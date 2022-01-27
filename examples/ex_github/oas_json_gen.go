@@ -1000,6 +1000,54 @@ func (s *ActionsBillingUsageMinutesUsedBreakdown) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
+func (s ActionsCancelWorkflowRunAccepted) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfActionsCancelWorkflowRunAccepted = [0]string{}
+
+// Decode decodes ActionsCancelWorkflowRunAccepted from json.
+func (s ActionsCancelWorkflowRunAccepted) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActionsCancelWorkflowRunAccepted to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
 func (s ActionsCreateOrUpdateEnvironmentSecretNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -1331,6 +1379,54 @@ func (s *ActionsCreateOrUpdateOrgSecretReqVisibility) Decode(d *jx.Decoder) erro
 		*s = ActionsCreateOrUpdateOrgSecretReqVisibilitySelected
 	default:
 		*s = ActionsCreateOrUpdateOrgSecretReqVisibility(v)
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s ActionsCreateOrUpdateRepoSecretCreated) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfActionsCreateOrUpdateRepoSecretCreated = [0]string{}
+
+// Decode decodes ActionsCreateOrUpdateRepoSecretCreated from json.
+func (s ActionsCreateOrUpdateRepoSecretCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActionsCreateOrUpdateRepoSecretCreated to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
 	}
 
 	return nil
@@ -4489,6 +4585,54 @@ func (s *ActionsPublicKey) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
+func (s ActionsReRunWorkflowCreated) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfActionsReRunWorkflowCreated = [0]string{}
+
+// Decode decodes ActionsReRunWorkflowCreated from json.
+func (s ActionsReRunWorkflowCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActionsReRunWorkflowCreated to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
 func (s ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -4722,6 +4866,54 @@ func (s *ActionsRepositoryPermissions) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s ActionsRetryWorkflowCreated) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfActionsRetryWorkflowCreated = [0]string{}
+
+// Decode decodes ActionsRetryWorkflowCreated from json.
+func (s ActionsRetryWorkflowCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ActionsRetryWorkflowCreated to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
 	}
 
 	return nil
@@ -9948,6 +10140,54 @@ func (s *AppsCreateContentAttachmentReq) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// Encode implements json.Marshaler.
+func (s AppsCreateFromManifestReq) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfAppsCreateFromManifestReq = [0]string{}
+
+// Decode decodes AppsCreateFromManifestReq from json.
+func (s AppsCreateFromManifestReq) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AppsCreateFromManifestReq to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // Encode encodes AppsCreateInstallationAccessTokenApplicationJSONForbidden as json.
 func (s AppsCreateInstallationAccessTokenApplicationJSONForbidden) Encode(e *jx.Writer) {
 	unwrapped := BasicError(s)
@@ -13158,6 +13398,54 @@ func (s *AuditLogEventActorLocation) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
+func (s AuditLogEventData) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfAuditLogEventData = [0]string{}
+
+// Decode decodes AuditLogEventData from json.
+func (s AuditLogEventData) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AuditLogEventData to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
 func (s AuthenticationToken) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -14477,6 +14765,52 @@ func (s *BaseGist) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s BaseGistFiles) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		elem.Encode(e)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfBaseGistFiles = [0]string{}
+
+// Decode decodes BaseGistFiles from json.
+func (s BaseGistFiles) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode BaseGistFiles to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem BaseGistFilesItem
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
 	}
 
 	return nil
@@ -19686,6 +20020,54 @@ func (s *ChecksListSuitesForRefOK) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s ChecksRerequestSuiteCreated) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfChecksRerequestSuiteCreated = [0]string{}
+
+// Decode decodes ChecksRerequestSuiteCreated from json.
+func (s ChecksRerequestSuiteCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ChecksRerequestSuiteCreated to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
 	}
 
 	return nil
@@ -29492,6 +29874,54 @@ func (s *DeploymentPayload) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// Encode implements json.Marshaler.
+func (s DeploymentPayload0) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfDeploymentPayload0 = [0]string{}
+
+// Decode decodes DeploymentPayload0 from json.
+func (s DeploymentPayload0) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode DeploymentPayload0 to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // Encode encodes DeploymentReviewerType as json.
 func (s DeploymentReviewerType) Encode(e *jx.Writer) {
 	e.Str(string(s))
@@ -30475,6 +30905,54 @@ func (s *Email) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s EmojisGetOK) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfEmojisGetOK = [0]string{}
+
+// Decode decodes EmojisGetOK from json.
+func (s EmojisGetOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode EmojisGetOK to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
 	}
 
 	return nil
@@ -39555,6 +40033,52 @@ func (s *GistSimple) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
+func (s GistSimpleFiles) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		elem.Encode(e)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfGistSimpleFiles = [0]string{}
+
+// Decode decodes GistSimpleFiles from json.
+func (s GistSimpleFiles) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistSimpleFiles to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem GistSimpleFilesItem
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
 func (s GistSimpleFilesItem) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -40102,6 +40626,52 @@ func (s *GistSimpleForkOf) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
+func (s GistSimpleForkOfFiles) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		elem.Encode(e)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfGistSimpleForkOfFiles = [0]string{}
+
+// Decode decodes GistSimpleForkOfFiles from json.
+func (s GistSimpleForkOfFiles) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistSimpleForkOfFiles to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem GistSimpleForkOfFilesItem
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
 func (s GistSimpleForkOfFilesItem) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -40367,6 +40937,54 @@ func (s *GistsCheckIsStarredNoContent) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		default:
 			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s GistsCheckIsStarredNotFound) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfGistsCheckIsStarredNotFound = [0]string{}
+
+// Decode decodes GistsCheckIsStarredNotFound from json.
+func (s GistsCheckIsStarredNotFound) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsCheckIsStarredNotFound to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -40660,6 +41278,52 @@ func (s *GistsCreateReq) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s GistsCreateReqFiles) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		elem.Encode(e)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfGistsCreateReqFiles = [0]string{}
+
+// Decode decodes GistsCreateReqFiles from json.
+func (s GistsCreateReqFiles) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsCreateReqFiles to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem GistsCreateReqFilesItem
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
 	}
 
 	return nil
@@ -46958,6 +47622,102 @@ func (s *HookDeliveryRequest) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
+func (s HookDeliveryRequestHeaders) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfHookDeliveryRequestHeaders = [0]string{}
+
+// Decode decodes HookDeliveryRequestHeaders from json.
+func (s HookDeliveryRequestHeaders) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode HookDeliveryRequestHeaders to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s HookDeliveryRequestPayload) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfHookDeliveryRequestPayload = [0]string{}
+
+// Decode decodes HookDeliveryRequestPayload from json.
+func (s HookDeliveryRequestPayload) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode HookDeliveryRequestPayload to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
 func (s HookDeliveryResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -47043,6 +47803,54 @@ func (s *HookDeliveryResponse) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s HookDeliveryResponseHeaders) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfHookDeliveryResponseHeaders = [0]string{}
+
+// Decode decodes HookDeliveryResponseHeaders from json.
+func (s HookDeliveryResponseHeaders) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode HookDeliveryResponseHeaders to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
 	}
 
 	return nil
@@ -48482,6 +49290,151 @@ func (s *Integration) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s IntegrationPermissions) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		{
+			if s.Issues.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Issues.Set {
+				e.RawStr("\"issues\"" + ":")
+				s.Issues.Encode(e)
+			}
+		}
+		{
+			if s.Checks.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Checks.Set {
+				e.RawStr("\"checks\"" + ":")
+				s.Checks.Encode(e)
+			}
+		}
+		{
+			if s.Metadata.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Metadata.Set {
+				e.RawStr("\"metadata\"" + ":")
+				s.Metadata.Encode(e)
+			}
+		}
+		{
+			if s.Contents.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Contents.Set {
+				e.RawStr("\"contents\"" + ":")
+				s.Contents.Encode(e)
+			}
+		}
+		{
+			if s.Deployments.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Deployments.Set {
+				e.RawStr("\"deployments\"" + ":")
+				s.Deployments.Encode(e)
+			}
+		}
+	}
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfIntegrationPermissions = [5]string{
+	0: "issues",
+	1: "checks",
+	2: "metadata",
+	3: "contents",
+	4: "deployments",
+}
+
+// Decode decodes IntegrationPermissions from json.
+func (s *IntegrationPermissions) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode IntegrationPermissions to nil`)
+	}
+
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "issues":
+			s.Issues.Reset()
+			if err := s.Issues.Decode(d); err != nil {
+				return err
+			}
+		case "checks":
+			s.Checks.Reset()
+			if err := s.Checks.Decode(d); err != nil {
+				return err
+			}
+		case "metadata":
+			s.Metadata.Reset()
+			if err := s.Metadata.Decode(d); err != nil {
+				return err
+			}
+		case "contents":
+			s.Contents.Reset()
+			if err := s.Contents.Decode(d); err != nil {
+				return err
+			}
+		case "deployments":
+			s.Deployments.Reset()
+			if err := s.Deployments.Decode(d); err != nil {
+				return err
+			}
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
 	}
 
 	return nil
@@ -61039,6 +61992,97 @@ func (s *MigrationsListReposForUserOKApplicationJSON) Decode(d *jx.Decoder) erro
 }
 
 // Encode implements json.Marshaler.
+func (s MigrationsMapCommitAuthorReq) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		{
+			if s.Email.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Email.Set {
+				e.RawStr("\"email\"" + ":")
+				s.Email.Encode(e)
+			}
+		}
+		{
+			if s.Name.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Name.Set {
+				e.RawStr("\"name\"" + ":")
+				s.Name.Encode(e)
+			}
+		}
+	}
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfMigrationsMapCommitAuthorReq = [2]string{
+	0: "email",
+	1: "name",
+}
+
+// Decode decodes MigrationsMapCommitAuthorReq from json.
+func (s *MigrationsMapCommitAuthorReq) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MigrationsMapCommitAuthorReq to nil`)
+	}
+
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "email":
+			s.Email.Reset()
+			if err := s.Email.Decode(d); err != nil {
+				return err
+			}
+		case "name":
+			s.Name.Reset()
+			if err := s.Name.Decode(d); err != nil {
+				return err
+			}
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
 func (s MigrationsSetLfsPreferenceReq) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -65656,6 +66700,151 @@ func (s *NullableIntegration) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s NullableIntegrationPermissions) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		{
+			if s.Issues.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Issues.Set {
+				e.RawStr("\"issues\"" + ":")
+				s.Issues.Encode(e)
+			}
+		}
+		{
+			if s.Checks.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Checks.Set {
+				e.RawStr("\"checks\"" + ":")
+				s.Checks.Encode(e)
+			}
+		}
+		{
+			if s.Metadata.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Metadata.Set {
+				e.RawStr("\"metadata\"" + ":")
+				s.Metadata.Encode(e)
+			}
+		}
+		{
+			if s.Contents.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Contents.Set {
+				e.RawStr("\"contents\"" + ":")
+				s.Contents.Encode(e)
+			}
+		}
+		{
+			if s.Deployments.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Deployments.Set {
+				e.RawStr("\"deployments\"" + ":")
+				s.Deployments.Encode(e)
+			}
+		}
+	}
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfNullableIntegrationPermissions = [5]string{
+	0: "issues",
+	1: "checks",
+	2: "metadata",
+	3: "contents",
+	4: "deployments",
+}
+
+// Decode decodes NullableIntegrationPermissions from json.
+func (s *NullableIntegrationPermissions) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode NullableIntegrationPermissions to nil`)
+	}
+
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "issues":
+			s.Issues.Reset()
+			if err := s.Issues.Decode(d); err != nil {
+				return err
+			}
+		case "checks":
+			s.Checks.Reset()
+			if err := s.Checks.Decode(d); err != nil {
+				return err
+			}
+		case "metadata":
+			s.Metadata.Reset()
+			if err := s.Metadata.Decode(d); err != nil {
+				return err
+			}
+		case "contents":
+			s.Contents.Reset()
+			if err := s.Contents.Decode(d); err != nil {
+				return err
+			}
+		case "deployments":
+			s.Deployments.Reset()
+			if err := s.Deployments.Decode(d); err != nil {
+				return err
+			}
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
 	}
 
 	return nil
@@ -78034,6 +79223,45 @@ func (o *OptNilCodeScanningAnalysisToolVersion) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes DeploymentBranchPolicy as json.
+func (o OptNilDeploymentBranchPolicy) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes DeploymentBranchPolicy from json.
+func (o *OptNilDeploymentBranchPolicy) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptNilDeploymentBranchPolicy to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		o.Null = false
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		var v DeploymentBranchPolicy
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptNilDeploymentBranchPolicy`, d.Next())
+	}
+}
+
 // Encode encodes FullRepositorySecurityAndAnalysis as json.
 func (o OptNilFullRepositorySecurityAndAnalysis) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -78803,6 +80031,64 @@ func (o *OptNilPagesHealthCheckAltDomain) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptNilPagesHealthCheckAltDomain`, d.Next())
+	}
+}
+
+// Encode encodes []ReposCreateOrUpdateEnvironmentReqReviewersItem as json.
+func (o OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	e.ArrStart()
+	if len(o.Value) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := o.Value[0]
+			elem.Encode(e)
+		}
+		for _, elem := range o.Value[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes []ReposCreateOrUpdateEnvironmentReqReviewersItem from json.
+func (o *OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray to nil`)
+	}
+	switch d.Next() {
+	case jx.Array:
+		o.Set = true
+		o.Null = false
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem ReposCreateOrUpdateEnvironmentReqReviewersItem
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			o.Value = append(o.Value, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		var v []ReposCreateOrUpdateEnvironmentReqReviewersItem
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray`, d.Next())
 	}
 }
 
@@ -82051,6 +83337,31 @@ func (o *OptReposCreateWebhookReq) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes ReposCreateWebhookReqConfig as json.
+func (o OptReposCreateWebhookReqConfig) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes ReposCreateWebhookReqConfig from json.
+func (o *OptReposCreateWebhookReqConfig) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptReposCreateWebhookReqConfig to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptReposCreateWebhookReqConfig`, d.Next())
+	}
+}
+
 // Encode encodes ReposDeleteFileReqAuthor as json.
 func (o OptReposDeleteFileReqAuthor) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -84890,6 +86201,28 @@ func (o *OptVerification) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes WaitTimer as json.
+func (o OptWaitTimer) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes WaitTimer from json.
+func (o *OptWaitTimer) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptWaitTimer to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptWaitTimer`, d.Next())
+	}
+}
+
 // Encode encodes WebhookConfigContentType as json.
 func (o OptWebhookConfigContentType) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -87684,6 +89017,54 @@ func (s *OrgsCheckPublicMembershipForUserNotFound) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
+func (s OrgsConvertMemberToOutsideCollaboratorAccepted) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfOrgsConvertMemberToOutsideCollaboratorAccepted = [0]string{}
+
+// Decode decodes OrgsConvertMemberToOutsideCollaboratorAccepted from json.
+func (s OrgsConvertMemberToOutsideCollaboratorAccepted) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OrgsConvertMemberToOutsideCollaboratorAccepted to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
 func (s OrgsConvertMemberToOutsideCollaboratorForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -90085,6 +91466,133 @@ func (s *OrgsUpdateReqMembersAllowedRepositoryCreationType) Decode(d *jx.Decoder
 		*s = OrgsUpdateReqMembersAllowedRepositoryCreationTypeNone
 	default:
 		*s = OrgsUpdateReqMembersAllowedRepositoryCreationType(v)
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s OrgsUpdateWebhookConfigForOrgReq) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		{
+			if s.URL.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.URL.Set {
+				e.RawStr("\"url\"" + ":")
+				s.URL.Encode(e)
+			}
+		}
+		{
+			if s.ContentType.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.ContentType.Set {
+				e.RawStr("\"content_type\"" + ":")
+				s.ContentType.Encode(e)
+			}
+		}
+		{
+			if s.Secret.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Secret.Set {
+				e.RawStr("\"secret\"" + ":")
+				s.Secret.Encode(e)
+			}
+		}
+		{
+			if s.InsecureSsl.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.InsecureSsl.Set {
+				e.RawStr("\"insecure_ssl\"" + ":")
+				s.InsecureSsl.Encode(e)
+			}
+		}
+	}
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfOrgsUpdateWebhookConfigForOrgReq = [4]string{
+	0: "url",
+	1: "content_type",
+	2: "secret",
+	3: "insecure_ssl",
+}
+
+// Decode decodes OrgsUpdateWebhookConfigForOrgReq from json.
+func (s *OrgsUpdateWebhookConfigForOrgReq) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OrgsUpdateWebhookConfigForOrgReq to nil`)
+	}
+
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "url":
+			s.URL.Reset()
+			if err := s.URL.Decode(d); err != nil {
+				return err
+			}
+		case "content_type":
+			s.ContentType.Reset()
+			if err := s.ContentType.Decode(d); err != nil {
+				return err
+			}
+		case "secret":
+			s.Secret.Reset()
+			if err := s.Secret.Decode(d); err != nil {
+				return err
+			}
+		case "insecure_ssl":
+			s.InsecureSsl.Reset()
+			if err := s.InsecureSsl.Decode(d); err != nil {
+				return err
+			}
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
 	}
 
 	return nil
@@ -100594,6 +102102,54 @@ func (s *ProjectsListForUserState) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
+func (s ProjectsMoveCardCreated) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfProjectsMoveCardCreated = [0]string{}
+
+// Decode decodes ProjectsMoveCardCreated from json.
+func (s ProjectsMoveCardCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsMoveCardCreated to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
 func (s ProjectsMoveCardForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -101134,6 +102690,54 @@ func (s *ProjectsMoveColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) er
 		return errors.Wrap(err, "alias")
 	}
 	*s = ProjectsMoveColumnApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s ProjectsMoveColumnCreated) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfProjectsMoveColumnCreated = [0]string{}
+
+// Decode decodes ProjectsMoveColumnCreated from json.
+func (s ProjectsMoveColumnCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProjectsMoveColumnCreated to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -102242,6 +103846,332 @@ func (s *ProtectedBranchAdminEnforced) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
+func (s ProtectedBranchAllowDeletions) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		{
+			if !first {
+				e.Comma()
+			}
+			first = false
+
+			e.RawStr("\"enabled\"" + ":")
+			e.Bool(s.Enabled)
+		}
+	}
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfProtectedBranchAllowDeletions = [1]string{
+	0: "enabled",
+}
+
+// Decode decodes ProtectedBranchAllowDeletions from json.
+func (s *ProtectedBranchAllowDeletions) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProtectedBranchAllowDeletions to nil`)
+	}
+	var requiredBitSet [1]uint8
+
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "enabled":
+			requiredBitSet[0] |= 1 << 0
+			v, err := d.Bool()
+			s.Enabled = bool(v)
+			if err != nil {
+				return err
+			}
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfProtectedBranchAllowDeletions) {
+					name = jsonFieldsNameOfProtectedBranchAllowDeletions[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s ProtectedBranchAllowForcePushes) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		{
+			if !first {
+				e.Comma()
+			}
+			first = false
+
+			e.RawStr("\"enabled\"" + ":")
+			e.Bool(s.Enabled)
+		}
+	}
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfProtectedBranchAllowForcePushes = [1]string{
+	0: "enabled",
+}
+
+// Decode decodes ProtectedBranchAllowForcePushes from json.
+func (s *ProtectedBranchAllowForcePushes) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProtectedBranchAllowForcePushes to nil`)
+	}
+	var requiredBitSet [1]uint8
+
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "enabled":
+			requiredBitSet[0] |= 1 << 0
+			v, err := d.Bool()
+			s.Enabled = bool(v)
+			if err != nil {
+				return err
+			}
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfProtectedBranchAllowForcePushes) {
+					name = jsonFieldsNameOfProtectedBranchAllowForcePushes[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s ProtectedBranchEnforceAdmins) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		{
+			if !first {
+				e.Comma()
+			}
+			first = false
+
+			e.RawStr("\"url\"" + ":")
+			json.EncodeURI(e, s.URL)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"enabled\"" + ":")
+			e.Bool(s.Enabled)
+		}
+	}
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfProtectedBranchEnforceAdmins = [2]string{
+	0: "url",
+	1: "enabled",
+}
+
+// Decode decodes ProtectedBranchEnforceAdmins from json.
+func (s *ProtectedBranchEnforceAdmins) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProtectedBranchEnforceAdmins to nil`)
+	}
+	var requiredBitSet [1]uint8
+
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "url":
+			requiredBitSet[0] |= 1 << 0
+			v, err := json.DecodeURI(d)
+			s.URL = v
+			if err != nil {
+				return err
+			}
+		case "enabled":
+			requiredBitSet[0] |= 1 << 1
+			v, err := d.Bool()
+			s.Enabled = bool(v)
+			if err != nil {
+				return err
+			}
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000011,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfProtectedBranchEnforceAdmins) {
+					name = jsonFieldsNameOfProtectedBranchEnforceAdmins[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
 func (s ProtectedBranchPullRequestReview) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -102542,6 +104472,183 @@ func (s *ProtectedBranchPullRequestReviewDismissalRestrictions) Decode(d *jx.Dec
 		return nil
 	}); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s ProtectedBranchRequiredConversationResolution) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		{
+			if s.Enabled.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Enabled.Set {
+				e.RawStr("\"enabled\"" + ":")
+				s.Enabled.Encode(e)
+			}
+		}
+	}
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfProtectedBranchRequiredConversationResolution = [1]string{
+	0: "enabled",
+}
+
+// Decode decodes ProtectedBranchRequiredConversationResolution from json.
+func (s *ProtectedBranchRequiredConversationResolution) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProtectedBranchRequiredConversationResolution to nil`)
+	}
+
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "enabled":
+			s.Enabled.Reset()
+			if err := s.Enabled.Decode(d); err != nil {
+				return err
+			}
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s ProtectedBranchRequiredLinearHistory) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		{
+			if !first {
+				e.Comma()
+			}
+			first = false
+
+			e.RawStr("\"enabled\"" + ":")
+			e.Bool(s.Enabled)
+		}
+	}
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfProtectedBranchRequiredLinearHistory = [1]string{
+	0: "enabled",
+}
+
+// Decode decodes ProtectedBranchRequiredLinearHistory from json.
+func (s *ProtectedBranchRequiredLinearHistory) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ProtectedBranchRequiredLinearHistory to nil`)
+	}
+	var requiredBitSet [1]uint8
+
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "enabled":
+			requiredBitSet[0] |= 1 << 0
+			v, err := d.Bool()
+			s.Enabled = bool(v)
+			if err != nil {
+				return err
+			}
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfProtectedBranchRequiredLinearHistory) {
+					name = jsonFieldsNameOfProtectedBranchRequiredLinearHistory[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
 	}
 
 	return nil
@@ -122284,6 +124391,54 @@ func (s *ReposCreateDeploymentReqPayload) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
+func (s ReposCreateDeploymentReqPayload0) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfReposCreateDeploymentReqPayload0 = [0]string{}
+
+// Decode decodes ReposCreateDeploymentReqPayload0 from json.
+func (s ReposCreateDeploymentReqPayload0) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposCreateDeploymentReqPayload0 to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
 func (s ReposCreateDeploymentStatusReq) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -122640,6 +124795,54 @@ func (s *ReposCreateDispatchEventReq) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s ReposCreateDispatchEventReqClientPayload) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfReposCreateDispatchEventReqClientPayload = [0]string{}
+
+// Decode decodes ReposCreateDispatchEventReqClientPayload from json.
+func (s ReposCreateDispatchEventReqClientPayload) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposCreateDispatchEventReqClientPayload to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
 	}
 
 	return nil
@@ -123565,6 +125768,115 @@ func (s *ReposCreateInOrgReqVisibility) Decode(d *jx.Decoder) error {
 		*s = ReposCreateInOrgReqVisibilityInternal
 	default:
 		*s = ReposCreateInOrgReqVisibility(v)
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s ReposCreateOrUpdateEnvironmentReq) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		{
+			if s.WaitTimer.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.WaitTimer.Set {
+				e.RawStr("\"wait_timer\"" + ":")
+				s.WaitTimer.Encode(e)
+			}
+		}
+		{
+			if s.Reviewers.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Reviewers.Set {
+				e.RawStr("\"reviewers\"" + ":")
+				s.Reviewers.Encode(e)
+			}
+		}
+		{
+			if s.DeploymentBranchPolicy.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.DeploymentBranchPolicy.Set {
+				e.RawStr("\"deployment_branch_policy\"" + ":")
+				s.DeploymentBranchPolicy.Encode(e)
+			}
+		}
+	}
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfReposCreateOrUpdateEnvironmentReq = [3]string{
+	0: "wait_timer",
+	1: "reviewers",
+	2: "deployment_branch_policy",
+}
+
+// Decode decodes ReposCreateOrUpdateEnvironmentReq from json.
+func (s *ReposCreateOrUpdateEnvironmentReq) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposCreateOrUpdateEnvironmentReq to nil`)
+	}
+
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "wait_timer":
+			s.WaitTimer.Reset()
+			if err := s.WaitTimer.Decode(d); err != nil {
+				return err
+			}
+		case "reviewers":
+			s.Reviewers.Reset()
+			if err := s.Reviewers.Decode(d); err != nil {
+				return err
+			}
+		case "deployment_branch_policy":
+			s.DeploymentBranchPolicy.Reset()
+			if err := s.DeploymentBranchPolicy.Decode(d); err != nil {
+				return err
+			}
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
 	}
 
 	return nil
@@ -124671,6 +126983,154 @@ func (s *ReposCreateWebhookApplicationJSONNotFound) Decode(d *jx.Decoder) error 
 		return errors.Wrap(err, "alias")
 	}
 	*s = ReposCreateWebhookApplicationJSONNotFound(unwrapped)
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s ReposCreateWebhookReq) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		{
+			if s.Name.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Name.Set {
+				e.RawStr("\"name\"" + ":")
+				s.Name.Encode(e)
+			}
+		}
+		{
+			if s.Config.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Config.Set {
+				e.RawStr("\"config\"" + ":")
+				s.Config.Encode(e)
+			}
+		}
+		{
+			if s.Events != nil {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Events != nil {
+				e.RawStr("\"events\"" + ":")
+				e.ArrStart()
+				if len(s.Events) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := s.Events[0]
+						e.Str(elem)
+					}
+					for _, elem := range s.Events[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		{
+			if s.Active.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Active.Set {
+				e.RawStr("\"active\"" + ":")
+				s.Active.Encode(e)
+			}
+		}
+	}
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfReposCreateWebhookReq = [4]string{
+	0: "name",
+	1: "config",
+	2: "events",
+	3: "active",
+}
+
+// Decode decodes ReposCreateWebhookReq from json.
+func (s *ReposCreateWebhookReq) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposCreateWebhookReq to nil`)
+	}
+
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "name":
+			s.Name.Reset()
+			if err := s.Name.Decode(d); err != nil {
+				return err
+			}
+		case "config":
+			s.Config.Reset()
+			if err := s.Config.Decode(d); err != nil {
+				return err
+			}
+		case "events":
+			s.Events = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				s.Events = append(s.Events, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+		case "active":
+			s.Active.Reset()
+			if err := s.Active.Decode(d); err != nil {
+				return err
+			}
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -132605,6 +135065,133 @@ func (s *ReposUpdateStatusCheckProtectionReq) Decode(d *jx.Decoder) error {
 			}
 		default:
 			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s ReposUpdateWebhookConfigForRepoReq) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		{
+			if s.URL.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.URL.Set {
+				e.RawStr("\"url\"" + ":")
+				s.URL.Encode(e)
+			}
+		}
+		{
+			if s.ContentType.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.ContentType.Set {
+				e.RawStr("\"content_type\"" + ":")
+				s.ContentType.Encode(e)
+			}
+		}
+		{
+			if s.Secret.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Secret.Set {
+				e.RawStr("\"secret\"" + ":")
+				s.Secret.Encode(e)
+			}
+		}
+		{
+			if s.InsecureSsl.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.InsecureSsl.Set {
+				e.RawStr("\"insecure_ssl\"" + ":")
+				s.InsecureSsl.Encode(e)
+			}
+		}
+	}
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfReposUpdateWebhookConfigForRepoReq = [4]string{
+	0: "url",
+	1: "content_type",
+	2: "secret",
+	3: "insecure_ssl",
+}
+
+// Decode decodes ReposUpdateWebhookConfigForRepoReq from json.
+func (s *ReposUpdateWebhookConfigForRepoReq) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ReposUpdateWebhookConfigForRepoReq to nil`)
+	}
+
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "url":
+			s.URL.Reset()
+			if err := s.URL.Decode(d); err != nil {
+				return err
+			}
+		case "content_type":
+			s.ContentType.Reset()
+			if err := s.ContentType.Decode(d); err != nil {
+				return err
+			}
+		case "secret":
+			s.Secret.Reset()
+			if err := s.Secret.Decode(d); err != nil {
+				return err
+			}
+		case "insecure_ssl":
+			s.InsecureSsl.Reset()
+			if err := s.InsecureSsl.Decode(d); err != nil {
+				return err
+			}
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -151638,6 +154225,98 @@ func (s *TeamsCreateDiscussionLegacyReq) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		{
+			if s.Groups != nil {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Groups != nil {
+				e.RawStr("\"groups\"" + ":")
+				e.ArrStart()
+				if len(s.Groups) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := s.Groups[0]
+						elem.Encode(e)
+					}
+					for _, elem := range s.Groups[1:] {
+						e.Comma()
+						elem.Encode(e)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+	}
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfTeamsCreateOrUpdateIdpGroupConnectionsInOrgReq = [1]string{
+	0: "groups",
+}
+
+// Decode decodes TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq from json.
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq to nil`)
+	}
+
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "groups":
+			s.Groups = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem
+				if err := elem.Decode(d); err != nil {
+					return err
+				}
+				s.Groups = append(s.Groups, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
 	}
 
 	return nil

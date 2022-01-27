@@ -137,6 +137,8 @@ type ActionsBillingUsageMinutesUsedBreakdown struct {
 	WINDOWS OptInt `json:"WINDOWS"`
 }
 
+type ActionsCancelWorkflowRunAccepted map[string]string
+
 // ActionsCreateOrUpdateEnvironmentSecretNoContent is response for ActionsCreateOrUpdateEnvironmentSecret operation.
 type ActionsCreateOrUpdateEnvironmentSecretNoContent struct{}
 
@@ -166,6 +168,10 @@ const (
 	ActionsCreateOrUpdateOrgSecretReqVisibilityPrivate  ActionsCreateOrUpdateOrgSecretReqVisibility = "private"
 	ActionsCreateOrUpdateOrgSecretReqVisibilitySelected ActionsCreateOrUpdateOrgSecretReqVisibility = "selected"
 )
+
+type ActionsCreateOrUpdateRepoSecretCreated map[string]string
+
+func (ActionsCreateOrUpdateRepoSecretCreated) actionsCreateOrUpdateRepoSecretRes() {}
 
 // ActionsCreateOrUpdateRepoSecretNoContent is response for ActionsCreateOrUpdateRepoSecret operation.
 type ActionsCreateOrUpdateRepoSecretNoContent struct{}
@@ -768,6 +774,8 @@ type ActionsPublicKey struct {
 	CreatedAt OptString `json:"created_at"`
 }
 
+type ActionsReRunWorkflowCreated map[string]string
+
 // ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent is response for ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg operation.
 type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent struct{}
 
@@ -790,6 +798,8 @@ type ActionsRepositoryPermissions struct {
 	AllowedActions     OptAllowedActions     `json:"allowed_actions"`
 	SelectedActionsURL OptSelectedActionsURL `json:"selected_actions_url"`
 }
+
+type ActionsRetryWorkflowCreated map[string]string
 
 type ActionsReviewPendingDeploymentsForRunReq struct {
 	EnvironmentIds []int                                         `json:"environment_ids"`
@@ -1470,6 +1480,8 @@ type AppsCreateContentAttachmentReq struct {
 	Body  string `json:"body"`
 }
 
+type AppsCreateFromManifestReq map[string]string
+
 type AppsCreateInstallationAccessTokenApplicationJSONForbidden BasicError
 
 func (*AppsCreateInstallationAccessTokenApplicationJSONForbidden) appsCreateInstallationAccessTokenRes() {
@@ -1779,6 +1791,8 @@ type AuditLogEventActorLocation struct {
 	CountryName OptString `json:"country_name"`
 }
 
+type AuditLogEventData map[string]string
+
 // Ref: #/components/schemas/authentication-token
 type AuthenticationToken struct {
 	Token               string                                    `json:"token"`
@@ -1895,6 +1909,8 @@ type BaseGist struct {
 }
 
 func (*BaseGist) gistsForkRes() {}
+
+type BaseGistFiles map[string]BaseGistFilesItem
 
 type BaseGistFilesItem struct {
 	Filename OptString `json:"filename"`
@@ -2459,6 +2475,8 @@ type ChecksListSuitesForRefOK struct {
 	TotalCount  int          `json:"total_count"`
 	CheckSuites []CheckSuite `json:"check_suites"`
 }
+
+type ChecksRerequestSuiteCreated map[string]string
 
 type ChecksSetSuitesPreferencesReq struct {
 	AutoTriggerChecks []ChecksSetSuitesPreferencesReqAutoTriggerChecksItem `json:"auto_trigger_checks"`
@@ -3306,6 +3324,8 @@ func NewStringDeploymentPayload(v string) DeploymentPayload {
 	return s
 }
 
+type DeploymentPayload0 map[string]string
+
 // Ref: #/components/schemas/deployment-reviewer-type
 type DeploymentReviewerType string
 
@@ -3400,6 +3420,10 @@ type Email struct {
 	Verified   bool      `json:"verified"`
 	Visibility NilString `json:"visibility"`
 }
+
+type EmojisGetOK map[string]string
+
+func (EmojisGetOK) emojisGetRes() {}
 
 // Ref: #/components/schemas/empty-object
 type EmptyObject map[string]string
@@ -4133,6 +4157,8 @@ func (*GistSimple) gistsCreateRes()      {}
 func (*GistSimple) gistsGetRes()         {}
 func (*GistSimple) gistsGetRevisionRes() {}
 
+type GistSimpleFiles map[string]GistSimpleFilesItem
+
 type GistSimpleFilesItem struct {
 	Filename  OptString `json:"filename"`
 	Type      OptString `json:"type"`
@@ -4166,6 +4192,8 @@ type GistSimpleForkOf struct {
 	History     []string                 `json:"history"`
 }
 
+type GistSimpleForkOfFiles map[string]GistSimpleForkOfFilesItem
+
 type GistSimpleForkOfFilesItem struct {
 	Filename OptString `json:"filename"`
 	Type     OptString `json:"type"`
@@ -4186,6 +4214,10 @@ type GistSimpleForksItem struct {
 type GistsCheckIsStarredNoContent struct{}
 
 func (*GistsCheckIsStarredNoContent) gistsCheckIsStarredRes() {}
+
+type GistsCheckIsStarredNotFound map[string]string
+
+func (GistsCheckIsStarredNotFound) gistsCheckIsStarredRes() {}
 
 type GistsCreateApplicationJSONForbidden BasicError
 
@@ -4212,6 +4244,8 @@ type GistsCreateReq struct {
 	Files       GistsCreateReqFiles     `json:"files"`
 	Public      OptGistsCreateReqPublic `json:"public"`
 }
+
+type GistsCreateReqFiles map[string]GistsCreateReqFilesItem
 
 type GistsCreateReqFilesItem struct {
 	Content string `json:"content"`
@@ -4802,10 +4836,16 @@ type HookDeliveryRequest struct {
 	Payload NilHookDeliveryRequestPayload `json:"payload"`
 }
 
+type HookDeliveryRequestHeaders map[string]string
+
+type HookDeliveryRequestPayload map[string]string
+
 type HookDeliveryResponse struct {
 	Headers NilHookDeliveryResponseHeaders `json:"headers"`
 	Payload NilString                      `json:"payload"`
 }
+
+type HookDeliveryResponseHeaders map[string]string
 
 // Ref: #/components/schemas/hook-response
 type HookResponse struct {
@@ -4927,6 +4967,15 @@ type Integration struct {
 }
 
 func (*Integration) appsGetBySlugRes() {}
+
+type IntegrationPermissions struct {
+	Issues          OptString `json:"issues"`
+	Checks          OptString `json:"checks"`
+	Metadata        OptString `json:"metadata"`
+	Contents        OptString `json:"contents"`
+	Deployments     OptString `json:"deployments"`
+	AdditionalProps map[string]string
+}
 
 // Ref: #/components/schemas/interaction-expiry
 type InteractionExpiry string
@@ -6559,6 +6608,12 @@ type MigrationsListReposForUserOKApplicationJSON []MinimalRepository
 
 func (MigrationsListReposForUserOKApplicationJSON) migrationsListReposForUserRes() {}
 
+type MigrationsMapCommitAuthorReq struct {
+	Email           OptString `json:"email"`
+	Name            OptString `json:"name"`
+	AdditionalProps map[string]string
+}
+
 type MigrationsSetLfsPreferenceReq struct {
 	UseLfs MigrationsSetLfsPreferenceReqUseLfs `json:"use_lfs"`
 }
@@ -8152,6 +8207,15 @@ type NullableIntegration struct {
 	ClientSecret       OptString                      `json:"client_secret"`
 	WebhookSecret      OptNilString                   `json:"webhook_secret"`
 	Pem                OptString                      `json:"pem"`
+}
+
+type NullableIntegrationPermissions struct {
+	Issues          OptString `json:"issues"`
+	Checks          OptString `json:"checks"`
+	Metadata        OptString `json:"metadata"`
+	Contents        OptString `json:"contents"`
+	Deployments     OptString `json:"deployments"`
+	AdditionalProps map[string]string
 }
 
 // Ref: #/components/schemas/nullable-license-simple
@@ -16934,6 +16998,61 @@ func (o OptNilCodeScanningAnalysisToolVersion) Or(d CodeScanningAnalysisToolVers
 	return d
 }
 
+// NewOptNilDeploymentBranchPolicy returns new OptNilDeploymentBranchPolicy with value set to v.
+func NewOptNilDeploymentBranchPolicy(v DeploymentBranchPolicy) OptNilDeploymentBranchPolicy {
+	return OptNilDeploymentBranchPolicy{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilDeploymentBranchPolicy is optional nullable DeploymentBranchPolicy.
+type OptNilDeploymentBranchPolicy struct {
+	Value DeploymentBranchPolicy
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilDeploymentBranchPolicy was set.
+func (o OptNilDeploymentBranchPolicy) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilDeploymentBranchPolicy) Reset() {
+	var v DeploymentBranchPolicy
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilDeploymentBranchPolicy) SetTo(v DeploymentBranchPolicy) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilDeploymentBranchPolicy) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilDeploymentBranchPolicy) Get() (v DeploymentBranchPolicy, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilDeploymentBranchPolicy) Or(d DeploymentBranchPolicy) DeploymentBranchPolicy {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilFullRepositorySecurityAndAnalysis returns new OptNilFullRepositorySecurityAndAnalysis with value set to v.
 func NewOptNilFullRepositorySecurityAndAnalysis(v FullRepositorySecurityAndAnalysis) OptNilFullRepositorySecurityAndAnalysis {
 	return OptNilFullRepositorySecurityAndAnalysis{
@@ -17973,6 +18092,61 @@ func (o OptNilPagesHealthCheckAltDomain) Get() (v PagesHealthCheckAltDomain, ok 
 
 // Or returns value if set, or given parameter if does not.
 func (o OptNilPagesHealthCheckAltDomain) Or(d PagesHealthCheckAltDomain) PagesHealthCheckAltDomain {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray returns new OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray with value set to v.
+func NewOptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray(v []ReposCreateOrUpdateEnvironmentReqReviewersItem) OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray {
+	return OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray is optional nullable []ReposCreateOrUpdateEnvironmentReqReviewersItem.
+type OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray struct {
+	Value []ReposCreateOrUpdateEnvironmentReqReviewersItem
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray was set.
+func (o OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) Reset() {
+	var v []ReposCreateOrUpdateEnvironmentReqReviewersItem
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) SetTo(v []ReposCreateOrUpdateEnvironmentReqReviewersItem) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) Get() (v []ReposCreateOrUpdateEnvironmentReqReviewersItem, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) Or(d []ReposCreateOrUpdateEnvironmentReqReviewersItem) []ReposCreateOrUpdateEnvironmentReqReviewersItem {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -23609,6 +23783,52 @@ func (o OptReposCreateWebhookReq) Or(d ReposCreateWebhookReq) ReposCreateWebhook
 	return d
 }
 
+// NewOptReposCreateWebhookReqConfig returns new OptReposCreateWebhookReqConfig with value set to v.
+func NewOptReposCreateWebhookReqConfig(v ReposCreateWebhookReqConfig) OptReposCreateWebhookReqConfig {
+	return OptReposCreateWebhookReqConfig{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposCreateWebhookReqConfig is optional ReposCreateWebhookReqConfig.
+type OptReposCreateWebhookReqConfig struct {
+	Value ReposCreateWebhookReqConfig
+	Set   bool
+}
+
+// IsSet returns true if OptReposCreateWebhookReqConfig was set.
+func (o OptReposCreateWebhookReqConfig) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposCreateWebhookReqConfig) Reset() {
+	var v ReposCreateWebhookReqConfig
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposCreateWebhookReqConfig) SetTo(v ReposCreateWebhookReqConfig) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposCreateWebhookReqConfig) Get() (v ReposCreateWebhookReqConfig, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposCreateWebhookReqConfig) Or(d ReposCreateWebhookReqConfig) ReposCreateWebhookReqConfig {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptReposDeleteFileReqAuthor returns new OptReposDeleteFileReqAuthor with value set to v.
 func NewOptReposDeleteFileReqAuthor(v ReposDeleteFileReqAuthor) OptReposDeleteFileReqAuthor {
 	return OptReposDeleteFileReqAuthor{
@@ -28901,6 +29121,52 @@ func (o OptVerification) Or(d Verification) Verification {
 	return d
 }
 
+// NewOptWaitTimer returns new OptWaitTimer with value set to v.
+func NewOptWaitTimer(v WaitTimer) OptWaitTimer {
+	return OptWaitTimer{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptWaitTimer is optional WaitTimer.
+type OptWaitTimer struct {
+	Value WaitTimer
+	Set   bool
+}
+
+// IsSet returns true if OptWaitTimer was set.
+func (o OptWaitTimer) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptWaitTimer) Reset() {
+	var v WaitTimer
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptWaitTimer) SetTo(v WaitTimer) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptWaitTimer) Get() (v WaitTimer, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptWaitTimer) Or(d WaitTimer) WaitTimer {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptWebhookConfigContentType returns new OptWebhookConfigContentType with value set to v.
 func NewOptWebhookConfigContentType(v WebhookConfigContentType) OptWebhookConfigContentType {
 	return OptWebhookConfigContentType{
@@ -29450,6 +29716,10 @@ type OrgsCheckPublicMembershipForUserNotFound struct{}
 
 func (*OrgsCheckPublicMembershipForUserNotFound) orgsCheckPublicMembershipForUserRes() {}
 
+type OrgsConvertMemberToOutsideCollaboratorAccepted map[string]string
+
+func (OrgsConvertMemberToOutsideCollaboratorAccepted) orgsConvertMemberToOutsideCollaboratorRes() {}
+
 // OrgsConvertMemberToOutsideCollaboratorForbidden is response for OrgsConvertMemberToOutsideCollaborator operation.
 type OrgsConvertMemberToOutsideCollaboratorForbidden struct{}
 
@@ -29743,6 +30013,14 @@ const (
 	OrgsUpdateReqMembersAllowedRepositoryCreationTypePrivate OrgsUpdateReqMembersAllowedRepositoryCreationType = "private"
 	OrgsUpdateReqMembersAllowedRepositoryCreationTypeNone    OrgsUpdateReqMembersAllowedRepositoryCreationType = "none"
 )
+
+type OrgsUpdateWebhookConfigForOrgReq struct {
+	URL             OptWebhookConfigURL         `json:"url"`
+	ContentType     OptWebhookConfigContentType `json:"content_type"`
+	Secret          OptWebhookConfigSecret      `json:"secret"`
+	InsecureSsl     OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
+	AdditionalProps map[string]string
+}
 
 type OrgsUpdateWebhookReq struct {
 	Config OptOrgsUpdateWebhookReqConfig `json:"config"`
@@ -31188,6 +31466,10 @@ const (
 	ProjectsListForUserStateAll    ProjectsListForUserState = "all"
 )
 
+type ProjectsMoveCardCreated map[string]string
+
+func (ProjectsMoveCardCreated) projectsMoveCardRes() {}
+
 type ProjectsMoveCardForbidden struct {
 	Message          OptString                             `json:"message"`
 	DocumentationURL OptString                             `json:"documentation_url"`
@@ -31229,6 +31511,10 @@ func (*ProjectsMoveColumnApplicationJSONForbidden) projectsMoveColumnRes() {}
 type ProjectsMoveColumnApplicationJSONUnauthorized BasicError
 
 func (*ProjectsMoveColumnApplicationJSONUnauthorized) projectsMoveColumnRes() {}
+
+type ProjectsMoveColumnCreated map[string]string
+
+func (ProjectsMoveColumnCreated) projectsMoveColumnRes() {}
 
 type ProjectsMoveColumnReq struct {
 	Position string `json:"position"`
@@ -31343,6 +31629,22 @@ type ProtectedBranchAdminEnforced struct {
 func (*ProtectedBranchAdminEnforced) reposCreateCommitSignatureProtectionRes() {}
 func (*ProtectedBranchAdminEnforced) reposGetCommitSignatureProtectionRes()    {}
 
+type ProtectedBranchAllowDeletions struct {
+	Enabled         bool `json:"enabled"`
+	AdditionalProps map[string]string
+}
+
+type ProtectedBranchAllowForcePushes struct {
+	Enabled         bool `json:"enabled"`
+	AdditionalProps map[string]string
+}
+
+type ProtectedBranchEnforceAdmins struct {
+	URL             url.URL `json:"url"`
+	Enabled         bool    `json:"enabled"`
+	AdditionalProps map[string]string
+}
+
 // Ref: #/components/schemas/protected-branch-pull-request-review
 type ProtectedBranchPullRequestReview struct {
 	URL                          OptURL                                                   `json:"url"`
@@ -31360,6 +31662,16 @@ type ProtectedBranchPullRequestReviewDismissalRestrictions struct {
 	URL      OptString    `json:"url"`
 	UsersURL OptString    `json:"users_url"`
 	TeamsURL OptString    `json:"teams_url"`
+}
+
+type ProtectedBranchRequiredConversationResolution struct {
+	Enabled         OptBool `json:"enabled"`
+	AdditionalProps map[string]string
+}
+
+type ProtectedBranchRequiredLinearHistory struct {
+	Enabled         bool `json:"enabled"`
+	AdditionalProps map[string]string
 }
 
 type ProtectedBranchRequiredPullRequestReviews struct {
@@ -33401,6 +33713,8 @@ func NewStringReposCreateDeploymentReqPayload(v string) ReposCreateDeploymentReq
 	return s
 }
 
+type ReposCreateDeploymentReqPayload0 map[string]string
+
 type ReposCreateDeploymentStatusReq struct {
 	State          ReposCreateDeploymentStatusReqState          `json:"state"`
 	TargetURL      OptString                                    `json:"target_url"`
@@ -33440,6 +33754,8 @@ type ReposCreateDispatchEventReq struct {
 	EventType     string                                      `json:"event_type"`
 	ClientPayload OptReposCreateDispatchEventReqClientPayload `json:"client_payload"`
 }
+
+type ReposCreateDispatchEventReqClientPayload map[string]string
 
 type ReposCreateForAuthenticatedUserApplicationJSONBadRequest BasicError
 
@@ -33527,6 +33843,13 @@ const (
 	ReposCreateInOrgReqVisibilityInternal   ReposCreateInOrgReqVisibility = "internal"
 )
 
+type ReposCreateOrUpdateEnvironmentReq struct {
+	WaitTimer              OptWaitTimer                                              `json:"wait_timer"`
+	Reviewers              OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray `json:"reviewers"`
+	DeploymentBranchPolicy OptNilDeploymentBranchPolicy                              `json:"deployment_branch_policy"`
+	AdditionalProps        map[string]string
+}
+
 type ReposCreateOrUpdateEnvironmentReqReviewersItem struct {
 	Type OptDeploymentReviewerType `json:"type"`
 	ID   OptInt                    `json:"id"`
@@ -33610,6 +33933,14 @@ func (*ReposCreateWebhookApplicationJSONForbidden) reposCreateWebhookRes() {}
 type ReposCreateWebhookApplicationJSONNotFound BasicError
 
 func (*ReposCreateWebhookApplicationJSONNotFound) reposCreateWebhookRes() {}
+
+type ReposCreateWebhookReq struct {
+	Name            OptString                      `json:"name"`
+	Config          OptReposCreateWebhookReqConfig `json:"config"`
+	Events          []string                       `json:"events"`
+	Active          OptBool                        `json:"active"`
+	AdditionalProps map[string]string
+}
 
 type ReposCreateWebhookReqConfig struct {
 	URL         OptWebhookConfigURL         `json:"url"`
@@ -34907,6 +35238,14 @@ const (
 type ReposUpdateStatusCheckProtectionReq struct {
 	Strict   OptBool  `json:"strict"`
 	Contexts []string `json:"contexts"`
+}
+
+type ReposUpdateWebhookConfigForRepoReq struct {
+	URL             OptWebhookConfigURL         `json:"url"`
+	ContentType     OptWebhookConfigContentType `json:"content_type"`
+	Secret          OptWebhookConfigSecret      `json:"secret"`
+	InsecureSsl     OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
+	AdditionalProps map[string]string
 }
 
 type ReposUpdateWebhookReq struct {
@@ -36510,6 +36849,11 @@ type TeamsCreateDiscussionLegacyReq struct {
 	Title   string  `json:"title"`
 	Body    string  `json:"body"`
 	Private OptBool `json:"private"`
+}
+
+type TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq struct {
+	Groups          []TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem `json:"groups"`
+	AdditionalProps map[string]string
 }
 
 type TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem struct {
