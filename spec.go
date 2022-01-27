@@ -509,10 +509,14 @@ func (p *AdditionalProperties) UnmarshalJSON(data []byte) error {
 		return errors.Errorf("unexpected type %s", tt.String())
 	}
 
-	s := new(Schema)
+	s := Schema{}
 	b, err := d.Raw()
 	if err != nil {
 		return err
 	}
-	return json.Unmarshal(b, s)
+	if err := json.Unmarshal(b, &s); err != nil {
+		return err
+	}
+	*p = AdditionalProperties(s)
+	return nil
 }
