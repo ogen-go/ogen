@@ -127,7 +127,7 @@ func (j JSON) Type() string {
 	if j.t.Is(KindArray) {
 		return "Array"
 	}
-	if j.t.Is(KindStruct) {
+	if j.t.Is(KindStruct, KindMap) {
 		return "Object"
 	}
 	switch j.t.Primitive {
