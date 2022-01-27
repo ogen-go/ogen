@@ -1401,17 +1401,15 @@ func (*IoK8sAPICertificatesV1CertificateSigningRequestList) listCertificatesV1Ce
 
 // Ref: #/components/schemas/io.k8s.api.certificates.v1.CertificateSigningRequestSpec
 type IoK8sAPICertificatesV1CertificateSigningRequestSpec struct {
-	ExpirationSeconds OptInt32                                                  `json:"expirationSeconds"`
-	Extra             *IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra `json:"extra"`
-	Groups            []string                                                  `json:"groups"`
-	Request           []byte                                                    `json:"request"`
-	SignerName        string                                                    `json:"signerName"`
-	UID               OptString                                                 `json:"uid"`
-	Usages            []string                                                  `json:"usages"`
-	Username          OptString                                                 `json:"username"`
+	ExpirationSeconds OptInt32                                                    `json:"expirationSeconds"`
+	Extra             OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra `json:"extra"`
+	Groups            []string                                                    `json:"groups"`
+	Request           []byte                                                      `json:"request"`
+	SignerName        string                                                      `json:"signerName"`
+	UID               OptString                                                   `json:"uid"`
+	Usages            []string                                                    `json:"usages"`
+	Username          OptString                                                   `json:"username"`
 }
-
-type IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra struct{}
 
 // Ref: #/components/schemas/io.k8s.api.certificates.v1.CertificateSigningRequestStatus
 type IoK8sAPICertificatesV1CertificateSigningRequestStatus struct {
@@ -1497,29 +1495,25 @@ type IoK8sAPICoreV1AzureFileVolumeSource struct {
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.CSIPersistentVolumeSource
 type IoK8sAPICoreV1CSIPersistentVolumeSource struct {
-	ControllerExpandSecretRef  OptIoK8sAPICoreV1SecretReference                         `json:"controllerExpandSecretRef"`
-	ControllerPublishSecretRef OptIoK8sAPICoreV1SecretReference                         `json:"controllerPublishSecretRef"`
-	Driver                     string                                                   `json:"driver"`
-	FsType                     OptString                                                `json:"fsType"`
-	NodePublishSecretRef       OptIoK8sAPICoreV1SecretReference                         `json:"nodePublishSecretRef"`
-	NodeStageSecretRef         OptIoK8sAPICoreV1SecretReference                         `json:"nodeStageSecretRef"`
-	ReadOnly                   OptBool                                                  `json:"readOnly"`
-	VolumeAttributes           *IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes `json:"volumeAttributes"`
-	VolumeHandle               string                                                   `json:"volumeHandle"`
+	ControllerExpandSecretRef  OptIoK8sAPICoreV1SecretReference                           `json:"controllerExpandSecretRef"`
+	ControllerPublishSecretRef OptIoK8sAPICoreV1SecretReference                           `json:"controllerPublishSecretRef"`
+	Driver                     string                                                     `json:"driver"`
+	FsType                     OptString                                                  `json:"fsType"`
+	NodePublishSecretRef       OptIoK8sAPICoreV1SecretReference                           `json:"nodePublishSecretRef"`
+	NodeStageSecretRef         OptIoK8sAPICoreV1SecretReference                           `json:"nodeStageSecretRef"`
+	ReadOnly                   OptBool                                                    `json:"readOnly"`
+	VolumeAttributes           OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes `json:"volumeAttributes"`
+	VolumeHandle               string                                                     `json:"volumeHandle"`
 }
-
-type IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes struct{}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.CSIVolumeSource
 type IoK8sAPICoreV1CSIVolumeSource struct {
-	Driver               string                                         `json:"driver"`
-	FsType               OptString                                      `json:"fsType"`
-	NodePublishSecretRef OptIoK8sAPICoreV1LocalObjectReference          `json:"nodePublishSecretRef"`
-	ReadOnly             OptBool                                        `json:"readOnly"`
-	VolumeAttributes     *IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes `json:"volumeAttributes"`
+	Driver               string                                           `json:"driver"`
+	FsType               OptString                                        `json:"fsType"`
+	NodePublishSecretRef OptIoK8sAPICoreV1LocalObjectReference            `json:"nodePublishSecretRef"`
+	ReadOnly             OptBool                                          `json:"readOnly"`
+	VolumeAttributes     OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes `json:"volumeAttributes"`
 }
-
-type IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes struct{}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.Capabilities
 type IoK8sAPICoreV1Capabilities struct {
@@ -1599,18 +1593,14 @@ func (*IoK8sAPICoreV1ComponentStatusList) listCoreV1ComponentStatusRes() {}
 // Ref: #/components/schemas/io.k8s.api.core.v1.ConfigMap
 type IoK8sAPICoreV1ConfigMap struct {
 	ApiVersion OptString                                   `json:"apiVersion"`
-	BinaryData *IoK8sAPICoreV1ConfigMapBinaryData          `json:"binaryData"`
-	Data       *IoK8sAPICoreV1ConfigMapData                `json:"data"`
+	BinaryData OptIoK8sAPICoreV1ConfigMapBinaryData        `json:"binaryData"`
+	Data       OptIoK8sAPICoreV1ConfigMapData              `json:"data"`
 	Immutable  OptBool                                     `json:"immutable"`
 	Kind       OptString                                   `json:"kind"`
 	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
 }
 
 func (*IoK8sAPICoreV1ConfigMap) readCoreV1NamespacedConfigMapRes() {}
-
-type IoK8sAPICoreV1ConfigMapBinaryData struct{}
-
-type IoK8sAPICoreV1ConfigMapData struct{}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.ConfigMapEnvSource
 type IoK8sAPICoreV1ConfigMapEnvSource struct {
@@ -1933,25 +1923,21 @@ type IoK8sAPICoreV1FCVolumeSource struct {
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.FlexPersistentVolumeSource
 type IoK8sAPICoreV1FlexPersistentVolumeSource struct {
-	Driver    string                                           `json:"driver"`
-	FsType    OptString                                        `json:"fsType"`
-	Options   *IoK8sAPICoreV1FlexPersistentVolumeSourceOptions `json:"options"`
-	ReadOnly  OptBool                                          `json:"readOnly"`
-	SecretRef OptIoK8sAPICoreV1SecretReference                 `json:"secretRef"`
+	Driver    string                                             `json:"driver"`
+	FsType    OptString                                          `json:"fsType"`
+	Options   OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions `json:"options"`
+	ReadOnly  OptBool                                            `json:"readOnly"`
+	SecretRef OptIoK8sAPICoreV1SecretReference                   `json:"secretRef"`
 }
-
-type IoK8sAPICoreV1FlexPersistentVolumeSourceOptions struct{}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.FlexVolumeSource
 type IoK8sAPICoreV1FlexVolumeSource struct {
-	Driver    string                                 `json:"driver"`
-	FsType    OptString                              `json:"fsType"`
-	Options   *IoK8sAPICoreV1FlexVolumeSourceOptions `json:"options"`
-	ReadOnly  OptBool                                `json:"readOnly"`
-	SecretRef OptIoK8sAPICoreV1LocalObjectReference  `json:"secretRef"`
+	Driver    string                                   `json:"driver"`
+	FsType    OptString                                `json:"fsType"`
+	Options   OptIoK8sAPICoreV1FlexVolumeSourceOptions `json:"options"`
+	ReadOnly  OptBool                                  `json:"readOnly"`
+	SecretRef OptIoK8sAPICoreV1LocalObjectReference    `json:"secretRef"`
 }
-
-type IoK8sAPICoreV1FlexVolumeSourceOptions struct{}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.FlockerVolumeSource
 type IoK8sAPICoreV1FlockerVolumeSource struct {
@@ -2078,23 +2064,13 @@ func (*IoK8sAPICoreV1LimitRange) readCoreV1NamespacedLimitRangeRes() {}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.LimitRangeItem
 type IoK8sAPICoreV1LimitRangeItem struct {
-	Default              *IoK8sAPICoreV1LimitRangeItemDefault              `json:"default"`
-	DefaultRequest       *IoK8sAPICoreV1LimitRangeItemDefaultRequest       `json:"defaultRequest"`
-	Max                  *IoK8sAPICoreV1LimitRangeItemMax                  `json:"max"`
-	MaxLimitRequestRatio *IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio `json:"maxLimitRequestRatio"`
-	Min                  *IoK8sAPICoreV1LimitRangeItemMin                  `json:"min"`
-	Type                 string                                            `json:"type"`
+	Default              OptIoK8sAPICoreV1LimitRangeItemDefault              `json:"default"`
+	DefaultRequest       OptIoK8sAPICoreV1LimitRangeItemDefaultRequest       `json:"defaultRequest"`
+	Max                  OptIoK8sAPICoreV1LimitRangeItemMax                  `json:"max"`
+	MaxLimitRequestRatio OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio `json:"maxLimitRequestRatio"`
+	Min                  OptIoK8sAPICoreV1LimitRangeItemMin                  `json:"min"`
+	Type                 string                                              `json:"type"`
 }
-
-type IoK8sAPICoreV1LimitRangeItemDefault struct{}
-
-type IoK8sAPICoreV1LimitRangeItemDefaultRequest struct{}
-
-type IoK8sAPICoreV1LimitRangeItemMax struct{}
-
-type IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio struct{}
-
-type IoK8sAPICoreV1LimitRangeItemMin struct{}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.LimitRangeList
 type IoK8sAPICoreV1LimitRangeList struct {
@@ -2277,22 +2253,18 @@ type IoK8sAPICoreV1NodeSpec struct {
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.NodeStatus
 type IoK8sAPICoreV1NodeStatus struct {
-	Addresses       []IoK8sAPICoreV1NodeAddress          `json:"addresses"`
-	Allocatable     *IoK8sAPICoreV1NodeStatusAllocatable `json:"allocatable"`
-	Capacity        *IoK8sAPICoreV1NodeStatusCapacity    `json:"capacity"`
-	Conditions      []IoK8sAPICoreV1NodeCondition        `json:"conditions"`
-	Config          OptIoK8sAPICoreV1NodeConfigStatus    `json:"config"`
-	DaemonEndpoints OptIoK8sAPICoreV1NodeDaemonEndpoints `json:"daemonEndpoints"`
-	Images          []IoK8sAPICoreV1ContainerImage       `json:"images"`
-	NodeInfo        OptIoK8sAPICoreV1NodeSystemInfo      `json:"nodeInfo"`
-	Phase           OptString                            `json:"phase"`
-	VolumesAttached []IoK8sAPICoreV1AttachedVolume       `json:"volumesAttached"`
-	VolumesInUse    []string                             `json:"volumesInUse"`
+	Addresses       []IoK8sAPICoreV1NodeAddress            `json:"addresses"`
+	Allocatable     OptIoK8sAPICoreV1NodeStatusAllocatable `json:"allocatable"`
+	Capacity        OptIoK8sAPICoreV1NodeStatusCapacity    `json:"capacity"`
+	Conditions      []IoK8sAPICoreV1NodeCondition          `json:"conditions"`
+	Config          OptIoK8sAPICoreV1NodeConfigStatus      `json:"config"`
+	DaemonEndpoints OptIoK8sAPICoreV1NodeDaemonEndpoints   `json:"daemonEndpoints"`
+	Images          []IoK8sAPICoreV1ContainerImage         `json:"images"`
+	NodeInfo        OptIoK8sAPICoreV1NodeSystemInfo        `json:"nodeInfo"`
+	Phase           OptString                              `json:"phase"`
+	VolumesAttached []IoK8sAPICoreV1AttachedVolume         `json:"volumesAttached"`
+	VolumesInUse    []string                               `json:"volumesInUse"`
 }
-
-type IoK8sAPICoreV1NodeStatusAllocatable struct{}
-
-type IoK8sAPICoreV1NodeStatusCapacity struct{}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.NodeSystemInfo
 type IoK8sAPICoreV1NodeSystemInfo struct {
@@ -2385,13 +2357,11 @@ type IoK8sAPICoreV1PersistentVolumeClaimSpec struct {
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaimStatus
 type IoK8sAPICoreV1PersistentVolumeClaimStatus struct {
-	AccessModes []string                                           `json:"accessModes"`
-	Capacity    *IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity `json:"capacity"`
-	Conditions  []IoK8sAPICoreV1PersistentVolumeClaimCondition     `json:"conditions"`
-	Phase       OptString                                          `json:"phase"`
+	AccessModes []string                                             `json:"accessModes"`
+	Capacity    OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity `json:"capacity"`
+	Conditions  []IoK8sAPICoreV1PersistentVolumeClaimCondition       `json:"conditions"`
+	Phase       OptString                                            `json:"phase"`
 }
-
-type IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity struct{}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaimTemplate
 type IoK8sAPICoreV1PersistentVolumeClaimTemplate struct {
@@ -2421,7 +2391,7 @@ type IoK8sAPICoreV1PersistentVolumeSpec struct {
 	AwsElasticBlockStore          OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource `json:"awsElasticBlockStore"`
 	AzureDisk                     OptIoK8sAPICoreV1AzureDiskVolumeSource            `json:"azureDisk"`
 	AzureFile                     OptIoK8sAPICoreV1AzureFilePersistentVolumeSource  `json:"azureFile"`
-	Capacity                      *IoK8sAPICoreV1PersistentVolumeSpecCapacity       `json:"capacity"`
+	Capacity                      OptIoK8sAPICoreV1PersistentVolumeSpecCapacity     `json:"capacity"`
 	Cephfs                        OptIoK8sAPICoreV1CephFSPersistentVolumeSource     `json:"cephfs"`
 	Cinder                        OptIoK8sAPICoreV1CinderPersistentVolumeSource     `json:"cinder"`
 	ClaimRef                      OptIoK8sAPICoreV1ObjectReference                  `json:"claimRef"`
@@ -2448,8 +2418,6 @@ type IoK8sAPICoreV1PersistentVolumeSpec struct {
 	VolumeMode                    OptString                                         `json:"volumeMode"`
 	VsphereVolume                 OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource   `json:"vsphereVolume"`
 }
-
-type IoK8sAPICoreV1PersistentVolumeSpecCapacity struct{}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.PersistentVolumeStatus
 type IoK8sAPICoreV1PersistentVolumeStatus struct {
@@ -2573,8 +2541,8 @@ type IoK8sAPICoreV1PodSpec struct {
 	ImagePullSecrets              []IoK8sAPICoreV1LocalObjectReference     `json:"imagePullSecrets"`
 	InitContainers                []IoK8sAPICoreV1Container                `json:"initContainers"`
 	NodeName                      OptString                                `json:"nodeName"`
-	NodeSelector                  *IoK8sAPICoreV1PodSpecNodeSelector       `json:"nodeSelector"`
-	Overhead                      *IoK8sAPICoreV1PodSpecOverhead           `json:"overhead"`
+	NodeSelector                  OptIoK8sAPICoreV1PodSpecNodeSelector     `json:"nodeSelector"`
+	Overhead                      OptIoK8sAPICoreV1PodSpecOverhead         `json:"overhead"`
 	PreemptionPolicy              OptString                                `json:"preemptionPolicy"`
 	Priority                      OptInt32                                 `json:"priority"`
 	PriorityClassName             OptString                                `json:"priorityClassName"`
@@ -2593,10 +2561,6 @@ type IoK8sAPICoreV1PodSpec struct {
 	TopologySpreadConstraints     []IoK8sAPICoreV1TopologySpreadConstraint `json:"topologySpreadConstraints"`
 	Volumes                       []IoK8sAPICoreV1Volume                   `json:"volumes"`
 }
-
-type IoK8sAPICoreV1PodSpecNodeSelector struct{}
-
-type IoK8sAPICoreV1PodSpecOverhead struct{}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodStatus
 type IoK8sAPICoreV1PodStatus struct {
@@ -2750,13 +2714,11 @@ func (*IoK8sAPICoreV1ReplicationControllerList) listCoreV1ReplicationControllerF
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.ReplicationControllerSpec
 type IoK8sAPICoreV1ReplicationControllerSpec struct {
-	MinReadySeconds OptInt32                                         `json:"minReadySeconds"`
-	Replicas        OptInt32                                         `json:"replicas"`
-	Selector        *IoK8sAPICoreV1ReplicationControllerSpecSelector `json:"selector"`
-	Template        OptIoK8sAPICoreV1PodTemplateSpec                 `json:"template"`
+	MinReadySeconds OptInt32                                           `json:"minReadySeconds"`
+	Replicas        OptInt32                                           `json:"replicas"`
+	Selector        OptIoK8sAPICoreV1ReplicationControllerSpecSelector `json:"selector"`
+	Template        OptIoK8sAPICoreV1PodTemplateSpec                   `json:"template"`
 }
-
-type IoK8sAPICoreV1ReplicationControllerSpecSelector struct{}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.ReplicationControllerStatus
 type IoK8sAPICoreV1ReplicationControllerStatus struct {
@@ -2800,32 +2762,22 @@ func (*IoK8sAPICoreV1ResourceQuotaList) listCoreV1ResourceQuotaForAllNamespacesR
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.ResourceQuotaSpec
 type IoK8sAPICoreV1ResourceQuotaSpec struct {
-	Hard          *IoK8sAPICoreV1ResourceQuotaSpecHard `json:"hard"`
-	ScopeSelector OptIoK8sAPICoreV1ScopeSelector       `json:"scopeSelector"`
-	Scopes        []string                             `json:"scopes"`
+	Hard          OptIoK8sAPICoreV1ResourceQuotaSpecHard `json:"hard"`
+	ScopeSelector OptIoK8sAPICoreV1ScopeSelector         `json:"scopeSelector"`
+	Scopes        []string                               `json:"scopes"`
 }
-
-type IoK8sAPICoreV1ResourceQuotaSpecHard struct{}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.ResourceQuotaStatus
 type IoK8sAPICoreV1ResourceQuotaStatus struct {
-	Hard *IoK8sAPICoreV1ResourceQuotaStatusHard `json:"hard"`
-	Used *IoK8sAPICoreV1ResourceQuotaStatusUsed `json:"used"`
+	Hard OptIoK8sAPICoreV1ResourceQuotaStatusHard `json:"hard"`
+	Used OptIoK8sAPICoreV1ResourceQuotaStatusUsed `json:"used"`
 }
-
-type IoK8sAPICoreV1ResourceQuotaStatusHard struct{}
-
-type IoK8sAPICoreV1ResourceQuotaStatusUsed struct{}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.ResourceRequirements
 type IoK8sAPICoreV1ResourceRequirements struct {
-	Limits   *IoK8sAPICoreV1ResourceRequirementsLimits   `json:"limits"`
-	Requests *IoK8sAPICoreV1ResourceRequirementsRequests `json:"requests"`
+	Limits   OptIoK8sAPICoreV1ResourceRequirementsLimits   `json:"limits"`
+	Requests OptIoK8sAPICoreV1ResourceRequirementsRequests `json:"requests"`
 }
-
-type IoK8sAPICoreV1ResourceRequirementsLimits struct{}
-
-type IoK8sAPICoreV1ResourceRequirementsRequests struct{}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.SELinuxOptions
 type IoK8sAPICoreV1SELinuxOptions struct {
@@ -2884,17 +2836,15 @@ type IoK8sAPICoreV1SeccompProfile struct {
 // Ref: #/components/schemas/io.k8s.api.core.v1.Secret
 type IoK8sAPICoreV1Secret struct {
 	ApiVersion OptString                                   `json:"apiVersion"`
-	Data       *IoK8sAPICoreV1SecretData                   `json:"data"`
+	Data       OptIoK8sAPICoreV1SecretData                 `json:"data"`
 	Immutable  OptBool                                     `json:"immutable"`
 	Kind       OptString                                   `json:"kind"`
 	Metadata   OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
-	StringData *IoK8sAPICoreV1SecretStringData             `json:"stringData"`
+	StringData OptIoK8sAPICoreV1SecretStringData           `json:"stringData"`
 	Type       OptString                                   `json:"type"`
 }
 
 func (*IoK8sAPICoreV1Secret) readCoreV1NamespacedSecretRes() {}
-
-type IoK8sAPICoreV1SecretData struct{}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.SecretEnvSource
 type IoK8sAPICoreV1SecretEnvSource struct {
@@ -2932,8 +2882,6 @@ type IoK8sAPICoreV1SecretReference struct {
 	Name      OptString `json:"name"`
 	Namespace OptString `json:"namespace"`
 }
-
-type IoK8sAPICoreV1SecretStringData struct{}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.SecretVolumeSource
 type IoK8sAPICoreV1SecretVolumeSource struct {
@@ -3038,13 +2986,11 @@ type IoK8sAPICoreV1ServiceSpec struct {
 	LoadBalancerSourceRanges      []string                               `json:"loadBalancerSourceRanges"`
 	Ports                         []IoK8sAPICoreV1ServicePort            `json:"ports"`
 	PublishNotReadyAddresses      OptBool                                `json:"publishNotReadyAddresses"`
-	Selector                      *IoK8sAPICoreV1ServiceSpecSelector     `json:"selector"`
+	Selector                      OptIoK8sAPICoreV1ServiceSpecSelector   `json:"selector"`
 	SessionAffinity               OptString                              `json:"sessionAffinity"`
 	SessionAffinityConfig         OptIoK8sAPICoreV1SessionAffinityConfig `json:"sessionAffinityConfig"`
 	Type                          OptString                              `json:"type"`
 }
-
-type IoK8sAPICoreV1ServiceSpecSelector struct{}
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.ServiceStatus
 type IoK8sAPICoreV1ServiceStatus struct {
@@ -3217,14 +3163,14 @@ type IoK8sAPICoreV1WindowsSecurityContextOptions struct {
 
 // Ref: #/components/schemas/io.k8s.api.discovery.v1.Endpoint
 type IoK8sAPIDiscoveryV1Endpoint struct {
-	Addresses          []string                                       `json:"addresses"`
-	Conditions         OptIoK8sAPIDiscoveryV1EndpointConditions       `json:"conditions"`
-	DeprecatedTopology *IoK8sAPIDiscoveryV1EndpointDeprecatedTopology `json:"deprecatedTopology"`
-	Hints              OptIoK8sAPIDiscoveryV1EndpointHints            `json:"hints"`
-	Hostname           OptString                                      `json:"hostname"`
-	NodeName           OptString                                      `json:"nodeName"`
-	TargetRef          OptIoK8sAPICoreV1ObjectReference               `json:"targetRef"`
-	Zone               OptString                                      `json:"zone"`
+	Addresses          []string                                         `json:"addresses"`
+	Conditions         OptIoK8sAPIDiscoveryV1EndpointConditions         `json:"conditions"`
+	DeprecatedTopology OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology `json:"deprecatedTopology"`
+	Hints              OptIoK8sAPIDiscoveryV1EndpointHints              `json:"hints"`
+	Hostname           OptString                                        `json:"hostname"`
+	NodeName           OptString                                        `json:"nodeName"`
+	TargetRef          OptIoK8sAPICoreV1ObjectReference                 `json:"targetRef"`
+	Zone               OptString                                        `json:"zone"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.discovery.v1.EndpointConditions
@@ -3233,8 +3179,6 @@ type IoK8sAPIDiscoveryV1EndpointConditions struct {
 	Serving     OptBool `json:"serving"`
 	Terminating OptBool `json:"terminating"`
 }
-
-type IoK8sAPIDiscoveryV1EndpointDeprecatedTopology struct{}
 
 // Ref: #/components/schemas/io.k8s.api.discovery.v1.EndpointHints
 type IoK8sAPIDiscoveryV1EndpointHints struct {
@@ -3285,7 +3229,7 @@ type IoK8sAPIDiscoveryV1beta1Endpoint struct {
 	Hostname   OptString                                     `json:"hostname"`
 	NodeName   OptString                                     `json:"nodeName"`
 	TargetRef  OptIoK8sAPICoreV1ObjectReference              `json:"targetRef"`
-	Topology   *IoK8sAPIDiscoveryV1beta1EndpointTopology     `json:"topology"`
+	Topology   OptIoK8sAPIDiscoveryV1beta1EndpointTopology   `json:"topology"`
 }
 
 // Ref: #/components/schemas/io.k8s.api.discovery.v1beta1.EndpointConditions
@@ -3331,8 +3275,6 @@ type IoK8sAPIDiscoveryV1beta1EndpointSliceList struct {
 func (*IoK8sAPIDiscoveryV1beta1EndpointSliceList) listDiscoveryV1beta1EndpointSliceForAllNamespacesRes() {
 }
 func (*IoK8sAPIDiscoveryV1beta1EndpointSliceList) listDiscoveryV1beta1NamespacedEndpointSliceRes() {}
-
-type IoK8sAPIDiscoveryV1beta1EndpointTopology struct{}
 
 // Ref: #/components/schemas/io.k8s.api.discovery.v1beta1.ForZone
 type IoK8sAPIDiscoveryV1beta1ForZone struct {
@@ -3923,10 +3865,8 @@ type IoK8sAPINetworkingV1ServiceBackendPort struct {
 
 // Ref: #/components/schemas/io.k8s.api.node.v1.Overhead
 type IoK8sAPINodeV1Overhead struct {
-	PodFixed *IoK8sAPINodeV1OverheadPodFixed `json:"podFixed"`
+	PodFixed OptIoK8sAPINodeV1OverheadPodFixed `json:"podFixed"`
 }
-
-type IoK8sAPINodeV1OverheadPodFixed struct{}
 
 // Ref: #/components/schemas/io.k8s.api.node.v1.RuntimeClass
 type IoK8sAPINodeV1RuntimeClass struct {
@@ -3952,18 +3892,14 @@ func (*IoK8sAPINodeV1RuntimeClassList) listNodeV1RuntimeClassRes() {}
 
 // Ref: #/components/schemas/io.k8s.api.node.v1.Scheduling
 type IoK8sAPINodeV1Scheduling struct {
-	NodeSelector *IoK8sAPINodeV1SchedulingNodeSelector `json:"nodeSelector"`
-	Tolerations  []IoK8sAPICoreV1Toleration            `json:"tolerations"`
+	NodeSelector OptIoK8sAPINodeV1SchedulingNodeSelector `json:"nodeSelector"`
+	Tolerations  []IoK8sAPICoreV1Toleration              `json:"tolerations"`
 }
-
-type IoK8sAPINodeV1SchedulingNodeSelector struct{}
 
 // Ref: #/components/schemas/io.k8s.api.node.v1alpha1.Overhead
 type IoK8sAPINodeV1alpha1Overhead struct {
-	PodFixed *IoK8sAPINodeV1alpha1OverheadPodFixed `json:"podFixed"`
+	PodFixed OptIoK8sAPINodeV1alpha1OverheadPodFixed `json:"podFixed"`
 }
-
-type IoK8sAPINodeV1alpha1OverheadPodFixed struct{}
 
 // Ref: #/components/schemas/io.k8s.api.node.v1alpha1.RuntimeClass
 type IoK8sAPINodeV1alpha1RuntimeClass struct {
@@ -3994,18 +3930,14 @@ type IoK8sAPINodeV1alpha1RuntimeClassSpec struct {
 
 // Ref: #/components/schemas/io.k8s.api.node.v1alpha1.Scheduling
 type IoK8sAPINodeV1alpha1Scheduling struct {
-	NodeSelector *IoK8sAPINodeV1alpha1SchedulingNodeSelector `json:"nodeSelector"`
-	Tolerations  []IoK8sAPICoreV1Toleration                  `json:"tolerations"`
+	NodeSelector OptIoK8sAPINodeV1alpha1SchedulingNodeSelector `json:"nodeSelector"`
+	Tolerations  []IoK8sAPICoreV1Toleration                    `json:"tolerations"`
 }
-
-type IoK8sAPINodeV1alpha1SchedulingNodeSelector struct{}
 
 // Ref: #/components/schemas/io.k8s.api.node.v1beta1.Overhead
 type IoK8sAPINodeV1beta1Overhead struct {
-	PodFixed *IoK8sAPINodeV1beta1OverheadPodFixed `json:"podFixed"`
+	PodFixed OptIoK8sAPINodeV1beta1OverheadPodFixed `json:"podFixed"`
 }
-
-type IoK8sAPINodeV1beta1OverheadPodFixed struct{}
 
 // Ref: #/components/schemas/io.k8s.api.node.v1beta1.RuntimeClass
 type IoK8sAPINodeV1beta1RuntimeClass struct {
@@ -4031,11 +3963,9 @@ func (*IoK8sAPINodeV1beta1RuntimeClassList) listNodeV1beta1RuntimeClassRes() {}
 
 // Ref: #/components/schemas/io.k8s.api.node.v1beta1.Scheduling
 type IoK8sAPINodeV1beta1Scheduling struct {
-	NodeSelector *IoK8sAPINodeV1beta1SchedulingNodeSelector `json:"nodeSelector"`
-	Tolerations  []IoK8sAPICoreV1Toleration                 `json:"tolerations"`
+	NodeSelector OptIoK8sAPINodeV1beta1SchedulingNodeSelector `json:"nodeSelector"`
+	Tolerations  []IoK8sAPICoreV1Toleration                   `json:"tolerations"`
 }
-
-type IoK8sAPINodeV1beta1SchedulingNodeSelector struct{}
 
 // Ref: #/components/schemas/io.k8s.api.policy.v1.PodDisruptionBudget
 type IoK8sAPIPolicyV1PodDisruptionBudget struct {
@@ -4070,16 +4000,14 @@ type IoK8sAPIPolicyV1PodDisruptionBudgetSpec struct {
 
 // Ref: #/components/schemas/io.k8s.api.policy.v1.PodDisruptionBudgetStatus
 type IoK8sAPIPolicyV1PodDisruptionBudgetStatus struct {
-	Conditions         []IoK8sApimachineryPkgApisMetaV1Condition               `json:"conditions"`
-	CurrentHealthy     int32                                                   `json:"currentHealthy"`
-	DesiredHealthy     int32                                                   `json:"desiredHealthy"`
-	DisruptedPods      *IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods `json:"disruptedPods"`
-	DisruptionsAllowed int32                                                   `json:"disruptionsAllowed"`
-	ExpectedPods       int32                                                   `json:"expectedPods"`
-	ObservedGeneration OptInt64                                                `json:"observedGeneration"`
+	Conditions         []IoK8sApimachineryPkgApisMetaV1Condition                 `json:"conditions"`
+	CurrentHealthy     int32                                                     `json:"currentHealthy"`
+	DesiredHealthy     int32                                                     `json:"desiredHealthy"`
+	DisruptedPods      OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods `json:"disruptedPods"`
+	DisruptionsAllowed int32                                                     `json:"disruptionsAllowed"`
+	ExpectedPods       int32                                                     `json:"expectedPods"`
+	ObservedGeneration OptInt64                                                  `json:"observedGeneration"`
 }
-
-type IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods struct{}
 
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.AllowedCSIDriver
 type IoK8sAPIPolicyV1beta1AllowedCSIDriver struct {
@@ -4151,16 +4079,14 @@ type IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec struct {
 
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.PodDisruptionBudgetStatus
 type IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus struct {
-	Conditions         []IoK8sApimachineryPkgApisMetaV1Condition                    `json:"conditions"`
-	CurrentHealthy     int32                                                        `json:"currentHealthy"`
-	DesiredHealthy     int32                                                        `json:"desiredHealthy"`
-	DisruptedPods      *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods `json:"disruptedPods"`
-	DisruptionsAllowed int32                                                        `json:"disruptionsAllowed"`
-	ExpectedPods       int32                                                        `json:"expectedPods"`
-	ObservedGeneration OptInt64                                                     `json:"observedGeneration"`
+	Conditions         []IoK8sApimachineryPkgApisMetaV1Condition                      `json:"conditions"`
+	CurrentHealthy     int32                                                          `json:"currentHealthy"`
+	DesiredHealthy     int32                                                          `json:"desiredHealthy"`
+	DisruptedPods      OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods `json:"disruptedPods"`
+	DisruptionsAllowed int32                                                          `json:"disruptionsAllowed"`
+	ExpectedPods       int32                                                          `json:"expectedPods"`
+	ObservedGeneration OptInt64                                                       `json:"observedGeneration"`
 }
-
-type IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods struct{}
 
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.PodSecurityPolicy
 type IoK8sAPIPolicyV1beta1PodSecurityPolicy struct {
@@ -4449,7 +4375,7 @@ type IoK8sAPIStorageV1StorageClass struct {
 	Kind                 OptString                                   `json:"kind"`
 	Metadata             OptIoK8sApimachineryPkgApisMetaV1ObjectMeta `json:"metadata"`
 	MountOptions         []string                                    `json:"mountOptions"`
-	Parameters           *IoK8sAPIStorageV1StorageClassParameters    `json:"parameters"`
+	Parameters           OptIoK8sAPIStorageV1StorageClassParameters  `json:"parameters"`
 	Provisioner          string                                      `json:"provisioner"`
 	ReclaimPolicy        OptString                                   `json:"reclaimPolicy"`
 	VolumeBindingMode    OptString                                   `json:"volumeBindingMode"`
@@ -4466,8 +4392,6 @@ type IoK8sAPIStorageV1StorageClassList struct {
 }
 
 func (*IoK8sAPIStorageV1StorageClassList) listStorageV1StorageClassRes() {}
-
-type IoK8sAPIStorageV1StorageClassParameters struct{}
 
 // Ref: #/components/schemas/io.k8s.api.storage.v1.TokenRequest
 type IoK8sAPIStorageV1TokenRequest struct {
@@ -4512,13 +4436,11 @@ type IoK8sAPIStorageV1VolumeAttachmentSpec struct {
 
 // Ref: #/components/schemas/io.k8s.api.storage.v1.VolumeAttachmentStatus
 type IoK8sAPIStorageV1VolumeAttachmentStatus struct {
-	AttachError        OptIoK8sAPIStorageV1VolumeError                            `json:"attachError"`
-	Attached           bool                                                       `json:"attached"`
-	AttachmentMetadata *IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata `json:"attachmentMetadata"`
-	DetachError        OptIoK8sAPIStorageV1VolumeError                            `json:"detachError"`
+	AttachError        OptIoK8sAPIStorageV1VolumeError                              `json:"attachError"`
+	Attached           bool                                                         `json:"attached"`
+	AttachmentMetadata OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata `json:"attachmentMetadata"`
+	DetachError        OptIoK8sAPIStorageV1VolumeError                              `json:"detachError"`
 }
-
-type IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata struct{}
 
 // Ref: #/components/schemas/io.k8s.api.storage.v1.VolumeError
 type IoK8sAPIStorageV1VolumeError struct {
@@ -4706,54 +4628,50 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON struct{}
 
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps struct {
-	Ref                                                  OptString                                                                          `json:"$ref"`
-	Schema                                               OptString                                                                          `json:"$schema"`
-	AdditionalItems                                      *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool            `json:"additionalItems"`
-	AdditionalProperties                                 *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool            `json:"additionalProperties"`
-	AllOf                                                []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps                 `json:"allOf"`
-	AnyOf                                                []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps                 `json:"anyOf"`
-	Default                                              *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                             `json:"default"`
-	Definitions                                          *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions       `json:"definitions"`
-	Dependencies                                         *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies      `json:"dependencies"`
-	Description                                          OptString                                                                          `json:"description"`
-	Enum                                                 []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                            `json:"enum"`
-	Example                                              *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                             `json:"example"`
-	ExclusiveMaximum                                     OptBool                                                                            `json:"exclusiveMaximum"`
-	ExclusiveMinimum                                     OptBool                                                                            `json:"exclusiveMinimum"`
-	ExternalDocs                                         OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation          `json:"externalDocs"`
-	Format                                               OptString                                                                          `json:"format"`
-	ID                                                   OptString                                                                          `json:"id"`
-	Items                                                *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray           `json:"items"`
-	MaxItems                                             OptInt64                                                                           `json:"maxItems"`
-	MaxLength                                            OptInt64                                                                           `json:"maxLength"`
-	MaxProperties                                        OptInt64                                                                           `json:"maxProperties"`
-	Maximum                                              OptFloat64                                                                         `json:"maximum"`
-	MinItems                                             OptInt64                                                                           `json:"minItems"`
-	MinLength                                            OptInt64                                                                           `json:"minLength"`
-	MinProperties                                        OptInt64                                                                           `json:"minProperties"`
-	Minimum                                              OptFloat64                                                                         `json:"minimum"`
-	MultipleOf                                           OptFloat64                                                                         `json:"multipleOf"`
-	Not                                                  *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps                  `json:"not"`
-	Nullable                                             OptBool                                                                            `json:"nullable"`
-	OneOf                                                []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps                 `json:"oneOf"`
-	Pattern                                              OptString                                                                          `json:"pattern"`
-	PatternProperties                                    *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties `json:"patternProperties"`
-	Properties                                           *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties        `json:"properties"`
-	Required                                             []string                                                                           `json:"required"`
-	Title                                                OptString                                                                          `json:"title"`
-	Type                                                 OptString                                                                          `json:"type"`
-	UniqueItems                                          OptBool                                                                            `json:"uniqueItems"`
-	XMinusKubernetesMinusEmbeddedMinusResource           OptBool                                                                            `json:"x-kubernetes-embedded-resource"`
-	XMinusKubernetesMinusIntMinusOrMinusString           OptBool                                                                            `json:"x-kubernetes-int-or-string"`
-	XMinusKubernetesMinusListMinusMapMinusKeys           []string                                                                           `json:"x-kubernetes-list-map-keys"`
-	XMinusKubernetesMinusListMinusType                   OptString                                                                          `json:"x-kubernetes-list-type"`
-	XMinusKubernetesMinusMapMinusType                    OptString                                                                          `json:"x-kubernetes-map-type"`
-	XMinusKubernetesMinusPreserveMinusUnknownMinusFields OptBool                                                                            `json:"x-kubernetes-preserve-unknown-fields"`
+	Ref                                                  OptString                                                                            `json:"$ref"`
+	Schema                                               OptString                                                                            `json:"$schema"`
+	AdditionalItems                                      *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool              `json:"additionalItems"`
+	AdditionalProperties                                 *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool              `json:"additionalProperties"`
+	AllOf                                                []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps                   `json:"allOf"`
+	AnyOf                                                []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps                   `json:"anyOf"`
+	Default                                              *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                               `json:"default"`
+	Definitions                                          OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions       `json:"definitions"`
+	Dependencies                                         OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies      `json:"dependencies"`
+	Description                                          OptString                                                                            `json:"description"`
+	Enum                                                 []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                              `json:"enum"`
+	Example                                              *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                               `json:"example"`
+	ExclusiveMaximum                                     OptBool                                                                              `json:"exclusiveMaximum"`
+	ExclusiveMinimum                                     OptBool                                                                              `json:"exclusiveMinimum"`
+	ExternalDocs                                         OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation            `json:"externalDocs"`
+	Format                                               OptString                                                                            `json:"format"`
+	ID                                                   OptString                                                                            `json:"id"`
+	Items                                                *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray             `json:"items"`
+	MaxItems                                             OptInt64                                                                             `json:"maxItems"`
+	MaxLength                                            OptInt64                                                                             `json:"maxLength"`
+	MaxProperties                                        OptInt64                                                                             `json:"maxProperties"`
+	Maximum                                              OptFloat64                                                                           `json:"maximum"`
+	MinItems                                             OptInt64                                                                             `json:"minItems"`
+	MinLength                                            OptInt64                                                                             `json:"minLength"`
+	MinProperties                                        OptInt64                                                                             `json:"minProperties"`
+	Minimum                                              OptFloat64                                                                           `json:"minimum"`
+	MultipleOf                                           OptFloat64                                                                           `json:"multipleOf"`
+	Not                                                  *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps                    `json:"not"`
+	Nullable                                             OptBool                                                                              `json:"nullable"`
+	OneOf                                                []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps                   `json:"oneOf"`
+	Pattern                                              OptString                                                                            `json:"pattern"`
+	PatternProperties                                    OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties `json:"patternProperties"`
+	Properties                                           OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties        `json:"properties"`
+	Required                                             []string                                                                             `json:"required"`
+	Title                                                OptString                                                                            `json:"title"`
+	Type                                                 OptString                                                                            `json:"type"`
+	UniqueItems                                          OptBool                                                                              `json:"uniqueItems"`
+	XMinusKubernetesMinusEmbeddedMinusResource           OptBool                                                                              `json:"x-kubernetes-embedded-resource"`
+	XMinusKubernetesMinusIntMinusOrMinusString           OptBool                                                                              `json:"x-kubernetes-int-or-string"`
+	XMinusKubernetesMinusListMinusMapMinusKeys           []string                                                                             `json:"x-kubernetes-list-map-keys"`
+	XMinusKubernetesMinusListMinusType                   OptString                                                                            `json:"x-kubernetes-list-type"`
+	XMinusKubernetesMinusMapMinusType                    OptString                                                                            `json:"x-kubernetes-map-type"`
+	XMinusKubernetesMinusPreserveMinusUnknownMinusFields OptBool                                                                              `json:"x-kubernetes-preserve-unknown-fields"`
 }
-
-type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions struct{}
-
-type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies struct{}
 
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrArray
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray struct{}
@@ -4761,9 +4679,8 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray str
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrBool
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool struct{}
 
-type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties struct{}
-
-type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties struct{}
+// Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrStringArray
+type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray struct{}
 
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.ServiceReference
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference struct {
@@ -4916,11 +4833,9 @@ type IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery struct {
 
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector
 type IoK8sApimachineryPkgApisMetaV1LabelSelector struct {
-	MatchExpressions []IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement `json:"matchExpressions"`
-	MatchLabels      *IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels  `json:"matchLabels"`
+	MatchExpressions []IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement  `json:"matchExpressions"`
+	MatchLabels      OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels `json:"matchLabels"`
 }
-
-type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels struct{}
 
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement
 type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement struct {
@@ -4952,27 +4867,23 @@ type IoK8sApimachineryPkgApisMetaV1MicroTime time.Time
 
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
 type IoK8sApimachineryPkgApisMetaV1ObjectMeta struct {
-	Annotations                *IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations `json:"annotations"`
-	ClusterName                OptString                                            `json:"clusterName"`
-	CreationTimestamp          OptIoK8sApimachineryPkgApisMetaV1Time                `json:"creationTimestamp"`
-	DeletionGracePeriodSeconds OptInt64                                             `json:"deletionGracePeriodSeconds"`
-	DeletionTimestamp          OptIoK8sApimachineryPkgApisMetaV1Time                `json:"deletionTimestamp"`
-	Finalizers                 []string                                             `json:"finalizers"`
-	GenerateName               OptString                                            `json:"generateName"`
-	Generation                 OptInt64                                             `json:"generation"`
-	Labels                     *IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels      `json:"labels"`
-	ManagedFields              []IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry   `json:"managedFields"`
-	Name                       OptString                                            `json:"name"`
-	Namespace                  OptString                                            `json:"namespace"`
-	OwnerReferences            []IoK8sApimachineryPkgApisMetaV1OwnerReference       `json:"ownerReferences"`
-	ResourceVersion            OptString                                            `json:"resourceVersion"`
-	SelfLink                   OptString                                            `json:"selfLink"`
-	UID                        OptString                                            `json:"uid"`
+	Annotations                OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations `json:"annotations"`
+	ClusterName                OptString                                              `json:"clusterName"`
+	CreationTimestamp          OptIoK8sApimachineryPkgApisMetaV1Time                  `json:"creationTimestamp"`
+	DeletionGracePeriodSeconds OptInt64                                               `json:"deletionGracePeriodSeconds"`
+	DeletionTimestamp          OptIoK8sApimachineryPkgApisMetaV1Time                  `json:"deletionTimestamp"`
+	Finalizers                 []string                                               `json:"finalizers"`
+	GenerateName               OptString                                              `json:"generateName"`
+	Generation                 OptInt64                                               `json:"generation"`
+	Labels                     OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels      `json:"labels"`
+	ManagedFields              []IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry     `json:"managedFields"`
+	Name                       OptString                                              `json:"name"`
+	Namespace                  OptString                                              `json:"namespace"`
+	OwnerReferences            []IoK8sApimachineryPkgApisMetaV1OwnerReference         `json:"ownerReferences"`
+	ResourceVersion            OptString                                              `json:"resourceVersion"`
+	SelfLink                   OptString                                              `json:"selfLink"`
+	UID                        OptString                                              `json:"uid"`
 }
-
-type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations struct{}
-
-type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels struct{}
 
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference
 type IoK8sApimachineryPkgApisMetaV1OwnerReference struct {
@@ -8445,6 +8356,52 @@ func (o OptIoK8sAPIBatchV1beta1CronJobStatus) Or(d IoK8sAPIBatchV1beta1CronJobSt
 	return d
 }
 
+// NewOptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra returns new OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra with value set to v.
+func NewOptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra(v IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra {
+	return OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra is optional IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra.
+type OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra struct {
+	Value IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra was set.
+func (o OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Reset() {
+	var v IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) SetTo(v IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Get() (v IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Or(d IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICertificatesV1CertificateSigningRequestStatus returns new OptIoK8sAPICertificatesV1CertificateSigningRequestStatus with value set to v.
 func NewOptIoK8sAPICertificatesV1CertificateSigningRequestStatus(v IoK8sAPICertificatesV1CertificateSigningRequestStatus) OptIoK8sAPICertificatesV1CertificateSigningRequestStatus {
 	return OptIoK8sAPICertificatesV1CertificateSigningRequestStatus{
@@ -8813,6 +8770,52 @@ func (o OptIoK8sAPICoreV1CSIPersistentVolumeSource) Or(d IoK8sAPICoreV1CSIPersis
 	return d
 }
 
+// NewOptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes returns new OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes with value set to v.
+func NewOptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes(v IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes {
+	return OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes is optional IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes.
+type OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes struct {
+	Value IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes was set.
+func (o OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Reset() {
+	var v IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) SetTo(v IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Get() (v IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Or(d IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1CSIVolumeSource returns new OptIoK8sAPICoreV1CSIVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1CSIVolumeSource(v IoK8sAPICoreV1CSIVolumeSource) OptIoK8sAPICoreV1CSIVolumeSource {
 	return OptIoK8sAPICoreV1CSIVolumeSource{
@@ -8853,6 +8856,52 @@ func (o OptIoK8sAPICoreV1CSIVolumeSource) Get() (v IoK8sAPICoreV1CSIVolumeSource
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIoK8sAPICoreV1CSIVolumeSource) Or(d IoK8sAPICoreV1CSIVolumeSource) IoK8sAPICoreV1CSIVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes returns new OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes with value set to v.
+func NewOptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes(v IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes {
+	return OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes is optional IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes.
+type OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes struct {
+	Value IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes was set.
+func (o OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Reset() {
+	var v IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) SetTo(v IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Get() (v IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Or(d IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -9129,6 +9178,98 @@ func (o OptIoK8sAPICoreV1ClientIPConfig) Get() (v IoK8sAPICoreV1ClientIPConfig, 
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIoK8sAPICoreV1ClientIPConfig) Or(d IoK8sAPICoreV1ClientIPConfig) IoK8sAPICoreV1ClientIPConfig {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPICoreV1ConfigMapBinaryData returns new OptIoK8sAPICoreV1ConfigMapBinaryData with value set to v.
+func NewOptIoK8sAPICoreV1ConfigMapBinaryData(v IoK8sAPICoreV1ConfigMapBinaryData) OptIoK8sAPICoreV1ConfigMapBinaryData {
+	return OptIoK8sAPICoreV1ConfigMapBinaryData{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1ConfigMapBinaryData is optional IoK8sAPICoreV1ConfigMapBinaryData.
+type OptIoK8sAPICoreV1ConfigMapBinaryData struct {
+	Value IoK8sAPICoreV1ConfigMapBinaryData
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1ConfigMapBinaryData was set.
+func (o OptIoK8sAPICoreV1ConfigMapBinaryData) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1ConfigMapBinaryData) Reset() {
+	var v IoK8sAPICoreV1ConfigMapBinaryData
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1ConfigMapBinaryData) SetTo(v IoK8sAPICoreV1ConfigMapBinaryData) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1ConfigMapBinaryData) Get() (v IoK8sAPICoreV1ConfigMapBinaryData, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ConfigMapBinaryData) Or(d IoK8sAPICoreV1ConfigMapBinaryData) IoK8sAPICoreV1ConfigMapBinaryData {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPICoreV1ConfigMapData returns new OptIoK8sAPICoreV1ConfigMapData with value set to v.
+func NewOptIoK8sAPICoreV1ConfigMapData(v IoK8sAPICoreV1ConfigMapData) OptIoK8sAPICoreV1ConfigMapData {
+	return OptIoK8sAPICoreV1ConfigMapData{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1ConfigMapData is optional IoK8sAPICoreV1ConfigMapData.
+type OptIoK8sAPICoreV1ConfigMapData struct {
+	Value IoK8sAPICoreV1ConfigMapData
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1ConfigMapData was set.
+func (o OptIoK8sAPICoreV1ConfigMapData) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1ConfigMapData) Reset() {
+	var v IoK8sAPICoreV1ConfigMapData
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1ConfigMapData) SetTo(v IoK8sAPICoreV1ConfigMapData) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1ConfigMapData) Get() (v IoK8sAPICoreV1ConfigMapData, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ConfigMapData) Or(d IoK8sAPICoreV1ConfigMapData) IoK8sAPICoreV1ConfigMapData {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -10055,6 +10196,52 @@ func (o OptIoK8sAPICoreV1FlexPersistentVolumeSource) Or(d IoK8sAPICoreV1FlexPers
 	return d
 }
 
+// NewOptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions returns new OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions with value set to v.
+func NewOptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions(v IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions {
+	return OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions is optional IoK8sAPICoreV1FlexPersistentVolumeSourceOptions.
+type OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions struct {
+	Value IoK8sAPICoreV1FlexPersistentVolumeSourceOptions
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions was set.
+func (o OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Reset() {
+	var v IoK8sAPICoreV1FlexPersistentVolumeSourceOptions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions) SetTo(v IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Get() (v IoK8sAPICoreV1FlexPersistentVolumeSourceOptions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Or(d IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) IoK8sAPICoreV1FlexPersistentVolumeSourceOptions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1FlexVolumeSource returns new OptIoK8sAPICoreV1FlexVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1FlexVolumeSource(v IoK8sAPICoreV1FlexVolumeSource) OptIoK8sAPICoreV1FlexVolumeSource {
 	return OptIoK8sAPICoreV1FlexVolumeSource{
@@ -10095,6 +10282,52 @@ func (o OptIoK8sAPICoreV1FlexVolumeSource) Get() (v IoK8sAPICoreV1FlexVolumeSour
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIoK8sAPICoreV1FlexVolumeSource) Or(d IoK8sAPICoreV1FlexVolumeSource) IoK8sAPICoreV1FlexVolumeSource {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPICoreV1FlexVolumeSourceOptions returns new OptIoK8sAPICoreV1FlexVolumeSourceOptions with value set to v.
+func NewOptIoK8sAPICoreV1FlexVolumeSourceOptions(v IoK8sAPICoreV1FlexVolumeSourceOptions) OptIoK8sAPICoreV1FlexVolumeSourceOptions {
+	return OptIoK8sAPICoreV1FlexVolumeSourceOptions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1FlexVolumeSourceOptions is optional IoK8sAPICoreV1FlexVolumeSourceOptions.
+type OptIoK8sAPICoreV1FlexVolumeSourceOptions struct {
+	Value IoK8sAPICoreV1FlexVolumeSourceOptions
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1FlexVolumeSourceOptions was set.
+func (o OptIoK8sAPICoreV1FlexVolumeSourceOptions) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1FlexVolumeSourceOptions) Reset() {
+	var v IoK8sAPICoreV1FlexVolumeSourceOptions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1FlexVolumeSourceOptions) SetTo(v IoK8sAPICoreV1FlexVolumeSourceOptions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1FlexVolumeSourceOptions) Get() (v IoK8sAPICoreV1FlexVolumeSourceOptions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1FlexVolumeSourceOptions) Or(d IoK8sAPICoreV1FlexVolumeSourceOptions) IoK8sAPICoreV1FlexVolumeSourceOptions {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -10601,6 +10834,236 @@ func (o OptIoK8sAPICoreV1Lifecycle) Get() (v IoK8sAPICoreV1Lifecycle, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIoK8sAPICoreV1Lifecycle) Or(d IoK8sAPICoreV1Lifecycle) IoK8sAPICoreV1Lifecycle {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPICoreV1LimitRangeItemDefault returns new OptIoK8sAPICoreV1LimitRangeItemDefault with value set to v.
+func NewOptIoK8sAPICoreV1LimitRangeItemDefault(v IoK8sAPICoreV1LimitRangeItemDefault) OptIoK8sAPICoreV1LimitRangeItemDefault {
+	return OptIoK8sAPICoreV1LimitRangeItemDefault{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1LimitRangeItemDefault is optional IoK8sAPICoreV1LimitRangeItemDefault.
+type OptIoK8sAPICoreV1LimitRangeItemDefault struct {
+	Value IoK8sAPICoreV1LimitRangeItemDefault
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1LimitRangeItemDefault was set.
+func (o OptIoK8sAPICoreV1LimitRangeItemDefault) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1LimitRangeItemDefault) Reset() {
+	var v IoK8sAPICoreV1LimitRangeItemDefault
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1LimitRangeItemDefault) SetTo(v IoK8sAPICoreV1LimitRangeItemDefault) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1LimitRangeItemDefault) Get() (v IoK8sAPICoreV1LimitRangeItemDefault, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1LimitRangeItemDefault) Or(d IoK8sAPICoreV1LimitRangeItemDefault) IoK8sAPICoreV1LimitRangeItemDefault {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPICoreV1LimitRangeItemDefaultRequest returns new OptIoK8sAPICoreV1LimitRangeItemDefaultRequest with value set to v.
+func NewOptIoK8sAPICoreV1LimitRangeItemDefaultRequest(v IoK8sAPICoreV1LimitRangeItemDefaultRequest) OptIoK8sAPICoreV1LimitRangeItemDefaultRequest {
+	return OptIoK8sAPICoreV1LimitRangeItemDefaultRequest{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1LimitRangeItemDefaultRequest is optional IoK8sAPICoreV1LimitRangeItemDefaultRequest.
+type OptIoK8sAPICoreV1LimitRangeItemDefaultRequest struct {
+	Value IoK8sAPICoreV1LimitRangeItemDefaultRequest
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1LimitRangeItemDefaultRequest was set.
+func (o OptIoK8sAPICoreV1LimitRangeItemDefaultRequest) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1LimitRangeItemDefaultRequest) Reset() {
+	var v IoK8sAPICoreV1LimitRangeItemDefaultRequest
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1LimitRangeItemDefaultRequest) SetTo(v IoK8sAPICoreV1LimitRangeItemDefaultRequest) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1LimitRangeItemDefaultRequest) Get() (v IoK8sAPICoreV1LimitRangeItemDefaultRequest, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1LimitRangeItemDefaultRequest) Or(d IoK8sAPICoreV1LimitRangeItemDefaultRequest) IoK8sAPICoreV1LimitRangeItemDefaultRequest {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPICoreV1LimitRangeItemMax returns new OptIoK8sAPICoreV1LimitRangeItemMax with value set to v.
+func NewOptIoK8sAPICoreV1LimitRangeItemMax(v IoK8sAPICoreV1LimitRangeItemMax) OptIoK8sAPICoreV1LimitRangeItemMax {
+	return OptIoK8sAPICoreV1LimitRangeItemMax{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1LimitRangeItemMax is optional IoK8sAPICoreV1LimitRangeItemMax.
+type OptIoK8sAPICoreV1LimitRangeItemMax struct {
+	Value IoK8sAPICoreV1LimitRangeItemMax
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1LimitRangeItemMax was set.
+func (o OptIoK8sAPICoreV1LimitRangeItemMax) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1LimitRangeItemMax) Reset() {
+	var v IoK8sAPICoreV1LimitRangeItemMax
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1LimitRangeItemMax) SetTo(v IoK8sAPICoreV1LimitRangeItemMax) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1LimitRangeItemMax) Get() (v IoK8sAPICoreV1LimitRangeItemMax, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1LimitRangeItemMax) Or(d IoK8sAPICoreV1LimitRangeItemMax) IoK8sAPICoreV1LimitRangeItemMax {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio returns new OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio with value set to v.
+func NewOptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio(v IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio {
+	return OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio is optional IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio.
+type OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio struct {
+	Value IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio was set.
+func (o OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Reset() {
+	var v IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) SetTo(v IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Get() (v IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Or(d IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPICoreV1LimitRangeItemMin returns new OptIoK8sAPICoreV1LimitRangeItemMin with value set to v.
+func NewOptIoK8sAPICoreV1LimitRangeItemMin(v IoK8sAPICoreV1LimitRangeItemMin) OptIoK8sAPICoreV1LimitRangeItemMin {
+	return OptIoK8sAPICoreV1LimitRangeItemMin{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1LimitRangeItemMin is optional IoK8sAPICoreV1LimitRangeItemMin.
+type OptIoK8sAPICoreV1LimitRangeItemMin struct {
+	Value IoK8sAPICoreV1LimitRangeItemMin
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1LimitRangeItemMin was set.
+func (o OptIoK8sAPICoreV1LimitRangeItemMin) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1LimitRangeItemMin) Reset() {
+	var v IoK8sAPICoreV1LimitRangeItemMin
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1LimitRangeItemMin) SetTo(v IoK8sAPICoreV1LimitRangeItemMin) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1LimitRangeItemMin) Get() (v IoK8sAPICoreV1LimitRangeItemMin, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1LimitRangeItemMin) Or(d IoK8sAPICoreV1LimitRangeItemMin) IoK8sAPICoreV1LimitRangeItemMin {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -11251,6 +11714,98 @@ func (o OptIoK8sAPICoreV1NodeStatus) Or(d IoK8sAPICoreV1NodeStatus) IoK8sAPICore
 	return d
 }
 
+// NewOptIoK8sAPICoreV1NodeStatusAllocatable returns new OptIoK8sAPICoreV1NodeStatusAllocatable with value set to v.
+func NewOptIoK8sAPICoreV1NodeStatusAllocatable(v IoK8sAPICoreV1NodeStatusAllocatable) OptIoK8sAPICoreV1NodeStatusAllocatable {
+	return OptIoK8sAPICoreV1NodeStatusAllocatable{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1NodeStatusAllocatable is optional IoK8sAPICoreV1NodeStatusAllocatable.
+type OptIoK8sAPICoreV1NodeStatusAllocatable struct {
+	Value IoK8sAPICoreV1NodeStatusAllocatable
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1NodeStatusAllocatable was set.
+func (o OptIoK8sAPICoreV1NodeStatusAllocatable) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1NodeStatusAllocatable) Reset() {
+	var v IoK8sAPICoreV1NodeStatusAllocatable
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1NodeStatusAllocatable) SetTo(v IoK8sAPICoreV1NodeStatusAllocatable) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1NodeStatusAllocatable) Get() (v IoK8sAPICoreV1NodeStatusAllocatable, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1NodeStatusAllocatable) Or(d IoK8sAPICoreV1NodeStatusAllocatable) IoK8sAPICoreV1NodeStatusAllocatable {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPICoreV1NodeStatusCapacity returns new OptIoK8sAPICoreV1NodeStatusCapacity with value set to v.
+func NewOptIoK8sAPICoreV1NodeStatusCapacity(v IoK8sAPICoreV1NodeStatusCapacity) OptIoK8sAPICoreV1NodeStatusCapacity {
+	return OptIoK8sAPICoreV1NodeStatusCapacity{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1NodeStatusCapacity is optional IoK8sAPICoreV1NodeStatusCapacity.
+type OptIoK8sAPICoreV1NodeStatusCapacity struct {
+	Value IoK8sAPICoreV1NodeStatusCapacity
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1NodeStatusCapacity was set.
+func (o OptIoK8sAPICoreV1NodeStatusCapacity) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1NodeStatusCapacity) Reset() {
+	var v IoK8sAPICoreV1NodeStatusCapacity
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1NodeStatusCapacity) SetTo(v IoK8sAPICoreV1NodeStatusCapacity) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1NodeStatusCapacity) Get() (v IoK8sAPICoreV1NodeStatusCapacity, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1NodeStatusCapacity) Or(d IoK8sAPICoreV1NodeStatusCapacity) IoK8sAPICoreV1NodeStatusCapacity {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1NodeSystemInfo returns new OptIoK8sAPICoreV1NodeSystemInfo with value set to v.
 func NewOptIoK8sAPICoreV1NodeSystemInfo(v IoK8sAPICoreV1NodeSystemInfo) OptIoK8sAPICoreV1NodeSystemInfo {
 	return OptIoK8sAPICoreV1NodeSystemInfo{
@@ -11481,6 +12036,52 @@ func (o OptIoK8sAPICoreV1PersistentVolumeClaimStatus) Or(d IoK8sAPICoreV1Persist
 	return d
 }
 
+// NewOptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity returns new OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity with value set to v.
+func NewOptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity(v IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity {
+	return OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity is optional IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity.
+type OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity struct {
+	Value IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity was set.
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Reset() {
+	var v IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) SetTo(v IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Get() (v IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Or(d IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1PersistentVolumeClaimTemplate returns new OptIoK8sAPICoreV1PersistentVolumeClaimTemplate with value set to v.
 func NewOptIoK8sAPICoreV1PersistentVolumeClaimTemplate(v IoK8sAPICoreV1PersistentVolumeClaimTemplate) OptIoK8sAPICoreV1PersistentVolumeClaimTemplate {
 	return OptIoK8sAPICoreV1PersistentVolumeClaimTemplate{
@@ -11613,6 +12214,52 @@ func (o OptIoK8sAPICoreV1PersistentVolumeSpec) Get() (v IoK8sAPICoreV1Persistent
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIoK8sAPICoreV1PersistentVolumeSpec) Or(d IoK8sAPICoreV1PersistentVolumeSpec) IoK8sAPICoreV1PersistentVolumeSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPICoreV1PersistentVolumeSpecCapacity returns new OptIoK8sAPICoreV1PersistentVolumeSpecCapacity with value set to v.
+func NewOptIoK8sAPICoreV1PersistentVolumeSpecCapacity(v IoK8sAPICoreV1PersistentVolumeSpecCapacity) OptIoK8sAPICoreV1PersistentVolumeSpecCapacity {
+	return OptIoK8sAPICoreV1PersistentVolumeSpecCapacity{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1PersistentVolumeSpecCapacity is optional IoK8sAPICoreV1PersistentVolumeSpecCapacity.
+type OptIoK8sAPICoreV1PersistentVolumeSpecCapacity struct {
+	Value IoK8sAPICoreV1PersistentVolumeSpecCapacity
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1PersistentVolumeSpecCapacity was set.
+func (o OptIoK8sAPICoreV1PersistentVolumeSpecCapacity) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1PersistentVolumeSpecCapacity) Reset() {
+	var v IoK8sAPICoreV1PersistentVolumeSpecCapacity
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1PersistentVolumeSpecCapacity) SetTo(v IoK8sAPICoreV1PersistentVolumeSpecCapacity) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1PersistentVolumeSpecCapacity) Get() (v IoK8sAPICoreV1PersistentVolumeSpecCapacity, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PersistentVolumeSpecCapacity) Or(d IoK8sAPICoreV1PersistentVolumeSpecCapacity) IoK8sAPICoreV1PersistentVolumeSpecCapacity {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -11935,6 +12582,98 @@ func (o OptIoK8sAPICoreV1PodSpec) Get() (v IoK8sAPICoreV1PodSpec, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIoK8sAPICoreV1PodSpec) Or(d IoK8sAPICoreV1PodSpec) IoK8sAPICoreV1PodSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPICoreV1PodSpecNodeSelector returns new OptIoK8sAPICoreV1PodSpecNodeSelector with value set to v.
+func NewOptIoK8sAPICoreV1PodSpecNodeSelector(v IoK8sAPICoreV1PodSpecNodeSelector) OptIoK8sAPICoreV1PodSpecNodeSelector {
+	return OptIoK8sAPICoreV1PodSpecNodeSelector{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1PodSpecNodeSelector is optional IoK8sAPICoreV1PodSpecNodeSelector.
+type OptIoK8sAPICoreV1PodSpecNodeSelector struct {
+	Value IoK8sAPICoreV1PodSpecNodeSelector
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1PodSpecNodeSelector was set.
+func (o OptIoK8sAPICoreV1PodSpecNodeSelector) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1PodSpecNodeSelector) Reset() {
+	var v IoK8sAPICoreV1PodSpecNodeSelector
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1PodSpecNodeSelector) SetTo(v IoK8sAPICoreV1PodSpecNodeSelector) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1PodSpecNodeSelector) Get() (v IoK8sAPICoreV1PodSpecNodeSelector, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PodSpecNodeSelector) Or(d IoK8sAPICoreV1PodSpecNodeSelector) IoK8sAPICoreV1PodSpecNodeSelector {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPICoreV1PodSpecOverhead returns new OptIoK8sAPICoreV1PodSpecOverhead with value set to v.
+func NewOptIoK8sAPICoreV1PodSpecOverhead(v IoK8sAPICoreV1PodSpecOverhead) OptIoK8sAPICoreV1PodSpecOverhead {
+	return OptIoK8sAPICoreV1PodSpecOverhead{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1PodSpecOverhead is optional IoK8sAPICoreV1PodSpecOverhead.
+type OptIoK8sAPICoreV1PodSpecOverhead struct {
+	Value IoK8sAPICoreV1PodSpecOverhead
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1PodSpecOverhead was set.
+func (o OptIoK8sAPICoreV1PodSpecOverhead) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1PodSpecOverhead) Reset() {
+	var v IoK8sAPICoreV1PodSpecOverhead
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1PodSpecOverhead) SetTo(v IoK8sAPICoreV1PodSpecOverhead) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1PodSpecOverhead) Get() (v IoK8sAPICoreV1PodSpecOverhead, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1PodSpecOverhead) Or(d IoK8sAPICoreV1PodSpecOverhead) IoK8sAPICoreV1PodSpecOverhead {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -12355,6 +13094,52 @@ func (o OptIoK8sAPICoreV1ReplicationControllerSpec) Or(d IoK8sAPICoreV1Replicati
 	return d
 }
 
+// NewOptIoK8sAPICoreV1ReplicationControllerSpecSelector returns new OptIoK8sAPICoreV1ReplicationControllerSpecSelector with value set to v.
+func NewOptIoK8sAPICoreV1ReplicationControllerSpecSelector(v IoK8sAPICoreV1ReplicationControllerSpecSelector) OptIoK8sAPICoreV1ReplicationControllerSpecSelector {
+	return OptIoK8sAPICoreV1ReplicationControllerSpecSelector{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1ReplicationControllerSpecSelector is optional IoK8sAPICoreV1ReplicationControllerSpecSelector.
+type OptIoK8sAPICoreV1ReplicationControllerSpecSelector struct {
+	Value IoK8sAPICoreV1ReplicationControllerSpecSelector
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1ReplicationControllerSpecSelector was set.
+func (o OptIoK8sAPICoreV1ReplicationControllerSpecSelector) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1ReplicationControllerSpecSelector) Reset() {
+	var v IoK8sAPICoreV1ReplicationControllerSpecSelector
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1ReplicationControllerSpecSelector) SetTo(v IoK8sAPICoreV1ReplicationControllerSpecSelector) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1ReplicationControllerSpecSelector) Get() (v IoK8sAPICoreV1ReplicationControllerSpecSelector, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ReplicationControllerSpecSelector) Or(d IoK8sAPICoreV1ReplicationControllerSpecSelector) IoK8sAPICoreV1ReplicationControllerSpecSelector {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1ReplicationControllerStatus returns new OptIoK8sAPICoreV1ReplicationControllerStatus with value set to v.
 func NewOptIoK8sAPICoreV1ReplicationControllerStatus(v IoK8sAPICoreV1ReplicationControllerStatus) OptIoK8sAPICoreV1ReplicationControllerStatus {
 	return OptIoK8sAPICoreV1ReplicationControllerStatus{
@@ -12493,6 +13278,52 @@ func (o OptIoK8sAPICoreV1ResourceQuotaSpec) Or(d IoK8sAPICoreV1ResourceQuotaSpec
 	return d
 }
 
+// NewOptIoK8sAPICoreV1ResourceQuotaSpecHard returns new OptIoK8sAPICoreV1ResourceQuotaSpecHard with value set to v.
+func NewOptIoK8sAPICoreV1ResourceQuotaSpecHard(v IoK8sAPICoreV1ResourceQuotaSpecHard) OptIoK8sAPICoreV1ResourceQuotaSpecHard {
+	return OptIoK8sAPICoreV1ResourceQuotaSpecHard{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1ResourceQuotaSpecHard is optional IoK8sAPICoreV1ResourceQuotaSpecHard.
+type OptIoK8sAPICoreV1ResourceQuotaSpecHard struct {
+	Value IoK8sAPICoreV1ResourceQuotaSpecHard
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1ResourceQuotaSpecHard was set.
+func (o OptIoK8sAPICoreV1ResourceQuotaSpecHard) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1ResourceQuotaSpecHard) Reset() {
+	var v IoK8sAPICoreV1ResourceQuotaSpecHard
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1ResourceQuotaSpecHard) SetTo(v IoK8sAPICoreV1ResourceQuotaSpecHard) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1ResourceQuotaSpecHard) Get() (v IoK8sAPICoreV1ResourceQuotaSpecHard, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ResourceQuotaSpecHard) Or(d IoK8sAPICoreV1ResourceQuotaSpecHard) IoK8sAPICoreV1ResourceQuotaSpecHard {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1ResourceQuotaStatus returns new OptIoK8sAPICoreV1ResourceQuotaStatus with value set to v.
 func NewOptIoK8sAPICoreV1ResourceQuotaStatus(v IoK8sAPICoreV1ResourceQuotaStatus) OptIoK8sAPICoreV1ResourceQuotaStatus {
 	return OptIoK8sAPICoreV1ResourceQuotaStatus{
@@ -12539,6 +13370,98 @@ func (o OptIoK8sAPICoreV1ResourceQuotaStatus) Or(d IoK8sAPICoreV1ResourceQuotaSt
 	return d
 }
 
+// NewOptIoK8sAPICoreV1ResourceQuotaStatusHard returns new OptIoK8sAPICoreV1ResourceQuotaStatusHard with value set to v.
+func NewOptIoK8sAPICoreV1ResourceQuotaStatusHard(v IoK8sAPICoreV1ResourceQuotaStatusHard) OptIoK8sAPICoreV1ResourceQuotaStatusHard {
+	return OptIoK8sAPICoreV1ResourceQuotaStatusHard{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1ResourceQuotaStatusHard is optional IoK8sAPICoreV1ResourceQuotaStatusHard.
+type OptIoK8sAPICoreV1ResourceQuotaStatusHard struct {
+	Value IoK8sAPICoreV1ResourceQuotaStatusHard
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1ResourceQuotaStatusHard was set.
+func (o OptIoK8sAPICoreV1ResourceQuotaStatusHard) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1ResourceQuotaStatusHard) Reset() {
+	var v IoK8sAPICoreV1ResourceQuotaStatusHard
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1ResourceQuotaStatusHard) SetTo(v IoK8sAPICoreV1ResourceQuotaStatusHard) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1ResourceQuotaStatusHard) Get() (v IoK8sAPICoreV1ResourceQuotaStatusHard, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ResourceQuotaStatusHard) Or(d IoK8sAPICoreV1ResourceQuotaStatusHard) IoK8sAPICoreV1ResourceQuotaStatusHard {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPICoreV1ResourceQuotaStatusUsed returns new OptIoK8sAPICoreV1ResourceQuotaStatusUsed with value set to v.
+func NewOptIoK8sAPICoreV1ResourceQuotaStatusUsed(v IoK8sAPICoreV1ResourceQuotaStatusUsed) OptIoK8sAPICoreV1ResourceQuotaStatusUsed {
+	return OptIoK8sAPICoreV1ResourceQuotaStatusUsed{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1ResourceQuotaStatusUsed is optional IoK8sAPICoreV1ResourceQuotaStatusUsed.
+type OptIoK8sAPICoreV1ResourceQuotaStatusUsed struct {
+	Value IoK8sAPICoreV1ResourceQuotaStatusUsed
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1ResourceQuotaStatusUsed was set.
+func (o OptIoK8sAPICoreV1ResourceQuotaStatusUsed) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1ResourceQuotaStatusUsed) Reset() {
+	var v IoK8sAPICoreV1ResourceQuotaStatusUsed
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1ResourceQuotaStatusUsed) SetTo(v IoK8sAPICoreV1ResourceQuotaStatusUsed) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1ResourceQuotaStatusUsed) Get() (v IoK8sAPICoreV1ResourceQuotaStatusUsed, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ResourceQuotaStatusUsed) Or(d IoK8sAPICoreV1ResourceQuotaStatusUsed) IoK8sAPICoreV1ResourceQuotaStatusUsed {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1ResourceRequirements returns new OptIoK8sAPICoreV1ResourceRequirements with value set to v.
 func NewOptIoK8sAPICoreV1ResourceRequirements(v IoK8sAPICoreV1ResourceRequirements) OptIoK8sAPICoreV1ResourceRequirements {
 	return OptIoK8sAPICoreV1ResourceRequirements{
@@ -12579,6 +13502,98 @@ func (o OptIoK8sAPICoreV1ResourceRequirements) Get() (v IoK8sAPICoreV1ResourceRe
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIoK8sAPICoreV1ResourceRequirements) Or(d IoK8sAPICoreV1ResourceRequirements) IoK8sAPICoreV1ResourceRequirements {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPICoreV1ResourceRequirementsLimits returns new OptIoK8sAPICoreV1ResourceRequirementsLimits with value set to v.
+func NewOptIoK8sAPICoreV1ResourceRequirementsLimits(v IoK8sAPICoreV1ResourceRequirementsLimits) OptIoK8sAPICoreV1ResourceRequirementsLimits {
+	return OptIoK8sAPICoreV1ResourceRequirementsLimits{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1ResourceRequirementsLimits is optional IoK8sAPICoreV1ResourceRequirementsLimits.
+type OptIoK8sAPICoreV1ResourceRequirementsLimits struct {
+	Value IoK8sAPICoreV1ResourceRequirementsLimits
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1ResourceRequirementsLimits was set.
+func (o OptIoK8sAPICoreV1ResourceRequirementsLimits) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1ResourceRequirementsLimits) Reset() {
+	var v IoK8sAPICoreV1ResourceRequirementsLimits
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1ResourceRequirementsLimits) SetTo(v IoK8sAPICoreV1ResourceRequirementsLimits) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1ResourceRequirementsLimits) Get() (v IoK8sAPICoreV1ResourceRequirementsLimits, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ResourceRequirementsLimits) Or(d IoK8sAPICoreV1ResourceRequirementsLimits) IoK8sAPICoreV1ResourceRequirementsLimits {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPICoreV1ResourceRequirementsRequests returns new OptIoK8sAPICoreV1ResourceRequirementsRequests with value set to v.
+func NewOptIoK8sAPICoreV1ResourceRequirementsRequests(v IoK8sAPICoreV1ResourceRequirementsRequests) OptIoK8sAPICoreV1ResourceRequirementsRequests {
+	return OptIoK8sAPICoreV1ResourceRequirementsRequests{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1ResourceRequirementsRequests is optional IoK8sAPICoreV1ResourceRequirementsRequests.
+type OptIoK8sAPICoreV1ResourceRequirementsRequests struct {
+	Value IoK8sAPICoreV1ResourceRequirementsRequests
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1ResourceRequirementsRequests was set.
+func (o OptIoK8sAPICoreV1ResourceRequirementsRequests) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1ResourceRequirementsRequests) Reset() {
+	var v IoK8sAPICoreV1ResourceRequirementsRequests
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1ResourceRequirementsRequests) SetTo(v IoK8sAPICoreV1ResourceRequirementsRequests) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1ResourceRequirementsRequests) Get() (v IoK8sAPICoreV1ResourceRequirementsRequests, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ResourceRequirementsRequests) Or(d IoK8sAPICoreV1ResourceRequirementsRequests) IoK8sAPICoreV1ResourceRequirementsRequests {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -12815,6 +13830,52 @@ func (o OptIoK8sAPICoreV1SeccompProfile) Or(d IoK8sAPICoreV1SeccompProfile) IoK8
 	return d
 }
 
+// NewOptIoK8sAPICoreV1SecretData returns new OptIoK8sAPICoreV1SecretData with value set to v.
+func NewOptIoK8sAPICoreV1SecretData(v IoK8sAPICoreV1SecretData) OptIoK8sAPICoreV1SecretData {
+	return OptIoK8sAPICoreV1SecretData{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1SecretData is optional IoK8sAPICoreV1SecretData.
+type OptIoK8sAPICoreV1SecretData struct {
+	Value IoK8sAPICoreV1SecretData
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1SecretData was set.
+func (o OptIoK8sAPICoreV1SecretData) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1SecretData) Reset() {
+	var v IoK8sAPICoreV1SecretData
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1SecretData) SetTo(v IoK8sAPICoreV1SecretData) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1SecretData) Get() (v IoK8sAPICoreV1SecretData, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1SecretData) Or(d IoK8sAPICoreV1SecretData) IoK8sAPICoreV1SecretData {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1SecretEnvSource returns new OptIoK8sAPICoreV1SecretEnvSource with value set to v.
 func NewOptIoK8sAPICoreV1SecretEnvSource(v IoK8sAPICoreV1SecretEnvSource) OptIoK8sAPICoreV1SecretEnvSource {
 	return OptIoK8sAPICoreV1SecretEnvSource{
@@ -12999,6 +14060,52 @@ func (o OptIoK8sAPICoreV1SecretReference) Or(d IoK8sAPICoreV1SecretReference) Io
 	return d
 }
 
+// NewOptIoK8sAPICoreV1SecretStringData returns new OptIoK8sAPICoreV1SecretStringData with value set to v.
+func NewOptIoK8sAPICoreV1SecretStringData(v IoK8sAPICoreV1SecretStringData) OptIoK8sAPICoreV1SecretStringData {
+	return OptIoK8sAPICoreV1SecretStringData{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1SecretStringData is optional IoK8sAPICoreV1SecretStringData.
+type OptIoK8sAPICoreV1SecretStringData struct {
+	Value IoK8sAPICoreV1SecretStringData
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1SecretStringData was set.
+func (o OptIoK8sAPICoreV1SecretStringData) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1SecretStringData) Reset() {
+	var v IoK8sAPICoreV1SecretStringData
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1SecretStringData) SetTo(v IoK8sAPICoreV1SecretStringData) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1SecretStringData) Get() (v IoK8sAPICoreV1SecretStringData, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1SecretStringData) Or(d IoK8sAPICoreV1SecretStringData) IoK8sAPICoreV1SecretStringData {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPICoreV1SecretVolumeSource returns new OptIoK8sAPICoreV1SecretVolumeSource with value set to v.
 func NewOptIoK8sAPICoreV1SecretVolumeSource(v IoK8sAPICoreV1SecretVolumeSource) OptIoK8sAPICoreV1SecretVolumeSource {
 	return OptIoK8sAPICoreV1SecretVolumeSource{
@@ -13177,6 +14284,52 @@ func (o OptIoK8sAPICoreV1ServiceSpec) Get() (v IoK8sAPICoreV1ServiceSpec, ok boo
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIoK8sAPICoreV1ServiceSpec) Or(d IoK8sAPICoreV1ServiceSpec) IoK8sAPICoreV1ServiceSpec {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPICoreV1ServiceSpecSelector returns new OptIoK8sAPICoreV1ServiceSpecSelector with value set to v.
+func NewOptIoK8sAPICoreV1ServiceSpecSelector(v IoK8sAPICoreV1ServiceSpecSelector) OptIoK8sAPICoreV1ServiceSpecSelector {
+	return OptIoK8sAPICoreV1ServiceSpecSelector{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPICoreV1ServiceSpecSelector is optional IoK8sAPICoreV1ServiceSpecSelector.
+type OptIoK8sAPICoreV1ServiceSpecSelector struct {
+	Value IoK8sAPICoreV1ServiceSpecSelector
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPICoreV1ServiceSpecSelector was set.
+func (o OptIoK8sAPICoreV1ServiceSpecSelector) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPICoreV1ServiceSpecSelector) Reset() {
+	var v IoK8sAPICoreV1ServiceSpecSelector
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPICoreV1ServiceSpecSelector) SetTo(v IoK8sAPICoreV1ServiceSpecSelector) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPICoreV1ServiceSpecSelector) Get() (v IoK8sAPICoreV1ServiceSpecSelector, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPICoreV1ServiceSpecSelector) Or(d IoK8sAPICoreV1ServiceSpecSelector) IoK8sAPICoreV1ServiceSpecSelector {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -13643,6 +14796,52 @@ func (o OptIoK8sAPIDiscoveryV1EndpointConditions) Or(d IoK8sAPIDiscoveryV1Endpoi
 	return d
 }
 
+// NewOptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology returns new OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology with value set to v.
+func NewOptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology(v IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology {
+	return OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology is optional IoK8sAPIDiscoveryV1EndpointDeprecatedTopology.
+type OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology struct {
+	Value IoK8sAPIDiscoveryV1EndpointDeprecatedTopology
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology was set.
+func (o OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Reset() {
+	var v IoK8sAPIDiscoveryV1EndpointDeprecatedTopology
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology) SetTo(v IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Get() (v IoK8sAPIDiscoveryV1EndpointDeprecatedTopology, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Or(d IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) IoK8sAPIDiscoveryV1EndpointDeprecatedTopology {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIDiscoveryV1EndpointHints returns new OptIoK8sAPIDiscoveryV1EndpointHints with value set to v.
 func NewOptIoK8sAPIDiscoveryV1EndpointHints(v IoK8sAPIDiscoveryV1EndpointHints) OptIoK8sAPIDiscoveryV1EndpointHints {
 	return OptIoK8sAPIDiscoveryV1EndpointHints{
@@ -13775,6 +14974,52 @@ func (o OptIoK8sAPIDiscoveryV1beta1EndpointHints) Get() (v IoK8sAPIDiscoveryV1be
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIoK8sAPIDiscoveryV1beta1EndpointHints) Or(d IoK8sAPIDiscoveryV1beta1EndpointHints) IoK8sAPIDiscoveryV1beta1EndpointHints {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPIDiscoveryV1beta1EndpointTopology returns new OptIoK8sAPIDiscoveryV1beta1EndpointTopology with value set to v.
+func NewOptIoK8sAPIDiscoveryV1beta1EndpointTopology(v IoK8sAPIDiscoveryV1beta1EndpointTopology) OptIoK8sAPIDiscoveryV1beta1EndpointTopology {
+	return OptIoK8sAPIDiscoveryV1beta1EndpointTopology{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPIDiscoveryV1beta1EndpointTopology is optional IoK8sAPIDiscoveryV1beta1EndpointTopology.
+type OptIoK8sAPIDiscoveryV1beta1EndpointTopology struct {
+	Value IoK8sAPIDiscoveryV1beta1EndpointTopology
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPIDiscoveryV1beta1EndpointTopology was set.
+func (o OptIoK8sAPIDiscoveryV1beta1EndpointTopology) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPIDiscoveryV1beta1EndpointTopology) Reset() {
+	var v IoK8sAPIDiscoveryV1beta1EndpointTopology
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPIDiscoveryV1beta1EndpointTopology) SetTo(v IoK8sAPIDiscoveryV1beta1EndpointTopology) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPIDiscoveryV1beta1EndpointTopology) Get() (v IoK8sAPIDiscoveryV1beta1EndpointTopology, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIDiscoveryV1beta1EndpointTopology) Or(d IoK8sAPIDiscoveryV1beta1EndpointTopology) IoK8sAPIDiscoveryV1beta1EndpointTopology {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -15391,6 +16636,52 @@ func (o OptIoK8sAPINodeV1Overhead) Or(d IoK8sAPINodeV1Overhead) IoK8sAPINodeV1Ov
 	return d
 }
 
+// NewOptIoK8sAPINodeV1OverheadPodFixed returns new OptIoK8sAPINodeV1OverheadPodFixed with value set to v.
+func NewOptIoK8sAPINodeV1OverheadPodFixed(v IoK8sAPINodeV1OverheadPodFixed) OptIoK8sAPINodeV1OverheadPodFixed {
+	return OptIoK8sAPINodeV1OverheadPodFixed{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPINodeV1OverheadPodFixed is optional IoK8sAPINodeV1OverheadPodFixed.
+type OptIoK8sAPINodeV1OverheadPodFixed struct {
+	Value IoK8sAPINodeV1OverheadPodFixed
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPINodeV1OverheadPodFixed was set.
+func (o OptIoK8sAPINodeV1OverheadPodFixed) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPINodeV1OverheadPodFixed) Reset() {
+	var v IoK8sAPINodeV1OverheadPodFixed
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPINodeV1OverheadPodFixed) SetTo(v IoK8sAPINodeV1OverheadPodFixed) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPINodeV1OverheadPodFixed) Get() (v IoK8sAPINodeV1OverheadPodFixed, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINodeV1OverheadPodFixed) Or(d IoK8sAPINodeV1OverheadPodFixed) IoK8sAPINodeV1OverheadPodFixed {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPINodeV1Scheduling returns new OptIoK8sAPINodeV1Scheduling with value set to v.
 func NewOptIoK8sAPINodeV1Scheduling(v IoK8sAPINodeV1Scheduling) OptIoK8sAPINodeV1Scheduling {
 	return OptIoK8sAPINodeV1Scheduling{
@@ -15431,6 +16722,52 @@ func (o OptIoK8sAPINodeV1Scheduling) Get() (v IoK8sAPINodeV1Scheduling, ok bool)
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIoK8sAPINodeV1Scheduling) Or(d IoK8sAPINodeV1Scheduling) IoK8sAPINodeV1Scheduling {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPINodeV1SchedulingNodeSelector returns new OptIoK8sAPINodeV1SchedulingNodeSelector with value set to v.
+func NewOptIoK8sAPINodeV1SchedulingNodeSelector(v IoK8sAPINodeV1SchedulingNodeSelector) OptIoK8sAPINodeV1SchedulingNodeSelector {
+	return OptIoK8sAPINodeV1SchedulingNodeSelector{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPINodeV1SchedulingNodeSelector is optional IoK8sAPINodeV1SchedulingNodeSelector.
+type OptIoK8sAPINodeV1SchedulingNodeSelector struct {
+	Value IoK8sAPINodeV1SchedulingNodeSelector
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPINodeV1SchedulingNodeSelector was set.
+func (o OptIoK8sAPINodeV1SchedulingNodeSelector) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPINodeV1SchedulingNodeSelector) Reset() {
+	var v IoK8sAPINodeV1SchedulingNodeSelector
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPINodeV1SchedulingNodeSelector) SetTo(v IoK8sAPINodeV1SchedulingNodeSelector) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPINodeV1SchedulingNodeSelector) Get() (v IoK8sAPINodeV1SchedulingNodeSelector, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINodeV1SchedulingNodeSelector) Or(d IoK8sAPINodeV1SchedulingNodeSelector) IoK8sAPINodeV1SchedulingNodeSelector {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -15483,6 +16820,52 @@ func (o OptIoK8sAPINodeV1alpha1Overhead) Or(d IoK8sAPINodeV1alpha1Overhead) IoK8
 	return d
 }
 
+// NewOptIoK8sAPINodeV1alpha1OverheadPodFixed returns new OptIoK8sAPINodeV1alpha1OverheadPodFixed with value set to v.
+func NewOptIoK8sAPINodeV1alpha1OverheadPodFixed(v IoK8sAPINodeV1alpha1OverheadPodFixed) OptIoK8sAPINodeV1alpha1OverheadPodFixed {
+	return OptIoK8sAPINodeV1alpha1OverheadPodFixed{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPINodeV1alpha1OverheadPodFixed is optional IoK8sAPINodeV1alpha1OverheadPodFixed.
+type OptIoK8sAPINodeV1alpha1OverheadPodFixed struct {
+	Value IoK8sAPINodeV1alpha1OverheadPodFixed
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPINodeV1alpha1OverheadPodFixed was set.
+func (o OptIoK8sAPINodeV1alpha1OverheadPodFixed) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPINodeV1alpha1OverheadPodFixed) Reset() {
+	var v IoK8sAPINodeV1alpha1OverheadPodFixed
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPINodeV1alpha1OverheadPodFixed) SetTo(v IoK8sAPINodeV1alpha1OverheadPodFixed) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPINodeV1alpha1OverheadPodFixed) Get() (v IoK8sAPINodeV1alpha1OverheadPodFixed, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINodeV1alpha1OverheadPodFixed) Or(d IoK8sAPINodeV1alpha1OverheadPodFixed) IoK8sAPINodeV1alpha1OverheadPodFixed {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPINodeV1alpha1Scheduling returns new OptIoK8sAPINodeV1alpha1Scheduling with value set to v.
 func NewOptIoK8sAPINodeV1alpha1Scheduling(v IoK8sAPINodeV1alpha1Scheduling) OptIoK8sAPINodeV1alpha1Scheduling {
 	return OptIoK8sAPINodeV1alpha1Scheduling{
@@ -15523,6 +16906,52 @@ func (o OptIoK8sAPINodeV1alpha1Scheduling) Get() (v IoK8sAPINodeV1alpha1Scheduli
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIoK8sAPINodeV1alpha1Scheduling) Or(d IoK8sAPINodeV1alpha1Scheduling) IoK8sAPINodeV1alpha1Scheduling {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPINodeV1alpha1SchedulingNodeSelector returns new OptIoK8sAPINodeV1alpha1SchedulingNodeSelector with value set to v.
+func NewOptIoK8sAPINodeV1alpha1SchedulingNodeSelector(v IoK8sAPINodeV1alpha1SchedulingNodeSelector) OptIoK8sAPINodeV1alpha1SchedulingNodeSelector {
+	return OptIoK8sAPINodeV1alpha1SchedulingNodeSelector{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPINodeV1alpha1SchedulingNodeSelector is optional IoK8sAPINodeV1alpha1SchedulingNodeSelector.
+type OptIoK8sAPINodeV1alpha1SchedulingNodeSelector struct {
+	Value IoK8sAPINodeV1alpha1SchedulingNodeSelector
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPINodeV1alpha1SchedulingNodeSelector was set.
+func (o OptIoK8sAPINodeV1alpha1SchedulingNodeSelector) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPINodeV1alpha1SchedulingNodeSelector) Reset() {
+	var v IoK8sAPINodeV1alpha1SchedulingNodeSelector
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPINodeV1alpha1SchedulingNodeSelector) SetTo(v IoK8sAPINodeV1alpha1SchedulingNodeSelector) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPINodeV1alpha1SchedulingNodeSelector) Get() (v IoK8sAPINodeV1alpha1SchedulingNodeSelector, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINodeV1alpha1SchedulingNodeSelector) Or(d IoK8sAPINodeV1alpha1SchedulingNodeSelector) IoK8sAPINodeV1alpha1SchedulingNodeSelector {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -15575,6 +17004,52 @@ func (o OptIoK8sAPINodeV1beta1Overhead) Or(d IoK8sAPINodeV1beta1Overhead) IoK8sA
 	return d
 }
 
+// NewOptIoK8sAPINodeV1beta1OverheadPodFixed returns new OptIoK8sAPINodeV1beta1OverheadPodFixed with value set to v.
+func NewOptIoK8sAPINodeV1beta1OverheadPodFixed(v IoK8sAPINodeV1beta1OverheadPodFixed) OptIoK8sAPINodeV1beta1OverheadPodFixed {
+	return OptIoK8sAPINodeV1beta1OverheadPodFixed{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPINodeV1beta1OverheadPodFixed is optional IoK8sAPINodeV1beta1OverheadPodFixed.
+type OptIoK8sAPINodeV1beta1OverheadPodFixed struct {
+	Value IoK8sAPINodeV1beta1OverheadPodFixed
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPINodeV1beta1OverheadPodFixed was set.
+func (o OptIoK8sAPINodeV1beta1OverheadPodFixed) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPINodeV1beta1OverheadPodFixed) Reset() {
+	var v IoK8sAPINodeV1beta1OverheadPodFixed
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPINodeV1beta1OverheadPodFixed) SetTo(v IoK8sAPINodeV1beta1OverheadPodFixed) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPINodeV1beta1OverheadPodFixed) Get() (v IoK8sAPINodeV1beta1OverheadPodFixed, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINodeV1beta1OverheadPodFixed) Or(d IoK8sAPINodeV1beta1OverheadPodFixed) IoK8sAPINodeV1beta1OverheadPodFixed {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPINodeV1beta1Scheduling returns new OptIoK8sAPINodeV1beta1Scheduling with value set to v.
 func NewOptIoK8sAPINodeV1beta1Scheduling(v IoK8sAPINodeV1beta1Scheduling) OptIoK8sAPINodeV1beta1Scheduling {
 	return OptIoK8sAPINodeV1beta1Scheduling{
@@ -15615,6 +17090,52 @@ func (o OptIoK8sAPINodeV1beta1Scheduling) Get() (v IoK8sAPINodeV1beta1Scheduling
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIoK8sAPINodeV1beta1Scheduling) Or(d IoK8sAPINodeV1beta1Scheduling) IoK8sAPINodeV1beta1Scheduling {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPINodeV1beta1SchedulingNodeSelector returns new OptIoK8sAPINodeV1beta1SchedulingNodeSelector with value set to v.
+func NewOptIoK8sAPINodeV1beta1SchedulingNodeSelector(v IoK8sAPINodeV1beta1SchedulingNodeSelector) OptIoK8sAPINodeV1beta1SchedulingNodeSelector {
+	return OptIoK8sAPINodeV1beta1SchedulingNodeSelector{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPINodeV1beta1SchedulingNodeSelector is optional IoK8sAPINodeV1beta1SchedulingNodeSelector.
+type OptIoK8sAPINodeV1beta1SchedulingNodeSelector struct {
+	Value IoK8sAPINodeV1beta1SchedulingNodeSelector
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPINodeV1beta1SchedulingNodeSelector was set.
+func (o OptIoK8sAPINodeV1beta1SchedulingNodeSelector) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPINodeV1beta1SchedulingNodeSelector) Reset() {
+	var v IoK8sAPINodeV1beta1SchedulingNodeSelector
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPINodeV1beta1SchedulingNodeSelector) SetTo(v IoK8sAPINodeV1beta1SchedulingNodeSelector) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPINodeV1beta1SchedulingNodeSelector) Get() (v IoK8sAPINodeV1beta1SchedulingNodeSelector, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPINodeV1beta1SchedulingNodeSelector) Or(d IoK8sAPINodeV1beta1SchedulingNodeSelector) IoK8sAPINodeV1beta1SchedulingNodeSelector {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -15713,6 +17234,52 @@ func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) Or(d IoK8sAPIPolicyV1PodDi
 	return d
 }
 
+// NewOptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods returns new OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods with value set to v.
+func NewOptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods(v IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods {
+	return OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods is optional IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods.
+type OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods struct {
+	Value IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods was set.
+func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Reset() {
+	var v IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) SetTo(v IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Get() (v IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Or(d IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec returns new OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec with value set to v.
 func NewOptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec(v IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec {
 	return OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec{
@@ -15799,6 +17366,52 @@ func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Get() (v IoK8sAPIPoli
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Or(d IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods returns new OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods with value set to v.
+func NewOptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods(v IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods {
+	return OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods is optional IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods.
+type OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods struct {
+	Value IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods was set.
+func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Reset() {
+	var v IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) SetTo(v IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Get() (v IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Or(d IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -15989,6 +17602,52 @@ func (o OptIoK8sAPIRbacV1AggregationRule) Or(d IoK8sAPIRbacV1AggregationRule) Io
 	return d
 }
 
+// NewOptIoK8sAPIStorageV1StorageClassParameters returns new OptIoK8sAPIStorageV1StorageClassParameters with value set to v.
+func NewOptIoK8sAPIStorageV1StorageClassParameters(v IoK8sAPIStorageV1StorageClassParameters) OptIoK8sAPIStorageV1StorageClassParameters {
+	return OptIoK8sAPIStorageV1StorageClassParameters{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPIStorageV1StorageClassParameters is optional IoK8sAPIStorageV1StorageClassParameters.
+type OptIoK8sAPIStorageV1StorageClassParameters struct {
+	Value IoK8sAPIStorageV1StorageClassParameters
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPIStorageV1StorageClassParameters was set.
+func (o OptIoK8sAPIStorageV1StorageClassParameters) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPIStorageV1StorageClassParameters) Reset() {
+	var v IoK8sAPIStorageV1StorageClassParameters
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPIStorageV1StorageClassParameters) SetTo(v IoK8sAPIStorageV1StorageClassParameters) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPIStorageV1StorageClassParameters) Get() (v IoK8sAPIStorageV1StorageClassParameters, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIStorageV1StorageClassParameters) Or(d IoK8sAPIStorageV1StorageClassParameters) IoK8sAPIStorageV1StorageClassParameters {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sAPIStorageV1VolumeAttachmentStatus returns new OptIoK8sAPIStorageV1VolumeAttachmentStatus with value set to v.
 func NewOptIoK8sAPIStorageV1VolumeAttachmentStatus(v IoK8sAPIStorageV1VolumeAttachmentStatus) OptIoK8sAPIStorageV1VolumeAttachmentStatus {
 	return OptIoK8sAPIStorageV1VolumeAttachmentStatus{
@@ -16029,6 +17688,52 @@ func (o OptIoK8sAPIStorageV1VolumeAttachmentStatus) Get() (v IoK8sAPIStorageV1Vo
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIoK8sAPIStorageV1VolumeAttachmentStatus) Or(d IoK8sAPIStorageV1VolumeAttachmentStatus) IoK8sAPIStorageV1VolumeAttachmentStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata returns new OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata with value set to v.
+func NewOptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata(v IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata {
+	return OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata is optional IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata.
+type OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata struct {
+	Value IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata was set.
+func (o OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Reset() {
+	var v IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) SetTo(v IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Get() (v IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Or(d IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -16511,6 +18216,198 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Or(
 	return d
 }
 
+// NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions is optional IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions struct {
+	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) Reset() {
+	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies is optional IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies struct {
+	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) Reset() {
+	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties is optional IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties struct {
+	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) Reset() {
+	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties is optional IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties struct {
+	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) Reset() {
+	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference with value set to v.
 func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference {
 	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference{
@@ -16793,6 +18690,52 @@ func (o OptIoK8sApimachineryPkgApisMetaV1LabelSelector) Or(d IoK8sApimachineryPk
 	return d
 }
 
+// NewOptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels returns new OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels with value set to v.
+func NewOptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels(v IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels {
+	return OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels is optional IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels.
+type OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels struct {
+	Value IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels was set.
+func (o OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Reset() {
+	var v IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) SetTo(v IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Get() (v IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Or(d IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sApimachineryPkgApisMetaV1ListMeta returns new OptIoK8sApimachineryPkgApisMetaV1ListMeta with value set to v.
 func NewOptIoK8sApimachineryPkgApisMetaV1ListMeta(v IoK8sApimachineryPkgApisMetaV1ListMeta) OptIoK8sApimachineryPkgApisMetaV1ListMeta {
 	return OptIoK8sApimachineryPkgApisMetaV1ListMeta{
@@ -16925,6 +18868,98 @@ func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) Get() (v IoK8sApimachineryP
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) Or(d IoK8sApimachineryPkgApisMetaV1ObjectMeta) IoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations returns new OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations with value set to v.
+func NewOptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations(v IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations {
+	return OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations is optional IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations.
+type OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations struct {
+	Value IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations was set.
+func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Reset() {
+	var v IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) SetTo(v IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Get() (v IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Or(d IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels returns new OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels with value set to v.
+func NewOptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels(v IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels {
+	return OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels is optional IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels.
+type OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels struct {
+	Value IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels was set.
+func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Reset() {
+	var v IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) SetTo(v IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Get() (v IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Or(d IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels {
 	if v, ok := o.Get(); ok {
 		return v
 	}

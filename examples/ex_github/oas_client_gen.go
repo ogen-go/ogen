@@ -30385,22 +30385,6 @@ func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWeb
 //
 // PATCH /orgs/{org}/hooks/{hook_id}/config
 func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptOrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (res WebhookConfig, err error) {
-	if err := func() error {
-		if request.Set {
-			if err := func() error {
-				if err := request.Value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OrgsUpdateWebhookConfigForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/update-webhook-config-for-org`)),
@@ -42467,22 +42451,6 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 //
 // POST /repos/{owner}/{repo}/hooks
 func (c *Client) ReposCreateWebhook(ctx context.Context, request OptReposCreateWebhookReq, params ReposCreateWebhookParams) (res ReposCreateWebhookRes, err error) {
-	if err := func() error {
-		if request.Set {
-			if err := func() error {
-				if err := request.Value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposCreateWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-webhook`)),
@@ -54430,22 +54398,6 @@ func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateW
 //
 // PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
 func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request OptReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (res WebhookConfig, err error) {
-	if err := func() error {
-		if request.Set {
-			if err := func() error {
-				if err := request.Value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-		return nil
-	}(); err != nil {
-		return res, errors.Wrap(err, "validate")
-	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `ReposUpdateWebhookConfigForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-webhook-config-for-repo`)),

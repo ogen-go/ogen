@@ -995,6 +995,125 @@ func (s *ID) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// Encode implements json.Marshaler.
+func (s MapWithProperties) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		{
+			if !first {
+				e.Comma()
+			}
+			first = false
+
+			e.RawStr("\"required\"" + ":")
+			e.Int(s.Required)
+		}
+		{
+			if s.Optional.Set {
+				e.Comma()
+			}
+			if s.Optional.Set {
+				e.RawStr("\"optional\"" + ":")
+				s.Optional.Encode(e)
+			}
+		}
+	}
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfMapWithProperties = [2]string{
+	0: "required",
+	1: "optional",
+}
+
+// Decode decodes MapWithProperties from json.
+func (s *MapWithProperties) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MapWithProperties to nil`)
+	}
+	var requiredBitSet [1]uint8
+
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "required":
+			requiredBitSet[0] |= 1 << 0
+			v, err := d.Int()
+			s.Required = int(v)
+			if err != nil {
+				return err
+			}
+		case "optional":
+			s.Optional.Reset()
+			if err := s.Optional.Decode(d); err != nil {
+				return err
+			}
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfMapWithProperties) {
+					name = jsonFieldsNameOfMapWithProperties[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
 // Encode encodes NullableEnumsBoth as json.
 func (o NilNullableEnumsBoth) Encode(e *jx.Writer) {
 	if o.Null {
@@ -1467,6 +1586,28 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes MapWithProperties as json.
+func (o OptMapWithProperties) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes MapWithProperties from json.
+func (o *OptMapWithProperties) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptMapWithProperties to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptMapWithProperties`, d.Next())
+	}
+}
+
 // Encode encodes string as json.
 func (o OptNilString) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -1689,6 +1830,28 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptString`, d.Next())
+	}
+}
+
+// Encode encodes StringStringMap as json.
+func (o OptStringStringMap) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes StringStringMap from json.
+func (o *OptStringStringMap) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptStringStringMap to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptStringStringMap`, d.Next())
 	}
 }
 
@@ -1964,6 +2127,24 @@ func (s Pet) Encode(e *jx.Writer) {
 		}
 	}
 	{
+		if s.TestMap.Set {
+			e.Comma()
+		}
+		if s.TestMap.Set {
+			e.RawStr("\"testMap\"" + ":")
+			s.TestMap.Encode(e)
+		}
+	}
+	{
+		if s.TestMapWithProps.Set {
+			e.Comma()
+		}
+		if s.TestMapWithProps.Set {
+			e.RawStr("\"testMapWithProps\"" + ":")
+			s.TestMapWithProps.Encode(e)
+		}
+	}
+	{
 		if s.TestDate.Set {
 			e.Comma()
 		}
@@ -2002,7 +2183,7 @@ func (s Pet) Encode(e *jx.Writer) {
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfPet = [25]string{
+var jsonFieldsNameOfPet = [27]string{
 	0:  "primary",
 	1:  "id",
 	2:  "unique_id",
@@ -2024,10 +2205,12 @@ var jsonFieldsNameOfPet = [25]string{
 	18: "testFloat1",
 	19: "testArray1",
 	20: "testArray2",
-	21: "testDate",
-	22: "testDuration",
-	23: "testTime",
-	24: "testDateTime",
+	21: "testMap",
+	22: "testMapWithProps",
+	23: "testDate",
+	24: "testDuration",
+	25: "testTime",
+	26: "testDateTime",
 }
 
 // Decode decodes Pet from json.
@@ -2186,6 +2369,16 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 		case "testArray2":
 			s.TestArray2.Reset()
 			if err := s.TestArray2.Decode(d); err != nil {
+				return err
+			}
+		case "testMap":
+			s.TestMap.Reset()
+			if err := s.TestMap.Decode(d); err != nil {
+				return err
+			}
+		case "testMapWithProps":
+			s.TestMapWithProps.Reset()
+			if err := s.TestMapWithProps.Decode(d); err != nil {
 				return err
 			}
 		case "testDate":
@@ -2591,6 +2784,100 @@ func (s *PetUploadAvatarByIDOK) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		default:
 			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s StringMap) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfStringMap = [0]string{}
+
+// Decode decodes StringMap from json.
+func (s StringMap) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode StringMap to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s StringStringMap) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		elem.Encode(e)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfStringStringMap = [0]string{}
+
+// Decode decodes StringStringMap from json.
+func (s StringStringMap) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode StringStringMap to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem StringMap
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {

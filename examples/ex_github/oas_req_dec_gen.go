@@ -3138,22 +3138,6 @@ func decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request, span trace.Span
 		}(); err != nil {
 			return req, err
 		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
-						return err
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
-		}
 		return request, nil
 	default:
 		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -5052,22 +5036,6 @@ func decodeReposCreateWebhookRequest(r *http.Request, span trace.Span) (req OptR
 		}(); err != nil {
 			return req, err
 		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
-						return err
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
-		}
 		return request, nil
 	default:
 		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
@@ -6047,22 +6015,6 @@ func decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request, span trace.Sp
 			return nil
 		}(); err != nil {
 			return req, err
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if err := request.Value.Validate(); err != nil {
-						return err
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:

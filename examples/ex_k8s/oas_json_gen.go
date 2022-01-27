@@ -16806,13 +16806,13 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Encode(e *jx.Writer
 		}
 	}
 	{
-		if s.Extra != nil {
+		if s.Extra.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Extra != nil {
+		if s.Extra.Set {
 			e.RawStr("\"extra\"" + ":")
 			s.Extra.Encode(e)
 		}
@@ -16924,12 +16924,10 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Decode(d *jx.Decod
 				return err
 			}
 		case "extra":
-			s.Extra = nil
-			var elem IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra
-			if err := elem.Decode(d); err != nil {
+			s.Extra.Reset()
+			if err := s.Extra.Decode(d); err != nil {
 				return err
 			}
-			s.Extra = &elem
 		case "groups":
 			s.Groups = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -17019,37 +17017,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Decode(d *jx.Decod
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra = [0]string{}
-
-// Decode decodes IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra from json.
-func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
 	}
 
 	return nil
@@ -18302,10 +18269,10 @@ func (s IoK8sAPICoreV1CSIPersistentVolumeSource) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.VolumeAttributes != nil {
+		if s.VolumeAttributes.Set {
 			e.Comma()
 		}
-		if s.VolumeAttributes != nil {
+		if s.VolumeAttributes.Set {
 			e.RawStr("\"volumeAttributes\"" + ":")
 			s.VolumeAttributes.Encode(e)
 		}
@@ -18378,12 +18345,10 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "volumeAttributes":
-			s.VolumeAttributes = nil
-			var elem IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes
-			if err := elem.Decode(d); err != nil {
+			s.VolumeAttributes.Reset()
+			if err := s.VolumeAttributes.Decode(d); err != nil {
 				return err
 			}
-			s.VolumeAttributes = &elem
 		case "volumeHandle":
 			requiredBitSet[1] |= 1 << 0
 			v, err := d.Str()
@@ -18435,37 +18400,6 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes from json.
-func (s *IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -18509,10 +18443,10 @@ func (s IoK8sAPICoreV1CSIVolumeSource) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.VolumeAttributes != nil {
+		if s.VolumeAttributes.Set {
 			e.Comma()
 		}
-		if s.VolumeAttributes != nil {
+		if s.VolumeAttributes.Set {
 			e.RawStr("\"volumeAttributes\"" + ":")
 			s.VolumeAttributes.Encode(e)
 		}
@@ -18560,12 +18494,10 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "volumeAttributes":
-			s.VolumeAttributes = nil
-			var elem IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes
-			if err := elem.Decode(d); err != nil {
+			s.VolumeAttributes.Reset()
+			if err := s.VolumeAttributes.Decode(d); err != nil {
 				return err
 			}
-			s.VolumeAttributes = &elem
 		default:
 			return d.Skip()
 		}
@@ -18603,37 +18535,6 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes from json.
-func (s *IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
 	}
 
 	return nil
@@ -19842,25 +19743,25 @@ func (s IoK8sAPICoreV1ConfigMap) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.BinaryData != nil {
+		if s.BinaryData.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.BinaryData != nil {
+		if s.BinaryData.Set {
 			e.RawStr("\"binaryData\"" + ":")
 			s.BinaryData.Encode(e)
 		}
 	}
 	{
-		if s.Data != nil {
+		if s.Data.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Data != nil {
+		if s.Data.Set {
 			e.RawStr("\"data\"" + ":")
 			s.Data.Encode(e)
 		}
@@ -19927,19 +19828,15 @@ func (s *IoK8sAPICoreV1ConfigMap) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "binaryData":
-			s.BinaryData = nil
-			var elem IoK8sAPICoreV1ConfigMapBinaryData
-			if err := elem.Decode(d); err != nil {
+			s.BinaryData.Reset()
+			if err := s.BinaryData.Decode(d); err != nil {
 				return err
 			}
-			s.BinaryData = &elem
 		case "data":
-			s.Data = nil
-			var elem IoK8sAPICoreV1ConfigMapData
-			if err := elem.Decode(d); err != nil {
+			s.Data.Reset()
+			if err := s.Data.Decode(d); err != nil {
 				return err
 			}
-			s.Data = &elem
 		case "immutable":
 			s.Immutable.Reset()
 			if err := s.Immutable.Decode(d); err != nil {
@@ -19955,68 +19852,6 @@ func (s *IoK8sAPICoreV1ConfigMap) Decode(d *jx.Decoder) error {
 			if err := s.Metadata.Decode(d); err != nil {
 				return err
 			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ConfigMapBinaryData) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1ConfigMapBinaryData = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1ConfigMapBinaryData from json.
-func (s *IoK8sAPICoreV1ConfigMapBinaryData) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1ConfigMapBinaryData to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ConfigMapData) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1ConfigMapData = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1ConfigMapData from json.
-func (s *IoK8sAPICoreV1ConfigMapData) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1ConfigMapData to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
 		default:
 			return d.Skip()
 		}
@@ -25002,10 +24837,10 @@ func (s IoK8sAPICoreV1FlexPersistentVolumeSource) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.Options != nil {
+		if s.Options.Set {
 			e.Comma()
 		}
-		if s.Options != nil {
+		if s.Options.Set {
 			e.RawStr("\"options\"" + ":")
 			s.Options.Encode(e)
 		}
@@ -25061,12 +24896,10 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "options":
-			s.Options = nil
-			var elem IoK8sAPICoreV1FlexPersistentVolumeSourceOptions
-			if err := elem.Decode(d); err != nil {
+			s.Options.Reset()
+			if err := s.Options.Decode(d); err != nil {
 				return err
 			}
-			s.Options = &elem
 		case "readOnly":
 			s.ReadOnly.Reset()
 			if err := s.ReadOnly.Decode(d); err != nil {
@@ -25120,37 +24953,6 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1FlexPersistentVolumeSourceOptions = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1FlexPersistentVolumeSourceOptions from json.
-func (s *IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1FlexPersistentVolumeSourceOptions to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -25176,10 +24978,10 @@ func (s IoK8sAPICoreV1FlexVolumeSource) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.Options != nil {
+		if s.Options.Set {
 			e.Comma()
 		}
-		if s.Options != nil {
+		if s.Options.Set {
 			e.RawStr("\"options\"" + ":")
 			s.Options.Encode(e)
 		}
@@ -25235,12 +25037,10 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "options":
-			s.Options = nil
-			var elem IoK8sAPICoreV1FlexVolumeSourceOptions
-			if err := elem.Decode(d); err != nil {
+			s.Options.Reset()
+			if err := s.Options.Decode(d); err != nil {
 				return err
 			}
-			s.Options = &elem
 		case "readOnly":
 			s.ReadOnly.Reset()
 			if err := s.ReadOnly.Decode(d); err != nil {
@@ -25288,37 +25088,6 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1FlexVolumeSourceOptions) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1FlexVolumeSourceOptions = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1FlexVolumeSourceOptions from json.
-func (s *IoK8sAPICoreV1FlexVolumeSourceOptions) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1FlexVolumeSourceOptions to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
 	}
 
 	return nil
@@ -27228,61 +26997,61 @@ func (s IoK8sAPICoreV1LimitRangeItem) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.Default != nil {
+		if s.Default.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Default != nil {
+		if s.Default.Set {
 			e.RawStr("\"default\"" + ":")
 			s.Default.Encode(e)
 		}
 	}
 	{
-		if s.DefaultRequest != nil {
+		if s.DefaultRequest.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.DefaultRequest != nil {
+		if s.DefaultRequest.Set {
 			e.RawStr("\"defaultRequest\"" + ":")
 			s.DefaultRequest.Encode(e)
 		}
 	}
 	{
-		if s.Max != nil {
+		if s.Max.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Max != nil {
+		if s.Max.Set {
 			e.RawStr("\"max\"" + ":")
 			s.Max.Encode(e)
 		}
 	}
 	{
-		if s.MaxLimitRequestRatio != nil {
+		if s.MaxLimitRequestRatio.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.MaxLimitRequestRatio != nil {
+		if s.MaxLimitRequestRatio.Set {
 			e.RawStr("\"maxLimitRequestRatio\"" + ":")
 			s.MaxLimitRequestRatio.Encode(e)
 		}
 	}
 	{
-		if s.Min != nil {
+		if s.Min.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Min != nil {
+		if s.Min.Set {
 			e.RawStr("\"min\"" + ":")
 			s.Min.Encode(e)
 		}
@@ -27318,40 +27087,30 @@ func (s *IoK8sAPICoreV1LimitRangeItem) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "default":
-			s.Default = nil
-			var elem IoK8sAPICoreV1LimitRangeItemDefault
-			if err := elem.Decode(d); err != nil {
+			s.Default.Reset()
+			if err := s.Default.Decode(d); err != nil {
 				return err
 			}
-			s.Default = &elem
 		case "defaultRequest":
-			s.DefaultRequest = nil
-			var elem IoK8sAPICoreV1LimitRangeItemDefaultRequest
-			if err := elem.Decode(d); err != nil {
+			s.DefaultRequest.Reset()
+			if err := s.DefaultRequest.Decode(d); err != nil {
 				return err
 			}
-			s.DefaultRequest = &elem
 		case "max":
-			s.Max = nil
-			var elem IoK8sAPICoreV1LimitRangeItemMax
-			if err := elem.Decode(d); err != nil {
+			s.Max.Reset()
+			if err := s.Max.Decode(d); err != nil {
 				return err
 			}
-			s.Max = &elem
 		case "maxLimitRequestRatio":
-			s.MaxLimitRequestRatio = nil
-			var elem IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio
-			if err := elem.Decode(d); err != nil {
+			s.MaxLimitRequestRatio.Reset()
+			if err := s.MaxLimitRequestRatio.Decode(d); err != nil {
 				return err
 			}
-			s.MaxLimitRequestRatio = &elem
 		case "min":
-			s.Min = nil
-			var elem IoK8sAPICoreV1LimitRangeItemMin
-			if err := elem.Decode(d); err != nil {
+			s.Min.Reset()
+			if err := s.Min.Decode(d); err != nil {
 				return err
 			}
-			s.Min = &elem
 		case "type":
 			requiredBitSet[0] |= 1 << 5
 			v, err := d.Str()
@@ -27396,161 +27155,6 @@ func (s *IoK8sAPICoreV1LimitRangeItem) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1LimitRangeItemDefault) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1LimitRangeItemDefault = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1LimitRangeItemDefault from json.
-func (s *IoK8sAPICoreV1LimitRangeItemDefault) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1LimitRangeItemDefault to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1LimitRangeItemDefaultRequest = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1LimitRangeItemDefaultRequest from json.
-func (s *IoK8sAPICoreV1LimitRangeItemDefaultRequest) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1LimitRangeItemDefaultRequest to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1LimitRangeItemMax) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1LimitRangeItemMax = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1LimitRangeItemMax from json.
-func (s *IoK8sAPICoreV1LimitRangeItemMax) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1LimitRangeItemMax to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio from json.
-func (s *IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1LimitRangeItemMin) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1LimitRangeItemMin = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1LimitRangeItemMin from json.
-func (s *IoK8sAPICoreV1LimitRangeItemMin) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1LimitRangeItemMin to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
 	}
 
 	return nil
@@ -30199,25 +29803,25 @@ func (s IoK8sAPICoreV1NodeStatus) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.Allocatable != nil {
+		if s.Allocatable.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Allocatable != nil {
+		if s.Allocatable.Set {
 			e.RawStr("\"allocatable\"" + ":")
 			s.Allocatable.Encode(e)
 		}
 	}
 	{
-		if s.Capacity != nil {
+		if s.Capacity.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Capacity != nil {
+		if s.Capacity.Set {
 			e.RawStr("\"capacity\"" + ":")
 			s.Capacity.Encode(e)
 		}
@@ -30404,19 +30008,15 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "allocatable":
-			s.Allocatable = nil
-			var elem IoK8sAPICoreV1NodeStatusAllocatable
-			if err := elem.Decode(d); err != nil {
+			s.Allocatable.Reset()
+			if err := s.Allocatable.Decode(d); err != nil {
 				return err
 			}
-			s.Allocatable = &elem
 		case "capacity":
-			s.Capacity = nil
-			var elem IoK8sAPICoreV1NodeStatusCapacity
-			if err := elem.Decode(d); err != nil {
+			s.Capacity.Reset()
+			if err := s.Capacity.Decode(d); err != nil {
 				return err
 			}
-			s.Capacity = &elem
 		case "conditions":
 			s.Conditions = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -30487,68 +30087,6 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NodeStatusAllocatable) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1NodeStatusAllocatable = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1NodeStatusAllocatable from json.
-func (s *IoK8sAPICoreV1NodeStatusAllocatable) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1NodeStatusAllocatable to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NodeStatusCapacity) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1NodeStatusCapacity = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1NodeStatusCapacity from json.
-func (s *IoK8sAPICoreV1NodeStatusCapacity) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1NodeStatusCapacity to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
 		default:
 			return d.Skip()
 		}
@@ -31812,13 +31350,13 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.Capacity != nil {
+		if s.Capacity.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Capacity != nil {
+		if s.Capacity.Set {
 			e.RawStr("\"capacity\"" + ":")
 			s.Capacity.Encode(e)
 		}
@@ -31892,12 +31430,10 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) Decode(d *jx.Decoder) error 
 				return err
 			}
 		case "capacity":
-			s.Capacity = nil
-			var elem IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity
-			if err := elem.Decode(d); err != nil {
+			s.Capacity.Reset()
+			if err := s.Capacity.Decode(d); err != nil {
 				return err
 			}
-			s.Capacity = &elem
 		case "conditions":
 			s.Conditions = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -31915,37 +31451,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) Decode(d *jx.Decoder) error 
 			if err := s.Phase.Decode(d); err != nil {
 				return err
 			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity from json.
-func (s *IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
 		default:
 			return d.Skip()
 		}
@@ -32365,13 +31870,13 @@ func (s IoK8sAPICoreV1PersistentVolumeSpec) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.Capacity != nil {
+		if s.Capacity.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Capacity != nil {
+		if s.Capacity.Set {
 			e.RawStr("\"capacity\"" + ":")
 			s.Capacity.Encode(e)
 		}
@@ -32762,12 +32267,10 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "capacity":
-			s.Capacity = nil
-			var elem IoK8sAPICoreV1PersistentVolumeSpecCapacity
-			if err := elem.Decode(d); err != nil {
+			s.Capacity.Reset()
+			if err := s.Capacity.Decode(d); err != nil {
 				return err
 			}
-			s.Capacity = &elem
 		case "cephfs":
 			s.Cephfs.Reset()
 			if err := s.Cephfs.Decode(d); err != nil {
@@ -32902,37 +32405,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 			if err := s.VsphereVolume.Decode(d); err != nil {
 				return err
 			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1PersistentVolumeSpecCapacity = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1PersistentVolumeSpecCapacity from json.
-func (s *IoK8sAPICoreV1PersistentVolumeSpecCapacity) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1PersistentVolumeSpecCapacity to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
 		default:
 			return d.Skip()
 		}
@@ -34752,19 +34224,19 @@ func (s IoK8sAPICoreV1PodSpec) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.NodeSelector != nil {
+		if s.NodeSelector.Set {
 			e.Comma()
 		}
-		if s.NodeSelector != nil {
+		if s.NodeSelector.Set {
 			e.RawStr("\"nodeSelector\"" + ":")
 			s.NodeSelector.Encode(e)
 		}
 	}
 	{
-		if s.Overhead != nil {
+		if s.Overhead.Set {
 			e.Comma()
 		}
-		if s.Overhead != nil {
+		if s.Overhead.Set {
 			e.RawStr("\"overhead\"" + ":")
 			s.Overhead.Encode(e)
 		}
@@ -35137,19 +34609,15 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "nodeSelector":
-			s.NodeSelector = nil
-			var elem IoK8sAPICoreV1PodSpecNodeSelector
-			if err := elem.Decode(d); err != nil {
+			s.NodeSelector.Reset()
+			if err := s.NodeSelector.Decode(d); err != nil {
 				return err
 			}
-			s.NodeSelector = &elem
 		case "overhead":
-			s.Overhead = nil
-			var elem IoK8sAPICoreV1PodSpecOverhead
-			if err := elem.Decode(d); err != nil {
+			s.Overhead.Reset()
+			if err := s.Overhead.Decode(d); err != nil {
 				return err
 			}
-			s.Overhead = &elem
 		case "preemptionPolicy":
 			s.PreemptionPolicy.Reset()
 			if err := s.PreemptionPolicy.Decode(d); err != nil {
@@ -35304,68 +34772,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodSpecNodeSelector) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1PodSpecNodeSelector = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1PodSpecNodeSelector from json.
-func (s *IoK8sAPICoreV1PodSpecNodeSelector) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1PodSpecNodeSelector to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodSpecOverhead) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1PodSpecOverhead = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1PodSpecOverhead from json.
-func (s *IoK8sAPICoreV1PodSpecOverhead) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1PodSpecOverhead to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
 	}
 
 	return nil
@@ -37682,13 +37088,13 @@ func (s IoK8sAPICoreV1ReplicationControllerSpec) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.Selector != nil {
+		if s.Selector.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Selector != nil {
+		if s.Selector.Set {
 			e.RawStr("\"selector\"" + ":")
 			s.Selector.Encode(e)
 		}
@@ -37734,48 +37140,15 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "selector":
-			s.Selector = nil
-			var elem IoK8sAPICoreV1ReplicationControllerSpecSelector
-			if err := elem.Decode(d); err != nil {
+			s.Selector.Reset()
+			if err := s.Selector.Decode(d); err != nil {
 				return err
 			}
-			s.Selector = &elem
 		case "template":
 			s.Template.Reset()
 			if err := s.Template.Decode(d); err != nil {
 				return err
 			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1ReplicationControllerSpecSelector = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1ReplicationControllerSpecSelector from json.
-func (s *IoK8sAPICoreV1ReplicationControllerSpecSelector) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1ReplicationControllerSpecSelector to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
 		default:
 			return d.Skip()
 		}
@@ -38371,13 +37744,13 @@ func (s IoK8sAPICoreV1ResourceQuotaSpec) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.Hard != nil {
+		if s.Hard.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Hard != nil {
+		if s.Hard.Set {
 			e.RawStr("\"hard\"" + ":")
 			s.Hard.Encode(e)
 		}
@@ -38436,12 +37809,10 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "hard":
-			s.Hard = nil
-			var elem IoK8sAPICoreV1ResourceQuotaSpecHard
-			if err := elem.Decode(d); err != nil {
+			s.Hard.Reset()
+			if err := s.Hard.Decode(d); err != nil {
 				return err
 			}
-			s.Hard = &elem
 		case "scopeSelector":
 			s.ScopeSelector.Reset()
 			if err := s.ScopeSelector.Decode(d); err != nil {
@@ -38473,37 +37844,6 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ResourceQuotaSpecHard) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1ResourceQuotaSpecHard = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1ResourceQuotaSpecHard from json.
-func (s *IoK8sAPICoreV1ResourceQuotaSpecHard) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1ResourceQuotaSpecHard to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -38511,25 +37851,25 @@ func (s IoK8sAPICoreV1ResourceQuotaStatus) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.Hard != nil {
+		if s.Hard.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Hard != nil {
+		if s.Hard.Set {
 			e.RawStr("\"hard\"" + ":")
 			s.Hard.Encode(e)
 		}
 	}
 	{
-		if s.Used != nil {
+		if s.Used.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Used != nil {
+		if s.Used.Set {
 			e.RawStr("\"used\"" + ":")
 			s.Used.Encode(e)
 		}
@@ -38551,81 +37891,15 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "hard":
-			s.Hard = nil
-			var elem IoK8sAPICoreV1ResourceQuotaStatusHard
-			if err := elem.Decode(d); err != nil {
+			s.Hard.Reset()
+			if err := s.Hard.Decode(d); err != nil {
 				return err
 			}
-			s.Hard = &elem
 		case "used":
-			s.Used = nil
-			var elem IoK8sAPICoreV1ResourceQuotaStatusUsed
-			if err := elem.Decode(d); err != nil {
+			s.Used.Reset()
+			if err := s.Used.Decode(d); err != nil {
 				return err
 			}
-			s.Used = &elem
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ResourceQuotaStatusHard) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1ResourceQuotaStatusHard = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1ResourceQuotaStatusHard from json.
-func (s *IoK8sAPICoreV1ResourceQuotaStatusHard) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1ResourceQuotaStatusHard to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1ResourceQuotaStatusUsed = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1ResourceQuotaStatusUsed from json.
-func (s *IoK8sAPICoreV1ResourceQuotaStatusUsed) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1ResourceQuotaStatusUsed to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
 		default:
 			return d.Skip()
 		}
@@ -38645,25 +37919,25 @@ func (s IoK8sAPICoreV1ResourceRequirements) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.Limits != nil {
+		if s.Limits.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Limits != nil {
+		if s.Limits.Set {
 			e.RawStr("\"limits\"" + ":")
 			s.Limits.Encode(e)
 		}
 	}
 	{
-		if s.Requests != nil {
+		if s.Requests.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Requests != nil {
+		if s.Requests.Set {
 			e.RawStr("\"requests\"" + ":")
 			s.Requests.Encode(e)
 		}
@@ -38685,81 +37959,15 @@ func (s *IoK8sAPICoreV1ResourceRequirements) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "limits":
-			s.Limits = nil
-			var elem IoK8sAPICoreV1ResourceRequirementsLimits
-			if err := elem.Decode(d); err != nil {
+			s.Limits.Reset()
+			if err := s.Limits.Decode(d); err != nil {
 				return err
 			}
-			s.Limits = &elem
 		case "requests":
-			s.Requests = nil
-			var elem IoK8sAPICoreV1ResourceRequirementsRequests
-			if err := elem.Decode(d); err != nil {
+			s.Requests.Reset()
+			if err := s.Requests.Decode(d); err != nil {
 				return err
 			}
-			s.Requests = &elem
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ResourceRequirementsLimits) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1ResourceRequirementsLimits = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1ResourceRequirementsLimits from json.
-func (s *IoK8sAPICoreV1ResourceRequirementsLimits) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1ResourceRequirementsLimits to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ResourceRequirementsRequests) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1ResourceRequirementsRequests = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1ResourceRequirementsRequests from json.
-func (s *IoK8sAPICoreV1ResourceRequirementsRequests) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1ResourceRequirementsRequests to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
 		default:
 			return d.Skip()
 		}
@@ -39626,13 +38834,13 @@ func (s IoK8sAPICoreV1Secret) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.Data != nil {
+		if s.Data.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Data != nil {
+		if s.Data.Set {
 			e.RawStr("\"data\"" + ":")
 			s.Data.Encode(e)
 		}
@@ -39674,13 +38882,13 @@ func (s IoK8sAPICoreV1Secret) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.StringData != nil {
+		if s.StringData.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.StringData != nil {
+		if s.StringData.Set {
 			e.RawStr("\"stringData\"" + ":")
 			s.StringData.Encode(e)
 		}
@@ -39724,12 +38932,10 @@ func (s *IoK8sAPICoreV1Secret) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "data":
-			s.Data = nil
-			var elem IoK8sAPICoreV1SecretData
-			if err := elem.Decode(d); err != nil {
+			s.Data.Reset()
+			if err := s.Data.Decode(d); err != nil {
 				return err
 			}
-			s.Data = &elem
 		case "immutable":
 			s.Immutable.Reset()
 			if err := s.Immutable.Decode(d); err != nil {
@@ -39746,48 +38952,15 @@ func (s *IoK8sAPICoreV1Secret) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "stringData":
-			s.StringData = nil
-			var elem IoK8sAPICoreV1SecretStringData
-			if err := elem.Decode(d); err != nil {
+			s.StringData.Reset()
+			if err := s.StringData.Decode(d); err != nil {
 				return err
 			}
-			s.StringData = &elem
 		case "type":
 			s.Type.Reset()
 			if err := s.Type.Decode(d); err != nil {
 				return err
 			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1SecretData) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1SecretData = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1SecretData from json.
-func (s *IoK8sAPICoreV1SecretData) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1SecretData to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
 		default:
 			return d.Skip()
 		}
@@ -40287,37 +39460,6 @@ func (s *IoK8sAPICoreV1SecretReference) Decode(d *jx.Decoder) error {
 			if err := s.Namespace.Decode(d); err != nil {
 				return err
 			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1SecretStringData) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1SecretStringData = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1SecretStringData from json.
-func (s *IoK8sAPICoreV1SecretStringData) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1SecretStringData to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
 		default:
 			return d.Skip()
 		}
@@ -41806,13 +40948,13 @@ func (s IoK8sAPICoreV1ServiceSpec) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.Selector != nil {
+		if s.Selector.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Selector != nil {
+		if s.Selector.Set {
 			e.RawStr("\"selector\"" + ":")
 			s.Selector.Encode(e)
 		}
@@ -42005,12 +41147,10 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "selector":
-			s.Selector = nil
-			var elem IoK8sAPICoreV1ServiceSpecSelector
-			if err := elem.Decode(d); err != nil {
+			s.Selector.Reset()
+			if err := s.Selector.Decode(d); err != nil {
 				return err
 			}
-			s.Selector = &elem
 		case "sessionAffinity":
 			s.SessionAffinity.Reset()
 			if err := s.SessionAffinity.Decode(d); err != nil {
@@ -42026,37 +41166,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 			if err := s.Type.Decode(d); err != nil {
 				return err
 			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ServiceSpecSelector) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPICoreV1ServiceSpecSelector = [0]string{}
-
-// Decode decodes IoK8sAPICoreV1ServiceSpecSelector from json.
-func (s *IoK8sAPICoreV1ServiceSpecSelector) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPICoreV1ServiceSpecSelector to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
 		default:
 			return d.Skip()
 		}
@@ -44665,10 +43774,10 @@ func (s IoK8sAPIDiscoveryV1Endpoint) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.DeprecatedTopology != nil {
+		if s.DeprecatedTopology.Set {
 			e.Comma()
 		}
-		if s.DeprecatedTopology != nil {
+		if s.DeprecatedTopology.Set {
 			e.RawStr("\"deprecatedTopology\"" + ":")
 			s.DeprecatedTopology.Encode(e)
 		}
@@ -44762,12 +43871,10 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "deprecatedTopology":
-			s.DeprecatedTopology = nil
-			var elem IoK8sAPIDiscoveryV1EndpointDeprecatedTopology
-			if err := elem.Decode(d); err != nil {
+			s.DeprecatedTopology.Reset()
+			if err := s.DeprecatedTopology.Decode(d); err != nil {
 				return err
 			}
-			s.DeprecatedTopology = &elem
 		case "hints":
 			s.Hints.Reset()
 			if err := s.Hints.Decode(d); err != nil {
@@ -44910,37 +44017,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointConditions) Decode(d *jx.Decoder) error {
 			if err := s.Terminating.Decode(d); err != nil {
 				return err
 			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPIDiscoveryV1EndpointDeprecatedTopology = [0]string{}
-
-// Decode decodes IoK8sAPIDiscoveryV1EndpointDeprecatedTopology from json.
-func (s *IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPIDiscoveryV1EndpointDeprecatedTopology to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
 		default:
 			return d.Skip()
 		}
@@ -45619,10 +44695,10 @@ func (s IoK8sAPIDiscoveryV1beta1Endpoint) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.Topology != nil {
+		if s.Topology.Set {
 			e.Comma()
 		}
-		if s.Topology != nil {
+		if s.Topology.Set {
 			e.RawStr("\"topology\"" + ":")
 			s.Topology.Encode(e)
 		}
@@ -45690,12 +44766,10 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "topology":
-			s.Topology = nil
-			var elem IoK8sAPIDiscoveryV1beta1EndpointTopology
-			if err := elem.Decode(d); err != nil {
+			s.Topology.Reset()
+			if err := s.Topology.Decode(d); err != nil {
 				return err
 			}
-			s.Topology = &elem
 		default:
 			return d.Skip()
 		}
@@ -46331,37 +45405,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) Decode(d *jx.Decoder) error 
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPIDiscoveryV1beta1EndpointTopology = [0]string{}
-
-// Decode decodes IoK8sAPIDiscoveryV1beta1EndpointTopology from json.
-func (s *IoK8sAPIDiscoveryV1beta1EndpointTopology) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPIDiscoveryV1beta1EndpointTopology to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
 	}
 
 	return nil
@@ -55092,13 +54135,13 @@ func (s IoK8sAPINodeV1Overhead) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.PodFixed != nil {
+		if s.PodFixed.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.PodFixed != nil {
+		if s.PodFixed.Set {
 			e.RawStr("\"podFixed\"" + ":")
 			s.PodFixed.Encode(e)
 		}
@@ -55119,43 +54162,10 @@ func (s *IoK8sAPINodeV1Overhead) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "podFixed":
-			s.PodFixed = nil
-			var elem IoK8sAPINodeV1OverheadPodFixed
-			if err := elem.Decode(d); err != nil {
+			s.PodFixed.Reset()
+			if err := s.PodFixed.Decode(d); err != nil {
 				return err
 			}
-			s.PodFixed = &elem
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1OverheadPodFixed) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPINodeV1OverheadPodFixed = [0]string{}
-
-// Decode decodes IoK8sAPINodeV1OverheadPodFixed from json.
-func (s *IoK8sAPINodeV1OverheadPodFixed) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPINodeV1OverheadPodFixed to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
 		default:
 			return d.Skip()
 		}
@@ -55481,13 +54491,13 @@ func (s IoK8sAPINodeV1Scheduling) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.NodeSelector != nil {
+		if s.NodeSelector.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.NodeSelector != nil {
+		if s.NodeSelector.Set {
 			e.RawStr("\"nodeSelector\"" + ":")
 			s.NodeSelector.Encode(e)
 		}
@@ -55533,12 +54543,10 @@ func (s *IoK8sAPINodeV1Scheduling) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "nodeSelector":
-			s.NodeSelector = nil
-			var elem IoK8sAPINodeV1SchedulingNodeSelector
-			if err := elem.Decode(d); err != nil {
+			s.NodeSelector.Reset()
+			if err := s.NodeSelector.Decode(d); err != nil {
 				return err
 			}
-			s.NodeSelector = &elem
 		case "tolerations":
 			s.Tolerations = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -55563,37 +54571,6 @@ func (s *IoK8sAPINodeV1Scheduling) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1SchedulingNodeSelector) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPINodeV1SchedulingNodeSelector = [0]string{}
-
-// Decode decodes IoK8sAPINodeV1SchedulingNodeSelector from json.
-func (s *IoK8sAPINodeV1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPINodeV1SchedulingNodeSelector to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1Overhead) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -55601,13 +54578,13 @@ func (s IoK8sAPINodeV1alpha1Overhead) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.PodFixed != nil {
+		if s.PodFixed.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.PodFixed != nil {
+		if s.PodFixed.Set {
 			e.RawStr("\"podFixed\"" + ":")
 			s.PodFixed.Encode(e)
 		}
@@ -55628,43 +54605,10 @@ func (s *IoK8sAPINodeV1alpha1Overhead) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "podFixed":
-			s.PodFixed = nil
-			var elem IoK8sAPINodeV1alpha1OverheadPodFixed
-			if err := elem.Decode(d); err != nil {
+			s.PodFixed.Reset()
+			if err := s.PodFixed.Decode(d); err != nil {
 				return err
 			}
-			s.PodFixed = &elem
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1alpha1OverheadPodFixed) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPINodeV1alpha1OverheadPodFixed = [0]string{}
-
-// Decode decodes IoK8sAPINodeV1alpha1OverheadPodFixed from json.
-func (s *IoK8sAPINodeV1alpha1OverheadPodFixed) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPINodeV1alpha1OverheadPodFixed to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
 		default:
 			return d.Skip()
 		}
@@ -56078,13 +55022,13 @@ func (s IoK8sAPINodeV1alpha1Scheduling) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.NodeSelector != nil {
+		if s.NodeSelector.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.NodeSelector != nil {
+		if s.NodeSelector.Set {
 			e.RawStr("\"nodeSelector\"" + ":")
 			s.NodeSelector.Encode(e)
 		}
@@ -56130,12 +55074,10 @@ func (s *IoK8sAPINodeV1alpha1Scheduling) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "nodeSelector":
-			s.NodeSelector = nil
-			var elem IoK8sAPINodeV1alpha1SchedulingNodeSelector
-			if err := elem.Decode(d); err != nil {
+			s.NodeSelector.Reset()
+			if err := s.NodeSelector.Decode(d); err != nil {
 				return err
 			}
-			s.NodeSelector = &elem
 		case "tolerations":
 			s.Tolerations = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -56160,37 +55102,6 @@ func (s *IoK8sAPINodeV1alpha1Scheduling) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPINodeV1alpha1SchedulingNodeSelector = [0]string{}
-
-// Decode decodes IoK8sAPINodeV1alpha1SchedulingNodeSelector from json.
-func (s *IoK8sAPINodeV1alpha1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPINodeV1alpha1SchedulingNodeSelector to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1Overhead) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -56198,13 +55109,13 @@ func (s IoK8sAPINodeV1beta1Overhead) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.PodFixed != nil {
+		if s.PodFixed.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.PodFixed != nil {
+		if s.PodFixed.Set {
 			e.RawStr("\"podFixed\"" + ":")
 			s.PodFixed.Encode(e)
 		}
@@ -56225,43 +55136,10 @@ func (s *IoK8sAPINodeV1beta1Overhead) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "podFixed":
-			s.PodFixed = nil
-			var elem IoK8sAPINodeV1beta1OverheadPodFixed
-			if err := elem.Decode(d); err != nil {
+			s.PodFixed.Reset()
+			if err := s.PodFixed.Decode(d); err != nil {
 				return err
 			}
-			s.PodFixed = &elem
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1beta1OverheadPodFixed) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPINodeV1beta1OverheadPodFixed = [0]string{}
-
-// Decode decodes IoK8sAPINodeV1beta1OverheadPodFixed from json.
-func (s *IoK8sAPINodeV1beta1OverheadPodFixed) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPINodeV1beta1OverheadPodFixed to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
 		default:
 			return d.Skip()
 		}
@@ -56587,13 +55465,13 @@ func (s IoK8sAPINodeV1beta1Scheduling) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.NodeSelector != nil {
+		if s.NodeSelector.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.NodeSelector != nil {
+		if s.NodeSelector.Set {
 			e.RawStr("\"nodeSelector\"" + ":")
 			s.NodeSelector.Encode(e)
 		}
@@ -56639,12 +55517,10 @@ func (s *IoK8sAPINodeV1beta1Scheduling) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "nodeSelector":
-			s.NodeSelector = nil
-			var elem IoK8sAPINodeV1beta1SchedulingNodeSelector
-			if err := elem.Decode(d); err != nil {
+			s.NodeSelector.Reset()
+			if err := s.NodeSelector.Decode(d); err != nil {
 				return err
 			}
-			s.NodeSelector = &elem
 		case "tolerations":
 			s.Tolerations = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -56657,37 +55533,6 @@ func (s *IoK8sAPINodeV1beta1Scheduling) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPINodeV1beta1SchedulingNodeSelector = [0]string{}
-
-// Decode decodes IoK8sAPINodeV1beta1SchedulingNodeSelector from json.
-func (s *IoK8sAPINodeV1beta1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPINodeV1beta1SchedulingNodeSelector to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
 		default:
 			return d.Skip()
 		}
@@ -57101,10 +55946,10 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Encode(e *jx.Writer) {
 		e.Int32(s.DesiredHealthy)
 	}
 	{
-		if s.DisruptedPods != nil {
+		if s.DisruptedPods.Set {
 			e.Comma()
 		}
-		if s.DisruptedPods != nil {
+		if s.DisruptedPods.Set {
 			e.RawStr("\"disruptedPods\"" + ":")
 			s.DisruptedPods.Encode(e)
 		}
@@ -57179,12 +56024,10 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) error 
 				return err
 			}
 		case "disruptedPods":
-			s.DisruptedPods = nil
-			var elem IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods
-			if err := elem.Decode(d); err != nil {
+			s.DisruptedPods.Reset()
+			if err := s.DisruptedPods.Decode(d); err != nil {
 				return err
 			}
-			s.DisruptedPods = &elem
 		case "disruptionsAllowed":
 			requiredBitSet[0] |= 1 << 4
 			v, err := d.Int32()
@@ -57241,37 +56084,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) error 
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods = [0]string{}
-
-// Decode decodes IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods from json.
-func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
 	}
 
 	return nil
@@ -58186,10 +56998,10 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Encode(e *jx.Writer) {
 		e.Int32(s.DesiredHealthy)
 	}
 	{
-		if s.DisruptedPods != nil {
+		if s.DisruptedPods.Set {
 			e.Comma()
 		}
-		if s.DisruptedPods != nil {
+		if s.DisruptedPods.Set {
 			e.RawStr("\"disruptedPods\"" + ":")
 			s.DisruptedPods.Encode(e)
 		}
@@ -58264,12 +57076,10 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) e
 				return err
 			}
 		case "disruptedPods":
-			s.DisruptedPods = nil
-			var elem IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods
-			if err := elem.Decode(d); err != nil {
+			s.DisruptedPods.Reset()
+			if err := s.DisruptedPods.Decode(d); err != nil {
 				return err
 			}
-			s.DisruptedPods = &elem
 		case "disruptionsAllowed":
 			requiredBitSet[0] |= 1 << 4
 			v, err := d.Int32()
@@ -58326,37 +57136,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) e
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods = [0]string{}
-
-// Decode decodes IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods from json.
-func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
 	}
 
 	return nil
@@ -63013,13 +61792,13 @@ func (s IoK8sAPIStorageV1StorageClass) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.Parameters != nil {
+		if s.Parameters.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Parameters != nil {
+		if s.Parameters.Set {
 			e.RawStr("\"parameters\"" + ":")
 			s.Parameters.Encode(e)
 		}
@@ -63123,12 +61902,10 @@ func (s *IoK8sAPIStorageV1StorageClass) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "parameters":
-			s.Parameters = nil
-			var elem IoK8sAPIStorageV1StorageClassParameters
-			if err := elem.Decode(d); err != nil {
+			s.Parameters.Reset()
+			if err := s.Parameters.Decode(d); err != nil {
 				return err
 			}
-			s.Parameters = &elem
 		case "provisioner":
 			requiredBitSet[0] |= 1 << 7
 			v, err := d.Str()
@@ -63331,37 +62108,6 @@ func (s *IoK8sAPIStorageV1StorageClassList) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1StorageClassParameters) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPIStorageV1StorageClassParameters = [0]string{}
-
-// Decode decodes IoK8sAPIStorageV1StorageClassParameters from json.
-func (s *IoK8sAPIStorageV1StorageClassParameters) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPIStorageV1StorageClassParameters to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
 	}
 
 	return nil
@@ -63962,10 +62708,10 @@ func (s IoK8sAPIStorageV1VolumeAttachmentStatus) Encode(e *jx.Writer) {
 		e.Bool(s.Attached)
 	}
 	{
-		if s.AttachmentMetadata != nil {
+		if s.AttachmentMetadata.Set {
 			e.Comma()
 		}
-		if s.AttachmentMetadata != nil {
+		if s.AttachmentMetadata.Set {
 			e.RawStr("\"attachmentMetadata\"" + ":")
 			s.AttachmentMetadata.Encode(e)
 		}
@@ -64011,12 +62757,10 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "attachmentMetadata":
-			s.AttachmentMetadata = nil
-			var elem IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata
-			if err := elem.Decode(d); err != nil {
+			s.AttachmentMetadata.Reset()
+			if err := s.AttachmentMetadata.Decode(d); err != nil {
 				return err
 			}
-			s.AttachmentMetadata = &elem
 		case "detachError":
 			s.DetachError.Reset()
 			if err := s.DetachError.Decode(d); err != nil {
@@ -64059,37 +62803,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata = [0]string{}
-
-// Decode decodes IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata from json.
-func (s *IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
 	}
 
 	return nil
@@ -66774,25 +65487,25 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode
 		}
 	}
 	{
-		if s.Definitions != nil {
+		if s.Definitions.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Definitions != nil {
+		if s.Definitions.Set {
 			e.RawStr("\"definitions\"" + ":")
 			s.Definitions.Encode(e)
 		}
 	}
 	{
-		if s.Dependencies != nil {
+		if s.Dependencies.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Dependencies != nil {
+		if s.Dependencies.Set {
 			e.RawStr("\"dependencies\"" + ":")
 			s.Dependencies.Encode(e)
 		}
@@ -67086,25 +65799,25 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode
 		}
 	}
 	{
-		if s.PatternProperties != nil {
+		if s.PatternProperties.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.PatternProperties != nil {
+		if s.PatternProperties.Set {
 			e.RawStr("\"patternProperties\"" + ":")
 			s.PatternProperties.Encode(e)
 		}
 	}
 	{
-		if s.Properties != nil {
+		if s.Properties.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Properties != nil {
+		if s.Properties.Set {
 			e.RawStr("\"properties\"" + ":")
 			s.Properties.Encode(e)
 		}
@@ -67366,19 +66079,15 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 			}
 			s.Default = &elem
 		case "definitions":
-			s.Definitions = nil
-			var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions
-			if err := elem.Decode(d); err != nil {
+			s.Definitions.Reset()
+			if err := s.Definitions.Decode(d); err != nil {
 				return err
 			}
-			s.Definitions = &elem
 		case "dependencies":
-			s.Dependencies = nil
-			var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies
-			if err := elem.Decode(d); err != nil {
+			s.Dependencies.Reset()
+			if err := s.Dependencies.Decode(d); err != nil {
 				return err
 			}
-			s.Dependencies = &elem
 		case "description":
 			s.Description.Reset()
 			if err := s.Description.Decode(d); err != nil {
@@ -67510,19 +66219,15 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return err
 			}
 		case "patternProperties":
-			s.PatternProperties = nil
-			var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties
-			if err := elem.Decode(d); err != nil {
+			s.PatternProperties.Reset()
+			if err := s.PatternProperties.Decode(d); err != nil {
 				return err
 			}
-			s.PatternProperties = &elem
 		case "properties":
-			s.Properties = nil
-			var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties
-			if err := elem.Decode(d); err != nil {
+			s.Properties.Reset()
+			if err := s.Properties.Decode(d); err != nil {
 				return err
 			}
-			s.Properties = &elem
 		case "required":
 			s.Required = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -67603,68 +66308,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions = [0]string{}
-
-// Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions from json.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies = [0]string{}
-
-// Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies from json.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -67727,7 +66370,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool)
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
 		first = true
@@ -67736,43 +66379,12 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternP
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties = [0]string{}
+var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray = [0]string{}
 
-// Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties from json.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) Decode(d *jx.Decoder) error {
+// Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray from json.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties = [0]string{}
-
-// Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties from json.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties to nil`)
+		return errors.New(`invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray to nil`)
 	}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -69376,13 +67988,13 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.MatchLabels != nil {
+		if s.MatchLabels.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.MatchLabels != nil {
+		if s.MatchLabels.Set {
 			e.RawStr("\"matchLabels\"" + ":")
 			s.MatchLabels.Encode(e)
 		}
@@ -69416,43 +68028,10 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) Decode(d *jx.Decoder) erro
 				return err
 			}
 		case "matchLabels":
-			s.MatchLabels = nil
-			var elem IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels
-			if err := elem.Decode(d); err != nil {
+			s.MatchLabels.Reset()
+			if err := s.MatchLabels.Decode(d); err != nil {
 				return err
 			}
-			s.MatchLabels = &elem
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels = [0]string{}
-
-// Decode decodes IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels from json.
-func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
 		default:
 			return d.Skip()
 		}
@@ -69893,13 +68472,13 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.Annotations != nil {
+		if s.Annotations.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Annotations != nil {
+		if s.Annotations.Set {
 			e.RawStr("\"annotations\"" + ":")
 			s.Annotations.Encode(e)
 		}
@@ -70001,13 +68580,13 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.Labels != nil {
+		if s.Labels.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Labels != nil {
+		if s.Labels.Set {
 			e.RawStr("\"labels\"" + ":")
 			s.Labels.Encode(e)
 		}
@@ -70151,12 +68730,10 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "annotations":
-			s.Annotations = nil
-			var elem IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations
-			if err := elem.Decode(d); err != nil {
+			s.Annotations.Reset()
+			if err := s.Annotations.Decode(d); err != nil {
 				return err
 			}
-			s.Annotations = &elem
 		case "clusterName":
 			s.ClusterName.Reset()
 			if err := s.ClusterName.Decode(d); err != nil {
@@ -70202,12 +68779,10 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "labels":
-			s.Labels = nil
-			var elem IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels
-			if err := elem.Decode(d); err != nil {
+			s.Labels.Reset()
+			if err := s.Labels.Decode(d); err != nil {
 				return err
 			}
-			s.Labels = &elem
 		case "managedFields":
 			s.ManagedFields = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
@@ -70257,68 +68832,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 			if err := s.UID.Decode(d); err != nil {
 				return err
 			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations = [0]string{}
-
-// Decode decodes IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations from json.
-func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels = [0]string{}
-
-// Decode decodes IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels from json.
-func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
 		default:
 			return d.Skip()
 		}
@@ -76224,6 +74737,28 @@ func (o *OptIoK8sAPIBatchV1beta1CronJobStatus) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra as json.
+func (o OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra from json.
+func (o *OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra`, d.Next())
+	}
+}
+
 // Encode encodes IoK8sAPICertificatesV1CertificateSigningRequestStatus as json.
 func (o OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -76424,6 +74959,28 @@ func (o *OptIoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error
 	}
 }
 
+// Encode encodes IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes as json.
+func (o OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes from json.
+func (o *OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes`, d.Next())
+	}
+}
+
 // Encode encodes IoK8sAPICoreV1CSIVolumeSource as json.
 func (o OptIoK8sAPICoreV1CSIVolumeSource) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -76446,6 +75003,28 @@ func (o *OptIoK8sAPICoreV1CSIVolumeSource) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1CSIVolumeSource`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes as json.
+func (o OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes from json.
+func (o *OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes`, d.Next())
 	}
 }
 
@@ -76596,6 +75175,50 @@ func (o *OptIoK8sAPICoreV1ClientIPConfig) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1ClientIPConfig`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPICoreV1ConfigMapBinaryData as json.
+func (o OptIoK8sAPICoreV1ConfigMapBinaryData) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1ConfigMapBinaryData from json.
+func (o *OptIoK8sAPICoreV1ConfigMapBinaryData) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1ConfigMapBinaryData to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1ConfigMapBinaryData`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPICoreV1ConfigMapData as json.
+func (o OptIoK8sAPICoreV1ConfigMapData) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1ConfigMapData from json.
+func (o *OptIoK8sAPICoreV1ConfigMapData) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1ConfigMapData to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1ConfigMapData`, d.Next())
 	}
 }
 
@@ -77099,6 +75722,28 @@ func (o *OptIoK8sAPICoreV1FlexPersistentVolumeSource) Decode(d *jx.Decoder) erro
 	}
 }
 
+// Encode encodes IoK8sAPICoreV1FlexPersistentVolumeSourceOptions as json.
+func (o OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1FlexPersistentVolumeSourceOptions from json.
+func (o *OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions`, d.Next())
+	}
+}
+
 // Encode encodes IoK8sAPICoreV1FlexVolumeSource as json.
 func (o OptIoK8sAPICoreV1FlexVolumeSource) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -77121,6 +75766,28 @@ func (o *OptIoK8sAPICoreV1FlexVolumeSource) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1FlexVolumeSource`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPICoreV1FlexVolumeSourceOptions as json.
+func (o OptIoK8sAPICoreV1FlexVolumeSourceOptions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1FlexVolumeSourceOptions from json.
+func (o *OptIoK8sAPICoreV1FlexVolumeSourceOptions) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1FlexVolumeSourceOptions to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1FlexVolumeSourceOptions`, d.Next())
 	}
 }
 
@@ -77396,6 +76063,116 @@ func (o *OptIoK8sAPICoreV1Lifecycle) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1Lifecycle`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPICoreV1LimitRangeItemDefault as json.
+func (o OptIoK8sAPICoreV1LimitRangeItemDefault) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1LimitRangeItemDefault from json.
+func (o *OptIoK8sAPICoreV1LimitRangeItemDefault) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1LimitRangeItemDefault to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1LimitRangeItemDefault`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPICoreV1LimitRangeItemDefaultRequest as json.
+func (o OptIoK8sAPICoreV1LimitRangeItemDefaultRequest) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1LimitRangeItemDefaultRequest from json.
+func (o *OptIoK8sAPICoreV1LimitRangeItemDefaultRequest) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1LimitRangeItemDefaultRequest to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1LimitRangeItemDefaultRequest`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPICoreV1LimitRangeItemMax as json.
+func (o OptIoK8sAPICoreV1LimitRangeItemMax) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1LimitRangeItemMax from json.
+func (o *OptIoK8sAPICoreV1LimitRangeItemMax) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1LimitRangeItemMax to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1LimitRangeItemMax`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio as json.
+func (o OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio from json.
+func (o *OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPICoreV1LimitRangeItemMin as json.
+func (o OptIoK8sAPICoreV1LimitRangeItemMin) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1LimitRangeItemMin from json.
+func (o *OptIoK8sAPICoreV1LimitRangeItemMin) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1LimitRangeItemMin to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1LimitRangeItemMin`, d.Next())
 	}
 }
 
@@ -77749,6 +76526,50 @@ func (o *OptIoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes IoK8sAPICoreV1NodeStatusAllocatable as json.
+func (o OptIoK8sAPICoreV1NodeStatusAllocatable) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1NodeStatusAllocatable from json.
+func (o *OptIoK8sAPICoreV1NodeStatusAllocatable) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1NodeStatusAllocatable to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1NodeStatusAllocatable`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPICoreV1NodeStatusCapacity as json.
+func (o OptIoK8sAPICoreV1NodeStatusCapacity) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1NodeStatusCapacity from json.
+func (o *OptIoK8sAPICoreV1NodeStatusCapacity) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1NodeStatusCapacity to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1NodeStatusCapacity`, d.Next())
+	}
+}
+
 // Encode encodes IoK8sAPICoreV1NodeSystemInfo as json.
 func (o OptIoK8sAPICoreV1NodeSystemInfo) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -77874,6 +76695,28 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimStatus) Decode(d *jx.Decoder) err
 	}
 }
 
+// Encode encodes IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity as json.
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity from json.
+func (o *OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity`, d.Next())
+	}
+}
+
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimTemplate as json.
 func (o OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -77946,6 +76789,28 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1PersistentVolumeSpec`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPICoreV1PersistentVolumeSpecCapacity as json.
+func (o OptIoK8sAPICoreV1PersistentVolumeSpecCapacity) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1PersistentVolumeSpecCapacity from json.
+func (o *OptIoK8sAPICoreV1PersistentVolumeSpecCapacity) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeSpecCapacity to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1PersistentVolumeSpecCapacity`, d.Next())
 	}
 }
 
@@ -78121,6 +76986,50 @@ func (o *OptIoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1PodSpec`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPICoreV1PodSpecNodeSelector as json.
+func (o OptIoK8sAPICoreV1PodSpecNodeSelector) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1PodSpecNodeSelector from json.
+func (o *OptIoK8sAPICoreV1PodSpecNodeSelector) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1PodSpecNodeSelector to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1PodSpecNodeSelector`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPICoreV1PodSpecOverhead as json.
+func (o OptIoK8sAPICoreV1PodSpecOverhead) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1PodSpecOverhead from json.
+func (o *OptIoK8sAPICoreV1PodSpecOverhead) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1PodSpecOverhead to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1PodSpecOverhead`, d.Next())
 	}
 }
 
@@ -78349,6 +77258,28 @@ func (o *OptIoK8sAPICoreV1ReplicationControllerSpec) Decode(d *jx.Decoder) error
 	}
 }
 
+// Encode encodes IoK8sAPICoreV1ReplicationControllerSpecSelector as json.
+func (o OptIoK8sAPICoreV1ReplicationControllerSpecSelector) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1ReplicationControllerSpecSelector from json.
+func (o *OptIoK8sAPICoreV1ReplicationControllerSpecSelector) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1ReplicationControllerSpecSelector to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1ReplicationControllerSpecSelector`, d.Next())
+	}
+}
+
 // Encode encodes IoK8sAPICoreV1ReplicationControllerStatus as json.
 func (o OptIoK8sAPICoreV1ReplicationControllerStatus) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -78424,6 +77355,28 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaSpec) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes IoK8sAPICoreV1ResourceQuotaSpecHard as json.
+func (o OptIoK8sAPICoreV1ResourceQuotaSpecHard) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1ResourceQuotaSpecHard from json.
+func (o *OptIoK8sAPICoreV1ResourceQuotaSpecHard) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1ResourceQuotaSpecHard to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1ResourceQuotaSpecHard`, d.Next())
+	}
+}
+
 // Encode encodes IoK8sAPICoreV1ResourceQuotaStatus as json.
 func (o OptIoK8sAPICoreV1ResourceQuotaStatus) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -78449,6 +77402,50 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaStatus) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes IoK8sAPICoreV1ResourceQuotaStatusHard as json.
+func (o OptIoK8sAPICoreV1ResourceQuotaStatusHard) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1ResourceQuotaStatusHard from json.
+func (o *OptIoK8sAPICoreV1ResourceQuotaStatusHard) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1ResourceQuotaStatusHard to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1ResourceQuotaStatusHard`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPICoreV1ResourceQuotaStatusUsed as json.
+func (o OptIoK8sAPICoreV1ResourceQuotaStatusUsed) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1ResourceQuotaStatusUsed from json.
+func (o *OptIoK8sAPICoreV1ResourceQuotaStatusUsed) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1ResourceQuotaStatusUsed to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1ResourceQuotaStatusUsed`, d.Next())
+	}
+}
+
 // Encode encodes IoK8sAPICoreV1ResourceRequirements as json.
 func (o OptIoK8sAPICoreV1ResourceRequirements) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -78471,6 +77468,50 @@ func (o *OptIoK8sAPICoreV1ResourceRequirements) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1ResourceRequirements`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPICoreV1ResourceRequirementsLimits as json.
+func (o OptIoK8sAPICoreV1ResourceRequirementsLimits) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1ResourceRequirementsLimits from json.
+func (o *OptIoK8sAPICoreV1ResourceRequirementsLimits) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1ResourceRequirementsLimits to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1ResourceRequirementsLimits`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPICoreV1ResourceRequirementsRequests as json.
+func (o OptIoK8sAPICoreV1ResourceRequirementsRequests) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1ResourceRequirementsRequests from json.
+func (o *OptIoK8sAPICoreV1ResourceRequirementsRequests) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1ResourceRequirementsRequests to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1ResourceRequirementsRequests`, d.Next())
 	}
 }
 
@@ -78599,6 +77640,28 @@ func (o *OptIoK8sAPICoreV1SeccompProfile) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes IoK8sAPICoreV1SecretData as json.
+func (o OptIoK8sAPICoreV1SecretData) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1SecretData from json.
+func (o *OptIoK8sAPICoreV1SecretData) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1SecretData to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1SecretData`, d.Next())
+	}
+}
+
 // Encode encodes IoK8sAPICoreV1SecretEnvSource as json.
 func (o OptIoK8sAPICoreV1SecretEnvSource) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -78699,6 +77762,28 @@ func (o *OptIoK8sAPICoreV1SecretReference) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes IoK8sAPICoreV1SecretStringData as json.
+func (o OptIoK8sAPICoreV1SecretStringData) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1SecretStringData from json.
+func (o *OptIoK8sAPICoreV1SecretStringData) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1SecretStringData to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1SecretStringData`, d.Next())
+	}
+}
+
 // Encode encodes IoK8sAPICoreV1SecretVolumeSource as json.
 func (o OptIoK8sAPICoreV1SecretVolumeSource) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -78796,6 +77881,28 @@ func (o *OptIoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1ServiceSpec`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPICoreV1ServiceSpecSelector as json.
+func (o OptIoK8sAPICoreV1ServiceSpecSelector) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPICoreV1ServiceSpecSelector from json.
+func (o *OptIoK8sAPICoreV1ServiceSpecSelector) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPICoreV1ServiceSpecSelector to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPICoreV1ServiceSpecSelector`, d.Next())
 	}
 }
 
@@ -79049,6 +78156,28 @@ func (o *OptIoK8sAPIDiscoveryV1EndpointConditions) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes IoK8sAPIDiscoveryV1EndpointDeprecatedTopology as json.
+func (o OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPIDiscoveryV1EndpointDeprecatedTopology from json.
+func (o *OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology`, d.Next())
+	}
+}
+
 // Encode encodes IoK8sAPIDiscoveryV1EndpointHints as json.
 func (o OptIoK8sAPIDiscoveryV1EndpointHints) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -79121,6 +78250,28 @@ func (o *OptIoK8sAPIDiscoveryV1beta1EndpointHints) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPIDiscoveryV1beta1EndpointHints`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPIDiscoveryV1beta1EndpointTopology as json.
+func (o OptIoK8sAPIDiscoveryV1beta1EndpointTopology) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPIDiscoveryV1beta1EndpointTopology from json.
+func (o *OptIoK8sAPIDiscoveryV1beta1EndpointTopology) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPIDiscoveryV1beta1EndpointTopology to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPIDiscoveryV1beta1EndpointTopology`, d.Next())
 	}
 }
 
@@ -79999,6 +79150,28 @@ func (o *OptIoK8sAPINodeV1Overhead) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes IoK8sAPINodeV1OverheadPodFixed as json.
+func (o OptIoK8sAPINodeV1OverheadPodFixed) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPINodeV1OverheadPodFixed from json.
+func (o *OptIoK8sAPINodeV1OverheadPodFixed) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPINodeV1OverheadPodFixed to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPINodeV1OverheadPodFixed`, d.Next())
+	}
+}
+
 // Encode encodes IoK8sAPINodeV1Scheduling as json.
 func (o OptIoK8sAPINodeV1Scheduling) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -80021,6 +79194,28 @@ func (o *OptIoK8sAPINodeV1Scheduling) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPINodeV1Scheduling`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPINodeV1SchedulingNodeSelector as json.
+func (o OptIoK8sAPINodeV1SchedulingNodeSelector) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPINodeV1SchedulingNodeSelector from json.
+func (o *OptIoK8sAPINodeV1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPINodeV1SchedulingNodeSelector to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPINodeV1SchedulingNodeSelector`, d.Next())
 	}
 }
 
@@ -80049,6 +79244,28 @@ func (o *OptIoK8sAPINodeV1alpha1Overhead) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes IoK8sAPINodeV1alpha1OverheadPodFixed as json.
+func (o OptIoK8sAPINodeV1alpha1OverheadPodFixed) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPINodeV1alpha1OverheadPodFixed from json.
+func (o *OptIoK8sAPINodeV1alpha1OverheadPodFixed) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPINodeV1alpha1OverheadPodFixed to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPINodeV1alpha1OverheadPodFixed`, d.Next())
+	}
+}
+
 // Encode encodes IoK8sAPINodeV1alpha1Scheduling as json.
 func (o OptIoK8sAPINodeV1alpha1Scheduling) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -80071,6 +79288,28 @@ func (o *OptIoK8sAPINodeV1alpha1Scheduling) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPINodeV1alpha1Scheduling`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPINodeV1alpha1SchedulingNodeSelector as json.
+func (o OptIoK8sAPINodeV1alpha1SchedulingNodeSelector) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPINodeV1alpha1SchedulingNodeSelector from json.
+func (o *OptIoK8sAPINodeV1alpha1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPINodeV1alpha1SchedulingNodeSelector to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPINodeV1alpha1SchedulingNodeSelector`, d.Next())
 	}
 }
 
@@ -80099,6 +79338,28 @@ func (o *OptIoK8sAPINodeV1beta1Overhead) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes IoK8sAPINodeV1beta1OverheadPodFixed as json.
+func (o OptIoK8sAPINodeV1beta1OverheadPodFixed) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPINodeV1beta1OverheadPodFixed from json.
+func (o *OptIoK8sAPINodeV1beta1OverheadPodFixed) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPINodeV1beta1OverheadPodFixed to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPINodeV1beta1OverheadPodFixed`, d.Next())
+	}
+}
+
 // Encode encodes IoK8sAPINodeV1beta1Scheduling as json.
 func (o OptIoK8sAPINodeV1beta1Scheduling) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -80121,6 +79382,28 @@ func (o *OptIoK8sAPINodeV1beta1Scheduling) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPINodeV1beta1Scheduling`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPINodeV1beta1SchedulingNodeSelector as json.
+func (o OptIoK8sAPINodeV1beta1SchedulingNodeSelector) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPINodeV1beta1SchedulingNodeSelector from json.
+func (o *OptIoK8sAPINodeV1beta1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPINodeV1beta1SchedulingNodeSelector to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPINodeV1beta1SchedulingNodeSelector`, d.Next())
 	}
 }
 
@@ -80174,6 +79457,28 @@ func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) err
 	}
 }
 
+// Encode encodes IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods as json.
+func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods from json.
+func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods`, d.Next())
+	}
+}
+
 // Encode encodes IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec as json.
 func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -80221,6 +79526,28 @@ func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods as json.
+func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods from json.
+func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods`, d.Next())
 	}
 }
 
@@ -80324,6 +79651,28 @@ func (o *OptIoK8sAPIRbacV1AggregationRule) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes IoK8sAPIStorageV1StorageClassParameters as json.
+func (o OptIoK8sAPIStorageV1StorageClassParameters) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPIStorageV1StorageClassParameters from json.
+func (o *OptIoK8sAPIStorageV1StorageClassParameters) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPIStorageV1StorageClassParameters to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPIStorageV1StorageClassParameters`, d.Next())
+	}
+}
+
 // Encode encodes IoK8sAPIStorageV1VolumeAttachmentStatus as json.
 func (o OptIoK8sAPIStorageV1VolumeAttachmentStatus) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -80346,6 +79695,28 @@ func (o *OptIoK8sAPIStorageV1VolumeAttachmentStatus) Decode(d *jx.Decoder) error
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPIStorageV1VolumeAttachmentStatus`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata as json.
+func (o OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata from json.
+func (o *OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata`, d.Next())
 	}
 }
 
@@ -80599,6 +79970,94 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) De
 	}
 }
 
+// Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions as json.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions from json.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies as json.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies from json.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties as json.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties from json.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties as json.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties from json.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties`, d.Next())
+	}
+}
+
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -80746,6 +80205,28 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1LabelSelector) Decode(d *jx.Decoder) e
 	}
 }
 
+// Encode encodes IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels as json.
+func (o OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels from json.
+func (o *OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels`, d.Next())
+	}
+}
+
 // Encode encodes IoK8sApimachineryPkgApisMetaV1ListMeta as json.
 func (o OptIoK8sApimachineryPkgApisMetaV1ListMeta) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -80815,6 +80296,50 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) erro
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1ObjectMeta`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations as json.
+func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations from json.
+func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations`, d.Next())
+	}
+}
+
+// Encode encodes IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels as json.
+func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels from json.
+func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels`, d.Next())
 	}
 }
 
