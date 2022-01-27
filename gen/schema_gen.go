@@ -71,7 +71,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err e
 			return t
 		}
 
-		if t.Is(ir.KindStruct, ir.KindEnum, ir.KindSum) {
+		if t.Is(ir.KindStruct, ir.KindMap, ir.KindEnum, ir.KindSum) {
 			g.side = append(g.side, t)
 		}
 
@@ -80,8 +80,13 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err e
 
 	switch schema.Type {
 	case oas.Object:
+		kind := ir.KindStruct
+		if schema.Item != nil {
+			kind = ir.KindMap
+		}
+
 		s := side(&ir.Type{
-			Kind:   ir.KindStruct,
+			Kind:   kind,
 			Name:   name,
 			Schema: schema,
 		})
@@ -103,8 +108,14 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err e
 			})
 		}
 
-		return s, nil
+		if schema.Item != nil {
+			s.Item, err = g.generate(name+"Item", schema.Item)
+			if err != nil {
+				return nil, err
+			}
+		}
 
+		return s, nil
 	case oas.Array:
 		array := &ir.Type{
 			Kind:        ir.KindArray,

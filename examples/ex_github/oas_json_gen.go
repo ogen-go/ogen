@@ -1006,21 +1006,38 @@ func (s ActionsCancelWorkflowRunAccepted) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfActionsCancelWorkflowRunAccepted = [0]string{}
 
 // Decode decodes ActionsCancelWorkflowRunAccepted from json.
-func (s *ActionsCancelWorkflowRunAccepted) Decode(d *jx.Decoder) error {
+func (s ActionsCancelWorkflowRunAccepted) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ActionsCancelWorkflowRunAccepted to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -1374,21 +1391,38 @@ func (s ActionsCreateOrUpdateRepoSecretCreated) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfActionsCreateOrUpdateRepoSecretCreated = [0]string{}
 
 // Decode decodes ActionsCreateOrUpdateRepoSecretCreated from json.
-func (s *ActionsCreateOrUpdateRepoSecretCreated) Decode(d *jx.Decoder) error {
+func (s ActionsCreateOrUpdateRepoSecretCreated) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ActionsCreateOrUpdateRepoSecretCreated to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -4557,21 +4591,38 @@ func (s ActionsReRunWorkflowCreated) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfActionsReRunWorkflowCreated = [0]string{}
 
 // Decode decodes ActionsReRunWorkflowCreated from json.
-func (s *ActionsReRunWorkflowCreated) Decode(d *jx.Decoder) error {
+func (s ActionsReRunWorkflowCreated) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ActionsReRunWorkflowCreated to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -4827,21 +4878,38 @@ func (s ActionsRetryWorkflowCreated) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfActionsRetryWorkflowCreated = [0]string{}
 
 // Decode decodes ActionsRetryWorkflowCreated from json.
-func (s *ActionsRetryWorkflowCreated) Decode(d *jx.Decoder) error {
+func (s ActionsRetryWorkflowCreated) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ActionsRetryWorkflowCreated to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -10079,21 +10147,38 @@ func (s AppsCreateFromManifestReq) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfAppsCreateFromManifestReq = [0]string{}
 
 // Decode decodes AppsCreateFromManifestReq from json.
-func (s *AppsCreateFromManifestReq) Decode(d *jx.Decoder) error {
+func (s AppsCreateFromManifestReq) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppsCreateFromManifestReq to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -12518,13 +12603,13 @@ func (s AuditLogEvent) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.Data != nil {
+		if s.Data.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Data != nil {
+		if s.Data.Set {
 			e.RawStr("\"data\"" + ":")
 			s.Data.Encode(e)
 		}
@@ -13051,12 +13136,10 @@ func (s *AuditLogEvent) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "data":
-			s.Data = nil
-			var elem AuditLogEventData
-			if err := elem.Decode(d); err != nil {
+			s.Data.Reset()
+			if err := s.Data.Decode(d); err != nil {
 				return err
 			}
-			s.Data = &elem
 		case "org_id":
 			s.OrgID.Reset()
 			if err := s.OrgID.Decode(d); err != nil {
@@ -13321,21 +13404,38 @@ func (s AuditLogEventData) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfAuditLogEventData = [0]string{}
 
 // Decode decodes AuditLogEventData from json.
-func (s *AuditLogEventData) Decode(d *jx.Decoder) error {
+func (s AuditLogEventData) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AuditLogEventData to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -14677,19 +14777,156 @@ func (s BaseGistFiles) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		elem.Encode(e)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfBaseGistFiles = [0]string{}
 
 // Decode decodes BaseGistFiles from json.
-func (s *BaseGistFiles) Decode(d *jx.Decoder) error {
+func (s BaseGistFiles) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode BaseGistFiles to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		default:
+			var elem BaseGistFilesItem
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s BaseGistFilesItem) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Filename.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Filename.Set {
+			e.RawStr("\"filename\"" + ":")
+			s.Filename.Encode(e)
+		}
+	}
+	{
+		if s.Type.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Type.Set {
+			e.RawStr("\"type\"" + ":")
+			s.Type.Encode(e)
+		}
+	}
+	{
+		if s.Language.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Language.Set {
+			e.RawStr("\"language\"" + ":")
+			s.Language.Encode(e)
+		}
+	}
+	{
+		if s.RawURL.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.RawURL.Set {
+			e.RawStr("\"raw_url\"" + ":")
+			s.RawURL.Encode(e)
+		}
+	}
+	{
+		if s.Size.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Size.Set {
+			e.RawStr("\"size\"" + ":")
+			s.Size.Encode(e)
+		}
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfBaseGistFilesItem = [5]string{
+	0: "filename",
+	1: "type",
+	2: "language",
+	3: "raw_url",
+	4: "size",
+}
+
+// Decode decodes BaseGistFilesItem from json.
+func (s *BaseGistFilesItem) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode BaseGistFilesItem to nil`)
+	}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "filename":
+			s.Filename.Reset()
+			if err := s.Filename.Decode(d); err != nil {
+				return err
+			}
+		case "type":
+			s.Type.Reset()
+			if err := s.Type.Decode(d); err != nil {
+				return err
+			}
+		case "language":
+			s.Language.Reset()
+			if err := s.Language.Decode(d); err != nil {
+				return err
+			}
+		case "raw_url":
+			s.RawURL.Reset()
+			if err := s.RawURL.Decode(d); err != nil {
+				return err
+			}
+		case "size":
+			s.Size.Reset()
+			if err := s.Size.Decode(d); err != nil {
+				return err
+			}
 		default:
 			return d.Skip()
 		}
@@ -19795,21 +20032,38 @@ func (s ChecksRerequestSuiteCreated) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfChecksRerequestSuiteCreated = [0]string{}
 
 // Decode decodes ChecksRerequestSuiteCreated from json.
-func (s *ChecksRerequestSuiteCreated) Decode(d *jx.Decoder) error {
+func (s ChecksRerequestSuiteCreated) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ChecksRerequestSuiteCreated to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -29627,21 +29881,38 @@ func (s DeploymentPayload0) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfDeploymentPayload0 = [0]string{}
 
 // Decode decodes DeploymentPayload0 from json.
-func (s *DeploymentPayload0) Decode(d *jx.Decoder) error {
+func (s DeploymentPayload0) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode DeploymentPayload0 to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -30646,21 +30917,38 @@ func (s EmojisGetOK) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfEmojisGetOK = [0]string{}
 
 // Decode decodes EmojisGetOK from json.
-func (s *EmojisGetOK) Decode(d *jx.Decoder) error {
+func (s EmojisGetOK) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode EmojisGetOK to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -30677,21 +30965,38 @@ func (s EmptyObject) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfEmptyObject = [0]string{}
 
 // Decode decodes EmptyObject from json.
-func (s *EmptyObject) Decode(d *jx.Decoder) error {
+func (s EmptyObject) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode EmptyObject to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -39457,13 +39762,13 @@ func (s GistSimple) Encode(e *jx.Writer) {
 		}
 	}
 	{
-		if s.Files != nil {
+		if s.Files.Set {
 			if !first {
 				e.Comma()
 			}
 			first = false
 		}
-		if s.Files != nil {
+		if s.Files.Set {
 			e.RawStr("\"files\"" + ":")
 			s.Files.Encode(e)
 		}
@@ -39667,12 +39972,10 @@ func (s *GistSimple) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "files":
-			s.Files = nil
-			var elem GistSimpleFiles
-			if err := elem.Decode(d); err != nil {
+			s.Files.Reset()
+			if err := s.Files.Decode(d); err != nil {
 				return err
 			}
-			s.Files = &elem
 		case "public":
 			s.Public.Reset()
 			if err := s.Public.Decode(d); err != nil {
@@ -39736,19 +40039,192 @@ func (s GistSimpleFiles) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		elem.Encode(e)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfGistSimpleFiles = [0]string{}
 
 // Decode decodes GistSimpleFiles from json.
-func (s *GistSimpleFiles) Decode(d *jx.Decoder) error {
+func (s GistSimpleFiles) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode GistSimpleFiles to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		default:
+			var elem GistSimpleFilesItem
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s GistSimpleFilesItem) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Filename.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Filename.Set {
+			e.RawStr("\"filename\"" + ":")
+			s.Filename.Encode(e)
+		}
+	}
+	{
+		if s.Type.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Type.Set {
+			e.RawStr("\"type\"" + ":")
+			s.Type.Encode(e)
+		}
+	}
+	{
+		if s.Language.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Language.Set {
+			e.RawStr("\"language\"" + ":")
+			s.Language.Encode(e)
+		}
+	}
+	{
+		if s.RawURL.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.RawURL.Set {
+			e.RawStr("\"raw_url\"" + ":")
+			s.RawURL.Encode(e)
+		}
+	}
+	{
+		if s.Size.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Size.Set {
+			e.RawStr("\"size\"" + ":")
+			s.Size.Encode(e)
+		}
+	}
+	{
+		if s.Truncated.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Truncated.Set {
+			e.RawStr("\"truncated\"" + ":")
+			s.Truncated.Encode(e)
+		}
+	}
+	{
+		if s.Content.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Content.Set {
+			e.RawStr("\"content\"" + ":")
+			s.Content.Encode(e)
+		}
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfGistSimpleFilesItem = [7]string{
+	0: "filename",
+	1: "type",
+	2: "language",
+	3: "raw_url",
+	4: "size",
+	5: "truncated",
+	6: "content",
+}
+
+// Decode decodes GistSimpleFilesItem from json.
+func (s *GistSimpleFilesItem) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistSimpleFilesItem to nil`)
+	}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "filename":
+			s.Filename.Reset()
+			if err := s.Filename.Decode(d); err != nil {
+				return err
+			}
+		case "type":
+			s.Type.Reset()
+			if err := s.Type.Decode(d); err != nil {
+				return err
+			}
+		case "language":
+			s.Language.Reset()
+			if err := s.Language.Decode(d); err != nil {
+				return err
+			}
+		case "raw_url":
+			s.RawURL.Reset()
+			if err := s.RawURL.Decode(d); err != nil {
+				return err
+			}
+		case "size":
+			s.Size.Reset()
+			if err := s.Size.Decode(d); err != nil {
+				return err
+			}
+		case "truncated":
+			s.Truncated.Reset()
+			if err := s.Truncated.Decode(d); err != nil {
+				return err
+			}
+		case "content":
+			s.Content.Reset()
+			if err := s.Content.Decode(d); err != nil {
+				return err
+			}
 		default:
 			return d.Skip()
 		}
@@ -40156,19 +40632,156 @@ func (s GistSimpleForkOfFiles) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		elem.Encode(e)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfGistSimpleForkOfFiles = [0]string{}
 
 // Decode decodes GistSimpleForkOfFiles from json.
-func (s *GistSimpleForkOfFiles) Decode(d *jx.Decoder) error {
+func (s GistSimpleForkOfFiles) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode GistSimpleForkOfFiles to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		default:
+			var elem GistSimpleForkOfFilesItem
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s GistSimpleForkOfFilesItem) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Filename.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Filename.Set {
+			e.RawStr("\"filename\"" + ":")
+			s.Filename.Encode(e)
+		}
+	}
+	{
+		if s.Type.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Type.Set {
+			e.RawStr("\"type\"" + ":")
+			s.Type.Encode(e)
+		}
+	}
+	{
+		if s.Language.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Language.Set {
+			e.RawStr("\"language\"" + ":")
+			s.Language.Encode(e)
+		}
+	}
+	{
+		if s.RawURL.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.RawURL.Set {
+			e.RawStr("\"raw_url\"" + ":")
+			s.RawURL.Encode(e)
+		}
+	}
+	{
+		if s.Size.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Size.Set {
+			e.RawStr("\"size\"" + ":")
+			s.Size.Encode(e)
+		}
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfGistSimpleForkOfFilesItem = [5]string{
+	0: "filename",
+	1: "type",
+	2: "language",
+	3: "raw_url",
+	4: "size",
+}
+
+// Decode decodes GistSimpleForkOfFilesItem from json.
+func (s *GistSimpleForkOfFilesItem) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistSimpleForkOfFilesItem to nil`)
+	}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "filename":
+			s.Filename.Reset()
+			if err := s.Filename.Decode(d); err != nil {
+				return err
+			}
+		case "type":
+			s.Type.Reset()
+			if err := s.Type.Decode(d); err != nil {
+				return err
+			}
+		case "language":
+			s.Language.Reset()
+			if err := s.Language.Decode(d); err != nil {
+				return err
+			}
+		case "raw_url":
+			s.RawURL.Reset()
+			if err := s.RawURL.Decode(d); err != nil {
+				return err
+			}
+		case "size":
+			s.Size.Reset()
+			if err := s.Size.Decode(d); err != nil {
+				return err
+			}
 		default:
 			return d.Skip()
 		}
@@ -40340,21 +40953,38 @@ func (s GistsCheckIsStarredNotFound) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfGistsCheckIsStarredNotFound = [0]string{}
 
 // Decode decodes GistsCheckIsStarredNotFound from json.
-func (s *GistsCheckIsStarredNotFound) Decode(d *jx.Decoder) error {
+func (s GistsCheckIsStarredNotFound) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode GistsCheckIsStarredNotFound to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -40660,25 +41290,121 @@ func (s GistsCreateReqFiles) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		elem.Encode(e)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfGistsCreateReqFiles = [0]string{}
 
 // Decode decodes GistsCreateReqFiles from json.
-func (s *GistsCreateReqFiles) Decode(d *jx.Decoder) error {
+func (s GistsCreateReqFiles) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode GistsCreateReqFiles to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		default:
+			var elem GistsCreateReqFilesItem
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s GistsCreateReqFilesItem) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
+
+		e.RawStr("\"content\"" + ":")
+		e.Str(s.Content)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfGistsCreateReqFilesItem = [1]string{
+	0: "content",
+}
+
+// Decode decodes GistsCreateReqFilesItem from json.
+func (s *GistsCreateReqFilesItem) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode GistsCreateReqFilesItem to nil`)
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "content":
+			requiredBitSet[0] |= 1 << 0
+			v, err := d.Str()
+			s.Content = string(v)
+			if err != nil {
+				return err
+			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
 		return err
+	}
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfGistsCreateReqFilesItem) {
+					name = jsonFieldsNameOfGistsCreateReqFilesItem[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
 	}
 
 	return nil
@@ -46818,21 +47544,13 @@ func (s HookDeliveryRequest) Encode(e *jx.Writer) {
 		first = false
 
 		e.RawStr("\"headers\"" + ":")
-		if s.Headers == nil {
-			e.Null()
-		} else {
-			s.Headers.Encode(e)
-		}
+		s.Headers.Encode(e)
 	}
 	{
 		e.Comma()
 
 		e.RawStr("\"payload\"" + ":")
-		if s.Payload == nil {
-			e.Null()
-		} else {
-			s.Payload.Encode(e)
-		}
+		s.Payload.Encode(e)
 	}
 	e.ObjEnd()
 }
@@ -46853,20 +47571,14 @@ func (s *HookDeliveryRequest) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "headers":
 			requiredBitSet[0] |= 1 << 0
-			s.Headers = nil
-			var elem HookDeliveryRequestHeaders
-			if err := elem.Decode(d); err != nil {
+			if err := s.Headers.Decode(d); err != nil {
 				return err
 			}
-			s.Headers = &elem
 		case "payload":
 			requiredBitSet[0] |= 1 << 1
-			s.Payload = nil
-			var elem HookDeliveryRequestPayload
-			if err := elem.Decode(d); err != nil {
+			if err := s.Payload.Decode(d); err != nil {
 				return err
 			}
-			s.Payload = &elem
 		default:
 			return d.Skip()
 		}
@@ -46916,21 +47628,38 @@ func (s HookDeliveryRequestHeaders) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfHookDeliveryRequestHeaders = [0]string{}
 
 // Decode decodes HookDeliveryRequestHeaders from json.
-func (s *HookDeliveryRequestHeaders) Decode(d *jx.Decoder) error {
+func (s HookDeliveryRequestHeaders) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode HookDeliveryRequestHeaders to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -46947,21 +47676,38 @@ func (s HookDeliveryRequestPayload) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfHookDeliveryRequestPayload = [0]string{}
 
 // Decode decodes HookDeliveryRequestPayload from json.
-func (s *HookDeliveryRequestPayload) Decode(d *jx.Decoder) error {
+func (s HookDeliveryRequestPayload) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode HookDeliveryRequestPayload to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -46985,11 +47731,7 @@ func (s HookDeliveryResponse) Encode(e *jx.Writer) {
 		first = false
 
 		e.RawStr("\"headers\"" + ":")
-		if s.Headers == nil {
-			e.Null()
-		} else {
-			s.Headers.Encode(e)
-		}
+		s.Headers.Encode(e)
 	}
 	{
 		e.Comma()
@@ -47016,12 +47758,9 @@ func (s *HookDeliveryResponse) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "headers":
 			requiredBitSet[0] |= 1 << 0
-			s.Headers = nil
-			var elem HookDeliveryResponseHeaders
-			if err := elem.Decode(d); err != nil {
+			if err := s.Headers.Decode(d); err != nil {
 				return err
 			}
-			s.Headers = &elem
 		case "payload":
 			requiredBitSet[0] |= 1 << 1
 			if err := s.Payload.Decode(d); err != nil {
@@ -47076,21 +47815,38 @@ func (s HookDeliveryResponseHeaders) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfHookDeliveryResponseHeaders = [0]string{}
 
 // Decode decodes HookDeliveryResponseHeaders from json.
-func (s *HookDeliveryResponseHeaders) Decode(d *jx.Decoder) error {
+func (s HookDeliveryResponseHeaders) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode HookDeliveryResponseHeaders to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -48547,64 +49303,76 @@ func (s IntegrationPermissions) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.Issues.Set {
-			if !first {
-				e.Comma()
+		{
+			if s.Issues.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
 			}
-			first = false
+			if s.Issues.Set {
+				e.RawStr("\"issues\"" + ":")
+				s.Issues.Encode(e)
+			}
 		}
-		if s.Issues.Set {
-			e.RawStr("\"issues\"" + ":")
-			s.Issues.Encode(e)
+		{
+			if s.Checks.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Checks.Set {
+				e.RawStr("\"checks\"" + ":")
+				s.Checks.Encode(e)
+			}
+		}
+		{
+			if s.Metadata.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Metadata.Set {
+				e.RawStr("\"metadata\"" + ":")
+				s.Metadata.Encode(e)
+			}
+		}
+		{
+			if s.Contents.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Contents.Set {
+				e.RawStr("\"contents\"" + ":")
+				s.Contents.Encode(e)
+			}
+		}
+		{
+			if s.Deployments.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Deployments.Set {
+				e.RawStr("\"deployments\"" + ":")
+				s.Deployments.Encode(e)
+			}
 		}
 	}
-	{
-		if s.Checks.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
 		}
-		if s.Checks.Set {
-			e.RawStr("\"checks\"" + ":")
-			s.Checks.Encode(e)
-		}
-	}
-	{
-		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
-			s.Metadata.Encode(e)
-		}
-	}
-	{
-		if s.Contents.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Contents.Set {
-			e.RawStr("\"contents\"" + ":")
-			s.Contents.Encode(e)
-		}
-	}
-	{
-		if s.Deployments.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Deployments.Set {
-			e.RawStr("\"deployments\"" + ":")
-			s.Deployments.Encode(e)
-		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
 	}
 	e.ObjEnd()
 }
@@ -48623,6 +49391,11 @@ func (s *IntegrationPermissions) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode IntegrationPermissions to nil`)
 	}
 
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "issues":
@@ -48651,7 +49424,13 @@ func (s *IntegrationPermissions) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -57436,21 +58215,38 @@ func (s Language) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Int(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfLanguage = [0]string{}
 
 // Decode decodes Language from json.
-func (s *Language) Decode(d *jx.Decoder) error {
+func (s Language) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode Language to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem int
+			v, err := d.Int()
+			elem = int(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -61203,28 +61999,40 @@ func (s MigrationsMapCommitAuthorReq) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.Email.Set {
-			if !first {
-				e.Comma()
+		{
+			if s.Email.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
 			}
-			first = false
+			if s.Email.Set {
+				e.RawStr("\"email\"" + ":")
+				s.Email.Encode(e)
+			}
 		}
-		if s.Email.Set {
-			e.RawStr("\"email\"" + ":")
-			s.Email.Encode(e)
+		{
+			if s.Name.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Name.Set {
+				e.RawStr("\"name\"" + ":")
+				s.Name.Encode(e)
+			}
 		}
 	}
-	{
-		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
 		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
-			s.Name.Encode(e)
-		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
 	}
 	e.ObjEnd()
 }
@@ -61240,6 +62048,11 @@ func (s *MigrationsMapCommitAuthorReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode MigrationsMapCommitAuthorReq to nil`)
 	}
 
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "email":
@@ -61253,7 +62066,13 @@ func (s *MigrationsMapCommitAuthorReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -64346,6 +65165,111 @@ func (o *NilFileCommitContent) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes HookDeliveryRequestHeaders as json.
+func (o NilHookDeliveryRequestHeaders) Encode(e *jx.Writer) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes HookDeliveryRequestHeaders from json.
+func (o *NilHookDeliveryRequestHeaders) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode NilHookDeliveryRequestHeaders to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Null = false
+		o.Value = make(HookDeliveryRequestHeaders)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		var v HookDeliveryRequestHeaders
+		o.Value = v
+		o.Null = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading NilHookDeliveryRequestHeaders`, d.Next())
+	}
+}
+
+// Encode encodes HookDeliveryRequestPayload as json.
+func (o NilHookDeliveryRequestPayload) Encode(e *jx.Writer) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes HookDeliveryRequestPayload from json.
+func (o *NilHookDeliveryRequestPayload) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode NilHookDeliveryRequestPayload to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Null = false
+		o.Value = make(HookDeliveryRequestPayload)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		var v HookDeliveryRequestPayload
+		o.Value = v
+		o.Null = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading NilHookDeliveryRequestPayload`, d.Next())
+	}
+}
+
+// Encode encodes HookDeliveryResponseHeaders as json.
+func (o NilHookDeliveryResponseHeaders) Encode(e *jx.Writer) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes HookDeliveryResponseHeaders from json.
+func (o *NilHookDeliveryResponseHeaders) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode NilHookDeliveryResponseHeaders to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Null = false
+		o.Value = make(HookDeliveryResponseHeaders)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		var v HookDeliveryResponseHeaders
+		o.Value = v
+		o.Null = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading NilHookDeliveryResponseHeaders`, d.Next())
+	}
+}
+
 // Encode encodes int as json.
 func (o NilInt) Encode(e *jx.Writer) {
 	if o.Null {
@@ -65801,64 +66725,76 @@ func (s NullableIntegrationPermissions) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.Issues.Set {
-			if !first {
-				e.Comma()
+		{
+			if s.Issues.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
 			}
-			first = false
+			if s.Issues.Set {
+				e.RawStr("\"issues\"" + ":")
+				s.Issues.Encode(e)
+			}
 		}
-		if s.Issues.Set {
-			e.RawStr("\"issues\"" + ":")
-			s.Issues.Encode(e)
+		{
+			if s.Checks.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Checks.Set {
+				e.RawStr("\"checks\"" + ":")
+				s.Checks.Encode(e)
+			}
+		}
+		{
+			if s.Metadata.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Metadata.Set {
+				e.RawStr("\"metadata\"" + ":")
+				s.Metadata.Encode(e)
+			}
+		}
+		{
+			if s.Contents.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Contents.Set {
+				e.RawStr("\"contents\"" + ":")
+				s.Contents.Encode(e)
+			}
+		}
+		{
+			if s.Deployments.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Deployments.Set {
+				e.RawStr("\"deployments\"" + ":")
+				s.Deployments.Encode(e)
+			}
 		}
 	}
-	{
-		if s.Checks.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
 		}
-		if s.Checks.Set {
-			e.RawStr("\"checks\"" + ":")
-			s.Checks.Encode(e)
-		}
-	}
-	{
-		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
-			s.Metadata.Encode(e)
-		}
-	}
-	{
-		if s.Contents.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Contents.Set {
-			e.RawStr("\"contents\"" + ":")
-			s.Contents.Encode(e)
-		}
-	}
-	{
-		if s.Deployments.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Deployments.Set {
-			e.RawStr("\"deployments\"" + ":")
-			s.Deployments.Encode(e)
-		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
 	}
 	e.ObjEnd()
 }
@@ -65877,6 +66813,11 @@ func (s *NullableIntegrationPermissions) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode NullableIntegrationPermissions to nil`)
 	}
 
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "issues":
@@ -65905,7 +66846,13 @@ func (s *NullableIntegrationPermissions) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -75080,6 +76027,7 @@ func (o *OptAppsCreateFromManifestReq) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.Object:
 		o.Set = true
+		o.Value = make(AppsCreateFromManifestReq)
 		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
@@ -75261,6 +76209,32 @@ func (o *OptAuditLogEventActorLocation) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAuditLogEventActorLocation`, d.Next())
+	}
+}
+
+// Encode encodes AuditLogEventData as json.
+func (o OptAuditLogEventData) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes AuditLogEventData from json.
+func (o *OptAuditLogEventData) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptAuditLogEventData to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		o.Value = make(AuditLogEventData)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptAuditLogEventData`, d.Next())
 	}
 }
 
@@ -76619,6 +77593,32 @@ func (o *OptGistHistoryChangeStatus) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptGistHistoryChangeStatus`, d.Next())
+	}
+}
+
+// Encode encodes GistSimpleFiles as json.
+func (o OptGistSimpleFiles) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes GistSimpleFiles from json.
+func (o *OptGistSimpleFiles) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptGistSimpleFiles to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		o.Value = make(GistSimpleFiles)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptGistSimpleFiles`, d.Next())
 	}
 }
 
@@ -82191,6 +83191,32 @@ func (o *OptReposCreateDeploymentStatusReqEnvironment) Decode(d *jx.Decoder) err
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposCreateDeploymentStatusReqEnvironment`, d.Next())
+	}
+}
+
+// Encode encodes ReposCreateDispatchEventReqClientPayload as json.
+func (o OptReposCreateDispatchEventReqClientPayload) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes ReposCreateDispatchEventReqClientPayload from json.
+func (o *OptReposCreateDispatchEventReqClientPayload) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptReposCreateDispatchEventReqClientPayload to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		o.Value = make(ReposCreateDispatchEventReqClientPayload)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptReposCreateDispatchEventReqClientPayload`, d.Next())
 	}
 }
 
@@ -88058,21 +89084,38 @@ func (s OrgsConvertMemberToOutsideCollaboratorAccepted) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfOrgsConvertMemberToOutsideCollaboratorAccepted = [0]string{}
 
 // Decode decodes OrgsConvertMemberToOutsideCollaboratorAccepted from json.
-func (s *OrgsConvertMemberToOutsideCollaboratorAccepted) Decode(d *jx.Decoder) error {
+func (s OrgsConvertMemberToOutsideCollaboratorAccepted) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrgsConvertMemberToOutsideCollaboratorAccepted to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -90497,52 +91540,64 @@ func (s OrgsUpdateWebhookConfigForOrgReq) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.URL.Set {
-			if !first {
-				e.Comma()
+		{
+			if s.URL.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
 			}
-			first = false
+			if s.URL.Set {
+				e.RawStr("\"url\"" + ":")
+				s.URL.Encode(e)
+			}
 		}
-		if s.URL.Set {
-			e.RawStr("\"url\"" + ":")
-			s.URL.Encode(e)
+		{
+			if s.ContentType.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.ContentType.Set {
+				e.RawStr("\"content_type\"" + ":")
+				s.ContentType.Encode(e)
+			}
+		}
+		{
+			if s.Secret.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Secret.Set {
+				e.RawStr("\"secret\"" + ":")
+				s.Secret.Encode(e)
+			}
+		}
+		{
+			if s.InsecureSsl.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.InsecureSsl.Set {
+				e.RawStr("\"insecure_ssl\"" + ":")
+				s.InsecureSsl.Encode(e)
+			}
 		}
 	}
-	{
-		if s.ContentType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
 		}
-		if s.ContentType.Set {
-			e.RawStr("\"content_type\"" + ":")
-			s.ContentType.Encode(e)
-		}
-	}
-	{
-		if s.Secret.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Secret.Set {
-			e.RawStr("\"secret\"" + ":")
-			s.Secret.Encode(e)
-		}
-	}
-	{
-		if s.InsecureSsl.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.InsecureSsl.Set {
-			e.RawStr("\"insecure_ssl\"" + ":")
-			s.InsecureSsl.Encode(e)
-		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
 	}
 	e.ObjEnd()
 }
@@ -90560,6 +91615,11 @@ func (s *OrgsUpdateWebhookConfigForOrgReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OrgsUpdateWebhookConfigForOrgReq to nil`)
 	}
 
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "url":
@@ -90583,7 +91643,13 @@ func (s *OrgsUpdateWebhookConfigForOrgReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -101103,21 +102169,38 @@ func (s ProjectsMoveCardCreated) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfProjectsMoveCardCreated = [0]string{}
 
 // Decode decodes ProjectsMoveCardCreated from json.
-func (s *ProjectsMoveCardCreated) Decode(d *jx.Decoder) error {
+func (s ProjectsMoveCardCreated) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ProjectsMoveCardCreated to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -101678,21 +102761,38 @@ func (s ProjectsMoveColumnCreated) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfProjectsMoveColumnCreated = [0]string{}
 
 // Decode decodes ProjectsMoveColumnCreated from json.
-func (s *ProjectsMoveColumnCreated) Decode(d *jx.Decoder) error {
+func (s ProjectsMoveColumnCreated) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ProjectsMoveColumnCreated to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -102814,13 +103914,25 @@ func (s ProtectedBranchAllowDeletions) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
+		{
+			if !first {
+				e.Comma()
+			}
+			first = false
+
+			e.RawStr("\"enabled\"" + ":")
+			e.Bool(s.Enabled)
+		}
+	}
+	for k, elem := range s.AdditionalProps {
 		if !first {
 			e.Comma()
 		}
-		first = false
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
 
-		e.RawStr("\"enabled\"" + ":")
-		e.Bool(s.Enabled)
+		e.Str(elem)
 	}
 	e.ObjEnd()
 }
@@ -102836,6 +103948,11 @@ func (s *ProtectedBranchAllowDeletions) Decode(d *jx.Decoder) error {
 	}
 	var requiredBitSet [1]uint8
 
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "enabled":
@@ -102846,7 +103963,13 @@ func (s *ProtectedBranchAllowDeletions) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -102895,13 +104018,25 @@ func (s ProtectedBranchAllowForcePushes) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
+		{
+			if !first {
+				e.Comma()
+			}
+			first = false
+
+			e.RawStr("\"enabled\"" + ":")
+			e.Bool(s.Enabled)
+		}
+	}
+	for k, elem := range s.AdditionalProps {
 		if !first {
 			e.Comma()
 		}
-		first = false
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
 
-		e.RawStr("\"enabled\"" + ":")
-		e.Bool(s.Enabled)
+		e.Str(elem)
 	}
 	e.ObjEnd()
 }
@@ -102917,6 +104052,11 @@ func (s *ProtectedBranchAllowForcePushes) Decode(d *jx.Decoder) error {
 	}
 	var requiredBitSet [1]uint8
 
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "enabled":
@@ -102927,7 +104067,13 @@ func (s *ProtectedBranchAllowForcePushes) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -102976,19 +104122,31 @@ func (s ProtectedBranchEnforceAdmins) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
+		{
+			if !first {
+				e.Comma()
+			}
+			first = false
+
+			e.RawStr("\"url\"" + ":")
+			json.EncodeURI(e, s.URL)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"enabled\"" + ":")
+			e.Bool(s.Enabled)
+		}
+	}
+	for k, elem := range s.AdditionalProps {
 		if !first {
 			e.Comma()
 		}
-		first = false
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
 
-		e.RawStr("\"url\"" + ":")
-		json.EncodeURI(e, s.URL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"enabled\"" + ":")
-		e.Bool(s.Enabled)
+		e.Str(elem)
 	}
 	e.ObjEnd()
 }
@@ -103005,6 +104163,11 @@ func (s *ProtectedBranchEnforceAdmins) Decode(d *jx.Decoder) error {
 	}
 	var requiredBitSet [1]uint8
 
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "url":
@@ -103022,7 +104185,13 @@ func (s *ProtectedBranchEnforceAdmins) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -103377,16 +104546,28 @@ func (s ProtectedBranchRequiredConversationResolution) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.Enabled.Set {
-			if !first {
-				e.Comma()
+		{
+			if s.Enabled.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
 			}
-			first = false
+			if s.Enabled.Set {
+				e.RawStr("\"enabled\"" + ":")
+				s.Enabled.Encode(e)
+			}
 		}
-		if s.Enabled.Set {
-			e.RawStr("\"enabled\"" + ":")
-			s.Enabled.Encode(e)
+	}
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
 		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
 	}
 	e.ObjEnd()
 }
@@ -103401,6 +104582,11 @@ func (s *ProtectedBranchRequiredConversationResolution) Decode(d *jx.Decoder) er
 		return errors.New(`invalid: unable to decode ProtectedBranchRequiredConversationResolution to nil`)
 	}
 
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "enabled":
@@ -103409,7 +104595,13 @@ func (s *ProtectedBranchRequiredConversationResolution) Decode(d *jx.Decoder) er
 				return err
 			}
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -103427,13 +104619,25 @@ func (s ProtectedBranchRequiredLinearHistory) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
+		{
+			if !first {
+				e.Comma()
+			}
+			first = false
+
+			e.RawStr("\"enabled\"" + ":")
+			e.Bool(s.Enabled)
+		}
+	}
+	for k, elem := range s.AdditionalProps {
 		if !first {
 			e.Comma()
 		}
-		first = false
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
 
-		e.RawStr("\"enabled\"" + ":")
-		e.Bool(s.Enabled)
+		e.Str(elem)
 	}
 	e.ObjEnd()
 }
@@ -103449,6 +104653,11 @@ func (s *ProtectedBranchRequiredLinearHistory) Decode(d *jx.Decoder) error {
 	}
 	var requiredBitSet [1]uint8
 
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "enabled":
@@ -103459,7 +104668,13 @@ func (s *ProtectedBranchRequiredLinearHistory) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -103917,265 +105132,277 @@ func (s PublicUser) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
+		{
+			if !first {
+				e.Comma()
+			}
+			first = false
+
+			e.RawStr("\"login\"" + ":")
+			e.Str(s.Login)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"id\"" + ":")
+			e.Int(s.ID)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"node_id\"" + ":")
+			e.Str(s.NodeID)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"avatar_url\"" + ":")
+			json.EncodeURI(e, s.AvatarURL)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"gravatar_id\"" + ":")
+			s.GravatarID.Encode(e)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"url\"" + ":")
+			json.EncodeURI(e, s.URL)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"html_url\"" + ":")
+			json.EncodeURI(e, s.HTMLURL)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"followers_url\"" + ":")
+			json.EncodeURI(e, s.FollowersURL)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"following_url\"" + ":")
+			e.Str(s.FollowingURL)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"gists_url\"" + ":")
+			e.Str(s.GistsURL)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"starred_url\"" + ":")
+			e.Str(s.StarredURL)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"subscriptions_url\"" + ":")
+			json.EncodeURI(e, s.SubscriptionsURL)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"organizations_url\"" + ":")
+			json.EncodeURI(e, s.OrganizationsURL)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"repos_url\"" + ":")
+			json.EncodeURI(e, s.ReposURL)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"events_url\"" + ":")
+			e.Str(s.EventsURL)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"received_events_url\"" + ":")
+			json.EncodeURI(e, s.ReceivedEventsURL)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"type\"" + ":")
+			e.Str(s.Type)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"site_admin\"" + ":")
+			e.Bool(s.SiteAdmin)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"name\"" + ":")
+			s.Name.Encode(e)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"company\"" + ":")
+			s.Company.Encode(e)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"blog\"" + ":")
+			s.Blog.Encode(e)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"location\"" + ":")
+			s.Location.Encode(e)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"email\"" + ":")
+			s.Email.Encode(e)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"hireable\"" + ":")
+			s.Hireable.Encode(e)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"bio\"" + ":")
+			s.Bio.Encode(e)
+		}
+		{
+			if s.TwitterUsername.Set {
+				e.Comma()
+			}
+			if s.TwitterUsername.Set {
+				e.RawStr("\"twitter_username\"" + ":")
+				s.TwitterUsername.Encode(e)
+			}
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"public_repos\"" + ":")
+			e.Int(s.PublicRepos)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"public_gists\"" + ":")
+			e.Int(s.PublicGists)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"followers\"" + ":")
+			e.Int(s.Followers)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"following\"" + ":")
+			e.Int(s.Following)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"created_at\"" + ":")
+			json.EncodeDateTime(e, s.CreatedAt)
+		}
+		{
+			e.Comma()
+
+			e.RawStr("\"updated_at\"" + ":")
+			json.EncodeDateTime(e, s.UpdatedAt)
+		}
+		{
+			if s.Plan.Set {
+				e.Comma()
+			}
+			if s.Plan.Set {
+				e.RawStr("\"plan\"" + ":")
+				s.Plan.Encode(e)
+			}
+		}
+		{
+			if s.SuspendedAt.Set {
+				e.Comma()
+			}
+			if s.SuspendedAt.Set {
+				e.RawStr("\"suspended_at\"" + ":")
+				s.SuspendedAt.Encode(e, json.EncodeDateTime)
+			}
+		}
+		{
+			if s.PrivateGists.Set {
+				e.Comma()
+			}
+			if s.PrivateGists.Set {
+				e.RawStr("\"private_gists\"" + ":")
+				s.PrivateGists.Encode(e)
+			}
+		}
+		{
+			if s.TotalPrivateRepos.Set {
+				e.Comma()
+			}
+			if s.TotalPrivateRepos.Set {
+				e.RawStr("\"total_private_repos\"" + ":")
+				s.TotalPrivateRepos.Encode(e)
+			}
+		}
+		{
+			if s.OwnedPrivateRepos.Set {
+				e.Comma()
+			}
+			if s.OwnedPrivateRepos.Set {
+				e.RawStr("\"owned_private_repos\"" + ":")
+				s.OwnedPrivateRepos.Encode(e)
+			}
+		}
+		{
+			if s.DiskUsage.Set {
+				e.Comma()
+			}
+			if s.DiskUsage.Set {
+				e.RawStr("\"disk_usage\"" + ":")
+				s.DiskUsage.Encode(e)
+			}
+		}
+		{
+			if s.Collaborators.Set {
+				e.Comma()
+			}
+			if s.Collaborators.Set {
+				e.RawStr("\"collaborators\"" + ":")
+				s.Collaborators.Encode(e)
+			}
+		}
+	}
+	for k, elem := range s.AdditionalProps {
 		if !first {
 			e.Comma()
 		}
-		first = false
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
 
-		e.RawStr("\"login\"" + ":")
-		e.Str(s.Login)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"id\"" + ":")
-		e.Int(s.ID)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"node_id\"" + ":")
-		e.Str(s.NodeID)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"avatar_url\"" + ":")
-		json.EncodeURI(e, s.AvatarURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"gravatar_id\"" + ":")
-		s.GravatarID.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"url\"" + ":")
-		json.EncodeURI(e, s.URL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"html_url\"" + ":")
-		json.EncodeURI(e, s.HTMLURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"followers_url\"" + ":")
-		json.EncodeURI(e, s.FollowersURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"following_url\"" + ":")
-		e.Str(s.FollowingURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"gists_url\"" + ":")
-		e.Str(s.GistsURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"starred_url\"" + ":")
-		e.Str(s.StarredURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"subscriptions_url\"" + ":")
-		json.EncodeURI(e, s.SubscriptionsURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"organizations_url\"" + ":")
-		json.EncodeURI(e, s.OrganizationsURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"repos_url\"" + ":")
-		json.EncodeURI(e, s.ReposURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"events_url\"" + ":")
-		e.Str(s.EventsURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"received_events_url\"" + ":")
-		json.EncodeURI(e, s.ReceivedEventsURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"type\"" + ":")
-		e.Str(s.Type)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"site_admin\"" + ":")
-		e.Bool(s.SiteAdmin)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"name\"" + ":")
-		s.Name.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"company\"" + ":")
-		s.Company.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"blog\"" + ":")
-		s.Blog.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"location\"" + ":")
-		s.Location.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"email\"" + ":")
-		s.Email.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"hireable\"" + ":")
-		s.Hireable.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"bio\"" + ":")
-		s.Bio.Encode(e)
-	}
-	{
-		if s.TwitterUsername.Set {
-			e.Comma()
-		}
-		if s.TwitterUsername.Set {
-			e.RawStr("\"twitter_username\"" + ":")
-			s.TwitterUsername.Encode(e)
-		}
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"public_repos\"" + ":")
-		e.Int(s.PublicRepos)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"public_gists\"" + ":")
-		e.Int(s.PublicGists)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"followers\"" + ":")
-		e.Int(s.Followers)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"following\"" + ":")
-		e.Int(s.Following)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"created_at\"" + ":")
-		json.EncodeDateTime(e, s.CreatedAt)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"updated_at\"" + ":")
-		json.EncodeDateTime(e, s.UpdatedAt)
-	}
-	{
-		if s.Plan.Set {
-			e.Comma()
-		}
-		if s.Plan.Set {
-			e.RawStr("\"plan\"" + ":")
-			s.Plan.Encode(e)
-		}
-	}
-	{
-		if s.SuspendedAt.Set {
-			e.Comma()
-		}
-		if s.SuspendedAt.Set {
-			e.RawStr("\"suspended_at\"" + ":")
-			s.SuspendedAt.Encode(e, json.EncodeDateTime)
-		}
-	}
-	{
-		if s.PrivateGists.Set {
-			e.Comma()
-		}
-		if s.PrivateGists.Set {
-			e.RawStr("\"private_gists\"" + ":")
-			s.PrivateGists.Encode(e)
-		}
-	}
-	{
-		if s.TotalPrivateRepos.Set {
-			e.Comma()
-		}
-		if s.TotalPrivateRepos.Set {
-			e.RawStr("\"total_private_repos\"" + ":")
-			s.TotalPrivateRepos.Encode(e)
-		}
-	}
-	{
-		if s.OwnedPrivateRepos.Set {
-			e.Comma()
-		}
-		if s.OwnedPrivateRepos.Set {
-			e.RawStr("\"owned_private_repos\"" + ":")
-			s.OwnedPrivateRepos.Encode(e)
-		}
-	}
-	{
-		if s.DiskUsage.Set {
-			e.Comma()
-		}
-		if s.DiskUsage.Set {
-			e.RawStr("\"disk_usage\"" + ":")
-			s.DiskUsage.Encode(e)
-		}
-	}
-	{
-		if s.Collaborators.Set {
-			e.Comma()
-		}
-		if s.Collaborators.Set {
-			e.RawStr("\"collaborators\"" + ":")
-			s.Collaborators.Encode(e)
-		}
+		e.Str(elem)
 	}
 	e.ObjEnd()
 }
@@ -104229,6 +105456,11 @@ func (s *PublicUser) Decode(d *jx.Decoder) error {
 	}
 	var requiredBitSet [5]uint8
 
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "login":
@@ -104473,7 +105705,13 @@ func (s *PublicUser) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -123220,21 +124458,38 @@ func (s ReposCreateDeploymentReqPayload0) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfReposCreateDeploymentReqPayload0 = [0]string{}
 
 // Decode decodes ReposCreateDeploymentReqPayload0 from json.
-func (s *ReposCreateDeploymentReqPayload0) Decode(d *jx.Decoder) error {
+func (s ReposCreateDeploymentReqPayload0) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposCreateDeploymentReqPayload0 to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -123527,10 +124782,10 @@ func (s ReposCreateDispatchEventReq) Encode(e *jx.Writer) {
 		e.Str(s.EventType)
 	}
 	{
-		if s.ClientPayload != nil {
+		if s.ClientPayload.Set {
 			e.Comma()
 		}
-		if s.ClientPayload != nil {
+		if s.ClientPayload.Set {
 			e.RawStr("\"client_payload\"" + ":")
 			s.ClientPayload.Encode(e)
 		}
@@ -123560,12 +124815,10 @@ func (s *ReposCreateDispatchEventReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "client_payload":
-			s.ClientPayload = nil
-			var elem ReposCreateDispatchEventReqClientPayload
-			if err := elem.Decode(d); err != nil {
+			s.ClientPayload.Reset()
+			if err := s.ClientPayload.Decode(d); err != nil {
 				return err
 			}
-			s.ClientPayload = &elem
 		default:
 			return d.Skip()
 		}
@@ -123615,21 +124868,38 @@ func (s ReposCreateDispatchEventReqClientPayload) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfReposCreateDispatchEventReqClientPayload = [0]string{}
 
 // Decode decodes ReposCreateDispatchEventReqClientPayload from json.
-func (s *ReposCreateDispatchEventReqClientPayload) Decode(d *jx.Decoder) error {
+func (s ReposCreateDispatchEventReqClientPayload) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposCreateDispatchEventReqClientPayload to nil`)
 	}
 
+	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -124572,40 +125842,52 @@ func (s ReposCreateOrUpdateEnvironmentReq) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.WaitTimer.Set {
-			if !first {
-				e.Comma()
+		{
+			if s.WaitTimer.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
 			}
-			first = false
+			if s.WaitTimer.Set {
+				e.RawStr("\"wait_timer\"" + ":")
+				s.WaitTimer.Encode(e)
+			}
 		}
-		if s.WaitTimer.Set {
-			e.RawStr("\"wait_timer\"" + ":")
-			s.WaitTimer.Encode(e)
+		{
+			if s.Reviewers.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Reviewers.Set {
+				e.RawStr("\"reviewers\"" + ":")
+				s.Reviewers.Encode(e)
+			}
+		}
+		{
+			if s.DeploymentBranchPolicy.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.DeploymentBranchPolicy.Set {
+				e.RawStr("\"deployment_branch_policy\"" + ":")
+				s.DeploymentBranchPolicy.Encode(e)
+			}
 		}
 	}
-	{
-		if s.Reviewers.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
 		}
-		if s.Reviewers.Set {
-			e.RawStr("\"reviewers\"" + ":")
-			s.Reviewers.Encode(e)
-		}
-	}
-	{
-		if s.DeploymentBranchPolicy.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DeploymentBranchPolicy.Set {
-			e.RawStr("\"deployment_branch_policy\"" + ":")
-			s.DeploymentBranchPolicy.Encode(e)
-		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
 	}
 	e.ObjEnd()
 }
@@ -124622,6 +125904,11 @@ func (s *ReposCreateOrUpdateEnvironmentReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ReposCreateOrUpdateEnvironmentReq to nil`)
 	}
 
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "wait_timer":
@@ -124640,7 +125927,13 @@ func (s *ReposCreateOrUpdateEnvironmentReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -125762,64 +127055,76 @@ func (s ReposCreateWebhookReq) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
-			s.Name.Encode(e)
-		}
-	}
-	{
-		if s.Config.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Config.Set {
-			e.RawStr("\"config\"" + ":")
-			s.Config.Encode(e)
-		}
-	}
-	{
-		if s.Events != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Events != nil {
-			e.RawStr("\"events\"" + ":")
-			e.ArrStart()
-			if len(s.Events) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Events[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Events[1:] {
+		{
+			if s.Name.Set {
+				if !first {
 					e.Comma()
-					e.Str(elem)
 				}
+				first = false
 			}
-			e.ArrEnd()
+			if s.Name.Set {
+				e.RawStr("\"name\"" + ":")
+				s.Name.Encode(e)
+			}
+		}
+		{
+			if s.Config.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Config.Set {
+				e.RawStr("\"config\"" + ":")
+				s.Config.Encode(e)
+			}
+		}
+		{
+			if s.Events != nil {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Events != nil {
+				e.RawStr("\"events\"" + ":")
+				e.ArrStart()
+				if len(s.Events) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := s.Events[0]
+						e.Str(elem)
+					}
+					for _, elem := range s.Events[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		{
+			if s.Active.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Active.Set {
+				e.RawStr("\"active\"" + ":")
+				s.Active.Encode(e)
+			}
 		}
 	}
-	{
-		if s.Active.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
 		}
-		if s.Active.Set {
-			e.RawStr("\"active\"" + ":")
-			s.Active.Encode(e)
-		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
 	}
 	e.ObjEnd()
 }
@@ -125837,6 +127142,11 @@ func (s *ReposCreateWebhookReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ReposCreateWebhookReq to nil`)
 	}
 
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "name":
@@ -125869,7 +127179,13 @@ func (s *ReposCreateWebhookReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -133827,52 +135143,64 @@ func (s ReposUpdateWebhookConfigForRepoReq) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.URL.Set {
-			if !first {
-				e.Comma()
+		{
+			if s.URL.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
 			}
-			first = false
+			if s.URL.Set {
+				e.RawStr("\"url\"" + ":")
+				s.URL.Encode(e)
+			}
 		}
-		if s.URL.Set {
-			e.RawStr("\"url\"" + ":")
-			s.URL.Encode(e)
+		{
+			if s.ContentType.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.ContentType.Set {
+				e.RawStr("\"content_type\"" + ":")
+				s.ContentType.Encode(e)
+			}
+		}
+		{
+			if s.Secret.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.Secret.Set {
+				e.RawStr("\"secret\"" + ":")
+				s.Secret.Encode(e)
+			}
+		}
+		{
+			if s.InsecureSsl.Set {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.InsecureSsl.Set {
+				e.RawStr("\"insecure_ssl\"" + ":")
+				s.InsecureSsl.Encode(e)
+			}
 		}
 	}
-	{
-		if s.ContentType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
 		}
-		if s.ContentType.Set {
-			e.RawStr("\"content_type\"" + ":")
-			s.ContentType.Encode(e)
-		}
-	}
-	{
-		if s.Secret.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Secret.Set {
-			e.RawStr("\"secret\"" + ":")
-			s.Secret.Encode(e)
-		}
-	}
-	{
-		if s.InsecureSsl.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.InsecureSsl.Set {
-			e.RawStr("\"insecure_ssl\"" + ":")
-			s.InsecureSsl.Encode(e)
-		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
 	}
 	e.ObjEnd()
 }
@@ -133890,6 +135218,11 @@ func (s *ReposUpdateWebhookConfigForRepoReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ReposUpdateWebhookConfigForRepoReq to nil`)
 	}
 
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "url":
@@ -133913,7 +135246,13 @@ func (s *ReposUpdateWebhookConfigForRepoReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -152960,28 +154299,40 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		if s.Groups != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Groups != nil {
-			e.RawStr("\"groups\"" + ":")
-			e.ArrStart()
-			if len(s.Groups) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Groups[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Groups[1:] {
+		{
+			if s.Groups != nil {
+				if !first {
 					e.Comma()
-					elem.Encode(e)
 				}
+				first = false
 			}
-			e.ArrEnd()
+			if s.Groups != nil {
+				e.RawStr("\"groups\"" + ":")
+				e.ArrStart()
+				if len(s.Groups) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := s.Groups[0]
+						elem.Encode(e)
+					}
+					for _, elem := range s.Groups[1:] {
+						e.Comma()
+						elem.Encode(e)
+					}
+				}
+				e.ArrEnd()
+			}
 		}
+	}
+	for k, elem := range s.AdditionalProps {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
 	}
 	e.ObjEnd()
 }
@@ -152996,6 +154347,11 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Decode(d *jx.Decoder) e
 		return errors.New(`invalid: unable to decode TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq to nil`)
 	}
 
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]string{}
+		s.AdditionalProps = m
+	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "groups":
@@ -153011,7 +154367,13 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Decode(d *jx.Decoder) e
 				return err
 			}
 		default:
-			return d.Skip()
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {

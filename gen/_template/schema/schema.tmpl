@@ -12,6 +12,8 @@
 
 {{- if $.IsStruct }}
 	{{- template "schema/struct" $ }}
+{{- else if $.IsMap }}
+	{{- template "schema/map" $ }}
 {{- else if $.IsStream }}
 	{{- template "schema/stream" $ }}
 {{- else if $.IsAlias }}

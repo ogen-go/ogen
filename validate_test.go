@@ -19,6 +19,9 @@ func TestValidateRequired(t *testing.T) {
 	arrayTest := func() json.Unmarshaler {
 		return &api.ArrayTest{}
 	}
+	mapWithProperties := func() json.Unmarshaler {
+		return &api.MapWithProperties{}
+	}
 	required := func(fields ...string) (r []validate.FieldError) {
 		for _, f := range fields {
 			r = append(r, validate.FieldError{
@@ -63,6 +66,16 @@ func TestValidateRequired(t *testing.T) {
 			arrayTest,
 			required("required"),
 		},
+		{
+			`{}`,
+			mapWithProperties,
+			required("required"),
+		},
+		{
+			`{"random_field": "string"}`,
+			mapWithProperties,
+			required("required"),
+		},
 	} {
 		tc := tc
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
@@ -74,6 +87,34 @@ func TestValidateRequired(t *testing.T) {
 			} else {
 				require.NoError(t, err)
 			}
+		})
+	}
+}
+
+func TestValidateMap(t *testing.T) {
+	for i, tc := range []struct {
+		Input string
+		Error bool
+	}{
+		{
+			`{}`,
+			false,
+		},
+		{
+			`{"a": ""}`,
+			true,
+		},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			m := api.StringMap{}
+			require.NoError(t, m.Decode(jx.DecodeStr(tc.Input)))
+
+			checker := require.NoError
+			if tc.Error {
+				checker = require.Error
+			}
+			checker(t, m.Validate())
 		})
 	}
 }

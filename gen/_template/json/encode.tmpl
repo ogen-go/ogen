@@ -10,7 +10,7 @@ e.RawStr({{ printf "%q" $.Tag.EscapedJSON }}+":")
 {{- define "json/enc_comma" -}}
 	{{- $t := $.Type }}
 	{{- $j := $t.JSON }}
-	{{- if or ($t.IsStruct) ($t.IsEnum) ($t.IsPointer) ($t.IsSum) ($t.IsAlias) -}}
+	{{- if or ($t.IsStruct) ($t.IsMap) ($t.IsEnum) ($t.IsPointer) ($t.IsSum) ($t.IsAlias) -}}
 		{{- if or ($t.NilSemantic.Invalid) ($t.NilSemantic.Optional) -}}
 		if {{ $.Var }} != nil {
 			e.Comma()
@@ -169,7 +169,7 @@ e.RawStr({{ printf "%q" $.Tag.EscapedJSON }}+":")
 {{- define "json/enc" -}}
 	{{- $t := $.Type }}
 	{{- $j := $t.JSON }}
-	{{- if or ($t.IsStruct) ($t.IsEnum) ($t.IsPointer) ($t.IsSum) ($t.IsAlias) -}}
+	{{- if or ($t.IsStruct) ($t.IsMap) ($t.IsEnum) ($t.IsPointer) ($t.IsSum) ($t.IsAlias) -}}
 		{{- template "json/enc_value" $ }}
 	{{- else if $t.IsGeneric -}}
 		{{- template "json/enc_generic" $ }}

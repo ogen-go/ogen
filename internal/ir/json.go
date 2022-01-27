@@ -18,6 +18,11 @@ type JSON struct {
 
 type JSONFields []*Field
 
+// NotEmpty whether field slice is not empty.
+func (j JSONFields) NotEmpty() bool {
+	return len(j) != 0
+}
+
 // FirstRequiredIndex returns first required field index.
 //
 // Or -1 if there is no required fields.
@@ -26,6 +31,7 @@ func (j JSONFields) FirstRequiredIndex() int {
 		if typ := f.Type; typ.IsGeneric() && typ.GenericVariant.Optional ||
 			typ.Is(
 				KindStruct,
+				KindMap,
 				KindEnum,
 				KindPointer,
 				KindSum,
@@ -121,7 +127,7 @@ func (j JSON) Type() string {
 	if j.t.Is(KindArray) {
 		return "Array"
 	}
-	if j.t.Is(KindStruct) {
+	if j.t.Is(KindStruct, KindMap) {
 		return "Object"
 	}
 	switch j.t.Primitive {

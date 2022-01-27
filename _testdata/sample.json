@@ -523,6 +523,13 @@
           }
         }
       },
+      "StringMap": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
       "NullableEnums": {
         "type": "object",
         "required": [
@@ -559,6 +566,38 @@
               null
             ]
           }
+        }
+      },
+      "StringStringMap": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/StringMap"
+        }
+      },
+      "MapWithProperties": {
+        "type": "object",
+        "required": [
+          "required"
+        ],
+        "properties": {
+          "required": {
+            "type": "integer"
+          },
+          "optional": {
+            "type": "integer"
+          },
+          "sub_map": {
+            "$ref": "#/components/schemas/StringMap"
+          },
+          "inlined_sub_map": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": {
+          "type": "string"
         }
       },
       "Data": {
@@ -745,6 +784,12 @@
           },
           "testArray2": {
             "$ref": "#/components/schemas/ArrayTest"
+          },
+          "testMap": {
+            "$ref": "#/components/schemas/StringStringMap"
+          },
+          "testMapWithProps": {
+            "$ref": "#/components/schemas/MapWithProperties"
           },
           "testDate": {
             "type": "string",

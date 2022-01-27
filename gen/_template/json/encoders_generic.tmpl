@@ -23,7 +23,7 @@ func (o {{ $.Name }}) Encode(e *jx.Writer{{ if $g.Format }}, format func(*jx.Wri
 	e.{{ $g.JSON.Fn }}({{ $g.Primitive }}(o.Value))
 {{- else if $g.IsArray }}
 	{{- template "json/enc_array_elems" elem $g "o.Value" -}}
-{{- else if or ($g.IsStruct) ($g.IsEnum) ($g.IsPointer) ($g.IsSum) ($g.IsAlias) }}
+{{- else if or ($g.IsStruct) ($g.IsMap) ($g.IsEnum) ($g.IsPointer) ($g.IsSum) ($g.IsAlias) }}
 	o.Value.Encode(e)
 {{- end }}
 }
@@ -54,6 +54,13 @@ func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if $g.Format }}, format func(*jx.D
 		}
 		o.Value = v
 	{{- else if or ($g.IsStruct) ($g.IsEnum) }}
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+	{{- else if $g.IsMap }}
+		{{- if not $g.Fields }}
+		o.Value = make({{ $g.Go }})
+		{{- end }}
 		if err := o.Value.Decode(d); err != nil {
 			return err
 		}

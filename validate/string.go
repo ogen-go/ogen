@@ -97,7 +97,7 @@ func (t String) checkEmail(v string) error {
 func (t String) Validate(v string) error {
 	if err := (Array{
 		MinLength:    t.MinLength,
-		MinLengthSet: t.MaxLengthSet,
+		MinLengthSet: t.MinLengthSet,
 		MaxLength:    t.MaxLength,
 		MaxLengthSet: t.MaxLengthSet,
 	}).ValidateLength(len([]rune(v))); err != nil {

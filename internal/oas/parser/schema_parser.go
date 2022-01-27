@@ -90,10 +90,21 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 			return false
 		}
 
+		var item *oas.Schema
+		if ap := schema.AdditionalProperties; ap != nil {
+			sch := ogen.Schema(*ap)
+			prop, err := p.Parse(&sch)
+			if err != nil {
+				return nil, errors.Wrapf(err, "additionalProperties")
+			}
+			item = prop
+		}
+
 		s := hook(&oas.Schema{
 			Type:          oas.Object,
-			MinProperties: schema.MinProperties,
+			Item:          item,
 			MaxProperties: schema.MaxProperties,
+			MinProperties: schema.MinProperties,
 		})
 		for _, propSpec := range schema.Properties {
 			prop, err := p.Parse(propSpec.Schema)

@@ -258,6 +258,17 @@ func NewIntID(v int) ID {
 	return s
 }
 
+// Ref: #/components/schemas/MapWithProperties
+type MapWithProperties struct {
+	Required        int                               `json:"required"`
+	Optional        OptInt                            `json:"optional"`
+	SubMap          OptStringMap                      `json:"sub_map"`
+	InlinedSubMap   OptMapWithPropertiesInlinedSubMap `json:"inlined_sub_map"`
+	AdditionalProps map[string]string
+}
+
+type MapWithPropertiesInlinedSubMap map[string]string
+
 // NewNilNullableEnumsBoth returns new NilNullableEnumsBoth with value set to v.
 func NewNilNullableEnumsBoth(v NullableEnumsBoth) NilNullableEnumsBoth {
 	return NilNullableEnumsBoth{
@@ -684,6 +695,98 @@ func (o OptInt) Or(d int) int {
 	return d
 }
 
+// NewOptMapWithProperties returns new OptMapWithProperties with value set to v.
+func NewOptMapWithProperties(v MapWithProperties) OptMapWithProperties {
+	return OptMapWithProperties{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMapWithProperties is optional MapWithProperties.
+type OptMapWithProperties struct {
+	Value MapWithProperties
+	Set   bool
+}
+
+// IsSet returns true if OptMapWithProperties was set.
+func (o OptMapWithProperties) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMapWithProperties) Reset() {
+	var v MapWithProperties
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMapWithProperties) SetTo(v MapWithProperties) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMapWithProperties) Get() (v MapWithProperties, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMapWithProperties) Or(d MapWithProperties) MapWithProperties {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptMapWithPropertiesInlinedSubMap returns new OptMapWithPropertiesInlinedSubMap with value set to v.
+func NewOptMapWithPropertiesInlinedSubMap(v MapWithPropertiesInlinedSubMap) OptMapWithPropertiesInlinedSubMap {
+	return OptMapWithPropertiesInlinedSubMap{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMapWithPropertiesInlinedSubMap is optional MapWithPropertiesInlinedSubMap.
+type OptMapWithPropertiesInlinedSubMap struct {
+	Value MapWithPropertiesInlinedSubMap
+	Set   bool
+}
+
+// IsSet returns true if OptMapWithPropertiesInlinedSubMap was set.
+func (o OptMapWithPropertiesInlinedSubMap) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMapWithPropertiesInlinedSubMap) Reset() {
+	var v MapWithPropertiesInlinedSubMap
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMapWithPropertiesInlinedSubMap) SetTo(v MapWithPropertiesInlinedSubMap) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMapWithPropertiesInlinedSubMap) Get() (v MapWithPropertiesInlinedSubMap, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMapWithPropertiesInlinedSubMap) Or(d MapWithPropertiesInlinedSubMap) MapWithPropertiesInlinedSubMap {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilString returns new OptNilString with value set to v.
 func NewOptNilString(v string) OptNilString {
 	return OptNilString{
@@ -1024,6 +1127,98 @@ func (o OptString) Or(d string) string {
 	return d
 }
 
+// NewOptStringMap returns new OptStringMap with value set to v.
+func NewOptStringMap(v StringMap) OptStringMap {
+	return OptStringMap{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringMap is optional StringMap.
+type OptStringMap struct {
+	Value StringMap
+	Set   bool
+}
+
+// IsSet returns true if OptStringMap was set.
+func (o OptStringMap) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringMap) Reset() {
+	var v StringMap
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringMap) SetTo(v StringMap) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringMap) Get() (v StringMap, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringMap) Or(d StringMap) StringMap {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStringStringMap returns new OptStringStringMap with value set to v.
+func NewOptStringStringMap(v StringStringMap) OptStringStringMap {
+	return OptStringStringMap{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringStringMap is optional StringStringMap.
+type OptStringStringMap struct {
+	Value StringStringMap
+	Set   bool
+}
+
+// IsSet returns true if OptStringStringMap was set.
+func (o OptStringStringMap) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringStringMap) Reset() {
+	var v StringStringMap
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringStringMap) SetTo(v StringStringMap) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringStringMap) Get() (v StringStringMap, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringStringMap) Or(d StringStringMap) StringStringMap {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTime returns new OptTime with value set to v.
 func NewOptTime(v time.Time) OptTime {
 	return OptTime{
@@ -1118,31 +1313,33 @@ func (o OptUUID) Or(d uuid.UUID) uuid.UUID {
 
 // Ref: #/components/schemas/Pet
 type Pet struct {
-	Primary      *Pet          `json:"primary"`
-	ID           int64         `json:"id"`
-	UniqueID     uuid.UUID     `json:"unique_id"`
-	Name         string        `json:"name"`
-	Type         OptPetType    `json:"type"`
-	Kind         PetKind       `json:"kind"`
-	Tag          OptUUID       `json:"tag"`
-	IP           net.IP        `json:"ip"`
-	IPV4         net.IP        `json:"ip_v4"`
-	IPV6         net.IP        `json:"ip_v6"`
-	URI          url.URL       `json:"uri"`
-	Birthday     time.Time     `json:"birthday"`
-	Rate         time.Duration `json:"rate"`
-	Nickname     NilString     `json:"nickname"`
-	NullStr      OptNilString  `json:"nullStr"`
-	Friends      []Pet         `json:"friends"`
-	Next         OptData       `json:"next"`
-	TestInteger1 OptInt        `json:"testInteger1"`
-	TestFloat1   OptFloat64    `json:"testFloat1"`
-	TestArray1   [][]string    `json:"testArray1"`
-	TestArray2   OptArrayTest  `json:"testArray2"`
-	TestDate     OptTime       `json:"testDate"`
-	TestDuration OptDuration   `json:"testDuration"`
-	TestTime     OptTime       `json:"testTime"`
-	TestDateTime OptTime       `json:"testDateTime"`
+	Primary          *Pet                 `json:"primary"`
+	ID               int64                `json:"id"`
+	UniqueID         uuid.UUID            `json:"unique_id"`
+	Name             string               `json:"name"`
+	Type             OptPetType           `json:"type"`
+	Kind             PetKind              `json:"kind"`
+	Tag              OptUUID              `json:"tag"`
+	IP               net.IP               `json:"ip"`
+	IPV4             net.IP               `json:"ip_v4"`
+	IPV6             net.IP               `json:"ip_v6"`
+	URI              url.URL              `json:"uri"`
+	Birthday         time.Time            `json:"birthday"`
+	Rate             time.Duration        `json:"rate"`
+	Nickname         NilString            `json:"nickname"`
+	NullStr          OptNilString         `json:"nullStr"`
+	Friends          []Pet                `json:"friends"`
+	Next             OptData              `json:"next"`
+	TestInteger1     OptInt               `json:"testInteger1"`
+	TestFloat1       OptFloat64           `json:"testFloat1"`
+	TestArray1       [][]string           `json:"testArray1"`
+	TestArray2       OptArrayTest         `json:"testArray2"`
+	TestMap          OptStringStringMap   `json:"testMap"`
+	TestMapWithProps OptMapWithProperties `json:"testMapWithProps"`
+	TestDate         OptTime              `json:"testDate"`
+	TestDuration     OptDuration          `json:"testDuration"`
+	TestTime         OptTime              `json:"testTime"`
+	TestDateTime     OptTime              `json:"testDateTime"`
 }
 
 func (*Pet) foobarGetRes()  {}
@@ -1217,3 +1414,9 @@ type Stream struct {
 func (s Stream) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
+
+// Ref: #/components/schemas/StringMap
+type StringMap map[string]string
+
+// Ref: #/components/schemas/StringStringMap
+type StringStringMap map[string]StringMap

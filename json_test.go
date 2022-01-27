@@ -264,6 +264,152 @@ func TestJSONArray(t *testing.T) {
 	})
 }
 
+func TestJSONAdditionalProperties(t *testing.T) {
+	t.Run("Decode", func(t *testing.T) {
+		for i, tc := range []struct {
+			Input    string
+			Expected api.MapWithProperties
+			Error    bool
+		}{
+			{
+				`{"required": 1}`,
+				api.MapWithProperties{
+					Required:        1,
+					AdditionalProps: map[string]string{},
+				},
+				false,
+			},
+			{
+				`{"required": 1, "optional": 10}`,
+				api.MapWithProperties{
+					Required:        1,
+					Optional:        api.NewOptInt(10),
+					AdditionalProps: map[string]string{},
+				},
+				false,
+			},
+			{
+				`{"required": 1, "runtime_field": "field"}`,
+				api.MapWithProperties{
+					Required: 1,
+					AdditionalProps: map[string]string{
+						"runtime_field": "field",
+					},
+				},
+				false,
+			},
+			{
+				`{"required": 1, "sub_map":{"runtime_field": "field"}}`,
+				api.MapWithProperties{
+					Required:        1,
+					AdditionalProps: map[string]string{},
+					SubMap: api.NewOptStringMap(api.StringMap{
+						"runtime_field": "field",
+					}),
+				},
+				false,
+			},
+			{
+				`{"required": 1, "inlined_sub_map":{"runtime_field": "field"}}`,
+				api.MapWithProperties{
+					Required:        1,
+					AdditionalProps: map[string]string{},
+					InlinedSubMap: api.NewOptMapWithPropertiesInlinedSubMap(api.MapWithPropertiesInlinedSubMap{
+						"runtime_field": "field",
+					}),
+				},
+				false,
+			},
+			{
+				// MapWithProperties expects string for `runtime_field`.
+				`{"required": 1, "runtime_field": 10}`,
+				api.MapWithProperties{},
+				true,
+			},
+		} {
+			// Make range value copy to prevent data races.
+			tc := tc
+			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+				r := api.MapWithProperties{}
+				if err := r.Decode(jx.DecodeStr(tc.Input)); tc.Error {
+					require.Error(t, err)
+				} else {
+					require.NoError(t, err)
+					require.Equal(t, tc.Expected, r)
+				}
+			})
+		}
+	})
+	t.Run("Encode", func(t *testing.T) {
+		for i, tc := range []struct {
+			Value    json.Marshaler
+			Expected string
+		}{
+			{
+				api.MapWithProperties{
+					Required:        1,
+					AdditionalProps: map[string]string{},
+				},
+				`{"required": 1}`,
+			},
+			{
+				api.MapWithProperties{
+					Required:        1,
+					Optional:        api.NewOptInt(10),
+					AdditionalProps: map[string]string{},
+				},
+				`{"required": 1, "optional": 10}`,
+			},
+			{
+				api.MapWithProperties{
+					Required: 1,
+					AdditionalProps: map[string]string{
+						"runtime_field": "field",
+					},
+				},
+				`{"required": 1, "runtime_field": "field"}`,
+			},
+			{
+				api.MapWithProperties{},
+				`{"required": 0}`,
+			},
+			{
+				api.StringStringMap{
+					"a": api.StringMap{
+						"b": "c",
+					},
+				},
+				`{"a":{"b":"c"}}`,
+			},
+			{
+				api.MapWithProperties{
+					Required: 1,
+					SubMap: api.NewOptStringMap(api.StringMap{
+						"runtime_field": "field",
+					}),
+				},
+				`{"required": 1, "sub_map":{"runtime_field": "field"}}`,
+			},
+			{
+				api.MapWithProperties{
+					Required:        1,
+					AdditionalProps: map[string]string{},
+					InlinedSubMap: api.NewOptMapWithPropertiesInlinedSubMap(api.MapWithPropertiesInlinedSubMap{
+						"runtime_field": "field",
+					}),
+				},
+				`{"required": 1, "inlined_sub_map":{"runtime_field": "field"}}`,
+			},
+		} {
+			// Make range value copy to prevent data races.
+			tc := tc
+			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+				testEncode(t, tc.Value, tc.Expected)
+			})
+		}
+	})
+}
+
 func TestJSONNullableEnum(t *testing.T) {
 	for _, tc := range []struct {
 		Type  json.Unmarshaler

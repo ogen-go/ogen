@@ -61,5 +61,5 @@ func (t Type) CanGeneric() bool {
 			return false
 		}
 	}
-	return t.Is(KindPrimitive, KindEnum, KindStruct, KindSum)
+	return t.Is(KindPrimitive, KindEnum, KindStruct, KindMap, KindSum)
 }

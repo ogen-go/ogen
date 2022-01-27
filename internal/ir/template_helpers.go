@@ -73,6 +73,7 @@ func (t *Type) IsFloat() bool {
 }
 
 func (t *Type) IsArray() bool     { return t.Is(KindArray) }
+func (t *Type) IsMap() bool       { return t.Is(KindMap) }
 func (t *Type) IsPrimitive() bool { return t.Is(KindPrimitive) }
 func (t *Type) IsStruct() bool    { return t.Is(KindStruct) }
 func (t *Type) IsPointer() bool   { return t.Is(KindPointer) }
@@ -91,9 +92,14 @@ func (t *Type) ReceiverType() string {
 	return t.Name
 }
 
+// AdditionalPropsField returns name of additional properties field.
+func (t *Type) AdditionalPropsField() string {
+	return "AdditionalProps"
+}
+
 func (t *Type) needsPointerReceiverType() bool {
 	switch t.Kind {
-	case KindPointer, KindArray:
+	case KindPointer, KindArray, KindMap:
 		return false
 	case KindAlias:
 		return t.AliasTo.needsPointerReceiverType()

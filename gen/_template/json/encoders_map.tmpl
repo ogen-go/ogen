@@ -1,29 +1,5 @@
-{{- define "json/encode_struct_fields" }}
-{{- /*gotype: github.com/ogen-go/ogen/internal/ir.JSONFields*/ -}}
-	{{- $firstRequiredIDx := $.FirstRequiredIndex }}
-	{{- range $i, $f := $ }}
-		{
-		{{- $elem := field_elem $f }}
-		{{- if eq $i $firstRequiredIDx -}}
-			{{/* Encode first required field */}}
-			if !first {
-				{{- template "json/enc_comma" $elem -}}
-			}
-			first = false
-		{{- else if and (ne $firstRequiredIDx -1) (gt $i $firstRequiredIDx) -}}
-			{{/* Encode field after first required */}}
-			{{- template "json/enc_comma" $elem -}}
-		{{- else -}}
-			{{/* Encode field before first required */}}
-			{{- template "json/enc_comma_first" $elem -}}
-		{{- end }}
-		{{ template "json/enc" $elem }}
-		}
-	{{- end }}
-{{- end }}
-
-{{- define "json/encoders_struct" }}
 {{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "json/encoders_map" }}
 {{- $fields := $.JSON.Fields }}
 // Encode implements json.Marshaler.
 func (s {{ $.Name }}) Encode(e *jx.Writer) {
@@ -32,7 +8,20 @@ func (s {{ $.Name }}) Encode(e *jx.Writer) {
 		first = true
 		_ = first
 	)
-	{{- template "json/encode_struct_fields" $fields }}
+	{{- if $fields.NotEmpty }}
+	{
+		{{- template "json/encode_struct_fields" $fields }}
+	}
+	{{- end }}
+	for k, elem := range s{{- if $fields.NotEmpty }}.{{ $.AdditionalPropsField }}{{- end }} {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+		{{ template "json/enc" map_elem $.Item }}
+	}
 	e.ObjEnd()
 }
 
@@ -43,7 +32,7 @@ var jsonFieldsNameOf{{ $.Name }} = [{{ len $fields }}]string{
 }
 
 // Decode decodes {{ $.Name }} from json.
-func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
+func (s {{ if $fields.NotEmpty }}*{{ end }}{{ $.Name }}) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode {{ $.Name }} to nil`)
 	}
@@ -53,6 +42,12 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	var requiredBitSet [{{ len $requiredMask }}]uint8
 	{{- end }}
 
+	m := s{{ if $fields.NotEmpty }}.{{ $.AdditionalPropsField }}
+	if m == nil {
+		m = map[string]{{ $.Item.Go }}{}
+		s.{{ $.AdditionalPropsField }} = m
+	}
+	{{- end }}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 	{{- range $i, $f := $fields }}
@@ -63,7 +58,9 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 		{{- template "json/dec" field_elem $f }}
 	{{- end }}
 		default:
-			return d.Skip()
+			var elem {{ $.Item.Go }}
+			{{- template "json/dec" map_elem $.Item }}
+			m[string(k)] = elem
 		}
 		return nil
 	}); err != nil {

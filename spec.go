@@ -271,6 +271,10 @@ type Schema struct {
 	// (inline or referenced).
 	Properties Properties `json:"properties,omitempty"`
 
+	// Value can be boolean or object. Inline or referenced schema MUST be of a Schema Object
+	// and not a standard JSON Schema. Consistent with JSON Schema, additionalProperties defaults to true.
+	AdditionalProperties *AdditionalProperties `json:"additionalProperties,omitempty"`
+
 	// The value of this keyword MUST be an array.
 	// This array MUST have at least one element.
 	// Elements of this array MUST be strings, and MUST be unique.
@@ -487,4 +491,32 @@ func (p *Properties) UnmarshalJSON(data []byte) error {
 		})
 		return nil
 	})
+}
+
+type AdditionalProperties Schema
+
+func (p AdditionalProperties) MarshalJSON() ([]byte, error) {
+	return json.Marshal(Schema(p))
+}
+
+func (p *AdditionalProperties) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	switch tt := d.Next(); tt {
+	case jx.Object:
+	case jx.Bool:
+		return nil
+	default:
+		return errors.Errorf("unexpected type %s", tt.String())
+	}
+
+	s := Schema{}
+	b, err := d.Raw()
+	if err != nil {
+		return err
+	}
+	if err := json.Unmarshal(b, &s); err != nil {
+		return err
+	}
+	*p = AdditionalProperties(s)
+	return nil
 }
