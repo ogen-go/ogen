@@ -43,9 +43,11 @@ func testEncode(t *testing.T, encoder json.Marshaler, expected string) {
 	defer jx.PutWriter(e)
 
 	encoder.Encode(e)
-	if expected != "" {
-		require.True(t, std.Valid(e.Buf))
+	if expected == "" {
+		require.Empty(t, e.Buf)
+		return
 	}
+	require.True(t, std.Valid(e.Buf))
 	require.JSONEq(t, expected, string(e.Buf), "encoding result mismatch")
 }
 
