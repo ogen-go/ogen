@@ -605,6 +605,42 @@
           }
         }
       },
+      "ArrayTest": {
+        "description": "test array encoder/decoder generation",
+        "type": "object",
+        "required": [
+          "required",
+          "nullable_required"
+        ],
+        "properties": {
+          "required": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "optional": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "nullable_required": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "nullable_optional": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
       "Pet": {
         "description": "cute and lovely creature",
         "type": "object",
@@ -706,6 +742,9 @@
                 "maxLength": 255
               }
             }
+          },
+          "testArray2": {
+            "$ref": "#/components/schemas/ArrayTest"
           },
           "testDate": {
             "type": "string",
