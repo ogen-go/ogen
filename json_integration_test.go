@@ -20,6 +20,11 @@ import (
 func TestExampleJSON(t *testing.T) {
 	t.Parallel()
 	date := time.Date(2011, 10, 10, 7, 12, 34, 4125, time.UTC)
+	stringMap := api.StringStringMap{
+		"prop": api.StringMap{
+			"i\nhate": "OpenAPI specification",
+		},
+	}
 	pet := api.Pet{
 		Friends:  []api.Pet{},
 		Birthday: conv.Date(date),
@@ -33,6 +38,13 @@ func TestExampleJSON(t *testing.T) {
 				"Baz",
 			},
 		},
+		TestMap: api.NewOptStringStringMap(stringMap),
+		TestMapWithProps: api.NewOptMapWithProperties(api.MapWithProperties{
+			Required: 10,
+			AdditionalProps: map[string]string{
+				"data": "data",
+			},
+		}),
 		Nickname:     api.NewNilString("Nick"),
 		NullStr:      api.NewOptNilString("Bar"),
 		Rate:         time.Second,
