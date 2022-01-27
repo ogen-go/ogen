@@ -65,6 +65,203 @@ var (
 )
 
 // Encode implements json.Marshaler.
+func (s ArrayTest) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
+
+		e.RawStr("\"required\"" + ":")
+		e.ArrStart()
+		if len(s.Required) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Required[0]
+				e.Str(elem)
+			}
+			for _, elem := range s.Required[1:] {
+				e.Comma()
+				e.Str(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+	{
+		if s.Optional != nil {
+			e.Comma()
+		}
+		if s.Optional != nil {
+			e.RawStr("\"optional\"" + ":")
+			e.ArrStart()
+			if len(s.Optional) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Optional[0]
+					e.Str(elem)
+				}
+				for _, elem := range s.Optional[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"nullable_required\"" + ":")
+		if s.NullableRequired == nil {
+			e.Null()
+		} else {
+			e.ArrStart()
+			if len(s.NullableRequired) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.NullableRequired[0]
+					e.Str(elem)
+				}
+				for _, elem := range s.NullableRequired[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.NullableOptional.Set {
+			e.Comma()
+		}
+		if s.NullableOptional.Set {
+			e.RawStr("\"nullable_optional\"" + ":")
+			s.NullableOptional.Encode(e)
+		}
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfArrayTest = [4]string{
+	0: "required",
+	1: "optional",
+	2: "nullable_required",
+	3: "nullable_optional",
+}
+
+// Decode decodes ArrayTest from json.
+func (s *ArrayTest) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode ArrayTest to nil`)
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "required":
+			requiredBitSet[0] |= 1 << 0
+			s.Required = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				s.Required = append(s.Required, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+		case "optional":
+			s.Optional = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				s.Optional = append(s.Optional, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+		case "nullable_required":
+			requiredBitSet[0] |= 1 << 2
+			s.NullableRequired = nil
+			switch tt := d.Next(); tt {
+			case jx.Null:
+				if err := d.Skip(); err != nil {
+					return err
+				}
+			default:
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.NullableRequired = append(s.NullableRequired, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+			}
+		case "nullable_optional":
+			s.NullableOptional.Reset()
+			if err := s.NullableOptional.Decode(d); err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000101,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfArrayTest) {
+					name = jsonFieldsNameOfArrayTest[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
 func (s Data) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -1117,6 +1314,31 @@ func (s *NullableEnumsOnlyNullable) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// Encode encodes ArrayTest as json.
+func (o OptArrayTest) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes ArrayTest from json.
+func (o *OptArrayTest) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptArrayTest to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptArrayTest`, d.Next())
+	}
+}
+
 // Encode encodes Data as json.
 func (o OptData) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -1283,6 +1505,66 @@ func (o *OptNilString) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptNilString`, d.Next())
+	}
+}
+
+// Encode encodes []string as json.
+func (o OptNilStringArray) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	e.ArrStart()
+	if len(o.Value) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := o.Value[0]
+			e.Str(elem)
+		}
+		for _, elem := range o.Value[1:] {
+			e.Comma()
+			e.Str(elem)
+		}
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes []string from json.
+func (o *OptNilStringArray) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptNilStringArray to nil`)
+	}
+	switch d.Next() {
+	case jx.Array:
+		o.Set = true
+		o.Null = false
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			o.Value = append(o.Value, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		var v []string
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptNilStringArray`, d.Next())
 	}
 }
 
@@ -1673,6 +1955,15 @@ func (s Pet) Encode(e *jx.Writer) {
 		}
 	}
 	{
+		if s.TestArray2.Set {
+			e.Comma()
+		}
+		if s.TestArray2.Set {
+			e.RawStr("\"testArray2\"" + ":")
+			s.TestArray2.Encode(e)
+		}
+	}
+	{
 		if s.TestDate.Set {
 			e.Comma()
 		}
@@ -1711,7 +2002,7 @@ func (s Pet) Encode(e *jx.Writer) {
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfPet = [24]string{
+var jsonFieldsNameOfPet = [25]string{
 	0:  "primary",
 	1:  "id",
 	2:  "unique_id",
@@ -1732,10 +2023,11 @@ var jsonFieldsNameOfPet = [24]string{
 	17: "testInteger1",
 	18: "testFloat1",
 	19: "testArray1",
-	20: "testDate",
-	21: "testDuration",
-	22: "testTime",
-	23: "testDateTime",
+	20: "testArray2",
+	21: "testDate",
+	22: "testDuration",
+	23: "testTime",
+	24: "testDateTime",
 }
 
 // Decode decodes Pet from json.
@@ -1743,7 +2035,7 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode Pet to nil`)
 	}
-	var requiredBitSet [3]uint8
+	var requiredBitSet [4]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -1891,6 +2183,11 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 			}); err != nil {
 				return err
 			}
+		case "testArray2":
+			s.TestArray2.Reset()
+			if err := s.TestArray2.Decode(d); err != nil {
+				return err
+			}
 		case "testDate":
 			s.TestDate.Reset()
 			if err := s.TestDate.Decode(d, json.DecodeDate); err != nil {
@@ -1919,9 +2216,10 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 		return err
 	}
 	var failures []validate.FieldError
-	for i, mask := range [3]uint8{
+	for i, mask := range [4]uint8{
 		0b10101110,
 		0b00111111,
+		0b00000000,
 		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {

@@ -64,6 +64,43 @@ var (
 	_ = sync.Pool{}
 )
 
+func (s ArrayTest) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Required == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.NullableOptional.Set {
+			if err := func() error {
+				if s.NullableOptional.Value == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "nullable_optional",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s Data) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -497,6 +534,25 @@ func (s Pet) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "testArray1",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.TestArray2.Set {
+			if err := func() error {
+				if err := s.TestArray2.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "testArray2",
 			Error: err,
 		})
 	}

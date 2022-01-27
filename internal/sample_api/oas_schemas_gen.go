@@ -64,6 +64,14 @@ var (
 	_ = sync.Pool{}
 )
 
+// Ref: #/components/schemas/ArrayTest
+type ArrayTest struct {
+	Required         []string          `json:"required"`
+	Optional         []string          `json:"optional"`
+	NullableRequired []string          `json:"nullable_required"`
+	NullableOptional OptNilStringArray `json:"nullable_optional"`
+}
+
 // Ref: #/components/schemas/Data
 type Data struct {
 	ID           ID               `json:"id"`
@@ -400,6 +408,52 @@ const (
 	NullableEnumsOnlyNullableDesc NullableEnumsOnlyNullable = "desc"
 )
 
+// NewOptArrayTest returns new OptArrayTest with value set to v.
+func NewOptArrayTest(v ArrayTest) OptArrayTest {
+	return OptArrayTest{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptArrayTest is optional ArrayTest.
+type OptArrayTest struct {
+	Value ArrayTest
+	Set   bool
+}
+
+// IsSet returns true if OptArrayTest was set.
+func (o OptArrayTest) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptArrayTest) Reset() {
+	var v ArrayTest
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptArrayTest) SetTo(v ArrayTest) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptArrayTest) Get() (v ArrayTest, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptArrayTest) Or(d ArrayTest) ArrayTest {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptData returns new OptData with value set to v.
 func NewOptData(v Data) OptData {
 	return OptData{
@@ -679,6 +733,61 @@ func (o OptNilString) Get() (v string, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptNilString) Or(d string) string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilStringArray returns new OptNilStringArray with value set to v.
+func NewOptNilStringArray(v []string) OptNilStringArray {
+	return OptNilStringArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilStringArray is optional nullable []string.
+type OptNilStringArray struct {
+	Value []string
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilStringArray was set.
+func (o OptNilStringArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilStringArray) Reset() {
+	var v []string
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilStringArray) SetTo(v []string) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilStringArray) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilStringArray) Get() (v []string, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilStringArray) Or(d []string) []string {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -1029,6 +1138,7 @@ type Pet struct {
 	TestInteger1 OptInt        `json:"testInteger1"`
 	TestFloat1   OptFloat64    `json:"testFloat1"`
 	TestArray1   [][]string    `json:"testArray1"`
+	TestArray2   OptArrayTest  `json:"testArray2"`
 	TestDate     OptTime       `json:"testDate"`
 	TestDuration OptDuration   `json:"testDuration"`
 	TestTime     OptTime       `json:"testTime"`

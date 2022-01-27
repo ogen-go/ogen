@@ -1,22 +1,16 @@
 package ogen
 
 import (
+	std "encoding/json"
 	"fmt"
-	"net"
-	"net/url"
 	"strconv"
 	"testing"
-	"time"
 
 	"github.com/go-faster/jx"
-	"github.com/google/uuid"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ogen-go/ogen/conv"
 	api "github.com/ogen-go/ogen/internal/sample_api"
-	"github.com/ogen-go/ogen/internal/techempower"
 	"github.com/ogen-go/ogen/json"
-	"github.com/ogen-go/ogen/validate"
 )
 
 func decodeObject(t testing.TB, data []byte, v json.Unmarshaler) {
@@ -42,6 +36,19 @@ func encodeObject(v json.Marshaler) []byte {
 	v.Encode(e)
 	e.ObjEnd()
 	return e.Buf
+}
+
+func testEncode(t *testing.T, encoder json.Marshaler, expected string) {
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
+
+	encoder.Encode(e)
+	if expected == "" {
+		require.Empty(t, e.Buf)
+		return
+	}
+	require.True(t, std.Valid(e.Buf))
+	require.JSONEq(t, expected, string(e.Buf), "encoding result mismatch")
 }
 
 func TestJSONGenerics(t *testing.T) {
@@ -85,54 +92,61 @@ func TestJSONGenerics(t *testing.T) {
 	})
 	t.Run("Encode", func(t *testing.T) {
 		for _, tc := range []struct {
-			Name   string
-			Value  json.Marshaler
-			Result string
+			Name     string
+			Value    json.Marshaler
+			Expected string
 		}{
 			{
-				Name:   "ZeroPrimitive",
-				Value:  api.OptNilString{},
-				Result: "",
+				Name:     "ZeroPrimitive",
+				Value:    api.OptNilString{},
+				Expected: "",
 			},
 			{
-				Name:   "SetPrimitive",
-				Value:  api.NewOptNilString("foo"),
-				Result: `"foo"`,
+				Name:     "SetPrimitive",
+				Value:    api.NewOptNilString("foo"),
+				Expected: `"foo"`,
 			},
 			{
-				Name:   "NilPrimitive",
-				Value:  api.OptNilString{Null: true, Set: true},
-				Result: `null`,
+				Name:     "NilPrimitive",
+				Value:    api.OptNilString{Null: true, Set: true},
+				Expected: `null`,
 			},
 			{
-				Name:   "ZeroAlias",
-				Value:  api.OptPetName{},
-				Result: "",
+				Name:     "ZeroAlias",
+				Value:    api.OptPetName{},
+				Expected: "",
 			},
 			{
-				Name:   "SetAlias",
-				Value:  api.NewOptPetName("foo"),
-				Result: `"foo"`,
+				Name:     "SetAlias",
+				Value:    api.NewOptPetName("foo"),
+				Expected: `"foo"`,
 			},
 			{
-				Name:   "ZeroEnum",
-				Value:  api.OptPetType{},
-				Result: "",
+				Name:     "ZeroEnum",
+				Value:    api.OptPetType{},
+				Expected: "",
 			},
 			{
-				Name:   "SetEnum",
-				Value:  api.NewOptPetType(api.PetTypeFifa),
-				Result: strconv.Quote(string(api.PetTypeFifa)),
+				Name:     "SetEnum",
+				Value:    api.NewOptPetType(api.PetTypeFifa),
+				Expected: strconv.Quote(string(api.PetTypeFifa)),
 			},
 			{
-				Name:   "ZeroSum",
-				Value:  api.OptID{},
-				Result: "",
+				Name:     "ZeroSum",
+				Value:    api.OptID{},
+				Expected: "",
 			},
 			{
-				Name:   "SetSum",
-				Value:  api.NewOptID(api.NewIntID(10)),
-				Result: `10`,
+				Name:     "SetSum",
+				Value:    api.NewOptID(api.NewIntID(10)),
+				Expected: `10`,
+			},
+			{
+				Name: "SetArray",
+				Value: api.NewOptNilStringArray([]string{
+					"aboba",
+				}),
+				Expected: `["aboba"]`,
 			},
 		} {
 			// Make range value copy to prevent data races.
@@ -140,178 +154,120 @@ func TestJSONGenerics(t *testing.T) {
 			t.Run(tc.Name, func(t *testing.T) {
 				t.Parallel()
 
-				e := jx.GetWriter()
-				tc.Value.Encode(e)
-				require.Equal(t, tc.Result, string(e.Buf), "encoding result mismatch")
+				testEncode(t, tc.Value, tc.Expected)
 			})
 		}
 	})
 }
 
-func TestJSONExample(t *testing.T) {
-	t.Parallel()
-	date := time.Date(2011, 10, 10, 7, 12, 34, 4125, time.UTC)
-	pet := api.Pet{
-		Friends:  []api.Pet{},
-		Birthday: conv.Date(date),
-		ID:       42,
-		Name:     "SomePet",
-		TestArray1: [][]string{
+func TestJSONArray(t *testing.T) {
+	t.Run("Decode", func(t *testing.T) {
+		for i, tc := range []struct {
+			Input    string
+			Expected api.ArrayTest
+			Error    bool
+		}{
 			{
-				"Foo", "Bar",
+				`{"required": [], "nullable_required": []}`,
+				api.ArrayTest{},
+				false,
 			},
 			{
-				"Baz",
+				`{"required": [], "optional": [], "nullable_required": [], "nullable_optional": []}`,
+				api.ArrayTest{
+					NullableOptional: api.OptNilStringArray{
+						Set: true,
+					},
+				},
+				false,
 			},
-		},
-		Nickname:     api.NewNilString("Nick"),
-		NullStr:      api.NewOptNilString("Bar"),
-		Rate:         time.Second,
-		Tag:          api.NewOptUUID(uuid.New()),
-		TestDate:     api.NewOptTime(conv.Date(date)),
-		TestDateTime: api.NewOptTime(conv.DateTime(date)),
-		TestDuration: api.NewOptDuration(time.Minute),
-		TestFloat1:   api.NewOptFloat64(1.0),
-		TestInteger1: api.NewOptInt(10),
-		TestTime:     api.NewOptTime(conv.Time(date)),
-		UniqueID:     uuid.New(),
-		URI:          url.URL{Scheme: "s3", Host: "foo", Path: "bar"},
-		IP:           net.IPv4(127, 0, 0, 1),
-		IPV4:         net.IPv4(127, 0, 0, 1),
-		IPV6:         net.ParseIP("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
-		Next: api.NewOptData(api.Data{
-			Description: api.NewDescriptionSimpleDataDescription(api.DescriptionSimple{
-				Description: "foo",
-			}),
-			ID: api.NewIntID(10),
-		}),
-	}
+			{
+				`{"required": [], "nullable_required": null}`,
+				api.ArrayTest{},
+				false,
+			},
+			{
+				`{"required": [], "nullable_required": null, "nullable_optional": null}`,
+				api.ArrayTest{
+					NullableOptional: api.OptNilStringArray{
+						Set:  true,
+						Null: true,
+					},
+				},
+				false,
+			},
 
-	for _, tc := range []struct {
-		Name  string
-		Value interface {
-			json.Marshaler
-		}
-		Expected string
-	}{
-		{
-			Name:  "Pet",
-			Value: pet,
-		},
-		{
-			Name: "PetWithPrimary",
-			Value: func(input api.Pet) (r api.Pet) {
-				r = input
-				r.Primary = &input
-				return r
-			}(pet),
-		},
-		{
-			Name:  "OptPetSet",
-			Value: api.NewOptPet(pet),
-		},
-		{
-			Name:     "PetName",
-			Value:    api.PetName("boba"),
-			Expected: `"boba"`,
-		},
-		{
-			Name:     "OptPetName",
-			Value:    api.NewOptPetName("boba"),
-			Expected: `"boba"`,
-		},
-		{
-			Name:     "PetType",
-			Value:    api.PetTypeFifa,
-			Expected: strconv.Quote(string(api.PetTypeFifa)),
-		},
-		{
-			Name:     "OptPetType",
-			Value:    api.NewOptPetType(api.PetTypeFifa),
-			Expected: strconv.Quote(string(api.PetTypeFifa)),
-		},
-	} {
-		// Make range value copy to prevent data races.
-		tc := tc
-		t.Run(tc.Name, func(t *testing.T) {
-			encode := json.Encode(tc.Value)
-			t.Logf("%s", encode)
-			require.True(t, jx.Valid(encode), "invalid json")
-			if tc.Expected != "" {
-				require.JSONEq(t, tc.Expected, string(encode))
-			}
-		})
-	}
-
-}
-
-func TestTechEmpowerJSON(t *testing.T) {
-	hw := techempower.WorldObject{
-		ID:           10,
-		RandomNumber: 2134,
-	}
-	e := &jx.Writer{}
-	hw.Encode(e)
-	var parsed techempower.WorldObject
-	d := jx.GetDecoder()
-	d.ResetBytes(e.Buf)
-	t.Log(e)
-	require.NoError(t, parsed.Decode(d))
-	require.Equal(t, hw, parsed)
-}
-
-func TestValidateRequired(t *testing.T) {
-	data := func() json.Unmarshaler {
-		return &api.Data{}
-	}
-	required := func(fields ...string) (r []validate.FieldError) {
-		for _, f := range fields {
-			r = append(r, validate.FieldError{
-				Name:  f,
-				Error: validate.ErrFieldRequired,
+			// Negative tests
+			{
+				`{"required": [], "nullable_required": null, "optional": null}`,
+				api.ArrayTest{},
+				true,
+			},
+			{
+				`{"required": null, "nullable_required": null}`,
+				api.ArrayTest{},
+				true,
+			},
+		} {
+			// Make range value copy to prevent data races.
+			tc := tc
+			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+				r := api.ArrayTest{}
+				if err := r.Decode(jx.DecodeStr(tc.Input)); tc.Error {
+					require.Error(t, err)
+				} else {
+					require.Equal(t, tc.Expected, r)
+					require.NoError(t, err)
+				}
 			})
 		}
-		return r
-	}
-	for i, tc := range []struct {
-		Input   string
-		Decoder func() json.Unmarshaler
-		Error   []validate.FieldError
-	}{
-		{
-			`{}`,
-			data,
-			required("id", "description", "email", "hostname", "format"),
-		},
-		{
-			`{"email": "aboba"}`,
-			data,
-			required("id", "description", "hostname", "format"),
-		},
-		{
-			`{"id":10, "email": "aboba"}`,
-			data,
-			required("description", "hostname", "format"),
-		},
-	} {
-		tc := tc
-		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-			err := tc.Decoder().Decode(jx.DecodeStr(tc.Input))
-			if len(tc.Error) > 0 {
-				var e *validate.Error
-				require.ErrorAs(t, err, &e)
-				require.Equal(t, tc.Error, e.Fields)
-			} else {
-				require.NoError(t, err)
-			}
-		})
-	}
+	})
+	t.Run("Encode", func(t *testing.T) {
+		for i, tc := range []struct {
+			Value    api.ArrayTest
+			Expected string
+		}{
+			{
+				Value:    api.ArrayTest{},
+				Expected: `{"required":[],"nullable_required":null}`,
+			},
+			{
+				Value: api.ArrayTest{
+					Optional: []string{},
+				},
+				Expected: `{"required":[],"optional":[],"nullable_required":null}`,
+			},
+			{
+				Value: api.ArrayTest{
+					NullableOptional: api.OptNilStringArray{
+						Set: true,
+					},
+				},
+				Expected: `{"required":[],"nullable_required":null,"nullable_optional":[]}`,
+			},
+			{
+				Value: api.ArrayTest{
+					NullableOptional: api.OptNilStringArray{
+						Set:  true,
+						Null: true,
+					},
+				},
+				Expected: `{"required":[],"nullable_required":null,"nullable_optional":null}`,
+			},
+		} {
+			// Make range value copy to prevent data races.
+			tc := tc
+			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+				testEncode(t, tc.Value, tc.Expected)
+			})
+		}
+	})
 }
 
-func TestNullableEnum(t *testing.T) {
+func TestJSONNullableEnum(t *testing.T) {
 	for _, tc := range []struct {
-		Type json.Unmarshaler
-		Err  bool
+		Type  json.Unmarshaler
+		Error bool
 	}{
 		{new(api.NullableEnumsOnlyNullable), true},
 		{new(api.NilNullableEnumsOnlyNullValue), false},
@@ -319,7 +275,7 @@ func TestNullableEnum(t *testing.T) {
 	} {
 		t.Run(fmt.Sprintf("%T", tc.Type), func(t *testing.T) {
 			checker := require.NoError
-			if tc.Err {
+			if tc.Error {
 				checker = require.Error
 			}
 			checker(t, tc.Type.Decode(jx.DecodeStr(`null`)))
