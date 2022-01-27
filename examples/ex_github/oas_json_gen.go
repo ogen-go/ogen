@@ -29856,7 +29856,7 @@ func (s *DeploymentPayload) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.String:
+	case jx.Object:
 		if err := s.DeploymentPayload0.Decode(d); err != nil {
 			return err
 		}
@@ -65180,8 +65180,12 @@ func (o *NilHookDeliveryRequestHeaders) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode NilHookDeliveryRequestHeaders to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Null = false
+		o.Value = make(HookDeliveryRequestHeaders)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -65211,8 +65215,12 @@ func (o *NilHookDeliveryRequestPayload) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode NilHookDeliveryRequestPayload to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Null = false
+		o.Value = make(HookDeliveryRequestPayload)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -65242,8 +65250,12 @@ func (o *NilHookDeliveryResponseHeaders) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode NilHookDeliveryResponseHeaders to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Null = false
+		o.Value = make(HookDeliveryResponseHeaders)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -76013,8 +76025,12 @@ func (o *OptAppsCreateFromManifestReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OptAppsCreateFromManifestReq to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Set = true
+		o.Value = make(AppsCreateFromManifestReq)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppsCreateFromManifestReq`, d.Next())
@@ -76210,8 +76226,12 @@ func (o *OptAuditLogEventData) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OptAuditLogEventData to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Set = true
+		o.Value = make(AuditLogEventData)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAuditLogEventData`, d.Next())
@@ -77590,8 +77610,12 @@ func (o *OptGistSimpleFiles) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OptGistSimpleFiles to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Set = true
+		o.Value = make(GistSimpleFiles)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptGistSimpleFiles`, d.Next())
@@ -78963,8 +78987,11 @@ func (o *OptMigrationsMapCommitAuthorReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OptMigrationsMapCommitAuthorReq to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptMigrationsMapCommitAuthorReq`, d.Next())
@@ -81221,8 +81248,11 @@ func (o *OptOrgsUpdateWebhookConfigForOrgReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OptOrgsUpdateWebhookConfigForOrgReq to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptOrgsUpdateWebhookConfigForOrgReq`, d.Next())
@@ -81918,8 +81948,11 @@ func (o *OptProtectedBranchAllowDeletions) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OptProtectedBranchAllowDeletions to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptProtectedBranchAllowDeletions`, d.Next())
@@ -81940,8 +81973,11 @@ func (o *OptProtectedBranchAllowForcePushes) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OptProtectedBranchAllowForcePushes to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptProtectedBranchAllowForcePushes`, d.Next())
@@ -81962,8 +81998,11 @@ func (o *OptProtectedBranchEnforceAdmins) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OptProtectedBranchEnforceAdmins to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptProtectedBranchEnforceAdmins`, d.Next())
@@ -82034,8 +82073,11 @@ func (o *OptProtectedBranchRequiredConversationResolution) Decode(d *jx.Decoder)
 		return errors.New(`invalid: unable to decode OptProtectedBranchRequiredConversationResolution to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptProtectedBranchRequiredConversationResolution`, d.Next())
@@ -82056,8 +82098,11 @@ func (o *OptProtectedBranchRequiredLinearHistory) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OptProtectedBranchRequiredLinearHistory to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptProtectedBranchRequiredLinearHistory`, d.Next())
@@ -82153,8 +82198,11 @@ func (o *OptPublicUser) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OptPublicUser to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPublicUser`, d.Next())
@@ -83160,8 +83208,12 @@ func (o *OptReposCreateDispatchEventReqClientPayload) Decode(d *jx.Decoder) erro
 		return errors.New(`invalid: unable to decode OptReposCreateDispatchEventReqClientPayload to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Set = true
+		o.Value = make(ReposCreateDispatchEventReqClientPayload)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposCreateDispatchEventReqClientPayload`, d.Next())
@@ -83232,8 +83284,11 @@ func (o *OptReposCreateOrUpdateEnvironmentReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OptReposCreateOrUpdateEnvironmentReq to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposCreateOrUpdateEnvironmentReq`, d.Next())
@@ -83329,8 +83384,11 @@ func (o *OptReposCreateWebhookReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OptReposCreateWebhookReq to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposCreateWebhookReq`, d.Next())
@@ -84277,8 +84335,11 @@ func (o *OptReposUpdateWebhookConfigForRepoReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OptReposUpdateWebhookConfigForRepoReq to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposUpdateWebhookConfigForRepoReq`, d.Next())
@@ -124372,7 +124433,7 @@ func (s *ReposCreateDeploymentReqPayload) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.String:
+	case jx.Object:
 		if err := s.ReposCreateDeploymentReqPayload0.Decode(d); err != nil {
 			return err
 		}

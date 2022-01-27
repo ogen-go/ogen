@@ -260,10 +260,14 @@ func NewIntID(v int) ID {
 
 // Ref: #/components/schemas/MapWithProperties
 type MapWithProperties struct {
-	Required        int    `json:"required"`
-	Optional        OptInt `json:"optional"`
+	Required        int                               `json:"required"`
+	Optional        OptInt                            `json:"optional"`
+	SubMap          OptStringMap                      `json:"sub_map"`
+	InlinedSubMap   OptMapWithPropertiesInlinedSubMap `json:"inlined_sub_map"`
 	AdditionalProps map[string]string
 }
+
+type MapWithPropertiesInlinedSubMap map[string]string
 
 // NewNilNullableEnumsBoth returns new NilNullableEnumsBoth with value set to v.
 func NewNilNullableEnumsBoth(v NullableEnumsBoth) NilNullableEnumsBoth {
@@ -737,6 +741,52 @@ func (o OptMapWithProperties) Or(d MapWithProperties) MapWithProperties {
 	return d
 }
 
+// NewOptMapWithPropertiesInlinedSubMap returns new OptMapWithPropertiesInlinedSubMap with value set to v.
+func NewOptMapWithPropertiesInlinedSubMap(v MapWithPropertiesInlinedSubMap) OptMapWithPropertiesInlinedSubMap {
+	return OptMapWithPropertiesInlinedSubMap{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMapWithPropertiesInlinedSubMap is optional MapWithPropertiesInlinedSubMap.
+type OptMapWithPropertiesInlinedSubMap struct {
+	Value MapWithPropertiesInlinedSubMap
+	Set   bool
+}
+
+// IsSet returns true if OptMapWithPropertiesInlinedSubMap was set.
+func (o OptMapWithPropertiesInlinedSubMap) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMapWithPropertiesInlinedSubMap) Reset() {
+	var v MapWithPropertiesInlinedSubMap
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMapWithPropertiesInlinedSubMap) SetTo(v MapWithPropertiesInlinedSubMap) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMapWithPropertiesInlinedSubMap) Get() (v MapWithPropertiesInlinedSubMap, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMapWithPropertiesInlinedSubMap) Or(d MapWithPropertiesInlinedSubMap) MapWithPropertiesInlinedSubMap {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilString returns new OptNilString with value set to v.
 func NewOptNilString(v string) OptNilString {
 	return OptNilString{
@@ -1071,6 +1121,52 @@ func (o OptString) Get() (v string, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptString) Or(d string) string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStringMap returns new OptStringMap with value set to v.
+func NewOptStringMap(v StringMap) OptStringMap {
+	return OptStringMap{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringMap is optional StringMap.
+type OptStringMap struct {
+	Value StringMap
+	Set   bool
+}
+
+// IsSet returns true if OptStringMap was set.
+func (o OptStringMap) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringMap) Reset() {
+	var v StringMap
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringMap) SetTo(v StringMap) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringMap) Get() (v StringMap, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringMap) Or(d StringMap) StringMap {
 	if v, ok := o.Get(); ok {
 		return v
 	}

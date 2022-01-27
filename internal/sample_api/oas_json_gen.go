@@ -1021,6 +1021,24 @@ func (s MapWithProperties) Encode(e *jx.Writer) {
 				s.Optional.Encode(e)
 			}
 		}
+		{
+			if s.SubMap.Set {
+				e.Comma()
+			}
+			if s.SubMap.Set {
+				e.RawStr("\"sub_map\"" + ":")
+				s.SubMap.Encode(e)
+			}
+		}
+		{
+			if s.InlinedSubMap.Set {
+				e.Comma()
+			}
+			if s.InlinedSubMap.Set {
+				e.RawStr("\"inlined_sub_map\"" + ":")
+				s.InlinedSubMap.Encode(e)
+			}
+		}
 	}
 	for k, elem := range s.AdditionalProps {
 		if !first {
@@ -1035,9 +1053,11 @@ func (s MapWithProperties) Encode(e *jx.Writer) {
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfMapWithProperties = [2]string{
+var jsonFieldsNameOfMapWithProperties = [4]string{
 	0: "required",
 	1: "optional",
+	2: "sub_map",
+	3: "inlined_sub_map",
 }
 
 // Decode decodes MapWithProperties from json.
@@ -1064,6 +1084,16 @@ func (s *MapWithProperties) Decode(d *jx.Decoder) error {
 		case "optional":
 			s.Optional.Reset()
 			if err := s.Optional.Decode(d); err != nil {
+				return err
+			}
+		case "sub_map":
+			s.SubMap.Reset()
+			if err := s.SubMap.Decode(d); err != nil {
+				return err
+			}
+		case "inlined_sub_map":
+			s.InlinedSubMap.Reset()
+			if err := s.InlinedSubMap.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -1109,6 +1139,54 @@ func (s *MapWithProperties) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s MapWithPropertiesInlinedSubMap) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfMapWithPropertiesInlinedSubMap = [0]string{}
+
+// Decode decodes MapWithPropertiesInlinedSubMap from json.
+func (s MapWithPropertiesInlinedSubMap) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode MapWithPropertiesInlinedSubMap to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
 	}
 
 	return nil
@@ -1600,11 +1678,40 @@ func (o *OptMapWithProperties) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OptMapWithProperties to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptMapWithProperties`, d.Next())
+	}
+}
+
+// Encode encodes MapWithPropertiesInlinedSubMap as json.
+func (o OptMapWithPropertiesInlinedSubMap) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes MapWithPropertiesInlinedSubMap from json.
+func (o *OptMapWithPropertiesInlinedSubMap) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptMapWithPropertiesInlinedSubMap to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		o.Value = make(MapWithPropertiesInlinedSubMap)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptMapWithPropertiesInlinedSubMap`, d.Next())
 	}
 }
 
@@ -1833,6 +1940,32 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes StringMap as json.
+func (o OptStringMap) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes StringMap from json.
+func (o *OptStringMap) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptStringMap to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		o.Value = make(StringMap)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptStringMap`, d.Next())
+	}
+}
+
 // Encode encodes StringStringMap as json.
 func (o OptStringStringMap) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -1847,8 +1980,12 @@ func (o *OptStringStringMap) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OptStringStringMap to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Object:
 		o.Set = true
+		o.Value = make(StringStringMap)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptStringStringMap`, d.Next())
