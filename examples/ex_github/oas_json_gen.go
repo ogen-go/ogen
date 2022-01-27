@@ -13787,17 +13787,24 @@ func (s *Authorization) Decode(d *jx.Decoder) error {
 		case "scopes":
 			requiredBitSet[0] |= 1 << 2
 			s.Scopes = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
+			switch tt := d.Next(); tt {
+			case jx.Null:
+				if err := d.Skip(); err != nil {
 					return err
 				}
-				s.Scopes = append(s.Scopes, elem)
-				return nil
-			}); err != nil {
-				return err
+			default:
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					s.Scopes = append(s.Scopes, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
 			}
 		case "token":
 			requiredBitSet[0] |= 1 << 3
@@ -18780,15 +18787,22 @@ func (s *CheckSuite) Decode(d *jx.Decoder) error {
 		case "pull_requests":
 			requiredBitSet[1] |= 1 << 1
 			s.PullRequests = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem PullRequestMinimal
-				if err := elem.Decode(d); err != nil {
+			switch tt := d.Next(); tt {
+			case jx.Null:
+				if err := d.Skip(); err != nil {
 					return err
 				}
-				s.PullRequests = append(s.PullRequests, elem)
-				return nil
-			}); err != nil {
-				return err
+			default:
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem PullRequestMinimal
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					s.PullRequests = append(s.PullRequests, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
 			}
 		case "app":
 			requiredBitSet[1] |= 1 << 2
@@ -78323,6 +78337,19 @@ func (o OptNilGistHistoryArray) Encode(e *jx.Writer) {
 		e.Null()
 		return
 	}
+	e.ArrStart()
+	if len(o.Value) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := o.Value[0]
+			elem.Encode(e)
+		}
+		for _, elem := range o.Value[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
+	}
+	e.ArrEnd()
 }
 
 // Decode decodes []GistHistory from json.
@@ -78334,6 +78361,16 @@ func (o *OptNilGistHistoryArray) Decode(d *jx.Decoder) error {
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem GistHistory
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			o.Value = append(o.Value, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -78397,6 +78434,19 @@ func (o OptNilGistSimpleForksItemArray) Encode(e *jx.Writer) {
 		e.Null()
 		return
 	}
+	e.ArrStart()
+	if len(o.Value) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := o.Value[0]
+			elem.Encode(e)
+		}
+		for _, elem := range o.Value[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
+	}
+	e.ArrEnd()
 }
 
 // Decode decodes []GistSimpleForksItem from json.
@@ -78408,6 +78458,16 @@ func (o *OptNilGistSimpleForksItemArray) Decode(d *jx.Decoder) error {
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem GistSimpleForksItem
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			o.Value = append(o.Value, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -79010,6 +79070,19 @@ func (o OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) Encode(e *jx.
 		e.Null()
 		return
 	}
+	e.ArrStart()
+	if len(o.Value) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := o.Value[0]
+			elem.Encode(e)
+		}
+		for _, elem := range o.Value[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
+	}
+	e.ArrEnd()
 }
 
 // Decode decodes []ReposCreateOrUpdateEnvironmentReqReviewersItem from json.
@@ -79021,6 +79094,16 @@ func (o *OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) Decode(d *jx
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem ReposCreateOrUpdateEnvironmentReqReviewersItem
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			o.Value = append(o.Value, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -79162,6 +79245,19 @@ func (o OptNilSimpleUserArray) Encode(e *jx.Writer) {
 		e.Null()
 		return
 	}
+	e.ArrStart()
+	if len(o.Value) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := o.Value[0]
+			elem.Encode(e)
+		}
+		for _, elem := range o.Value[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
+	}
+	e.ArrEnd()
 }
 
 // Decode decodes []SimpleUser from json.
@@ -79173,6 +79269,16 @@ func (o *OptNilSimpleUserArray) Decode(d *jx.Decoder) error {
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem SimpleUser
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			o.Value = append(o.Value, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -79238,6 +79344,19 @@ func (o OptNilStringArray) Encode(e *jx.Writer) {
 		e.Null()
 		return
 	}
+	e.ArrStart()
+	if len(o.Value) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := o.Value[0]
+			e.Str(elem)
+		}
+		for _, elem := range o.Value[1:] {
+			e.Comma()
+			e.Str(elem)
+		}
+	}
+	e.ArrEnd()
 }
 
 // Decode decodes []string from json.
@@ -79249,6 +79368,18 @@ func (o *OptNilStringArray) Decode(d *jx.Decoder) error {
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			o.Value = append(o.Value, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -79273,6 +79404,19 @@ func (o OptNilTeamArray) Encode(e *jx.Writer) {
 		e.Null()
 		return
 	}
+	e.ArrStart()
+	if len(o.Value) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := o.Value[0]
+			elem.Encode(e)
+		}
+		for _, elem := range o.Value[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
+	}
+	e.ArrEnd()
 }
 
 // Decode decodes []Team from json.
@@ -79284,6 +79428,16 @@ func (o *OptNilTeamArray) Decode(d *jx.Decoder) error {
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem Team
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			o.Value = append(o.Value, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -79308,6 +79462,19 @@ func (o OptNilTeamSimpleArray) Encode(e *jx.Writer) {
 		e.Null()
 		return
 	}
+	e.ArrStart()
+	if len(o.Value) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := o.Value[0]
+			elem.Encode(e)
+		}
+		for _, elem := range o.Value[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
+	}
+	e.ArrEnd()
 }
 
 // Decode decodes []TeamSimple from json.
@@ -79319,6 +79486,16 @@ func (o *OptNilTeamSimpleArray) Decode(d *jx.Decoder) error {
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem TeamSimple
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			o.Value = append(o.Value, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -79384,6 +79561,19 @@ func (o OptNilTopicSearchResultItemAliasesItemArray) Encode(e *jx.Writer) {
 		e.Null()
 		return
 	}
+	e.ArrStart()
+	if len(o.Value) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := o.Value[0]
+			elem.Encode(e)
+		}
+		for _, elem := range o.Value[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
+	}
+	e.ArrEnd()
 }
 
 // Decode decodes []TopicSearchResultItemAliasesItem from json.
@@ -79395,6 +79585,16 @@ func (o *OptNilTopicSearchResultItemAliasesItemArray) Decode(d *jx.Decoder) erro
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem TopicSearchResultItemAliasesItem
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			o.Value = append(o.Value, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -79419,6 +79619,19 @@ func (o OptNilTopicSearchResultItemRelatedItemArray) Encode(e *jx.Writer) {
 		e.Null()
 		return
 	}
+	e.ArrStart()
+	if len(o.Value) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := o.Value[0]
+			elem.Encode(e)
+		}
+		for _, elem := range o.Value[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
+	}
+	e.ArrEnd()
 }
 
 // Decode decodes []TopicSearchResultItemRelatedItem from json.
@@ -79430,6 +79643,16 @@ func (o *OptNilTopicSearchResultItemRelatedItemArray) Decode(d *jx.Decoder) erro
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem TopicSearchResultItemRelatedItem
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			o.Value = append(o.Value, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -162588,15 +162811,22 @@ func (s *WorkflowRun) Decode(d *jx.Decoder) error {
 		case "pull_requests":
 			requiredBitSet[1] |= 1 << 7
 			s.PullRequests = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem PullRequestMinimal
-				if err := elem.Decode(d); err != nil {
+			switch tt := d.Next(); tt {
+			case jx.Null:
+				if err := d.Skip(); err != nil {
 					return err
 				}
-				s.PullRequests = append(s.PullRequests, elem)
-				return nil
-			}); err != nil {
-				return err
+			default:
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem PullRequestMinimal
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					s.PullRequests = append(s.PullRequests, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
 			}
 		case "created_at":
 			requiredBitSet[2] |= 1 << 0
