@@ -585,6 +585,15 @@
           },
           "optional": {
             "type": "integer"
+          },
+          "sub_map": {
+            "$ref": "#/components/schemas/StringMap"
+          },
+          "inlined_sub_map": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         },
         "additionalProperties": {

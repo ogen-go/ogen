@@ -57,6 +57,13 @@ func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if $g.Format }}, format func(*jx.D
 		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
+	{{- else if $g.IsMap }}
+		{{- if not $g.Fields }}
+		o.Value = make({{ $g.Go }})
+		{{- end }}
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 	{{- else if $g.IsArray }}
 		{{ template "json/dec_array_elems" elem $g "o.Value" }}
 	{{- else if $g.JSON.Fn }}

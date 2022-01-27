@@ -299,6 +299,28 @@ func TestJSONAdditionalProperties(t *testing.T) {
 				false,
 			},
 			{
+				`{"required": 1, "sub_map":{"runtime_field": "field"}}`,
+				api.MapWithProperties{
+					Required:        1,
+					AdditionalProps: map[string]string{},
+					SubMap: api.NewOptStringMap(api.StringMap{
+						"runtime_field": "field",
+					}),
+				},
+				false,
+			},
+			{
+				`{"required": 1, "inlined_sub_map":{"runtime_field": "field"}}`,
+				api.MapWithProperties{
+					Required:        1,
+					AdditionalProps: map[string]string{},
+					InlinedSubMap: api.NewOptMapWithPropertiesInlinedSubMap(api.MapWithPropertiesInlinedSubMap{
+						"runtime_field": "field",
+					}),
+				},
+				false,
+			},
+			{
 				// MapWithProperties expects string for `runtime_field`.
 				`{"required": 1, "runtime_field": 10}`,
 				api.MapWithProperties{},
@@ -312,8 +334,8 @@ func TestJSONAdditionalProperties(t *testing.T) {
 				if err := r.Decode(jx.DecodeStr(tc.Input)); tc.Error {
 					require.Error(t, err)
 				} else {
-					require.Equal(t, tc.Expected, r)
 					require.NoError(t, err)
+					require.Equal(t, tc.Expected, r)
 				}
 			})
 		}
@@ -358,6 +380,25 @@ func TestJSONAdditionalProperties(t *testing.T) {
 					},
 				},
 				`{"a":{"b":"c"}}`,
+			},
+			{
+				api.MapWithProperties{
+					Required: 1,
+					SubMap: api.NewOptStringMap(api.StringMap{
+						"runtime_field": "field",
+					}),
+				},
+				`{"required": 1, "sub_map":{"runtime_field": "field"}}`,
+			},
+			{
+				api.MapWithProperties{
+					Required:        1,
+					AdditionalProps: map[string]string{},
+					InlinedSubMap: api.NewOptMapWithPropertiesInlinedSubMap(api.MapWithPropertiesInlinedSubMap{
+						"runtime_field": "field",
+					}),
+				},
+				`{"required": 1, "inlined_sub_map":{"runtime_field": "field"}}`,
 			},
 		} {
 			// Make range value copy to prevent data races.
