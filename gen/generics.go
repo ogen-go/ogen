@@ -9,7 +9,7 @@ import (
 
 func (g *Generator) wrapGenerics() {
 	for _, t := range g.types {
-		if t.Is(ir.KindStruct) {
+		if t.Is(ir.KindStruct) || (t.Is(ir.KindMap) && len(t.Fields) > 0) {
 			g.boxStructFields(t)
 		}
 	}

@@ -92,6 +92,11 @@ func (t *Type) ReceiverType() string {
 	return t.Name
 }
 
+// AdditionalPropsField returns name of additional properties field.
+func (t *Type) AdditionalPropsField() string {
+	return "AdditionalProps"
+}
+
 func (t *Type) needsPointerReceiverType() bool {
 	switch t.Kind {
 	case KindPointer, KindArray, KindMap:

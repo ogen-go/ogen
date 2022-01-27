@@ -526,7 +526,8 @@
       "StringMap": {
         "type": "object",
         "additionalProperties": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         }
       },
       "NullableEnums": {
@@ -565,6 +566,29 @@
               null
             ]
           }
+        }
+      },
+      "StringStringMap": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/StringMap"
+        }
+      },
+      "MapWithProperties": {
+        "type": "object",
+        "required": [
+          "required"
+        ],
+        "properties": {
+          "required": {
+            "type": "integer"
+          },
+          "optional": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": {
+          "type": "string"
         }
       },
       "Data": {
@@ -753,7 +777,10 @@
             "$ref": "#/components/schemas/ArrayTest"
           },
           "testMap": {
-            "$ref": "#/components/schemas/StringMap"
+            "$ref": "#/components/schemas/StringStringMap"
+          },
+          "testMapWithProps": {
+            "$ref": "#/components/schemas/MapWithProperties"
           },
           "testDate": {
             "type": "string",

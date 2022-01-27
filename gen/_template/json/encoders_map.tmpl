@@ -9,9 +9,11 @@ func (s {{ $.Name }}) Encode(e *jx.Writer) {
 		_ = first
 	)
 	{{- if $fields.NotEmpty }}
-	{{- template "json/encode_struct_fields" $fields }}
+	{
+		{{- template "json/encode_struct_fields" $fields }}
+	}
 	{{- end }}
-	for k, elem := range s{{- if $fields.NotEmpty }}.Addtional{{- end }} {
+	for k, elem := range s{{- if $fields.NotEmpty }}.{{ $.AdditionalPropsField }}{{- end }} {
 		if !first {
 			e.Comma()
 		}
@@ -40,7 +42,12 @@ func (s {{ if $fields.NotEmpty }}*{{ end }}{{ $.Name }}) Decode(d *jx.Decoder) e
 	var requiredBitSet [{{ len $requiredMask }}]uint8
 	{{- end }}
 
-	m := s{{ if $fields.NotEmpty }}.Addtional{{ end }}
+	m := s{{ if $fields.NotEmpty }}.{{ $.AdditionalPropsField }}
+	if m == nil {
+		m = map[string]{{ $.Item.Go }}{}
+		s.{{ $.AdditionalPropsField }} = m
+	}
+	{{- end }}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 	{{- range $i, $f := $fields }}
@@ -48,7 +55,6 @@ func (s {{ if $fields.NotEmpty }}*{{ end }}{{ $.Name }}) Decode(d *jx.Decoder) e
 		{{- if $f.Spec.Required }}
 		requiredBitSet[{{ div $i 8 }}] |= 1 << {{ mod $i 8 }}
 		{{- end }}
-		s := s.Fields
 		{{- template "json/dec" field_elem $f }}
 	{{- end }}
 		default:

@@ -35,7 +35,7 @@
 			return errors.Wrap(err, "pointer")
 		}
 	{{- end -}}
-	{{- if or ($t.IsStruct) ($t.IsAlias) ($t.IsEnum) ($t.IsSum) }}
+	{{- if or ($t.IsStruct) ($t.IsMap) ($t.IsAlias) ($t.IsEnum) ($t.IsSum) }}
 	{{- $validated = true }}
 	if err := {{ $.Var }}.Validate(); err != nil {
 		return err
@@ -140,6 +140,40 @@ func (s {{ $t.Name }}) Validate() error {
 		}
 	{{- end }}
 	{{- end }}{{/*Range fields*/}}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+{{- else if $t.IsMap }}
+func (s {{ $t.Name }}) Validate() error {
+	var failures []validate.FieldError
+	{{- range $f := $t.Fields }}{{/*Range fields*/}}
+	{{- if $f.Type.NeedValidation }}
+		if err := func() error {
+			{{- template "validate" field_elem $f }}
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name: "{{ $f.Spec.Name }}",
+				Error: err,
+			})
+		}
+	{{- end }}
+	{{- end }}{{/*Range fields*/}}
+
+	{{- if $t.Item.NeedValidation }}
+	for key, elem := range s{{ if $t.Fields }}.{{ $t.AdditionalPropsField }}{{ end }} {
+		if err := func() error {
+			{{- template "validate" map_elem $t.Item }}
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  key,
+				Error: err,
+			})
+		}
+	}
+	{{- end }}
+
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
