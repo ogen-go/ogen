@@ -1,0 +1,9 @@
+{{- /*gotype: []string*/ -}}
+{{- define "godoc_def" }}{{- if $ }}
+{{- template "godoc" $ }}
+// {{- /* Trailing comment line */ -}}
+{{- end }}{{- end }}
+
+{{- define "godoc" }}{{- range $line := $ }}
+// {{ $line }}
+{{- end }}{{- end }}

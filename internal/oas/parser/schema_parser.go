@@ -113,9 +113,10 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 			}
 
 			s.Properties = append(s.Properties, oas.Property{
-				Name:     propSpec.Name,
-				Schema:   prop,
-				Required: required(propSpec.Name),
+				Name:        propSpec.Name,
+				Description: propSpec.Schema.Description,
+				Schema:      prop,
+				Required:    required(propSpec.Name),
 			})
 		}
 		return s, nil

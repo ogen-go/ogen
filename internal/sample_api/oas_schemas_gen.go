@@ -64,6 +64,7 @@ var (
 	_ = sync.Pool{}
 )
 
+// Test array encoder/decoder generation.
 // Ref: #/components/schemas/ArrayTest
 type ArrayTest struct {
 	Required         []string          `json:"required"`
@@ -393,11 +394,15 @@ func (*NotFound) petUploadAvatarByIDRes() {}
 
 // Ref: #/components/schemas/NullableEnums
 type NullableEnums struct {
-	OnlyNullable  NullableEnumsOnlyNullable     `json:"only_nullable"`
+	// Must not be nullable.
+	OnlyNullable NullableEnumsOnlyNullable `json:"only_nullable"`
+	// Must be nullable.
 	OnlyNullValue NilNullableEnumsOnlyNullValue `json:"only_null_value"`
-	Both          NilNullableEnumsBoth          `json:"both"`
+	// Must be nullable.
+	Both NilNullableEnumsBoth `json:"both"`
 }
 
+// Must be nullable.
 type NullableEnumsBoth string
 
 const (
@@ -405,6 +410,7 @@ const (
 	NullableEnumsBothDesc NullableEnumsBoth = "desc"
 )
 
+// Must be nullable.
 type NullableEnumsOnlyNullValue string
 
 const (
@@ -412,6 +418,7 @@ const (
 	NullableEnumsOnlyNullValueDesc NullableEnumsOnlyNullValue = "desc"
 )
 
+// Must not be nullable.
 type NullableEnumsOnlyNullable string
 
 const (
@@ -1311,6 +1318,7 @@ func (o OptUUID) Or(d uuid.UUID) uuid.UUID {
 	return d
 }
 
+// Cute and lovely creature.
 // Ref: #/components/schemas/Pet
 type Pet struct {
 	Primary          *Pet                 `json:"primary"`

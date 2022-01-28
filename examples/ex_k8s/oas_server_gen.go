@@ -68,617 +68,925 @@ var (
 type Handler interface {
 	// GetAPIVersions implements getAPIVersions operation.
 	//
+	// Get available API versions.
+	//
 	// GET /apis/
 	GetAPIVersions(ctx context.Context) (GetAPIVersionsRes, error)
 	// GetAdmissionregistrationAPIGroup implements getAdmissionregistrationAPIGroup operation.
+	//
+	// Get information of a group.
 	//
 	// GET /apis/admissionregistration.k8s.io/
 	GetAdmissionregistrationAPIGroup(ctx context.Context) (GetAdmissionregistrationAPIGroupRes, error)
 	// GetAdmissionregistrationV1APIResources implements getAdmissionregistrationV1APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /apis/admissionregistration.k8s.io/v1/
 	GetAdmissionregistrationV1APIResources(ctx context.Context) (GetAdmissionregistrationV1APIResourcesRes, error)
 	// GetApiextensionsAPIGroup implements getApiextensionsAPIGroup operation.
+	//
+	// Get information of a group.
 	//
 	// GET /apis/apiextensions.k8s.io/
 	GetApiextensionsAPIGroup(ctx context.Context) (GetApiextensionsAPIGroupRes, error)
 	// GetApiextensionsV1APIResources implements getApiextensionsV1APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /apis/apiextensions.k8s.io/v1/
 	GetApiextensionsV1APIResources(ctx context.Context) (GetApiextensionsV1APIResourcesRes, error)
 	// GetApiregistrationAPIGroup implements getApiregistrationAPIGroup operation.
+	//
+	// Get information of a group.
 	//
 	// GET /apis/apiregistration.k8s.io/
 	GetApiregistrationAPIGroup(ctx context.Context) (GetApiregistrationAPIGroupRes, error)
 	// GetApiregistrationV1APIResources implements getApiregistrationV1APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /apis/apiregistration.k8s.io/v1/
 	GetApiregistrationV1APIResources(ctx context.Context) (GetApiregistrationV1APIResourcesRes, error)
 	// GetAppsAPIGroup implements getAppsAPIGroup operation.
+	//
+	// Get information of a group.
 	//
 	// GET /apis/apps/
 	GetAppsAPIGroup(ctx context.Context) (GetAppsAPIGroupRes, error)
 	// GetAppsV1APIResources implements getAppsV1APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /apis/apps/v1/
 	GetAppsV1APIResources(ctx context.Context) (GetAppsV1APIResourcesRes, error)
 	// GetAuthenticationAPIGroup implements getAuthenticationAPIGroup operation.
+	//
+	// Get information of a group.
 	//
 	// GET /apis/authentication.k8s.io/
 	GetAuthenticationAPIGroup(ctx context.Context) (GetAuthenticationAPIGroupRes, error)
 	// GetAuthenticationV1APIResources implements getAuthenticationV1APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /apis/authentication.k8s.io/v1/
 	GetAuthenticationV1APIResources(ctx context.Context) (GetAuthenticationV1APIResourcesRes, error)
 	// GetAuthorizationAPIGroup implements getAuthorizationAPIGroup operation.
+	//
+	// Get information of a group.
 	//
 	// GET /apis/authorization.k8s.io/
 	GetAuthorizationAPIGroup(ctx context.Context) (GetAuthorizationAPIGroupRes, error)
 	// GetAuthorizationV1APIResources implements getAuthorizationV1APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /apis/authorization.k8s.io/v1/
 	GetAuthorizationV1APIResources(ctx context.Context) (GetAuthorizationV1APIResourcesRes, error)
 	// GetAutoscalingAPIGroup implements getAutoscalingAPIGroup operation.
+	//
+	// Get information of a group.
 	//
 	// GET /apis/autoscaling/
 	GetAutoscalingAPIGroup(ctx context.Context) (GetAutoscalingAPIGroupRes, error)
 	// GetAutoscalingV1APIResources implements getAutoscalingV1APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /apis/autoscaling/v1/
 	GetAutoscalingV1APIResources(ctx context.Context) (GetAutoscalingV1APIResourcesRes, error)
 	// GetAutoscalingV2beta1APIResources implements getAutoscalingV2beta1APIResources operation.
+	//
+	// Get available resources.
 	//
 	// GET /apis/autoscaling/v2beta1/
 	GetAutoscalingV2beta1APIResources(ctx context.Context) (GetAutoscalingV2beta1APIResourcesRes, error)
 	// GetAutoscalingV2beta2APIResources implements getAutoscalingV2beta2APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /apis/autoscaling/v2beta2/
 	GetAutoscalingV2beta2APIResources(ctx context.Context) (GetAutoscalingV2beta2APIResourcesRes, error)
 	// GetBatchAPIGroup implements getBatchAPIGroup operation.
+	//
+	// Get information of a group.
 	//
 	// GET /apis/batch/
 	GetBatchAPIGroup(ctx context.Context) (GetBatchAPIGroupRes, error)
 	// GetBatchV1APIResources implements getBatchV1APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /apis/batch/v1/
 	GetBatchV1APIResources(ctx context.Context) (GetBatchV1APIResourcesRes, error)
 	// GetBatchV1beta1APIResources implements getBatchV1beta1APIResources operation.
+	//
+	// Get available resources.
 	//
 	// GET /apis/batch/v1beta1/
 	GetBatchV1beta1APIResources(ctx context.Context) (GetBatchV1beta1APIResourcesRes, error)
 	// GetCertificatesAPIGroup implements getCertificatesAPIGroup operation.
 	//
+	// Get information of a group.
+	//
 	// GET /apis/certificates.k8s.io/
 	GetCertificatesAPIGroup(ctx context.Context) (GetCertificatesAPIGroupRes, error)
 	// GetCertificatesV1APIResources implements getCertificatesV1APIResources operation.
+	//
+	// Get available resources.
 	//
 	// GET /apis/certificates.k8s.io/v1/
 	GetCertificatesV1APIResources(ctx context.Context) (GetCertificatesV1APIResourcesRes, error)
 	// GetCodeVersion implements getCodeVersion operation.
 	//
+	// Get the code version.
+	//
 	// GET /version/
 	GetCodeVersion(ctx context.Context) (GetCodeVersionRes, error)
 	// GetCoordinationAPIGroup implements getCoordinationAPIGroup operation.
+	//
+	// Get information of a group.
 	//
 	// GET /apis/coordination.k8s.io/
 	GetCoordinationAPIGroup(ctx context.Context) (GetCoordinationAPIGroupRes, error)
 	// GetCoordinationV1APIResources implements getCoordinationV1APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /apis/coordination.k8s.io/v1/
 	GetCoordinationV1APIResources(ctx context.Context) (GetCoordinationV1APIResourcesRes, error)
 	// GetCoreAPIVersions implements getCoreAPIVersions operation.
+	//
+	// Get available API versions.
 	//
 	// GET /api/
 	GetCoreAPIVersions(ctx context.Context) (GetCoreAPIVersionsRes, error)
 	// GetCoreV1APIResources implements getCoreV1APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /api/v1/
 	GetCoreV1APIResources(ctx context.Context) (GetCoreV1APIResourcesRes, error)
 	// GetDiscoveryAPIGroup implements getDiscoveryAPIGroup operation.
+	//
+	// Get information of a group.
 	//
 	// GET /apis/discovery.k8s.io/
 	GetDiscoveryAPIGroup(ctx context.Context) (GetDiscoveryAPIGroupRes, error)
 	// GetDiscoveryV1APIResources implements getDiscoveryV1APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /apis/discovery.k8s.io/v1/
 	GetDiscoveryV1APIResources(ctx context.Context) (GetDiscoveryV1APIResourcesRes, error)
 	// GetDiscoveryV1beta1APIResources implements getDiscoveryV1beta1APIResources operation.
+	//
+	// Get available resources.
 	//
 	// GET /apis/discovery.k8s.io/v1beta1/
 	GetDiscoveryV1beta1APIResources(ctx context.Context) (GetDiscoveryV1beta1APIResourcesRes, error)
 	// GetEventsAPIGroup implements getEventsAPIGroup operation.
 	//
+	// Get information of a group.
+	//
 	// GET /apis/events.k8s.io/
 	GetEventsAPIGroup(ctx context.Context) (GetEventsAPIGroupRes, error)
 	// GetEventsV1APIResources implements getEventsV1APIResources operation.
+	//
+	// Get available resources.
 	//
 	// GET /apis/events.k8s.io/v1/
 	GetEventsV1APIResources(ctx context.Context) (GetEventsV1APIResourcesRes, error)
 	// GetEventsV1beta1APIResources implements getEventsV1beta1APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /apis/events.k8s.io/v1beta1/
 	GetEventsV1beta1APIResources(ctx context.Context) (GetEventsV1beta1APIResourcesRes, error)
 	// GetFlowcontrolApiserverAPIGroup implements getFlowcontrolApiserverAPIGroup operation.
+	//
+	// Get information of a group.
 	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/
 	GetFlowcontrolApiserverAPIGroup(ctx context.Context) (GetFlowcontrolApiserverAPIGroupRes, error)
 	// GetFlowcontrolApiserverV1beta1APIResources implements getFlowcontrolApiserverV1beta1APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/
 	GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context) (GetFlowcontrolApiserverV1beta1APIResourcesRes, error)
 	// GetFlowcontrolApiserverV1beta2APIResources implements getFlowcontrolApiserverV1beta2APIResources operation.
+	//
+	// Get available resources.
 	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/
 	GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context) (GetFlowcontrolApiserverV1beta2APIResourcesRes, error)
 	// GetInternalApiserverAPIGroup implements getInternalApiserverAPIGroup operation.
 	//
+	// Get information of a group.
+	//
 	// GET /apis/internal.apiserver.k8s.io/
 	GetInternalApiserverAPIGroup(ctx context.Context) (GetInternalApiserverAPIGroupRes, error)
 	// GetInternalApiserverV1alpha1APIResources implements getInternalApiserverV1alpha1APIResources operation.
+	//
+	// Get available resources.
 	//
 	// GET /apis/internal.apiserver.k8s.io/v1alpha1/
 	GetInternalApiserverV1alpha1APIResources(ctx context.Context) (GetInternalApiserverV1alpha1APIResourcesRes, error)
 	// GetNetworkingAPIGroup implements getNetworkingAPIGroup operation.
 	//
+	// Get information of a group.
+	//
 	// GET /apis/networking.k8s.io/
 	GetNetworkingAPIGroup(ctx context.Context) (GetNetworkingAPIGroupRes, error)
 	// GetNetworkingV1APIResources implements getNetworkingV1APIResources operation.
+	//
+	// Get available resources.
 	//
 	// GET /apis/networking.k8s.io/v1/
 	GetNetworkingV1APIResources(ctx context.Context) (GetNetworkingV1APIResourcesRes, error)
 	// GetNodeAPIGroup implements getNodeAPIGroup operation.
 	//
+	// Get information of a group.
+	//
 	// GET /apis/node.k8s.io/
 	GetNodeAPIGroup(ctx context.Context) (GetNodeAPIGroupRes, error)
 	// GetNodeV1APIResources implements getNodeV1APIResources operation.
+	//
+	// Get available resources.
 	//
 	// GET /apis/node.k8s.io/v1/
 	GetNodeV1APIResources(ctx context.Context) (GetNodeV1APIResourcesRes, error)
 	// GetNodeV1alpha1APIResources implements getNodeV1alpha1APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /apis/node.k8s.io/v1alpha1/
 	GetNodeV1alpha1APIResources(ctx context.Context) (GetNodeV1alpha1APIResourcesRes, error)
 	// GetNodeV1beta1APIResources implements getNodeV1beta1APIResources operation.
+	//
+	// Get available resources.
 	//
 	// GET /apis/node.k8s.io/v1beta1/
 	GetNodeV1beta1APIResources(ctx context.Context) (GetNodeV1beta1APIResourcesRes, error)
 	// GetPolicyAPIGroup implements getPolicyAPIGroup operation.
 	//
+	// Get information of a group.
+	//
 	// GET /apis/policy/
 	GetPolicyAPIGroup(ctx context.Context) (GetPolicyAPIGroupRes, error)
 	// GetPolicyV1APIResources implements getPolicyV1APIResources operation.
+	//
+	// Get available resources.
 	//
 	// GET /apis/policy/v1/
 	GetPolicyV1APIResources(ctx context.Context) (GetPolicyV1APIResourcesRes, error)
 	// GetPolicyV1beta1APIResources implements getPolicyV1beta1APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /apis/policy/v1beta1/
 	GetPolicyV1beta1APIResources(ctx context.Context) (GetPolicyV1beta1APIResourcesRes, error)
 	// GetRbacAuthorizationAPIGroup implements getRbacAuthorizationAPIGroup operation.
+	//
+	// Get information of a group.
 	//
 	// GET /apis/rbac.authorization.k8s.io/
 	GetRbacAuthorizationAPIGroup(ctx context.Context) (GetRbacAuthorizationAPIGroupRes, error)
 	// GetRbacAuthorizationV1APIResources implements getRbacAuthorizationV1APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /apis/rbac.authorization.k8s.io/v1/
 	GetRbacAuthorizationV1APIResources(ctx context.Context) (GetRbacAuthorizationV1APIResourcesRes, error)
 	// GetSchedulingAPIGroup implements getSchedulingAPIGroup operation.
+	//
+	// Get information of a group.
 	//
 	// GET /apis/scheduling.k8s.io/
 	GetSchedulingAPIGroup(ctx context.Context) (GetSchedulingAPIGroupRes, error)
 	// GetSchedulingV1APIResources implements getSchedulingV1APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /apis/scheduling.k8s.io/v1/
 	GetSchedulingV1APIResources(ctx context.Context) (GetSchedulingV1APIResourcesRes, error)
 	// GetServiceAccountIssuerOpenIDConfiguration implements getServiceAccountIssuerOpenIDConfiguration operation.
+	//
+	// Get service account issuer OpenID configuration, also known as the 'OIDC discovery doc'.
 	//
 	// GET /.well-known/openid-configuration/
 	GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context) (GetServiceAccountIssuerOpenIDConfigurationRes, error)
 	// GetStorageAPIGroup implements getStorageAPIGroup operation.
 	//
+	// Get information of a group.
+	//
 	// GET /apis/storage.k8s.io/
 	GetStorageAPIGroup(ctx context.Context) (GetStorageAPIGroupRes, error)
 	// GetStorageV1APIResources implements getStorageV1APIResources operation.
+	//
+	// Get available resources.
 	//
 	// GET /apis/storage.k8s.io/v1/
 	GetStorageV1APIResources(ctx context.Context) (GetStorageV1APIResourcesRes, error)
 	// GetStorageV1alpha1APIResources implements getStorageV1alpha1APIResources operation.
 	//
+	// Get available resources.
+	//
 	// GET /apis/storage.k8s.io/v1alpha1/
 	GetStorageV1alpha1APIResources(ctx context.Context) (GetStorageV1alpha1APIResourcesRes, error)
 	// GetStorageV1beta1APIResources implements getStorageV1beta1APIResources operation.
+	//
+	// Get available resources.
 	//
 	// GET /apis/storage.k8s.io/v1beta1/
 	GetStorageV1beta1APIResources(ctx context.Context) (GetStorageV1beta1APIResourcesRes, error)
 	// ListAdmissionregistrationV1MutatingWebhookConfiguration implements listAdmissionregistrationV1MutatingWebhookConfiguration operation.
 	//
+	// List or watch objects of kind MutatingWebhookConfiguration.
+	//
 	// GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations
 	ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) (ListAdmissionregistrationV1MutatingWebhookConfigurationRes, error)
 	// ListAdmissionregistrationV1ValidatingWebhookConfiguration implements listAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+	//
+	// List or watch objects of kind ValidatingWebhookConfiguration.
 	//
 	// GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations
 	ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) (ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, error)
 	// ListApiextensionsV1CustomResourceDefinition implements listApiextensionsV1CustomResourceDefinition operation.
 	//
+	// List or watch objects of kind CustomResourceDefinition.
+	//
 	// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions
 	ListApiextensionsV1CustomResourceDefinition(ctx context.Context, params ListApiextensionsV1CustomResourceDefinitionParams) (ListApiextensionsV1CustomResourceDefinitionRes, error)
 	// ListApiregistrationV1APIService implements listApiregistrationV1APIService operation.
+	//
+	// List or watch objects of kind APIService.
 	//
 	// GET /apis/apiregistration.k8s.io/v1/apiservices
 	ListApiregistrationV1APIService(ctx context.Context, params ListApiregistrationV1APIServiceParams) (ListApiregistrationV1APIServiceRes, error)
 	// ListAppsV1ControllerRevisionForAllNamespaces implements listAppsV1ControllerRevisionForAllNamespaces operation.
 	//
+	// List or watch objects of kind ControllerRevision.
+	//
 	// GET /apis/apps/v1/controllerrevisions
 	ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Context, params ListAppsV1ControllerRevisionForAllNamespacesParams) (ListAppsV1ControllerRevisionForAllNamespacesRes, error)
 	// ListAppsV1DaemonSetForAllNamespaces implements listAppsV1DaemonSetForAllNamespaces operation.
+	//
+	// List or watch objects of kind DaemonSet.
 	//
 	// GET /apis/apps/v1/daemonsets
 	ListAppsV1DaemonSetForAllNamespaces(ctx context.Context, params ListAppsV1DaemonSetForAllNamespacesParams) (ListAppsV1DaemonSetForAllNamespacesRes, error)
 	// ListAppsV1DeploymentForAllNamespaces implements listAppsV1DeploymentForAllNamespaces operation.
 	//
+	// List or watch objects of kind Deployment.
+	//
 	// GET /apis/apps/v1/deployments
 	ListAppsV1DeploymentForAllNamespaces(ctx context.Context, params ListAppsV1DeploymentForAllNamespacesParams) (ListAppsV1DeploymentForAllNamespacesRes, error)
 	// ListAppsV1NamespacedControllerRevision implements listAppsV1NamespacedControllerRevision operation.
+	//
+	// List or watch objects of kind ControllerRevision.
 	//
 	// GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions
 	ListAppsV1NamespacedControllerRevision(ctx context.Context, params ListAppsV1NamespacedControllerRevisionParams) (ListAppsV1NamespacedControllerRevisionRes, error)
 	// ListAppsV1NamespacedDaemonSet implements listAppsV1NamespacedDaemonSet operation.
 	//
+	// List or watch objects of kind DaemonSet.
+	//
 	// GET /apis/apps/v1/namespaces/{namespace}/daemonsets
 	ListAppsV1NamespacedDaemonSet(ctx context.Context, params ListAppsV1NamespacedDaemonSetParams) (ListAppsV1NamespacedDaemonSetRes, error)
 	// ListAppsV1NamespacedDeployment implements listAppsV1NamespacedDeployment operation.
+	//
+	// List or watch objects of kind Deployment.
 	//
 	// GET /apis/apps/v1/namespaces/{namespace}/deployments
 	ListAppsV1NamespacedDeployment(ctx context.Context, params ListAppsV1NamespacedDeploymentParams) (ListAppsV1NamespacedDeploymentRes, error)
 	// ListAppsV1NamespacedReplicaSet implements listAppsV1NamespacedReplicaSet operation.
 	//
+	// List or watch objects of kind ReplicaSet.
+	//
 	// GET /apis/apps/v1/namespaces/{namespace}/replicasets
 	ListAppsV1NamespacedReplicaSet(ctx context.Context, params ListAppsV1NamespacedReplicaSetParams) (ListAppsV1NamespacedReplicaSetRes, error)
 	// ListAppsV1NamespacedStatefulSet implements listAppsV1NamespacedStatefulSet operation.
+	//
+	// List or watch objects of kind StatefulSet.
 	//
 	// GET /apis/apps/v1/namespaces/{namespace}/statefulsets
 	ListAppsV1NamespacedStatefulSet(ctx context.Context, params ListAppsV1NamespacedStatefulSetParams) (ListAppsV1NamespacedStatefulSetRes, error)
 	// ListAppsV1ReplicaSetForAllNamespaces implements listAppsV1ReplicaSetForAllNamespaces operation.
 	//
+	// List or watch objects of kind ReplicaSet.
+	//
 	// GET /apis/apps/v1/replicasets
 	ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, params ListAppsV1ReplicaSetForAllNamespacesParams) (ListAppsV1ReplicaSetForAllNamespacesRes, error)
 	// ListAppsV1StatefulSetForAllNamespaces implements listAppsV1StatefulSetForAllNamespaces operation.
+	//
+	// List or watch objects of kind StatefulSet.
 	//
 	// GET /apis/apps/v1/statefulsets
 	ListAppsV1StatefulSetForAllNamespaces(ctx context.Context, params ListAppsV1StatefulSetForAllNamespacesParams) (ListAppsV1StatefulSetForAllNamespacesRes, error)
 	// ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces implements listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces operation.
 	//
+	// List or watch objects of kind HorizontalPodAutoscaler.
+	//
 	// GET /apis/autoscaling/v1/horizontalpodautoscalers
 	ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams) (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, error)
 	// ListAutoscalingV1NamespacedHorizontalPodAutoscaler implements listAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+	//
+	// List or watch objects of kind HorizontalPodAutoscaler.
 	//
 	// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers
 	ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (ListAutoscalingV1NamespacedHorizontalPodAutoscalerRes, error)
 	// ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces implements listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces operation.
 	//
+	// List or watch objects of kind HorizontalPodAutoscaler.
+	//
 	// GET /apis/autoscaling/v2beta1/horizontalpodautoscalers
 	ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams) (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, error)
 	// ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler implements listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+	//
+	// List or watch objects of kind HorizontalPodAutoscaler.
 	//
 	// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers
 	ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, error)
 	// ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces implements listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces operation.
 	//
+	// List or watch objects of kind HorizontalPodAutoscaler.
+	//
 	// GET /apis/autoscaling/v2beta2/horizontalpodautoscalers
 	ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams) (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, error)
 	// ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler implements listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+	//
+	// List or watch objects of kind HorizontalPodAutoscaler.
 	//
 	// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers
 	ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, error)
 	// ListBatchV1CronJobForAllNamespaces implements listBatchV1CronJobForAllNamespaces operation.
 	//
+	// List or watch objects of kind CronJob.
+	//
 	// GET /apis/batch/v1/cronjobs
 	ListBatchV1CronJobForAllNamespaces(ctx context.Context, params ListBatchV1CronJobForAllNamespacesParams) (ListBatchV1CronJobForAllNamespacesRes, error)
 	// ListBatchV1JobForAllNamespaces implements listBatchV1JobForAllNamespaces operation.
+	//
+	// List or watch objects of kind Job.
 	//
 	// GET /apis/batch/v1/jobs
 	ListBatchV1JobForAllNamespaces(ctx context.Context, params ListBatchV1JobForAllNamespacesParams) (ListBatchV1JobForAllNamespacesRes, error)
 	// ListBatchV1NamespacedCronJob implements listBatchV1NamespacedCronJob operation.
 	//
+	// List or watch objects of kind CronJob.
+	//
 	// GET /apis/batch/v1/namespaces/{namespace}/cronjobs
 	ListBatchV1NamespacedCronJob(ctx context.Context, params ListBatchV1NamespacedCronJobParams) (ListBatchV1NamespacedCronJobRes, error)
 	// ListBatchV1NamespacedJob implements listBatchV1NamespacedJob operation.
+	//
+	// List or watch objects of kind Job.
 	//
 	// GET /apis/batch/v1/namespaces/{namespace}/jobs
 	ListBatchV1NamespacedJob(ctx context.Context, params ListBatchV1NamespacedJobParams) (ListBatchV1NamespacedJobRes, error)
 	// ListBatchV1beta1CronJobForAllNamespaces implements listBatchV1beta1CronJobForAllNamespaces operation.
 	//
+	// List or watch objects of kind CronJob.
+	//
 	// GET /apis/batch/v1beta1/cronjobs
 	ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context, params ListBatchV1beta1CronJobForAllNamespacesParams) (ListBatchV1beta1CronJobForAllNamespacesRes, error)
 	// ListBatchV1beta1NamespacedCronJob implements listBatchV1beta1NamespacedCronJob operation.
+	//
+	// List or watch objects of kind CronJob.
 	//
 	// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs
 	ListBatchV1beta1NamespacedCronJob(ctx context.Context, params ListBatchV1beta1NamespacedCronJobParams) (ListBatchV1beta1NamespacedCronJobRes, error)
 	// ListCertificatesV1CertificateSigningRequest implements listCertificatesV1CertificateSigningRequest operation.
 	//
+	// List or watch objects of kind CertificateSigningRequest.
+	//
 	// GET /apis/certificates.k8s.io/v1/certificatesigningrequests
 	ListCertificatesV1CertificateSigningRequest(ctx context.Context, params ListCertificatesV1CertificateSigningRequestParams) (ListCertificatesV1CertificateSigningRequestRes, error)
 	// ListCoordinationV1LeaseForAllNamespaces implements listCoordinationV1LeaseForAllNamespaces operation.
+	//
+	// List or watch objects of kind Lease.
 	//
 	// GET /apis/coordination.k8s.io/v1/leases
 	ListCoordinationV1LeaseForAllNamespaces(ctx context.Context, params ListCoordinationV1LeaseForAllNamespacesParams) (ListCoordinationV1LeaseForAllNamespacesRes, error)
 	// ListCoordinationV1NamespacedLease implements listCoordinationV1NamespacedLease operation.
 	//
+	// List or watch objects of kind Lease.
+	//
 	// GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases
 	ListCoordinationV1NamespacedLease(ctx context.Context, params ListCoordinationV1NamespacedLeaseParams) (ListCoordinationV1NamespacedLeaseRes, error)
 	// ListCoreV1ComponentStatus implements listCoreV1ComponentStatus operation.
+	//
+	// List objects of kind ComponentStatus.
 	//
 	// GET /api/v1/componentstatuses
 	ListCoreV1ComponentStatus(ctx context.Context, params ListCoreV1ComponentStatusParams) (ListCoreV1ComponentStatusRes, error)
 	// ListCoreV1ConfigMapForAllNamespaces implements listCoreV1ConfigMapForAllNamespaces operation.
 	//
+	// List or watch objects of kind ConfigMap.
+	//
 	// GET /api/v1/configmaps
 	ListCoreV1ConfigMapForAllNamespaces(ctx context.Context, params ListCoreV1ConfigMapForAllNamespacesParams) (ListCoreV1ConfigMapForAllNamespacesRes, error)
 	// ListCoreV1EndpointsForAllNamespaces implements listCoreV1EndpointsForAllNamespaces operation.
+	//
+	// List or watch objects of kind Endpoints.
 	//
 	// GET /api/v1/endpoints
 	ListCoreV1EndpointsForAllNamespaces(ctx context.Context, params ListCoreV1EndpointsForAllNamespacesParams) (ListCoreV1EndpointsForAllNamespacesRes, error)
 	// ListCoreV1EventForAllNamespaces implements listCoreV1EventForAllNamespaces operation.
 	//
+	// List or watch objects of kind Event.
+	//
 	// GET /api/v1/events
 	ListCoreV1EventForAllNamespaces(ctx context.Context, params ListCoreV1EventForAllNamespacesParams) (ListCoreV1EventForAllNamespacesRes, error)
 	// ListCoreV1LimitRangeForAllNamespaces implements listCoreV1LimitRangeForAllNamespaces operation.
+	//
+	// List or watch objects of kind LimitRange.
 	//
 	// GET /api/v1/limitranges
 	ListCoreV1LimitRangeForAllNamespaces(ctx context.Context, params ListCoreV1LimitRangeForAllNamespacesParams) (ListCoreV1LimitRangeForAllNamespacesRes, error)
 	// ListCoreV1Namespace implements listCoreV1Namespace operation.
 	//
+	// List or watch objects of kind Namespace.
+	//
 	// GET /api/v1/namespaces
 	ListCoreV1Namespace(ctx context.Context, params ListCoreV1NamespaceParams) (ListCoreV1NamespaceRes, error)
 	// ListCoreV1NamespacedConfigMap implements listCoreV1NamespacedConfigMap operation.
+	//
+	// List or watch objects of kind ConfigMap.
 	//
 	// GET /api/v1/namespaces/{namespace}/configmaps
 	ListCoreV1NamespacedConfigMap(ctx context.Context, params ListCoreV1NamespacedConfigMapParams) (ListCoreV1NamespacedConfigMapRes, error)
 	// ListCoreV1NamespacedEndpoints implements listCoreV1NamespacedEndpoints operation.
 	//
+	// List or watch objects of kind Endpoints.
+	//
 	// GET /api/v1/namespaces/{namespace}/endpoints
 	ListCoreV1NamespacedEndpoints(ctx context.Context, params ListCoreV1NamespacedEndpointsParams) (ListCoreV1NamespacedEndpointsRes, error)
 	// ListCoreV1NamespacedEvent implements listCoreV1NamespacedEvent operation.
+	//
+	// List or watch objects of kind Event.
 	//
 	// GET /api/v1/namespaces/{namespace}/events
 	ListCoreV1NamespacedEvent(ctx context.Context, params ListCoreV1NamespacedEventParams) (ListCoreV1NamespacedEventRes, error)
 	// ListCoreV1NamespacedLimitRange implements listCoreV1NamespacedLimitRange operation.
 	//
+	// List or watch objects of kind LimitRange.
+	//
 	// GET /api/v1/namespaces/{namespace}/limitranges
 	ListCoreV1NamespacedLimitRange(ctx context.Context, params ListCoreV1NamespacedLimitRangeParams) (ListCoreV1NamespacedLimitRangeRes, error)
 	// ListCoreV1NamespacedPersistentVolumeClaim implements listCoreV1NamespacedPersistentVolumeClaim operation.
+	//
+	// List or watch objects of kind PersistentVolumeClaim.
 	//
 	// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims
 	ListCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params ListCoreV1NamespacedPersistentVolumeClaimParams) (ListCoreV1NamespacedPersistentVolumeClaimRes, error)
 	// ListCoreV1NamespacedPod implements listCoreV1NamespacedPod operation.
 	//
+	// List or watch objects of kind Pod.
+	//
 	// GET /api/v1/namespaces/{namespace}/pods
 	ListCoreV1NamespacedPod(ctx context.Context, params ListCoreV1NamespacedPodParams) (ListCoreV1NamespacedPodRes, error)
 	// ListCoreV1NamespacedPodTemplate implements listCoreV1NamespacedPodTemplate operation.
+	//
+	// List or watch objects of kind PodTemplate.
 	//
 	// GET /api/v1/namespaces/{namespace}/podtemplates
 	ListCoreV1NamespacedPodTemplate(ctx context.Context, params ListCoreV1NamespacedPodTemplateParams) (ListCoreV1NamespacedPodTemplateRes, error)
 	// ListCoreV1NamespacedReplicationController implements listCoreV1NamespacedReplicationController operation.
 	//
+	// List or watch objects of kind ReplicationController.
+	//
 	// GET /api/v1/namespaces/{namespace}/replicationcontrollers
 	ListCoreV1NamespacedReplicationController(ctx context.Context, params ListCoreV1NamespacedReplicationControllerParams) (ListCoreV1NamespacedReplicationControllerRes, error)
 	// ListCoreV1NamespacedResourceQuota implements listCoreV1NamespacedResourceQuota operation.
+	//
+	// List or watch objects of kind ResourceQuota.
 	//
 	// GET /api/v1/namespaces/{namespace}/resourcequotas
 	ListCoreV1NamespacedResourceQuota(ctx context.Context, params ListCoreV1NamespacedResourceQuotaParams) (ListCoreV1NamespacedResourceQuotaRes, error)
 	// ListCoreV1NamespacedSecret implements listCoreV1NamespacedSecret operation.
 	//
+	// List or watch objects of kind Secret.
+	//
 	// GET /api/v1/namespaces/{namespace}/secrets
 	ListCoreV1NamespacedSecret(ctx context.Context, params ListCoreV1NamespacedSecretParams) (ListCoreV1NamespacedSecretRes, error)
 	// ListCoreV1NamespacedService implements listCoreV1NamespacedService operation.
+	//
+	// List or watch objects of kind Service.
 	//
 	// GET /api/v1/namespaces/{namespace}/services
 	ListCoreV1NamespacedService(ctx context.Context, params ListCoreV1NamespacedServiceParams) (ListCoreV1NamespacedServiceRes, error)
 	// ListCoreV1NamespacedServiceAccount implements listCoreV1NamespacedServiceAccount operation.
 	//
+	// List or watch objects of kind ServiceAccount.
+	//
 	// GET /api/v1/namespaces/{namespace}/serviceaccounts
 	ListCoreV1NamespacedServiceAccount(ctx context.Context, params ListCoreV1NamespacedServiceAccountParams) (ListCoreV1NamespacedServiceAccountRes, error)
 	// ListCoreV1Node implements listCoreV1Node operation.
+	//
+	// List or watch objects of kind Node.
 	//
 	// GET /api/v1/nodes
 	ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams) (ListCoreV1NodeRes, error)
 	// ListCoreV1PersistentVolume implements listCoreV1PersistentVolume operation.
 	//
+	// List or watch objects of kind PersistentVolume.
+	//
 	// GET /api/v1/persistentvolumes
 	ListCoreV1PersistentVolume(ctx context.Context, params ListCoreV1PersistentVolumeParams) (ListCoreV1PersistentVolumeRes, error)
 	// ListCoreV1PersistentVolumeClaimForAllNamespaces implements listCoreV1PersistentVolumeClaimForAllNamespaces operation.
+	//
+	// List or watch objects of kind PersistentVolumeClaim.
 	//
 	// GET /api/v1/persistentvolumeclaims
 	ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Context, params ListCoreV1PersistentVolumeClaimForAllNamespacesParams) (ListCoreV1PersistentVolumeClaimForAllNamespacesRes, error)
 	// ListCoreV1PodForAllNamespaces implements listCoreV1PodForAllNamespaces operation.
 	//
+	// List or watch objects of kind Pod.
+	//
 	// GET /api/v1/pods
 	ListCoreV1PodForAllNamespaces(ctx context.Context, params ListCoreV1PodForAllNamespacesParams) (ListCoreV1PodForAllNamespacesRes, error)
 	// ListCoreV1PodTemplateForAllNamespaces implements listCoreV1PodTemplateForAllNamespaces operation.
+	//
+	// List or watch objects of kind PodTemplate.
 	//
 	// GET /api/v1/podtemplates
 	ListCoreV1PodTemplateForAllNamespaces(ctx context.Context, params ListCoreV1PodTemplateForAllNamespacesParams) (ListCoreV1PodTemplateForAllNamespacesRes, error)
 	// ListCoreV1ReplicationControllerForAllNamespaces implements listCoreV1ReplicationControllerForAllNamespaces operation.
 	//
+	// List or watch objects of kind ReplicationController.
+	//
 	// GET /api/v1/replicationcontrollers
 	ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Context, params ListCoreV1ReplicationControllerForAllNamespacesParams) (ListCoreV1ReplicationControllerForAllNamespacesRes, error)
 	// ListCoreV1ResourceQuotaForAllNamespaces implements listCoreV1ResourceQuotaForAllNamespaces operation.
+	//
+	// List or watch objects of kind ResourceQuota.
 	//
 	// GET /api/v1/resourcequotas
 	ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context, params ListCoreV1ResourceQuotaForAllNamespacesParams) (ListCoreV1ResourceQuotaForAllNamespacesRes, error)
 	// ListCoreV1SecretForAllNamespaces implements listCoreV1SecretForAllNamespaces operation.
 	//
+	// List or watch objects of kind Secret.
+	//
 	// GET /api/v1/secrets
 	ListCoreV1SecretForAllNamespaces(ctx context.Context, params ListCoreV1SecretForAllNamespacesParams) (ListCoreV1SecretForAllNamespacesRes, error)
 	// ListCoreV1ServiceAccountForAllNamespaces implements listCoreV1ServiceAccountForAllNamespaces operation.
+	//
+	// List or watch objects of kind ServiceAccount.
 	//
 	// GET /api/v1/serviceaccounts
 	ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context, params ListCoreV1ServiceAccountForAllNamespacesParams) (ListCoreV1ServiceAccountForAllNamespacesRes, error)
 	// ListCoreV1ServiceForAllNamespaces implements listCoreV1ServiceForAllNamespaces operation.
 	//
+	// List or watch objects of kind Service.
+	//
 	// GET /api/v1/services
 	ListCoreV1ServiceForAllNamespaces(ctx context.Context, params ListCoreV1ServiceForAllNamespacesParams) (ListCoreV1ServiceForAllNamespacesRes, error)
 	// ListDiscoveryV1EndpointSliceForAllNamespaces implements listDiscoveryV1EndpointSliceForAllNamespaces operation.
+	//
+	// List or watch objects of kind EndpointSlice.
 	//
 	// GET /apis/discovery.k8s.io/v1/endpointslices
 	ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Context, params ListDiscoveryV1EndpointSliceForAllNamespacesParams) (ListDiscoveryV1EndpointSliceForAllNamespacesRes, error)
 	// ListDiscoveryV1NamespacedEndpointSlice implements listDiscoveryV1NamespacedEndpointSlice operation.
 	//
+	// List or watch objects of kind EndpointSlice.
+	//
 	// GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices
 	ListDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params ListDiscoveryV1NamespacedEndpointSliceParams) (ListDiscoveryV1NamespacedEndpointSliceRes, error)
 	// ListDiscoveryV1beta1EndpointSliceForAllNamespaces implements listDiscoveryV1beta1EndpointSliceForAllNamespaces operation.
+	//
+	// List or watch objects of kind EndpointSlice.
 	//
 	// GET /apis/discovery.k8s.io/v1beta1/endpointslices
 	ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.Context, params ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams) (ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, error)
 	// ListDiscoveryV1beta1NamespacedEndpointSlice implements listDiscoveryV1beta1NamespacedEndpointSlice operation.
 	//
+	// List or watch objects of kind EndpointSlice.
+	//
 	// GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices
 	ListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params ListDiscoveryV1beta1NamespacedEndpointSliceParams) (ListDiscoveryV1beta1NamespacedEndpointSliceRes, error)
 	// ListEventsV1EventForAllNamespaces implements listEventsV1EventForAllNamespaces operation.
+	//
+	// List or watch objects of kind Event.
 	//
 	// GET /apis/events.k8s.io/v1/events
 	ListEventsV1EventForAllNamespaces(ctx context.Context, params ListEventsV1EventForAllNamespacesParams) (ListEventsV1EventForAllNamespacesRes, error)
 	// ListEventsV1NamespacedEvent implements listEventsV1NamespacedEvent operation.
 	//
+	// List or watch objects of kind Event.
+	//
 	// GET /apis/events.k8s.io/v1/namespaces/{namespace}/events
 	ListEventsV1NamespacedEvent(ctx context.Context, params ListEventsV1NamespacedEventParams) (ListEventsV1NamespacedEventRes, error)
 	// ListEventsV1beta1EventForAllNamespaces implements listEventsV1beta1EventForAllNamespaces operation.
+	//
+	// List or watch objects of kind Event.
 	//
 	// GET /apis/events.k8s.io/v1beta1/events
 	ListEventsV1beta1EventForAllNamespaces(ctx context.Context, params ListEventsV1beta1EventForAllNamespacesParams) (ListEventsV1beta1EventForAllNamespacesRes, error)
 	// ListEventsV1beta1NamespacedEvent implements listEventsV1beta1NamespacedEvent operation.
 	//
+	// List or watch objects of kind Event.
+	//
 	// GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events
 	ListEventsV1beta1NamespacedEvent(ctx context.Context, params ListEventsV1beta1NamespacedEventParams) (ListEventsV1beta1NamespacedEventRes, error)
 	// ListFlowcontrolApiserverV1beta1FlowSchema implements listFlowcontrolApiserverV1beta1FlowSchema operation.
+	//
+	// List or watch objects of kind FlowSchema.
 	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas
 	ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta1FlowSchemaParams) (ListFlowcontrolApiserverV1beta1FlowSchemaRes, error)
 	// ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration implements listFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
 	//
+	// List or watch objects of kind PriorityLevelConfiguration.
+	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations
 	ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, error)
 	// ListFlowcontrolApiserverV1beta2FlowSchema implements listFlowcontrolApiserverV1beta2FlowSchema operation.
+	//
+	// List or watch objects of kind FlowSchema.
 	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas
 	ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta2FlowSchemaParams) (ListFlowcontrolApiserverV1beta2FlowSchemaRes, error)
 	// ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration implements listFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
 	//
+	// List or watch objects of kind PriorityLevelConfiguration.
+	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations
 	ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, error)
 	// ListInternalApiserverV1alpha1StorageVersion implements listInternalApiserverV1alpha1StorageVersion operation.
+	//
+	// List or watch objects of kind StorageVersion.
 	//
 	// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions
 	ListInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ListInternalApiserverV1alpha1StorageVersionParams) (ListInternalApiserverV1alpha1StorageVersionRes, error)
 	// ListNetworkingV1IngressClass implements listNetworkingV1IngressClass operation.
 	//
+	// List or watch objects of kind IngressClass.
+	//
 	// GET /apis/networking.k8s.io/v1/ingressclasses
 	ListNetworkingV1IngressClass(ctx context.Context, params ListNetworkingV1IngressClassParams) (ListNetworkingV1IngressClassRes, error)
 	// ListNetworkingV1IngressForAllNamespaces implements listNetworkingV1IngressForAllNamespaces operation.
+	//
+	// List or watch objects of kind Ingress.
 	//
 	// GET /apis/networking.k8s.io/v1/ingresses
 	ListNetworkingV1IngressForAllNamespaces(ctx context.Context, params ListNetworkingV1IngressForAllNamespacesParams) (ListNetworkingV1IngressForAllNamespacesRes, error)
 	// ListNetworkingV1NamespacedIngress implements listNetworkingV1NamespacedIngress operation.
 	//
+	// List or watch objects of kind Ingress.
+	//
 	// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses
 	ListNetworkingV1NamespacedIngress(ctx context.Context, params ListNetworkingV1NamespacedIngressParams) (ListNetworkingV1NamespacedIngressRes, error)
 	// ListNetworkingV1NamespacedNetworkPolicy implements listNetworkingV1NamespacedNetworkPolicy operation.
+	//
+	// List or watch objects of kind NetworkPolicy.
 	//
 	// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies
 	ListNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params ListNetworkingV1NamespacedNetworkPolicyParams) (ListNetworkingV1NamespacedNetworkPolicyRes, error)
 	// ListNetworkingV1NetworkPolicyForAllNamespaces implements listNetworkingV1NetworkPolicyForAllNamespaces operation.
 	//
+	// List or watch objects of kind NetworkPolicy.
+	//
 	// GET /apis/networking.k8s.io/v1/networkpolicies
 	ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Context, params ListNetworkingV1NetworkPolicyForAllNamespacesParams) (ListNetworkingV1NetworkPolicyForAllNamespacesRes, error)
 	// ListNodeV1RuntimeClass implements listNodeV1RuntimeClass operation.
+	//
+	// List or watch objects of kind RuntimeClass.
 	//
 	// GET /apis/node.k8s.io/v1/runtimeclasses
 	ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1RuntimeClassParams) (ListNodeV1RuntimeClassRes, error)
 	// ListNodeV1alpha1RuntimeClass implements listNodeV1alpha1RuntimeClass operation.
 	//
+	// List or watch objects of kind RuntimeClass.
+	//
 	// GET /apis/node.k8s.io/v1alpha1/runtimeclasses
 	ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNodeV1alpha1RuntimeClassParams) (ListNodeV1alpha1RuntimeClassRes, error)
 	// ListNodeV1beta1RuntimeClass implements listNodeV1beta1RuntimeClass operation.
+	//
+	// List or watch objects of kind RuntimeClass.
 	//
 	// GET /apis/node.k8s.io/v1beta1/runtimeclasses
 	ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNodeV1beta1RuntimeClassParams) (ListNodeV1beta1RuntimeClassRes, error)
 	// ListPolicyV1NamespacedPodDisruptionBudget implements listPolicyV1NamespacedPodDisruptionBudget operation.
 	//
+	// List or watch objects of kind PodDisruptionBudget.
+	//
 	// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets
 	ListPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params ListPolicyV1NamespacedPodDisruptionBudgetParams) (ListPolicyV1NamespacedPodDisruptionBudgetRes, error)
 	// ListPolicyV1PodDisruptionBudgetForAllNamespaces implements listPolicyV1PodDisruptionBudgetForAllNamespaces operation.
+	//
+	// List or watch objects of kind PodDisruptionBudget.
 	//
 	// GET /apis/policy/v1/poddisruptionbudgets
 	ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Context, params ListPolicyV1PodDisruptionBudgetForAllNamespacesParams) (ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, error)
 	// ListPolicyV1beta1NamespacedPodDisruptionBudget implements listPolicyV1beta1NamespacedPodDisruptionBudget operation.
 	//
+	// List or watch objects of kind PodDisruptionBudget.
+	//
 	// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets
 	ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params ListPolicyV1beta1NamespacedPodDisruptionBudgetParams) (ListPolicyV1beta1NamespacedPodDisruptionBudgetRes, error)
 	// ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces implements listPolicyV1beta1PodDisruptionBudgetForAllNamespaces operation.
+	//
+	// List or watch objects of kind PodDisruptionBudget.
 	//
 	// GET /apis/policy/v1beta1/poddisruptionbudgets
 	ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx context.Context, params ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams) (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, error)
 	// ListPolicyV1beta1PodSecurityPolicy implements listPolicyV1beta1PodSecurityPolicy operation.
 	//
+	// List or watch objects of kind PodSecurityPolicy.
+	//
 	// GET /apis/policy/v1beta1/podsecuritypolicies
 	ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ListPolicyV1beta1PodSecurityPolicyParams) (ListPolicyV1beta1PodSecurityPolicyRes, error)
 	// ListRbacAuthorizationV1ClusterRole implements listRbacAuthorizationV1ClusterRole operation.
+	//
+	// List or watch objects of kind ClusterRole.
 	//
 	// GET /apis/rbac.authorization.k8s.io/v1/clusterroles
 	ListRbacAuthorizationV1ClusterRole(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleParams) (ListRbacAuthorizationV1ClusterRoleRes, error)
 	// ListRbacAuthorizationV1ClusterRoleBinding implements listRbacAuthorizationV1ClusterRoleBinding operation.
 	//
+	// List or watch objects of kind ClusterRoleBinding.
+	//
 	// GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings
 	ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleBindingParams) (ListRbacAuthorizationV1ClusterRoleBindingRes, error)
 	// ListRbacAuthorizationV1NamespacedRole implements listRbacAuthorizationV1NamespacedRole operation.
+	//
+	// List or watch objects of kind Role.
 	//
 	// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles
 	ListRbacAuthorizationV1NamespacedRole(ctx context.Context, params ListRbacAuthorizationV1NamespacedRoleParams) (ListRbacAuthorizationV1NamespacedRoleRes, error)
 	// ListRbacAuthorizationV1NamespacedRoleBinding implements listRbacAuthorizationV1NamespacedRoleBinding operation.
 	//
+	// List or watch objects of kind RoleBinding.
+	//
 	// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings
 	ListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params ListRbacAuthorizationV1NamespacedRoleBindingParams) (ListRbacAuthorizationV1NamespacedRoleBindingRes, error)
 	// ListRbacAuthorizationV1RoleBindingForAllNamespaces implements listRbacAuthorizationV1RoleBindingForAllNamespaces operation.
+	//
+	// List or watch objects of kind RoleBinding.
 	//
 	// GET /apis/rbac.authorization.k8s.io/v1/rolebindings
 	ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.Context, params ListRbacAuthorizationV1RoleBindingForAllNamespacesParams) (ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, error)
 	// ListRbacAuthorizationV1RoleForAllNamespaces implements listRbacAuthorizationV1RoleForAllNamespaces operation.
 	//
+	// List or watch objects of kind Role.
+	//
 	// GET /apis/rbac.authorization.k8s.io/v1/roles
 	ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context, params ListRbacAuthorizationV1RoleForAllNamespacesParams) (ListRbacAuthorizationV1RoleForAllNamespacesRes, error)
 	// ListSchedulingV1PriorityClass implements listSchedulingV1PriorityClass operation.
+	//
+	// List or watch objects of kind PriorityClass.
 	//
 	// GET /apis/scheduling.k8s.io/v1/priorityclasses
 	ListSchedulingV1PriorityClass(ctx context.Context, params ListSchedulingV1PriorityClassParams) (ListSchedulingV1PriorityClassRes, error)
 	// ListStorageV1CSIDriver implements listStorageV1CSIDriver operation.
 	//
+	// List or watch objects of kind CSIDriver.
+	//
 	// GET /apis/storage.k8s.io/v1/csidrivers
 	ListStorageV1CSIDriver(ctx context.Context, params ListStorageV1CSIDriverParams) (ListStorageV1CSIDriverRes, error)
 	// ListStorageV1CSINode implements listStorageV1CSINode operation.
+	//
+	// List or watch objects of kind CSINode.
 	//
 	// GET /apis/storage.k8s.io/v1/csinodes
 	ListStorageV1CSINode(ctx context.Context, params ListStorageV1CSINodeParams) (ListStorageV1CSINodeRes, error)
 	// ListStorageV1StorageClass implements listStorageV1StorageClass operation.
 	//
+	// List or watch objects of kind StorageClass.
+	//
 	// GET /apis/storage.k8s.io/v1/storageclasses
 	ListStorageV1StorageClass(ctx context.Context, params ListStorageV1StorageClassParams) (ListStorageV1StorageClassRes, error)
 	// ListStorageV1VolumeAttachment implements listStorageV1VolumeAttachment operation.
+	//
+	// List or watch objects of kind VolumeAttachment.
 	//
 	// GET /apis/storage.k8s.io/v1/volumeattachments
 	ListStorageV1VolumeAttachment(ctx context.Context, params ListStorageV1VolumeAttachmentParams) (ListStorageV1VolumeAttachmentRes, error)
 	// ListStorageV1alpha1CSIStorageCapacityForAllNamespaces implements listStorageV1alpha1CSIStorageCapacityForAllNamespaces operation.
 	//
+	// List or watch objects of kind CSIStorageCapacity.
+	//
 	// GET /apis/storage.k8s.io/v1alpha1/csistoragecapacities
 	ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx context.Context, params ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams) (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, error)
 	// ListStorageV1alpha1NamespacedCSIStorageCapacity implements listStorageV1alpha1NamespacedCSIStorageCapacity operation.
+	//
+	// List or watch objects of kind CSIStorageCapacity.
 	//
 	// GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities
 	ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params ListStorageV1alpha1NamespacedCSIStorageCapacityParams) (ListStorageV1alpha1NamespacedCSIStorageCapacityRes, error)
 	// ListStorageV1beta1CSIStorageCapacityForAllNamespaces implements listStorageV1beta1CSIStorageCapacityForAllNamespaces operation.
 	//
+	// List or watch objects of kind CSIStorageCapacity.
+	//
 	// GET /apis/storage.k8s.io/v1beta1/csistoragecapacities
 	ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx context.Context, params ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams) (ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, error)
 	// ListStorageV1beta1NamespacedCSIStorageCapacity implements listStorageV1beta1NamespacedCSIStorageCapacity operation.
+	//
+	// List or watch objects of kind CSIStorageCapacity.
 	//
 	// GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities
 	ListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params ListStorageV1beta1NamespacedCSIStorageCapacityParams) (ListStorageV1beta1NamespacedCSIStorageCapacityRes, error)
@@ -692,1029 +1000,1706 @@ type Handler interface {
 	LogFileListHandler(ctx context.Context) (LogFileListHandlerUnauthorized, error)
 	// ReadAdmissionregistrationV1MutatingWebhookConfiguration implements readAdmissionregistrationV1MutatingWebhookConfiguration operation.
 	//
+	// Read the specified MutatingWebhookConfiguration.
+	//
 	// GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}
 	ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ReadAdmissionregistrationV1MutatingWebhookConfigurationParams) (ReadAdmissionregistrationV1MutatingWebhookConfigurationRes, error)
 	// ReadAdmissionregistrationV1ValidatingWebhookConfiguration implements readAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+	//
+	// Read the specified ValidatingWebhookConfiguration.
 	//
 	// GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}
 	ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams) (ReadAdmissionregistrationV1ValidatingWebhookConfigurationRes, error)
 	// ReadApiextensionsV1CustomResourceDefinition implements readApiextensionsV1CustomResourceDefinition operation.
 	//
+	// Read the specified CustomResourceDefinition.
+	//
 	// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}
 	ReadApiextensionsV1CustomResourceDefinition(ctx context.Context, params ReadApiextensionsV1CustomResourceDefinitionParams) (ReadApiextensionsV1CustomResourceDefinitionRes, error)
 	// ReadApiextensionsV1CustomResourceDefinitionStatus implements readApiextensionsV1CustomResourceDefinitionStatus operation.
+	//
+	// Read status of the specified CustomResourceDefinition.
 	//
 	// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status
 	ReadApiextensionsV1CustomResourceDefinitionStatus(ctx context.Context, params ReadApiextensionsV1CustomResourceDefinitionStatusParams) (ReadApiextensionsV1CustomResourceDefinitionStatusRes, error)
 	// ReadApiregistrationV1APIService implements readApiregistrationV1APIService operation.
 	//
+	// Read the specified APIService.
+	//
 	// GET /apis/apiregistration.k8s.io/v1/apiservices/{name}
 	ReadApiregistrationV1APIService(ctx context.Context, params ReadApiregistrationV1APIServiceParams) (ReadApiregistrationV1APIServiceRes, error)
 	// ReadApiregistrationV1APIServiceStatus implements readApiregistrationV1APIServiceStatus operation.
+	//
+	// Read status of the specified APIService.
 	//
 	// GET /apis/apiregistration.k8s.io/v1/apiservices/{name}/status
 	ReadApiregistrationV1APIServiceStatus(ctx context.Context, params ReadApiregistrationV1APIServiceStatusParams) (ReadApiregistrationV1APIServiceStatusRes, error)
 	// ReadAppsV1NamespacedControllerRevision implements readAppsV1NamespacedControllerRevision operation.
 	//
+	// Read the specified ControllerRevision.
+	//
 	// GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}
 	ReadAppsV1NamespacedControllerRevision(ctx context.Context, params ReadAppsV1NamespacedControllerRevisionParams) (ReadAppsV1NamespacedControllerRevisionRes, error)
 	// ReadAppsV1NamespacedDaemonSet implements readAppsV1NamespacedDaemonSet operation.
+	//
+	// Read the specified DaemonSet.
 	//
 	// GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}
 	ReadAppsV1NamespacedDaemonSet(ctx context.Context, params ReadAppsV1NamespacedDaemonSetParams) (ReadAppsV1NamespacedDaemonSetRes, error)
 	// ReadAppsV1NamespacedDaemonSetStatus implements readAppsV1NamespacedDaemonSetStatus operation.
 	//
+	// Read status of the specified DaemonSet.
+	//
 	// GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status
 	ReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, params ReadAppsV1NamespacedDaemonSetStatusParams) (ReadAppsV1NamespacedDaemonSetStatusRes, error)
 	// ReadAppsV1NamespacedDeployment implements readAppsV1NamespacedDeployment operation.
+	//
+	// Read the specified Deployment.
 	//
 	// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}
 	ReadAppsV1NamespacedDeployment(ctx context.Context, params ReadAppsV1NamespacedDeploymentParams) (ReadAppsV1NamespacedDeploymentRes, error)
 	// ReadAppsV1NamespacedDeploymentScale implements readAppsV1NamespacedDeploymentScale operation.
 	//
+	// Read scale of the specified Deployment.
+	//
 	// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale
 	ReadAppsV1NamespacedDeploymentScale(ctx context.Context, params ReadAppsV1NamespacedDeploymentScaleParams) (ReadAppsV1NamespacedDeploymentScaleRes, error)
 	// ReadAppsV1NamespacedDeploymentStatus implements readAppsV1NamespacedDeploymentStatus operation.
+	//
+	// Read status of the specified Deployment.
 	//
 	// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/status
 	ReadAppsV1NamespacedDeploymentStatus(ctx context.Context, params ReadAppsV1NamespacedDeploymentStatusParams) (ReadAppsV1NamespacedDeploymentStatusRes, error)
 	// ReadAppsV1NamespacedReplicaSet implements readAppsV1NamespacedReplicaSet operation.
 	//
+	// Read the specified ReplicaSet.
+	//
 	// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}
 	ReadAppsV1NamespacedReplicaSet(ctx context.Context, params ReadAppsV1NamespacedReplicaSetParams) (ReadAppsV1NamespacedReplicaSetRes, error)
 	// ReadAppsV1NamespacedReplicaSetScale implements readAppsV1NamespacedReplicaSetScale operation.
+	//
+	// Read scale of the specified ReplicaSet.
 	//
 	// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale
 	ReadAppsV1NamespacedReplicaSetScale(ctx context.Context, params ReadAppsV1NamespacedReplicaSetScaleParams) (ReadAppsV1NamespacedReplicaSetScaleRes, error)
 	// ReadAppsV1NamespacedReplicaSetStatus implements readAppsV1NamespacedReplicaSetStatus operation.
 	//
+	// Read status of the specified ReplicaSet.
+	//
 	// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status
 	ReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, params ReadAppsV1NamespacedReplicaSetStatusParams) (ReadAppsV1NamespacedReplicaSetStatusRes, error)
 	// ReadAppsV1NamespacedStatefulSet implements readAppsV1NamespacedStatefulSet operation.
+	//
+	// Read the specified StatefulSet.
 	//
 	// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}
 	ReadAppsV1NamespacedStatefulSet(ctx context.Context, params ReadAppsV1NamespacedStatefulSetParams) (ReadAppsV1NamespacedStatefulSetRes, error)
 	// ReadAppsV1NamespacedStatefulSetScale implements readAppsV1NamespacedStatefulSetScale operation.
 	//
+	// Read scale of the specified StatefulSet.
+	//
 	// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale
 	ReadAppsV1NamespacedStatefulSetScale(ctx context.Context, params ReadAppsV1NamespacedStatefulSetScaleParams) (ReadAppsV1NamespacedStatefulSetScaleRes, error)
 	// ReadAppsV1NamespacedStatefulSetStatus implements readAppsV1NamespacedStatefulSetStatus operation.
+	//
+	// Read status of the specified StatefulSet.
 	//
 	// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status
 	ReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, params ReadAppsV1NamespacedStatefulSetStatusParams) (ReadAppsV1NamespacedStatefulSetStatusRes, error)
 	// ReadAutoscalingV1NamespacedHorizontalPodAutoscaler implements readAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
 	//
+	// Read the specified HorizontalPodAutoscaler.
+	//
 	// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}
 	ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRes, error)
 	// ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus implements readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus operation.
+	//
+	// Read status of the specified HorizontalPodAutoscaler.
 	//
 	// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 	ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams) (ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes, error)
 	// ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler implements readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
 	//
+	// Read the specified HorizontalPodAutoscaler.
+	//
 	// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}
 	ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, error)
 	// ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus implements readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus operation.
+	//
+	// Read status of the specified HorizontalPodAutoscaler.
 	//
 	// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 	ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams) (ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes, error)
 	// ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler implements readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
 	//
+	// Read the specified HorizontalPodAutoscaler.
+	//
 	// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}
 	ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, error)
 	// ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus implements readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus operation.
+	//
+	// Read status of the specified HorizontalPodAutoscaler.
 	//
 	// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 	ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams) (ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes, error)
 	// ReadBatchV1NamespacedCronJob implements readBatchV1NamespacedCronJob operation.
 	//
+	// Read the specified CronJob.
+	//
 	// GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}
 	ReadBatchV1NamespacedCronJob(ctx context.Context, params ReadBatchV1NamespacedCronJobParams) (ReadBatchV1NamespacedCronJobRes, error)
 	// ReadBatchV1NamespacedCronJobStatus implements readBatchV1NamespacedCronJobStatus operation.
+	//
+	// Read status of the specified CronJob.
 	//
 	// GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status
 	ReadBatchV1NamespacedCronJobStatus(ctx context.Context, params ReadBatchV1NamespacedCronJobStatusParams) (ReadBatchV1NamespacedCronJobStatusRes, error)
 	// ReadBatchV1NamespacedJob implements readBatchV1NamespacedJob operation.
 	//
+	// Read the specified Job.
+	//
 	// GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}
 	ReadBatchV1NamespacedJob(ctx context.Context, params ReadBatchV1NamespacedJobParams) (ReadBatchV1NamespacedJobRes, error)
 	// ReadBatchV1NamespacedJobStatus implements readBatchV1NamespacedJobStatus operation.
+	//
+	// Read status of the specified Job.
 	//
 	// GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}/status
 	ReadBatchV1NamespacedJobStatus(ctx context.Context, params ReadBatchV1NamespacedJobStatusParams) (ReadBatchV1NamespacedJobStatusRes, error)
 	// ReadBatchV1beta1NamespacedCronJob implements readBatchV1beta1NamespacedCronJob operation.
 	//
+	// Read the specified CronJob.
+	//
 	// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}
 	ReadBatchV1beta1NamespacedCronJob(ctx context.Context, params ReadBatchV1beta1NamespacedCronJobParams) (ReadBatchV1beta1NamespacedCronJobRes, error)
 	// ReadBatchV1beta1NamespacedCronJobStatus implements readBatchV1beta1NamespacedCronJobStatus operation.
+	//
+	// Read status of the specified CronJob.
 	//
 	// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status
 	ReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context, params ReadBatchV1beta1NamespacedCronJobStatusParams) (ReadBatchV1beta1NamespacedCronJobStatusRes, error)
 	// ReadCertificatesV1CertificateSigningRequest implements readCertificatesV1CertificateSigningRequest operation.
 	//
+	// Read the specified CertificateSigningRequest.
+	//
 	// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}
 	ReadCertificatesV1CertificateSigningRequest(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestParams) (ReadCertificatesV1CertificateSigningRequestRes, error)
 	// ReadCertificatesV1CertificateSigningRequestApproval implements readCertificatesV1CertificateSigningRequestApproval operation.
+	//
+	// Read approval of the specified CertificateSigningRequest.
 	//
 	// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval
 	ReadCertificatesV1CertificateSigningRequestApproval(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestApprovalParams) (ReadCertificatesV1CertificateSigningRequestApprovalRes, error)
 	// ReadCertificatesV1CertificateSigningRequestStatus implements readCertificatesV1CertificateSigningRequestStatus operation.
 	//
+	// Read status of the specified CertificateSigningRequest.
+	//
 	// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status
 	ReadCertificatesV1CertificateSigningRequestStatus(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestStatusParams) (ReadCertificatesV1CertificateSigningRequestStatusRes, error)
 	// ReadCoordinationV1NamespacedLease implements readCoordinationV1NamespacedLease operation.
+	//
+	// Read the specified Lease.
 	//
 	// GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}
 	ReadCoordinationV1NamespacedLease(ctx context.Context, params ReadCoordinationV1NamespacedLeaseParams) (ReadCoordinationV1NamespacedLeaseRes, error)
 	// ReadCoreV1ComponentStatus implements readCoreV1ComponentStatus operation.
 	//
+	// Read the specified ComponentStatus.
+	//
 	// GET /api/v1/componentstatuses/{name}
 	ReadCoreV1ComponentStatus(ctx context.Context, params ReadCoreV1ComponentStatusParams) (ReadCoreV1ComponentStatusRes, error)
 	// ReadCoreV1Namespace implements readCoreV1Namespace operation.
+	//
+	// Read the specified Namespace.
 	//
 	// GET /api/v1/namespaces/{name}
 	ReadCoreV1Namespace(ctx context.Context, params ReadCoreV1NamespaceParams) (ReadCoreV1NamespaceRes, error)
 	// ReadCoreV1NamespaceStatus implements readCoreV1NamespaceStatus operation.
 	//
+	// Read status of the specified Namespace.
+	//
 	// GET /api/v1/namespaces/{name}/status
 	ReadCoreV1NamespaceStatus(ctx context.Context, params ReadCoreV1NamespaceStatusParams) (ReadCoreV1NamespaceStatusRes, error)
 	// ReadCoreV1NamespacedConfigMap implements readCoreV1NamespacedConfigMap operation.
+	//
+	// Read the specified ConfigMap.
 	//
 	// GET /api/v1/namespaces/{namespace}/configmaps/{name}
 	ReadCoreV1NamespacedConfigMap(ctx context.Context, params ReadCoreV1NamespacedConfigMapParams) (ReadCoreV1NamespacedConfigMapRes, error)
 	// ReadCoreV1NamespacedEndpoints implements readCoreV1NamespacedEndpoints operation.
 	//
+	// Read the specified Endpoints.
+	//
 	// GET /api/v1/namespaces/{namespace}/endpoints/{name}
 	ReadCoreV1NamespacedEndpoints(ctx context.Context, params ReadCoreV1NamespacedEndpointsParams) (ReadCoreV1NamespacedEndpointsRes, error)
 	// ReadCoreV1NamespacedEvent implements readCoreV1NamespacedEvent operation.
+	//
+	// Read the specified Event.
 	//
 	// GET /api/v1/namespaces/{namespace}/events/{name}
 	ReadCoreV1NamespacedEvent(ctx context.Context, params ReadCoreV1NamespacedEventParams) (ReadCoreV1NamespacedEventRes, error)
 	// ReadCoreV1NamespacedLimitRange implements readCoreV1NamespacedLimitRange operation.
 	//
+	// Read the specified LimitRange.
+	//
 	// GET /api/v1/namespaces/{namespace}/limitranges/{name}
 	ReadCoreV1NamespacedLimitRange(ctx context.Context, params ReadCoreV1NamespacedLimitRangeParams) (ReadCoreV1NamespacedLimitRangeRes, error)
 	// ReadCoreV1NamespacedPersistentVolumeClaim implements readCoreV1NamespacedPersistentVolumeClaim operation.
+	//
+	// Read the specified PersistentVolumeClaim.
 	//
 	// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
 	ReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params ReadCoreV1NamespacedPersistentVolumeClaimParams) (ReadCoreV1NamespacedPersistentVolumeClaimRes, error)
 	// ReadCoreV1NamespacedPersistentVolumeClaimStatus implements readCoreV1NamespacedPersistentVolumeClaimStatus operation.
 	//
+	// Read status of the specified PersistentVolumeClaim.
+	//
 	// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
 	ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context.Context, params ReadCoreV1NamespacedPersistentVolumeClaimStatusParams) (ReadCoreV1NamespacedPersistentVolumeClaimStatusRes, error)
 	// ReadCoreV1NamespacedPod implements readCoreV1NamespacedPod operation.
+	//
+	// Read the specified Pod.
 	//
 	// GET /api/v1/namespaces/{namespace}/pods/{name}
 	ReadCoreV1NamespacedPod(ctx context.Context, params ReadCoreV1NamespacedPodParams) (ReadCoreV1NamespacedPodRes, error)
 	// ReadCoreV1NamespacedPodEphemeralcontainers implements readCoreV1NamespacedPodEphemeralcontainers operation.
 	//
+	// Read ephemeralcontainers of the specified Pod.
+	//
 	// GET /api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers
 	ReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Context, params ReadCoreV1NamespacedPodEphemeralcontainersParams) (ReadCoreV1NamespacedPodEphemeralcontainersRes, error)
 	// ReadCoreV1NamespacedPodLog implements readCoreV1NamespacedPodLog operation.
+	//
+	// Read log of the specified Pod.
 	//
 	// GET /api/v1/namespaces/{namespace}/pods/{name}/log
 	ReadCoreV1NamespacedPodLog(ctx context.Context, params ReadCoreV1NamespacedPodLogParams) (ReadCoreV1NamespacedPodLogRes, error)
 	// ReadCoreV1NamespacedPodStatus implements readCoreV1NamespacedPodStatus operation.
 	//
+	// Read status of the specified Pod.
+	//
 	// GET /api/v1/namespaces/{namespace}/pods/{name}/status
 	ReadCoreV1NamespacedPodStatus(ctx context.Context, params ReadCoreV1NamespacedPodStatusParams) (ReadCoreV1NamespacedPodStatusRes, error)
 	// ReadCoreV1NamespacedPodTemplate implements readCoreV1NamespacedPodTemplate operation.
+	//
+	// Read the specified PodTemplate.
 	//
 	// GET /api/v1/namespaces/{namespace}/podtemplates/{name}
 	ReadCoreV1NamespacedPodTemplate(ctx context.Context, params ReadCoreV1NamespacedPodTemplateParams) (ReadCoreV1NamespacedPodTemplateRes, error)
 	// ReadCoreV1NamespacedReplicationController implements readCoreV1NamespacedReplicationController operation.
 	//
+	// Read the specified ReplicationController.
+	//
 	// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}
 	ReadCoreV1NamespacedReplicationController(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerParams) (ReadCoreV1NamespacedReplicationControllerRes, error)
 	// ReadCoreV1NamespacedReplicationControllerScale implements readCoreV1NamespacedReplicationControllerScale operation.
+	//
+	// Read scale of the specified ReplicationController.
 	//
 	// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale
 	ReadCoreV1NamespacedReplicationControllerScale(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerScaleParams) (ReadCoreV1NamespacedReplicationControllerScaleRes, error)
 	// ReadCoreV1NamespacedReplicationControllerStatus implements readCoreV1NamespacedReplicationControllerStatus operation.
 	//
+	// Read status of the specified ReplicationController.
+	//
 	// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status
 	ReadCoreV1NamespacedReplicationControllerStatus(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerStatusParams) (ReadCoreV1NamespacedReplicationControllerStatusRes, error)
 	// ReadCoreV1NamespacedResourceQuota implements readCoreV1NamespacedResourceQuota operation.
+	//
+	// Read the specified ResourceQuota.
 	//
 	// GET /api/v1/namespaces/{namespace}/resourcequotas/{name}
 	ReadCoreV1NamespacedResourceQuota(ctx context.Context, params ReadCoreV1NamespacedResourceQuotaParams) (ReadCoreV1NamespacedResourceQuotaRes, error)
 	// ReadCoreV1NamespacedResourceQuotaStatus implements readCoreV1NamespacedResourceQuotaStatus operation.
 	//
+	// Read status of the specified ResourceQuota.
+	//
 	// GET /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
 	ReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context, params ReadCoreV1NamespacedResourceQuotaStatusParams) (ReadCoreV1NamespacedResourceQuotaStatusRes, error)
 	// ReadCoreV1NamespacedSecret implements readCoreV1NamespacedSecret operation.
+	//
+	// Read the specified Secret.
 	//
 	// GET /api/v1/namespaces/{namespace}/secrets/{name}
 	ReadCoreV1NamespacedSecret(ctx context.Context, params ReadCoreV1NamespacedSecretParams) (ReadCoreV1NamespacedSecretRes, error)
 	// ReadCoreV1NamespacedService implements readCoreV1NamespacedService operation.
 	//
+	// Read the specified Service.
+	//
 	// GET /api/v1/namespaces/{namespace}/services/{name}
 	ReadCoreV1NamespacedService(ctx context.Context, params ReadCoreV1NamespacedServiceParams) (ReadCoreV1NamespacedServiceRes, error)
 	// ReadCoreV1NamespacedServiceAccount implements readCoreV1NamespacedServiceAccount operation.
+	//
+	// Read the specified ServiceAccount.
 	//
 	// GET /api/v1/namespaces/{namespace}/serviceaccounts/{name}
 	ReadCoreV1NamespacedServiceAccount(ctx context.Context, params ReadCoreV1NamespacedServiceAccountParams) (ReadCoreV1NamespacedServiceAccountRes, error)
 	// ReadCoreV1NamespacedServiceStatus implements readCoreV1NamespacedServiceStatus operation.
 	//
+	// Read status of the specified Service.
+	//
 	// GET /api/v1/namespaces/{namespace}/services/{name}/status
 	ReadCoreV1NamespacedServiceStatus(ctx context.Context, params ReadCoreV1NamespacedServiceStatusParams) (ReadCoreV1NamespacedServiceStatusRes, error)
 	// ReadCoreV1Node implements readCoreV1Node operation.
+	//
+	// Read the specified Node.
 	//
 	// GET /api/v1/nodes/{name}
 	ReadCoreV1Node(ctx context.Context, params ReadCoreV1NodeParams) (ReadCoreV1NodeRes, error)
 	// ReadCoreV1NodeStatus implements readCoreV1NodeStatus operation.
 	//
+	// Read status of the specified Node.
+	//
 	// GET /api/v1/nodes/{name}/status
 	ReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1NodeStatusParams) (ReadCoreV1NodeStatusRes, error)
 	// ReadCoreV1PersistentVolume implements readCoreV1PersistentVolume operation.
+	//
+	// Read the specified PersistentVolume.
 	//
 	// GET /api/v1/persistentvolumes/{name}
 	ReadCoreV1PersistentVolume(ctx context.Context, params ReadCoreV1PersistentVolumeParams) (ReadCoreV1PersistentVolumeRes, error)
 	// ReadCoreV1PersistentVolumeStatus implements readCoreV1PersistentVolumeStatus operation.
 	//
+	// Read status of the specified PersistentVolume.
+	//
 	// GET /api/v1/persistentvolumes/{name}/status
 	ReadCoreV1PersistentVolumeStatus(ctx context.Context, params ReadCoreV1PersistentVolumeStatusParams) (ReadCoreV1PersistentVolumeStatusRes, error)
 	// ReadDiscoveryV1NamespacedEndpointSlice implements readDiscoveryV1NamespacedEndpointSlice operation.
+	//
+	// Read the specified EndpointSlice.
 	//
 	// GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}
 	ReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params ReadDiscoveryV1NamespacedEndpointSliceParams) (ReadDiscoveryV1NamespacedEndpointSliceRes, error)
 	// ReadDiscoveryV1beta1NamespacedEndpointSlice implements readDiscoveryV1beta1NamespacedEndpointSlice operation.
 	//
+	// Read the specified EndpointSlice.
+	//
 	// GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}
 	ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params ReadDiscoveryV1beta1NamespacedEndpointSliceParams) (ReadDiscoveryV1beta1NamespacedEndpointSliceRes, error)
 	// ReadEventsV1NamespacedEvent implements readEventsV1NamespacedEvent operation.
+	//
+	// Read the specified Event.
 	//
 	// GET /apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}
 	ReadEventsV1NamespacedEvent(ctx context.Context, params ReadEventsV1NamespacedEventParams) (ReadEventsV1NamespacedEventRes, error)
 	// ReadEventsV1beta1NamespacedEvent implements readEventsV1beta1NamespacedEvent operation.
 	//
+	// Read the specified Event.
+	//
 	// GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}
 	ReadEventsV1beta1NamespacedEvent(ctx context.Context, params ReadEventsV1beta1NamespacedEventParams) (ReadEventsV1beta1NamespacedEventRes, error)
 	// ReadFlowcontrolApiserverV1beta1FlowSchema implements readFlowcontrolApiserverV1beta1FlowSchema operation.
+	//
+	// Read the specified FlowSchema.
 	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}
 	ReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ReadFlowcontrolApiserverV1beta1FlowSchemaParams) (ReadFlowcontrolApiserverV1beta1FlowSchemaRes, error)
 	// ReadFlowcontrolApiserverV1beta1FlowSchemaStatus implements readFlowcontrolApiserverV1beta1FlowSchemaStatus operation.
 	//
+	// Read status of the specified FlowSchema.
+	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status
 	ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams) (ReadFlowcontrolApiserverV1beta1FlowSchemaStatusRes, error)
 	// ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration implements readFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+	//
+	// Read the specified PriorityLevelConfiguration.
 	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}
 	ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, error)
 	// ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus implements readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus operation.
 	//
+	// Read status of the specified PriorityLevelConfiguration.
+	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status
 	ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams) (ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes, error)
 	// ReadFlowcontrolApiserverV1beta2FlowSchema implements readFlowcontrolApiserverV1beta2FlowSchema operation.
+	//
+	// Read the specified FlowSchema.
 	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}
 	ReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ReadFlowcontrolApiserverV1beta2FlowSchemaParams) (ReadFlowcontrolApiserverV1beta2FlowSchemaRes, error)
 	// ReadFlowcontrolApiserverV1beta2FlowSchemaStatus implements readFlowcontrolApiserverV1beta2FlowSchemaStatus operation.
 	//
+	// Read status of the specified FlowSchema.
+	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status
 	ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams) (ReadFlowcontrolApiserverV1beta2FlowSchemaStatusRes, error)
 	// ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration implements readFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+	//
+	// Read the specified PriorityLevelConfiguration.
 	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}
 	ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, error)
 	// ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus implements readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus operation.
 	//
+	// Read status of the specified PriorityLevelConfiguration.
+	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status
 	ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams) (ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes, error)
 	// ReadInternalApiserverV1alpha1StorageVersion implements readInternalApiserverV1alpha1StorageVersion operation.
+	//
+	// Read the specified StorageVersion.
 	//
 	// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}
 	ReadInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ReadInternalApiserverV1alpha1StorageVersionParams) (ReadInternalApiserverV1alpha1StorageVersionRes, error)
 	// ReadInternalApiserverV1alpha1StorageVersionStatus implements readInternalApiserverV1alpha1StorageVersionStatus operation.
 	//
+	// Read status of the specified StorageVersion.
+	//
 	// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status
 	ReadInternalApiserverV1alpha1StorageVersionStatus(ctx context.Context, params ReadInternalApiserverV1alpha1StorageVersionStatusParams) (ReadInternalApiserverV1alpha1StorageVersionStatusRes, error)
 	// ReadNetworkingV1IngressClass implements readNetworkingV1IngressClass operation.
+	//
+	// Read the specified IngressClass.
 	//
 	// GET /apis/networking.k8s.io/v1/ingressclasses/{name}
 	ReadNetworkingV1IngressClass(ctx context.Context, params ReadNetworkingV1IngressClassParams) (ReadNetworkingV1IngressClassRes, error)
 	// ReadNetworkingV1NamespacedIngress implements readNetworkingV1NamespacedIngress operation.
 	//
+	// Read the specified Ingress.
+	//
 	// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}
 	ReadNetworkingV1NamespacedIngress(ctx context.Context, params ReadNetworkingV1NamespacedIngressParams) (ReadNetworkingV1NamespacedIngressRes, error)
 	// ReadNetworkingV1NamespacedIngressStatus implements readNetworkingV1NamespacedIngressStatus operation.
+	//
+	// Read status of the specified Ingress.
 	//
 	// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status
 	ReadNetworkingV1NamespacedIngressStatus(ctx context.Context, params ReadNetworkingV1NamespacedIngressStatusParams) (ReadNetworkingV1NamespacedIngressStatusRes, error)
 	// ReadNetworkingV1NamespacedNetworkPolicy implements readNetworkingV1NamespacedNetworkPolicy operation.
 	//
+	// Read the specified NetworkPolicy.
+	//
 	// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}
 	ReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params ReadNetworkingV1NamespacedNetworkPolicyParams) (ReadNetworkingV1NamespacedNetworkPolicyRes, error)
 	// ReadNodeV1RuntimeClass implements readNodeV1RuntimeClass operation.
+	//
+	// Read the specified RuntimeClass.
 	//
 	// GET /apis/node.k8s.io/v1/runtimeclasses/{name}
 	ReadNodeV1RuntimeClass(ctx context.Context, params ReadNodeV1RuntimeClassParams) (ReadNodeV1RuntimeClassRes, error)
 	// ReadNodeV1alpha1RuntimeClass implements readNodeV1alpha1RuntimeClass operation.
 	//
+	// Read the specified RuntimeClass.
+	//
 	// GET /apis/node.k8s.io/v1alpha1/runtimeclasses/{name}
 	ReadNodeV1alpha1RuntimeClass(ctx context.Context, params ReadNodeV1alpha1RuntimeClassParams) (ReadNodeV1alpha1RuntimeClassRes, error)
 	// ReadNodeV1beta1RuntimeClass implements readNodeV1beta1RuntimeClass operation.
+	//
+	// Read the specified RuntimeClass.
 	//
 	// GET /apis/node.k8s.io/v1beta1/runtimeclasses/{name}
 	ReadNodeV1beta1RuntimeClass(ctx context.Context, params ReadNodeV1beta1RuntimeClassParams) (ReadNodeV1beta1RuntimeClassRes, error)
 	// ReadPolicyV1NamespacedPodDisruptionBudget implements readPolicyV1NamespacedPodDisruptionBudget operation.
 	//
+	// Read the specified PodDisruptionBudget.
+	//
 	// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}
 	ReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params ReadPolicyV1NamespacedPodDisruptionBudgetParams) (ReadPolicyV1NamespacedPodDisruptionBudgetRes, error)
 	// ReadPolicyV1NamespacedPodDisruptionBudgetStatus implements readPolicyV1NamespacedPodDisruptionBudgetStatus operation.
+	//
+	// Read status of the specified PodDisruptionBudget.
 	//
 	// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
 	ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context.Context, params ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams) (ReadPolicyV1NamespacedPodDisruptionBudgetStatusRes, error)
 	// ReadPolicyV1beta1NamespacedPodDisruptionBudget implements readPolicyV1beta1NamespacedPodDisruptionBudget operation.
 	//
+	// Read the specified PodDisruptionBudget.
+	//
 	// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}
 	ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams) (ReadPolicyV1beta1NamespacedPodDisruptionBudgetRes, error)
 	// ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus implements readPolicyV1beta1NamespacedPodDisruptionBudgetStatus operation.
+	//
+	// Read status of the specified PodDisruptionBudget.
 	//
 	// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
 	ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx context.Context, params ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams) (ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes, error)
 	// ReadPolicyV1beta1PodSecurityPolicy implements readPolicyV1beta1PodSecurityPolicy operation.
 	//
+	// Read the specified PodSecurityPolicy.
+	//
 	// GET /apis/policy/v1beta1/podsecuritypolicies/{name}
 	ReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ReadPolicyV1beta1PodSecurityPolicyParams) (ReadPolicyV1beta1PodSecurityPolicyRes, error)
 	// ReadRbacAuthorizationV1ClusterRole implements readRbacAuthorizationV1ClusterRole operation.
+	//
+	// Read the specified ClusterRole.
 	//
 	// GET /apis/rbac.authorization.k8s.io/v1/clusterroles/{name}
 	ReadRbacAuthorizationV1ClusterRole(ctx context.Context, params ReadRbacAuthorizationV1ClusterRoleParams) (ReadRbacAuthorizationV1ClusterRoleRes, error)
 	// ReadRbacAuthorizationV1ClusterRoleBinding implements readRbacAuthorizationV1ClusterRoleBinding operation.
 	//
+	// Read the specified ClusterRoleBinding.
+	//
 	// GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}
 	ReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ReadRbacAuthorizationV1ClusterRoleBindingParams) (ReadRbacAuthorizationV1ClusterRoleBindingRes, error)
 	// ReadRbacAuthorizationV1NamespacedRole implements readRbacAuthorizationV1NamespacedRole operation.
+	//
+	// Read the specified Role.
 	//
 	// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}
 	ReadRbacAuthorizationV1NamespacedRole(ctx context.Context, params ReadRbacAuthorizationV1NamespacedRoleParams) (ReadRbacAuthorizationV1NamespacedRoleRes, error)
 	// ReadRbacAuthorizationV1NamespacedRoleBinding implements readRbacAuthorizationV1NamespacedRoleBinding operation.
 	//
+	// Read the specified RoleBinding.
+	//
 	// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}
 	ReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params ReadRbacAuthorizationV1NamespacedRoleBindingParams) (ReadRbacAuthorizationV1NamespacedRoleBindingRes, error)
 	// ReadSchedulingV1PriorityClass implements readSchedulingV1PriorityClass operation.
+	//
+	// Read the specified PriorityClass.
 	//
 	// GET /apis/scheduling.k8s.io/v1/priorityclasses/{name}
 	ReadSchedulingV1PriorityClass(ctx context.Context, params ReadSchedulingV1PriorityClassParams) (ReadSchedulingV1PriorityClassRes, error)
 	// ReadStorageV1CSIDriver implements readStorageV1CSIDriver operation.
 	//
+	// Read the specified CSIDriver.
+	//
 	// GET /apis/storage.k8s.io/v1/csidrivers/{name}
 	ReadStorageV1CSIDriver(ctx context.Context, params ReadStorageV1CSIDriverParams) (ReadStorageV1CSIDriverRes, error)
 	// ReadStorageV1CSINode implements readStorageV1CSINode operation.
+	//
+	// Read the specified CSINode.
 	//
 	// GET /apis/storage.k8s.io/v1/csinodes/{name}
 	ReadStorageV1CSINode(ctx context.Context, params ReadStorageV1CSINodeParams) (ReadStorageV1CSINodeRes, error)
 	// ReadStorageV1StorageClass implements readStorageV1StorageClass operation.
 	//
+	// Read the specified StorageClass.
+	//
 	// GET /apis/storage.k8s.io/v1/storageclasses/{name}
 	ReadStorageV1StorageClass(ctx context.Context, params ReadStorageV1StorageClassParams) (ReadStorageV1StorageClassRes, error)
 	// ReadStorageV1VolumeAttachment implements readStorageV1VolumeAttachment operation.
+	//
+	// Read the specified VolumeAttachment.
 	//
 	// GET /apis/storage.k8s.io/v1/volumeattachments/{name}
 	ReadStorageV1VolumeAttachment(ctx context.Context, params ReadStorageV1VolumeAttachmentParams) (ReadStorageV1VolumeAttachmentRes, error)
 	// ReadStorageV1VolumeAttachmentStatus implements readStorageV1VolumeAttachmentStatus operation.
 	//
+	// Read status of the specified VolumeAttachment.
+	//
 	// GET /apis/storage.k8s.io/v1/volumeattachments/{name}/status
 	ReadStorageV1VolumeAttachmentStatus(ctx context.Context, params ReadStorageV1VolumeAttachmentStatusParams) (ReadStorageV1VolumeAttachmentStatusRes, error)
 	// ReadStorageV1alpha1NamespacedCSIStorageCapacity implements readStorageV1alpha1NamespacedCSIStorageCapacity operation.
+	//
+	// Read the specified CSIStorageCapacity.
 	//
 	// GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}
 	ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params ReadStorageV1alpha1NamespacedCSIStorageCapacityParams) (ReadStorageV1alpha1NamespacedCSIStorageCapacityRes, error)
 	// ReadStorageV1beta1NamespacedCSIStorageCapacity implements readStorageV1beta1NamespacedCSIStorageCapacity operation.
 	//
+	// Read the specified CSIStorageCapacity.
+	//
 	// GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}
 	ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params ReadStorageV1beta1NamespacedCSIStorageCapacityParams) (ReadStorageV1beta1NamespacedCSIStorageCapacityRes, error)
 	// WatchAdmissionregistrationV1MutatingWebhookConfiguration implements watchAdmissionregistrationV1MutatingWebhookConfiguration operation.
+	//
+	// Watch changes to an object of kind MutatingWebhookConfiguration. deprecated: use the 'watch'
+	// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+	// parameter.
 	//
 	// GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}
 	WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params WatchAdmissionregistrationV1MutatingWebhookConfigurationParams) (WatchAdmissionregistrationV1MutatingWebhookConfigurationRes, error)
 	// WatchAdmissionregistrationV1MutatingWebhookConfigurationList implements watchAdmissionregistrationV1MutatingWebhookConfigurationList operation.
 	//
+	// Watch individual changes to a list of MutatingWebhookConfiguration. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
 	// GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations
 	WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx context.Context, params WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams) (WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, error)
 	// WatchAdmissionregistrationV1ValidatingWebhookConfiguration implements watchAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+	//
+	// Watch changes to an object of kind ValidatingWebhookConfiguration. deprecated: use the 'watch'
+	// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+	// parameter.
 	//
 	// GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}
 	WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams) (WatchAdmissionregistrationV1ValidatingWebhookConfigurationRes, error)
 	// WatchAdmissionregistrationV1ValidatingWebhookConfigurationList implements watchAdmissionregistrationV1ValidatingWebhookConfigurationList operation.
 	//
+	// Watch individual changes to a list of ValidatingWebhookConfiguration. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
 	// GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations
 	WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx context.Context, params WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams) (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, error)
 	// WatchApiextensionsV1CustomResourceDefinition implements watchApiextensionsV1CustomResourceDefinition operation.
+	//
+	// Watch changes to an object of kind CustomResourceDefinition. deprecated: use the 'watch' parameter
+	// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}
 	WatchApiextensionsV1CustomResourceDefinition(ctx context.Context, params WatchApiextensionsV1CustomResourceDefinitionParams) (WatchApiextensionsV1CustomResourceDefinitionRes, error)
 	// WatchApiextensionsV1CustomResourceDefinitionList implements watchApiextensionsV1CustomResourceDefinitionList operation.
 	//
+	// Watch individual changes to a list of CustomResourceDefinition. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
 	// GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions
 	WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Context, params WatchApiextensionsV1CustomResourceDefinitionListParams) (WatchApiextensionsV1CustomResourceDefinitionListRes, error)
 	// WatchApiregistrationV1APIService implements watchApiregistrationV1APIService operation.
+	//
+	// Watch changes to an object of kind APIService. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/apiregistration.k8s.io/v1/watch/apiservices/{name}
 	WatchApiregistrationV1APIService(ctx context.Context, params WatchApiregistrationV1APIServiceParams) (WatchApiregistrationV1APIServiceRes, error)
 	// WatchApiregistrationV1APIServiceList implements watchApiregistrationV1APIServiceList operation.
 	//
+	// Watch individual changes to a list of APIService. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /apis/apiregistration.k8s.io/v1/watch/apiservices
 	WatchApiregistrationV1APIServiceList(ctx context.Context, params WatchApiregistrationV1APIServiceListParams) (WatchApiregistrationV1APIServiceListRes, error)
 	// WatchAppsV1ControllerRevisionListForAllNamespaces implements watchAppsV1ControllerRevisionListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter
+	// with a list operation instead.
 	//
 	// GET /apis/apps/v1/watch/controllerrevisions
 	WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.Context, params WatchAppsV1ControllerRevisionListForAllNamespacesParams) (WatchAppsV1ControllerRevisionListForAllNamespacesRes, error)
 	// WatchAppsV1DaemonSetListForAllNamespaces implements watchAppsV1DaemonSetListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of DaemonSet. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /apis/apps/v1/watch/daemonsets
 	WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context, params WatchAppsV1DaemonSetListForAllNamespacesParams) (WatchAppsV1DaemonSetListForAllNamespacesRes, error)
 	// WatchAppsV1DeploymentListForAllNamespaces implements watchAppsV1DeploymentListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a
+	// list operation instead.
 	//
 	// GET /apis/apps/v1/watch/deployments
 	WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context, params WatchAppsV1DeploymentListForAllNamespacesParams) (WatchAppsV1DeploymentListForAllNamespacesRes, error)
 	// WatchAppsV1NamespacedControllerRevision implements watchAppsV1NamespacedControllerRevision operation.
 	//
+	// Watch changes to an object of kind ControllerRevision. deprecated: use the 'watch' parameter with
+	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
 	// GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}
 	WatchAppsV1NamespacedControllerRevision(ctx context.Context, params WatchAppsV1NamespacedControllerRevisionParams) (WatchAppsV1NamespacedControllerRevisionRes, error)
 	// WatchAppsV1NamespacedControllerRevisionList implements watchAppsV1NamespacedControllerRevisionList operation.
+	//
+	// Watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter
+	// with a list operation instead.
 	//
 	// GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions
 	WatchAppsV1NamespacedControllerRevisionList(ctx context.Context, params WatchAppsV1NamespacedControllerRevisionListParams) (WatchAppsV1NamespacedControllerRevisionListRes, error)
 	// WatchAppsV1NamespacedDaemonSet implements watchAppsV1NamespacedDaemonSet operation.
 	//
+	// Watch changes to an object of kind DaemonSet. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
 	// GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}
 	WatchAppsV1NamespacedDaemonSet(ctx context.Context, params WatchAppsV1NamespacedDaemonSetParams) (WatchAppsV1NamespacedDaemonSetRes, error)
 	// WatchAppsV1NamespacedDaemonSetList implements watchAppsV1NamespacedDaemonSetList operation.
+	//
+	// Watch individual changes to a list of DaemonSet. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets
 	WatchAppsV1NamespacedDaemonSetList(ctx context.Context, params WatchAppsV1NamespacedDaemonSetListParams) (WatchAppsV1NamespacedDaemonSetListRes, error)
 	// WatchAppsV1NamespacedDeployment implements watchAppsV1NamespacedDeployment operation.
 	//
+	// Watch changes to an object of kind Deployment. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
 	// GET /apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}
 	WatchAppsV1NamespacedDeployment(ctx context.Context, params WatchAppsV1NamespacedDeploymentParams) (WatchAppsV1NamespacedDeploymentRes, error)
 	// WatchAppsV1NamespacedDeploymentList implements watchAppsV1NamespacedDeploymentList operation.
+	//
+	// Watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a
+	// list operation instead.
 	//
 	// GET /apis/apps/v1/watch/namespaces/{namespace}/deployments
 	WatchAppsV1NamespacedDeploymentList(ctx context.Context, params WatchAppsV1NamespacedDeploymentListParams) (WatchAppsV1NamespacedDeploymentListRes, error)
 	// WatchAppsV1NamespacedReplicaSet implements watchAppsV1NamespacedReplicaSet operation.
 	//
+	// Watch changes to an object of kind ReplicaSet. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
 	// GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}
 	WatchAppsV1NamespacedReplicaSet(ctx context.Context, params WatchAppsV1NamespacedReplicaSetParams) (WatchAppsV1NamespacedReplicaSetRes, error)
 	// WatchAppsV1NamespacedReplicaSetList implements watchAppsV1NamespacedReplicaSetList operation.
+	//
+	// Watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a
+	// list operation instead.
 	//
 	// GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets
 	WatchAppsV1NamespacedReplicaSetList(ctx context.Context, params WatchAppsV1NamespacedReplicaSetListParams) (WatchAppsV1NamespacedReplicaSetListRes, error)
 	// WatchAppsV1NamespacedStatefulSet implements watchAppsV1NamespacedStatefulSet operation.
 	//
+	// Watch changes to an object of kind StatefulSet. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
 	// GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}
 	WatchAppsV1NamespacedStatefulSet(ctx context.Context, params WatchAppsV1NamespacedStatefulSetParams) (WatchAppsV1NamespacedStatefulSetRes, error)
 	// WatchAppsV1NamespacedStatefulSetList implements watchAppsV1NamespacedStatefulSetList operation.
+	//
+	// Watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a
+	// list operation instead.
 	//
 	// GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets
 	WatchAppsV1NamespacedStatefulSetList(ctx context.Context, params WatchAppsV1NamespacedStatefulSetListParams) (WatchAppsV1NamespacedStatefulSetListRes, error)
 	// WatchAppsV1ReplicaSetListForAllNamespaces implements watchAppsV1ReplicaSetListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /apis/apps/v1/watch/replicasets
 	WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context, params WatchAppsV1ReplicaSetListForAllNamespacesParams) (WatchAppsV1ReplicaSetListForAllNamespacesRes, error)
 	// WatchAppsV1StatefulSetListForAllNamespaces implements watchAppsV1StatefulSetListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a
+	// list operation instead.
 	//
 	// GET /apis/apps/v1/watch/statefulsets
 	WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context, params WatchAppsV1StatefulSetListForAllNamespacesParams) (WatchAppsV1StatefulSetListForAllNamespacesRes, error)
 	// WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces implements watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
 	// GET /apis/autoscaling/v1/watch/horizontalpodautoscalers
 	WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams) (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, error)
 	// WatchAutoscalingV1NamespacedHorizontalPodAutoscaler implements watchAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+	//
+	// Watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+	// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 	WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes, error)
 	// WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList implements watchAutoscalingV1NamespacedHorizontalPodAutoscalerList operation.
 	//
+	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
 	// GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers
 	WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams) (WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes, error)
 	// WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces implements watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+	// parameter with a list operation instead.
 	//
 	// GET /apis/autoscaling/v2beta1/watch/horizontalpodautoscalers
 	WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams) (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, error)
 	// WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler implements watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
 	//
+	// Watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+	// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
 	// GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 	WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, error)
 	// WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList implements watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList operation.
+	//
+	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+	// parameter with a list operation instead.
 	//
 	// GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers
 	WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams) (WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes, error)
 	// WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces implements watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
 	// GET /apis/autoscaling/v2beta2/watch/horizontalpodautoscalers
 	WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams) (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, error)
 	// WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler implements watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+	//
+	// Watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+	// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 	WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, error)
 	// WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList implements watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList operation.
 	//
+	// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
 	// GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers
 	WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams) (WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes, error)
 	// WatchBatchV1CronJobListForAllNamespaces implements watchBatchV1CronJobListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/batch/v1/watch/cronjobs
 	WatchBatchV1CronJobListForAllNamespaces(ctx context.Context, params WatchBatchV1CronJobListForAllNamespacesParams) (WatchBatchV1CronJobListForAllNamespacesRes, error)
 	// WatchBatchV1JobListForAllNamespaces implements watchBatchV1JobListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of Job. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /apis/batch/v1/watch/jobs
 	WatchBatchV1JobListForAllNamespaces(ctx context.Context, params WatchBatchV1JobListForAllNamespacesParams) (WatchBatchV1JobListForAllNamespacesRes, error)
 	// WatchBatchV1NamespacedCronJob implements watchBatchV1NamespacedCronJob operation.
+	//
+	// Watch changes to an object of kind CronJob. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}
 	WatchBatchV1NamespacedCronJob(ctx context.Context, params WatchBatchV1NamespacedCronJobParams) (WatchBatchV1NamespacedCronJobRes, error)
 	// WatchBatchV1NamespacedCronJobList implements watchBatchV1NamespacedCronJobList operation.
 	//
+	// Watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs
 	WatchBatchV1NamespacedCronJobList(ctx context.Context, params WatchBatchV1NamespacedCronJobListParams) (WatchBatchV1NamespacedCronJobListRes, error)
 	// WatchBatchV1NamespacedJob implements watchBatchV1NamespacedJob operation.
+	//
+	// Watch changes to an object of kind Job. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}
 	WatchBatchV1NamespacedJob(ctx context.Context, params WatchBatchV1NamespacedJobParams) (WatchBatchV1NamespacedJobRes, error)
 	// WatchBatchV1NamespacedJobList implements watchBatchV1NamespacedJobList operation.
 	//
+	// Watch individual changes to a list of Job. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /apis/batch/v1/watch/namespaces/{namespace}/jobs
 	WatchBatchV1NamespacedJobList(ctx context.Context, params WatchBatchV1NamespacedJobListParams) (WatchBatchV1NamespacedJobListRes, error)
 	// WatchBatchV1beta1CronJobListForAllNamespaces implements watchBatchV1beta1CronJobListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/batch/v1beta1/watch/cronjobs
 	WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Context, params WatchBatchV1beta1CronJobListForAllNamespacesParams) (WatchBatchV1beta1CronJobListForAllNamespacesRes, error)
 	// WatchBatchV1beta1NamespacedCronJob implements watchBatchV1beta1NamespacedCronJob operation.
 	//
+	// Watch changes to an object of kind CronJob. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
 	// GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}
 	WatchBatchV1beta1NamespacedCronJob(ctx context.Context, params WatchBatchV1beta1NamespacedCronJobParams) (WatchBatchV1beta1NamespacedCronJobRes, error)
 	// WatchBatchV1beta1NamespacedCronJobList implements watchBatchV1beta1NamespacedCronJobList operation.
+	//
+	// Watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs
 	WatchBatchV1beta1NamespacedCronJobList(ctx context.Context, params WatchBatchV1beta1NamespacedCronJobListParams) (WatchBatchV1beta1NamespacedCronJobListRes, error)
 	// WatchCertificatesV1CertificateSigningRequest implements watchCertificatesV1CertificateSigningRequest operation.
 	//
+	// Watch changes to an object of kind CertificateSigningRequest. deprecated: use the 'watch'
+	// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+	// parameter.
+	//
 	// GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}
 	WatchCertificatesV1CertificateSigningRequest(ctx context.Context, params WatchCertificatesV1CertificateSigningRequestParams) (WatchCertificatesV1CertificateSigningRequestRes, error)
 	// WatchCertificatesV1CertificateSigningRequestList implements watchCertificatesV1CertificateSigningRequestList operation.
+	//
+	// Watch individual changes to a list of CertificateSigningRequest. deprecated: use the 'watch'
+	// parameter with a list operation instead.
 	//
 	// GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests
 	WatchCertificatesV1CertificateSigningRequestList(ctx context.Context, params WatchCertificatesV1CertificateSigningRequestListParams) (WatchCertificatesV1CertificateSigningRequestListRes, error)
 	// WatchCoordinationV1LeaseListForAllNamespaces implements watchCoordinationV1LeaseListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of Lease. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /apis/coordination.k8s.io/v1/watch/leases
 	WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Context, params WatchCoordinationV1LeaseListForAllNamespacesParams) (WatchCoordinationV1LeaseListForAllNamespacesRes, error)
 	// WatchCoordinationV1NamespacedLease implements watchCoordinationV1NamespacedLease operation.
+	//
+	// Watch changes to an object of kind Lease. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}
 	WatchCoordinationV1NamespacedLease(ctx context.Context, params WatchCoordinationV1NamespacedLeaseParams) (WatchCoordinationV1NamespacedLeaseRes, error)
 	// WatchCoordinationV1NamespacedLeaseList implements watchCoordinationV1NamespacedLeaseList operation.
 	//
+	// Watch individual changes to a list of Lease. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases
 	WatchCoordinationV1NamespacedLeaseList(ctx context.Context, params WatchCoordinationV1NamespacedLeaseListParams) (WatchCoordinationV1NamespacedLeaseListRes, error)
 	// WatchCoreV1ConfigMapListForAllNamespaces implements watchCoreV1ConfigMapListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /api/v1/watch/configmaps
 	WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context, params WatchCoreV1ConfigMapListForAllNamespacesParams) (WatchCoreV1ConfigMapListForAllNamespacesRes, error)
 	// WatchCoreV1EndpointsListForAllNamespaces implements watchCoreV1EndpointsListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /api/v1/watch/endpoints
 	WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context, params WatchCoreV1EndpointsListForAllNamespacesParams) (WatchCoreV1EndpointsListForAllNamespacesRes, error)
 	// WatchCoreV1EventListForAllNamespaces implements watchCoreV1EventListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /api/v1/watch/events
 	WatchCoreV1EventListForAllNamespaces(ctx context.Context, params WatchCoreV1EventListForAllNamespacesParams) (WatchCoreV1EventListForAllNamespacesRes, error)
 	// WatchCoreV1LimitRangeListForAllNamespaces implements watchCoreV1LimitRangeListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /api/v1/watch/limitranges
 	WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context, params WatchCoreV1LimitRangeListForAllNamespacesParams) (WatchCoreV1LimitRangeListForAllNamespacesRes, error)
 	// WatchCoreV1Namespace implements watchCoreV1Namespace operation.
+	//
+	// Watch changes to an object of kind Namespace. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/namespaces/{name}
 	WatchCoreV1Namespace(ctx context.Context, params WatchCoreV1NamespaceParams) (WatchCoreV1NamespaceRes, error)
 	// WatchCoreV1NamespaceList implements watchCoreV1NamespaceList operation.
 	//
+	// Watch individual changes to a list of Namespace. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /api/v1/watch/namespaces
 	WatchCoreV1NamespaceList(ctx context.Context, params WatchCoreV1NamespaceListParams) (WatchCoreV1NamespaceListRes, error)
 	// WatchCoreV1NamespacedConfigMap implements watchCoreV1NamespacedConfigMap operation.
+	//
+	// Watch changes to an object of kind ConfigMap. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/configmaps/{name}
 	WatchCoreV1NamespacedConfigMap(ctx context.Context, params WatchCoreV1NamespacedConfigMapParams) (WatchCoreV1NamespacedConfigMapRes, error)
 	// WatchCoreV1NamespacedConfigMapList implements watchCoreV1NamespacedConfigMapList operation.
 	//
+	// Watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /api/v1/watch/namespaces/{namespace}/configmaps
 	WatchCoreV1NamespacedConfigMapList(ctx context.Context, params WatchCoreV1NamespacedConfigMapListParams) (WatchCoreV1NamespacedConfigMapListRes, error)
 	// WatchCoreV1NamespacedEndpoints implements watchCoreV1NamespacedEndpoints operation.
+	//
+	// Watch changes to an object of kind Endpoints. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/endpoints/{name}
 	WatchCoreV1NamespacedEndpoints(ctx context.Context, params WatchCoreV1NamespacedEndpointsParams) (WatchCoreV1NamespacedEndpointsRes, error)
 	// WatchCoreV1NamespacedEndpointsList implements watchCoreV1NamespacedEndpointsList operation.
 	//
+	// Watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /api/v1/watch/namespaces/{namespace}/endpoints
 	WatchCoreV1NamespacedEndpointsList(ctx context.Context, params WatchCoreV1NamespacedEndpointsListParams) (WatchCoreV1NamespacedEndpointsListRes, error)
 	// WatchCoreV1NamespacedEvent implements watchCoreV1NamespacedEvent operation.
+	//
+	// Watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/events/{name}
 	WatchCoreV1NamespacedEvent(ctx context.Context, params WatchCoreV1NamespacedEventParams) (WatchCoreV1NamespacedEventRes, error)
 	// WatchCoreV1NamespacedEventList implements watchCoreV1NamespacedEventList operation.
 	//
+	// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /api/v1/watch/namespaces/{namespace}/events
 	WatchCoreV1NamespacedEventList(ctx context.Context, params WatchCoreV1NamespacedEventListParams) (WatchCoreV1NamespacedEventListRes, error)
 	// WatchCoreV1NamespacedLimitRange implements watchCoreV1NamespacedLimitRange operation.
+	//
+	// Watch changes to an object of kind LimitRange. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/limitranges/{name}
 	WatchCoreV1NamespacedLimitRange(ctx context.Context, params WatchCoreV1NamespacedLimitRangeParams) (WatchCoreV1NamespacedLimitRangeRes, error)
 	// WatchCoreV1NamespacedLimitRangeList implements watchCoreV1NamespacedLimitRangeList operation.
 	//
+	// Watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /api/v1/watch/namespaces/{namespace}/limitranges
 	WatchCoreV1NamespacedLimitRangeList(ctx context.Context, params WatchCoreV1NamespacedLimitRangeListParams) (WatchCoreV1NamespacedLimitRangeListRes, error)
 	// WatchCoreV1NamespacedPersistentVolumeClaim implements watchCoreV1NamespacedPersistentVolumeClaim operation.
+	//
+	// Watch changes to an object of kind PersistentVolumeClaim. deprecated: use the 'watch' parameter
+	// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}
 	WatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params WatchCoreV1NamespacedPersistentVolumeClaimParams) (WatchCoreV1NamespacedPersistentVolumeClaimRes, error)
 	// WatchCoreV1NamespacedPersistentVolumeClaimList implements watchCoreV1NamespacedPersistentVolumeClaimList operation.
 	//
+	// Watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
 	// GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims
 	WatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.Context, params WatchCoreV1NamespacedPersistentVolumeClaimListParams) (WatchCoreV1NamespacedPersistentVolumeClaimListRes, error)
 	// WatchCoreV1NamespacedPod implements watchCoreV1NamespacedPod operation.
+	//
+	// Watch changes to an object of kind Pod. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/pods/{name}
 	WatchCoreV1NamespacedPod(ctx context.Context, params WatchCoreV1NamespacedPodParams) (WatchCoreV1NamespacedPodRes, error)
 	// WatchCoreV1NamespacedPodList implements watchCoreV1NamespacedPodList operation.
 	//
+	// Watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /api/v1/watch/namespaces/{namespace}/pods
 	WatchCoreV1NamespacedPodList(ctx context.Context, params WatchCoreV1NamespacedPodListParams) (WatchCoreV1NamespacedPodListRes, error)
 	// WatchCoreV1NamespacedPodTemplate implements watchCoreV1NamespacedPodTemplate operation.
+	//
+	// Watch changes to an object of kind PodTemplate. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/podtemplates/{name}
 	WatchCoreV1NamespacedPodTemplate(ctx context.Context, params WatchCoreV1NamespacedPodTemplateParams) (WatchCoreV1NamespacedPodTemplateRes, error)
 	// WatchCoreV1NamespacedPodTemplateList implements watchCoreV1NamespacedPodTemplateList operation.
 	//
+	// Watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /api/v1/watch/namespaces/{namespace}/podtemplates
 	WatchCoreV1NamespacedPodTemplateList(ctx context.Context, params WatchCoreV1NamespacedPodTemplateListParams) (WatchCoreV1NamespacedPodTemplateListRes, error)
 	// WatchCoreV1NamespacedReplicationController implements watchCoreV1NamespacedReplicationController operation.
+	//
+	// Watch changes to an object of kind ReplicationController. deprecated: use the 'watch' parameter
+	// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}
 	WatchCoreV1NamespacedReplicationController(ctx context.Context, params WatchCoreV1NamespacedReplicationControllerParams) (WatchCoreV1NamespacedReplicationControllerRes, error)
 	// WatchCoreV1NamespacedReplicationControllerList implements watchCoreV1NamespacedReplicationControllerList operation.
 	//
+	// Watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
 	// GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers
 	WatchCoreV1NamespacedReplicationControllerList(ctx context.Context, params WatchCoreV1NamespacedReplicationControllerListParams) (WatchCoreV1NamespacedReplicationControllerListRes, error)
 	// WatchCoreV1NamespacedResourceQuota implements watchCoreV1NamespacedResourceQuota operation.
+	//
+	// Watch changes to an object of kind ResourceQuota. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/resourcequotas/{name}
 	WatchCoreV1NamespacedResourceQuota(ctx context.Context, params WatchCoreV1NamespacedResourceQuotaParams) (WatchCoreV1NamespacedResourceQuotaRes, error)
 	// WatchCoreV1NamespacedResourceQuotaList implements watchCoreV1NamespacedResourceQuotaList operation.
 	//
+	// Watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /api/v1/watch/namespaces/{namespace}/resourcequotas
 	WatchCoreV1NamespacedResourceQuotaList(ctx context.Context, params WatchCoreV1NamespacedResourceQuotaListParams) (WatchCoreV1NamespacedResourceQuotaListRes, error)
 	// WatchCoreV1NamespacedSecret implements watchCoreV1NamespacedSecret operation.
+	//
+	// Watch changes to an object of kind Secret. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/secrets/{name}
 	WatchCoreV1NamespacedSecret(ctx context.Context, params WatchCoreV1NamespacedSecretParams) (WatchCoreV1NamespacedSecretRes, error)
 	// WatchCoreV1NamespacedSecretList implements watchCoreV1NamespacedSecretList operation.
 	//
+	// Watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /api/v1/watch/namespaces/{namespace}/secrets
 	WatchCoreV1NamespacedSecretList(ctx context.Context, params WatchCoreV1NamespacedSecretListParams) (WatchCoreV1NamespacedSecretListRes, error)
 	// WatchCoreV1NamespacedService implements watchCoreV1NamespacedService operation.
+	//
+	// Watch changes to an object of kind Service. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/services/{name}
 	WatchCoreV1NamespacedService(ctx context.Context, params WatchCoreV1NamespacedServiceParams) (WatchCoreV1NamespacedServiceRes, error)
 	// WatchCoreV1NamespacedServiceAccount implements watchCoreV1NamespacedServiceAccount operation.
 	//
+	// Watch changes to an object of kind ServiceAccount. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
 	// GET /api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}
 	WatchCoreV1NamespacedServiceAccount(ctx context.Context, params WatchCoreV1NamespacedServiceAccountParams) (WatchCoreV1NamespacedServiceAccountRes, error)
 	// WatchCoreV1NamespacedServiceAccountList implements watchCoreV1NamespacedServiceAccountList operation.
+	//
+	// Watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a
+	// list operation instead.
 	//
 	// GET /api/v1/watch/namespaces/{namespace}/serviceaccounts
 	WatchCoreV1NamespacedServiceAccountList(ctx context.Context, params WatchCoreV1NamespacedServiceAccountListParams) (WatchCoreV1NamespacedServiceAccountListRes, error)
 	// WatchCoreV1NamespacedServiceList implements watchCoreV1NamespacedServiceList operation.
 	//
+	// Watch individual changes to a list of Service. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /api/v1/watch/namespaces/{namespace}/services
 	WatchCoreV1NamespacedServiceList(ctx context.Context, params WatchCoreV1NamespacedServiceListParams) (WatchCoreV1NamespacedServiceListRes, error)
 	// WatchCoreV1Node implements watchCoreV1Node operation.
+	//
+	// Watch changes to an object of kind Node. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/nodes/{name}
 	WatchCoreV1Node(ctx context.Context, params WatchCoreV1NodeParams) (WatchCoreV1NodeRes, error)
 	// WatchCoreV1NodeList implements watchCoreV1NodeList operation.
 	//
+	// Watch individual changes to a list of Node. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /api/v1/watch/nodes
 	WatchCoreV1NodeList(ctx context.Context, params WatchCoreV1NodeListParams) (WatchCoreV1NodeListRes, error)
 	// WatchCoreV1PersistentVolume implements watchCoreV1PersistentVolume operation.
+	//
+	// Watch changes to an object of kind PersistentVolume. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /api/v1/watch/persistentvolumes/{name}
 	WatchCoreV1PersistentVolume(ctx context.Context, params WatchCoreV1PersistentVolumeParams) (WatchCoreV1PersistentVolumeRes, error)
 	// WatchCoreV1PersistentVolumeClaimListForAllNamespaces implements watchCoreV1PersistentVolumeClaimListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
 	// GET /api/v1/watch/persistentvolumeclaims
 	WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx context.Context, params WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams) (WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, error)
 	// WatchCoreV1PersistentVolumeList implements watchCoreV1PersistentVolumeList operation.
+	//
+	// Watch individual changes to a list of PersistentVolume. deprecated: use the 'watch' parameter with
+	// a list operation instead.
 	//
 	// GET /api/v1/watch/persistentvolumes
 	WatchCoreV1PersistentVolumeList(ctx context.Context, params WatchCoreV1PersistentVolumeListParams) (WatchCoreV1PersistentVolumeListRes, error)
 	// WatchCoreV1PodListForAllNamespaces implements watchCoreV1PodListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /api/v1/watch/pods
 	WatchCoreV1PodListForAllNamespaces(ctx context.Context, params WatchCoreV1PodListForAllNamespacesParams) (WatchCoreV1PodListForAllNamespacesRes, error)
 	// WatchCoreV1PodTemplateListForAllNamespaces implements watchCoreV1PodTemplateListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a
+	// list operation instead.
 	//
 	// GET /api/v1/watch/podtemplates
 	WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context, params WatchCoreV1PodTemplateListForAllNamespacesParams) (WatchCoreV1PodTemplateListForAllNamespacesRes, error)
 	// WatchCoreV1ReplicationControllerListForAllNamespaces implements watchCoreV1ReplicationControllerListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
 	// GET /api/v1/watch/replicationcontrollers
 	WatchCoreV1ReplicationControllerListForAllNamespaces(ctx context.Context, params WatchCoreV1ReplicationControllerListForAllNamespacesParams) (WatchCoreV1ReplicationControllerListForAllNamespacesRes, error)
 	// WatchCoreV1ResourceQuotaListForAllNamespaces implements watchCoreV1ResourceQuotaListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a
+	// list operation instead.
 	//
 	// GET /api/v1/watch/resourcequotas
 	WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Context, params WatchCoreV1ResourceQuotaListForAllNamespacesParams) (WatchCoreV1ResourceQuotaListForAllNamespacesRes, error)
 	// WatchCoreV1SecretListForAllNamespaces implements watchCoreV1SecretListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /api/v1/watch/secrets
 	WatchCoreV1SecretListForAllNamespaces(ctx context.Context, params WatchCoreV1SecretListForAllNamespacesParams) (WatchCoreV1SecretListForAllNamespacesRes, error)
 	// WatchCoreV1ServiceAccountListForAllNamespaces implements watchCoreV1ServiceAccountListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a
+	// list operation instead.
 	//
 	// GET /api/v1/watch/serviceaccounts
 	WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Context, params WatchCoreV1ServiceAccountListForAllNamespacesParams) (WatchCoreV1ServiceAccountListForAllNamespacesRes, error)
 	// WatchCoreV1ServiceListForAllNamespaces implements watchCoreV1ServiceListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of Service. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /api/v1/watch/services
 	WatchCoreV1ServiceListForAllNamespaces(ctx context.Context, params WatchCoreV1ServiceListForAllNamespacesParams) (WatchCoreV1ServiceListForAllNamespacesRes, error)
 	// WatchDiscoveryV1EndpointSliceListForAllNamespaces implements watchDiscoveryV1EndpointSliceListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of EndpointSlice. deprecated: use the 'watch' parameter with a
+	// list operation instead.
 	//
 	// GET /apis/discovery.k8s.io/v1/watch/endpointslices
 	WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.Context, params WatchDiscoveryV1EndpointSliceListForAllNamespacesParams) (WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, error)
 	// WatchDiscoveryV1NamespacedEndpointSlice implements watchDiscoveryV1NamespacedEndpointSlice operation.
 	//
+	// Watch changes to an object of kind EndpointSlice. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
 	// GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}
 	WatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params WatchDiscoveryV1NamespacedEndpointSliceParams) (WatchDiscoveryV1NamespacedEndpointSliceRes, error)
 	// WatchDiscoveryV1NamespacedEndpointSliceList implements watchDiscoveryV1NamespacedEndpointSliceList operation.
+	//
+	// Watch individual changes to a list of EndpointSlice. deprecated: use the 'watch' parameter with a
+	// list operation instead.
 	//
 	// GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices
 	WatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Context, params WatchDiscoveryV1NamespacedEndpointSliceListParams) (WatchDiscoveryV1NamespacedEndpointSliceListRes, error)
 	// WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces implements watchDiscoveryV1beta1EndpointSliceListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of EndpointSlice. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /apis/discovery.k8s.io/v1beta1/watch/endpointslices
 	WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx context.Context, params WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams) (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, error)
 	// WatchDiscoveryV1beta1NamespacedEndpointSlice implements watchDiscoveryV1beta1NamespacedEndpointSlice operation.
+	//
+	// Watch changes to an object of kind EndpointSlice. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}
 	WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params WatchDiscoveryV1beta1NamespacedEndpointSliceParams) (WatchDiscoveryV1beta1NamespacedEndpointSliceRes, error)
 	// WatchDiscoveryV1beta1NamespacedEndpointSliceList implements watchDiscoveryV1beta1NamespacedEndpointSliceList operation.
 	//
+	// Watch individual changes to a list of EndpointSlice. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices
 	WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx context.Context, params WatchDiscoveryV1beta1NamespacedEndpointSliceListParams) (WatchDiscoveryV1beta1NamespacedEndpointSliceListRes, error)
 	// WatchEventsV1EventListForAllNamespaces implements watchEventsV1EventListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/events.k8s.io/v1/watch/events
 	WatchEventsV1EventListForAllNamespaces(ctx context.Context, params WatchEventsV1EventListForAllNamespacesParams) (WatchEventsV1EventListForAllNamespacesRes, error)
 	// WatchEventsV1NamespacedEvent implements watchEventsV1NamespacedEvent operation.
 	//
+	// Watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
 	// GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}
 	WatchEventsV1NamespacedEvent(ctx context.Context, params WatchEventsV1NamespacedEventParams) (WatchEventsV1NamespacedEventRes, error)
 	// WatchEventsV1NamespacedEventList implements watchEventsV1NamespacedEventList operation.
+	//
+	// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events
 	WatchEventsV1NamespacedEventList(ctx context.Context, params WatchEventsV1NamespacedEventListParams) (WatchEventsV1NamespacedEventListRes, error)
 	// WatchEventsV1beta1EventListForAllNamespaces implements watchEventsV1beta1EventListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /apis/events.k8s.io/v1beta1/watch/events
 	WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context, params WatchEventsV1beta1EventListForAllNamespacesParams) (WatchEventsV1beta1EventListForAllNamespacesRes, error)
 	// WatchEventsV1beta1NamespacedEvent implements watchEventsV1beta1NamespacedEvent operation.
+	//
+	// Watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}
 	WatchEventsV1beta1NamespacedEvent(ctx context.Context, params WatchEventsV1beta1NamespacedEventParams) (WatchEventsV1beta1NamespacedEventRes, error)
 	// WatchEventsV1beta1NamespacedEventList implements watchEventsV1beta1NamespacedEventList operation.
 	//
+	// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events
 	WatchEventsV1beta1NamespacedEventList(ctx context.Context, params WatchEventsV1beta1NamespacedEventListParams) (WatchEventsV1beta1NamespacedEventListRes, error)
 	// WatchFlowcontrolApiserverV1beta1FlowSchema implements watchFlowcontrolApiserverV1beta1FlowSchema operation.
+	//
+	// Watch changes to an object of kind FlowSchema. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}
 	WatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params WatchFlowcontrolApiserverV1beta1FlowSchemaParams) (WatchFlowcontrolApiserverV1beta1FlowSchemaRes, error)
 	// WatchFlowcontrolApiserverV1beta1FlowSchemaList implements watchFlowcontrolApiserverV1beta1FlowSchemaList operation.
 	//
+	// Watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas
 	WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Context, params WatchFlowcontrolApiserverV1beta1FlowSchemaListParams) (WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, error)
 	// WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration implements watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+	//
+	// Watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch'
+	// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+	// parameter.
 	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}
 	WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, error)
 	// WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList implements watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList operation.
 	//
+	// Watch individual changes to a list of PriorityLevelConfiguration. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations
 	WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx context.Context, params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams) (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, error)
 	// WatchFlowcontrolApiserverV1beta2FlowSchema implements watchFlowcontrolApiserverV1beta2FlowSchema operation.
+	//
+	// Watch changes to an object of kind FlowSchema. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}
 	WatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params WatchFlowcontrolApiserverV1beta2FlowSchemaParams) (WatchFlowcontrolApiserverV1beta2FlowSchemaRes, error)
 	// WatchFlowcontrolApiserverV1beta2FlowSchemaList implements watchFlowcontrolApiserverV1beta2FlowSchemaList operation.
 	//
+	// Watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas
 	WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Context, params WatchFlowcontrolApiserverV1beta2FlowSchemaListParams) (WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, error)
 	// WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration implements watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+	//
+	// Watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch'
+	// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+	// parameter.
 	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}
 	WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, error)
 	// WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList implements watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList operation.
 	//
+	// Watch individual changes to a list of PriorityLevelConfiguration. deprecated: use the 'watch'
+	// parameter with a list operation instead.
+	//
 	// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations
 	WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx context.Context, params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams) (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, error)
 	// WatchInternalApiserverV1alpha1StorageVersion implements watchInternalApiserverV1alpha1StorageVersion operation.
+	//
+	// Watch changes to an object of kind StorageVersion. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}
 	WatchInternalApiserverV1alpha1StorageVersion(ctx context.Context, params WatchInternalApiserverV1alpha1StorageVersionParams) (WatchInternalApiserverV1alpha1StorageVersionRes, error)
 	// WatchInternalApiserverV1alpha1StorageVersionList implements watchInternalApiserverV1alpha1StorageVersionList operation.
 	//
+	// Watch individual changes to a list of StorageVersion. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions
 	WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Context, params WatchInternalApiserverV1alpha1StorageVersionListParams) (WatchInternalApiserverV1alpha1StorageVersionListRes, error)
 	// WatchNetworkingV1IngressClass implements watchNetworkingV1IngressClass operation.
+	//
+	// Watch changes to an object of kind IngressClass. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/networking.k8s.io/v1/watch/ingressclasses/{name}
 	WatchNetworkingV1IngressClass(ctx context.Context, params WatchNetworkingV1IngressClassParams) (WatchNetworkingV1IngressClassRes, error)
 	// WatchNetworkingV1IngressClassList implements watchNetworkingV1IngressClassList operation.
 	//
+	// Watch individual changes to a list of IngressClass. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /apis/networking.k8s.io/v1/watch/ingressclasses
 	WatchNetworkingV1IngressClassList(ctx context.Context, params WatchNetworkingV1IngressClassListParams) (WatchNetworkingV1IngressClassListRes, error)
 	// WatchNetworkingV1IngressListForAllNamespaces implements watchNetworkingV1IngressListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/networking.k8s.io/v1/watch/ingresses
 	WatchNetworkingV1IngressListForAllNamespaces(ctx context.Context, params WatchNetworkingV1IngressListForAllNamespacesParams) (WatchNetworkingV1IngressListForAllNamespacesRes, error)
 	// WatchNetworkingV1NamespacedIngress implements watchNetworkingV1NamespacedIngress operation.
 	//
+	// Watch changes to an object of kind Ingress. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
 	// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}
 	WatchNetworkingV1NamespacedIngress(ctx context.Context, params WatchNetworkingV1NamespacedIngressParams) (WatchNetworkingV1NamespacedIngressRes, error)
 	// WatchNetworkingV1NamespacedIngressList implements watchNetworkingV1NamespacedIngressList operation.
+	//
+	// Watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list
+	// operation instead.
 	//
 	// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses
 	WatchNetworkingV1NamespacedIngressList(ctx context.Context, params WatchNetworkingV1NamespacedIngressListParams) (WatchNetworkingV1NamespacedIngressListRes, error)
 	// WatchNetworkingV1NamespacedNetworkPolicy implements watchNetworkingV1NamespacedNetworkPolicy operation.
 	//
+	// Watch changes to an object of kind NetworkPolicy. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
 	// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}
 	WatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params WatchNetworkingV1NamespacedNetworkPolicyParams) (WatchNetworkingV1NamespacedNetworkPolicyRes, error)
 	// WatchNetworkingV1NamespacedNetworkPolicyList implements watchNetworkingV1NamespacedNetworkPolicyList operation.
+	//
+	// Watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch' parameter with a
+	// list operation instead.
 	//
 	// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies
 	WatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Context, params WatchNetworkingV1NamespacedNetworkPolicyListParams) (WatchNetworkingV1NamespacedNetworkPolicyListRes, error)
 	// WatchNetworkingV1NetworkPolicyListForAllNamespaces implements watchNetworkingV1NetworkPolicyListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /apis/networking.k8s.io/v1/watch/networkpolicies
 	WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.Context, params WatchNetworkingV1NetworkPolicyListForAllNamespacesParams) (WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, error)
 	// WatchNodeV1RuntimeClass implements watchNodeV1RuntimeClass operation.
+	//
+	// Watch changes to an object of kind RuntimeClass. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/node.k8s.io/v1/watch/runtimeclasses/{name}
 	WatchNodeV1RuntimeClass(ctx context.Context, params WatchNodeV1RuntimeClassParams) (WatchNodeV1RuntimeClassRes, error)
 	// WatchNodeV1RuntimeClassList implements watchNodeV1RuntimeClassList operation.
 	//
+	// Watch individual changes to a list of RuntimeClass. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /apis/node.k8s.io/v1/watch/runtimeclasses
 	WatchNodeV1RuntimeClassList(ctx context.Context, params WatchNodeV1RuntimeClassListParams) (WatchNodeV1RuntimeClassListRes, error)
 	// WatchNodeV1alpha1RuntimeClass implements watchNodeV1alpha1RuntimeClass operation.
+	//
+	// Watch changes to an object of kind RuntimeClass. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}
 	WatchNodeV1alpha1RuntimeClass(ctx context.Context, params WatchNodeV1alpha1RuntimeClassParams) (WatchNodeV1alpha1RuntimeClassRes, error)
 	// WatchNodeV1alpha1RuntimeClassList implements watchNodeV1alpha1RuntimeClassList operation.
 	//
+	// Watch individual changes to a list of RuntimeClass. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses
 	WatchNodeV1alpha1RuntimeClassList(ctx context.Context, params WatchNodeV1alpha1RuntimeClassListParams) (WatchNodeV1alpha1RuntimeClassListRes, error)
 	// WatchNodeV1beta1RuntimeClass implements watchNodeV1beta1RuntimeClass operation.
+	//
+	// Watch changes to an object of kind RuntimeClass. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}
 	WatchNodeV1beta1RuntimeClass(ctx context.Context, params WatchNodeV1beta1RuntimeClassParams) (WatchNodeV1beta1RuntimeClassRes, error)
 	// WatchNodeV1beta1RuntimeClassList implements watchNodeV1beta1RuntimeClassList operation.
 	//
+	// Watch individual changes to a list of RuntimeClass. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses
 	WatchNodeV1beta1RuntimeClassList(ctx context.Context, params WatchNodeV1beta1RuntimeClassListParams) (WatchNodeV1beta1RuntimeClassListRes, error)
 	// WatchPolicyV1NamespacedPodDisruptionBudget implements watchPolicyV1NamespacedPodDisruptionBudget operation.
+	//
+	// Watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with
+	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 	WatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params WatchPolicyV1NamespacedPodDisruptionBudgetParams) (WatchPolicyV1NamespacedPodDisruptionBudgetRes, error)
 	// WatchPolicyV1NamespacedPodDisruptionBudgetList implements watchPolicyV1NamespacedPodDisruptionBudgetList operation.
 	//
+	// Watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
 	// GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets
 	WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.Context, params WatchPolicyV1NamespacedPodDisruptionBudgetListParams) (WatchPolicyV1NamespacedPodDisruptionBudgetListRes, error)
 	// WatchPolicyV1PodDisruptionBudgetListForAllNamespaces implements watchPolicyV1PodDisruptionBudgetListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter
+	// with a list operation instead.
 	//
 	// GET /apis/policy/v1/watch/poddisruptionbudgets
 	WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx context.Context, params WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams) (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, error)
 	// WatchPolicyV1beta1NamespacedPodDisruptionBudget implements watchPolicyV1beta1NamespacedPodDisruptionBudget operation.
 	//
+	// Watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with
+	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
 	// GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 	WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams) (WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes, error)
 	// WatchPolicyV1beta1NamespacedPodDisruptionBudgetList implements watchPolicyV1beta1NamespacedPodDisruptionBudgetList operation.
+	//
+	// Watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter
+	// with a list operation instead.
 	//
 	// GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets
 	WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx context.Context, params WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams) (WatchPolicyV1beta1NamespacedPodDisruptionBudgetListRes, error)
 	// WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces implements watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
 	// GET /apis/policy/v1beta1/watch/poddisruptionbudgets
 	WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx context.Context, params WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams) (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, error)
 	// WatchPolicyV1beta1PodSecurityPolicy implements watchPolicyV1beta1PodSecurityPolicy operation.
+	//
+	// Watch changes to an object of kind PodSecurityPolicy. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/policy/v1beta1/watch/podsecuritypolicies/{name}
 	WatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, params WatchPolicyV1beta1PodSecurityPolicyParams) (WatchPolicyV1beta1PodSecurityPolicyRes, error)
 	// WatchPolicyV1beta1PodSecurityPolicyList implements watchPolicyV1beta1PodSecurityPolicyList operation.
 	//
+	// Watch individual changes to a list of PodSecurityPolicy. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
 	// GET /apis/policy/v1beta1/watch/podsecuritypolicies
 	WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context, params WatchPolicyV1beta1PodSecurityPolicyListParams) (WatchPolicyV1beta1PodSecurityPolicyListRes, error)
 	// WatchRbacAuthorizationV1ClusterRole implements watchRbacAuthorizationV1ClusterRole operation.
+	//
+	// Watch changes to an object of kind ClusterRole. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}
 	WatchRbacAuthorizationV1ClusterRole(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleParams) (WatchRbacAuthorizationV1ClusterRoleRes, error)
 	// WatchRbacAuthorizationV1ClusterRoleBinding implements watchRbacAuthorizationV1ClusterRoleBinding operation.
 	//
+	// Watch changes to an object of kind ClusterRoleBinding. deprecated: use the 'watch' parameter with
+	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
 	// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}
 	WatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleBindingParams) (WatchRbacAuthorizationV1ClusterRoleBindingRes, error)
 	// WatchRbacAuthorizationV1ClusterRoleBindingList implements watchRbacAuthorizationV1ClusterRoleBindingList operation.
+	//
+	// Watch individual changes to a list of ClusterRoleBinding. deprecated: use the 'watch' parameter
+	// with a list operation instead.
 	//
 	// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings
 	WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleBindingListParams) (WatchRbacAuthorizationV1ClusterRoleBindingListRes, error)
 	// WatchRbacAuthorizationV1ClusterRoleList implements watchRbacAuthorizationV1ClusterRoleList operation.
 	//
+	// Watch individual changes to a list of ClusterRole. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles
 	WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleListParams) (WatchRbacAuthorizationV1ClusterRoleListRes, error)
 	// WatchRbacAuthorizationV1NamespacedRole implements watchRbacAuthorizationV1NamespacedRole operation.
+	//
+	// Watch changes to an object of kind Role. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}
 	WatchRbacAuthorizationV1NamespacedRole(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleParams) (WatchRbacAuthorizationV1NamespacedRoleRes, error)
 	// WatchRbacAuthorizationV1NamespacedRoleBinding implements watchRbacAuthorizationV1NamespacedRoleBinding operation.
 	//
+	// Watch changes to an object of kind RoleBinding. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
 	// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}
 	WatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleBindingParams) (WatchRbacAuthorizationV1NamespacedRoleBindingRes, error)
 	// WatchRbacAuthorizationV1NamespacedRoleBindingList implements watchRbacAuthorizationV1NamespacedRoleBindingList operation.
+	//
+	// Watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a
+	// list operation instead.
 	//
 	// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings
 	WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleBindingListParams) (WatchRbacAuthorizationV1NamespacedRoleBindingListRes, error)
 	// WatchRbacAuthorizationV1NamespacedRoleList implements watchRbacAuthorizationV1NamespacedRoleList operation.
 	//
+	// Watch individual changes to a list of Role. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles
 	WatchRbacAuthorizationV1NamespacedRoleList(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleListParams) (WatchRbacAuthorizationV1NamespacedRoleListRes, error)
 	// WatchRbacAuthorizationV1RoleBindingListForAllNamespaces implements watchRbacAuthorizationV1RoleBindingListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a
+	// list operation instead.
 	//
 	// GET /apis/rbac.authorization.k8s.io/v1/watch/rolebindings
 	WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx context.Context, params WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams) (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, error)
 	// WatchRbacAuthorizationV1RoleListForAllNamespaces implements watchRbacAuthorizationV1RoleListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of Role. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /apis/rbac.authorization.k8s.io/v1/watch/roles
 	WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Context, params WatchRbacAuthorizationV1RoleListForAllNamespacesParams) (WatchRbacAuthorizationV1RoleListForAllNamespacesRes, error)
 	// WatchSchedulingV1PriorityClass implements watchSchedulingV1PriorityClass operation.
+	//
+	// Watch changes to an object of kind PriorityClass. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}
 	WatchSchedulingV1PriorityClass(ctx context.Context, params WatchSchedulingV1PriorityClassParams) (WatchSchedulingV1PriorityClassRes, error)
 	// WatchSchedulingV1PriorityClassList implements watchSchedulingV1PriorityClassList operation.
 	//
+	// Watch individual changes to a list of PriorityClass. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /apis/scheduling.k8s.io/v1/watch/priorityclasses
 	WatchSchedulingV1PriorityClassList(ctx context.Context, params WatchSchedulingV1PriorityClassListParams) (WatchSchedulingV1PriorityClassListRes, error)
 	// WatchStorageV1CSIDriver implements watchStorageV1CSIDriver operation.
+	//
+	// Watch changes to an object of kind CSIDriver. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/storage.k8s.io/v1/watch/csidrivers/{name}
 	WatchStorageV1CSIDriver(ctx context.Context, params WatchStorageV1CSIDriverParams) (WatchStorageV1CSIDriverRes, error)
 	// WatchStorageV1CSIDriverList implements watchStorageV1CSIDriverList operation.
 	//
+	// Watch individual changes to a list of CSIDriver. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /apis/storage.k8s.io/v1/watch/csidrivers
 	WatchStorageV1CSIDriverList(ctx context.Context, params WatchStorageV1CSIDriverListParams) (WatchStorageV1CSIDriverListRes, error)
 	// WatchStorageV1CSINode implements watchStorageV1CSINode operation.
+	//
+	// Watch changes to an object of kind CSINode. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/storage.k8s.io/v1/watch/csinodes/{name}
 	WatchStorageV1CSINode(ctx context.Context, params WatchStorageV1CSINodeParams) (WatchStorageV1CSINodeRes, error)
 	// WatchStorageV1CSINodeList implements watchStorageV1CSINodeList operation.
 	//
+	// Watch individual changes to a list of CSINode. deprecated: use the 'watch' parameter with a list
+	// operation instead.
+	//
 	// GET /apis/storage.k8s.io/v1/watch/csinodes
 	WatchStorageV1CSINodeList(ctx context.Context, params WatchStorageV1CSINodeListParams) (WatchStorageV1CSINodeListRes, error)
 	// WatchStorageV1StorageClass implements watchStorageV1StorageClass operation.
+	//
+	// Watch changes to an object of kind StorageClass. deprecated: use the 'watch' parameter with a list
+	// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/storage.k8s.io/v1/watch/storageclasses/{name}
 	WatchStorageV1StorageClass(ctx context.Context, params WatchStorageV1StorageClassParams) (WatchStorageV1StorageClassRes, error)
 	// WatchStorageV1StorageClassList implements watchStorageV1StorageClassList operation.
 	//
+	// Watch individual changes to a list of StorageClass. deprecated: use the 'watch' parameter with a
+	// list operation instead.
+	//
 	// GET /apis/storage.k8s.io/v1/watch/storageclasses
 	WatchStorageV1StorageClassList(ctx context.Context, params WatchStorageV1StorageClassListParams) (WatchStorageV1StorageClassListRes, error)
 	// WatchStorageV1VolumeAttachment implements watchStorageV1VolumeAttachment operation.
+	//
+	// Watch changes to an object of kind VolumeAttachment. deprecated: use the 'watch' parameter with a
+	// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 	//
 	// GET /apis/storage.k8s.io/v1/watch/volumeattachments/{name}
 	WatchStorageV1VolumeAttachment(ctx context.Context, params WatchStorageV1VolumeAttachmentParams) (WatchStorageV1VolumeAttachmentRes, error)
 	// WatchStorageV1VolumeAttachmentList implements watchStorageV1VolumeAttachmentList operation.
 	//
+	// Watch individual changes to a list of VolumeAttachment. deprecated: use the 'watch' parameter with
+	// a list operation instead.
+	//
 	// GET /apis/storage.k8s.io/v1/watch/volumeattachments
 	WatchStorageV1VolumeAttachmentList(ctx context.Context, params WatchStorageV1VolumeAttachmentListParams) (WatchStorageV1VolumeAttachmentListRes, error)
 	// WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces implements watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces operation.
+	//
+	// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
+	// with a list operation instead.
 	//
 	// GET /apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities
 	WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx context.Context, params WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams) (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, error)
 	// WatchStorageV1alpha1NamespacedCSIStorageCapacity implements watchStorageV1alpha1NamespacedCSIStorageCapacity operation.
 	//
+	// Watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watch' parameter with
+	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
 	// GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 	WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params WatchStorageV1alpha1NamespacedCSIStorageCapacityParams) (WatchStorageV1alpha1NamespacedCSIStorageCapacityRes, error)
 	// WatchStorageV1alpha1NamespacedCSIStorageCapacityList implements watchStorageV1alpha1NamespacedCSIStorageCapacityList operation.
+	//
+	// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
+	// with a list operation instead.
 	//
 	// GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities
 	WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx context.Context, params WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams) (WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes, error)
 	// WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces implements watchStorageV1beta1CSIStorageCapacityListForAllNamespaces operation.
 	//
+	// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
+	// with a list operation instead.
+	//
 	// GET /apis/storage.k8s.io/v1beta1/watch/csistoragecapacities
 	WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx context.Context, params WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams) (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, error)
 	// WatchStorageV1beta1NamespacedCSIStorageCapacity implements watchStorageV1beta1NamespacedCSIStorageCapacity operation.
 	//
+	// Watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watch' parameter with
+	// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+	//
 	// GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 	WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params WatchStorageV1beta1NamespacedCSIStorageCapacityParams) (WatchStorageV1beta1NamespacedCSIStorageCapacityRes, error)
 	// WatchStorageV1beta1NamespacedCSIStorageCapacityList implements watchStorageV1beta1NamespacedCSIStorageCapacityList operation.
+	//
+	// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
+	// with a list operation instead.
 	//
 	// GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities
 	WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx context.Context, params WatchStorageV1beta1NamespacedCSIStorageCapacityListParams) (WatchStorageV1beta1NamespacedCSIStorageCapacityListRes, error)

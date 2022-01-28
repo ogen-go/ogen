@@ -66,6 +66,7 @@ var (
 
 // Ref: #/components/schemas/HelloWorld
 type HelloWorld struct {
+	// Should be equal to 'Hello, World!'.
 	Message string `json:"message"`
 }
 

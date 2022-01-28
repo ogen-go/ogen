@@ -11,8 +11,9 @@ import (
 
 func (g *Generator) generateOperation(spec *oas.Operation) (_ *ir.Operation, err error) {
 	op := &ir.Operation{
-		Name: pascal(spec.Path.String(), strings.ToLower(spec.HTTPMethod)),
-		Spec: spec,
+		Name:        pascal(spec.Path.String(), strings.ToLower(spec.HTTPMethod)),
+		Description: spec.Description,
+		Spec:        spec,
 	}
 	if spec.OperationID != "" {
 		op.Name = pascal(spec.OperationID)

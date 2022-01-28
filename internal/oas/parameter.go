@@ -28,10 +28,11 @@ func (l ParameterLocation) Cookie() bool {
 
 // Parameter is an OpenAPI Operation Parameter.
 type Parameter struct {
-	Name     string
-	Schema   *Schema
-	In       ParameterLocation
-	Style    string
-	Explode  bool
-	Required bool
+	Name        string
+	Description string
+	Schema      *Schema
+	In          ParameterLocation
+	Style       string
+	Explode     bool
+	Required    bool
 }

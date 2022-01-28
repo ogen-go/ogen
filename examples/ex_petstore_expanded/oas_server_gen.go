@@ -68,6 +68,8 @@ var (
 type Handler interface {
 	// DeletePet implements deletePet operation.
 	//
+	// Deletes a single pet based on the ID supplied.
+	//
 	// DELETE /pets/{id}
 	DeletePet(ctx context.Context, params DeletePetParams) (DeletePetRes, error)
 }

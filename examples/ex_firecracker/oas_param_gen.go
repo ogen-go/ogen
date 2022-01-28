@@ -65,17 +65,21 @@ var (
 )
 
 type PatchGuestDriveByIDParams struct {
+	// The id of the guest drive.
 	DriveID string
 }
 
 type PatchGuestNetworkInterfaceByIDParams struct {
+	// The id of the guest network interface.
 	IfaceID string
 }
 
 type PutGuestDriveByIDParams struct {
+	// The id of the guest drive.
 	DriveID string
 }
 
 type PutGuestNetworkInterfaceByIDParams struct {
+	// The id of the guest network interface.
 	IfaceID string
 }

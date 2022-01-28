@@ -97,6 +97,8 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 
 // DeletePet invokes deletePet operation.
 //
+// Deletes a single pet based on the ID supplied.
+//
 // DELETE /pets/{id}
 func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res DeletePetRes, err error) {
 	startTime := time.Now()

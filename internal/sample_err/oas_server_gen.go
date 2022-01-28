@@ -68,9 +68,13 @@ var (
 type Handler interface {
 	// DataCreate implements dataCreate operation.
 	//
+	// Creates data.
+	//
 	// POST /data
 	DataCreate(ctx context.Context, req OptData) (Data, error)
 	// DataGet implements dataGet operation.
+	//
+	// Retrieve data.
 	//
 	// GET /data
 	DataGet(ctx context.Context) (Data, error)

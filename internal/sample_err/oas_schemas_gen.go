@@ -68,11 +68,13 @@ func (s *ErrorStatusCode) Error() string {
 	return fmt.Sprintf("code %d: %+v", s.StatusCode, s.Response)
 }
 
+// Some data.
 // Ref: #/components/schemas/Data
 type Data struct {
 	Name string `json:"name"`
 }
 
+// Represents error object.
 // Ref: #/components/schemas/Error
 type Error struct {
 	Code    int64  `json:"code"`

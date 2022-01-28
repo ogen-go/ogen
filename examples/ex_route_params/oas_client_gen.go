@@ -97,6 +97,8 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 
 // DataGet invokes dataGet operation.
 //
+// Retrieve data.
+//
 // GET /name/{id}/{key}
 func (c *Client) DataGet(ctx context.Context, params DataGetParams) (res string, err error) {
 	startTime := time.Now()
@@ -166,6 +168,8 @@ func (c *Client) DataGet(ctx context.Context, params DataGetParams) (res string,
 
 // DataGetAny invokes dataGetAny operation.
 //
+// Retrieve any data.
+//
 // GET /name
 func (c *Client) DataGetAny(ctx context.Context) (res string, err error) {
 	startTime := time.Now()
@@ -205,6 +209,8 @@ func (c *Client) DataGetAny(ctx context.Context) (res string, err error) {
 }
 
 // DataGetID invokes dataGetID operation.
+//
+// Retrieve data.
 //
 // GET /name/{id}
 func (c *Client) DataGetID(ctx context.Context, params DataGetIDParams) (res string, err error) {

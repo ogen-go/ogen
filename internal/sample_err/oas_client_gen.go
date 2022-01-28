@@ -97,6 +97,8 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 
 // DataCreate invokes dataCreate operation.
 //
+// Creates data.
+//
 // POST /data
 func (c *Client) DataCreate(ctx context.Context, request OptData) (res Data, err error) {
 	startTime := time.Now()
@@ -150,6 +152,8 @@ func (c *Client) DataCreate(ctx context.Context, request OptData) (res Data, err
 }
 
 // DataGet invokes dataGet operation.
+//
+// Retrieve data.
 //
 // GET /data
 func (c *Client) DataGet(ctx context.Context) (res Data, err error) {

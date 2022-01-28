@@ -81,9 +81,22 @@ type Candle struct {
 	H        float64          `json:"h"`
 	L        float64          `json:"l"`
 	V        int32            `json:"v"`
-	Time     time.Time        `json:"time"`
+	// ISO8601.
+	Time time.Time `json:"time"`
 }
 
+// Интервал свечи и допустимый промежуток запроса:
+// - 1min [1 minute, 1 day]
+// - 2min [2 minutes, 1 day]
+// - 3min [3 minutes, 1 day]
+// - 5min [5 minutes, 1 day]
+// - 10min [10 minutes, 1 day]
+// - 15min [15 minutes, 1 day]
+// - 30min [30 minutes, 1 day]
+// - hour [1 hour, 7 days]
+// - day [1 day, 1 year]
+// - week [7 days, 2 years]
+// - month [1 month, 10 years].
 // Ref: #/components/schemas/CandleResolution
 type CandleResolution string
 
@@ -221,15 +234,18 @@ func (*LimitOrderResponse) ordersLimitOrderPostRes() {}
 
 // Ref: #/components/schemas/MarketInstrument
 type MarketInstrument struct {
-	Figi              string         `json:"figi"`
-	Ticker            string         `json:"ticker"`
-	Isin              OptString      `json:"isin"`
-	MinPriceIncrement OptFloat64     `json:"minPriceIncrement"`
-	Lot               int32          `json:"lot"`
-	MinQuantity       OptInt32       `json:"minQuantity"`
-	Currency          OptCurrency    `json:"currency"`
-	Name              string         `json:"name"`
-	Type              InstrumentType `json:"type"`
+	Figi   string    `json:"figi"`
+	Ticker string    `json:"ticker"`
+	Isin   OptString `json:"isin"`
+	// Шаг цены.
+	MinPriceIncrement OptFloat64 `json:"minPriceIncrement"`
+	Lot               int32      `json:"lot"`
+	// Минимальное число инструментов для покупки должно
+	// быть не меньше, чем размер лота х количество лотов.
+	MinQuantity OptInt32       `json:"minQuantity"`
+	Currency    OptCurrency    `json:"currency"`
+	Name        string         `json:"name"`
+	Type        InstrumentType `json:"type"`
 }
 
 // Ref: #/components/schemas/MarketInstrumentList
@@ -274,22 +290,26 @@ type MoneyAmount struct {
 
 // Ref: #/components/schemas/Operation
 type Operation struct {
-	ID               string                         `json:"id"`
-	Status           OperationStatus                `json:"status"`
-	Trades           []OperationTrade               `json:"trades"`
-	Commission       OptMoneyAmount                 `json:"commission"`
-	Currency         Currency                       `json:"currency"`
-	Payment          float64                        `json:"payment"`
-	Price            OptFloat64                     `json:"price"`
-	Quantity         OptInt32                       `json:"quantity"`
-	QuantityExecuted OptInt32                       `json:"quantityExecuted"`
-	Figi             OptString                      `json:"figi"`
-	InstrumentType   OptInstrumentType              `json:"instrumentType"`
-	IsMarginCall     bool                           `json:"isMarginCall"`
-	Date             time.Time                      `json:"date"`
-	OperationType    OptOperationTypeWithCommission `json:"operationType"`
+	ID         string           `json:"id"`
+	Status     OperationStatus  `json:"status"`
+	Trades     []OperationTrade `json:"trades"`
+	Commission OptMoneyAmount   `json:"commission"`
+	Currency   Currency         `json:"currency"`
+	Payment    float64          `json:"payment"`
+	Price      OptFloat64       `json:"price"`
+	// Число инструментов в выставленной заявке.
+	Quantity OptInt32 `json:"quantity"`
+	// Число инструментов, исполненных в заявке.
+	QuantityExecuted OptInt32          `json:"quantityExecuted"`
+	Figi             OptString         `json:"figi"`
+	InstrumentType   OptInstrumentType `json:"instrumentType"`
+	IsMarginCall     bool              `json:"isMarginCall"`
+	// ISO8601.
+	Date          time.Time                      `json:"date"`
+	OperationType OptOperationTypeWithCommission `json:"operationType"`
 }
 
+// Статус заявки.
 // Ref: #/components/schemas/OperationStatus
 type OperationStatus string
 
@@ -301,7 +321,8 @@ const (
 
 // Ref: #/components/schemas/OperationTrade
 type OperationTrade struct {
-	TradeId  string    `json:"tradeId"`
+	TradeId string `json:"tradeId"`
+	// ISO8601.
 	Date     time.Time `json:"date"`
 	Price    float64   `json:"price"`
 	Quantity int32     `json:"quantity"`
@@ -788,6 +809,7 @@ type OrderResponse struct {
 	Quantity int32   `json:"quantity"`
 }
 
+// Статус заявки.
 // Ref: #/components/schemas/OrderStatus
 type OrderStatus string
 
@@ -803,6 +825,7 @@ const (
 	OrderStatusPendingNew     OrderStatus = "PendingNew"
 )
 
+// Тип заявки.
 // Ref: #/components/schemas/OrderType
 type OrderType string
 
@@ -813,17 +836,21 @@ const (
 
 // Ref: #/components/schemas/Orderbook
 type Orderbook struct {
-	Figi              string          `json:"figi"`
-	Depth             int32           `json:"depth"`
-	Bids              []OrderResponse `json:"bids"`
-	Asks              []OrderResponse `json:"asks"`
-	TradeStatus       TradeStatus     `json:"tradeStatus"`
-	MinPriceIncrement float64         `json:"minPriceIncrement"`
-	FaceValue         OptFloat64      `json:"faceValue"`
-	LastPrice         OptFloat64      `json:"lastPrice"`
-	ClosePrice        OptFloat64      `json:"closePrice"`
-	LimitUp           OptFloat64      `json:"limitUp"`
-	LimitDown         OptFloat64      `json:"limitDown"`
+	Figi        string          `json:"figi"`
+	Depth       int32           `json:"depth"`
+	Bids        []OrderResponse `json:"bids"`
+	Asks        []OrderResponse `json:"asks"`
+	TradeStatus TradeStatus     `json:"tradeStatus"`
+	// Шаг цены.
+	MinPriceIncrement float64 `json:"minPriceIncrement"`
+	// Номинал для облигаций.
+	FaceValue  OptFloat64 `json:"faceValue"`
+	LastPrice  OptFloat64 `json:"lastPrice"`
+	ClosePrice OptFloat64 `json:"closePrice"`
+	// Верхняя граница цены.
+	LimitUp OptFloat64 `json:"limitUp"`
+	// Нижняя граница цены.
+	LimitDown OptFloat64 `json:"limitDown"`
 }
 
 // Ref: #/components/schemas/OrderbookResponse
@@ -846,10 +873,11 @@ func (*OrdersResponse) ordersGetRes() {}
 
 // Ref: #/components/schemas/PlacedLimitOrder
 type PlacedLimitOrder struct {
-	OrderId       string         `json:"orderId"`
-	Operation     OperationType  `json:"operation"`
-	Status        OrderStatus    `json:"status"`
-	RejectReason  OptString      `json:"rejectReason"`
+	OrderId      string        `json:"orderId"`
+	Operation    OperationType `json:"operation"`
+	Status       OrderStatus   `json:"status"`
+	RejectReason OptString     `json:"rejectReason"`
+	// Сообщение об ошибке.
 	Message       OptString      `json:"message"`
 	RequestedLots int            `json:"requestedLots"`
 	ExecutedLots  int            `json:"executedLots"`
@@ -858,10 +886,11 @@ type PlacedLimitOrder struct {
 
 // Ref: #/components/schemas/PlacedMarketOrder
 type PlacedMarketOrder struct {
-	OrderId       string         `json:"orderId"`
-	Operation     OperationType  `json:"operation"`
-	Status        OrderStatus    `json:"status"`
-	RejectReason  OptString      `json:"rejectReason"`
+	OrderId      string        `json:"orderId"`
+	Operation    OperationType `json:"operation"`
+	Status       OrderStatus   `json:"status"`
+	RejectReason OptString     `json:"rejectReason"`
+	// Сообщение об ошибке.
 	Message       OptString      `json:"message"`
 	RequestedLots int            `json:"requestedLots"`
 	ExecutedLots  int            `json:"executedLots"`
@@ -955,9 +984,10 @@ type SandboxSetPositionBalanceRequest struct {
 
 // Ref: #/components/schemas/SearchMarketInstrument
 type SearchMarketInstrument struct {
-	Figi              string         `json:"figi"`
-	Ticker            string         `json:"ticker"`
-	Isin              OptString      `json:"isin"`
+	Figi   string    `json:"figi"`
+	Ticker string    `json:"ticker"`
+	Isin   OptString `json:"isin"`
+	// Шаг цены.
 	MinPriceIncrement OptFloat64     `json:"minPriceIncrement"`
 	Lot               int32          `json:"lot"`
 	Currency          OptCurrency    `json:"currency"`

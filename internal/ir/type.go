@@ -72,7 +72,7 @@ type SumSpec struct {
 }
 
 type Type struct {
-	Doc              string              // documentation
+	Doc              string              // ogen documentation
 	Kind             Kind                // kind
 	Name             string              // only for struct, alias, interface, enum
 	Primitive        PrimitiveType       // only for primitive, enum
@@ -91,6 +91,13 @@ type Type struct {
 	GenericOf        *Type               // only for generic
 	GenericVariant   GenericVariant      // only for generic
 	Validators       Validators
+}
+
+func (t Type) GoDoc() []string {
+	if t.Schema == nil {
+		return nil
+	}
+	return prettyDoc(t.Schema.Description)
 }
 
 func (t Type) String() string {
@@ -147,6 +154,13 @@ type Field struct {
 	Type *Type
 	Tag  Tag
 	Spec *oas.Property
+}
+
+func (f Field) GoDoc() []string {
+	if f.Spec == nil {
+		return nil
+	}
+	return prettyDoc(f.Spec.Description)
 }
 
 func (t *Type) Is(vs ...Kind) bool {

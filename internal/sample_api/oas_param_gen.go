@@ -73,8 +73,10 @@ type DataGetFormatParams struct {
 }
 
 type FoobarGetParams struct {
+	// InlinedParam.
 	InlinedParam int64
-	Skip         int32
+	// Number of items to skip.
+	Skip int32
 }
 
 type GetHeaderParams struct {
@@ -82,28 +84,37 @@ type GetHeaderParams struct {
 }
 
 type PetFriendsNamesByIDParams struct {
+	// Pet ID.
 	ID int
 }
 
 type PetGetParams struct {
-	PetID  int64
-	XTags  []uuid.UUID
+	// ID of pet.
+	PetID int64
+	// Tags of pets.
+	XTags []uuid.UUID
+	// Pet scopes.
 	XScope []string
-	Token  string
+	// Token.
+	Token string
 }
 
 type PetGetAvatarByIDParams struct {
+	// ID of pet.
 	PetID int64
 }
 
 type PetGetByNameParams struct {
+	// Name of pet.
 	Name string
 }
 
 type PetNameByIDParams struct {
+	// Pet ID.
 	ID int
 }
 
 type PetUploadAvatarByIDParams struct {
+	// ID of pet.
 	PetID int64
 }

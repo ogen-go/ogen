@@ -65,50 +65,66 @@ var (
 )
 
 type CreatePetCategoriesParams struct {
+	// ID of the Pet.
 	ID int
 }
 
 type CreatePetFriendsParams struct {
+	// ID of the Pet.
 	ID int
 }
 
 type CreatePetOwnerParams struct {
+	// ID of the Pet.
 	ID int
 }
 
 type DeletePetParams struct {
+	// ID of the Pet.
 	ID int
 }
 
 type DeletePetOwnerParams struct {
+	// ID of the Pet.
 	ID int
 }
 
 type ListPetParams struct {
-	Page         OptInt32
+	// What page to render.
+	Page OptInt32
+	// Item count to render per page.
 	ItemsPerPage OptInt32
 }
 
 type ListPetCategoriesParams struct {
-	ID           int
-	Page         OptInt32
+	// ID of the Pet.
+	ID int
+	// What page to render.
+	Page OptInt32
+	// Item count to render per page.
 	ItemsPerPage OptInt32
 }
 
 type ListPetFriendsParams struct {
-	ID           int
-	Page         OptInt32
+	// ID of the Pet.
+	ID int
+	// What page to render.
+	Page OptInt32
+	// Item count to render per page.
 	ItemsPerPage OptInt32
 }
 
 type ReadPetParams struct {
+	// ID of the Pet.
 	ID int
 }
 
 type ReadPetOwnerParams struct {
+	// ID of the Pet.
 	ID int
 }
 
 type UpdatePetParams struct {
+	// ID of the Pet.
 	ID int
 }

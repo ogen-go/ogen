@@ -65,49 +65,59 @@ var (
 )
 
 type ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
-	Org           string
+	Org string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
 	RepositoryID  int
 }
 
 type ActionsAddSelectedRepoToOrgSecretParams struct {
-	Org          string
+	Org string
+	// Secret_name parameter.
 	SecretName   string
 	RepositoryID int
 }
 
 type ActionsAddSelfHostedRunnerToGroupForOrgParams struct {
-	Org           string
+	Org string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
-	RunnerID      int
+	// Unique identifier of the self-hosted runner.
+	RunnerID int
 }
 
 type ActionsApproveWorkflowRunParams struct {
 	Owner string
 	Repo  string
+	// The id of the workflow run.
 	RunID int
 }
 
 type ActionsCancelWorkflowRunParams struct {
 	Owner string
 	Repo  string
+	// The id of the workflow run.
 	RunID int
 }
 
 type ActionsCreateOrUpdateEnvironmentSecretParams struct {
-	RepositoryID    int
+	RepositoryID int
+	// The name of the environment.
 	EnvironmentName string
-	SecretName      string
+	// Secret_name parameter.
+	SecretName string
 }
 
 type ActionsCreateOrUpdateOrgSecretParams struct {
-	Org        string
+	Org string
+	// Secret_name parameter.
 	SecretName string
 }
 
 type ActionsCreateOrUpdateRepoSecretParams struct {
-	Owner      string
-	Repo       string
+	Owner string
+	Repo  string
+	// Secret_name parameter.
 	SecretName string
 }
 
@@ -134,53 +144,63 @@ type ActionsCreateSelfHostedRunnerGroupForOrgParams struct {
 }
 
 type ActionsDeleteArtifactParams struct {
-	Owner      string
-	Repo       string
+	Owner string
+	Repo  string
+	// Artifact_id parameter.
 	ArtifactID int
 }
 
 type ActionsDeleteEnvironmentSecretParams struct {
-	RepositoryID    int
+	RepositoryID int
+	// The name of the environment.
 	EnvironmentName string
-	SecretName      string
+	// Secret_name parameter.
+	SecretName string
 }
 
 type ActionsDeleteOrgSecretParams struct {
-	Org        string
+	Org string
+	// Secret_name parameter.
 	SecretName string
 }
 
 type ActionsDeleteRepoSecretParams struct {
-	Owner      string
-	Repo       string
+	Owner string
+	Repo  string
+	// Secret_name parameter.
 	SecretName string
 }
 
 type ActionsDeleteSelfHostedRunnerFromOrgParams struct {
-	Org      string
+	Org string
+	// Unique identifier of the self-hosted runner.
 	RunnerID int
 }
 
 type ActionsDeleteSelfHostedRunnerFromRepoParams struct {
-	Owner    string
-	Repo     string
+	Owner string
+	Repo  string
+	// Unique identifier of the self-hosted runner.
 	RunnerID int
 }
 
 type ActionsDeleteSelfHostedRunnerGroupFromOrgParams struct {
-	Org           string
+	Org string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
 }
 
 type ActionsDeleteWorkflowRunParams struct {
 	Owner string
 	Repo  string
+	// The id of the workflow run.
 	RunID int
 }
 
 type ActionsDeleteWorkflowRunLogsParams struct {
 	Owner string
 	Repo  string
+	// The id of the workflow run.
 	RunID int
 }
 
@@ -190,8 +210,9 @@ type ActionsDisableSelectedRepositoryGithubActionsOrganizationParams struct {
 }
 
 type ActionsDownloadArtifactParams struct {
-	Owner         string
-	Repo          string
+	Owner string
+	Repo  string
+	// Artifact_id parameter.
 	ArtifactID    int
 	ArchiveFormat string
 }
@@ -199,12 +220,14 @@ type ActionsDownloadArtifactParams struct {
 type ActionsDownloadJobLogsForWorkflowRunParams struct {
 	Owner string
 	Repo  string
+	// Job_id parameter.
 	JobID int
 }
 
 type ActionsDownloadWorkflowRunLogsParams struct {
 	Owner string
 	Repo  string
+	// The id of the workflow run.
 	RunID int
 }
 
@@ -223,20 +246,24 @@ type ActionsGetAllowedActionsRepositoryParams struct {
 }
 
 type ActionsGetArtifactParams struct {
-	Owner      string
-	Repo       string
+	Owner string
+	Repo  string
+	// Artifact_id parameter.
 	ArtifactID int
 }
 
 type ActionsGetEnvironmentPublicKeyParams struct {
-	RepositoryID    int
+	RepositoryID int
+	// The name of the environment.
 	EnvironmentName string
 }
 
 type ActionsGetEnvironmentSecretParams struct {
-	RepositoryID    int
+	RepositoryID int
+	// The name of the environment.
 	EnvironmentName string
-	SecretName      string
+	// Secret_name parameter.
+	SecretName string
 }
 
 type ActionsGetGithubActionsPermissionsOrganizationParams struct {
@@ -251,6 +278,7 @@ type ActionsGetGithubActionsPermissionsRepositoryParams struct {
 type ActionsGetJobForWorkflowRunParams struct {
 	Owner string
 	Repo  string
+	// Job_id parameter.
 	JobID int
 }
 
@@ -259,7 +287,8 @@ type ActionsGetOrgPublicKeyParams struct {
 }
 
 type ActionsGetOrgSecretParams struct {
-	Org        string
+	Org string
+	// Secret_name parameter.
 	SecretName string
 }
 
@@ -269,93 +298,120 @@ type ActionsGetRepoPublicKeyParams struct {
 }
 
 type ActionsGetRepoSecretParams struct {
-	Owner      string
-	Repo       string
+	Owner string
+	Repo  string
+	// Secret_name parameter.
 	SecretName string
 }
 
 type ActionsGetReviewsForRunParams struct {
 	Owner string
 	Repo  string
+	// The id of the workflow run.
 	RunID int
 }
 
 type ActionsGetSelfHostedRunnerForOrgParams struct {
-	Org      string
+	Org string
+	// Unique identifier of the self-hosted runner.
 	RunnerID int
 }
 
 type ActionsGetSelfHostedRunnerForRepoParams struct {
-	Owner    string
-	Repo     string
+	Owner string
+	Repo  string
+	// Unique identifier of the self-hosted runner.
 	RunnerID int
 }
 
 type ActionsGetSelfHostedRunnerGroupForOrgParams struct {
-	Org           string
+	Org string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
 }
 
 type ActionsGetWorkflowRunParams struct {
 	Owner string
 	Repo  string
+	// The id of the workflow run.
 	RunID int
 }
 
 type ActionsGetWorkflowRunUsageParams struct {
 	Owner string
 	Repo  string
+	// The id of the workflow run.
 	RunID int
 }
 
 type ActionsListArtifactsForRepoParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActionsListEnvironmentSecretsParams struct {
-	RepositoryID    int
+	RepositoryID int
+	// The name of the environment.
 	EnvironmentName string
-	PerPage         OptInt
-	Page            OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActionsListJobsForWorkflowRunParams struct {
-	Owner   string
-	Repo    string
-	RunID   int
-	Filter  OptActionsListJobsForWorkflowRunFilter
+	Owner string
+	Repo  string
+	// The id of the workflow run.
+	RunID int
+	// Filters jobs by their `completed_at` timestamp. Can be one of:
+	// \* `latest`: Returns jobs from the most recent execution of the workflow run.
+	// \* `all`: Returns all jobs for a workflow run, including from old executions of the workflow run.
+	Filter OptActionsListJobsForWorkflowRunFilter
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActionsListOrgSecretsParams struct {
-	Org     string
+	Org string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
-	Org           string
+	Org string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
-	Page          OptInt
-	PerPage       OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
 }
 
 type ActionsListRepoSecretsParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActionsListRepoWorkflowsParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActionsListRunnerApplicationsForOrgParams struct {
@@ -368,60 +424,89 @@ type ActionsListRunnerApplicationsForRepoParams struct {
 }
 
 type ActionsListSelectedReposForOrgSecretParams struct {
-	Org        string
+	Org string
+	// Secret_name parameter.
 	SecretName string
-	Page       OptInt
-	PerPage    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
 }
 
 type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams struct {
-	Org     string
+	Org string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActionsListSelfHostedRunnerGroupsForOrgParams struct {
-	Org     string
+	Org string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActionsListSelfHostedRunnersForOrgParams struct {
-	Org     string
+	Org string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActionsListSelfHostedRunnersForRepoParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActionsListSelfHostedRunnersInGroupForOrgParams struct {
-	Org           string
+	Org string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
-	PerPage       OptInt
-	Page          OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActionsListWorkflowRunArtifactsParams struct {
-	Owner   string
-	Repo    string
-	RunID   int
+	Owner string
+	Repo  string
+	// The id of the workflow run.
+	RunID int
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActionsListWorkflowRunsForRepoParams struct {
-	Owner   string
-	Repo    string
-	Actor   OptString
-	Branch  OptString
-	Event   OptString
-	Status  OptActionsListWorkflowRunsForRepoStatus
+	Owner string
+	Repo  string
+	// Returns someone's workflow runs. Use the login for the user who created the `push` associated with
+	// the check suite or workflow run.
+	Actor OptString
+	// Returns workflow runs associated with a branch. Use the name of the branch of the `push`.
+	Branch OptString
+	// Returns workflow run triggered by the event you specify. For example, `push`, `pull_request` or
+	// `issue`. For more information, see "[Events that trigger workflows](https://help.github.
+	// com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows).".
+	Event OptString
+	// Returns workflow runs with the check run `status` or `conclusion` that you specify. For example, a
+	// conclusion can be `success` or a status can be `in_progress`. Only GitHub can set a status of
+	// `waiting` or `requested`. For a list of the possible `status` and `conclusion` options, see
+	// "[Create a check run](https://docs.github.com/rest/reference/checks#create-a-check-run).".
+	Status OptActionsListWorkflowRunsForRepoStatus
+	// Results per page (max 100).
 	PerPage OptInt
+	// Page number of the results to fetch.
 	Page    OptInt
 	Created OptTime
 }
@@ -429,36 +514,43 @@ type ActionsListWorkflowRunsForRepoParams struct {
 type ActionsReRunWorkflowParams struct {
 	Owner string
 	Repo  string
+	// The id of the workflow run.
 	RunID int
 }
 
 type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
-	Org           string
+	Org string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
 	RepositoryID  int
 }
 
 type ActionsRemoveSelectedRepoFromOrgSecretParams struct {
-	Org          string
+	Org string
+	// Secret_name parameter.
 	SecretName   string
 	RepositoryID int
 }
 
 type ActionsRemoveSelfHostedRunnerFromGroupForOrgParams struct {
-	Org           string
+	Org string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
-	RunnerID      int
+	// Unique identifier of the self-hosted runner.
+	RunnerID int
 }
 
 type ActionsRetryWorkflowParams struct {
 	Owner string
 	Repo  string
+	// The id of the workflow run.
 	RunID int
 }
 
 type ActionsReviewPendingDeploymentsForRunParams struct {
 	Owner string
 	Repo  string
+	// The id of the workflow run.
 	RunID int
 }
 
@@ -481,12 +573,14 @@ type ActionsSetGithubActionsPermissionsRepositoryParams struct {
 }
 
 type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
-	Org           string
+	Org string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
 }
 
 type ActionsSetSelectedReposForOrgSecretParams struct {
-	Org        string
+	Org string
+	// Secret_name parameter.
 	SecretName string
 }
 
@@ -495,12 +589,14 @@ type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams struct
 }
 
 type ActionsSetSelfHostedRunnersInGroupForOrgParams struct {
-	Org           string
+	Org string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
 }
 
 type ActionsUpdateSelfHostedRunnerGroupForOrgParams struct {
-	Org           string
+	Org string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
 }
 
@@ -515,6 +611,7 @@ type ActivityDeleteRepoSubscriptionParams struct {
 }
 
 type ActivityDeleteThreadSubscriptionParams struct {
+	// Thread_id parameter.
 	ThreadID int
 }
 
@@ -524,112 +621,158 @@ type ActivityGetRepoSubscriptionParams struct {
 }
 
 type ActivityGetThreadParams struct {
+	// Thread_id parameter.
 	ThreadID int
 }
 
 type ActivityGetThreadSubscriptionForAuthenticatedUserParams struct {
+	// Thread_id parameter.
 	ThreadID int
 }
 
 type ActivityListEventsForAuthenticatedUserParams struct {
 	Username string
-	PerPage  OptInt
-	Page     OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActivityListNotificationsForAuthenticatedUserParams struct {
-	All           OptBool
+	// If `true`, show notifications marked as read.
+	All OptBool
+	// If `true`, only shows notifications in which the user is directly participating or mentioned.
 	Participating OptBool
-	Since         OptTime
-	Before        OptTime
-	PerPage       OptInt
-	Page          OptInt
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptTime
+	// Only show notifications updated before the given time. This is a timestamp in [ISO
+	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Before OptTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActivityListOrgEventsForAuthenticatedUserParams struct {
 	Username string
 	Org      string
-	PerPage  OptInt
-	Page     OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActivityListPublicEventsParams struct {
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActivityListPublicEventsForRepoNetworkParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActivityListPublicEventsForUserParams struct {
 	Username string
-	PerPage  OptInt
-	Page     OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActivityListPublicOrgEventsParams struct {
-	Org     string
+	Org string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActivityListReceivedEventsForUserParams struct {
 	Username string
-	PerPage  OptInt
-	Page     OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActivityListReceivedPublicEventsForUserParams struct {
 	Username string
-	PerPage  OptInt
-	Page     OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActivityListRepoEventsParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActivityListRepoNotificationsForAuthenticatedUserParams struct {
-	Owner         string
-	Repo          string
-	All           OptBool
+	Owner string
+	Repo  string
+	// If `true`, show notifications marked as read.
+	All OptBool
+	// If `true`, only shows notifications in which the user is directly participating or mentioned.
 	Participating OptBool
-	Since         OptTime
-	Before        OptTime
-	PerPage       OptInt
-	Page          OptInt
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptTime
+	// Only show notifications updated before the given time. This is a timestamp in [ISO
+	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Before OptTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActivityListReposStarredByAuthenticatedUserParams struct {
-	Sort      OptActivityListReposStarredByAuthenticatedUserSort
+	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+	Sort OptActivityListReposStarredByAuthenticatedUserSort
+	// One of `asc` (ascending) or `desc` (descending).
 	Direction OptActivityListReposStarredByAuthenticatedUserDirection
-	PerPage   OptInt
-	Page      OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActivityListReposWatchedByUserParams struct {
 	Username string
-	PerPage  OptInt
-	Page     OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActivityListWatchedReposForAuthenticatedUserParams struct {
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActivityListWatchersForRepoParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ActivityMarkRepoNotificationsAsReadParams struct {
@@ -638,6 +781,7 @@ type ActivityMarkRepoNotificationsAsReadParams struct {
 }
 
 type ActivityMarkThreadAsReadParams struct {
+	// Thread_id parameter.
 	ThreadID int
 }
 
@@ -647,6 +791,7 @@ type ActivitySetRepoSubscriptionParams struct {
 }
 
 type ActivitySetThreadSubscriptionParams struct {
+	// Thread_id parameter.
 	ThreadID int
 }
 
@@ -661,33 +806,44 @@ type ActivityUnstarRepoForAuthenticatedUserParams struct {
 }
 
 type AppsAddRepoToInstallationParams struct {
+	// Installation_id parameter.
 	InstallationID int
 	RepositoryID   int
 }
 
 type AppsCheckTokenParams struct {
+	// The client ID of your GitHub app.
 	ClientID string
 }
 
 type AppsCreateContentAttachmentParams struct {
-	Owner              string
-	Repo               string
+	// The owner of the repository. Determined from the `repository` `full_name` of the
+	// `content_reference` event.
+	Owner string
+	// The name of the repository. Determined from the `repository` `full_name` of the
+	// `content_reference` event.
+	Repo string
+	// The `id` of the `content_reference` event.
 	ContentReferenceID int
 }
 
 type AppsCreateInstallationAccessTokenParams struct {
+	// Installation_id parameter.
 	InstallationID int
 }
 
 type AppsDeleteAuthorizationParams struct {
+	// The client ID of your GitHub app.
 	ClientID string
 }
 
 type AppsDeleteInstallationParams struct {
+	// Installation_id parameter.
 	InstallationID int
 }
 
 type AppsDeleteTokenParams struct {
+	// The client ID of your GitHub app.
 	ClientID string
 }
 
@@ -696,10 +852,12 @@ type AppsGetBySlugParams struct {
 }
 
 type AppsGetSubscriptionPlanForAccountParams struct {
+	// Account_id parameter.
 	AccountID int
 }
 
 type AppsGetSubscriptionPlanForAccountStubbedParams struct {
+	// Account_id parameter.
 	AccountID int
 }
 
@@ -708,55 +866,83 @@ type AppsGetWebhookDeliveryParams struct {
 }
 
 type AppsListAccountsForPlanParams struct {
-	PlanID    int
-	Sort      OptAppsListAccountsForPlanSort
+	// Plan_id parameter.
+	PlanID int
+	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+	Sort OptAppsListAccountsForPlanSort
+	// To return the oldest accounts first, set to `asc`. Can be one of `asc` or `desc`. Ignored without
+	// the `sort` parameter.
 	Direction OptAppsListAccountsForPlanDirection
-	PerPage   OptInt
-	Page      OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type AppsListAccountsForPlanStubbedParams struct {
-	PlanID    int
-	Sort      OptAppsListAccountsForPlanStubbedSort
+	// Plan_id parameter.
+	PlanID int
+	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+	Sort OptAppsListAccountsForPlanStubbedSort
+	// To return the oldest accounts first, set to `asc`. Can be one of `asc` or `desc`. Ignored without
+	// the `sort` parameter.
 	Direction OptAppsListAccountsForPlanStubbedDirection
-	PerPage   OptInt
-	Page      OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type AppsListInstallationReposForAuthenticatedUserParams struct {
+	// Installation_id parameter.
 	InstallationID int
-	PerPage        OptInt
-	Page           OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type AppsListPlansParams struct {
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type AppsListPlansStubbedParams struct {
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type AppsListReposAccessibleToInstallationParams struct {
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type AppsListSubscriptionsForAuthenticatedUserParams struct {
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type AppsListSubscriptionsForAuthenticatedUserStubbedParams struct {
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type AppsListWebhookDeliveriesParams struct {
+	// Results per page (max 100).
 	PerPage OptInt
-	Cursor  OptString
+	// Used for pagination: the starting delivery from which the page of deliveries is fetched. Refer to
+	// the `link` header for the next and previous page cursors.
+	Cursor OptString
 }
 
 type AppsRedeliverWebhookDeliveryParams struct {
@@ -764,27 +950,33 @@ type AppsRedeliverWebhookDeliveryParams struct {
 }
 
 type AppsRemoveRepoFromInstallationParams struct {
+	// Installation_id parameter.
 	InstallationID int
 	RepositoryID   int
 }
 
 type AppsResetTokenParams struct {
+	// The client ID of your GitHub app.
 	ClientID string
 }
 
 type AppsScopeTokenParams struct {
+	// The client ID of your GitHub app.
 	ClientID string
 }
 
 type AppsSuspendInstallationParams struct {
+	// Installation_id parameter.
 	InstallationID int
 }
 
 type AppsUnsuspendInstallationParams struct {
+	// Installation_id parameter.
 	InstallationID int
 }
 
 type BillingGetGithubActionsBillingGheParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 }
 
@@ -797,6 +989,7 @@ type BillingGetGithubActionsBillingUserParams struct {
 }
 
 type BillingGetGithubPackagesBillingGheParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 }
 
@@ -809,6 +1002,7 @@ type BillingGetGithubPackagesBillingUserParams struct {
 }
 
 type BillingGetSharedStorageBillingGheParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 }
 
@@ -826,61 +1020,88 @@ type ChecksCreateSuiteParams struct {
 }
 
 type ChecksGetParams struct {
-	Owner      string
-	Repo       string
+	Owner string
+	Repo  string
+	// Check_run_id parameter.
 	CheckRunID int
 }
 
 type ChecksGetSuiteParams struct {
-	Owner        string
-	Repo         string
+	Owner string
+	Repo  string
+	// Check_suite_id parameter.
 	CheckSuiteID int
 }
 
 type ChecksListAnnotationsParams struct {
-	Owner      string
-	Repo       string
+	Owner string
+	Repo  string
+	// Check_run_id parameter.
 	CheckRunID int
-	PerPage    OptInt
-	Page       OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ChecksListForRefParams struct {
-	Owner     string
-	Repo      string
-	Ref       string
+	Owner string
+	Repo  string
+	// Ref parameter.
+	Ref string
+	// Returns check runs with the specified `name`.
 	CheckName OptString
-	Status    OptChecksListForRefStatus
-	Filter    OptChecksListForRefFilter
-	PerPage   OptInt
-	Page      OptInt
-	AppID     OptInt
+	// Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or
+	// `completed`.
+	Status OptChecksListForRefStatus
+	// Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most
+	// recent check runs) or `all`.
+	Filter OptChecksListForRefFilter
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page  OptInt
+	AppID OptInt
 }
 
 type ChecksListForSuiteParams struct {
-	Owner        string
-	Repo         string
+	Owner string
+	Repo  string
+	// Check_suite_id parameter.
 	CheckSuiteID int
-	CheckName    OptString
-	Status       OptChecksListForSuiteStatus
-	Filter       OptChecksListForSuiteFilter
-	PerPage      OptInt
-	Page         OptInt
+	// Returns check runs with the specified `name`.
+	CheckName OptString
+	// Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or
+	// `completed`.
+	Status OptChecksListForSuiteStatus
+	// Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most
+	// recent check runs) or `all`.
+	Filter OptChecksListForSuiteFilter
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ChecksListSuitesForRefParams struct {
-	Owner     string
-	Repo      string
-	Ref       string
-	AppID     OptInt
+	Owner string
+	Repo  string
+	// Ref parameter.
+	Ref string
+	// Filters check suites by GitHub App `id`.
+	AppID OptInt
+	// Returns check runs with the specified `name`.
 	CheckName OptString
-	PerPage   OptInt
-	Page      OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ChecksRerequestSuiteParams struct {
-	Owner        string
-	Repo         string
+	Owner string
+	Repo  string
+	// Check_suite_id parameter.
 	CheckSuiteID int
 }
 
@@ -890,64 +1111,109 @@ type ChecksSetSuitesPreferencesParams struct {
 }
 
 type CodeScanningDeleteAnalysisParams struct {
-	Owner         string
-	Repo          string
-	AnalysisID    int
+	Owner string
+	Repo  string
+	// The ID of the analysis, as returned from the `GET /repos/{owner}/{repo}/code-scanning/analyses`
+	// operation.
+	AnalysisID int
+	// Allow deletion if the specified analysis is the last in a set. If you attempt to delete the final
+	// analysis in a set without setting this parameter to `true`, you'll get a 400 response with the
+	// message: `Analysis is last of its type and deletion may result in the loss of historical alert
+	// data. Please specify confirm_delete.`.
 	ConfirmDelete OptNilString
 }
 
 type CodeScanningGetAlertParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
+	// alert within GitHub, and in the `number` field in the response from the `GET
+	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
 	AlertNumber AlertNumber
 }
 
 type CodeScanningGetAnalysisParams struct {
-	Owner      string
-	Repo       string
+	Owner string
+	Repo  string
+	// The ID of the analysis, as returned from the `GET /repos/{owner}/{repo}/code-scanning/analyses`
+	// operation.
 	AnalysisID int
 }
 
 type CodeScanningGetSarifParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// The SARIF ID obtained after uploading.
 	SarifID string
 }
 
 type CodeScanningListAlertInstancesParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
+	// alert within GitHub, and in the `number` field in the response from the `GET
+	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
 	AlertNumber AlertNumber
-	Page        OptInt
-	PerPage     OptInt
-	Ref         OptCodeScanningRef
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// The Git reference for the results you want to list. The `ref` for a branch can be formatted either
+	// as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use
+	// `refs/pull/<number>/merge`.
+	Ref OptCodeScanningRef
 }
 
 type CodeScanningListAlertsForRepoParams struct {
-	Owner    string
-	Repo     string
+	Owner string
+	Repo  string
+	// The name of a code scanning tool. Only results by this tool will be listed. You can specify the
+	// tool by using either `tool_name` or `tool_guid`, but not both.
 	ToolName OptCodeScanningAnalysisToolName
+	// The GUID of a code scanning tool. Only results by this tool will be listed. Note that some code
+	// scanning tools may not include a GUID in their analysis data. You can specify the tool by using
+	// either `tool_guid` or `tool_name`, but not both.
 	ToolGUID OptNilCodeScanningAnalysisToolGUID
-	Page     OptInt
-	PerPage  OptInt
-	Ref      OptCodeScanningRef
-	State    OptCodeScanningAlertState
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// The Git reference for the results you want to list. The `ref` for a branch can be formatted either
+	// as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use
+	// `refs/pull/<number>/merge`.
+	Ref OptCodeScanningRef
+	// Set to `open`, `fixed`, or `dismissed` to list code scanning alerts in a specific state.
+	State OptCodeScanningAlertState
 }
 
 type CodeScanningListRecentAnalysesParams struct {
-	Owner    string
-	Repo     string
+	Owner string
+	Repo  string
+	// The name of a code scanning tool. Only results by this tool will be listed. You can specify the
+	// tool by using either `tool_name` or `tool_guid`, but not both.
 	ToolName OptCodeScanningAnalysisToolName
+	// The GUID of a code scanning tool. Only results by this tool will be listed. Note that some code
+	// scanning tools may not include a GUID in their analysis data. You can specify the tool by using
+	// either `tool_guid` or `tool_name`, but not both.
 	ToolGUID OptNilCodeScanningAnalysisToolGUID
-	Page     OptInt
-	PerPage  OptInt
-	Ref      OptCodeScanningRef
-	SarifID  OptCodeScanningAnalysisSarifID
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// The Git reference for the analyses you want to list. The `ref` for a branch can be formatted
+	// either as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use
+	// `refs/pull/<number>/merge`.
+	Ref OptCodeScanningRef
+	// Filter analyses belonging to the same SARIF upload.
+	SarifID OptCodeScanningAnalysisSarifID
 }
 
 type CodeScanningUpdateAlertParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
+	// alert within GitHub, and in the `number` field in the response from the `GET
+	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
 	AlertNumber AlertNumber
 }
 
@@ -961,305 +1227,447 @@ type CodesOfConductGetConductCodeParams struct {
 }
 
 type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct {
-	Enterprise    string
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
-	OrgID         int
+	// Unique identifier of an organization.
+	OrgID int
 }
 
 type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams struct {
-	Enterprise    string
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
-	RunnerID      int
+	// Unique identifier of the self-hosted runner.
+	RunnerID int
 }
 
 type EnterpriseAdminCreateRegistrationTokenForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 }
 
 type EnterpriseAdminCreateRemoveTokenForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 }
 
 type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 }
 
 type EnterpriseAdminDeleteScimGroupFromEnterpriseParams struct {
-	Enterprise  string
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Identifier generated by the GitHub SCIM endpoint.
 	ScimGroupID string
 }
 
 type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
-	RunnerID   int
+	// Unique identifier of the self-hosted runner.
+	RunnerID int
 }
 
 type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams struct {
-	Enterprise    string
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
 }
 
 type EnterpriseAdminDeleteUserFromEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
+	// Scim_user_id parameter.
 	ScimUserID string
 }
 
 type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
-	OrgID      int
+	// Unique identifier of an organization.
+	OrgID int
 }
 
 type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
-	OrgID      int
+	// Unique identifier of an organization.
+	OrgID int
 }
 
 type EnterpriseAdminGetAllowedActionsEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 }
 
 type EnterpriseAdminGetAuditLogParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
-	Phrase     OptString
-	Include    OptEnterpriseAdminGetAuditLogInclude
-	After      OptString
-	Before     OptString
-	Order      OptEnterpriseAdminGetAuditLogOrder
-	Page       OptInt
-	PerPage    OptInt
+	// A search phrase. For more information, see [Searching the audit log](https://docs.github.
+	// com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization#searching-the-audit-log).
+	Phrase OptString
+	// The event types to include:
+	// - `web` - returns web (non-Git) events
+	// - `git` - returns Git events
+	// - `all` - returns both web and Git events
+	// The default is `web`.
+	Include OptEnterpriseAdminGetAuditLogInclude
+	// A cursor, as given in the [Link header](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
+	// for events after this cursor.
+	After OptString
+	// A cursor, as given in the [Link header](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
+	// for events before this cursor.
+	Before OptString
+	// The order of audit log events. To list newest events first, specify `desc`. To list oldest events
+	// first, specify `asc`.
+	// The default is `desc`.
+	Order OptEnterpriseAdminGetAuditLogOrder
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
 }
 
 type EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 }
 
 type EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams struct {
-	Enterprise         string
-	ScimGroupID        string
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Identifier generated by the GitHub SCIM endpoint.
+	ScimGroupID string
+	// Attributes to exclude.
 	ExcludedAttributes OptString
 }
 
 type EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
+	// Scim_user_id parameter.
 	ScimUserID string
 }
 
 type EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
-	RunnerID   int
+	// Unique identifier of the self-hosted runner.
+	RunnerID int
 }
 
 type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams struct {
-	Enterprise    string
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
 }
 
 type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct {
-	Enterprise    string
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
-	PerPage       OptInt
-	Page          OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type EnterpriseAdminListProvisionedGroupsEnterpriseParams struct {
-	Enterprise         string
-	StartIndex         OptInt
-	Count              OptInt
-	Filter             OptString
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Used for pagination: the index of the first result to return.
+	StartIndex OptInt
+	// Used for pagination: the number of results to return.
+	Count OptInt
+	// Filter results.
+	Filter OptString
+	// Attributes to exclude.
 	ExcludedAttributes OptString
 }
 
 type EnterpriseAdminListProvisionedIdentitiesEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
+	// Used for pagination: the index of the first result to return.
 	StartIndex OptInt
-	Count      OptInt
-	Filter     OptString
+	// Used for pagination: the number of results to return.
+	Count OptInt
+	// Filter results.
+	Filter OptString
 }
 
 type EnterpriseAdminListRunnerApplicationsForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 }
 
 type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
-	PerPage    OptInt
-	Page       OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
-	PerPage    OptInt
-	Page       OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type EnterpriseAdminListSelfHostedRunnersForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
-	PerPage    OptInt
-	Page       OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams struct {
-	Enterprise    string
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
-	PerPage       OptInt
-	Page          OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type EnterpriseAdminProvisionAndInviteEnterpriseGroupParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 }
 
 type EnterpriseAdminProvisionAndInviteEnterpriseUserParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 }
 
 type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct {
-	Enterprise    string
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
-	OrgID         int
+	// Unique identifier of an organization.
+	OrgID int
 }
 
 type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams struct {
-	Enterprise    string
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
-	RunnerID      int
+	// Unique identifier of the self-hosted runner.
+	RunnerID int
 }
 
 type EnterpriseAdminSetAllowedActionsEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 }
 
 type EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 }
 
 type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams struct {
-	Enterprise  string
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Identifier generated by the GitHub SCIM endpoint.
 	ScimGroupID string
 }
 
 type EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
+	// Scim_user_id parameter.
 	ScimUserID string
 }
 
 type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct {
-	Enterprise    string
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
 }
 
 type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 }
 
 type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams struct {
-	Enterprise    string
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
 }
 
 type EnterpriseAdminUpdateAttributeForEnterpriseGroupParams struct {
-	Enterprise  string
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Identifier generated by the GitHub SCIM endpoint.
 	ScimGroupID string
 }
 
 type EnterpriseAdminUpdateAttributeForEnterpriseUserParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
+	// Scim_user_id parameter.
 	ScimUserID string
 }
 
 type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams struct {
-	Enterprise    string
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
 }
 
 type GistsCheckIsStarredParams struct {
+	// Gist_id parameter.
 	GistID string
 }
 
 type GistsCreateCommentParams struct {
+	// Gist_id parameter.
 	GistID string
 }
 
 type GistsDeleteParams struct {
+	// Gist_id parameter.
 	GistID string
 }
 
 type GistsDeleteCommentParams struct {
-	GistID    string
+	// Gist_id parameter.
+	GistID string
+	// Comment_id parameter.
 	CommentID int
 }
 
 type GistsForkParams struct {
+	// Gist_id parameter.
 	GistID string
 }
 
 type GistsGetParams struct {
+	// Gist_id parameter.
 	GistID string
 }
 
 type GistsGetCommentParams struct {
-	GistID    string
+	// Gist_id parameter.
+	GistID string
+	// Comment_id parameter.
 	CommentID int
 }
 
 type GistsGetRevisionParams struct {
+	// Gist_id parameter.
 	GistID string
 	Sha    string
 }
 
 type GistsListParams struct {
-	Since   OptTime
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptTime
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type GistsListCommentsParams struct {
-	GistID  string
+	// Gist_id parameter.
+	GistID string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type GistsListCommitsParams struct {
-	GistID  string
+	// Gist_id parameter.
+	GistID string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type GistsListForUserParams struct {
 	Username string
-	Since    OptTime
-	PerPage  OptInt
-	Page     OptInt
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type GistsListForksParams struct {
-	GistID  string
+	// Gist_id parameter.
+	GistID string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type GistsListPublicParams struct {
-	Since   OptTime
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptTime
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type GistsListStarredParams struct {
-	Since   OptTime
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptTime
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type GistsStarParams struct {
+	// Gist_id parameter.
 	GistID string
 }
 
 type GistsUnstarParams struct {
+	// Gist_id parameter.
 	GistID string
 }
 
 type GistsUpdateCommentParams struct {
-	GistID    string
+	// Gist_id parameter.
+	GistID string
+	// Comment_id parameter.
 	CommentID int
 }
 
@@ -1291,7 +1699,8 @@ type GitCreateTreeParams struct {
 type GitDeleteRefParams struct {
 	Owner string
 	Repo  string
-	Ref   string
+	// Ref parameter.
+	Ref string
 }
 
 type GitGetBlobParams struct {
@@ -1301,15 +1710,17 @@ type GitGetBlobParams struct {
 }
 
 type GitGetCommitParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Commit_sha parameter.
 	CommitSha string
 }
 
 type GitGetRefParams struct {
 	Owner string
 	Repo  string
-	Ref   string
+	// Ref parameter.
+	Ref string
 }
 
 type GitGetTagParams struct {
@@ -1319,24 +1730,32 @@ type GitGetTagParams struct {
 }
 
 type GitGetTreeParams struct {
-	Owner     string
-	Repo      string
-	TreeSha   string
+	Owner   string
+	Repo    string
+	TreeSha string
+	// Setting this parameter to any value returns the objects or subtrees referenced by the tree
+	// specified in `:tree_sha`. For example, setting `recursive` to any of the following will enable
+	// returning objects or subtrees: `0`, `1`, `"true"`, and `"false"`. Omit this parameter to prevent
+	// recursively returning objects or subtrees.
 	Recursive OptString
 }
 
 type GitListMatchingRefsParams struct {
-	Owner   string
-	Repo    string
-	Ref     string
+	Owner string
+	Repo  string
+	// Ref parameter.
+	Ref string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type GitUpdateRefParams struct {
 	Owner string
 	Repo  string
-	Ref   string
+	// Ref parameter.
+	Ref string
 }
 
 type GitignoreGetTemplateParams struct {
@@ -1362,8 +1781,9 @@ type InteractionsSetRestrictionsForRepoParams struct {
 }
 
 type IssuesAddAssigneesParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// Issue_number parameter.
 	IssueNumber int
 }
 
@@ -1379,8 +1799,9 @@ type IssuesCreateParams struct {
 }
 
 type IssuesCreateCommentParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// Issue_number parameter.
 	IssueNumber int
 }
 
@@ -1395,8 +1816,9 @@ type IssuesCreateMilestoneParams struct {
 }
 
 type IssuesDeleteCommentParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Comment_id parameter.
 	CommentID int
 }
 
@@ -1407,20 +1829,23 @@ type IssuesDeleteLabelParams struct {
 }
 
 type IssuesDeleteMilestoneParams struct {
-	Owner           string
-	Repo            string
+	Owner string
+	Repo  string
+	// Milestone_number parameter.
 	MilestoneNumber int
 }
 
 type IssuesGetParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// Issue_number parameter.
 	IssueNumber int
 }
 
 type IssuesGetCommentParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Comment_id parameter.
 	CommentID int
 }
 
@@ -1437,171 +1862,267 @@ type IssuesGetLabelParams struct {
 }
 
 type IssuesGetMilestoneParams struct {
-	Owner           string
-	Repo            string
+	Owner string
+	Repo  string
+	// Milestone_number parameter.
 	MilestoneNumber int
 }
 
 type IssuesListParams struct {
-	Filter    OptIssuesListFilter
-	State     OptIssuesListState
-	Labels    OptString
-	Sort      OptIssuesListSort
+	// Indicates which sorts of issues to return. Can be one of:
+	// \* `assigned`: Issues assigned to you
+	// \* `created`: Issues created by you
+	// \* `mentioned`: Issues mentioning you
+	// \* `subscribed`: Issues you're subscribed to updates for
+	// \* `all` or `repos`: All issues the authenticated user can see, regardless of participation or
+	// creation.
+	Filter OptIssuesListFilter
+	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
+	State OptIssuesListState
+	// A list of comma separated label names. Example: `bug,ui,@high`.
+	Labels OptString
+	// What to sort results by. Can be either `created`, `updated`, `comments`.
+	Sort OptIssuesListSort
+	// One of `asc` (ascending) or `desc` (descending).
 	Direction OptIssuesListDirection
-	Since     OptTime
-	Collab    OptBool
-	Orgs      OptBool
-	Owned     OptBool
-	Pulls     OptBool
-	PerPage   OptInt
-	Page      OptInt
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since  OptTime
+	Collab OptBool
+	Orgs   OptBool
+	Owned  OptBool
+	Pulls  OptBool
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type IssuesListAssigneesParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type IssuesListCommentsParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// Issue_number parameter.
 	IssueNumber int
-	Since       OptTime
-	PerPage     OptInt
-	Page        OptInt
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type IssuesListCommentsForRepoParams struct {
-	Owner     string
-	Repo      string
-	Sort      OptIssuesListCommentsForRepoSort
+	Owner string
+	Repo  string
+	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+	Sort OptIssuesListCommentsForRepoSort
+	// Either `asc` or `desc`. Ignored without the `sort` parameter.
 	Direction OptIssuesListCommentsForRepoDirection
-	Since     OptTime
-	PerPage   OptInt
-	Page      OptInt
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type IssuesListEventsForRepoParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type IssuesListForAuthenticatedUserParams struct {
-	Filter    OptIssuesListForAuthenticatedUserFilter
-	State     OptIssuesListForAuthenticatedUserState
-	Labels    OptString
-	Sort      OptIssuesListForAuthenticatedUserSort
+	// Indicates which sorts of issues to return. Can be one of:
+	// \* `assigned`: Issues assigned to you
+	// \* `created`: Issues created by you
+	// \* `mentioned`: Issues mentioning you
+	// \* `subscribed`: Issues you're subscribed to updates for
+	// \* `all` or `repos`: All issues the authenticated user can see, regardless of participation or
+	// creation.
+	Filter OptIssuesListForAuthenticatedUserFilter
+	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
+	State OptIssuesListForAuthenticatedUserState
+	// A list of comma separated label names. Example: `bug,ui,@high`.
+	Labels OptString
+	// What to sort results by. Can be either `created`, `updated`, `comments`.
+	Sort OptIssuesListForAuthenticatedUserSort
+	// One of `asc` (ascending) or `desc` (descending).
 	Direction OptIssuesListForAuthenticatedUserDirection
-	Since     OptTime
-	PerPage   OptInt
-	Page      OptInt
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type IssuesListForOrgParams struct {
-	Org       string
-	Filter    OptIssuesListForOrgFilter
-	State     OptIssuesListForOrgState
-	Labels    OptString
-	Sort      OptIssuesListForOrgSort
+	Org string
+	// Indicates which sorts of issues to return. Can be one of:
+	// \* `assigned`: Issues assigned to you
+	// \* `created`: Issues created by you
+	// \* `mentioned`: Issues mentioning you
+	// \* `subscribed`: Issues you're subscribed to updates for
+	// \* `all` or `repos`: All issues the authenticated user can see, regardless of participation or
+	// creation.
+	Filter OptIssuesListForOrgFilter
+	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
+	State OptIssuesListForOrgState
+	// A list of comma separated label names. Example: `bug,ui,@high`.
+	Labels OptString
+	// What to sort results by. Can be either `created`, `updated`, `comments`.
+	Sort OptIssuesListForOrgSort
+	// One of `asc` (ascending) or `desc` (descending).
 	Direction OptIssuesListForOrgDirection
-	Since     OptTime
-	PerPage   OptInt
-	Page      OptInt
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type IssuesListForRepoParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// If an `integer` is passed, it should refer to a milestone by its `number` field. If the string `*`
+	// is passed, issues with any milestone are accepted. If the string `none` is passed, issues without
+	// milestones are returned.
 	Milestone OptString
-	State     OptIssuesListForRepoState
-	Assignee  OptString
-	Creator   OptString
+	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
+	State OptIssuesListForRepoState
+	// Can be the name of a user. Pass in `none` for issues with no assigned user, and `*` for issues
+	// assigned to any user.
+	Assignee OptString
+	// The user that created the issue.
+	Creator OptString
+	// A user that's mentioned in the issue.
 	Mentioned OptString
-	Labels    OptString
-	Sort      OptIssuesListForRepoSort
+	// A list of comma separated label names. Example: `bug,ui,@high`.
+	Labels OptString
+	// What to sort results by. Can be either `created`, `updated`, `comments`.
+	Sort OptIssuesListForRepoSort
+	// One of `asc` (ascending) or `desc` (descending).
 	Direction OptIssuesListForRepoDirection
-	Since     OptTime
-	PerPage   OptInt
-	Page      OptInt
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type IssuesListLabelsForMilestoneParams struct {
-	Owner           string
-	Repo            string
+	Owner string
+	Repo  string
+	// Milestone_number parameter.
 	MilestoneNumber int
-	PerPage         OptInt
-	Page            OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type IssuesListLabelsForRepoParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type IssuesListLabelsOnIssueParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// Issue_number parameter.
 	IssueNumber int
-	PerPage     OptInt
-	Page        OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type IssuesListMilestonesParams struct {
-	Owner     string
-	Repo      string
-	State     OptIssuesListMilestonesState
-	Sort      OptIssuesListMilestonesSort
+	Owner string
+	Repo  string
+	// The state of the milestone. Either `open`, `closed`, or `all`.
+	State OptIssuesListMilestonesState
+	// What to sort results by. Either `due_on` or `completeness`.
+	Sort OptIssuesListMilestonesSort
+	// The direction of the sort. Either `asc` or `desc`.
 	Direction OptIssuesListMilestonesDirection
-	PerPage   OptInt
-	Page      OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type IssuesLockParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// Issue_number parameter.
 	IssueNumber int
 }
 
 type IssuesRemoveAllLabelsParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// Issue_number parameter.
 	IssueNumber int
 }
 
 type IssuesRemoveAssigneesParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// Issue_number parameter.
 	IssueNumber int
 }
 
 type IssuesRemoveLabelParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// Issue_number parameter.
 	IssueNumber int
 	Name        string
 }
 
 type IssuesUnlockParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// Issue_number parameter.
 	IssueNumber int
 }
 
 type IssuesUpdateParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// Issue_number parameter.
 	IssueNumber int
 }
 
 type IssuesUpdateCommentParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Comment_id parameter.
 	CommentID int
 }
 
@@ -1612,8 +2133,9 @@ type IssuesUpdateLabelParams struct {
 }
 
 type IssuesUpdateMilestoneParams struct {
-	Owner           string
-	Repo            string
+	Owner string
+	Repo  string
+	// Milestone_number parameter.
 	MilestoneNumber int
 }
 
@@ -1623,8 +2145,10 @@ type LicensesGetParams struct {
 
 type LicensesGetAllCommonlyUsedParams struct {
 	Featured OptBool
-	PerPage  OptInt
-	Page     OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type LicensesGetForRepoParams struct {
@@ -1638,26 +2162,31 @@ type MigrationsCancelImportParams struct {
 }
 
 type MigrationsDeleteArchiveForAuthenticatedUserParams struct {
+	// Migration_id parameter.
 	MigrationID int
 }
 
 type MigrationsDeleteArchiveForOrgParams struct {
-	Org         string
+	Org string
+	// Migration_id parameter.
 	MigrationID int
 }
 
 type MigrationsDownloadArchiveForOrgParams struct {
-	Org         string
+	Org string
+	// Migration_id parameter.
 	MigrationID int
 }
 
 type MigrationsGetArchiveForAuthenticatedUserParams struct {
+	// Migration_id parameter.
 	MigrationID int
 }
 
 type MigrationsGetCommitAuthorsParams struct {
 	Owner string
 	Repo  string
+	// A user ID. Only return users with an ID greater than this ID.
 	Since OptInt
 }
 
@@ -1672,39 +2201,53 @@ type MigrationsGetLargeFilesParams struct {
 }
 
 type MigrationsGetStatusForAuthenticatedUserParams struct {
+	// Migration_id parameter.
 	MigrationID int
 	Exclude     []string
 }
 
 type MigrationsGetStatusForOrgParams struct {
-	Org         string
+	Org string
+	// Migration_id parameter.
 	MigrationID int
-	Exclude     []MigrationsGetStatusForOrgExcludeItem
+	// Exclude attributes from the API response to improve performance.
+	Exclude []MigrationsGetStatusForOrgExcludeItem
 }
 
 type MigrationsListForAuthenticatedUserParams struct {
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type MigrationsListForOrgParams struct {
-	Org     string
+	Org string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+	// Exclude attributes from the API response to improve performance.
 	Exclude []MigrationsListForOrgExcludeItem
 }
 
 type MigrationsListReposForOrgParams struct {
-	Org         string
+	Org string
+	// Migration_id parameter.
 	MigrationID int
-	PerPage     OptInt
-	Page        OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type MigrationsListReposForUserParams struct {
+	// Migration_id parameter.
 	MigrationID int
-	PerPage     OptInt
-	Page        OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type MigrationsMapCommitAuthorParams struct {
@@ -1728,14 +2271,18 @@ type MigrationsStartImportParams struct {
 }
 
 type MigrationsUnlockRepoForAuthenticatedUserParams struct {
+	// Migration_id parameter.
 	MigrationID int
-	RepoName    string
+	// Repo_name parameter.
+	RepoName string
 }
 
 type MigrationsUnlockRepoForOrgParams struct {
-	Org         string
+	Org string
+	// Migration_id parameter.
 	MigrationID int
-	RepoName    string
+	// Repo_name parameter.
+	RepoName string
 }
 
 type MigrationsUpdateImportParams struct {
@@ -1744,43 +2291,56 @@ type MigrationsUpdateImportParams struct {
 }
 
 type OAuthAuthorizationsDeleteAuthorizationParams struct {
+	// Authorization_id parameter.
 	AuthorizationID int
 }
 
 type OAuthAuthorizationsDeleteGrantParams struct {
+	// Grant_id parameter.
 	GrantID int
 }
 
 type OAuthAuthorizationsGetAuthorizationParams struct {
+	// Authorization_id parameter.
 	AuthorizationID int
 }
 
 type OAuthAuthorizationsGetGrantParams struct {
+	// Grant_id parameter.
 	GrantID int
 }
 
 type OAuthAuthorizationsGetOrCreateAuthorizationForAppParams struct {
+	// The client ID of your GitHub app.
 	ClientID string
 }
 
 type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams struct {
+	// The client ID of your GitHub app.
 	ClientID    string
 	Fingerprint string
 }
 
 type OAuthAuthorizationsListAuthorizationsParams struct {
-	PerPage  OptInt
-	Page     OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+	// The client ID of your GitHub app.
 	ClientID OptString
 }
 
 type OAuthAuthorizationsListGrantsParams struct {
-	PerPage  OptInt
-	Page     OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+	// The client ID of your GitHub app.
 	ClientID OptString
 }
 
 type OAuthAuthorizationsUpdateAuthorizationParams struct {
+	// Authorization_id parameter.
 	AuthorizationID int
 }
 
@@ -1790,7 +2350,8 @@ type OrgsBlockUserParams struct {
 }
 
 type OrgsCancelInvitationParams struct {
-	Org          string
+	Org string
+	// Invitation_id parameter.
 	InvitationID int
 }
 
@@ -1832,14 +2393,32 @@ type OrgsGetParams struct {
 }
 
 type OrgsGetAuditLogParams struct {
-	Org     string
-	Phrase  OptString
+	Org string
+	// A search phrase. For more information, see [Searching the audit log](https://docs.github.
+	// com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization#searching-the-audit-log).
+	Phrase OptString
+	// The event types to include:
+	// - `web` - returns web (non-Git) events
+	// - `git` - returns Git events
+	// - `all` - returns both web and Git events
+	// The default is `web`.
 	Include OptOrgsGetAuditLogInclude
-	After   OptString
-	Before  OptString
-	Order   OptOrgsGetAuditLogOrder
+	// A cursor, as given in the [Link header](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
+	// for events after this cursor.
+	After OptString
+	// A cursor, as given in the [Link header](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
+	// for events before this cursor.
+	Before OptString
+	// The order of audit log events. To list newest events first, specify `desc`. To list oldest events
+	// first, specify `asc`.
+	// The default is `desc`.
+	Order OptOrgsGetAuditLogOrder
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type OrgsGetMembershipForAuthenticatedUserParams struct {
@@ -1868,7 +2447,9 @@ type OrgsGetWebhookDeliveryParams struct {
 }
 
 type OrgsListParams struct {
-	Since   OptInt
+	// An organization ID. Only return organizations with an ID greater than this ID.
+	Since OptInt
+	// Results per page (max 100).
 	PerPage OptInt
 }
 
@@ -1877,60 +2458,93 @@ type OrgsListBlockedUsersParams struct {
 }
 
 type OrgsListFailedInvitationsParams struct {
-	Org     string
+	Org string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type OrgsListForAuthenticatedUserParams struct {
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type OrgsListForUserParams struct {
 	Username string
-	PerPage  OptInt
-	Page     OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type OrgsListInvitationTeamsParams struct {
-	Org          string
+	Org string
+	// Invitation_id parameter.
 	InvitationID int
-	PerPage      OptInt
-	Page         OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type OrgsListMembersParams struct {
-	Org     string
-	Filter  OptOrgsListMembersFilter
-	Role    OptOrgsListMembersRole
+	Org string
+	// Filter members returned in the list. Can be one of:
+	// \* `2fa_disabled` - Members without [two-factor authentication](https://github.
+	// com/blog/1614-two-factor-authentication) enabled. Available for organization owners.
+	// \* `all` - All members the authenticated user can see.
+	Filter OptOrgsListMembersFilter
+	// Filter members returned by their role. Can be one of:
+	// \* `all` - All members of the organization, regardless of role.
+	// \* `admin` - Organization owners.
+	// \* `member` - Non-owner organization members.
+	Role OptOrgsListMembersRole
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type OrgsListMembershipsForAuthenticatedUserParams struct {
-	State   OptOrgsListMembershipsForAuthenticatedUserState
+	// Indicates the state of the memberships to return. Can be either `active` or `pending`. If not
+	// specified, the API returns both active and pending memberships.
+	State OptOrgsListMembershipsForAuthenticatedUserState
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type OrgsListOutsideCollaboratorsParams struct {
-	Org     string
-	Filter  OptOrgsListOutsideCollaboratorsFilter
+	Org string
+	// Filter the list of outside collaborators. Can be one of:
+	// \* `2fa_disabled`: Outside collaborators without [two-factor authentication](https://github.
+	// com/blog/1614-two-factor-authentication) enabled.
+	// \* `all`: All outside collaborators.
+	Filter OptOrgsListOutsideCollaboratorsFilter
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type OrgsListPendingInvitationsParams struct {
-	Org     string
+	Org string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type OrgsListPublicMembersParams struct {
-	Org     string
+	Org string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type OrgsListSamlSSOAuthorizationsParams struct {
@@ -1938,16 +2552,21 @@ type OrgsListSamlSSOAuthorizationsParams struct {
 }
 
 type OrgsListWebhookDeliveriesParams struct {
-	Org     string
-	HookID  int
+	Org    string
+	HookID int
+	// Results per page (max 100).
 	PerPage OptInt
-	Cursor  OptString
+	// Used for pagination: the starting delivery from which the page of deliveries is fetched. Refer to
+	// the `link` header for the next and previous page cursors.
+	Cursor OptString
 }
 
 type OrgsListWebhooksParams struct {
-	Org     string
+	Org string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type OrgsPingWebhookParams struct {
@@ -2016,156 +2635,327 @@ type OrgsUpdateWebhookConfigForOrgParams struct {
 }
 
 type PackagesDeletePackageForAuthenticatedUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
 	PackageType PackagesDeletePackageForAuthenticatedUserPackageType
+	// The name of the package.
 	PackageName string
 }
 
 type PackagesDeletePackageForOrgParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
 	PackageType PackagesDeletePackageForOrgPackageType
+	// The name of the package.
 	PackageName string
 	Org         string
 }
 
 type PackagesDeletePackageForUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
 	PackageType PackagesDeletePackageForUserPackageType
+	// The name of the package.
 	PackageName string
 	Username    string
 }
 
 type PackagesDeletePackageVersionForAuthenticatedUserParams struct {
-	PackageType      PackagesDeletePackageVersionForAuthenticatedUserPackageType
-	PackageName      string
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesDeletePackageVersionForAuthenticatedUserPackageType
+	// The name of the package.
+	PackageName string
+	// Unique identifier of the package version.
 	PackageVersionID int
 }
 
 type PackagesDeletePackageVersionForOrgParams struct {
-	PackageType      PackagesDeletePackageVersionForOrgPackageType
-	PackageName      string
-	Org              string
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesDeletePackageVersionForOrgPackageType
+	// The name of the package.
+	PackageName string
+	Org         string
+	// Unique identifier of the package version.
 	PackageVersionID int
 }
 
 type PackagesDeletePackageVersionForUserParams struct {
-	PackageType      PackagesDeletePackageVersionForUserPackageType
-	PackageName      string
-	Username         string
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesDeletePackageVersionForUserPackageType
+	// The name of the package.
+	PackageName string
+	Username    string
+	// Unique identifier of the package version.
 	PackageVersionID int
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
 	PackageType PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType
+	// The name of the package.
 	PackageName string
-	Page        OptInt
-	PerPage     OptInt
-	State       OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// The state of the package, either active or deleted.
+	State OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByOrgParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
 	PackageType PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType
+	// The name of the package.
 	PackageName string
 	Org         string
-	Page        OptInt
-	PerPage     OptInt
-	State       OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// The state of the package, either active or deleted.
+	State OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
 	PackageType PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType
+	// The name of the package.
 	PackageName string
 	Username    string
 }
 
 type PackagesGetPackageForAuthenticatedUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
 	PackageType PackagesGetPackageForAuthenticatedUserPackageType
+	// The name of the package.
 	PackageName string
 }
 
 type PackagesGetPackageForOrganizationParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
 	PackageType PackagesGetPackageForOrganizationPackageType
+	// The name of the package.
 	PackageName string
 	Org         string
 }
 
 type PackagesGetPackageForUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
 	PackageType PackagesGetPackageForUserPackageType
+	// The name of the package.
 	PackageName string
 	Username    string
 }
 
 type PackagesGetPackageVersionForAuthenticatedUserParams struct {
-	PackageType      PackagesGetPackageVersionForAuthenticatedUserPackageType
-	PackageName      string
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesGetPackageVersionForAuthenticatedUserPackageType
+	// The name of the package.
+	PackageName string
+	// Unique identifier of the package version.
 	PackageVersionID int
 }
 
 type PackagesGetPackageVersionForOrganizationParams struct {
-	PackageType      PackagesGetPackageVersionForOrganizationPackageType
-	PackageName      string
-	Org              string
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesGetPackageVersionForOrganizationPackageType
+	// The name of the package.
+	PackageName string
+	Org         string
+	// Unique identifier of the package version.
 	PackageVersionID int
 }
 
 type PackagesGetPackageVersionForUserParams struct {
-	PackageType      PackagesGetPackageVersionForUserPackageType
-	PackageName      string
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesGetPackageVersionForUserPackageType
+	// The name of the package.
+	PackageName string
+	// Unique identifier of the package version.
 	PackageVersionID int
 	Username         string
 }
 
 type PackagesListPackagesForAuthenticatedUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
 	PackageType PackagesListPackagesForAuthenticatedUserPackageType
-	Visibility  OptPackagesListPackagesForAuthenticatedUserVisibility
+	// The selected visibility of the packages. Can be one of `public`, `private`, or `internal`. Only
+	// `container` package_types currently support `internal` visibility properly. For other ecosystems
+	// `internal` is synonymous with `private`. This parameter is optional and only filters an existing
+	// result set.
+	Visibility OptPackagesListPackagesForAuthenticatedUserVisibility
 }
 
 type PackagesListPackagesForOrganizationParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
 	PackageType PackagesListPackagesForOrganizationPackageType
 	Org         string
-	Visibility  OptPackagesListPackagesForOrganizationVisibility
+	// The selected visibility of the packages. Can be one of `public`, `private`, or `internal`. Only
+	// `container` package_types currently support `internal` visibility properly. For other ecosystems
+	// `internal` is synonymous with `private`. This parameter is optional and only filters an existing
+	// result set.
+	Visibility OptPackagesListPackagesForOrganizationVisibility
 }
 
 type PackagesListPackagesForUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
 	PackageType PackagesListPackagesForUserPackageType
-	Visibility  OptPackagesListPackagesForUserVisibility
-	Username    string
+	// The selected visibility of the packages. Can be one of `public`, `private`, or `internal`. Only
+	// `container` package_types currently support `internal` visibility properly. For other ecosystems
+	// `internal` is synonymous with `private`. This parameter is optional and only filters an existing
+	// result set.
+	Visibility OptPackagesListPackagesForUserVisibility
+	Username   string
 }
 
 type PackagesRestorePackageForAuthenticatedUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
 	PackageType PackagesRestorePackageForAuthenticatedUserPackageType
+	// The name of the package.
 	PackageName string
-	Token       OptString
+	// Package token.
+	Token OptString
 }
 
 type PackagesRestorePackageForOrgParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
 	PackageType PackagesRestorePackageForOrgPackageType
+	// The name of the package.
 	PackageName string
 	Org         string
-	Token       OptString
+	// Package token.
+	Token OptString
 }
 
 type PackagesRestorePackageForUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
 	PackageType PackagesRestorePackageForUserPackageType
+	// The name of the package.
 	PackageName string
 	Username    string
-	Token       OptString
+	// Package token.
+	Token OptString
 }
 
 type PackagesRestorePackageVersionForAuthenticatedUserParams struct {
-	PackageType      PackagesRestorePackageVersionForAuthenticatedUserPackageType
-	PackageName      string
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesRestorePackageVersionForAuthenticatedUserPackageType
+	// The name of the package.
+	PackageName string
+	// Unique identifier of the package version.
 	PackageVersionID int
 }
 
 type PackagesRestorePackageVersionForOrgParams struct {
-	PackageType      PackagesRestorePackageVersionForOrgPackageType
-	PackageName      string
-	Org              string
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesRestorePackageVersionForOrgPackageType
+	// The name of the package.
+	PackageName string
+	Org         string
+	// Unique identifier of the package version.
 	PackageVersionID int
 }
 
 type PackagesRestorePackageVersionForUserParams struct {
-	PackageType      PackagesRestorePackageVersionForUserPackageType
-	PackageName      string
-	Username         string
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesRestorePackageVersionForUserPackageType
+	// The name of the package.
+	PackageName string
+	Username    string
+	// Unique identifier of the package version.
 	PackageVersionID int
 }
 
@@ -2192,10 +2982,12 @@ type ProjectsDeleteParams struct {
 }
 
 type ProjectsDeleteCardParams struct {
+	// Card_id parameter.
 	CardID int
 }
 
 type ProjectsDeleteColumnParams struct {
+	// Column_id parameter.
 	ColumnID int
 }
 
@@ -2204,10 +2996,12 @@ type ProjectsGetParams struct {
 }
 
 type ProjectsGetCardParams struct {
+	// Card_id parameter.
 	CardID int
 }
 
 type ProjectsGetColumnParams struct {
+	// Column_id parameter.
 	ColumnID int
 }
 
@@ -2217,52 +3011,78 @@ type ProjectsGetPermissionForUserParams struct {
 }
 
 type ProjectsListCardsParams struct {
-	ColumnID      int
+	// Column_id parameter.
+	ColumnID int
+	// Filters the project cards that are returned by the card's state. Can be one of `all`,`archived`,
+	// or `not_archived`.
 	ArchivedState OptProjectsListCardsArchivedState
-	PerPage       OptInt
-	Page          OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ProjectsListCollaboratorsParams struct {
-	ProjectID   int
+	ProjectID int
+	// Filters the collaborators by their affiliation. Can be one of:
+	// \* `outside`: Outside collaborators of a project that are not a member of the project's
+	// organization.
+	// \* `direct`: Collaborators with permissions to a project, regardless of organization membership
+	// status.
+	// \* `all`: All collaborators the authenticated user can see.
 	Affiliation OptProjectsListCollaboratorsAffiliation
-	PerPage     OptInt
-	Page        OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ProjectsListColumnsParams struct {
 	ProjectID int
-	PerPage   OptInt
-	Page      OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ProjectsListForOrgParams struct {
-	Org     string
-	State   OptProjectsListForOrgState
+	Org string
+	// Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
+	State OptProjectsListForOrgState
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ProjectsListForRepoParams struct {
-	Owner   string
-	Repo    string
-	State   OptProjectsListForRepoState
+	Owner string
+	Repo  string
+	// Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
+	State OptProjectsListForRepoState
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ProjectsListForUserParams struct {
 	Username string
-	State    OptProjectsListForUserState
-	PerPage  OptInt
-	Page     OptInt
+	// Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
+	State OptProjectsListForUserState
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ProjectsMoveCardParams struct {
+	// Card_id parameter.
 	CardID int
 }
 
 type ProjectsMoveColumnParams struct {
+	// Column_id parameter.
 	ColumnID int
 }
 
@@ -2276,10 +3096,12 @@ type ProjectsUpdateParams struct {
 }
 
 type ProjectsUpdateCardParams struct {
+	// Card_id parameter.
 	CardID int
 }
 
 type ProjectsUpdateColumnParams struct {
+	// Column_id parameter.
 	ColumnID int
 }
 
@@ -2298,7 +3120,8 @@ type PullsCreateReplyForReviewCommentParams struct {
 	Owner      string
 	Repo       string
 	PullNumber int
-	CommentID  int
+	// Comment_id parameter.
+	CommentID int
 }
 
 type PullsCreateReviewParams struct {
@@ -2317,12 +3140,14 @@ type PullsDeletePendingReviewParams struct {
 	Owner      string
 	Repo       string
 	PullNumber int
-	ReviewID   int
+	// Review_id parameter.
+	ReviewID int
 }
 
 type PullsDeleteReviewCommentParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Comment_id parameter.
 	CommentID int
 }
 
@@ -2330,7 +3155,8 @@ type PullsDismissReviewParams struct {
 	Owner      string
 	Repo       string
 	PullNumber int
-	ReviewID   int
+	// Review_id parameter.
+	ReviewID int
 }
 
 type PullsGetParams struct {
@@ -2343,87 +3169,121 @@ type PullsGetReviewParams struct {
 	Owner      string
 	Repo       string
 	PullNumber int
-	ReviewID   int
+	// Review_id parameter.
+	ReviewID int
 }
 
 type PullsGetReviewCommentParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Comment_id parameter.
 	CommentID int
 }
 
 type PullsListParams struct {
-	Owner     string
-	Repo      string
-	State     OptPullsListState
-	Head      OptString
-	Base      OptString
-	Sort      OptPullsListSort
+	Owner string
+	Repo  string
+	// Either `open`, `closed`, or `all` to filter by state.
+	State OptPullsListState
+	// Filter pulls by head user or head organization and branch name in the format of `user:ref-name` or
+	// `organization:ref-name`. For example: `github:new-script-format` or `octocat:test-branch`.
+	Head OptString
+	// Filter pulls by base branch name. Example: `gh-pages`.
+	Base OptString
+	// What to sort results by. Can be either `created`, `updated`, `popularity` (comment count) or
+	// `long-running` (age, filtering by pulls updated in the last month).
+	Sort OptPullsListSort
+	// The direction of the sort. Can be either `asc` or `desc`. Default: `desc` when sort is `created`
+	// or sort is not specified, otherwise `asc`.
 	Direction OptPullsListDirection
-	PerPage   OptInt
-	Page      OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type PullsListCommentsForReviewParams struct {
 	Owner      string
 	Repo       string
 	PullNumber int
-	ReviewID   int
-	PerPage    OptInt
-	Page       OptInt
+	// Review_id parameter.
+	ReviewID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type PullsListCommitsParams struct {
 	Owner      string
 	Repo       string
 	PullNumber int
-	PerPage    OptInt
-	Page       OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type PullsListFilesParams struct {
 	Owner      string
 	Repo       string
 	PullNumber int
-	PerPage    OptInt
-	Page       OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type PullsListRequestedReviewersParams struct {
 	Owner      string
 	Repo       string
 	PullNumber int
-	PerPage    OptInt
-	Page       OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type PullsListReviewCommentsParams struct {
 	Owner      string
 	Repo       string
 	PullNumber int
-	Sort       OptPullsListReviewCommentsSort
-	Direction  OptPullsListReviewCommentsDirection
-	Since      OptTime
-	PerPage    OptInt
-	Page       OptInt
+	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+	Sort OptPullsListReviewCommentsSort
+	// Can be either `asc` or `desc`. Ignored without `sort` parameter.
+	Direction OptPullsListReviewCommentsDirection
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type PullsListReviewCommentsForRepoParams struct {
-	Owner     string
-	Repo      string
-	Sort      OptPullsListReviewCommentsForRepoSort
+	Owner string
+	Repo  string
+	Sort  OptPullsListReviewCommentsForRepoSort
+	// Can be either `asc` or `desc`. Ignored without `sort` parameter.
 	Direction OptPullsListReviewCommentsForRepoDirection
-	Since     OptTime
-	PerPage   OptInt
-	Page      OptInt
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type PullsListReviewsParams struct {
 	Owner      string
 	Repo       string
 	PullNumber int
-	PerPage    OptInt
-	Page       OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type PullsMergeParams struct {
@@ -2442,7 +3302,8 @@ type PullsSubmitReviewParams struct {
 	Owner      string
 	Repo       string
 	PullNumber int
-	ReviewID   int
+	// Review_id parameter.
+	ReviewID int
 }
 
 type PullsUpdateParams struct {
@@ -2461,47 +3322,55 @@ type PullsUpdateReviewParams struct {
 	Owner      string
 	Repo       string
 	PullNumber int
-	ReviewID   int
+	// Review_id parameter.
+	ReviewID int
 }
 
 type PullsUpdateReviewCommentParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Comment_id parameter.
 	CommentID int
 }
 
 type ReactionsCreateForCommitCommentParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Comment_id parameter.
 	CommentID int
 }
 
 type ReactionsCreateForIssueParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// Issue_number parameter.
 	IssueNumber int
 }
 
 type ReactionsCreateForIssueCommentParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Comment_id parameter.
 	CommentID int
 }
 
 type ReactionsCreateForPullRequestReviewCommentParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Comment_id parameter.
 	CommentID int
 }
 
 type ReactionsCreateForReleaseParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Release_id parameter.
 	ReleaseID int
 }
 
 type ReactionsCreateForTeamDiscussionCommentInOrgParams struct {
-	Org              string
+	Org string
+	// Team_slug parameter.
 	TeamSlug         string
 	DiscussionNumber int
 	CommentNumber    int
@@ -2514,7 +3383,8 @@ type ReactionsCreateForTeamDiscussionCommentLegacyParams struct {
 }
 
 type ReactionsCreateForTeamDiscussionInOrgParams struct {
-	Org              string
+	Org string
+	// Team_slug parameter.
 	TeamSlug         string
 	DiscussionNumber int
 }
@@ -2525,42 +3395,48 @@ type ReactionsCreateForTeamDiscussionLegacyParams struct {
 }
 
 type ReactionsDeleteForCommitCommentParams struct {
-	Owner      string
-	Repo       string
+	Owner string
+	Repo  string
+	// Comment_id parameter.
 	CommentID  int
 	ReactionID int
 }
 
 type ReactionsDeleteForIssueParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// Issue_number parameter.
 	IssueNumber int
 	ReactionID  int
 }
 
 type ReactionsDeleteForIssueCommentParams struct {
-	Owner      string
-	Repo       string
+	Owner string
+	Repo  string
+	// Comment_id parameter.
 	CommentID  int
 	ReactionID int
 }
 
 type ReactionsDeleteForPullRequestCommentParams struct {
-	Owner      string
-	Repo       string
+	Owner string
+	Repo  string
+	// Comment_id parameter.
 	CommentID  int
 	ReactionID int
 }
 
 type ReactionsDeleteForTeamDiscussionParams struct {
-	Org              string
+	Org string
+	// Team_slug parameter.
 	TeamSlug         string
 	DiscussionNumber int
 	ReactionID       int
 }
 
 type ReactionsDeleteForTeamDiscussionCommentParams struct {
-	Org              string
+	Org string
+	// Team_slug parameter.
 	TeamSlug         string
 	DiscussionNumber int
 	CommentNumber    int
@@ -2572,84 +3448,124 @@ type ReactionsDeleteLegacyParams struct {
 }
 
 type ReactionsListForCommitCommentParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Comment_id parameter.
 	CommentID int
-	Content   OptReactionsListForCommitCommentContent
-	PerPage   OptInt
-	Page      OptInt
+	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
+	// Omit this parameter to list all reactions to a commit comment.
+	Content OptReactionsListForCommitCommentContent
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReactionsListForIssueParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// Issue_number parameter.
 	IssueNumber int
-	Content     OptReactionsListForIssueContent
-	PerPage     OptInt
-	Page        OptInt
+	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
+	// Omit this parameter to list all reactions to an issue.
+	Content OptReactionsListForIssueContent
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReactionsListForIssueCommentParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Comment_id parameter.
 	CommentID int
-	Content   OptReactionsListForIssueCommentContent
-	PerPage   OptInt
-	Page      OptInt
+	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
+	// Omit this parameter to list all reactions to an issue comment.
+	Content OptReactionsListForIssueCommentContent
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReactionsListForPullRequestReviewCommentParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Comment_id parameter.
 	CommentID int
-	Content   OptReactionsListForPullRequestReviewCommentContent
-	PerPage   OptInt
-	Page      OptInt
+	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
+	// Omit this parameter to list all reactions to a pull request review comment.
+	Content OptReactionsListForPullRequestReviewCommentContent
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReactionsListForTeamDiscussionCommentInOrgParams struct {
-	Org              string
+	Org string
+	// Team_slug parameter.
 	TeamSlug         string
 	DiscussionNumber int
 	CommentNumber    int
-	Content          OptReactionsListForTeamDiscussionCommentInOrgContent
-	PerPage          OptInt
-	Page             OptInt
+	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
+	// Omit this parameter to list all reactions to a team discussion comment.
+	Content OptReactionsListForTeamDiscussionCommentInOrgContent
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReactionsListForTeamDiscussionCommentLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
 	CommentNumber    int
-	Content          OptReactionsListForTeamDiscussionCommentLegacyContent
-	PerPage          OptInt
-	Page             OptInt
+	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
+	// Omit this parameter to list all reactions to a team discussion comment.
+	Content OptReactionsListForTeamDiscussionCommentLegacyContent
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReactionsListForTeamDiscussionInOrgParams struct {
-	Org              string
+	Org string
+	// Team_slug parameter.
 	TeamSlug         string
 	DiscussionNumber int
-	Content          OptReactionsListForTeamDiscussionInOrgContent
-	PerPage          OptInt
-	Page             OptInt
+	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
+	// Omit this parameter to list all reactions to a team discussion.
+	Content OptReactionsListForTeamDiscussionInOrgContent
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReactionsListForTeamDiscussionLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
-	Content          OptReactionsListForTeamDiscussionLegacyContent
-	PerPage          OptInt
-	Page             OptInt
+	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
+	// Omit this parameter to list all reactions to a team discussion.
+	Content OptReactionsListForTeamDiscussionLegacyContent
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposAcceptInvitationParams struct {
+	// Invitation_id parameter.
 	InvitationID int
 }
 
 type ReposAddAppAccessRestrictionsParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
@@ -2660,20 +3576,23 @@ type ReposAddCollaboratorParams struct {
 }
 
 type ReposAddStatusCheckContextsParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposAddTeamAccessRestrictionsParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposAddUserAccessRestrictionsParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
@@ -2689,10 +3608,13 @@ type ReposCheckVulnerabilityAlertsParams struct {
 }
 
 type ReposCompareCommitsParams struct {
-	Owner    string
-	Repo     string
-	Page     OptInt
-	PerPage  OptInt
+	Owner string
+	Repo  string
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// The base branch and head branch to compare. This parameter expects the format `{base}...{head}`.
 	Basehead string
 }
 
@@ -2702,14 +3624,16 @@ type ReposCreateAutolinkParams struct {
 }
 
 type ReposCreateCommitCommentParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Commit_sha parameter.
 	CommitSha string
 }
 
 type ReposCreateCommitSignatureProtectionParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
@@ -2730,8 +3654,9 @@ type ReposCreateDeploymentParams struct {
 }
 
 type ReposCreateDeploymentStatusParams struct {
-	Owner        string
-	Repo         string
+	Owner string
+	Repo  string
+	// Deployment_id parameter.
 	DeploymentID int
 }
 
@@ -2752,7 +3677,8 @@ type ReposCreateInOrgParams struct {
 type ReposCreateOrUpdateFileContentsParams struct {
 	Owner string
 	Repo  string
-	Path  string
+	// Path parameter.
+	Path string
 }
 
 type ReposCreatePagesSiteParams struct {
@@ -2776,6 +3702,7 @@ type ReposCreateWebhookParams struct {
 }
 
 type ReposDeclineInvitationParams struct {
+	// Invitation_id parameter.
 	InvitationID int
 }
 
@@ -2785,68 +3712,79 @@ type ReposDeleteParams struct {
 }
 
 type ReposDeleteAccessRestrictionsParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposDeleteAdminBranchProtectionParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposDeleteAnEnvironmentParams struct {
-	Owner           string
-	Repo            string
+	Owner string
+	Repo  string
+	// The name of the environment.
 	EnvironmentName string
 }
 
 type ReposDeleteAutolinkParams struct {
-	Owner      string
-	Repo       string
+	Owner string
+	Repo  string
+	// Autolink_id parameter.
 	AutolinkID int
 }
 
 type ReposDeleteBranchProtectionParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposDeleteCommitCommentParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Comment_id parameter.
 	CommentID int
 }
 
 type ReposDeleteCommitSignatureProtectionParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposDeleteDeployKeyParams struct {
 	Owner string
 	Repo  string
+	// Key_id parameter.
 	KeyID int
 }
 
 type ReposDeleteDeploymentParams struct {
-	Owner        string
-	Repo         string
+	Owner string
+	Repo  string
+	// Deployment_id parameter.
 	DeploymentID int
 }
 
 type ReposDeleteFileParams struct {
 	Owner string
 	Repo  string
-	Path  string
+	// Path parameter.
+	Path string
 }
 
 type ReposDeleteInvitationParams struct {
-	Owner        string
-	Repo         string
+	Owner string
+	Repo  string
+	// Invitation_id parameter.
 	InvitationID int
 }
 
@@ -2856,20 +3794,23 @@ type ReposDeletePagesSiteParams struct {
 }
 
 type ReposDeletePullRequestReviewProtectionParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposDeleteReleaseParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Release_id parameter.
 	ReleaseID int
 }
 
 type ReposDeleteReleaseAssetParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Asset_id parameter.
 	AssetID int
 }
 
@@ -2927,58 +3868,68 @@ type ReposGetParams struct {
 }
 
 type ReposGetAccessRestrictionsParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposGetAdminBranchProtectionParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposGetAllStatusCheckContextsParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposGetAllTopicsParams struct {
-	Owner   string
-	Repo    string
-	Page    OptInt
+	Owner string
+	Repo  string
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
 	PerPage OptInt
 }
 
 type ReposGetAppsWithAccessToProtectedBranchParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposGetAutolinkParams struct {
-	Owner      string
-	Repo       string
+	Owner string
+	Repo  string
+	// Autolink_id parameter.
 	AutolinkID int
 }
 
 type ReposGetBranchParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposGetBranchProtectionParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposGetClonesParams struct {
 	Owner string
 	Repo  string
-	Per   OptReposGetClonesPer
+	// Must be one of: `day`, `week`.
+	Per OptReposGetClonesPer
 }
 
 type ReposGetCodeFrequencyStatsParams struct {
@@ -2993,19 +3944,25 @@ type ReposGetCollaboratorPermissionLevelParams struct {
 }
 
 type ReposGetCombinedStatusForRefParams struct {
-	Owner   string
-	Repo    string
-	Ref     string
+	Owner string
+	Repo  string
+	// Ref parameter.
+	Ref string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposGetCommitParams struct {
-	Owner   string
-	Repo    string
-	Page    OptInt
+	Owner string
+	Repo  string
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
 	PerPage OptInt
-	Ref     string
+	// Ref parameter.
+	Ref string
 }
 
 type ReposGetCommitActivityStatsParams struct {
@@ -3014,14 +3971,16 @@ type ReposGetCommitActivityStatsParams struct {
 }
 
 type ReposGetCommitCommentParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Comment_id parameter.
 	CommentID int
 }
 
 type ReposGetCommitSignatureProtectionParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
@@ -3038,18 +3997,21 @@ type ReposGetContributorsStatsParams struct {
 type ReposGetDeployKeyParams struct {
 	Owner string
 	Repo  string
+	// Key_id parameter.
 	KeyID int
 }
 
 type ReposGetDeploymentParams struct {
-	Owner        string
-	Repo         string
+	Owner string
+	Repo  string
+	// Deployment_id parameter.
 	DeploymentID int
 }
 
 type ReposGetDeploymentStatusParams struct {
-	Owner        string
-	Repo         string
+	Owner string
+	Repo  string
+	// Deployment_id parameter.
 	DeploymentID int
 	StatusID     int
 }
@@ -3086,8 +4048,9 @@ type ReposGetParticipationStatsParams struct {
 }
 
 type ReposGetPullRequestReviewProtectionParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
@@ -3099,43 +4062,51 @@ type ReposGetPunchCardStatsParams struct {
 type ReposGetReadmeParams struct {
 	Owner string
 	Repo  string
-	Ref   OptString
+	// The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`).
+	Ref OptString
 }
 
 type ReposGetReadmeInDirectoryParams struct {
 	Owner string
 	Repo  string
-	Dir   string
-	Ref   OptString
+	// The alternate path to look for a README file.
+	Dir string
+	// The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`).
+	Ref OptString
 }
 
 type ReposGetReleaseParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Release_id parameter.
 	ReleaseID int
 }
 
 type ReposGetReleaseAssetParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Asset_id parameter.
 	AssetID int
 }
 
 type ReposGetReleaseByTagParams struct {
 	Owner string
 	Repo  string
-	Tag   string
+	// Tag parameter.
+	Tag string
 }
 
 type ReposGetStatusChecksProtectionParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposGetTeamsWithAccessToProtectedBranchParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
@@ -3150,15 +4121,17 @@ type ReposGetTopReferrersParams struct {
 }
 
 type ReposGetUsersWithAccessToProtectedBranchParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposGetViewsParams struct {
 	Owner string
 	Repo  string
-	Per   OptReposGetViewsPer
+	// Must be one of: `day`, `week`.
+	Per OptReposGetViewsPer
 }
 
 type ReposGetWebhookParams struct {
@@ -3183,148 +4156,234 @@ type ReposGetWebhookDeliveryParams struct {
 type ReposListAutolinksParams struct {
 	Owner string
 	Repo  string
-	Page  OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListBranchesParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Setting to `true` returns only protected branches. When set to `false`, only unprotected branches
+	// are returned. Omitting this parameter returns all branches.
 	Protected OptBool
-	PerPage   OptInt
-	Page      OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListBranchesForHeadCommitParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Commit_sha parameter.
 	CommitSha string
 }
 
 type ReposListCollaboratorsParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// Filter collaborators returned by their affiliation. Can be one of:
+	// \* `outside`: All outside collaborators of an organization-owned repository.
+	// \* `direct`: All collaborators with permissions to an organization-owned repository, regardless of
+	// organization membership status.
+	// \* `all`: All collaborators the authenticated user can see.
 	Affiliation OptReposListCollaboratorsAffiliation
-	PerPage     OptInt
-	Page        OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListCommentsForCommitParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Commit_sha parameter.
 	CommitSha string
-	PerPage   OptInt
-	Page      OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListCommitCommentsForRepoParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListCommitStatusesForRefParams struct {
-	Owner   string
-	Repo    string
-	Ref     string
+	Owner string
+	Repo  string
+	// Ref parameter.
+	Ref string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListCommitsParams struct {
-	Owner   string
-	Repo    string
-	Sha     OptString
-	Path    OptString
-	Author  OptString
-	Since   OptTime
-	Until   OptTime
+	Owner string
+	Repo  string
+	// SHA or branch to start listing commits from. Default: the repository’s default branch (usually
+	// `master`).
+	Sha OptString
+	// Only commits containing this file path will be returned.
+	Path OptString
+	// GitHub login or email address by which to filter by commit author.
+	Author OptString
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptTime
+	// Only commits before this date will be returned. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Until OptTime
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListContributorsParams struct {
-	Owner   string
-	Repo    string
-	Anon    OptString
+	Owner string
+	Repo  string
+	// Set to `1` or `true` to include anonymous contributors in results.
+	Anon OptString
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListDeployKeysParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListDeploymentStatusesParams struct {
-	Owner        string
-	Repo         string
+	Owner string
+	Repo  string
+	// Deployment_id parameter.
 	DeploymentID int
-	PerPage      OptInt
-	Page         OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListDeploymentsParams struct {
-	Owner       string
-	Repo        string
-	Sha         OptString
-	Ref         OptString
-	Task        OptString
+	Owner string
+	Repo  string
+	// The SHA recorded at creation time.
+	Sha OptString
+	// The name of the ref. This can be a branch, tag, or SHA.
+	Ref OptString
+	// The name of the task for the deployment (e.g., `deploy` or `deploy:migrations`).
+	Task OptString
+	// The name of the environment that was deployed to (e.g., `staging` or `production`).
 	Environment OptNilString
-	PerPage     OptInt
-	Page        OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListForAuthenticatedUserParams struct {
-	Visibility  OptReposListForAuthenticatedUserVisibility
+	// Can be one of `all`, `public`, or `private`. Note: For GitHub AE, can be one of `all`, `internal`,
+	// or `private`.
+	Visibility OptReposListForAuthenticatedUserVisibility
+	// Comma-separated list of values. Can include:
+	// \* `owner`: Repositories that are owned by the authenticated user.
+	// \* `collaborator`: Repositories that the user has been added to as a collaborator.
+	// \* `organization_member`: Repositories that the user has access to through being a member of an
+	// organization. This includes every repository on every team that the user is on.
 	Affiliation OptString
-	Type        OptReposListForAuthenticatedUserType
-	Sort        OptReposListForAuthenticatedUserSort
-	Direction   OptReposListForAuthenticatedUserDirection
-	PerPage     OptInt
-	Page        OptInt
-	Since       OptTime
-	Before      OptTime
+	// Can be one of `all`, `owner`, `public`, `private`, `member`. Note: For GitHub AE, can be one of
+	// `all`, `owner`, `internal`, `private`, `member`. Default: `all`
+	// Will cause a `422` error if used in the same request as **visibility** or **affiliation**. Will
+	// cause a `422` error if used in the same request as **visibility** or **affiliation**.
+	Type OptReposListForAuthenticatedUserType
+	// Can be one of `created`, `updated`, `pushed`, `full_name`.
+	Sort OptReposListForAuthenticatedUserSort
+	// Can be one of `asc` or `desc`. Default: `asc` when using `full_name`, otherwise `desc`.
+	Direction OptReposListForAuthenticatedUserDirection
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptTime
+	// Only show notifications updated before the given time. This is a timestamp in [ISO
+	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Before OptTime
 }
 
 type ReposListForOrgParams struct {
-	Org       string
-	Type      OptReposListForOrgType
-	Sort      OptReposListForOrgSort
+	Org string
+	// Specifies the types of repositories you want returned. Can be one of `all`, `public`, `private`,
+	// `forks`, `sources`, `member`, `internal`. Note: For GitHub AE, can be one of `all`, `private`,
+	// `forks`, `sources`, `member`, `internal`. Default: `all`. If your organization is associated with
+	// an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `type` can
+	// also be `internal`. However, the `internal` value is not yet supported when a GitHub App calls
+	// this API with an installation access token.
+	Type OptReposListForOrgType
+	// Can be one of `created`, `updated`, `pushed`, `full_name`.
+	Sort OptReposListForOrgSort
+	// Can be one of `asc` or `desc`. Default: when using `full_name`: `asc`, otherwise `desc`.
 	Direction OptReposListForOrgDirection
-	PerPage   OptInt
-	Page      OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListForUserParams struct {
-	Username  string
-	Type      OptReposListForUserType
-	Sort      OptReposListForUserSort
+	Username string
+	// Can be one of `all`, `owner`, `member`.
+	Type OptReposListForUserType
+	// Can be one of `created`, `updated`, `pushed`, `full_name`.
+	Sort OptReposListForUserSort
+	// Can be one of `asc` or `desc`. Default: `asc` when using `full_name`, otherwise `desc`.
 	Direction OptReposListForUserDirection
-	PerPage   OptInt
-	Page      OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListForksParams struct {
-	Owner   string
-	Repo    string
-	Sort    OptReposListForksSort
+	Owner string
+	Repo  string
+	// The sort order. Can be either `newest`, `oldest`, or `stargazers`.
+	Sort OptReposListForksSort
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListInvitationsParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListInvitationsForAuthenticatedUserParams struct {
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListLanguagesParams struct {
@@ -3333,66 +4392,86 @@ type ReposListLanguagesParams struct {
 }
 
 type ReposListPagesBuildsParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListPublicParams struct {
+	// A repository ID. Only return repositories with an ID greater than this ID.
 	Since OptInt
 }
 
 type ReposListPullRequestsAssociatedWithCommitParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Commit_sha parameter.
 	CommitSha string
-	PerPage   OptInt
-	Page      OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListReleaseAssetsParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Release_id parameter.
 	ReleaseID int
-	PerPage   OptInt
-	Page      OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListReleasesParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListTagsParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListTeamsParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposListWebhookDeliveriesParams struct {
-	Owner   string
-	Repo    string
-	HookID  int
+	Owner  string
+	Repo   string
+	HookID int
+	// Results per page (max 100).
 	PerPage OptInt
-	Cursor  OptString
+	// Used for pagination: the starting delivery from which the page of deliveries is fetched. Refer to
+	// the `link` header for the next and previous page cursors.
+	Cursor OptString
 }
 
 type ReposListWebhooksParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type ReposMergeParams struct {
@@ -3419,8 +4498,9 @@ type ReposRedeliverWebhookDeliveryParams struct {
 }
 
 type ReposRemoveAppAccessRestrictionsParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
@@ -3431,32 +4511,37 @@ type ReposRemoveCollaboratorParams struct {
 }
 
 type ReposRemoveStatusCheckContextsParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposRemoveStatusCheckProtectionParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposRemoveTeamAccessRestrictionsParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposRemoveUserAccessRestrictionsParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposRenameBranchParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
@@ -3471,32 +4556,37 @@ type ReposRequestPagesBuildParams struct {
 }
 
 type ReposSetAdminBranchProtectionParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposSetAppAccessRestrictionsParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposSetStatusCheckContextsParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposSetTeamAccessRestrictionsParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposSetUserAccessRestrictionsParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
@@ -3517,44 +4607,51 @@ type ReposUpdateParams struct {
 }
 
 type ReposUpdateBranchProtectionParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposUpdateCommitCommentParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Comment_id parameter.
 	CommentID int
 }
 
 type ReposUpdateInvitationParams struct {
-	Owner        string
-	Repo         string
+	Owner string
+	Repo  string
+	// Invitation_id parameter.
 	InvitationID int
 }
 
 type ReposUpdatePullRequestReviewProtectionParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
 type ReposUpdateReleaseParams struct {
-	Owner     string
-	Repo      string
+	Owner string
+	Repo  string
+	// Release_id parameter.
 	ReleaseID int
 }
 
 type ReposUpdateReleaseAssetParams struct {
-	Owner   string
-	Repo    string
+	Owner string
+	Repo  string
+	// Asset_id parameter.
 	AssetID int
 }
 
 type ReposUpdateStatusCheckProtectionParams struct {
-	Owner  string
-	Repo   string
+	Owner string
+	Repo  string
+	// The name of the branch.
 	Branch string
 }
 
@@ -3571,91 +4668,186 @@ type ReposUpdateWebhookConfigForRepoParams struct {
 }
 
 type ScimDeleteUserFromOrgParams struct {
-	Org        string
+	Org string
+	// Scim_user_id parameter.
 	ScimUserID string
 }
 
 type SearchCodeParams struct {
-	Q       string
-	Sort    OptSearchCodeSort
-	Order   OptSearchCodeOrder
+	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
+	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
+	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
+	// com/rest/reference/search#constructing-a-search-query). See "[Searching code](https://help.github.
+	// com/articles/searching-code/)" for a detailed list of qualifiers.
+	Q string
+	// Sorts the results of your query. Can only be `indexed`, which indicates how recently a file has
+	// been indexed by the GitHub search infrastructure. Default: [best match](https://docs.github.
+	// com/rest/reference/search#ranking-search-results).
+	Sort OptSearchCodeSort
+	// Determines whether the first search result returned is the highest number of matches (`desc`) or
+	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+	Order OptSearchCodeOrder
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type SearchCommitsParams struct {
-	Q       string
-	Sort    OptSearchCommitsSort
-	Order   OptSearchCommitsOrder
+	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
+	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
+	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
+	// com/rest/reference/search#constructing-a-search-query). See "[Searching commits](https://help.
+	// github.com/articles/searching-commits/)" for a detailed list of qualifiers.
+	Q string
+	// Sorts the results of your query by `author-date` or `committer-date`. Default: [best
+	// match](https://docs.github.com/rest/reference/search#ranking-search-results).
+	Sort OptSearchCommitsSort
+	// Determines whether the first search result returned is the highest number of matches (`desc`) or
+	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+	Order OptSearchCommitsOrder
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type SearchIssuesAndPullRequestsParams struct {
-	Q       string
-	Sort    OptSearchIssuesAndPullRequestsSort
-	Order   OptSearchIssuesAndPullRequestsOrder
+	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
+	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
+	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
+	// com/rest/reference/search#constructing-a-search-query). See "[Searching issues and pull
+	// requests](https://help.github.com/articles/searching-issues-and-pull-requests/)" for a detailed
+	// list of qualifiers.
+	Q string
+	// Sorts the results of your query by the number of `comments`, `reactions`, `reactions-+1`,
+	// `reactions--1`, `reactions-smile`, `reactions-thinking_face`, `reactions-heart`, `reactions-tada`,
+	// or `interactions`. You can also sort results by how recently the items were `created` or `updated`,
+	//  Default: [best match](https://docs.github.com/rest/reference/search#ranking-search-results).
+	Sort OptSearchIssuesAndPullRequestsSort
+	// Determines whether the first search result returned is the highest number of matches (`desc`) or
+	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+	Order OptSearchIssuesAndPullRequestsOrder
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type SearchLabelsParams struct {
+	// The id of the repository.
 	RepositoryID int
-	Q            string
-	Sort         OptSearchLabelsSort
-	Order        OptSearchLabelsOrder
-	PerPage      OptInt
-	Page         OptInt
+	// The search keywords. This endpoint does not accept qualifiers in the query. To learn more about
+	// the format of the query, see [Constructing a search query](https://docs.github.
+	// com/rest/reference/search#constructing-a-search-query).
+	Q string
+	// Sorts the results of your query by when the label was `created` or `updated`. Default: [best
+	// match](https://docs.github.com/rest/reference/search#ranking-search-results).
+	Sort OptSearchLabelsSort
+	// Determines whether the first search result returned is the highest number of matches (`desc`) or
+	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+	Order OptSearchLabelsOrder
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type SearchReposParams struct {
-	Q       string
-	Sort    OptSearchReposSort
-	Order   OptSearchReposOrder
+	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
+	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
+	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
+	// com/rest/reference/search#constructing-a-search-query). See "[Searching for
+	// repositories](https://help.github.com/articles/searching-for-repositories/)" for a detailed list
+	// of qualifiers.
+	Q string
+	// Sorts the results of your query by number of `stars`, `forks`, or `help-wanted-issues` or how
+	// recently the items were `updated`. Default: [best match](https://docs.github.
+	// com/rest/reference/search#ranking-search-results).
+	Sort OptSearchReposSort
+	// Determines whether the first search result returned is the highest number of matches (`desc`) or
+	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+	Order OptSearchReposOrder
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type SearchTopicsParams struct {
-	Q       string
+	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
+	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
+	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
+	// com/rest/reference/search#constructing-a-search-query).
+	Q string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type SearchUsersParams struct {
-	Q       string
-	Sort    OptSearchUsersSort
-	Order   OptSearchUsersOrder
+	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
+	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
+	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
+	// com/rest/reference/search#constructing-a-search-query). See "[Searching users](https://help.github.
+	// com/articles/searching-users/)" for a detailed list of qualifiers.
+	Q string
+	// Sorts the results of your query by number of `followers` or `repositories`, or when the person
+	// `joined` GitHub. Default: [best match](https://docs.github.
+	// com/rest/reference/search#ranking-search-results).
+	Sort OptSearchUsersSort
+	// Determines whether the first search result returned is the highest number of matches (`desc`) or
+	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+	Order OptSearchUsersOrder
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type SecretScanningGetAlertParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
+	// alert within GitHub, and in the `number` field in the response from the `GET
+	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
 	AlertNumber AlertNumber
 }
 
 type SecretScanningListAlertsForOrgParams struct {
-	Org        string
-	State      OptSecretScanningListAlertsForOrgState
+	Org string
+	// Set to `open` or `resolved` to only list secret scanning alerts in a specific state.
+	State OptSecretScanningListAlertsForOrgState
+	// A comma separated list of secret types to return. By default all secret types are returned.
 	SecretType OptString
-	Page       OptInt
-	PerPage    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
 }
 
 type SecretScanningListAlertsForRepoParams struct {
-	Owner      string
-	Repo       string
-	State      OptSecretScanningListAlertsForRepoState
+	Owner string
+	Repo  string
+	// Set to `open` or `resolved` to only list secret scanning alerts in a specific state.
+	State OptSecretScanningListAlertsForRepoState
+	// A comma separated list of secret types to return. By default all secret types are returned. See
+	// "[About secret scanning for private repositories](https://docs.github.
+	// com/code-security/secret-security/about-secret-scanning#about-secret-scanning-for-private-repositories)" for a complete list of secret types (API slug).
 	SecretType OptString
-	Page       OptInt
-	PerPage    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
 }
 
 type SecretScanningUpdateAlertParams struct {
-	Owner       string
-	Repo        string
+	Owner string
+	Repo  string
+	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
+	// alert within GitHub, and in the `number` field in the response from the `GET
+	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
 	AlertNumber AlertNumber
 }
 
@@ -3665,7 +4857,8 @@ type TeamsAddMemberLegacyParams struct {
 }
 
 type TeamsAddOrUpdateMembershipForUserInOrgParams struct {
-	Org      string
+	Org string
+	// Team_slug parameter.
 	TeamSlug string
 	Username string
 }
@@ -3676,7 +4869,8 @@ type TeamsAddOrUpdateMembershipForUserLegacyParams struct {
 }
 
 type TeamsAddOrUpdateProjectPermissionsInOrgParams struct {
-	Org       string
+	Org string
+	// Team_slug parameter.
 	TeamSlug  string
 	ProjectID int
 }
@@ -3687,7 +4881,8 @@ type TeamsAddOrUpdateProjectPermissionsLegacyParams struct {
 }
 
 type TeamsAddOrUpdateRepoPermissionsInOrgParams struct {
-	Org      string
+	Org string
+	// Team_slug parameter.
 	TeamSlug string
 	Owner    string
 	Repo     string
@@ -3700,7 +4895,8 @@ type TeamsAddOrUpdateRepoPermissionsLegacyParams struct {
 }
 
 type TeamsCheckPermissionsForProjectInOrgParams struct {
-	Org       string
+	Org string
+	// Team_slug parameter.
 	TeamSlug  string
 	ProjectID int
 }
@@ -3711,7 +4907,8 @@ type TeamsCheckPermissionsForProjectLegacyParams struct {
 }
 
 type TeamsCheckPermissionsForRepoInOrgParams struct {
-	Org      string
+	Org string
+	// Team_slug parameter.
 	TeamSlug string
 	Owner    string
 	Repo     string
@@ -3728,7 +4925,8 @@ type TeamsCreateParams struct {
 }
 
 type TeamsCreateDiscussionCommentInOrgParams struct {
-	Org              string
+	Org string
+	// Team_slug parameter.
 	TeamSlug         string
 	DiscussionNumber int
 }
@@ -3739,7 +4937,8 @@ type TeamsCreateDiscussionCommentLegacyParams struct {
 }
 
 type TeamsCreateDiscussionInOrgParams struct {
-	Org      string
+	Org string
+	// Team_slug parameter.
 	TeamSlug string
 }
 
@@ -3748,7 +4947,8 @@ type TeamsCreateDiscussionLegacyParams struct {
 }
 
 type TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams struct {
-	Org      string
+	Org string
+	// Team_slug parameter.
 	TeamSlug string
 }
 
@@ -3757,7 +4957,8 @@ type TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams struct {
 }
 
 type TeamsDeleteDiscussionCommentInOrgParams struct {
-	Org              string
+	Org string
+	// Team_slug parameter.
 	TeamSlug         string
 	DiscussionNumber int
 	CommentNumber    int
@@ -3770,7 +4971,8 @@ type TeamsDeleteDiscussionCommentLegacyParams struct {
 }
 
 type TeamsDeleteDiscussionInOrgParams struct {
-	Org              string
+	Org string
+	// Team_slug parameter.
 	TeamSlug         string
 	DiscussionNumber int
 }
@@ -3781,7 +4983,8 @@ type TeamsDeleteDiscussionLegacyParams struct {
 }
 
 type TeamsDeleteInOrgParams struct {
-	Org      string
+	Org string
+	// Team_slug parameter.
 	TeamSlug string
 }
 
@@ -3790,12 +4993,14 @@ type TeamsDeleteLegacyParams struct {
 }
 
 type TeamsGetByNameParams struct {
-	Org      string
+	Org string
+	// Team_slug parameter.
 	TeamSlug string
 }
 
 type TeamsGetDiscussionCommentInOrgParams struct {
-	Org              string
+	Org string
+	// Team_slug parameter.
 	TeamSlug         string
 	DiscussionNumber int
 	CommentNumber    int
@@ -3808,7 +5013,8 @@ type TeamsGetDiscussionCommentLegacyParams struct {
 }
 
 type TeamsGetDiscussionInOrgParams struct {
-	Org              string
+	Org string
+	// Team_slug parameter.
 	TeamSlug         string
 	DiscussionNumber int
 }
@@ -3828,7 +5034,8 @@ type TeamsGetMemberLegacyParams struct {
 }
 
 type TeamsGetMembershipForUserInOrgParams struct {
-	Org      string
+	Org string
+	// Team_slug parameter.
 	TeamSlug string
 	Username string
 }
@@ -3839,60 +5046,84 @@ type TeamsGetMembershipForUserLegacyParams struct {
 }
 
 type TeamsListParams struct {
-	Org     string
+	Org string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type TeamsListChildInOrgParams struct {
-	Org      string
+	Org string
+	// Team_slug parameter.
 	TeamSlug string
-	PerPage  OptInt
-	Page     OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type TeamsListChildLegacyParams struct {
-	TeamID  int
+	TeamID int
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type TeamsListDiscussionCommentsInOrgParams struct {
-	Org              string
+	Org string
+	// Team_slug parameter.
 	TeamSlug         string
 	DiscussionNumber int
-	Direction        OptTeamsListDiscussionCommentsInOrgDirection
-	PerPage          OptInt
-	Page             OptInt
+	// One of `asc` (ascending) or `desc` (descending).
+	Direction OptTeamsListDiscussionCommentsInOrgDirection
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type TeamsListDiscussionCommentsLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
-	Direction        OptTeamsListDiscussionCommentsLegacyDirection
-	PerPage          OptInt
-	Page             OptInt
+	// One of `asc` (ascending) or `desc` (descending).
+	Direction OptTeamsListDiscussionCommentsLegacyDirection
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type TeamsListDiscussionsInOrgParams struct {
-	Org       string
-	TeamSlug  string
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
+	// One of `asc` (ascending) or `desc` (descending).
 	Direction OptTeamsListDiscussionsInOrgDirection
-	PerPage   OptInt
-	Page      OptInt
-	Pinned    OptString
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+	// Pinned discussions only filter.
+	Pinned OptString
 }
 
 type TeamsListDiscussionsLegacyParams struct {
-	TeamID    int
+	TeamID int
+	// One of `asc` (ascending) or `desc` (descending).
 	Direction OptTeamsListDiscussionsLegacyDirection
-	PerPage   OptInt
-	Page      OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type TeamsListForAuthenticatedUserParams struct {
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type TeamsListIdpGroupsForLegacyParams struct {
@@ -3900,68 +5131,99 @@ type TeamsListIdpGroupsForLegacyParams struct {
 }
 
 type TeamsListIdpGroupsForOrgParams struct {
-	Org     string
+	Org string
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptString
+	// Page token.
+	Page OptString
 }
 
 type TeamsListIdpGroupsInOrgParams struct {
-	Org      string
+	Org string
+	// Team_slug parameter.
 	TeamSlug string
 }
 
 type TeamsListMembersInOrgParams struct {
-	Org      string
+	Org string
+	// Team_slug parameter.
 	TeamSlug string
-	Role     OptTeamsListMembersInOrgRole
-	PerPage  OptInt
-	Page     OptInt
+	// Filters members returned by their role in the team. Can be one of:
+	// \* `member` - normal members of the team.
+	// \* `maintainer` - team maintainers.
+	// \* `all` - all members of the team.
+	Role OptTeamsListMembersInOrgRole
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type TeamsListMembersLegacyParams struct {
-	TeamID  int
-	Role    OptTeamsListMembersLegacyRole
+	TeamID int
+	// Filters members returned by their role in the team. Can be one of:
+	// \* `member` - normal members of the team.
+	// \* `maintainer` - team maintainers.
+	// \* `all` - all members of the team.
+	Role OptTeamsListMembersLegacyRole
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type TeamsListPendingInvitationsInOrgParams struct {
-	Org      string
+	Org string
+	// Team_slug parameter.
 	TeamSlug string
-	PerPage  OptInt
-	Page     OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type TeamsListPendingInvitationsLegacyParams struct {
-	TeamID  int
+	TeamID int
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type TeamsListProjectsInOrgParams struct {
-	Org      string
+	Org string
+	// Team_slug parameter.
 	TeamSlug string
-	PerPage  OptInt
-	Page     OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type TeamsListProjectsLegacyParams struct {
-	TeamID  int
+	TeamID int
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type TeamsListReposInOrgParams struct {
-	Org      string
+	Org string
+	// Team_slug parameter.
 	TeamSlug string
-	PerPage  OptInt
-	Page     OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type TeamsListReposLegacyParams struct {
-	TeamID  int
+	TeamID int
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type TeamsRemoveMemberLegacyParams struct {
@@ -3970,7 +5232,8 @@ type TeamsRemoveMemberLegacyParams struct {
 }
 
 type TeamsRemoveMembershipForUserInOrgParams struct {
-	Org      string
+	Org string
+	// Team_slug parameter.
 	TeamSlug string
 	Username string
 }
@@ -3981,7 +5244,8 @@ type TeamsRemoveMembershipForUserLegacyParams struct {
 }
 
 type TeamsRemoveProjectInOrgParams struct {
-	Org       string
+	Org string
+	// Team_slug parameter.
 	TeamSlug  string
 	ProjectID int
 }
@@ -3992,7 +5256,8 @@ type TeamsRemoveProjectLegacyParams struct {
 }
 
 type TeamsRemoveRepoInOrgParams struct {
-	Org      string
+	Org string
+	// Team_slug parameter.
 	TeamSlug string
 	Owner    string
 	Repo     string
@@ -4005,7 +5270,8 @@ type TeamsRemoveRepoLegacyParams struct {
 }
 
 type TeamsUpdateDiscussionCommentInOrgParams struct {
-	Org              string
+	Org string
+	// Team_slug parameter.
 	TeamSlug         string
 	DiscussionNumber int
 	CommentNumber    int
@@ -4018,7 +5284,8 @@ type TeamsUpdateDiscussionCommentLegacyParams struct {
 }
 
 type TeamsUpdateDiscussionInOrgParams struct {
-	Org              string
+	Org string
+	// Team_slug parameter.
 	TeamSlug         string
 	DiscussionNumber int
 }
@@ -4029,7 +5296,8 @@ type TeamsUpdateDiscussionLegacyParams struct {
 }
 
 type TeamsUpdateInOrgParams struct {
-	Org      string
+	Org string
+	// Team_slug parameter.
 	TeamSlug string
 }
 
@@ -4055,10 +5323,12 @@ type UsersCheckPersonIsFollowedByAuthenticatedParams struct {
 }
 
 type UsersDeleteGpgKeyForAuthenticatedParams struct {
+	// Gpg_key_id parameter.
 	GpgKeyID int
 }
 
 type UsersDeletePublicSSHKeyForAuthenticatedParams struct {
+	// Key_id parameter.
 	KeyID int
 }
 
@@ -4071,76 +5341,103 @@ type UsersGetByUsernameParams struct {
 }
 
 type UsersGetContextForUserParams struct {
-	Username    string
+	Username string
+	// Identifies which additional information you'd like to receive about the person's hovercard. Can be
+	// `organization`, `repository`, `issue`, `pull_request`. **Required** when using `subject_id`.
 	SubjectType OptUsersGetContextForUserSubjectType
-	SubjectID   OptString
+	// Uses the ID for the `subject_type` you specified. **Required** when using `subject_type`.
+	SubjectID OptString
 }
 
 type UsersGetGpgKeyForAuthenticatedParams struct {
+	// Gpg_key_id parameter.
 	GpgKeyID int
 }
 
 type UsersGetPublicSSHKeyForAuthenticatedParams struct {
+	// Key_id parameter.
 	KeyID int
 }
 
 type UsersListParams struct {
-	Since   OptInt
+	// A user ID. Only return users with an ID greater than this ID.
+	Since OptInt
+	// Results per page (max 100).
 	PerPage OptInt
 }
 
 type UsersListEmailsForAuthenticatedParams struct {
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type UsersListFollowedByAuthenticatedParams struct {
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type UsersListFollowersForAuthenticatedUserParams struct {
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type UsersListFollowersForUserParams struct {
 	Username string
-	PerPage  OptInt
-	Page     OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type UsersListFollowingForUserParams struct {
 	Username string
-	PerPage  OptInt
-	Page     OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type UsersListGpgKeysForAuthenticatedParams struct {
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type UsersListGpgKeysForUserParams struct {
 	Username string
-	PerPage  OptInt
-	Page     OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type UsersListPublicEmailsForAuthenticatedParams struct {
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type UsersListPublicKeysForUserParams struct {
 	Username string
-	PerPage  OptInt
-	Page     OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type UsersListPublicSSHKeysForAuthenticatedParams struct {
+	// Results per page (max 100).
 	PerPage OptInt
-	Page    OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 type UsersUnblockParams struct {
