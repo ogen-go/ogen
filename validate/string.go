@@ -18,16 +18,19 @@ type String struct {
 	Hostname     bool
 }
 
+// SetMaxLength sets maximum string length (in Unicode code points).
 func (t *String) SetMaxLength(v int) {
 	t.MaxLengthSet = true
 	t.MaxLength = v
 }
 
+// SetMinLength sets minimum string length (in Unicode code points).
 func (t *String) SetMinLength(v int) {
 	t.MinLengthSet = true
 	t.MinLength = v
 }
 
+// Set reports whether any validations are set.
 func (t String) Set() bool {
 	return t.MaxLengthSet || t.MinLengthSet || t.Email || t.Regex != nil || t.Hostname
 }
@@ -36,21 +39,21 @@ func (t String) checkHostname(v string) error {
 	if v == "" {
 		return errors.New("blank")
 	}
-	for i, r := range v {
-		if !unicode.IsPrint(r) {
-			return errors.New("not printable character")
-		}
-		if unicode.IsSpace(r) {
-			return errors.New("space character")
-		}
-		if i > 255 {
-			return errors.New("too long")
-		}
+	if len([]rune(v)) >= 255 {
+		return errors.New("too long")
+	}
+	for _, r := range v {
 		if r == '.' {
 			continue
 		}
 		if !(r >= 'a' && r <= 'z' || r >= '0' && r <= '9' || r == '-' || r >= 'A' && r <= 'Z') {
-			return errors.New("invalid character")
+			if unicode.IsSpace(r) {
+				return errors.Errorf("space character (%U)", r)
+			}
+			if !unicode.IsPrint(r) {
+				return errors.Errorf("not printable character (%U)", r)
+			}
+			return errors.Errorf("invalid character (%U)", r)
 		}
 	}
 	return nil
@@ -66,11 +69,11 @@ func (t String) checkEmail(v string) error {
 		last  rune
 	)
 	for i, r := range v {
-		if !unicode.IsPrint(r) {
-			return errors.New("not printable character")
-		}
 		if unicode.IsSpace(r) {
-			return errors.New("space character")
+			return errors.Errorf("space character (%U)", r)
+		}
+		if !unicode.IsPrint(r) {
+			return errors.Errorf("not printable character (%U)", r)
 		}
 
 		last = r
@@ -94,6 +97,7 @@ func (t String) checkEmail(v string) error {
 	return nil
 }
 
+// Validate returns error if v does not match validation rules.
 func (t String) Validate(v string) error {
 	if err := (Array{
 		MinLength:    t.MinLength,

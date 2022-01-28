@@ -24,6 +24,11 @@ func (t *Array) SetMinLength(v int) {
 	t.MinLength = v
 }
 
+// Set reports whether any validations are set.
+func (t Array) Set() bool {
+	return t.MaxLengthSet || t.MinLengthSet
+}
+
 // ValidateLength returns error if array length v is invalid.
 func (t Array) ValidateLength(v int) error {
 	if t.MaxLengthSet && v > t.MaxLength {
@@ -34,9 +39,4 @@ func (t Array) ValidateLength(v int) error {
 	}
 
 	return nil
-}
-
-// Set reports whether any validations are set.
-func (t Array) Set() bool {
-	return t.MaxLengthSet || t.MinLengthSet
 }
