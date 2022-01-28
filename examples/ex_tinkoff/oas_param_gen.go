@@ -65,71 +65,97 @@ var (
 )
 
 type MarketCandlesGetParams struct {
-	Figi     string
-	From     time.Time
-	To       time.Time
+	// FIGI.
+	Figi string
+	// Начало временного промежутка.
+	From time.Time
+	// Конец временного промежутка.
+	To time.Time
+	// Интервал свечи.
 	Interval CandleResolution
 }
 
 type MarketOrderbookGetParams struct {
-	Figi  string
+	// FIGI.
+	Figi string
+	// Глубина стакана [1..20].
 	Depth int32
 }
 
 type MarketSearchByFigiGetParams struct {
+	// FIGI.
 	Figi string
 }
 
 type MarketSearchByTickerGetParams struct {
+	// Тикер инструмента.
 	Ticker string
 }
 
 type OperationsGetParams struct {
-	From            time.Time
-	To              time.Time
-	Figi            OptString
+	// Начало временного промежутка.
+	From time.Time
+	// Конец временного промежутка.
+	To time.Time
+	// Figi инструмента для фильтрации.
+	Figi OptString
+	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
 }
 
 type OrdersCancelPostParams struct {
-	OrderId         string
+	// ID заявки.
+	OrderId string
+	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
 }
 
 type OrdersGetParams struct {
+	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
 }
 
 type OrdersLimitOrderPostParams struct {
-	Figi            string
+	// FIGI инструмента.
+	Figi string
+	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
 }
 
 type OrdersMarketOrderPostParams struct {
-	Figi            string
+	// FIGI инструмента.
+	Figi string
+	// Уникальный идентификатор счета (по умолчанию -
+	// Тинькофф).
 	BrokerAccountId OptString
 }
 
 type PortfolioCurrenciesGetParams struct {
+	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
 }
 
 type PortfolioGetParams struct {
+	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
 }
 
 type SandboxClearPostParams struct {
+	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
 }
 
 type SandboxCurrenciesBalancePostParams struct {
+	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
 }
 
 type SandboxPositionsBalancePostParams struct {
+	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
 }
 
 type SandboxRemovePostParams struct {
+	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
 }

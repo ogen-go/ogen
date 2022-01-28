@@ -97,6 +97,8 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 
 // CreateSnapshot invokes createSnapshot operation.
 //
+// Creates a snapshot of the microVM state. The microVM should be in the `Paused` state.
+//
 // PUT /snapshot/create
 func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParams) (res CreateSnapshotRes, err error) {
 	if err := func() error {
@@ -341,6 +343,8 @@ func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes,
 
 // GetExportVmConfig invokes getExportVmConfig operation.
 //
+// Gets configuration for all VM resources.
+//
 // GET /vm/config
 func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRes, err error) {
 	startTime := time.Now()
@@ -381,6 +385,10 @@ func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRe
 
 // GetMachineConfiguration invokes getMachineConfiguration operation.
 //
+// Gets the machine configuration of the VM. When called before the PUT operation, it will return the
+// default values for the vCPU count (=1), memory size (=128 MiB). By default Hyperthreading is
+// disabled and there is no CPU Template.
+//
 // GET /machine-config
 func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineConfigurationRes, err error) {
 	startTime := time.Now()
@@ -420,6 +428,9 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineCon
 }
 
 // LoadSnapshot invokes loadSnapshot operation.
+//
+// Loads the microVM state from a snapshot. Only accepted on a fresh Firecracker process (before
+// configuring any resource other than the Logger and Metrics).
 //
 // PUT /snapshot/load
 func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (res LoadSnapshotRes, err error) {
@@ -474,6 +485,8 @@ func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (
 }
 
 // MmdsConfigPut invokes  operation.
+//
+// Creates MMDS configuration to be used by the MMDS network stack.
 //
 // PUT /mmds/config
 func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res MmdsConfigPutRes, err error) {
@@ -673,6 +686,9 @@ func (c *Client) MmdsPut(ctx context.Context, request OptMmdsPutReq) (res MmdsPu
 
 // PatchBalloon invokes patchBalloon operation.
 //
+// Updates an existing balloon device, before or after machine startup. Will fail if update is not
+// possible.
+//
 // PATCH /balloon
 func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res PatchBalloonRes, err error) {
 	startTime := time.Now()
@@ -727,6 +743,9 @@ func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res P
 
 // PatchBalloonStatsInterval invokes patchBalloonStatsInterval operation.
 //
+// Updates an existing balloon device statistics interval, before or after machine startup. Will fail
+// if update is not possible.
+//
 // PATCH /balloon/statistics
 func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonStatsUpdate) (res PatchBalloonStatsIntervalRes, err error) {
 	startTime := time.Now()
@@ -780,6 +799,9 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 }
 
 // PatchGuestDriveByID invokes patchGuestDriveByID operation.
+//
+// Updates the properties of the drive with the ID specified by drive_id path parameter. Will fail if
+// update is not possible.
 //
 // PATCH /drives/{drive_id}
 func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, params PatchGuestDriveByIDParams) (res PatchGuestDriveByIDRes, err error) {
@@ -857,6 +879,8 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 
 // PatchGuestNetworkInterfaceByID invokes patchGuestNetworkInterfaceByID operation.
 //
+// Updates the rate limiters applied to a network interface.
+//
 // PATCH /network-interfaces/{iface_id}
 func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (res PatchGuestNetworkInterfaceByIDRes, err error) {
 	if err := func() error {
@@ -933,6 +957,9 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 
 // PatchMachineConfiguration invokes patchMachineConfiguration operation.
 //
+// Partially updates the Virtual Machine Configuration with the specified input. If any of the
+// parameters has an incorrect value, the whole update fails.
+//
 // PATCH /machine-config
 func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachineConfiguration) (res PatchMachineConfigurationRes, err error) {
 	if err := func() error {
@@ -1003,6 +1030,8 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachi
 
 // PatchVm invokes patchVm operation.
 //
+// Sets the desired state (Paused or Resumed) for the microVM.
+//
 // PATCH /vm
 func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err error) {
 	if err := func() error {
@@ -1065,6 +1094,9 @@ func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err e
 
 // PutBalloon invokes putBalloon operation.
 //
+// Creates a new balloon device if one does not already exist, otherwise updates it, before machine
+// startup. This will fail after machine startup. Will fail if update is not possible.
+//
 // PUT /balloon
 func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloonRes, err error) {
 	startTime := time.Now()
@@ -1119,6 +1151,9 @@ func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloo
 
 // PutGuestBootSource invokes putGuestBootSource operation.
 //
+// Creates new boot source if one does not already exist, otherwise updates it. Will fail if update
+// is not possible.
+//
 // PUT /boot-source
 func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (res PutGuestBootSourceRes, err error) {
 	startTime := time.Now()
@@ -1172,6 +1207,9 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 }
 
 // PutGuestDriveByID invokes putGuestDriveByID operation.
+//
+// Creates new drive with ID specified by drive_id path parameter. If a drive with the specified ID
+// already exists, updates its state based on new input. Will fail if update is not possible.
 //
 // PUT /drives/{drive_id}
 func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params PutGuestDriveByIDParams) (res PutGuestDriveByIDRes, err error) {
@@ -1249,6 +1287,8 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 
 // PutGuestNetworkInterfaceByID invokes putGuestNetworkInterfaceByID operation.
 //
+// Creates new network interface with ID specified by iface_id path parameter.
+//
 // PUT /network-interfaces/{iface_id}
 func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (res PutGuestNetworkInterfaceByIDRes, err error) {
 	if err := func() error {
@@ -1324,6 +1364,9 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 }
 
 // PutGuestVsock invokes putGuestVsock operation.
+//
+// The first call creates the device with the configuration specified in body. Subsequent calls will
+// update the device configuration. May fail if update is not possible.
 //
 // PUT /vsock
 func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuestVsockRes, err error) {
@@ -1448,6 +1491,11 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 }
 
 // PutMachineConfiguration invokes putMachineConfiguration operation.
+//
+// Updates the Virtual Machine Configuration with the specified input. Firecracker starts with
+// default values for vCPU count (=1) and memory size (=128 MiB). With Hyperthreading enabled, the
+// vCPU count is restricted to be 1 or an even number, otherwise there are no restrictions regarding
+// the vCPU count. If any of the parameters has an incorrect value, the whole update fails.
 //
 // PUT /machine-config
 func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachineConfiguration) (res PutMachineConfigurationRes, err error) {

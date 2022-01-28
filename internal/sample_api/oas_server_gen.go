@@ -68,17 +68,25 @@ var (
 type Handler interface {
 	// DataGetFormat implements dataGetFormat operation.
 	//
+	// Retrieve data.
+	//
 	// GET /name/{id}/{foo}1234{bar}-{baz}!{kek}
 	DataGetFormat(ctx context.Context, params DataGetFormatParams) (string, error)
 	// ErrorGet implements errorGet operation.
+	//
+	// Returns error.
 	//
 	// GET /error
 	ErrorGet(ctx context.Context) (ErrorStatusCode, error)
 	// FoobarGet implements foobarGet operation.
 	//
+	// Dumb endpoint for testing things.
+	//
 	// GET /foobar
 	FoobarGet(ctx context.Context, params FoobarGetParams) (FoobarGetRes, error)
 	// FoobarPost implements foobarPost operation.
+	//
+	// Dumb endpoint for testing things.
 	//
 	// POST /foobar
 	FoobarPost(ctx context.Context, req OptPet) (FoobarPostRes, error)
@@ -88,29 +96,43 @@ type Handler interface {
 	FoobarPut(ctx context.Context) (FoobarPutDefStatusCode, error)
 	// GetHeader implements getHeader operation.
 	//
+	// Test for header param.
+	//
 	// GET /test/header
 	GetHeader(ctx context.Context, params GetHeaderParams) (Hash, error)
 	// PetCreate implements petCreate operation.
+	//
+	// Creates pet.
 	//
 	// POST /pet
 	PetCreate(ctx context.Context, req OptPet) (Pet, error)
 	// PetFriendsNamesByID implements petFriendsNamesByID operation.
 	//
+	// Returns names of all friends of pet.
+	//
 	// GET /pet/friendNames/{id}
 	PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) ([]string, error)
 	// PetGet implements petGet operation.
+	//
+	// Returns pet from the system that the user has access to.
 	//
 	// GET /pet
 	PetGet(ctx context.Context, params PetGetParams) (PetGetRes, error)
 	// PetGetAvatarByID implements petGetAvatarByID operation.
 	//
+	// Returns pet avatar by id.
+	//
 	// GET /pet/avatar
 	PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDParams) (PetGetAvatarByIDRes, error)
 	// PetGetByName implements petGetByName operation.
 	//
+	// Returns pet by name from the system that the user has access to.
+	//
 	// GET /pet/{name}
 	PetGetByName(ctx context.Context, params PetGetByNameParams) (Pet, error)
 	// PetNameByID implements petNameByID operation.
+	//
+	// Returns pet name by pet id.
 	//
 	// GET /pet/name/{id}
 	PetNameByID(ctx context.Context, params PetNameByIDParams) (string, error)
@@ -123,6 +145,8 @@ type Handler interface {
 	// POST /pet/updateName
 	PetUpdateNamePost(ctx context.Context, req OptString) (PetUpdateNamePostDefStatusCode, error)
 	// PetUploadAvatarByID implements petUploadAvatarByID operation.
+	//
+	// Uploads pet avatar by id.
 	//
 	// POST /pet/avatar
 	PetUploadAvatarByID(ctx context.Context, req Stream, params PetUploadAvatarByIDParams) (PetUploadAvatarByIDRes, error)

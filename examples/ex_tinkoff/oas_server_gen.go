@@ -128,6 +128,8 @@ type Handler interface {
 	PortfolioGet(ctx context.Context, params PortfolioGetParams) (PortfolioGetRes, error)
 	// SandboxClearPost implements  operation.
 	//
+	// Удаление всех позиций клиента.
+	//
 	// POST /sandbox/clear
 	SandboxClearPost(ctx context.Context, params SandboxClearPostParams) (SandboxClearPostRes, error)
 	// SandboxCurrenciesBalancePost implements  operation.
@@ -140,9 +142,13 @@ type Handler interface {
 	SandboxPositionsBalancePost(ctx context.Context, req SandboxSetPositionBalanceRequest, params SandboxPositionsBalancePostParams) (SandboxPositionsBalancePostRes, error)
 	// SandboxRegisterPost implements  operation.
 	//
+	// Создание счета и валютных позиций для клиента.
+	//
 	// POST /sandbox/register
 	SandboxRegisterPost(ctx context.Context, req OptSandboxRegisterRequest) (SandboxRegisterPostRes, error)
 	// SandboxRemovePost implements  operation.
+	//
+	// Удаление счета клиента.
 	//
 	// POST /sandbox/remove
 	SandboxRemovePost(ctx context.Context, params SandboxRemovePostParams) (SandboxRemovePostRes, error)

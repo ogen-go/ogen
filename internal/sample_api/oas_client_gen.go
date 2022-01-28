@@ -97,6 +97,8 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 
 // DataGetFormat invokes dataGetFormat operation.
 //
+// Retrieve data.
+//
 // GET /name/{id}/{foo}1234{bar}-{baz}!{kek}
 func (c *Client) DataGetFormat(ctx context.Context, params DataGetFormatParams) (res string, err error) {
 	startTime := time.Now()
@@ -211,6 +213,8 @@ func (c *Client) DataGetFormat(ctx context.Context, params DataGetFormatParams) 
 
 // ErrorGet invokes errorGet operation.
 //
+// Returns error.
+//
 // GET /error
 func (c *Client) ErrorGet(ctx context.Context) (res ErrorStatusCode, err error) {
 	startTime := time.Now()
@@ -250,6 +254,8 @@ func (c *Client) ErrorGet(ctx context.Context) (res ErrorStatusCode, err error) 
 }
 
 // FoobarGet invokes foobarGet operation.
+//
+// Dumb endpoint for testing things.
 //
 // GET /foobar
 func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res FoobarGetRes, err error) {
@@ -319,6 +325,8 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 }
 
 // FoobarPost invokes foobarPost operation.
+//
+// Dumb endpoint for testing things.
 //
 // POST /foobar
 func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPostRes, err error) {
@@ -429,6 +437,8 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err
 
 // GetHeader invokes getHeader operation.
 //
+// Test for header param.
+//
 // GET /test/header
 func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Hash, err error) {
 	startTime := time.Now()
@@ -482,6 +492,8 @@ func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Has
 }
 
 // PetCreate invokes petCreate operation.
+//
+// Creates pet.
 //
 // POST /pet
 func (c *Client) PetCreate(ctx context.Context, request OptPet) (res Pet, err error) {
@@ -553,6 +565,8 @@ func (c *Client) PetCreate(ctx context.Context, request OptPet) (res Pet, err er
 
 // PetFriendsNamesByID invokes petFriendsNamesByID operation.
 //
+// Returns names of all friends of pet.
+//
 // GET /pet/friendNames/{id}
 func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) (res []string, err error) {
 	startTime := time.Now()
@@ -606,6 +620,8 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 }
 
 // PetGet invokes petGet operation.
+//
+// Returns pet from the system that the user has access to.
 //
 // GET /pet
 func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes, err error) {
@@ -721,6 +737,8 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 
 // PetGetAvatarByID invokes petGetAvatarByID operation.
 //
+// Returns pet avatar by id.
+//
 // GET /pet/avatar
 func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDParams) (res PetGetAvatarByIDRes, err error) {
 	startTime := time.Now()
@@ -777,6 +795,8 @@ func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDPa
 
 // PetGetByName invokes petGetByName operation.
 //
+// Returns pet by name from the system that the user has access to.
+//
 // GET /pet/{name}
 func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res Pet, err error) {
 	startTime := time.Now()
@@ -830,6 +850,8 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 }
 
 // PetNameByID invokes petNameByID operation.
+//
+// Returns pet name by pet id.
 //
 // GET /pet/name/{id}
 func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res string, err error) {
@@ -1030,6 +1052,8 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res 
 }
 
 // PetUploadAvatarByID invokes petUploadAvatarByID operation.
+//
+// Uploads pet avatar by id.
 //
 // POST /pet/avatar
 func (c *Client) PetUploadAvatarByID(ctx context.Context, request Stream, params PetUploadAvatarByIDParams) (res PetUploadAvatarByIDRes, err error) {

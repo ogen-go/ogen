@@ -1056,6 +1056,8 @@ func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (r
 
 // SandboxClearPost invokes  operation.
 //
+// Удаление всех позиций клиента.
+//
 // POST /sandbox/clear
 func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostParams) (res SandboxClearPostRes, err error) {
 	startTime := time.Now()
@@ -1274,6 +1276,8 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 
 // SandboxRegisterPost invokes  operation.
 //
+// Создание счета и валютных позиций для клиента.
+//
 // POST /sandbox/register
 func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegisterRequest) (res SandboxRegisterPostRes, err error) {
 	if err := func() error {
@@ -1342,6 +1346,8 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 }
 
 // SandboxRemovePost invokes  operation.
+//
+// Удаление счета клиента.
 //
 // POST /sandbox/remove
 func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePostParams) (res SandboxRemovePostRes, err error) {

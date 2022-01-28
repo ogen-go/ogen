@@ -68,13 +68,19 @@ var (
 type Handler interface {
 	// DataGet implements dataGet operation.
 	//
+	// Retrieve data.
+	//
 	// GET /name/{id}/{key}
 	DataGet(ctx context.Context, params DataGetParams) (string, error)
 	// DataGetAny implements dataGetAny operation.
 	//
+	// Retrieve any data.
+	//
 	// GET /name
 	DataGetAny(ctx context.Context) (string, error)
 	// DataGetID implements dataGetID operation.
+	//
+	// Retrieve data.
 	//
 	// GET /name/{id}
 	DataGetID(ctx context.Context, params DataGetIDParams) (string, error)

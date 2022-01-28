@@ -65,5 +65,6 @@ var (
 )
 
 type DeletePetParams struct {
+	// ID of pet to delete.
 	ID int64
 }

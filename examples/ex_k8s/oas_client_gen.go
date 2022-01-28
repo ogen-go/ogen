@@ -97,6 +97,8 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 
 // GetAPIVersions invokes getAPIVersions operation.
 //
+// Get available API versions.
+//
 // GET /apis/
 func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err error) {
 	startTime := time.Now()
@@ -136,6 +138,8 @@ func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err
 }
 
 // GetAdmissionregistrationAPIGroup invokes getAdmissionregistrationAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/admissionregistration.k8s.io/
 func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetAdmissionregistrationAPIGroupRes, err error) {
@@ -177,6 +181,8 @@ func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetA
 
 // GetAdmissionregistrationV1APIResources invokes getAdmissionregistrationV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/admissionregistration.k8s.io/v1/
 func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (res GetAdmissionregistrationV1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -216,6 +222,8 @@ func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (re
 }
 
 // GetApiextensionsAPIGroup invokes getApiextensionsAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/apiextensions.k8s.io/
 func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextensionsAPIGroupRes, err error) {
@@ -257,6 +265,8 @@ func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextens
 
 // GetApiextensionsV1APIResources invokes getApiextensionsV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/apiextensions.k8s.io/v1/
 func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApiextensionsV1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -296,6 +306,8 @@ func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApi
 }
 
 // GetApiregistrationAPIGroup invokes getApiregistrationAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/apiregistration.k8s.io/
 func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregistrationAPIGroupRes, err error) {
@@ -337,6 +349,8 @@ func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregi
 
 // GetApiregistrationV1APIResources invokes getApiregistrationV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/apiregistration.k8s.io/v1/
 func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetApiregistrationV1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -376,6 +390,8 @@ func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetA
 }
 
 // GetAppsAPIGroup invokes getAppsAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/apps/
 func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, err error) {
@@ -417,6 +433,8 @@ func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, e
 
 // GetAppsV1APIResources invokes getAppsV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/apps/v1/
 func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -456,6 +474,8 @@ func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIRes
 }
 
 // GetAuthenticationAPIGroup invokes getAuthenticationAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/authentication.k8s.io/
 func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenticationAPIGroupRes, err error) {
@@ -497,6 +517,8 @@ func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenti
 
 // GetAuthenticationV1APIResources invokes getAuthenticationV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/authentication.k8s.io/v1/
 func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAuthenticationV1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -536,6 +558,8 @@ func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAu
 }
 
 // GetAuthorizationAPIGroup invokes getAuthorizationAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/authorization.k8s.io/
 func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthorizationAPIGroupRes, err error) {
@@ -577,6 +601,8 @@ func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthoriza
 
 // GetAuthorizationV1APIResources invokes getAuthorizationV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/authorization.k8s.io/v1/
 func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAuthorizationV1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -616,6 +642,8 @@ func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAut
 }
 
 // GetAutoscalingAPIGroup invokes getAutoscalingAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/autoscaling/
 func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscalingAPIGroupRes, err error) {
@@ -657,6 +685,8 @@ func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscaling
 
 // GetAutoscalingV1APIResources invokes getAutoscalingV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/autoscaling/v1/
 func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutoscalingV1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -696,6 +726,8 @@ func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutos
 }
 
 // GetAutoscalingV2beta1APIResources invokes getAutoscalingV2beta1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/autoscaling/v2beta1/
 func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res GetAutoscalingV2beta1APIResourcesRes, err error) {
@@ -737,6 +769,8 @@ func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res Get
 
 // GetAutoscalingV2beta2APIResources invokes getAutoscalingV2beta2APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/autoscaling/v2beta2/
 func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res GetAutoscalingV2beta2APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -776,6 +810,8 @@ func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res Get
 }
 
 // GetBatchAPIGroup invokes getBatchAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/batch/
 func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes, err error) {
@@ -817,6 +853,8 @@ func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes,
 
 // GetBatchV1APIResources invokes getBatchV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/batch/v1/
 func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -856,6 +894,8 @@ func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIR
 }
 
 // GetBatchV1beta1APIResources invokes getBatchV1beta1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/batch/v1beta1/
 func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV1beta1APIResourcesRes, err error) {
@@ -897,6 +937,8 @@ func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV
 
 // GetCertificatesAPIGroup invokes getCertificatesAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/certificates.k8s.io/
 func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificatesAPIGroupRes, err error) {
 	startTime := time.Now()
@@ -936,6 +978,8 @@ func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificat
 }
 
 // GetCertificatesV1APIResources invokes getCertificatesV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/certificates.k8s.io/v1/
 func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCertificatesV1APIResourcesRes, err error) {
@@ -977,6 +1021,8 @@ func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCert
 
 // GetCodeVersion invokes getCodeVersion operation.
 //
+// Get the code version.
+//
 // GET /version/
 func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err error) {
 	startTime := time.Now()
@@ -1016,6 +1062,8 @@ func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err
 }
 
 // GetCoordinationAPIGroup invokes getCoordinationAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/coordination.k8s.io/
 func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinationAPIGroupRes, err error) {
@@ -1057,6 +1105,8 @@ func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinati
 
 // GetCoordinationV1APIResources invokes getCoordinationV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/coordination.k8s.io/v1/
 func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoordinationV1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -1096,6 +1146,8 @@ func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoor
 }
 
 // GetCoreAPIVersions invokes getCoreAPIVersions operation.
+//
+// Get available API versions.
 //
 // GET /api/
 func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersionsRes, err error) {
@@ -1137,6 +1189,8 @@ func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersions
 
 // GetCoreV1APIResources invokes getCoreV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /api/v1/
 func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -1176,6 +1230,8 @@ func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIRes
 }
 
 // GetDiscoveryAPIGroup invokes getDiscoveryAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/discovery.k8s.io/
 func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIGroupRes, err error) {
@@ -1217,6 +1273,8 @@ func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIG
 
 // GetDiscoveryV1APIResources invokes getDiscoveryV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/discovery.k8s.io/v1/
 func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscoveryV1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -1256,6 +1314,8 @@ func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscove
 }
 
 // GetDiscoveryV1beta1APIResources invokes getDiscoveryV1beta1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/discovery.k8s.io/v1beta1/
 func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDiscoveryV1beta1APIResourcesRes, err error) {
@@ -1297,6 +1357,8 @@ func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDi
 
 // GetEventsAPIGroup invokes getEventsAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/events.k8s.io/
 func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRes, err error) {
 	startTime := time.Now()
@@ -1336,6 +1398,8 @@ func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRe
 }
 
 // GetEventsV1APIResources invokes getEventsV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/events.k8s.io/v1/
 func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1APIResourcesRes, err error) {
@@ -1377,6 +1441,8 @@ func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1AP
 
 // GetEventsV1beta1APIResources invokes getEventsV1beta1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/events.k8s.io/v1beta1/
 func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEventsV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -1416,6 +1482,8 @@ func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEvent
 }
 
 // GetFlowcontrolApiserverAPIGroup invokes getFlowcontrolApiserverAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/
 func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFlowcontrolApiserverAPIGroupRes, err error) {
@@ -1457,6 +1525,8 @@ func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFl
 
 // GetFlowcontrolApiserverV1beta1APIResources invokes getFlowcontrolApiserverV1beta1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/
 func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -1496,6 +1566,8 @@ func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context)
 }
 
 // GetFlowcontrolApiserverV1beta2APIResources invokes getFlowcontrolApiserverV1beta2APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/
 func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta2APIResourcesRes, err error) {
@@ -1537,6 +1609,8 @@ func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context)
 
 // GetInternalApiserverAPIGroup invokes getInternalApiserverAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/internal.apiserver.k8s.io/
 func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInternalApiserverAPIGroupRes, err error) {
 	startTime := time.Now()
@@ -1576,6 +1650,8 @@ func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInter
 }
 
 // GetInternalApiserverV1alpha1APIResources invokes getInternalApiserverV1alpha1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/
 func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (res GetInternalApiserverV1alpha1APIResourcesRes, err error) {
@@ -1617,6 +1693,8 @@ func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (
 
 // GetNetworkingAPIGroup invokes getNetworkingAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/networking.k8s.io/
 func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAPIGroupRes, err error) {
 	startTime := time.Now()
@@ -1656,6 +1734,8 @@ func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAP
 }
 
 // GetNetworkingV1APIResources invokes getNetworkingV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/networking.k8s.io/v1/
 func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetworkingV1APIResourcesRes, err error) {
@@ -1697,6 +1777,8 @@ func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetwor
 
 // GetNodeAPIGroup invokes getNodeAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/node.k8s.io/
 func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, err error) {
 	startTime := time.Now()
@@ -1736,6 +1818,8 @@ func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, e
 }
 
 // GetNodeV1APIResources invokes getNodeV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/node.k8s.io/v1/
 func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIResourcesRes, err error) {
@@ -1777,6 +1861,8 @@ func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIRes
 
 // GetNodeV1alpha1APIResources invokes getNodeV1alpha1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/node.k8s.io/v1alpha1/
 func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1alpha1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -1816,6 +1902,8 @@ func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1
 }
 
 // GetNodeV1beta1APIResources invokes getNodeV1beta1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/node.k8s.io/v1beta1/
 func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1beta1APIResourcesRes, err error) {
@@ -1857,6 +1945,8 @@ func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1b
 
 // GetPolicyAPIGroup invokes getPolicyAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/policy/
 func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRes, err error) {
 	startTime := time.Now()
@@ -1896,6 +1986,8 @@ func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRe
 }
 
 // GetPolicyV1APIResources invokes getPolicyV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/policy/v1/
 func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1APIResourcesRes, err error) {
@@ -1937,6 +2029,8 @@ func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1AP
 
 // GetPolicyV1beta1APIResources invokes getPolicyV1beta1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/policy/v1beta1/
 func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolicyV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -1976,6 +2070,8 @@ func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolic
 }
 
 // GetRbacAuthorizationAPIGroup invokes getRbacAuthorizationAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/rbac.authorization.k8s.io/
 func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacAuthorizationAPIGroupRes, err error) {
@@ -2017,6 +2113,8 @@ func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacA
 
 // GetRbacAuthorizationV1APIResources invokes getRbacAuthorizationV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/
 func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res GetRbacAuthorizationV1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -2056,6 +2154,8 @@ func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res Ge
 }
 
 // GetSchedulingAPIGroup invokes getSchedulingAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/scheduling.k8s.io/
 func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAPIGroupRes, err error) {
@@ -2097,6 +2197,8 @@ func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAP
 
 // GetSchedulingV1APIResources invokes getSchedulingV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/scheduling.k8s.io/v1/
 func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedulingV1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -2136,6 +2238,8 @@ func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedu
 }
 
 // GetServiceAccountIssuerOpenIDConfiguration invokes getServiceAccountIssuerOpenIDConfiguration operation.
+//
+// Get service account issuer OpenID configuration, also known as the 'OIDC discovery doc'.
 //
 // GET /.well-known/openid-configuration/
 func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context) (res GetServiceAccountIssuerOpenIDConfigurationRes, err error) {
@@ -2177,6 +2281,8 @@ func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context)
 
 // GetStorageAPIGroup invokes getStorageAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/storage.k8s.io/
 func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroupRes, err error) {
 	startTime := time.Now()
@@ -2216,6 +2322,8 @@ func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroup
 }
 
 // GetStorageV1APIResources invokes getStorageV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/storage.k8s.io/v1/
 func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1APIResourcesRes, err error) {
@@ -2257,6 +2365,8 @@ func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1
 
 // GetStorageV1alpha1APIResources invokes getStorageV1alpha1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/storage.k8s.io/v1alpha1/
 func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetStorageV1alpha1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -2297,6 +2407,8 @@ func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetSto
 
 // GetStorageV1beta1APIResources invokes getStorageV1beta1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/storage.k8s.io/v1beta1/
 func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStorageV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
@@ -2336,6 +2448,8 @@ func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStor
 }
 
 // ListAdmissionregistrationV1MutatingWebhookConfiguration invokes listAdmissionregistrationV1MutatingWebhookConfiguration operation.
+//
+// List or watch objects of kind MutatingWebhookConfiguration.
 //
 // GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations
 func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) (res ListAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
@@ -2540,6 +2654,8 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 
 // ListAdmissionregistrationV1ValidatingWebhookConfiguration invokes listAdmissionregistrationV1ValidatingWebhookConfiguration operation.
 //
+// List or watch objects of kind ValidatingWebhookConfiguration.
+//
 // GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations
 func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
@@ -2742,6 +2858,8 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 }
 
 // ListApiextensionsV1CustomResourceDefinition invokes listApiextensionsV1CustomResourceDefinition operation.
+//
+// List or watch objects of kind CustomResourceDefinition.
 //
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions
 func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context, params ListApiextensionsV1CustomResourceDefinitionParams) (res ListApiextensionsV1CustomResourceDefinitionRes, err error) {
@@ -2946,6 +3064,8 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 
 // ListApiregistrationV1APIService invokes listApiregistrationV1APIService operation.
 //
+// List or watch objects of kind APIService.
+//
 // GET /apis/apiregistration.k8s.io/v1/apiservices
 func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params ListApiregistrationV1APIServiceParams) (res ListApiregistrationV1APIServiceRes, err error) {
 	startTime := time.Now()
@@ -3148,6 +3268,8 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 }
 
 // ListAppsV1ControllerRevisionForAllNamespaces invokes listAppsV1ControllerRevisionForAllNamespaces operation.
+//
+// List or watch objects of kind ControllerRevision.
 //
 // GET /apis/apps/v1/controllerrevisions
 func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Context, params ListAppsV1ControllerRevisionForAllNamespacesParams) (res ListAppsV1ControllerRevisionForAllNamespacesRes, err error) {
@@ -3352,6 +3474,8 @@ func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Contex
 
 // ListAppsV1DaemonSetForAllNamespaces invokes listAppsV1DaemonSetForAllNamespaces operation.
 //
+// List or watch objects of kind DaemonSet.
+//
 // GET /apis/apps/v1/daemonsets
 func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context, params ListAppsV1DaemonSetForAllNamespacesParams) (res ListAppsV1DaemonSetForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -3555,6 +3679,8 @@ func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context, params
 
 // ListAppsV1DeploymentForAllNamespaces invokes listAppsV1DeploymentForAllNamespaces operation.
 //
+// List or watch objects of kind Deployment.
+//
 // GET /apis/apps/v1/deployments
 func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context, params ListAppsV1DeploymentForAllNamespacesParams) (res ListAppsV1DeploymentForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -3757,6 +3883,8 @@ func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context, param
 }
 
 // ListAppsV1NamespacedControllerRevision invokes listAppsV1NamespacedControllerRevision operation.
+//
+// List or watch objects of kind ControllerRevision.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions
 func (c *Client) ListAppsV1NamespacedControllerRevision(ctx context.Context, params ListAppsV1NamespacedControllerRevisionParams) (res ListAppsV1NamespacedControllerRevisionRes, err error) {
@@ -3976,6 +4104,8 @@ func (c *Client) ListAppsV1NamespacedControllerRevision(ctx context.Context, par
 
 // ListAppsV1NamespacedDaemonSet invokes listAppsV1NamespacedDaemonSet operation.
 //
+// List or watch objects of kind DaemonSet.
+//
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets
 func (c *Client) ListAppsV1NamespacedDaemonSet(ctx context.Context, params ListAppsV1NamespacedDaemonSetParams) (res ListAppsV1NamespacedDaemonSetRes, err error) {
 	startTime := time.Now()
@@ -4193,6 +4323,8 @@ func (c *Client) ListAppsV1NamespacedDaemonSet(ctx context.Context, params ListA
 }
 
 // ListAppsV1NamespacedDeployment invokes listAppsV1NamespacedDeployment operation.
+//
+// List or watch objects of kind Deployment.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/deployments
 func (c *Client) ListAppsV1NamespacedDeployment(ctx context.Context, params ListAppsV1NamespacedDeploymentParams) (res ListAppsV1NamespacedDeploymentRes, err error) {
@@ -4412,6 +4544,8 @@ func (c *Client) ListAppsV1NamespacedDeployment(ctx context.Context, params List
 
 // ListAppsV1NamespacedReplicaSet invokes listAppsV1NamespacedReplicaSet operation.
 //
+// List or watch objects of kind ReplicaSet.
+//
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets
 func (c *Client) ListAppsV1NamespacedReplicaSet(ctx context.Context, params ListAppsV1NamespacedReplicaSetParams) (res ListAppsV1NamespacedReplicaSetRes, err error) {
 	startTime := time.Now()
@@ -4629,6 +4763,8 @@ func (c *Client) ListAppsV1NamespacedReplicaSet(ctx context.Context, params List
 }
 
 // ListAppsV1NamespacedStatefulSet invokes listAppsV1NamespacedStatefulSet operation.
+//
+// List or watch objects of kind StatefulSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets
 func (c *Client) ListAppsV1NamespacedStatefulSet(ctx context.Context, params ListAppsV1NamespacedStatefulSetParams) (res ListAppsV1NamespacedStatefulSetRes, err error) {
@@ -4848,6 +4984,8 @@ func (c *Client) ListAppsV1NamespacedStatefulSet(ctx context.Context, params Lis
 
 // ListAppsV1ReplicaSetForAllNamespaces invokes listAppsV1ReplicaSetForAllNamespaces operation.
 //
+// List or watch objects of kind ReplicaSet.
+//
 // GET /apis/apps/v1/replicasets
 func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, params ListAppsV1ReplicaSetForAllNamespacesParams) (res ListAppsV1ReplicaSetForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -5050,6 +5188,8 @@ func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, param
 }
 
 // ListAppsV1StatefulSetForAllNamespaces invokes listAppsV1StatefulSetForAllNamespaces operation.
+//
+// List or watch objects of kind StatefulSet.
 //
 // GET /apis/apps/v1/statefulsets
 func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context, params ListAppsV1StatefulSetForAllNamespacesParams) (res ListAppsV1StatefulSetForAllNamespacesRes, err error) {
@@ -5254,6 +5394,8 @@ func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context, para
 
 // ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces invokes listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces operation.
 //
+// List or watch objects of kind HorizontalPodAutoscaler.
+//
 // GET /apis/autoscaling/v1/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams) (res ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -5456,6 +5598,8 @@ func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx co
 }
 
 // ListAutoscalingV1NamespacedHorizontalPodAutoscaler invokes listAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+//
+// List or watch objects of kind HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (res ListAutoscalingV1NamespacedHorizontalPodAutoscalerRes, err error) {
@@ -5675,6 +5819,8 @@ func (c *Client) ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.
 
 // ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces invokes listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces operation.
 //
+// List or watch objects of kind HorizontalPodAutoscaler.
+//
 // GET /apis/autoscaling/v2beta1/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams) (res ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -5877,6 +6023,8 @@ func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(c
 }
 
 // ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler invokes listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+//
+// List or watch objects of kind HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (res ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, err error) {
@@ -6096,6 +6244,8 @@ func (c *Client) ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx con
 
 // ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces invokes listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces operation.
 //
+// List or watch objects of kind HorizontalPodAutoscaler.
+//
 // GET /apis/autoscaling/v2beta2/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams) (res ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -6298,6 +6448,8 @@ func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(c
 }
 
 // ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler invokes listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+//
+// List or watch objects of kind HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (res ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, err error) {
@@ -6517,6 +6669,8 @@ func (c *Client) ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx con
 
 // ListBatchV1CronJobForAllNamespaces invokes listBatchV1CronJobForAllNamespaces operation.
 //
+// List or watch objects of kind CronJob.
+//
 // GET /apis/batch/v1/cronjobs
 func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context, params ListBatchV1CronJobForAllNamespacesParams) (res ListBatchV1CronJobForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -6720,6 +6874,8 @@ func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context, params 
 
 // ListBatchV1JobForAllNamespaces invokes listBatchV1JobForAllNamespaces operation.
 //
+// List or watch objects of kind Job.
+//
 // GET /apis/batch/v1/jobs
 func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context, params ListBatchV1JobForAllNamespacesParams) (res ListBatchV1JobForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -6922,6 +7078,8 @@ func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context, params List
 }
 
 // ListBatchV1NamespacedCronJob invokes listBatchV1NamespacedCronJob operation.
+//
+// List or watch objects of kind CronJob.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs
 func (c *Client) ListBatchV1NamespacedCronJob(ctx context.Context, params ListBatchV1NamespacedCronJobParams) (res ListBatchV1NamespacedCronJobRes, err error) {
@@ -7141,6 +7299,8 @@ func (c *Client) ListBatchV1NamespacedCronJob(ctx context.Context, params ListBa
 
 // ListBatchV1NamespacedJob invokes listBatchV1NamespacedJob operation.
 //
+// List or watch objects of kind Job.
+//
 // GET /apis/batch/v1/namespaces/{namespace}/jobs
 func (c *Client) ListBatchV1NamespacedJob(ctx context.Context, params ListBatchV1NamespacedJobParams) (res ListBatchV1NamespacedJobRes, err error) {
 	startTime := time.Now()
@@ -7359,6 +7519,8 @@ func (c *Client) ListBatchV1NamespacedJob(ctx context.Context, params ListBatchV
 
 // ListBatchV1beta1CronJobForAllNamespaces invokes listBatchV1beta1CronJobForAllNamespaces operation.
 //
+// List or watch objects of kind CronJob.
+//
 // GET /apis/batch/v1beta1/cronjobs
 func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context, params ListBatchV1beta1CronJobForAllNamespacesParams) (res ListBatchV1beta1CronJobForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -7561,6 +7723,8 @@ func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context, pa
 }
 
 // ListBatchV1beta1NamespacedCronJob invokes listBatchV1beta1NamespacedCronJob operation.
+//
+// List or watch objects of kind CronJob.
 //
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs
 func (c *Client) ListBatchV1beta1NamespacedCronJob(ctx context.Context, params ListBatchV1beta1NamespacedCronJobParams) (res ListBatchV1beta1NamespacedCronJobRes, err error) {
@@ -7780,6 +7944,8 @@ func (c *Client) ListBatchV1beta1NamespacedCronJob(ctx context.Context, params L
 
 // ListCertificatesV1CertificateSigningRequest invokes listCertificatesV1CertificateSigningRequest operation.
 //
+// List or watch objects of kind CertificateSigningRequest.
+//
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests
 func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context, params ListCertificatesV1CertificateSigningRequestParams) (res ListCertificatesV1CertificateSigningRequestRes, err error) {
 	startTime := time.Now()
@@ -7983,6 +8149,8 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 
 // ListCoordinationV1LeaseForAllNamespaces invokes listCoordinationV1LeaseForAllNamespaces operation.
 //
+// List or watch objects of kind Lease.
+//
 // GET /apis/coordination.k8s.io/v1/leases
 func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context, params ListCoordinationV1LeaseForAllNamespacesParams) (res ListCoordinationV1LeaseForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -8185,6 +8353,8 @@ func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context, pa
 }
 
 // ListCoordinationV1NamespacedLease invokes listCoordinationV1NamespacedLease operation.
+//
+// List or watch objects of kind Lease.
 //
 // GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases
 func (c *Client) ListCoordinationV1NamespacedLease(ctx context.Context, params ListCoordinationV1NamespacedLeaseParams) (res ListCoordinationV1NamespacedLeaseRes, err error) {
@@ -8404,6 +8574,8 @@ func (c *Client) ListCoordinationV1NamespacedLease(ctx context.Context, params L
 
 // ListCoreV1ComponentStatus invokes listCoreV1ComponentStatus operation.
 //
+// List objects of kind ComponentStatus.
+//
 // GET /api/v1/componentstatuses
 func (c *Client) ListCoreV1ComponentStatus(ctx context.Context, params ListCoreV1ComponentStatusParams) (res ListCoreV1ComponentStatusRes, err error) {
 	startTime := time.Now()
@@ -8606,6 +8778,8 @@ func (c *Client) ListCoreV1ComponentStatus(ctx context.Context, params ListCoreV
 }
 
 // ListCoreV1ConfigMapForAllNamespaces invokes listCoreV1ConfigMapForAllNamespaces operation.
+//
+// List or watch objects of kind ConfigMap.
 //
 // GET /api/v1/configmaps
 func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context, params ListCoreV1ConfigMapForAllNamespacesParams) (res ListCoreV1ConfigMapForAllNamespacesRes, err error) {
@@ -8810,6 +8984,8 @@ func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context, params
 
 // ListCoreV1EndpointsForAllNamespaces invokes listCoreV1EndpointsForAllNamespaces operation.
 //
+// List or watch objects of kind Endpoints.
+//
 // GET /api/v1/endpoints
 func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context, params ListCoreV1EndpointsForAllNamespacesParams) (res ListCoreV1EndpointsForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -9012,6 +9188,8 @@ func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context, params
 }
 
 // ListCoreV1EventForAllNamespaces invokes listCoreV1EventForAllNamespaces operation.
+//
+// List or watch objects of kind Event.
 //
 // GET /api/v1/events
 func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context, params ListCoreV1EventForAllNamespacesParams) (res ListCoreV1EventForAllNamespacesRes, err error) {
@@ -9216,6 +9394,8 @@ func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context, params Lis
 
 // ListCoreV1LimitRangeForAllNamespaces invokes listCoreV1LimitRangeForAllNamespaces operation.
 //
+// List or watch objects of kind LimitRange.
+//
 // GET /api/v1/limitranges
 func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context, params ListCoreV1LimitRangeForAllNamespacesParams) (res ListCoreV1LimitRangeForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -9419,6 +9599,8 @@ func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context, param
 
 // ListCoreV1Namespace invokes listCoreV1Namespace operation.
 //
+// List or watch objects of kind Namespace.
+//
 // GET /api/v1/namespaces
 func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1NamespaceParams) (res ListCoreV1NamespaceRes, err error) {
 	startTime := time.Now()
@@ -9621,6 +9803,8 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 }
 
 // ListCoreV1NamespacedConfigMap invokes listCoreV1NamespacedConfigMap operation.
+//
+// List or watch objects of kind ConfigMap.
 //
 // GET /api/v1/namespaces/{namespace}/configmaps
 func (c *Client) ListCoreV1NamespacedConfigMap(ctx context.Context, params ListCoreV1NamespacedConfigMapParams) (res ListCoreV1NamespacedConfigMapRes, err error) {
@@ -9840,6 +10024,8 @@ func (c *Client) ListCoreV1NamespacedConfigMap(ctx context.Context, params ListC
 
 // ListCoreV1NamespacedEndpoints invokes listCoreV1NamespacedEndpoints operation.
 //
+// List or watch objects of kind Endpoints.
+//
 // GET /api/v1/namespaces/{namespace}/endpoints
 func (c *Client) ListCoreV1NamespacedEndpoints(ctx context.Context, params ListCoreV1NamespacedEndpointsParams) (res ListCoreV1NamespacedEndpointsRes, err error) {
 	startTime := time.Now()
@@ -10057,6 +10243,8 @@ func (c *Client) ListCoreV1NamespacedEndpoints(ctx context.Context, params ListC
 }
 
 // ListCoreV1NamespacedEvent invokes listCoreV1NamespacedEvent operation.
+//
+// List or watch objects of kind Event.
 //
 // GET /api/v1/namespaces/{namespace}/events
 func (c *Client) ListCoreV1NamespacedEvent(ctx context.Context, params ListCoreV1NamespacedEventParams) (res ListCoreV1NamespacedEventRes, err error) {
@@ -10276,6 +10464,8 @@ func (c *Client) ListCoreV1NamespacedEvent(ctx context.Context, params ListCoreV
 
 // ListCoreV1NamespacedLimitRange invokes listCoreV1NamespacedLimitRange operation.
 //
+// List or watch objects of kind LimitRange.
+//
 // GET /api/v1/namespaces/{namespace}/limitranges
 func (c *Client) ListCoreV1NamespacedLimitRange(ctx context.Context, params ListCoreV1NamespacedLimitRangeParams) (res ListCoreV1NamespacedLimitRangeRes, err error) {
 	startTime := time.Now()
@@ -10493,6 +10683,8 @@ func (c *Client) ListCoreV1NamespacedLimitRange(ctx context.Context, params List
 }
 
 // ListCoreV1NamespacedPersistentVolumeClaim invokes listCoreV1NamespacedPersistentVolumeClaim operation.
+//
+// List or watch objects of kind PersistentVolumeClaim.
 //
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims
 func (c *Client) ListCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params ListCoreV1NamespacedPersistentVolumeClaimParams) (res ListCoreV1NamespacedPersistentVolumeClaimRes, err error) {
@@ -10712,6 +10904,8 @@ func (c *Client) ListCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, 
 
 // ListCoreV1NamespacedPod invokes listCoreV1NamespacedPod operation.
 //
+// List or watch objects of kind Pod.
+//
 // GET /api/v1/namespaces/{namespace}/pods
 func (c *Client) ListCoreV1NamespacedPod(ctx context.Context, params ListCoreV1NamespacedPodParams) (res ListCoreV1NamespacedPodRes, err error) {
 	startTime := time.Now()
@@ -10929,6 +11123,8 @@ func (c *Client) ListCoreV1NamespacedPod(ctx context.Context, params ListCoreV1N
 }
 
 // ListCoreV1NamespacedPodTemplate invokes listCoreV1NamespacedPodTemplate operation.
+//
+// List or watch objects of kind PodTemplate.
 //
 // GET /api/v1/namespaces/{namespace}/podtemplates
 func (c *Client) ListCoreV1NamespacedPodTemplate(ctx context.Context, params ListCoreV1NamespacedPodTemplateParams) (res ListCoreV1NamespacedPodTemplateRes, err error) {
@@ -11148,6 +11344,8 @@ func (c *Client) ListCoreV1NamespacedPodTemplate(ctx context.Context, params Lis
 
 // ListCoreV1NamespacedReplicationController invokes listCoreV1NamespacedReplicationController operation.
 //
+// List or watch objects of kind ReplicationController.
+//
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers
 func (c *Client) ListCoreV1NamespacedReplicationController(ctx context.Context, params ListCoreV1NamespacedReplicationControllerParams) (res ListCoreV1NamespacedReplicationControllerRes, err error) {
 	startTime := time.Now()
@@ -11365,6 +11563,8 @@ func (c *Client) ListCoreV1NamespacedReplicationController(ctx context.Context, 
 }
 
 // ListCoreV1NamespacedResourceQuota invokes listCoreV1NamespacedResourceQuota operation.
+//
+// List or watch objects of kind ResourceQuota.
 //
 // GET /api/v1/namespaces/{namespace}/resourcequotas
 func (c *Client) ListCoreV1NamespacedResourceQuota(ctx context.Context, params ListCoreV1NamespacedResourceQuotaParams) (res ListCoreV1NamespacedResourceQuotaRes, err error) {
@@ -11584,6 +11784,8 @@ func (c *Client) ListCoreV1NamespacedResourceQuota(ctx context.Context, params L
 
 // ListCoreV1NamespacedSecret invokes listCoreV1NamespacedSecret operation.
 //
+// List or watch objects of kind Secret.
+//
 // GET /api/v1/namespaces/{namespace}/secrets
 func (c *Client) ListCoreV1NamespacedSecret(ctx context.Context, params ListCoreV1NamespacedSecretParams) (res ListCoreV1NamespacedSecretRes, err error) {
 	startTime := time.Now()
@@ -11801,6 +12003,8 @@ func (c *Client) ListCoreV1NamespacedSecret(ctx context.Context, params ListCore
 }
 
 // ListCoreV1NamespacedService invokes listCoreV1NamespacedService operation.
+//
+// List or watch objects of kind Service.
 //
 // GET /api/v1/namespaces/{namespace}/services
 func (c *Client) ListCoreV1NamespacedService(ctx context.Context, params ListCoreV1NamespacedServiceParams) (res ListCoreV1NamespacedServiceRes, err error) {
@@ -12020,6 +12224,8 @@ func (c *Client) ListCoreV1NamespacedService(ctx context.Context, params ListCor
 
 // ListCoreV1NamespacedServiceAccount invokes listCoreV1NamespacedServiceAccount operation.
 //
+// List or watch objects of kind ServiceAccount.
+//
 // GET /api/v1/namespaces/{namespace}/serviceaccounts
 func (c *Client) ListCoreV1NamespacedServiceAccount(ctx context.Context, params ListCoreV1NamespacedServiceAccountParams) (res ListCoreV1NamespacedServiceAccountRes, err error) {
 	startTime := time.Now()
@@ -12238,6 +12444,8 @@ func (c *Client) ListCoreV1NamespacedServiceAccount(ctx context.Context, params 
 
 // ListCoreV1Node invokes listCoreV1Node operation.
 //
+// List or watch objects of kind Node.
+//
 // GET /api/v1/nodes
 func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams) (res ListCoreV1NodeRes, err error) {
 	startTime := time.Now()
@@ -12440,6 +12648,8 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 }
 
 // ListCoreV1PersistentVolume invokes listCoreV1PersistentVolume operation.
+//
+// List or watch objects of kind PersistentVolume.
 //
 // GET /api/v1/persistentvolumes
 func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCoreV1PersistentVolumeParams) (res ListCoreV1PersistentVolumeRes, err error) {
@@ -12644,6 +12854,8 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 
 // ListCoreV1PersistentVolumeClaimForAllNamespaces invokes listCoreV1PersistentVolumeClaimForAllNamespaces operation.
 //
+// List or watch objects of kind PersistentVolumeClaim.
+//
 // GET /api/v1/persistentvolumeclaims
 func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Context, params ListCoreV1PersistentVolumeClaimForAllNamespacesParams) (res ListCoreV1PersistentVolumeClaimForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -12846,6 +13058,8 @@ func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Con
 }
 
 // ListCoreV1PodForAllNamespaces invokes listCoreV1PodForAllNamespaces operation.
+//
+// List or watch objects of kind Pod.
 //
 // GET /api/v1/pods
 func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context, params ListCoreV1PodForAllNamespacesParams) (res ListCoreV1PodForAllNamespacesRes, err error) {
@@ -13050,6 +13264,8 @@ func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context, params ListC
 
 // ListCoreV1PodTemplateForAllNamespaces invokes listCoreV1PodTemplateForAllNamespaces operation.
 //
+// List or watch objects of kind PodTemplate.
+//
 // GET /api/v1/podtemplates
 func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context, params ListCoreV1PodTemplateForAllNamespacesParams) (res ListCoreV1PodTemplateForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -13252,6 +13468,8 @@ func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context, para
 }
 
 // ListCoreV1ReplicationControllerForAllNamespaces invokes listCoreV1ReplicationControllerForAllNamespaces operation.
+//
+// List or watch objects of kind ReplicationController.
 //
 // GET /api/v1/replicationcontrollers
 func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Context, params ListCoreV1ReplicationControllerForAllNamespacesParams) (res ListCoreV1ReplicationControllerForAllNamespacesRes, err error) {
@@ -13456,6 +13674,8 @@ func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Con
 
 // ListCoreV1ResourceQuotaForAllNamespaces invokes listCoreV1ResourceQuotaForAllNamespaces operation.
 //
+// List or watch objects of kind ResourceQuota.
+//
 // GET /api/v1/resourcequotas
 func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context, params ListCoreV1ResourceQuotaForAllNamespacesParams) (res ListCoreV1ResourceQuotaForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -13658,6 +13878,8 @@ func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context, pa
 }
 
 // ListCoreV1SecretForAllNamespaces invokes listCoreV1SecretForAllNamespaces operation.
+//
+// List or watch objects of kind Secret.
 //
 // GET /api/v1/secrets
 func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context, params ListCoreV1SecretForAllNamespacesParams) (res ListCoreV1SecretForAllNamespacesRes, err error) {
@@ -13862,6 +14084,8 @@ func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context, params Li
 
 // ListCoreV1ServiceAccountForAllNamespaces invokes listCoreV1ServiceAccountForAllNamespaces operation.
 //
+// List or watch objects of kind ServiceAccount.
+//
 // GET /api/v1/serviceaccounts
 func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context, params ListCoreV1ServiceAccountForAllNamespacesParams) (res ListCoreV1ServiceAccountForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -14064,6 +14288,8 @@ func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context, p
 }
 
 // ListCoreV1ServiceForAllNamespaces invokes listCoreV1ServiceForAllNamespaces operation.
+//
+// List or watch objects of kind Service.
 //
 // GET /api/v1/services
 func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context, params ListCoreV1ServiceForAllNamespacesParams) (res ListCoreV1ServiceForAllNamespacesRes, err error) {
@@ -14268,6 +14494,8 @@ func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context, params L
 
 // ListDiscoveryV1EndpointSliceForAllNamespaces invokes listDiscoveryV1EndpointSliceForAllNamespaces operation.
 //
+// List or watch objects of kind EndpointSlice.
+//
 // GET /apis/discovery.k8s.io/v1/endpointslices
 func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Context, params ListDiscoveryV1EndpointSliceForAllNamespacesParams) (res ListDiscoveryV1EndpointSliceForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -14470,6 +14698,8 @@ func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Contex
 }
 
 // ListDiscoveryV1NamespacedEndpointSlice invokes listDiscoveryV1NamespacedEndpointSlice operation.
+//
+// List or watch objects of kind EndpointSlice.
 //
 // GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices
 func (c *Client) ListDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params ListDiscoveryV1NamespacedEndpointSliceParams) (res ListDiscoveryV1NamespacedEndpointSliceRes, err error) {
@@ -14689,6 +14919,8 @@ func (c *Client) ListDiscoveryV1NamespacedEndpointSlice(ctx context.Context, par
 
 // ListDiscoveryV1beta1EndpointSliceForAllNamespaces invokes listDiscoveryV1beta1EndpointSliceForAllNamespaces operation.
 //
+// List or watch objects of kind EndpointSlice.
+//
 // GET /apis/discovery.k8s.io/v1beta1/endpointslices
 func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.Context, params ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams) (res ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -14891,6 +15123,8 @@ func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.C
 }
 
 // ListDiscoveryV1beta1NamespacedEndpointSlice invokes listDiscoveryV1beta1NamespacedEndpointSlice operation.
+//
+// List or watch objects of kind EndpointSlice.
 //
 // GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices
 func (c *Client) ListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params ListDiscoveryV1beta1NamespacedEndpointSliceParams) (res ListDiscoveryV1beta1NamespacedEndpointSliceRes, err error) {
@@ -15110,6 +15344,8 @@ func (c *Client) ListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context
 
 // ListEventsV1EventForAllNamespaces invokes listEventsV1EventForAllNamespaces operation.
 //
+// List or watch objects of kind Event.
+//
 // GET /apis/events.k8s.io/v1/events
 func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context, params ListEventsV1EventForAllNamespacesParams) (res ListEventsV1EventForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -15312,6 +15548,8 @@ func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context, params L
 }
 
 // ListEventsV1NamespacedEvent invokes listEventsV1NamespacedEvent operation.
+//
+// List or watch objects of kind Event.
 //
 // GET /apis/events.k8s.io/v1/namespaces/{namespace}/events
 func (c *Client) ListEventsV1NamespacedEvent(ctx context.Context, params ListEventsV1NamespacedEventParams) (res ListEventsV1NamespacedEventRes, err error) {
@@ -15531,6 +15769,8 @@ func (c *Client) ListEventsV1NamespacedEvent(ctx context.Context, params ListEve
 
 // ListEventsV1beta1EventForAllNamespaces invokes listEventsV1beta1EventForAllNamespaces operation.
 //
+// List or watch objects of kind Event.
+//
 // GET /apis/events.k8s.io/v1beta1/events
 func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context, params ListEventsV1beta1EventForAllNamespacesParams) (res ListEventsV1beta1EventForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -15733,6 +15973,8 @@ func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context, par
 }
 
 // ListEventsV1beta1NamespacedEvent invokes listEventsV1beta1NamespacedEvent operation.
+//
+// List or watch objects of kind Event.
 //
 // GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events
 func (c *Client) ListEventsV1beta1NamespacedEvent(ctx context.Context, params ListEventsV1beta1NamespacedEventParams) (res ListEventsV1beta1NamespacedEventRes, err error) {
@@ -15952,6 +16194,8 @@ func (c *Client) ListEventsV1beta1NamespacedEvent(ctx context.Context, params Li
 
 // ListFlowcontrolApiserverV1beta1FlowSchema invokes listFlowcontrolApiserverV1beta1FlowSchema operation.
 //
+// List or watch objects of kind FlowSchema.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas
 func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta1FlowSchemaParams) (res ListFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	startTime := time.Now()
@@ -16154,6 +16398,8 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 }
 
 // ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration invokes listFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+//
+// List or watch objects of kind PriorityLevelConfiguration.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations
 func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
@@ -16358,6 +16604,8 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 
 // ListFlowcontrolApiserverV1beta2FlowSchema invokes listFlowcontrolApiserverV1beta2FlowSchema operation.
 //
+// List or watch objects of kind FlowSchema.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas
 func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta2FlowSchemaParams) (res ListFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	startTime := time.Now()
@@ -16560,6 +16808,8 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 }
 
 // ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration invokes listFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+//
+// List or watch objects of kind PriorityLevelConfiguration.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations
 func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
@@ -16764,6 +17014,8 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 
 // ListInternalApiserverV1alpha1StorageVersion invokes listInternalApiserverV1alpha1StorageVersion operation.
 //
+// List or watch objects of kind StorageVersion.
+//
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions
 func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ListInternalApiserverV1alpha1StorageVersionParams) (res ListInternalApiserverV1alpha1StorageVersionRes, err error) {
 	startTime := time.Now()
@@ -16966,6 +17218,8 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 }
 
 // ListNetworkingV1IngressClass invokes listNetworkingV1IngressClass operation.
+//
+// List or watch objects of kind IngressClass.
 //
 // GET /apis/networking.k8s.io/v1/ingressclasses
 func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNetworkingV1IngressClassParams) (res ListNetworkingV1IngressClassRes, err error) {
@@ -17170,6 +17424,8 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 
 // ListNetworkingV1IngressForAllNamespaces invokes listNetworkingV1IngressForAllNamespaces operation.
 //
+// List or watch objects of kind Ingress.
+//
 // GET /apis/networking.k8s.io/v1/ingresses
 func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context, params ListNetworkingV1IngressForAllNamespacesParams) (res ListNetworkingV1IngressForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -17372,6 +17628,8 @@ func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context, pa
 }
 
 // ListNetworkingV1NamespacedIngress invokes listNetworkingV1NamespacedIngress operation.
+//
+// List or watch objects of kind Ingress.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses
 func (c *Client) ListNetworkingV1NamespacedIngress(ctx context.Context, params ListNetworkingV1NamespacedIngressParams) (res ListNetworkingV1NamespacedIngressRes, err error) {
@@ -17591,6 +17849,8 @@ func (c *Client) ListNetworkingV1NamespacedIngress(ctx context.Context, params L
 
 // ListNetworkingV1NamespacedNetworkPolicy invokes listNetworkingV1NamespacedNetworkPolicy operation.
 //
+// List or watch objects of kind NetworkPolicy.
+//
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies
 func (c *Client) ListNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params ListNetworkingV1NamespacedNetworkPolicyParams) (res ListNetworkingV1NamespacedNetworkPolicyRes, err error) {
 	startTime := time.Now()
@@ -17809,6 +18069,8 @@ func (c *Client) ListNetworkingV1NamespacedNetworkPolicy(ctx context.Context, pa
 
 // ListNetworkingV1NetworkPolicyForAllNamespaces invokes listNetworkingV1NetworkPolicyForAllNamespaces operation.
 //
+// List or watch objects of kind NetworkPolicy.
+//
 // GET /apis/networking.k8s.io/v1/networkpolicies
 func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Context, params ListNetworkingV1NetworkPolicyForAllNamespacesParams) (res ListNetworkingV1NetworkPolicyForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -18011,6 +18273,8 @@ func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Conte
 }
 
 // ListNodeV1RuntimeClass invokes listNodeV1RuntimeClass operation.
+//
+// List or watch objects of kind RuntimeClass.
 //
 // GET /apis/node.k8s.io/v1/runtimeclasses
 func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1RuntimeClassParams) (res ListNodeV1RuntimeClassRes, err error) {
@@ -18215,6 +18479,8 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 
 // ListNodeV1alpha1RuntimeClass invokes listNodeV1alpha1RuntimeClass operation.
 //
+// List or watch objects of kind RuntimeClass.
+//
 // GET /apis/node.k8s.io/v1alpha1/runtimeclasses
 func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNodeV1alpha1RuntimeClassParams) (res ListNodeV1alpha1RuntimeClassRes, err error) {
 	startTime := time.Now()
@@ -18418,6 +18684,8 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 
 // ListNodeV1beta1RuntimeClass invokes listNodeV1beta1RuntimeClass operation.
 //
+// List or watch objects of kind RuntimeClass.
+//
 // GET /apis/node.k8s.io/v1beta1/runtimeclasses
 func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNodeV1beta1RuntimeClassParams) (res ListNodeV1beta1RuntimeClassRes, err error) {
 	startTime := time.Now()
@@ -18620,6 +18888,8 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 }
 
 // ListPolicyV1NamespacedPodDisruptionBudget invokes listPolicyV1NamespacedPodDisruptionBudget operation.
+//
+// List or watch objects of kind PodDisruptionBudget.
 //
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets
 func (c *Client) ListPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params ListPolicyV1NamespacedPodDisruptionBudgetParams) (res ListPolicyV1NamespacedPodDisruptionBudgetRes, err error) {
@@ -18839,6 +19109,8 @@ func (c *Client) ListPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, 
 
 // ListPolicyV1PodDisruptionBudgetForAllNamespaces invokes listPolicyV1PodDisruptionBudgetForAllNamespaces operation.
 //
+// List or watch objects of kind PodDisruptionBudget.
+//
 // GET /apis/policy/v1/poddisruptionbudgets
 func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Context, params ListPolicyV1PodDisruptionBudgetForAllNamespacesParams) (res ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -19041,6 +19313,8 @@ func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Con
 }
 
 // ListPolicyV1beta1NamespacedPodDisruptionBudget invokes listPolicyV1beta1NamespacedPodDisruptionBudget operation.
+//
+// List or watch objects of kind PodDisruptionBudget.
 //
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets
 func (c *Client) ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params ListPolicyV1beta1NamespacedPodDisruptionBudgetParams) (res ListPolicyV1beta1NamespacedPodDisruptionBudgetRes, err error) {
@@ -19260,6 +19534,8 @@ func (c *Client) ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Cont
 
 // ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces invokes listPolicyV1beta1PodDisruptionBudgetForAllNamespaces operation.
 //
+// List or watch objects of kind PodDisruptionBudget.
+//
 // GET /apis/policy/v1beta1/poddisruptionbudgets
 func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx context.Context, params ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams) (res ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -19462,6 +19738,8 @@ func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx contex
 }
 
 // ListPolicyV1beta1PodSecurityPolicy invokes listPolicyV1beta1PodSecurityPolicy operation.
+//
+// List or watch objects of kind PodSecurityPolicy.
 //
 // GET /apis/policy/v1beta1/podsecuritypolicies
 func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ListPolicyV1beta1PodSecurityPolicyParams) (res ListPolicyV1beta1PodSecurityPolicyRes, err error) {
@@ -19666,6 +19944,8 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 
 // ListRbacAuthorizationV1ClusterRole invokes listRbacAuthorizationV1ClusterRole operation.
 //
+// List or watch objects of kind ClusterRole.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/clusterroles
 func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleParams) (res ListRbacAuthorizationV1ClusterRoleRes, err error) {
 	startTime := time.Now()
@@ -19869,6 +20149,8 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 
 // ListRbacAuthorizationV1ClusterRoleBinding invokes listRbacAuthorizationV1ClusterRoleBinding operation.
 //
+// List or watch objects of kind ClusterRoleBinding.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings
 func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleBindingParams) (res ListRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	startTime := time.Now()
@@ -20071,6 +20353,8 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 }
 
 // ListRbacAuthorizationV1NamespacedRole invokes listRbacAuthorizationV1NamespacedRole operation.
+//
+// List or watch objects of kind Role.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles
 func (c *Client) ListRbacAuthorizationV1NamespacedRole(ctx context.Context, params ListRbacAuthorizationV1NamespacedRoleParams) (res ListRbacAuthorizationV1NamespacedRoleRes, err error) {
@@ -20290,6 +20574,8 @@ func (c *Client) ListRbacAuthorizationV1NamespacedRole(ctx context.Context, para
 
 // ListRbacAuthorizationV1NamespacedRoleBinding invokes listRbacAuthorizationV1NamespacedRoleBinding operation.
 //
+// List or watch objects of kind RoleBinding.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings
 func (c *Client) ListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params ListRbacAuthorizationV1NamespacedRoleBindingParams) (res ListRbacAuthorizationV1NamespacedRoleBindingRes, err error) {
 	startTime := time.Now()
@@ -20508,6 +20794,8 @@ func (c *Client) ListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Contex
 
 // ListRbacAuthorizationV1RoleBindingForAllNamespaces invokes listRbacAuthorizationV1RoleBindingForAllNamespaces operation.
 //
+// List or watch objects of kind RoleBinding.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/rolebindings
 func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.Context, params ListRbacAuthorizationV1RoleBindingForAllNamespacesParams) (res ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -20710,6 +20998,8 @@ func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.
 }
 
 // ListRbacAuthorizationV1RoleForAllNamespaces invokes listRbacAuthorizationV1RoleForAllNamespaces operation.
+//
+// List or watch objects of kind Role.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/roles
 func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context, params ListRbacAuthorizationV1RoleForAllNamespacesParams) (res ListRbacAuthorizationV1RoleForAllNamespacesRes, err error) {
@@ -20914,6 +21204,8 @@ func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context
 
 // ListSchedulingV1PriorityClass invokes listSchedulingV1PriorityClass operation.
 //
+// List or watch objects of kind PriorityClass.
+//
 // GET /apis/scheduling.k8s.io/v1/priorityclasses
 func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListSchedulingV1PriorityClassParams) (res ListSchedulingV1PriorityClassRes, err error) {
 	startTime := time.Now()
@@ -21116,6 +21408,8 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 }
 
 // ListStorageV1CSIDriver invokes listStorageV1CSIDriver operation.
+//
+// List or watch objects of kind CSIDriver.
 //
 // GET /apis/storage.k8s.io/v1/csidrivers
 func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV1CSIDriverParams) (res ListStorageV1CSIDriverRes, err error) {
@@ -21320,6 +21614,8 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 
 // ListStorageV1CSINode invokes listStorageV1CSINode operation.
 //
+// List or watch objects of kind CSINode.
+//
 // GET /apis/storage.k8s.io/v1/csinodes
 func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1CSINodeParams) (res ListStorageV1CSINodeRes, err error) {
 	startTime := time.Now()
@@ -21522,6 +21818,8 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 }
 
 // ListStorageV1StorageClass invokes listStorageV1StorageClass operation.
+//
+// List or watch objects of kind StorageClass.
 //
 // GET /apis/storage.k8s.io/v1/storageclasses
 func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStorageV1StorageClassParams) (res ListStorageV1StorageClassRes, err error) {
@@ -21726,6 +22024,8 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 
 // ListStorageV1VolumeAttachment invokes listStorageV1VolumeAttachment operation.
 //
+// List or watch objects of kind VolumeAttachment.
+//
 // GET /apis/storage.k8s.io/v1/volumeattachments
 func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListStorageV1VolumeAttachmentParams) (res ListStorageV1VolumeAttachmentRes, err error) {
 	startTime := time.Now()
@@ -21929,6 +22229,8 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 
 // ListStorageV1alpha1CSIStorageCapacityForAllNamespaces invokes listStorageV1alpha1CSIStorageCapacityForAllNamespaces operation.
 //
+// List or watch objects of kind CSIStorageCapacity.
+//
 // GET /apis/storage.k8s.io/v1alpha1/csistoragecapacities
 func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx context.Context, params ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams) (res ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -22131,6 +22433,8 @@ func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx conte
 }
 
 // ListStorageV1alpha1NamespacedCSIStorageCapacity invokes listStorageV1alpha1NamespacedCSIStorageCapacity operation.
+//
+// List or watch objects of kind CSIStorageCapacity.
 //
 // GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities
 func (c *Client) ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params ListStorageV1alpha1NamespacedCSIStorageCapacityParams) (res ListStorageV1alpha1NamespacedCSIStorageCapacityRes, err error) {
@@ -22350,6 +22654,8 @@ func (c *Client) ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Con
 
 // ListStorageV1beta1CSIStorageCapacityForAllNamespaces invokes listStorageV1beta1CSIStorageCapacityForAllNamespaces operation.
 //
+// List or watch objects of kind CSIStorageCapacity.
+//
 // GET /apis/storage.k8s.io/v1beta1/csistoragecapacities
 func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx context.Context, params ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams) (res ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -22552,6 +22858,8 @@ func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx contex
 }
 
 // ListStorageV1beta1NamespacedCSIStorageCapacity invokes listStorageV1beta1NamespacedCSIStorageCapacity operation.
+//
+// List or watch objects of kind CSIStorageCapacity.
 //
 // GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities
 func (c *Client) ListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params ListStorageV1beta1NamespacedCSIStorageCapacityParams) (res ListStorageV1beta1NamespacedCSIStorageCapacityRes, err error) {
@@ -22865,6 +23173,8 @@ func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandler
 
 // ReadAdmissionregistrationV1MutatingWebhookConfiguration invokes readAdmissionregistrationV1MutatingWebhookConfiguration operation.
 //
+// Read the specified MutatingWebhookConfiguration.
+//
 // GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}
 func (c *Client) ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ReadAdmissionregistrationV1MutatingWebhookConfigurationParams) (res ReadAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
@@ -22937,6 +23247,8 @@ func (c *Client) ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 }
 
 // ReadAdmissionregistrationV1ValidatingWebhookConfiguration invokes readAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+//
+// Read the specified ValidatingWebhookConfiguration.
 //
 // GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}
 func (c *Client) ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res ReadAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
@@ -23011,6 +23323,8 @@ func (c *Client) ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 
 // ReadApiextensionsV1CustomResourceDefinition invokes readApiextensionsV1CustomResourceDefinition operation.
 //
+// Read the specified CustomResourceDefinition.
+//
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}
 func (c *Client) ReadApiextensionsV1CustomResourceDefinition(ctx context.Context, params ReadApiextensionsV1CustomResourceDefinitionParams) (res ReadApiextensionsV1CustomResourceDefinitionRes, err error) {
 	startTime := time.Now()
@@ -23083,6 +23397,8 @@ func (c *Client) ReadApiextensionsV1CustomResourceDefinition(ctx context.Context
 }
 
 // ReadApiextensionsV1CustomResourceDefinitionStatus invokes readApiextensionsV1CustomResourceDefinitionStatus operation.
+//
+// Read status of the specified CustomResourceDefinition.
 //
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status
 func (c *Client) ReadApiextensionsV1CustomResourceDefinitionStatus(ctx context.Context, params ReadApiextensionsV1CustomResourceDefinitionStatusParams) (res ReadApiextensionsV1CustomResourceDefinitionStatusRes, err error) {
@@ -23158,6 +23474,8 @@ func (c *Client) ReadApiextensionsV1CustomResourceDefinitionStatus(ctx context.C
 
 // ReadApiregistrationV1APIService invokes readApiregistrationV1APIService operation.
 //
+// Read the specified APIService.
+//
 // GET /apis/apiregistration.k8s.io/v1/apiservices/{name}
 func (c *Client) ReadApiregistrationV1APIService(ctx context.Context, params ReadApiregistrationV1APIServiceParams) (res ReadApiregistrationV1APIServiceRes, err error) {
 	startTime := time.Now()
@@ -23230,6 +23548,8 @@ func (c *Client) ReadApiregistrationV1APIService(ctx context.Context, params Rea
 }
 
 // ReadApiregistrationV1APIServiceStatus invokes readApiregistrationV1APIServiceStatus operation.
+//
+// Read status of the specified APIService.
 //
 // GET /apis/apiregistration.k8s.io/v1/apiservices/{name}/status
 func (c *Client) ReadApiregistrationV1APIServiceStatus(ctx context.Context, params ReadApiregistrationV1APIServiceStatusParams) (res ReadApiregistrationV1APIServiceStatusRes, err error) {
@@ -23304,6 +23624,8 @@ func (c *Client) ReadApiregistrationV1APIServiceStatus(ctx context.Context, para
 }
 
 // ReadAppsV1NamespacedControllerRevision invokes readAppsV1NamespacedControllerRevision operation.
+//
+// Read the specified ControllerRevision.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}
 func (c *Client) ReadAppsV1NamespacedControllerRevision(ctx context.Context, params ReadAppsV1NamespacedControllerRevisionParams) (res ReadAppsV1NamespacedControllerRevisionRes, err error) {
@@ -23393,6 +23715,8 @@ func (c *Client) ReadAppsV1NamespacedControllerRevision(ctx context.Context, par
 
 // ReadAppsV1NamespacedDaemonSet invokes readAppsV1NamespacedDaemonSet operation.
 //
+// Read the specified DaemonSet.
+//
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}
 func (c *Client) ReadAppsV1NamespacedDaemonSet(ctx context.Context, params ReadAppsV1NamespacedDaemonSetParams) (res ReadAppsV1NamespacedDaemonSetRes, err error) {
 	startTime := time.Now()
@@ -23480,6 +23804,8 @@ func (c *Client) ReadAppsV1NamespacedDaemonSet(ctx context.Context, params ReadA
 }
 
 // ReadAppsV1NamespacedDaemonSetStatus invokes readAppsV1NamespacedDaemonSetStatus operation.
+//
+// Read status of the specified DaemonSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status
 func (c *Client) ReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, params ReadAppsV1NamespacedDaemonSetStatusParams) (res ReadAppsV1NamespacedDaemonSetStatusRes, err error) {
@@ -23570,6 +23896,8 @@ func (c *Client) ReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, params
 
 // ReadAppsV1NamespacedDeployment invokes readAppsV1NamespacedDeployment operation.
 //
+// Read the specified Deployment.
+//
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}
 func (c *Client) ReadAppsV1NamespacedDeployment(ctx context.Context, params ReadAppsV1NamespacedDeploymentParams) (res ReadAppsV1NamespacedDeploymentRes, err error) {
 	startTime := time.Now()
@@ -23657,6 +23985,8 @@ func (c *Client) ReadAppsV1NamespacedDeployment(ctx context.Context, params Read
 }
 
 // ReadAppsV1NamespacedDeploymentScale invokes readAppsV1NamespacedDeploymentScale operation.
+//
+// Read scale of the specified Deployment.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale
 func (c *Client) ReadAppsV1NamespacedDeploymentScale(ctx context.Context, params ReadAppsV1NamespacedDeploymentScaleParams) (res ReadAppsV1NamespacedDeploymentScaleRes, err error) {
@@ -23747,6 +24077,8 @@ func (c *Client) ReadAppsV1NamespacedDeploymentScale(ctx context.Context, params
 
 // ReadAppsV1NamespacedDeploymentStatus invokes readAppsV1NamespacedDeploymentStatus operation.
 //
+// Read status of the specified Deployment.
+//
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/status
 func (c *Client) ReadAppsV1NamespacedDeploymentStatus(ctx context.Context, params ReadAppsV1NamespacedDeploymentStatusParams) (res ReadAppsV1NamespacedDeploymentStatusRes, err error) {
 	startTime := time.Now()
@@ -23836,6 +24168,8 @@ func (c *Client) ReadAppsV1NamespacedDeploymentStatus(ctx context.Context, param
 
 // ReadAppsV1NamespacedReplicaSet invokes readAppsV1NamespacedReplicaSet operation.
 //
+// Read the specified ReplicaSet.
+//
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}
 func (c *Client) ReadAppsV1NamespacedReplicaSet(ctx context.Context, params ReadAppsV1NamespacedReplicaSetParams) (res ReadAppsV1NamespacedReplicaSetRes, err error) {
 	startTime := time.Now()
@@ -23923,6 +24257,8 @@ func (c *Client) ReadAppsV1NamespacedReplicaSet(ctx context.Context, params Read
 }
 
 // ReadAppsV1NamespacedReplicaSetScale invokes readAppsV1NamespacedReplicaSetScale operation.
+//
+// Read scale of the specified ReplicaSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale
 func (c *Client) ReadAppsV1NamespacedReplicaSetScale(ctx context.Context, params ReadAppsV1NamespacedReplicaSetScaleParams) (res ReadAppsV1NamespacedReplicaSetScaleRes, err error) {
@@ -24013,6 +24349,8 @@ func (c *Client) ReadAppsV1NamespacedReplicaSetScale(ctx context.Context, params
 
 // ReadAppsV1NamespacedReplicaSetStatus invokes readAppsV1NamespacedReplicaSetStatus operation.
 //
+// Read status of the specified ReplicaSet.
+//
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status
 func (c *Client) ReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, params ReadAppsV1NamespacedReplicaSetStatusParams) (res ReadAppsV1NamespacedReplicaSetStatusRes, err error) {
 	startTime := time.Now()
@@ -24102,6 +24440,8 @@ func (c *Client) ReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, param
 
 // ReadAppsV1NamespacedStatefulSet invokes readAppsV1NamespacedStatefulSet operation.
 //
+// Read the specified StatefulSet.
+//
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}
 func (c *Client) ReadAppsV1NamespacedStatefulSet(ctx context.Context, params ReadAppsV1NamespacedStatefulSetParams) (res ReadAppsV1NamespacedStatefulSetRes, err error) {
 	startTime := time.Now()
@@ -24189,6 +24529,8 @@ func (c *Client) ReadAppsV1NamespacedStatefulSet(ctx context.Context, params Rea
 }
 
 // ReadAppsV1NamespacedStatefulSetScale invokes readAppsV1NamespacedStatefulSetScale operation.
+//
+// Read scale of the specified StatefulSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale
 func (c *Client) ReadAppsV1NamespacedStatefulSetScale(ctx context.Context, params ReadAppsV1NamespacedStatefulSetScaleParams) (res ReadAppsV1NamespacedStatefulSetScaleRes, err error) {
@@ -24279,6 +24621,8 @@ func (c *Client) ReadAppsV1NamespacedStatefulSetScale(ctx context.Context, param
 
 // ReadAppsV1NamespacedStatefulSetStatus invokes readAppsV1NamespacedStatefulSetStatus operation.
 //
+// Read status of the specified StatefulSet.
+//
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status
 func (c *Client) ReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, params ReadAppsV1NamespacedStatefulSetStatusParams) (res ReadAppsV1NamespacedStatefulSetStatusRes, err error) {
 	startTime := time.Now()
@@ -24368,6 +24712,8 @@ func (c *Client) ReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, para
 
 // ReadAutoscalingV1NamespacedHorizontalPodAutoscaler invokes readAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
 //
+// Read the specified HorizontalPodAutoscaler.
+//
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (res ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
@@ -24455,6 +24801,8 @@ func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.
 }
 
 // ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus invokes readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus operation.
+//
+// Read status of the specified HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams) (res ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes, err error) {
@@ -24545,6 +24893,8 @@ func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx co
 
 // ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler invokes readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
 //
+// Read the specified HorizontalPodAutoscaler.
+//
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (res ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
@@ -24632,6 +24982,8 @@ func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx con
 }
 
 // ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus invokes readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus operation.
+//
+// Read status of the specified HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams) (res ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes, err error) {
@@ -24722,6 +25074,8 @@ func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(c
 
 // ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler invokes readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
 //
+// Read the specified HorizontalPodAutoscaler.
+//
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (res ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
@@ -24809,6 +25163,8 @@ func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx con
 }
 
 // ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus invokes readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus operation.
+//
+// Read status of the specified HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams) (res ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes, err error) {
@@ -24899,6 +25255,8 @@ func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(c
 
 // ReadBatchV1NamespacedCronJob invokes readBatchV1NamespacedCronJob operation.
 //
+// Read the specified CronJob.
+//
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}
 func (c *Client) ReadBatchV1NamespacedCronJob(ctx context.Context, params ReadBatchV1NamespacedCronJobParams) (res ReadBatchV1NamespacedCronJobRes, err error) {
 	startTime := time.Now()
@@ -24986,6 +25344,8 @@ func (c *Client) ReadBatchV1NamespacedCronJob(ctx context.Context, params ReadBa
 }
 
 // ReadBatchV1NamespacedCronJobStatus invokes readBatchV1NamespacedCronJobStatus operation.
+//
+// Read status of the specified CronJob.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status
 func (c *Client) ReadBatchV1NamespacedCronJobStatus(ctx context.Context, params ReadBatchV1NamespacedCronJobStatusParams) (res ReadBatchV1NamespacedCronJobStatusRes, err error) {
@@ -25076,6 +25436,8 @@ func (c *Client) ReadBatchV1NamespacedCronJobStatus(ctx context.Context, params 
 
 // ReadBatchV1NamespacedJob invokes readBatchV1NamespacedJob operation.
 //
+// Read the specified Job.
+//
 // GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}
 func (c *Client) ReadBatchV1NamespacedJob(ctx context.Context, params ReadBatchV1NamespacedJobParams) (res ReadBatchV1NamespacedJobRes, err error) {
 	startTime := time.Now()
@@ -25163,6 +25525,8 @@ func (c *Client) ReadBatchV1NamespacedJob(ctx context.Context, params ReadBatchV
 }
 
 // ReadBatchV1NamespacedJobStatus invokes readBatchV1NamespacedJobStatus operation.
+//
+// Read status of the specified Job.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}/status
 func (c *Client) ReadBatchV1NamespacedJobStatus(ctx context.Context, params ReadBatchV1NamespacedJobStatusParams) (res ReadBatchV1NamespacedJobStatusRes, err error) {
@@ -25253,6 +25617,8 @@ func (c *Client) ReadBatchV1NamespacedJobStatus(ctx context.Context, params Read
 
 // ReadBatchV1beta1NamespacedCronJob invokes readBatchV1beta1NamespacedCronJob operation.
 //
+// Read the specified CronJob.
+//
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}
 func (c *Client) ReadBatchV1beta1NamespacedCronJob(ctx context.Context, params ReadBatchV1beta1NamespacedCronJobParams) (res ReadBatchV1beta1NamespacedCronJobRes, err error) {
 	startTime := time.Now()
@@ -25340,6 +25706,8 @@ func (c *Client) ReadBatchV1beta1NamespacedCronJob(ctx context.Context, params R
 }
 
 // ReadBatchV1beta1NamespacedCronJobStatus invokes readBatchV1beta1NamespacedCronJobStatus operation.
+//
+// Read status of the specified CronJob.
 //
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status
 func (c *Client) ReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context, params ReadBatchV1beta1NamespacedCronJobStatusParams) (res ReadBatchV1beta1NamespacedCronJobStatusRes, err error) {
@@ -25430,6 +25798,8 @@ func (c *Client) ReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context, pa
 
 // ReadCertificatesV1CertificateSigningRequest invokes readCertificatesV1CertificateSigningRequest operation.
 //
+// Read the specified CertificateSigningRequest.
+//
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}
 func (c *Client) ReadCertificatesV1CertificateSigningRequest(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestParams) (res ReadCertificatesV1CertificateSigningRequestRes, err error) {
 	startTime := time.Now()
@@ -25502,6 +25872,8 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequest(ctx context.Context
 }
 
 // ReadCertificatesV1CertificateSigningRequestApproval invokes readCertificatesV1CertificateSigningRequestApproval operation.
+//
+// Read approval of the specified CertificateSigningRequest.
 //
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval
 func (c *Client) ReadCertificatesV1CertificateSigningRequestApproval(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestApprovalParams) (res ReadCertificatesV1CertificateSigningRequestApprovalRes, err error) {
@@ -25577,6 +25949,8 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequestApproval(ctx context
 
 // ReadCertificatesV1CertificateSigningRequestStatus invokes readCertificatesV1CertificateSigningRequestStatus operation.
 //
+// Read status of the specified CertificateSigningRequest.
+//
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status
 func (c *Client) ReadCertificatesV1CertificateSigningRequestStatus(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestStatusParams) (res ReadCertificatesV1CertificateSigningRequestStatusRes, err error) {
 	startTime := time.Now()
@@ -25650,6 +26024,8 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequestStatus(ctx context.C
 }
 
 // ReadCoordinationV1NamespacedLease invokes readCoordinationV1NamespacedLease operation.
+//
+// Read the specified Lease.
 //
 // GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}
 func (c *Client) ReadCoordinationV1NamespacedLease(ctx context.Context, params ReadCoordinationV1NamespacedLeaseParams) (res ReadCoordinationV1NamespacedLeaseRes, err error) {
@@ -25739,6 +26115,8 @@ func (c *Client) ReadCoordinationV1NamespacedLease(ctx context.Context, params R
 
 // ReadCoreV1ComponentStatus invokes readCoreV1ComponentStatus operation.
 //
+// Read the specified ComponentStatus.
+//
 // GET /api/v1/componentstatuses/{name}
 func (c *Client) ReadCoreV1ComponentStatus(ctx context.Context, params ReadCoreV1ComponentStatusParams) (res ReadCoreV1ComponentStatusRes, err error) {
 	startTime := time.Now()
@@ -25811,6 +26189,8 @@ func (c *Client) ReadCoreV1ComponentStatus(ctx context.Context, params ReadCoreV
 }
 
 // ReadCoreV1Namespace invokes readCoreV1Namespace operation.
+//
+// Read the specified Namespace.
 //
 // GET /api/v1/namespaces/{name}
 func (c *Client) ReadCoreV1Namespace(ctx context.Context, params ReadCoreV1NamespaceParams) (res ReadCoreV1NamespaceRes, err error) {
@@ -25885,6 +26265,8 @@ func (c *Client) ReadCoreV1Namespace(ctx context.Context, params ReadCoreV1Names
 
 // ReadCoreV1NamespaceStatus invokes readCoreV1NamespaceStatus operation.
 //
+// Read status of the specified Namespace.
+//
 // GET /api/v1/namespaces/{name}/status
 func (c *Client) ReadCoreV1NamespaceStatus(ctx context.Context, params ReadCoreV1NamespaceStatusParams) (res ReadCoreV1NamespaceStatusRes, err error) {
 	startTime := time.Now()
@@ -25958,6 +26340,8 @@ func (c *Client) ReadCoreV1NamespaceStatus(ctx context.Context, params ReadCoreV
 }
 
 // ReadCoreV1NamespacedConfigMap invokes readCoreV1NamespacedConfigMap operation.
+//
+// Read the specified ConfigMap.
 //
 // GET /api/v1/namespaces/{namespace}/configmaps/{name}
 func (c *Client) ReadCoreV1NamespacedConfigMap(ctx context.Context, params ReadCoreV1NamespacedConfigMapParams) (res ReadCoreV1NamespacedConfigMapRes, err error) {
@@ -26047,6 +26431,8 @@ func (c *Client) ReadCoreV1NamespacedConfigMap(ctx context.Context, params ReadC
 
 // ReadCoreV1NamespacedEndpoints invokes readCoreV1NamespacedEndpoints operation.
 //
+// Read the specified Endpoints.
+//
 // GET /api/v1/namespaces/{namespace}/endpoints/{name}
 func (c *Client) ReadCoreV1NamespacedEndpoints(ctx context.Context, params ReadCoreV1NamespacedEndpointsParams) (res ReadCoreV1NamespacedEndpointsRes, err error) {
 	startTime := time.Now()
@@ -26134,6 +26520,8 @@ func (c *Client) ReadCoreV1NamespacedEndpoints(ctx context.Context, params ReadC
 }
 
 // ReadCoreV1NamespacedEvent invokes readCoreV1NamespacedEvent operation.
+//
+// Read the specified Event.
 //
 // GET /api/v1/namespaces/{namespace}/events/{name}
 func (c *Client) ReadCoreV1NamespacedEvent(ctx context.Context, params ReadCoreV1NamespacedEventParams) (res ReadCoreV1NamespacedEventRes, err error) {
@@ -26223,6 +26611,8 @@ func (c *Client) ReadCoreV1NamespacedEvent(ctx context.Context, params ReadCoreV
 
 // ReadCoreV1NamespacedLimitRange invokes readCoreV1NamespacedLimitRange operation.
 //
+// Read the specified LimitRange.
+//
 // GET /api/v1/namespaces/{namespace}/limitranges/{name}
 func (c *Client) ReadCoreV1NamespacedLimitRange(ctx context.Context, params ReadCoreV1NamespacedLimitRangeParams) (res ReadCoreV1NamespacedLimitRangeRes, err error) {
 	startTime := time.Now()
@@ -26311,6 +26701,8 @@ func (c *Client) ReadCoreV1NamespacedLimitRange(ctx context.Context, params Read
 
 // ReadCoreV1NamespacedPersistentVolumeClaim invokes readCoreV1NamespacedPersistentVolumeClaim operation.
 //
+// Read the specified PersistentVolumeClaim.
+//
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
 func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params ReadCoreV1NamespacedPersistentVolumeClaimParams) (res ReadCoreV1NamespacedPersistentVolumeClaimRes, err error) {
 	startTime := time.Now()
@@ -26398,6 +26790,8 @@ func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, 
 }
 
 // ReadCoreV1NamespacedPersistentVolumeClaimStatus invokes readCoreV1NamespacedPersistentVolumeClaimStatus operation.
+//
+// Read status of the specified PersistentVolumeClaim.
 //
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
 func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context.Context, params ReadCoreV1NamespacedPersistentVolumeClaimStatusParams) (res ReadCoreV1NamespacedPersistentVolumeClaimStatusRes, err error) {
@@ -26488,6 +26882,8 @@ func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context.Con
 
 // ReadCoreV1NamespacedPod invokes readCoreV1NamespacedPod operation.
 //
+// Read the specified Pod.
+//
 // GET /api/v1/namespaces/{namespace}/pods/{name}
 func (c *Client) ReadCoreV1NamespacedPod(ctx context.Context, params ReadCoreV1NamespacedPodParams) (res ReadCoreV1NamespacedPodRes, err error) {
 	startTime := time.Now()
@@ -26575,6 +26971,8 @@ func (c *Client) ReadCoreV1NamespacedPod(ctx context.Context, params ReadCoreV1N
 }
 
 // ReadCoreV1NamespacedPodEphemeralcontainers invokes readCoreV1NamespacedPodEphemeralcontainers operation.
+//
+// Read ephemeralcontainers of the specified Pod.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers
 func (c *Client) ReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Context, params ReadCoreV1NamespacedPodEphemeralcontainersParams) (res ReadCoreV1NamespacedPodEphemeralcontainersRes, err error) {
@@ -26664,6 +27062,8 @@ func (c *Client) ReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Context,
 }
 
 // ReadCoreV1NamespacedPodLog invokes readCoreV1NamespacedPodLog operation.
+//
+// Read log of the specified Pod.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}/log
 func (c *Client) ReadCoreV1NamespacedPodLog(ctx context.Context, params ReadCoreV1NamespacedPodLogParams) (res ReadCoreV1NamespacedPodLogRes, err error) {
@@ -26882,6 +27282,8 @@ func (c *Client) ReadCoreV1NamespacedPodLog(ctx context.Context, params ReadCore
 
 // ReadCoreV1NamespacedPodStatus invokes readCoreV1NamespacedPodStatus operation.
 //
+// Read status of the specified Pod.
+//
 // GET /api/v1/namespaces/{namespace}/pods/{name}/status
 func (c *Client) ReadCoreV1NamespacedPodStatus(ctx context.Context, params ReadCoreV1NamespacedPodStatusParams) (res ReadCoreV1NamespacedPodStatusRes, err error) {
 	startTime := time.Now()
@@ -26971,6 +27373,8 @@ func (c *Client) ReadCoreV1NamespacedPodStatus(ctx context.Context, params ReadC
 
 // ReadCoreV1NamespacedPodTemplate invokes readCoreV1NamespacedPodTemplate operation.
 //
+// Read the specified PodTemplate.
+//
 // GET /api/v1/namespaces/{namespace}/podtemplates/{name}
 func (c *Client) ReadCoreV1NamespacedPodTemplate(ctx context.Context, params ReadCoreV1NamespacedPodTemplateParams) (res ReadCoreV1NamespacedPodTemplateRes, err error) {
 	startTime := time.Now()
@@ -27059,6 +27463,8 @@ func (c *Client) ReadCoreV1NamespacedPodTemplate(ctx context.Context, params Rea
 
 // ReadCoreV1NamespacedReplicationController invokes readCoreV1NamespacedReplicationController operation.
 //
+// Read the specified ReplicationController.
+//
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}
 func (c *Client) ReadCoreV1NamespacedReplicationController(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerParams) (res ReadCoreV1NamespacedReplicationControllerRes, err error) {
 	startTime := time.Now()
@@ -27146,6 +27552,8 @@ func (c *Client) ReadCoreV1NamespacedReplicationController(ctx context.Context, 
 }
 
 // ReadCoreV1NamespacedReplicationControllerScale invokes readCoreV1NamespacedReplicationControllerScale operation.
+//
+// Read scale of the specified ReplicationController.
 //
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale
 func (c *Client) ReadCoreV1NamespacedReplicationControllerScale(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerScaleParams) (res ReadCoreV1NamespacedReplicationControllerScaleRes, err error) {
@@ -27236,6 +27644,8 @@ func (c *Client) ReadCoreV1NamespacedReplicationControllerScale(ctx context.Cont
 
 // ReadCoreV1NamespacedReplicationControllerStatus invokes readCoreV1NamespacedReplicationControllerStatus operation.
 //
+// Read status of the specified ReplicationController.
+//
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status
 func (c *Client) ReadCoreV1NamespacedReplicationControllerStatus(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerStatusParams) (res ReadCoreV1NamespacedReplicationControllerStatusRes, err error) {
 	startTime := time.Now()
@@ -27325,6 +27735,8 @@ func (c *Client) ReadCoreV1NamespacedReplicationControllerStatus(ctx context.Con
 
 // ReadCoreV1NamespacedResourceQuota invokes readCoreV1NamespacedResourceQuota operation.
 //
+// Read the specified ResourceQuota.
+//
 // GET /api/v1/namespaces/{namespace}/resourcequotas/{name}
 func (c *Client) ReadCoreV1NamespacedResourceQuota(ctx context.Context, params ReadCoreV1NamespacedResourceQuotaParams) (res ReadCoreV1NamespacedResourceQuotaRes, err error) {
 	startTime := time.Now()
@@ -27412,6 +27824,8 @@ func (c *Client) ReadCoreV1NamespacedResourceQuota(ctx context.Context, params R
 }
 
 // ReadCoreV1NamespacedResourceQuotaStatus invokes readCoreV1NamespacedResourceQuotaStatus operation.
+//
+// Read status of the specified ResourceQuota.
 //
 // GET /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
 func (c *Client) ReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context, params ReadCoreV1NamespacedResourceQuotaStatusParams) (res ReadCoreV1NamespacedResourceQuotaStatusRes, err error) {
@@ -27502,6 +27916,8 @@ func (c *Client) ReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context, pa
 
 // ReadCoreV1NamespacedSecret invokes readCoreV1NamespacedSecret operation.
 //
+// Read the specified Secret.
+//
 // GET /api/v1/namespaces/{namespace}/secrets/{name}
 func (c *Client) ReadCoreV1NamespacedSecret(ctx context.Context, params ReadCoreV1NamespacedSecretParams) (res ReadCoreV1NamespacedSecretRes, err error) {
 	startTime := time.Now()
@@ -27589,6 +28005,8 @@ func (c *Client) ReadCoreV1NamespacedSecret(ctx context.Context, params ReadCore
 }
 
 // ReadCoreV1NamespacedService invokes readCoreV1NamespacedService operation.
+//
+// Read the specified Service.
 //
 // GET /api/v1/namespaces/{namespace}/services/{name}
 func (c *Client) ReadCoreV1NamespacedService(ctx context.Context, params ReadCoreV1NamespacedServiceParams) (res ReadCoreV1NamespacedServiceRes, err error) {
@@ -27678,6 +28096,8 @@ func (c *Client) ReadCoreV1NamespacedService(ctx context.Context, params ReadCor
 
 // ReadCoreV1NamespacedServiceAccount invokes readCoreV1NamespacedServiceAccount operation.
 //
+// Read the specified ServiceAccount.
+//
 // GET /api/v1/namespaces/{namespace}/serviceaccounts/{name}
 func (c *Client) ReadCoreV1NamespacedServiceAccount(ctx context.Context, params ReadCoreV1NamespacedServiceAccountParams) (res ReadCoreV1NamespacedServiceAccountRes, err error) {
 	startTime := time.Now()
@@ -27765,6 +28185,8 @@ func (c *Client) ReadCoreV1NamespacedServiceAccount(ctx context.Context, params 
 }
 
 // ReadCoreV1NamespacedServiceStatus invokes readCoreV1NamespacedServiceStatus operation.
+//
+// Read status of the specified Service.
 //
 // GET /api/v1/namespaces/{namespace}/services/{name}/status
 func (c *Client) ReadCoreV1NamespacedServiceStatus(ctx context.Context, params ReadCoreV1NamespacedServiceStatusParams) (res ReadCoreV1NamespacedServiceStatusRes, err error) {
@@ -27855,6 +28277,8 @@ func (c *Client) ReadCoreV1NamespacedServiceStatus(ctx context.Context, params R
 
 // ReadCoreV1Node invokes readCoreV1Node operation.
 //
+// Read the specified Node.
+//
 // GET /api/v1/nodes/{name}
 func (c *Client) ReadCoreV1Node(ctx context.Context, params ReadCoreV1NodeParams) (res ReadCoreV1NodeRes, err error) {
 	startTime := time.Now()
@@ -27927,6 +28351,8 @@ func (c *Client) ReadCoreV1Node(ctx context.Context, params ReadCoreV1NodeParams
 }
 
 // ReadCoreV1NodeStatus invokes readCoreV1NodeStatus operation.
+//
+// Read status of the specified Node.
 //
 // GET /api/v1/nodes/{name}/status
 func (c *Client) ReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1NodeStatusParams) (res ReadCoreV1NodeStatusRes, err error) {
@@ -28002,6 +28428,8 @@ func (c *Client) ReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1Node
 
 // ReadCoreV1PersistentVolume invokes readCoreV1PersistentVolume operation.
 //
+// Read the specified PersistentVolume.
+//
 // GET /api/v1/persistentvolumes/{name}
 func (c *Client) ReadCoreV1PersistentVolume(ctx context.Context, params ReadCoreV1PersistentVolumeParams) (res ReadCoreV1PersistentVolumeRes, err error) {
 	startTime := time.Now()
@@ -28074,6 +28502,8 @@ func (c *Client) ReadCoreV1PersistentVolume(ctx context.Context, params ReadCore
 }
 
 // ReadCoreV1PersistentVolumeStatus invokes readCoreV1PersistentVolumeStatus operation.
+//
+// Read status of the specified PersistentVolume.
 //
 // GET /api/v1/persistentvolumes/{name}/status
 func (c *Client) ReadCoreV1PersistentVolumeStatus(ctx context.Context, params ReadCoreV1PersistentVolumeStatusParams) (res ReadCoreV1PersistentVolumeStatusRes, err error) {
@@ -28148,6 +28578,8 @@ func (c *Client) ReadCoreV1PersistentVolumeStatus(ctx context.Context, params Re
 }
 
 // ReadDiscoveryV1NamespacedEndpointSlice invokes readDiscoveryV1NamespacedEndpointSlice operation.
+//
+// Read the specified EndpointSlice.
 //
 // GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}
 func (c *Client) ReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params ReadDiscoveryV1NamespacedEndpointSliceParams) (res ReadDiscoveryV1NamespacedEndpointSliceRes, err error) {
@@ -28237,6 +28669,8 @@ func (c *Client) ReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context, par
 
 // ReadDiscoveryV1beta1NamespacedEndpointSlice invokes readDiscoveryV1beta1NamespacedEndpointSlice operation.
 //
+// Read the specified EndpointSlice.
+//
 // GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}
 func (c *Client) ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params ReadDiscoveryV1beta1NamespacedEndpointSliceParams) (res ReadDiscoveryV1beta1NamespacedEndpointSliceRes, err error) {
 	startTime := time.Now()
@@ -28324,6 +28758,8 @@ func (c *Client) ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context
 }
 
 // ReadEventsV1NamespacedEvent invokes readEventsV1NamespacedEvent operation.
+//
+// Read the specified Event.
 //
 // GET /apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}
 func (c *Client) ReadEventsV1NamespacedEvent(ctx context.Context, params ReadEventsV1NamespacedEventParams) (res ReadEventsV1NamespacedEventRes, err error) {
@@ -28413,6 +28849,8 @@ func (c *Client) ReadEventsV1NamespacedEvent(ctx context.Context, params ReadEve
 
 // ReadEventsV1beta1NamespacedEvent invokes readEventsV1beta1NamespacedEvent operation.
 //
+// Read the specified Event.
+//
 // GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}
 func (c *Client) ReadEventsV1beta1NamespacedEvent(ctx context.Context, params ReadEventsV1beta1NamespacedEventParams) (res ReadEventsV1beta1NamespacedEventRes, err error) {
 	startTime := time.Now()
@@ -28501,6 +28939,8 @@ func (c *Client) ReadEventsV1beta1NamespacedEvent(ctx context.Context, params Re
 
 // ReadFlowcontrolApiserverV1beta1FlowSchema invokes readFlowcontrolApiserverV1beta1FlowSchema operation.
 //
+// Read the specified FlowSchema.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}
 func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ReadFlowcontrolApiserverV1beta1FlowSchemaParams) (res ReadFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	startTime := time.Now()
@@ -28573,6 +29013,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 }
 
 // ReadFlowcontrolApiserverV1beta1FlowSchemaStatus invokes readFlowcontrolApiserverV1beta1FlowSchemaStatus operation.
+//
+// Read status of the specified FlowSchema.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status
 func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams) (res ReadFlowcontrolApiserverV1beta1FlowSchemaStatusRes, err error) {
@@ -28648,6 +29090,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context.Con
 
 // ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration invokes readFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
 //
+// Read the specified PriorityLevelConfiguration.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}
 func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
@@ -28720,6 +29164,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 }
 
 // ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus invokes readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus operation.
+//
+// Read status of the specified PriorityLevelConfiguration.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status
 func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams) (res ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes, err error) {
@@ -28795,6 +29241,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
 
 // ReadFlowcontrolApiserverV1beta2FlowSchema invokes readFlowcontrolApiserverV1beta2FlowSchema operation.
 //
+// Read the specified FlowSchema.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}
 func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ReadFlowcontrolApiserverV1beta2FlowSchemaParams) (res ReadFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	startTime := time.Now()
@@ -28867,6 +29315,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 }
 
 // ReadFlowcontrolApiserverV1beta2FlowSchemaStatus invokes readFlowcontrolApiserverV1beta2FlowSchemaStatus operation.
+//
+// Read status of the specified FlowSchema.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status
 func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams) (res ReadFlowcontrolApiserverV1beta2FlowSchemaStatusRes, err error) {
@@ -28942,6 +29392,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context.Con
 
 // ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration invokes readFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
 //
+// Read the specified PriorityLevelConfiguration.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}
 func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
@@ -29014,6 +29466,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 }
 
 // ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus invokes readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus operation.
+//
+// Read status of the specified PriorityLevelConfiguration.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status
 func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams) (res ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes, err error) {
@@ -29089,6 +29543,8 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
 
 // ReadInternalApiserverV1alpha1StorageVersion invokes readInternalApiserverV1alpha1StorageVersion operation.
 //
+// Read the specified StorageVersion.
+//
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}
 func (c *Client) ReadInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ReadInternalApiserverV1alpha1StorageVersionParams) (res ReadInternalApiserverV1alpha1StorageVersionRes, err error) {
 	startTime := time.Now()
@@ -29161,6 +29617,8 @@ func (c *Client) ReadInternalApiserverV1alpha1StorageVersion(ctx context.Context
 }
 
 // ReadInternalApiserverV1alpha1StorageVersionStatus invokes readInternalApiserverV1alpha1StorageVersionStatus operation.
+//
+// Read status of the specified StorageVersion.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status
 func (c *Client) ReadInternalApiserverV1alpha1StorageVersionStatus(ctx context.Context, params ReadInternalApiserverV1alpha1StorageVersionStatusParams) (res ReadInternalApiserverV1alpha1StorageVersionStatusRes, err error) {
@@ -29236,6 +29694,8 @@ func (c *Client) ReadInternalApiserverV1alpha1StorageVersionStatus(ctx context.C
 
 // ReadNetworkingV1IngressClass invokes readNetworkingV1IngressClass operation.
 //
+// Read the specified IngressClass.
+//
 // GET /apis/networking.k8s.io/v1/ingressclasses/{name}
 func (c *Client) ReadNetworkingV1IngressClass(ctx context.Context, params ReadNetworkingV1IngressClassParams) (res ReadNetworkingV1IngressClassRes, err error) {
 	startTime := time.Now()
@@ -29308,6 +29768,8 @@ func (c *Client) ReadNetworkingV1IngressClass(ctx context.Context, params ReadNe
 }
 
 // ReadNetworkingV1NamespacedIngress invokes readNetworkingV1NamespacedIngress operation.
+//
+// Read the specified Ingress.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}
 func (c *Client) ReadNetworkingV1NamespacedIngress(ctx context.Context, params ReadNetworkingV1NamespacedIngressParams) (res ReadNetworkingV1NamespacedIngressRes, err error) {
@@ -29396,6 +29858,8 @@ func (c *Client) ReadNetworkingV1NamespacedIngress(ctx context.Context, params R
 }
 
 // ReadNetworkingV1NamespacedIngressStatus invokes readNetworkingV1NamespacedIngressStatus operation.
+//
+// Read status of the specified Ingress.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status
 func (c *Client) ReadNetworkingV1NamespacedIngressStatus(ctx context.Context, params ReadNetworkingV1NamespacedIngressStatusParams) (res ReadNetworkingV1NamespacedIngressStatusRes, err error) {
@@ -29486,6 +29950,8 @@ func (c *Client) ReadNetworkingV1NamespacedIngressStatus(ctx context.Context, pa
 
 // ReadNetworkingV1NamespacedNetworkPolicy invokes readNetworkingV1NamespacedNetworkPolicy operation.
 //
+// Read the specified NetworkPolicy.
+//
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}
 func (c *Client) ReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params ReadNetworkingV1NamespacedNetworkPolicyParams) (res ReadNetworkingV1NamespacedNetworkPolicyRes, err error) {
 	startTime := time.Now()
@@ -29574,6 +30040,8 @@ func (c *Client) ReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context, pa
 
 // ReadNodeV1RuntimeClass invokes readNodeV1RuntimeClass operation.
 //
+// Read the specified RuntimeClass.
+//
 // GET /apis/node.k8s.io/v1/runtimeclasses/{name}
 func (c *Client) ReadNodeV1RuntimeClass(ctx context.Context, params ReadNodeV1RuntimeClassParams) (res ReadNodeV1RuntimeClassRes, err error) {
 	startTime := time.Now()
@@ -29646,6 +30114,8 @@ func (c *Client) ReadNodeV1RuntimeClass(ctx context.Context, params ReadNodeV1Ru
 }
 
 // ReadNodeV1alpha1RuntimeClass invokes readNodeV1alpha1RuntimeClass operation.
+//
+// Read the specified RuntimeClass.
 //
 // GET /apis/node.k8s.io/v1alpha1/runtimeclasses/{name}
 func (c *Client) ReadNodeV1alpha1RuntimeClass(ctx context.Context, params ReadNodeV1alpha1RuntimeClassParams) (res ReadNodeV1alpha1RuntimeClassRes, err error) {
@@ -29720,6 +30190,8 @@ func (c *Client) ReadNodeV1alpha1RuntimeClass(ctx context.Context, params ReadNo
 
 // ReadNodeV1beta1RuntimeClass invokes readNodeV1beta1RuntimeClass operation.
 //
+// Read the specified RuntimeClass.
+//
 // GET /apis/node.k8s.io/v1beta1/runtimeclasses/{name}
 func (c *Client) ReadNodeV1beta1RuntimeClass(ctx context.Context, params ReadNodeV1beta1RuntimeClassParams) (res ReadNodeV1beta1RuntimeClassRes, err error) {
 	startTime := time.Now()
@@ -29792,6 +30264,8 @@ func (c *Client) ReadNodeV1beta1RuntimeClass(ctx context.Context, params ReadNod
 }
 
 // ReadPolicyV1NamespacedPodDisruptionBudget invokes readPolicyV1NamespacedPodDisruptionBudget operation.
+//
+// Read the specified PodDisruptionBudget.
 //
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params ReadPolicyV1NamespacedPodDisruptionBudgetParams) (res ReadPolicyV1NamespacedPodDisruptionBudgetRes, err error) {
@@ -29880,6 +30354,8 @@ func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, 
 }
 
 // ReadPolicyV1NamespacedPodDisruptionBudgetStatus invokes readPolicyV1NamespacedPodDisruptionBudgetStatus operation.
+//
+// Read status of the specified PodDisruptionBudget.
 //
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
 func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context.Context, params ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams) (res ReadPolicyV1NamespacedPodDisruptionBudgetStatusRes, err error) {
@@ -29970,6 +30446,8 @@ func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context.Con
 
 // ReadPolicyV1beta1NamespacedPodDisruptionBudget invokes readPolicyV1beta1NamespacedPodDisruptionBudget operation.
 //
+// Read the specified PodDisruptionBudget.
+//
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams) (res ReadPolicyV1beta1NamespacedPodDisruptionBudgetRes, err error) {
 	startTime := time.Now()
@@ -30057,6 +30535,8 @@ func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Cont
 }
 
 // ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus invokes readPolicyV1beta1NamespacedPodDisruptionBudgetStatus operation.
+//
+// Read status of the specified PodDisruptionBudget.
 //
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
 func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx context.Context, params ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams) (res ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes, err error) {
@@ -30147,6 +30627,8 @@ func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx contex
 
 // ReadPolicyV1beta1PodSecurityPolicy invokes readPolicyV1beta1PodSecurityPolicy operation.
 //
+// Read the specified PodSecurityPolicy.
+//
 // GET /apis/policy/v1beta1/podsecuritypolicies/{name}
 func (c *Client) ReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ReadPolicyV1beta1PodSecurityPolicyParams) (res ReadPolicyV1beta1PodSecurityPolicyRes, err error) {
 	startTime := time.Now()
@@ -30219,6 +30701,8 @@ func (c *Client) ReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 }
 
 // ReadRbacAuthorizationV1ClusterRole invokes readRbacAuthorizationV1ClusterRole operation.
+//
+// Read the specified ClusterRole.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/clusterroles/{name}
 func (c *Client) ReadRbacAuthorizationV1ClusterRole(ctx context.Context, params ReadRbacAuthorizationV1ClusterRoleParams) (res ReadRbacAuthorizationV1ClusterRoleRes, err error) {
@@ -30293,6 +30777,8 @@ func (c *Client) ReadRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 
 // ReadRbacAuthorizationV1ClusterRoleBinding invokes readRbacAuthorizationV1ClusterRoleBinding operation.
 //
+// Read the specified ClusterRoleBinding.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}
 func (c *Client) ReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ReadRbacAuthorizationV1ClusterRoleBindingParams) (res ReadRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	startTime := time.Now()
@@ -30365,6 +30851,8 @@ func (c *Client) ReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 }
 
 // ReadRbacAuthorizationV1NamespacedRole invokes readRbacAuthorizationV1NamespacedRole operation.
+//
+// Read the specified Role.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}
 func (c *Client) ReadRbacAuthorizationV1NamespacedRole(ctx context.Context, params ReadRbacAuthorizationV1NamespacedRoleParams) (res ReadRbacAuthorizationV1NamespacedRoleRes, err error) {
@@ -30454,6 +30942,8 @@ func (c *Client) ReadRbacAuthorizationV1NamespacedRole(ctx context.Context, para
 
 // ReadRbacAuthorizationV1NamespacedRoleBinding invokes readRbacAuthorizationV1NamespacedRoleBinding operation.
 //
+// Read the specified RoleBinding.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}
 func (c *Client) ReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params ReadRbacAuthorizationV1NamespacedRoleBindingParams) (res ReadRbacAuthorizationV1NamespacedRoleBindingRes, err error) {
 	startTime := time.Now()
@@ -30542,6 +31032,8 @@ func (c *Client) ReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Contex
 
 // ReadSchedulingV1PriorityClass invokes readSchedulingV1PriorityClass operation.
 //
+// Read the specified PriorityClass.
+//
 // GET /apis/scheduling.k8s.io/v1/priorityclasses/{name}
 func (c *Client) ReadSchedulingV1PriorityClass(ctx context.Context, params ReadSchedulingV1PriorityClassParams) (res ReadSchedulingV1PriorityClassRes, err error) {
 	startTime := time.Now()
@@ -30614,6 +31106,8 @@ func (c *Client) ReadSchedulingV1PriorityClass(ctx context.Context, params ReadS
 }
 
 // ReadStorageV1CSIDriver invokes readStorageV1CSIDriver operation.
+//
+// Read the specified CSIDriver.
 //
 // GET /apis/storage.k8s.io/v1/csidrivers/{name}
 func (c *Client) ReadStorageV1CSIDriver(ctx context.Context, params ReadStorageV1CSIDriverParams) (res ReadStorageV1CSIDriverRes, err error) {
@@ -30688,6 +31182,8 @@ func (c *Client) ReadStorageV1CSIDriver(ctx context.Context, params ReadStorageV
 
 // ReadStorageV1CSINode invokes readStorageV1CSINode operation.
 //
+// Read the specified CSINode.
+//
 // GET /apis/storage.k8s.io/v1/csinodes/{name}
 func (c *Client) ReadStorageV1CSINode(ctx context.Context, params ReadStorageV1CSINodeParams) (res ReadStorageV1CSINodeRes, err error) {
 	startTime := time.Now()
@@ -30760,6 +31256,8 @@ func (c *Client) ReadStorageV1CSINode(ctx context.Context, params ReadStorageV1C
 }
 
 // ReadStorageV1StorageClass invokes readStorageV1StorageClass operation.
+//
+// Read the specified StorageClass.
 //
 // GET /apis/storage.k8s.io/v1/storageclasses/{name}
 func (c *Client) ReadStorageV1StorageClass(ctx context.Context, params ReadStorageV1StorageClassParams) (res ReadStorageV1StorageClassRes, err error) {
@@ -30834,6 +31332,8 @@ func (c *Client) ReadStorageV1StorageClass(ctx context.Context, params ReadStora
 
 // ReadStorageV1VolumeAttachment invokes readStorageV1VolumeAttachment operation.
 //
+// Read the specified VolumeAttachment.
+//
 // GET /apis/storage.k8s.io/v1/volumeattachments/{name}
 func (c *Client) ReadStorageV1VolumeAttachment(ctx context.Context, params ReadStorageV1VolumeAttachmentParams) (res ReadStorageV1VolumeAttachmentRes, err error) {
 	startTime := time.Now()
@@ -30906,6 +31406,8 @@ func (c *Client) ReadStorageV1VolumeAttachment(ctx context.Context, params ReadS
 }
 
 // ReadStorageV1VolumeAttachmentStatus invokes readStorageV1VolumeAttachmentStatus operation.
+//
+// Read status of the specified VolumeAttachment.
 //
 // GET /apis/storage.k8s.io/v1/volumeattachments/{name}/status
 func (c *Client) ReadStorageV1VolumeAttachmentStatus(ctx context.Context, params ReadStorageV1VolumeAttachmentStatusParams) (res ReadStorageV1VolumeAttachmentStatusRes, err error) {
@@ -30980,6 +31482,8 @@ func (c *Client) ReadStorageV1VolumeAttachmentStatus(ctx context.Context, params
 }
 
 // ReadStorageV1alpha1NamespacedCSIStorageCapacity invokes readStorageV1alpha1NamespacedCSIStorageCapacity operation.
+//
+// Read the specified CSIStorageCapacity.
 //
 // GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}
 func (c *Client) ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params ReadStorageV1alpha1NamespacedCSIStorageCapacityParams) (res ReadStorageV1alpha1NamespacedCSIStorageCapacityRes, err error) {
@@ -31069,6 +31573,8 @@ func (c *Client) ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Con
 
 // ReadStorageV1beta1NamespacedCSIStorageCapacity invokes readStorageV1beta1NamespacedCSIStorageCapacity operation.
 //
+// Read the specified CSIStorageCapacity.
+//
 // GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}
 func (c *Client) ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params ReadStorageV1beta1NamespacedCSIStorageCapacityParams) (res ReadStorageV1beta1NamespacedCSIStorageCapacityRes, err error) {
 	startTime := time.Now()
@@ -31156,6 +31662,10 @@ func (c *Client) ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 }
 
 // WatchAdmissionregistrationV1MutatingWebhookConfiguration invokes watchAdmissionregistrationV1MutatingWebhookConfiguration operation.
+//
+// Watch changes to an object of kind MutatingWebhookConfiguration. deprecated: use the 'watch'
+// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+// parameter.
 //
 // GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}
 func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params WatchAdmissionregistrationV1MutatingWebhookConfigurationParams) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
@@ -31374,6 +31884,9 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx co
 
 // WatchAdmissionregistrationV1MutatingWebhookConfigurationList invokes watchAdmissionregistrationV1MutatingWebhookConfigurationList operation.
 //
+// Watch individual changes to a list of MutatingWebhookConfiguration. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations
 func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx context.Context, params WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, err error) {
 	startTime := time.Now()
@@ -31576,6 +32089,10 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ct
 }
 
 // WatchAdmissionregistrationV1ValidatingWebhookConfiguration invokes watchAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+//
+// Watch changes to an object of kind ValidatingWebhookConfiguration. deprecated: use the 'watch'
+// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+// parameter.
 //
 // GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}
 func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
@@ -31794,6 +32311,9 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx 
 
 // WatchAdmissionregistrationV1ValidatingWebhookConfigurationList invokes watchAdmissionregistrationV1ValidatingWebhookConfigurationList operation.
 //
+// Watch individual changes to a list of ValidatingWebhookConfiguration. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations
 func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx context.Context, params WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, err error) {
 	startTime := time.Now()
@@ -31996,6 +32516,9 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(
 }
 
 // WatchApiextensionsV1CustomResourceDefinition invokes watchApiextensionsV1CustomResourceDefinition operation.
+//
+// Watch changes to an object of kind CustomResourceDefinition. deprecated: use the 'watch' parameter
+// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}
 func (c *Client) WatchApiextensionsV1CustomResourceDefinition(ctx context.Context, params WatchApiextensionsV1CustomResourceDefinitionParams) (res WatchApiextensionsV1CustomResourceDefinitionRes, err error) {
@@ -32214,6 +32737,9 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinition(ctx context.Contex
 
 // WatchApiextensionsV1CustomResourceDefinitionList invokes watchApiextensionsV1CustomResourceDefinitionList operation.
 //
+// Watch individual changes to a list of CustomResourceDefinition. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions
 func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Context, params WatchApiextensionsV1CustomResourceDefinitionListParams) (res WatchApiextensionsV1CustomResourceDefinitionListRes, err error) {
 	startTime := time.Now()
@@ -32416,6 +32942,9 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Co
 }
 
 // WatchApiregistrationV1APIService invokes watchApiregistrationV1APIService operation.
+//
+// Watch changes to an object of kind APIService. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apiregistration.k8s.io/v1/watch/apiservices/{name}
 func (c *Client) WatchApiregistrationV1APIService(ctx context.Context, params WatchApiregistrationV1APIServiceParams) (res WatchApiregistrationV1APIServiceRes, err error) {
@@ -32634,6 +33163,9 @@ func (c *Client) WatchApiregistrationV1APIService(ctx context.Context, params Wa
 
 // WatchApiregistrationV1APIServiceList invokes watchApiregistrationV1APIServiceList operation.
 //
+// Watch individual changes to a list of APIService. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/apiregistration.k8s.io/v1/watch/apiservices
 func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context, params WatchApiregistrationV1APIServiceListParams) (res WatchApiregistrationV1APIServiceListRes, err error) {
 	startTime := time.Now()
@@ -32836,6 +33368,9 @@ func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context, param
 }
 
 // WatchAppsV1ControllerRevisionListForAllNamespaces invokes watchAppsV1ControllerRevisionListForAllNamespaces operation.
+//
+// Watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter
+// with a list operation instead.
 //
 // GET /apis/apps/v1/watch/controllerrevisions
 func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.Context, params WatchAppsV1ControllerRevisionListForAllNamespacesParams) (res WatchAppsV1ControllerRevisionListForAllNamespacesRes, err error) {
@@ -33040,6 +33575,9 @@ func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.C
 
 // WatchAppsV1DaemonSetListForAllNamespaces invokes watchAppsV1DaemonSetListForAllNamespaces operation.
 //
+// Watch individual changes to a list of DaemonSet. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/apps/v1/watch/daemonsets
 func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context, params WatchAppsV1DaemonSetListForAllNamespacesParams) (res WatchAppsV1DaemonSetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -33243,6 +33781,9 @@ func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context, p
 
 // WatchAppsV1DeploymentListForAllNamespaces invokes watchAppsV1DeploymentListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/apps/v1/watch/deployments
 func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context, params WatchAppsV1DeploymentListForAllNamespacesParams) (res WatchAppsV1DeploymentListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -33445,6 +33986,9 @@ func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context, 
 }
 
 // WatchAppsV1NamespacedControllerRevision invokes watchAppsV1NamespacedControllerRevision operation.
+//
+// Watch changes to an object of kind ControllerRevision. deprecated: use the 'watch' parameter with
+// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}
 func (c *Client) WatchAppsV1NamespacedControllerRevision(ctx context.Context, params WatchAppsV1NamespacedControllerRevisionParams) (res WatchAppsV1NamespacedControllerRevisionRes, err error) {
@@ -33678,6 +34222,9 @@ func (c *Client) WatchAppsV1NamespacedControllerRevision(ctx context.Context, pa
 
 // WatchAppsV1NamespacedControllerRevisionList invokes watchAppsV1NamespacedControllerRevisionList operation.
 //
+// Watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions
 func (c *Client) WatchAppsV1NamespacedControllerRevisionList(ctx context.Context, params WatchAppsV1NamespacedControllerRevisionListParams) (res WatchAppsV1NamespacedControllerRevisionListRes, err error) {
 	startTime := time.Now()
@@ -33895,6 +34442,9 @@ func (c *Client) WatchAppsV1NamespacedControllerRevisionList(ctx context.Context
 }
 
 // WatchAppsV1NamespacedDaemonSet invokes watchAppsV1NamespacedDaemonSet operation.
+//
+// Watch changes to an object of kind DaemonSet. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}
 func (c *Client) WatchAppsV1NamespacedDaemonSet(ctx context.Context, params WatchAppsV1NamespacedDaemonSetParams) (res WatchAppsV1NamespacedDaemonSetRes, err error) {
@@ -34128,6 +34678,9 @@ func (c *Client) WatchAppsV1NamespacedDaemonSet(ctx context.Context, params Watc
 
 // WatchAppsV1NamespacedDaemonSetList invokes watchAppsV1NamespacedDaemonSetList operation.
 //
+// Watch individual changes to a list of DaemonSet. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets
 func (c *Client) WatchAppsV1NamespacedDaemonSetList(ctx context.Context, params WatchAppsV1NamespacedDaemonSetListParams) (res WatchAppsV1NamespacedDaemonSetListRes, err error) {
 	startTime := time.Now()
@@ -34345,6 +34898,9 @@ func (c *Client) WatchAppsV1NamespacedDaemonSetList(ctx context.Context, params 
 }
 
 // WatchAppsV1NamespacedDeployment invokes watchAppsV1NamespacedDeployment operation.
+//
+// Watch changes to an object of kind Deployment. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}
 func (c *Client) WatchAppsV1NamespacedDeployment(ctx context.Context, params WatchAppsV1NamespacedDeploymentParams) (res WatchAppsV1NamespacedDeploymentRes, err error) {
@@ -34578,6 +35134,9 @@ func (c *Client) WatchAppsV1NamespacedDeployment(ctx context.Context, params Wat
 
 // WatchAppsV1NamespacedDeploymentList invokes watchAppsV1NamespacedDeploymentList operation.
 //
+// Watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/apps/v1/watch/namespaces/{namespace}/deployments
 func (c *Client) WatchAppsV1NamespacedDeploymentList(ctx context.Context, params WatchAppsV1NamespacedDeploymentListParams) (res WatchAppsV1NamespacedDeploymentListRes, err error) {
 	startTime := time.Now()
@@ -34795,6 +35354,9 @@ func (c *Client) WatchAppsV1NamespacedDeploymentList(ctx context.Context, params
 }
 
 // WatchAppsV1NamespacedReplicaSet invokes watchAppsV1NamespacedReplicaSet operation.
+//
+// Watch changes to an object of kind ReplicaSet. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}
 func (c *Client) WatchAppsV1NamespacedReplicaSet(ctx context.Context, params WatchAppsV1NamespacedReplicaSetParams) (res WatchAppsV1NamespacedReplicaSetRes, err error) {
@@ -35028,6 +35590,9 @@ func (c *Client) WatchAppsV1NamespacedReplicaSet(ctx context.Context, params Wat
 
 // WatchAppsV1NamespacedReplicaSetList invokes watchAppsV1NamespacedReplicaSetList operation.
 //
+// Watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets
 func (c *Client) WatchAppsV1NamespacedReplicaSetList(ctx context.Context, params WatchAppsV1NamespacedReplicaSetListParams) (res WatchAppsV1NamespacedReplicaSetListRes, err error) {
 	startTime := time.Now()
@@ -35245,6 +35810,9 @@ func (c *Client) WatchAppsV1NamespacedReplicaSetList(ctx context.Context, params
 }
 
 // WatchAppsV1NamespacedStatefulSet invokes watchAppsV1NamespacedStatefulSet operation.
+//
+// Watch changes to an object of kind StatefulSet. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}
 func (c *Client) WatchAppsV1NamespacedStatefulSet(ctx context.Context, params WatchAppsV1NamespacedStatefulSetParams) (res WatchAppsV1NamespacedStatefulSetRes, err error) {
@@ -35478,6 +36046,9 @@ func (c *Client) WatchAppsV1NamespacedStatefulSet(ctx context.Context, params Wa
 
 // WatchAppsV1NamespacedStatefulSetList invokes watchAppsV1NamespacedStatefulSetList operation.
 //
+// Watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets
 func (c *Client) WatchAppsV1NamespacedStatefulSetList(ctx context.Context, params WatchAppsV1NamespacedStatefulSetListParams) (res WatchAppsV1NamespacedStatefulSetListRes, err error) {
 	startTime := time.Now()
@@ -35696,6 +36267,9 @@ func (c *Client) WatchAppsV1NamespacedStatefulSetList(ctx context.Context, param
 
 // WatchAppsV1ReplicaSetListForAllNamespaces invokes watchAppsV1ReplicaSetListForAllNamespaces operation.
 //
+// Watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/apps/v1/watch/replicasets
 func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context, params WatchAppsV1ReplicaSetListForAllNamespacesParams) (res WatchAppsV1ReplicaSetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -35898,6 +36472,9 @@ func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context, 
 }
 
 // WatchAppsV1StatefulSetListForAllNamespaces invokes watchAppsV1StatefulSetListForAllNamespaces operation.
+//
+// Watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a
+// list operation instead.
 //
 // GET /apis/apps/v1/watch/statefulsets
 func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context, params WatchAppsV1StatefulSetListForAllNamespacesParams) (res WatchAppsV1StatefulSetListForAllNamespacesRes, err error) {
@@ -36102,6 +36679,9 @@ func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context,
 
 // WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces invokes watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces operation.
 //
+// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/autoscaling/v1/watch/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams) (res WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -36304,6 +36884,9 @@ func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(c
 }
 
 // WatchAutoscalingV1NamespacedHorizontalPodAutoscaler invokes watchAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+//
+// Watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (res WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes, err error) {
@@ -36537,6 +37120,9 @@ func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context
 
 // WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList invokes watchAutoscalingV1NamespacedHorizontalPodAutoscalerList operation.
 //
+// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams) (res WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes, err error) {
 	startTime := time.Now()
@@ -36755,6 +37341,9 @@ func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx con
 
 // WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces invokes watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces operation.
 //
+// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/autoscaling/v2beta1/watch/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams) (res WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -36957,6 +37546,9 @@ func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespa
 }
 
 // WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler invokes watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+//
+// Watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (res WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, err error) {
@@ -37190,6 +37782,9 @@ func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx co
 
 // WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList invokes watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList operation.
 //
+// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams) (res WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes, err error) {
 	startTime := time.Now()
@@ -37408,6 +38003,9 @@ func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ct
 
 // WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces invokes watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces operation.
 //
+// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/autoscaling/v2beta2/watch/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams) (res WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -37610,6 +38208,9 @@ func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespa
 }
 
 // WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler invokes watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+//
+// Watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (res WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, err error) {
@@ -37843,6 +38444,9 @@ func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx co
 
 // WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList invokes watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList operation.
 //
+// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams) (res WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes, err error) {
 	startTime := time.Now()
@@ -38061,6 +38665,9 @@ func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ct
 
 // WatchBatchV1CronJobListForAllNamespaces invokes watchBatchV1CronJobListForAllNamespaces operation.
 //
+// Watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/batch/v1/watch/cronjobs
 func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context, params WatchBatchV1CronJobListForAllNamespacesParams) (res WatchBatchV1CronJobListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -38264,6 +38871,9 @@ func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context, pa
 
 // WatchBatchV1JobListForAllNamespaces invokes watchBatchV1JobListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Job. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/batch/v1/watch/jobs
 func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context, params WatchBatchV1JobListForAllNamespacesParams) (res WatchBatchV1JobListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -38466,6 +39076,9 @@ func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context, params
 }
 
 // WatchBatchV1NamespacedCronJob invokes watchBatchV1NamespacedCronJob operation.
+//
+// Watch changes to an object of kind CronJob. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}
 func (c *Client) WatchBatchV1NamespacedCronJob(ctx context.Context, params WatchBatchV1NamespacedCronJobParams) (res WatchBatchV1NamespacedCronJobRes, err error) {
@@ -38699,6 +39312,9 @@ func (c *Client) WatchBatchV1NamespacedCronJob(ctx context.Context, params Watch
 
 // WatchBatchV1NamespacedCronJobList invokes watchBatchV1NamespacedCronJobList operation.
 //
+// Watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs
 func (c *Client) WatchBatchV1NamespacedCronJobList(ctx context.Context, params WatchBatchV1NamespacedCronJobListParams) (res WatchBatchV1NamespacedCronJobListRes, err error) {
 	startTime := time.Now()
@@ -38916,6 +39532,9 @@ func (c *Client) WatchBatchV1NamespacedCronJobList(ctx context.Context, params W
 }
 
 // WatchBatchV1NamespacedJob invokes watchBatchV1NamespacedJob operation.
+//
+// Watch changes to an object of kind Job. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}
 func (c *Client) WatchBatchV1NamespacedJob(ctx context.Context, params WatchBatchV1NamespacedJobParams) (res WatchBatchV1NamespacedJobRes, err error) {
@@ -39149,6 +39768,9 @@ func (c *Client) WatchBatchV1NamespacedJob(ctx context.Context, params WatchBatc
 
 // WatchBatchV1NamespacedJobList invokes watchBatchV1NamespacedJobList operation.
 //
+// Watch individual changes to a list of Job. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/batch/v1/watch/namespaces/{namespace}/jobs
 func (c *Client) WatchBatchV1NamespacedJobList(ctx context.Context, params WatchBatchV1NamespacedJobListParams) (res WatchBatchV1NamespacedJobListRes, err error) {
 	startTime := time.Now()
@@ -39367,6 +39989,9 @@ func (c *Client) WatchBatchV1NamespacedJobList(ctx context.Context, params Watch
 
 // WatchBatchV1beta1CronJobListForAllNamespaces invokes watchBatchV1beta1CronJobListForAllNamespaces operation.
 //
+// Watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/batch/v1beta1/watch/cronjobs
 func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Context, params WatchBatchV1beta1CronJobListForAllNamespacesParams) (res WatchBatchV1beta1CronJobListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -39569,6 +40194,9 @@ func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Contex
 }
 
 // WatchBatchV1beta1NamespacedCronJob invokes watchBatchV1beta1NamespacedCronJob operation.
+//
+// Watch changes to an object of kind CronJob. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}
 func (c *Client) WatchBatchV1beta1NamespacedCronJob(ctx context.Context, params WatchBatchV1beta1NamespacedCronJobParams) (res WatchBatchV1beta1NamespacedCronJobRes, err error) {
@@ -39802,6 +40430,9 @@ func (c *Client) WatchBatchV1beta1NamespacedCronJob(ctx context.Context, params 
 
 // WatchBatchV1beta1NamespacedCronJobList invokes watchBatchV1beta1NamespacedCronJobList operation.
 //
+// Watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs
 func (c *Client) WatchBatchV1beta1NamespacedCronJobList(ctx context.Context, params WatchBatchV1beta1NamespacedCronJobListParams) (res WatchBatchV1beta1NamespacedCronJobListRes, err error) {
 	startTime := time.Now()
@@ -40020,6 +40651,10 @@ func (c *Client) WatchBatchV1beta1NamespacedCronJobList(ctx context.Context, par
 
 // WatchCertificatesV1CertificateSigningRequest invokes watchCertificatesV1CertificateSigningRequest operation.
 //
+// Watch changes to an object of kind CertificateSigningRequest. deprecated: use the 'watch'
+// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+// parameter.
+//
 // GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}
 func (c *Client) WatchCertificatesV1CertificateSigningRequest(ctx context.Context, params WatchCertificatesV1CertificateSigningRequestParams) (res WatchCertificatesV1CertificateSigningRequestRes, err error) {
 	startTime := time.Now()
@@ -40237,6 +40872,9 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequest(ctx context.Contex
 
 // WatchCertificatesV1CertificateSigningRequestList invokes watchCertificatesV1CertificateSigningRequestList operation.
 //
+// Watch individual changes to a list of CertificateSigningRequest. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests
 func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Context, params WatchCertificatesV1CertificateSigningRequestListParams) (res WatchCertificatesV1CertificateSigningRequestListRes, err error) {
 	startTime := time.Now()
@@ -40440,6 +41078,9 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Co
 
 // WatchCoordinationV1LeaseListForAllNamespaces invokes watchCoordinationV1LeaseListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Lease. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/coordination.k8s.io/v1/watch/leases
 func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Context, params WatchCoordinationV1LeaseListForAllNamespacesParams) (res WatchCoordinationV1LeaseListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -40642,6 +41283,9 @@ func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Contex
 }
 
 // WatchCoordinationV1NamespacedLease invokes watchCoordinationV1NamespacedLease operation.
+//
+// Watch changes to an object of kind Lease. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}
 func (c *Client) WatchCoordinationV1NamespacedLease(ctx context.Context, params WatchCoordinationV1NamespacedLeaseParams) (res WatchCoordinationV1NamespacedLeaseRes, err error) {
@@ -40875,6 +41519,9 @@ func (c *Client) WatchCoordinationV1NamespacedLease(ctx context.Context, params 
 
 // WatchCoordinationV1NamespacedLeaseList invokes watchCoordinationV1NamespacedLeaseList operation.
 //
+// Watch individual changes to a list of Lease. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases
 func (c *Client) WatchCoordinationV1NamespacedLeaseList(ctx context.Context, params WatchCoordinationV1NamespacedLeaseListParams) (res WatchCoordinationV1NamespacedLeaseListRes, err error) {
 	startTime := time.Now()
@@ -41093,6 +41740,9 @@ func (c *Client) WatchCoordinationV1NamespacedLeaseList(ctx context.Context, par
 
 // WatchCoreV1ConfigMapListForAllNamespaces invokes watchCoreV1ConfigMapListForAllNamespaces operation.
 //
+// Watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/configmaps
 func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context, params WatchCoreV1ConfigMapListForAllNamespacesParams) (res WatchCoreV1ConfigMapListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -41295,6 +41945,9 @@ func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context, p
 }
 
 // WatchCoreV1EndpointsListForAllNamespaces invokes watchCoreV1EndpointsListForAllNamespaces operation.
+//
+// Watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /api/v1/watch/endpoints
 func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context, params WatchCoreV1EndpointsListForAllNamespacesParams) (res WatchCoreV1EndpointsListForAllNamespacesRes, err error) {
@@ -41499,6 +42152,9 @@ func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context, p
 
 // WatchCoreV1EventListForAllNamespaces invokes watchCoreV1EventListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/events
 func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context, params WatchCoreV1EventListForAllNamespacesParams) (res WatchCoreV1EventListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -41702,6 +42358,9 @@ func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context, param
 
 // WatchCoreV1LimitRangeListForAllNamespaces invokes watchCoreV1LimitRangeListForAllNamespaces operation.
 //
+// Watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /api/v1/watch/limitranges
 func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context, params WatchCoreV1LimitRangeListForAllNamespacesParams) (res WatchCoreV1LimitRangeListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -41904,6 +42563,9 @@ func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context, 
 }
 
 // WatchCoreV1Namespace invokes watchCoreV1Namespace operation.
+//
+// Watch changes to an object of kind Namespace. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{name}
 func (c *Client) WatchCoreV1Namespace(ctx context.Context, params WatchCoreV1NamespaceParams) (res WatchCoreV1NamespaceRes, err error) {
@@ -42122,6 +42784,9 @@ func (c *Client) WatchCoreV1Namespace(ctx context.Context, params WatchCoreV1Nam
 
 // WatchCoreV1NamespaceList invokes watchCoreV1NamespaceList operation.
 //
+// Watch individual changes to a list of Namespace. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/namespaces
 func (c *Client) WatchCoreV1NamespaceList(ctx context.Context, params WatchCoreV1NamespaceListParams) (res WatchCoreV1NamespaceListRes, err error) {
 	startTime := time.Now()
@@ -42324,6 +42989,9 @@ func (c *Client) WatchCoreV1NamespaceList(ctx context.Context, params WatchCoreV
 }
 
 // WatchCoreV1NamespacedConfigMap invokes watchCoreV1NamespacedConfigMap operation.
+//
+// Watch changes to an object of kind ConfigMap. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/configmaps/{name}
 func (c *Client) WatchCoreV1NamespacedConfigMap(ctx context.Context, params WatchCoreV1NamespacedConfigMapParams) (res WatchCoreV1NamespacedConfigMapRes, err error) {
@@ -42557,6 +43225,9 @@ func (c *Client) WatchCoreV1NamespacedConfigMap(ctx context.Context, params Watc
 
 // WatchCoreV1NamespacedConfigMapList invokes watchCoreV1NamespacedConfigMapList operation.
 //
+// Watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/configmaps
 func (c *Client) WatchCoreV1NamespacedConfigMapList(ctx context.Context, params WatchCoreV1NamespacedConfigMapListParams) (res WatchCoreV1NamespacedConfigMapListRes, err error) {
 	startTime := time.Now()
@@ -42774,6 +43445,9 @@ func (c *Client) WatchCoreV1NamespacedConfigMapList(ctx context.Context, params 
 }
 
 // WatchCoreV1NamespacedEndpoints invokes watchCoreV1NamespacedEndpoints operation.
+//
+// Watch changes to an object of kind Endpoints. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/endpoints/{name}
 func (c *Client) WatchCoreV1NamespacedEndpoints(ctx context.Context, params WatchCoreV1NamespacedEndpointsParams) (res WatchCoreV1NamespacedEndpointsRes, err error) {
@@ -43007,6 +43681,9 @@ func (c *Client) WatchCoreV1NamespacedEndpoints(ctx context.Context, params Watc
 
 // WatchCoreV1NamespacedEndpointsList invokes watchCoreV1NamespacedEndpointsList operation.
 //
+// Watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/endpoints
 func (c *Client) WatchCoreV1NamespacedEndpointsList(ctx context.Context, params WatchCoreV1NamespacedEndpointsListParams) (res WatchCoreV1NamespacedEndpointsListRes, err error) {
 	startTime := time.Now()
@@ -43224,6 +43901,9 @@ func (c *Client) WatchCoreV1NamespacedEndpointsList(ctx context.Context, params 
 }
 
 // WatchCoreV1NamespacedEvent invokes watchCoreV1NamespacedEvent operation.
+//
+// Watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/events/{name}
 func (c *Client) WatchCoreV1NamespacedEvent(ctx context.Context, params WatchCoreV1NamespacedEventParams) (res WatchCoreV1NamespacedEventRes, err error) {
@@ -43457,6 +44137,9 @@ func (c *Client) WatchCoreV1NamespacedEvent(ctx context.Context, params WatchCor
 
 // WatchCoreV1NamespacedEventList invokes watchCoreV1NamespacedEventList operation.
 //
+// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/events
 func (c *Client) WatchCoreV1NamespacedEventList(ctx context.Context, params WatchCoreV1NamespacedEventListParams) (res WatchCoreV1NamespacedEventListRes, err error) {
 	startTime := time.Now()
@@ -43674,6 +44357,9 @@ func (c *Client) WatchCoreV1NamespacedEventList(ctx context.Context, params Watc
 }
 
 // WatchCoreV1NamespacedLimitRange invokes watchCoreV1NamespacedLimitRange operation.
+//
+// Watch changes to an object of kind LimitRange. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/limitranges/{name}
 func (c *Client) WatchCoreV1NamespacedLimitRange(ctx context.Context, params WatchCoreV1NamespacedLimitRangeParams) (res WatchCoreV1NamespacedLimitRangeRes, err error) {
@@ -43907,6 +44593,9 @@ func (c *Client) WatchCoreV1NamespacedLimitRange(ctx context.Context, params Wat
 
 // WatchCoreV1NamespacedLimitRangeList invokes watchCoreV1NamespacedLimitRangeList operation.
 //
+// Watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/limitranges
 func (c *Client) WatchCoreV1NamespacedLimitRangeList(ctx context.Context, params WatchCoreV1NamespacedLimitRangeListParams) (res WatchCoreV1NamespacedLimitRangeListRes, err error) {
 	startTime := time.Now()
@@ -44124,6 +44813,9 @@ func (c *Client) WatchCoreV1NamespacedLimitRangeList(ctx context.Context, params
 }
 
 // WatchCoreV1NamespacedPersistentVolumeClaim invokes watchCoreV1NamespacedPersistentVolumeClaim operation.
+//
+// Watch changes to an object of kind PersistentVolumeClaim. deprecated: use the 'watch' parameter
+// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}
 func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params WatchCoreV1NamespacedPersistentVolumeClaimParams) (res WatchCoreV1NamespacedPersistentVolumeClaimRes, err error) {
@@ -44357,6 +45049,9 @@ func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context,
 
 // WatchCoreV1NamespacedPersistentVolumeClaimList invokes watchCoreV1NamespacedPersistentVolumeClaimList operation.
 //
+// Watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims
 func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.Context, params WatchCoreV1NamespacedPersistentVolumeClaimListParams) (res WatchCoreV1NamespacedPersistentVolumeClaimListRes, err error) {
 	startTime := time.Now()
@@ -44574,6 +45269,9 @@ func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.Cont
 }
 
 // WatchCoreV1NamespacedPod invokes watchCoreV1NamespacedPod operation.
+//
+// Watch changes to an object of kind Pod. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/pods/{name}
 func (c *Client) WatchCoreV1NamespacedPod(ctx context.Context, params WatchCoreV1NamespacedPodParams) (res WatchCoreV1NamespacedPodRes, err error) {
@@ -44807,6 +45505,9 @@ func (c *Client) WatchCoreV1NamespacedPod(ctx context.Context, params WatchCoreV
 
 // WatchCoreV1NamespacedPodList invokes watchCoreV1NamespacedPodList operation.
 //
+// Watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/pods
 func (c *Client) WatchCoreV1NamespacedPodList(ctx context.Context, params WatchCoreV1NamespacedPodListParams) (res WatchCoreV1NamespacedPodListRes, err error) {
 	startTime := time.Now()
@@ -45024,6 +45725,9 @@ func (c *Client) WatchCoreV1NamespacedPodList(ctx context.Context, params WatchC
 }
 
 // WatchCoreV1NamespacedPodTemplate invokes watchCoreV1NamespacedPodTemplate operation.
+//
+// Watch changes to an object of kind PodTemplate. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/podtemplates/{name}
 func (c *Client) WatchCoreV1NamespacedPodTemplate(ctx context.Context, params WatchCoreV1NamespacedPodTemplateParams) (res WatchCoreV1NamespacedPodTemplateRes, err error) {
@@ -45257,6 +45961,9 @@ func (c *Client) WatchCoreV1NamespacedPodTemplate(ctx context.Context, params Wa
 
 // WatchCoreV1NamespacedPodTemplateList invokes watchCoreV1NamespacedPodTemplateList operation.
 //
+// Watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/podtemplates
 func (c *Client) WatchCoreV1NamespacedPodTemplateList(ctx context.Context, params WatchCoreV1NamespacedPodTemplateListParams) (res WatchCoreV1NamespacedPodTemplateListRes, err error) {
 	startTime := time.Now()
@@ -45474,6 +46181,9 @@ func (c *Client) WatchCoreV1NamespacedPodTemplateList(ctx context.Context, param
 }
 
 // WatchCoreV1NamespacedReplicationController invokes watchCoreV1NamespacedReplicationController operation.
+//
+// Watch changes to an object of kind ReplicationController. deprecated: use the 'watch' parameter
+// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}
 func (c *Client) WatchCoreV1NamespacedReplicationController(ctx context.Context, params WatchCoreV1NamespacedReplicationControllerParams) (res WatchCoreV1NamespacedReplicationControllerRes, err error) {
@@ -45707,6 +46417,9 @@ func (c *Client) WatchCoreV1NamespacedReplicationController(ctx context.Context,
 
 // WatchCoreV1NamespacedReplicationControllerList invokes watchCoreV1NamespacedReplicationControllerList operation.
 //
+// Watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers
 func (c *Client) WatchCoreV1NamespacedReplicationControllerList(ctx context.Context, params WatchCoreV1NamespacedReplicationControllerListParams) (res WatchCoreV1NamespacedReplicationControllerListRes, err error) {
 	startTime := time.Now()
@@ -45924,6 +46637,9 @@ func (c *Client) WatchCoreV1NamespacedReplicationControllerList(ctx context.Cont
 }
 
 // WatchCoreV1NamespacedResourceQuota invokes watchCoreV1NamespacedResourceQuota operation.
+//
+// Watch changes to an object of kind ResourceQuota. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/resourcequotas/{name}
 func (c *Client) WatchCoreV1NamespacedResourceQuota(ctx context.Context, params WatchCoreV1NamespacedResourceQuotaParams) (res WatchCoreV1NamespacedResourceQuotaRes, err error) {
@@ -46157,6 +46873,9 @@ func (c *Client) WatchCoreV1NamespacedResourceQuota(ctx context.Context, params 
 
 // WatchCoreV1NamespacedResourceQuotaList invokes watchCoreV1NamespacedResourceQuotaList operation.
 //
+// Watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/resourcequotas
 func (c *Client) WatchCoreV1NamespacedResourceQuotaList(ctx context.Context, params WatchCoreV1NamespacedResourceQuotaListParams) (res WatchCoreV1NamespacedResourceQuotaListRes, err error) {
 	startTime := time.Now()
@@ -46374,6 +47093,9 @@ func (c *Client) WatchCoreV1NamespacedResourceQuotaList(ctx context.Context, par
 }
 
 // WatchCoreV1NamespacedSecret invokes watchCoreV1NamespacedSecret operation.
+//
+// Watch changes to an object of kind Secret. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/secrets/{name}
 func (c *Client) WatchCoreV1NamespacedSecret(ctx context.Context, params WatchCoreV1NamespacedSecretParams) (res WatchCoreV1NamespacedSecretRes, err error) {
@@ -46607,6 +47329,9 @@ func (c *Client) WatchCoreV1NamespacedSecret(ctx context.Context, params WatchCo
 
 // WatchCoreV1NamespacedSecretList invokes watchCoreV1NamespacedSecretList operation.
 //
+// Watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/secrets
 func (c *Client) WatchCoreV1NamespacedSecretList(ctx context.Context, params WatchCoreV1NamespacedSecretListParams) (res WatchCoreV1NamespacedSecretListRes, err error) {
 	startTime := time.Now()
@@ -46824,6 +47549,9 @@ func (c *Client) WatchCoreV1NamespacedSecretList(ctx context.Context, params Wat
 }
 
 // WatchCoreV1NamespacedService invokes watchCoreV1NamespacedService operation.
+//
+// Watch changes to an object of kind Service. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/services/{name}
 func (c *Client) WatchCoreV1NamespacedService(ctx context.Context, params WatchCoreV1NamespacedServiceParams) (res WatchCoreV1NamespacedServiceRes, err error) {
@@ -47057,6 +47785,9 @@ func (c *Client) WatchCoreV1NamespacedService(ctx context.Context, params WatchC
 
 // WatchCoreV1NamespacedServiceAccount invokes watchCoreV1NamespacedServiceAccount operation.
 //
+// Watch changes to an object of kind ServiceAccount. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+//
 // GET /api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}
 func (c *Client) WatchCoreV1NamespacedServiceAccount(ctx context.Context, params WatchCoreV1NamespacedServiceAccountParams) (res WatchCoreV1NamespacedServiceAccountRes, err error) {
 	startTime := time.Now()
@@ -47289,6 +48020,9 @@ func (c *Client) WatchCoreV1NamespacedServiceAccount(ctx context.Context, params
 
 // WatchCoreV1NamespacedServiceAccountList invokes watchCoreV1NamespacedServiceAccountList operation.
 //
+// Watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/serviceaccounts
 func (c *Client) WatchCoreV1NamespacedServiceAccountList(ctx context.Context, params WatchCoreV1NamespacedServiceAccountListParams) (res WatchCoreV1NamespacedServiceAccountListRes, err error) {
 	startTime := time.Now()
@@ -47506,6 +48240,9 @@ func (c *Client) WatchCoreV1NamespacedServiceAccountList(ctx context.Context, pa
 }
 
 // WatchCoreV1NamespacedServiceList invokes watchCoreV1NamespacedServiceList operation.
+//
+// Watch individual changes to a list of Service. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /api/v1/watch/namespaces/{namespace}/services
 func (c *Client) WatchCoreV1NamespacedServiceList(ctx context.Context, params WatchCoreV1NamespacedServiceListParams) (res WatchCoreV1NamespacedServiceListRes, err error) {
@@ -47725,6 +48462,9 @@ func (c *Client) WatchCoreV1NamespacedServiceList(ctx context.Context, params Wa
 
 // WatchCoreV1Node invokes watchCoreV1Node operation.
 //
+// Watch changes to an object of kind Node. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+//
 // GET /api/v1/watch/nodes/{name}
 func (c *Client) WatchCoreV1Node(ctx context.Context, params WatchCoreV1NodeParams) (res WatchCoreV1NodeRes, err error) {
 	startTime := time.Now()
@@ -47942,6 +48682,9 @@ func (c *Client) WatchCoreV1Node(ctx context.Context, params WatchCoreV1NodePara
 
 // WatchCoreV1NodeList invokes watchCoreV1NodeList operation.
 //
+// Watch individual changes to a list of Node. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/nodes
 func (c *Client) WatchCoreV1NodeList(ctx context.Context, params WatchCoreV1NodeListParams) (res WatchCoreV1NodeListRes, err error) {
 	startTime := time.Now()
@@ -48144,6 +48887,9 @@ func (c *Client) WatchCoreV1NodeList(ctx context.Context, params WatchCoreV1Node
 }
 
 // WatchCoreV1PersistentVolume invokes watchCoreV1PersistentVolume operation.
+//
+// Watch changes to an object of kind PersistentVolume. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/persistentvolumes/{name}
 func (c *Client) WatchCoreV1PersistentVolume(ctx context.Context, params WatchCoreV1PersistentVolumeParams) (res WatchCoreV1PersistentVolumeRes, err error) {
@@ -48362,6 +49108,9 @@ func (c *Client) WatchCoreV1PersistentVolume(ctx context.Context, params WatchCo
 
 // WatchCoreV1PersistentVolumeClaimListForAllNamespaces invokes watchCoreV1PersistentVolumeClaimListForAllNamespaces operation.
 //
+// Watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /api/v1/watch/persistentvolumeclaims
 func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx context.Context, params WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams) (res WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -48564,6 +49313,9 @@ func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx contex
 }
 
 // WatchCoreV1PersistentVolumeList invokes watchCoreV1PersistentVolumeList operation.
+//
+// Watch individual changes to a list of PersistentVolume. deprecated: use the 'watch' parameter with
+// a list operation instead.
 //
 // GET /api/v1/watch/persistentvolumes
 func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context, params WatchCoreV1PersistentVolumeListParams) (res WatchCoreV1PersistentVolumeListRes, err error) {
@@ -48768,6 +49520,9 @@ func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context, params Wat
 
 // WatchCoreV1PodListForAllNamespaces invokes watchCoreV1PodListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/pods
 func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context, params WatchCoreV1PodListForAllNamespacesParams) (res WatchCoreV1PodListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -48970,6 +49725,9 @@ func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context, params 
 }
 
 // WatchCoreV1PodTemplateListForAllNamespaces invokes watchCoreV1PodTemplateListForAllNamespaces operation.
+//
+// Watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a
+// list operation instead.
 //
 // GET /api/v1/watch/podtemplates
 func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context, params WatchCoreV1PodTemplateListForAllNamespacesParams) (res WatchCoreV1PodTemplateListForAllNamespacesRes, err error) {
@@ -49174,6 +49932,9 @@ func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context,
 
 // WatchCoreV1ReplicationControllerListForAllNamespaces invokes watchCoreV1ReplicationControllerListForAllNamespaces operation.
 //
+// Watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /api/v1/watch/replicationcontrollers
 func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx context.Context, params WatchCoreV1ReplicationControllerListForAllNamespacesParams) (res WatchCoreV1ReplicationControllerListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -49376,6 +50137,9 @@ func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx contex
 }
 
 // WatchCoreV1ResourceQuotaListForAllNamespaces invokes watchCoreV1ResourceQuotaListForAllNamespaces operation.
+//
+// Watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a
+// list operation instead.
 //
 // GET /api/v1/watch/resourcequotas
 func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Context, params WatchCoreV1ResourceQuotaListForAllNamespacesParams) (res WatchCoreV1ResourceQuotaListForAllNamespacesRes, err error) {
@@ -49580,6 +50344,9 @@ func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Contex
 
 // WatchCoreV1SecretListForAllNamespaces invokes watchCoreV1SecretListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/secrets
 func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context, params WatchCoreV1SecretListForAllNamespacesParams) (res WatchCoreV1SecretListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -49782,6 +50549,9 @@ func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context, para
 }
 
 // WatchCoreV1ServiceAccountListForAllNamespaces invokes watchCoreV1ServiceAccountListForAllNamespaces operation.
+//
+// Watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a
+// list operation instead.
 //
 // GET /api/v1/watch/serviceaccounts
 func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Context, params WatchCoreV1ServiceAccountListForAllNamespacesParams) (res WatchCoreV1ServiceAccountListForAllNamespacesRes, err error) {
@@ -49986,6 +50756,9 @@ func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Conte
 
 // WatchCoreV1ServiceListForAllNamespaces invokes watchCoreV1ServiceListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Service. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/services
 func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context, params WatchCoreV1ServiceListForAllNamespacesParams) (res WatchCoreV1ServiceListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -50189,6 +50962,9 @@ func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context, par
 
 // WatchDiscoveryV1EndpointSliceListForAllNamespaces invokes watchDiscoveryV1EndpointSliceListForAllNamespaces operation.
 //
+// Watch individual changes to a list of EndpointSlice. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/discovery.k8s.io/v1/watch/endpointslices
 func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.Context, params WatchDiscoveryV1EndpointSliceListForAllNamespacesParams) (res WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -50391,6 +51167,9 @@ func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.C
 }
 
 // WatchDiscoveryV1NamespacedEndpointSlice invokes watchDiscoveryV1NamespacedEndpointSlice operation.
+//
+// Watch changes to an object of kind EndpointSlice. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}
 func (c *Client) WatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params WatchDiscoveryV1NamespacedEndpointSliceParams) (res WatchDiscoveryV1NamespacedEndpointSliceRes, err error) {
@@ -50624,6 +51403,9 @@ func (c *Client) WatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, pa
 
 // WatchDiscoveryV1NamespacedEndpointSliceList invokes watchDiscoveryV1NamespacedEndpointSliceList operation.
 //
+// Watch individual changes to a list of EndpointSlice. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices
 func (c *Client) WatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Context, params WatchDiscoveryV1NamespacedEndpointSliceListParams) (res WatchDiscoveryV1NamespacedEndpointSliceListRes, err error) {
 	startTime := time.Now()
@@ -50842,6 +51624,9 @@ func (c *Client) WatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Context
 
 // WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces invokes watchDiscoveryV1beta1EndpointSliceListForAllNamespaces operation.
 //
+// Watch individual changes to a list of EndpointSlice. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/discovery.k8s.io/v1beta1/watch/endpointslices
 func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx context.Context, params WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams) (res WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -51044,6 +51829,9 @@ func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx cont
 }
 
 // WatchDiscoveryV1beta1NamespacedEndpointSlice invokes watchDiscoveryV1beta1NamespacedEndpointSlice operation.
+//
+// Watch changes to an object of kind EndpointSlice. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}
 func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params WatchDiscoveryV1beta1NamespacedEndpointSliceParams) (res WatchDiscoveryV1beta1NamespacedEndpointSliceRes, err error) {
@@ -51277,6 +52065,9 @@ func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Contex
 
 // WatchDiscoveryV1beta1NamespacedEndpointSliceList invokes watchDiscoveryV1beta1NamespacedEndpointSliceList operation.
 //
+// Watch individual changes to a list of EndpointSlice. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices
 func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx context.Context, params WatchDiscoveryV1beta1NamespacedEndpointSliceListParams) (res WatchDiscoveryV1beta1NamespacedEndpointSliceListRes, err error) {
 	startTime := time.Now()
@@ -51495,6 +52286,9 @@ func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx context.Co
 
 // WatchEventsV1EventListForAllNamespaces invokes watchEventsV1EventListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/events.k8s.io/v1/watch/events
 func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context, params WatchEventsV1EventListForAllNamespacesParams) (res WatchEventsV1EventListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -51697,6 +52491,9 @@ func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context, par
 }
 
 // WatchEventsV1NamespacedEvent invokes watchEventsV1NamespacedEvent operation.
+//
+// Watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}
 func (c *Client) WatchEventsV1NamespacedEvent(ctx context.Context, params WatchEventsV1NamespacedEventParams) (res WatchEventsV1NamespacedEventRes, err error) {
@@ -51930,6 +52727,9 @@ func (c *Client) WatchEventsV1NamespacedEvent(ctx context.Context, params WatchE
 
 // WatchEventsV1NamespacedEventList invokes watchEventsV1NamespacedEventList operation.
 //
+// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events
 func (c *Client) WatchEventsV1NamespacedEventList(ctx context.Context, params WatchEventsV1NamespacedEventListParams) (res WatchEventsV1NamespacedEventListRes, err error) {
 	startTime := time.Now()
@@ -52148,6 +52948,9 @@ func (c *Client) WatchEventsV1NamespacedEventList(ctx context.Context, params Wa
 
 // WatchEventsV1beta1EventListForAllNamespaces invokes watchEventsV1beta1EventListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/events.k8s.io/v1beta1/watch/events
 func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context, params WatchEventsV1beta1EventListForAllNamespacesParams) (res WatchEventsV1beta1EventListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -52350,6 +53153,9 @@ func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context
 }
 
 // WatchEventsV1beta1NamespacedEvent invokes watchEventsV1beta1NamespacedEvent operation.
+//
+// Watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}
 func (c *Client) WatchEventsV1beta1NamespacedEvent(ctx context.Context, params WatchEventsV1beta1NamespacedEventParams) (res WatchEventsV1beta1NamespacedEventRes, err error) {
@@ -52583,6 +53389,9 @@ func (c *Client) WatchEventsV1beta1NamespacedEvent(ctx context.Context, params W
 
 // WatchEventsV1beta1NamespacedEventList invokes watchEventsV1beta1NamespacedEventList operation.
 //
+// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events
 func (c *Client) WatchEventsV1beta1NamespacedEventList(ctx context.Context, params WatchEventsV1beta1NamespacedEventListParams) (res WatchEventsV1beta1NamespacedEventListRes, err error) {
 	startTime := time.Now()
@@ -52801,6 +53610,9 @@ func (c *Client) WatchEventsV1beta1NamespacedEventList(ctx context.Context, para
 
 // WatchFlowcontrolApiserverV1beta1FlowSchema invokes watchFlowcontrolApiserverV1beta1FlowSchema operation.
 //
+// Watch changes to an object of kind FlowSchema. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}
 func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params WatchFlowcontrolApiserverV1beta1FlowSchemaParams) (res WatchFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	startTime := time.Now()
@@ -53018,6 +53830,9 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context,
 
 // WatchFlowcontrolApiserverV1beta1FlowSchemaList invokes watchFlowcontrolApiserverV1beta1FlowSchemaList operation.
 //
+// Watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas
 func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Context, params WatchFlowcontrolApiserverV1beta1FlowSchemaListParams) (res WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, err error) {
 	startTime := time.Now()
@@ -53220,6 +54035,10 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Cont
 }
 
 // WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration invokes watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+//
+// Watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch'
+// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+// parameter.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}
 func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
@@ -53438,6 +54257,9 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx 
 
 // WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList invokes watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList operation.
 //
+// Watch individual changes to a list of PriorityLevelConfiguration. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations
 func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx context.Context, params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, err error) {
 	startTime := time.Now()
@@ -53640,6 +54462,9 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(
 }
 
 // WatchFlowcontrolApiserverV1beta2FlowSchema invokes watchFlowcontrolApiserverV1beta2FlowSchema operation.
+//
+// Watch changes to an object of kind FlowSchema. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}
 func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params WatchFlowcontrolApiserverV1beta2FlowSchemaParams) (res WatchFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
@@ -53858,6 +54683,9 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context,
 
 // WatchFlowcontrolApiserverV1beta2FlowSchemaList invokes watchFlowcontrolApiserverV1beta2FlowSchemaList operation.
 //
+// Watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas
 func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Context, params WatchFlowcontrolApiserverV1beta2FlowSchemaListParams) (res WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, err error) {
 	startTime := time.Now()
@@ -54060,6 +54888,10 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Cont
 }
 
 // WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration invokes watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+//
+// Watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch'
+// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+// parameter.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}
 func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
@@ -54278,6 +55110,9 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx 
 
 // WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList invokes watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList operation.
 //
+// Watch individual changes to a list of PriorityLevelConfiguration. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations
 func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx context.Context, params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, err error) {
 	startTime := time.Now()
@@ -54480,6 +55315,9 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(
 }
 
 // WatchInternalApiserverV1alpha1StorageVersion invokes watchInternalApiserverV1alpha1StorageVersion operation.
+//
+// Watch changes to an object of kind StorageVersion. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}
 func (c *Client) WatchInternalApiserverV1alpha1StorageVersion(ctx context.Context, params WatchInternalApiserverV1alpha1StorageVersionParams) (res WatchInternalApiserverV1alpha1StorageVersionRes, err error) {
@@ -54698,6 +55536,9 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersion(ctx context.Contex
 
 // WatchInternalApiserverV1alpha1StorageVersionList invokes watchInternalApiserverV1alpha1StorageVersionList operation.
 //
+// Watch individual changes to a list of StorageVersion. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions
 func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Context, params WatchInternalApiserverV1alpha1StorageVersionListParams) (res WatchInternalApiserverV1alpha1StorageVersionListRes, err error) {
 	startTime := time.Now()
@@ -54900,6 +55741,9 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Co
 }
 
 // WatchNetworkingV1IngressClass invokes watchNetworkingV1IngressClass operation.
+//
+// Watch changes to an object of kind IngressClass. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/networking.k8s.io/v1/watch/ingressclasses/{name}
 func (c *Client) WatchNetworkingV1IngressClass(ctx context.Context, params WatchNetworkingV1IngressClassParams) (res WatchNetworkingV1IngressClassRes, err error) {
@@ -55118,6 +55962,9 @@ func (c *Client) WatchNetworkingV1IngressClass(ctx context.Context, params Watch
 
 // WatchNetworkingV1IngressClassList invokes watchNetworkingV1IngressClassList operation.
 //
+// Watch individual changes to a list of IngressClass. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/networking.k8s.io/v1/watch/ingressclasses
 func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context, params WatchNetworkingV1IngressClassListParams) (res WatchNetworkingV1IngressClassListRes, err error) {
 	startTime := time.Now()
@@ -55321,6 +56168,9 @@ func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context, params W
 
 // WatchNetworkingV1IngressListForAllNamespaces invokes watchNetworkingV1IngressListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/networking.k8s.io/v1/watch/ingresses
 func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Context, params WatchNetworkingV1IngressListForAllNamespacesParams) (res WatchNetworkingV1IngressListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -55523,6 +56373,9 @@ func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Contex
 }
 
 // WatchNetworkingV1NamespacedIngress invokes watchNetworkingV1NamespacedIngress operation.
+//
+// Watch changes to an object of kind Ingress. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}
 func (c *Client) WatchNetworkingV1NamespacedIngress(ctx context.Context, params WatchNetworkingV1NamespacedIngressParams) (res WatchNetworkingV1NamespacedIngressRes, err error) {
@@ -55756,6 +56609,9 @@ func (c *Client) WatchNetworkingV1NamespacedIngress(ctx context.Context, params 
 
 // WatchNetworkingV1NamespacedIngressList invokes watchNetworkingV1NamespacedIngressList operation.
 //
+// Watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses
 func (c *Client) WatchNetworkingV1NamespacedIngressList(ctx context.Context, params WatchNetworkingV1NamespacedIngressListParams) (res WatchNetworkingV1NamespacedIngressListRes, err error) {
 	startTime := time.Now()
@@ -55973,6 +56829,9 @@ func (c *Client) WatchNetworkingV1NamespacedIngressList(ctx context.Context, par
 }
 
 // WatchNetworkingV1NamespacedNetworkPolicy invokes watchNetworkingV1NamespacedNetworkPolicy operation.
+//
+// Watch changes to an object of kind NetworkPolicy. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}
 func (c *Client) WatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params WatchNetworkingV1NamespacedNetworkPolicyParams) (res WatchNetworkingV1NamespacedNetworkPolicyRes, err error) {
@@ -56206,6 +57065,9 @@ func (c *Client) WatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, p
 
 // WatchNetworkingV1NamespacedNetworkPolicyList invokes watchNetworkingV1NamespacedNetworkPolicyList operation.
 //
+// Watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies
 func (c *Client) WatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Context, params WatchNetworkingV1NamespacedNetworkPolicyListParams) (res WatchNetworkingV1NamespacedNetworkPolicyListRes, err error) {
 	startTime := time.Now()
@@ -56424,6 +57286,9 @@ func (c *Client) WatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Contex
 
 // WatchNetworkingV1NetworkPolicyListForAllNamespaces invokes watchNetworkingV1NetworkPolicyListForAllNamespaces operation.
 //
+// Watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/networking.k8s.io/v1/watch/networkpolicies
 func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.Context, params WatchNetworkingV1NetworkPolicyListForAllNamespacesParams) (res WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -56626,6 +57491,9 @@ func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.
 }
 
 // WatchNodeV1RuntimeClass invokes watchNodeV1RuntimeClass operation.
+//
+// Watch changes to an object of kind RuntimeClass. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/node.k8s.io/v1/watch/runtimeclasses/{name}
 func (c *Client) WatchNodeV1RuntimeClass(ctx context.Context, params WatchNodeV1RuntimeClassParams) (res WatchNodeV1RuntimeClassRes, err error) {
@@ -56844,6 +57712,9 @@ func (c *Client) WatchNodeV1RuntimeClass(ctx context.Context, params WatchNodeV1
 
 // WatchNodeV1RuntimeClassList invokes watchNodeV1RuntimeClassList operation.
 //
+// Watch individual changes to a list of RuntimeClass. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/node.k8s.io/v1/watch/runtimeclasses
 func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context, params WatchNodeV1RuntimeClassListParams) (res WatchNodeV1RuntimeClassListRes, err error) {
 	startTime := time.Now()
@@ -57046,6 +57917,9 @@ func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context, params WatchNo
 }
 
 // WatchNodeV1alpha1RuntimeClass invokes watchNodeV1alpha1RuntimeClass operation.
+//
+// Watch changes to an object of kind RuntimeClass. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}
 func (c *Client) WatchNodeV1alpha1RuntimeClass(ctx context.Context, params WatchNodeV1alpha1RuntimeClassParams) (res WatchNodeV1alpha1RuntimeClassRes, err error) {
@@ -57264,6 +58138,9 @@ func (c *Client) WatchNodeV1alpha1RuntimeClass(ctx context.Context, params Watch
 
 // WatchNodeV1alpha1RuntimeClassList invokes watchNodeV1alpha1RuntimeClassList operation.
 //
+// Watch individual changes to a list of RuntimeClass. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses
 func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context, params WatchNodeV1alpha1RuntimeClassListParams) (res WatchNodeV1alpha1RuntimeClassListRes, err error) {
 	startTime := time.Now()
@@ -57466,6 +58343,9 @@ func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context, params W
 }
 
 // WatchNodeV1beta1RuntimeClass invokes watchNodeV1beta1RuntimeClass operation.
+//
+// Watch changes to an object of kind RuntimeClass. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}
 func (c *Client) WatchNodeV1beta1RuntimeClass(ctx context.Context, params WatchNodeV1beta1RuntimeClassParams) (res WatchNodeV1beta1RuntimeClassRes, err error) {
@@ -57684,6 +58564,9 @@ func (c *Client) WatchNodeV1beta1RuntimeClass(ctx context.Context, params WatchN
 
 // WatchNodeV1beta1RuntimeClassList invokes watchNodeV1beta1RuntimeClassList operation.
 //
+// Watch individual changes to a list of RuntimeClass. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses
 func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context, params WatchNodeV1beta1RuntimeClassListParams) (res WatchNodeV1beta1RuntimeClassListRes, err error) {
 	startTime := time.Now()
@@ -57886,6 +58769,9 @@ func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context, params Wa
 }
 
 // WatchPolicyV1NamespacedPodDisruptionBudget invokes watchPolicyV1NamespacedPodDisruptionBudget operation.
+//
+// Watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with
+// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params WatchPolicyV1NamespacedPodDisruptionBudgetParams) (res WatchPolicyV1NamespacedPodDisruptionBudgetRes, err error) {
@@ -58119,6 +59005,9 @@ func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context,
 
 // WatchPolicyV1NamespacedPodDisruptionBudgetList invokes watchPolicyV1NamespacedPodDisruptionBudgetList operation.
 //
+// Watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets
 func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.Context, params WatchPolicyV1NamespacedPodDisruptionBudgetListParams) (res WatchPolicyV1NamespacedPodDisruptionBudgetListRes, err error) {
 	startTime := time.Now()
@@ -58337,6 +59226,9 @@ func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.Cont
 
 // WatchPolicyV1PodDisruptionBudgetListForAllNamespaces invokes watchPolicyV1PodDisruptionBudgetListForAllNamespaces operation.
 //
+// Watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/policy/v1/watch/poddisruptionbudgets
 func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx context.Context, params WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams) (res WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -58539,6 +59431,9 @@ func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx contex
 }
 
 // WatchPolicyV1beta1NamespacedPodDisruptionBudget invokes watchPolicyV1beta1NamespacedPodDisruptionBudget operation.
+//
+// Watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with
+// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams) (res WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes, err error) {
@@ -58772,6 +59667,9 @@ func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Con
 
 // WatchPolicyV1beta1NamespacedPodDisruptionBudgetList invokes watchPolicyV1beta1NamespacedPodDisruptionBudgetList operation.
 //
+// Watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets
 func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx context.Context, params WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams) (res WatchPolicyV1beta1NamespacedPodDisruptionBudgetListRes, err error) {
 	startTime := time.Now()
@@ -58990,6 +59888,9 @@ func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx context
 
 // WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces invokes watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces operation.
 //
+// Watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/policy/v1beta1/watch/poddisruptionbudgets
 func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx context.Context, params WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams) (res WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -59192,6 +60093,9 @@ func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx c
 }
 
 // WatchPolicyV1beta1PodSecurityPolicy invokes watchPolicyV1beta1PodSecurityPolicy operation.
+//
+// Watch changes to an object of kind PodSecurityPolicy. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/policy/v1beta1/watch/podsecuritypolicies/{name}
 func (c *Client) WatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, params WatchPolicyV1beta1PodSecurityPolicyParams) (res WatchPolicyV1beta1PodSecurityPolicyRes, err error) {
@@ -59410,6 +60314,9 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, params
 
 // WatchPolicyV1beta1PodSecurityPolicyList invokes watchPolicyV1beta1PodSecurityPolicyList operation.
 //
+// Watch individual changes to a list of PodSecurityPolicy. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/policy/v1beta1/watch/podsecuritypolicies
 func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context, params WatchPolicyV1beta1PodSecurityPolicyListParams) (res WatchPolicyV1beta1PodSecurityPolicyListRes, err error) {
 	startTime := time.Now()
@@ -59612,6 +60519,9 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context, pa
 }
 
 // WatchRbacAuthorizationV1ClusterRole invokes watchRbacAuthorizationV1ClusterRole operation.
+//
+// Watch changes to an object of kind ClusterRole. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}
 func (c *Client) WatchRbacAuthorizationV1ClusterRole(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleParams) (res WatchRbacAuthorizationV1ClusterRoleRes, err error) {
@@ -59830,6 +60740,9 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRole(ctx context.Context, params
 
 // WatchRbacAuthorizationV1ClusterRoleBinding invokes watchRbacAuthorizationV1ClusterRoleBinding operation.
 //
+// Watch changes to an object of kind ClusterRoleBinding. deprecated: use the 'watch' parameter with
+// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}
 func (c *Client) WatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleBindingParams) (res WatchRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	startTime := time.Now()
@@ -60047,6 +60960,9 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context,
 
 // WatchRbacAuthorizationV1ClusterRoleBindingList invokes watchRbacAuthorizationV1ClusterRoleBindingList operation.
 //
+// Watch individual changes to a list of ClusterRoleBinding. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings
 func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleBindingListParams) (res WatchRbacAuthorizationV1ClusterRoleBindingListRes, err error) {
 	startTime := time.Now()
@@ -60250,6 +61166,9 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Cont
 
 // WatchRbacAuthorizationV1ClusterRoleList invokes watchRbacAuthorizationV1ClusterRoleList operation.
 //
+// Watch individual changes to a list of ClusterRole. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles
 func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleListParams) (res WatchRbacAuthorizationV1ClusterRoleListRes, err error) {
 	startTime := time.Now()
@@ -60452,6 +61371,9 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context, pa
 }
 
 // WatchRbacAuthorizationV1NamespacedRole invokes watchRbacAuthorizationV1NamespacedRole operation.
+//
+// Watch changes to an object of kind Role. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}
 func (c *Client) WatchRbacAuthorizationV1NamespacedRole(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleParams) (res WatchRbacAuthorizationV1NamespacedRoleRes, err error) {
@@ -60685,6 +61607,9 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRole(ctx context.Context, par
 
 // WatchRbacAuthorizationV1NamespacedRoleBinding invokes watchRbacAuthorizationV1NamespacedRoleBinding operation.
 //
+// Watch changes to an object of kind RoleBinding. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}
 func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleBindingParams) (res WatchRbacAuthorizationV1NamespacedRoleBindingRes, err error) {
 	startTime := time.Now()
@@ -60917,6 +61842,9 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Conte
 
 // WatchRbacAuthorizationV1NamespacedRoleBindingList invokes watchRbacAuthorizationV1NamespacedRoleBindingList operation.
 //
+// Watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings
 func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleBindingListParams) (res WatchRbacAuthorizationV1NamespacedRoleBindingListRes, err error) {
 	startTime := time.Now()
@@ -61134,6 +62062,9 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx context.C
 }
 
 // WatchRbacAuthorizationV1NamespacedRoleList invokes watchRbacAuthorizationV1NamespacedRoleList operation.
+//
+// Watch individual changes to a list of Role. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles
 func (c *Client) WatchRbacAuthorizationV1NamespacedRoleList(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleListParams) (res WatchRbacAuthorizationV1NamespacedRoleListRes, err error) {
@@ -61353,6 +62284,9 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleList(ctx context.Context,
 
 // WatchRbacAuthorizationV1RoleBindingListForAllNamespaces invokes watchRbacAuthorizationV1RoleBindingListForAllNamespaces operation.
 //
+// Watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/watch/rolebindings
 func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx context.Context, params WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams) (res WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -61556,6 +62490,9 @@ func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx con
 
 // WatchRbacAuthorizationV1RoleListForAllNamespaces invokes watchRbacAuthorizationV1RoleListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Role. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/watch/roles
 func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Context, params WatchRbacAuthorizationV1RoleListForAllNamespacesParams) (res WatchRbacAuthorizationV1RoleListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -61758,6 +62695,9 @@ func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Co
 }
 
 // WatchSchedulingV1PriorityClass invokes watchSchedulingV1PriorityClass operation.
+//
+// Watch changes to an object of kind PriorityClass. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}
 func (c *Client) WatchSchedulingV1PriorityClass(ctx context.Context, params WatchSchedulingV1PriorityClassParams) (res WatchSchedulingV1PriorityClassRes, err error) {
@@ -61976,6 +62916,9 @@ func (c *Client) WatchSchedulingV1PriorityClass(ctx context.Context, params Watc
 
 // WatchSchedulingV1PriorityClassList invokes watchSchedulingV1PriorityClassList operation.
 //
+// Watch individual changes to a list of PriorityClass. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/scheduling.k8s.io/v1/watch/priorityclasses
 func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context, params WatchSchedulingV1PriorityClassListParams) (res WatchSchedulingV1PriorityClassListRes, err error) {
 	startTime := time.Now()
@@ -62178,6 +63121,9 @@ func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context, params 
 }
 
 // WatchStorageV1CSIDriver invokes watchStorageV1CSIDriver operation.
+//
+// Watch changes to an object of kind CSIDriver. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1/watch/csidrivers/{name}
 func (c *Client) WatchStorageV1CSIDriver(ctx context.Context, params WatchStorageV1CSIDriverParams) (res WatchStorageV1CSIDriverRes, err error) {
@@ -62396,6 +63342,9 @@ func (c *Client) WatchStorageV1CSIDriver(ctx context.Context, params WatchStorag
 
 // WatchStorageV1CSIDriverList invokes watchStorageV1CSIDriverList operation.
 //
+// Watch individual changes to a list of CSIDriver. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/storage.k8s.io/v1/watch/csidrivers
 func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context, params WatchStorageV1CSIDriverListParams) (res WatchStorageV1CSIDriverListRes, err error) {
 	startTime := time.Now()
@@ -62598,6 +63547,9 @@ func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context, params WatchSt
 }
 
 // WatchStorageV1CSINode invokes watchStorageV1CSINode operation.
+//
+// Watch changes to an object of kind CSINode. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1/watch/csinodes/{name}
 func (c *Client) WatchStorageV1CSINode(ctx context.Context, params WatchStorageV1CSINodeParams) (res WatchStorageV1CSINodeRes, err error) {
@@ -62816,6 +63768,9 @@ func (c *Client) WatchStorageV1CSINode(ctx context.Context, params WatchStorageV
 
 // WatchStorageV1CSINodeList invokes watchStorageV1CSINodeList operation.
 //
+// Watch individual changes to a list of CSINode. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/storage.k8s.io/v1/watch/csinodes
 func (c *Client) WatchStorageV1CSINodeList(ctx context.Context, params WatchStorageV1CSINodeListParams) (res WatchStorageV1CSINodeListRes, err error) {
 	startTime := time.Now()
@@ -63018,6 +63973,9 @@ func (c *Client) WatchStorageV1CSINodeList(ctx context.Context, params WatchStor
 }
 
 // WatchStorageV1StorageClass invokes watchStorageV1StorageClass operation.
+//
+// Watch changes to an object of kind StorageClass. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1/watch/storageclasses/{name}
 func (c *Client) WatchStorageV1StorageClass(ctx context.Context, params WatchStorageV1StorageClassParams) (res WatchStorageV1StorageClassRes, err error) {
@@ -63236,6 +64194,9 @@ func (c *Client) WatchStorageV1StorageClass(ctx context.Context, params WatchSto
 
 // WatchStorageV1StorageClassList invokes watchStorageV1StorageClassList operation.
 //
+// Watch individual changes to a list of StorageClass. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/storage.k8s.io/v1/watch/storageclasses
 func (c *Client) WatchStorageV1StorageClassList(ctx context.Context, params WatchStorageV1StorageClassListParams) (res WatchStorageV1StorageClassListRes, err error) {
 	startTime := time.Now()
@@ -63438,6 +64399,9 @@ func (c *Client) WatchStorageV1StorageClassList(ctx context.Context, params Watc
 }
 
 // WatchStorageV1VolumeAttachment invokes watchStorageV1VolumeAttachment operation.
+//
+// Watch changes to an object of kind VolumeAttachment. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1/watch/volumeattachments/{name}
 func (c *Client) WatchStorageV1VolumeAttachment(ctx context.Context, params WatchStorageV1VolumeAttachmentParams) (res WatchStorageV1VolumeAttachmentRes, err error) {
@@ -63656,6 +64620,9 @@ func (c *Client) WatchStorageV1VolumeAttachment(ctx context.Context, params Watc
 
 // WatchStorageV1VolumeAttachmentList invokes watchStorageV1VolumeAttachmentList operation.
 //
+// Watch individual changes to a list of VolumeAttachment. deprecated: use the 'watch' parameter with
+// a list operation instead.
+//
 // GET /apis/storage.k8s.io/v1/watch/volumeattachments
 func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context, params WatchStorageV1VolumeAttachmentListParams) (res WatchStorageV1VolumeAttachmentListRes, err error) {
 	startTime := time.Now()
@@ -63859,6 +64826,9 @@ func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context, params 
 
 // WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces invokes watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces operation.
 //
+// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities
 func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx context.Context, params WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams) (res WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -64061,6 +65031,9 @@ func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx 
 }
 
 // WatchStorageV1alpha1NamespacedCSIStorageCapacity invokes watchStorageV1alpha1NamespacedCSIStorageCapacity operation.
+//
+// Watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watch' parameter with
+// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params WatchStorageV1alpha1NamespacedCSIStorageCapacityParams) (res WatchStorageV1alpha1NamespacedCSIStorageCapacityRes, err error) {
@@ -64294,6 +65267,9 @@ func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Co
 
 // WatchStorageV1alpha1NamespacedCSIStorageCapacityList invokes watchStorageV1alpha1NamespacedCSIStorageCapacityList operation.
 //
+// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities
 func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx context.Context, params WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams) (res WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes, err error) {
 	startTime := time.Now()
@@ -64512,6 +65488,9 @@ func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx contex
 
 // WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces invokes watchStorageV1beta1CSIStorageCapacityListForAllNamespaces operation.
 //
+// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/storage.k8s.io/v1beta1/watch/csistoragecapacities
 func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx context.Context, params WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams) (res WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, err error) {
 	startTime := time.Now()
@@ -64714,6 +65693,9 @@ func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx c
 }
 
 // WatchStorageV1beta1NamespacedCSIStorageCapacity invokes watchStorageV1beta1NamespacedCSIStorageCapacity operation.
+//
+// Watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watch' parameter with
+// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params WatchStorageV1beta1NamespacedCSIStorageCapacityParams) (res WatchStorageV1beta1NamespacedCSIStorageCapacityRes, err error) {
@@ -64946,6 +65928,9 @@ func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Con
 }
 
 // WatchStorageV1beta1NamespacedCSIStorageCapacityList invokes watchStorageV1beta1NamespacedCSIStorageCapacityList operation.
+//
+// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
+// with a list operation instead.
 //
 // GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities
 func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx context.Context, params WatchStorageV1beta1NamespacedCSIStorageCapacityListParams) (res WatchStorageV1beta1NamespacedCSIStorageCapacityListRes, err error) {

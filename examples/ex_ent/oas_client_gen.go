@@ -97,6 +97,8 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 
 // CreatePet invokes createPet operation.
 //
+// Creates a new Pet and persists it to storage.
+//
 // POST /pets
 func (c *Client) CreatePet(ctx context.Context, request CreatePetReq) (res CreatePetRes, err error) {
 	startTime := time.Now()
@@ -150,6 +152,8 @@ func (c *Client) CreatePet(ctx context.Context, request CreatePetReq) (res Creat
 }
 
 // CreatePetCategories invokes createPetCategories operation.
+//
+// Creates a new Category and attaches it to the Pet.
 //
 // POST /pets/{id}/categories
 func (c *Client) CreatePetCategories(ctx context.Context, request CreatePetCategoriesReq, params CreatePetCategoriesParams) (res CreatePetCategoriesRes, err error) {
@@ -220,6 +224,8 @@ func (c *Client) CreatePetCategories(ctx context.Context, request CreatePetCateg
 
 // CreatePetFriends invokes createPetFriends operation.
 //
+// Creates a new Pet and attaches it to the Pet.
+//
 // POST /pets/{id}/friends
 func (c *Client) CreatePetFriends(ctx context.Context, request CreatePetFriendsReq, params CreatePetFriendsParams) (res CreatePetFriendsRes, err error) {
 	startTime := time.Now()
@@ -288,6 +294,8 @@ func (c *Client) CreatePetFriends(ctx context.Context, request CreatePetFriendsR
 }
 
 // CreatePetOwner invokes createPetOwner operation.
+//
+// Creates a new User and attaches it to the Pet.
 //
 // POST /pets/{id}/owner
 func (c *Client) CreatePetOwner(ctx context.Context, request CreatePetOwnerReq, params CreatePetOwnerParams) (res CreatePetOwnerRes, err error) {
@@ -358,6 +366,8 @@ func (c *Client) CreatePetOwner(ctx context.Context, request CreatePetOwnerReq, 
 
 // DeletePet invokes deletePet operation.
 //
+// Deletes the Pet with the requested ID.
+//
 // DELETE /pets/{id}
 func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res DeletePetRes, err error) {
 	startTime := time.Now()
@@ -411,6 +421,8 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 }
 
 // DeletePetOwner invokes deletePetOwner operation.
+//
+// Delete the attached Owner of the Pet with the given ID.
 //
 // DELETE /pets/{id}/owner
 func (c *Client) DeletePetOwner(ctx context.Context, params DeletePetOwnerParams) (res DeletePetOwnerRes, err error) {
@@ -466,6 +478,8 @@ func (c *Client) DeletePetOwner(ctx context.Context, params DeletePetOwnerParams
 }
 
 // ListPet invokes listPet operation.
+//
+// List Pets.
 //
 // GET /pets
 func (c *Client) ListPet(ctx context.Context, params ListPetParams) (res ListPetRes, err error) {
@@ -541,6 +555,8 @@ func (c *Client) ListPet(ctx context.Context, params ListPetParams) (res ListPet
 }
 
 // ListPetCategories invokes listPetCategories operation.
+//
+// List attached Categories.
 //
 // GET /pets/{id}/categories
 func (c *Client) ListPetCategories(ctx context.Context, params ListPetCategoriesParams) (res ListPetCategoriesRes, err error) {
@@ -632,6 +648,8 @@ func (c *Client) ListPetCategories(ctx context.Context, params ListPetCategories
 
 // ListPetFriends invokes listPetFriends operation.
 //
+// List attached Friends.
+//
 // GET /pets/{id}/friends
 func (c *Client) ListPetFriends(ctx context.Context, params ListPetFriendsParams) (res ListPetFriendsRes, err error) {
 	startTime := time.Now()
@@ -722,6 +740,8 @@ func (c *Client) ListPetFriends(ctx context.Context, params ListPetFriendsParams
 
 // ReadPet invokes readPet operation.
 //
+// Finds the Pet with the requested ID and returns it.
+//
 // GET /pets/{id}
 func (c *Client) ReadPet(ctx context.Context, params ReadPetParams) (res ReadPetRes, err error) {
 	startTime := time.Now()
@@ -775,6 +795,8 @@ func (c *Client) ReadPet(ctx context.Context, params ReadPetParams) (res ReadPet
 }
 
 // ReadPetOwner invokes readPetOwner operation.
+//
+// Find the attached User of the Pet with the given ID.
 //
 // GET /pets/{id}/owner
 func (c *Client) ReadPetOwner(ctx context.Context, params ReadPetOwnerParams) (res ReadPetOwnerRes, err error) {
@@ -830,6 +852,8 @@ func (c *Client) ReadPetOwner(ctx context.Context, params ReadPetOwnerParams) (r
 }
 
 // UpdatePet invokes updatePet operation.
+//
+// Updates a Pet and persists changes to storage.
 //
 // PATCH /pets/{id}
 func (c *Client) UpdatePet(ctx context.Context, request UpdatePetReq, params UpdatePetParams) (res UpdatePetRes, err error) {

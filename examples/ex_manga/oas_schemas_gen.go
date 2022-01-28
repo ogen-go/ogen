@@ -132,8 +132,10 @@ func (*GetPageThumbnailImageOKImage) getPageThumbnailImageRes() {}
 // Ref: #/components/schemas/Image
 type Image struct {
 	T OptString `json:"t"`
-	W OptInt    `json:"w"`
-	H OptInt    `json:"h"`
+	// Width of image.
+	W OptInt `json:"w"`
+	// Height of image.
+	H OptInt `json:"h"`
 }
 
 // Ref: #/components/schemas/Images
@@ -439,9 +441,11 @@ func (SearchOKApplicationJSON) searchRes() {}
 
 // Ref: #/components/schemas/SearchResponse
 type SearchResponse struct {
-	Result   []Book `json:"result"`
+	Result []Book `json:"result"`
+	// Total number of pages.
 	NumPages OptInt `json:"num_pages"`
-	PerPage  OptInt `json:"per_page"`
+	// Elements on one page.
+	PerPage OptInt `json:"per_page"`
 }
 
 // Ref: #/components/schemas/Tag
