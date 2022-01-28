@@ -4,6 +4,7 @@
 {{- if $.Doc -}}
 // {{ $.Doc }}
 {{- end }}
+{{- template "godoc" $.GoDoc }}
 {{- if $.Schema }}
 	{{- if $.Schema.Ref }}
 	// Ref: {{ $.Schema.Ref }}

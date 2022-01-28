@@ -79,12 +79,13 @@ func (p *parser) parseParameter(param *ogen.Parameter) (*oas.Parameter, error) {
 	}
 
 	return &oas.Parameter{
-		Name:     param.Name,
-		In:       locatedIn,
-		Schema:   schema,
-		Style:    style,
-		Explode:  paramExplode(locatedIn, param.Explode),
-		Required: param.Required,
+		Name:        param.Name,
+		Description: param.Description,
+		In:          locatedIn,
+		Schema:      schema,
+		Style:       style,
+		Explode:     paramExplode(locatedIn, param.Explode),
+		Required:    param.Required,
 	}, nil
 }
 

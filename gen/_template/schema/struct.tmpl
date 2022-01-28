@@ -5,6 +5,7 @@
 {{- else }}
 	type {{ $.Name }} struct {
 	{{- range $f := $.Fields }}
+		{{- template "godoc" $f.GoDoc }}
 		{{ $f.Name }} {{ $f.Type.Go }} {{ if $f.Tag.JSON }}`json:"{{ $f.Tag.JSON }}"`{{ end }}
 	{{- end }}
 	}

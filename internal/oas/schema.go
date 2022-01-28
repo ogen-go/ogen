@@ -61,7 +61,8 @@ type Schema struct {
 
 // Property is an OpenAPI JSON Schema Object property.
 type Property struct {
-	Name     string  // Property name.
-	Schema   *Schema // Property schema.
-	Required bool    // Whether the field is required or not.
+	Name        string  // Property name.
+	Description string  // Property description.
+	Schema      *Schema // Property schema.
+	Required    bool    // Whether the field is required or not.
 }

@@ -38,6 +38,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 {{ range $op := $.Operations }}
 // {{ $op.Name }} invokes {{ $op.Spec.OperationID }} operation.
 //
+{{- template "godoc_def" $op.GoDoc }}
 // {{ $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
 func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, request {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Response.Type.Go }}, err error) {
 	{{- if $op.Request }}{{/* Request validation */}}

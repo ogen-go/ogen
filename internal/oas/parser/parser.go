@@ -74,6 +74,7 @@ func (p *parser) parse() error {
 func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParams []*oas.Parameter) (_ *oas.Operation, err error) {
 	op := &oas.Operation{
 		OperationID: spec.OperationID,
+		Description: spec.Description,
 		HTTPMethod:  strings.ToUpper(httpMethod),
 	}
 

@@ -3,6 +3,7 @@ package oas
 // Operation is an OpenAPI Operation.
 type Operation struct {
 	OperationID string // optional
+	Description string // optional
 	HTTPMethod  string
 	Path        Path
 	Parameters  []*Parameter

@@ -9,12 +9,17 @@ import (
 )
 
 type Operation struct {
-	Name      string
-	PathParts []*PathPart
-	Params    []*Parameter
-	Request   *Request
-	Response  *Response
-	Spec      *oas.Operation
+	Name        string
+	Description string
+	PathParts   []*PathPart
+	Params      []*Parameter
+	Request     *Request
+	Response    *Response
+	Spec        *oas.Operation
+}
+
+func (op Operation) GoDoc() []string {
+	return prettyDoc(op.Description)
 }
 
 type PathPart struct {
@@ -33,6 +38,13 @@ type Parameter struct {
 	Name string
 	Type *Type
 	Spec *oas.Parameter
+}
+
+func (op Parameter) GoDoc() []string {
+	if op.Spec == nil {
+		return nil
+	}
+	return prettyDoc(op.Spec.Description)
 }
 
 type Request struct {
