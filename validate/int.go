@@ -16,29 +16,39 @@ type Int struct {
 	MaxExclusive bool
 }
 
+// SetMultipleOf sets multipleOf validator.
 func (t *Int) SetMultipleOf(v int) {
 	t.MultipleOfSet = true
 	t.MultipleOf = v
 }
 
+// SetExclusiveMinimum sets exclusive minimum value.
 func (t *Int) SetExclusiveMinimum(v int64) {
 	t.MinExclusive = true
 	t.SetMinimum(v)
 }
 
+// SetExclusiveMaximum sets exclusive maximum value.
 func (t *Int) SetExclusiveMaximum(v int64) {
 	t.MaxExclusive = true
 	t.SetMaximum(v)
 }
 
+// SetMinimum sets minimum value.
+func (t *Int) SetMinimum(v int64) {
+	t.Min = v
+	t.MinSet = true
+}
+
+// SetMaximum sets maximum value.
 func (t *Int) SetMaximum(v int64) {
 	t.Max = v
 	t.MaxSet = true
 }
 
-func (t *Int) SetMinimum(v int64) {
-	t.Max = v
-	t.MaxSet = true
+// Set reports whether any validations are set.
+func (t Int) Set() bool {
+	return t.MinSet || t.MaxSet || t.MultipleOfSet
 }
 
 // Validate returns error if v does not match validation rules.
@@ -54,8 +64,4 @@ func (t Int) Validate(v int64) error {
 	}
 
 	return nil
-}
-
-func (t Int) Set() bool {
-	return t.MinSet || t.MaxSet || t.MultipleOfSet
 }

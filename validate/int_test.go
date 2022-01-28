@@ -13,6 +13,65 @@ func TestInt_Set(t *testing.T) {
 	assert.True(t, Int{MultipleOfSet: true}.Set())
 }
 
+func TestInt_Setters(t *testing.T) {
+	for _, tc := range []struct {
+		do       func(*Int)
+		expected Int
+	}{
+		{
+			do: func(i *Int) {
+				i.SetMultipleOf(10)
+			},
+			expected: Int{
+				MultipleOf:    10,
+				MultipleOfSet: true,
+			},
+		},
+		{
+			do: func(i *Int) {
+				i.SetExclusiveMaximum(10)
+			},
+			expected: Int{
+				Max:          10,
+				MaxExclusive: true,
+				MaxSet:       true,
+			},
+		},
+		{
+			do: func(i *Int) {
+				i.SetExclusiveMinimum(10)
+			},
+			expected: Int{
+				Min:          10,
+				MinExclusive: true,
+				MinSet:       true,
+			},
+		},
+		{
+			do: func(i *Int) {
+				i.SetMaximum(10)
+			},
+			expected: Int{
+				Max:    10,
+				MaxSet: true,
+			},
+		},
+		{
+			do: func(i *Int) {
+				i.SetMinimum(10)
+			},
+			expected: Int{
+				Min:    10,
+				MinSet: true,
+			},
+		},
+	} {
+		var r Int
+		tc.do(&r)
+		assert.Equal(t, tc.expected, r)
+	}
+}
+
 func TestInt_Validate(t *testing.T) {
 	for _, tc := range []struct {
 		Name      string

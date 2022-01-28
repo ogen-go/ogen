@@ -14,6 +14,7 @@ type Error struct {
 	Fields []FieldError
 }
 
+// Error implements error.
 func (e *Error) Error() string {
 	var b strings.Builder
 	b.WriteString("invalid:")
