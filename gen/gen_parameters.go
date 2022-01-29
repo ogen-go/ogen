@@ -18,6 +18,14 @@ func (g *Generator) generateParameters(opName string, params []*oas.Parameter) (
 			continue
 		}
 
+		if err := isSupportedParamStyle(p); err != nil {
+			if err := g.fail(err); err != nil {
+				return nil, errors.Wrap(err, "fail")
+			}
+
+			continue
+		}
+
 		t, err := g.generateSchema(pascal(opName, p.Name), p.Schema)
 		if err != nil {
 			return nil, errors.Wrapf(err, "%q", p.Name)
@@ -96,16 +104,31 @@ func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error 
 	case ir.KindGeneric:
 		return isParamAllowed(t.GenericOf, root, visited)
 	case ir.KindSum:
-		return &ErrNotImplemented{"sum type parameter"}
-
 		// for i, of := range t.SumOf {
-		// 	if err := isParamAllowed(of, root, visited); err != nil {
+		// 	if err := isParamAllowed(of, false, visited); err != nil {
 		// 		// TODO: Check field.Spec existence.
 		// 		return errors.Wrapf(err, "sum[%d]", i)
 		// 	}
 		// }
 		// return nil
+		return &ErrNotImplemented{"sum type parameter"}
+	case ir.KindMap:
+		return &ErrNotImplemented{"object with additionalProperties"}
 	default:
 		panic("unreachable")
 	}
+}
+
+func isSupportedParamStyle(param *oas.Parameter) error {
+	switch param.Style {
+	case oas.QueryStyleSpaceDelimited:
+		return &ErrNotImplemented{Name: "spaceDelimited parameter style"}
+
+	case oas.QueryStylePipeDelimited:
+		if param.Schema.Type == oas.Object {
+			return &ErrNotImplemented{Name: "pipeDelimited style for object parameters"}
+		}
+	}
+
+	return nil
 }

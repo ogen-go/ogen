@@ -10,21 +10,13 @@ const (
 	LocationCookie ParameterLocation = "cookie"
 )
 
-func (l ParameterLocation) Query() bool {
-	return l == LocationQuery
-}
+func (l ParameterLocation) Query() bool { return l == LocationQuery }
 
-func (l ParameterLocation) Header() bool {
-	return l == LocationHeader
-}
+func (l ParameterLocation) Header() bool { return l == LocationHeader }
 
-func (l ParameterLocation) Path() bool {
-	return l == LocationPath
-}
+func (l ParameterLocation) Path() bool { return l == LocationPath }
 
-func (l ParameterLocation) Cookie() bool {
-	return l == LocationCookie
-}
+func (l ParameterLocation) Cookie() bool { return l == LocationCookie }
 
 // Parameter is an OpenAPI Operation Parameter.
 type Parameter struct {
@@ -32,7 +24,27 @@ type Parameter struct {
 	Description string
 	Schema      *Schema
 	In          ParameterLocation
-	Style       string
+	Style       ParameterStyle
 	Explode     bool
 	Required    bool
 }
+
+type ParameterStyle string
+
+func (s ParameterStyle) String() string { return string(s) }
+
+// https://swagger.io/docs/specification/serialization/
+const (
+	PathStyleSimple ParameterStyle = "simple"
+	PathStyleLabel  ParameterStyle = "label"
+	PathStyleMatrix ParameterStyle = "matrix"
+
+	QueryStyleForm           ParameterStyle = "form"
+	QueryStyleSpaceDelimited ParameterStyle = "spaceDelimited"
+	QueryStylePipeDelimited  ParameterStyle = "pipeDelimited"
+	QueryStyleDeepObject     ParameterStyle = "deepObject"
+
+	HeaderStyleSimple ParameterStyle = "simple"
+
+	CookieStyleForm ParameterStyle = "form"
+)

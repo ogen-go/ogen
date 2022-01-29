@@ -91,44 +91,45 @@ func (p *parser) parseParameter(param *ogen.Parameter) (*oas.Parameter, error) {
 
 // paramStyle checks parameter style field.
 // https://swagger.io/docs/specification/serialization/
-func paramStyle(locatedIn oas.ParameterLocation, style string) (string, error) {
+func paramStyle(locatedIn oas.ParameterLocation, style string) (oas.ParameterStyle, error) {
 	if style == "" {
-		defaultStyles := map[oas.ParameterLocation]string{
-			oas.LocationPath:   "simple",
-			oas.LocationQuery:  "form",
-			oas.LocationHeader: "simple",
-			oas.LocationCookie: "form",
+		defaultStyles := map[oas.ParameterLocation]oas.ParameterStyle{
+			oas.LocationPath:   oas.PathStyleSimple,
+			oas.LocationQuery:  oas.QueryStyleForm,
+			oas.LocationHeader: oas.HeaderStyleSimple,
+			oas.LocationCookie: oas.CookieStyleForm,
 		}
 
 		return defaultStyles[locatedIn], nil
 	}
 
-	allowedStyles := map[oas.ParameterLocation]map[string]struct{}{
+	allowedStyles := map[oas.ParameterLocation]map[string]oas.ParameterStyle{
 		oas.LocationPath: {
-			"simple": struct{}{},
-			"label":  struct{}{},
-			"matrix": struct{}{},
+			"simple": oas.PathStyleSimple,
+			"label":  oas.PathStyleLabel,
+			"matrix": oas.PathStyleMatrix,
 		},
 		oas.LocationQuery: {
-			"form": struct{}{},
+			"form": oas.QueryStyleForm,
 			// Not supported.
 			// "spaceDelimited": struct{}{},
-			"pipeDelimited": struct{}{},
-			"deepObject":    struct{}{},
+			"pipeDelimited": oas.QueryStylePipeDelimited,
+			"deepObject":    oas.QueryStyleDeepObject,
 		},
 		oas.LocationHeader: {
-			"simple": struct{}{},
+			"simple": oas.HeaderStyleSimple,
 		},
 		oas.LocationCookie: {
-			"form": struct{}{},
+			"form": oas.CookieStyleForm,
 		},
 	}
 
-	if _, found := allowedStyles[locatedIn][style]; !found {
+	s, found := allowedStyles[locatedIn][style]
+	if !found {
 		return "", errors.Errorf("unexpected style: %s", style)
 	}
 
-	return style, nil
+	return s, nil
 }
 
 // paramExplode checks parameter explode field.
