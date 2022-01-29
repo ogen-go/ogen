@@ -480,6 +480,80 @@
           }
         }
       }
+    },
+    "/testObjectQueryParameter": {
+      "get": {
+        "operationId": "testObjectQueryParameter",
+        "parameters": [
+          {
+            "name": "formObject",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "object",
+              "required": ["min", "max", "filter"],
+              "properties": {
+                "min": {
+                  "type": "integer"
+                },
+                "max": {
+                  "type": "integer"
+                },
+                "filter": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          {
+            "name": "deepObject",
+            "in": "query",
+            "style": "deepObject",
+            "schema": {
+              "type": "object",
+              "required": ["min", "max", "filter"],
+              "properties": {
+                "min": {
+                  "type": "integer"
+                },
+                "max": {
+                  "type": "integer"
+                },
+                "filter": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["style", "min", "max", "filter"],
+                  "properties": {
+                    "style": {
+                      "type": "string"
+                    },
+                    "min": {
+                      "type": "integer"
+                    },
+                    "max": {
+                      "type": "integer"
+                    },
+                    "filter": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
