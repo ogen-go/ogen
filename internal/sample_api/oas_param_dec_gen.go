@@ -675,3 +675,59 @@ func decodePetUploadAvatarByIDParams(args [0]string, r *http.Request) (PetUpload
 	}
 	return params, nil
 }
+
+func decodeTestObjectQueryParameterParams(args [0]string, r *http.Request) (TestObjectQueryParameterParams, error) {
+	var (
+		params    TestObjectQueryParameterParams
+		queryArgs = r.URL.Query()
+	)
+	// Decode query: formObject.
+	{
+		values, ok := queryArgs["formObject"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsFormObjectVal TestObjectQueryParameterFormObject
+				if err := func() error {
+					return paramsFormObjectVal.decodeURI(d)
+				}(); err != nil {
+					return err
+				}
+				params.FormObject.SetTo(paramsFormObjectVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: formObject: parse`)
+			}
+		}
+	}
+	// Decode query: deepObject.
+	{
+		values, ok := queryArgs["deepObject"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleDeepObject,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsDeepObjectVal TestObjectQueryParameterDeepObject
+				if err := func() error {
+					return paramsDeepObjectVal.decodeURI(d)
+				}(); err != nil {
+					return err
+				}
+				params.DeepObject.SetTo(paramsDeepObjectVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, `query: deepObject: parse`)
+			}
+		}
+	}
+	return params, nil
+}

@@ -321,18 +321,45 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
-			case 't': // Prefix: "test/header"
-				if l := len("test/header"); len(elem) >= l && elem[0:l] == "test/header" {
+			case 't': // Prefix: "test"
+				if l := len("test"); len(elem) >= l && elem[0:l] == "test" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					// Leaf: GetHeader
-					s.handleGetHeaderRequest([0]string{}, w, r)
+					s.handleTestObjectQueryParameterRequest([0]string{}, w, r)
 
 					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/header"
+					if l := len("/header"); len(elem) >= l && elem[0:l] == "/header" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: GetHeader
+						s.handleGetHeaderRequest([0]string{}, w, r)
+
+						return
+					}
+				case 'O': // Prefix: "ObjectQueryParameter"
+					if l := len("ObjectQueryParameter"); len(elem) >= l && elem[0:l] == "ObjectQueryParameter" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: TestObjectQueryParameter
+						s.handleTestObjectQueryParameterRequest([0]string{}, w, r)
+
+						return
+					}
 				}
 			}
 		}
@@ -727,19 +754,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						return r, true
 					}
 				}
-			case 't': // Prefix: "test/header"
-				if l := len("test/header"); len(elem) >= l && elem[0:l] == "test/header" {
+			case 't': // Prefix: "test"
+				if l := len("test"); len(elem) >= l && elem[0:l] == "test" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					// Leaf: GetHeader
-					r.name = "GetHeader"
+					r.name = "TestObjectQueryParameter"
 					r.args = args
 					r.count = 0
 					return r, true
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/header"
+					if l := len("/header"); len(elem) >= l && elem[0:l] == "/header" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: GetHeader
+						r.name = "GetHeader"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
+				case 'O': // Prefix: "ObjectQueryParameter"
+					if l := len("ObjectQueryParameter"); len(elem) >= l && elem[0:l] == "ObjectQueryParameter" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: TestObjectQueryParameter
+						r.name = "TestObjectQueryParameter"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
 				}
 			}
 		}

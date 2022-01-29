@@ -118,3 +118,8 @@ type PetUploadAvatarByIDParams struct {
 	// ID of pet.
 	PetID int64
 }
+
+type TestObjectQueryParameterParams struct {
+	FormObject OptTestObjectQueryParameterFormObject
+	DeepObject OptTestObjectQueryParameterDeepObject
+}

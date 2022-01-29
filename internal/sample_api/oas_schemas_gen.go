@@ -1226,6 +1226,98 @@ func (o OptStringStringMap) Or(d StringStringMap) StringStringMap {
 	return d
 }
 
+// NewOptTestObjectQueryParameterDeepObject returns new OptTestObjectQueryParameterDeepObject with value set to v.
+func NewOptTestObjectQueryParameterDeepObject(v TestObjectQueryParameterDeepObject) OptTestObjectQueryParameterDeepObject {
+	return OptTestObjectQueryParameterDeepObject{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTestObjectQueryParameterDeepObject is optional TestObjectQueryParameterDeepObject.
+type OptTestObjectQueryParameterDeepObject struct {
+	Value TestObjectQueryParameterDeepObject
+	Set   bool
+}
+
+// IsSet returns true if OptTestObjectQueryParameterDeepObject was set.
+func (o OptTestObjectQueryParameterDeepObject) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTestObjectQueryParameterDeepObject) Reset() {
+	var v TestObjectQueryParameterDeepObject
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTestObjectQueryParameterDeepObject) SetTo(v TestObjectQueryParameterDeepObject) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTestObjectQueryParameterDeepObject) Get() (v TestObjectQueryParameterDeepObject, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTestObjectQueryParameterDeepObject) Or(d TestObjectQueryParameterDeepObject) TestObjectQueryParameterDeepObject {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptTestObjectQueryParameterFormObject returns new OptTestObjectQueryParameterFormObject with value set to v.
+func NewOptTestObjectQueryParameterFormObject(v TestObjectQueryParameterFormObject) OptTestObjectQueryParameterFormObject {
+	return OptTestObjectQueryParameterFormObject{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTestObjectQueryParameterFormObject is optional TestObjectQueryParameterFormObject.
+type OptTestObjectQueryParameterFormObject struct {
+	Value TestObjectQueryParameterFormObject
+	Set   bool
+}
+
+// IsSet returns true if OptTestObjectQueryParameterFormObject was set.
+func (o OptTestObjectQueryParameterFormObject) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTestObjectQueryParameterFormObject) Reset() {
+	var v TestObjectQueryParameterFormObject
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTestObjectQueryParameterFormObject) SetTo(v TestObjectQueryParameterFormObject) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTestObjectQueryParameterFormObject) Get() (v TestObjectQueryParameterFormObject, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTestObjectQueryParameterFormObject) Or(d TestObjectQueryParameterFormObject) TestObjectQueryParameterFormObject {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTime returns new OptTime with value set to v.
 func NewOptTime(v time.Time) OptTime {
 	return OptTime{
@@ -1428,3 +1520,22 @@ type StringMap map[string]string
 
 // Ref: #/components/schemas/StringStringMap
 type StringStringMap map[string]StringMap
+
+type TestObjectQueryParameterDeepObject struct {
+	Min    int    `json:"min"`
+	Max    int    `json:"max"`
+	Filter string `json:"filter"`
+}
+
+type TestObjectQueryParameterFormObject struct {
+	Min    int    `json:"min"`
+	Max    int    `json:"max"`
+	Filter string `json:"filter"`
+}
+
+type TestObjectQueryParameterOK struct {
+	Style  string `json:"style"`
+	Min    int    `json:"min"`
+	Max    int    `json:"max"`
+	Filter string `json:"filter"`
+}

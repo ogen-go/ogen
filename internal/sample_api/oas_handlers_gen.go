@@ -490,6 +490,35 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 	}
 }
 
+// HandleTestObjectQueryParameterRequest handles testObjectQueryParameter operation.
+//
+// GET /testObjectQueryParameter
+func (s *Server) handleTestObjectQueryParameterRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `TestObjectQueryParameter`,
+		trace.WithAttributes(otelogen.OperationID(`testObjectQueryParameter`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeTestObjectQueryParameterParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestObjectQueryParameter(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestObjectQueryParameterResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 func respondError(w http.ResponseWriter, code int, err error) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(code)

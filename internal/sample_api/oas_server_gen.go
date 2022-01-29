@@ -150,6 +150,10 @@ type Handler interface {
 	//
 	// POST /pet/avatar
 	PetUploadAvatarByID(ctx context.Context, req Stream, params PetUploadAvatarByIDParams) (PetUploadAvatarByIDRes, error)
+	// TestObjectQueryParameter implements testObjectQueryParameter operation.
+	//
+	// GET /testObjectQueryParameter
+	TestObjectQueryParameter(ctx context.Context, params TestObjectQueryParameterParams) (TestObjectQueryParameterOK, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and

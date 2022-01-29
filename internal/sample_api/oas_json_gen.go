@@ -1992,6 +1992,56 @@ func (o *OptStringStringMap) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes TestObjectQueryParameterDeepObject as json.
+func (o OptTestObjectQueryParameterDeepObject) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes TestObjectQueryParameterDeepObject from json.
+func (o *OptTestObjectQueryParameterDeepObject) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptTestObjectQueryParameterDeepObject to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptTestObjectQueryParameterDeepObject`, d.Next())
+	}
+}
+
+// Encode encodes TestObjectQueryParameterFormObject as json.
+func (o OptTestObjectQueryParameterFormObject) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes TestObjectQueryParameterFormObject from json.
+func (o *OptTestObjectQueryParameterFormObject) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptTestObjectQueryParameterFormObject to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptTestObjectQueryParameterFormObject`, d.Next())
+	}
+}
+
 // Encode encodes time.Time as json.
 func (o OptTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
 	if !o.Set {
@@ -3019,6 +3069,347 @@ func (s StringStringMap) Decode(d *jx.Decoder) error {
 		return nil
 	}); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s TestObjectQueryParameterDeepObject) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
+
+		e.RawStr("\"min\"" + ":")
+		e.Int(s.Min)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"max\"" + ":")
+		e.Int(s.Max)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"filter\"" + ":")
+		e.Str(s.Filter)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfTestObjectQueryParameterDeepObject = [3]string{
+	0: "min",
+	1: "max",
+	2: "filter",
+}
+
+// Decode decodes TestObjectQueryParameterDeepObject from json.
+func (s *TestObjectQueryParameterDeepObject) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode TestObjectQueryParameterDeepObject to nil`)
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "min":
+			requiredBitSet[0] |= 1 << 0
+			v, err := d.Int()
+			s.Min = int(v)
+			if err != nil {
+				return err
+			}
+		case "max":
+			requiredBitSet[0] |= 1 << 1
+			v, err := d.Int()
+			s.Max = int(v)
+			if err != nil {
+				return err
+			}
+		case "filter":
+			requiredBitSet[0] |= 1 << 2
+			v, err := d.Str()
+			s.Filter = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000111,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfTestObjectQueryParameterDeepObject) {
+					name = jsonFieldsNameOfTestObjectQueryParameterDeepObject[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s TestObjectQueryParameterFormObject) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
+
+		e.RawStr("\"min\"" + ":")
+		e.Int(s.Min)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"max\"" + ":")
+		e.Int(s.Max)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"filter\"" + ":")
+		e.Str(s.Filter)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfTestObjectQueryParameterFormObject = [3]string{
+	0: "min",
+	1: "max",
+	2: "filter",
+}
+
+// Decode decodes TestObjectQueryParameterFormObject from json.
+func (s *TestObjectQueryParameterFormObject) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode TestObjectQueryParameterFormObject to nil`)
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "min":
+			requiredBitSet[0] |= 1 << 0
+			v, err := d.Int()
+			s.Min = int(v)
+			if err != nil {
+				return err
+			}
+		case "max":
+			requiredBitSet[0] |= 1 << 1
+			v, err := d.Int()
+			s.Max = int(v)
+			if err != nil {
+				return err
+			}
+		case "filter":
+			requiredBitSet[0] |= 1 << 2
+			v, err := d.Str()
+			s.Filter = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000111,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfTestObjectQueryParameterFormObject) {
+					name = jsonFieldsNameOfTestObjectQueryParameterFormObject[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s TestObjectQueryParameterOK) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
+
+		e.RawStr("\"style\"" + ":")
+		e.Str(s.Style)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"min\"" + ":")
+		e.Int(s.Min)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"max\"" + ":")
+		e.Int(s.Max)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"filter\"" + ":")
+		e.Str(s.Filter)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfTestObjectQueryParameterOK = [4]string{
+	0: "style",
+	1: "min",
+	2: "max",
+	3: "filter",
+}
+
+// Decode decodes TestObjectQueryParameterOK from json.
+func (s *TestObjectQueryParameterOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode TestObjectQueryParameterOK to nil`)
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "style":
+			requiredBitSet[0] |= 1 << 0
+			v, err := d.Str()
+			s.Style = string(v)
+			if err != nil {
+				return err
+			}
+		case "min":
+			requiredBitSet[0] |= 1 << 1
+			v, err := d.Int()
+			s.Min = int(v)
+			if err != nil {
+				return err
+			}
+		case "max":
+			requiredBitSet[0] |= 1 << 2
+			v, err := d.Int()
+			s.Max = int(v)
+			if err != nil {
+				return err
+			}
+		case "filter":
+			requiredBitSet[0] |= 1 << 3
+			v, err := d.Str()
+			s.Filter = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00001111,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfTestObjectQueryParameterOK) {
+					name = jsonFieldsNameOfTestObjectQueryParameterOK[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
 	}
 
 	return nil

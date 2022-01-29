@@ -1121,3 +1121,78 @@ func (c *Client) PetUploadAvatarByID(ctx context.Context, request Stream, params
 
 	return result, nil
 }
+
+// TestObjectQueryParameter invokes testObjectQueryParameter operation.
+//
+// GET /testObjectQueryParameter
+func (c *Client) TestObjectQueryParameter(ctx context.Context, params TestObjectQueryParameterParams) (res TestObjectQueryParameterOK, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `TestObjectQueryParameter`,
+		trace.WithAttributes(otelogen.OperationID(`testObjectQueryParameter`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/testObjectQueryParameter"
+
+	q := u.Query()
+	{
+		// Encode "formObject" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.FormObject.Get(); ok {
+				return val.encodeURI(e)
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["formObject"] = e.Result()
+	}
+	{
+		// Encode "deepObject" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleDeepObject,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.DeepObject.Get(); ok {
+				return val.encodeURI(e)
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["deepObject"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestObjectQueryParameterResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
