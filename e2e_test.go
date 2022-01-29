@@ -145,13 +145,13 @@ func (s *sampleAPIServer) PetGetAvatarByID(ctx context.Context, params api.PetGe
 			Response:   api.Error{Message: "error"},
 		}, nil
 	default:
-		return &api.PetGetAvatarByIDOKApplicationOctetStream{
+		return &api.PetGetAvatarByIDOK{
 			Data: bytes.NewReader(petAvatar),
 		}, nil
 	}
 }
 
-func (s *sampleAPIServer) PetUploadAvatarByID(ctx context.Context, req api.Stream, params api.PetUploadAvatarByIDParams) (api.PetUploadAvatarByIDRes, error) {
+func (s *sampleAPIServer) PetUploadAvatarByID(ctx context.Context, req api.PetUploadAvatarByIDReq, params api.PetUploadAvatarByIDParams) (api.PetUploadAvatarByIDRes, error) {
 	switch params.PetID {
 	case petNotFoundID:
 		return &api.NotFound{}, nil
@@ -368,7 +368,7 @@ func TestIntegration(t *testing.T) {
 
 		t.Run("PetUploadAvatar", func(t *testing.T) {
 			t.Run("OK", func(t *testing.T) {
-				stream := api.Stream{
+				stream := api.PetUploadAvatarByIDReq{
 					Data: io.NopCloser(bytes.NewReader(petAvatar)),
 				}
 				got, err := client.PetUploadAvatarByID(ctx, stream, api.PetUploadAvatarByIDParams{
@@ -378,7 +378,7 @@ func TestIntegration(t *testing.T) {
 				assert.IsType(t, &api.PetUploadAvatarByIDOK{}, got, fmt.Sprintf("receive response %v", got))
 			})
 			t.Run("NotFound", func(t *testing.T) {
-				stream := api.Stream{
+				stream := api.PetUploadAvatarByIDReq{
 					Data: io.NopCloser(bytes.NewReader(petAvatar)),
 				}
 				got, err := client.PetUploadAvatarByID(ctx, stream, api.PetUploadAvatarByIDParams{
@@ -388,7 +388,7 @@ func TestIntegration(t *testing.T) {
 				assert.IsType(t, &api.NotFound{}, got, fmt.Sprintf("receive response %v", got))
 			})
 			t.Run("Error", func(t *testing.T) {
-				stream := api.Stream{
+				stream := api.PetUploadAvatarByIDReq{
 					Data: bytes.NewReader(petAvatar),
 				}
 				got, err := client.PetUploadAvatarByID(ctx, stream, api.PetUploadAvatarByIDParams{
@@ -404,9 +404,9 @@ func TestIntegration(t *testing.T) {
 					PetID: petExistingID,
 				})
 				require.NoError(t, err)
-				assert.IsType(t, &api.PetGetAvatarByIDOKApplicationOctetStream{}, got, fmt.Sprintf("receive response %v", got))
+				assert.IsType(t, &api.PetGetAvatarByIDOK{}, got, fmt.Sprintf("receive response %v", got))
 
-				raw := got.(*api.PetGetAvatarByIDOKApplicationOctetStream)
+				raw := got.(*api.PetGetAvatarByIDOK)
 				avatar, err := io.ReadAll(raw)
 				require.NoError(t, err)
 
