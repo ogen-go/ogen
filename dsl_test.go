@@ -130,7 +130,7 @@ func TestBuilder(t *testing.T) {
 						"ok": {
 							Description: "Success",
 							Content: map[string]ogen.Media{
-								string(ir.ContentTypeJSON): {Schema: ogen.Schema{
+								string(ir.ContentTypeJSON): {Schema: &ogen.Schema{
 									Type:        "object",
 									Description: "Success",
 									Properties: []ogen.Property{
@@ -170,7 +170,7 @@ func TestBuilder(t *testing.T) {
 				"error": {
 					Description: "An Error Response",
 					Content: map[string]ogen.Media{
-						string(ir.ContentTypeJSON): {Schema: ogen.Schema{
+						string(ir.ContentTypeJSON): {Schema: &ogen.Schema{
 							Type:        "object",
 							Description: "Error Response Schema",
 							Properties: []ogen.Property{
@@ -203,7 +203,7 @@ func TestBuilder(t *testing.T) {
 					Description: "Referenced RequestBody",
 					Content: map[string]ogen.Media{
 						string(ir.ContentTypeJSON): {
-							Schema: ogen.Schema{Ref: "#/components/schemas/" + _toySchema.Name},
+							Schema: &ogen.Schema{Ref: "#/components/schemas/" + _toySchema.Name},
 						},
 					},
 					Required: true,

@@ -233,7 +233,7 @@ func (r *RequestBody) SetContent(c map[string]Media) *RequestBody {
 func (r *RequestBody) AddContent(mt string, s *Schema) *RequestBody {
 	if s != nil {
 		r.initContent()
-		r.Content[mt] = Media{Schema: *s}
+		r.Content[mt] = Media{Schema: s}
 	}
 	return r
 }
@@ -713,7 +713,7 @@ func (r *Response) SetContent(c map[string]Media) *Response {
 func (r *Response) AddContent(mt string, s *Schema) *Response {
 	if s != nil {
 		r.initContent()
-		r.Content[mt] = Media{Schema: *s}
+		r.Content[mt] = Media{Schema: s}
 	}
 	return r
 }

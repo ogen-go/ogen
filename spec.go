@@ -242,7 +242,7 @@ type Response struct {
 // Media provides schema and examples for the media type identified by its key.
 type Media struct {
 	// The schema defining the content of the request, response, or parameter.
-	Schema   Schema              `json:"schema"`
+	Schema   *Schema             `json:"schema,omitempty"`
 	Example  json.RawMessage     `json:"example,omitempty"`
 	Examples map[string]*Example `json:"examples,omitempty"`
 }

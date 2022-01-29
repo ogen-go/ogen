@@ -2,7 +2,6 @@ package parser
 
 import (
 	"net/http"
-	"reflect"
 	"strconv"
 
 	"github.com/go-faster/errors"
@@ -47,16 +46,7 @@ func (p *parser) parseResponse(resp *ogen.Response) (*oas.Response, error) {
 		Contents: make(map[string]*oas.Schema, len(resp.Content)),
 	}
 	for contentType, media := range resp.Content {
-		if reflect.DeepEqual(media.Schema, ogen.Schema{}) {
-			switch contentType {
-			case "application/octet-stream":
-				response.Contents[contentType] = nil
-				continue
-			default:
-			}
-		}
-
-		schema, err := p.parseSchema(&media.Schema)
+		schema, err := p.parseSchema(media.Schema)
 		if err != nil {
 			return nil, errors.Wrapf(err, "content: %s: schema", contentType)
 		}

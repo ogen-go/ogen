@@ -1,8 +1,6 @@
 package parser
 
 import (
-	"reflect"
-
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
@@ -25,16 +23,7 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody) (*oas.RequestBody, err
 	}
 
 	for contentType, media := range body.Content {
-		if reflect.DeepEqual(media.Schema, ogen.Schema{}) {
-			switch contentType {
-			case "application/octet-stream":
-				result.Contents[contentType] = nil
-				continue
-			default:
-			}
-		}
-
-		schema, err := p.parseSchema(&media.Schema)
+		schema, err := p.parseSchema(media.Schema)
 		if err != nil {
 			return nil, errors.Wrapf(err, "content: %s: parse schema", contentType)
 		}

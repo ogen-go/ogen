@@ -10,6 +10,10 @@ import (
 )
 
 func (p *parser) parseSchema(schema *ogen.Schema) (*oas.Schema, error) {
+	if schema == nil {
+		return nil, nil
+	}
+
 	parser := &schemaParser{
 		components: p.spec.Components.Schemas,
 		globalRefs: p.refs.schemas,
