@@ -19,6 +19,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
+	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen/conv"
@@ -186,6 +187,26 @@ func (s *sampleAPIServer) ErrorGet(ctx context.Context) (api.ErrorStatusCode, er
 			Message: "test_error",
 		},
 	}, nil
+}
+
+func (s *sampleAPIServer) TestObjectQueryParameter(ctx context.Context, params api.TestObjectQueryParameterParams) (api.TestObjectQueryParameterOK, error) {
+	if param, ok := params.FormObject.Get(); ok {
+		return api.TestObjectQueryParameterOK{
+			Style:  "form",
+			Min:    param.Min,
+			Max:    param.Max,
+			Filter: param.Filter,
+		}, nil
+	}
+	if param, ok := params.DeepObject.Get(); ok {
+		return api.TestObjectQueryParameterOK{
+			Style:  "deepObject",
+			Min:    param.Min,
+			Max:    param.Max,
+			Filter: param.Filter,
+		}, nil
+	}
+	return api.TestObjectQueryParameterOK{}, errors.New("invalid input")
 }
 
 var _ api.Handler = (*sampleAPIServer)(nil)
@@ -448,6 +469,42 @@ func TestIntegration(t *testing.T) {
 			})
 			a.NoError(err)
 			assert.Equal(t, "1 foo- bar+ baz/ kek*", h)
+		})
+		t.Run("TestObjectQueryParameter", func(t *testing.T) {
+			const (
+				min    = 1
+				max    = 5
+				filter = "abc"
+			)
+
+			t.Run("formStyle", func(t *testing.T) {
+				resp, err := client.TestObjectQueryParameter(ctx, api.TestObjectQueryParameterParams{
+					FormObject: api.NewOptTestObjectQueryParameterFormObject(api.TestObjectQueryParameterFormObject{
+						Min:    min,
+						Max:    max,
+						Filter: filter,
+					}),
+				})
+				require.NoError(t, err)
+				require.Equal(t, resp.Style, "form")
+				require.Equal(t, resp.Min, min)
+				require.Equal(t, resp.Max, max)
+				require.Equal(t, resp.Filter, filter)
+			})
+			t.Run("deepObjectStyle", func(t *testing.T) {
+				resp, err := client.TestObjectQueryParameter(ctx, api.TestObjectQueryParameterParams{
+					DeepObject: api.NewOptTestObjectQueryParameterDeepObject(api.TestObjectQueryParameterDeepObject{
+						Min:    min,
+						Max:    max,
+						Filter: filter,
+					}),
+				})
+				require.NoError(t, err)
+				require.Equal(t, resp.Style, "deepObject")
+				require.Equal(t, resp.Min, min)
+				require.Equal(t, resp.Max, max)
+				require.Equal(t, resp.Filter, filter)
+			})
 		})
 	})
 
