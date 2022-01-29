@@ -123,8 +123,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 	}
 	for _, name := range []string{
 		"schemas",
-		"uri_dec",
-		"uri_enc",
+		"uri",
 		"json",
 		"interfaces",
 		"param",
@@ -141,7 +140,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		"router",
 	} {
 		// Skip uri encode/decode if no types for that.
-		if (name == "uri_enc" || name == "uri_dec") && len(g.uriTypes) == 0 {
+		if name == "uri" && len(g.uriTypes) == 0 {
 			continue
 		}
 
