@@ -8,61 +8,38 @@ import (
 )
 
 func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.Request, error) {
-	var (
-		name  = opName + "Req"
-		types = make(map[ir.ContentType]*ir.Type)
-	)
+	name := opName + "Req"
 
-	contentTypes, err := sortContentTypes(body.Contents)
+	contents, err := g.generateContents(name, body.Contents)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "contents")
 	}
 
-	for _, contentType := range contentTypes {
-		var (
-			schema = body.Contents[contentType]
-			sName  = name
-		)
-		if len(body.Contents) > 1 {
-			sName = pascal(name, contentType)
-		}
-
-		if isBinary(schema) {
-			types[ir.ContentType(contentType)] = ir.Stream()
-			continue
-		}
-
-		if schema == nil {
-			switch contentType {
-			case "application/octet-stream":
-				t := ir.Stream()
-				types[ir.ContentType(contentType)] = t
-				g.saveType(t)
+	if !body.Required {
+		// NOTE:
+		// In case where requestBody has multiple content types
+		// we can try to wrap sum-type interface with Optional[T]
+		// instead of wrapping each content type.
+		for contentType, typ := range contents {
+			// TODO: Support optional streams?
+			if typ.Is(ir.KindStream) {
 				continue
-			default:
-				return nil, errors.Errorf("unsupported empty schema for content-type %q", contentType)
 			}
-		}
 
-		t, err := g.generateSchema(sName, schema)
-		if err != nil {
-			return nil, errors.Wrapf(err, "contents: %s", contentType)
-		}
-		if !body.Required {
-			t = ir.Generic(genericPostfix(t.Go()), t, ir.GenericVariant{
+			optionalTyp := ir.Generic(genericPostfix(typ.Go()), typ, ir.GenericVariant{
 				Optional: true,
 			})
-			g.saveType(t)
-		}
 
-		types[ir.ContentType(contentType)] = t
+			g.saveType(optionalTyp)
+			contents[contentType] = optionalTyp
+		}
 	}
 
-	if len(types) == 1 {
-		for _, t := range types {
+	if len(contents) == 1 {
+		for _, t := range contents {
 			return &ir.Request{
 				Type:     t,
-				Contents: types,
+				Contents: contents,
 				Spec:     body,
 			}, nil
 		}
@@ -71,15 +48,12 @@ func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.R
 	iface := ir.Interface(name)
 	iface.AddMethod(camel(name))
 	g.saveIface(iface)
-	for contentType, t := range types {
+	for contentType, t := range contents {
 		switch t.Kind {
 		case ir.KindPrimitive, ir.KindArray:
 			// Primitive types cannot have methods, wrap it with alias.
 			t = ir.Alias(pascal(name, string(contentType)), t)
-			types[contentType] = t
-			g.saveType(t)
-		case ir.KindStream:
-			t.Name = pascal(name, string(contentType))
+			contents[contentType] = t
 			g.saveType(t)
 		default:
 		}
@@ -89,7 +63,7 @@ func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.R
 
 	return &ir.Request{
 		Type:     iface,
-		Contents: types,
+		Contents: contents,
 		Spec:     body,
 	}, nil
 }
