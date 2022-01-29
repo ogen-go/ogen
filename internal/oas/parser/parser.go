@@ -102,6 +102,7 @@ func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParam
 	if err != nil {
 		return nil, errors.Wrap(err, "responses")
 	}
+
 	return op, nil
 }
 
