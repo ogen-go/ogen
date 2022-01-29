@@ -240,7 +240,7 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 
 func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PetGetAvatarByIDOKApplicationOctetStream:
+	case *PetGetAvatarByIDOK:
 		w.Header().Set("Content-Type", "application/octet-stream")
 		w.WriteHeader(200)
 		if _, err := io.Copy(w, response); err != nil {

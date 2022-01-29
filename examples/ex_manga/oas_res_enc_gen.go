@@ -88,7 +88,7 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trac
 
 func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GetPageCoverImageOKImage:
+	case *GetPageCoverImageOK:
 		w.Header().Set("Content-Type", "image/*")
 		w.WriteHeader(200)
 		if _, err := io.Copy(w, response); err != nil {
@@ -106,7 +106,7 @@ func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.Respo
 
 func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GetPageImageOKImage:
+	case *GetPageImageOK:
 		w.Header().Set("Content-Type", "image/*")
 		w.WriteHeader(200)
 		if _, err := io.Copy(w, response); err != nil {
@@ -124,7 +124,7 @@ func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter,
 
 func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GetPageThumbnailImageOKImage:
+	case *GetPageThumbnailImageOK:
 		w.Header().Set("Content-Type", "image/*")
 		w.WriteHeader(200)
 		if _, err := io.Copy(w, response); err != nil {

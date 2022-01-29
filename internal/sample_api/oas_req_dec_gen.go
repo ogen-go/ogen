@@ -272,10 +272,10 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req OptSt
 	}
 }
 
-func decodePetUploadAvatarByIDRequest(r *http.Request, span trace.Span) (req Stream, err error) {
+func decodePetUploadAvatarByIDRequest(r *http.Request, span trace.Span) (req PetUploadAvatarByIDReq, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/octet-stream":
-		return Stream{Data: r.Body}, nil
+		return PetUploadAvatarByIDReq{Data: r.Body}, nil
 	default:
 		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
 	}

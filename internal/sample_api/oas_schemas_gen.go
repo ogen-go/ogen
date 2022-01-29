@@ -1446,15 +1446,15 @@ func (*Pet) foobarGetRes()  {}
 func (*Pet) foobarPostRes() {}
 func (*Pet) petGetRes()     {}
 
-type PetGetAvatarByIDOKApplicationOctetStream struct {
+type PetGetAvatarByIDOK struct {
 	Data io.Reader
 }
 
-func (s PetGetAvatarByIDOKApplicationOctetStream) Read(p []byte) (n int, err error) {
+func (s PetGetAvatarByIDOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-func (*PetGetAvatarByIDOKApplicationOctetStream) petGetAvatarByIDRes() {}
+func (*PetGetAvatarByIDOK) petGetAvatarByIDRes() {}
 
 type PetGetDef struct {
 	Message string `json:"message"`
@@ -1507,11 +1507,11 @@ type PetUploadAvatarByIDOK struct{}
 
 func (*PetUploadAvatarByIDOK) petUploadAvatarByIDRes() {}
 
-type Stream struct {
+type PetUploadAvatarByIDReq struct {
 	Data io.Reader
 }
 
-func (s Stream) Read(p []byte) (n int, err error) {
+func (s PetUploadAvatarByIDReq) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 

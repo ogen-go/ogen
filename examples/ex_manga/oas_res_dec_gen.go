@@ -109,7 +109,7 @@ func decodeGetPageCoverImageResponse(resp *http.Response, span trace.Span) (res 
 			if err != nil {
 				return res, err
 			}
-			return &GetPageCoverImageOKImage{
+			return &GetPageCoverImageOK{
 				Data: bytes.NewReader(b),
 			}, nil
 		default:
@@ -131,7 +131,7 @@ func decodeGetPageImageResponse(resp *http.Response, span trace.Span) (res GetPa
 			if err != nil {
 				return res, err
 			}
-			return &GetPageImageOKImage{
+			return &GetPageImageOK{
 				Data: bytes.NewReader(b),
 			}, nil
 		default:
@@ -153,7 +153,7 @@ func decodeGetPageThumbnailImageResponse(resp *http.Response, span trace.Span) (
 			if err != nil {
 				return res, err
 			}
-			return &GetPageThumbnailImageOKImage{
+			return &GetPageThumbnailImageOK{
 				Data: bytes.NewReader(b),
 			}, nil
 		default:

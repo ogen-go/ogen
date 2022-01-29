@@ -149,7 +149,7 @@ type Handler interface {
 	// Uploads pet avatar by id.
 	//
 	// POST /pet/avatar
-	PetUploadAvatarByID(ctx context.Context, req Stream, params PetUploadAvatarByIDParams) (PetUploadAvatarByIDRes, error)
+	PetUploadAvatarByID(ctx context.Context, req PetUploadAvatarByIDReq, params PetUploadAvatarByIDParams) (PetUploadAvatarByIDRes, error)
 	// TestObjectQueryParameter implements testObjectQueryParameter operation.
 	//
 	// GET /testObjectQueryParameter

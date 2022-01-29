@@ -89,45 +89,45 @@ type GetPageCoverImageForbidden struct{}
 
 func (*GetPageCoverImageForbidden) getPageCoverImageRes() {}
 
-type GetPageCoverImageOKImage struct {
+type GetPageCoverImageOK struct {
 	Data io.Reader
 }
 
-func (s GetPageCoverImageOKImage) Read(p []byte) (n int, err error) {
+func (s GetPageCoverImageOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-func (*GetPageCoverImageOKImage) getPageCoverImageRes() {}
+func (*GetPageCoverImageOK) getPageCoverImageRes() {}
 
 // GetPageImageForbidden is response for GetPageImage operation.
 type GetPageImageForbidden struct{}
 
 func (*GetPageImageForbidden) getPageImageRes() {}
 
-type GetPageImageOKImage struct {
+type GetPageImageOK struct {
 	Data io.Reader
 }
 
-func (s GetPageImageOKImage) Read(p []byte) (n int, err error) {
+func (s GetPageImageOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-func (*GetPageImageOKImage) getPageImageRes() {}
+func (*GetPageImageOK) getPageImageRes() {}
 
 // GetPageThumbnailImageForbidden is response for GetPageThumbnailImage operation.
 type GetPageThumbnailImageForbidden struct{}
 
 func (*GetPageThumbnailImageForbidden) getPageThumbnailImageRes() {}
 
-type GetPageThumbnailImageOKImage struct {
+type GetPageThumbnailImageOK struct {
 	Data io.Reader
 }
 
-func (s GetPageThumbnailImageOKImage) Read(p []byte) (n int, err error) {
+func (s GetPageThumbnailImageOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-func (*GetPageThumbnailImageOKImage) getPageThumbnailImageRes() {}
+func (*GetPageThumbnailImageOK) getPageThumbnailImageRes() {}
 
 // Ref: #/components/schemas/Image
 type Image struct {

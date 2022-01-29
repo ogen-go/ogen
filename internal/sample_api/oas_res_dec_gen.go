@@ -427,7 +427,7 @@ func decodePetGetAvatarByIDResponse(resp *http.Response, span trace.Span) (res P
 			if err != nil {
 				return res, err
 			}
-			return &PetGetAvatarByIDOKApplicationOctetStream{
+			return &PetGetAvatarByIDOK{
 				Data: bytes.NewReader(b),
 			}, nil
 		default:

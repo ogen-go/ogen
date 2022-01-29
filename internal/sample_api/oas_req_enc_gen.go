@@ -100,6 +100,6 @@ func encodePetUpdateNamePostRequestJSON(req OptString, span trace.Span) (data *j
 	return e, nil
 }
 
-func encodePetUploadAvatarByIDRequestOctetStream(req Stream, span trace.Span) (data io.Reader, err error) {
+func encodePetUploadAvatarByIDRequestOctetStream(req PetUploadAvatarByIDReq, span trace.Span) (data io.Reader, err error) {
 	return req, nil
 }
