@@ -140,7 +140,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		"router",
 	} {
 		// Skip uri encode/decode if no types for that.
-		if name == "uri" && len(g.uriTypes) == 0 {
+		if name == "uri" && !g.hasURIObjectParams() {
 			continue
 		}
 
@@ -151,4 +151,13 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 	}
 
 	return nil
+}
+
+func (g *Generator) hasURIObjectParams() bool {
+	for _, t := range g.types {
+		if t.HasFeature("uri") && t.Is(ir.KindStruct) {
+			return true
+		}
+	}
+	return false
 }

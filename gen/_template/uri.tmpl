@@ -2,8 +2,8 @@
 {{- define "uri" }}
 {{- template "header" $ }}
 
-{{- range $t, $_ := $.URITypes }}
-	{{- if $t.IsStruct }}
+{{- range $_, $t := $.Types }}
+	{{- if and ($t.HasFeature "uri") $t.IsStruct }}
 	{{- template "uri/encoders" $t }}
 	{{- end }}
 {{- end }}

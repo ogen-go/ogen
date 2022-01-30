@@ -23,8 +23,23 @@ func (g *Generator) saveType(t *ir.Type) {
 		panic("unreachable")
 	}
 
-	if _, ok := g.types[t.Name]; ok && !t.IsGeneric() {
-		panic(fmt.Sprintf("schema name conflict: %q", t.Name))
+	if confT, ok := g.types[t.Name]; ok {
+		if t.IsGeneric() {
+			// HACK:
+			// Currently generator can overwrite same generic type
+			// multiple times during IR generation.
+			//
+			// We need to keep the set of features consistent
+			// during this overwrites...
+			//
+			// Maybe we should instantiate generic types only once when needed
+			// and reuse them?
+			for _, feature := range confT.Features {
+				t.AddFeature(feature)
+			}
+		} else {
+			panic(fmt.Sprintf("schema name conflict: %q", t.Name))
+		}
 	}
 
 	g.types[t.Name] = t

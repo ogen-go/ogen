@@ -34,19 +34,6 @@ func (v GenericVariant) Any() bool {
 	return v.Nullable || v.Optional
 }
 
-func Generic(name string, of *Type, v GenericVariant) *Type {
-	name = v.Name() + name
-	if of.Is(KindArray) {
-		name = name + "Array"
-	}
-	return &Type{
-		Name:           name,
-		Kind:           KindGeneric,
-		GenericOf:      of,
-		GenericVariant: v,
-	}
-}
-
 // CanGeneric reports whether Type can be boxed to KindGeneric.
 func (t Type) CanGeneric() bool {
 	switch t.Kind {

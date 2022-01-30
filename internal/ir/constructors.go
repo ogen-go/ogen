@@ -16,6 +16,7 @@ func Array(item *Type, sem NilSemantic, schema *oas.Schema) *Type {
 		Item:        item,
 		Schema:      schema,
 		NilSemantic: sem,
+		Features:    item.CloneFeatures(),
 	}
 }
 
@@ -25,6 +26,7 @@ func Alias(name string, to *Type) *Type {
 		Name:       name,
 		AliasTo:    to,
 		Validators: to.Validators,
+		Features:   to.CloneFeatures(),
 	}
 }
 
@@ -37,11 +39,26 @@ func Interface(name string) *Type {
 	}
 }
 
-func Pointer(typ *Type, sem NilSemantic) *Type {
+func Pointer(to *Type, sem NilSemantic) *Type {
 	return &Type{
 		Kind:        KindPointer,
-		PointerTo:   typ,
+		PointerTo:   to,
 		NilSemantic: sem,
+		Features:    to.CloneFeatures(),
+	}
+}
+
+func Generic(name string, of *Type, v GenericVariant) *Type {
+	name = v.Name() + name
+	if of.Is(KindArray) {
+		name = name + "Array"
+	}
+	return &Type{
+		Name:           name,
+		Kind:           KindGeneric,
+		GenericOf:      of,
+		GenericVariant: v,
+		Features:       of.CloneFeatures(),
 	}
 }
 

@@ -25,6 +25,7 @@ func (g *Generator) generateContents(name string, contents map[string]*oas.Schem
 				return nil, errors.Wrapf(err, "contents: %s", contentType)
 			}
 
+			t.AddFeature("json")
 			result[ir.ContentTypeJSON] = t
 
 		case "application/octet-stream":

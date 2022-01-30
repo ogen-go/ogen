@@ -4,8 +4,10 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{- range $t := $.Types }}
+{{- range $_, $t := $.Types }}
+	{{- if $t.HasFeature "json" }}
 	{{- template "json/encoders" $t }}
+	{{- end }}
 {{- end }}
 
 {{ end }}

@@ -91,6 +91,7 @@ type Type struct {
 	GenericOf        *Type               // only for generic
 	GenericVariant   GenericVariant      // only for generic
 	Validators       Validators
+	Features         []string
 }
 
 func (t Type) GoDoc() []string {

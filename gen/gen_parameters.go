@@ -36,12 +36,7 @@ func (g *Generator) generateParameters(opName string, params []*oas.Parameter) (
 			return nil, err
 		}
 
-		for t := range visited {
-			if t.Is(ir.KindStruct) {
-				g.uriTypes[t] = struct{}{}
-			}
-		}
-
+		t.AddFeature("uri")
 		result = append(result, &ir.Parameter{
 			Name: pascal(p.Name),
 			Type: t,
