@@ -45,6 +45,7 @@ func Parse(spec *ogen.Spec) ([]*oas.Operation, error) {
 }
 
 func (p *parser) parse() error {
+	operationIDs := make(map[string]struct{})
 	for path, item := range p.spec.Paths {
 		if item.Ref != "" {
 			return errors.Errorf("%s: referenced pathItem not supported", path)
@@ -56,9 +57,16 @@ func (p *parser) parse() error {
 		}
 
 		if err := forEachOps(item, func(method string, op ogen.Operation) error {
+			if id := op.OperationID; id != "" {
+				if _, ok := operationIDs[id]; ok {
+					return errors.Errorf("duplicate operationId: %q", id)
+				}
+				operationIDs[id] = struct{}{}
+			}
+
 			parsedOp, err := p.parseOp(path, method, op, itemParams)
 			if err != nil {
-				return errors.Wrap(err, method)
+				return err
 			}
 
 			p.operations = append(p.operations, parsedOp)
