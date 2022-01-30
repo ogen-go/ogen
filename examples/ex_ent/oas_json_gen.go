@@ -706,68 +706,6 @@ func (s *CreatePetReq) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-// Encode implements json.Marshaler.
-func (s DeletePetNoContent) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfDeletePetNoContent = [0]string{}
-
-// Decode decodes DeletePetNoContent from json.
-func (s *DeletePetNoContent) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode DeletePetNoContent to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s DeletePetOwnerNoContent) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfDeletePetOwnerNoContent = [0]string{}
-
-// Decode decodes DeletePetOwnerNoContent from json.
-func (s *DeletePetOwnerNoContent) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode DeletePetOwnerNoContent to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 // Encode encodes ListPetCategoriesOKApplicationJSON as json.
 func (s ListPetCategoriesOKApplicationJSON) Encode(e *jx.Writer) {
 	unwrapped := []PetCategoriesList(s)
@@ -924,33 +862,6 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptInt`, d.Next())
-	}
-}
-
-// Encode encodes int32 as json.
-func (o OptInt32) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	e.Int32(int32(o.Value))
-}
-
-// Decode decodes int32 from json.
-func (o *OptInt32) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptInt32 to nil`)
-	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		v, err := d.Int32()
-		if err != nil {
-			return err
-		}
-		o.Value = int32(v)
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptInt32`, d.Next())
 	}
 }
 

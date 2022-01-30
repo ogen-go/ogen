@@ -64,7 +64,7 @@ var (
 	_ = sync.Pool{}
 )
 
-func (v TestObjectQueryParameterFormObject) encodeURI(e uri.Encoder) error {
+func (v TestObjectQueryParameterDeepObject) encodeURI(e uri.Encoder) error {
 	if err := e.EncodeField("min", func(e uri.Encoder) error {
 		return e.EncodeValue(conv.IntToString(v.Min))
 	}); err != nil {
@@ -83,9 +83,9 @@ func (v TestObjectQueryParameterFormObject) encodeURI(e uri.Encoder) error {
 	return nil
 }
 
-func (v *TestObjectQueryParameterFormObject) decodeURI(d uri.Decoder) error {
+func (v *TestObjectQueryParameterDeepObject) decodeURI(d uri.Decoder) error {
 	if v == nil {
-		return errors.New(`unable to decode TestObjectQueryParameterFormObject to nil`)
+		return errors.New(`unable to decode TestObjectQueryParameterDeepObject to nil`)
 	}
 	return d.DecodeFields(func(name string, d uri.Decoder) error {
 		switch name {
@@ -134,7 +134,7 @@ func (v *TestObjectQueryParameterFormObject) decodeURI(d uri.Decoder) error {
 	})
 }
 
-func (v TestObjectQueryParameterDeepObject) encodeURI(e uri.Encoder) error {
+func (v TestObjectQueryParameterFormObject) encodeURI(e uri.Encoder) error {
 	if err := e.EncodeField("min", func(e uri.Encoder) error {
 		return e.EncodeValue(conv.IntToString(v.Min))
 	}); err != nil {
@@ -153,9 +153,9 @@ func (v TestObjectQueryParameterDeepObject) encodeURI(e uri.Encoder) error {
 	return nil
 }
 
-func (v *TestObjectQueryParameterDeepObject) decodeURI(d uri.Decoder) error {
+func (v *TestObjectQueryParameterFormObject) decodeURI(d uri.Decoder) error {
 	if v == nil {
-		return errors.New(`unable to decode TestObjectQueryParameterDeepObject to nil`)
+		return errors.New(`unable to decode TestObjectQueryParameterFormObject to nil`)
 	}
 	return d.DecodeFields(func(name string, d uri.Decoder) error {
 		switch name {

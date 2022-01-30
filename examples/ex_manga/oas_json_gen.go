@@ -278,130 +278,6 @@ func (s *Book) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetBookForbidden) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfGetBookForbidden = [0]string{}
-
-// Decode decodes GetBookForbidden from json.
-func (s *GetBookForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GetBookForbidden to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s GetPageCoverImageForbidden) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfGetPageCoverImageForbidden = [0]string{}
-
-// Decode decodes GetPageCoverImageForbidden from json.
-func (s *GetPageCoverImageForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GetPageCoverImageForbidden to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s GetPageImageForbidden) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfGetPageImageForbidden = [0]string{}
-
-// Decode decodes GetPageImageForbidden from json.
-func (s *GetPageImageForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GetPageImageForbidden to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s GetPageThumbnailImageForbidden) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfGetPageThumbnailImageForbidden = [0]string{}
-
-// Decode decodes GetPageThumbnailImageForbidden from json.
-func (s *GetPageThumbnailImageForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GetPageThumbnailImageForbidden to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
 func (s Image) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -746,37 +622,6 @@ func (o *OptTitle) Decode(d *jx.Decoder) error {
 	}
 }
 
-// Encode implements json.Marshaler.
-func (s SearchByTagIDForbidden) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfSearchByTagIDForbidden = [0]string{}
-
-// Decode decodes SearchByTagIDForbidden from json.
-func (s *SearchByTagIDForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode SearchByTagIDForbidden to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 // Encode encodes SearchByTagIDOKApplicationJSON as json.
 func (s SearchByTagIDOKApplicationJSON) Encode(e *jx.Writer) {
 	unwrapped := []SearchResponse(s)
@@ -818,37 +663,6 @@ func (s *SearchByTagIDOKApplicationJSON) Decode(d *jx.Decoder) error {
 		return errors.Wrap(err, "alias")
 	}
 	*s = SearchByTagIDOKApplicationJSON(unwrapped)
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s SearchForbidden) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfSearchForbidden = [0]string{}
-
-// Decode decodes SearchForbidden from json.
-func (s *SearchForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode SearchForbidden to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
 	return nil
 }
 

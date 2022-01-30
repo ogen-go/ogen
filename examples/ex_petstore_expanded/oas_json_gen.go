@@ -65,37 +65,6 @@ var (
 )
 
 // Encode implements json.Marshaler.
-func (s DeletePetNoContent) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfDeletePetNoContent = [0]string{}
-
-// Decode decodes DeletePetNoContent from json.
-func (s *DeletePetNoContent) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode DeletePetNoContent to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
 func (s Error) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -185,37 +154,6 @@ func (s *Error) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s ErrorStatusCode) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfErrorStatusCode = [0]string{}
-
-// Decode decodes ErrorStatusCode from json.
-func (s *ErrorStatusCode) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode ErrorStatusCode to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
 	}
 
 	return nil
