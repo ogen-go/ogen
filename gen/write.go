@@ -16,7 +16,6 @@ type TemplateConfig struct {
 	Package    string
 	Operations []*ir.Operation
 	Types      map[string]*ir.Type
-	URITypes   map[*ir.Type]struct{}
 	Interfaces map[string]*ir.Type
 	Error      *ir.StatusResponse
 	ErrorType  *ir.Type
@@ -46,9 +45,6 @@ func (t TemplateConfig) RegexStrings() (r []string) {
 	}
 
 	for _, typ := range t.Types {
-		addRegex(typ)
-	}
-	for typ := range t.URITypes {
 		addRegex(typ)
 	}
 	for _, typ := range t.Interfaces {
@@ -113,7 +109,6 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Package:    pkgName,
 		Operations: g.operations,
 		Types:      g.types,
-		URITypes:   g.uriTypes,
 		Interfaces: g.interfaces,
 		Error:      g.errType,
 		Router:     g.router,

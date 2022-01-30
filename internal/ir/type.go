@@ -91,6 +91,12 @@ type Type struct {
 	GenericOf        *Type               // only for generic
 	GenericVariant   GenericVariant      // only for generic
 	Validators       Validators
+
+	// Features contains a set of features the type must implement.
+	// Available features: 'json', 'uri'.
+	//
+	// If some of these features are set, generator
+	// generates additional encoding methods if needed.
 	Features         []string
 }
 
