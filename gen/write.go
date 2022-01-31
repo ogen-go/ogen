@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"os"
+	"regexp"
 	"sort"
 	"text/template"
 
@@ -20,6 +21,13 @@ type TemplateConfig struct {
 	Error      *ir.StatusResponse
 	ErrorType  *ir.Type
 	Router     Router
+
+	skipTestRegex *regexp.Regexp
+}
+
+// SkipTest returns true, if test should be skipped.
+func (t TemplateConfig) SkipTest(typ *ir.Type) bool {
+	return t.skipTestRegex != nil && t.skipTestRegex.MatchString(typ.Name)
 }
 
 // RegexStrings returns slice of all unique regex validators.
@@ -106,12 +114,14 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 	}
 
 	cfg := TemplateConfig{
-		Package:    pkgName,
-		Operations: g.operations,
-		Types:      g.types,
-		Interfaces: g.interfaces,
-		Error:      g.errType,
-		Router:     g.router,
+		Package:       pkgName,
+		Operations:    g.operations,
+		Types:         g.types,
+		Interfaces:    g.interfaces,
+		Error:         g.errType,
+		ErrorType:     nil,
+		Router:        g.router,
+		skipTestRegex: g.opt.SkipTestRegex,
 	}
 	if cfg.Error != nil {
 		cfg.ErrorType = cfg.Error.Contents[ir.ContentTypeJSON]

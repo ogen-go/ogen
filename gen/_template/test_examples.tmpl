@@ -7,6 +7,9 @@
 {{- with $examples := $typ.Examples }}
 
 func Test{{ $typ.Go }}_Decode(t *testing.T) {
+	{{- if $.SkipTest $typ }}
+	t.Skip("Skipped by regex")
+	{{- end }}
 	t.Parallel()
 
 	for i, tc := range []struct{

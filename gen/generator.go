@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"regexp"
 	"sort"
 	"strings"
 
@@ -31,6 +32,7 @@ type Generator struct {
 type Options struct {
 	VerboseRoute         bool
 	GenerateExampleTests bool
+	SkipTestRegex        *regexp.Regexp
 	SpecificMethodPath   string
 	IgnoreNotImplemented []string
 }
