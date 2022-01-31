@@ -554,6 +554,63 @@
           }
         }
       }
+    },
+    "/oneofBug": {
+      "post": {
+        "operationId": "oneofBug",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": ["common-1", "common-2", "unique-1"],
+                    "properties": {
+                      "common-1": {"type": "string"},
+                      "common-2": {"type": "integer"},
+                      "unique-1": {"type": "string"}
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": ["common-1", "common-2", "unique-2"],
+                    "properties": {
+                      "common-1": {"type": "string"},
+                      "common-2": {"type": "integer"},
+                      "unique-2": {"type": "string"}
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": ["common-1", "common-2", "unique-3"],
+                    "properties": {
+                      "common-1": {"type": "string"},
+                      "common-2": {"type": "integer"},
+                      "common-3": {"type": "integer"},
+                      "unique-3": {"type": "string"}
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": ["common-1", "common-2", "unique-4"],
+                    "properties": {
+                      "common-3": {"type": "integer"},
+                      "unique-4": {"type": "string"}
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
     }
   },
   "components": {

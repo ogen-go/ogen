@@ -429,3 +429,28 @@ func TestJSONNullableEnum(t *testing.T) {
 		})
 	}
 }
+
+func TestJSONSum(t *testing.T) {
+	for i, tc := range []struct {
+		Input    string
+		Expected api.OneofBugReqType
+		Error    bool
+	}{
+		{`{"common-1": "abc", "common-2": 1, "unique-1": "unique"}`, api.OneofBugReq0OneofBugReq, false},
+		{`{"common-1": "abc", "common-2": 1, "unique-2": "unique"}`, api.OneofBugReq1OneofBugReq, false},
+		{`{"common-1": "abc", "common-2": 1, "unique-3": "unique"}`, api.OneofBugReq2OneofBugReq, false},
+		{`{"common-1": "abc", "common-2": 1, "unique-4": "unique"}`, api.OneofBugReq3OneofBugReq, false},
+	} {
+		// Make range value copy to prevent data races.
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			checker := require.NoError
+			if tc.Error {
+				checker = require.Error
+			}
+			r := api.OneofBugReq{}
+			checker(t, r.Decode(jx.DecodeStr(tc.Input)))
+			require.Equal(t, tc.Expected, r.Type)
+		})
+	}
+}
