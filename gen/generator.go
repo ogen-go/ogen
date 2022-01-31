@@ -74,6 +74,12 @@ func (g *Generator) makeIR(ops []*oas.Operation) error {
 	}
 
 	for _, spec := range ops {
+		if p := g.opt.SpecificMethodPath; p != "" {
+			if spec.Path.String() != p {
+				continue
+			}
+		}
+
 		op, err := g.generateOperation(spec)
 		if err != nil {
 			if err := g.fail(err); err != nil {
