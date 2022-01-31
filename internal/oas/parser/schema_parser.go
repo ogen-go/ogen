@@ -76,6 +76,14 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 		return hook(&oas.Schema{AllOf: schemas}), nil
 	}
 
+	// Try to derive schema type from properties.
+	if schema.Type == "" {
+		switch {
+		case schema.Items != nil:
+			schema.Type = "array"
+		}
+	}
+
 	switch schema.Type {
 	case "object":
 		if schema.Items != nil {
