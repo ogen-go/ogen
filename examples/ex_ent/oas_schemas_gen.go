@@ -207,52 +207,6 @@ func (o OptInt32) Or(d int32) int32 {
 	return d
 }
 
-// NewOptString returns new OptString with value set to v.
-func NewOptString(v string) OptString {
-	return OptString{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptString is optional string.
-type OptString struct {
-	Value string
-	Set   bool
-}
-
-// IsSet returns true if OptString was set.
-func (o OptString) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptString) Reset() {
-	var v string
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptString) SetTo(v string) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptString) Get() (v string, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptString) Or(d string) string {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptTime returns new OptTime with value set to v.
 func NewOptTime(v time.Time) OptTime {
 	return OptTime{
@@ -403,9 +357,8 @@ type PetUpdate struct {
 func (*PetUpdate) updatePetRes() {}
 
 type R400 struct {
-	Code   int       `json:"code"`
-	Status string    `json:"status"`
-	Errors OptString `json:"errors"`
+	Code   int    `json:"code"`
+	Status string `json:"status"`
 }
 
 func (*R400) createPetCategoriesRes() {}
@@ -422,9 +375,8 @@ func (*R400) readPetRes()             {}
 func (*R400) updatePetRes()           {}
 
 type R404 struct {
-	Code   int       `json:"code"`
-	Status string    `json:"status"`
-	Errors OptString `json:"errors"`
+	Code   int    `json:"code"`
+	Status string `json:"status"`
 }
 
 func (*R404) deletePetOwnerRes()    {}
@@ -437,9 +389,8 @@ func (*R404) readPetRes()           {}
 func (*R404) updatePetRes()         {}
 
 type R409 struct {
-	Code   int       `json:"code"`
-	Status string    `json:"status"`
-	Errors OptString `json:"errors"`
+	Code   int    `json:"code"`
+	Status string `json:"status"`
 }
 
 func (*R409) createPetCategoriesRes() {}
@@ -448,9 +399,8 @@ func (*R409) createPetOwnerRes()      {}
 func (*R409) createPetRes()           {}
 
 type R500 struct {
-	Code   int       `json:"code"`
-	Status string    `json:"status"`
-	Errors OptString `json:"errors"`
+	Code   int    `json:"code"`
+	Status string `json:"status"`
 }
 
 func (*R500) createPetCategoriesRes() {}

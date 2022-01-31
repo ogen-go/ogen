@@ -882,38 +882,21 @@ func (s ActionsCancelWorkflowRunAccepted) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
-	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfActionsCancelWorkflowRunAccepted = [0]string{}
 
 // Decode decodes ActionsCancelWorkflowRunAccepted from json.
-func (s ActionsCancelWorkflowRunAccepted) Decode(d *jx.Decoder) error {
+func (s *ActionsCancelWorkflowRunAccepted) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ActionsCancelWorkflowRunAccepted to nil`)
 	}
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -1205,38 +1188,21 @@ func (s ActionsCreateOrUpdateRepoSecretCreated) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
-	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfActionsCreateOrUpdateRepoSecretCreated = [0]string{}
 
 // Decode decodes ActionsCreateOrUpdateRepoSecretCreated from json.
-func (s ActionsCreateOrUpdateRepoSecretCreated) Decode(d *jx.Decoder) error {
+func (s *ActionsCreateOrUpdateRepoSecretCreated) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ActionsCreateOrUpdateRepoSecretCreated to nil`)
 	}
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -3642,38 +3608,21 @@ func (s ActionsReRunWorkflowCreated) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
-	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfActionsReRunWorkflowCreated = [0]string{}
 
 // Decode decodes ActionsReRunWorkflowCreated from json.
-func (s ActionsReRunWorkflowCreated) Decode(d *jx.Decoder) error {
+func (s *ActionsReRunWorkflowCreated) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ActionsReRunWorkflowCreated to nil`)
 	}
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -3805,38 +3754,21 @@ func (s ActionsRetryWorkflowCreated) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
-	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfActionsRetryWorkflowCreated = [0]string{}
 
 // Decode decodes ActionsRetryWorkflowCreated from json.
-func (s ActionsRetryWorkflowCreated) Decode(d *jx.Decoder) error {
+func (s *ActionsRetryWorkflowCreated) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ActionsRetryWorkflowCreated to nil`)
 	}
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -8408,38 +8340,21 @@ func (s AppsCreateFromManifestReq) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
-	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfAppsCreateFromManifestReq = [0]string{}
 
 // Decode decodes AppsCreateFromManifestReq from json.
-func (s AppsCreateFromManifestReq) Decode(d *jx.Decoder) error {
+func (s *AppsCreateFromManifestReq) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppsCreateFromManifestReq to nil`)
 	}
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -10417,940 +10332,6 @@ func (s *Artifact) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AuditLogEvent) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if s.Timestamp.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Timestamp.Set {
-			e.RawStr("\"@timestamp\"" + ":")
-			s.Timestamp.Encode(e)
-		}
-	}
-	{
-		if s.Action.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Action.Set {
-			e.RawStr("\"action\"" + ":")
-			s.Action.Encode(e)
-		}
-	}
-	{
-		if s.Active.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Active.Set {
-			e.RawStr("\"active\"" + ":")
-			s.Active.Encode(e)
-		}
-	}
-	{
-		if s.ActiveWas.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ActiveWas.Set {
-			e.RawStr("\"active_was\"" + ":")
-			s.ActiveWas.Encode(e)
-		}
-	}
-	{
-		if s.Actor.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Actor.Set {
-			e.RawStr("\"actor\"" + ":")
-			s.Actor.Encode(e)
-		}
-	}
-	{
-		if s.ActorID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ActorID.Set {
-			e.RawStr("\"actor_id\"" + ":")
-			s.ActorID.Encode(e)
-		}
-	}
-	{
-		if s.ActorLocation.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ActorLocation.Set {
-			e.RawStr("\"actor_location\"" + ":")
-			s.ActorLocation.Encode(e)
-		}
-	}
-	{
-		if s.Data.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Data.Set {
-			e.RawStr("\"data\"" + ":")
-			s.Data.Encode(e)
-		}
-	}
-	{
-		if s.OrgID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.OrgID.Set {
-			e.RawStr("\"org_id\"" + ":")
-			s.OrgID.Encode(e)
-		}
-	}
-	{
-		if s.BlockedUser.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.BlockedUser.Set {
-			e.RawStr("\"blocked_user\"" + ":")
-			s.BlockedUser.Encode(e)
-		}
-	}
-	{
-		if s.Business.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Business.Set {
-			e.RawStr("\"business\"" + ":")
-			s.Business.Encode(e)
-		}
-	}
-	{
-		if s.Config != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Config != nil {
-			e.RawStr("\"config\"" + ":")
-			e.ArrStart()
-			if len(s.Config) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Config[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Config[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
-	}
-	{
-		if s.ConfigWas != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ConfigWas != nil {
-			e.RawStr("\"config_was\"" + ":")
-			e.ArrStart()
-			if len(s.ConfigWas) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ConfigWas[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.ConfigWas[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
-	}
-	{
-		if s.ContentType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ContentType.Set {
-			e.RawStr("\"content_type\"" + ":")
-			s.ContentType.Encode(e)
-		}
-	}
-	{
-		if s.CreatedAt.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CreatedAt.Set {
-			e.RawStr("\"created_at\"" + ":")
-			s.CreatedAt.Encode(e)
-		}
-	}
-	{
-		if s.DeployKeyFingerprint.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DeployKeyFingerprint.Set {
-			e.RawStr("\"deploy_key_fingerprint\"" + ":")
-			s.DeployKeyFingerprint.Encode(e)
-		}
-	}
-	{
-		if s.DocumentID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DocumentID.Set {
-			e.RawStr("\"_document_id\"" + ":")
-			s.DocumentID.Encode(e)
-		}
-	}
-	{
-		if s.Emoji.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Emoji.Set {
-			e.RawStr("\"emoji\"" + ":")
-			s.Emoji.Encode(e)
-		}
-	}
-	{
-		if s.Events != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Events != nil {
-			e.RawStr("\"events\"" + ":")
-			e.ArrStart()
-			if len(s.Events) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Events[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Events[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
-	}
-	{
-		if s.EventsWere != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.EventsWere != nil {
-			e.RawStr("\"events_were\"" + ":")
-			e.ArrStart()
-			if len(s.EventsWere) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.EventsWere[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.EventsWere[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
-	}
-	{
-		if s.Explanation.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Explanation.Set {
-			e.RawStr("\"explanation\"" + ":")
-			s.Explanation.Encode(e)
-		}
-	}
-	{
-		if s.Fingerprint.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Fingerprint.Set {
-			e.RawStr("\"fingerprint\"" + ":")
-			s.Fingerprint.Encode(e)
-		}
-	}
-	{
-		if s.HookID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.HookID.Set {
-			e.RawStr("\"hook_id\"" + ":")
-			s.HookID.Encode(e)
-		}
-	}
-	{
-		if s.LimitedAvailability.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LimitedAvailability.Set {
-			e.RawStr("\"limited_availability\"" + ":")
-			s.LimitedAvailability.Encode(e)
-		}
-	}
-	{
-		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
-			s.Message.Encode(e)
-		}
-	}
-	{
-		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
-			s.Name.Encode(e)
-		}
-	}
-	{
-		if s.OldUser.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.OldUser.Set {
-			e.RawStr("\"old_user\"" + ":")
-			s.OldUser.Encode(e)
-		}
-	}
-	{
-		if s.OpensshPublicKey.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.OpensshPublicKey.Set {
-			e.RawStr("\"openssh_public_key\"" + ":")
-			s.OpensshPublicKey.Encode(e)
-		}
-	}
-	{
-		if s.Org.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Org.Set {
-			e.RawStr("\"org\"" + ":")
-			s.Org.Encode(e)
-		}
-	}
-	{
-		if s.PreviousVisibility.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PreviousVisibility.Set {
-			e.RawStr("\"previous_visibility\"" + ":")
-			s.PreviousVisibility.Encode(e)
-		}
-	}
-	{
-		if s.ReadOnly.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"read_only\"" + ":")
-			s.ReadOnly.Encode(e)
-		}
-	}
-	{
-		if s.Repo.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Repo.Set {
-			e.RawStr("\"repo\"" + ":")
-			s.Repo.Encode(e)
-		}
-	}
-	{
-		if s.Repository.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Repository.Set {
-			e.RawStr("\"repository\"" + ":")
-			s.Repository.Encode(e)
-		}
-	}
-	{
-		if s.RepositoryPublic.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RepositoryPublic.Set {
-			e.RawStr("\"repository_public\"" + ":")
-			s.RepositoryPublic.Encode(e)
-		}
-	}
-	{
-		if s.TargetLogin.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.TargetLogin.Set {
-			e.RawStr("\"target_login\"" + ":")
-			s.TargetLogin.Encode(e)
-		}
-	}
-	{
-		if s.Team.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Team.Set {
-			e.RawStr("\"team\"" + ":")
-			s.Team.Encode(e)
-		}
-	}
-	{
-		if s.TransportProtocol.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.TransportProtocol.Set {
-			e.RawStr("\"transport_protocol\"" + ":")
-			s.TransportProtocol.Encode(e)
-		}
-	}
-	{
-		if s.TransportProtocolName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.TransportProtocolName.Set {
-			e.RawStr("\"transport_protocol_name\"" + ":")
-			s.TransportProtocolName.Encode(e)
-		}
-	}
-	{
-		if s.User.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.User.Set {
-			e.RawStr("\"user\"" + ":")
-			s.User.Encode(e)
-		}
-	}
-	{
-		if s.Visibility.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Visibility.Set {
-			e.RawStr("\"visibility\"" + ":")
-			s.Visibility.Encode(e)
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfAuditLogEvent = [40]string{
-	0:  "@timestamp",
-	1:  "action",
-	2:  "active",
-	3:  "active_was",
-	4:  "actor",
-	5:  "actor_id",
-	6:  "actor_location",
-	7:  "data",
-	8:  "org_id",
-	9:  "blocked_user",
-	10: "business",
-	11: "config",
-	12: "config_was",
-	13: "content_type",
-	14: "created_at",
-	15: "deploy_key_fingerprint",
-	16: "_document_id",
-	17: "emoji",
-	18: "events",
-	19: "events_were",
-	20: "explanation",
-	21: "fingerprint",
-	22: "hook_id",
-	23: "limited_availability",
-	24: "message",
-	25: "name",
-	26: "old_user",
-	27: "openssh_public_key",
-	28: "org",
-	29: "previous_visibility",
-	30: "read_only",
-	31: "repo",
-	32: "repository",
-	33: "repository_public",
-	34: "target_login",
-	35: "team",
-	36: "transport_protocol",
-	37: "transport_protocol_name",
-	38: "user",
-	39: "visibility",
-}
-
-// Decode decodes AuditLogEvent from json.
-func (s *AuditLogEvent) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode AuditLogEvent to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "@timestamp":
-			s.Timestamp.Reset()
-			if err := s.Timestamp.Decode(d); err != nil {
-				return err
-			}
-		case "action":
-			s.Action.Reset()
-			if err := s.Action.Decode(d); err != nil {
-				return err
-			}
-		case "active":
-			s.Active.Reset()
-			if err := s.Active.Decode(d); err != nil {
-				return err
-			}
-		case "active_was":
-			s.ActiveWas.Reset()
-			if err := s.ActiveWas.Decode(d); err != nil {
-				return err
-			}
-		case "actor":
-			s.Actor.Reset()
-			if err := s.Actor.Decode(d); err != nil {
-				return err
-			}
-		case "actor_id":
-			s.ActorID.Reset()
-			if err := s.ActorID.Decode(d); err != nil {
-				return err
-			}
-		case "actor_location":
-			s.ActorLocation.Reset()
-			if err := s.ActorLocation.Decode(d); err != nil {
-				return err
-			}
-		case "data":
-			s.Data.Reset()
-			if err := s.Data.Decode(d); err != nil {
-				return err
-			}
-		case "org_id":
-			s.OrgID.Reset()
-			if err := s.OrgID.Decode(d); err != nil {
-				return err
-			}
-		case "blocked_user":
-			s.BlockedUser.Reset()
-			if err := s.BlockedUser.Decode(d); err != nil {
-				return err
-			}
-		case "business":
-			s.Business.Reset()
-			if err := s.Business.Decode(d); err != nil {
-				return err
-			}
-		case "config":
-			s.Config = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				s.Config = append(s.Config, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		case "config_was":
-			s.ConfigWas = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				s.ConfigWas = append(s.ConfigWas, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		case "content_type":
-			s.ContentType.Reset()
-			if err := s.ContentType.Decode(d); err != nil {
-				return err
-			}
-		case "created_at":
-			s.CreatedAt.Reset()
-			if err := s.CreatedAt.Decode(d); err != nil {
-				return err
-			}
-		case "deploy_key_fingerprint":
-			s.DeployKeyFingerprint.Reset()
-			if err := s.DeployKeyFingerprint.Decode(d); err != nil {
-				return err
-			}
-		case "_document_id":
-			s.DocumentID.Reset()
-			if err := s.DocumentID.Decode(d); err != nil {
-				return err
-			}
-		case "emoji":
-			s.Emoji.Reset()
-			if err := s.Emoji.Decode(d); err != nil {
-				return err
-			}
-		case "events":
-			s.Events = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				s.Events = append(s.Events, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		case "events_were":
-			s.EventsWere = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				s.EventsWere = append(s.EventsWere, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		case "explanation":
-			s.Explanation.Reset()
-			if err := s.Explanation.Decode(d); err != nil {
-				return err
-			}
-		case "fingerprint":
-			s.Fingerprint.Reset()
-			if err := s.Fingerprint.Decode(d); err != nil {
-				return err
-			}
-		case "hook_id":
-			s.HookID.Reset()
-			if err := s.HookID.Decode(d); err != nil {
-				return err
-			}
-		case "limited_availability":
-			s.LimitedAvailability.Reset()
-			if err := s.LimitedAvailability.Decode(d); err != nil {
-				return err
-			}
-		case "message":
-			s.Message.Reset()
-			if err := s.Message.Decode(d); err != nil {
-				return err
-			}
-		case "name":
-			s.Name.Reset()
-			if err := s.Name.Decode(d); err != nil {
-				return err
-			}
-		case "old_user":
-			s.OldUser.Reset()
-			if err := s.OldUser.Decode(d); err != nil {
-				return err
-			}
-		case "openssh_public_key":
-			s.OpensshPublicKey.Reset()
-			if err := s.OpensshPublicKey.Decode(d); err != nil {
-				return err
-			}
-		case "org":
-			s.Org.Reset()
-			if err := s.Org.Decode(d); err != nil {
-				return err
-			}
-		case "previous_visibility":
-			s.PreviousVisibility.Reset()
-			if err := s.PreviousVisibility.Decode(d); err != nil {
-				return err
-			}
-		case "read_only":
-			s.ReadOnly.Reset()
-			if err := s.ReadOnly.Decode(d); err != nil {
-				return err
-			}
-		case "repo":
-			s.Repo.Reset()
-			if err := s.Repo.Decode(d); err != nil {
-				return err
-			}
-		case "repository":
-			s.Repository.Reset()
-			if err := s.Repository.Decode(d); err != nil {
-				return err
-			}
-		case "repository_public":
-			s.RepositoryPublic.Reset()
-			if err := s.RepositoryPublic.Decode(d); err != nil {
-				return err
-			}
-		case "target_login":
-			s.TargetLogin.Reset()
-			if err := s.TargetLogin.Decode(d); err != nil {
-				return err
-			}
-		case "team":
-			s.Team.Reset()
-			if err := s.Team.Decode(d); err != nil {
-				return err
-			}
-		case "transport_protocol":
-			s.TransportProtocol.Reset()
-			if err := s.TransportProtocol.Decode(d); err != nil {
-				return err
-			}
-		case "transport_protocol_name":
-			s.TransportProtocolName.Reset()
-			if err := s.TransportProtocolName.Decode(d); err != nil {
-				return err
-			}
-		case "user":
-			s.User.Reset()
-			if err := s.User.Decode(d); err != nil {
-				return err
-			}
-		case "visibility":
-			s.Visibility.Reset()
-			if err := s.Visibility.Decode(d); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s AuditLogEventActorLocation) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if s.CountryName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CountryName.Set {
-			e.RawStr("\"country_name\"" + ":")
-			s.CountryName.Encode(e)
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfAuditLogEventActorLocation = [1]string{
-	0: "country_name",
-}
-
-// Decode decodes AuditLogEventActorLocation from json.
-func (s *AuditLogEventActorLocation) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode AuditLogEventActorLocation to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "country_name":
-			s.CountryName.Reset()
-			if err := s.CountryName.Decode(d); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s AuditLogEventData) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfAuditLogEventData = [0]string{}
-
-// Decode decodes AuditLogEventData from json.
-func (s AuditLogEventData) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode AuditLogEventData to nil`)
-	}
-
-	m := s
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
 func (s AuthenticationToken) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -12281,564 +11262,6 @@ func (s *Autolink) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s BaseGist) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if !first {
-			e.Comma()
-		}
-		first = false
-
-		e.RawStr("\"url\"" + ":")
-		json.EncodeURI(e, s.URL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"forks_url\"" + ":")
-		json.EncodeURI(e, s.ForksURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"commits_url\"" + ":")
-		json.EncodeURI(e, s.CommitsURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"id\"" + ":")
-		e.Str(s.ID)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"node_id\"" + ":")
-		e.Str(s.NodeID)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"git_pull_url\"" + ":")
-		json.EncodeURI(e, s.GitPullURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"git_push_url\"" + ":")
-		json.EncodeURI(e, s.GitPushURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"html_url\"" + ":")
-		json.EncodeURI(e, s.HTMLURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"files\"" + ":")
-		s.Files.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"public\"" + ":")
-		e.Bool(s.Public)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"created_at\"" + ":")
-		json.EncodeDateTime(e, s.CreatedAt)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"updated_at\"" + ":")
-		json.EncodeDateTime(e, s.UpdatedAt)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"description\"" + ":")
-		s.Description.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"comments\"" + ":")
-		e.Int(s.Comments)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"user\"" + ":")
-		s.User.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"comments_url\"" + ":")
-		json.EncodeURI(e, s.CommentsURL)
-	}
-	{
-		if s.Owner.Set {
-			e.Comma()
-		}
-		if s.Owner.Set {
-			e.RawStr("\"owner\"" + ":")
-			s.Owner.Encode(e)
-		}
-	}
-	{
-		if s.Truncated.Set {
-			e.Comma()
-		}
-		if s.Truncated.Set {
-			e.RawStr("\"truncated\"" + ":")
-			s.Truncated.Encode(e)
-		}
-	}
-	{
-		if s.Forks != nil {
-			e.Comma()
-		}
-		if s.Forks != nil {
-			e.RawStr("\"forks\"" + ":")
-			e.ArrStart()
-			if len(s.Forks) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Forks[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Forks[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
-	}
-	{
-		if s.History != nil {
-			e.Comma()
-		}
-		if s.History != nil {
-			e.RawStr("\"history\"" + ":")
-			e.ArrStart()
-			if len(s.History) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.History[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.History[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfBaseGist = [20]string{
-	0:  "url",
-	1:  "forks_url",
-	2:  "commits_url",
-	3:  "id",
-	4:  "node_id",
-	5:  "git_pull_url",
-	6:  "git_push_url",
-	7:  "html_url",
-	8:  "files",
-	9:  "public",
-	10: "created_at",
-	11: "updated_at",
-	12: "description",
-	13: "comments",
-	14: "user",
-	15: "comments_url",
-	16: "owner",
-	17: "truncated",
-	18: "forks",
-	19: "history",
-}
-
-// Decode decodes BaseGist from json.
-func (s *BaseGist) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode BaseGist to nil`)
-	}
-	var requiredBitSet [3]uint8
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "url":
-			requiredBitSet[0] |= 1 << 0
-			v, err := json.DecodeURI(d)
-			s.URL = v
-			if err != nil {
-				return err
-			}
-		case "forks_url":
-			requiredBitSet[0] |= 1 << 1
-			v, err := json.DecodeURI(d)
-			s.ForksURL = v
-			if err != nil {
-				return err
-			}
-		case "commits_url":
-			requiredBitSet[0] |= 1 << 2
-			v, err := json.DecodeURI(d)
-			s.CommitsURL = v
-			if err != nil {
-				return err
-			}
-		case "id":
-			requiredBitSet[0] |= 1 << 3
-			v, err := d.Str()
-			s.ID = string(v)
-			if err != nil {
-				return err
-			}
-		case "node_id":
-			requiredBitSet[0] |= 1 << 4
-			v, err := d.Str()
-			s.NodeID = string(v)
-			if err != nil {
-				return err
-			}
-		case "git_pull_url":
-			requiredBitSet[0] |= 1 << 5
-			v, err := json.DecodeURI(d)
-			s.GitPullURL = v
-			if err != nil {
-				return err
-			}
-		case "git_push_url":
-			requiredBitSet[0] |= 1 << 6
-			v, err := json.DecodeURI(d)
-			s.GitPushURL = v
-			if err != nil {
-				return err
-			}
-		case "html_url":
-			requiredBitSet[0] |= 1 << 7
-			v, err := json.DecodeURI(d)
-			s.HTMLURL = v
-			if err != nil {
-				return err
-			}
-		case "files":
-			requiredBitSet[1] |= 1 << 0
-			s.Files = make(BaseGistFiles)
-			if err := s.Files.Decode(d); err != nil {
-				return err
-			}
-		case "public":
-			requiredBitSet[1] |= 1 << 1
-			v, err := d.Bool()
-			s.Public = bool(v)
-			if err != nil {
-				return err
-			}
-		case "created_at":
-			requiredBitSet[1] |= 1 << 2
-			v, err := json.DecodeDateTime(d)
-			s.CreatedAt = v
-			if err != nil {
-				return err
-			}
-		case "updated_at":
-			requiredBitSet[1] |= 1 << 3
-			v, err := json.DecodeDateTime(d)
-			s.UpdatedAt = v
-			if err != nil {
-				return err
-			}
-		case "description":
-			requiredBitSet[1] |= 1 << 4
-			if err := s.Description.Decode(d); err != nil {
-				return err
-			}
-		case "comments":
-			requiredBitSet[1] |= 1 << 5
-			v, err := d.Int()
-			s.Comments = int(v)
-			if err != nil {
-				return err
-			}
-		case "user":
-			requiredBitSet[1] |= 1 << 6
-			if err := s.User.Decode(d); err != nil {
-				return err
-			}
-		case "comments_url":
-			requiredBitSet[1] |= 1 << 7
-			v, err := json.DecodeURI(d)
-			s.CommentsURL = v
-			if err != nil {
-				return err
-			}
-		case "owner":
-			s.Owner.Reset()
-			if err := s.Owner.Decode(d); err != nil {
-				return err
-			}
-		case "truncated":
-			s.Truncated.Reset()
-			if err := s.Truncated.Decode(d); err != nil {
-				return err
-			}
-		case "forks":
-			s.Forks = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				s.Forks = append(s.Forks, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		case "history":
-			s.History = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				s.History = append(s.History, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-	var failures []validate.FieldError
-	for i, mask := range [3]uint8{
-		0b11111111,
-		0b11111111,
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfBaseGist) {
-					name = jsonFieldsNameOfBaseGist[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s BaseGistFiles) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		elem.Encode(e)
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfBaseGistFiles = [0]string{}
-
-// Decode decodes BaseGistFiles from json.
-func (s BaseGistFiles) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode BaseGistFiles to nil`)
-	}
-
-	m := s
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem BaseGistFilesItem
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			m[string(k)] = elem
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s BaseGistFilesItem) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if s.Filename.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Filename.Set {
-			e.RawStr("\"filename\"" + ":")
-			s.Filename.Encode(e)
-		}
-	}
-	{
-		if s.Type.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
-			s.Type.Encode(e)
-		}
-	}
-	{
-		if s.Language.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Language.Set {
-			e.RawStr("\"language\"" + ":")
-			s.Language.Encode(e)
-		}
-	}
-	{
-		if s.RawURL.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RawURL.Set {
-			e.RawStr("\"raw_url\"" + ":")
-			s.RawURL.Encode(e)
-		}
-	}
-	{
-		if s.Size.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Size.Set {
-			e.RawStr("\"size\"" + ":")
-			s.Size.Encode(e)
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfBaseGistFilesItem = [5]string{
-	0: "filename",
-	1: "type",
-	2: "language",
-	3: "raw_url",
-	4: "size",
-}
-
-// Decode decodes BaseGistFilesItem from json.
-func (s *BaseGistFilesItem) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode BaseGistFilesItem to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "filename":
-			s.Filename.Reset()
-			if err := s.Filename.Decode(d); err != nil {
-				return err
-			}
-		case "type":
-			s.Type.Reset()
-			if err := s.Type.Decode(d); err != nil {
-				return err
-			}
-		case "language":
-			s.Language.Reset()
-			if err := s.Language.Decode(d); err != nil {
-				return err
-			}
-		case "raw_url":
-			s.RawURL.Reset()
-			if err := s.RawURL.Decode(d); err != nil {
-				return err
-			}
-		case "size":
-			s.Size.Reset()
-			if err := s.Size.Decode(d); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
 	}
 
 	return nil
@@ -17844,38 +16267,21 @@ func (s ChecksRerequestSuiteCreated) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
-	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfChecksRerequestSuiteCreated = [0]string{}
 
 // Decode decodes ChecksRerequestSuiteCreated from json.
-func (s ChecksRerequestSuiteCreated) Decode(d *jx.Decoder) error {
+func (s *ChecksRerequestSuiteCreated) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ChecksRerequestSuiteCreated to nil`)
 	}
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -18460,263 +16866,6 @@ func (s *CodeOfConductSimple) Decode(d *jx.Decoder) error {
 				var name string
 				if fieldIdx < len(jsonFieldsNameOfCodeOfConductSimple) {
 					name = jsonFieldsNameOfCodeOfConductSimple[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s CodeScanningAlert) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if !first {
-			e.Comma()
-		}
-		first = false
-
-		e.RawStr("\"number\"" + ":")
-		s.Number.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"created_at\"" + ":")
-		s.CreatedAt.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"url\"" + ":")
-		s.URL.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"html_url\"" + ":")
-		s.HTMLURL.Encode(e)
-	}
-	{
-		if s.Instances.Set {
-			e.Comma()
-		}
-		if s.Instances.Set {
-			e.RawStr("\"instances\"" + ":")
-			s.Instances.Encode(e)
-		}
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"instances_url\"" + ":")
-		s.InstancesURL.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"state\"" + ":")
-		s.State.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"dismissed_by\"" + ":")
-		s.DismissedBy.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"dismissed_at\"" + ":")
-		s.DismissedAt.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"dismissed_reason\"" + ":")
-		s.DismissedReason.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"rule\"" + ":")
-		s.Rule.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"tool\"" + ":")
-		s.Tool.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"most_recent_instance\"" + ":")
-		s.MostRecentInstance.Encode(e)
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfCodeScanningAlert = [13]string{
-	0:  "number",
-	1:  "created_at",
-	2:  "url",
-	3:  "html_url",
-	4:  "instances",
-	5:  "instances_url",
-	6:  "state",
-	7:  "dismissed_by",
-	8:  "dismissed_at",
-	9:  "dismissed_reason",
-	10: "rule",
-	11: "tool",
-	12: "most_recent_instance",
-}
-
-// Decode decodes CodeScanningAlert from json.
-func (s *CodeScanningAlert) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode CodeScanningAlert to nil`)
-	}
-	var requiredBitSet [2]uint8
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "number":
-			requiredBitSet[0] |= 1 << 0
-			{
-				var unwrapped int
-				v, err := d.Int()
-				unwrapped = int(v)
-				if err != nil {
-					return err
-				}
-				s.Number = AlertNumber(unwrapped)
-			}
-		case "created_at":
-			requiredBitSet[0] |= 1 << 1
-			{
-				var unwrapped time.Time
-				v, err := json.DecodeDateTime(d)
-				unwrapped = v
-				if err != nil {
-					return err
-				}
-				s.CreatedAt = AlertCreatedAt(unwrapped)
-			}
-		case "url":
-			requiredBitSet[0] |= 1 << 2
-			{
-				var unwrapped url.URL
-				v, err := json.DecodeURI(d)
-				unwrapped = v
-				if err != nil {
-					return err
-				}
-				s.URL = AlertURL(unwrapped)
-			}
-		case "html_url":
-			requiredBitSet[0] |= 1 << 3
-			{
-				var unwrapped url.URL
-				v, err := json.DecodeURI(d)
-				unwrapped = v
-				if err != nil {
-					return err
-				}
-				s.HTMLURL = AlertHTMLURL(unwrapped)
-			}
-		case "instances":
-			s.Instances.Reset()
-			if err := s.Instances.Decode(d); err != nil {
-				return err
-			}
-		case "instances_url":
-			requiredBitSet[0] |= 1 << 5
-			{
-				var unwrapped url.URL
-				v, err := json.DecodeURI(d)
-				unwrapped = v
-				if err != nil {
-					return err
-				}
-				s.InstancesURL = AlertInstancesURL(unwrapped)
-			}
-		case "state":
-			requiredBitSet[0] |= 1 << 6
-			if err := s.State.Decode(d); err != nil {
-				return err
-			}
-		case "dismissed_by":
-			requiredBitSet[0] |= 1 << 7
-			if err := s.DismissedBy.Decode(d); err != nil {
-				return err
-			}
-		case "dismissed_at":
-			requiredBitSet[1] |= 1 << 0
-			if err := s.DismissedAt.Decode(d); err != nil {
-				return err
-			}
-		case "dismissed_reason":
-			requiredBitSet[1] |= 1 << 1
-			if err := s.DismissedReason.Decode(d); err != nil {
-				return err
-			}
-		case "rule":
-			requiredBitSet[1] |= 1 << 2
-			if err := s.Rule.Decode(d); err != nil {
-				return err
-			}
-		case "tool":
-			requiredBitSet[1] |= 1 << 3
-			if err := s.Tool.Decode(d); err != nil {
-				return err
-			}
-		case "most_recent_instance":
-			requiredBitSet[1] |= 1 << 4
-			if err := s.MostRecentInstance.Decode(d); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-	var failures []validate.FieldError
-	for i, mask := range [2]uint8{
-		0b11101111,
-		0b00011111,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfCodeScanningAlert) {
-					name = jsonFieldsNameOfCodeScanningAlert[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
@@ -19488,244 +17637,6 @@ func (s *CodeScanningAlertLocation) Decode(d *jx.Decoder) error {
 		return nil
 	}); err != nil {
 		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s CodeScanningAlertRule) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if s.ID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ID.Set {
-			e.RawStr("\"id\"" + ":")
-			s.ID.Encode(e)
-		}
-	}
-	{
-		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
-			s.Name.Encode(e)
-		}
-	}
-	{
-		if s.Severity.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Severity.Set {
-			e.RawStr("\"severity\"" + ":")
-			s.Severity.Encode(e)
-		}
-	}
-	{
-		if s.SecuritySeverityLevel.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SecuritySeverityLevel.Set {
-			e.RawStr("\"security_severity_level\"" + ":")
-			s.SecuritySeverityLevel.Encode(e)
-		}
-	}
-	{
-		if s.Description.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Description.Set {
-			e.RawStr("\"description\"" + ":")
-			s.Description.Encode(e)
-		}
-	}
-	{
-		if s.FullDescription.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FullDescription.Set {
-			e.RawStr("\"full_description\"" + ":")
-			s.FullDescription.Encode(e)
-		}
-	}
-	{
-		if s.Tags.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Tags.Set {
-			e.RawStr("\"tags\"" + ":")
-			s.Tags.Encode(e)
-		}
-	}
-	{
-		if s.Help.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Help.Set {
-			e.RawStr("\"help\"" + ":")
-			s.Help.Encode(e)
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfCodeScanningAlertRule = [8]string{
-	0: "id",
-	1: "name",
-	2: "severity",
-	3: "security_severity_level",
-	4: "description",
-	5: "full_description",
-	6: "tags",
-	7: "help",
-}
-
-// Decode decodes CodeScanningAlertRule from json.
-func (s *CodeScanningAlertRule) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode CodeScanningAlertRule to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "id":
-			s.ID.Reset()
-			if err := s.ID.Decode(d); err != nil {
-				return err
-			}
-		case "name":
-			s.Name.Reset()
-			if err := s.Name.Decode(d); err != nil {
-				return err
-			}
-		case "severity":
-			s.Severity.Reset()
-			if err := s.Severity.Decode(d); err != nil {
-				return err
-			}
-		case "security_severity_level":
-			s.SecuritySeverityLevel.Reset()
-			if err := s.SecuritySeverityLevel.Decode(d); err != nil {
-				return err
-			}
-		case "description":
-			s.Description.Reset()
-			if err := s.Description.Decode(d); err != nil {
-				return err
-			}
-		case "full_description":
-			s.FullDescription.Reset()
-			if err := s.FullDescription.Decode(d); err != nil {
-				return err
-			}
-		case "tags":
-			s.Tags.Reset()
-			if err := s.Tags.Decode(d); err != nil {
-				return err
-			}
-		case "help":
-			s.Help.Reset()
-			if err := s.Help.Decode(d); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode encodes CodeScanningAlertRuleSecuritySeverityLevel as json.
-func (s CodeScanningAlertRuleSecuritySeverityLevel) Encode(e *jx.Writer) {
-	e.Str(string(s))
-}
-
-// Decode decodes CodeScanningAlertRuleSecuritySeverityLevel from json.
-func (s *CodeScanningAlertRuleSecuritySeverityLevel) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode CodeScanningAlertRuleSecuritySeverityLevel to nil`)
-	}
-	v, err := d.StrBytes()
-	if err != nil {
-		return err
-	}
-	// Try to use constant string.
-	switch CodeScanningAlertRuleSecuritySeverityLevel(v) {
-	case CodeScanningAlertRuleSecuritySeverityLevelLow:
-		*s = CodeScanningAlertRuleSecuritySeverityLevelLow
-	case CodeScanningAlertRuleSecuritySeverityLevelMedium:
-		*s = CodeScanningAlertRuleSecuritySeverityLevelMedium
-	case CodeScanningAlertRuleSecuritySeverityLevelHigh:
-		*s = CodeScanningAlertRuleSecuritySeverityLevelHigh
-	case CodeScanningAlertRuleSecuritySeverityLevelCritical:
-		*s = CodeScanningAlertRuleSecuritySeverityLevelCritical
-	default:
-		*s = CodeScanningAlertRuleSecuritySeverityLevel(v)
-	}
-
-	return nil
-}
-
-// Encode encodes CodeScanningAlertRuleSeverity as json.
-func (s CodeScanningAlertRuleSeverity) Encode(e *jx.Writer) {
-	e.Str(string(s))
-}
-
-// Decode decodes CodeScanningAlertRuleSeverity from json.
-func (s *CodeScanningAlertRuleSeverity) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode CodeScanningAlertRuleSeverity to nil`)
-	}
-	v, err := d.StrBytes()
-	if err != nil {
-		return err
-	}
-	// Try to use constant string.
-	switch CodeScanningAlertRuleSeverity(v) {
-	case CodeScanningAlertRuleSeverityNone:
-		*s = CodeScanningAlertRuleSeverityNone
-	case CodeScanningAlertRuleSeverityNote:
-		*s = CodeScanningAlertRuleSeverityNote
-	case CodeScanningAlertRuleSeverityWarning:
-		*s = CodeScanningAlertRuleSeverityWarning
-	case CodeScanningAlertRuleSeverityError:
-		*s = CodeScanningAlertRuleSeverityError
-	default:
-		*s = CodeScanningAlertRuleSeverity(v)
 	}
 
 	return nil
@@ -20779,54 +18690,6 @@ func (s *CodeScanningDeleteAnalysisApplicationJSONNotFound) Decode(d *jx.Decoder
 	return nil
 }
 
-// Encode encodes CodeScanningGetAlertApplicationJSONForbidden as json.
-func (s CodeScanningGetAlertApplicationJSONForbidden) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningGetAlertApplicationJSONForbidden from json.
-func (s *CodeScanningGetAlertApplicationJSONForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode CodeScanningGetAlertApplicationJSONForbidden to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningGetAlertApplicationJSONForbidden(unwrapped)
-	return nil
-}
-
-// Encode encodes CodeScanningGetAlertApplicationJSONNotFound as json.
-func (s CodeScanningGetAlertApplicationJSONNotFound) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningGetAlertApplicationJSONNotFound from json.
-func (s *CodeScanningGetAlertApplicationJSONNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode CodeScanningGetAlertApplicationJSONNotFound to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningGetAlertApplicationJSONNotFound(unwrapped)
-	return nil
-}
-
 // Encode encodes CodeScanningGetAnalysisApplicationJSONForbidden as json.
 func (s CodeScanningGetAnalysisApplicationJSONForbidden) Encode(e *jx.Writer) {
 	unwrapped := BasicError(s)
@@ -21337,54 +19200,6 @@ func (s *CodeScanningSarifsStatusProcessingStatus) Decode(d *jx.Decoder) error {
 		*s = CodeScanningSarifsStatusProcessingStatus(v)
 	}
 
-	return nil
-}
-
-// Encode encodes CodeScanningUpdateAlertApplicationJSONForbidden as json.
-func (s CodeScanningUpdateAlertApplicationJSONForbidden) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningUpdateAlertApplicationJSONForbidden from json.
-func (s *CodeScanningUpdateAlertApplicationJSONForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode CodeScanningUpdateAlertApplicationJSONForbidden to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningUpdateAlertApplicationJSONForbidden(unwrapped)
-	return nil
-}
-
-// Encode encodes CodeScanningUpdateAlertApplicationJSONNotFound as json.
-func (s CodeScanningUpdateAlertApplicationJSONNotFound) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes CodeScanningUpdateAlertApplicationJSONNotFound from json.
-func (s *CodeScanningUpdateAlertApplicationJSONNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode CodeScanningUpdateAlertApplicationJSONNotFound to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = CodeScanningUpdateAlertApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
@@ -27576,7 +25391,6 @@ func (s *DeploymentPayload) Decode(d *jx.Decoder) error {
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
 	case jx.Object:
-		s.DeploymentPayload0 = make(DeploymentPayload0)
 		if err := s.DeploymentPayload0.Decode(d); err != nil {
 			return err
 		}
@@ -27601,38 +25415,21 @@ func (s DeploymentPayload0) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
-	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfDeploymentPayload0 = [0]string{}
 
 // Decode decodes DeploymentPayload0 from json.
-func (s DeploymentPayload0) Decode(d *jx.Decoder) error {
+func (s *DeploymentPayload0) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode DeploymentPayload0 to nil`)
 	}
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -28685,38 +26482,21 @@ func (s EmptyObject) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
-	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfEmptyObject = [0]string{}
 
 // Decode decodes EmptyObject from json.
-func (s EmptyObject) Decode(d *jx.Decoder) error {
+func (s *EmptyObject) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode EmptyObject to nil`)
 	}
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -31264,378 +29044,6 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) Decode(d *j
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if !first {
-			e.Comma()
-		}
-		first = false
-
-		e.RawStr("\"schemas\"" + ":")
-		e.ArrStart()
-		if len(s.Schemas) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Schemas[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Schemas[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
-		}
-		e.ArrEnd()
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"Operations\"" + ":")
-		e.ArrStart()
-		if len(s.Operations) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Operations[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Operations[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
-		}
-		e.ArrEnd()
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfEnterpriseAdminUpdateAttributeForEnterpriseGroupReq = [2]string{
-	0: "schemas",
-	1: "Operations",
-}
-
-// Decode decodes EnterpriseAdminUpdateAttributeForEnterpriseGroupReq from json.
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode EnterpriseAdminUpdateAttributeForEnterpriseGroupReq to nil`)
-	}
-	var requiredBitSet [1]uint8
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "schemas":
-			requiredBitSet[0] |= 1 << 0
-			s.Schemas = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				s.Schemas = append(s.Schemas, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		case "Operations":
-			requiredBitSet[0] |= 1 << 1
-			s.Operations = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				s.Operations = append(s.Operations, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000011,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfEnterpriseAdminUpdateAttributeForEnterpriseGroupReq) {
-					name = jsonFieldsNameOfEnterpriseAdminUpdateAttributeForEnterpriseGroupReq[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if !first {
-			e.Comma()
-		}
-		first = false
-
-		e.RawStr("\"op\"" + ":")
-		s.Op.Encode(e)
-	}
-	{
-		if s.Path.Set {
-			e.Comma()
-		}
-		if s.Path.Set {
-			e.RawStr("\"path\"" + ":")
-			s.Path.Encode(e)
-		}
-	}
-	{
-		if s.Value.Set {
-			e.Comma()
-		}
-		if s.Value.Set {
-			e.RawStr("\"value\"" + ":")
-			s.Value.Encode(e)
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem = [3]string{
-	0: "op",
-	1: "path",
-	2: "value",
-}
-
-// Decode decodes EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem from json.
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem to nil`)
-	}
-	var requiredBitSet [1]uint8
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "op":
-			requiredBitSet[0] |= 1 << 0
-			if err := s.Op.Decode(d); err != nil {
-				return err
-			}
-		case "path":
-			s.Path.Reset()
-			if err := s.Path.Decode(d); err != nil {
-				return err
-			}
-		case "value":
-			s.Value.Reset()
-			if err := s.Value.Decode(d); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000001,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) {
-					name = jsonFieldsNameOfEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode encodes EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp as json.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp) Encode(e *jx.Writer) {
-	e.Str(string(s))
-}
-
-// Decode decodes EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp from json.
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp to nil`)
-	}
-	v, err := d.StrBytes()
-	if err != nil {
-		return err
-	}
-	// Try to use constant string.
-	switch EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp(v) {
-	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_add:
-		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_add
-	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Add:
-		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Add
-	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_remove:
-		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_remove
-	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Remove:
-		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Remove
-	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_replace:
-		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_replace
-	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Replace:
-		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Replace
-	default:
-		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp(v)
-	}
-
-	return nil
-}
-
-// Encode encodes EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue as json.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) Encode(e *jx.Writer) {
-	switch s.Type {
-	case StringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
-		e.Str(s.String)
-	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
-		s.EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1.Encode(e)
-	case ArrayStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
-		e.ArrStart()
-		if len(s.ArrayString) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.ArrayString[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.ArrayString[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
-		}
-		e.ArrEnd()
-	}
-}
-
-// Decode decodes EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue from json.
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue to nil`)
-	}
-	// Sum type type_discriminator.
-	switch t := d.Next(); t {
-	case jx.String:
-		v, err := d.Str()
-		s.String = string(v)
-		if err != nil {
-			return err
-		}
-		s.Type = StringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
-	case jx.Object:
-		if err := s.EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1.Decode(d); err != nil {
-			return err
-		}
-		s.Type = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
-	case jx.Array:
-		s.ArrayString = nil
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			s.ArrayString = append(s.ArrayString, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		s.Type = ArrayStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
-	default:
-		return errors.Errorf("unexpected json type %q", t)
-	}
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 = [0]string{}
-
-// Decode decodes EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 from json.
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
 	}
 
 	return nil
@@ -36583,1600 +33991,33 @@ func (s *GistCommitChangeStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GistHistory) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if s.User.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.User.Set {
-			e.RawStr("\"user\"" + ":")
-			s.User.Encode(e)
-		}
-	}
-	{
-		if s.Version.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Version.Set {
-			e.RawStr("\"version\"" + ":")
-			s.Version.Encode(e)
-		}
-	}
-	{
-		if s.CommittedAt.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CommittedAt.Set {
-			e.RawStr("\"committed_at\"" + ":")
-			s.CommittedAt.Encode(e, json.EncodeDateTime)
-		}
-	}
-	{
-		if s.ChangeStatus.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ChangeStatus.Set {
-			e.RawStr("\"change_status\"" + ":")
-			s.ChangeStatus.Encode(e)
-		}
-	}
-	{
-		if s.URL.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.URL.Set {
-			e.RawStr("\"url\"" + ":")
-			s.URL.Encode(e)
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfGistHistory = [5]string{
-	0: "user",
-	1: "version",
-	2: "committed_at",
-	3: "change_status",
-	4: "url",
-}
-
-// Decode decodes GistHistory from json.
-func (s *GistHistory) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistHistory to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "user":
-			s.User.Reset()
-			if err := s.User.Decode(d); err != nil {
-				return err
-			}
-		case "version":
-			s.Version.Reset()
-			if err := s.Version.Decode(d); err != nil {
-				return err
-			}
-		case "committed_at":
-			s.CommittedAt.Reset()
-			if err := s.CommittedAt.Decode(d, json.DecodeDateTime); err != nil {
-				return err
-			}
-		case "change_status":
-			s.ChangeStatus.Reset()
-			if err := s.ChangeStatus.Decode(d); err != nil {
-				return err
-			}
-		case "url":
-			s.URL.Reset()
-			if err := s.URL.Decode(d); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s GistHistoryChangeStatus) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if s.Total.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Total.Set {
-			e.RawStr("\"total\"" + ":")
-			s.Total.Encode(e)
-		}
-	}
-	{
-		if s.Additions.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Additions.Set {
-			e.RawStr("\"additions\"" + ":")
-			s.Additions.Encode(e)
-		}
-	}
-	{
-		if s.Deletions.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Deletions.Set {
-			e.RawStr("\"deletions\"" + ":")
-			s.Deletions.Encode(e)
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfGistHistoryChangeStatus = [3]string{
-	0: "total",
-	1: "additions",
-	2: "deletions",
-}
-
-// Decode decodes GistHistoryChangeStatus from json.
-func (s *GistHistoryChangeStatus) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistHistoryChangeStatus to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "total":
-			s.Total.Reset()
-			if err := s.Total.Decode(d); err != nil {
-				return err
-			}
-		case "additions":
-			s.Additions.Reset()
-			if err := s.Additions.Decode(d); err != nil {
-				return err
-			}
-		case "deletions":
-			s.Deletions.Reset()
-			if err := s.Deletions.Decode(d); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s GistSimple) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if s.Forks.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Forks.Set {
-			e.RawStr("\"forks\"" + ":")
-			s.Forks.Encode(e)
-		}
-	}
-	{
-		if s.History.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.History.Set {
-			e.RawStr("\"history\"" + ":")
-			s.History.Encode(e)
-		}
-	}
-	{
-		if s.ForkOf.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ForkOf.Set {
-			e.RawStr("\"fork_of\"" + ":")
-			s.ForkOf.Encode(e)
-		}
-	}
-	{
-		if s.URL.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.URL.Set {
-			e.RawStr("\"url\"" + ":")
-			s.URL.Encode(e)
-		}
-	}
-	{
-		if s.ForksURL.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ForksURL.Set {
-			e.RawStr("\"forks_url\"" + ":")
-			s.ForksURL.Encode(e)
-		}
-	}
-	{
-		if s.CommitsURL.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CommitsURL.Set {
-			e.RawStr("\"commits_url\"" + ":")
-			s.CommitsURL.Encode(e)
-		}
-	}
-	{
-		if s.ID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ID.Set {
-			e.RawStr("\"id\"" + ":")
-			s.ID.Encode(e)
-		}
-	}
-	{
-		if s.NodeID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.NodeID.Set {
-			e.RawStr("\"node_id\"" + ":")
-			s.NodeID.Encode(e)
-		}
-	}
-	{
-		if s.GitPullURL.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.GitPullURL.Set {
-			e.RawStr("\"git_pull_url\"" + ":")
-			s.GitPullURL.Encode(e)
-		}
-	}
-	{
-		if s.GitPushURL.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.GitPushURL.Set {
-			e.RawStr("\"git_push_url\"" + ":")
-			s.GitPushURL.Encode(e)
-		}
-	}
-	{
-		if s.HTMLURL.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.HTMLURL.Set {
-			e.RawStr("\"html_url\"" + ":")
-			s.HTMLURL.Encode(e)
-		}
-	}
-	{
-		if s.Files.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Files.Set {
-			e.RawStr("\"files\"" + ":")
-			s.Files.Encode(e)
-		}
-	}
-	{
-		if s.Public.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Public.Set {
-			e.RawStr("\"public\"" + ":")
-			s.Public.Encode(e)
-		}
-	}
-	{
-		if s.CreatedAt.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CreatedAt.Set {
-			e.RawStr("\"created_at\"" + ":")
-			s.CreatedAt.Encode(e)
-		}
-	}
-	{
-		if s.UpdatedAt.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.UpdatedAt.Set {
-			e.RawStr("\"updated_at\"" + ":")
-			s.UpdatedAt.Encode(e)
-		}
-	}
-	{
-		if s.Description.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Description.Set {
-			e.RawStr("\"description\"" + ":")
-			s.Description.Encode(e)
-		}
-	}
-	{
-		if s.Comments.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Comments.Set {
-			e.RawStr("\"comments\"" + ":")
-			s.Comments.Encode(e)
-		}
-	}
-	{
-		if s.User.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.User.Set {
-			e.RawStr("\"user\"" + ":")
-			s.User.Encode(e)
-		}
-	}
-	{
-		if s.CommentsURL.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CommentsURL.Set {
-			e.RawStr("\"comments_url\"" + ":")
-			s.CommentsURL.Encode(e)
-		}
-	}
-	{
-		if s.Owner.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Owner.Set {
-			e.RawStr("\"owner\"" + ":")
-			s.Owner.Encode(e)
-		}
-	}
-	{
-		if s.Truncated.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Truncated.Set {
-			e.RawStr("\"truncated\"" + ":")
-			s.Truncated.Encode(e)
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfGistSimple = [21]string{
-	0:  "forks",
-	1:  "history",
-	2:  "fork_of",
-	3:  "url",
-	4:  "forks_url",
-	5:  "commits_url",
-	6:  "id",
-	7:  "node_id",
-	8:  "git_pull_url",
-	9:  "git_push_url",
-	10: "html_url",
-	11: "files",
-	12: "public",
-	13: "created_at",
-	14: "updated_at",
-	15: "description",
-	16: "comments",
-	17: "user",
-	18: "comments_url",
-	19: "owner",
-	20: "truncated",
-}
-
-// Decode decodes GistSimple from json.
-func (s *GistSimple) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistSimple to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "forks":
-			s.Forks.Reset()
-			if err := s.Forks.Decode(d); err != nil {
-				return err
-			}
-		case "history":
-			s.History.Reset()
-			if err := s.History.Decode(d); err != nil {
-				return err
-			}
-		case "fork_of":
-			s.ForkOf.Reset()
-			if err := s.ForkOf.Decode(d); err != nil {
-				return err
-			}
-		case "url":
-			s.URL.Reset()
-			if err := s.URL.Decode(d); err != nil {
-				return err
-			}
-		case "forks_url":
-			s.ForksURL.Reset()
-			if err := s.ForksURL.Decode(d); err != nil {
-				return err
-			}
-		case "commits_url":
-			s.CommitsURL.Reset()
-			if err := s.CommitsURL.Decode(d); err != nil {
-				return err
-			}
-		case "id":
-			s.ID.Reset()
-			if err := s.ID.Decode(d); err != nil {
-				return err
-			}
-		case "node_id":
-			s.NodeID.Reset()
-			if err := s.NodeID.Decode(d); err != nil {
-				return err
-			}
-		case "git_pull_url":
-			s.GitPullURL.Reset()
-			if err := s.GitPullURL.Decode(d); err != nil {
-				return err
-			}
-		case "git_push_url":
-			s.GitPushURL.Reset()
-			if err := s.GitPushURL.Decode(d); err != nil {
-				return err
-			}
-		case "html_url":
-			s.HTMLURL.Reset()
-			if err := s.HTMLURL.Decode(d); err != nil {
-				return err
-			}
-		case "files":
-			s.Files.Reset()
-			if err := s.Files.Decode(d); err != nil {
-				return err
-			}
-		case "public":
-			s.Public.Reset()
-			if err := s.Public.Decode(d); err != nil {
-				return err
-			}
-		case "created_at":
-			s.CreatedAt.Reset()
-			if err := s.CreatedAt.Decode(d); err != nil {
-				return err
-			}
-		case "updated_at":
-			s.UpdatedAt.Reset()
-			if err := s.UpdatedAt.Decode(d); err != nil {
-				return err
-			}
-		case "description":
-			s.Description.Reset()
-			if err := s.Description.Decode(d); err != nil {
-				return err
-			}
-		case "comments":
-			s.Comments.Reset()
-			if err := s.Comments.Decode(d); err != nil {
-				return err
-			}
-		case "user":
-			s.User.Reset()
-			if err := s.User.Decode(d); err != nil {
-				return err
-			}
-		case "comments_url":
-			s.CommentsURL.Reset()
-			if err := s.CommentsURL.Decode(d); err != nil {
-				return err
-			}
-		case "owner":
-			s.Owner.Reset()
-			if err := s.Owner.Decode(d); err != nil {
-				return err
-			}
-		case "truncated":
-			s.Truncated.Reset()
-			if err := s.Truncated.Decode(d); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s GistSimpleFiles) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		elem.Encode(e)
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfGistSimpleFiles = [0]string{}
-
-// Decode decodes GistSimpleFiles from json.
-func (s GistSimpleFiles) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistSimpleFiles to nil`)
-	}
-
-	m := s
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem GistSimpleFilesItem
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			m[string(k)] = elem
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s GistSimpleFilesItem) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if s.Filename.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Filename.Set {
-			e.RawStr("\"filename\"" + ":")
-			s.Filename.Encode(e)
-		}
-	}
-	{
-		if s.Type.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
-			s.Type.Encode(e)
-		}
-	}
-	{
-		if s.Language.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Language.Set {
-			e.RawStr("\"language\"" + ":")
-			s.Language.Encode(e)
-		}
-	}
-	{
-		if s.RawURL.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RawURL.Set {
-			e.RawStr("\"raw_url\"" + ":")
-			s.RawURL.Encode(e)
-		}
-	}
-	{
-		if s.Size.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Size.Set {
-			e.RawStr("\"size\"" + ":")
-			s.Size.Encode(e)
-		}
-	}
-	{
-		if s.Truncated.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Truncated.Set {
-			e.RawStr("\"truncated\"" + ":")
-			s.Truncated.Encode(e)
-		}
-	}
-	{
-		if s.Content.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Content.Set {
-			e.RawStr("\"content\"" + ":")
-			s.Content.Encode(e)
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfGistSimpleFilesItem = [7]string{
-	0: "filename",
-	1: "type",
-	2: "language",
-	3: "raw_url",
-	4: "size",
-	5: "truncated",
-	6: "content",
-}
-
-// Decode decodes GistSimpleFilesItem from json.
-func (s *GistSimpleFilesItem) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistSimpleFilesItem to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "filename":
-			s.Filename.Reset()
-			if err := s.Filename.Decode(d); err != nil {
-				return err
-			}
-		case "type":
-			s.Type.Reset()
-			if err := s.Type.Decode(d); err != nil {
-				return err
-			}
-		case "language":
-			s.Language.Reset()
-			if err := s.Language.Decode(d); err != nil {
-				return err
-			}
-		case "raw_url":
-			s.RawURL.Reset()
-			if err := s.RawURL.Decode(d); err != nil {
-				return err
-			}
-		case "size":
-			s.Size.Reset()
-			if err := s.Size.Decode(d); err != nil {
-				return err
-			}
-		case "truncated":
-			s.Truncated.Reset()
-			if err := s.Truncated.Decode(d); err != nil {
-				return err
-			}
-		case "content":
-			s.Content.Reset()
-			if err := s.Content.Decode(d); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s GistSimpleForkOf) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if !first {
-			e.Comma()
-		}
-		first = false
-
-		e.RawStr("\"url\"" + ":")
-		json.EncodeURI(e, s.URL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"forks_url\"" + ":")
-		json.EncodeURI(e, s.ForksURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"commits_url\"" + ":")
-		json.EncodeURI(e, s.CommitsURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"id\"" + ":")
-		e.Str(s.ID)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"node_id\"" + ":")
-		e.Str(s.NodeID)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"git_pull_url\"" + ":")
-		json.EncodeURI(e, s.GitPullURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"git_push_url\"" + ":")
-		json.EncodeURI(e, s.GitPushURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"html_url\"" + ":")
-		json.EncodeURI(e, s.HTMLURL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"files\"" + ":")
-		s.Files.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"public\"" + ":")
-		e.Bool(s.Public)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"created_at\"" + ":")
-		json.EncodeDateTime(e, s.CreatedAt)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"updated_at\"" + ":")
-		json.EncodeDateTime(e, s.UpdatedAt)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"description\"" + ":")
-		s.Description.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"comments\"" + ":")
-		e.Int(s.Comments)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"user\"" + ":")
-		s.User.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"comments_url\"" + ":")
-		json.EncodeURI(e, s.CommentsURL)
-	}
-	{
-		if s.Owner.Set {
-			e.Comma()
-		}
-		if s.Owner.Set {
-			e.RawStr("\"owner\"" + ":")
-			s.Owner.Encode(e)
-		}
-	}
-	{
-		if s.Truncated.Set {
-			e.Comma()
-		}
-		if s.Truncated.Set {
-			e.RawStr("\"truncated\"" + ":")
-			s.Truncated.Encode(e)
-		}
-	}
-	{
-		if s.Forks != nil {
-			e.Comma()
-		}
-		if s.Forks != nil {
-			e.RawStr("\"forks\"" + ":")
-			e.ArrStart()
-			if len(s.Forks) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Forks[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Forks[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
-	}
-	{
-		if s.History != nil {
-			e.Comma()
-		}
-		if s.History != nil {
-			e.RawStr("\"history\"" + ":")
-			e.ArrStart()
-			if len(s.History) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.History[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.History[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfGistSimpleForkOf = [20]string{
-	0:  "url",
-	1:  "forks_url",
-	2:  "commits_url",
-	3:  "id",
-	4:  "node_id",
-	5:  "git_pull_url",
-	6:  "git_push_url",
-	7:  "html_url",
-	8:  "files",
-	9:  "public",
-	10: "created_at",
-	11: "updated_at",
-	12: "description",
-	13: "comments",
-	14: "user",
-	15: "comments_url",
-	16: "owner",
-	17: "truncated",
-	18: "forks",
-	19: "history",
-}
-
-// Decode decodes GistSimpleForkOf from json.
-func (s *GistSimpleForkOf) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistSimpleForkOf to nil`)
-	}
-	var requiredBitSet [3]uint8
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "url":
-			requiredBitSet[0] |= 1 << 0
-			v, err := json.DecodeURI(d)
-			s.URL = v
-			if err != nil {
-				return err
-			}
-		case "forks_url":
-			requiredBitSet[0] |= 1 << 1
-			v, err := json.DecodeURI(d)
-			s.ForksURL = v
-			if err != nil {
-				return err
-			}
-		case "commits_url":
-			requiredBitSet[0] |= 1 << 2
-			v, err := json.DecodeURI(d)
-			s.CommitsURL = v
-			if err != nil {
-				return err
-			}
-		case "id":
-			requiredBitSet[0] |= 1 << 3
-			v, err := d.Str()
-			s.ID = string(v)
-			if err != nil {
-				return err
-			}
-		case "node_id":
-			requiredBitSet[0] |= 1 << 4
-			v, err := d.Str()
-			s.NodeID = string(v)
-			if err != nil {
-				return err
-			}
-		case "git_pull_url":
-			requiredBitSet[0] |= 1 << 5
-			v, err := json.DecodeURI(d)
-			s.GitPullURL = v
-			if err != nil {
-				return err
-			}
-		case "git_push_url":
-			requiredBitSet[0] |= 1 << 6
-			v, err := json.DecodeURI(d)
-			s.GitPushURL = v
-			if err != nil {
-				return err
-			}
-		case "html_url":
-			requiredBitSet[0] |= 1 << 7
-			v, err := json.DecodeURI(d)
-			s.HTMLURL = v
-			if err != nil {
-				return err
-			}
-		case "files":
-			requiredBitSet[1] |= 1 << 0
-			s.Files = make(GistSimpleForkOfFiles)
-			if err := s.Files.Decode(d); err != nil {
-				return err
-			}
-		case "public":
-			requiredBitSet[1] |= 1 << 1
-			v, err := d.Bool()
-			s.Public = bool(v)
-			if err != nil {
-				return err
-			}
-		case "created_at":
-			requiredBitSet[1] |= 1 << 2
-			v, err := json.DecodeDateTime(d)
-			s.CreatedAt = v
-			if err != nil {
-				return err
-			}
-		case "updated_at":
-			requiredBitSet[1] |= 1 << 3
-			v, err := json.DecodeDateTime(d)
-			s.UpdatedAt = v
-			if err != nil {
-				return err
-			}
-		case "description":
-			requiredBitSet[1] |= 1 << 4
-			if err := s.Description.Decode(d); err != nil {
-				return err
-			}
-		case "comments":
-			requiredBitSet[1] |= 1 << 5
-			v, err := d.Int()
-			s.Comments = int(v)
-			if err != nil {
-				return err
-			}
-		case "user":
-			requiredBitSet[1] |= 1 << 6
-			if err := s.User.Decode(d); err != nil {
-				return err
-			}
-		case "comments_url":
-			requiredBitSet[1] |= 1 << 7
-			v, err := json.DecodeURI(d)
-			s.CommentsURL = v
-			if err != nil {
-				return err
-			}
-		case "owner":
-			s.Owner.Reset()
-			if err := s.Owner.Decode(d); err != nil {
-				return err
-			}
-		case "truncated":
-			s.Truncated.Reset()
-			if err := s.Truncated.Decode(d); err != nil {
-				return err
-			}
-		case "forks":
-			s.Forks = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				s.Forks = append(s.Forks, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		case "history":
-			s.History = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				s.History = append(s.History, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-	var failures []validate.FieldError
-	for i, mask := range [3]uint8{
-		0b11111111,
-		0b11111111,
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfGistSimpleForkOf) {
-					name = jsonFieldsNameOfGistSimpleForkOf[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s GistSimpleForkOfFiles) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		elem.Encode(e)
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfGistSimpleForkOfFiles = [0]string{}
-
-// Decode decodes GistSimpleForkOfFiles from json.
-func (s GistSimpleForkOfFiles) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistSimpleForkOfFiles to nil`)
-	}
-
-	m := s
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem GistSimpleForkOfFilesItem
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			m[string(k)] = elem
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s GistSimpleForkOfFilesItem) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if s.Filename.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Filename.Set {
-			e.RawStr("\"filename\"" + ":")
-			s.Filename.Encode(e)
-		}
-	}
-	{
-		if s.Type.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
-			s.Type.Encode(e)
-		}
-	}
-	{
-		if s.Language.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Language.Set {
-			e.RawStr("\"language\"" + ":")
-			s.Language.Encode(e)
-		}
-	}
-	{
-		if s.RawURL.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RawURL.Set {
-			e.RawStr("\"raw_url\"" + ":")
-			s.RawURL.Encode(e)
-		}
-	}
-	{
-		if s.Size.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Size.Set {
-			e.RawStr("\"size\"" + ":")
-			s.Size.Encode(e)
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfGistSimpleForkOfFilesItem = [5]string{
-	0: "filename",
-	1: "type",
-	2: "language",
-	3: "raw_url",
-	4: "size",
-}
-
-// Decode decodes GistSimpleForkOfFilesItem from json.
-func (s *GistSimpleForkOfFilesItem) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistSimpleForkOfFilesItem to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "filename":
-			s.Filename.Reset()
-			if err := s.Filename.Decode(d); err != nil {
-				return err
-			}
-		case "type":
-			s.Type.Reset()
-			if err := s.Type.Decode(d); err != nil {
-				return err
-			}
-		case "language":
-			s.Language.Reset()
-			if err := s.Language.Decode(d); err != nil {
-				return err
-			}
-		case "raw_url":
-			s.RawURL.Reset()
-			if err := s.RawURL.Decode(d); err != nil {
-				return err
-			}
-		case "size":
-			s.Size.Reset()
-			if err := s.Size.Decode(d); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s GistSimpleForksItem) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if s.ID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ID.Set {
-			e.RawStr("\"id\"" + ":")
-			s.ID.Encode(e)
-		}
-	}
-	{
-		if s.URL.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.URL.Set {
-			e.RawStr("\"url\"" + ":")
-			s.URL.Encode(e)
-		}
-	}
-	{
-		if s.User.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.User.Set {
-			e.RawStr("\"user\"" + ":")
-			s.User.Encode(e)
-		}
-	}
-	{
-		if s.CreatedAt.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CreatedAt.Set {
-			e.RawStr("\"created_at\"" + ":")
-			s.CreatedAt.Encode(e, json.EncodeDateTime)
-		}
-	}
-	{
-		if s.UpdatedAt.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.UpdatedAt.Set {
-			e.RawStr("\"updated_at\"" + ":")
-			s.UpdatedAt.Encode(e, json.EncodeDateTime)
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfGistSimpleForksItem = [5]string{
-	0: "id",
-	1: "url",
-	2: "user",
-	3: "created_at",
-	4: "updated_at",
-}
-
-// Decode decodes GistSimpleForksItem from json.
-func (s *GistSimpleForksItem) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistSimpleForksItem to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "id":
-			s.ID.Reset()
-			if err := s.ID.Decode(d); err != nil {
-				return err
-			}
-		case "url":
-			s.URL.Reset()
-			if err := s.URL.Decode(d); err != nil {
-				return err
-			}
-		case "user":
-			s.User.Reset()
-			if err := s.User.Decode(d); err != nil {
-				return err
-			}
-		case "created_at":
-			s.CreatedAt.Reset()
-			if err := s.CreatedAt.Decode(d, json.DecodeDateTime); err != nil {
-				return err
-			}
-		case "updated_at":
-			s.UpdatedAt.Reset()
-			if err := s.UpdatedAt.Decode(d, json.DecodeDateTime); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
 func (s GistsCheckIsStarredNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
 		first = true
 		_     = first
 	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
-	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfGistsCheckIsStarredNotFound = [0]string{}
 
 // Decode decodes GistsCheckIsStarredNotFound from json.
-func (s GistsCheckIsStarredNotFound) Decode(d *jx.Decoder) error {
+func (s *GistsCheckIsStarredNotFound) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode GistsCheckIsStarredNotFound to nil`)
 	}
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
 		return err
 	}
 
-	return nil
-}
-
-// Encode encodes GistsCreateApplicationJSONForbidden as json.
-func (s GistsCreateApplicationJSONForbidden) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsCreateApplicationJSONForbidden from json.
-func (s *GistsCreateApplicationJSONForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistsCreateApplicationJSONForbidden to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsCreateApplicationJSONForbidden(unwrapped)
-	return nil
-}
-
-// Encode encodes GistsCreateApplicationJSONNotFound as json.
-func (s GistsCreateApplicationJSONNotFound) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsCreateApplicationJSONNotFound from json.
-func (s *GistsCreateApplicationJSONNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistsCreateApplicationJSONNotFound to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsCreateApplicationJSONNotFound(unwrapped)
 	return nil
 }
 
@@ -38707,102 +34548,6 @@ func (s *GistsDeleteCommentApplicationJSONNotFound) Decode(d *jx.Decoder) error 
 	return nil
 }
 
-// Encode encodes GistsForkApplicationJSONForbidden as json.
-func (s GistsForkApplicationJSONForbidden) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsForkApplicationJSONForbidden from json.
-func (s *GistsForkApplicationJSONForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistsForkApplicationJSONForbidden to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsForkApplicationJSONForbidden(unwrapped)
-	return nil
-}
-
-// Encode encodes GistsForkApplicationJSONNotFound as json.
-func (s GistsForkApplicationJSONNotFound) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsForkApplicationJSONNotFound from json.
-func (s *GistsForkApplicationJSONNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistsForkApplicationJSONNotFound to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsForkApplicationJSONNotFound(unwrapped)
-	return nil
-}
-
-// Encode encodes GistsGetRevisionApplicationJSONForbidden as json.
-func (s GistsGetRevisionApplicationJSONForbidden) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsGetRevisionApplicationJSONForbidden from json.
-func (s *GistsGetRevisionApplicationJSONForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistsGetRevisionApplicationJSONForbidden to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsGetRevisionApplicationJSONForbidden(unwrapped)
-	return nil
-}
-
-// Encode encodes GistsGetRevisionApplicationJSONNotFound as json.
-func (s GistsGetRevisionApplicationJSONNotFound) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsGetRevisionApplicationJSONNotFound from json.
-func (s *GistsGetRevisionApplicationJSONNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistsGetRevisionApplicationJSONNotFound to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsGetRevisionApplicationJSONNotFound(unwrapped)
-	return nil
-}
-
 // Encode encodes GistsListCommentsApplicationJSONForbidden as json.
 func (s GistsListCommentsApplicationJSONForbidden) Encode(e *jx.Writer) {
 	unwrapped := BasicError(s)
@@ -38984,322 +34729,6 @@ func (s *GistsListCommitsOKApplicationJSON) Decode(d *jx.Decoder) error {
 		return errors.Wrap(err, "alias")
 	}
 	*s = GistsListCommitsOKApplicationJSON(unwrapped)
-	return nil
-}
-
-// Encode encodes GistsListForUserOKApplicationJSON as json.
-func (s GistsListForUserOKApplicationJSON) Encode(e *jx.Writer) {
-	unwrapped := []BaseGist(s)
-	e.ArrStart()
-	if len(unwrapped) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := unwrapped[0]
-			elem.Encode(e)
-		}
-		for _, elem := range unwrapped[1:] {
-			e.Comma()
-			elem.Encode(e)
-		}
-	}
-	e.ArrEnd()
-}
-
-// Decode decodes GistsListForUserOKApplicationJSON from json.
-func (s *GistsListForUserOKApplicationJSON) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistsListForUserOKApplicationJSON to nil`)
-	}
-	var unwrapped []BaseGist
-	if err := func() error {
-		unwrapped = nil
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem BaseGist
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			unwrapped = append(unwrapped, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsListForUserOKApplicationJSON(unwrapped)
-	return nil
-}
-
-// Encode encodes GistsListForksApplicationJSONForbidden as json.
-func (s GistsListForksApplicationJSONForbidden) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsListForksApplicationJSONForbidden from json.
-func (s *GistsListForksApplicationJSONForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistsListForksApplicationJSONForbidden to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsListForksApplicationJSONForbidden(unwrapped)
-	return nil
-}
-
-// Encode encodes GistsListForksApplicationJSONNotFound as json.
-func (s GistsListForksApplicationJSONNotFound) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsListForksApplicationJSONNotFound from json.
-func (s *GistsListForksApplicationJSONNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistsListForksApplicationJSONNotFound to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsListForksApplicationJSONNotFound(unwrapped)
-	return nil
-}
-
-// Encode encodes GistsListForksOKApplicationJSON as json.
-func (s GistsListForksOKApplicationJSON) Encode(e *jx.Writer) {
-	unwrapped := []GistSimple(s)
-	e.ArrStart()
-	if len(unwrapped) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := unwrapped[0]
-			elem.Encode(e)
-		}
-		for _, elem := range unwrapped[1:] {
-			e.Comma()
-			elem.Encode(e)
-		}
-	}
-	e.ArrEnd()
-}
-
-// Decode decodes GistsListForksOKApplicationJSON from json.
-func (s *GistsListForksOKApplicationJSON) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistsListForksOKApplicationJSON to nil`)
-	}
-	var unwrapped []GistSimple
-	if err := func() error {
-		unwrapped = nil
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem GistSimple
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			unwrapped = append(unwrapped, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsListForksOKApplicationJSON(unwrapped)
-	return nil
-}
-
-// Encode encodes GistsListOKApplicationJSON as json.
-func (s GistsListOKApplicationJSON) Encode(e *jx.Writer) {
-	unwrapped := []BaseGist(s)
-	e.ArrStart()
-	if len(unwrapped) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := unwrapped[0]
-			elem.Encode(e)
-		}
-		for _, elem := range unwrapped[1:] {
-			e.Comma()
-			elem.Encode(e)
-		}
-	}
-	e.ArrEnd()
-}
-
-// Decode decodes GistsListOKApplicationJSON from json.
-func (s *GistsListOKApplicationJSON) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistsListOKApplicationJSON to nil`)
-	}
-	var unwrapped []BaseGist
-	if err := func() error {
-		unwrapped = nil
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem BaseGist
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			unwrapped = append(unwrapped, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsListOKApplicationJSON(unwrapped)
-	return nil
-}
-
-// Encode encodes GistsListPublicOKApplicationJSON as json.
-func (s GistsListPublicOKApplicationJSON) Encode(e *jx.Writer) {
-	unwrapped := []BaseGist(s)
-	e.ArrStart()
-	if len(unwrapped) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := unwrapped[0]
-			elem.Encode(e)
-		}
-		for _, elem := range unwrapped[1:] {
-			e.Comma()
-			elem.Encode(e)
-		}
-	}
-	e.ArrEnd()
-}
-
-// Decode decodes GistsListPublicOKApplicationJSON from json.
-func (s *GistsListPublicOKApplicationJSON) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistsListPublicOKApplicationJSON to nil`)
-	}
-	var unwrapped []BaseGist
-	if err := func() error {
-		unwrapped = nil
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem BaseGist
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			unwrapped = append(unwrapped, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsListPublicOKApplicationJSON(unwrapped)
-	return nil
-}
-
-// Encode encodes GistsListStarredApplicationJSONForbidden as json.
-func (s GistsListStarredApplicationJSONForbidden) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsListStarredApplicationJSONForbidden from json.
-func (s *GistsListStarredApplicationJSONForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistsListStarredApplicationJSONForbidden to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsListStarredApplicationJSONForbidden(unwrapped)
-	return nil
-}
-
-// Encode encodes GistsListStarredApplicationJSONUnauthorized as json.
-func (s GistsListStarredApplicationJSONUnauthorized) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes GistsListStarredApplicationJSONUnauthorized from json.
-func (s *GistsListStarredApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistsListStarredApplicationJSONUnauthorized to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsListStarredApplicationJSONUnauthorized(unwrapped)
-	return nil
-}
-
-// Encode encodes GistsListStarredOKApplicationJSON as json.
-func (s GistsListStarredOKApplicationJSON) Encode(e *jx.Writer) {
-	unwrapped := []BaseGist(s)
-	e.ArrStart()
-	if len(unwrapped) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := unwrapped[0]
-			elem.Encode(e)
-		}
-		for _, elem := range unwrapped[1:] {
-			e.Comma()
-			elem.Encode(e)
-		}
-	}
-	e.ArrEnd()
-}
-
-// Decode decodes GistsListStarredOKApplicationJSON from json.
-func (s *GistsListStarredOKApplicationJSON) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GistsListStarredOKApplicationJSON to nil`)
-	}
-	var unwrapped []BaseGist
-	if err := func() error {
-		unwrapped = nil
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem BaseGist
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			unwrapped = append(unwrapped, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = GistsListStarredOKApplicationJSON(unwrapped)
 	return nil
 }
 
@@ -42701,662 +38130,6 @@ func (s *GitignoreTemplate) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GpgKey) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if !first {
-			e.Comma()
-		}
-		first = false
-
-		e.RawStr("\"id\"" + ":")
-		e.Int(s.ID)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"primary_key_id\"" + ":")
-		s.PrimaryKeyID.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"key_id\"" + ":")
-		e.Str(s.KeyID)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"public_key\"" + ":")
-		e.Str(s.PublicKey)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"emails\"" + ":")
-		e.ArrStart()
-		if len(s.Emails) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Emails[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Emails[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
-		}
-		e.ArrEnd()
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"subkeys\"" + ":")
-		e.ArrStart()
-		if len(s.Subkeys) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Subkeys[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Subkeys[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
-		}
-		e.ArrEnd()
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"can_sign\"" + ":")
-		e.Bool(s.CanSign)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"can_encrypt_comms\"" + ":")
-		e.Bool(s.CanEncryptComms)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"can_encrypt_storage\"" + ":")
-		e.Bool(s.CanEncryptStorage)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"can_certify\"" + ":")
-		e.Bool(s.CanCertify)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"created_at\"" + ":")
-		json.EncodeDateTime(e, s.CreatedAt)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"expires_at\"" + ":")
-		s.ExpiresAt.Encode(e, json.EncodeDateTime)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"raw_key\"" + ":")
-		s.RawKey.Encode(e)
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfGpgKey = [13]string{
-	0:  "id",
-	1:  "primary_key_id",
-	2:  "key_id",
-	3:  "public_key",
-	4:  "emails",
-	5:  "subkeys",
-	6:  "can_sign",
-	7:  "can_encrypt_comms",
-	8:  "can_encrypt_storage",
-	9:  "can_certify",
-	10: "created_at",
-	11: "expires_at",
-	12: "raw_key",
-}
-
-// Decode decodes GpgKey from json.
-func (s *GpgKey) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GpgKey to nil`)
-	}
-	var requiredBitSet [2]uint8
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "id":
-			requiredBitSet[0] |= 1 << 0
-			v, err := d.Int()
-			s.ID = int(v)
-			if err != nil {
-				return err
-			}
-		case "primary_key_id":
-			requiredBitSet[0] |= 1 << 1
-			if err := s.PrimaryKeyID.Decode(d); err != nil {
-				return err
-			}
-		case "key_id":
-			requiredBitSet[0] |= 1 << 2
-			v, err := d.Str()
-			s.KeyID = string(v)
-			if err != nil {
-				return err
-			}
-		case "public_key":
-			requiredBitSet[0] |= 1 << 3
-			v, err := d.Str()
-			s.PublicKey = string(v)
-			if err != nil {
-				return err
-			}
-		case "emails":
-			requiredBitSet[0] |= 1 << 4
-			s.Emails = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem GpgKeyEmailsItem
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				s.Emails = append(s.Emails, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		case "subkeys":
-			requiredBitSet[0] |= 1 << 5
-			s.Subkeys = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem GpgKeySubkeysItem
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				s.Subkeys = append(s.Subkeys, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		case "can_sign":
-			requiredBitSet[0] |= 1 << 6
-			v, err := d.Bool()
-			s.CanSign = bool(v)
-			if err != nil {
-				return err
-			}
-		case "can_encrypt_comms":
-			requiredBitSet[0] |= 1 << 7
-			v, err := d.Bool()
-			s.CanEncryptComms = bool(v)
-			if err != nil {
-				return err
-			}
-		case "can_encrypt_storage":
-			requiredBitSet[1] |= 1 << 0
-			v, err := d.Bool()
-			s.CanEncryptStorage = bool(v)
-			if err != nil {
-				return err
-			}
-		case "can_certify":
-			requiredBitSet[1] |= 1 << 1
-			v, err := d.Bool()
-			s.CanCertify = bool(v)
-			if err != nil {
-				return err
-			}
-		case "created_at":
-			requiredBitSet[1] |= 1 << 2
-			v, err := json.DecodeDateTime(d)
-			s.CreatedAt = v
-			if err != nil {
-				return err
-			}
-		case "expires_at":
-			requiredBitSet[1] |= 1 << 3
-			if err := s.ExpiresAt.Decode(d, json.DecodeDateTime); err != nil {
-				return err
-			}
-		case "raw_key":
-			requiredBitSet[1] |= 1 << 4
-			if err := s.RawKey.Decode(d); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-	var failures []validate.FieldError
-	for i, mask := range [2]uint8{
-		0b11111111,
-		0b00011111,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfGpgKey) {
-					name = jsonFieldsNameOfGpgKey[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s GpgKeyEmailsItem) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if s.Email.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Email.Set {
-			e.RawStr("\"email\"" + ":")
-			s.Email.Encode(e)
-		}
-	}
-	{
-		if s.Verified.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Verified.Set {
-			e.RawStr("\"verified\"" + ":")
-			s.Verified.Encode(e)
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfGpgKeyEmailsItem = [2]string{
-	0: "email",
-	1: "verified",
-}
-
-// Decode decodes GpgKeyEmailsItem from json.
-func (s *GpgKeyEmailsItem) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GpgKeyEmailsItem to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "email":
-			s.Email.Reset()
-			if err := s.Email.Decode(d); err != nil {
-				return err
-			}
-		case "verified":
-			s.Verified.Reset()
-			if err := s.Verified.Decode(d); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s GpgKeySubkeysItem) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if s.ID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ID.Set {
-			e.RawStr("\"id\"" + ":")
-			s.ID.Encode(e)
-		}
-	}
-	{
-		if s.PrimaryKeyID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PrimaryKeyID.Set {
-			e.RawStr("\"primary_key_id\"" + ":")
-			s.PrimaryKeyID.Encode(e)
-		}
-	}
-	{
-		if s.KeyID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.KeyID.Set {
-			e.RawStr("\"key_id\"" + ":")
-			s.KeyID.Encode(e)
-		}
-	}
-	{
-		if s.PublicKey.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PublicKey.Set {
-			e.RawStr("\"public_key\"" + ":")
-			s.PublicKey.Encode(e)
-		}
-	}
-	{
-		if s.Emails != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Emails != nil {
-			e.RawStr("\"emails\"" + ":")
-			e.ArrStart()
-			if len(s.Emails) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Emails[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Emails[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
-	}
-	{
-		if s.Subkeys != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Subkeys != nil {
-			e.RawStr("\"subkeys\"" + ":")
-			e.ArrStart()
-			if len(s.Subkeys) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Subkeys[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Subkeys[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
-	}
-	{
-		if s.CanSign.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CanSign.Set {
-			e.RawStr("\"can_sign\"" + ":")
-			s.CanSign.Encode(e)
-		}
-	}
-	{
-		if s.CanEncryptComms.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CanEncryptComms.Set {
-			e.RawStr("\"can_encrypt_comms\"" + ":")
-			s.CanEncryptComms.Encode(e)
-		}
-	}
-	{
-		if s.CanEncryptStorage.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CanEncryptStorage.Set {
-			e.RawStr("\"can_encrypt_storage\"" + ":")
-			s.CanEncryptStorage.Encode(e)
-		}
-	}
-	{
-		if s.CanCertify.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CanCertify.Set {
-			e.RawStr("\"can_certify\"" + ":")
-			s.CanCertify.Encode(e)
-		}
-	}
-	{
-		if s.CreatedAt.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CreatedAt.Set {
-			e.RawStr("\"created_at\"" + ":")
-			s.CreatedAt.Encode(e)
-		}
-	}
-	{
-		if s.ExpiresAt.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ExpiresAt.Set {
-			e.RawStr("\"expires_at\"" + ":")
-			s.ExpiresAt.Encode(e)
-		}
-	}
-	{
-		if s.RawKey.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RawKey.Set {
-			e.RawStr("\"raw_key\"" + ":")
-			s.RawKey.Encode(e)
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfGpgKeySubkeysItem = [13]string{
-	0:  "id",
-	1:  "primary_key_id",
-	2:  "key_id",
-	3:  "public_key",
-	4:  "emails",
-	5:  "subkeys",
-	6:  "can_sign",
-	7:  "can_encrypt_comms",
-	8:  "can_encrypt_storage",
-	9:  "can_certify",
-	10: "created_at",
-	11: "expires_at",
-	12: "raw_key",
-}
-
-// Decode decodes GpgKeySubkeysItem from json.
-func (s *GpgKeySubkeysItem) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode GpgKeySubkeysItem to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "id":
-			s.ID.Reset()
-			if err := s.ID.Decode(d); err != nil {
-				return err
-			}
-		case "primary_key_id":
-			s.PrimaryKeyID.Reset()
-			if err := s.PrimaryKeyID.Decode(d); err != nil {
-				return err
-			}
-		case "key_id":
-			s.KeyID.Reset()
-			if err := s.KeyID.Decode(d); err != nil {
-				return err
-			}
-		case "public_key":
-			s.PublicKey.Reset()
-			if err := s.PublicKey.Decode(d); err != nil {
-				return err
-			}
-		case "emails":
-			s.Emails = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				s.Emails = append(s.Emails, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		case "subkeys":
-			s.Subkeys = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				s.Subkeys = append(s.Subkeys, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		case "can_sign":
-			s.CanSign.Reset()
-			if err := s.CanSign.Decode(d); err != nil {
-				return err
-			}
-		case "can_encrypt_comms":
-			s.CanEncryptComms.Reset()
-			if err := s.CanEncryptComms.Decode(d); err != nil {
-				return err
-			}
-		case "can_encrypt_storage":
-			s.CanEncryptStorage.Reset()
-			if err := s.CanEncryptStorage.Decode(d); err != nil {
-				return err
-			}
-		case "can_certify":
-			s.CanCertify.Reset()
-			if err := s.CanCertify.Decode(d); err != nil {
-				return err
-			}
-		case "created_at":
-			s.CreatedAt.Reset()
-			if err := s.CreatedAt.Decode(d); err != nil {
-				return err
-			}
-		case "expires_at":
-			s.ExpiresAt.Reset()
-			if err := s.ExpiresAt.Decode(d); err != nil {
-				return err
-			}
-		case "raw_key":
-			s.RawKey.Reset()
-			if err := s.RawKey.Decode(d); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
 func (s GroupMapping) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -44528,13 +39301,21 @@ func (s HookDeliveryRequest) Encode(e *jx.Writer) {
 		first = false
 
 		e.RawStr("\"headers\"" + ":")
-		s.Headers.Encode(e)
+		if s.Headers == nil {
+			e.Null()
+		} else {
+			s.Headers.Encode(e)
+		}
 	}
 	{
 		e.Comma()
 
 		e.RawStr("\"payload\"" + ":")
-		s.Payload.Encode(e)
+		if s.Payload == nil {
+			e.Null()
+		} else {
+			s.Payload.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -44555,14 +39336,20 @@ func (s *HookDeliveryRequest) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "headers":
 			requiredBitSet[0] |= 1 << 0
-			if err := s.Headers.Decode(d); err != nil {
+			s.Headers = nil
+			var elem HookDeliveryRequestHeaders
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
+			s.Headers = &elem
 		case "payload":
 			requiredBitSet[0] |= 1 << 1
-			if err := s.Payload.Decode(d); err != nil {
+			s.Payload = nil
+			var elem HookDeliveryRequestPayload
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
+			s.Payload = &elem
 		default:
 			return d.Skip()
 		}
@@ -44612,38 +39399,21 @@ func (s HookDeliveryRequestHeaders) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
-	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfHookDeliveryRequestHeaders = [0]string{}
 
 // Decode decodes HookDeliveryRequestHeaders from json.
-func (s HookDeliveryRequestHeaders) Decode(d *jx.Decoder) error {
+func (s *HookDeliveryRequestHeaders) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode HookDeliveryRequestHeaders to nil`)
 	}
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -44660,38 +39430,21 @@ func (s HookDeliveryRequestPayload) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
-	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfHookDeliveryRequestPayload = [0]string{}
 
 // Decode decodes HookDeliveryRequestPayload from json.
-func (s HookDeliveryRequestPayload) Decode(d *jx.Decoder) error {
+func (s *HookDeliveryRequestPayload) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode HookDeliveryRequestPayload to nil`)
 	}
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -44715,7 +39468,11 @@ func (s HookDeliveryResponse) Encode(e *jx.Writer) {
 		first = false
 
 		e.RawStr("\"headers\"" + ":")
-		s.Headers.Encode(e)
+		if s.Headers == nil {
+			e.Null()
+		} else {
+			s.Headers.Encode(e)
+		}
 	}
 	{
 		e.Comma()
@@ -44742,9 +39499,12 @@ func (s *HookDeliveryResponse) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "headers":
 			requiredBitSet[0] |= 1 << 0
-			if err := s.Headers.Decode(d); err != nil {
+			s.Headers = nil
+			var elem HookDeliveryResponseHeaders
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
+			s.Headers = &elem
 		case "payload":
 			requiredBitSet[0] |= 1 << 1
 			if err := s.Payload.Decode(d); err != nil {
@@ -44799,38 +39559,21 @@ func (s HookDeliveryResponseHeaders) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
-	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfHookDeliveryResponseHeaders = [0]string{}
 
 // Decode decodes HookDeliveryResponseHeaders from json.
-func (s HookDeliveryResponseHeaders) Decode(d *jx.Decoder) error {
+func (s *HookDeliveryResponseHeaders) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode HookDeliveryResponseHeaders to nil`)
 	}
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -57054,352 +51797,6 @@ func (s *MetaRootOK) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-// Encode implements json.Marshaler.
-func (s Migration) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if !first {
-			e.Comma()
-		}
-		first = false
-
-		e.RawStr("\"id\"" + ":")
-		e.Int(s.ID)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"owner\"" + ":")
-		s.Owner.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"guid\"" + ":")
-		e.Str(s.GUID)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"state\"" + ":")
-		e.Str(s.State)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"lock_repositories\"" + ":")
-		e.Bool(s.LockRepositories)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"exclude_metadata\"" + ":")
-		e.Bool(s.ExcludeMetadata)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"exclude_git_data\"" + ":")
-		e.Bool(s.ExcludeGitData)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"exclude_attachments\"" + ":")
-		e.Bool(s.ExcludeAttachments)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"exclude_releases\"" + ":")
-		e.Bool(s.ExcludeReleases)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"exclude_owner_projects\"" + ":")
-		e.Bool(s.ExcludeOwnerProjects)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"repositories\"" + ":")
-		e.ArrStart()
-		if len(s.Repositories) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Repositories[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Repositories[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
-		}
-		e.ArrEnd()
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"url\"" + ":")
-		json.EncodeURI(e, s.URL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"created_at\"" + ":")
-		json.EncodeDateTime(e, s.CreatedAt)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"updated_at\"" + ":")
-		json.EncodeDateTime(e, s.UpdatedAt)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"node_id\"" + ":")
-		e.Str(s.NodeID)
-	}
-	{
-		if s.ArchiveURL.Set {
-			e.Comma()
-		}
-		if s.ArchiveURL.Set {
-			e.RawStr("\"archive_url\"" + ":")
-			s.ArchiveURL.Encode(e)
-		}
-	}
-	{
-		if s.Exclude != nil {
-			e.Comma()
-		}
-		if s.Exclude != nil {
-			e.RawStr("\"exclude\"" + ":")
-			e.ArrStart()
-			if len(s.Exclude) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Exclude[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Exclude[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfMigration = [17]string{
-	0:  "id",
-	1:  "owner",
-	2:  "guid",
-	3:  "state",
-	4:  "lock_repositories",
-	5:  "exclude_metadata",
-	6:  "exclude_git_data",
-	7:  "exclude_attachments",
-	8:  "exclude_releases",
-	9:  "exclude_owner_projects",
-	10: "repositories",
-	11: "url",
-	12: "created_at",
-	13: "updated_at",
-	14: "node_id",
-	15: "archive_url",
-	16: "exclude",
-}
-
-// Decode decodes Migration from json.
-func (s *Migration) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode Migration to nil`)
-	}
-	var requiredBitSet [3]uint8
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "id":
-			requiredBitSet[0] |= 1 << 0
-			v, err := d.Int()
-			s.ID = int(v)
-			if err != nil {
-				return err
-			}
-		case "owner":
-			requiredBitSet[0] |= 1 << 1
-			if err := s.Owner.Decode(d); err != nil {
-				return err
-			}
-		case "guid":
-			requiredBitSet[0] |= 1 << 2
-			v, err := d.Str()
-			s.GUID = string(v)
-			if err != nil {
-				return err
-			}
-		case "state":
-			requiredBitSet[0] |= 1 << 3
-			v, err := d.Str()
-			s.State = string(v)
-			if err != nil {
-				return err
-			}
-		case "lock_repositories":
-			requiredBitSet[0] |= 1 << 4
-			v, err := d.Bool()
-			s.LockRepositories = bool(v)
-			if err != nil {
-				return err
-			}
-		case "exclude_metadata":
-			requiredBitSet[0] |= 1 << 5
-			v, err := d.Bool()
-			s.ExcludeMetadata = bool(v)
-			if err != nil {
-				return err
-			}
-		case "exclude_git_data":
-			requiredBitSet[0] |= 1 << 6
-			v, err := d.Bool()
-			s.ExcludeGitData = bool(v)
-			if err != nil {
-				return err
-			}
-		case "exclude_attachments":
-			requiredBitSet[0] |= 1 << 7
-			v, err := d.Bool()
-			s.ExcludeAttachments = bool(v)
-			if err != nil {
-				return err
-			}
-		case "exclude_releases":
-			requiredBitSet[1] |= 1 << 0
-			v, err := d.Bool()
-			s.ExcludeReleases = bool(v)
-			if err != nil {
-				return err
-			}
-		case "exclude_owner_projects":
-			requiredBitSet[1] |= 1 << 1
-			v, err := d.Bool()
-			s.ExcludeOwnerProjects = bool(v)
-			if err != nil {
-				return err
-			}
-		case "repositories":
-			requiredBitSet[1] |= 1 << 2
-			s.Repositories = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem Repository
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				s.Repositories = append(s.Repositories, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		case "url":
-			requiredBitSet[1] |= 1 << 3
-			v, err := json.DecodeURI(d)
-			s.URL = v
-			if err != nil {
-				return err
-			}
-		case "created_at":
-			requiredBitSet[1] |= 1 << 4
-			v, err := json.DecodeDateTime(d)
-			s.CreatedAt = v
-			if err != nil {
-				return err
-			}
-		case "updated_at":
-			requiredBitSet[1] |= 1 << 5
-			v, err := json.DecodeDateTime(d)
-			s.UpdatedAt = v
-			if err != nil {
-				return err
-			}
-		case "node_id":
-			requiredBitSet[1] |= 1 << 6
-			v, err := d.Str()
-			s.NodeID = string(v)
-			if err != nil {
-				return err
-			}
-		case "archive_url":
-			s.ArchiveURL.Reset()
-			if err := s.ArchiveURL.Decode(d); err != nil {
-				return err
-			}
-		case "exclude":
-			s.Exclude = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				s.Exclude = append(s.Exclude, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-	var failures []validate.FieldError
-	for i, mask := range [3]uint8{
-		0b11111111,
-		0b01111111,
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfMigration) {
-					name = jsonFieldsNameOfMigration[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
 // Encode encodes MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden as json.
 func (s MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Writer) {
 	unwrapped := BasicError(s)
@@ -57564,170 +51961,6 @@ func (s *MigrationsGetCommitAuthorsOKApplicationJSON) Decode(d *jx.Decoder) erro
 	return nil
 }
 
-// Encode encodes MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden as json.
-func (s MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden from json.
-func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden(unwrapped)
-	return nil
-}
-
-// Encode encodes MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound as json.
-func (s MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound from json.
-func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound(unwrapped)
-	return nil
-}
-
-// Encode encodes MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized from json.
-func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
-	return nil
-}
-
-// Encode encodes MigrationsListForAuthenticatedUserApplicationJSONForbidden as json.
-func (s MigrationsListForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsListForAuthenticatedUserApplicationJSONForbidden from json.
-func (s *MigrationsListForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode MigrationsListForAuthenticatedUserApplicationJSONForbidden to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsListForAuthenticatedUserApplicationJSONForbidden(unwrapped)
-	return nil
-}
-
-// Encode encodes MigrationsListForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsListForAuthenticatedUserApplicationJSONUnauthorized from json.
-func (s *MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode MigrationsListForAuthenticatedUserApplicationJSONUnauthorized to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsListForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
-	return nil
-}
-
-// Encode encodes MigrationsListForAuthenticatedUserOKApplicationJSON as json.
-func (s MigrationsListForAuthenticatedUserOKApplicationJSON) Encode(e *jx.Writer) {
-	unwrapped := []Migration(s)
-	e.ArrStart()
-	if len(unwrapped) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := unwrapped[0]
-			elem.Encode(e)
-		}
-		for _, elem := range unwrapped[1:] {
-			e.Comma()
-			elem.Encode(e)
-		}
-	}
-	e.ArrEnd()
-}
-
-// Decode decodes MigrationsListForAuthenticatedUserOKApplicationJSON from json.
-func (s *MigrationsListForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode MigrationsListForAuthenticatedUserOKApplicationJSON to nil`)
-	}
-	var unwrapped []Migration
-	if err := func() error {
-		unwrapped = nil
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem Migration
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			unwrapped = append(unwrapped, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsListForAuthenticatedUserOKApplicationJSON(unwrapped)
-	return nil
-}
-
 // Encode encodes MigrationsListReposForOrgOKApplicationJSON as json.
 func (s MigrationsListReposForOrgOKApplicationJSON) Encode(e *jx.Writer) {
 	unwrapped := []MinimalRepository(s)
@@ -57824,40 +52057,28 @@ func (s MigrationsMapCommitAuthorReq) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		{
-			if s.Email.Set {
-				if !first {
-					e.Comma()
-				}
-				first = false
+		if s.Email.Set {
+			if !first {
+				e.Comma()
 			}
-			if s.Email.Set {
-				e.RawStr("\"email\"" + ":")
-				s.Email.Encode(e)
-			}
+			first = false
 		}
-		{
-			if s.Name.Set {
-				if !first {
-					e.Comma()
-				}
-				first = false
-			}
-			if s.Name.Set {
-				e.RawStr("\"name\"" + ":")
-				s.Name.Encode(e)
-			}
+		if s.Email.Set {
+			e.RawStr("\"email\"" + ":")
+			s.Email.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		if !first {
-			e.Comma()
+	{
+		if s.Name.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
+		if s.Name.Set {
+			e.RawStr("\"name\"" + ":")
+			s.Name.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -57873,11 +52094,6 @@ func (s *MigrationsMapCommitAuthorReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode MigrationsMapCommitAuthorReq to nil`)
 	}
 
-	m := s.AdditionalProps
-	if m == nil {
-		m = map[string]string{}
-		s.AdditionalProps = m
-	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "email":
@@ -57891,13 +52107,7 @@ func (s *MigrationsMapCommitAuthorReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -58010,54 +52220,6 @@ func (s *MigrationsSetLfsPreferenceReqUseLfs) Decode(d *jx.Decoder) error {
 		*s = MigrationsSetLfsPreferenceReqUseLfs(v)
 	}
 
-	return nil
-}
-
-// Encode encodes MigrationsStartForAuthenticatedUserApplicationJSONForbidden as json.
-func (s MigrationsStartForAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsStartForAuthenticatedUserApplicationJSONForbidden from json.
-func (s *MigrationsStartForAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode MigrationsStartForAuthenticatedUserApplicationJSONForbidden to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsStartForAuthenticatedUserApplicationJSONForbidden(unwrapped)
-	return nil
-}
-
-// Encode encodes MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized from json.
-func (s *MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
 	return nil
 }
 
@@ -60928,111 +55090,6 @@ func (o *NilFileCommitContent) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading NilFileCommitContent`, d.Next())
-	}
-}
-
-// Encode encodes HookDeliveryRequestHeaders as json.
-func (o NilHookDeliveryRequestHeaders) Encode(e *jx.Writer) {
-	if o.Null {
-		e.Null()
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes HookDeliveryRequestHeaders from json.
-func (o *NilHookDeliveryRequestHeaders) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode NilHookDeliveryRequestHeaders to nil`)
-	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		o.Value = make(HookDeliveryRequestHeaders)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v HookDeliveryRequestHeaders
-		o.Value = v
-		o.Null = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading NilHookDeliveryRequestHeaders`, d.Next())
-	}
-}
-
-// Encode encodes HookDeliveryRequestPayload as json.
-func (o NilHookDeliveryRequestPayload) Encode(e *jx.Writer) {
-	if o.Null {
-		e.Null()
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes HookDeliveryRequestPayload from json.
-func (o *NilHookDeliveryRequestPayload) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode NilHookDeliveryRequestPayload to nil`)
-	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		o.Value = make(HookDeliveryRequestPayload)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v HookDeliveryRequestPayload
-		o.Value = v
-		o.Null = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading NilHookDeliveryRequestPayload`, d.Next())
-	}
-}
-
-// Encode encodes HookDeliveryResponseHeaders as json.
-func (o NilHookDeliveryResponseHeaders) Encode(e *jx.Writer) {
-	if o.Null {
-		e.Null()
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes HookDeliveryResponseHeaders from json.
-func (o *NilHookDeliveryResponseHeaders) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode NilHookDeliveryResponseHeaders to nil`)
-	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		o.Value = make(HookDeliveryResponseHeaders)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v HookDeliveryResponseHeaders
-		o.Value = v
-		o.Null = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading NilHookDeliveryResponseHeaders`, d.Next())
 	}
 }
 
@@ -71581,7 +65638,6 @@ func (o *OptAppsCreateFromManifestReq) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.Object:
 		o.Set = true
-		o.Value = make(AppsCreateFromManifestReq)
 		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
@@ -71638,57 +65694,6 @@ func (o *OptAppsUpdateWebhookConfigForAppReq) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppsUpdateWebhookConfigForAppReq`, d.Next())
-	}
-}
-
-// Encode encodes AuditLogEventActorLocation as json.
-func (o OptAuditLogEventActorLocation) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes AuditLogEventActorLocation from json.
-func (o *OptAuditLogEventActorLocation) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptAuditLogEventActorLocation to nil`)
-	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptAuditLogEventActorLocation`, d.Next())
-	}
-}
-
-// Encode encodes AuditLogEventData as json.
-func (o OptAuditLogEventData) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes AuditLogEventData from json.
-func (o *OptAuditLogEventData) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptAuditLogEventData to nil`)
-	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(AuditLogEventData)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptAuditLogEventData`, d.Next())
 	}
 }
 
@@ -72144,56 +66149,6 @@ func (o *OptCodeScanningAlertLocation) Decode(d *jx.Decoder) error {
 	}
 }
 
-// Encode encodes CodeScanningAlertRuleSecuritySeverityLevel as json.
-func (o OptCodeScanningAlertRuleSecuritySeverityLevel) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	e.Str(string(o.Value))
-}
-
-// Decode decodes CodeScanningAlertRuleSecuritySeverityLevel from json.
-func (o *OptCodeScanningAlertRuleSecuritySeverityLevel) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptCodeScanningAlertRuleSecuritySeverityLevel to nil`)
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAlertRuleSecuritySeverityLevel`, d.Next())
-	}
-}
-
-// Encode encodes CodeScanningAlertRuleSeverity as json.
-func (o OptCodeScanningAlertRuleSeverity) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	e.Str(string(o.Value))
-}
-
-// Decode decodes CodeScanningAlertRuleSeverity from json.
-func (o *OptCodeScanningAlertRuleSeverity) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptCodeScanningAlertRuleSeverity to nil`)
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAlertRuleSeverity`, d.Next())
-	}
-}
-
 // Encode encodes CodeScanningAlertRuleSummarySeverity as json.
 func (o OptCodeScanningAlertRuleSummarySeverity) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -72516,31 +66471,6 @@ func (o *OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility`, d.Next())
-	}
-}
-
-// Encode encodes EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue as json.
-func (o OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue from json.
-func (o *OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue to nil`)
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue`, d.Next())
 	}
 }
 
@@ -72893,57 +66823,6 @@ func (o *OptFullRepositorySecurityAndAnalysisSecretScanningStatus) Decode(d *jx.
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptFullRepositorySecurityAndAnalysisSecretScanningStatus`, d.Next())
-	}
-}
-
-// Encode encodes GistHistoryChangeStatus as json.
-func (o OptGistHistoryChangeStatus) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes GistHistoryChangeStatus from json.
-func (o *OptGistHistoryChangeStatus) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptGistHistoryChangeStatus to nil`)
-	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptGistHistoryChangeStatus`, d.Next())
-	}
-}
-
-// Encode encodes GistSimpleFiles as json.
-func (o OptGistSimpleFiles) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes GistSimpleFiles from json.
-func (o *OptGistSimpleFiles) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptGistSimpleFiles to nil`)
-	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(GistSimpleFiles)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptGistSimpleFiles`, d.Next())
 	}
 }
 
@@ -74159,161 +68038,6 @@ func (o *OptNilFullRepositorySecurityAndAnalysis) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptNilFullRepositorySecurityAndAnalysis`, d.Next())
-	}
-}
-
-// Encode encodes []GistHistory as json.
-func (o OptNilGistHistoryArray) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	if o.Null {
-		e.Null()
-		return
-	}
-	e.ArrStart()
-	if len(o.Value) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := o.Value[0]
-			elem.Encode(e)
-		}
-		for _, elem := range o.Value[1:] {
-			e.Comma()
-			elem.Encode(e)
-		}
-	}
-	e.ArrEnd()
-}
-
-// Decode decodes []GistHistory from json.
-func (o *OptNilGistHistoryArray) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptNilGistHistoryArray to nil`)
-	}
-	switch d.Next() {
-	case jx.Array:
-		o.Set = true
-		o.Null = false
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem GistHistory
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			o.Value = append(o.Value, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v []GistHistory
-		o.Value = v
-		o.Set = true
-		o.Null = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptNilGistHistoryArray`, d.Next())
-	}
-}
-
-// Encode encodes GistSimpleForkOf as json.
-func (o OptNilGistSimpleForkOf) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	if o.Null {
-		e.Null()
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes GistSimpleForkOf from json.
-func (o *OptNilGistSimpleForkOf) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptNilGistSimpleForkOf to nil`)
-	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v GistSimpleForkOf
-		o.Value = v
-		o.Set = true
-		o.Null = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptNilGistSimpleForkOf`, d.Next())
-	}
-}
-
-// Encode encodes []GistSimpleForksItem as json.
-func (o OptNilGistSimpleForksItemArray) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	if o.Null {
-		e.Null()
-		return
-	}
-	e.ArrStart()
-	if len(o.Value) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := o.Value[0]
-			elem.Encode(e)
-		}
-		for _, elem := range o.Value[1:] {
-			e.Comma()
-			elem.Encode(e)
-		}
-	}
-	e.ArrEnd()
-}
-
-// Decode decodes []GistSimpleForksItem from json.
-func (o *OptNilGistSimpleForksItemArray) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptNilGistSimpleForksItemArray to nil`)
-	}
-	switch d.Next() {
-	case jx.Array:
-		o.Set = true
-		o.Null = false
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem GistSimpleForksItem
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			o.Value = append(o.Value, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v []GistSimpleForksItem
-		o.Value = v
-		o.Set = true
-		o.Null = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptNilGistSimpleForksItemArray`, d.Next())
 	}
 }
 
@@ -76002,131 +69726,6 @@ func (o *OptOrgsUpdateWebhookReqConfig) Decode(d *jx.Decoder) error {
 	}
 }
 
-// Encode encodes PackageVersionMetadata as json.
-func (o OptPackageVersionMetadata) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes PackageVersionMetadata from json.
-func (o *OptPackageVersionMetadata) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptPackageVersionMetadata to nil`)
-	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptPackageVersionMetadata`, d.Next())
-	}
-}
-
-// Encode encodes PackageVersionMetadataContainer as json.
-func (o OptPackageVersionMetadataContainer) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes PackageVersionMetadataContainer from json.
-func (o *OptPackageVersionMetadataContainer) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptPackageVersionMetadataContainer to nil`)
-	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptPackageVersionMetadataContainer`, d.Next())
-	}
-}
-
-// Encode encodes PackageVersionMetadataDocker as json.
-func (o OptPackageVersionMetadataDocker) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes PackageVersionMetadataDocker from json.
-func (o *OptPackageVersionMetadataDocker) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptPackageVersionMetadataDocker to nil`)
-	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptPackageVersionMetadataDocker`, d.Next())
-	}
-}
-
-// Encode encodes PageProtectedDomainState as json.
-func (o OptPageProtectedDomainState) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	e.Str(string(o.Value))
-}
-
-// Decode decodes PageProtectedDomainState from json.
-func (o *OptPageProtectedDomainState) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptPageProtectedDomainState to nil`)
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptPageProtectedDomainState`, d.Next())
-	}
-}
-
-// Encode encodes PagesHTTPSCertificate as json.
-func (o OptPagesHTTPSCertificate) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes PagesHTTPSCertificate from json.
-func (o *OptPagesHTTPSCertificate) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptPagesHTTPSCertificate to nil`)
-	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptPagesHTTPSCertificate`, d.Next())
-	}
-}
-
 // Encode encodes PagesHealthCheckDomain as json.
 func (o OptPagesHealthCheckDomain) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -76149,31 +69748,6 @@ func (o *OptPagesHealthCheckDomain) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPagesHealthCheckDomain`, d.Next())
-	}
-}
-
-// Encode encodes PagesSourceHash as json.
-func (o OptPagesSourceHash) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes PagesSourceHash from json.
-func (o *OptPagesSourceHash) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptPagesSourceHash to nil`)
-	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptPagesSourceHash`, d.Next())
 	}
 }
 
@@ -76624,31 +70198,6 @@ func (o *OptProtectedBranchRequiredSignatures) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptProtectedBranchRequiredSignatures`, d.Next())
-	}
-}
-
-// Encode encodes PublicUser as json.
-func (o OptPublicUser) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes PublicUser from json.
-func (o *OptPublicUser) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptPublicUser to nil`)
-	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptPublicUser`, d.Next())
 	}
 }
 
@@ -77274,32 +70823,6 @@ func (o *OptReposCreateDeploymentStatusReqEnvironment) Decode(d *jx.Decoder) err
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposCreateDeploymentStatusReqEnvironment`, d.Next())
-	}
-}
-
-// Encode encodes ReposCreateDispatchEventReqClientPayload as json.
-func (o OptReposCreateDispatchEventReqClientPayload) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes ReposCreateDispatchEventReqClientPayload from json.
-func (o *OptReposCreateDispatchEventReqClientPayload) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptReposCreateDispatchEventReqClientPayload to nil`)
-	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(ReposCreateDispatchEventReqClientPayload)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptReposCreateDispatchEventReqClientPayload`, d.Next())
 	}
 }
 
@@ -78575,31 +72098,6 @@ func (o *OptSelectedActionsURL) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSelectedActionsURL`, d.Next())
-	}
-}
-
-// Encode encodes SimpleUser as json.
-func (o OptSimpleUser) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes SimpleUser from json.
-func (o *OptSimpleUser) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptSimpleUser to nil`)
-	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptSimpleUser`, d.Next())
 	}
 }
 
@@ -82098,38 +75596,21 @@ func (s OrgsConvertMemberToOutsideCollaboratorAccepted) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
-	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfOrgsConvertMemberToOutsideCollaboratorAccepted = [0]string{}
 
 // Decode decodes OrgsConvertMemberToOutsideCollaboratorAccepted from json.
-func (s OrgsConvertMemberToOutsideCollaboratorAccepted) Decode(d *jx.Decoder) error {
+func (s *OrgsConvertMemberToOutsideCollaboratorAccepted) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrgsConvertMemberToOutsideCollaboratorAccepted to nil`)
 	}
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -84016,64 +77497,52 @@ func (s OrgsUpdateWebhookConfigForOrgReq) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		{
-			if s.URL.Set {
-				if !first {
-					e.Comma()
-				}
-				first = false
+		if s.URL.Set {
+			if !first {
+				e.Comma()
 			}
-			if s.URL.Set {
-				e.RawStr("\"url\"" + ":")
-				s.URL.Encode(e)
-			}
+			first = false
 		}
-		{
-			if s.ContentType.Set {
-				if !first {
-					e.Comma()
-				}
-				first = false
-			}
-			if s.ContentType.Set {
-				e.RawStr("\"content_type\"" + ":")
-				s.ContentType.Encode(e)
-			}
-		}
-		{
-			if s.Secret.Set {
-				if !first {
-					e.Comma()
-				}
-				first = false
-			}
-			if s.Secret.Set {
-				e.RawStr("\"secret\"" + ":")
-				s.Secret.Encode(e)
-			}
-		}
-		{
-			if s.InsecureSsl.Set {
-				if !first {
-					e.Comma()
-				}
-				first = false
-			}
-			if s.InsecureSsl.Set {
-				e.RawStr("\"insecure_ssl\"" + ":")
-				s.InsecureSsl.Encode(e)
-			}
+		if s.URL.Set {
+			e.RawStr("\"url\"" + ":")
+			s.URL.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		if !first {
-			e.Comma()
+	{
+		if s.ContentType.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
+		if s.ContentType.Set {
+			e.RawStr("\"content_type\"" + ":")
+			s.ContentType.Encode(e)
+		}
+	}
+	{
+		if s.Secret.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Secret.Set {
+			e.RawStr("\"secret\"" + ":")
+			s.Secret.Encode(e)
+		}
+	}
+	{
+		if s.InsecureSsl.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.InsecureSsl.Set {
+			e.RawStr("\"insecure_ssl\"" + ":")
+			s.InsecureSsl.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -84091,11 +77560,6 @@ func (s *OrgsUpdateWebhookConfigForOrgReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OrgsUpdateWebhookConfigForOrgReq to nil`)
 	}
 
-	m := s.AdditionalProps
-	if m == nil {
-		m = map[string]string{}
-		s.AdditionalProps = m
-	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "url":
@@ -84119,13 +77583,7 @@ func (s *OrgsUpdateWebhookConfigForOrgReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -84640,549 +78098,6 @@ func (s *PackagePackageType) Decode(d *jx.Decoder) error {
 		*s = PackagePackageTypeContainer
 	default:
 		*s = PackagePackageType(v)
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s PackageVersion) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if !first {
-			e.Comma()
-		}
-		first = false
-
-		e.RawStr("\"id\"" + ":")
-		e.Int(s.ID)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"name\"" + ":")
-		e.Str(s.Name)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"url\"" + ":")
-		e.Str(s.URL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"package_html_url\"" + ":")
-		e.Str(s.PackageHTMLURL)
-	}
-	{
-		if s.HTMLURL.Set {
-			e.Comma()
-		}
-		if s.HTMLURL.Set {
-			e.RawStr("\"html_url\"" + ":")
-			s.HTMLURL.Encode(e)
-		}
-	}
-	{
-		if s.License.Set {
-			e.Comma()
-		}
-		if s.License.Set {
-			e.RawStr("\"license\"" + ":")
-			s.License.Encode(e)
-		}
-	}
-	{
-		if s.Description.Set {
-			e.Comma()
-		}
-		if s.Description.Set {
-			e.RawStr("\"description\"" + ":")
-			s.Description.Encode(e)
-		}
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"created_at\"" + ":")
-		json.EncodeDateTime(e, s.CreatedAt)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"updated_at\"" + ":")
-		json.EncodeDateTime(e, s.UpdatedAt)
-	}
-	{
-		if s.DeletedAt.Set {
-			e.Comma()
-		}
-		if s.DeletedAt.Set {
-			e.RawStr("\"deleted_at\"" + ":")
-			s.DeletedAt.Encode(e, json.EncodeDateTime)
-		}
-	}
-	{
-		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
-			s.Metadata.Encode(e)
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfPackageVersion = [11]string{
-	0:  "id",
-	1:  "name",
-	2:  "url",
-	3:  "package_html_url",
-	4:  "html_url",
-	5:  "license",
-	6:  "description",
-	7:  "created_at",
-	8:  "updated_at",
-	9:  "deleted_at",
-	10: "metadata",
-}
-
-// Decode decodes PackageVersion from json.
-func (s *PackageVersion) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PackageVersion to nil`)
-	}
-	var requiredBitSet [2]uint8
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "id":
-			requiredBitSet[0] |= 1 << 0
-			v, err := d.Int()
-			s.ID = int(v)
-			if err != nil {
-				return err
-			}
-		case "name":
-			requiredBitSet[0] |= 1 << 1
-			v, err := d.Str()
-			s.Name = string(v)
-			if err != nil {
-				return err
-			}
-		case "url":
-			requiredBitSet[0] |= 1 << 2
-			v, err := d.Str()
-			s.URL = string(v)
-			if err != nil {
-				return err
-			}
-		case "package_html_url":
-			requiredBitSet[0] |= 1 << 3
-			v, err := d.Str()
-			s.PackageHTMLURL = string(v)
-			if err != nil {
-				return err
-			}
-		case "html_url":
-			s.HTMLURL.Reset()
-			if err := s.HTMLURL.Decode(d); err != nil {
-				return err
-			}
-		case "license":
-			s.License.Reset()
-			if err := s.License.Decode(d); err != nil {
-				return err
-			}
-		case "description":
-			s.Description.Reset()
-			if err := s.Description.Decode(d); err != nil {
-				return err
-			}
-		case "created_at":
-			requiredBitSet[0] |= 1 << 7
-			v, err := json.DecodeDateTime(d)
-			s.CreatedAt = v
-			if err != nil {
-				return err
-			}
-		case "updated_at":
-			requiredBitSet[1] |= 1 << 0
-			v, err := json.DecodeDateTime(d)
-			s.UpdatedAt = v
-			if err != nil {
-				return err
-			}
-		case "deleted_at":
-			s.DeletedAt.Reset()
-			if err := s.DeletedAt.Decode(d, json.DecodeDateTime); err != nil {
-				return err
-			}
-		case "metadata":
-			s.Metadata.Reset()
-			if err := s.Metadata.Decode(d); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-	var failures []validate.FieldError
-	for i, mask := range [2]uint8{
-		0b10001111,
-		0b00000001,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfPackageVersion) {
-					name = jsonFieldsNameOfPackageVersion[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s PackageVersionMetadata) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if !first {
-			e.Comma()
-		}
-		first = false
-
-		e.RawStr("\"package_type\"" + ":")
-		s.PackageType.Encode(e)
-	}
-	{
-		if s.Container.Set {
-			e.Comma()
-		}
-		if s.Container.Set {
-			e.RawStr("\"container\"" + ":")
-			s.Container.Encode(e)
-		}
-	}
-	{
-		if s.Docker.Set {
-			e.Comma()
-		}
-		if s.Docker.Set {
-			e.RawStr("\"docker\"" + ":")
-			s.Docker.Encode(e)
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfPackageVersionMetadata = [3]string{
-	0: "package_type",
-	1: "container",
-	2: "docker",
-}
-
-// Decode decodes PackageVersionMetadata from json.
-func (s *PackageVersionMetadata) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PackageVersionMetadata to nil`)
-	}
-	var requiredBitSet [1]uint8
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "package_type":
-			requiredBitSet[0] |= 1 << 0
-			if err := s.PackageType.Decode(d); err != nil {
-				return err
-			}
-		case "container":
-			s.Container.Reset()
-			if err := s.Container.Decode(d); err != nil {
-				return err
-			}
-		case "docker":
-			s.Docker.Reset()
-			if err := s.Docker.Decode(d); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000001,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfPackageVersionMetadata) {
-					name = jsonFieldsNameOfPackageVersionMetadata[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s PackageVersionMetadataContainer) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if !first {
-			e.Comma()
-		}
-		first = false
-
-		e.RawStr("\"tags\"" + ":")
-		e.ArrStart()
-		if len(s.Tags) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Tags[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Tags[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
-		}
-		e.ArrEnd()
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfPackageVersionMetadataContainer = [1]string{
-	0: "tags",
-}
-
-// Decode decodes PackageVersionMetadataContainer from json.
-func (s *PackageVersionMetadataContainer) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PackageVersionMetadataContainer to nil`)
-	}
-	var requiredBitSet [1]uint8
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "tags":
-			requiredBitSet[0] |= 1 << 0
-			s.Tags = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				s.Tags = append(s.Tags, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000001,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfPackageVersionMetadataContainer) {
-					name = jsonFieldsNameOfPackageVersionMetadataContainer[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s PackageVersionMetadataDocker) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if s.Tag != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Tag != nil {
-			e.RawStr("\"tag\"" + ":")
-			e.ArrStart()
-			if len(s.Tag) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Tag[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Tag[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfPackageVersionMetadataDocker = [1]string{
-	0: "tag",
-}
-
-// Decode decodes PackageVersionMetadataDocker from json.
-func (s *PackageVersionMetadataDocker) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PackageVersionMetadataDocker to nil`)
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "tag":
-			s.Tag = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				s.Tag = append(s.Tag, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// Encode encodes PackageVersionMetadataPackageType as json.
-func (s PackageVersionMetadataPackageType) Encode(e *jx.Writer) {
-	e.Str(string(s))
-}
-
-// Decode decodes PackageVersionMetadataPackageType from json.
-func (s *PackageVersionMetadataPackageType) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PackageVersionMetadataPackageType to nil`)
-	}
-	v, err := d.StrBytes()
-	if err != nil {
-		return err
-	}
-	// Try to use constant string.
-	switch PackageVersionMetadataPackageType(v) {
-	case PackageVersionMetadataPackageTypeNpm:
-		*s = PackageVersionMetadataPackageTypeNpm
-	case PackageVersionMetadataPackageTypeMaven:
-		*s = PackageVersionMetadataPackageTypeMaven
-	case PackageVersionMetadataPackageTypeRubygems:
-		*s = PackageVersionMetadataPackageTypeRubygems
-	case PackageVersionMetadataPackageTypeDocker:
-		*s = PackageVersionMetadataPackageTypeDocker
-	case PackageVersionMetadataPackageTypeNuget:
-		*s = PackageVersionMetadataPackageTypeNuget
-	case PackageVersionMetadataPackageTypeContainer:
-		*s = PackageVersionMetadataPackageTypeContainer
-	default:
-		*s = PackageVersionMetadataPackageType(v)
 	}
 
 	return nil
@@ -85753,354 +78668,6 @@ func (s *PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) Decode(
 		return errors.Wrap(err, "alias")
 	}
 	*s = PackagesDeletePackageVersionForUserApplicationJSONUnauthorized(unwrapped)
-	return nil
-}
-
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden(unwrapped)
-	return nil
-}
-
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound(unwrapped)
-	return nil
-}
-
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
-	return nil
-}
-
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON) Encode(e *jx.Writer) {
-	unwrapped := []PackageVersion(s)
-	e.ArrStart()
-	if len(unwrapped) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := unwrapped[0]
-			elem.Encode(e)
-		}
-		for _, elem := range unwrapped[1:] {
-			e.Comma()
-			elem.Encode(e)
-		}
-	}
-	e.ArrEnd()
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON to nil`)
-	}
-	var unwrapped []PackageVersion
-	if err := func() error {
-		unwrapped = nil
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem PackageVersion
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			unwrapped = append(unwrapped, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON(unwrapped)
-	return nil
-}
-
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden(unwrapped)
-	return nil
-}
-
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound(unwrapped)
-	return nil
-}
-
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized(unwrapped)
-	return nil
-}
-
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) Encode(e *jx.Writer) {
-	unwrapped := []PackageVersion(s)
-	e.ArrStart()
-	if len(unwrapped) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := unwrapped[0]
-			elem.Encode(e)
-		}
-		for _, elem := range unwrapped[1:] {
-			e.Comma()
-			elem.Encode(e)
-		}
-	}
-	e.ArrEnd()
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON to nil`)
-	}
-	var unwrapped []PackageVersion
-	if err := func() error {
-		unwrapped = nil
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem PackageVersion
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			unwrapped = append(unwrapped, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON(unwrapped)
-	return nil
-}
-
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden(unwrapped)
-	return nil
-}
-
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound(unwrapped)
-	return nil
-}
-
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized(unwrapped)
-	return nil
-}
-
-// Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON as json.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) Encode(e *jx.Writer) {
-	unwrapped := []PackageVersion(s)
-	e.ArrStart()
-	if len(unwrapped) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := unwrapped[0]
-			elem.Encode(e)
-		}
-		for _, elem := range unwrapped[1:] {
-			e.Comma()
-			elem.Encode(e)
-		}
-	}
-	e.ArrEnd()
-}
-
-// Decode decodes PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON from json.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON to nil`)
-	}
-	var unwrapped []PackageVersion
-	if err := func() error {
-		unwrapped = nil
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem PackageVersion
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			unwrapped = append(unwrapped, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON(unwrapped)
 	return nil
 }
 
@@ -86721,230 +79288,6 @@ func (s *PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) Decode
 }
 
 // Encode implements json.Marshaler.
-func (s Page) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if !first {
-			e.Comma()
-		}
-		first = false
-
-		e.RawStr("\"url\"" + ":")
-		json.EncodeURI(e, s.URL)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"status\"" + ":")
-		s.Status.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"cname\"" + ":")
-		s.Cname.Encode(e)
-	}
-	{
-		if s.ProtectedDomainState.Set {
-			e.Comma()
-		}
-		if s.ProtectedDomainState.Set {
-			e.RawStr("\"protected_domain_state\"" + ":")
-			s.ProtectedDomainState.Encode(e)
-		}
-	}
-	{
-		if s.PendingDomainUnverifiedAt.Set {
-			e.Comma()
-		}
-		if s.PendingDomainUnverifiedAt.Set {
-			e.RawStr("\"pending_domain_unverified_at\"" + ":")
-			s.PendingDomainUnverifiedAt.Encode(e, json.EncodeDateTime)
-		}
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"custom_404\"" + ":")
-		e.Bool(s.Custom404)
-	}
-	{
-		if s.HTMLURL.Set {
-			e.Comma()
-		}
-		if s.HTMLURL.Set {
-			e.RawStr("\"html_url\"" + ":")
-			s.HTMLURL.Encode(e)
-		}
-	}
-	{
-		if s.Source.Set {
-			e.Comma()
-		}
-		if s.Source.Set {
-			e.RawStr("\"source\"" + ":")
-			s.Source.Encode(e)
-		}
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"public\"" + ":")
-		e.Bool(s.Public)
-	}
-	{
-		if s.HTTPSCertificate.Set {
-			e.Comma()
-		}
-		if s.HTTPSCertificate.Set {
-			e.RawStr("\"https_certificate\"" + ":")
-			s.HTTPSCertificate.Encode(e)
-		}
-	}
-	{
-		if s.HTTPSEnforced.Set {
-			e.Comma()
-		}
-		if s.HTTPSEnforced.Set {
-			e.RawStr("\"https_enforced\"" + ":")
-			s.HTTPSEnforced.Encode(e)
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfPage = [11]string{
-	0:  "url",
-	1:  "status",
-	2:  "cname",
-	3:  "protected_domain_state",
-	4:  "pending_domain_unverified_at",
-	5:  "custom_404",
-	6:  "html_url",
-	7:  "source",
-	8:  "public",
-	9:  "https_certificate",
-	10: "https_enforced",
-}
-
-// Decode decodes Page from json.
-func (s *Page) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode Page to nil`)
-	}
-	var requiredBitSet [2]uint8
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "url":
-			requiredBitSet[0] |= 1 << 0
-			v, err := json.DecodeURI(d)
-			s.URL = v
-			if err != nil {
-				return err
-			}
-		case "status":
-			requiredBitSet[0] |= 1 << 1
-			if err := s.Status.Decode(d); err != nil {
-				return err
-			}
-		case "cname":
-			requiredBitSet[0] |= 1 << 2
-			if err := s.Cname.Decode(d); err != nil {
-				return err
-			}
-		case "protected_domain_state":
-			s.ProtectedDomainState.Reset()
-			if err := s.ProtectedDomainState.Decode(d); err != nil {
-				return err
-			}
-		case "pending_domain_unverified_at":
-			s.PendingDomainUnverifiedAt.Reset()
-			if err := s.PendingDomainUnverifiedAt.Decode(d, json.DecodeDateTime); err != nil {
-				return err
-			}
-		case "custom_404":
-			requiredBitSet[0] |= 1 << 5
-			v, err := d.Bool()
-			s.Custom404 = bool(v)
-			if err != nil {
-				return err
-			}
-		case "html_url":
-			s.HTMLURL.Reset()
-			if err := s.HTMLURL.Decode(d); err != nil {
-				return err
-			}
-		case "source":
-			s.Source.Reset()
-			if err := s.Source.Decode(d); err != nil {
-				return err
-			}
-		case "public":
-			requiredBitSet[1] |= 1 << 0
-			v, err := d.Bool()
-			s.Public = bool(v)
-			if err != nil {
-				return err
-			}
-		case "https_certificate":
-			s.HTTPSCertificate.Reset()
-			if err := s.HTTPSCertificate.Decode(d); err != nil {
-				return err
-			}
-		case "https_enforced":
-			s.HTTPSEnforced.Reset()
-			if err := s.HTTPSEnforced.Decode(d); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-	var failures []validate.FieldError
-	for i, mask := range [2]uint8{
-		0b00100111,
-		0b00000001,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfPage) {
-					name = jsonFieldsNameOfPage[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
 func (s PageBuild) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -87288,253 +79631,6 @@ func (s *PageBuildStatus) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode encodes PageProtectedDomainState as json.
-func (s PageProtectedDomainState) Encode(e *jx.Writer) {
-	e.Str(string(s))
-}
-
-// Decode decodes PageProtectedDomainState from json.
-func (s *PageProtectedDomainState) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PageProtectedDomainState to nil`)
-	}
-	v, err := d.StrBytes()
-	if err != nil {
-		return err
-	}
-	// Try to use constant string.
-	switch PageProtectedDomainState(v) {
-	case PageProtectedDomainStatePending:
-		*s = PageProtectedDomainStatePending
-	case PageProtectedDomainStateVerified:
-		*s = PageProtectedDomainStateVerified
-	case PageProtectedDomainStateUnverified:
-		*s = PageProtectedDomainStateUnverified
-	default:
-		*s = PageProtectedDomainState(v)
-	}
-
-	return nil
-}
-
-// Encode encodes PageStatus as json.
-func (s PageStatus) Encode(e *jx.Writer) {
-	e.Str(string(s))
-}
-
-// Decode decodes PageStatus from json.
-func (s *PageStatus) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PageStatus to nil`)
-	}
-	v, err := d.StrBytes()
-	if err != nil {
-		return err
-	}
-	// Try to use constant string.
-	switch PageStatus(v) {
-	case PageStatusBuilt:
-		*s = PageStatusBuilt
-	case PageStatusBuilding:
-		*s = PageStatusBuilding
-	case PageStatusErrored:
-		*s = PageStatusErrored
-	default:
-		*s = PageStatus(v)
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s PagesHTTPSCertificate) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if !first {
-			e.Comma()
-		}
-		first = false
-
-		e.RawStr("\"state\"" + ":")
-		s.State.Encode(e)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"description\"" + ":")
-		e.Str(s.Description)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"domains\"" + ":")
-		e.ArrStart()
-		if len(s.Domains) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Domains[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Domains[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
-		}
-		e.ArrEnd()
-	}
-	{
-		if s.ExpiresAt.Set {
-			e.Comma()
-		}
-		if s.ExpiresAt.Set {
-			e.RawStr("\"expires_at\"" + ":")
-			s.ExpiresAt.Encode(e, json.EncodeDate)
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfPagesHTTPSCertificate = [4]string{
-	0: "state",
-	1: "description",
-	2: "domains",
-	3: "expires_at",
-}
-
-// Decode decodes PagesHTTPSCertificate from json.
-func (s *PagesHTTPSCertificate) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PagesHTTPSCertificate to nil`)
-	}
-	var requiredBitSet [1]uint8
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "state":
-			requiredBitSet[0] |= 1 << 0
-			if err := s.State.Decode(d); err != nil {
-				return err
-			}
-		case "description":
-			requiredBitSet[0] |= 1 << 1
-			v, err := d.Str()
-			s.Description = string(v)
-			if err != nil {
-				return err
-			}
-		case "domains":
-			requiredBitSet[0] |= 1 << 2
-			s.Domains = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem string
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				s.Domains = append(s.Domains, elem)
-				return nil
-			}); err != nil {
-				return err
-			}
-		case "expires_at":
-			s.ExpiresAt.Reset()
-			if err := s.ExpiresAt.Decode(d, json.DecodeDate); err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000111,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfPagesHTTPSCertificate) {
-					name = jsonFieldsNameOfPagesHTTPSCertificate[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode encodes PagesHTTPSCertificateState as json.
-func (s PagesHTTPSCertificateState) Encode(e *jx.Writer) {
-	e.Str(string(s))
-}
-
-// Decode decodes PagesHTTPSCertificateState from json.
-func (s *PagesHTTPSCertificateState) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PagesHTTPSCertificateState to nil`)
-	}
-	v, err := d.StrBytes()
-	if err != nil {
-		return err
-	}
-	// Try to use constant string.
-	switch PagesHTTPSCertificateState(v) {
-	case PagesHTTPSCertificateStateNew:
-		*s = PagesHTTPSCertificateStateNew
-	case PagesHTTPSCertificateStateAuthorizationCreated:
-		*s = PagesHTTPSCertificateStateAuthorizationCreated
-	case PagesHTTPSCertificateStateAuthorizationPending:
-		*s = PagesHTTPSCertificateStateAuthorizationPending
-	case PagesHTTPSCertificateStateAuthorized:
-		*s = PagesHTTPSCertificateStateAuthorized
-	case PagesHTTPSCertificateStateAuthorizationRevoked:
-		*s = PagesHTTPSCertificateStateAuthorizationRevoked
-	case PagesHTTPSCertificateStateIssued:
-		*s = PagesHTTPSCertificateStateIssued
-	case PagesHTTPSCertificateStateUploaded:
-		*s = PagesHTTPSCertificateStateUploaded
-	case PagesHTTPSCertificateStateApproved:
-		*s = PagesHTTPSCertificateStateApproved
-	case PagesHTTPSCertificateStateErrored:
-		*s = PagesHTTPSCertificateStateErrored
-	case PagesHTTPSCertificateStateBadAuthz:
-		*s = PagesHTTPSCertificateStateBadAuthz
-	case PagesHTTPSCertificateStateDestroyPending:
-		*s = PagesHTTPSCertificateStateDestroyPending
-	case PagesHTTPSCertificateStateDNSChanged:
-		*s = PagesHTTPSCertificateStateDNSChanged
-	default:
-		*s = PagesHTTPSCertificateState(v)
 	}
 
 	return nil
@@ -88675,101 +80771,6 @@ func (s *PagesHealthCheckDomain) Decode(d *jx.Decoder) error {
 		return nil
 	}); err != nil {
 		return err
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s PagesSourceHash) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if !first {
-			e.Comma()
-		}
-		first = false
-
-		e.RawStr("\"branch\"" + ":")
-		e.Str(s.Branch)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"path\"" + ":")
-		e.Str(s.Path)
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfPagesSourceHash = [2]string{
-	0: "branch",
-	1: "path",
-}
-
-// Decode decodes PagesSourceHash from json.
-func (s *PagesSourceHash) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode PagesSourceHash to nil`)
-	}
-	var requiredBitSet [1]uint8
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "branch":
-			requiredBitSet[0] |= 1 << 0
-			v, err := d.Str()
-			s.Branch = string(v)
-			if err != nil {
-				return err
-			}
-		case "path":
-			requiredBitSet[0] |= 1 << 1
-			v, err := d.Str()
-			s.Path = string(v)
-			if err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000011,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfPagesSourceHash) {
-					name = jsonFieldsNameOfPagesSourceHash[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
 	}
 
 	return nil
@@ -93024,38 +85025,21 @@ func (s ProjectsMoveCardCreated) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
-	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfProjectsMoveCardCreated = [0]string{}
 
 // Decode decodes ProjectsMoveCardCreated from json.
-func (s ProjectsMoveCardCreated) Decode(d *jx.Decoder) error {
+func (s *ProjectsMoveCardCreated) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ProjectsMoveCardCreated to nil`)
 	}
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -93616,38 +85600,21 @@ func (s ProjectsMoveColumnCreated) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
-	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfProjectsMoveColumnCreated = [0]string{}
 
 // Decode decodes ProjectsMoveColumnCreated from json.
-func (s ProjectsMoveColumnCreated) Decode(d *jx.Decoder) error {
+func (s *ProjectsMoveColumnCreated) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ProjectsMoveColumnCreated to nil`)
 	}
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -94707,25 +86674,13 @@ func (s ProtectedBranchAllowDeletions) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		{
-			if !first {
-				e.Comma()
-			}
-			first = false
-
-			e.RawStr("\"enabled\"" + ":")
-			e.Bool(s.Enabled)
-		}
-	}
-	for k, elem := range s.AdditionalProps {
 		if !first {
 			e.Comma()
 		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
+		first = false
 
-		e.Str(elem)
+		e.RawStr("\"enabled\"" + ":")
+		e.Bool(s.Enabled)
 	}
 	e.ObjEnd()
 }
@@ -94741,11 +86696,6 @@ func (s *ProtectedBranchAllowDeletions) Decode(d *jx.Decoder) error {
 	}
 	var requiredBitSet [1]uint8
 
-	m := s.AdditionalProps
-	if m == nil {
-		m = map[string]string{}
-		s.AdditionalProps = m
-	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "enabled":
@@ -94756,13 +86706,7 @@ func (s *ProtectedBranchAllowDeletions) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -94811,25 +86755,13 @@ func (s ProtectedBranchAllowForcePushes) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		{
-			if !first {
-				e.Comma()
-			}
-			first = false
-
-			e.RawStr("\"enabled\"" + ":")
-			e.Bool(s.Enabled)
-		}
-	}
-	for k, elem := range s.AdditionalProps {
 		if !first {
 			e.Comma()
 		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
+		first = false
 
-		e.Str(elem)
+		e.RawStr("\"enabled\"" + ":")
+		e.Bool(s.Enabled)
 	}
 	e.ObjEnd()
 }
@@ -94845,11 +86777,6 @@ func (s *ProtectedBranchAllowForcePushes) Decode(d *jx.Decoder) error {
 	}
 	var requiredBitSet [1]uint8
 
-	m := s.AdditionalProps
-	if m == nil {
-		m = map[string]string{}
-		s.AdditionalProps = m
-	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "enabled":
@@ -94860,13 +86787,7 @@ func (s *ProtectedBranchAllowForcePushes) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -94915,31 +86836,19 @@ func (s ProtectedBranchEnforceAdmins) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		{
-			if !first {
-				e.Comma()
-			}
-			first = false
-
-			e.RawStr("\"url\"" + ":")
-			json.EncodeURI(e, s.URL)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"enabled\"" + ":")
-			e.Bool(s.Enabled)
-		}
-	}
-	for k, elem := range s.AdditionalProps {
 		if !first {
 			e.Comma()
 		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
+		first = false
 
-		e.Str(elem)
+		e.RawStr("\"url\"" + ":")
+		json.EncodeURI(e, s.URL)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"enabled\"" + ":")
+		e.Bool(s.Enabled)
 	}
 	e.ObjEnd()
 }
@@ -94956,11 +86865,6 @@ func (s *ProtectedBranchEnforceAdmins) Decode(d *jx.Decoder) error {
 	}
 	var requiredBitSet [1]uint8
 
-	m := s.AdditionalProps
-	if m == nil {
-		m = map[string]string{}
-		s.AdditionalProps = m
-	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "url":
@@ -94978,13 +86882,7 @@ func (s *ProtectedBranchEnforceAdmins) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -95339,28 +87237,16 @@ func (s ProtectedBranchRequiredConversationResolution) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		{
-			if s.Enabled.Set {
-				if !first {
-					e.Comma()
-				}
-				first = false
+		if s.Enabled.Set {
+			if !first {
+				e.Comma()
 			}
-			if s.Enabled.Set {
-				e.RawStr("\"enabled\"" + ":")
-				s.Enabled.Encode(e)
-			}
+			first = false
 		}
-	}
-	for k, elem := range s.AdditionalProps {
-		if !first {
-			e.Comma()
+		if s.Enabled.Set {
+			e.RawStr("\"enabled\"" + ":")
+			s.Enabled.Encode(e)
 		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
 	}
 	e.ObjEnd()
 }
@@ -95375,11 +87261,6 @@ func (s *ProtectedBranchRequiredConversationResolution) Decode(d *jx.Decoder) er
 		return errors.New(`invalid: unable to decode ProtectedBranchRequiredConversationResolution to nil`)
 	}
 
-	m := s.AdditionalProps
-	if m == nil {
-		m = map[string]string{}
-		s.AdditionalProps = m
-	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "enabled":
@@ -95388,13 +87269,7 @@ func (s *ProtectedBranchRequiredConversationResolution) Decode(d *jx.Decoder) er
 				return err
 			}
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -95412,25 +87287,13 @@ func (s ProtectedBranchRequiredLinearHistory) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		{
-			if !first {
-				e.Comma()
-			}
-			first = false
-
-			e.RawStr("\"enabled\"" + ":")
-			e.Bool(s.Enabled)
-		}
-	}
-	for k, elem := range s.AdditionalProps {
 		if !first {
 			e.Comma()
 		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
+		first = false
 
-		e.Str(elem)
+		e.RawStr("\"enabled\"" + ":")
+		e.Bool(s.Enabled)
 	}
 	e.ObjEnd()
 }
@@ -95446,11 +87309,6 @@ func (s *ProtectedBranchRequiredLinearHistory) Decode(d *jx.Decoder) error {
 	}
 	var requiredBitSet [1]uint8
 
-	m := s.AdditionalProps
-	if m == nil {
-		m = map[string]string{}
-		s.AdditionalProps = m
-	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "enabled":
@@ -95461,13 +87319,7 @@ func (s *ProtectedBranchRequiredLinearHistory) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -95925,277 +87777,265 @@ func (s PublicUser) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		{
-			if !first {
-				e.Comma()
-			}
-			first = false
-
-			e.RawStr("\"login\"" + ":")
-			e.Str(s.Login)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"id\"" + ":")
-			e.Int(s.ID)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"node_id\"" + ":")
-			e.Str(s.NodeID)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"avatar_url\"" + ":")
-			json.EncodeURI(e, s.AvatarURL)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"gravatar_id\"" + ":")
-			s.GravatarID.Encode(e)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"url\"" + ":")
-			json.EncodeURI(e, s.URL)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"html_url\"" + ":")
-			json.EncodeURI(e, s.HTMLURL)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"followers_url\"" + ":")
-			json.EncodeURI(e, s.FollowersURL)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"following_url\"" + ":")
-			e.Str(s.FollowingURL)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"gists_url\"" + ":")
-			e.Str(s.GistsURL)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"starred_url\"" + ":")
-			e.Str(s.StarredURL)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"subscriptions_url\"" + ":")
-			json.EncodeURI(e, s.SubscriptionsURL)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"organizations_url\"" + ":")
-			json.EncodeURI(e, s.OrganizationsURL)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"repos_url\"" + ":")
-			json.EncodeURI(e, s.ReposURL)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"events_url\"" + ":")
-			e.Str(s.EventsURL)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"received_events_url\"" + ":")
-			json.EncodeURI(e, s.ReceivedEventsURL)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"type\"" + ":")
-			e.Str(s.Type)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"site_admin\"" + ":")
-			e.Bool(s.SiteAdmin)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"name\"" + ":")
-			s.Name.Encode(e)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"company\"" + ":")
-			s.Company.Encode(e)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"blog\"" + ":")
-			s.Blog.Encode(e)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"location\"" + ":")
-			s.Location.Encode(e)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"email\"" + ":")
-			s.Email.Encode(e)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"hireable\"" + ":")
-			s.Hireable.Encode(e)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"bio\"" + ":")
-			s.Bio.Encode(e)
-		}
-		{
-			if s.TwitterUsername.Set {
-				e.Comma()
-			}
-			if s.TwitterUsername.Set {
-				e.RawStr("\"twitter_username\"" + ":")
-				s.TwitterUsername.Encode(e)
-			}
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"public_repos\"" + ":")
-			e.Int(s.PublicRepos)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"public_gists\"" + ":")
-			e.Int(s.PublicGists)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"followers\"" + ":")
-			e.Int(s.Followers)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"following\"" + ":")
-			e.Int(s.Following)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"created_at\"" + ":")
-			json.EncodeDateTime(e, s.CreatedAt)
-		}
-		{
-			e.Comma()
-
-			e.RawStr("\"updated_at\"" + ":")
-			json.EncodeDateTime(e, s.UpdatedAt)
-		}
-		{
-			if s.Plan.Set {
-				e.Comma()
-			}
-			if s.Plan.Set {
-				e.RawStr("\"plan\"" + ":")
-				s.Plan.Encode(e)
-			}
-		}
-		{
-			if s.SuspendedAt.Set {
-				e.Comma()
-			}
-			if s.SuspendedAt.Set {
-				e.RawStr("\"suspended_at\"" + ":")
-				s.SuspendedAt.Encode(e, json.EncodeDateTime)
-			}
-		}
-		{
-			if s.PrivateGists.Set {
-				e.Comma()
-			}
-			if s.PrivateGists.Set {
-				e.RawStr("\"private_gists\"" + ":")
-				s.PrivateGists.Encode(e)
-			}
-		}
-		{
-			if s.TotalPrivateRepos.Set {
-				e.Comma()
-			}
-			if s.TotalPrivateRepos.Set {
-				e.RawStr("\"total_private_repos\"" + ":")
-				s.TotalPrivateRepos.Encode(e)
-			}
-		}
-		{
-			if s.OwnedPrivateRepos.Set {
-				e.Comma()
-			}
-			if s.OwnedPrivateRepos.Set {
-				e.RawStr("\"owned_private_repos\"" + ":")
-				s.OwnedPrivateRepos.Encode(e)
-			}
-		}
-		{
-			if s.DiskUsage.Set {
-				e.Comma()
-			}
-			if s.DiskUsage.Set {
-				e.RawStr("\"disk_usage\"" + ":")
-				s.DiskUsage.Encode(e)
-			}
-		}
-		{
-			if s.Collaborators.Set {
-				e.Comma()
-			}
-			if s.Collaborators.Set {
-				e.RawStr("\"collaborators\"" + ":")
-				s.Collaborators.Encode(e)
-			}
-		}
-	}
-	for k, elem := range s.AdditionalProps {
 		if !first {
 			e.Comma()
 		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
+		first = false
 
-		e.Str(elem)
+		e.RawStr("\"login\"" + ":")
+		e.Str(s.Login)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"id\"" + ":")
+		e.Int(s.ID)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"node_id\"" + ":")
+		e.Str(s.NodeID)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"avatar_url\"" + ":")
+		json.EncodeURI(e, s.AvatarURL)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"gravatar_id\"" + ":")
+		s.GravatarID.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"url\"" + ":")
+		json.EncodeURI(e, s.URL)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"html_url\"" + ":")
+		json.EncodeURI(e, s.HTMLURL)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"followers_url\"" + ":")
+		json.EncodeURI(e, s.FollowersURL)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"following_url\"" + ":")
+		e.Str(s.FollowingURL)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"gists_url\"" + ":")
+		e.Str(s.GistsURL)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"starred_url\"" + ":")
+		e.Str(s.StarredURL)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"subscriptions_url\"" + ":")
+		json.EncodeURI(e, s.SubscriptionsURL)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"organizations_url\"" + ":")
+		json.EncodeURI(e, s.OrganizationsURL)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"repos_url\"" + ":")
+		json.EncodeURI(e, s.ReposURL)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"events_url\"" + ":")
+		e.Str(s.EventsURL)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"received_events_url\"" + ":")
+		json.EncodeURI(e, s.ReceivedEventsURL)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"site_admin\"" + ":")
+		e.Bool(s.SiteAdmin)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"name\"" + ":")
+		s.Name.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"company\"" + ":")
+		s.Company.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"blog\"" + ":")
+		s.Blog.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"location\"" + ":")
+		s.Location.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"email\"" + ":")
+		s.Email.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"hireable\"" + ":")
+		s.Hireable.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"bio\"" + ":")
+		s.Bio.Encode(e)
+	}
+	{
+		if s.TwitterUsername.Set {
+			e.Comma()
+		}
+		if s.TwitterUsername.Set {
+			e.RawStr("\"twitter_username\"" + ":")
+			s.TwitterUsername.Encode(e)
+		}
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"public_repos\"" + ":")
+		e.Int(s.PublicRepos)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"public_gists\"" + ":")
+		e.Int(s.PublicGists)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"followers\"" + ":")
+		e.Int(s.Followers)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"following\"" + ":")
+		e.Int(s.Following)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"created_at\"" + ":")
+		json.EncodeDateTime(e, s.CreatedAt)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"updated_at\"" + ":")
+		json.EncodeDateTime(e, s.UpdatedAt)
+	}
+	{
+		if s.Plan.Set {
+			e.Comma()
+		}
+		if s.Plan.Set {
+			e.RawStr("\"plan\"" + ":")
+			s.Plan.Encode(e)
+		}
+	}
+	{
+		if s.SuspendedAt.Set {
+			e.Comma()
+		}
+		if s.SuspendedAt.Set {
+			e.RawStr("\"suspended_at\"" + ":")
+			s.SuspendedAt.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.PrivateGists.Set {
+			e.Comma()
+		}
+		if s.PrivateGists.Set {
+			e.RawStr("\"private_gists\"" + ":")
+			s.PrivateGists.Encode(e)
+		}
+	}
+	{
+		if s.TotalPrivateRepos.Set {
+			e.Comma()
+		}
+		if s.TotalPrivateRepos.Set {
+			e.RawStr("\"total_private_repos\"" + ":")
+			s.TotalPrivateRepos.Encode(e)
+		}
+	}
+	{
+		if s.OwnedPrivateRepos.Set {
+			e.Comma()
+		}
+		if s.OwnedPrivateRepos.Set {
+			e.RawStr("\"owned_private_repos\"" + ":")
+			s.OwnedPrivateRepos.Encode(e)
+		}
+	}
+	{
+		if s.DiskUsage.Set {
+			e.Comma()
+		}
+		if s.DiskUsage.Set {
+			e.RawStr("\"disk_usage\"" + ":")
+			s.DiskUsage.Encode(e)
+		}
+	}
+	{
+		if s.Collaborators.Set {
+			e.Comma()
+		}
+		if s.Collaborators.Set {
+			e.RawStr("\"collaborators\"" + ":")
+			s.Collaborators.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -96249,11 +88089,6 @@ func (s *PublicUser) Decode(d *jx.Decoder) error {
 	}
 	var requiredBitSet [5]uint8
 
-	m := s.AdditionalProps
-	if m == nil {
-		m = map[string]string{}
-		s.AdditionalProps = m
-	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "login":
@@ -96498,13 +88333,7 @@ func (s *PublicUser) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -114191,7 +106020,6 @@ func (s *ReposCreateDeploymentReqPayload) Decode(d *jx.Decoder) error {
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
 	case jx.Object:
-		s.ReposCreateDeploymentReqPayload0 = make(ReposCreateDeploymentReqPayload0)
 		if err := s.ReposCreateDeploymentReqPayload0.Decode(d); err != nil {
 			return err
 		}
@@ -114216,38 +106044,21 @@ func (s ReposCreateDeploymentReqPayload0) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
-	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfReposCreateDeploymentReqPayload0 = [0]string{}
 
 // Decode decodes ReposCreateDeploymentReqPayload0 from json.
-func (s ReposCreateDeploymentReqPayload0) Decode(d *jx.Decoder) error {
+func (s *ReposCreateDeploymentReqPayload0) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposCreateDeploymentReqPayload0 to nil`)
 	}
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -114509,10 +106320,10 @@ func (s ReposCreateDispatchEventReq) Encode(e *jx.Writer) {
 		e.Str(s.EventType)
 	}
 	{
-		if s.ClientPayload.Set {
+		if s.ClientPayload != nil {
 			e.Comma()
 		}
-		if s.ClientPayload.Set {
+		if s.ClientPayload != nil {
 			e.RawStr("\"client_payload\"" + ":")
 			s.ClientPayload.Encode(e)
 		}
@@ -114542,10 +106353,12 @@ func (s *ReposCreateDispatchEventReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "client_payload":
-			s.ClientPayload.Reset()
-			if err := s.ClientPayload.Decode(d); err != nil {
+			s.ClientPayload = nil
+			var elem ReposCreateDispatchEventReqClientPayload
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
+			s.ClientPayload = &elem
 		default:
 			return d.Skip()
 		}
@@ -114595,38 +106408,21 @@ func (s ReposCreateDispatchEventReqClientPayload) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
-	}
 	e.ObjEnd()
 }
 
 var jsonFieldsNameOfReposCreateDispatchEventReqClientPayload = [0]string{}
 
 // Decode decodes ReposCreateDispatchEventReqClientPayload from json.
-func (s ReposCreateDispatchEventReqClientPayload) Decode(d *jx.Decoder) error {
+func (s *ReposCreateDispatchEventReqClientPayload) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposCreateDispatchEventReqClientPayload to nil`)
 	}
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -115569,52 +107365,40 @@ func (s ReposCreateOrUpdateEnvironmentReq) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		{
-			if s.WaitTimer.Set {
-				if !first {
-					e.Comma()
-				}
-				first = false
+		if s.WaitTimer.Set {
+			if !first {
+				e.Comma()
 			}
-			if s.WaitTimer.Set {
-				e.RawStr("\"wait_timer\"" + ":")
-				s.WaitTimer.Encode(e)
-			}
+			first = false
 		}
-		{
-			if s.Reviewers.Set {
-				if !first {
-					e.Comma()
-				}
-				first = false
-			}
-			if s.Reviewers.Set {
-				e.RawStr("\"reviewers\"" + ":")
-				s.Reviewers.Encode(e)
-			}
-		}
-		{
-			if s.DeploymentBranchPolicy.Set {
-				if !first {
-					e.Comma()
-				}
-				first = false
-			}
-			if s.DeploymentBranchPolicy.Set {
-				e.RawStr("\"deployment_branch_policy\"" + ":")
-				s.DeploymentBranchPolicy.Encode(e)
-			}
+		if s.WaitTimer.Set {
+			e.RawStr("\"wait_timer\"" + ":")
+			s.WaitTimer.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		if !first {
-			e.Comma()
+	{
+		if s.Reviewers.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
+		if s.Reviewers.Set {
+			e.RawStr("\"reviewers\"" + ":")
+			s.Reviewers.Encode(e)
+		}
+	}
+	{
+		if s.DeploymentBranchPolicy.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.DeploymentBranchPolicy.Set {
+			e.RawStr("\"deployment_branch_policy\"" + ":")
+			s.DeploymentBranchPolicy.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -115631,11 +107415,6 @@ func (s *ReposCreateOrUpdateEnvironmentReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ReposCreateOrUpdateEnvironmentReq to nil`)
 	}
 
-	m := s.AdditionalProps
-	if m == nil {
-		m = map[string]string{}
-		s.AdditionalProps = m
-	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "wait_timer":
@@ -115654,13 +107433,7 @@ func (s *ReposCreateOrUpdateEnvironmentReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -116782,76 +108555,64 @@ func (s ReposCreateWebhookReq) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		{
-			if s.Name.Set {
-				if !first {
-					e.Comma()
-				}
-				first = false
+		if s.Name.Set {
+			if !first {
+				e.Comma()
 			}
-			if s.Name.Set {
-				e.RawStr("\"name\"" + ":")
-				s.Name.Encode(e)
-			}
+			first = false
 		}
-		{
-			if s.Config.Set {
-				if !first {
-					e.Comma()
-				}
-				first = false
-			}
-			if s.Config.Set {
-				e.RawStr("\"config\"" + ":")
-				s.Config.Encode(e)
-			}
-		}
-		{
-			if s.Events != nil {
-				if !first {
-					e.Comma()
-				}
-				first = false
-			}
-			if s.Events != nil {
-				e.RawStr("\"events\"" + ":")
-				e.ArrStart()
-				if len(s.Events) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := s.Events[0]
-						e.Str(elem)
-					}
-					for _, elem := range s.Events[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
-			}
-		}
-		{
-			if s.Active.Set {
-				if !first {
-					e.Comma()
-				}
-				first = false
-			}
-			if s.Active.Set {
-				e.RawStr("\"active\"" + ":")
-				s.Active.Encode(e)
-			}
+		if s.Name.Set {
+			e.RawStr("\"name\"" + ":")
+			s.Name.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		if !first {
-			e.Comma()
+	{
+		if s.Config.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
+		if s.Config.Set {
+			e.RawStr("\"config\"" + ":")
+			s.Config.Encode(e)
+		}
+	}
+	{
+		if s.Events != nil {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Events != nil {
+			e.RawStr("\"events\"" + ":")
+			e.ArrStart()
+			if len(s.Events) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Events[0]
+					e.Str(elem)
+				}
+				for _, elem := range s.Events[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.Active.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Active.Set {
+			e.RawStr("\"active\"" + ":")
+			s.Active.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -116869,11 +108630,6 @@ func (s *ReposCreateWebhookReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ReposCreateWebhookReq to nil`)
 	}
 
-	m := s.AdditionalProps
-	if m == nil {
-		m = map[string]string{}
-		s.AdditionalProps = m
-	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "name":
@@ -116906,13 +108662,7 @@ func (s *ReposCreateWebhookReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -123303,64 +115053,52 @@ func (s ReposUpdateWebhookConfigForRepoReq) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		{
-			if s.URL.Set {
-				if !first {
-					e.Comma()
-				}
-				first = false
+		if s.URL.Set {
+			if !first {
+				e.Comma()
 			}
-			if s.URL.Set {
-				e.RawStr("\"url\"" + ":")
-				s.URL.Encode(e)
-			}
+			first = false
 		}
-		{
-			if s.ContentType.Set {
-				if !first {
-					e.Comma()
-				}
-				first = false
-			}
-			if s.ContentType.Set {
-				e.RawStr("\"content_type\"" + ":")
-				s.ContentType.Encode(e)
-			}
-		}
-		{
-			if s.Secret.Set {
-				if !first {
-					e.Comma()
-				}
-				first = false
-			}
-			if s.Secret.Set {
-				e.RawStr("\"secret\"" + ":")
-				s.Secret.Encode(e)
-			}
-		}
-		{
-			if s.InsecureSsl.Set {
-				if !first {
-					e.Comma()
-				}
-				first = false
-			}
-			if s.InsecureSsl.Set {
-				e.RawStr("\"insecure_ssl\"" + ":")
-				s.InsecureSsl.Encode(e)
-			}
+		if s.URL.Set {
+			e.RawStr("\"url\"" + ":")
+			s.URL.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		if !first {
-			e.Comma()
+	{
+		if s.ContentType.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
+		if s.ContentType.Set {
+			e.RawStr("\"content_type\"" + ":")
+			s.ContentType.Encode(e)
+		}
+	}
+	{
+		if s.Secret.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Secret.Set {
+			e.RawStr("\"secret\"" + ":")
+			s.Secret.Encode(e)
+		}
+	}
+	{
+		if s.InsecureSsl.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.InsecureSsl.Set {
+			e.RawStr("\"insecure_ssl\"" + ":")
+			s.InsecureSsl.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -123378,11 +115116,6 @@ func (s *ReposUpdateWebhookConfigForRepoReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ReposUpdateWebhookConfigForRepoReq to nil`)
 	}
 
-	m := s.AdditionalProps
-	if m == nil {
-		m = map[string]string{}
-		s.AdditionalProps = m
-	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "url":
@@ -123406,13 +115139,7 @@ func (s *ReposUpdateWebhookConfigForRepoReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -141377,40 +133104,28 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Encode(e *jx.Writer) {
 		_     = first
 	)
 	{
-		{
-			if s.Groups != nil {
-				if !first {
+		if s.Groups != nil {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Groups != nil {
+			e.RawStr("\"groups\"" + ":")
+			e.ArrStart()
+			if len(s.Groups) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Groups[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Groups[1:] {
 					e.Comma()
+					elem.Encode(e)
 				}
-				first = false
 			}
-			if s.Groups != nil {
-				e.RawStr("\"groups\"" + ":")
-				e.ArrStart()
-				if len(s.Groups) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := s.Groups[0]
-						elem.Encode(e)
-					}
-					for _, elem := range s.Groups[1:] {
-						e.Comma()
-						elem.Encode(e)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
-	}
-	for k, elem := range s.AdditionalProps {
-		if !first {
-			e.Comma()
-		}
-		first = true
-		e.Str(k)
-		e.RawStr(`:`)
-
-		e.Str(elem)
 	}
 	e.ObjEnd()
 }
@@ -141425,11 +133140,6 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Decode(d *jx.Decoder) e
 		return errors.New(`invalid: unable to decode TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq to nil`)
 	}
 
-	m := s.AdditionalProps
-	if m == nil {
-		m = map[string]string{}
-		s.AdditionalProps = m
-	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "groups":
@@ -141445,13 +133155,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Decode(d *jx.Decoder) e
 				return err
 			}
 		default:
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			m[string(k)] = elem
+			return d.Skip()
 		}
 		return nil
 	}); err != nil {
@@ -145815,78 +137519,6 @@ func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) D
 	return nil
 }
 
-// Encode encodes UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden as json.
-func (s UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden from json.
-func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
-	return nil
-}
-
-// Encode encodes UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound as json.
-func (s UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound from json.
-func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
-	return nil
-}
-
-// Encode encodes UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized from json.
-func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
-	return nil
-}
-
 // Encode implements json.Marshaler.
 func (s UsersCreateGpgKeyForAuthenticatedReq) Encode(e *jx.Writer) {
 	e.ObjStart()
@@ -146760,78 +138392,6 @@ func (s *UsersGetByUsernameOK) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-// Encode encodes UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden as json.
-func (s UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden from json.
-func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
-	return nil
-}
-
-// Encode encodes UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound as json.
-func (s UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound from json.
-func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
-	return nil
-}
-
-// Encode encodes UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized from json.
-func (s *UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
-	return nil
-}
-
 // Encode encodes UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden as json.
 func (s UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Writer) {
 	unwrapped := BasicError(s)
@@ -147317,122 +138877,6 @@ func (s *UsersListFollowersForAuthenticatedUserOKApplicationJSON) Decode(d *jx.D
 		return errors.Wrap(err, "alias")
 	}
 	*s = UsersListFollowersForAuthenticatedUserOKApplicationJSON(unwrapped)
-	return nil
-}
-
-// Encode encodes UsersListGpgKeysForAuthenticatedApplicationJSONForbidden as json.
-func (s UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListGpgKeysForAuthenticatedApplicationJSONForbidden from json.
-func (s *UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode UsersListGpgKeysForAuthenticatedApplicationJSONForbidden to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListGpgKeysForAuthenticatedApplicationJSONForbidden(unwrapped)
-	return nil
-}
-
-// Encode encodes UsersListGpgKeysForAuthenticatedApplicationJSONNotFound as json.
-func (s UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListGpgKeysForAuthenticatedApplicationJSONNotFound from json.
-func (s *UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode UsersListGpgKeysForAuthenticatedApplicationJSONNotFound to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListGpgKeysForAuthenticatedApplicationJSONNotFound(unwrapped)
-	return nil
-}
-
-// Encode encodes UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized as json.
-func (s UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Writer) {
-	unwrapped := BasicError(s)
-	unwrapped.Encode(e)
-}
-
-// Decode decodes UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized from json.
-func (s *UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized to nil`)
-	}
-	var unwrapped BasicError
-	if err := func() error {
-		if err := unwrapped.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized(unwrapped)
-	return nil
-}
-
-// Encode encodes UsersListGpgKeysForAuthenticatedOKApplicationJSON as json.
-func (s UsersListGpgKeysForAuthenticatedOKApplicationJSON) Encode(e *jx.Writer) {
-	unwrapped := []GpgKey(s)
-	e.ArrStart()
-	if len(unwrapped) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := unwrapped[0]
-			elem.Encode(e)
-		}
-		for _, elem := range unwrapped[1:] {
-			e.Comma()
-			elem.Encode(e)
-		}
-	}
-	e.ArrEnd()
-}
-
-// Decode decodes UsersListGpgKeysForAuthenticatedOKApplicationJSON from json.
-func (s *UsersListGpgKeysForAuthenticatedOKApplicationJSON) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode UsersListGpgKeysForAuthenticatedOKApplicationJSON to nil`)
-	}
-	var unwrapped []GpgKey
-	if err := func() error {
-		unwrapped = nil
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem GpgKey
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			unwrapped = append(unwrapped, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = UsersListGpgKeysForAuthenticatedOKApplicationJSON(unwrapped)
 	return nil
 }
 

@@ -69,31 +69,6 @@ type GetBookParams struct {
 	BookID int
 }
 
-type GetPageCoverImageParams struct {
-	// ID of book.
-	MediaID int
-	// Image format.
-	Format string
-}
-
-type GetPageImageParams struct {
-	// ID of book.
-	MediaID int
-	// Number of page.
-	Page int
-	// Image format.
-	Format string
-}
-
-type GetPageThumbnailImageParams struct {
-	// ID of book.
-	MediaID int
-	// Number of page.
-	Page int
-	// Image format.
-	Format string
-}
-
 type SearchParams struct {
 	// Search query.
 	// * You can search for multiple terms at the same time, and this will return only galleries that

@@ -865,33 +865,6 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 	}
 }
 
-// Encode encodes string as json.
-func (o OptString) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	e.Str(string(o.Value))
-}
-
-// Decode decodes string from json.
-func (o *OptString) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptString to nil`)
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := d.Str()
-		if err != nil {
-			return err
-		}
-		o.Value = string(v)
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptString`, d.Next())
-	}
-}
-
 // Encode encodes time.Time as json.
 func (o OptTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
 	if !o.Set {
@@ -2349,22 +2322,12 @@ func (s R400) Encode(e *jx.Writer) {
 		e.RawStr("\"status\"" + ":")
 		e.Str(s.Status)
 	}
-	{
-		if s.Errors.Set {
-			e.Comma()
-		}
-		if s.Errors.Set {
-			e.RawStr("\"errors\"" + ":")
-			s.Errors.Encode(e)
-		}
-	}
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfR400 = [3]string{
+var jsonFieldsNameOfR400 = [2]string{
 	0: "code",
 	1: "status",
-	2: "errors",
 }
 
 // Decode decodes R400 from json.
@@ -2388,11 +2351,6 @@ func (s *R400) Decode(d *jx.Decoder) error {
 			v, err := d.Str()
 			s.Status = string(v)
 			if err != nil {
-				return err
-			}
-		case "errors":
-			s.Errors.Reset()
-			if err := s.Errors.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -2459,22 +2417,12 @@ func (s R404) Encode(e *jx.Writer) {
 		e.RawStr("\"status\"" + ":")
 		e.Str(s.Status)
 	}
-	{
-		if s.Errors.Set {
-			e.Comma()
-		}
-		if s.Errors.Set {
-			e.RawStr("\"errors\"" + ":")
-			s.Errors.Encode(e)
-		}
-	}
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfR404 = [3]string{
+var jsonFieldsNameOfR404 = [2]string{
 	0: "code",
 	1: "status",
-	2: "errors",
 }
 
 // Decode decodes R404 from json.
@@ -2498,11 +2446,6 @@ func (s *R404) Decode(d *jx.Decoder) error {
 			v, err := d.Str()
 			s.Status = string(v)
 			if err != nil {
-				return err
-			}
-		case "errors":
-			s.Errors.Reset()
-			if err := s.Errors.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -2569,22 +2512,12 @@ func (s R409) Encode(e *jx.Writer) {
 		e.RawStr("\"status\"" + ":")
 		e.Str(s.Status)
 	}
-	{
-		if s.Errors.Set {
-			e.Comma()
-		}
-		if s.Errors.Set {
-			e.RawStr("\"errors\"" + ":")
-			s.Errors.Encode(e)
-		}
-	}
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfR409 = [3]string{
+var jsonFieldsNameOfR409 = [2]string{
 	0: "code",
 	1: "status",
-	2: "errors",
 }
 
 // Decode decodes R409 from json.
@@ -2608,11 +2541,6 @@ func (s *R409) Decode(d *jx.Decoder) error {
 			v, err := d.Str()
 			s.Status = string(v)
 			if err != nil {
-				return err
-			}
-		case "errors":
-			s.Errors.Reset()
-			if err := s.Errors.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -2679,22 +2607,12 @@ func (s R500) Encode(e *jx.Writer) {
 		e.RawStr("\"status\"" + ":")
 		e.Str(s.Status)
 	}
-	{
-		if s.Errors.Set {
-			e.Comma()
-		}
-		if s.Errors.Set {
-			e.RawStr("\"errors\"" + ":")
-			s.Errors.Encode(e)
-		}
-	}
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfR500 = [3]string{
+var jsonFieldsNameOfR500 = [2]string{
 	0: "code",
 	1: "status",
-	2: "errors",
 }
 
 // Decode decodes R500 from json.
@@ -2718,11 +2636,6 @@ func (s *R500) Decode(d *jx.Decoder) error {
 			v, err := d.Str()
 			s.Status = string(v)
 			if err != nil {
-				return err
-			}
-		case "errors":
-			s.Errors.Reset()
-			if err := s.Errors.Decode(d); err != nil {
 				return err
 			}
 		default:
