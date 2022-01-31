@@ -90826,6 +90826,7 @@ func (s *ProjectsCreateCardReq) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -146442,6 +146443,174 @@ func (s *UsersFollowApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
 		return errors.Wrap(err, "alias")
 	}
 	*s = UsersFollowApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
+
+// Encode encodes UsersGetAuthenticatedApplicationJSONForbidden as json.
+func (s UsersGetAuthenticatedApplicationJSONForbidden) Encode(e *jx.Writer) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersGetAuthenticatedApplicationJSONForbidden from json.
+func (s *UsersGetAuthenticatedApplicationJSONForbidden) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersGetAuthenticatedApplicationJSONForbidden to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersGetAuthenticatedApplicationJSONForbidden(unwrapped)
+	return nil
+}
+
+// Encode encodes UsersGetAuthenticatedApplicationJSONUnauthorized as json.
+func (s UsersGetAuthenticatedApplicationJSONUnauthorized) Encode(e *jx.Writer) {
+	unwrapped := BasicError(s)
+	unwrapped.Encode(e)
+}
+
+// Decode decodes UsersGetAuthenticatedApplicationJSONUnauthorized from json.
+func (s *UsersGetAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersGetAuthenticatedApplicationJSONUnauthorized to nil`)
+	}
+	var unwrapped BasicError
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UsersGetAuthenticatedApplicationJSONUnauthorized(unwrapped)
+	return nil
+}
+
+// Encode encodes UsersGetAuthenticatedOK as json.
+func (s UsersGetAuthenticatedOK) Encode(e *jx.Writer) {
+	switch s.Type {
+	case PrivateUserUsersGetAuthenticatedOK:
+		s.PrivateUser.Encode(e)
+	case PublicUserUsersGetAuthenticatedOK:
+		s.PublicUser.Encode(e)
+	}
+}
+
+// Decode decodes UsersGetAuthenticatedOK from json.
+func (s *UsersGetAuthenticatedOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersGetAuthenticatedOK to nil`)
+	}
+	// Sum type fields.
+	if d.Next() != jx.Object {
+		return errors.Errorf("unexpected json type %q", d.Next())
+	}
+
+	var found bool
+	if err := d.Capture(func(d *jx.Decoder) error {
+		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
+			if found {
+				return d.Skip()
+			}
+			switch string(key) {
+			case "two_factor_authentication":
+				found = true
+				s.Type = PrivateUserUsersGetAuthenticatedOK
+			case "business_plus":
+				found = true
+				s.Type = PrivateUserUsersGetAuthenticatedOK
+			case "ldap_dn":
+				found = true
+				s.Type = PrivateUserUsersGetAuthenticatedOK
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return errors.Wrap(err, "capture")
+	}
+	if !found {
+		s.Type = PublicUserUsersGetAuthenticatedOK
+	}
+	switch s.Type {
+	case PrivateUserUsersGetAuthenticatedOK:
+		if err := s.PrivateUser.Decode(d); err != nil {
+			return err
+		}
+	case PublicUserUsersGetAuthenticatedOK:
+		if err := s.PublicUser.Decode(d); err != nil {
+			return err
+		}
+	default:
+		return errors.Errorf("inferred invalid type: %s", s.Type)
+	}
+	return nil
+}
+
+// Encode encodes UsersGetByUsernameOK as json.
+func (s UsersGetByUsernameOK) Encode(e *jx.Writer) {
+	switch s.Type {
+	case PrivateUserUsersGetByUsernameOK:
+		s.PrivateUser.Encode(e)
+	case PublicUserUsersGetByUsernameOK:
+		s.PublicUser.Encode(e)
+	}
+}
+
+// Decode decodes UsersGetByUsernameOK from json.
+func (s *UsersGetByUsernameOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode UsersGetByUsernameOK to nil`)
+	}
+	// Sum type fields.
+	if d.Next() != jx.Object {
+		return errors.Errorf("unexpected json type %q", d.Next())
+	}
+
+	var found bool
+	if err := d.Capture(func(d *jx.Decoder) error {
+		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
+			if found {
+				return d.Skip()
+			}
+			switch string(key) {
+			case "two_factor_authentication":
+				found = true
+				s.Type = PrivateUserUsersGetByUsernameOK
+			case "business_plus":
+				found = true
+				s.Type = PrivateUserUsersGetByUsernameOK
+			case "ldap_dn":
+				found = true
+				s.Type = PrivateUserUsersGetByUsernameOK
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return errors.Wrap(err, "capture")
+	}
+	if !found {
+		s.Type = PublicUserUsersGetByUsernameOK
+	}
+	switch s.Type {
+	case PrivateUserUsersGetByUsernameOK:
+		if err := s.PrivateUser.Decode(d); err != nil {
+			return err
+		}
+	case PublicUserUsersGetByUsernameOK:
+		if err := s.PublicUser.Decode(d); err != nil {
+			return err
+		}
+	default:
+		return errors.Errorf("inferred invalid type: %s", s.Type)
+	}
 	return nil
 }
 

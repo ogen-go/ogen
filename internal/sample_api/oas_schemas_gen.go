@@ -259,6 +259,147 @@ func NewIntID(v int) ID {
 	return s
 }
 
+// Ref: #/components/schemas/Issue143
+// Issue143 represents sum type.
+type Issue143 struct {
+	Type      Issue143Type // switch on this field
+	Issue1430 Issue1430
+	Issue1431 Issue1431
+	Issue1432 Issue1432
+	Issue1433 Issue1433
+}
+
+// Issue143Type is oneOf type of Issue143.
+type Issue143Type string
+
+// Possible values for Issue143Type.
+const (
+	Issue1430Issue143 Issue143Type = "Issue1430"
+	Issue1431Issue143 Issue143Type = "Issue1431"
+	Issue1432Issue143 Issue143Type = "Issue1432"
+	Issue1433Issue143 Issue143Type = "Issue1433"
+)
+
+// IsIssue1430 reports whether Issue143 is Issue1430.
+func (s Issue143) IsIssue1430() bool { return s.Type == Issue1430Issue143 }
+
+// IsIssue1431 reports whether Issue143 is Issue1431.
+func (s Issue143) IsIssue1431() bool { return s.Type == Issue1431Issue143 }
+
+// IsIssue1432 reports whether Issue143 is Issue1432.
+func (s Issue143) IsIssue1432() bool { return s.Type == Issue1432Issue143 }
+
+// IsIssue1433 reports whether Issue143 is Issue1433.
+func (s Issue143) IsIssue1433() bool { return s.Type == Issue1433Issue143 }
+
+// SetIssue1430 sets Issue143 to Issue1430.
+func (s *Issue143) SetIssue1430(v Issue1430) {
+	s.Type = Issue1430Issue143
+	s.Issue1430 = v
+}
+
+// GetIssue1430 returns Issue1430 and true boolean if Issue143 is Issue1430.
+func (s Issue143) GetIssue1430() (v Issue1430, ok bool) {
+	if !s.IsIssue1430() {
+		return v, false
+	}
+	return s.Issue1430, true
+}
+
+// NewIssue1430Issue143 returns new Issue143 from Issue1430.
+func NewIssue1430Issue143(v Issue1430) Issue143 {
+	var s Issue143
+	s.SetIssue1430(v)
+	return s
+}
+
+// SetIssue1431 sets Issue143 to Issue1431.
+func (s *Issue143) SetIssue1431(v Issue1431) {
+	s.Type = Issue1431Issue143
+	s.Issue1431 = v
+}
+
+// GetIssue1431 returns Issue1431 and true boolean if Issue143 is Issue1431.
+func (s Issue143) GetIssue1431() (v Issue1431, ok bool) {
+	if !s.IsIssue1431() {
+		return v, false
+	}
+	return s.Issue1431, true
+}
+
+// NewIssue1431Issue143 returns new Issue143 from Issue1431.
+func NewIssue1431Issue143(v Issue1431) Issue143 {
+	var s Issue143
+	s.SetIssue1431(v)
+	return s
+}
+
+// SetIssue1432 sets Issue143 to Issue1432.
+func (s *Issue143) SetIssue1432(v Issue1432) {
+	s.Type = Issue1432Issue143
+	s.Issue1432 = v
+}
+
+// GetIssue1432 returns Issue1432 and true boolean if Issue143 is Issue1432.
+func (s Issue143) GetIssue1432() (v Issue1432, ok bool) {
+	if !s.IsIssue1432() {
+		return v, false
+	}
+	return s.Issue1432, true
+}
+
+// NewIssue1432Issue143 returns new Issue143 from Issue1432.
+func NewIssue1432Issue143(v Issue1432) Issue143 {
+	var s Issue143
+	s.SetIssue1432(v)
+	return s
+}
+
+// SetIssue1433 sets Issue143 to Issue1433.
+func (s *Issue143) SetIssue1433(v Issue1433) {
+	s.Type = Issue1433Issue143
+	s.Issue1433 = v
+}
+
+// GetIssue1433 returns Issue1433 and true boolean if Issue143 is Issue1433.
+func (s Issue143) GetIssue1433() (v Issue1433, ok bool) {
+	if !s.IsIssue1433() {
+		return v, false
+	}
+	return s.Issue1433, true
+}
+
+// NewIssue1433Issue143 returns new Issue143 from Issue1433.
+func NewIssue1433Issue143(v Issue1433) Issue143 {
+	var s Issue143
+	s.SetIssue1433(v)
+	return s
+}
+
+type Issue1430 struct {
+	CommonMinus1 string `json:"common-1"`
+	CommonMinus2 int    `json:"common-2"`
+	UniqueMinus1 string `json:"unique-1"`
+}
+
+type Issue1431 struct {
+	CommonMinus1 string `json:"common-1"`
+	CommonMinus2 int    `json:"common-2"`
+	UniqueMinus2 string `json:"unique-2"`
+}
+
+type Issue1432 struct {
+	CommonMinus1 string `json:"common-1"`
+	CommonMinus2 int    `json:"common-2"`
+	CommonMinus3 OptInt `json:"common-3"`
+	UniqueMinus3 string `json:"unique-3"`
+}
+
+type Issue1433 struct {
+	CommonMinus3 OptInt `json:"common-3"`
+	UniqueMinus4 string `json:"unique-4"`
+}
+
 // Ref: #/components/schemas/MapWithProperties
 type MapWithProperties struct {
 	Required        int                               `json:"required"`
@@ -426,148 +567,96 @@ const (
 	NullableEnumsOnlyNullableDesc NullableEnumsOnlyNullable = "desc"
 )
 
-// OneofBugOK is response for OneofBug operation.
-type OneofBugOK struct{}
-
-// OneofBugReq represents sum type.
-type OneofBugReq struct {
-	Type         OneofBugReqType // switch on this field
-	OneofBugReq0 OneofBugReq0
-	OneofBugReq1 OneofBugReq1
-	OneofBugReq2 OneofBugReq2
-	OneofBugReq3 OneofBugReq3
+// Ref: #/components/schemas/OneOfBugs
+type OneOfBugs struct {
+	Issue143              Issue143                    `json:"issue143"`
+	AdditionalMinusFields OneVariantHasNoUniqueFields `json:"additional-fields"`
 }
 
-// OneofBugReqType is oneOf type of OneofBugReq.
-type OneofBugReqType string
+// Ref: #/components/schemas/OneVariantHasNoUniqueFields
+// OneVariantHasNoUniqueFields represents sum type.
+type OneVariantHasNoUniqueFields struct {
+	Type                         OneVariantHasNoUniqueFieldsType // switch on this field
+	OneVariantHasNoUniqueFields0 OneVariantHasNoUniqueFields0
+	OneVariantHasNoUniqueFields1 OneVariantHasNoUniqueFields1
+}
 
-// Possible values for OneofBugReqType.
+// OneVariantHasNoUniqueFieldsType is oneOf type of OneVariantHasNoUniqueFields.
+type OneVariantHasNoUniqueFieldsType string
+
+// Possible values for OneVariantHasNoUniqueFieldsType.
 const (
-	OneofBugReq0OneofBugReq OneofBugReqType = "OneofBugReq0"
-	OneofBugReq1OneofBugReq OneofBugReqType = "OneofBugReq1"
-	OneofBugReq2OneofBugReq OneofBugReqType = "OneofBugReq2"
-	OneofBugReq3OneofBugReq OneofBugReqType = "OneofBugReq3"
+	OneVariantHasNoUniqueFields0OneVariantHasNoUniqueFields OneVariantHasNoUniqueFieldsType = "OneVariantHasNoUniqueFields0"
+	OneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields OneVariantHasNoUniqueFieldsType = "OneVariantHasNoUniqueFields1"
 )
 
-// IsOneofBugReq0 reports whether OneofBugReq is OneofBugReq0.
-func (s OneofBugReq) IsOneofBugReq0() bool { return s.Type == OneofBugReq0OneofBugReq }
-
-// IsOneofBugReq1 reports whether OneofBugReq is OneofBugReq1.
-func (s OneofBugReq) IsOneofBugReq1() bool { return s.Type == OneofBugReq1OneofBugReq }
-
-// IsOneofBugReq2 reports whether OneofBugReq is OneofBugReq2.
-func (s OneofBugReq) IsOneofBugReq2() bool { return s.Type == OneofBugReq2OneofBugReq }
-
-// IsOneofBugReq3 reports whether OneofBugReq is OneofBugReq3.
-func (s OneofBugReq) IsOneofBugReq3() bool { return s.Type == OneofBugReq3OneofBugReq }
-
-// SetOneofBugReq0 sets OneofBugReq to OneofBugReq0.
-func (s *OneofBugReq) SetOneofBugReq0(v OneofBugReq0) {
-	s.Type = OneofBugReq0OneofBugReq
-	s.OneofBugReq0 = v
+// IsOneVariantHasNoUniqueFields0 reports whether OneVariantHasNoUniqueFields is OneVariantHasNoUniqueFields0.
+func (s OneVariantHasNoUniqueFields) IsOneVariantHasNoUniqueFields0() bool {
+	return s.Type == OneVariantHasNoUniqueFields0OneVariantHasNoUniqueFields
 }
 
-// GetOneofBugReq0 returns OneofBugReq0 and true boolean if OneofBugReq is OneofBugReq0.
-func (s OneofBugReq) GetOneofBugReq0() (v OneofBugReq0, ok bool) {
-	if !s.IsOneofBugReq0() {
+// IsOneVariantHasNoUniqueFields1 reports whether OneVariantHasNoUniqueFields is OneVariantHasNoUniqueFields1.
+func (s OneVariantHasNoUniqueFields) IsOneVariantHasNoUniqueFields1() bool {
+	return s.Type == OneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields
+}
+
+// SetOneVariantHasNoUniqueFields0 sets OneVariantHasNoUniqueFields to OneVariantHasNoUniqueFields0.
+func (s *OneVariantHasNoUniqueFields) SetOneVariantHasNoUniqueFields0(v OneVariantHasNoUniqueFields0) {
+	s.Type = OneVariantHasNoUniqueFields0OneVariantHasNoUniqueFields
+	s.OneVariantHasNoUniqueFields0 = v
+}
+
+// GetOneVariantHasNoUniqueFields0 returns OneVariantHasNoUniqueFields0 and true boolean if OneVariantHasNoUniqueFields is OneVariantHasNoUniqueFields0.
+func (s OneVariantHasNoUniqueFields) GetOneVariantHasNoUniqueFields0() (v OneVariantHasNoUniqueFields0, ok bool) {
+	if !s.IsOneVariantHasNoUniqueFields0() {
 		return v, false
 	}
-	return s.OneofBugReq0, true
+	return s.OneVariantHasNoUniqueFields0, true
 }
 
-// NewOneofBugReq0OneofBugReq returns new OneofBugReq from OneofBugReq0.
-func NewOneofBugReq0OneofBugReq(v OneofBugReq0) OneofBugReq {
-	var s OneofBugReq
-	s.SetOneofBugReq0(v)
+// NewOneVariantHasNoUniqueFields0OneVariantHasNoUniqueFields returns new OneVariantHasNoUniqueFields from OneVariantHasNoUniqueFields0.
+func NewOneVariantHasNoUniqueFields0OneVariantHasNoUniqueFields(v OneVariantHasNoUniqueFields0) OneVariantHasNoUniqueFields {
+	var s OneVariantHasNoUniqueFields
+	s.SetOneVariantHasNoUniqueFields0(v)
 	return s
 }
 
-// SetOneofBugReq1 sets OneofBugReq to OneofBugReq1.
-func (s *OneofBugReq) SetOneofBugReq1(v OneofBugReq1) {
-	s.Type = OneofBugReq1OneofBugReq
-	s.OneofBugReq1 = v
+// SetOneVariantHasNoUniqueFields1 sets OneVariantHasNoUniqueFields to OneVariantHasNoUniqueFields1.
+func (s *OneVariantHasNoUniqueFields) SetOneVariantHasNoUniqueFields1(v OneVariantHasNoUniqueFields1) {
+	s.Type = OneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields
+	s.OneVariantHasNoUniqueFields1 = v
 }
 
-// GetOneofBugReq1 returns OneofBugReq1 and true boolean if OneofBugReq is OneofBugReq1.
-func (s OneofBugReq) GetOneofBugReq1() (v OneofBugReq1, ok bool) {
-	if !s.IsOneofBugReq1() {
+// GetOneVariantHasNoUniqueFields1 returns OneVariantHasNoUniqueFields1 and true boolean if OneVariantHasNoUniqueFields is OneVariantHasNoUniqueFields1.
+func (s OneVariantHasNoUniqueFields) GetOneVariantHasNoUniqueFields1() (v OneVariantHasNoUniqueFields1, ok bool) {
+	if !s.IsOneVariantHasNoUniqueFields1() {
 		return v, false
 	}
-	return s.OneofBugReq1, true
+	return s.OneVariantHasNoUniqueFields1, true
 }
 
-// NewOneofBugReq1OneofBugReq returns new OneofBugReq from OneofBugReq1.
-func NewOneofBugReq1OneofBugReq(v OneofBugReq1) OneofBugReq {
-	var s OneofBugReq
-	s.SetOneofBugReq1(v)
+// NewOneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields returns new OneVariantHasNoUniqueFields from OneVariantHasNoUniqueFields1.
+func NewOneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields(v OneVariantHasNoUniqueFields1) OneVariantHasNoUniqueFields {
+	var s OneVariantHasNoUniqueFields
+	s.SetOneVariantHasNoUniqueFields1(v)
 	return s
 }
 
-// SetOneofBugReq2 sets OneofBugReq to OneofBugReq2.
-func (s *OneofBugReq) SetOneofBugReq2(v OneofBugReq2) {
-	s.Type = OneofBugReq2OneofBugReq
-	s.OneofBugReq2 = v
+type OneVariantHasNoUniqueFields0 struct {
+	A string `json:"a"`
+	B OptInt `json:"b"`
+	C string `json:"c"`
 }
 
-// GetOneofBugReq2 returns OneofBugReq2 and true boolean if OneofBugReq is OneofBugReq2.
-func (s OneofBugReq) GetOneofBugReq2() (v OneofBugReq2, ok bool) {
-	if !s.IsOneofBugReq2() {
-		return v, false
-	}
-	return s.OneofBugReq2, true
+type OneVariantHasNoUniqueFields1 struct {
+	A string `json:"a"`
+	B OptInt `json:"b"`
+	C string `json:"c"`
+	D OptInt `json:"d"`
 }
 
-// NewOneofBugReq2OneofBugReq returns new OneofBugReq from OneofBugReq2.
-func NewOneofBugReq2OneofBugReq(v OneofBugReq2) OneofBugReq {
-	var s OneofBugReq
-	s.SetOneofBugReq2(v)
-	return s
-}
-
-// SetOneofBugReq3 sets OneofBugReq to OneofBugReq3.
-func (s *OneofBugReq) SetOneofBugReq3(v OneofBugReq3) {
-	s.Type = OneofBugReq3OneofBugReq
-	s.OneofBugReq3 = v
-}
-
-// GetOneofBugReq3 returns OneofBugReq3 and true boolean if OneofBugReq is OneofBugReq3.
-func (s OneofBugReq) GetOneofBugReq3() (v OneofBugReq3, ok bool) {
-	if !s.IsOneofBugReq3() {
-		return v, false
-	}
-	return s.OneofBugReq3, true
-}
-
-// NewOneofBugReq3OneofBugReq returns new OneofBugReq from OneofBugReq3.
-func NewOneofBugReq3OneofBugReq(v OneofBugReq3) OneofBugReq {
-	var s OneofBugReq
-	s.SetOneofBugReq3(v)
-	return s
-}
-
-type OneofBugReq0 struct {
-	CommonMinus1 string `json:"common-1"`
-	CommonMinus2 int    `json:"common-2"`
-	UniqueMinus1 string `json:"unique-1"`
-}
-
-type OneofBugReq1 struct {
-	CommonMinus1 string `json:"common-1"`
-	CommonMinus2 int    `json:"common-2"`
-	UniqueMinus2 string `json:"unique-2"`
-}
-
-type OneofBugReq2 struct {
-	CommonMinus1 string `json:"common-1"`
-	CommonMinus2 int    `json:"common-2"`
-	CommonMinus3 OptInt `json:"common-3"`
-	UniqueMinus3 string `json:"unique-3"`
-}
-
-type OneofBugReq3 struct {
-	CommonMinus3 OptInt `json:"common-3"`
-	UniqueMinus4 string `json:"unique-4"`
-}
+// OneofBugOK is response for OneofBug operation.
+type OneofBugOK struct{}
 
 // NewOptArrayTest returns new OptArrayTest with value set to v.
 func NewOptArrayTest(v ArrayTest) OptArrayTest {

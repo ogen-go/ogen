@@ -103,7 +103,7 @@ type Handler interface {
 	// OneofBug implements oneofBug operation.
 	//
 	// POST /oneofBug
-	OneofBug(ctx context.Context, req OneofBugReq) (OneofBugOK, error)
+	OneofBug(ctx context.Context, req OneOfBugs) (OneofBugOK, error)
 	// PetCreate implements petCreate operation.
 	//
 	// Creates pet.

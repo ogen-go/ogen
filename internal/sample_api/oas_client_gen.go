@@ -494,7 +494,7 @@ func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Has
 // OneofBug invokes oneofBug operation.
 //
 // POST /oneofBug
-func (c *Client) OneofBug(ctx context.Context, request OneofBugReq) (res OneofBugOK, err error) {
+func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugOK, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, `OneofBug`,
 		trace.WithAttributes(otelogen.OperationID(`oneofBug`)),

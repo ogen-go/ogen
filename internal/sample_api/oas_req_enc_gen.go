@@ -73,7 +73,7 @@ func encodeFoobarPostRequestJSON(req OptPet, span trace.Span) (data *jx.Writer, 
 	return e, nil
 }
 
-func encodeOneofBugRequestJSON(req OneofBugReq, span trace.Span) (data *jx.Writer, err error) {
+func encodeOneofBugRequestJSON(req OneOfBugs, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 
 	req.Encode(e)

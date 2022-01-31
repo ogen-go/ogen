@@ -563,44 +563,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "oneOf": [
-                  {
-                    "type": "object",
-                    "required": ["common-1", "common-2", "unique-1"],
-                    "properties": {
-                      "common-1": {"type": "string"},
-                      "common-2": {"type": "integer"},
-                      "unique-1": {"type": "string"}
-                    }
-                  },
-                  {
-                    "type": "object",
-                    "required": ["common-1", "common-2", "unique-2"],
-                    "properties": {
-                      "common-1": {"type": "string"},
-                      "common-2": {"type": "integer"},
-                      "unique-2": {"type": "string"}
-                    }
-                  },
-                  {
-                    "type": "object",
-                    "required": ["common-1", "common-2", "unique-3"],
-                    "properties": {
-                      "common-1": {"type": "string"},
-                      "common-2": {"type": "integer"},
-                      "common-3": {"type": "integer"},
-                      "unique-3": {"type": "string"}
-                    }
-                  },
-                  {
-                    "type": "object",
-                    "required": ["common-1", "common-2", "unique-4"],
-                    "properties": {
-                      "common-3": {"type": "integer"},
-                      "unique-4": {"type": "string"}
-                    }
-                  }
-                ]
+                "$ref": "#/components/schemas/OneOfBugs"
               }
             }
           }
@@ -972,6 +935,84 @@
             "type": "string",
             "minLength": 64,
             "maxLength": 64
+          }
+        }
+      },
+      "Issue143": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": ["common-1", "common-2", "unique-1"],
+            "properties": {
+              "common-1": {"type": "string"},
+              "common-2": {"type": "integer"},
+              "unique-1": {"type": "string"}
+            }
+          },
+          {
+            "type": "object",
+            "required": ["common-1", "common-2", "unique-2"],
+            "properties": {
+              "common-1": {"type": "string"},
+              "common-2": {"type": "integer"},
+              "unique-2": {"type": "string"}
+            }
+          },
+          {
+            "type": "object",
+            "required": ["common-1", "common-2", "unique-3"],
+            "properties": {
+              "common-1": {"type": "string"},
+              "common-2": {"type": "integer"},
+              "common-3": {"type": "integer"},
+              "unique-3": {"type": "string"}
+            }
+          },
+          {
+            "type": "object",
+            "required": ["common-1", "common-2", "unique-4"],
+            "properties": {
+              "common-3": {"type": "integer"},
+              "unique-4": {"type": "string"}
+            }
+          }
+        ]
+      },
+      "OneVariantHasNoUniqueFields": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": ["a", "c"],
+            "properties": {
+              "a": {"type": "string"},
+              "b": {"type": "integer"},
+              "c": {"type": "string"}
+            }
+          },
+          {
+            "type": "object",
+            "required": ["a", "c"],
+            "properties": {
+              "a": {"type": "string"},
+              "b": {"type": "integer"},
+              "c": {"type": "string"},
+              "d": {"type": "integer"}
+            }
+          }
+        ]
+      },
+      "OneOfBugs" : {
+        "type": "object",
+        "required": [
+          "issue143",
+          "additional-fields"
+        ],
+        "properties": {
+          "issue143":{
+            "$ref": "#/components/schemas/Issue143"
+          },
+          "additional-fields": {
+            "$ref": "#/components/schemas/OneVariantHasNoUniqueFields"
           }
         }
       }

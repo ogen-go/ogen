@@ -1632,6 +1632,7 @@ func (s *BotCommandScope) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -3347,6 +3348,7 @@ func (s *ChatMember) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -5355,6 +5357,7 @@ func (s *CopyMessageReplyMarkup) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -10317,6 +10320,7 @@ func (s *InlineQueryResult) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -15957,6 +15961,7 @@ func (s *InputMedia) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -17073,6 +17078,7 @@ func (s *InputMessageContent) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -22063,6 +22069,7 @@ func (s *PassportElementError) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -27759,6 +27766,7 @@ func (s *SendAnimationReplyMarkup) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -28117,6 +28125,7 @@ func (s *SendAudioReplyMarkup) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -28488,6 +28497,7 @@ func (s *SendContactReplyMarkup) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -28722,6 +28732,7 @@ func (s *SendDiceReplyMarkup) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -29050,6 +29061,7 @@ func (s *SendDocumentReplyMarkup) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -30003,6 +30015,7 @@ func (s *SendLocationReplyMarkup) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -30239,6 +30252,7 @@ func (s *SendMediaGroupMediaItem) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -30541,6 +30555,7 @@ func (s *SendMessageReplyMarkup) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -30839,6 +30854,7 @@ func (s *SendPhotoReplyMarkup) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -31277,6 +31293,7 @@ func (s *SendPollReplyMarkup) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -31510,6 +31527,7 @@ func (s *SendStickerReplyMarkup) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -31846,6 +31864,7 @@ func (s *SendVenueReplyMarkup) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -32418,6 +32437,7 @@ func (s *SendVideoNoteReplyMarkup) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -32498,6 +32518,7 @@ func (s *SendVideoReplyMarkup) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -32811,6 +32832,7 @@ func (s *SendVoiceReplyMarkup) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {

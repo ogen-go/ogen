@@ -441,6 +441,7 @@ func (s *DataDescription) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -899,6 +900,522 @@ func (s *ID) Decode(d *jx.Decoder) error {
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
+	return nil
+}
+
+// Encode encodes Issue143 as json.
+func (s Issue143) Encode(e *jx.Writer) {
+	switch s.Type {
+	case Issue1430Issue143:
+		s.Issue1430.Encode(e)
+	case Issue1431Issue143:
+		s.Issue1431.Encode(e)
+	case Issue1432Issue143:
+		s.Issue1432.Encode(e)
+	case Issue1433Issue143:
+		s.Issue1433.Encode(e)
+	}
+}
+
+// Decode decodes Issue143 from json.
+func (s *Issue143) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode Issue143 to nil`)
+	}
+	// Sum type fields.
+	if d.Next() != jx.Object {
+		return errors.Errorf("unexpected json type %q", d.Next())
+	}
+
+	var found bool
+	if err := d.Capture(func(d *jx.Decoder) error {
+		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
+			if found {
+				return d.Skip()
+			}
+			switch string(key) {
+			case "unique-1":
+				found = true
+				s.Type = Issue1430Issue143
+			case "unique-2":
+				found = true
+				s.Type = Issue1431Issue143
+			case "unique-3":
+				found = true
+				s.Type = Issue1432Issue143
+			case "unique-4":
+				found = true
+				s.Type = Issue1433Issue143
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return errors.Wrap(err, "capture")
+	}
+	if !found {
+		return errors.New("unable to detect sum type variant")
+	}
+	switch s.Type {
+	case Issue1430Issue143:
+		if err := s.Issue1430.Decode(d); err != nil {
+			return err
+		}
+	case Issue1431Issue143:
+		if err := s.Issue1431.Decode(d); err != nil {
+			return err
+		}
+	case Issue1432Issue143:
+		if err := s.Issue1432.Decode(d); err != nil {
+			return err
+		}
+	case Issue1433Issue143:
+		if err := s.Issue1433.Decode(d); err != nil {
+			return err
+		}
+	default:
+		return errors.Errorf("inferred invalid type: %s", s.Type)
+	}
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s Issue1430) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
+
+		e.RawStr("\"common-1\"" + ":")
+		e.Str(s.CommonMinus1)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"common-2\"" + ":")
+		e.Int(s.CommonMinus2)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"unique-1\"" + ":")
+		e.Str(s.UniqueMinus1)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfIssue1430 = [3]string{
+	0: "common-1",
+	1: "common-2",
+	2: "unique-1",
+}
+
+// Decode decodes Issue1430 from json.
+func (s *Issue1430) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode Issue1430 to nil`)
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "common-1":
+			requiredBitSet[0] |= 1 << 0
+			v, err := d.Str()
+			s.CommonMinus1 = string(v)
+			if err != nil {
+				return err
+			}
+		case "common-2":
+			requiredBitSet[0] |= 1 << 1
+			v, err := d.Int()
+			s.CommonMinus2 = int(v)
+			if err != nil {
+				return err
+			}
+		case "unique-1":
+			requiredBitSet[0] |= 1 << 2
+			v, err := d.Str()
+			s.UniqueMinus1 = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000111,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfIssue1430) {
+					name = jsonFieldsNameOfIssue1430[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s Issue1431) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
+
+		e.RawStr("\"common-1\"" + ":")
+		e.Str(s.CommonMinus1)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"common-2\"" + ":")
+		e.Int(s.CommonMinus2)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"unique-2\"" + ":")
+		e.Str(s.UniqueMinus2)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfIssue1431 = [3]string{
+	0: "common-1",
+	1: "common-2",
+	2: "unique-2",
+}
+
+// Decode decodes Issue1431 from json.
+func (s *Issue1431) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode Issue1431 to nil`)
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "common-1":
+			requiredBitSet[0] |= 1 << 0
+			v, err := d.Str()
+			s.CommonMinus1 = string(v)
+			if err != nil {
+				return err
+			}
+		case "common-2":
+			requiredBitSet[0] |= 1 << 1
+			v, err := d.Int()
+			s.CommonMinus2 = int(v)
+			if err != nil {
+				return err
+			}
+		case "unique-2":
+			requiredBitSet[0] |= 1 << 2
+			v, err := d.Str()
+			s.UniqueMinus2 = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000111,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfIssue1431) {
+					name = jsonFieldsNameOfIssue1431[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s Issue1432) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
+
+		e.RawStr("\"common-1\"" + ":")
+		e.Str(s.CommonMinus1)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"common-2\"" + ":")
+		e.Int(s.CommonMinus2)
+	}
+	{
+		if s.CommonMinus3.Set {
+			e.Comma()
+		}
+		if s.CommonMinus3.Set {
+			e.RawStr("\"common-3\"" + ":")
+			s.CommonMinus3.Encode(e)
+		}
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"unique-3\"" + ":")
+		e.Str(s.UniqueMinus3)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfIssue1432 = [4]string{
+	0: "common-1",
+	1: "common-2",
+	2: "common-3",
+	3: "unique-3",
+}
+
+// Decode decodes Issue1432 from json.
+func (s *Issue1432) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode Issue1432 to nil`)
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "common-1":
+			requiredBitSet[0] |= 1 << 0
+			v, err := d.Str()
+			s.CommonMinus1 = string(v)
+			if err != nil {
+				return err
+			}
+		case "common-2":
+			requiredBitSet[0] |= 1 << 1
+			v, err := d.Int()
+			s.CommonMinus2 = int(v)
+			if err != nil {
+				return err
+			}
+		case "common-3":
+			s.CommonMinus3.Reset()
+			if err := s.CommonMinus3.Decode(d); err != nil {
+				return err
+			}
+		case "unique-3":
+			requiredBitSet[0] |= 1 << 3
+			v, err := d.Str()
+			s.UniqueMinus3 = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00001011,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfIssue1432) {
+					name = jsonFieldsNameOfIssue1432[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s Issue1433) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.CommonMinus3.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.CommonMinus3.Set {
+			e.RawStr("\"common-3\"" + ":")
+			s.CommonMinus3.Encode(e)
+		}
+	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
+
+		e.RawStr("\"unique-4\"" + ":")
+		e.Str(s.UniqueMinus4)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfIssue1433 = [2]string{
+	0: "common-3",
+	1: "unique-4",
+}
+
+// Decode decodes Issue1433 from json.
+func (s *Issue1433) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode Issue1433 to nil`)
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "common-3":
+			s.CommonMinus3.Reset()
+			if err := s.CommonMinus3.Decode(d); err != nil {
+				return err
+			}
+		case "unique-4":
+			requiredBitSet[0] |= 1 << 1
+			v, err := d.Str()
+			s.UniqueMinus4 = string(v)
+			if err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000010,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfIssue1433) {
+					name = jsonFieldsNameOfIssue1433[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
 	return nil
 }
 
@@ -1387,29 +1904,117 @@ func (s *NullableEnumsOnlyNullable) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-// Encode encodes OneofBugReq as json.
-func (s OneofBugReq) Encode(e *jx.Writer) {
+// Encode implements json.Marshaler.
+func (s OneOfBugs) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
+
+		e.RawStr("\"issue143\"" + ":")
+		s.Issue143.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"additional-fields\"" + ":")
+		s.AdditionalMinusFields.Encode(e)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfOneOfBugs = [2]string{
+	0: "issue143",
+	1: "additional-fields",
+}
+
+// Decode decodes OneOfBugs from json.
+func (s *OneOfBugs) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode OneOfBugs to nil`)
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "issue143":
+			requiredBitSet[0] |= 1 << 0
+			if err := s.Issue143.Decode(d); err != nil {
+				return err
+			}
+		case "additional-fields":
+			requiredBitSet[0] |= 1 << 1
+			if err := s.AdditionalMinusFields.Decode(d); err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000011,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfOneOfBugs) {
+					name = jsonFieldsNameOfOneOfBugs[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode encodes OneVariantHasNoUniqueFields as json.
+func (s OneVariantHasNoUniqueFields) Encode(e *jx.Writer) {
 	switch s.Type {
-	case OneofBugReq0OneofBugReq:
-		s.OneofBugReq0.Encode(e)
-	case OneofBugReq1OneofBugReq:
-		s.OneofBugReq1.Encode(e)
-	case OneofBugReq2OneofBugReq:
-		s.OneofBugReq2.Encode(e)
-	case OneofBugReq3OneofBugReq:
-		s.OneofBugReq3.Encode(e)
+	case OneVariantHasNoUniqueFields0OneVariantHasNoUniqueFields:
+		s.OneVariantHasNoUniqueFields0.Encode(e)
+	case OneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields:
+		s.OneVariantHasNoUniqueFields1.Encode(e)
 	}
 }
 
-// Decode decodes OneofBugReq from json.
-func (s *OneofBugReq) Decode(d *jx.Decoder) error {
+// Decode decodes OneVariantHasNoUniqueFields from json.
+func (s *OneVariantHasNoUniqueFields) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode OneofBugReq to nil`)
+		return errors.New(`invalid: unable to decode OneVariantHasNoUniqueFields to nil`)
 	}
 	// Sum type fields.
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -1417,18 +2022,9 @@ func (s *OneofBugReq) Decode(d *jx.Decoder) error {
 				return d.Skip()
 			}
 			switch string(key) {
-			case "unique-1":
+			case "d":
 				found = true
-				s.Type = OneofBugReq0OneofBugReq
-			case "unique-2":
-				found = true
-				s.Type = OneofBugReq1OneofBugReq
-			case "unique-3":
-				found = true
-				s.Type = OneofBugReq2OneofBugReq
-			case "unique-4":
-				found = true
-				s.Type = OneofBugReq3OneofBugReq
+				s.Type = OneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields
 			}
 			return d.Skip()
 		})
@@ -1436,23 +2032,15 @@ func (s *OneofBugReq) Decode(d *jx.Decoder) error {
 		return errors.Wrap(err, "capture")
 	}
 	if !found {
-		return errors.New("unable to detect sum type variant")
+		s.Type = OneVariantHasNoUniqueFields0OneVariantHasNoUniqueFields
 	}
 	switch s.Type {
-	case OneofBugReq0OneofBugReq:
-		if err := s.OneofBugReq0.Decode(d); err != nil {
+	case OneVariantHasNoUniqueFields0OneVariantHasNoUniqueFields:
+		if err := s.OneVariantHasNoUniqueFields0.Decode(d); err != nil {
 			return err
 		}
-	case OneofBugReq1OneofBugReq:
-		if err := s.OneofBugReq1.Decode(d); err != nil {
-			return err
-		}
-	case OneofBugReq2OneofBugReq:
-		if err := s.OneofBugReq2.Decode(d); err != nil {
-			return err
-		}
-	case OneofBugReq3OneofBugReq:
-		if err := s.OneofBugReq3.Decode(d); err != nil {
+	case OneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields:
+		if err := s.OneVariantHasNoUniqueFields1.Decode(d); err != nil {
 			return err
 		}
 	default:
@@ -1462,7 +2050,7 @@ func (s *OneofBugReq) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OneofBugReq0) Encode(e *jx.Writer) {
+func (s OneVariantHasNoUniqueFields0) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
 		first = true
@@ -1474,57 +2062,58 @@ func (s OneofBugReq0) Encode(e *jx.Writer) {
 		}
 		first = false
 
-		e.RawStr("\"common-1\"" + ":")
-		e.Str(s.CommonMinus1)
+		e.RawStr("\"a\"" + ":")
+		e.Str(s.A)
+	}
+	{
+		if s.B.Set {
+			e.Comma()
+		}
+		if s.B.Set {
+			e.RawStr("\"b\"" + ":")
+			s.B.Encode(e)
+		}
 	}
 	{
 		e.Comma()
 
-		e.RawStr("\"common-2\"" + ":")
-		e.Int(s.CommonMinus2)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"unique-1\"" + ":")
-		e.Str(s.UniqueMinus1)
+		e.RawStr("\"c\"" + ":")
+		e.Str(s.C)
 	}
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfOneofBugReq0 = [3]string{
-	0: "common-1",
-	1: "common-2",
-	2: "unique-1",
+var jsonFieldsNameOfOneVariantHasNoUniqueFields0 = [3]string{
+	0: "a",
+	1: "b",
+	2: "c",
 }
 
-// Decode decodes OneofBugReq0 from json.
-func (s *OneofBugReq0) Decode(d *jx.Decoder) error {
+// Decode decodes OneVariantHasNoUniqueFields0 from json.
+func (s *OneVariantHasNoUniqueFields0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode OneofBugReq0 to nil`)
+		return errors.New(`invalid: unable to decode OneVariantHasNoUniqueFields0 to nil`)
 	}
 	var requiredBitSet [1]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "common-1":
+		case "a":
 			requiredBitSet[0] |= 1 << 0
 			v, err := d.Str()
-			s.CommonMinus1 = string(v)
+			s.A = string(v)
 			if err != nil {
 				return err
 			}
-		case "common-2":
-			requiredBitSet[0] |= 1 << 1
-			v, err := d.Int()
-			s.CommonMinus2 = int(v)
-			if err != nil {
+		case "b":
+			s.B.Reset()
+			if err := s.B.Decode(d); err != nil {
 				return err
 			}
-		case "unique-1":
+		case "c":
 			requiredBitSet[0] |= 1 << 2
 			v, err := d.Str()
-			s.UniqueMinus1 = string(v)
+			s.C = string(v)
 			if err != nil {
 				return err
 			}
@@ -1537,7 +2126,7 @@ func (s *OneofBugReq0) Decode(d *jx.Decoder) error {
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000111,
+		0b00000101,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -1549,8 +2138,8 @@ func (s *OneofBugReq0) Decode(d *jx.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(jsonFieldsNameOfOneofBugReq0) {
-					name = jsonFieldsNameOfOneofBugReq0[fieldIdx]
+				if fieldIdx < len(jsonFieldsNameOfOneVariantHasNoUniqueFields0) {
+					name = jsonFieldsNameOfOneVariantHasNoUniqueFields0[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
@@ -1571,7 +2160,7 @@ func (s *OneofBugReq0) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OneofBugReq1) Encode(e *jx.Writer) {
+func (s OneVariantHasNoUniqueFields1) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
 		first = true
@@ -1583,58 +2172,74 @@ func (s OneofBugReq1) Encode(e *jx.Writer) {
 		}
 		first = false
 
-		e.RawStr("\"common-1\"" + ":")
-		e.Str(s.CommonMinus1)
+		e.RawStr("\"a\"" + ":")
+		e.Str(s.A)
+	}
+	{
+		if s.B.Set {
+			e.Comma()
+		}
+		if s.B.Set {
+			e.RawStr("\"b\"" + ":")
+			s.B.Encode(e)
+		}
 	}
 	{
 		e.Comma()
 
-		e.RawStr("\"common-2\"" + ":")
-		e.Int(s.CommonMinus2)
+		e.RawStr("\"c\"" + ":")
+		e.Str(s.C)
 	}
 	{
-		e.Comma()
-
-		e.RawStr("\"unique-2\"" + ":")
-		e.Str(s.UniqueMinus2)
+		if s.D.Set {
+			e.Comma()
+		}
+		if s.D.Set {
+			e.RawStr("\"d\"" + ":")
+			s.D.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfOneofBugReq1 = [3]string{
-	0: "common-1",
-	1: "common-2",
-	2: "unique-2",
+var jsonFieldsNameOfOneVariantHasNoUniqueFields1 = [4]string{
+	0: "a",
+	1: "b",
+	2: "c",
+	3: "d",
 }
 
-// Decode decodes OneofBugReq1 from json.
-func (s *OneofBugReq1) Decode(d *jx.Decoder) error {
+// Decode decodes OneVariantHasNoUniqueFields1 from json.
+func (s *OneVariantHasNoUniqueFields1) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode OneofBugReq1 to nil`)
+		return errors.New(`invalid: unable to decode OneVariantHasNoUniqueFields1 to nil`)
 	}
 	var requiredBitSet [1]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "common-1":
+		case "a":
 			requiredBitSet[0] |= 1 << 0
 			v, err := d.Str()
-			s.CommonMinus1 = string(v)
+			s.A = string(v)
 			if err != nil {
 				return err
 			}
-		case "common-2":
-			requiredBitSet[0] |= 1 << 1
-			v, err := d.Int()
-			s.CommonMinus2 = int(v)
-			if err != nil {
+		case "b":
+			s.B.Reset()
+			if err := s.B.Decode(d); err != nil {
 				return err
 			}
-		case "unique-2":
+		case "c":
 			requiredBitSet[0] |= 1 << 2
 			v, err := d.Str()
-			s.UniqueMinus2 = string(v)
+			s.C = string(v)
 			if err != nil {
+				return err
+			}
+		case "d":
+			s.D.Reset()
+			if err := s.D.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -1646,7 +2251,7 @@ func (s *OneofBugReq1) Decode(d *jx.Decoder) error {
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000111,
+		0b00000101,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -1658,231 +2263,8 @@ func (s *OneofBugReq1) Decode(d *jx.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(jsonFieldsNameOfOneofBugReq1) {
-					name = jsonFieldsNameOfOneofBugReq1[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s OneofBugReq2) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if !first {
-			e.Comma()
-		}
-		first = false
-
-		e.RawStr("\"common-1\"" + ":")
-		e.Str(s.CommonMinus1)
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"common-2\"" + ":")
-		e.Int(s.CommonMinus2)
-	}
-	{
-		if s.CommonMinus3.Set {
-			e.Comma()
-		}
-		if s.CommonMinus3.Set {
-			e.RawStr("\"common-3\"" + ":")
-			s.CommonMinus3.Encode(e)
-		}
-	}
-	{
-		e.Comma()
-
-		e.RawStr("\"unique-3\"" + ":")
-		e.Str(s.UniqueMinus3)
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfOneofBugReq2 = [4]string{
-	0: "common-1",
-	1: "common-2",
-	2: "common-3",
-	3: "unique-3",
-}
-
-// Decode decodes OneofBugReq2 from json.
-func (s *OneofBugReq2) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode OneofBugReq2 to nil`)
-	}
-	var requiredBitSet [1]uint8
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "common-1":
-			requiredBitSet[0] |= 1 << 0
-			v, err := d.Str()
-			s.CommonMinus1 = string(v)
-			if err != nil {
-				return err
-			}
-		case "common-2":
-			requiredBitSet[0] |= 1 << 1
-			v, err := d.Int()
-			s.CommonMinus2 = int(v)
-			if err != nil {
-				return err
-			}
-		case "common-3":
-			s.CommonMinus3.Reset()
-			if err := s.CommonMinus3.Decode(d); err != nil {
-				return err
-			}
-		case "unique-3":
-			requiredBitSet[0] |= 1 << 3
-			v, err := d.Str()
-			s.UniqueMinus3 = string(v)
-			if err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00001011,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfOneofBugReq2) {
-					name = jsonFieldsNameOfOneofBugReq2[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s OneofBugReq3) Encode(e *jx.Writer) {
-	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if s.CommonMinus3.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CommonMinus3.Set {
-			e.RawStr("\"common-3\"" + ":")
-			s.CommonMinus3.Encode(e)
-		}
-	}
-	{
-		if !first {
-			e.Comma()
-		}
-		first = false
-
-		e.RawStr("\"unique-4\"" + ":")
-		e.Str(s.UniqueMinus4)
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfOneofBugReq3 = [2]string{
-	0: "common-3",
-	1: "unique-4",
-}
-
-// Decode decodes OneofBugReq3 from json.
-func (s *OneofBugReq3) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New(`invalid: unable to decode OneofBugReq3 to nil`)
-	}
-	var requiredBitSet [1]uint8
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "common-3":
-			s.CommonMinus3.Reset()
-			if err := s.CommonMinus3.Decode(d); err != nil {
-				return err
-			}
-		case "unique-4":
-			requiredBitSet[0] |= 1 << 1
-			v, err := d.Str()
-			s.UniqueMinus4 = string(v)
-			if err != nil {
-				return err
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return err
-	}
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000010,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfOneofBugReq3) {
-					name = jsonFieldsNameOfOneofBugReq3[fieldIdx]
+				if fieldIdx < len(jsonFieldsNameOfOneVariantHasNoUniqueFields1) {
+					name = jsonFieldsNameOfOneVariantHasNoUniqueFields1[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}

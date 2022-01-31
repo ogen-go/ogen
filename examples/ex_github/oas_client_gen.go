@@ -66675,6 +66675,121 @@ func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (res
 	return result, nil
 }
 
+// UsersGetAuthenticated invokes users/get-authenticated operation.
+//
+// If the authenticated user is authenticated through basic authentication or OAuth with the `user`
+// scope, then the response lists public and private profile information.
+// If the authenticated user is authenticated through OAuth without the `user` scope, then the
+// response lists only public profile information.
+//
+// GET /user
+func (c *Client) UsersGetAuthenticated(ctx context.Context) (res UsersGetAuthenticatedRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `UsersGetAuthenticated`,
+		trace.WithAttributes(otelogen.OperationID(`users/get-authenticated`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/user"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeUsersGetAuthenticatedResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// UsersGetByUsername invokes users/get-by-username operation.
+//
+// Provides publicly available information about someone with a GitHub account.
+// GitHub Apps with the `Plan` user permission can use this endpoint to retrieve information about a
+// user's GitHub plan. The GitHub App must be authenticated as a user. See "[Identifying and
+// authorizing users for GitHub Apps](https://docs.github.
+// com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/)" for details
+// about authentication. For an example response, see 'Response with GitHub plan information' below"
+// The `email` key in the following response is the publicly visible email address from your GitHub
+// [profile page](https://github.com/settings/profile). When setting up your profile, you can select
+// a primary email address to be “public” which provides an email entry for this endpoint. If you
+// do not set a public email address for `email`, then it will have a value of `null`. You only see
+// publicly visible email addresses when authenticated with GitHub. For more information, see
+// [Authentication](https://docs.github.com/rest/overview/resources-in-the-rest-api#authentication).
+// The Emails API enables you to list all of your email addresses, and toggle a primary email to be
+// visible publicly. For more information, see "[Emails API](https://docs.github.
+// com/rest/reference/users#emails)".
+//
+// GET /users/{username}
+func (c *Client) UsersGetByUsername(ctx context.Context, params UsersGetByUsernameParams) (res UsersGetByUsernameRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `UsersGetByUsername`,
+		trace.WithAttributes(otelogen.OperationID(`users/get-by-username`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/users/"
+	{
+		// Encode "username" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "username",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Username))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeUsersGetByUsernameResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // UsersGetContextForUser invokes users/get-context-for-user operation.
 //
 // Provides hovercard information when authenticated through basic auth or OAuth with the `repo`

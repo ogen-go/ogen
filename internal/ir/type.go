@@ -62,6 +62,11 @@ func (t *TypeDiscriminator) Set(s *Type) {
 // SumSpec for KindSum.
 type SumSpec struct {
 	Unique []*Field
+	// DefaultMapping is name of default mapping.
+	//
+	// Used for variant which has no unique fields.
+	DefaultMapping string
+
 	// Discriminator is field name of sum type discriminator.
 	Discriminator string
 	// Mapping is discriminator value -> variant mapping.
@@ -97,7 +102,7 @@ type Type struct {
 	//
 	// If some of these features are set, generator
 	// generates additional encoding methods if needed.
-	Features         []string
+	Features []string
 }
 
 func (t Type) GoDoc() []string {
