@@ -307,6 +307,27 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err e
 					delete(uniq[variant.Name], field)
 				}
 			}
+
+			if isComplex {
+				// Check that at most one type has no unique fields.
+				metNoUniqueFields := false
+				for _, variant := range sum.SumOf {
+					k := variant.Name
+					if len(uniq[k]) == 0 {
+						if metNoUniqueFields {
+							// Unable to deterministically select sub-schema only on fields.
+							return nil, errors.Wrapf(&ErrNotImplemented{Name: "discriminator inference"},
+								"oneOf %s: variant %s: no unique fields, "+
+									"unable to parse without discriminator", sum.Name, k,
+							)
+						}
+
+						// Set mapping without unique fields as default
+						sum.SumSpec.DefaultMapping = k
+						metNoUniqueFields = true
+					}
+				}
+			}
 		}
 		type sumVariant struct {
 			Name   string
@@ -323,13 +344,6 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err e
 				v.Unique = append(v.Unique, fieldName)
 			}
 			sort.Strings(v.Unique)
-			if isComplex && len(v.Unique) == 0 {
-				// Unable to deterministically select sub-schema only on fields.
-				return nil, errors.Wrapf(&ErrNotImplemented{Name: "discriminator inference"},
-					"oneOf %s: variant %s: no unique fields, "+
-						"unable to parse without discriminator", sum.Name, k,
-				)
-			}
 			variants = append(variants, v)
 		}
 		sort.SliceStable(variants, func(i, j int) bool {

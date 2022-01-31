@@ -31,6 +31,7 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	if d.Next() != jx.Object {
 		return errors.Errorf("unexpected json type %q", d.Next())
 	}
+
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
@@ -70,7 +71,11 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 		return errors.Wrap(err, "capture")
 	}
 	if !found {
+		{{- if $.SumSpec.DefaultMapping }}
+		s.Type = {{ $.SumSpec.DefaultMapping }}{{ $.Name }}
+		{{- else }}
 		return errors.New("unable to detect sum type variant")
+		{{- end }}
 	}
 	switch s.Type {
 	{{- range $s := $.SumOf }}
