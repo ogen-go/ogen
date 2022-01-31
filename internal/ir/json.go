@@ -121,16 +121,26 @@ func (j JSON) Format() string {
 // returned from `i.WhatIsNext()` method.
 // Blank string is returned if there is no appropriate json type.
 func (j JSON) Type() string {
-	if j.t.IsNumeric() {
+	return jsonType(j.t)
+}
+
+func jsonType(t *Type) string {
+	if t.IsNumeric() {
 		return "Number"
 	}
-	if j.t.Is(KindArray) {
+	if t.Is(KindArray) {
 		return "Array"
 	}
-	if j.t.Is(KindStruct, KindMap) {
+	if t.Is(KindStruct, KindMap) {
 		return "Object"
 	}
-	switch j.t.Primitive {
+	if t.Is(KindGeneric) {
+		return jsonType(t.GenericOf)
+	}
+	if t.Is(KindAlias) {
+		return jsonType(t.AliasTo)
+	}
+	switch t.Primitive {
 	case Bool:
 		return "Bool"
 	case String, Time, Duration, UUID, IP, URL, ByteSlice:
