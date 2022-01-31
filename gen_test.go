@@ -84,6 +84,7 @@ func TestGenerate(t *testing.T) {
 		"sum types with same names",
 		"sum type parameter",
 		"unsupported content types",
+		"empty schema",
 	))
 	t.Run("Tinkoff", g("tinkoff.json"))
 }
