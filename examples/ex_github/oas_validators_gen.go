@@ -2706,6 +2706,17 @@ func (s CheckRun) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.PullRequests == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "pull_requests",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.Deployment.Set {
 			if err := func() error {
 				if err := s.Deployment.Value.Validate(); err != nil {

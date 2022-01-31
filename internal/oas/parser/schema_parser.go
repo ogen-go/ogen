@@ -76,6 +76,14 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 		return hook(&oas.Schema{AllOf: schemas}), nil
 	}
 
+	// Try to derive schema type from properties.
+	if schema.Type == "" {
+		switch {
+		case schema.Items != nil:
+			schema.Type = "array"
+		}
+	}
+
 	switch schema.Type {
 	case "object":
 		if schema.Items != nil {
@@ -237,6 +245,8 @@ func (p *schemaParser) resolve(ref string) (*oas.Schema, error) {
 
 func (p *schemaParser) extendInfo(schema *ogen.Schema, s *oas.Schema) *oas.Schema {
 	s.Description = schema.Description
+	s.AddExample(schema.Example)
+
 	// Workaround: handle nullable enums correctly.
 	//
 	// Notice that nullable enum requires `null` in value list.

@@ -2603,7 +2603,7 @@ type CheckRun struct {
 	Name         string                 `json:"name"`
 	CheckSuite   NilCheckRunCheckSuite  `json:"check_suite"`
 	App          NilNullableIntegration `json:"app"`
-	PullRequests string                 `json:"pull_requests"`
+	PullRequests []PullRequestMinimal   `json:"pull_requests"`
 	Deployment   OptDeploymentSimple    `json:"deployment"`
 }
 

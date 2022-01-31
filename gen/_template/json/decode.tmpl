@@ -70,7 +70,14 @@ if err := d.Arr(func(d *jx.Decoder) error {
 		{{ template "json/dec_array" $ }}
 	{{- else if $t.GenericOf }}
 		{{- template "json/dec_generic" $ }}
-	{{- else if or ($t.IsStruct) ($t.IsMap) ($t.IsEnum) ($t.IsSum) ($t.IsAlias) }}
+	{{- else if $t.IsMap }}
+		{{- if not $t.Fields }}
+		{{ $.Var }} = make({{ $t.Go }})
+		{{- end }}
+		if err := {{ $.Var }}.Decode(d); err != nil {
+			return err
+		}
+	{{- else if or ($t.IsStruct) ($t.IsEnum) ($t.IsSum) ($t.IsAlias) }}
 		if err := {{ $.Var }}.Decode(d); err != nil {
 			return err
 		}

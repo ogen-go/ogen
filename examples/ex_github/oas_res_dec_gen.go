@@ -110,6 +110,7 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response, span trace.Spa
 
 			var response EmptyObject
 			if err := func() error {
+				response = make(EmptyObject)
 				if err := response.Decode(d); err != nil {
 					return err
 				}
@@ -206,6 +207,7 @@ func decodeActionsCancelWorkflowRunResponse(resp *http.Response, span trace.Span
 
 			var response ActionsCancelWorkflowRunAccepted
 			if err := func() error {
+				response = make(ActionsCancelWorkflowRunAccepted)
 				if err := response.Decode(d); err != nil {
 					return err
 				}
@@ -240,6 +242,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretResponse(resp *http.Response, s
 
 			var response EmptyObject
 			if err := func() error {
+				response = make(EmptyObject)
 				if err := response.Decode(d); err != nil {
 					return err
 				}
@@ -276,6 +279,7 @@ func decodeActionsCreateOrUpdateOrgSecretResponse(resp *http.Response, span trac
 
 			var response EmptyObject
 			if err := func() error {
+				response = make(EmptyObject)
 				if err := response.Decode(d); err != nil {
 					return err
 				}
@@ -312,6 +316,7 @@ func decodeActionsCreateOrUpdateRepoSecretResponse(resp *http.Response, span tra
 
 			var response ActionsCreateOrUpdateRepoSecretCreated
 			if err := func() error {
+				response = make(ActionsCreateOrUpdateRepoSecretCreated)
 				if err := response.Decode(d); err != nil {
 					return err
 				}
@@ -1858,6 +1863,7 @@ func decodeActionsReRunWorkflowResponse(resp *http.Response, span trace.Span) (r
 
 			var response ActionsReRunWorkflowCreated
 			if err := func() error {
+				response = make(ActionsReRunWorkflowCreated)
 				if err := response.Decode(d); err != nil {
 					return err
 				}
@@ -1921,6 +1927,7 @@ func decodeActionsRetryWorkflowResponse(resp *http.Response, span trace.Span) (r
 
 			var response ActionsRetryWorkflowCreated
 			if err := func() error {
+				response = make(ActionsRetryWorkflowCreated)
 				if err := response.Decode(d); err != nil {
 					return err
 				}
@@ -7135,6 +7142,7 @@ func decodeChecksRerequestSuiteResponse(resp *http.Response, span trace.Span) (r
 
 			var response ChecksRerequestSuiteCreated
 			if err := func() error {
+				response = make(ChecksRerequestSuiteCreated)
 				if err := response.Decode(d); err != nil {
 					return err
 				}
@@ -8459,6 +8467,7 @@ func decodeEmojisGetResponse(resp *http.Response, span trace.Span) (res EmojisGe
 
 			var response EmojisGetOK
 			if err := func() error {
+				response = make(EmojisGetOK)
 				if err := response.Decode(d); err != nil {
 					return err
 				}
@@ -9527,6 +9536,7 @@ func decodeGistsCheckIsStarredResponse(resp *http.Response, span trace.Span) (re
 
 			var response GistsCheckIsStarredNotFound
 			if err := func() error {
+				response = make(GistsCheckIsStarredNotFound)
 				if err := response.Decode(d); err != nil {
 					return err
 				}
@@ -18393,6 +18403,7 @@ func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response, s
 
 			var response OrgsConvertMemberToOutsideCollaboratorAccepted
 			if err := func() error {
+				response = make(OrgsConvertMemberToOutsideCollaboratorAccepted)
 				if err := response.Decode(d); err != nil {
 					return err
 				}
@@ -25269,6 +25280,7 @@ func decodeProjectsMoveCardResponse(resp *http.Response, span trace.Span) (res P
 
 			var response ProjectsMoveCardCreated
 			if err := func() error {
+				response = make(ProjectsMoveCardCreated)
 				if err := response.Decode(d); err != nil {
 					return err
 				}
@@ -25413,6 +25425,7 @@ func decodeProjectsMoveColumnResponse(resp *http.Response, span trace.Span) (res
 
 			var response ProjectsMoveColumnCreated
 			if err := func() error {
+				response = make(ProjectsMoveColumnCreated)
 				if err := response.Decode(d); err != nil {
 					return err
 				}
@@ -34420,6 +34433,7 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response, span trace.Span
 
 			var response EmptyObject
 			if err := func() error {
+				response = make(EmptyObject)
 				if err := response.Decode(d); err != nil {
 					return err
 				}
@@ -36959,6 +36973,7 @@ func decodeReposListLanguagesResponse(resp *http.Response, span trace.Span) (res
 
 			var response Language
 			if err := func() error {
+				response = make(Language)
 				if err := response.Decode(d); err != nil {
 					return err
 				}

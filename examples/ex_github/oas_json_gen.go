@@ -12545,6 +12545,7 @@ func (s *BaseGist) Decode(d *jx.Decoder) error {
 			}
 		case "files":
 			requiredBitSet[1] |= 1 << 0
+			s.Files = make(BaseGistFiles)
 			if err := s.Files.Decode(d); err != nil {
 				return err
 			}
@@ -16253,7 +16254,19 @@ func (s CheckRun) Encode(e *jx.Writer) {
 		e.Comma()
 
 		e.RawStr("\"pull_requests\"" + ":")
-		e.Str(s.PullRequests)
+		e.ArrStart()
+		if len(s.PullRequests) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.PullRequests[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.PullRequests[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
+		}
+		e.ArrEnd()
 	}
 	{
 		if s.Deployment.Set {
@@ -16383,9 +16396,15 @@ func (s *CheckRun) Decode(d *jx.Decoder) error {
 			}
 		case "pull_requests":
 			requiredBitSet[1] |= 1 << 7
-			v, err := d.Str()
-			s.PullRequests = string(v)
-			if err != nil {
+			s.PullRequests = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem PullRequestMinimal
+				if err := elem.Decode(d); err != nil {
+					return err
+				}
+				s.PullRequests = append(s.PullRequests, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 		case "deployment":
@@ -27557,6 +27576,7 @@ func (s *DeploymentPayload) Decode(d *jx.Decoder) error {
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
 	case jx.Object:
+		s.DeploymentPayload0 = make(DeploymentPayload0)
 		if err := s.DeploymentPayload0.Decode(d); err != nil {
 			return err
 		}
@@ -37643,6 +37663,7 @@ func (s *GistSimpleForkOf) Decode(d *jx.Decoder) error {
 			}
 		case "files":
 			requiredBitSet[1] |= 1 << 0
+			s.Files = make(GistSimpleForkOfFiles)
 			if err := s.Files.Decode(d); err != nil {
 				return err
 			}
@@ -38350,6 +38371,7 @@ func (s *GistsCreateReq) Decode(d *jx.Decoder) error {
 			}
 		case "files":
 			requiredBitSet[0] |= 1 << 1
+			s.Files = make(GistsCreateReqFiles)
 			if err := s.Files.Decode(d); err != nil {
 				return err
 			}
@@ -60824,6 +60846,9 @@ func (o *NilCodeScanningAlertDismissedAt) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Null = false
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -70631,6 +70656,9 @@ func (o *OptAlertCreatedAt) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAlertCreatedAt`, d.Next())
@@ -70653,6 +70681,9 @@ func (o *OptAlertHTMLURL) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAlertHTMLURL`, d.Next())
@@ -70673,8 +70704,11 @@ func (o *OptAlertNumber) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OptAlertNumber to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Number:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAlertNumber`, d.Next())
@@ -70697,6 +70731,9 @@ func (o *OptAlertURL) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAlertURL`, d.Next())
@@ -72048,6 +72085,9 @@ func (o *OptCodeScanningAlertEnvironment) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAlertEnvironment`, d.Next())
@@ -72220,6 +72260,9 @@ func (o *OptCodeScanningAnalysisAnalysisKey) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAnalysisAnalysisKey`, d.Next())
@@ -72242,6 +72285,9 @@ func (o *OptCodeScanningAnalysisCategory) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAnalysisCategory`, d.Next())
@@ -72264,6 +72310,9 @@ func (o *OptCodeScanningAnalysisSarifID) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAnalysisSarifID`, d.Next())
@@ -72286,6 +72335,9 @@ func (o *OptCodeScanningAnalysisToolName) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAnalysisToolName`, d.Next())
@@ -72308,6 +72360,9 @@ func (o *OptCodeScanningRef) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptCodeScanningRef`, d.Next())
@@ -72480,6 +72535,9 @@ func (o *OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemVal
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue`, d.Next())
@@ -72905,6 +72963,9 @@ func (o *OptGistsCreateReqPublic) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptGistsCreateReqPublic`, d.Next())
@@ -73966,6 +74027,9 @@ func (o *OptNilCodeScanningAnalysisToolGUID) Decode(d *jx.Decoder) error {
 	case jx.String:
 		o.Set = true
 		o.Null = false
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -74002,6 +74066,9 @@ func (o *OptNilCodeScanningAnalysisToolVersion) Decode(d *jx.Decoder) error {
 	case jx.String:
 		o.Set = true
 		o.Null = false
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -74312,6 +74379,9 @@ func (o *OptNilIssuesCreateReqMilestone) Decode(d *jx.Decoder) error {
 	case jx.String:
 		o.Set = true
 		o.Null = false
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -74348,6 +74418,9 @@ func (o *OptNilIssuesUpdateReqMilestone) Decode(d *jx.Decoder) error {
 	case jx.String:
 		o.Set = true
 		o.Null = false
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -74384,6 +74457,9 @@ func (o *OptNilIssuesUpdateReqTitle) Decode(d *jx.Decoder) error {
 	case jx.String:
 		o.Set = true
 		o.Null = false
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -77017,6 +77093,9 @@ func (o *OptReposAddAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposAddAppAccessRestrictionsReq`, d.Next())
@@ -77089,6 +77168,9 @@ func (o *OptReposAddStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposAddStatusCheckContextsReq`, d.Next())
@@ -77111,6 +77193,9 @@ func (o *OptReposAddTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposAddTeamAccessRestrictionsReq`, d.Next())
@@ -77133,6 +77218,9 @@ func (o *OptReposAddUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposAddUserAccessRestrictionsReq`, d.Next())
@@ -77155,6 +77243,9 @@ func (o *OptReposCreateDeploymentReqPayload) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposCreateDeploymentReqPayload`, d.Next())
@@ -77478,6 +77569,9 @@ func (o *OptReposRemoveAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposRemoveAppAccessRestrictionsReq`, d.Next())
@@ -77500,6 +77594,9 @@ func (o *OptReposRemoveStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposRemoveStatusCheckContextsReq`, d.Next())
@@ -77522,6 +77619,9 @@ func (o *OptReposRemoveTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposRemoveTeamAccessRestrictionsReq`, d.Next())
@@ -77544,6 +77644,9 @@ func (o *OptReposRemoveUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposRemoveUserAccessRestrictionsReq`, d.Next())
@@ -77591,6 +77694,9 @@ func (o *OptReposSetAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposSetAppAccessRestrictionsReq`, d.Next())
@@ -77613,6 +77719,9 @@ func (o *OptReposSetStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposSetStatusCheckContextsReq`, d.Next())
@@ -77635,6 +77744,9 @@ func (o *OptReposSetTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposSetTeamAccessRestrictionsReq`, d.Next())
@@ -77657,6 +77769,9 @@ func (o *OptReposSetUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposSetUserAccessRestrictionsReq`, d.Next())
@@ -78329,6 +78444,9 @@ func (o *OptScimUpdateAttributeForUserReqOperationsItemValue) Decode(d *jx.Decod
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptScimUpdateAttributeForUserReqOperationsItemValue`, d.Next())
@@ -78451,6 +78569,9 @@ func (o *OptSelectedActionsURL) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSelectedActionsURL`, d.Next())
@@ -79279,6 +79400,9 @@ func (o *OptUsersAddEmailForAuthenticatedReq) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptUsersAddEmailForAuthenticatedReq`, d.Next())
@@ -79301,6 +79425,9 @@ func (o *OptUsersDeleteEmailForAuthenticatedReq) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptUsersDeleteEmailForAuthenticatedReq`, d.Next())
@@ -79348,6 +79475,9 @@ func (o *OptValidationErrorErrorsItemValue) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptValidationErrorErrorsItemValue`, d.Next())
@@ -79393,8 +79523,11 @@ func (o *OptWaitTimer) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OptWaitTimer to nil`)
 	}
 	switch d.Next() {
-	case jx.String:
+	case jx.Number:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptWaitTimer`, d.Next())
@@ -79417,6 +79550,9 @@ func (o *OptWebhookConfigContentType) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptWebhookConfigContentType`, d.Next())
@@ -79439,6 +79575,9 @@ func (o *OptWebhookConfigInsecureSsl) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptWebhookConfigInsecureSsl`, d.Next())
@@ -79461,6 +79600,9 @@ func (o *OptWebhookConfigSecret) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptWebhookConfigSecret`, d.Next())
@@ -79483,6 +79625,9 @@ func (o *OptWebhookConfigURL) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptWebhookConfigURL`, d.Next())
@@ -114046,6 +114191,7 @@ func (s *ReposCreateDeploymentReqPayload) Decode(d *jx.Decoder) error {
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
 	case jx.Object:
+		s.ReposCreateDeploymentReqPayload0 = make(ReposCreateDeploymentReqPayload0)
 		if err := s.ReposCreateDeploymentReqPayload0.Decode(d); err != nil {
 			return err
 		}

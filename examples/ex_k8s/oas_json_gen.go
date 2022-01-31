@@ -77758,6 +77758,9 @@ func (o *OptIoK8sApimachineryPkgAPIResourceQuantity) Decode(d *jx.Decoder) error
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sApimachineryPkgAPIResourceQuantity`, d.Next())
@@ -77881,6 +77884,9 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1MicroTime) Decode(d *jx.Decoder) error
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1MicroTime`, d.Next())
@@ -77980,6 +77986,9 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1Time) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1Time`, d.Next())
@@ -78002,6 +78011,9 @@ func (o *OptIoK8sApimachineryPkgUtilIntstrIntOrString) Decode(d *jx.Decoder) err
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIoK8sApimachineryPkgUtilIntstrIntOrString`, d.Next())

@@ -2404,6 +2404,9 @@ func (o *OptID) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptID`, d.Next())
@@ -2655,6 +2658,9 @@ func (o *OptPetName) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPetName`, d.Next())
@@ -3598,6 +3604,7 @@ func (s StringStringMap) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		default:
 			var elem StringMap
+			elem = make(StringMap)
 			if err := elem.Decode(d); err != nil {
 				return err
 			}

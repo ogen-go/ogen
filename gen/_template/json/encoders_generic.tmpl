@@ -53,7 +53,7 @@ func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if $g.Format }}, format func(*jx.D
 			return err
 		}
 		o.Value = v
-	{{- else if or ($g.IsStruct) ($g.IsEnum) }}
+	{{- else if or ($g.IsStruct) ($g.IsEnum) ($g.IsPointer) ($g.IsSum) ($g.IsAlias)  }}
 		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
@@ -72,6 +72,8 @@ func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if $g.Format }}, format func(*jx.D
 			return err
 		}
 		o.Value = {{ $g.Go }}(v)
+	{{- else }}
+		{{ errorf "unexpected kind %s" $g.Kind }}
 	{{- end }}
 		return nil
 	{{- if $v.Nullable }}
