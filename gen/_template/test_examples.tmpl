@@ -21,11 +21,9 @@ func Test{{ $typ.Go }}_Decode(t *testing.T) {
 		tc := tc
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			var typ {{ $typ.Go }}
-			{{- if $typ.IsMap }}
-			{{- if eq (len $typ.Fields) 0 }}
+			{{- if $typ.IsMap }}{{- if not $typ.Fields }}
 			typ = make({{ $typ.Go }})
-			{{- end }}
-			{{- end }}
+			{{- end }}{{- end }}
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
 				var validateErr *validate.Error
