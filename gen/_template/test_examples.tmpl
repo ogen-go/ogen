@@ -16,9 +16,7 @@ func Test{{ $typ.Go }}_Decode(t *testing.T) {
 		Input string
 	}{
 		{{- range $example := $examples }}
-		{
-			Input: {{ printf "%q" $example }},
-		},
+		{Input: {{ printf "%q" $example }}},
 		{{- end }}
 	}{
 		tc := tc
