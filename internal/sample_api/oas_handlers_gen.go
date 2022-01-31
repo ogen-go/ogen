@@ -225,6 +225,35 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 	}
 }
 
+// HandleOneofBugRequest handles oneofBug operation.
+//
+// POST /oneofBug
+func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `OneofBug`,
+		trace.WithAttributes(otelogen.OperationID(`oneofBug`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeOneofBugRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.OneofBug(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOneofBugResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandlePetCreateRequest handles petCreate operation.
 //
 // POST /pet

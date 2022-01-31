@@ -69914,44 +69914,6 @@ func decodeUsersFollowParams(args [1]string, r *http.Request) (UsersFollowParams
 	return params, nil
 }
 
-func decodeUsersGetByUsernameParams(args [1]string, r *http.Request) (UsersGetByUsernameParams, error) {
-	var (
-		params UsersGetByUsernameParams
-	)
-	// Decode path: username.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "username",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Username = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New(`path: username: not specified`)
-		}
-	}
-	return params, nil
-}
-
 func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (UsersGetContextForUserParams, error) {
 	var (
 		params    UsersGetContextForUserParams

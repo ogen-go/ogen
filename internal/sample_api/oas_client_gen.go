@@ -491,6 +491,60 @@ func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Has
 	return result, nil
 }
 
+// OneofBug invokes oneofBug operation.
+//
+// POST /oneofBug
+func (c *Client) OneofBug(ctx context.Context, request OneofBugReq) (res OneofBugOK, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `OneofBug`,
+		trace.WithAttributes(otelogen.OperationID(`oneofBug`)),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeOneofBugRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/oneofBug"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeOneofBugResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // PetCreate invokes petCreate operation.
 //
 // Creates pet.

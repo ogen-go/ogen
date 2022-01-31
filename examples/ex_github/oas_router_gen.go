@@ -11614,7 +11614,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleUsersGetAuthenticatedRequest([0]string{}, w, r)
+					s.handleActivityListEventsForAuthenticatedUserRequest([1]string{
+						args[0],
+					}, w, r)
 
 					return
 				}
@@ -12322,11 +12324,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							elem = elem[idx:]
 
 							if len(elem) == 0 {
-								s.handleUsersGetByUsernameRequest([1]string{
-									args[0],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
@@ -30223,7 +30221,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "UsersGetAuthenticated"
+					r.name = "ActivityListEventsForAuthenticatedUser"
 					r.args = args
 					r.count = 0
 					return r, true
@@ -30935,10 +30933,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							elem = elem[idx:]
 
 							if len(elem) == 0 {
-								r.name = "UsersGetByUsername"
-								r.args = args
-								r.count = 1
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"

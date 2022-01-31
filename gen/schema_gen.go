@@ -281,19 +281,32 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err e
 				uniq[s.Name][f.Name] = struct{}{}
 			}
 		}
-		for _, s := range sum.SumOf {
-			k := s.Name
-			f := uniq[k]
-			for _, otherS := range sum.SumOf {
-				otherK := otherS.Name
-				if otherK == k {
-					continue
-				}
-				for otherField := range uniq[otherK] {
-					delete(f, otherField)
+		{
+			// Collect fields that common for at least 2 variants.
+			commonFields := map[string]struct{}{}
+			for _, variant := range sum.SumOf {
+				k := variant.Name
+				fields := uniq[k]
+				for _, otherVariant := range sum.SumOf {
+					otherK := otherVariant.Name
+					if otherK == k {
+						continue
+					}
+					otherFields := uniq[otherK]
+					for otherField := range otherFields {
+						if _, has := fields[otherField]; has {
+							// variant and otherVariant have common field otherField.
+							commonFields[otherField] = struct{}{}
+						}
+					}
 				}
 			}
-			uniq[k] = f
+			// Delete such fields.
+			for field := range commonFields {
+				for _, variant := range sum.SumOf {
+					delete(uniq[variant.Name], field)
+				}
+			}
 		}
 		type sumVariant struct {
 			Name   string

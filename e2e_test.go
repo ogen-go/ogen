@@ -209,6 +209,10 @@ func (s *sampleAPIServer) TestObjectQueryParameter(ctx context.Context, params a
 	return api.TestObjectQueryParameterOK{}, errors.New("invalid input")
 }
 
+func (s sampleAPIServer) OneofBug(ctx context.Context, req api.OneofBugReq) (api.OneofBugOK, error) {
+	panic("implement me")
+}
+
 var _ api.Handler = (*sampleAPIServer)(nil)
 
 //go:embed _testdata/pet.json

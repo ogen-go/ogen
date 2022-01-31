@@ -98,7 +98,6 @@ func (*Accepted) reposGetCodeFrequencyStatsRes()    {}
 func (*Accepted) reposGetCommitActivityStatsRes()   {}
 func (*Accepted) reposGetContributorsStatsRes()     {}
 func (*Accepted) reposRedeliverWebhookDeliveryRes() {}
-func (*Accepted) usersGetByUsernameRes()            {}
 
 // ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent is response for ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg operation.
 type ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent struct{}
@@ -2368,7 +2367,6 @@ func (*BasicError) teamsListProjectsLegacyRes()                          {}
 func (*BasicError) teamsListReposLegacyRes()                             {}
 func (*BasicError) teamsListRes()                                        {}
 func (*BasicError) teamsRemoveProjectLegacyRes()                         {}
-func (*BasicError) usersGetByUsernameRes()                               {}
 func (*BasicError) usersGetContextForUserRes()                           {}
 
 // Blob.
@@ -8966,7 +8964,6 @@ func (*NotModified) usersDeleteEmailForAuthenticatedRes()                  {}
 func (*NotModified) usersDeleteGpgKeyForAuthenticatedRes()                 {}
 func (*NotModified) usersDeletePublicSSHKeyForAuthenticatedRes()           {}
 func (*NotModified) usersFollowRes()                                       {}
-func (*NotModified) usersGetAuthenticatedRes()                             {}
 func (*NotModified) usersGetGpgKeyForAuthenticatedRes()                    {}
 func (*NotModified) usersGetPublicSSHKeyForAuthenticatedRes()              {}
 func (*NotModified) usersListBlockedByAuthenticatedRes()                   {}
@@ -39760,150 +39757,6 @@ func (*UsersFollowApplicationJSONUnauthorized) usersFollowRes() {}
 type UsersFollowNoContent struct{}
 
 func (*UsersFollowNoContent) usersFollowRes() {}
-
-type UsersGetAuthenticatedApplicationJSONForbidden BasicError
-
-func (*UsersGetAuthenticatedApplicationJSONForbidden) usersGetAuthenticatedRes() {}
-
-type UsersGetAuthenticatedApplicationJSONUnauthorized BasicError
-
-func (*UsersGetAuthenticatedApplicationJSONUnauthorized) usersGetAuthenticatedRes() {}
-
-// UsersGetAuthenticatedOK represents sum type.
-type UsersGetAuthenticatedOK struct {
-	Type        UsersGetAuthenticatedOKType // switch on this field
-	PrivateUser PrivateUser
-	PublicUser  PublicUser
-}
-
-// UsersGetAuthenticatedOKType is oneOf type of UsersGetAuthenticatedOK.
-type UsersGetAuthenticatedOKType string
-
-// Possible values for UsersGetAuthenticatedOKType.
-const (
-	PrivateUserUsersGetAuthenticatedOK UsersGetAuthenticatedOKType = "PrivateUser"
-	PublicUserUsersGetAuthenticatedOK  UsersGetAuthenticatedOKType = "PublicUser"
-)
-
-// IsPrivateUser reports whether UsersGetAuthenticatedOK is PrivateUser.
-func (s UsersGetAuthenticatedOK) IsPrivateUser() bool {
-	return s.Type == PrivateUserUsersGetAuthenticatedOK
-}
-
-// IsPublicUser reports whether UsersGetAuthenticatedOK is PublicUser.
-func (s UsersGetAuthenticatedOK) IsPublicUser() bool {
-	return s.Type == PublicUserUsersGetAuthenticatedOK
-}
-
-// SetPrivateUser sets UsersGetAuthenticatedOK to PrivateUser.
-func (s *UsersGetAuthenticatedOK) SetPrivateUser(v PrivateUser) {
-	s.Type = PrivateUserUsersGetAuthenticatedOK
-	s.PrivateUser = v
-}
-
-// GetPrivateUser returns PrivateUser and true boolean if UsersGetAuthenticatedOK is PrivateUser.
-func (s UsersGetAuthenticatedOK) GetPrivateUser() (v PrivateUser, ok bool) {
-	if !s.IsPrivateUser() {
-		return v, false
-	}
-	return s.PrivateUser, true
-}
-
-// NewPrivateUserUsersGetAuthenticatedOK returns new UsersGetAuthenticatedOK from PrivateUser.
-func NewPrivateUserUsersGetAuthenticatedOK(v PrivateUser) UsersGetAuthenticatedOK {
-	var s UsersGetAuthenticatedOK
-	s.SetPrivateUser(v)
-	return s
-}
-
-// SetPublicUser sets UsersGetAuthenticatedOK to PublicUser.
-func (s *UsersGetAuthenticatedOK) SetPublicUser(v PublicUser) {
-	s.Type = PublicUserUsersGetAuthenticatedOK
-	s.PublicUser = v
-}
-
-// GetPublicUser returns PublicUser and true boolean if UsersGetAuthenticatedOK is PublicUser.
-func (s UsersGetAuthenticatedOK) GetPublicUser() (v PublicUser, ok bool) {
-	if !s.IsPublicUser() {
-		return v, false
-	}
-	return s.PublicUser, true
-}
-
-// NewPublicUserUsersGetAuthenticatedOK returns new UsersGetAuthenticatedOK from PublicUser.
-func NewPublicUserUsersGetAuthenticatedOK(v PublicUser) UsersGetAuthenticatedOK {
-	var s UsersGetAuthenticatedOK
-	s.SetPublicUser(v)
-	return s
-}
-
-func (*UsersGetAuthenticatedOK) usersGetAuthenticatedRes() {}
-
-// UsersGetByUsernameOK represents sum type.
-type UsersGetByUsernameOK struct {
-	Type        UsersGetByUsernameOKType // switch on this field
-	PrivateUser PrivateUser
-	PublicUser  PublicUser
-}
-
-// UsersGetByUsernameOKType is oneOf type of UsersGetByUsernameOK.
-type UsersGetByUsernameOKType string
-
-// Possible values for UsersGetByUsernameOKType.
-const (
-	PrivateUserUsersGetByUsernameOK UsersGetByUsernameOKType = "PrivateUser"
-	PublicUserUsersGetByUsernameOK  UsersGetByUsernameOKType = "PublicUser"
-)
-
-// IsPrivateUser reports whether UsersGetByUsernameOK is PrivateUser.
-func (s UsersGetByUsernameOK) IsPrivateUser() bool { return s.Type == PrivateUserUsersGetByUsernameOK }
-
-// IsPublicUser reports whether UsersGetByUsernameOK is PublicUser.
-func (s UsersGetByUsernameOK) IsPublicUser() bool { return s.Type == PublicUserUsersGetByUsernameOK }
-
-// SetPrivateUser sets UsersGetByUsernameOK to PrivateUser.
-func (s *UsersGetByUsernameOK) SetPrivateUser(v PrivateUser) {
-	s.Type = PrivateUserUsersGetByUsernameOK
-	s.PrivateUser = v
-}
-
-// GetPrivateUser returns PrivateUser and true boolean if UsersGetByUsernameOK is PrivateUser.
-func (s UsersGetByUsernameOK) GetPrivateUser() (v PrivateUser, ok bool) {
-	if !s.IsPrivateUser() {
-		return v, false
-	}
-	return s.PrivateUser, true
-}
-
-// NewPrivateUserUsersGetByUsernameOK returns new UsersGetByUsernameOK from PrivateUser.
-func NewPrivateUserUsersGetByUsernameOK(v PrivateUser) UsersGetByUsernameOK {
-	var s UsersGetByUsernameOK
-	s.SetPrivateUser(v)
-	return s
-}
-
-// SetPublicUser sets UsersGetByUsernameOK to PublicUser.
-func (s *UsersGetByUsernameOK) SetPublicUser(v PublicUser) {
-	s.Type = PublicUserUsersGetByUsernameOK
-	s.PublicUser = v
-}
-
-// GetPublicUser returns PublicUser and true boolean if UsersGetByUsernameOK is PublicUser.
-func (s UsersGetByUsernameOK) GetPublicUser() (v PublicUser, ok bool) {
-	if !s.IsPublicUser() {
-		return v, false
-	}
-	return s.PublicUser, true
-}
-
-// NewPublicUserUsersGetByUsernameOK returns new UsersGetByUsernameOK from PublicUser.
-func NewPublicUserUsersGetByUsernameOK(v PublicUser) UsersGetByUsernameOK {
-	var s UsersGetByUsernameOK
-	s.SetPublicUser(v)
-	return s
-}
-
-func (*UsersGetByUsernameOK) usersGetByUsernameRes() {}
 
 type UsersGetContextForUserSubjectType string
 

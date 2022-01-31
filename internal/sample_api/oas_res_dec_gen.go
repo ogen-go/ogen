@@ -278,6 +278,15 @@ func decodeGetHeaderResponse(resp *http.Response, span trace.Span) (res Hash, er
 	}
 }
 
+func decodeOneofBugResponse(resp *http.Response, span trace.Span) (res OneofBugOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		return OneofBugOK{}, nil
+	default:
+		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+	}
+}
+
 func decodePetCreateResponse(resp *http.Response, span trace.Span) (res Pet, err error) {
 	switch resp.StatusCode {
 	case 200:

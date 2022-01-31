@@ -15293,34 +15293,6 @@ func (s UsersDeleteEmailForAuthenticatedReq0) Validate() error {
 	}
 	return nil
 }
-func (s UsersGetAuthenticatedOK) Validate() error {
-	switch s.Type {
-	case PrivateUserUsersGetAuthenticatedOK:
-		if err := s.PrivateUser.Validate(); err != nil {
-			return err
-		}
-		return nil
-	case PublicUserUsersGetAuthenticatedOK:
-		return nil // no validation needed
-	default:
-		return errors.Errorf("invalid type %q", s.Type)
-	}
-}
-
-func (s UsersGetByUsernameOK) Validate() error {
-	switch s.Type {
-	case PrivateUserUsersGetByUsernameOK:
-		if err := s.PrivateUser.Validate(); err != nil {
-			return err
-		}
-		return nil
-	case PublicUserUsersGetByUsernameOK:
-		return nil // no validation needed
-	default:
-		return errors.Errorf("invalid type %q", s.Type)
-	}
-}
-
 func (s UsersGetContextForUserSubjectType) Validate() error {
 	switch s {
 	case "organization":

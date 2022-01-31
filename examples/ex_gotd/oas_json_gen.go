@@ -3424,12 +3424,6 @@ func (s *CopyMessageReplyMarkup) Decode(d *jx.Decoder) error {
 			case "force_reply":
 				found = true
 				s.Type = ForceReplyCopyMessageReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ForceReplyCopyMessageReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ForceReplyCopyMessageReplyMarkup
 			}
 			return d.Skip()
 		})
@@ -16378,12 +16372,6 @@ func (s *SendAnimationReplyMarkup) Decode(d *jx.Decoder) error {
 			case "force_reply":
 				found = true
 				s.Type = ForceReplySendAnimationReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ForceReplySendAnimationReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ForceReplySendAnimationReplyMarkup
 			}
 			return d.Skip()
 		})
@@ -16740,12 +16728,6 @@ func (s *SendAudioReplyMarkup) Decode(d *jx.Decoder) error {
 				found = true
 				s.Type = ReplyKeyboardRemoveSendAudioReplyMarkup
 			case "force_reply":
-				found = true
-				s.Type = ForceReplySendAudioReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ForceReplySendAudioReplyMarkup
-			case "selective":
 				found = true
 				s.Type = ForceReplySendAudioReplyMarkup
 			}
@@ -17119,12 +17101,6 @@ func (s *SendContactReplyMarkup) Decode(d *jx.Decoder) error {
 			case "force_reply":
 				found = true
 				s.Type = ForceReplySendContactReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ForceReplySendContactReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ForceReplySendContactReplyMarkup
 			}
 			return d.Skip()
 		})
@@ -17357,12 +17333,6 @@ func (s *SendDiceReplyMarkup) Decode(d *jx.Decoder) error {
 				found = true
 				s.Type = ReplyKeyboardRemoveSendDiceReplyMarkup
 			case "force_reply":
-				found = true
-				s.Type = ForceReplySendDiceReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ForceReplySendDiceReplyMarkup
-			case "selective":
 				found = true
 				s.Type = ForceReplySendDiceReplyMarkup
 			}
@@ -17691,12 +17661,6 @@ func (s *SendDocumentReplyMarkup) Decode(d *jx.Decoder) error {
 				found = true
 				s.Type = ReplyKeyboardRemoveSendDocumentReplyMarkup
 			case "force_reply":
-				found = true
-				s.Type = ForceReplySendDocumentReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ForceReplySendDocumentReplyMarkup
-			case "selective":
 				found = true
 				s.Type = ForceReplySendDocumentReplyMarkup
 			}
@@ -18652,12 +18616,6 @@ func (s *SendLocationReplyMarkup) Decode(d *jx.Decoder) error {
 			case "force_reply":
 				found = true
 				s.Type = ForceReplySendLocationReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ForceReplySendLocationReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ForceReplySendLocationReplyMarkup
 			}
 			return d.Skip()
 		})
@@ -19196,12 +19154,6 @@ func (s *SendMessageReplyMarkup) Decode(d *jx.Decoder) error {
 			case "force_reply":
 				found = true
 				s.Type = ForceReplySendMessageReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ForceReplySendMessageReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ForceReplySendMessageReplyMarkup
 			}
 			return d.Skip()
 		})
@@ -19498,12 +19450,6 @@ func (s *SendPhotoReplyMarkup) Decode(d *jx.Decoder) error {
 				found = true
 				s.Type = ReplyKeyboardRemoveSendPhotoReplyMarkup
 			case "force_reply":
-				found = true
-				s.Type = ForceReplySendPhotoReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ForceReplySendPhotoReplyMarkup
-			case "selective":
 				found = true
 				s.Type = ForceReplySendPhotoReplyMarkup
 			}
@@ -19944,12 +19890,6 @@ func (s *SendPollReplyMarkup) Decode(d *jx.Decoder) error {
 			case "force_reply":
 				found = true
 				s.Type = ForceReplySendPollReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ForceReplySendPollReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ForceReplySendPollReplyMarkup
 			}
 			return d.Skip()
 		})
@@ -20181,12 +20121,6 @@ func (s *SendStickerReplyMarkup) Decode(d *jx.Decoder) error {
 				found = true
 				s.Type = ReplyKeyboardRemoveSendStickerReplyMarkup
 			case "force_reply":
-				found = true
-				s.Type = ForceReplySendStickerReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ForceReplySendStickerReplyMarkup
-			case "selective":
 				found = true
 				s.Type = ForceReplySendStickerReplyMarkup
 			}
@@ -20523,12 +20457,6 @@ func (s *SendVenueReplyMarkup) Decode(d *jx.Decoder) error {
 				found = true
 				s.Type = ReplyKeyboardRemoveSendVenueReplyMarkup
 			case "force_reply":
-				found = true
-				s.Type = ForceReplySendVenueReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ForceReplySendVenueReplyMarkup
-			case "selective":
 				found = true
 				s.Type = ForceReplySendVenueReplyMarkup
 			}
@@ -21103,12 +21031,6 @@ func (s *SendVideoNoteReplyMarkup) Decode(d *jx.Decoder) error {
 			case "force_reply":
 				found = true
 				s.Type = ForceReplySendVideoNoteReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ForceReplySendVideoNoteReplyMarkup
-			case "selective":
-				found = true
-				s.Type = ForceReplySendVideoNoteReplyMarkup
 			}
 			return d.Skip()
 		})
@@ -21187,12 +21109,6 @@ func (s *SendVideoReplyMarkup) Decode(d *jx.Decoder) error {
 				found = true
 				s.Type = ReplyKeyboardRemoveSendVideoReplyMarkup
 			case "force_reply":
-				found = true
-				s.Type = ForceReplySendVideoReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ForceReplySendVideoReplyMarkup
-			case "selective":
 				found = true
 				s.Type = ForceReplySendVideoReplyMarkup
 			}
@@ -21506,12 +21422,6 @@ func (s *SendVoiceReplyMarkup) Decode(d *jx.Decoder) error {
 				found = true
 				s.Type = ReplyKeyboardRemoveSendVoiceReplyMarkup
 			case "force_reply":
-				found = true
-				s.Type = ForceReplySendVoiceReplyMarkup
-			case "input_field_placeholder":
-				found = true
-				s.Type = ForceReplySendVoiceReplyMarkup
-			case "selective":
 				found = true
 				s.Type = ForceReplySendVoiceReplyMarkup
 			}
