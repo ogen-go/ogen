@@ -1274,8 +1274,7 @@
                 },
                 "status": {
                   "type": "string"
-                },
-                "errors": {}
+                }
               },
               "required": [
                 "code",
@@ -1297,8 +1296,7 @@
                 },
                 "status": {
                   "type": "string"
-                },
-                "errors": {}
+                }
               },
               "required": [
                 "code",
@@ -1320,8 +1318,7 @@
                 },
                 "status": {
                   "type": "string"
-                },
-                "errors": {}
+                }
               },
               "required": [
                 "code",
@@ -1343,8 +1340,7 @@
                 },
                 "status": {
                   "type": "string"
-                },
-                "errors": {}
+                }
               },
               "required": [
                 "code",
@@ -1366,8 +1362,7 @@
                 },
                 "status": {
                   "type": "string"
-                },
-                "errors": {}
+                }
               },
               "required": [
                 "code",
