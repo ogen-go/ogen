@@ -19984,6 +19984,9 @@ func (o *OptBotCommandScope) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptBotCommandScope`, d.Next())
@@ -20131,6 +20134,9 @@ func (o *OptChatMember) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptChatMember`, d.Next())
@@ -20278,6 +20284,9 @@ func (o *OptCopyMessageReplyMarkup) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptCopyMessageReplyMarkup`, d.Next())
@@ -20527,6 +20536,9 @@ func (o *OptID) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptID`, d.Next())
@@ -20624,6 +20636,9 @@ func (o *OptInputMessageContent) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptInputMessageContent`, d.Next())
@@ -21125,6 +21140,9 @@ func (o *OptSendAnimationReplyMarkup) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSendAnimationReplyMarkup`, d.Next())
@@ -21147,6 +21165,9 @@ func (o *OptSendAudioReplyMarkup) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSendAudioReplyMarkup`, d.Next())
@@ -21169,6 +21190,9 @@ func (o *OptSendContactReplyMarkup) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSendContactReplyMarkup`, d.Next())
@@ -21191,6 +21215,9 @@ func (o *OptSendDiceReplyMarkup) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSendDiceReplyMarkup`, d.Next())
@@ -21213,6 +21240,9 @@ func (o *OptSendDocumentReplyMarkup) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSendDocumentReplyMarkup`, d.Next())
@@ -21235,6 +21265,9 @@ func (o *OptSendLocationReplyMarkup) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSendLocationReplyMarkup`, d.Next())
@@ -21257,6 +21290,9 @@ func (o *OptSendMessageReplyMarkup) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSendMessageReplyMarkup`, d.Next())
@@ -21279,6 +21315,9 @@ func (o *OptSendPhotoReplyMarkup) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSendPhotoReplyMarkup`, d.Next())
@@ -21301,6 +21340,9 @@ func (o *OptSendPollReplyMarkup) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSendPollReplyMarkup`, d.Next())
@@ -21323,6 +21365,9 @@ func (o *OptSendStickerReplyMarkup) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSendStickerReplyMarkup`, d.Next())
@@ -21345,6 +21390,9 @@ func (o *OptSendVenueReplyMarkup) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSendVenueReplyMarkup`, d.Next())
@@ -21367,6 +21415,9 @@ func (o *OptSendVideoNoteReplyMarkup) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSendVideoNoteReplyMarkup`, d.Next())
@@ -21389,6 +21440,9 @@ func (o *OptSendVideoReplyMarkup) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSendVideoReplyMarkup`, d.Next())
@@ -21411,6 +21465,9 @@ func (o *OptSendVoiceReplyMarkup) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSendVoiceReplyMarkup`, d.Next())
