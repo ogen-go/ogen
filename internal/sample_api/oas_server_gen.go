@@ -100,6 +100,10 @@ type Handler interface {
 	//
 	// GET /test/header
 	GetHeader(ctx context.Context, params GetHeaderParams) (Hash, error)
+	// OneofBug implements oneofBug operation.
+	//
+	// POST /oneofBug
+	OneofBug(ctx context.Context, req OneofBugReq) (OneofBugOK, error)
 	// PetCreate implements petCreate operation.
 	//
 	// Creates pet.

@@ -21341,58 +21341,6 @@ func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter,
 	}
 }
 
-// HandleUsersGetAuthenticatedRequest handles users/get-authenticated operation.
-//
-// GET /user
-func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersGetAuthenticated`,
-		trace.WithAttributes(otelogen.OperationID(`users/get-authenticated`)),
-		trace.WithSpanKind(trace.SpanKindServer),
-	)
-	defer span.End()
-
-	response, err := s.h.UsersGetAuthenticated(ctx)
-	if err != nil {
-		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
-		return
-	}
-
-	if err := encodeUsersGetAuthenticatedResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		return
-	}
-}
-
-// HandleUsersGetByUsernameRequest handles users/get-by-username operation.
-//
-// GET /users/{username}
-func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersGetByUsername`,
-		trace.WithAttributes(otelogen.OperationID(`users/get-by-username`)),
-		trace.WithSpanKind(trace.SpanKindServer),
-	)
-	defer span.End()
-	params, err := decodeUsersGetByUsernameParams(args, r)
-	if err != nil {
-		span.RecordError(err)
-		respondError(w, http.StatusBadRequest, err)
-		return
-	}
-
-	response, err := s.h.UsersGetByUsername(ctx, params)
-	if err != nil {
-		span.RecordError(err)
-		respondError(w, http.StatusInternalServerError, err)
-		return
-	}
-
-	if err := encodeUsersGetByUsernameResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		return
-	}
-}
-
 // HandleUsersGetContextForUserRequest handles users/get-context-for-user operation.
 //
 // GET /users/{username}/hovercard

@@ -114,6 +114,36 @@ func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req OptPet, err 
 	}
 }
 
+func decodeOneofBugRequest(r *http.Request, span trace.Span) (req OneofBugReq, err error) {
+	switch r.Header.Get("Content-Type") {
+	case "application/json":
+		var request OneofBugReq
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+		if written == 0 {
+			return req, nil
+		}
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, err
+		}
+		return request, nil
+	default:
+		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+	}
+}
+
 func decodePetCreateRequest(r *http.Request, span trace.Span) (req OptPet, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":

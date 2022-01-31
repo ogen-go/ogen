@@ -167,6 +167,11 @@ func encodeGetHeaderResponse(response Hash, w http.ResponseWriter, span trace.Sp
 	return nil
 }
 
+func encodeOneofBugResponse(response OneofBugOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+	return nil
+}
+
 func encodePetCreateResponse(response Pet, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)

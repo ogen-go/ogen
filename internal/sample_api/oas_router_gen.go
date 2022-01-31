@@ -376,7 +376,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handlePetCreateRequest([0]string{}, w, r)
+				s.handleOneofBugRequest([0]string{}, w, r)
 
 				return
 			}
@@ -391,6 +391,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				if len(elem) == 0 {
 					// Leaf: FoobarPost
 					s.handleFoobarPostRequest([0]string{}, w, r)
+
+					return
+				}
+			case 'o': // Prefix: "oneofBug"
+				if l := len("oneofBug"); len(elem) >= l && elem[0:l] == "oneofBug" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: OneofBug
+					s.handleOneofBugRequest([0]string{}, w, r)
 
 					return
 				}
@@ -812,7 +825,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "PetCreate"
+				r.name = "OneofBug"
 				r.args = args
 				r.count = 0
 				return r, true
@@ -828,6 +841,20 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				if len(elem) == 0 {
 					// Leaf: FoobarPost
 					r.name = "FoobarPost"
+					r.args = args
+					r.count = 0
+					return r, true
+				}
+			case 'o': // Prefix: "oneofBug"
+				if l := len("oneofBug"); len(elem) >= l && elem[0:l] == "oneofBug" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: OneofBug
+					r.name = "OneofBug"
 					r.args = args
 					r.count = 0
 					return r, true

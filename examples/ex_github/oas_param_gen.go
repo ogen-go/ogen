@@ -5336,10 +5336,6 @@ type UsersFollowParams struct {
 	Username string
 }
 
-type UsersGetByUsernameParams struct {
-	Username string
-}
-
 type UsersGetContextForUserParams struct {
 	Username string
 	// Identifies which additional information you'd like to receive about the person's hovercard. Can be
