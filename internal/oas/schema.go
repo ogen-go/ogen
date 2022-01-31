@@ -1,5 +1,7 @@
 package oas
 
+import "encoding/json"
+
 // SchemaType is an OpenAPI JSON Schema type.
 type SchemaType string
 
@@ -57,6 +59,14 @@ type Schema struct {
 	// Struct validation.
 	MaxProperties *uint64
 	MinProperties *uint64
+
+	Examples []json.RawMessage
+}
+
+func (s *Schema) AddExample(r json.RawMessage) {
+	if len(r) > 0 {
+		s.Examples = append(s.Examples, r)
+	}
 }
 
 // Property is an OpenAPI JSON Schema Object property.

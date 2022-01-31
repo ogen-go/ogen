@@ -50,6 +50,17 @@ func (p *parser) parseResponse(resp *ogen.Response) (*oas.Response, error) {
 		if err != nil {
 			return nil, errors.Wrapf(err, "content: %s: schema", contentType)
 		}
+		schema.AddExample(media.Example)
+		for _, example := range media.Examples {
+			schema.AddExample(example.Value)
+			if ref := example.Ref; ref != "" {
+				r, err := p.resolveExample(ref)
+				if err != nil {
+					return nil, errors.Wrapf(err, "resolve: %q", ref)
+				}
+				schema.AddExample(r.Value)
+			}
+		}
 
 		response.Contents[contentType] = schema
 	}

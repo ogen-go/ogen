@@ -83,3 +83,30 @@ func (p *parser) resolveParameter(ref string) (*oas.Parameter, error) {
 	p.refs.parameters[ref] = param
 	return param, nil
 }
+
+func (p *parser) resolveExample(ref string) (*oas.Example, error) {
+	const prefix = "#/components/examples/"
+	if !strings.HasPrefix(ref, prefix) {
+		return nil, errors.Errorf("invalid parameter reference: %q", ref)
+	}
+
+	if param, ok := p.refs.examples[ref]; ok {
+		return param, nil
+	}
+
+	name := strings.TrimPrefix(ref, prefix)
+	component, found := p.spec.Components.Examples[name]
+	if !found {
+		return nil, errors.Errorf("component by reference %q not found", ref)
+	}
+	example := &oas.Example{
+		Ref:           component.Ref,
+		Summary:       component.Summary,
+		Description:   component.Description,
+		Value:         component.Value,
+		ExternalValue: component.ExternalValue,
+	}
+
+	p.refs.examples[ref] = example
+	return example, nil
+}

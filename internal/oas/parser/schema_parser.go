@@ -237,6 +237,8 @@ func (p *schemaParser) resolve(ref string) (*oas.Schema, error) {
 
 func (p *schemaParser) extendInfo(schema *ogen.Schema, s *oas.Schema) *oas.Schema {
 	s.Description = schema.Description
+	s.AddExample(schema.Example)
+
 	// Workaround: handle nullable enums correctly.
 	//
 	// Notice that nullable enum requires `null` in value list.

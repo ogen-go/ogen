@@ -145,6 +145,14 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		}
 	}
 
+	if g.opt.GenerateExampleTests {
+		name := "test_examples"
+		fileName := fmt.Sprintf("oas_%s_gen_test.go", name)
+		if err := w.Generate(name, fileName, cfg); err != nil {
+			return errors.Wrapf(err, "%s", name)
+		}
+	}
+
 	return nil
 }
 

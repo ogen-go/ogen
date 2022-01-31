@@ -20,6 +20,7 @@ type parser struct {
 		requestBodies map[string]*oas.RequestBody
 		responses     map[string]*oas.Response
 		parameters    map[string]*oas.Parameter
+		examples      map[string]*oas.Example
 	}
 }
 
@@ -32,11 +33,13 @@ func Parse(spec *ogen.Spec) ([]*oas.Operation, error) {
 			requestBodies map[string]*oas.RequestBody
 			responses     map[string]*oas.Response
 			parameters    map[string]*oas.Parameter
+			examples      map[string]*oas.Example
 		}{
 			schemas:       map[string]*oas.Schema{},
 			requestBodies: map[string]*oas.RequestBody{},
 			responses:     map[string]*oas.Response{},
 			parameters:    map[string]*oas.Parameter{},
+			examples:      map[string]*oas.Example{},
 		},
 	}
 

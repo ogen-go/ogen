@@ -30,6 +30,7 @@ type Generator struct {
 
 type Options struct {
 	VerboseRoute         bool
+	GenerateExampleTests bool
 	SpecificMethodPath   string
 	IgnoreNotImplemented []string
 }

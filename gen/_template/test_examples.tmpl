@@ -1,0 +1,46 @@
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
+
+{{ define "test_examples" }}
+{{ template "header_test" $ }}
+
+{{- range $typ := $.Types }}{{- if $typ.HasFeature "json" }}
+{{- with $examples := $typ.Examples }}
+
+func Test{{ $typ.Go }}_Decode(t *testing.T) {
+	t.Parallel()
+
+	for i, tc := range []struct{
+		Input string
+	}{
+		{{- range $example := $examples }}
+		{
+			Input: {{ printf "%q" $example }},
+		},
+		{{- end }}
+	}{
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ {{ $typ.Go }}
+			{{- if $typ.IsMap }}
+			{{- if eq (len $typ.Fields) 0 }}
+			typ = make({{ $typ.Go }})
+			{{- end }}
+			{{- end }}
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				t.Log("Input:", tc.Input)
+				t.Fatalf("Unexpected error: %+v", err)
+			}
+		})
+	}
+}
+
+{{- end }}
+{{- end }}{{- end }}
+
+{{- end }}

@@ -39,6 +39,7 @@ func main() {
 		specificMethod = flag.String("specific-method", "", "Generate specific method by its path")
 		clean          = flag.Bool("clean", false, "Clean generated files before generation")
 		verbose        = flag.Bool("v", false, "verbose")
+		generateTests  = flag.Bool("generate-tests", false, "Generate tests based on schema examples")
 
 		debugIgnoreNotImplemented = flag.String("debug.ignoreNotImplemented", "", "Ignore methods having functionality which is not implemented (all, oneOf, anyOf, allOf, nullable types, complex parameter types)")
 		debugNoerr                = flag.Bool("debug.noerr", false, "Ignore all errors")
@@ -93,6 +94,7 @@ func main() {
 		SpecificMethodPath:   *specificMethod,
 		IgnoreNotImplemented: strings.Split(*debugIgnoreNotImplemented, ","),
 		VerboseRoute:         *verbose,
+		GenerateExampleTests: *generateTests,
 	}
 
 	if *debugNoerr {
