@@ -29,6 +29,10 @@ func (p *schemaParser) Parse(schema *ogen.Schema) (*oas.Schema, error) {
 }
 
 func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Schema) (*oas.Schema, error) {
+	if schema == nil {
+		return nil, nil
+	}
+
 	if ref := schema.Ref; ref != "" {
 		s, err := p.resolve(ref)
 		if err != nil {
@@ -136,11 +140,7 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 			MaxItems:    schema.MaxItems,
 			UniqueItems: schema.UniqueItems,
 		})
-		if schema.Items == nil {
-			// Fallback to string.
-			array.Item = &oas.Schema{Type: oas.String}
-			return array, nil
-		}
+
 		if len(schema.Properties) > 0 {
 			return nil, errors.New("array cannot contain properties")
 		}
@@ -192,10 +192,7 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 		}), nil
 
 	case "":
-		return hook(&oas.Schema{
-			Type:   oas.String,
-			Format: oas.Format(schema.Format),
-		}), nil
+		return nil, nil
 
 	default:
 		return nil, errors.Errorf("unexpected schema type: %q", schema.Type)

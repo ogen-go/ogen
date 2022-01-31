@@ -40,6 +40,10 @@ func variantFieldName(t *ir.Type) string {
 }
 
 func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err error) {
+	if schema == nil {
+		return nil, &ErrNotImplemented{Name: "empty schema"}
+	}
+
 	if ref := schema.Ref; ref != "" {
 		if t, ok := g.globalRefs[ref]; ok {
 			return t, nil

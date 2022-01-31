@@ -22,7 +22,7 @@ func (g *Generator) generateContents(name string, contents map[string]*oas.Schem
 		case "application/json":
 			t, err := g.generateSchema(typeName, schema)
 			if err != nil {
-				return nil, errors.Wrapf(err, "contents: %s", contentType)
+				return nil, errors.Wrap(err, "schema")
 			}
 
 			t.AddFeature("json")
