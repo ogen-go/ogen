@@ -114,10 +114,10 @@ func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req OptPet, err 
 	}
 }
 
-func decodeOneofBugRequest(r *http.Request, span trace.Span) (req OneofBugReq, err error) {
+func decodeOneofBugRequest(r *http.Request, span trace.Span) (req OneOfBugs, err error) {
 	switch r.Header.Get("Content-Type") {
 	case "application/json":
-		var request OneofBugReq
+		var request OneOfBugs
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
