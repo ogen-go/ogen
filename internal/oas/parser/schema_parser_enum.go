@@ -9,6 +9,22 @@ import (
 	"github.com/ogen-go/ogen/internal/oas"
 )
 
+func inferEnumType(v json.RawMessage) (string, error) {
+	typ := jx.DecodeBytes(v).Next()
+	switch typ {
+	case jx.String:
+		return "string", nil
+	case jx.Number:
+		return "number", nil
+	case jx.Bool:
+		return "bool", nil
+	case jx.Null:
+		return "", errors.Errorf("cannot infer enum type from %q", v)
+	default:
+		return "", errors.Errorf("invalid enum value %q", v)
+	}
+}
+
 func parseEnumValues(typ oas.SchemaType, rawValues []json.RawMessage) ([]interface{}, error) {
 	var (
 		values []interface{}

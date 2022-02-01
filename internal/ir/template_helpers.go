@@ -82,6 +82,7 @@ func (t *Type) IsGeneric() bool   { return t.Is(KindGeneric) }
 func (t *Type) IsAlias() bool     { return t.Is(KindAlias) }
 func (t *Type) IsInterface() bool { return t.Is(KindInterface) }
 func (t *Type) IsSum() bool       { return t.Is(KindSum) }
+func (t *Type) IsAny() bool       { return t.Is(KindAny) }
 func (t *Type) IsStream() bool    { return t.Is(KindStream) }
 func (t *Type) IsNumeric() bool   { return t.IsInteger() || t.IsFloat() }
 

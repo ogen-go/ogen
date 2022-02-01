@@ -43,6 +43,13 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 
 	switch {
 	case len(schema.Enum) > 0:
+		if schema.Type == "" {
+			typ, err := inferEnumType(schema.Enum[0])
+			if err != nil {
+				return nil, errors.Wrap(err, "infer enum type")
+			}
+			schema.Type = typ
+		}
 		if err := validateTypeFormat(schema.Type, schema.Format); err != nil {
 			return nil, errors.Wrap(err, "validate format")
 		}
@@ -80,11 +87,31 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 		return hook(&oas.Schema{AllOf: schemas}), nil
 	}
 
-	// Try to derive schema type from properties.
+	// Try to infer schema type from properties.
 	if schema.Type == "" {
 		switch {
-		case schema.Items != nil:
+		case schema.AdditionalProperties != nil ||
+			schema.MaxProperties != nil ||
+			schema.MinProperties != nil:
+			schema.Type = "object"
+
+		case schema.Items != nil ||
+			schema.UniqueItems ||
+			schema.MaxItems != nil ||
+			schema.MinItems != nil:
 			schema.Type = "array"
+
+		case schema.Maximum != nil ||
+			schema.Minimum != nil ||
+			schema.ExclusiveMinimum ||
+			schema.ExclusiveMaximum || // FIXME(tdakkota): check for existence instead of true?
+			schema.MultipleOf != nil:
+			schema.Type = "number"
+
+		case schema.MaxLength != nil ||
+			schema.MinLength != nil ||
+			schema.Pattern != "":
+			schema.Type = "string"
 		}
 	}
 
@@ -102,21 +129,28 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 			return false
 		}
 
-		var item *oas.Schema
+		var (
+			item       *oas.Schema
+			additional bool
+		)
 		if ap := schema.AdditionalProperties; ap != nil {
-			sch := ogen.Schema(*ap)
-			prop, err := p.Parse(&sch)
-			if err != nil {
-				return nil, errors.Wrapf(err, "additionalProperties")
+			additional = true
+			if !ap.Bool {
+				sch := ap.Schema
+				prop, err := p.Parse(&sch)
+				if err != nil {
+					return nil, errors.Wrapf(err, "additionalProperties")
+				}
+				item = prop
 			}
-			item = prop
 		}
 
 		s := hook(&oas.Schema{
-			Type:          oas.Object,
-			Item:          item,
-			MaxProperties: schema.MaxProperties,
-			MinProperties: schema.MinProperties,
+			Type:                 oas.Object,
+			Item:                 item,
+			AdditionalProperties: additional,
+			MaxProperties:        schema.MaxProperties,
+			MinProperties:        schema.MinProperties,
 		})
 		for _, propSpec := range schema.Properties {
 			prop, err := p.Parse(propSpec.Schema)
@@ -140,7 +174,10 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 			MaxItems:    schema.MaxItems,
 			UniqueItems: schema.UniqueItems,
 		})
-
+		if schema.Items == nil {
+			// Keep items nil, we will use ir.Any for it.
+			return array, nil
+		}
 		if len(schema.Properties) > 0 {
 			return nil, errors.New("array cannot contain properties")
 		}
@@ -192,7 +229,7 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 		}), nil
 
 	case "":
-		return nil, nil
+		return hook(&oas.Schema{}), nil
 
 	default:
 		return nil, errors.Errorf("unexpected schema type: %q", schema.Type)

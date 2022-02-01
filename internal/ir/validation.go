@@ -73,7 +73,8 @@ func (t *Type) needValidation(path *walkpath) (result bool) {
 		return false
 	case KindMap:
 		return t.Item.needValidation(path)
-	case KindStream:
+	case KindStream, KindAny:
+		// FIXME(tdakkota): try to validate Any.
 		return false
 	default:
 		panic("unreachable")

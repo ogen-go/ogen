@@ -37,7 +37,8 @@ func (j JSONFields) FirstRequiredIndex() int {
 				KindSum,
 				KindAlias,
 			) && (typ.NilSemantic.Optional() || typ.NilSemantic.Invalid()) ||
-			typ.IsArray() && typ.NilSemantic.Optional() {
+			typ.IsArray() && typ.NilSemantic.Optional() ||
+			typ.IsAny() {
 			continue
 		}
 		return idx
@@ -155,7 +156,7 @@ func jsonType(t *Type) string {
 //
 // Mostly true for primitives or enums.
 func (j JSON) raw() bool {
-	if !j.t.Is(KindPrimitive, KindEnum) {
+	if !j.t.Is(KindPrimitive, KindEnum, KindAny) {
 		return false
 	}
 
@@ -166,7 +167,7 @@ func (j JSON) raw() bool {
 	case Bool, String, ByteSlice:
 		return true
 	default:
-		return false
+		return j.t.Kind == KindAny
 	}
 }
 
@@ -176,6 +177,9 @@ func (j JSON) raw() bool {
 func (j JSON) Fn() string {
 	if !j.raw() {
 		return ""
+	}
+	if j.t.IsAny() {
+		return "Raw"
 	}
 	switch j.t.Primitive {
 	case String:

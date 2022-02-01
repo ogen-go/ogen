@@ -22,6 +22,7 @@ const (
 	KindInterface Kind = "interface"
 	KindGeneric   Kind = "generic"
 	KindSum       Kind = "sum"
+	KindAny       Kind = "any"
 	KindStream    Kind = "stream"
 )
 
@@ -53,6 +54,8 @@ func (t *TypeDiscriminator) Set(s *Type) {
 		t.Set(s.PointerTo)
 	case KindGeneric:
 		t.Set(s.GenericOf)
+	case KindAny:
+		t.Kind = KindAny
 	default:
 		// Treat all other types as struct.
 		t.Kind = KindStruct
@@ -218,6 +221,8 @@ func (t *Type) Go() string {
 	switch t.Kind {
 	case KindPrimitive:
 		return t.Primitive.String()
+	case KindAny:
+		return "jx.Raw"
 	case KindArray:
 		return "[]" + t.Item.Go()
 	case KindPointer:
