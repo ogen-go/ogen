@@ -201,6 +201,10 @@ type CodeScanningDeleteAnalysisRes interface {
 	codeScanningDeleteAnalysisRes()
 }
 
+type CodeScanningGetAlertRes interface {
+	codeScanningGetAlertRes()
+}
+
 type CodeScanningGetAnalysisRes interface {
 	codeScanningGetAnalysisRes()
 }
@@ -219,6 +223,10 @@ type CodeScanningListAlertsForRepoRes interface {
 
 type CodeScanningListRecentAnalysesRes interface {
 	codeScanningListRecentAnalysesRes()
+}
+
+type CodeScanningUpdateAlertRes interface {
+	codeScanningUpdateAlertRes()
 }
 
 type CodeScanningUploadSarifRes interface {
@@ -245,6 +253,10 @@ type GistsCreateCommentRes interface {
 	gistsCreateCommentRes()
 }
 
+type GistsCreateRes interface {
+	gistsCreateRes()
+}
+
 type GistsDeleteCommentRes interface {
 	gistsDeleteCommentRes()
 }
@@ -253,8 +265,20 @@ type GistsDeleteRes interface {
 	gistsDeleteRes()
 }
 
+type GistsForkRes interface {
+	gistsForkRes()
+}
+
 type GistsGetCommentRes interface {
 	gistsGetCommentRes()
+}
+
+type GistsGetRes interface {
+	gistsGetRes()
+}
+
+type GistsGetRevisionRes interface {
+	gistsGetRevisionRes()
 }
 
 type GistsListCommentsRes interface {
@@ -263,6 +287,26 @@ type GistsListCommentsRes interface {
 
 type GistsListCommitsRes interface {
 	gistsListCommitsRes()
+}
+
+type GistsListForUserRes interface {
+	gistsListForUserRes()
+}
+
+type GistsListForksRes interface {
+	gistsListForksRes()
+}
+
+type GistsListPublicRes interface {
+	gistsListPublicRes()
+}
+
+type GistsListRes interface {
+	gistsListRes()
+}
+
+type GistsListStarredRes interface {
+	gistsListStarredRes()
 }
 
 type GistsStarRes interface {
@@ -497,6 +541,18 @@ type MigrationsGetImportStatusRes interface {
 	migrationsGetImportStatusRes()
 }
 
+type MigrationsGetStatusForAuthenticatedUserRes interface {
+	migrationsGetStatusForAuthenticatedUserRes()
+}
+
+type MigrationsGetStatusForOrgRes interface {
+	migrationsGetStatusForOrgRes()
+}
+
+type MigrationsListForAuthenticatedUserRes interface {
+	migrationsListForAuthenticatedUserRes()
+}
+
 type MigrationsListReposForOrgRes interface {
 	migrationsListReposForOrgRes()
 }
@@ -511,6 +567,14 @@ type MigrationsMapCommitAuthorRes interface {
 
 type MigrationsSetLfsPreferenceRes interface {
 	migrationsSetLfsPreferenceRes()
+}
+
+type MigrationsStartForAuthenticatedUserRes interface {
+	migrationsStartForAuthenticatedUserRes()
+}
+
+type MigrationsStartForOrgRes interface {
+	migrationsStartForOrgRes()
 }
 
 type MigrationsStartImportRes interface {
@@ -723,6 +787,18 @@ type PackagesDeletePackageVersionForOrgRes interface {
 
 type PackagesDeletePackageVersionForUserRes interface {
 	packagesDeletePackageVersionForUserRes()
+}
+
+type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes interface {
+	packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes()
+}
+
+type PackagesGetAllPackageVersionsForPackageOwnedByOrgRes interface {
+	packagesGetAllPackageVersionsForPackageOwnedByOrgRes()
+}
+
+type PackagesGetAllPackageVersionsForPackageOwnedByUserRes interface {
+	packagesGetAllPackageVersionsForPackageOwnedByUserRes()
 }
 
 type PackagesListPackagesForOrganizationRes interface {
@@ -1065,6 +1141,10 @@ type ReposCreateOrUpdateFileContentsRes interface {
 	reposCreateOrUpdateFileContentsRes()
 }
 
+type ReposCreatePagesSiteRes interface {
+	reposCreatePagesSiteRes()
+}
+
 type ReposCreateReleaseRes interface {
 	reposCreateReleaseRes()
 }
@@ -1203,6 +1283,10 @@ type ReposGetDeploymentStatusRes interface {
 
 type ReposGetPagesHealthCheckRes interface {
 	reposGetPagesHealthCheckRes()
+}
+
+type ReposGetPagesRes interface {
+	reposGetPagesRes()
 }
 
 type ReposGetParticipationStatsRes interface {
@@ -1601,6 +1685,10 @@ type UsersCheckPersonIsFollowedByAuthenticatedRes interface {
 	usersCheckPersonIsFollowedByAuthenticatedRes()
 }
 
+type UsersCreateGpgKeyForAuthenticatedRes interface {
+	usersCreateGpgKeyForAuthenticatedRes()
+}
+
 type UsersCreatePublicSSHKeyForAuthenticatedRes interface {
 	usersCreatePublicSSHKeyForAuthenticatedRes()
 }
@@ -1633,6 +1721,10 @@ type UsersGetContextForUserRes interface {
 	usersGetContextForUserRes()
 }
 
+type UsersGetGpgKeyForAuthenticatedRes interface {
+	usersGetGpgKeyForAuthenticatedRes()
+}
+
 type UsersGetPublicSSHKeyForAuthenticatedRes interface {
 	usersGetPublicSSHKeyForAuthenticatedRes()
 }
@@ -1651,6 +1743,10 @@ type UsersListFollowedByAuthenticatedRes interface {
 
 type UsersListFollowersForAuthenticatedUserRes interface {
 	usersListFollowersForAuthenticatedUserRes()
+}
+
+type UsersListGpgKeysForAuthenticatedRes interface {
+	usersListGpgKeysForAuthenticatedRes()
 }
 
 type UsersListPublicEmailsForAuthenticatedRes interface {

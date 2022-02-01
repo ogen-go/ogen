@@ -1782,6 +1782,18 @@ type Handler interface {
 	//
 	// DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
 	CodeScanningDeleteAnalysis(ctx context.Context, params CodeScanningDeleteAnalysisParams) (CodeScanningDeleteAnalysisRes, error)
+	// CodeScanningGetAlert implements code-scanning/get-alert operation.
+	//
+	// Gets a single code scanning alert. You must use an access token with the `security_events` scope
+	// to use this endpoint. GitHub Apps must have the `security_events` read permission to use this
+	// endpoint.
+	// **Deprecation notice**:
+	// The instances field is deprecated and will, in future, not be included in the response for this
+	// endpoint. The example response reflects this change. The same information can now be retrieved via
+	// a GET request to the URL specified by `instances_url`.
+	//
+	// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
+	CodeScanningGetAlert(ctx context.Context, params CodeScanningGetAlertParams) (CodeScanningGetAlertRes, error)
 	// CodeScanningGetAnalysis implements code-scanning/get-analysis operation.
 	//
 	// Gets a specified code scanning analysis for a repository.
@@ -1858,6 +1870,14 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/code-scanning/analyses
 	CodeScanningListRecentAnalyses(ctx context.Context, params CodeScanningListRecentAnalysesParams) (CodeScanningListRecentAnalysesRes, error)
+	// CodeScanningUpdateAlert implements code-scanning/update-alert operation.
+	//
+	// Updates the status of a single code scanning alert. You must use an access token with the
+	// `security_events` scope to use this endpoint. GitHub Apps must have the `security_events` write
+	// permission to use this endpoint.
+	//
+	// PATCH /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
+	CodeScanningUpdateAlert(ctx context.Context, req CodeScanningUpdateAlertReq, params CodeScanningUpdateAlertParams) (CodeScanningUpdateAlertRes, error)
 	// CodeScanningUploadSarif implements code-scanning/upload-sarif operation.
 	//
 	// Uploads SARIF data containing the results of a code scanning analysis to make the results
@@ -2016,6 +2036,13 @@ type Handler interface {
 	//
 	// GET /enterprises/{enterprise}/actions/permissions/selected-actions
 	EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context, params EnterpriseAdminGetAllowedActionsEnterpriseParams) (SelectedActions, error)
+	// EnterpriseAdminGetAuditLog implements enterprise-admin/get-audit-log operation.
+	//
+	// Gets the audit log for an enterprise. To use this endpoint, you must be an enterprise admin, and
+	// you must use an access token with the `admin:enterprise` scope.
+	//
+	// GET /enterprises/{enterprise}/audit-log
+	EnterpriseAdminGetAuditLog(ctx context.Context, params EnterpriseAdminGetAuditLogParams) ([]AuditLogEvent, error)
 	// EnterpriseAdminGetGithubActionsPermissionsEnterprise implements enterprise-admin/get-github-actions-permissions-enterprise operation.
 	//
 	// Gets the GitHub Actions permissions policy for organizations and allowed actions in an enterprise.
@@ -2244,6 +2271,17 @@ type Handler interface {
 	//
 	// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
 	EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx context.Context, req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) (EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, error)
+	// EnterpriseAdminUpdateAttributeForEnterpriseGroup implements enterprise-admin/update-attribute-for-enterprise-group operation.
+	//
+	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
+	// change.
+	// Allows you to change a provisioned group’s individual attributes. To change a group’s values,
+	// you must provide a specific Operations JSON format that contains at least one of the add, remove,
+	// or replace operations. For examples and more information on the SCIM operations format, see the
+	// [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
+	//
+	// PATCH /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+	EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Context, req EnterpriseAdminUpdateAttributeForEnterpriseGroupReq, params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams) (ScimEnterpriseGroup, error)
 	// EnterpriseAdminUpdateAttributeForEnterpriseUser implements enterprise-admin/update-attribute-for-enterprise-user operation.
 	//
 	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
@@ -2281,6 +2319,14 @@ type Handler interface {
 	//
 	// GET /gists/{gist_id}/star
 	GistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (GistsCheckIsStarredRes, error)
+	// GistsCreate implements gists/create operation.
+	//
+	// Allows you to add a new gist with one or more files.
+	// **Note:** Don't name your files "gistfile" with a numerical suffix. This is the format of the
+	// automatic naming scheme that Gist uses internally.
+	//
+	// POST /gists
+	GistsCreate(ctx context.Context, req GistsCreateReq) (GistsCreateRes, error)
 	// GistsCreateComment implements gists/create-comment operation.
 	//
 	// POST /gists/{gist_id}/comments
@@ -2293,10 +2339,31 @@ type Handler interface {
 	//
 	// DELETE /gists/{gist_id}/comments/{comment_id}
 	GistsDeleteComment(ctx context.Context, params GistsDeleteCommentParams) (GistsDeleteCommentRes, error)
+	// GistsFork implements gists/fork operation.
+	//
+	// **Note**: This was previously `/gists/:gist_id/fork`.
+	//
+	// POST /gists/{gist_id}/forks
+	GistsFork(ctx context.Context, params GistsForkParams) (GistsForkRes, error)
+	// GistsGet implements gists/get operation.
+	//
+	// GET /gists/{gist_id}
+	GistsGet(ctx context.Context, params GistsGetParams) (GistsGetRes, error)
 	// GistsGetComment implements gists/get-comment operation.
 	//
 	// GET /gists/{gist_id}/comments/{comment_id}
 	GistsGetComment(ctx context.Context, params GistsGetCommentParams) (GistsGetCommentRes, error)
+	// GistsGetRevision implements gists/get-revision operation.
+	//
+	// GET /gists/{gist_id}/{sha}
+	GistsGetRevision(ctx context.Context, params GistsGetRevisionParams) (GistsGetRevisionRes, error)
+	// GistsList implements gists/list operation.
+	//
+	// Lists the authenticated user's gists or if called anonymously, this endpoint returns all public
+	// gists:.
+	//
+	// GET /gists
+	GistsList(ctx context.Context, params GistsListParams) (GistsListRes, error)
 	// GistsListComments implements gists/list-comments operation.
 	//
 	// GET /gists/{gist_id}/comments
@@ -2305,6 +2372,31 @@ type Handler interface {
 	//
 	// GET /gists/{gist_id}/commits
 	GistsListCommits(ctx context.Context, params GistsListCommitsParams) (GistsListCommitsRes, error)
+	// GistsListForUser implements gists/list-for-user operation.
+	//
+	// Lists public gists for the specified user:.
+	//
+	// GET /users/{username}/gists
+	GistsListForUser(ctx context.Context, params GistsListForUserParams) (GistsListForUserRes, error)
+	// GistsListForks implements gists/list-forks operation.
+	//
+	// GET /gists/{gist_id}/forks
+	GistsListForks(ctx context.Context, params GistsListForksParams) (GistsListForksRes, error)
+	// GistsListPublic implements gists/list-public operation.
+	//
+	// List public gists sorted by most recently updated to least recently updated.
+	// Note: With [pagination](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#pagination), you can fetch up to 3000 gists. For
+	// example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
+	//
+	// GET /gists/public
+	GistsListPublic(ctx context.Context, params GistsListPublicParams) (GistsListPublicRes, error)
+	// GistsListStarred implements gists/list-starred operation.
+	//
+	// List the authenticated user's starred gists:.
+	//
+	// GET /gists/starred
+	GistsListStarred(ctx context.Context, params GistsListStarredParams) (GistsListStarredRes, error)
 	// GistsStar implements gists/star operation.
 	//
 	// Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more
@@ -3039,6 +3131,42 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/import/large_files
 	MigrationsGetLargeFiles(ctx context.Context, params MigrationsGetLargeFilesParams) ([]PorterLargeFile, error)
+	// MigrationsGetStatusForAuthenticatedUser implements migrations/get-status-for-authenticated-user operation.
+	//
+	// Fetches a single user migration. The response includes the `state` of the migration, which can be
+	// one of the following values:
+	// *   `pending` - the migration hasn't started yet.
+	// *   `exporting` - the migration is in progress.
+	// *   `exported` - the migration finished successfully.
+	// *   `failed` - the migration failed.
+	// Once the migration has been `exported` you can [download the migration archive](https://docs.
+	// github.com/rest/reference/migrations#download-a-user-migration-archive).
+	//
+	// GET /user/migrations/{migration_id}
+	MigrationsGetStatusForAuthenticatedUser(ctx context.Context, params MigrationsGetStatusForAuthenticatedUserParams) (MigrationsGetStatusForAuthenticatedUserRes, error)
+	// MigrationsGetStatusForOrg implements migrations/get-status-for-org operation.
+	//
+	// Fetches the status of a migration.
+	// The `state` of a migration can be one of the following values:
+	// *   `pending`, which means the migration hasn't started yet.
+	// *   `exporting`, which means the migration is in progress.
+	// *   `exported`, which means the migration finished successfully.
+	// *   `failed`, which means the migration failed.
+	//
+	// GET /orgs/{org}/migrations/{migration_id}
+	MigrationsGetStatusForOrg(ctx context.Context, params MigrationsGetStatusForOrgParams) (MigrationsGetStatusForOrgRes, error)
+	// MigrationsListForAuthenticatedUser implements migrations/list-for-authenticated-user operation.
+	//
+	// Lists all migrations a user has started.
+	//
+	// GET /user/migrations
+	MigrationsListForAuthenticatedUser(ctx context.Context, params MigrationsListForAuthenticatedUserParams) (MigrationsListForAuthenticatedUserRes, error)
+	// MigrationsListForOrg implements migrations/list-for-org operation.
+	//
+	// Lists the most recent migrations.
+	//
+	// GET /orgs/{org}/migrations
+	MigrationsListForOrg(ctx context.Context, params MigrationsListForOrgParams) ([]Migration, error)
 	// MigrationsListReposForOrg implements migrations/list-repos-for-org operation.
 	//
 	// List all the repositories for this organization migration.
@@ -3067,6 +3195,18 @@ type Handler interface {
 	//
 	// PATCH /repos/{owner}/{repo}/import/lfs
 	MigrationsSetLfsPreference(ctx context.Context, req MigrationsSetLfsPreferenceReq, params MigrationsSetLfsPreferenceParams) (MigrationsSetLfsPreferenceRes, error)
+	// MigrationsStartForAuthenticatedUser implements migrations/start-for-authenticated-user operation.
+	//
+	// Initiates the generation of a user migration archive.
+	//
+	// POST /user/migrations
+	MigrationsStartForAuthenticatedUser(ctx context.Context, req MigrationsStartForAuthenticatedUserReq) (MigrationsStartForAuthenticatedUserRes, error)
+	// MigrationsStartForOrg implements migrations/start-for-org operation.
+	//
+	// Initiates the generation of a migration archive.
+	//
+	// POST /orgs/{org}/migrations
+	MigrationsStartForOrg(ctx context.Context, req MigrationsStartForOrgReq, params MigrationsStartForOrgParams) (MigrationsStartForOrgRes, error)
 	// MigrationsStartImport implements migrations/start-import operation.
 	//
 	// Start a source import to a GitHub repository using GitHub Importer.
@@ -3373,6 +3513,17 @@ type Handler interface {
 	//
 	// GET /orgs/{org}
 	OrgsGet(ctx context.Context, params OrgsGetParams) (OrgsGetRes, error)
+	// OrgsGetAuditLog implements orgs/get-audit-log operation.
+	//
+	// Gets the audit log for an organization. For more information, see "[Reviewing the audit log for
+	// your organization](https://docs.github.
+	// com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization)."
+	// To use this endpoint, you must be an organization owner, and you must use an access token with the
+	// `admin:org` scope. GitHub Apps must have the `organization_administration` read permission to use
+	// this endpoint.
+	//
+	// GET /orgs/{org}/audit-log
+	OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogParams) ([]AuditLogEvent, error)
 	// OrgsGetMembershipForAuthenticatedUser implements orgs/get-membership-for-authenticated-user operation.
 	//
 	// GET /user/memberships/orgs/{org}
@@ -3698,6 +3849,30 @@ type Handler interface {
 	//
 	// DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
 	PackagesDeletePackageVersionForUser(ctx context.Context, params PackagesDeletePackageVersionForUserParams) (PackagesDeletePackageVersionForUserRes, error)
+	// PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser implements packages/get-all-package-versions-for-package-owned-by-authenticated-user operation.
+	//
+	// Returns all package versions for a package owned by the authenticated user.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /user/packages/{package_type}/{package_name}/versions
+	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams) (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes, error)
+	// PackagesGetAllPackageVersionsForPackageOwnedByOrg implements packages/get-all-package-versions-for-package-owned-by-org operation.
+	//
+	// Returns all package versions for a package owned by an organization.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /orgs/{org}/packages/{package_type}/{package_name}/versions
+	PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams) (PackagesGetAllPackageVersionsForPackageOwnedByOrgRes, error)
+	// PackagesGetAllPackageVersionsForPackageOwnedByUser implements packages/get-all-package-versions-for-package-owned-by-user operation.
+	//
+	// Returns all package versions for a public package owned by a specified user.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /users/{username}/packages/{package_type}/{package_name}/versions
+	PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByUserParams) (PackagesGetAllPackageVersionsForPackageOwnedByUserRes, error)
 	// PackagesGetPackageForAuthenticatedUser implements packages/get-package-for-authenticated-user operation.
 	//
 	// Gets a specific package for a package owned by the authenticated user.
@@ -3722,6 +3897,31 @@ type Handler interface {
 	//
 	// GET /users/{username}/packages/{package_type}/{package_name}
 	PackagesGetPackageForUser(ctx context.Context, params PackagesGetPackageForUserParams) (Package, error)
+	// PackagesGetPackageVersionForAuthenticatedUser implements packages/get-package-version-for-authenticated-user operation.
+	//
+	// Gets a specific package version for a package owned by the authenticated user.
+	// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
+	PackagesGetPackageVersionForAuthenticatedUser(ctx context.Context, params PackagesGetPackageVersionForAuthenticatedUserParams) (PackageVersion, error)
+	// PackagesGetPackageVersionForOrganization implements packages/get-package-version-for-organization operation.
+	//
+	// Gets a specific package version in an organization.
+	// You must authenticate using an access token with the `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
+	PackagesGetPackageVersionForOrganization(ctx context.Context, params PackagesGetPackageVersionForOrganizationParams) (PackageVersion, error)
+	// PackagesGetPackageVersionForUser implements packages/get-package-version-for-user operation.
+	//
+	// Gets a specific package version for a public package owned by a specified user.
+	// At this time, to use this endpoint, you must authenticate using an access token with the
+	// `packages:read` scope.
+	// If `package_type` is not `container`, your token must also include the `repo` scope.
+	//
+	// GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
+	PackagesGetPackageVersionForUser(ctx context.Context, params PackagesGetPackageVersionForUserParams) (PackageVersion, error)
 	// PackagesListPackagesForAuthenticatedUser implements packages/list-packages-for-authenticated-user operation.
 	//
 	// Lists packages owned by the authenticated user within the user's namespace.
@@ -4820,6 +5020,13 @@ type Handler interface {
 	//
 	// PUT /repos/{owner}/{repo}/contents/{path}
 	ReposCreateOrUpdateFileContents(ctx context.Context, req ReposCreateOrUpdateFileContentsReq, params ReposCreateOrUpdateFileContentsParams) (ReposCreateOrUpdateFileContentsRes, error)
+	// ReposCreatePagesSite implements repos/create-pages-site operation.
+	//
+	// Configures a GitHub Pages site. For more information, see "[About GitHub
+	// Pages](/github/working-with-github-pages/about-github-pages).".
+	//
+	// POST /repos/{owner}/{repo}/pages
+	ReposCreatePagesSite(ctx context.Context, req ReposCreatePagesSiteReq, params ReposCreatePagesSiteParams) (ReposCreatePagesSiteRes, error)
 	// ReposCreateRelease implements repos/create-release operation.
 	//
 	// Users with push access to the repository can create a release.
@@ -5309,6 +5516,10 @@ type Handler interface {
 	//
 	// GET /repos/{owner}/{repo}/releases/latest
 	ReposGetLatestRelease(ctx context.Context, params ReposGetLatestReleaseParams) (Release, error)
+	// ReposGetPages implements repos/get-pages operation.
+	//
+	// GET /repos/{owner}/{repo}/pages
+	ReposGetPages(ctx context.Context, params ReposGetPagesParams) (ReposGetPagesRes, error)
 	// ReposGetPagesBuild implements repos/get-pages-build operation.
 	//
 	// GET /repos/{owner}/{repo}/pages/builds/{build_id}
@@ -6999,6 +7210,14 @@ type Handler interface {
 	//
 	// GET /user/following/{username}
 	UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, params UsersCheckPersonIsFollowedByAuthenticatedParams) (UsersCheckPersonIsFollowedByAuthenticatedRes, error)
+	// UsersCreateGpgKeyForAuthenticated implements users/create-gpg-key-for-authenticated operation.
+	//
+	// Adds a GPG key to the authenticated user's GitHub account. Requires that you are authenticated via
+	// Basic Auth, or OAuth with at least `write:gpg_key` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// POST /user/gpg_keys
+	UsersCreateGpgKeyForAuthenticated(ctx context.Context, req UsersCreateGpgKeyForAuthenticatedReq) (UsersCreateGpgKeyForAuthenticatedRes, error)
 	// UsersCreatePublicSSHKeyForAuthenticated implements users/create-public-ssh-key-for-authenticated operation.
 	//
 	// Adds a public SSH key to the authenticated user's GitHub account. Requires that you are
@@ -7083,6 +7302,14 @@ type Handler interface {
 	//
 	// GET /users/{username}/hovercard
 	UsersGetContextForUser(ctx context.Context, params UsersGetContextForUserParams) (UsersGetContextForUserRes, error)
+	// UsersGetGpgKeyForAuthenticated implements users/get-gpg-key-for-authenticated operation.
+	//
+	// View extended details for a single GPG key. Requires that you are authenticated via Basic Auth or
+	// via OAuth with at least `read:gpg_key` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// GET /user/gpg_keys/{gpg_key_id}
+	UsersGetGpgKeyForAuthenticated(ctx context.Context, params UsersGetGpgKeyForAuthenticatedParams) (UsersGetGpgKeyForAuthenticatedRes, error)
 	// UsersGetPublicSSHKeyForAuthenticated implements users/get-public-ssh-key-for-authenticated operation.
 	//
 	// View extended details for a single public SSH key. Requires that you are authenticated via Basic
@@ -7138,6 +7365,20 @@ type Handler interface {
 	//
 	// GET /users/{username}/following
 	UsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) ([]SimpleUser, error)
+	// UsersListGpgKeysForAuthenticated implements users/list-gpg-keys-for-authenticated operation.
+	//
+	// Lists the current user's GPG keys. Requires that you are authenticated via Basic Auth or via OAuth
+	// with at least `read:gpg_key` [scope](https://docs.github.
+	// com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+	//
+	// GET /user/gpg_keys
+	UsersListGpgKeysForAuthenticated(ctx context.Context, params UsersListGpgKeysForAuthenticatedParams) (UsersListGpgKeysForAuthenticatedRes, error)
+	// UsersListGpgKeysForUser implements users/list-gpg-keys-for-user operation.
+	//
+	// Lists the GPG keys for a user. This information is accessible by anyone.
+	//
+	// GET /users/{username}/gpg_keys
+	UsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) ([]GpgKey, error)
 	// UsersListPublicEmailsForAuthenticated implements users/list-public-emails-for-authenticated operation.
 	//
 	// Lists your publicly visible email address, which you can set with the [Set primary email

@@ -144,7 +144,7 @@ type ActionsBillingUsageMinutesUsedBreakdown struct {
 	WINDOWS OptInt `json:"WINDOWS"`
 }
 
-type ActionsCancelWorkflowRunAccepted struct{}
+type ActionsCancelWorkflowRunAccepted map[string]jx.Raw
 
 // ActionsCreateOrUpdateEnvironmentSecretNoContent is response for ActionsCreateOrUpdateEnvironmentSecret operation.
 type ActionsCreateOrUpdateEnvironmentSecretNoContent struct{}
@@ -201,9 +201,9 @@ const (
 	ActionsCreateOrUpdateOrgSecretReqVisibilitySelected ActionsCreateOrUpdateOrgSecretReqVisibility = "selected"
 )
 
-type ActionsCreateOrUpdateRepoSecretCreated struct{}
+type ActionsCreateOrUpdateRepoSecretCreated map[string]jx.Raw
 
-func (*ActionsCreateOrUpdateRepoSecretCreated) actionsCreateOrUpdateRepoSecretRes() {}
+func (ActionsCreateOrUpdateRepoSecretCreated) actionsCreateOrUpdateRepoSecretRes() {}
 
 // ActionsCreateOrUpdateRepoSecretNoContent is response for ActionsCreateOrUpdateRepoSecret operation.
 type ActionsCreateOrUpdateRepoSecretNoContent struct{}
@@ -824,7 +824,7 @@ type ActionsPublicKey struct {
 	CreatedAt OptString `json:"created_at"`
 }
 
-type ActionsReRunWorkflowCreated struct{}
+type ActionsReRunWorkflowCreated map[string]jx.Raw
 
 // ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent is response for ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg operation.
 type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent struct{}
@@ -849,7 +849,7 @@ type ActionsRepositoryPermissions struct {
 	SelectedActionsURL OptSelectedActionsURL `json:"selected_actions_url"`
 }
 
-type ActionsRetryWorkflowCreated struct{}
+type ActionsRetryWorkflowCreated map[string]jx.Raw
 
 type ActionsReviewPendingDeploymentsForRunReq struct {
 	// The list of environment ids to approve or reject.
@@ -1693,7 +1693,7 @@ type AppsCreateContentAttachmentReq struct {
 	Body string `json:"body"`
 }
 
-type AppsCreateFromManifestReq struct{}
+type AppsCreateFromManifestReq map[string]jx.Raw
 
 type AppsCreateInstallationAccessTokenApplicationJSONForbidden BasicError
 
@@ -1974,6 +1974,71 @@ type Artifact struct {
 	UpdatedAt NilTime `json:"updated_at"`
 }
 
+// Ref: #/components/schemas/audit-log-event
+type AuditLogEvent struct {
+	// The time the audit log event occurred, given as a [Unix timestamp](http://en.wikipedia.
+	// org/wiki/Unix_time).
+	Timestamp OptInt `json:"@timestamp"`
+	// The name of the action that was performed, for example `user.login` or `repo.create`.
+	Action    OptString `json:"action"`
+	Active    OptBool   `json:"active"`
+	ActiveWas OptBool   `json:"active_was"`
+	// The actor who performed the action.
+	Actor OptString `json:"actor"`
+	// The id of the actor who performed the action.
+	ActorID       OptInt                        `json:"actor_id"`
+	ActorLocation OptAuditLogEventActorLocation `json:"actor_location"`
+	Data          OptAuditLogEventData          `json:"data"`
+	OrgID         OptInt                        `json:"org_id"`
+	// The username of the account being blocked.
+	BlockedUser OptString `json:"blocked_user"`
+	Business    OptString `json:"business"`
+	Config      []jx.Raw  `json:"config"`
+	ConfigWas   []jx.Raw  `json:"config_was"`
+	ContentType OptString `json:"content_type"`
+	// The time the audit log event was recorded, given as a [Unix timestamp](http://en.wikipedia.
+	// org/wiki/Unix_time).
+	CreatedAt            OptInt    `json:"created_at"`
+	DeployKeyFingerprint OptString `json:"deploy_key_fingerprint"`
+	// A unique identifier for an audit event.
+	DocumentID          OptString `json:"_document_id"`
+	Emoji               OptString `json:"emoji"`
+	Events              []jx.Raw  `json:"events"`
+	EventsWere          []jx.Raw  `json:"events_were"`
+	Explanation         OptString `json:"explanation"`
+	Fingerprint         OptString `json:"fingerprint"`
+	HookID              OptInt    `json:"hook_id"`
+	LimitedAvailability OptBool   `json:"limited_availability"`
+	Message             OptString `json:"message"`
+	Name                OptString `json:"name"`
+	OldUser             OptString `json:"old_user"`
+	OpensshPublicKey    OptString `json:"openssh_public_key"`
+	Org                 OptString `json:"org"`
+	PreviousVisibility  OptString `json:"previous_visibility"`
+	ReadOnly            OptBool   `json:"read_only"`
+	// The name of the repository.
+	Repo OptString `json:"repo"`
+	// The name of the repository.
+	Repository       OptString `json:"repository"`
+	RepositoryPublic OptBool   `json:"repository_public"`
+	TargetLogin      OptString `json:"target_login"`
+	Team             OptString `json:"team"`
+	// The type of protocol (for example, HTTP or SSH) used to transfer Git data.
+	TransportProtocol OptInt `json:"transport_protocol"`
+	// A human readable name for the protocol (for example, HTTP or SSH) used to transfer Git data.
+	TransportProtocolName OptString `json:"transport_protocol_name"`
+	// The user that was affected by the action performed (if available).
+	User OptString `json:"user"`
+	// The repository visibility, for example `public` or `private`.
+	Visibility OptString `json:"visibility"`
+}
+
+type AuditLogEventActorLocation struct {
+	CountryName OptString `json:"country_name"`
+}
+
+type AuditLogEventData map[string]jx.Raw
+
 // Authentication Token.
 // Ref: #/components/schemas/authentication-token
 type AuthenticationToken struct {
@@ -2082,6 +2147,43 @@ type Autolink struct {
 func (*Autolink) reposCreateAutolinkRes() {}
 func (*Autolink) reposGetAutolinkRes()    {}
 
+// Base Gist.
+// Ref: #/components/schemas/base-gist
+type BaseGist struct {
+	URL         url.URL               `json:"url"`
+	ForksURL    url.URL               `json:"forks_url"`
+	CommitsURL  url.URL               `json:"commits_url"`
+	ID          string                `json:"id"`
+	NodeID      string                `json:"node_id"`
+	GitPullURL  url.URL               `json:"git_pull_url"`
+	GitPushURL  url.URL               `json:"git_push_url"`
+	HTMLURL     url.URL               `json:"html_url"`
+	Files       BaseGistFiles         `json:"files"`
+	Public      bool                  `json:"public"`
+	CreatedAt   time.Time             `json:"created_at"`
+	UpdatedAt   time.Time             `json:"updated_at"`
+	Description NilString             `json:"description"`
+	Comments    int                   `json:"comments"`
+	User        NilNullableSimpleUser `json:"user"`
+	CommentsURL url.URL               `json:"comments_url"`
+	Owner       OptSimpleUser         `json:"owner"`
+	Truncated   OptBool               `json:"truncated"`
+	Forks       []jx.Raw              `json:"forks"`
+	History     []jx.Raw              `json:"history"`
+}
+
+func (*BaseGist) gistsForkRes() {}
+
+type BaseGistFiles map[string]BaseGistFilesItem
+
+type BaseGistFilesItem struct {
+	Filename OptString `json:"filename"`
+	Type     OptString `json:"type"`
+	Language OptString `json:"language"`
+	RawURL   OptString `json:"raw_url"`
+	Size     OptInt    `json:"size"`
+}
+
 // Basic Error.
 // Ref: #/components/schemas/basic-error
 type BasicError struct {
@@ -2109,6 +2211,9 @@ func (*BasicError) codeScanningGetSarifRes()                             {}
 func (*BasicError) codesOfConductGetConductCodeRes()                     {}
 func (*BasicError) gistsCheckIsStarredRes()                              {}
 func (*BasicError) gistsGetCommentRes()                                  {}
+func (*BasicError) gistsGetRes()                                         {}
+func (*BasicError) gistsListPublicRes()                                  {}
+func (*BasicError) gistsListRes()                                        {}
 func (*BasicError) gistsUpdateCommentRes()                               {}
 func (*BasicError) gitCreateCommitRes()                                  {}
 func (*BasicError) gitGetCommitRes()                                     {}
@@ -2135,9 +2240,11 @@ func (*BasicError) migrationsDeleteArchiveForOrgRes()                    {}
 func (*BasicError) migrationsDownloadArchiveForOrgRes()                  {}
 func (*BasicError) migrationsGetCommitAuthorsRes()                       {}
 func (*BasicError) migrationsGetImportStatusRes()                        {}
+func (*BasicError) migrationsGetStatusForOrgRes()                        {}
 func (*BasicError) migrationsListReposForOrgRes()                        {}
 func (*BasicError) migrationsListReposForUserRes()                       {}
 func (*BasicError) migrationsMapCommitAuthorRes()                        {}
+func (*BasicError) migrationsStartForOrgRes()                            {}
 func (*BasicError) migrationsStartImportRes()                            {}
 func (*BasicError) migrationsUnlockRepoForOrgRes()                       {}
 func (*BasicError) orgsCancelInvitationRes()                             {}
@@ -2183,6 +2290,7 @@ func (*BasicError) reposAddCollaboratorRes()                             {}
 func (*BasicError) reposCreateCommitCommentRes()                         {}
 func (*BasicError) reposCreateCommitSignatureProtectionRes()             {}
 func (*BasicError) reposCreateInOrgRes()                                 {}
+func (*BasicError) reposCreatePagesSiteRes()                             {}
 func (*BasicError) reposCreateReleaseRes()                               {}
 func (*BasicError) reposDeleteAdminBranchProtectionRes()                 {}
 func (*BasicError) reposDeleteAutolinkRes()                              {}
@@ -2208,6 +2316,7 @@ func (*BasicError) reposGetDeployKeyRes()                                {}
 func (*BasicError) reposGetDeploymentRes()                               {}
 func (*BasicError) reposGetDeploymentStatusRes()                         {}
 func (*BasicError) reposGetPagesHealthCheckRes()                         {}
+func (*BasicError) reposGetPagesRes()                                    {}
 func (*BasicError) reposGetParticipationStatsRes()                       {}
 func (*BasicError) reposGetReadmeInDirectoryRes()                        {}
 func (*BasicError) reposGetReadmeRes()                                   {}
@@ -2648,7 +2757,7 @@ type ChecksListSuitesForRefOK struct {
 	CheckSuites []CheckSuite `json:"check_suites"`
 }
 
-type ChecksRerequestSuiteCreated struct{}
+type ChecksRerequestSuiteCreated map[string]jx.Raw
 
 type ChecksSetSuitesPreferencesReq struct {
 	// Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled
@@ -2697,6 +2806,26 @@ type CodeOfConductSimple struct {
 	Name    string  `json:"name"`
 	HTMLURL NilURL  `json:"html_url"`
 }
+
+// Ref: #/components/schemas/code-scanning-alert
+type CodeScanningAlert struct {
+	Number             AlertNumber                         `json:"number"`
+	CreatedAt          AlertCreatedAt                      `json:"created_at"`
+	URL                AlertURL                            `json:"url"`
+	HTMLURL            AlertHTMLURL                        `json:"html_url"`
+	Instances          jx.Raw                              `json:"instances"`
+	InstancesURL       AlertInstancesURL                   `json:"instances_url"`
+	State              CodeScanningAlertState              `json:"state"`
+	DismissedBy        NilNullableSimpleUser               `json:"dismissed_by"`
+	DismissedAt        NilCodeScanningAlertDismissedAt     `json:"dismissed_at"`
+	DismissedReason    NilCodeScanningAlertDismissedReason `json:"dismissed_reason"`
+	Rule               CodeScanningAlertRule               `json:"rule"`
+	Tool               CodeScanningAnalysisTool            `json:"tool"`
+	MostRecentInstance CodeScanningAlertInstance           `json:"most_recent_instance"`
+}
+
+func (*CodeScanningAlert) codeScanningGetAlertRes()    {}
+func (*CodeScanningAlert) codeScanningUpdateAlertRes() {}
 
 // A classification of the file. For example to identify it as generated.
 // Ref: #/components/schemas/code-scanning-alert-classification
@@ -2769,6 +2898,46 @@ type CodeScanningAlertLocation struct {
 	StartColumn OptInt    `json:"start_column"`
 	EndColumn   OptInt    `json:"end_column"`
 }
+
+// Ref: #/components/schemas/code-scanning-alert-rule
+type CodeScanningAlertRule struct {
+	// A unique identifier for the rule used to detect the alert.
+	ID OptNilString `json:"id"`
+	// The name of the rule used to detect the alert.
+	Name OptString `json:"name"`
+	// The severity of the alert.
+	Severity OptCodeScanningAlertRuleSeverity `json:"severity"`
+	// The security severity of the alert.
+	SecuritySeverityLevel OptCodeScanningAlertRuleSecuritySeverityLevel `json:"security_severity_level"`
+	// A short description of the rule used to detect the alert.
+	Description OptString `json:"description"`
+	// Description of the rule used to detect the alert.
+	FullDescription OptString `json:"full_description"`
+	// A set of tags applicable for the rule.
+	Tags OptNilStringArray `json:"tags"`
+	// Detailed documentation for the rule as GitHub Flavored Markdown.
+	Help OptNilString `json:"help"`
+}
+
+// The security severity of the alert.
+type CodeScanningAlertRuleSecuritySeverityLevel string
+
+const (
+	CodeScanningAlertRuleSecuritySeverityLevelLow      CodeScanningAlertRuleSecuritySeverityLevel = "low"
+	CodeScanningAlertRuleSecuritySeverityLevelMedium   CodeScanningAlertRuleSecuritySeverityLevel = "medium"
+	CodeScanningAlertRuleSecuritySeverityLevelHigh     CodeScanningAlertRuleSecuritySeverityLevel = "high"
+	CodeScanningAlertRuleSecuritySeverityLevelCritical CodeScanningAlertRuleSecuritySeverityLevel = "critical"
+)
+
+// The severity of the alert.
+type CodeScanningAlertRuleSeverity string
+
+const (
+	CodeScanningAlertRuleSeverityNone    CodeScanningAlertRuleSeverity = "none"
+	CodeScanningAlertRuleSeverityNote    CodeScanningAlertRuleSeverity = "note"
+	CodeScanningAlertRuleSeverityWarning CodeScanningAlertRuleSeverity = "warning"
+	CodeScanningAlertRuleSeverityError   CodeScanningAlertRuleSeverity = "error"
+)
 
 // Ref: #/components/schemas/code-scanning-alert-rule-summary
 type CodeScanningAlertRuleSummary struct {
@@ -2891,6 +3060,14 @@ type CodeScanningDeleteAnalysisApplicationJSONNotFound BasicError
 
 func (*CodeScanningDeleteAnalysisApplicationJSONNotFound) codeScanningDeleteAnalysisRes() {}
 
+type CodeScanningGetAlertApplicationJSONForbidden BasicError
+
+func (*CodeScanningGetAlertApplicationJSONForbidden) codeScanningGetAlertRes() {}
+
+type CodeScanningGetAlertApplicationJSONNotFound BasicError
+
+func (*CodeScanningGetAlertApplicationJSONNotFound) codeScanningGetAlertRes() {}
+
 type CodeScanningGetAnalysisApplicationJSONForbidden BasicError
 
 func (*CodeScanningGetAnalysisApplicationJSONForbidden) codeScanningGetAnalysisRes() {}
@@ -2970,6 +3147,14 @@ const (
 	CodeScanningSarifsStatusProcessingStatusPending  CodeScanningSarifsStatusProcessingStatus = "pending"
 	CodeScanningSarifsStatusProcessingStatusComplete CodeScanningSarifsStatusProcessingStatus = "complete"
 )
+
+type CodeScanningUpdateAlertApplicationJSONForbidden BasicError
+
+func (*CodeScanningUpdateAlertApplicationJSONForbidden) codeScanningUpdateAlertRes() {}
+
+type CodeScanningUpdateAlertApplicationJSONNotFound BasicError
+
+func (*CodeScanningUpdateAlertApplicationJSONNotFound) codeScanningUpdateAlertRes() {}
 
 type CodeScanningUpdateAlertReq struct {
 	State           CodeScanningAlertSetState              `json:"state"`
@@ -3526,7 +3711,7 @@ func NewStringDeploymentPayload(v string) DeploymentPayload {
 	return s
 }
 
-type DeploymentPayload0 struct{}
+type DeploymentPayload0 map[string]jx.Raw
 
 // The type of reviewer. Must be one of: `User` or `Team`.
 // Ref: #/components/schemas/deployment-reviewer-type
@@ -3648,12 +3833,12 @@ func (EmojisGetOK) emojisGetRes() {}
 
 // An object without any properties.
 // Ref: #/components/schemas/empty-object
-type EmptyObject struct{}
+type EmptyObject map[string]jx.Raw
 
-func (*EmptyObject) actionsApproveWorkflowRunRes()              {}
-func (*EmptyObject) actionsCreateOrUpdateEnvironmentSecretRes() {}
-func (*EmptyObject) actionsCreateOrUpdateOrgSecretRes()         {}
-func (*EmptyObject) reposGetPagesHealthCheckRes()               {}
+func (EmptyObject) actionsApproveWorkflowRunRes()              {}
+func (EmptyObject) actionsCreateOrUpdateEnvironmentSecretRes() {}
+func (EmptyObject) actionsCreateOrUpdateOrgSecretRes()         {}
+func (EmptyObject) reposGetPagesHealthCheckRes()               {}
 
 // The policy that controls the organizations in the enterprise that are allowed to run GitHub
 // Actions. Can be one of: `all`, `none`, or `selected`.
@@ -3893,6 +4078,128 @@ type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq struct {
 	Runners []int `json:"runners"`
 }
 
+type EnterpriseAdminUpdateAttributeForEnterpriseGroupReq struct {
+	// The SCIM schema URIs.
+	Schemas []string `json:"schemas"`
+	// Array of [SCIM operations](https://tools.ietf.org/html/rfc7644#section-3.5.2).
+	Operations []EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem `json:"Operations"`
+}
+
+type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem struct {
+	Op    EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp       `json:"op"`
+	Path  OptString                                                                 `json:"path"`
+	Value OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue `json:"value"`
+}
+
+type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp string
+
+const (
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_add     EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "add"
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Add     EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "Add"
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_remove  EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "remove"
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Remove  EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "Remove"
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_replace EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "replace"
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Replace EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp = "Replace"
+)
+
+// EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue represents sum type.
+type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue struct {
+	Type                                                                    EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType // switch on this field
+	String                                                                  string
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1
+	ArrayAny                                                                []jx.Raw
+}
+
+// EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType is oneOf type of EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue.
+type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType string
+
+// Possible values for EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType.
+const (
+	StringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue                                                                  EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType = "string"
+	EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType = "EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1"
+	ArrayAnyEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue                                                                EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValueType = "[]jx.Raw"
+)
+
+// IsString reports whether EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is string.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) IsString() bool {
+	return s.Type == StringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+}
+
+// IsEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 reports whether EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) IsEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1() bool {
+	return s.Type == EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+}
+
+// IsArrayAny reports whether EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is []jx.Raw.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) IsArrayAny() bool {
+	return s.Type == ArrayAnyEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+}
+
+// SetString sets EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue to string.
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) SetString(v string) {
+	s.Type = StringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	s.String = v
+}
+
+// GetString returns string and true boolean if EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is string.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue returns new EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue from string.
+func NewStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue(v string) EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue {
+	var s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	s.SetString(v)
+	return s
+}
+
+// SetEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 sets EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue to EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1.
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) SetEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1(v EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) {
+	s.Type = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	s.EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 = v
+}
+
+// GetEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 returns EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 and true boolean if EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) GetEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1() (v EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1, ok bool) {
+	if !s.IsEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1() {
+		return v, false
+	}
+	return s.EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1, true
+}
+
+// NewEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue returns new EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue from EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1.
+func NewEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue(v EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue {
+	var s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	s.SetEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1(v)
+	return s
+}
+
+// SetArrayAny sets EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue to []jx.Raw.
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) SetArrayAny(v []jx.Raw) {
+	s.Type = ArrayAnyEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	s.ArrayAny = v
+}
+
+// GetArrayAny returns []jx.Raw and true boolean if EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is []jx.Raw.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) GetArrayAny() (v []jx.Raw, ok bool) {
+	if !s.IsArrayAny() {
+		return v, false
+	}
+	return s.ArrayAny, true
+}
+
+// NewArrayAnyEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue returns new EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue from []jx.Raw.
+func NewArrayAnyEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue(v []jx.Raw) EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue {
+	var s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	s.SetArrayAny(v)
+	return s
+}
+
+type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 struct{}
+
 type EnterpriseAdminUpdateAttributeForEnterpriseUserReq struct {
 	// The SCIM schema URIs.
 	Schemas []string `json:"schemas"`
@@ -4091,6 +4398,7 @@ type ForbiddenGist struct {
 }
 
 func (*ForbiddenGist) gistsGetCommentRes() {}
+func (*ForbiddenGist) gistsGetRes()        {}
 
 type ForbiddenGistBlock struct {
 	Reason    OptString    `json:"reason"`
@@ -4278,14 +4586,123 @@ type GistCommitChangeStatus struct {
 	Deletions OptInt `json:"deletions"`
 }
 
+// Gist History.
+// Ref: #/components/schemas/gist-history
+type GistHistory struct {
+	User         OptNilNullableSimpleUser   `json:"user"`
+	Version      OptString                  `json:"version"`
+	CommittedAt  OptTime                    `json:"committed_at"`
+	ChangeStatus OptGistHistoryChangeStatus `json:"change_status"`
+	URL          OptURL                     `json:"url"`
+}
+
+type GistHistoryChangeStatus struct {
+	Total     OptInt `json:"total"`
+	Additions OptInt `json:"additions"`
+	Deletions OptInt `json:"deletions"`
+}
+
+// Gist Simple.
+// Ref: #/components/schemas/gist-simple
+type GistSimple struct {
+	Forks   OptNilGistSimpleForksItemArray `json:"forks"`
+	History OptNilGistHistoryArray         `json:"history"`
+	// Gist.
+	ForkOf      OptNilGistSimpleForkOf `json:"fork_of"`
+	URL         OptString              `json:"url"`
+	ForksURL    OptString              `json:"forks_url"`
+	CommitsURL  OptString              `json:"commits_url"`
+	ID          OptString              `json:"id"`
+	NodeID      OptString              `json:"node_id"`
+	GitPullURL  OptString              `json:"git_pull_url"`
+	GitPushURL  OptString              `json:"git_push_url"`
+	HTMLURL     OptString              `json:"html_url"`
+	Files       OptGistSimpleFiles     `json:"files"`
+	Public      OptBool                `json:"public"`
+	CreatedAt   OptString              `json:"created_at"`
+	UpdatedAt   OptString              `json:"updated_at"`
+	Description OptNilString           `json:"description"`
+	Comments    OptInt                 `json:"comments"`
+	User        OptNilString           `json:"user"`
+	CommentsURL OptString              `json:"comments_url"`
+	Owner       OptSimpleUser          `json:"owner"`
+	Truncated   OptBool                `json:"truncated"`
+}
+
+func (*GistSimple) gistsCreateRes()      {}
+func (*GistSimple) gistsGetRes()         {}
+func (*GistSimple) gistsGetRevisionRes() {}
+
+type GistSimpleFiles map[string]GistSimpleFilesItem
+
+type GistSimpleFilesItem struct {
+	Filename  OptString `json:"filename"`
+	Type      OptString `json:"type"`
+	Language  OptString `json:"language"`
+	RawURL    OptString `json:"raw_url"`
+	Size      OptInt    `json:"size"`
+	Truncated OptBool   `json:"truncated"`
+	Content   OptString `json:"content"`
+}
+
+// Gist.
+type GistSimpleForkOf struct {
+	URL         url.URL                  `json:"url"`
+	ForksURL    url.URL                  `json:"forks_url"`
+	CommitsURL  url.URL                  `json:"commits_url"`
+	ID          string                   `json:"id"`
+	NodeID      string                   `json:"node_id"`
+	GitPullURL  url.URL                  `json:"git_pull_url"`
+	GitPushURL  url.URL                  `json:"git_push_url"`
+	HTMLURL     url.URL                  `json:"html_url"`
+	Files       GistSimpleForkOfFiles    `json:"files"`
+	Public      bool                     `json:"public"`
+	CreatedAt   time.Time                `json:"created_at"`
+	UpdatedAt   time.Time                `json:"updated_at"`
+	Description NilString                `json:"description"`
+	Comments    int                      `json:"comments"`
+	User        NilNullableSimpleUser    `json:"user"`
+	CommentsURL url.URL                  `json:"comments_url"`
+	Owner       OptNilNullableSimpleUser `json:"owner"`
+	Truncated   OptBool                  `json:"truncated"`
+	Forks       []jx.Raw                 `json:"forks"`
+	History     []jx.Raw                 `json:"history"`
+}
+
+type GistSimpleForkOfFiles map[string]GistSimpleForkOfFilesItem
+
+type GistSimpleForkOfFilesItem struct {
+	Filename OptString `json:"filename"`
+	Type     OptString `json:"type"`
+	Language OptString `json:"language"`
+	RawURL   OptString `json:"raw_url"`
+	Size     OptInt    `json:"size"`
+}
+
+type GistSimpleForksItem struct {
+	ID        OptString     `json:"id"`
+	URL       OptURL        `json:"url"`
+	User      OptPublicUser `json:"user"`
+	CreatedAt OptTime       `json:"created_at"`
+	UpdatedAt OptTime       `json:"updated_at"`
+}
+
 // GistsCheckIsStarredNoContent is response for GistsCheckIsStarred operation.
 type GistsCheckIsStarredNoContent struct{}
 
 func (*GistsCheckIsStarredNoContent) gistsCheckIsStarredRes() {}
 
-type GistsCheckIsStarredNotFound struct{}
+type GistsCheckIsStarredNotFound map[string]jx.Raw
 
-func (*GistsCheckIsStarredNotFound) gistsCheckIsStarredRes() {}
+func (GistsCheckIsStarredNotFound) gistsCheckIsStarredRes() {}
+
+type GistsCreateApplicationJSONForbidden BasicError
+
+func (*GistsCreateApplicationJSONForbidden) gistsCreateRes() {}
+
+type GistsCreateApplicationJSONNotFound BasicError
+
+func (*GistsCreateApplicationJSONNotFound) gistsCreateRes() {}
 
 type GistsCreateCommentApplicationJSONForbidden BasicError
 
@@ -4415,6 +4832,22 @@ type GistsDeleteNoContent struct{}
 
 func (*GistsDeleteNoContent) gistsDeleteRes() {}
 
+type GistsForkApplicationJSONForbidden BasicError
+
+func (*GistsForkApplicationJSONForbidden) gistsForkRes() {}
+
+type GistsForkApplicationJSONNotFound BasicError
+
+func (*GistsForkApplicationJSONNotFound) gistsForkRes() {}
+
+type GistsGetRevisionApplicationJSONForbidden BasicError
+
+func (*GistsGetRevisionApplicationJSONForbidden) gistsGetRevisionRes() {}
+
+type GistsGetRevisionApplicationJSONNotFound BasicError
+
+func (*GistsGetRevisionApplicationJSONNotFound) gistsGetRevisionRes() {}
+
 type GistsListCommentsApplicationJSONForbidden BasicError
 
 func (*GistsListCommentsApplicationJSONForbidden) gistsListCommentsRes() {}
@@ -4438,6 +4871,42 @@ func (*GistsListCommitsApplicationJSONNotFound) gistsListCommitsRes() {}
 type GistsListCommitsOKApplicationJSON []GistCommit
 
 func (GistsListCommitsOKApplicationJSON) gistsListCommitsRes() {}
+
+type GistsListForUserOKApplicationJSON []BaseGist
+
+func (GistsListForUserOKApplicationJSON) gistsListForUserRes() {}
+
+type GistsListForksApplicationJSONForbidden BasicError
+
+func (*GistsListForksApplicationJSONForbidden) gistsListForksRes() {}
+
+type GistsListForksApplicationJSONNotFound BasicError
+
+func (*GistsListForksApplicationJSONNotFound) gistsListForksRes() {}
+
+type GistsListForksOKApplicationJSON []GistSimple
+
+func (GistsListForksOKApplicationJSON) gistsListForksRes() {}
+
+type GistsListOKApplicationJSON []BaseGist
+
+func (GistsListOKApplicationJSON) gistsListRes() {}
+
+type GistsListPublicOKApplicationJSON []BaseGist
+
+func (GistsListPublicOKApplicationJSON) gistsListPublicRes() {}
+
+type GistsListStarredApplicationJSONForbidden BasicError
+
+func (*GistsListStarredApplicationJSONForbidden) gistsListStarredRes() {}
+
+type GistsListStarredApplicationJSONUnauthorized BasicError
+
+func (*GistsListStarredApplicationJSONUnauthorized) gistsListStarredRes() {}
+
+type GistsListStarredOKApplicationJSON []BaseGist
+
+func (GistsListStarredOKApplicationJSON) gistsListStarredRes() {}
 
 type GistsStarApplicationJSONForbidden BasicError
 
@@ -4818,6 +5287,48 @@ type GitignoreTemplate struct {
 
 func (*GitignoreTemplate) gitignoreGetTemplateRes() {}
 
+// A unique encryption key.
+// Ref: #/components/schemas/gpg-key
+type GpgKey struct {
+	ID                int                 `json:"id"`
+	PrimaryKeyID      NilInt              `json:"primary_key_id"`
+	KeyID             string              `json:"key_id"`
+	PublicKey         string              `json:"public_key"`
+	Emails            []GpgKeyEmailsItem  `json:"emails"`
+	Subkeys           []GpgKeySubkeysItem `json:"subkeys"`
+	CanSign           bool                `json:"can_sign"`
+	CanEncryptComms   bool                `json:"can_encrypt_comms"`
+	CanEncryptStorage bool                `json:"can_encrypt_storage"`
+	CanCertify        bool                `json:"can_certify"`
+	CreatedAt         time.Time           `json:"created_at"`
+	ExpiresAt         NilTime             `json:"expires_at"`
+	RawKey            NilString           `json:"raw_key"`
+}
+
+func (*GpgKey) usersCreateGpgKeyForAuthenticatedRes() {}
+func (*GpgKey) usersGetGpgKeyForAuthenticatedRes()    {}
+
+type GpgKeyEmailsItem struct {
+	Email    OptString `json:"email"`
+	Verified OptBool   `json:"verified"`
+}
+
+type GpgKeySubkeysItem struct {
+	ID                OptInt       `json:"id"`
+	PrimaryKeyID      OptInt       `json:"primary_key_id"`
+	KeyID             OptString    `json:"key_id"`
+	PublicKey         OptString    `json:"public_key"`
+	Emails            []jx.Raw     `json:"emails"`
+	Subkeys           []jx.Raw     `json:"subkeys"`
+	CanSign           OptBool      `json:"can_sign"`
+	CanEncryptComms   OptBool      `json:"can_encrypt_comms"`
+	CanEncryptStorage OptBool      `json:"can_encrypt_storage"`
+	CanCertify        OptBool      `json:"can_certify"`
+	CreatedAt         OptString    `json:"created_at"`
+	ExpiresAt         OptNilString `json:"expires_at"`
+	RawKey            OptNilString `json:"raw_key"`
+}
+
 // External Groups to be mapped to a team for membership.
 // Ref: #/components/schemas/group-mapping
 type GroupMapping struct {
@@ -4946,26 +5457,26 @@ type HookDeliveryItem struct {
 
 type HookDeliveryRequest struct {
 	// The request headers sent with the webhook delivery.
-	Headers *HookDeliveryRequestHeaders `json:"headers"`
+	Headers NilHookDeliveryRequestHeaders `json:"headers"`
 	// The webhook payload.
-	Payload *HookDeliveryRequestPayload `json:"payload"`
+	Payload NilHookDeliveryRequestPayload `json:"payload"`
 }
 
 // The request headers sent with the webhook delivery.
-type HookDeliveryRequestHeaders struct{}
+type HookDeliveryRequestHeaders map[string]jx.Raw
 
 // The webhook payload.
-type HookDeliveryRequestPayload struct{}
+type HookDeliveryRequestPayload map[string]jx.Raw
 
 type HookDeliveryResponse struct {
 	// The response headers received when the delivery was made.
-	Headers *HookDeliveryResponseHeaders `json:"headers"`
+	Headers NilHookDeliveryResponseHeaders `json:"headers"`
 	// The response payload received.
 	Payload NilString `json:"payload"`
 }
 
 // The response headers received when the delivery was made.
-type HookDeliveryResponseHeaders struct{}
+type HookDeliveryResponseHeaders map[string]jx.Raw
 
 // Ref: #/components/schemas/hook-response
 type HookResponse struct {
@@ -6745,6 +7256,33 @@ type MetaRootOK struct {
 	UserSearchURL                    string    `json:"user_search_url"`
 }
 
+// A migration.
+// Ref: #/components/schemas/migration
+type Migration struct {
+	ID                   int                   `json:"id"`
+	Owner                NilNullableSimpleUser `json:"owner"`
+	GUID                 string                `json:"guid"`
+	State                string                `json:"state"`
+	LockRepositories     bool                  `json:"lock_repositories"`
+	ExcludeMetadata      bool                  `json:"exclude_metadata"`
+	ExcludeGitData       bool                  `json:"exclude_git_data"`
+	ExcludeAttachments   bool                  `json:"exclude_attachments"`
+	ExcludeReleases      bool                  `json:"exclude_releases"`
+	ExcludeOwnerProjects bool                  `json:"exclude_owner_projects"`
+	Repositories         []Repository          `json:"repositories"`
+	URL                  url.URL               `json:"url"`
+	CreatedAt            time.Time             `json:"created_at"`
+	UpdatedAt            time.Time             `json:"updated_at"`
+	NodeID               string                `json:"node_id"`
+	ArchiveURL           OptURL                `json:"archive_url"`
+	Exclude              []jx.Raw              `json:"exclude"`
+}
+
+func (*Migration) migrationsGetStatusForAuthenticatedUserRes() {}
+func (*Migration) migrationsGetStatusForOrgRes()               {}
+func (*Migration) migrationsStartForAuthenticatedUserRes()     {}
+func (*Migration) migrationsStartForOrgRes()                   {}
+
 // MigrationsCancelImportNoContent is response for MigrationsCancelImport operation.
 type MigrationsCancelImportNoContent struct{}
 
@@ -6798,12 +7336,41 @@ type MigrationsGetCommitAuthorsOKApplicationJSON []PorterAuthor
 
 func (MigrationsGetCommitAuthorsOKApplicationJSON) migrationsGetCommitAuthorsRes() {}
 
+type MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden) migrationsGetStatusForAuthenticatedUserRes() {
+}
+
+type MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound BasicError
+
+func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound) migrationsGetStatusForAuthenticatedUserRes() {
+}
+
+type MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) migrationsGetStatusForAuthenticatedUserRes() {
+}
+
 // Allowed values that can be passed to the exclude param.
 type MigrationsGetStatusForOrgExcludeItem string
 
 const (
 	MigrationsGetStatusForOrgExcludeItemRepositories MigrationsGetStatusForOrgExcludeItem = "repositories"
 )
+
+type MigrationsListForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*MigrationsListForAuthenticatedUserApplicationJSONForbidden) migrationsListForAuthenticatedUserRes() {
+}
+
+type MigrationsListForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) migrationsListForAuthenticatedUserRes() {
+}
+
+type MigrationsListForAuthenticatedUserOKApplicationJSON []Migration
+
+func (MigrationsListForAuthenticatedUserOKApplicationJSON) migrationsListForAuthenticatedUserRes() {}
 
 // Allowed values that can be passed to the exclude param.
 type MigrationsListForOrgExcludeItem string
@@ -6821,10 +7388,9 @@ type MigrationsListReposForUserOKApplicationJSON []MinimalRepository
 func (MigrationsListReposForUserOKApplicationJSON) migrationsListReposForUserRes() {}
 
 type MigrationsMapCommitAuthorReq struct {
-	// The new Git author email.
-	Email OptString `json:"email"`
-	// The new Git author name.
-	Name OptString `json:"name"`
+	Email           OptString `json:"email"`
+	Name            OptString `json:"name"`
+	AdditionalProps map[string]jx.Raw
 }
 
 type MigrationsSetLfsPreferenceReq struct {
@@ -6841,6 +7407,16 @@ const (
 	MigrationsSetLfsPreferenceReqUseLfsOptIn  MigrationsSetLfsPreferenceReqUseLfs = "opt_in"
 	MigrationsSetLfsPreferenceReqUseLfsOptOut MigrationsSetLfsPreferenceReqUseLfs = "opt_out"
 )
+
+type MigrationsStartForAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*MigrationsStartForAuthenticatedUserApplicationJSONForbidden) migrationsStartForAuthenticatedUserRes() {
+}
+
+type MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized) migrationsStartForAuthenticatedUserRes() {
+}
 
 type MigrationsStartForAuthenticatedUserReq struct {
 	// Lock the repositories being migrated at the start of the migration.
@@ -7310,6 +7886,120 @@ func (o NilFileCommitContent) Get() (v FileCommitContent, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o NilFileCommitContent) Or(d FileCommitContent) FileCommitContent {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilHookDeliveryRequestHeaders returns new NilHookDeliveryRequestHeaders with value set to v.
+func NewNilHookDeliveryRequestHeaders(v HookDeliveryRequestHeaders) NilHookDeliveryRequestHeaders {
+	return NilHookDeliveryRequestHeaders{
+		Value: v,
+	}
+}
+
+// NilHookDeliveryRequestHeaders is nullable HookDeliveryRequestHeaders.
+type NilHookDeliveryRequestHeaders struct {
+	Value HookDeliveryRequestHeaders
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilHookDeliveryRequestHeaders) SetTo(v HookDeliveryRequestHeaders) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilHookDeliveryRequestHeaders) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilHookDeliveryRequestHeaders) Get() (v HookDeliveryRequestHeaders, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilHookDeliveryRequestHeaders) Or(d HookDeliveryRequestHeaders) HookDeliveryRequestHeaders {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilHookDeliveryRequestPayload returns new NilHookDeliveryRequestPayload with value set to v.
+func NewNilHookDeliveryRequestPayload(v HookDeliveryRequestPayload) NilHookDeliveryRequestPayload {
+	return NilHookDeliveryRequestPayload{
+		Value: v,
+	}
+}
+
+// NilHookDeliveryRequestPayload is nullable HookDeliveryRequestPayload.
+type NilHookDeliveryRequestPayload struct {
+	Value HookDeliveryRequestPayload
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilHookDeliveryRequestPayload) SetTo(v HookDeliveryRequestPayload) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilHookDeliveryRequestPayload) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilHookDeliveryRequestPayload) Get() (v HookDeliveryRequestPayload, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilHookDeliveryRequestPayload) Or(d HookDeliveryRequestPayload) HookDeliveryRequestPayload {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilHookDeliveryResponseHeaders returns new NilHookDeliveryResponseHeaders with value set to v.
+func NewNilHookDeliveryResponseHeaders(v HookDeliveryResponseHeaders) NilHookDeliveryResponseHeaders {
+	return NilHookDeliveryResponseHeaders{
+		Value: v,
+	}
+}
+
+// NilHookDeliveryResponseHeaders is nullable HookDeliveryResponseHeaders.
+type NilHookDeliveryResponseHeaders struct {
+	Value HookDeliveryResponseHeaders
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilHookDeliveryResponseHeaders) SetTo(v HookDeliveryResponseHeaders) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilHookDeliveryResponseHeaders) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilHookDeliveryResponseHeaders) Get() (v HookDeliveryResponseHeaders, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilHookDeliveryResponseHeaders) Or(d HookDeliveryResponseHeaders) HookDeliveryResponseHeaders {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -8189,11 +8879,18 @@ func (*NotModified) codesOfConductGetConductCodeRes()                      {}
 func (*NotModified) emojisGetRes()                                         {}
 func (*NotModified) gistsCheckIsStarredRes()                               {}
 func (*NotModified) gistsCreateCommentRes()                                {}
+func (*NotModified) gistsCreateRes()                                       {}
 func (*NotModified) gistsDeleteCommentRes()                                {}
 func (*NotModified) gistsDeleteRes()                                       {}
+func (*NotModified) gistsForkRes()                                         {}
 func (*NotModified) gistsGetCommentRes()                                   {}
+func (*NotModified) gistsGetRes()                                          {}
 func (*NotModified) gistsListCommentsRes()                                 {}
 func (*NotModified) gistsListCommitsRes()                                  {}
+func (*NotModified) gistsListForksRes()                                    {}
+func (*NotModified) gistsListPublicRes()                                   {}
+func (*NotModified) gistsListRes()                                         {}
+func (*NotModified) gistsListStarredRes()                                  {}
 func (*NotModified) gistsStarRes()                                         {}
 func (*NotModified) gistsUnstarRes()                                       {}
 func (*NotModified) gitignoreGetAllTemplatesRes()                          {}
@@ -8206,6 +8903,9 @@ func (*NotModified) licensesGetRes()                                       {}
 func (*NotModified) metaGetRes()                                           {}
 func (*NotModified) migrationsDeleteArchiveForAuthenticatedUserRes()       {}
 func (*NotModified) migrationsGetArchiveForAuthenticatedUserRes()          {}
+func (*NotModified) migrationsGetStatusForAuthenticatedUserRes()           {}
+func (*NotModified) migrationsListForAuthenticatedUserRes()                {}
+func (*NotModified) migrationsStartForAuthenticatedUserRes()               {}
 func (*NotModified) migrationsUnlockRepoForAuthenticatedUserRes()          {}
 func (*NotModified) oAuthAuthorizationsCreateAuthorizationRes()            {}
 func (*NotModified) oAuthAuthorizationsDeleteAuthorizationRes()            {}
@@ -8260,17 +8960,20 @@ func (*NotModified) usersAddEmailForAuthenticatedRes()                     {}
 func (*NotModified) usersBlockRes()                                        {}
 func (*NotModified) usersCheckBlockedRes()                                 {}
 func (*NotModified) usersCheckPersonIsFollowedByAuthenticatedRes()         {}
+func (*NotModified) usersCreateGpgKeyForAuthenticatedRes()                 {}
 func (*NotModified) usersCreatePublicSSHKeyForAuthenticatedRes()           {}
 func (*NotModified) usersDeleteEmailForAuthenticatedRes()                  {}
 func (*NotModified) usersDeleteGpgKeyForAuthenticatedRes()                 {}
 func (*NotModified) usersDeletePublicSSHKeyForAuthenticatedRes()           {}
 func (*NotModified) usersFollowRes()                                       {}
 func (*NotModified) usersGetAuthenticatedRes()                             {}
+func (*NotModified) usersGetGpgKeyForAuthenticatedRes()                    {}
 func (*NotModified) usersGetPublicSSHKeyForAuthenticatedRes()              {}
 func (*NotModified) usersListBlockedByAuthenticatedRes()                   {}
 func (*NotModified) usersListEmailsForAuthenticatedRes()                   {}
 func (*NotModified) usersListFollowedByAuthenticatedRes()                  {}
 func (*NotModified) usersListFollowersForAuthenticatedUserRes()            {}
+func (*NotModified) usersListGpgKeysForAuthenticatedRes()                  {}
 func (*NotModified) usersListPublicEmailsForAuthenticatedRes()             {}
 func (*NotModified) usersListPublicSSHKeysForAuthenticatedRes()            {}
 func (*NotModified) usersListRes()                                         {}
@@ -11576,6 +12279,98 @@ func (o OptAppsUpdateWebhookConfigForAppReq) Or(d AppsUpdateWebhookConfigForAppR
 	return d
 }
 
+// NewOptAuditLogEventActorLocation returns new OptAuditLogEventActorLocation with value set to v.
+func NewOptAuditLogEventActorLocation(v AuditLogEventActorLocation) OptAuditLogEventActorLocation {
+	return OptAuditLogEventActorLocation{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptAuditLogEventActorLocation is optional AuditLogEventActorLocation.
+type OptAuditLogEventActorLocation struct {
+	Value AuditLogEventActorLocation
+	Set   bool
+}
+
+// IsSet returns true if OptAuditLogEventActorLocation was set.
+func (o OptAuditLogEventActorLocation) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptAuditLogEventActorLocation) Reset() {
+	var v AuditLogEventActorLocation
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptAuditLogEventActorLocation) SetTo(v AuditLogEventActorLocation) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptAuditLogEventActorLocation) Get() (v AuditLogEventActorLocation, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAuditLogEventActorLocation) Or(d AuditLogEventActorLocation) AuditLogEventActorLocation {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptAuditLogEventData returns new OptAuditLogEventData with value set to v.
+func NewOptAuditLogEventData(v AuditLogEventData) OptAuditLogEventData {
+	return OptAuditLogEventData{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptAuditLogEventData is optional AuditLogEventData.
+type OptAuditLogEventData struct {
+	Value AuditLogEventData
+	Set   bool
+}
+
+// IsSet returns true if OptAuditLogEventData was set.
+func (o OptAuditLogEventData) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptAuditLogEventData) Reset() {
+	var v AuditLogEventData
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptAuditLogEventData) SetTo(v AuditLogEventData) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptAuditLogEventData) Get() (v AuditLogEventData, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAuditLogEventData) Or(d AuditLogEventData) AuditLogEventData {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptAuthenticationTokenRepositorySelection returns new OptAuthenticationTokenRepositorySelection with value set to v.
 func NewOptAuthenticationTokenRepositorySelection(v AuthenticationTokenRepositorySelection) OptAuthenticationTokenRepositorySelection {
 	return OptAuthenticationTokenRepositorySelection{
@@ -12588,6 +13383,98 @@ func (o OptCodeScanningAlertLocation) Or(d CodeScanningAlertLocation) CodeScanni
 	return d
 }
 
+// NewOptCodeScanningAlertRuleSecuritySeverityLevel returns new OptCodeScanningAlertRuleSecuritySeverityLevel with value set to v.
+func NewOptCodeScanningAlertRuleSecuritySeverityLevel(v CodeScanningAlertRuleSecuritySeverityLevel) OptCodeScanningAlertRuleSecuritySeverityLevel {
+	return OptCodeScanningAlertRuleSecuritySeverityLevel{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptCodeScanningAlertRuleSecuritySeverityLevel is optional CodeScanningAlertRuleSecuritySeverityLevel.
+type OptCodeScanningAlertRuleSecuritySeverityLevel struct {
+	Value CodeScanningAlertRuleSecuritySeverityLevel
+	Set   bool
+}
+
+// IsSet returns true if OptCodeScanningAlertRuleSecuritySeverityLevel was set.
+func (o OptCodeScanningAlertRuleSecuritySeverityLevel) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptCodeScanningAlertRuleSecuritySeverityLevel) Reset() {
+	var v CodeScanningAlertRuleSecuritySeverityLevel
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptCodeScanningAlertRuleSecuritySeverityLevel) SetTo(v CodeScanningAlertRuleSecuritySeverityLevel) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptCodeScanningAlertRuleSecuritySeverityLevel) Get() (v CodeScanningAlertRuleSecuritySeverityLevel, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptCodeScanningAlertRuleSecuritySeverityLevel) Or(d CodeScanningAlertRuleSecuritySeverityLevel) CodeScanningAlertRuleSecuritySeverityLevel {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptCodeScanningAlertRuleSeverity returns new OptCodeScanningAlertRuleSeverity with value set to v.
+func NewOptCodeScanningAlertRuleSeverity(v CodeScanningAlertRuleSeverity) OptCodeScanningAlertRuleSeverity {
+	return OptCodeScanningAlertRuleSeverity{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptCodeScanningAlertRuleSeverity is optional CodeScanningAlertRuleSeverity.
+type OptCodeScanningAlertRuleSeverity struct {
+	Value CodeScanningAlertRuleSeverity
+	Set   bool
+}
+
+// IsSet returns true if OptCodeScanningAlertRuleSeverity was set.
+func (o OptCodeScanningAlertRuleSeverity) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptCodeScanningAlertRuleSeverity) Reset() {
+	var v CodeScanningAlertRuleSeverity
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptCodeScanningAlertRuleSeverity) SetTo(v CodeScanningAlertRuleSeverity) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptCodeScanningAlertRuleSeverity) Get() (v CodeScanningAlertRuleSeverity, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptCodeScanningAlertRuleSeverity) Or(d CodeScanningAlertRuleSeverity) CodeScanningAlertRuleSeverity {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptCodeScanningAlertRuleSummarySeverity returns new OptCodeScanningAlertRuleSummarySeverity with value set to v.
 func NewOptCodeScanningAlertRuleSummarySeverity(v CodeScanningAlertRuleSummarySeverity) OptCodeScanningAlertRuleSummarySeverity {
 	return OptCodeScanningAlertRuleSummarySeverity{
@@ -13182,6 +14069,146 @@ func (o OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility)
 
 // Or returns value if set, or given parameter if does not.
 func (o OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) Or(d EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptEnterpriseAdminGetAuditLogInclude returns new OptEnterpriseAdminGetAuditLogInclude with value set to v.
+func NewOptEnterpriseAdminGetAuditLogInclude(v EnterpriseAdminGetAuditLogInclude) OptEnterpriseAdminGetAuditLogInclude {
+	return OptEnterpriseAdminGetAuditLogInclude{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptEnterpriseAdminGetAuditLogInclude is optional EnterpriseAdminGetAuditLogInclude.
+type OptEnterpriseAdminGetAuditLogInclude struct {
+	Value EnterpriseAdminGetAuditLogInclude
+	Set   bool
+}
+
+// IsSet returns true if OptEnterpriseAdminGetAuditLogInclude was set.
+func (o OptEnterpriseAdminGetAuditLogInclude) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptEnterpriseAdminGetAuditLogInclude) Reset() {
+	var v EnterpriseAdminGetAuditLogInclude
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptEnterpriseAdminGetAuditLogInclude) SetTo(v EnterpriseAdminGetAuditLogInclude) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptEnterpriseAdminGetAuditLogInclude) Get() (v EnterpriseAdminGetAuditLogInclude, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptEnterpriseAdminGetAuditLogInclude) Or(d EnterpriseAdminGetAuditLogInclude) EnterpriseAdminGetAuditLogInclude {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptEnterpriseAdminGetAuditLogOrder returns new OptEnterpriseAdminGetAuditLogOrder with value set to v.
+func NewOptEnterpriseAdminGetAuditLogOrder(v EnterpriseAdminGetAuditLogOrder) OptEnterpriseAdminGetAuditLogOrder {
+	return OptEnterpriseAdminGetAuditLogOrder{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptEnterpriseAdminGetAuditLogOrder is optional EnterpriseAdminGetAuditLogOrder.
+type OptEnterpriseAdminGetAuditLogOrder struct {
+	Value EnterpriseAdminGetAuditLogOrder
+	Set   bool
+}
+
+// IsSet returns true if OptEnterpriseAdminGetAuditLogOrder was set.
+func (o OptEnterpriseAdminGetAuditLogOrder) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptEnterpriseAdminGetAuditLogOrder) Reset() {
+	var v EnterpriseAdminGetAuditLogOrder
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptEnterpriseAdminGetAuditLogOrder) SetTo(v EnterpriseAdminGetAuditLogOrder) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptEnterpriseAdminGetAuditLogOrder) Get() (v EnterpriseAdminGetAuditLogOrder, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptEnterpriseAdminGetAuditLogOrder) Or(d EnterpriseAdminGetAuditLogOrder) EnterpriseAdminGetAuditLogOrder {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue returns new OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue with value set to v.
+func NewOptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue(v EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue {
+	return OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue is optional EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue.
+type OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue struct {
+	Value EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	Set   bool
+}
+
+// IsSet returns true if OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue was set.
+func (o OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) Reset() {
+	var v EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) SetTo(v EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) Get() (v EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) Or(d EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -13828,6 +14855,98 @@ func (o OptFullRepositorySecurityAndAnalysisSecretScanningStatus) Get() (v FullR
 
 // Or returns value if set, or given parameter if does not.
 func (o OptFullRepositorySecurityAndAnalysisSecretScanningStatus) Or(d FullRepositorySecurityAndAnalysisSecretScanningStatus) FullRepositorySecurityAndAnalysisSecretScanningStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptGistHistoryChangeStatus returns new OptGistHistoryChangeStatus with value set to v.
+func NewOptGistHistoryChangeStatus(v GistHistoryChangeStatus) OptGistHistoryChangeStatus {
+	return OptGistHistoryChangeStatus{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptGistHistoryChangeStatus is optional GistHistoryChangeStatus.
+type OptGistHistoryChangeStatus struct {
+	Value GistHistoryChangeStatus
+	Set   bool
+}
+
+// IsSet returns true if OptGistHistoryChangeStatus was set.
+func (o OptGistHistoryChangeStatus) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptGistHistoryChangeStatus) Reset() {
+	var v GistHistoryChangeStatus
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptGistHistoryChangeStatus) SetTo(v GistHistoryChangeStatus) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptGistHistoryChangeStatus) Get() (v GistHistoryChangeStatus, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptGistHistoryChangeStatus) Or(d GistHistoryChangeStatus) GistHistoryChangeStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptGistSimpleFiles returns new OptGistSimpleFiles with value set to v.
+func NewOptGistSimpleFiles(v GistSimpleFiles) OptGistSimpleFiles {
+	return OptGistSimpleFiles{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptGistSimpleFiles is optional GistSimpleFiles.
+type OptGistSimpleFiles struct {
+	Value GistSimpleFiles
+	Set   bool
+}
+
+// IsSet returns true if OptGistSimpleFiles was set.
+func (o OptGistSimpleFiles) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptGistSimpleFiles) Reset() {
+	var v GistSimpleFiles
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptGistSimpleFiles) SetTo(v GistSimpleFiles) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptGistSimpleFiles) Get() (v GistSimpleFiles, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptGistSimpleFiles) Or(d GistSimpleFiles) GistSimpleFiles {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -16878,6 +17997,171 @@ func (o OptNilFullRepositorySecurityAndAnalysis) Or(d FullRepositorySecurityAndA
 	return d
 }
 
+// NewOptNilGistHistoryArray returns new OptNilGistHistoryArray with value set to v.
+func NewOptNilGistHistoryArray(v []GistHistory) OptNilGistHistoryArray {
+	return OptNilGistHistoryArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilGistHistoryArray is optional nullable []GistHistory.
+type OptNilGistHistoryArray struct {
+	Value []GistHistory
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilGistHistoryArray was set.
+func (o OptNilGistHistoryArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilGistHistoryArray) Reset() {
+	var v []GistHistory
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilGistHistoryArray) SetTo(v []GistHistory) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilGistHistoryArray) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilGistHistoryArray) Get() (v []GistHistory, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilGistHistoryArray) Or(d []GistHistory) []GistHistory {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilGistSimpleForkOf returns new OptNilGistSimpleForkOf with value set to v.
+func NewOptNilGistSimpleForkOf(v GistSimpleForkOf) OptNilGistSimpleForkOf {
+	return OptNilGistSimpleForkOf{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilGistSimpleForkOf is optional nullable GistSimpleForkOf.
+type OptNilGistSimpleForkOf struct {
+	Value GistSimpleForkOf
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilGistSimpleForkOf was set.
+func (o OptNilGistSimpleForkOf) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilGistSimpleForkOf) Reset() {
+	var v GistSimpleForkOf
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilGistSimpleForkOf) SetTo(v GistSimpleForkOf) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilGistSimpleForkOf) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilGistSimpleForkOf) Get() (v GistSimpleForkOf, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilGistSimpleForkOf) Or(d GistSimpleForkOf) GistSimpleForkOf {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilGistSimpleForksItemArray returns new OptNilGistSimpleForksItemArray with value set to v.
+func NewOptNilGistSimpleForksItemArray(v []GistSimpleForksItem) OptNilGistSimpleForksItemArray {
+	return OptNilGistSimpleForksItemArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilGistSimpleForksItemArray is optional nullable []GistSimpleForksItem.
+type OptNilGistSimpleForksItemArray struct {
+	Value []GistSimpleForksItem
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilGistSimpleForksItemArray was set.
+func (o OptNilGistSimpleForksItemArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilGistSimpleForksItemArray) Reset() {
+	var v []GistSimpleForksItem
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilGistSimpleForksItemArray) SetTo(v []GistSimpleForksItem) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilGistSimpleForksItemArray) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilGistSimpleForksItemArray) Get() (v []GistSimpleForksItem, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilGistSimpleForksItemArray) Or(d []GistSimpleForksItem) []GistSimpleForksItem {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilInt returns new OptNilInt with value set to v.
 func NewOptNilInt(v int) OptNilInt {
 	return OptNilInt{
@@ -18878,6 +20162,98 @@ func (o OptOrgsCreateInvitationReqRole) Or(d OrgsCreateInvitationReqRole) OrgsCr
 	return d
 }
 
+// NewOptOrgsGetAuditLogInclude returns new OptOrgsGetAuditLogInclude with value set to v.
+func NewOptOrgsGetAuditLogInclude(v OrgsGetAuditLogInclude) OptOrgsGetAuditLogInclude {
+	return OptOrgsGetAuditLogInclude{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOrgsGetAuditLogInclude is optional OrgsGetAuditLogInclude.
+type OptOrgsGetAuditLogInclude struct {
+	Value OrgsGetAuditLogInclude
+	Set   bool
+}
+
+// IsSet returns true if OptOrgsGetAuditLogInclude was set.
+func (o OptOrgsGetAuditLogInclude) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOrgsGetAuditLogInclude) Reset() {
+	var v OrgsGetAuditLogInclude
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOrgsGetAuditLogInclude) SetTo(v OrgsGetAuditLogInclude) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOrgsGetAuditLogInclude) Get() (v OrgsGetAuditLogInclude, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsGetAuditLogInclude) Or(d OrgsGetAuditLogInclude) OrgsGetAuditLogInclude {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptOrgsGetAuditLogOrder returns new OptOrgsGetAuditLogOrder with value set to v.
+func NewOptOrgsGetAuditLogOrder(v OrgsGetAuditLogOrder) OptOrgsGetAuditLogOrder {
+	return OptOrgsGetAuditLogOrder{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOrgsGetAuditLogOrder is optional OrgsGetAuditLogOrder.
+type OptOrgsGetAuditLogOrder struct {
+	Value OrgsGetAuditLogOrder
+	Set   bool
+}
+
+// IsSet returns true if OptOrgsGetAuditLogOrder was set.
+func (o OptOrgsGetAuditLogOrder) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOrgsGetAuditLogOrder) Reset() {
+	var v OrgsGetAuditLogOrder
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOrgsGetAuditLogOrder) SetTo(v OrgsGetAuditLogOrder) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOrgsGetAuditLogOrder) Get() (v OrgsGetAuditLogOrder, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsGetAuditLogOrder) Or(d OrgsGetAuditLogOrder) OrgsGetAuditLogOrder {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptOrgsListMembersFilter returns new OptOrgsListMembersFilter with value set to v.
 func NewOptOrgsListMembersFilter(v OrgsListMembersFilter) OptOrgsListMembersFilter {
 	return OptOrgsListMembersFilter{
@@ -19430,6 +20806,238 @@ func (o OptOrgsUpdateWebhookReqConfig) Or(d OrgsUpdateWebhookReqConfig) OrgsUpda
 	return d
 }
 
+// NewOptPackageVersionMetadata returns new OptPackageVersionMetadata with value set to v.
+func NewOptPackageVersionMetadata(v PackageVersionMetadata) OptPackageVersionMetadata {
+	return OptPackageVersionMetadata{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPackageVersionMetadata is optional PackageVersionMetadata.
+type OptPackageVersionMetadata struct {
+	Value PackageVersionMetadata
+	Set   bool
+}
+
+// IsSet returns true if OptPackageVersionMetadata was set.
+func (o OptPackageVersionMetadata) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPackageVersionMetadata) Reset() {
+	var v PackageVersionMetadata
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPackageVersionMetadata) SetTo(v PackageVersionMetadata) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPackageVersionMetadata) Get() (v PackageVersionMetadata, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPackageVersionMetadata) Or(d PackageVersionMetadata) PackageVersionMetadata {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptPackageVersionMetadataContainer returns new OptPackageVersionMetadataContainer with value set to v.
+func NewOptPackageVersionMetadataContainer(v PackageVersionMetadataContainer) OptPackageVersionMetadataContainer {
+	return OptPackageVersionMetadataContainer{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPackageVersionMetadataContainer is optional PackageVersionMetadataContainer.
+type OptPackageVersionMetadataContainer struct {
+	Value PackageVersionMetadataContainer
+	Set   bool
+}
+
+// IsSet returns true if OptPackageVersionMetadataContainer was set.
+func (o OptPackageVersionMetadataContainer) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPackageVersionMetadataContainer) Reset() {
+	var v PackageVersionMetadataContainer
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPackageVersionMetadataContainer) SetTo(v PackageVersionMetadataContainer) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPackageVersionMetadataContainer) Get() (v PackageVersionMetadataContainer, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPackageVersionMetadataContainer) Or(d PackageVersionMetadataContainer) PackageVersionMetadataContainer {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptPackageVersionMetadataDocker returns new OptPackageVersionMetadataDocker with value set to v.
+func NewOptPackageVersionMetadataDocker(v PackageVersionMetadataDocker) OptPackageVersionMetadataDocker {
+	return OptPackageVersionMetadataDocker{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPackageVersionMetadataDocker is optional PackageVersionMetadataDocker.
+type OptPackageVersionMetadataDocker struct {
+	Value PackageVersionMetadataDocker
+	Set   bool
+}
+
+// IsSet returns true if OptPackageVersionMetadataDocker was set.
+func (o OptPackageVersionMetadataDocker) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPackageVersionMetadataDocker) Reset() {
+	var v PackageVersionMetadataDocker
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPackageVersionMetadataDocker) SetTo(v PackageVersionMetadataDocker) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPackageVersionMetadataDocker) Get() (v PackageVersionMetadataDocker, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPackageVersionMetadataDocker) Or(d PackageVersionMetadataDocker) PackageVersionMetadataDocker {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState returns new OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState with value set to v.
+func NewOptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState(v PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState {
+	return OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState is optional PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState.
+type OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState struct {
+	Value PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
+	Set   bool
+}
+
+// IsSet returns true if OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState was set.
+func (o OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) Reset() {
+	var v PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) SetTo(v PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) Get() (v PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) Or(d PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptPackagesGetAllPackageVersionsForPackageOwnedByOrgState returns new OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState with value set to v.
+func NewOptPackagesGetAllPackageVersionsForPackageOwnedByOrgState(v PackagesGetAllPackageVersionsForPackageOwnedByOrgState) OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState {
+	return OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState is optional PackagesGetAllPackageVersionsForPackageOwnedByOrgState.
+type OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState struct {
+	Value PackagesGetAllPackageVersionsForPackageOwnedByOrgState
+	Set   bool
+}
+
+// IsSet returns true if OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState was set.
+func (o OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) Reset() {
+	var v PackagesGetAllPackageVersionsForPackageOwnedByOrgState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) SetTo(v PackagesGetAllPackageVersionsForPackageOwnedByOrgState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) Get() (v PackagesGetAllPackageVersionsForPackageOwnedByOrgState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) Or(d PackagesGetAllPackageVersionsForPackageOwnedByOrgState) PackagesGetAllPackageVersionsForPackageOwnedByOrgState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPackagesListPackagesForAuthenticatedUserVisibility returns new OptPackagesListPackagesForAuthenticatedUserVisibility with value set to v.
 func NewOptPackagesListPackagesForAuthenticatedUserVisibility(v PackagesListPackagesForAuthenticatedUserVisibility) OptPackagesListPackagesForAuthenticatedUserVisibility {
 	return OptPackagesListPackagesForAuthenticatedUserVisibility{
@@ -19568,6 +21176,98 @@ func (o OptPackagesListPackagesForUserVisibility) Or(d PackagesListPackagesForUs
 	return d
 }
 
+// NewOptPageProtectedDomainState returns new OptPageProtectedDomainState with value set to v.
+func NewOptPageProtectedDomainState(v PageProtectedDomainState) OptPageProtectedDomainState {
+	return OptPageProtectedDomainState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPageProtectedDomainState is optional PageProtectedDomainState.
+type OptPageProtectedDomainState struct {
+	Value PageProtectedDomainState
+	Set   bool
+}
+
+// IsSet returns true if OptPageProtectedDomainState was set.
+func (o OptPageProtectedDomainState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPageProtectedDomainState) Reset() {
+	var v PageProtectedDomainState
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPageProtectedDomainState) SetTo(v PageProtectedDomainState) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPageProtectedDomainState) Get() (v PageProtectedDomainState, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPageProtectedDomainState) Or(d PageProtectedDomainState) PageProtectedDomainState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptPagesHTTPSCertificate returns new OptPagesHTTPSCertificate with value set to v.
+func NewOptPagesHTTPSCertificate(v PagesHTTPSCertificate) OptPagesHTTPSCertificate {
+	return OptPagesHTTPSCertificate{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPagesHTTPSCertificate is optional PagesHTTPSCertificate.
+type OptPagesHTTPSCertificate struct {
+	Value PagesHTTPSCertificate
+	Set   bool
+}
+
+// IsSet returns true if OptPagesHTTPSCertificate was set.
+func (o OptPagesHTTPSCertificate) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPagesHTTPSCertificate) Reset() {
+	var v PagesHTTPSCertificate
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPagesHTTPSCertificate) SetTo(v PagesHTTPSCertificate) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPagesHTTPSCertificate) Get() (v PagesHTTPSCertificate, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPagesHTTPSCertificate) Or(d PagesHTTPSCertificate) PagesHTTPSCertificate {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPagesHealthCheckDomain returns new OptPagesHealthCheckDomain with value set to v.
 func NewOptPagesHealthCheckDomain(v PagesHealthCheckDomain) OptPagesHealthCheckDomain {
 	return OptPagesHealthCheckDomain{
@@ -19608,6 +21308,52 @@ func (o OptPagesHealthCheckDomain) Get() (v PagesHealthCheckDomain, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptPagesHealthCheckDomain) Or(d PagesHealthCheckDomain) PagesHealthCheckDomain {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptPagesSourceHash returns new OptPagesSourceHash with value set to v.
+func NewOptPagesSourceHash(v PagesSourceHash) OptPagesSourceHash {
+	return OptPagesSourceHash{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPagesSourceHash is optional PagesSourceHash.
+type OptPagesSourceHash struct {
+	Value PagesSourceHash
+	Set   bool
+}
+
+// IsSet returns true if OptPagesSourceHash was set.
+func (o OptPagesSourceHash) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPagesSourceHash) Reset() {
+	var v PagesSourceHash
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPagesSourceHash) SetTo(v PagesSourceHash) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPagesSourceHash) Get() (v PagesSourceHash, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPagesSourceHash) Or(d PagesSourceHash) PagesSourceHash {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -20666,6 +22412,52 @@ func (o OptProtectedBranchRequiredSignatures) Get() (v ProtectedBranchRequiredSi
 
 // Or returns value if set, or given parameter if does not.
 func (o OptProtectedBranchRequiredSignatures) Or(d ProtectedBranchRequiredSignatures) ProtectedBranchRequiredSignatures {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptPublicUser returns new OptPublicUser with value set to v.
+func NewOptPublicUser(v PublicUser) OptPublicUser {
+	return OptPublicUser{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPublicUser is optional PublicUser.
+type OptPublicUser struct {
+	Value PublicUser
+	Set   bool
+}
+
+// IsSet returns true if OptPublicUser was set.
+func (o OptPublicUser) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPublicUser) Reset() {
+	var v PublicUser
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPublicUser) SetTo(v PublicUser) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPublicUser) Get() (v PublicUser, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPublicUser) Or(d PublicUser) PublicUser {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -22506,6 +24298,52 @@ func (o OptReposCreateDeploymentStatusReqEnvironment) Get() (v ReposCreateDeploy
 
 // Or returns value if set, or given parameter if does not.
 func (o OptReposCreateDeploymentStatusReqEnvironment) Or(d ReposCreateDeploymentStatusReqEnvironment) ReposCreateDeploymentStatusReqEnvironment {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptReposCreateDispatchEventReqClientPayload returns new OptReposCreateDispatchEventReqClientPayload with value set to v.
+func NewOptReposCreateDispatchEventReqClientPayload(v ReposCreateDispatchEventReqClientPayload) OptReposCreateDispatchEventReqClientPayload {
+	return OptReposCreateDispatchEventReqClientPayload{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptReposCreateDispatchEventReqClientPayload is optional ReposCreateDispatchEventReqClientPayload.
+type OptReposCreateDispatchEventReqClientPayload struct {
+	Value ReposCreateDispatchEventReqClientPayload
+	Set   bool
+}
+
+// IsSet returns true if OptReposCreateDispatchEventReqClientPayload was set.
+func (o OptReposCreateDispatchEventReqClientPayload) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptReposCreateDispatchEventReqClientPayload) Reset() {
+	var v ReposCreateDispatchEventReqClientPayload
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptReposCreateDispatchEventReqClientPayload) SetTo(v ReposCreateDispatchEventReqClientPayload) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptReposCreateDispatchEventReqClientPayload) Get() (v ReposCreateDispatchEventReqClientPayload, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptReposCreateDispatchEventReqClientPayload) Or(d ReposCreateDispatchEventReqClientPayload) ReposCreateDispatchEventReqClientPayload {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -26148,6 +27986,52 @@ func (o OptSelectedActionsURL) Or(d SelectedActionsURL) SelectedActionsURL {
 	return d
 }
 
+// NewOptSimpleUser returns new OptSimpleUser with value set to v.
+func NewOptSimpleUser(v SimpleUser) OptSimpleUser {
+	return OptSimpleUser{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSimpleUser is optional SimpleUser.
+type OptSimpleUser struct {
+	Value SimpleUser
+	Set   bool
+}
+
+// IsSet returns true if OptSimpleUser was set.
+func (o OptSimpleUser) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSimpleUser) Reset() {
+	var v SimpleUser
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSimpleUser) SetTo(v SimpleUser) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSimpleUser) Get() (v SimpleUser, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSimpleUser) Or(d SimpleUser) SimpleUser {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptStatusCheckPolicy returns new OptStatusCheckPolicy with value set to v.
 func NewOptStatusCheckPolicy(v StatusCheckPolicy) OptStatusCheckPolicy {
 	return OptStatusCheckPolicy{
@@ -28740,9 +30624,9 @@ type OrgsCheckPublicMembershipForUserNotFound struct{}
 
 func (*OrgsCheckPublicMembershipForUserNotFound) orgsCheckPublicMembershipForUserRes() {}
 
-type OrgsConvertMemberToOutsideCollaboratorAccepted struct{}
+type OrgsConvertMemberToOutsideCollaboratorAccepted map[string]jx.Raw
 
-func (*OrgsConvertMemberToOutsideCollaboratorAccepted) orgsConvertMemberToOutsideCollaboratorRes() {}
+func (OrgsConvertMemberToOutsideCollaboratorAccepted) orgsConvertMemberToOutsideCollaboratorRes() {}
 
 // OrgsConvertMemberToOutsideCollaboratorForbidden is response for OrgsConvertMemberToOutsideCollaborator operation.
 type OrgsConvertMemberToOutsideCollaboratorForbidden struct{}
@@ -29153,10 +31037,11 @@ const (
 )
 
 type OrgsUpdateWebhookConfigForOrgReq struct {
-	URL         OptWebhookConfigURL         `json:"url"`
-	ContentType OptWebhookConfigContentType `json:"content_type"`
-	Secret      OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
+	URL             OptWebhookConfigURL         `json:"url"`
+	ContentType     OptWebhookConfigContentType `json:"content_type"`
+	Secret          OptWebhookConfigSecret      `json:"secret"`
+	InsecureSsl     OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
+	AdditionalProps map[string]jx.Raw
 }
 
 type OrgsUpdateWebhookReq struct {
@@ -29209,6 +31094,49 @@ const (
 	PackagePackageTypeDocker    PackagePackageType = "docker"
 	PackagePackageTypeNuget     PackagePackageType = "nuget"
 	PackagePackageTypeContainer PackagePackageType = "container"
+)
+
+// A version of a software package.
+// Ref: #/components/schemas/package-version
+type PackageVersion struct {
+	// Unique identifier of the package version.
+	ID int `json:"id"`
+	// The name of the package version.
+	Name           string                    `json:"name"`
+	URL            string                    `json:"url"`
+	PackageHTMLURL string                    `json:"package_html_url"`
+	HTMLURL        OptString                 `json:"html_url"`
+	License        OptString                 `json:"license"`
+	Description    OptString                 `json:"description"`
+	CreatedAt      time.Time                 `json:"created_at"`
+	UpdatedAt      time.Time                 `json:"updated_at"`
+	DeletedAt      OptTime                   `json:"deleted_at"`
+	Metadata       OptPackageVersionMetadata `json:"metadata"`
+}
+
+type PackageVersionMetadata struct {
+	PackageType PackageVersionMetadataPackageType  `json:"package_type"`
+	Container   OptPackageVersionMetadataContainer `json:"container"`
+	Docker      OptPackageVersionMetadataDocker    `json:"docker"`
+}
+
+type PackageVersionMetadataContainer struct {
+	Tags []jx.Raw `json:"tags"`
+}
+
+type PackageVersionMetadataDocker struct {
+	Tag []jx.Raw `json:"tag"`
+}
+
+type PackageVersionMetadataPackageType string
+
+const (
+	PackageVersionMetadataPackageTypeNpm       PackageVersionMetadataPackageType = "npm"
+	PackageVersionMetadataPackageTypeMaven     PackageVersionMetadataPackageType = "maven"
+	PackageVersionMetadataPackageTypeRubygems  PackageVersionMetadataPackageType = "rubygems"
+	PackageVersionMetadataPackageTypeDocker    PackageVersionMetadataPackageType = "docker"
+	PackageVersionMetadataPackageTypeNuget     PackageVersionMetadataPackageType = "nuget"
+	PackageVersionMetadataPackageTypeContainer PackageVersionMetadataPackageType = "container"
 )
 
 type PackageVisibility string
@@ -29410,6 +31338,26 @@ const (
 	PackagesDeletePackageVersionForUserPackageTypeContainer PackagesDeletePackageVersionForUserPackageType = "container"
 )
 
+type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden BasicError
+
+func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
+}
+
+type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound BasicError
+
+func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
+}
+
+type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized BasicError
+
+func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
+}
+
+type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON []PackageVersion
+
+func (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
+}
+
 type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType string
 
 const (
@@ -29428,6 +31376,26 @@ const (
 	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateDeleted PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState = "deleted"
 )
 
+type PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden BasicError
+
+func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
+}
+
+type PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound BasicError
+
+func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
+}
+
+type PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized BasicError
+
+func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
+}
+
+type PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON []PackageVersion
+
+func (PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
+}
+
 type PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType string
 
 const (
@@ -29445,6 +31413,26 @@ const (
 	PackagesGetAllPackageVersionsForPackageOwnedByOrgStateActive  PackagesGetAllPackageVersionsForPackageOwnedByOrgState = "active"
 	PackagesGetAllPackageVersionsForPackageOwnedByOrgStateDeleted PackagesGetAllPackageVersionsForPackageOwnedByOrgState = "deleted"
 )
+
+type PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden BasicError
+
+func (*PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
+}
+
+type PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound BasicError
+
+func (*PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
+}
+
+type PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized BasicError
+
+func (*PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
+}
+
+type PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON []PackageVersion
+
+func (PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
+}
 
 type PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType string
 
@@ -29789,6 +31777,36 @@ const (
 	PackagesRestorePackageVersionForUserPackageTypeContainer PackagesRestorePackageVersionForUserPackageType = "container"
 )
 
+// The configuration for GitHub Pages for a repository.
+// Ref: #/components/schemas/page
+type Page struct {
+	// The API address for accessing this Page resource.
+	URL url.URL `json:"url"`
+	// The status of the most recent build of the Page.
+	Status PageStatus `json:"status"`
+	// The Pages site's custom domain.
+	Cname NilString `json:"cname"`
+	// The state if the domain is protected.
+	ProtectedDomainState OptPageProtectedDomainState `json:"protected_domain_state"`
+	// The timestamp when a pending domain becomes unverified.
+	PendingDomainUnverifiedAt OptNilTime `json:"pending_domain_unverified_at"`
+	// Whether the Page has a custom 404 page.
+	Custom404 bool `json:"custom_404"`
+	// The web address the Page can be accessed from.
+	HTMLURL OptURL             `json:"html_url"`
+	Source  OptPagesSourceHash `json:"source"`
+	// Whether the GitHub Pages site is publicly visible. If set to `true`, the site is accessible to
+	// anyone on the internet. If set to `false`, the site will only be accessible to users who have at
+	// least `read` access to the repository that published the site.
+	Public           bool                     `json:"public"`
+	HTTPSCertificate OptPagesHTTPSCertificate `json:"https_certificate"`
+	// Whether https is enabled on the domain.
+	HTTPSEnforced OptBool `json:"https_enforced"`
+}
+
+func (*Page) reposCreatePagesSiteRes() {}
+func (*Page) reposGetPagesRes()        {}
+
 // Page Build.
 // Ref: #/components/schemas/page-build
 type PageBuild struct {
@@ -29812,6 +31830,50 @@ type PageBuildStatus struct {
 	URL    url.URL `json:"url"`
 	Status string  `json:"status"`
 }
+
+// The state if the domain is protected.
+type PageProtectedDomainState string
+
+const (
+	PageProtectedDomainStatePending    PageProtectedDomainState = "pending"
+	PageProtectedDomainStateVerified   PageProtectedDomainState = "verified"
+	PageProtectedDomainStateUnverified PageProtectedDomainState = "unverified"
+)
+
+// The status of the most recent build of the Page.
+type PageStatus string
+
+const (
+	PageStatusBuilt    PageStatus = "built"
+	PageStatusBuilding PageStatus = "building"
+	PageStatusErrored  PageStatus = "errored"
+)
+
+// Ref: #/components/schemas/pages-https-certificate
+type PagesHTTPSCertificate struct {
+	State       PagesHTTPSCertificateState `json:"state"`
+	Description string                     `json:"description"`
+	// Array of the domain set and its alternate name (if it is configured).
+	Domains   []jx.Raw `json:"domains"`
+	ExpiresAt OptTime  `json:"expires_at"`
+}
+
+type PagesHTTPSCertificateState string
+
+const (
+	PagesHTTPSCertificateStateNew                  PagesHTTPSCertificateState = "new"
+	PagesHTTPSCertificateStateAuthorizationCreated PagesHTTPSCertificateState = "authorization_created"
+	PagesHTTPSCertificateStateAuthorizationPending PagesHTTPSCertificateState = "authorization_pending"
+	PagesHTTPSCertificateStateAuthorized           PagesHTTPSCertificateState = "authorized"
+	PagesHTTPSCertificateStateAuthorizationRevoked PagesHTTPSCertificateState = "authorization_revoked"
+	PagesHTTPSCertificateStateIssued               PagesHTTPSCertificateState = "issued"
+	PagesHTTPSCertificateStateUploaded             PagesHTTPSCertificateState = "uploaded"
+	PagesHTTPSCertificateStateApproved             PagesHTTPSCertificateState = "approved"
+	PagesHTTPSCertificateStateErrored              PagesHTTPSCertificateState = "errored"
+	PagesHTTPSCertificateStateBadAuthz             PagesHTTPSCertificateState = "bad_authz"
+	PagesHTTPSCertificateStateDestroyPending       PagesHTTPSCertificateState = "destroy_pending"
+	PagesHTTPSCertificateStateDNSChanged           PagesHTTPSCertificateState = "dns_changed"
+)
 
 // Pages Health Check Status.
 // Ref: #/components/schemas/pages-health-check
@@ -29884,6 +31946,12 @@ type PagesHealthCheckDomain struct {
 	CaaError                      OptNilString `json:"caa_error"`
 }
 
+// Ref: #/components/schemas/pages-source-hash
+type PagesSourceHash struct {
+	Branch string `json:"branch"`
+	Path   string `json:"path"`
+}
+
 // Ref: #/components/schemas/participation-stats
 type ParticipationStats struct {
 	All   []int `json:"all"`
@@ -29935,6 +32003,7 @@ func (*PreviewHeaderMissing) reactionsListForCommitCommentRes()              {}
 func (*PreviewHeaderMissing) reactionsListForIssueCommentRes()               {}
 func (*PreviewHeaderMissing) reactionsListForIssueRes()                      {}
 func (*PreviewHeaderMissing) reactionsListForPullRequestReviewCommentRes()   {}
+func (*PreviewHeaderMissing) reposCreatePagesSiteRes()                       {}
 func (*PreviewHeaderMissing) reposDeletePagesSiteRes()                       {}
 func (*PreviewHeaderMissing) reposGetAllTopicsRes()                          {}
 func (*PreviewHeaderMissing) reposGetBranchRes()                             {}
@@ -30485,9 +32554,9 @@ const (
 	ProjectsListForUserStateAll    ProjectsListForUserState = "all"
 )
 
-type ProjectsMoveCardCreated struct{}
+type ProjectsMoveCardCreated map[string]jx.Raw
 
-func (*ProjectsMoveCardCreated) projectsMoveCardRes() {}
+func (ProjectsMoveCardCreated) projectsMoveCardRes() {}
 
 type ProjectsMoveCardForbidden struct {
 	Message          OptString                             `json:"message"`
@@ -30534,9 +32603,9 @@ type ProjectsMoveColumnApplicationJSONUnauthorized BasicError
 
 func (*ProjectsMoveColumnApplicationJSONUnauthorized) projectsMoveColumnRes() {}
 
-type ProjectsMoveColumnCreated struct{}
+type ProjectsMoveColumnCreated map[string]jx.Raw
 
-func (*ProjectsMoveColumnCreated) projectsMoveColumnRes() {}
+func (ProjectsMoveColumnCreated) projectsMoveColumnRes() {}
 
 type ProjectsMoveColumnReq struct {
 	// The position of the column in a project. Can be one of: `first`, `last`, or `after:<column_id>` to
@@ -30665,16 +32734,19 @@ func (*ProtectedBranchAdminEnforced) reposCreateCommitSignatureProtectionRes() {
 func (*ProtectedBranchAdminEnforced) reposGetCommitSignatureProtectionRes()    {}
 
 type ProtectedBranchAllowDeletions struct {
-	Enabled bool `json:"enabled"`
+	Enabled         bool `json:"enabled"`
+	AdditionalProps map[string]jx.Raw
 }
 
 type ProtectedBranchAllowForcePushes struct {
-	Enabled bool `json:"enabled"`
+	Enabled         bool `json:"enabled"`
+	AdditionalProps map[string]jx.Raw
 }
 
 type ProtectedBranchEnforceAdmins struct {
-	URL     url.URL `json:"url"`
-	Enabled bool    `json:"enabled"`
+	URL             url.URL `json:"url"`
+	Enabled         bool    `json:"enabled"`
+	AdditionalProps map[string]jx.Raw
 }
 
 // Protected Branch Pull Request Review.
@@ -30700,11 +32772,13 @@ type ProtectedBranchPullRequestReviewDismissalRestrictions struct {
 }
 
 type ProtectedBranchRequiredConversationResolution struct {
-	Enabled OptBool `json:"enabled"`
+	Enabled         OptBool `json:"enabled"`
+	AdditionalProps map[string]jx.Raw
 }
 
 type ProtectedBranchRequiredLinearHistory struct {
-	Enabled bool `json:"enabled"`
+	Enabled         bool `json:"enabled"`
+	AdditionalProps map[string]jx.Raw
 }
 
 type ProtectedBranchRequiredPullRequestReviews struct {
@@ -30770,6 +32844,7 @@ type PublicUser struct {
 	OwnedPrivateRepos OptInt            `json:"owned_private_repos"`
 	DiskUsage         OptInt            `json:"disk_usage"`
 	Collaborators     OptInt            `json:"collaborators"`
+	AdditionalProps   map[string]jx.Raw
 }
 
 type PublicUserPlan struct {
@@ -33024,7 +35099,7 @@ func NewStringReposCreateDeploymentReqPayload(v string) ReposCreateDeploymentReq
 	return s
 }
 
-type ReposCreateDeploymentReqPayload0 struct{}
+type ReposCreateDeploymentReqPayload0 map[string]jx.Raw
 
 type ReposCreateDeploymentStatusReq struct {
 	// The state of the status. Can be one of `error`, `failure`, `inactive`, `in_progress`, `queued`
@@ -33112,11 +35187,11 @@ type ReposCreateDispatchEventReq struct {
 	// A custom webhook event name.
 	EventType string `json:"event_type"`
 	// JSON payload with extra information about the webhook event that your action or worklow may use.
-	ClientPayload *ReposCreateDispatchEventReqClientPayload `json:"client_payload"`
+	ClientPayload OptReposCreateDispatchEventReqClientPayload `json:"client_payload"`
 }
 
 // JSON payload with extra information about the webhook event that your action or worklow may use.
-type ReposCreateDispatchEventReqClientPayload struct{}
+type ReposCreateDispatchEventReqClientPayload map[string]jx.Raw
 
 type ReposCreateForAuthenticatedUserApplicationJSONBadRequest BasicError
 
@@ -33267,12 +35342,10 @@ const (
 )
 
 type ReposCreateOrUpdateEnvironmentReq struct {
-	WaitTimer OptWaitTimer `json:"wait_timer"`
-	// The people or teams that may review jobs that reference the environment. You can list up to six
-	// users or teams as reviewers. The reviewers must have at least read access to the repository. Only
-	// one of the required reviewers needs to approve the job for it to proceed.
+	WaitTimer              OptWaitTimer                                              `json:"wait_timer"`
 	Reviewers              OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray `json:"reviewers"`
 	DeploymentBranchPolicy OptNilDeploymentBranchPolicy                              `json:"deployment_branch_policy"`
+	AdditionalProps        map[string]jx.Raw
 }
 
 type ReposCreateOrUpdateEnvironmentReqReviewersItem struct {
@@ -33404,17 +35477,11 @@ type ReposCreateWebhookApplicationJSONNotFound BasicError
 func (*ReposCreateWebhookApplicationJSONNotFound) reposCreateWebhookRes() {}
 
 type ReposCreateWebhookReq struct {
-	// Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.
-	Name OptString `json:"name"`
-	// Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.
-	// github.com/rest/reference/repos#create-hook-config-params).
-	Config OptReposCreateWebhookReqConfig `json:"config"`
-	// Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered
-	// for.
-	Events []string `json:"events"`
-	// Determines if notifications are sent when the webhook is triggered. Set to `true` to send
-	// notifications.
-	Active OptBool `json:"active"`
+	Name            OptString                      `json:"name"`
+	Config          OptReposCreateWebhookReqConfig `json:"config"`
+	Events          []string                       `json:"events"`
+	Active          OptBool                        `json:"active"`
+	AdditionalProps map[string]jx.Raw
 }
 
 // Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.
@@ -34883,10 +36950,11 @@ type ReposUpdateStatusCheckProtectionReq struct {
 }
 
 type ReposUpdateWebhookConfigForRepoReq struct {
-	URL         OptWebhookConfigURL         `json:"url"`
-	ContentType OptWebhookConfigContentType `json:"content_type"`
-	Secret      OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
+	URL             OptWebhookConfigURL         `json:"url"`
+	ContentType     OptWebhookConfigContentType `json:"content_type"`
+	Secret          OptWebhookConfigSecret      `json:"secret"`
+	InsecureSsl     OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
+	AdditionalProps map[string]jx.Raw
 }
 
 type ReposUpdateWebhookReq struct {
@@ -35968,11 +38036,13 @@ type ServiceUnavailable struct {
 
 func (*ServiceUnavailable) activityListPublicEventsRes()        {}
 func (*ServiceUnavailable) codeScanningDeleteAnalysisRes()      {}
+func (*ServiceUnavailable) codeScanningGetAlertRes()            {}
 func (*ServiceUnavailable) codeScanningGetAnalysisRes()         {}
 func (*ServiceUnavailable) codeScanningGetSarifRes()            {}
 func (*ServiceUnavailable) codeScanningListAlertInstancesRes()  {}
 func (*ServiceUnavailable) codeScanningListAlertsForRepoRes()   {}
 func (*ServiceUnavailable) codeScanningListRecentAnalysesRes()  {}
+func (*ServiceUnavailable) codeScanningUpdateAlertRes()         {}
 func (*ServiceUnavailable) codeScanningUploadSarifRes()         {}
 func (*ServiceUnavailable) issuesCreateRes()                    {}
 func (*ServiceUnavailable) issuesUpdateRes()                    {}
@@ -36733,9 +38803,8 @@ type TeamsCreateDiscussionLegacyReq struct {
 }
 
 type TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq struct {
-	// The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will
-	// replace the original one. You must include any existing groups that you don't want to remove.
-	Groups []TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem `json:"groups"`
+	Groups          []TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem `json:"groups"`
+	AdditionalProps map[string]jx.Raw
 }
 
 type TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem struct {
@@ -37468,6 +39537,21 @@ type UsersCheckPersonIsFollowedByAuthenticatedNoContent struct{}
 func (*UsersCheckPersonIsFollowedByAuthenticatedNoContent) usersCheckPersonIsFollowedByAuthenticatedRes() {
 }
 
+type UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden) usersCreateGpgKeyForAuthenticatedRes() {
+}
+
+type UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound) usersCreateGpgKeyForAuthenticatedRes() {
+}
+
+type UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized) usersCreateGpgKeyForAuthenticatedRes() {
+}
+
 type UsersCreateGpgKeyForAuthenticatedReq struct {
 	// A GPG key in ASCII-armored format.
 	ArmoredPublicKey string `json:"armored_public_key"`
@@ -37830,6 +39914,19 @@ const (
 	UsersGetContextForUserSubjectTypePullRequest  UsersGetContextForUserSubjectType = "pull_request"
 )
 
+type UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden) usersGetGpgKeyForAuthenticatedRes() {}
+
+type UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound) usersGetGpgKeyForAuthenticatedRes() {}
+
+type UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized) usersGetGpgKeyForAuthenticatedRes() {
+}
+
 type UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden BasicError
 
 func (*UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden) usersGetPublicSSHKeyForAuthenticatedRes() {
@@ -37909,6 +40006,25 @@ type UsersListFollowersForAuthenticatedUserOKApplicationJSON []SimpleUser
 
 func (UsersListFollowersForAuthenticatedUserOKApplicationJSON) usersListFollowersForAuthenticatedUserRes() {
 }
+
+type UsersListGpgKeysForAuthenticatedApplicationJSONForbidden BasicError
+
+func (*UsersListGpgKeysForAuthenticatedApplicationJSONForbidden) usersListGpgKeysForAuthenticatedRes() {
+}
+
+type UsersListGpgKeysForAuthenticatedApplicationJSONNotFound BasicError
+
+func (*UsersListGpgKeysForAuthenticatedApplicationJSONNotFound) usersListGpgKeysForAuthenticatedRes() {
+}
+
+type UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized BasicError
+
+func (*UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) usersListGpgKeysForAuthenticatedRes() {
+}
+
+type UsersListGpgKeysForAuthenticatedOKApplicationJSON []GpgKey
+
+func (UsersListGpgKeysForAuthenticatedOKApplicationJSON) usersListGpgKeysForAuthenticatedRes() {}
 
 type UsersListOKApplicationJSON []SimpleUser
 
@@ -38072,6 +40188,11 @@ func (*ValidationError) appsListWebhookDeliveriesRes()                          
 func (*ValidationError) appsRedeliverWebhookDeliveryRes()                                    {}
 func (*ValidationError) appsResetTokenRes()                                                  {}
 func (*ValidationError) appsScopeTokenRes()                                                  {}
+func (*ValidationError) gistsCreateRes()                                                     {}
+func (*ValidationError) gistsForkRes()                                                       {}
+func (*ValidationError) gistsGetRevisionRes()                                                {}
+func (*ValidationError) gistsListForUserRes()                                                {}
+func (*ValidationError) gistsListPublicRes()                                                 {}
 func (*ValidationError) gitCreateBlobRes()                                                   {}
 func (*ValidationError) gitCreateCommitRes()                                                 {}
 func (*ValidationError) gitCreateRefRes()                                                    {}
@@ -38096,6 +40217,8 @@ func (*ValidationError) issuesUpdateCommentRes()                                
 func (*ValidationError) issuesUpdateRes()                                                    {}
 func (*ValidationError) migrationsMapCommitAuthorRes()                                       {}
 func (*ValidationError) migrationsSetLfsPreferenceRes()                                      {}
+func (*ValidationError) migrationsStartForAuthenticatedUserRes()                             {}
+func (*ValidationError) migrationsStartForOrgRes()                                           {}
 func (*ValidationError) migrationsStartImportRes()                                           {}
 func (*ValidationError) oAuthAuthorizationsCreateAuthorizationRes()                          {}
 func (*ValidationError) oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes() {}
@@ -38147,6 +40270,7 @@ func (*ValidationError) reposCreateForAuthenticatedUserRes()                    
 func (*ValidationError) reposCreateForkRes()                                                 {}
 func (*ValidationError) reposCreateInOrgRes()                                                {}
 func (*ValidationError) reposCreateOrUpdateFileContentsRes()                                 {}
+func (*ValidationError) reposCreatePagesSiteRes()                                            {}
 func (*ValidationError) reposCreateReleaseRes()                                              {}
 func (*ValidationError) reposCreateWebhookRes()                                              {}
 func (*ValidationError) reposDeleteFileRes()                                                 {}
@@ -38189,6 +40313,7 @@ func (*ValidationError) teamsRemoveProjectLegacyRes()                           
 func (*ValidationError) teamsUpdateLegacyRes()                                               {}
 func (*ValidationError) usersAddEmailForAuthenticatedRes()                                   {}
 func (*ValidationError) usersBlockRes()                                                      {}
+func (*ValidationError) usersCreateGpgKeyForAuthenticatedRes()                               {}
 func (*ValidationError) usersCreatePublicSSHKeyForAuthenticatedRes()                         {}
 func (*ValidationError) usersDeleteEmailForAuthenticatedRes()                                {}
 func (*ValidationError) usersDeleteGpgKeyForAuthenticatedRes()                               {}
