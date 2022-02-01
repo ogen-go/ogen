@@ -47,7 +47,7 @@ func testEncode(t *testing.T, encoder json.Marshaler, expected string) {
 		require.Empty(t, e.Buf)
 		return
 	}
-	require.True(t, std.Valid(e.Buf))
+	require.True(t, std.Valid(e.Buf), string(e.Buf))
 	require.JSONEq(t, expected, string(e.Buf), "encoding result mismatch")
 }
 
@@ -483,4 +483,79 @@ func TestJSONSum(t *testing.T) {
 			})
 		}
 	})
+}
+
+func TestJSONAny(t *testing.T) {
+	validJSON := []string{
+		`null`,
+		`true`,
+		`false`,
+		`10`,
+		`10.0`,
+		`10.0e1`,
+		`{}`,
+		`{"a":"b"}`,
+		`[{"a":"b"}]`,
+		`[{"a":{}}]`,
+	}
+	templateCase := func(f string) (r []string) {
+		for _, val := range validJSON {
+			r = append(r, fmt.Sprintf(f, val))
+		}
+		return r
+	}
+	type testCases struct {
+		Name   string
+		Inputs []string
+		Error  bool
+	}
+	var cases []testCases
+
+	for _, template := range []struct {
+		Name   string
+		Format string
+		Error  bool
+	}{
+		{
+			Name:   "Raw",
+			Format: `{"empty":%s}`,
+			Error:  false,
+		},
+
+		{Name: "AnyArray",
+			Format: `{"any_array":[%s]}`,
+			Error:  false,
+		},
+		{
+			Name:   "AnyMap",
+			Format: `{"any_map":{"key": %s}}`,
+			Error:  false,
+		},
+	} {
+		cases = append(cases, testCases{
+			Name:   template.Name,
+			Inputs: templateCase(template.Format),
+			Error:  template.Error,
+		})
+	}
+
+	for _, tc := range cases {
+		tc := tc
+		t.Run(tc.Name, func(t *testing.T) {
+			for i, input := range tc.Inputs {
+				input := input
+				t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+					typ := &api.AnyTest{}
+					checker := require.NoError
+					if tc.Error {
+						checker = require.Error
+					}
+					checker(t, typ.Decode(jx.DecodeStr(input)))
+					if !tc.Error {
+						testEncode(t, typ, input)
+					}
+				})
+			}
+		})
+	}
 }
