@@ -48,8 +48,7 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		{{- end }}
 		return {{ if or ($op.Request.Type.IsPointer) ($op.Request.Type.IsInterface) }}&{{ end }}request, nil
 		{{- else }}
-		_ = request
-		return req, errors.New("{{ $contentType }} decoder not implemented")
+		{{- errorf "%s decoder not implemented" $contentType }}
 		{{- end }}
 	{{- end }}
 	{{- /* Range over all request types */}}

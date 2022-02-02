@@ -19,7 +19,7 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(req {{ $op.Request.Type.
 	{{- template "req_json/enc" $type }}
 	return e, nil
 	{{- else }}
-	return nil, errors.New(`{{ $contentType }} encoder not implemented`)
+	{{- errorf "%s encoder not implemented" $contentType }}
 	{{- end }}
 }
 {{- end }}

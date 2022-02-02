@@ -98,7 +98,7 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 				}, nil
 			{{- end }}
 		{{- else }}
-			return res, errors.New("{{ $contentType }} decoder not implemented")
+			{{- errorf "%s decoder not implemented" $contentType }}
 		{{- end }}
 	{{- end }}{{/* Range over contents */}}
 	default:
