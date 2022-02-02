@@ -402,13 +402,14 @@ func (g *schemaGen) oneOf(name string, schema *oas.Schema) (*ir.Type, error) {
 	var (
 		// Determine unique fields for each SumOf variant.
 		uniq = map[string]map[string]struct{}{}
-		// Whether sum has complex types.
-		isComplex bool
 	)
 	for _, s := range sum.SumOf {
 		uniq[s.Name] = map[string]struct{}{}
-		if !s.Is(ir.KindPrimitive) {
-			isComplex = true
+		if !s.Is(ir.KindMap, ir.KindStruct) {
+			return nil, errors.Wrapf(&ErrNotImplemented{Name: "discriminator inference"},
+				"oneOf %s: variant %s: no unique fields, "+
+					"unable to parse without discriminator", sum.Name, s.Name,
+			)
 		}
 		for _, f := range s.Fields {
 			uniq[s.Name][f.Name] = struct{}{}
@@ -441,26 +442,25 @@ func (g *schemaGen) oneOf(name string, schema *oas.Schema) (*ir.Type, error) {
 			}
 		}
 
-		if isComplex {
-			// Check that at most one type has no unique fields.
-			metNoUniqueFields := false
-			for _, variant := range sum.SumOf {
-				k := variant.Name
-				if len(uniq[k]) == 0 {
-					if metNoUniqueFields {
-						// Unable to deterministically select sub-schema only on fields.
-						return nil, errors.Wrapf(&ErrNotImplemented{Name: "discriminator inference"},
-							"oneOf %s: variant %s: no unique fields, "+
-								"unable to parse without discriminator", sum.Name, k,
-						)
-					}
-
-					// Set mapping without unique fields as default
-					sum.SumSpec.DefaultMapping = k
-					metNoUniqueFields = true
+		// Check that at most one type has no unique fields.
+		metNoUniqueFields := false
+		for _, variant := range sum.SumOf {
+			k := variant.Name
+			if len(uniq[k]) == 0 {
+				if metNoUniqueFields {
+					// Unable to deterministically select sub-schema only on fields.
+					return nil, errors.Wrapf(&ErrNotImplemented{Name: "discriminator inference"},
+						"oneOf %s: variant %s: no unique fields, "+
+							"unable to parse without discriminator", sum.Name, k,
+					)
 				}
+
+				// Set mapping without unique fields as default
+				sum.SumSpec.DefaultMapping = k
+				metNoUniqueFields = true
 			}
 		}
+
 	}
 	type sumVariant struct {
 		Name   string
@@ -484,9 +484,6 @@ func (g *schemaGen) oneOf(name string, schema *oas.Schema) (*ir.Type, error) {
 		b := variants[j]
 		return strings.Compare(a.Name, b.Name) < 0
 	})
-	if !isComplex {
-		return sum, nil
-	}
 	for _, v := range variants {
 		for _, s := range sum.SumOf {
 			if s.Name != v.Name {
