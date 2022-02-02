@@ -33,12 +33,13 @@ type Options struct {
 	VerboseRoute         bool
 	GenerateExampleTests bool
 	SkipTestRegex        *regexp.Regexp
+	InferSchemaType      bool
 	SpecificMethodPath   string
 	IgnoreNotImplemented []string
 }
 
 func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
-	operations, err := parser.Parse(spec)
+	operations, err := parser.Parse(spec, opts.InferSchemaType)
 	if err != nil {
 		return nil, errors.Wrap(err, "parse")
 	}

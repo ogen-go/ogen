@@ -42,6 +42,7 @@ func main() {
 		verbose        = flag.Bool("v", false, "verbose")
 		generateTests  = flag.Bool("generate-tests", false, "Generate tests based on schema examples")
 		skipTestsRegex = flag.String("skip-tests", "", "Skip tests matched by regex")
+		inferTypes     = flag.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
 
 		debugIgnoreNotImplemented = flag.String("debug.ignoreNotImplemented", "", "Ignore methods having functionality which is not implemented (all, oneOf, anyOf, allOf, nullable types, complex parameter types)")
 		debugNoerr                = flag.Bool("debug.noerr", false, "Ignore all errors")
@@ -93,10 +94,12 @@ func main() {
 	}
 
 	opts := gen.Options{
-		SpecificMethodPath:   *specificMethod,
-		IgnoreNotImplemented: strings.Split(*debugIgnoreNotImplemented, ","),
 		VerboseRoute:         *verbose,
 		GenerateExampleTests: *generateTests,
+		SkipTestRegex:        nil,
+		InferSchemaType:      *inferTypes,
+		SpecificMethodPath:   *specificMethod,
+		IgnoreNotImplemented: strings.Split(*debugIgnoreNotImplemented, ","),
 	}
 	if expr := *skipTestsRegex; expr != "" {
 		r, err := regexp.Compile(expr)

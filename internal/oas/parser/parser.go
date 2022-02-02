@@ -22,12 +22,14 @@ type parser struct {
 		parameters    map[string]*oas.Parameter
 		examples      map[string]*oas.Example
 	}
+	inferTypes bool
 }
 
-func Parse(spec *ogen.Spec) ([]*oas.Operation, error) {
+func Parse(spec *ogen.Spec, inferTypes bool) ([]*oas.Operation, error) {
 	spec.Init()
 	p := &parser{
-		spec: spec,
+		spec:       spec,
+		operations: nil,
 		refs: struct {
 			schemas       map[string]*oas.Schema
 			requestBodies map[string]*oas.RequestBody
@@ -41,6 +43,7 @@ func Parse(spec *ogen.Spec) ([]*oas.Operation, error) {
 			parameters:    map[string]*oas.Parameter{},
 			examples:      map[string]*oas.Example{},
 		},
+		inferTypes: inferTypes,
 	}
 
 	err := p.parse()

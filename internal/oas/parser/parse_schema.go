@@ -18,6 +18,7 @@ func (p *parser) parseSchema(schema *ogen.Schema) (*oas.Schema, error) {
 		components: p.spec.Components.Schemas,
 		globalRefs: p.refs.schemas,
 		localRefs:  make(map[string]*oas.Schema),
+		inferTypes: p.inferTypes,
 	}
 
 	s, err := parser.Parse(schema)

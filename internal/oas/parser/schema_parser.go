@@ -20,6 +20,19 @@ type schemaParser struct {
 
 	// Parsed schema components current schema refers to.
 	localRefs map[string]*oas.Schema
+
+	// Enables type inference.
+	//
+	// For example:
+	//
+	//	{
+	//		"items": {
+	//			"type": "string"
+	//		}
+	//	}
+	//
+	// In that case schemaParser will handle that schema as "array" schema, because it has "items" field.
+	inferTypes bool
 }
 
 func (p *schemaParser) Parse(schema *ogen.Schema) (*oas.Schema, error) {
@@ -43,7 +56,7 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 
 	switch {
 	case len(schema.Enum) > 0:
-		if schema.Type == "" {
+		if p.inferTypes && schema.Type == "" {
 			typ, err := inferEnumType(schema.Enum[0])
 			if err != nil {
 				return nil, errors.Wrap(err, "infer enum type")
@@ -88,7 +101,7 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 	}
 
 	// Try to infer schema type from properties.
-	if schema.Type == "" {
+	if p.inferTypes && schema.Type == "" {
 		switch {
 		case schema.AdditionalProperties != nil ||
 			schema.MaxProperties != nil ||
