@@ -38,14 +38,14 @@ func (s {{ $.Name }}) Encode(e *jx.Writer) {
 
 var jsonFieldsNameOf{{ $.Name }} = [{{ len $fields }}]string{
 	{{- range $i, $f := $fields }}
-	{{ $i }}: {{ printf "%q" $f.Tag.JSON }},
+	{{ $i }}: {{ quote $f.Tag.JSON }},
 	{{- end }}
 }
 
 // Decode decodes {{ $.Name }} from json.
 func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode {{ $.Name }} to nil`)
+		return errors.New({{ printf "invalid: unable to decode %s to nil" $.Name | quote }})
 	}
 
 	{{- $requiredMask := $fields.RequiredMask }}
@@ -56,18 +56,24 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 	{{- range $i, $f := $fields }}
-	case {{ printf "%q" $f.Tag.JSON }}:
+	case {{ quote $f.Tag.JSON }}:
 		{{- if $f.Spec.Required }}
 		requiredBitSet[{{ div $i 8 }}] |= 1 << {{ mod $i 8 }}
 		{{- end }}
-		{{- template "json/dec" field_elem $f }}
+
+		if err := func() error {
+			{{- template "json/dec" field_elem $f }}
+			return nil
+		}(); err != nil {
+			return errors.Wrap(err, {{ printf "decode field %q" $f.Spec.Name | quote }})
+		}
 	{{- end }}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, {{ printf "decode %s" $.Name | quote }})
 	}
 
 	{{- if $fields.HasRequired }}

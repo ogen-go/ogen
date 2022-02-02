@@ -96,7 +96,7 @@ func decodeGetBookParams(args [1]string, r *http.Request) (GetBookParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path: book_id: not specified`)
+			return params, errors.New("path: book_id: not specified")
 		}
 	}
 	return params, nil
@@ -131,10 +131,10 @@ func decodeSearchParams(args [0]string, r *http.Request) (SearchParams, error) {
 				params.Query = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: query: parse`)
+				return params, errors.Wrap(err, "query: query: parse")
 			}
 		} else {
-			return params, errors.New(`query: query: not specified`)
+			return params, errors.New("query: query: not specified")
 		}
 	}
 	// Decode query: page.
@@ -168,7 +168,7 @@ func decodeSearchParams(args [0]string, r *http.Request) (SearchParams, error) {
 				params.Page.SetTo(paramsPageVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: page: parse`)
+				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
 	}
@@ -204,10 +204,10 @@ func decodeSearchByTagIDParams(args [0]string, r *http.Request) (SearchByTagIDPa
 				params.TagID = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: tag_id: parse`)
+				return params, errors.Wrap(err, "query: tag_id: parse")
 			}
 		} else {
-			return params, errors.New(`query: tag_id: not specified`)
+			return params, errors.New("query: tag_id: not specified")
 		}
 	}
 	// Decode query: page.
@@ -241,7 +241,7 @@ func decodeSearchByTagIDParams(args [0]string, r *http.Request) (SearchByTagIDPa
 				params.Page.SetTo(paramsPageVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: page: parse`)
+				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
 	}

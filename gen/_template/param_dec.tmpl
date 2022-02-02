@@ -23,7 +23,7 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
 	// Decode {{ $loc }}.
 	{{- if $p.Spec.In.Query }}{{/* Switch location */}}
 	{
-		values, ok := queryArgs[{{ printf "%q" $p.Spec.Name }}]
+		values, ok := queryArgs[{{ quote $p.Spec.Name }}]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values: values,
@@ -34,18 +34,18 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
 			if err := func() error {
 				{{- template "uri/decode" $el }}
 			}(); err != nil {
-				return params, errors.Wrap(err, `{{ $errParse }}`)
+				return params, errors.Wrap(err, {{ quote $errParse }})
 			}
 
 			{{- if $p.Type.NeedValidation }}
 			if err := func() error {
 				{{- template "validate" $el }}
 			}(); err != nil {
-				return params, errors.Wrap(err, `{{ $errInvalid }}`)
+				return params, errors.Wrap(err, {{ quote $errInvalid }})
 			}
 			{{- end }}
 		} {{- if $p.Spec.Required }} else {
-			return params, errors.New(`{{ $errNotSpecified }}`)
+			return params, errors.New({{ quote $errNotSpecified }})
 		} {{- end }}
 	}
 	{{- else if $p.Spec.In.Path }}
@@ -53,7 +53,7 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
 		param := args[{{ $op.PathParamIndex $p.Spec.Name }}]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param: "{{ $p.Spec.Name}}",
+				Param: {{ quote $p.Spec.Name}},
 				Value: param,
 				Style: uri.PathStyle{{ pascalSpecial $p.Spec.Style.String }},
 				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
@@ -65,12 +65,12 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
 				return params, err
 			}
 		} {{ if $p.Spec.Required }} else {
-			return params, errors.New(`{{ $errNotSpecified }}`)
+			return params, errors.New({{ quote $errNotSpecified }})
 		} {{ end }}
 	}
 	{{- else if $p.Spec.In.Header }}
 	{
-		param := r.Header.Get("{{ $p.Spec.Name }}")
+		param := r.Header.Get({{ quote $p.Spec.Name }})
 		if len(param) > 0 {
 			d := uri.NewHeaderDecoder(uri.HeaderDecoderConfig{
 				Value:   param,
@@ -79,29 +79,29 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
 			if err := func() error {
 				{{- template "uri/decode" $el }}
 			}(); err != nil {
-				return params, errors.Wrap(err, `{{ $errParse }}`)
+				return params, errors.Wrap(err, {{ quote $errParse }})
 			}
 		} {{ if $p.Spec.Required }} else {
-			return params, errors.New(`{{ $errNotSpecified }}`)
+			return params, errors.New({{ quote $errNotSpecified }})
 		} {{ end }}
 	}
 	{{- else if $p.Spec.In.Cookie }}
 	{
-		c, err := r.Cookie("{{ $p.Spec.Name }}")
+		c, err := r.Cookie({{ quote $p.Spec.Name }})
 		if err != nil {
-			return params, errors.Wrap(err, `{{ $loc }}: get`)
+			return params, errors.Wrap(err, {{ printf "%s: get %s" $loc $p.Spec.Name | quote }})
 		}
 
 		param := c.Value
 		if len(param) > 0 {
 			v, err := conv.{{ $p.Type.FromString }}(param)
 			if err != nil {
-				return params, errors.Wrap(err, `{{ $errParse }}`)
+				return params, errors.Wrap(err, {{ quote $errParse }})
 			}
 
 			params.{{ $p.Name }} = v
 		} {{ if $p.Spec.Required }} else {
-			return params, errors.New(`{{ $errNotSpecified }}`)
+			return params, errors.New({{ quote $errNotSpecified }})
 		} {{ end }}
 	}
 	{{- else }}

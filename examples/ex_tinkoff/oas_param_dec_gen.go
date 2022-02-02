@@ -93,10 +93,10 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (MarketCandle
 				params.Figi = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: figi: parse`)
+				return params, errors.Wrap(err, "query: figi: parse")
 			}
 		} else {
-			return params, errors.New(`query: figi: not specified`)
+			return params, errors.New("query: figi: not specified")
 		}
 	}
 	// Decode query: from.
@@ -123,10 +123,10 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (MarketCandle
 				params.From = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: from: parse`)
+				return params, errors.Wrap(err, "query: from: parse")
 			}
 		} else {
-			return params, errors.New(`query: from: not specified`)
+			return params, errors.New("query: from: not specified")
 		}
 	}
 	// Decode query: to.
@@ -153,10 +153,10 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (MarketCandle
 				params.To = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: to: parse`)
+				return params, errors.Wrap(err, "query: to: parse")
 			}
 		} else {
-			return params, errors.New(`query: to: not specified`)
+			return params, errors.New("query: to: not specified")
 		}
 	}
 	// Decode query: interval.
@@ -183,7 +183,7 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (MarketCandle
 				params.Interval = CandleResolution(c)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: interval: parse`)
+				return params, errors.Wrap(err, "query: interval: parse")
 			}
 			if err := func() error {
 				if err := params.Interval.Validate(); err != nil {
@@ -191,10 +191,10 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (MarketCandle
 				}
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: interval: invalid`)
+				return params, errors.Wrap(err, "query: interval: invalid")
 			}
 		} else {
-			return params, errors.New(`query: interval: not specified`)
+			return params, errors.New("query: interval: not specified")
 		}
 	}
 	return params, nil
@@ -229,10 +229,10 @@ func decodeMarketOrderbookGetParams(args [0]string, r *http.Request) (MarketOrde
 				params.Figi = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: figi: parse`)
+				return params, errors.Wrap(err, "query: figi: parse")
 			}
 		} else {
-			return params, errors.New(`query: figi: not specified`)
+			return params, errors.New("query: figi: not specified")
 		}
 	}
 	// Decode query: depth.
@@ -259,10 +259,10 @@ func decodeMarketOrderbookGetParams(args [0]string, r *http.Request) (MarketOrde
 				params.Depth = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: depth: parse`)
+				return params, errors.Wrap(err, "query: depth: parse")
 			}
 		} else {
-			return params, errors.New(`query: depth: not specified`)
+			return params, errors.New("query: depth: not specified")
 		}
 	}
 	return params, nil
@@ -297,10 +297,10 @@ func decodeMarketSearchByFigiGetParams(args [0]string, r *http.Request) (MarketS
 				params.Figi = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: figi: parse`)
+				return params, errors.Wrap(err, "query: figi: parse")
 			}
 		} else {
-			return params, errors.New(`query: figi: not specified`)
+			return params, errors.New("query: figi: not specified")
 		}
 	}
 	return params, nil
@@ -335,10 +335,10 @@ func decodeMarketSearchByTickerGetParams(args [0]string, r *http.Request) (Marke
 				params.Ticker = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: ticker: parse`)
+				return params, errors.Wrap(err, "query: ticker: parse")
 			}
 		} else {
-			return params, errors.New(`query: ticker: not specified`)
+			return params, errors.New("query: ticker: not specified")
 		}
 	}
 	return params, nil
@@ -373,10 +373,10 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (OperationsGetPa
 				params.From = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: from: parse`)
+				return params, errors.Wrap(err, "query: from: parse")
 			}
 		} else {
-			return params, errors.New(`query: from: not specified`)
+			return params, errors.New("query: from: not specified")
 		}
 	}
 	// Decode query: to.
@@ -403,10 +403,10 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (OperationsGetPa
 				params.To = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: to: parse`)
+				return params, errors.Wrap(err, "query: to: parse")
 			}
 		} else {
-			return params, errors.New(`query: to: not specified`)
+			return params, errors.New("query: to: not specified")
 		}
 	}
 	// Decode query: figi.
@@ -440,7 +440,7 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (OperationsGetPa
 				params.Figi.SetTo(paramsFigiVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: figi: parse`)
+				return params, errors.Wrap(err, "query: figi: parse")
 			}
 		}
 	}
@@ -475,7 +475,7 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (OperationsGetPa
 				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: brokerAccountId: parse`)
+				return params, errors.Wrap(err, "query: brokerAccountId: parse")
 			}
 		}
 	}
@@ -511,10 +511,10 @@ func decodeOrdersCancelPostParams(args [0]string, r *http.Request) (OrdersCancel
 				params.OrderId = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: orderId: parse`)
+				return params, errors.Wrap(err, "query: orderId: parse")
 			}
 		} else {
-			return params, errors.New(`query: orderId: not specified`)
+			return params, errors.New("query: orderId: not specified")
 		}
 	}
 	// Decode query: brokerAccountId.
@@ -548,7 +548,7 @@ func decodeOrdersCancelPostParams(args [0]string, r *http.Request) (OrdersCancel
 				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: brokerAccountId: parse`)
+				return params, errors.Wrap(err, "query: brokerAccountId: parse")
 			}
 		}
 	}
@@ -591,7 +591,7 @@ func decodeOrdersGetParams(args [0]string, r *http.Request) (OrdersGetParams, er
 				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: brokerAccountId: parse`)
+				return params, errors.Wrap(err, "query: brokerAccountId: parse")
 			}
 		}
 	}
@@ -627,10 +627,10 @@ func decodeOrdersLimitOrderPostParams(args [0]string, r *http.Request) (OrdersLi
 				params.Figi = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: figi: parse`)
+				return params, errors.Wrap(err, "query: figi: parse")
 			}
 		} else {
-			return params, errors.New(`query: figi: not specified`)
+			return params, errors.New("query: figi: not specified")
 		}
 	}
 	// Decode query: brokerAccountId.
@@ -664,7 +664,7 @@ func decodeOrdersLimitOrderPostParams(args [0]string, r *http.Request) (OrdersLi
 				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: brokerAccountId: parse`)
+				return params, errors.Wrap(err, "query: brokerAccountId: parse")
 			}
 		}
 	}
@@ -700,10 +700,10 @@ func decodeOrdersMarketOrderPostParams(args [0]string, r *http.Request) (OrdersM
 				params.Figi = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: figi: parse`)
+				return params, errors.Wrap(err, "query: figi: parse")
 			}
 		} else {
-			return params, errors.New(`query: figi: not specified`)
+			return params, errors.New("query: figi: not specified")
 		}
 	}
 	// Decode query: brokerAccountId.
@@ -737,7 +737,7 @@ func decodeOrdersMarketOrderPostParams(args [0]string, r *http.Request) (OrdersM
 				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: brokerAccountId: parse`)
+				return params, errors.Wrap(err, "query: brokerAccountId: parse")
 			}
 		}
 	}
@@ -780,7 +780,7 @@ func decodePortfolioCurrenciesGetParams(args [0]string, r *http.Request) (Portfo
 				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: brokerAccountId: parse`)
+				return params, errors.Wrap(err, "query: brokerAccountId: parse")
 			}
 		}
 	}
@@ -823,7 +823,7 @@ func decodePortfolioGetParams(args [0]string, r *http.Request) (PortfolioGetPara
 				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: brokerAccountId: parse`)
+				return params, errors.Wrap(err, "query: brokerAccountId: parse")
 			}
 		}
 	}
@@ -866,7 +866,7 @@ func decodeSandboxClearPostParams(args [0]string, r *http.Request) (SandboxClear
 				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: brokerAccountId: parse`)
+				return params, errors.Wrap(err, "query: brokerAccountId: parse")
 			}
 		}
 	}
@@ -909,7 +909,7 @@ func decodeSandboxCurrenciesBalancePostParams(args [0]string, r *http.Request) (
 				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: brokerAccountId: parse`)
+				return params, errors.Wrap(err, "query: brokerAccountId: parse")
 			}
 		}
 	}
@@ -952,7 +952,7 @@ func decodeSandboxPositionsBalancePostParams(args [0]string, r *http.Request) (S
 				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: brokerAccountId: parse`)
+				return params, errors.Wrap(err, "query: brokerAccountId: parse")
 			}
 		}
 	}
@@ -995,7 +995,7 @@ func decodeSandboxRemovePostParams(args [0]string, r *http.Request) (SandboxRemo
 				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: brokerAccountId: parse`)
+				return params, errors.Wrap(err, "query: brokerAccountId: parse")
 			}
 		}
 	}

@@ -21,7 +21,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Response.Type.Go }}, w http.Re
 		{{- template "respond" $info }}
 	{{- end }}
 	default:
-		return errors.Errorf(`{{ $op.Spec.Path}}: unexpected response type: %T`, response)
+		return errors.Errorf({{ quote $op.Spec.Path }}+`: unexpected response type: %T`, response)
 	}
 	{{- end }}
 }
@@ -54,7 +54,7 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 {{ define "respond" }}
 {{- /*gotype: github.com/ogen-go/ogen/internal/ir.ResponseInfo*/ -}}
 {{- if not $.NoContent }}{{- /* Set content-type */}}
-w.Header().Set("Content-Type", "{{ $.ContentType }}")
+w.Header().Set("Content-Type", {{ quote $.ContentType }})
 {{- end }}{{- /* Set content-type */}}
 
 {{- if $.Default }}{{- /* Set status code */}}

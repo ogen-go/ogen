@@ -67,7 +67,7 @@ var (
 func decodeCreatePetResponse(resp *http.Response, span trace.Span) (res CreatePetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -91,10 +91,10 @@ func decodeCreatePetResponse(resp *http.Response, span trace.Span) (res CreatePe
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 400:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -118,10 +118,10 @@ func decodeCreatePetResponse(resp *http.Response, span trace.Span) (res CreatePe
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 409:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -145,10 +145,10 @@ func decodeCreatePetResponse(resp *http.Response, span trace.Span) (res CreatePe
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 500:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -172,17 +172,17 @@ func decodeCreatePetResponse(resp *http.Response, span trace.Span) (res CreatePe
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodeCreatePetCategoriesResponse(resp *http.Response, span trace.Span) (res CreatePetCategoriesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -206,10 +206,10 @@ func decodeCreatePetCategoriesResponse(resp *http.Response, span trace.Span) (re
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 400:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -233,10 +233,10 @@ func decodeCreatePetCategoriesResponse(resp *http.Response, span trace.Span) (re
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 409:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -260,10 +260,10 @@ func decodeCreatePetCategoriesResponse(resp *http.Response, span trace.Span) (re
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 500:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -287,17 +287,17 @@ func decodeCreatePetCategoriesResponse(resp *http.Response, span trace.Span) (re
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodeCreatePetFriendsResponse(resp *http.Response, span trace.Span) (res CreatePetFriendsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -321,10 +321,10 @@ func decodeCreatePetFriendsResponse(resp *http.Response, span trace.Span) (res C
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 400:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -348,10 +348,10 @@ func decodeCreatePetFriendsResponse(resp *http.Response, span trace.Span) (res C
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 409:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -375,10 +375,10 @@ func decodeCreatePetFriendsResponse(resp *http.Response, span trace.Span) (res C
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 500:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -402,17 +402,17 @@ func decodeCreatePetFriendsResponse(resp *http.Response, span trace.Span) (res C
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodeCreatePetOwnerResponse(resp *http.Response, span trace.Span) (res CreatePetOwnerRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -436,10 +436,10 @@ func decodeCreatePetOwnerResponse(resp *http.Response, span trace.Span) (res Cre
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 400:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -463,10 +463,10 @@ func decodeCreatePetOwnerResponse(resp *http.Response, span trace.Span) (res Cre
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 409:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -490,10 +490,10 @@ func decodeCreatePetOwnerResponse(resp *http.Response, span trace.Span) (res Cre
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 500:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -517,10 +517,10 @@ func decodeCreatePetOwnerResponse(resp *http.Response, span trace.Span) (res Cre
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
@@ -529,7 +529,7 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 	case 204:
 		return &DeletePetNoContent{}, nil
 	case 400:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -553,10 +553,10 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 404:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -580,10 +580,10 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 500:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -607,10 +607,10 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
@@ -619,7 +619,7 @@ func decodeDeletePetOwnerResponse(resp *http.Response, span trace.Span) (res Del
 	case 204:
 		return &DeletePetOwnerNoContent{}, nil
 	case 400:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -643,10 +643,10 @@ func decodeDeletePetOwnerResponse(resp *http.Response, span trace.Span) (res Del
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 404:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -670,10 +670,10 @@ func decodeDeletePetOwnerResponse(resp *http.Response, span trace.Span) (res Del
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 500:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -697,17 +697,17 @@ func decodeDeletePetOwnerResponse(resp *http.Response, span trace.Span) (res Del
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodeListPetResponse(resp *http.Response, span trace.Span) (res ListPetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -743,10 +743,10 @@ func decodeListPetResponse(resp *http.Response, span trace.Span) (res ListPetRes
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 400:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -770,10 +770,10 @@ func decodeListPetResponse(resp *http.Response, span trace.Span) (res ListPetRes
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 404:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -797,10 +797,10 @@ func decodeListPetResponse(resp *http.Response, span trace.Span) (res ListPetRes
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 500:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -824,17 +824,17 @@ func decodeListPetResponse(resp *http.Response, span trace.Span) (res ListPetRes
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodeListPetCategoriesResponse(resp *http.Response, span trace.Span) (res ListPetCategoriesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -870,10 +870,10 @@ func decodeListPetCategoriesResponse(resp *http.Response, span trace.Span) (res 
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 400:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -897,10 +897,10 @@ func decodeListPetCategoriesResponse(resp *http.Response, span trace.Span) (res 
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 404:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -924,10 +924,10 @@ func decodeListPetCategoriesResponse(resp *http.Response, span trace.Span) (res 
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 500:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -951,17 +951,17 @@ func decodeListPetCategoriesResponse(resp *http.Response, span trace.Span) (res 
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodeListPetFriendsResponse(resp *http.Response, span trace.Span) (res ListPetFriendsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -997,10 +997,10 @@ func decodeListPetFriendsResponse(resp *http.Response, span trace.Span) (res Lis
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 400:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1024,10 +1024,10 @@ func decodeListPetFriendsResponse(resp *http.Response, span trace.Span) (res Lis
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 404:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1051,10 +1051,10 @@ func decodeListPetFriendsResponse(resp *http.Response, span trace.Span) (res Lis
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 500:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1078,17 +1078,17 @@ func decodeListPetFriendsResponse(resp *http.Response, span trace.Span) (res Lis
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodeReadPetResponse(resp *http.Response, span trace.Span) (res ReadPetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1112,10 +1112,10 @@ func decodeReadPetResponse(resp *http.Response, span trace.Span) (res ReadPetRes
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 400:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1139,10 +1139,10 @@ func decodeReadPetResponse(resp *http.Response, span trace.Span) (res ReadPetRes
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 404:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1166,10 +1166,10 @@ func decodeReadPetResponse(resp *http.Response, span trace.Span) (res ReadPetRes
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 500:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1193,17 +1193,17 @@ func decodeReadPetResponse(resp *http.Response, span trace.Span) (res ReadPetRes
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodeReadPetOwnerResponse(resp *http.Response, span trace.Span) (res ReadPetOwnerRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1227,10 +1227,10 @@ func decodeReadPetOwnerResponse(resp *http.Response, span trace.Span) (res ReadP
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 400:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1254,10 +1254,10 @@ func decodeReadPetOwnerResponse(resp *http.Response, span trace.Span) (res ReadP
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 404:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1281,10 +1281,10 @@ func decodeReadPetOwnerResponse(resp *http.Response, span trace.Span) (res ReadP
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 500:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1308,17 +1308,17 @@ func decodeReadPetOwnerResponse(resp *http.Response, span trace.Span) (res ReadP
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodeUpdatePetResponse(resp *http.Response, span trace.Span) (res UpdatePetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1342,10 +1342,10 @@ func decodeUpdatePetResponse(resp *http.Response, span trace.Span) (res UpdatePe
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 400:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1369,10 +1369,10 @@ func decodeUpdatePetResponse(resp *http.Response, span trace.Span) (res UpdatePe
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 404:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1396,10 +1396,10 @@ func decodeUpdatePetResponse(resp *http.Response, span trace.Span) (res UpdatePe
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 500:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1423,9 +1423,9 @@ func decodeUpdatePetResponse(resp *http.Response, span trace.Span) (res UpdatePe
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }

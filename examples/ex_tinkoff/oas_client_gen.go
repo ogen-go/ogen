@@ -100,7 +100,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // GET /market/bonds
 func (c *Client) MarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `MarketBondsGet`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "MarketBondsGet",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -139,7 +139,7 @@ func (c *Client) MarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err
 // GET /market/candles
 func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetParams) (res MarketCandlesGetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `MarketCandlesGet`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "MarketCandlesGet",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -233,7 +233,7 @@ func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetPa
 // GET /market/currencies
 func (c *Client) MarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesGetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `MarketCurrenciesGet`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "MarketCurrenciesGet",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -272,7 +272,7 @@ func (c *Client) MarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesG
 // GET /market/etfs
 func (c *Client) MarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `MarketEtfsGet`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "MarketEtfsGet",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -311,7 +311,7 @@ func (c *Client) MarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err e
 // GET /market/orderbook
 func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookGetParams) (res MarketOrderbookGetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `MarketOrderbookGet`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "MarketOrderbookGet",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -379,7 +379,7 @@ func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookG
 // GET /market/search/by-figi
 func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchByFigiGetParams) (res MarketSearchByFigiGetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `MarketSearchByFigiGet`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "MarketSearchByFigiGet",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -434,7 +434,7 @@ func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchB
 // GET /market/search/by-ticker
 func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearchByTickerGetParams) (res MarketSearchByTickerGetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `MarketSearchByTickerGet`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "MarketSearchByTickerGet",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -489,7 +489,7 @@ func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearc
 // GET /market/stocks
 func (c *Client) MarketStocksGet(ctx context.Context) (res MarketStocksGetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `MarketStocksGet`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "MarketStocksGet",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -528,7 +528,7 @@ func (c *Client) MarketStocksGet(ctx context.Context) (res MarketStocksGetRes, e
 // GET /operations
 func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) (res OperationsGetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `OperationsGet`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "OperationsGet",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -628,7 +628,7 @@ func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) 
 // POST /orders/cancel
 func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostParams) (res OrdersCancelPostRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `OrdersCancelPost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersCancelPost",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -699,7 +699,7 @@ func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostPa
 // GET /orders
 func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (res OrdersGetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `OrdersGet`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersGet",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -765,7 +765,7 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `OrdersLimitOrderPost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersLimitOrderPost",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -858,7 +858,7 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `OrdersMarketOrderPost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersMarketOrderPost",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -943,7 +943,7 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 // GET /portfolio/currencies
 func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCurrenciesGetParams) (res PortfolioCurrenciesGetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `PortfolioCurrenciesGet`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "PortfolioCurrenciesGet",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -1001,7 +1001,7 @@ func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCur
 // GET /portfolio
 func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (res PortfolioGetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `PortfolioGet`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "PortfolioGet",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -1061,7 +1061,7 @@ func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (r
 // POST /sandbox/clear
 func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostParams) (res SandboxClearPostRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `SandboxClearPost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxClearPost",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -1127,7 +1127,7 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `SandboxCurrenciesBalancePost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxCurrenciesBalancePost",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -1207,7 +1207,7 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `SandboxPositionsBalancePost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxPositionsBalancePost",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -1297,7 +1297,7 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `SandboxRegisterPost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxRegisterPost",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -1352,7 +1352,7 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 // POST /sandbox/remove
 func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePostParams) (res SandboxRemovePostRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `SandboxRemovePost`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxRemovePost",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -1410,7 +1410,7 @@ func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePost
 // GET /user/accounts
 func (c *Client) UserAccountsGet(ctx context.Context) (res UserAccountsGetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `UserAccountsGet`,
+	ctx, span := c.cfg.Tracer.Start(ctx, "UserAccountsGet",
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {

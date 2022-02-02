@@ -68,24 +68,24 @@ func (v TestObjectQueryParameterDeepObject) encodeURI(e uri.Encoder) error {
 	if err := e.EncodeField("min", func(e uri.Encoder) error {
 		return e.EncodeValue(conv.IntToString(v.Min))
 	}); err != nil {
-		return errors.Wrap(err, `field min`)
+		return errors.Wrap(err, "decode field \"min\"")
 	}
 	if err := e.EncodeField("max", func(e uri.Encoder) error {
 		return e.EncodeValue(conv.IntToString(v.Max))
 	}); err != nil {
-		return errors.Wrap(err, `field max`)
+		return errors.Wrap(err, "decode field \"max\"")
 	}
 	if err := e.EncodeField("filter", func(e uri.Encoder) error {
 		return e.EncodeValue(conv.StringToString(v.Filter))
 	}); err != nil {
-		return errors.Wrap(err, `field filter`)
+		return errors.Wrap(err, "decode field \"filter\"")
 	}
 	return nil
 }
 
 func (v *TestObjectQueryParameterDeepObject) decodeURI(d uri.Decoder) error {
 	if v == nil {
-		return errors.New(`unable to decode TestObjectQueryParameterDeepObject to nil`)
+		return errors.New("invalid: unable to decode TestObjectQueryParameterDeepObject to nil")
 	}
 	return d.DecodeFields(func(name string, d uri.Decoder) error {
 		switch name {
@@ -138,24 +138,24 @@ func (v TestObjectQueryParameterFormObject) encodeURI(e uri.Encoder) error {
 	if err := e.EncodeField("min", func(e uri.Encoder) error {
 		return e.EncodeValue(conv.IntToString(v.Min))
 	}); err != nil {
-		return errors.Wrap(err, `field min`)
+		return errors.Wrap(err, "decode field \"min\"")
 	}
 	if err := e.EncodeField("max", func(e uri.Encoder) error {
 		return e.EncodeValue(conv.IntToString(v.Max))
 	}); err != nil {
-		return errors.Wrap(err, `field max`)
+		return errors.Wrap(err, "decode field \"max\"")
 	}
 	if err := e.EncodeField("filter", func(e uri.Encoder) error {
 		return e.EncodeValue(conv.StringToString(v.Filter))
 	}); err != nil {
-		return errors.Wrap(err, `field filter`)
+		return errors.Wrap(err, "decode field \"filter\"")
 	}
 	return nil
 }
 
 func (v *TestObjectQueryParameterFormObject) decodeURI(d uri.Decoder) error {
 	if v == nil {
-		return errors.New(`unable to decode TestObjectQueryParameterFormObject to nil`)
+		return errors.New("invalid: unable to decode TestObjectQueryParameterFormObject to nil")
 	}
 	return d.DecodeFields(func(name string, d uri.Decoder) error {
 		switch name {

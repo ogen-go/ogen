@@ -69,7 +69,7 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 	case 204:
 		return &DeletePetNoContent{}, nil
 	default:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -96,7 +96,7 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 				Response:   response,
 			}, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	}
 }

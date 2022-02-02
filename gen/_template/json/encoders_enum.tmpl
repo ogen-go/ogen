@@ -8,7 +8,7 @@ func (s {{ $.Name }}) Encode(e *jx.Writer) {
 // Decode decodes {{ $.Name }} from json.
 func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode {{ $.Name }} to nil`)
+		return errors.New({{ printf "invalid: unable to decode %s to nil" $.Name | quote }})
 	}
 
 	{{- if $.Primitive.IsString }}

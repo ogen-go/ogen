@@ -68,8 +68,8 @@ var (
 //
 // GET /api/gallery/{book_id}
 func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetBook`,
-		trace.WithAttributes(otelogen.OperationID(`getBook`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetBook",
+		trace.WithAttributes(otelogen.OperationID("getBook")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -97,8 +97,8 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 //
 // GET /api/galleries/search
 func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `Search`,
-		trace.WithAttributes(otelogen.OperationID(`search`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "Search",
+		trace.WithAttributes(otelogen.OperationID("search")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -126,8 +126,8 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 //
 // GET /api/galleries/tagged
 func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchByTagID`,
-		trace.WithAttributes(otelogen.OperationID(`searchByTagID`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SearchByTagID",
+		trace.WithAttributes(otelogen.OperationID("searchByTagID")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()

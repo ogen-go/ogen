@@ -2,14 +2,14 @@
 u := uri.Clone(c.serverURL)
 {{- range $part := $.PathParts }}{{/* Range over path parts */}}
 {{- if $part.Raw }}
-u.Path += "{{ $part.Raw }}"
+u.Path += {{ quote $part.Raw }}
 
 {{- else }}
 {
 	{{- $param := $part.Param }}
-	// Encode "{{ $param.Spec.Name }}" parameter.
+	// Encode {{ quote $param.Spec.Name }} parameter.
 	e := uri.NewPathEncoder(uri.PathEncoderConfig{
-		Param: "{{ $param.Spec.Name }}",
+		Param: {{ quote $param.Spec.Name }},
 		Style: uri.PathStyle{{ pascalSpecial $param.Spec.Style.String }},
 		Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
 	})
@@ -30,7 +30,7 @@ u.Path += "{{ $part.Raw }}"
 q := u.Query()
 {{- range $param := $.QueryParams }}{{/* Range over params */}}
 {
-	// Encode "{{ $param.Spec.Name }}" parameter.
+	// Encode {{ quote $param.Spec.Name }} parameter.
 	e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
 		Style: uri.QueryStyle{{ pascalSpecial $param.Spec.Style.String }},
 		Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
@@ -40,7 +40,7 @@ q := u.Query()
 	}(); err != nil {
 		return res, errors.Wrap(err, "encode query")
 	}
-	q["{{ $param.Spec.Name }}"] = e.Result()
+	q[{{ quote $param.Spec.Name }}] = e.Result()
 }
 {{- end }}{{/* Range over params */}}
 u.RawQuery = q.Encode()

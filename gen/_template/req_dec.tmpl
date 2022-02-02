@@ -7,19 +7,22 @@
 {{- range $op := $.Operations }}
 {{- if $op.Request }}
 func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.Request.Type.Go }}, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	{{- /* Range over all request types */ -}}
 	{{- range $contentType, $t := $op.Request.Contents }}
-	case "{{ $contentType }}":
+	case {{ quote $contentType }}:
 		{{- if $t.IsStream }}
 		return {{ $op.Request.Type.Go }}{Data: r.Body}, nil
 		{{- /* Decode json */ -}}
 		{{- else if $contentType.JSON }}
+		if r.ContentLength == 0 {
 		{{- if $t.GenericVariant.Optional }}
-        if r.ContentLength == 0 {
 			return req, nil
+		{{- else }}
+			return req, validate.ErrBodyRequired
+		{{- end }}
 		}
-        {{- end }}
+
 		var request {{ $t.Go }}
 		buf := getBuf()
 		defer putBuf(buf)
@@ -27,9 +30,15 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
+		{{- if $t.GenericVariant.Optional }}
 			return req, nil
+		{{- else }}
+			return req, validate.ErrBodyRequired
+		{{- end }}
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -37,24 +46,23 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 			{{- template "json/dec" req_dec_elem $t }}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, {{ printf "decode %s:%s request" $op.Name $contentType | quote }})
 		}
 		{{- if $t.NeedValidation }}
 		if err := func() error {
 			{{- template "validate" req_dec_elem $t }}
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, {{ printf "validate %s request" $op.Name | quote }})
 		}
 		{{- end }}
 		return {{ if or ($op.Request.Type.IsPointer) ($op.Request.Type.IsInterface) }}&{{ end }}request, nil
 		{{- else }}
-		_ = request
-		return req, errors.New("{{ $contentType }} decoder not implemented")
+		{{- errorf "%s decoder not implemented" $contentType }}
 		{{- end }}
 	{{- end }}
 	{{- /* Range over all request types */}}
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 {{- end }}

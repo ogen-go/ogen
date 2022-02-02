@@ -65,8 +65,12 @@ var (
 )
 
 func decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.Span) (req LimitOrderRequest, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request LimitOrderRequest
 		buf := getBuf()
 		defer putBuf(buf)
@@ -74,9 +78,11 @@ func decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.Span) (req Li
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -86,7 +92,7 @@ func decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.Span) (req Li
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode OrdersLimitOrderPost:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -94,17 +100,21 @@ func decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.Span) (req Li
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate OrdersLimitOrderPost request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.Span) (req MarketOrderRequest, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request MarketOrderRequest
 		buf := getBuf()
 		defer putBuf(buf)
@@ -112,9 +122,11 @@ func decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.Span) (req M
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -124,7 +136,7 @@ func decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.Span) (req M
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode OrdersMarketOrderPost:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -132,17 +144,21 @@ func decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.Span) (req M
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate OrdersMarketOrderPost request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span trace.Span) (req SandboxSetCurrencyBalanceRequest, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SandboxSetCurrencyBalanceRequest
 		buf := getBuf()
 		defer putBuf(buf)
@@ -150,9 +166,11 @@ func decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span trace.Span)
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -162,7 +180,7 @@ func decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SandboxCurrenciesBalancePost:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -170,17 +188,21 @@ func decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SandboxCurrenciesBalancePost request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSandboxPositionsBalancePostRequest(r *http.Request, span trace.Span) (req SandboxSetPositionBalanceRequest, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SandboxSetPositionBalanceRequest
 		buf := getBuf()
 		defer putBuf(buf)
@@ -188,9 +210,11 @@ func decodeSandboxPositionsBalancePostRequest(r *http.Request, span trace.Span) 
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -200,7 +224,7 @@ func decodeSandboxPositionsBalancePostRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SandboxPositionsBalancePost:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -208,20 +232,21 @@ func decodeSandboxPositionsBalancePostRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SandboxPositionsBalancePost request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSandboxRegisterPostRequest(r *http.Request, span trace.Span) (req OptSandboxRegisterRequest, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
+
 		var request OptSandboxRegisterRequest
 		buf := getBuf()
 		defer putBuf(buf)
@@ -229,9 +254,11 @@ func decodeSandboxRegisterPostRequest(r *http.Request, span trace.Span) (req Opt
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
 			return req, nil
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -242,7 +269,7 @@ func decodeSandboxRegisterPostRequest(r *http.Request, span trace.Span) (req Opt
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SandboxRegisterPost:application/json request")
 		}
 		if err := func() error {
 			if request.Set {
@@ -258,10 +285,10 @@ func decodeSandboxRegisterPostRequest(r *http.Request, span trace.Span) (req Opt
 			return nil
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SandboxRegisterPost request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }

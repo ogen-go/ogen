@@ -82,6 +82,6 @@ func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span 
 
 		return nil
 	default:
-		return errors.Errorf(`/pets/{id}: unexpected response type: %T`, response)
+		return errors.Errorf("/pets/{id}"+`: unexpected response type: %T`, response)
 	}
 }

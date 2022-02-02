@@ -9,9 +9,9 @@
 //
 // {{ $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
 func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `{{ $op.Name }}`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), {{ quote $op.Name }},
 		{{- if $op.Spec.OperationID }}
-		trace.WithAttributes(otelogen.OperationID(`{{ $op.Spec.OperationID }}`)),
+		trace.WithAttributes(otelogen.OperationID({{ quote $op.Spec.OperationID }})),
 		{{- end }}
 		trace.WithSpanKind(trace.SpanKindServer),
 	)

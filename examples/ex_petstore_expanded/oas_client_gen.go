@@ -102,8 +102,8 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // DELETE /pets/{id}
 func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res DeletePetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `DeletePet`,
-		trace.WithAttributes(otelogen.OperationID(`deletePet`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "DeletePet",
+		trace.WithAttributes(otelogen.OperationID("deletePet")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {

@@ -67,7 +67,7 @@ var (
 func decodeDataGetResponse(resp *http.Response, span trace.Span) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -93,17 +93,17 @@ func decodeDataGetResponse(resp *http.Response, span trace.Span) (res string, er
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodeDataGetAnyResponse(resp *http.Response, span trace.Span) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -129,17 +129,17 @@ func decodeDataGetAnyResponse(resp *http.Response, span trace.Span) (res string,
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodeDataGetIDResponse(resp *http.Response, span trace.Span) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -165,9 +165,9 @@ func decodeDataGetIDResponse(resp *http.Response, span trace.Span) (res string, 
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }

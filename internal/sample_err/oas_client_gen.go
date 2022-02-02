@@ -102,8 +102,8 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // POST /data
 func (c *Client) DataCreate(ctx context.Context, request OptData) (res Data, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `DataCreate`,
-		trace.WithAttributes(otelogen.OperationID(`dataCreate`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "DataCreate",
+		trace.WithAttributes(otelogen.OperationID("dataCreate")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -158,8 +158,8 @@ func (c *Client) DataCreate(ctx context.Context, request OptData) (res Data, err
 // GET /data
 func (c *Client) DataGet(ctx context.Context) (res Data, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `DataGet`,
-		trace.WithAttributes(otelogen.OperationID(`dataGet`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "DataGet",
+		trace.WithAttributes(otelogen.OperationID("dataGet")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {

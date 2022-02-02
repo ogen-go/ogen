@@ -100,8 +100,8 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // GET /api/gallery/{book_id}
 func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBookRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `GetBook`,
-		trace.WithAttributes(otelogen.OperationID(`getBook`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "GetBook",
+		trace.WithAttributes(otelogen.OperationID("getBook")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -154,8 +154,8 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 // GET /api/galleries/search
 func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `Search`,
-		trace.WithAttributes(otelogen.OperationID(`search`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "Search",
+		trace.WithAttributes(otelogen.OperationID("search")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -226,8 +226,8 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 // GET /api/galleries/tagged
 func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) (res SearchByTagIDRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `SearchByTagID`,
-		trace.WithAttributes(otelogen.OperationID(`searchByTagID`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "SearchByTagID",
+		trace.WithAttributes(otelogen.OperationID("searchByTagID")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {

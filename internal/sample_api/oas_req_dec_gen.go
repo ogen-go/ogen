@@ -65,11 +65,12 @@ var (
 )
 
 func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req OptPet, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
+
 		var request OptPet
 		buf := getBuf()
 		defer putBuf(buf)
@@ -77,9 +78,11 @@ func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req OptPet, err 
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
 			return req, nil
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -90,7 +93,7 @@ func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req OptPet, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode FoobarPost:application/json request")
 		}
 		if err := func() error {
 			if request.Set {
@@ -106,17 +109,21 @@ func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req OptPet, err 
 			return nil
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate FoobarPost request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeOneofBugRequest(r *http.Request, span trace.Span) (req OneOfBugs, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request OneOfBugs
 		buf := getBuf()
 		defer putBuf(buf)
@@ -124,9 +131,11 @@ func decodeOneofBugRequest(r *http.Request, span trace.Span) (req OneOfBugs, err
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -136,20 +145,21 @@ func decodeOneofBugRequest(r *http.Request, span trace.Span) (req OneOfBugs, err
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode OneofBug:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePetCreateRequest(r *http.Request, span trace.Span) (req OptPet, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
+
 		var request OptPet
 		buf := getBuf()
 		defer putBuf(buf)
@@ -157,9 +167,11 @@ func decodePetCreateRequest(r *http.Request, span trace.Span) (req OptPet, err e
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
 			return req, nil
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -170,7 +182,7 @@ func decodePetCreateRequest(r *http.Request, span trace.Span) (req OptPet, err e
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PetCreate:application/json request")
 		}
 		if err := func() error {
 			if request.Set {
@@ -186,20 +198,21 @@ func decodePetCreateRequest(r *http.Request, span trace.Span) (req OptPet, err e
 			return nil
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate PetCreate request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req OptPetName, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
+
 		var request OptPetName
 		buf := getBuf()
 		defer putBuf(buf)
@@ -207,9 +220,11 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req 
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
 			return req, nil
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -220,7 +235,7 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PetUpdateNameAliasPost:application/json request")
 		}
 		if err := func() error {
 			if request.Set {
@@ -236,20 +251,21 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req 
 			return nil
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate PetUpdateNameAliasPost request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req OptString, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
+
 		var request OptString
 		buf := getBuf()
 		defer putBuf(buf)
@@ -257,9 +273,11 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req OptSt
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
 			return req, nil
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -270,7 +288,7 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req OptSt
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PetUpdateNamePost:application/json request")
 		}
 		if err := func() error {
 			if request.Set {
@@ -294,19 +312,19 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req OptSt
 			return nil
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate PetUpdateNamePost request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePetUploadAvatarByIDRequest(r *http.Request, span trace.Span) (req PetUploadAvatarByIDReq, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/octet-stream":
 		return PetUploadAvatarByIDReq{Data: r.Body}, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }

@@ -67,7 +67,7 @@ var (
 func decodeDataGetFormatResponse(resp *http.Response, span trace.Span) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -93,17 +93,17 @@ func decodeDataGetFormatResponse(resp *http.Response, span trace.Span) (res stri
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodeErrorGetResponse(resp *http.Response, span trace.Span) (res ErrorStatusCode, err error) {
 	switch resp.StatusCode {
 	default:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -130,7 +130,7 @@ func decodeErrorGetResponse(resp *http.Response, span trace.Span) (res ErrorStat
 				Response:   response,
 			}, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	}
 }
@@ -138,7 +138,7 @@ func decodeErrorGetResponse(resp *http.Response, span trace.Span) (res ErrorStat
 func decodeFoobarGetResponse(resp *http.Response, span trace.Span) (res FoobarGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -162,19 +162,19 @@ func decodeFoobarGetResponse(resp *http.Response, span trace.Span) (res FoobarGe
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 404:
 		return &NotFound{}, nil
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -198,12 +198,12 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 404:
 		return &NotFound{}, nil
 	default:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -230,7 +230,7 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 				Response:   response,
 			}, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	}
 }
@@ -247,7 +247,7 @@ func decodeFoobarPutResponse(resp *http.Response, span trace.Span) (res FoobarPu
 func decodeGetHeaderResponse(resp *http.Response, span trace.Span) (res Hash, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -271,10 +271,10 @@ func decodeGetHeaderResponse(resp *http.Response, span trace.Span) (res Hash, er
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
@@ -283,14 +283,14 @@ func decodeOneofBugResponse(resp *http.Response, span trace.Span) (res OneofBugO
 	case 200:
 		return OneofBugOK{}, nil
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodePetCreateResponse(resp *http.Response, span trace.Span) (res Pet, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -314,17 +314,17 @@ func decodePetCreateResponse(resp *http.Response, span trace.Span) (res Pet, err
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodePetFriendsNamesByIDResponse(resp *http.Response, span trace.Span) (res []string, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -358,17 +358,17 @@ func decodePetFriendsNamesByIDResponse(resp *http.Response, span trace.Span) (re
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -392,10 +392,10 @@ func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, 
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -422,7 +422,7 @@ func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, 
 				Response:   response,
 			}, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	}
 }
@@ -430,7 +430,7 @@ func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, 
 func decodePetGetAvatarByIDResponse(resp *http.Response, span trace.Span) (res PetGetAvatarByIDRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/octet-stream":
 			b, err := io.ReadAll(resp.Body)
 			if err != nil {
@@ -440,12 +440,12 @@ func decodePetGetAvatarByIDResponse(resp *http.Response, span trace.Span) (res P
 				Data: bytes.NewReader(b),
 			}, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 404:
 		return &NotFound{}, nil
 	default:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -472,7 +472,7 @@ func decodePetGetAvatarByIDResponse(resp *http.Response, span trace.Span) (res P
 				Response:   response,
 			}, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	}
 }
@@ -480,7 +480,7 @@ func decodePetGetAvatarByIDResponse(resp *http.Response, span trace.Span) (res P
 func decodePetGetByNameResponse(resp *http.Response, span trace.Span) (res Pet, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -504,17 +504,17 @@ func decodePetGetByNameResponse(resp *http.Response, span trace.Span) (res Pet, 
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodePetNameByIDResponse(resp *http.Response, span trace.Span) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -540,10 +540,10 @@ func decodePetNameByIDResponse(resp *http.Response, span trace.Span) (res string
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
@@ -572,7 +572,7 @@ func decodePetUploadAvatarByIDResponse(resp *http.Response, span trace.Span) (re
 	case 404:
 		return &NotFound{}, nil
 	default:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -599,7 +599,7 @@ func decodePetUploadAvatarByIDResponse(resp *http.Response, span trace.Span) (re
 				Response:   response,
 			}, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	}
 }
@@ -607,7 +607,7 @@ func decodePetUploadAvatarByIDResponse(resp *http.Response, span trace.Span) (re
 func decodeRecursiveMapGetResponse(resp *http.Response, span trace.Span) (res RecursiveMap, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -631,17 +631,17 @@ func decodeRecursiveMapGetResponse(resp *http.Response, span trace.Span) (res Re
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodeTestObjectQueryParameterResponse(resp *http.Response, span trace.Span) (res TestObjectQueryParameterOK, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -665,9 +665,9 @@ func decodeTestObjectQueryParameterResponse(resp *http.Response, span trace.Span
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }

@@ -67,7 +67,7 @@ var (
 func decodeGetBookResponse(resp *http.Response, span trace.Span) (res GetBookRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -91,19 +91,19 @@ func decodeGetBookResponse(resp *http.Response, span trace.Span) (res GetBookRes
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 403:
 		return &GetBookForbidden{}, nil
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -139,19 +139,19 @@ func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, 
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 403:
 		return &SearchForbidden{}, nil
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
 
 func decodeSearchByTagIDResponse(resp *http.Response, span trace.Span) (res SearchByTagIDRes, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -187,11 +187,11 @@ func decodeSearchByTagIDResponse(resp *http.Response, span trace.Span) (res Sear
 
 			return &response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	case 403:
 		return &SearchByTagIDForbidden{}, nil
 	default:
-		return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }

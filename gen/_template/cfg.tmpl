@@ -7,7 +7,7 @@
 {{- with $regexStrings := $.RegexStrings }}
 var regexMap = map[string]*regexp.Regexp{
 	{{- range $regex := $regexStrings }}
-	{{ printf "%q" $regex }}: regexp.MustCompile({{ printf "%q" $regex }}),
+	{{ quote $regex }}: regexp.MustCompile({{ quote $regex }}),
 	{{- end }}
 }
 {{- end }}

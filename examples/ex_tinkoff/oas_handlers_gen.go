@@ -68,7 +68,7 @@ var (
 //
 // GET /market/bonds
 func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `MarketBondsGet`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketBondsGet",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -90,7 +90,7 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 //
 // GET /market/candles
 func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `MarketCandlesGet`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketCandlesGet",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -118,7 +118,7 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 //
 // GET /market/currencies
 func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `MarketCurrenciesGet`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketCurrenciesGet",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -140,7 +140,7 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 //
 // GET /market/etfs
 func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `MarketEtfsGet`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketEtfsGet",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -162,7 +162,7 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 //
 // GET /market/orderbook
 func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `MarketOrderbookGet`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketOrderbookGet",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -190,7 +190,7 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 //
 // GET /market/search/by-figi
 func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `MarketSearchByFigiGet`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketSearchByFigiGet",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -218,7 +218,7 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 //
 // GET /market/search/by-ticker
 func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `MarketSearchByTickerGet`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketSearchByTickerGet",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -246,7 +246,7 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 //
 // GET /market/stocks
 func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `MarketStocksGet`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketStocksGet",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -268,7 +268,7 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 //
 // GET /operations
 func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `OperationsGet`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "OperationsGet",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -296,7 +296,7 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 //
 // POST /orders/cancel
 func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrdersCancelPost`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrdersCancelPost",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -324,7 +324,7 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 //
 // GET /orders
 func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrdersGet`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrdersGet",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -352,7 +352,7 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 //
 // POST /orders/limit-order
 func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrdersLimitOrderPost`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrdersLimitOrderPost",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -386,7 +386,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 //
 // POST /orders/market-order
 func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrdersMarketOrderPost`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrdersMarketOrderPost",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -420,7 +420,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 //
 // GET /portfolio/currencies
 func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `PortfolioCurrenciesGet`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "PortfolioCurrenciesGet",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -448,7 +448,7 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 //
 // GET /portfolio
 func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `PortfolioGet`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "PortfolioGet",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -476,7 +476,7 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 //
 // POST /sandbox/clear
 func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SandboxClearPost`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxClearPost",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -504,7 +504,7 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 //
 // POST /sandbox/currencies/balance
 func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SandboxCurrenciesBalancePost`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxCurrenciesBalancePost",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -538,7 +538,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 //
 // POST /sandbox/positions/balance
 func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SandboxPositionsBalancePost`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxPositionsBalancePost",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -572,7 +572,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 //
 // POST /sandbox/register
 func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SandboxRegisterPost`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxRegisterPost",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -600,7 +600,7 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 //
 // POST /sandbox/remove
 func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SandboxRemovePost`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxRemovePost",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -628,7 +628,7 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 //
 // GET /user/accounts
 func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `UserAccountsGet`,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "UserAccountsGet",
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()

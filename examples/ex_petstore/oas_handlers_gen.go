@@ -68,8 +68,8 @@ var (
 //
 // POST /pets
 func (s *Server) handleCreatePetsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `CreatePets`,
-		trace.WithAttributes(otelogen.OperationID(`createPets`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreatePets",
+		trace.WithAttributes(otelogen.OperationID("createPets")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -91,8 +91,8 @@ func (s *Server) handleCreatePetsRequest(args [0]string, w http.ResponseWriter, 
 //
 // GET /pets
 func (s *Server) handleListPetsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListPets`,
-		trace.WithAttributes(otelogen.OperationID(`listPets`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListPets",
+		trace.WithAttributes(otelogen.OperationID("listPets")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -120,8 +120,8 @@ func (s *Server) handleListPetsRequest(args [0]string, w http.ResponseWriter, r 
 //
 // GET /pets/{petId}
 func (s *Server) handleShowPetByIdRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `ShowPetById`,
-		trace.WithAttributes(otelogen.OperationID(`showPetById`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ShowPetById",
+		trace.WithAttributes(otelogen.OperationID("showPetById")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()

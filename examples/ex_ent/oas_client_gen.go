@@ -102,8 +102,8 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // POST /pets
 func (c *Client) CreatePet(ctx context.Context, request CreatePetReq) (res CreatePetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `CreatePet`,
-		trace.WithAttributes(otelogen.OperationID(`createPet`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "CreatePet",
+		trace.WithAttributes(otelogen.OperationID("createPet")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -158,8 +158,8 @@ func (c *Client) CreatePet(ctx context.Context, request CreatePetReq) (res Creat
 // POST /pets/{id}/categories
 func (c *Client) CreatePetCategories(ctx context.Context, request CreatePetCategoriesReq, params CreatePetCategoriesParams) (res CreatePetCategoriesRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `CreatePetCategories`,
-		trace.WithAttributes(otelogen.OperationID(`createPetCategories`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "CreatePetCategories",
+		trace.WithAttributes(otelogen.OperationID("createPetCategories")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -229,8 +229,8 @@ func (c *Client) CreatePetCategories(ctx context.Context, request CreatePetCateg
 // POST /pets/{id}/friends
 func (c *Client) CreatePetFriends(ctx context.Context, request CreatePetFriendsReq, params CreatePetFriendsParams) (res CreatePetFriendsRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `CreatePetFriends`,
-		trace.WithAttributes(otelogen.OperationID(`createPetFriends`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "CreatePetFriends",
+		trace.WithAttributes(otelogen.OperationID("createPetFriends")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -300,8 +300,8 @@ func (c *Client) CreatePetFriends(ctx context.Context, request CreatePetFriendsR
 // POST /pets/{id}/owner
 func (c *Client) CreatePetOwner(ctx context.Context, request CreatePetOwnerReq, params CreatePetOwnerParams) (res CreatePetOwnerRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `CreatePetOwner`,
-		trace.WithAttributes(otelogen.OperationID(`createPetOwner`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "CreatePetOwner",
+		trace.WithAttributes(otelogen.OperationID("createPetOwner")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -371,8 +371,8 @@ func (c *Client) CreatePetOwner(ctx context.Context, request CreatePetOwnerReq, 
 // DELETE /pets/{id}
 func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res DeletePetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `DeletePet`,
-		trace.WithAttributes(otelogen.OperationID(`deletePet`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "DeletePet",
+		trace.WithAttributes(otelogen.OperationID("deletePet")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -427,8 +427,8 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 // DELETE /pets/{id}/owner
 func (c *Client) DeletePetOwner(ctx context.Context, params DeletePetOwnerParams) (res DeletePetOwnerRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `DeletePetOwner`,
-		trace.WithAttributes(otelogen.OperationID(`deletePetOwner`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "DeletePetOwner",
+		trace.WithAttributes(otelogen.OperationID("deletePetOwner")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -484,8 +484,8 @@ func (c *Client) DeletePetOwner(ctx context.Context, params DeletePetOwnerParams
 // GET /pets
 func (c *Client) ListPet(ctx context.Context, params ListPetParams) (res ListPetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `ListPet`,
-		trace.WithAttributes(otelogen.OperationID(`listPet`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "ListPet",
+		trace.WithAttributes(otelogen.OperationID("listPet")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -561,8 +561,8 @@ func (c *Client) ListPet(ctx context.Context, params ListPetParams) (res ListPet
 // GET /pets/{id}/categories
 func (c *Client) ListPetCategories(ctx context.Context, params ListPetCategoriesParams) (res ListPetCategoriesRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `ListPetCategories`,
-		trace.WithAttributes(otelogen.OperationID(`listPetCategories`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "ListPetCategories",
+		trace.WithAttributes(otelogen.OperationID("listPetCategories")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -653,8 +653,8 @@ func (c *Client) ListPetCategories(ctx context.Context, params ListPetCategories
 // GET /pets/{id}/friends
 func (c *Client) ListPetFriends(ctx context.Context, params ListPetFriendsParams) (res ListPetFriendsRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `ListPetFriends`,
-		trace.WithAttributes(otelogen.OperationID(`listPetFriends`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "ListPetFriends",
+		trace.WithAttributes(otelogen.OperationID("listPetFriends")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -745,8 +745,8 @@ func (c *Client) ListPetFriends(ctx context.Context, params ListPetFriendsParams
 // GET /pets/{id}
 func (c *Client) ReadPet(ctx context.Context, params ReadPetParams) (res ReadPetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `ReadPet`,
-		trace.WithAttributes(otelogen.OperationID(`readPet`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "ReadPet",
+		trace.WithAttributes(otelogen.OperationID("readPet")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -801,8 +801,8 @@ func (c *Client) ReadPet(ctx context.Context, params ReadPetParams) (res ReadPet
 // GET /pets/{id}/owner
 func (c *Client) ReadPetOwner(ctx context.Context, params ReadPetOwnerParams) (res ReadPetOwnerRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `ReadPetOwner`,
-		trace.WithAttributes(otelogen.OperationID(`readPetOwner`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "ReadPetOwner",
+		trace.WithAttributes(otelogen.OperationID("readPetOwner")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -858,8 +858,8 @@ func (c *Client) ReadPetOwner(ctx context.Context, params ReadPetOwnerParams) (r
 // PATCH /pets/{id}
 func (c *Client) UpdatePet(ctx context.Context, request UpdatePetReq, params UpdatePetParams) (res UpdatePetRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `UpdatePet`,
-		trace.WithAttributes(otelogen.OperationID(`updatePet`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "UpdatePet",
+		trace.WithAttributes(otelogen.OperationID("updatePet")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
