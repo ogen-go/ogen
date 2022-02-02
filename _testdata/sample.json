@@ -656,6 +656,11 @@
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/RecursiveMap"
+        },
+        "properties": {
+          "optional_recursive_field": {
+            "$ref": "#/components/schemas/RecursiveMap"
+          }
         }
       },
       "NullableEnums": {
