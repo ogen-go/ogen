@@ -33,6 +33,8 @@ func variantFieldName(t *ir.Type) string {
 		result = "Array" + variantFieldName(t.Item)
 	case ir.KindPointer:
 		result = variantFieldName(t.PointerTo)
+	case ir.KindAny:
+		result = "Any"
 	default:
 		result = t.Go()
 	}
@@ -66,13 +68,15 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err e
 	}
 
 	side := func(t *ir.Type) *ir.Type {
-		if ref := t.Schema.Ref; ref != "" {
-			if t.Is(ir.KindPrimitive, ir.KindArray) {
-				t = ir.Alias(name, t)
-			}
+		if t.Schema != nil {
+			if ref := t.Schema.Ref; ref != "" {
+				if t.Is(ir.KindPrimitive, ir.KindArray) {
+					t = ir.Alias(name, t)
+				}
 
-			g.localRefs[ref] = t
-			return t
+				g.localRefs[ref] = t
+				return t
+			}
 		}
 
 		if t.Is(ir.KindStruct, ir.KindMap, ir.KindEnum, ir.KindSum) {
@@ -85,7 +89,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err e
 	switch schema.Type {
 	case oas.Object:
 		kind := ir.KindStruct
-		if schema.Item != nil {
+		if schema.AdditionalProperties {
 			kind = ir.KindMap
 		}
 
@@ -115,8 +119,10 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err e
 		if schema.Item != nil {
 			s.Item, err = g.generate(name+"Item", schema.Item)
 			if err != nil {
-				return nil, err
+				return nil, errors.Wrap(err, "item")
 			}
+		} else {
+			s.Item = ir.Any()
 		}
 
 		return s, nil
@@ -135,9 +141,13 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err e
 		}
 
 		ret := side(array)
-		array.Item, err = g.generate(name+"Item", schema.Item)
-		if err != nil {
-			return nil, err
+		if schema.Item != nil {
+			array.Item, err = g.generate(name+"Item", schema.Item)
+			if err != nil {
+				return nil, errors.Wrap(err, "item")
+			}
+		} else {
+			array.Item = ir.Any()
 		}
 
 		return ret, nil
@@ -145,7 +155,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err e
 	case oas.String, oas.Integer, oas.Number, oas.Boolean:
 		t, err := g.primitive(name, schema)
 		if err != nil {
-			return nil, err
+			return nil, errors.Wrap(err, "primitive")
 		}
 
 		switch schema.Type {
@@ -187,201 +197,15 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err e
 		}
 
 		return side(t), nil
-
 	case oas.Empty:
-		sum := &ir.Type{
-			Name:   name,
-			Kind:   ir.KindSum,
-			Schema: schema,
+		if len(schema.OneOf) == 0 {
+			return side(ir.Any()), nil
 		}
-		names := map[string]struct{}{}
-		for i, s := range schema.OneOf {
-			t, err := g.generate(fmt.Sprintf("%s%d", name, i), s)
-			if err != nil {
-				return nil, errors.Wrapf(err, "oneOf[%d]", i)
-			}
-			t.Name = variantFieldName(t)
-			if _, ok := names[t.Name]; ok {
-				return nil, errors.Wrap(&ErrNotImplemented{
-					Name: "sum types with same names",
-				}, name)
-			}
-			names[t.Name] = struct{}{}
-			sum.SumOf = append(sum.SumOf, t)
+		t, err := g.oneOf(name, schema)
+		if err != nil {
+			return nil, errors.Wrap(err, "oneOf")
 		}
-
-		// 1st case: explicit discriminator.
-		if d := schema.Discriminator; d != nil {
-			sum.SumSpec.Discriminator = schema.Discriminator.PropertyName
-			for k, v := range schema.Discriminator.Mapping {
-				// Explicit mapping.
-				var found bool
-				for _, s := range sum.SumOf {
-					if path.Base(s.Schema.Ref) == v {
-						found = true
-						sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
-							Key:  k,
-							Type: s.Name,
-						})
-					}
-				}
-				if !found {
-					return nil, errors.Errorf("discriminator: unable to map %s to %s", k, v)
-				}
-			}
-			if len(sum.SumSpec.Mapping) == 0 {
-				// Implicit mapping, defaults to type name.
-				for _, s := range sum.SumOf {
-					sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
-						Key:  path.Base(s.Schema.Ref),
-						Type: s.Name,
-					})
-				}
-			}
-			sort.SliceStable(sum.SumSpec.Mapping, func(i, j int) bool {
-				a := sum.SumSpec.Mapping[i]
-				b := sum.SumSpec.Mapping[j]
-				return strings.Compare(a.Key, b.Key) < 0
-			})
-			return side(sum), nil
-		}
-
-		// 2nd case: distinguish by serialization type.
-		var (
-			// Collect map of variant kinds.
-			typeMap = map[ir.TypeDiscriminator]struct{}{}
-			// If all variants have different kinds, so
-			// we can distinguish them by JSON type.
-			canUseTypeDiscriminator = true
-		)
-		for _, s := range sum.SumOf {
-			var kind ir.TypeDiscriminator
-			kind.Set(s)
-			if _, ok := typeMap[kind]; ok {
-				// Type kind is not unique, so we can distinguish variants by type.
-				canUseTypeDiscriminator = false
-				break
-			}
-			typeMap[kind] = struct{}{}
-		}
-		if canUseTypeDiscriminator {
-			sum.SumSpec.TypeDiscriminator = true
-			return side(sum), nil
-		}
-
-		// 3rd case: distinguish by unique fields.
-		var (
-			// Determine unique fields for each SumOf variant.
-			uniq = map[string]map[string]struct{}{}
-			// Whether sum has complex types.
-			isComplex bool
-		)
-		for _, s := range sum.SumOf {
-			uniq[s.Name] = map[string]struct{}{}
-			if !s.Is(ir.KindPrimitive) {
-				isComplex = true
-			}
-			for _, f := range s.Fields {
-				uniq[s.Name][f.Name] = struct{}{}
-			}
-		}
-		{
-			// Collect fields that common for at least 2 variants.
-			commonFields := map[string]struct{}{}
-			for _, variant := range sum.SumOf {
-				k := variant.Name
-				fields := uniq[k]
-				for _, otherVariant := range sum.SumOf {
-					otherK := otherVariant.Name
-					if otherK == k {
-						continue
-					}
-					otherFields := uniq[otherK]
-					for otherField := range otherFields {
-						if _, has := fields[otherField]; has {
-							// variant and otherVariant have common field otherField.
-							commonFields[otherField] = struct{}{}
-						}
-					}
-				}
-			}
-			// Delete such fields.
-			for field := range commonFields {
-				for _, variant := range sum.SumOf {
-					delete(uniq[variant.Name], field)
-				}
-			}
-
-			if isComplex {
-				// Check that at most one type has no unique fields.
-				metNoUniqueFields := false
-				for _, variant := range sum.SumOf {
-					k := variant.Name
-					if len(uniq[k]) == 0 {
-						if metNoUniqueFields {
-							// Unable to deterministically select sub-schema only on fields.
-							return nil, errors.Wrapf(&ErrNotImplemented{Name: "discriminator inference"},
-								"oneOf %s: variant %s: no unique fields, "+
-									"unable to parse without discriminator", sum.Name, k,
-							)
-						}
-
-						// Set mapping without unique fields as default
-						sum.SumSpec.DefaultMapping = k
-						metNoUniqueFields = true
-					}
-				}
-			}
-		}
-		type sumVariant struct {
-			Name   string
-			Unique []string
-		}
-		var variants []sumVariant
-		for _, s := range sum.SumOf {
-			k := s.Name
-			f := uniq[k]
-			v := sumVariant{
-				Name: k,
-			}
-			for fieldName := range f {
-				v.Unique = append(v.Unique, fieldName)
-			}
-			sort.Strings(v.Unique)
-			variants = append(variants, v)
-		}
-		sort.SliceStable(variants, func(i, j int) bool {
-			a := variants[i]
-			b := variants[j]
-			return strings.Compare(a.Name, b.Name) < 0
-		})
-		if !isComplex {
-			return side(sum), nil
-		}
-		for _, v := range variants {
-			for _, s := range sum.SumOf {
-				if s.Name != v.Name {
-					continue
-				}
-				if len(s.SumSpec.Unique) > 0 {
-					continue
-				}
-				for _, f := range s.Fields {
-					var skip bool
-					for _, n := range v.Unique {
-						if n == f.Name {
-							skip = true // not unique
-							break
-						}
-					}
-					if !skip {
-						continue
-					}
-					s.SumSpec.Unique = append(s.SumSpec.Unique, f)
-				}
-			}
-		}
-		return side(sum), nil
+		return side(t), nil
 	default:
 		panic("unreachable")
 	}
@@ -491,4 +315,200 @@ func parseSimple(schema *oas.Schema) (*ir.Type, error) {
 	}
 
 	return ir.Primitive(t, schema), nil
+}
+
+func (g *schemaGen) oneOf(name string, schema *oas.Schema) (*ir.Type, error) {
+	sum := &ir.Type{
+		Name:   name,
+		Kind:   ir.KindSum,
+		Schema: schema,
+	}
+	names := map[string]struct{}{}
+	for i, s := range schema.OneOf {
+		t, err := g.generate(fmt.Sprintf("%s%d", name, i), s)
+		if err != nil {
+			return nil, errors.Wrapf(err, "oneOf[%d]", i)
+		}
+		t.Name = variantFieldName(t)
+		if _, ok := names[t.Name]; ok {
+			return nil, errors.Wrap(&ErrNotImplemented{
+				Name: "sum types with same names",
+			}, name)
+		}
+		names[t.Name] = struct{}{}
+		sum.SumOf = append(sum.SumOf, t)
+	}
+
+	// 1st case: explicit discriminator.
+	if d := schema.Discriminator; d != nil {
+		sum.SumSpec.Discriminator = schema.Discriminator.PropertyName
+		for k, v := range schema.Discriminator.Mapping {
+			// Explicit mapping.
+			var found bool
+			for _, s := range sum.SumOf {
+				if path.Base(s.Schema.Ref) == v {
+					found = true
+					sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
+						Key:  k,
+						Type: s.Name,
+					})
+				}
+			}
+			if !found {
+				return nil, errors.Errorf("discriminator: unable to map %s to %s", k, v)
+			}
+		}
+		if len(sum.SumSpec.Mapping) == 0 {
+			// Implicit mapping, defaults to type name.
+			for _, s := range sum.SumOf {
+				sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
+					Key:  path.Base(s.Schema.Ref),
+					Type: s.Name,
+				})
+			}
+		}
+		sort.SliceStable(sum.SumSpec.Mapping, func(i, j int) bool {
+			a := sum.SumSpec.Mapping[i]
+			b := sum.SumSpec.Mapping[j]
+			return strings.Compare(a.Key, b.Key) < 0
+		})
+		return sum, nil
+	}
+
+	// 2nd case: distinguish by serialization type.
+	var (
+		// Collect map of variant kinds.
+		typeMap = map[ir.TypeDiscriminator]struct{}{}
+		// If all variants have different kinds, so
+		// we can distinguish them by JSON type.
+		canUseTypeDiscriminator = true
+	)
+	for _, s := range sum.SumOf {
+		var kind ir.TypeDiscriminator
+		kind.Set(s)
+		if _, ok := typeMap[kind]; ok {
+			// Type kind is not unique, so we can distinguish variants by type.
+			canUseTypeDiscriminator = false
+			break
+		}
+		typeMap[kind] = struct{}{}
+	}
+	if canUseTypeDiscriminator {
+		sum.SumSpec.TypeDiscriminator = true
+		return sum, nil
+	}
+
+	// 3rd case: distinguish by unique fields.
+	var (
+		// Determine unique fields for each SumOf variant.
+		uniq = map[string]map[string]struct{}{}
+		// Whether sum has complex types.
+		isComplex bool
+	)
+	for _, s := range sum.SumOf {
+		uniq[s.Name] = map[string]struct{}{}
+		if !s.Is(ir.KindPrimitive) {
+			isComplex = true
+		}
+		for _, f := range s.Fields {
+			uniq[s.Name][f.Name] = struct{}{}
+		}
+	}
+	{
+		// Collect fields that common for at least 2 variants.
+		commonFields := map[string]struct{}{}
+		for _, variant := range sum.SumOf {
+			k := variant.Name
+			fields := uniq[k]
+			for _, otherVariant := range sum.SumOf {
+				otherK := otherVariant.Name
+				if otherK == k {
+					continue
+				}
+				otherFields := uniq[otherK]
+				for otherField := range otherFields {
+					if _, has := fields[otherField]; has {
+						// variant and otherVariant have common field otherField.
+						commonFields[otherField] = struct{}{}
+					}
+				}
+			}
+		}
+		// Delete such fields.
+		for field := range commonFields {
+			for _, variant := range sum.SumOf {
+				delete(uniq[variant.Name], field)
+			}
+		}
+
+		if isComplex {
+			// Check that at most one type has no unique fields.
+			metNoUniqueFields := false
+			for _, variant := range sum.SumOf {
+				k := variant.Name
+				if len(uniq[k]) == 0 {
+					if metNoUniqueFields {
+						// Unable to deterministically select sub-schema only on fields.
+						return nil, errors.Wrapf(&ErrNotImplemented{Name: "discriminator inference"},
+							"oneOf %s: variant %s: no unique fields, "+
+								"unable to parse without discriminator", sum.Name, k,
+						)
+					}
+
+					// Set mapping without unique fields as default
+					sum.SumSpec.DefaultMapping = k
+					metNoUniqueFields = true
+				}
+			}
+		}
+	}
+	type sumVariant struct {
+		Name   string
+		Unique []string
+	}
+	var variants []sumVariant
+	for _, s := range sum.SumOf {
+		k := s.Name
+		f := uniq[k]
+		v := sumVariant{
+			Name: k,
+		}
+		for fieldName := range f {
+			v.Unique = append(v.Unique, fieldName)
+		}
+		sort.Strings(v.Unique)
+		variants = append(variants, v)
+	}
+	sort.SliceStable(variants, func(i, j int) bool {
+		a := variants[i]
+		b := variants[j]
+		return strings.Compare(a.Name, b.Name) < 0
+	})
+	if !isComplex {
+		return sum, nil
+	}
+	for _, v := range variants {
+		for _, s := range sum.SumOf {
+			if s.Name != v.Name {
+				continue
+			}
+			if len(s.SumSpec.Unique) > 0 {
+				continue
+			}
+			for _, f := range s.Fields {
+				var skip bool
+				for _, n := range v.Unique {
+					if n == f.Name {
+						skip = true // not unique
+						break
+					}
+				}
+				if !skip {
+					continue
+				}
+				s.SumSpec.Unique = append(s.SumSpec.Unique, f)
+			}
+		}
+	}
+	return sum, nil
 }

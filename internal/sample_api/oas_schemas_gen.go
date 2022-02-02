@@ -64,6 +64,15 @@ var (
 	_ = sync.Pool{}
 )
 
+// Ref: #/components/schemas/AnyTest
+type AnyTest struct {
+	Empty    jx.Raw           `json:"empty"`
+	AnyMap   OptAnyTestAnyMap `json:"any_map"`
+	AnyArray []jx.Raw         `json:"any_array"`
+}
+
+type AnyTestAnyMap map[string]jx.Raw
+
 // Test array encoder/decoder generation.
 // Ref: #/components/schemas/ArrayTest
 type ArrayTest struct {
@@ -657,6 +666,98 @@ type OneVariantHasNoUniqueFields1 struct {
 
 // OneofBugOK is response for OneofBug operation.
 type OneofBugOK struct{}
+
+// NewOptAnyTest returns new OptAnyTest with value set to v.
+func NewOptAnyTest(v AnyTest) OptAnyTest {
+	return OptAnyTest{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptAnyTest is optional AnyTest.
+type OptAnyTest struct {
+	Value AnyTest
+	Set   bool
+}
+
+// IsSet returns true if OptAnyTest was set.
+func (o OptAnyTest) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptAnyTest) Reset() {
+	var v AnyTest
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptAnyTest) SetTo(v AnyTest) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptAnyTest) Get() (v AnyTest, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAnyTest) Or(d AnyTest) AnyTest {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptAnyTestAnyMap returns new OptAnyTestAnyMap with value set to v.
+func NewOptAnyTestAnyMap(v AnyTestAnyMap) OptAnyTestAnyMap {
+	return OptAnyTestAnyMap{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptAnyTestAnyMap is optional AnyTestAnyMap.
+type OptAnyTestAnyMap struct {
+	Value AnyTestAnyMap
+	Set   bool
+}
+
+// IsSet returns true if OptAnyTestAnyMap was set.
+func (o OptAnyTestAnyMap) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptAnyTestAnyMap) Reset() {
+	var v AnyTestAnyMap
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptAnyTestAnyMap) SetTo(v AnyTestAnyMap) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptAnyTestAnyMap) Get() (v AnyTestAnyMap, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAnyTestAnyMap) Or(d AnyTestAnyMap) AnyTestAnyMap {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
 
 // NewOptArrayTest returns new OptArrayTest with value set to v.
 func NewOptArrayTest(v ArrayTest) OptArrayTest {
@@ -1668,6 +1769,7 @@ type Pet struct {
 	TestArray2       OptArrayTest         `json:"testArray2"`
 	TestMap          OptStringStringMap   `json:"testMap"`
 	TestMapWithProps OptMapWithProperties `json:"testMapWithProps"`
+	TestAny          OptAnyTest           `json:"testAny"`
 	TestDate         OptTime              `json:"testDate"`
 	TestDuration     OptDuration          `json:"testDuration"`
 	TestTime         OptTime              `json:"testTime"`

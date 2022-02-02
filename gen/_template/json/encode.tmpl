@@ -34,6 +34,10 @@ e.RawStr({{ printf "%q" $.Tag.EscapedJSON }}+":")
 		{{- else }}
 		e.Comma()
 		{{- end }}
+	{{- else if $t.IsAny }}
+		if len({{ $.Var }}) != 0 {
+			e.Comma()
+		}
 	{{- else if $j.Format -}}
 		e.Comma()
 	{{- else if $j.Fn -}}
@@ -79,6 +83,13 @@ e.RawStr({{ printf "%q" $.Tag.EscapedJSON }}+":")
 		{{- else }}
 		e.Comma()
 		{{- end }}
+	{{- else if $t.IsAny }}
+		if len({{ $.Var }}) != 0 {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
 	{{- else if $j.Format -}}
 		e.Comma()
 	{{- else if $j.Fn -}}
@@ -175,6 +186,11 @@ e.RawStr({{ printf "%q" $.Tag.EscapedJSON }}+":")
 		{{- template "json/enc_generic" $ }}
 	{{- else if $t.IsArray -}}
 		{{- template "json/enc_array" $ }}
+    {{- else if $t.IsAny }}
+		if len({{ $.Var }}) != 0 {
+        	{{- template "json/enc_field" $ }}
+			e.{{ $j.Fn }}({{ $.Var }})
+		}
 	{{- else if $j.Format -}}
 		{{- template "json/enc_field" $ }}
 		json.Encode{{ $j.Format }}(e, {{ $.Var }})

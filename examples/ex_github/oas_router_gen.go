@@ -4290,93 +4290,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							}
 							switch elem[0] {
-							case 'a': // Prefix: "actions/"
-								if l := len("actions/"); len(elem) >= l && elem[0:l] == "actions/" {
+							case 'a': // Prefix: "a"
+								if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest([2]string{
+									s.handleEnterpriseAdminGetAuditLogRequest([1]string{
 										args[0],
-										args[1],
 									}, w, r)
 
 									return
 								}
 								switch elem[0] {
-								case 'p': // Prefix: "permissions"
-									if l := len("permissions"); len(elem) >= l && elem[0:l] == "permissions" {
+								case 'c': // Prefix: "ctions/"
+									if l := len("ctions/"); len(elem) >= l && elem[0:l] == "ctions/" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										s.handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest([1]string{
-											args[0],
-										}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest([1]string{
-												args[0],
-											}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case 'o': // Prefix: "organizations"
-											if l := len("organizations"); len(elem) >= l && elem[0:l] == "organizations" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise
-												s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest([1]string{
-													args[0],
-												}, w, r)
-
-												return
-											}
-										case 's': // Prefix: "selected-actions"
-											if l := len("selected-actions"); len(elem) >= l && elem[0:l] == "selected-actions" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: EnterpriseAdminGetAllowedActionsEnterprise
-												s.handleEnterpriseAdminGetAllowedActionsEnterpriseRequest([1]string{
-													args[0],
-												}, w, r)
-
-												return
-											}
-										}
-									}
-								case 'r': // Prefix: "runner"
-									if l := len("runner"); len(elem) >= l && elem[0:l] == "runner" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest([2]string{
+										s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest([2]string{
 											args[0],
 											args[1],
 										}, w, r)
@@ -4384,15 +4321,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										return
 									}
 									switch elem[0] {
-									case '-': // Prefix: "-groups"
-										if l := len("-groups"); len(elem) >= l && elem[0:l] == "-groups" {
+									case 'p': // Prefix: "permissions"
+										if l := len("permissions"); len(elem) >= l && elem[0:l] == "permissions" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											s.handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest([1]string{
+											s.handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest([1]string{
 												args[0],
 											}, w, r)
 
@@ -4406,31 +4343,93 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												break
 											}
 
-											// Param: "runner_group_id"
-											// Match until "/"
-											idx := strings.IndexByte(elem, '/')
-											if idx > 0 {
-												args[1] = elem[:idx]
-												elem = elem[idx:]
+											if len(elem) == 0 {
+												s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case 'o': // Prefix: "organizations"
+												if l := len("organizations"); len(elem) >= l && elem[0:l] == "organizations" {
+													elem = elem[l:]
+												} else {
+													break
+												}
 
 												if len(elem) == 0 {
-													s.handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest([2]string{
+													// Leaf: EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise
+													s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest([1]string{
 														args[0],
-														args[1],
 													}, w, r)
 
 													return
 												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
+											case 's': // Prefix: "selected-actions"
+												if l := len("selected-actions"); len(elem) >= l && elem[0:l] == "selected-actions" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: EnterpriseAdminGetAllowedActionsEnterprise
+													s.handleEnterpriseAdminGetAllowedActionsEnterpriseRequest([1]string{
+														args[0],
+													}, w, r)
+
+													return
+												}
+											}
+										}
+									case 'r': // Prefix: "runner"
+										if l := len("runner"); len(elem) >= l && elem[0:l] == "runner" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest([2]string{
+												args[0],
+												args[1],
+											}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '-': // Prefix: "-groups"
+											if l := len("-groups"); len(elem) >= l && elem[0:l] == "-groups" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												// Param: "runner_group_id"
+												// Match until "/"
+												idx := strings.IndexByte(elem, '/')
+												if idx > 0 {
+													args[1] = elem[:idx]
+													elem = elem[idx:]
 
 													if len(elem) == 0 {
-														s.handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest([2]string{
+														s.handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest([2]string{
 															args[0],
 															args[1],
 														}, w, r)
@@ -4438,31 +4437,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														return
 													}
 													switch elem[0] {
-													case 'o': // Prefix: "organizations"
-														if l := len("organizations"); len(elem) >= l && elem[0:l] == "organizations" {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
 														if len(elem) == 0 {
-															// Leaf: EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
-															s.handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-
-															return
-														}
-													case 'r': // Prefix: "runners"
-														if l := len("runners"); len(elem) >= l && elem[0:l] == "runners" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf: EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise
 															s.handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest([2]string{
 																args[0],
 																args[1],
@@ -4470,67 +4452,116 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 															return
 														}
+														switch elem[0] {
+														case 'o': // Prefix: "organizations"
+															if l := len("organizations"); len(elem) >= l && elem[0:l] == "organizations" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf: EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
+																s.handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+
+																return
+															}
+														case 'r': // Prefix: "runners"
+															if l := len("runners"); len(elem) >= l && elem[0:l] == "runners" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf: EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise
+																s.handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+
+																return
+															}
+														}
 													}
 												}
 											}
-										}
-									case 's': // Prefix: "s"
-										if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest([1]string{
-												args[0],
-											}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										case 's': // Prefix: "s"
+											if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												break
+												s.handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
 											}
 											switch elem[0] {
-											case 'd': // Prefix: "downloads"
-												if l := len("downloads"); len(elem) >= l && elem[0:l] == "downloads" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													// Leaf: EnterpriseAdminListRunnerApplicationsForEnterprise
-													s.handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest([1]string{
+													break
+												}
+												switch elem[0] {
+												case 'd': // Prefix: "downloads"
+													if l := len("downloads"); len(elem) >= l && elem[0:l] == "downloads" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: EnterpriseAdminListRunnerApplicationsForEnterprise
+														s.handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest([1]string{
+															args[0],
+														}, w, r)
+
+														return
+													}
+												}
+												// Param: "runner_id"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
+												if len(elem) == 0 {
+													// Leaf: EnterpriseAdminGetSelfHostedRunnerForEnterprise
+													s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest([2]string{
 														args[0],
+														args[1],
 													}, w, r)
 
 													return
 												}
 											}
-											// Param: "runner_id"
-											// Leaf parameter
-											args[1] = elem
-											elem = ""
-
-											if len(elem) == 0 {
-												// Leaf: EnterpriseAdminGetSelfHostedRunnerForEnterprise
-												s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
-
-												return
-											}
 										}
+									}
+								case 'u': // Prefix: "udit-log"
+									if l := len("udit-log"); len(elem) >= l && elem[0:l] == "udit-log" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										// Leaf: EnterpriseAdminGetAuditLog
+										s.handleEnterpriseAdminGetAuditLogRequest([1]string{
+											args[0],
+										}, w, r)
+
+										return
 									}
 								}
 							case 's': // Prefix: "settings/billing/"
@@ -4637,119 +4668,197 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 				switch elem[0] {
-				case 's': // Prefix: "sts/"
-					if l := len("sts/"); len(elem) >= l && elem[0:l] == "sts/" {
+				case 's': // Prefix: "sts"
+					if l := len("sts"); len(elem) >= l && elem[0:l] == "sts" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Param: "gist_id"
-					// Match until "/"
-					idx := strings.IndexByte(elem, '/')
-					if idx > 0 {
-						args[0] = elem[:idx]
-						elem = elem[idx:]
+					if len(elem) == 0 {
+						s.handleGistsListRequest([0]string{}, w, r)
+
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
+						} else {
+							break
+						}
 
 						if len(elem) == 0 {
 							break
 						}
 						switch elem[0] {
-						case '/': // Prefix: "/"
-							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+						case 'p': // Prefix: "public"
+							if l := len("public"); len(elem) >= l && elem[0:l] == "public" {
 								elem = elem[l:]
 							} else {
 								break
 							}
 
 							if len(elem) == 0 {
-								s.handleGistsGetCommentRequest([2]string{
+								// Leaf: GistsListPublic
+								s.handleGistsListPublicRequest([0]string{}, w, r)
+
+								return
+							}
+						case 's': // Prefix: "starred"
+							if l := len("starred"); len(elem) >= l && elem[0:l] == "starred" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								// Leaf: GistsListStarred
+								s.handleGistsListStarredRequest([0]string{}, w, r)
+
+								return
+							}
+						}
+						// Param: "gist_id"
+						// Match until "/"
+						idx := strings.IndexByte(elem, '/')
+						if idx > 0 {
+							args[0] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								s.handleGistsGetRequest([1]string{
 									args[0],
-									args[1],
 								}, w, r)
 
 								return
 							}
 							switch elem[0] {
-							case 'c': // Prefix: "comm"
-								if l := len("comm"); len(elem) >= l && elem[0:l] == "comm" {
+							case '/': // Prefix: "/"
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									s.handleGistsListCommitsRequest([1]string{
+									s.handleGistsGetCommentRequest([2]string{
 										args[0],
+										args[1],
 									}, w, r)
 
 									return
 								}
 								switch elem[0] {
-								case 'e': // Prefix: "ents"
-									if l := len("ents"); len(elem) >= l && elem[0:l] == "ents" {
+								case 'c': // Prefix: "comm"
+									if l := len("comm"); len(elem) >= l && elem[0:l] == "comm" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										s.handleGistsListCommentsRequest([1]string{
-											args[0],
-										}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										// Param: "comment_id"
-										// Leaf parameter
-										args[1] = elem
-										elem = ""
-
-										if len(elem) == 0 {
-											// Leaf: GistsGetComment
-											s.handleGistsGetCommentRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
-
-											return
-										}
-									}
-								case 'i': // Prefix: "its"
-									if l := len("its"); len(elem) >= l && elem[0:l] == "its" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										// Leaf: GistsListCommits
 										s.handleGistsListCommitsRequest([1]string{
 											args[0],
 										}, w, r)
 
 										return
 									}
+									switch elem[0] {
+									case 'e': // Prefix: "ents"
+										if l := len("ents"); len(elem) >= l && elem[0:l] == "ents" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleGistsListCommentsRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											// Param: "comment_id"
+											// Leaf parameter
+											args[1] = elem
+											elem = ""
+
+											if len(elem) == 0 {
+												// Leaf: GistsGetComment
+												s.handleGistsGetCommentRequest([2]string{
+													args[0],
+													args[1],
+												}, w, r)
+
+												return
+											}
+										}
+									case 'i': // Prefix: "its"
+										if l := len("its"); len(elem) >= l && elem[0:l] == "its" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf: GistsListCommits
+											s.handleGistsListCommitsRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
+									}
+								case 'f': // Prefix: "forks"
+									if l := len("forks"); len(elem) >= l && elem[0:l] == "forks" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										// Leaf: GistsListForks
+										s.handleGistsListForksRequest([1]string{
+											args[0],
+										}, w, r)
+
+										return
+									}
+								case 's': // Prefix: "star"
+									if l := len("star"); len(elem) >= l && elem[0:l] == "star" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										// Leaf: GistsCheckIsStarred
+										s.handleGistsCheckIsStarredRequest([1]string{
+											args[0],
+										}, w, r)
+
+										return
+									}
 								}
-							case 's': // Prefix: "star"
-								if l := len("star"); len(elem) >= l && elem[0:l] == "star" {
-									elem = elem[l:]
-								} else {
-									break
-								}
+								// Param: "sha"
+								// Leaf parameter
+								args[1] = elem
+								elem = ""
 
 								if len(elem) == 0 {
-									// Leaf: GistsCheckIsStarred
-									s.handleGistsCheckIsStarredRequest([1]string{
+									// Leaf: GistsGetRevision
+									s.handleGistsGetRevisionRequest([2]string{
 										args[0],
+										args[1],
 									}, w, r)
 
 									return
@@ -5252,271 +5361,107 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							}
 							switch elem[0] {
-							case 'a': // Prefix: "actions/"
-								if l := len("actions/"); len(elem) >= l && elem[0:l] == "actions/" {
+							case 'a': // Prefix: "a"
+								if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									s.handleActionsGetOrgPublicKeyRequest([1]string{
+									s.handleOrgsGetAuditLogRequest([1]string{
 										args[0],
 									}, w, r)
 
 									return
 								}
 								switch elem[0] {
-								case 'p': // Prefix: "permissions"
-									if l := len("permissions"); len(elem) >= l && elem[0:l] == "permissions" {
+								case 'c': // Prefix: "ctions/"
+									if l := len("ctions/"); len(elem) >= l && elem[0:l] == "ctions/" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										s.handleActionsGetGithubActionsPermissionsOrganizationRequest([1]string{
+										s.handleActionsGetOrgPublicKeyRequest([1]string{
 											args[0],
 										}, w, r)
 
 										return
 									}
 									switch elem[0] {
-									case '/': // Prefix: "/"
-										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									case 'p': // Prefix: "permissions"
+										if l := len("permissions"); len(elem) >= l && elem[0:l] == "permissions" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest([1]string{
+											s.handleActionsGetGithubActionsPermissionsOrganizationRequest([1]string{
 												args[0],
 											}, w, r)
 
 											return
 										}
 										switch elem[0] {
-										case 'r': // Prefix: "repositories"
-											if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												// Leaf: ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 												s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest([1]string{
 													args[0],
 												}, w, r)
 
 												return
 											}
-										case 's': // Prefix: "selected-actions"
-											if l := len("selected-actions"); len(elem) >= l && elem[0:l] == "selected-actions" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: ActionsGetAllowedActionsOrganization
-												s.handleActionsGetAllowedActionsOrganizationRequest([1]string{
-													args[0],
-												}, w, r)
-
-												return
-											}
-										}
-									}
-								case 'r': // Prefix: "runner"
-									if l := len("runner"); len(elem) >= l && elem[0:l] == "runner" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleActionsGetSelfHostedRunnerGroupForOrgRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case '-': // Prefix: "-groups"
-										if l := len("-groups"); len(elem) >= l && elem[0:l] == "-groups" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleActionsListSelfHostedRunnerGroupsForOrgRequest([1]string{
-												args[0],
-											}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											// Param: "runner_group_id"
-											// Match until "/"
-											idx := strings.IndexByte(elem, '/')
-											if idx > 0 {
-												args[1] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													s.handleActionsGetSelfHostedRunnerGroupForOrgRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/r"
-													if l := len("/r"); len(elem) >= l && elem[0:l] == "/r" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleActionsListSelfHostedRunnersInGroupForOrgRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
-													}
-													switch elem[0] {
-													case 'e': // Prefix: "epositories"
-														if l := len("epositories"); len(elem) >= l && elem[0:l] == "epositories" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf: ActionsListRepoAccessToSelfHostedRunnerGroupInOrg
-															s.handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-
-															return
-														}
-													case 'u': // Prefix: "unners"
-														if l := len("unners"); len(elem) >= l && elem[0:l] == "unners" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf: ActionsListSelfHostedRunnersInGroupForOrg
-															s.handleActionsListSelfHostedRunnersInGroupForOrgRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-
-															return
-														}
-													}
-												}
-											}
-										}
-									case 's': // Prefix: "s"
-										if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleActionsListSelfHostedRunnersForOrgRequest([1]string{
-												args[0],
-											}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
 											switch elem[0] {
-											case 'd': // Prefix: "downloads"
-												if l := len("downloads"); len(elem) >= l && elem[0:l] == "downloads" {
+											case 'r': // Prefix: "repositories"
+												if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ActionsListRunnerApplicationsForOrg
-													s.handleActionsListRunnerApplicationsForOrgRequest([1]string{
+													// Leaf: ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
+													s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest([1]string{
+														args[0],
+													}, w, r)
+
+													return
+												}
+											case 's': // Prefix: "selected-actions"
+												if l := len("selected-actions"); len(elem) >= l && elem[0:l] == "selected-actions" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: ActionsGetAllowedActionsOrganization
+													s.handleActionsGetAllowedActionsOrganizationRequest([1]string{
 														args[0],
 													}, w, r)
 
 													return
 												}
 											}
-											// Param: "runner_id"
-											// Leaf parameter
-											args[1] = elem
-											elem = ""
-
-											if len(elem) == 0 {
-												// Leaf: ActionsGetSelfHostedRunnerForOrg
-												s.handleActionsGetSelfHostedRunnerForOrgRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
-
-												return
-											}
 										}
-									}
-								case 's': // Prefix: "secrets"
-									if l := len("secrets"); len(elem) >= l && elem[0:l] == "secrets" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleActionsListOrgSecretsRequest([1]string{
-											args[0],
-										}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									case 'r': // Prefix: "runner"
+										if l := len("runner"); len(elem) >= l && elem[0:l] == "runner" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											s.handleActionsGetOrgSecretRequest([2]string{
+											s.handleActionsGetSelfHostedRunnerGroupForOrgRequest([2]string{
 												args[0],
 												args[1],
 											}, w, r)
@@ -5524,28 +5469,175 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											return
 										}
 										switch elem[0] {
-										case 'p': // Prefix: "public-key"
-											if l := len("public-key"); len(elem) >= l && elem[0:l] == "public-key" {
+										case '-': // Prefix: "-groups"
+											if l := len("-groups"); len(elem) >= l && elem[0:l] == "-groups" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												// Leaf: ActionsGetOrgPublicKey
-												s.handleActionsGetOrgPublicKeyRequest([1]string{
+												s.handleActionsListSelfHostedRunnerGroupsForOrgRequest([1]string{
 													args[0],
 												}, w, r)
 
 												return
 											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												// Param: "runner_group_id"
+												// Match until "/"
+												idx := strings.IndexByte(elem, '/')
+												if idx > 0 {
+													args[1] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleActionsGetSelfHostedRunnerGroupForOrgRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/r"
+														if l := len("/r"); len(elem) >= l && elem[0:l] == "/r" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleActionsListSelfHostedRunnersInGroupForOrgRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+
+															return
+														}
+														switch elem[0] {
+														case 'e': // Prefix: "epositories"
+															if l := len("epositories"); len(elem) >= l && elem[0:l] == "epositories" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf: ActionsListRepoAccessToSelfHostedRunnerGroupInOrg
+																s.handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+
+																return
+															}
+														case 'u': // Prefix: "unners"
+															if l := len("unners"); len(elem) >= l && elem[0:l] == "unners" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf: ActionsListSelfHostedRunnersInGroupForOrg
+																s.handleActionsListSelfHostedRunnersInGroupForOrgRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+
+																return
+															}
+														}
+													}
+												}
+											}
+										case 's': // Prefix: "s"
+											if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleActionsListSelfHostedRunnersForOrgRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'd': // Prefix: "downloads"
+													if l := len("downloads"); len(elem) >= l && elem[0:l] == "downloads" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: ActionsListRunnerApplicationsForOrg
+														s.handleActionsListRunnerApplicationsForOrgRequest([1]string{
+															args[0],
+														}, w, r)
+
+														return
+													}
+												}
+												// Param: "runner_id"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
+												if len(elem) == 0 {
+													// Leaf: ActionsGetSelfHostedRunnerForOrg
+													s.handleActionsGetSelfHostedRunnerForOrgRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+
+													return
+												}
+											}
 										}
-										// Param: "secret_name"
-										// Match until "/"
-										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[1] = elem[:idx]
-											elem = elem[idx:]
+									case 's': // Prefix: "secrets"
+										if l := len("secrets"); len(elem) >= l && elem[0:l] == "secrets" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActionsListOrgSecretsRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
+												break
+											}
 
 											if len(elem) == 0 {
 												s.handleActionsGetOrgSecretRequest([2]string{
@@ -5556,24 +5648,72 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												return
 											}
 											switch elem[0] {
-											case '/': // Prefix: "/repositories"
-												if l := len("/repositories"); len(elem) >= l && elem[0:l] == "/repositories" {
+											case 'p': // Prefix: "public-key"
+												if l := len("public-key"); len(elem) >= l && elem[0:l] == "public-key" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													// Leaf: ActionsListSelectedReposForOrgSecret
-													s.handleActionsListSelectedReposForOrgSecretRequest([2]string{
+													// Leaf: ActionsGetOrgPublicKey
+													s.handleActionsGetOrgPublicKeyRequest([1]string{
+														args[0],
+													}, w, r)
+
+													return
+												}
+											}
+											// Param: "secret_name"
+											// Match until "/"
+											idx := strings.IndexByte(elem, '/')
+											if idx > 0 {
+												args[1] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													s.handleActionsGetOrgSecretRequest([2]string{
 														args[0],
 														args[1],
 													}, w, r)
 
 													return
 												}
+												switch elem[0] {
+												case '/': // Prefix: "/repositories"
+													if l := len("/repositories"); len(elem) >= l && elem[0:l] == "/repositories" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: ActionsListSelectedReposForOrgSecret
+														s.handleActionsListSelectedReposForOrgSecretRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+
+														return
+													}
+												}
 											}
 										}
+									}
+								case 'u': // Prefix: "udit-log"
+									if l := len("udit-log"); len(elem) >= l && elem[0:l] == "udit-log" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										// Leaf: OrgsGetAuditLog
+										s.handleOrgsGetAuditLogRequest([1]string{
+											args[0],
+										}, w, r)
+
+										return
 									}
 								}
 							case 'b': // Prefix: "blocks"
@@ -5930,33 +6070,37 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											return
 										}
 									}
-								case 'i': // Prefix: "igrations/"
-									if l := len("igrations/"); len(elem) >= l && elem[0:l] == "igrations/" {
+								case 'i': // Prefix: "igrations"
+									if l := len("igrations"); len(elem) >= l && elem[0:l] == "igrations" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Param: "migration_id"
-									// Match until "/"
-									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[1] = elem[:idx]
-										elem = elem[idx:]
+									if len(elem) == 0 {
+										s.handleMigrationsListForOrgRequest([1]string{
+											args[0],
+										}, w, r)
 
-										if len(elem) == 0 {
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
+										} else {
 											break
 										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-												elem = elem[l:]
-											} else {
-												break
-											}
+
+										// Param: "migration_id"
+										// Match until "/"
+										idx := strings.IndexByte(elem, '/')
+										if idx > 0 {
+											args[1] = elem[:idx]
+											elem = elem[idx:]
 
 											if len(elem) == 0 {
-												s.handleMigrationsListReposForOrgRequest([2]string{
+												s.handleMigrationsGetStatusForOrgRequest([2]string{
 													args[0],
 													args[1],
 												}, w, r)
@@ -5964,37 +6108,54 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												return
 											}
 											switch elem[0] {
-											case 'a': // Prefix: "archive"
-												if l := len("archive"); len(elem) >= l && elem[0:l] == "archive" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													// Leaf: MigrationsDownloadArchiveForOrg
-													s.handleMigrationsDownloadArchiveForOrgRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
-												}
-											case 'r': // Prefix: "repositories"
-												if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: MigrationsListReposForOrg
 													s.handleMigrationsListReposForOrgRequest([2]string{
 														args[0],
 														args[1],
 													}, w, r)
 
 													return
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "archive"
+													if l := len("archive"); len(elem) >= l && elem[0:l] == "archive" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: MigrationsDownloadArchiveForOrg
+														s.handleMigrationsDownloadArchiveForOrgRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+
+														return
+													}
+												case 'r': // Prefix: "repositories"
+													if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: MigrationsListReposForOrg
+														s.handleMigrationsListReposForOrgRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+
+														return
+													}
 												}
 											}
 										}
@@ -6023,7 +6184,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handlePackagesGetPackageForOrganizationRequest([3]string{
+									s.handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest([3]string{
 										args[0],
 										args[1],
 										args[2],
@@ -6073,19 +6234,64 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "package_name"
-												// Leaf parameter
-												args[2] = elem
-												elem = ""
+												// Match until "/"
+												idx := strings.IndexByte(elem, '/')
+												if idx > 0 {
+													args[2] = elem[:idx]
+													elem = elem[idx:]
 
-												if len(elem) == 0 {
-													// Leaf: PackagesGetPackageForOrganization
-													s.handlePackagesGetPackageForOrganizationRequest([3]string{
-														args[0],
-														args[1],
-														args[2],
-													}, w, r)
+													if len(elem) == 0 {
+														s.handlePackagesGetPackageForOrganizationRequest([3]string{
+															args[0],
+															args[1],
+															args[2],
+														}, w, r)
 
-													return
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/versions"
+														if l := len("/versions"); len(elem) >= l && elem[0:l] == "/versions" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest([3]string{
+																args[0],
+																args[1],
+																args[2],
+															}, w, r)
+
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															// Param: "package_version_id"
+															// Leaf parameter
+															args[3] = elem
+															elem = ""
+
+															if len(elem) == 0 {
+																// Leaf: PackagesGetPackageVersionForOrganization
+																s.handlePackagesGetPackageVersionForOrganizationRequest([4]string{
+																	args[0],
+																	args[1],
+																	args[2],
+																	args[3],
+																}, w, r)
+
+																return
+															}
+														}
+													}
 												}
 											}
 										}
@@ -7982,7 +8188,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleCodeScanningGetAnalysisRequest([3]string{
+													s.handleCodeScanningGetAlertRequest([3]string{
 														args[0],
 														args[1],
 														args[2],
@@ -8016,7 +8222,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleCodeScanningListAlertInstancesRequest([3]string{
+															s.handleCodeScanningGetAnalysisRequest([3]string{
 																args[0],
 																args[1],
 																args[2],
@@ -8056,7 +8262,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	elem = elem[idx:]
 
 																	if len(elem) == 0 {
-																		break
+																		s.handleCodeScanningGetAlertRequest([3]string{
+																			args[0],
+																			args[1],
+																			args[2],
+																		}, w, r)
+
+																		return
 																	}
 																	switch elem[0] {
 																	case '/': // Prefix: "/instances"
@@ -9527,15 +9739,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												return
 											}
 											switch elem[0] {
-											case 'a': // Prefix: "ages/"
-												if l := len("ages/"); len(elem) >= l && elem[0:l] == "ages/" {
+											case 'a': // Prefix: "ages"
+												if l := len("ages"); len(elem) >= l && elem[0:l] == "ages" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													s.handleReposGetPagesHealthCheckRequest([2]string{
+													s.handleReposGetPagesRequest([2]string{
 														args[0],
 														args[1],
 													}, w, r)
@@ -9543,15 +9755,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													return
 												}
 												switch elem[0] {
-												case 'b': // Prefix: "builds"
-													if l := len("builds"); len(elem) >= l && elem[0:l] == "builds" {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														s.handleReposListPagesBuildsRequest([2]string{
+														s.handleReposGetPagesHealthCheckRequest([2]string{
 															args[0],
 															args[1],
 														}, w, r)
@@ -9559,71 +9771,88 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														return
 													}
 													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													case 'b': // Prefix: "builds"
+														if l := len("builds"); len(elem) >= l && elem[0:l] == "builds" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
 														if len(elem) == 0 {
-															s.handleReposGetPagesBuildRequest([3]string{
+															s.handleReposListPagesBuildsRequest([2]string{
 																args[0],
 																args[1],
-																args[2],
 															}, w, r)
 
 															return
 														}
 														switch elem[0] {
-														case 'l': // Prefix: "latest"
-															if l := len("latest"); len(elem) >= l && elem[0:l] == "latest" {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 																elem = elem[l:]
 															} else {
 																break
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReposGetLatestPagesBuild
-																s.handleReposGetLatestPagesBuildRequest([2]string{
+																s.handleReposGetPagesBuildRequest([3]string{
 																	args[0],
 																	args[1],
+																	args[2],
+																}, w, r)
+
+																return
+															}
+															switch elem[0] {
+															case 'l': // Prefix: "latest"
+																if l := len("latest"); len(elem) >= l && elem[0:l] == "latest" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	// Leaf: ReposGetLatestPagesBuild
+																	s.handleReposGetLatestPagesBuildRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+
+																	return
+																}
+															}
+															// Param: "build_id"
+															// Leaf parameter
+															args[2] = elem
+															elem = ""
+
+															if len(elem) == 0 {
+																// Leaf: ReposGetPagesBuild
+																s.handleReposGetPagesBuildRequest([3]string{
+																	args[0],
+																	args[1],
+																	args[2],
 																}, w, r)
 
 																return
 															}
 														}
-														// Param: "build_id"
-														// Leaf parameter
-														args[2] = elem
-														elem = ""
+													case 'h': // Prefix: "health"
+														if l := len("health"); len(elem) >= l && elem[0:l] == "health" {
+															elem = elem[l:]
+														} else {
+															break
+														}
 
 														if len(elem) == 0 {
-															// Leaf: ReposGetPagesBuild
-															s.handleReposGetPagesBuildRequest([3]string{
+															// Leaf: ReposGetPagesHealthCheck
+															s.handleReposGetPagesHealthCheckRequest([2]string{
 																args[0],
 																args[1],
-																args[2],
 															}, w, r)
 
 															return
 														}
-													}
-												case 'h': // Prefix: "health"
-													if l := len("health"); len(elem) >= l && elem[0:l] == "health" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														// Leaf: ReposGetPagesHealthCheck
-														s.handleReposGetPagesHealthCheckRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
 													}
 												}
 											case 'r': // Prefix: "rojects"
@@ -11513,6 +11742,40 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						}
+					case 'g': // Prefix: "gpg_keys"
+						if l := len("gpg_keys"); len(elem) >= l && elem[0:l] == "gpg_keys" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleUsersListGpgKeysForAuthenticatedRequest([0]string{}, w, r)
+
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							// Param: "gpg_key_id"
+							// Leaf parameter
+							args[0] = elem
+							elem = ""
+
+							if len(elem) == 0 {
+								// Leaf: UsersGetGpgKeyForAuthenticated
+								s.handleUsersGetGpgKeyForAuthenticatedRequest([1]string{
+									args[0],
+								}, w, r)
+
+								return
+							}
+						}
 					case 'i': // Prefix: "i"
 						if l := len("i"); len(elem) >= l && elem[0:l] == "i" {
 							elem = elem[l:]
@@ -11685,68 +11948,86 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 							}
-						case 'i': // Prefix: "igrations/"
-							if l := len("igrations/"); len(elem) >= l && elem[0:l] == "igrations/" {
+						case 'i': // Prefix: "igrations"
+							if l := len("igrations"); len(elem) >= l && elem[0:l] == "igrations" {
 								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Param: "migration_id"
-							// Match until "/"
-							idx := strings.IndexByte(elem, '/')
-							if idx > 0 {
-								args[0] = elem[:idx]
-								elem = elem[idx:]
+							if len(elem) == 0 {
+								s.handleMigrationsListForAuthenticatedUserRequest([0]string{}, w, r)
 
-								if len(elem) == 0 {
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
+								} else {
 									break
 								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-										elem = elem[l:]
-									} else {
-										break
-									}
+
+								// Param: "migration_id"
+								// Match until "/"
+								idx := strings.IndexByte(elem, '/')
+								if idx > 0 {
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
 									if len(elem) == 0 {
-										s.handleMigrationsListReposForUserRequest([1]string{
+										s.handleMigrationsGetStatusForAuthenticatedUserRequest([1]string{
 											args[0],
 										}, w, r)
 
 										return
 									}
 									switch elem[0] {
-									case 'a': // Prefix: "archive"
-										if l := len("archive"); len(elem) >= l && elem[0:l] == "archive" {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											// Leaf: MigrationsGetArchiveForAuthenticatedUser
-											s.handleMigrationsGetArchiveForAuthenticatedUserRequest([1]string{
-												args[0],
-											}, w, r)
-
-											return
-										}
-									case 'r': // Prefix: "repositories"
-										if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											// Leaf: MigrationsListReposForUser
 											s.handleMigrationsListReposForUserRequest([1]string{
 												args[0],
 											}, w, r)
 
 											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "archive"
+											if l := len("archive"); len(elem) >= l && elem[0:l] == "archive" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf: MigrationsGetArchiveForAuthenticatedUser
+												s.handleMigrationsGetArchiveForAuthenticatedUserRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
+										case 'r': // Prefix: "repositories"
+											if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf: MigrationsListReposForUser
+												s.handleMigrationsListReposForUserRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
 										}
 									}
 								}
@@ -11817,18 +12098,61 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										// Param: "package_name"
-										// Leaf parameter
-										args[1] = elem
-										elem = ""
+										// Match until "/"
+										idx := strings.IndexByte(elem, '/')
+										if idx > 0 {
+											args[1] = elem[:idx]
+											elem = elem[idx:]
 
-										if len(elem) == 0 {
-											// Leaf: PackagesGetPackageForAuthenticatedUser
-											s.handlePackagesGetPackageForAuthenticatedUserRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
+											if len(elem) == 0 {
+												s.handlePackagesGetPackageForAuthenticatedUserRequest([2]string{
+													args[0],
+													args[1],
+												}, w, r)
 
-											return
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/versions"
+												if l := len("/versions"); len(elem) >= l && elem[0:l] == "/versions" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "package_version_id"
+													// Leaf parameter
+													args[2] = elem
+													elem = ""
+
+													if len(elem) == 0 {
+														// Leaf: PackagesGetPackageVersionForAuthenticatedUser
+														s.handlePackagesGetPackageVersionForAuthenticatedUserRequest([3]string{
+															args[0],
+															args[1],
+															args[2],
+														}, w, r)
+
+														return
+													}
+												}
+											}
 										}
 									}
 								}
@@ -12156,6 +12480,52 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 										}
 									}
+								case 'g': // Prefix: "g"
+									if l := len("g"); len(elem) >= l && elem[0:l] == "g" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleUsersListGpgKeysForUserRequest([1]string{
+											args[0],
+										}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case 'i': // Prefix: "ists"
+										if l := len("ists"); len(elem) >= l && elem[0:l] == "ists" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf: GistsListForUser
+											s.handleGistsListForUserRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
+									case 'p': // Prefix: "pg_keys"
+										if l := len("pg_keys"); len(elem) >= l && elem[0:l] == "pg_keys" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf: UsersListGpgKeysForUser
+											s.handleUsersListGpgKeysForUserRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
+									}
 								case 'h': // Prefix: "hovercard"
 									if l := len("hovercard"); len(elem) >= l && elem[0:l] == "hovercard" {
 										elem = elem[l:]
@@ -12257,19 +12627,64 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													// Param: "package_name"
-													// Leaf parameter
-													args[2] = elem
-													elem = ""
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx > 0 {
+														args[2] = elem[:idx]
+														elem = elem[idx:]
 
-													if len(elem) == 0 {
-														// Leaf: PackagesGetPackageForUser
-														s.handlePackagesGetPackageForUserRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
+														if len(elem) == 0 {
+															s.handlePackagesGetPackageForUserRequest([3]string{
+																args[0],
+																args[1],
+																args[2],
+															}, w, r)
 
-														return
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/versions"
+															if l := len("/versions"); len(elem) >= l && elem[0:l] == "/versions" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest([3]string{
+																	args[0],
+																	args[1],
+																	args[2],
+																}, w, r)
+
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																// Param: "package_version_id"
+																// Leaf parameter
+																args[3] = elem
+																elem = ""
+
+																if len(elem) == 0 {
+																	// Leaf: PackagesGetPackageVersionForUser
+																	s.handlePackagesGetPackageVersionForUserRequest([4]string{
+																		args[0],
+																		args[1],
+																		args[2],
+																		args[3],
+																	}, w, r)
+
+																	return
+																}
+															}
+														}
 													}
 												}
 											}
@@ -13091,7 +13506,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleReposUpdateCommitCommentRequest([3]string{
+										s.handleCodeScanningUpdateAlertRequest([3]string{
 											args[0],
 											args[1],
 											args[2],
@@ -13116,20 +13531,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											return
 										}
-									case 'o': // Prefix: "omments/"
-										if l := len("omments/"); len(elem) >= l && elem[0:l] == "omments/" {
+									case 'o': // Prefix: "o"
+										if l := len("o"); len(elem) >= l && elem[0:l] == "o" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Param: "comment_id"
-										// Leaf parameter
-										args[2] = elem
-										elem = ""
-
 										if len(elem) == 0 {
-											// Leaf: ReposUpdateCommitComment
 											s.handleReposUpdateCommitCommentRequest([3]string{
 												args[0],
 												args[1],
@@ -13137,6 +13546,52 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}, w, r)
 
 											return
+										}
+										switch elem[0] {
+										case 'd': // Prefix: "de-scanning/alerts/"
+											if l := len("de-scanning/alerts/"); len(elem) >= l && elem[0:l] == "de-scanning/alerts/" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											// Param: "alert_number"
+											// Leaf parameter
+											args[2] = elem
+											elem = ""
+
+											if len(elem) == 0 {
+												// Leaf: CodeScanningUpdateAlert
+												s.handleCodeScanningUpdateAlertRequest([3]string{
+													args[0],
+													args[1],
+													args[2],
+												}, w, r)
+
+												return
+											}
+										case 'm': // Prefix: "mments/"
+											if l := len("mments/"); len(elem) >= l && elem[0:l] == "mments/" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											// Param: "comment_id"
+											// Leaf parameter
+											args[2] = elem
+											elem = ""
+
+											if len(elem) == 0 {
+												// Leaf: ReposUpdateCommitComment
+												s.handleReposUpdateCommitCommentRequest([3]string{
+													args[0],
+													args[1],
+													args[2],
+												}, w, r)
+
+												return
+											}
 										}
 									}
 								case 'g': // Prefix: "git/refs/"
@@ -13552,26 +14007,64 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						break
 					}
 					switch elem[0] {
-					case '/': // Prefix: "/Users/"
-						if l := len("/Users/"); len(elem) >= l && elem[0:l] == "/Users/" {
+					case '/': // Prefix: "/"
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Param: "scim_user_id"
-						// Leaf parameter
-						args[1] = elem
-						elem = ""
-
 						if len(elem) == 0 {
-							// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseUser
 							s.handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest([2]string{
 								args[0],
 								args[1],
 							}, w, r)
 
 							return
+						}
+						switch elem[0] {
+						case 'G': // Prefix: "Groups/"
+							if l := len("Groups/"); len(elem) >= l && elem[0:l] == "Groups/" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							// Param: "scim_group_id"
+							// Leaf parameter
+							args[1] = elem
+							elem = ""
+
+							if len(elem) == 0 {
+								// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseGroup
+								s.handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest([2]string{
+									args[0],
+									args[1],
+								}, w, r)
+
+								return
+							}
+						case 'U': // Prefix: "Users/"
+							if l := len("Users/"); len(elem) >= l && elem[0:l] == "Users/" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							// Param: "scim_user_id"
+							// Leaf parameter
+							args[1] = elem
+							elem = ""
+
+							if len(elem) == 0 {
+								// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseUser
+								s.handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest([2]string{
+									args[0],
+									args[1],
+								}, w, r)
+
+								return
+							}
 						}
 					}
 				}
@@ -14061,38 +14554,83 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				}
-			case 'g': // Prefix: "gists/"
-				if l := len("gists/"); len(elem) >= l && elem[0:l] == "gists/" {
+			case 'g': // Prefix: "gists"
+				if l := len("gists"); len(elem) >= l && elem[0:l] == "gists" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Param: "gist_id"
-				// Match until "/"
-				idx := strings.IndexByte(elem, '/')
-				if idx > 0 {
-					args[0] = elem[:idx]
-					elem = elem[idx:]
+				if len(elem) == 0 {
+					s.handleGistsCreateRequest([0]string{}, w, r)
 
-					if len(elem) == 0 {
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+						elem = elem[l:]
+					} else {
 						break
 					}
-					switch elem[0] {
-					case '/': // Prefix: "/comments"
-						if l := len("/comments"); len(elem) >= l && elem[0:l] == "/comments" {
-							elem = elem[l:]
-						} else {
-							break
-						}
+
+					// Param: "gist_id"
+					// Match until "/"
+					idx := strings.IndexByte(elem, '/')
+					if idx > 0 {
+						args[0] = elem[:idx]
+						elem = elem[idx:]
 
 						if len(elem) == 0 {
-							// Leaf: GistsCreateComment
-							s.handleGistsCreateCommentRequest([1]string{
-								args[0],
-							}, w, r)
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
+							} else {
+								break
+							}
 
-							return
+							if len(elem) == 0 {
+								s.handleGistsForkRequest([1]string{
+									args[0],
+								}, w, r)
+
+								return
+							}
+							switch elem[0] {
+							case 'c': // Prefix: "comments"
+								if l := len("comments"); len(elem) >= l && elem[0:l] == "comments" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									// Leaf: GistsCreateComment
+									s.handleGistsCreateCommentRequest([1]string{
+										args[0],
+									}, w, r)
+
+									return
+								}
+							case 'f': // Prefix: "forks"
+								if l := len("forks"); len(elem) >= l && elem[0:l] == "forks" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									// Leaf: GistsFork
+									s.handleGistsForkRequest([1]string{
+										args[0],
+									}, w, r)
+
+									return
+								}
+							}
 						}
 					}
 				}
@@ -14122,7 +14660,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleOrgsCreateInvitationRequest([1]string{
+							s.handleMigrationsStartForOrgRequest([1]string{
 								args[0],
 							}, w, r)
 
@@ -14323,6 +14861,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								// Leaf: OrgsCreateInvitation
 								s.handleOrgsCreateInvitationRequest([1]string{
+									args[0],
+								}, w, r)
+
+								return
+							}
+						case 'm': // Prefix: "migrations"
+							if l := len("migrations"); len(elem) >= l && elem[0:l] == "migrations" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								// Leaf: MigrationsStartForOrg
+								s.handleMigrationsStartForOrgRequest([1]string{
 									args[0],
 								}, w, r)
 
@@ -16185,21 +16738,38 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										return
 									}
 									switch elem[0] {
-									case 'a': // Prefix: "ages/builds"
-										if l := len("ages/builds"); len(elem) >= l && elem[0:l] == "ages/builds" {
+									case 'a': // Prefix: "ages"
+										if l := len("ages"); len(elem) >= l && elem[0:l] == "ages" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ReposRequestPagesBuild
-											s.handleReposRequestPagesBuildRequest([2]string{
+											s.handleReposCreatePagesSiteRequest([2]string{
 												args[0],
 												args[1],
 											}, w, r)
 
 											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/builds"
+											if l := len("/builds"); len(elem) >= l && elem[0:l] == "/builds" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf: ReposRequestPagesBuild
+												s.handleReposRequestPagesBuildRequest([2]string{
+													args[0],
+													args[1],
+												}, w, r)
+
+												return
+											}
 										}
 									case 'r': // Prefix: "rojects"
 										if l := len("rojects"); len(elem) >= l && elem[0:l] == "rojects" {
@@ -16758,7 +17328,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleReposCreateForAuthenticatedUserRequest([0]string{}, w, r)
+						s.handlePackagesRestorePackageForAuthenticatedUserRequest([2]string{
+							args[0],
+							args[1],
+						}, w, r)
 
 						return
 					}
@@ -16776,6 +17349,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							return
 						}
+					case 'g': // Prefix: "gpg_keys"
+						if l := len("gpg_keys"); len(elem) >= l && elem[0:l] == "gpg_keys" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf: UsersCreateGpgKeyForAuthenticated
+							s.handleUsersCreateGpgKeyForAuthenticatedRequest([0]string{}, w, r)
+
+							return
+						}
 					case 'k': // Prefix: "keys"
 						if l := len("keys"); len(elem) >= l && elem[0:l] == "keys" {
 							elem = elem[l:]
@@ -16786,6 +17372,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						if len(elem) == 0 {
 							// Leaf: UsersCreatePublicSSHKeyForAuthenticated
 							s.handleUsersCreatePublicSSHKeyForAuthenticatedRequest([0]string{}, w, r)
+
+							return
+						}
+					case 'm': // Prefix: "migrations"
+						if l := len("migrations"); len(elem) >= l && elem[0:l] == "migrations" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf: MigrationsStartForAuthenticatedUser
+							s.handleMigrationsStartForAuthenticatedUserRequest([0]string{}, w, r)
 
 							return
 						}
@@ -23067,226 +23666,255 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								return r, true
 							}
 							switch elem[0] {
-							case 'a': // Prefix: "actions/"
-								if l := len("actions/"); len(elem) >= l && elem[0:l] == "actions/" {
+							case 'a': // Prefix: "a"
+								if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									r.name = "EnterpriseAdminGetSelfHostedRunnerForEnterprise"
+									r.name = "EnterpriseAdminGetAuditLog"
 									r.args = args
 									r.count = 1
 									return r, true
 								}
 								switch elem[0] {
-								case 'p': // Prefix: "permissions"
-									if l := len("permissions"); len(elem) >= l && elem[0:l] == "permissions" {
+								case 'c': // Prefix: "ctions/"
+									if l := len("ctions/"); len(elem) >= l && elem[0:l] == "ctions/" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										r.name = "EnterpriseAdminGetGithubActionsPermissionsEnterprise"
+										r.name = "EnterpriseAdminGetSelfHostedRunnerForEnterprise"
 										r.args = args
 										r.count = 1
 										return r, true
 									}
 									switch elem[0] {
-									case '/': // Prefix: "/"
-										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									case 'p': // Prefix: "permissions"
+										if l := len("permissions"); len(elem) >= l && elem[0:l] == "permissions" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											r.name = "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise"
+											r.name = "EnterpriseAdminGetGithubActionsPermissionsEnterprise"
 											r.args = args
 											r.count = 1
 											return r, true
 										}
 										switch elem[0] {
-										case 'o': // Prefix: "organizations"
-											if l := len("organizations"); len(elem) >= l && elem[0:l] == "organizations" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												// Leaf: EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise
 												r.name = "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise"
 												r.args = args
 												r.count = 1
 												return r, true
 											}
-										case 's': // Prefix: "selected-actions"
-											if l := len("selected-actions"); len(elem) >= l && elem[0:l] == "selected-actions" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: EnterpriseAdminGetAllowedActionsEnterprise
-												r.name = "EnterpriseAdminGetAllowedActionsEnterprise"
-												r.args = args
-												r.count = 1
-												return r, true
-											}
-										}
-									}
-								case 'r': // Prefix: "runner"
-									if l := len("runner"); len(elem) >= l && elem[0:l] == "runner" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise"
-										r.args = args
-										r.count = 1
-										return r, true
-									}
-									switch elem[0] {
-									case '-': // Prefix: "-groups"
-										if l := len("-groups"); len(elem) >= l && elem[0:l] == "-groups" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise"
-											r.args = args
-											r.count = 1
-											return r, true
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											// Param: "runner_group_id"
-											// Match until "/"
-											idx := strings.IndexByte(elem, '/')
-											if idx > 0 {
-												args[1] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													r.name = "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise"
-													r.args = args
-													r.count = 2
-													return r, true
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														r.name = "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise"
-														r.args = args
-														r.count = 2
-														return r, true
-													}
-													switch elem[0] {
-													case 'o': // Prefix: "organizations"
-														if l := len("organizations"); len(elem) >= l && elem[0:l] == "organizations" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf: EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
-															r.name = "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise"
-															r.args = args
-															r.count = 2
-															return r, true
-														}
-													case 'r': // Prefix: "runners"
-														if l := len("runners"); len(elem) >= l && elem[0:l] == "runners" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf: EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise
-															r.name = "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise"
-															r.args = args
-															r.count = 2
-															return r, true
-														}
-													}
-												}
-											}
-										}
-									case 's': // Prefix: "s"
-										if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "EnterpriseAdminListSelfHostedRunnersForEnterprise"
-											r.args = args
-											r.count = 1
-											return r, true
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
 											switch elem[0] {
-											case 'd': // Prefix: "downloads"
-												if l := len("downloads"); len(elem) >= l && elem[0:l] == "downloads" {
+											case 'o': // Prefix: "organizations"
+												if l := len("organizations"); len(elem) >= l && elem[0:l] == "organizations" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													// Leaf: EnterpriseAdminListRunnerApplicationsForEnterprise
-													r.name = "EnterpriseAdminListRunnerApplicationsForEnterprise"
+													// Leaf: EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise
+													r.name = "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+											case 's': // Prefix: "selected-actions"
+												if l := len("selected-actions"); len(elem) >= l && elem[0:l] == "selected-actions" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: EnterpriseAdminGetAllowedActionsEnterprise
+													r.name = "EnterpriseAdminGetAllowedActionsEnterprise"
 													r.args = args
 													r.count = 1
 													return r, true
 												}
 											}
-											// Param: "runner_id"
-											// Leaf parameter
-											args[1] = elem
-											elem = ""
+										}
+									case 'r': // Prefix: "runner"
+										if l := len("runner"); len(elem) >= l && elem[0:l] == "runner" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
+										switch elem[0] {
+										case '-': // Prefix: "-groups"
+											if l := len("-groups"); len(elem) >= l && elem[0:l] == "-groups" {
+												elem = elem[l:]
+											} else {
+												break
+											}
 
 											if len(elem) == 0 {
-												// Leaf: EnterpriseAdminGetSelfHostedRunnerForEnterprise
-												r.name = "EnterpriseAdminGetSelfHostedRunnerForEnterprise"
+												r.name = "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise"
 												r.args = args
-												r.count = 2
+												r.count = 1
 												return r, true
 											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												// Param: "runner_group_id"
+												// Match until "/"
+												idx := strings.IndexByte(elem, '/')
+												if idx > 0 {
+													args[1] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														r.name = "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise"
+														r.args = args
+														r.count = 2
+														return r, true
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															r.name = "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise"
+															r.args = args
+															r.count = 2
+															return r, true
+														}
+														switch elem[0] {
+														case 'o': // Prefix: "organizations"
+															if l := len("organizations"); len(elem) >= l && elem[0:l] == "organizations" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf: EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
+																r.name = "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise"
+																r.args = args
+																r.count = 2
+																return r, true
+															}
+														case 'r': // Prefix: "runners"
+															if l := len("runners"); len(elem) >= l && elem[0:l] == "runners" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf: EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise
+																r.name = "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise"
+																r.args = args
+																r.count = 2
+																return r, true
+															}
+														}
+													}
+												}
+											}
+										case 's': // Prefix: "s"
+											if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "EnterpriseAdminListSelfHostedRunnersForEnterprise"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'd': // Prefix: "downloads"
+													if l := len("downloads"); len(elem) >= l && elem[0:l] == "downloads" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: EnterpriseAdminListRunnerApplicationsForEnterprise
+														r.name = "EnterpriseAdminListRunnerApplicationsForEnterprise"
+														r.args = args
+														r.count = 1
+														return r, true
+													}
+												}
+												// Param: "runner_id"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
+												if len(elem) == 0 {
+													// Leaf: EnterpriseAdminGetSelfHostedRunnerForEnterprise
+													r.name = "EnterpriseAdminGetSelfHostedRunnerForEnterprise"
+													r.args = args
+													r.count = 2
+													return r, true
+												}
+											}
 										}
+									}
+								case 'u': // Prefix: "udit-log"
+									if l := len("udit-log"); len(elem) >= l && elem[0:l] == "udit-log" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										// Leaf: EnterpriseAdminGetAuditLog
+										r.name = "EnterpriseAdminGetAuditLog"
+										r.args = args
+										r.count = 1
+										return r, true
 									}
 								}
 							case 's': // Prefix: "settings/billing/"
@@ -23392,113 +24020,190 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					return r, true
 				}
 				switch elem[0] {
-				case 's': // Prefix: "sts/"
-					if l := len("sts/"); len(elem) >= l && elem[0:l] == "sts/" {
+				case 's': // Prefix: "sts"
+					if l := len("sts"); len(elem) >= l && elem[0:l] == "sts" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Param: "gist_id"
-					// Match until "/"
-					idx := strings.IndexByte(elem, '/')
-					if idx > 0 {
-						args[0] = elem[:idx]
-						elem = elem[idx:]
+					if len(elem) == 0 {
+						r.name = "GistsList"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
+						} else {
+							break
+						}
 
 						if len(elem) == 0 {
 							break
 						}
 						switch elem[0] {
-						case '/': // Prefix: "/"
-							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+						case 'p': // Prefix: "public"
+							if l := len("public"); len(elem) >= l && elem[0:l] == "public" {
 								elem = elem[l:]
 							} else {
 								break
 							}
 
 							if len(elem) == 0 {
-								r.name = "GistsGetComment"
+								// Leaf: GistsListPublic
+								r.name = "GistsListPublic"
+								r.args = args
+								r.count = 0
+								return r, true
+							}
+						case 's': // Prefix: "starred"
+							if l := len("starred"); len(elem) >= l && elem[0:l] == "starred" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								// Leaf: GistsListStarred
+								r.name = "GistsListStarred"
+								r.args = args
+								r.count = 0
+								return r, true
+							}
+						}
+						// Param: "gist_id"
+						// Match until "/"
+						idx := strings.IndexByte(elem, '/')
+						if idx > 0 {
+							args[0] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								r.name = "GistsGet"
 								r.args = args
 								r.count = 1
 								return r, true
 							}
 							switch elem[0] {
-							case 'c': // Prefix: "comm"
-								if l := len("comm"); len(elem) >= l && elem[0:l] == "comm" {
+							case '/': // Prefix: "/"
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									r.name = "GistsListCommits"
+									r.name = "GistsGetComment"
 									r.args = args
 									r.count = 1
 									return r, true
 								}
 								switch elem[0] {
-								case 'e': // Prefix: "ents"
-									if l := len("ents"); len(elem) >= l && elem[0:l] == "ents" {
+								case 'c': // Prefix: "comm"
+									if l := len("comm"); len(elem) >= l && elem[0:l] == "comm" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										r.name = "GistsListComments"
-										r.args = args
-										r.count = 1
-										return r, true
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										// Param: "comment_id"
-										// Leaf parameter
-										args[1] = elem
-										elem = ""
-
-										if len(elem) == 0 {
-											// Leaf: GistsGetComment
-											r.name = "GistsGetComment"
-											r.args = args
-											r.count = 2
-											return r, true
-										}
-									}
-								case 'i': // Prefix: "its"
-									if l := len("its"); len(elem) >= l && elem[0:l] == "its" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										// Leaf: GistsListCommits
 										r.name = "GistsListCommits"
 										r.args = args
 										r.count = 1
 										return r, true
 									}
+									switch elem[0] {
+									case 'e': // Prefix: "ents"
+										if l := len("ents"); len(elem) >= l && elem[0:l] == "ents" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "GistsListComments"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											// Param: "comment_id"
+											// Leaf parameter
+											args[1] = elem
+											elem = ""
+
+											if len(elem) == 0 {
+												// Leaf: GistsGetComment
+												r.name = "GistsGetComment"
+												r.args = args
+												r.count = 2
+												return r, true
+											}
+										}
+									case 'i': // Prefix: "its"
+										if l := len("its"); len(elem) >= l && elem[0:l] == "its" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf: GistsListCommits
+											r.name = "GistsListCommits"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
+									}
+								case 'f': // Prefix: "forks"
+									if l := len("forks"); len(elem) >= l && elem[0:l] == "forks" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										// Leaf: GistsListForks
+										r.name = "GistsListForks"
+										r.args = args
+										r.count = 1
+										return r, true
+									}
+								case 's': // Prefix: "star"
+									if l := len("star"); len(elem) >= l && elem[0:l] == "star" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										// Leaf: GistsCheckIsStarred
+										r.name = "GistsCheckIsStarred"
+										r.args = args
+										r.count = 1
+										return r, true
+									}
 								}
-							case 's': // Prefix: "star"
-								if l := len("star"); len(elem) >= l && elem[0:l] == "star" {
-									elem = elem[l:]
-								} else {
-									break
-								}
+								// Param: "sha"
+								// Leaf parameter
+								args[1] = elem
+								elem = ""
 
 								if len(elem) == 0 {
-									// Leaf: GistsCheckIsStarred
-									r.name = "GistsCheckIsStarred"
+									// Leaf: GistsGetRevision
+									r.name = "GistsGetRevision"
 									r.args = args
-									r.count = 1
+									r.count = 2
 									return r, true
 								}
 							}
@@ -23995,101 +24700,43 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								return r, true
 							}
 							switch elem[0] {
-							case 'a': // Prefix: "actions/"
-								if l := len("actions/"); len(elem) >= l && elem[0:l] == "actions/" {
+							case 'a': // Prefix: "a"
+								if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									r.name = "ActionsGetOrgPublicKey"
+									r.name = "OrgsGetAuditLog"
 									r.args = args
 									r.count = 1
 									return r, true
 								}
 								switch elem[0] {
-								case 'p': // Prefix: "permissions"
-									if l := len("permissions"); len(elem) >= l && elem[0:l] == "permissions" {
+								case 'c': // Prefix: "ctions/"
+									if l := len("ctions/"); len(elem) >= l && elem[0:l] == "ctions/" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										r.name = "ActionsGetGithubActionsPermissionsOrganization"
+										r.name = "ActionsGetOrgPublicKey"
 										r.args = args
 										r.count = 1
 										return r, true
 									}
 									switch elem[0] {
-									case '/': // Prefix: "/"
-										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									case 'p': // Prefix: "permissions"
+										if l := len("permissions"); len(elem) >= l && elem[0:l] == "permissions" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											r.name = "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization"
-											r.args = args
-											r.count = 1
-											return r, true
-										}
-										switch elem[0] {
-										case 'r': // Prefix: "repositories"
-											if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
-												r.name = "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization"
-												r.args = args
-												r.count = 1
-												return r, true
-											}
-										case 's': // Prefix: "selected-actions"
-											if l := len("selected-actions"); len(elem) >= l && elem[0:l] == "selected-actions" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: ActionsGetAllowedActionsOrganization
-												r.name = "ActionsGetAllowedActionsOrganization"
-												r.args = args
-												r.count = 1
-												return r, true
-											}
-										}
-									}
-								case 'r': // Prefix: "runner"
-									if l := len("runner"); len(elem) >= l && elem[0:l] == "runner" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "ActionsGetSelfHostedRunnerGroupForOrg"
-										r.args = args
-										r.count = 1
-										return r, true
-									}
-									switch elem[0] {
-									case '-': // Prefix: "-groups"
-										if l := len("-groups"); len(elem) >= l && elem[0:l] == "-groups" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "ActionsListSelfHostedRunnerGroupsForOrg"
+											r.name = "ActionsGetGithubActionsPermissionsOrganization"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -24102,7 +24749,236 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												break
 											}
 
-											// Param: "runner_group_id"
+											if len(elem) == 0 {
+												r.name = "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
+											switch elem[0] {
+											case 'r': // Prefix: "repositories"
+												if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
+													r.name = "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+											case 's': // Prefix: "selected-actions"
+												if l := len("selected-actions"); len(elem) >= l && elem[0:l] == "selected-actions" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: ActionsGetAllowedActionsOrganization
+													r.name = "ActionsGetAllowedActionsOrganization"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+											}
+										}
+									case 'r': // Prefix: "runner"
+										if l := len("runner"); len(elem) >= l && elem[0:l] == "runner" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "ActionsGetSelfHostedRunnerGroupForOrg"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
+										switch elem[0] {
+										case '-': // Prefix: "-groups"
+											if l := len("-groups"); len(elem) >= l && elem[0:l] == "-groups" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "ActionsListSelfHostedRunnerGroupsForOrg"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												// Param: "runner_group_id"
+												// Match until "/"
+												idx := strings.IndexByte(elem, '/')
+												if idx > 0 {
+													args[1] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														r.name = "ActionsGetSelfHostedRunnerGroupForOrg"
+														r.args = args
+														r.count = 2
+														return r, true
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/r"
+														if l := len("/r"); len(elem) >= l && elem[0:l] == "/r" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															r.name = "ActionsListSelfHostedRunnersInGroupForOrg"
+															r.args = args
+															r.count = 2
+															return r, true
+														}
+														switch elem[0] {
+														case 'e': // Prefix: "epositories"
+															if l := len("epositories"); len(elem) >= l && elem[0:l] == "epositories" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf: ActionsListRepoAccessToSelfHostedRunnerGroupInOrg
+																r.name = "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg"
+																r.args = args
+																r.count = 2
+																return r, true
+															}
+														case 'u': // Prefix: "unners"
+															if l := len("unners"); len(elem) >= l && elem[0:l] == "unners" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf: ActionsListSelfHostedRunnersInGroupForOrg
+																r.name = "ActionsListSelfHostedRunnersInGroupForOrg"
+																r.args = args
+																r.count = 2
+																return r, true
+															}
+														}
+													}
+												}
+											}
+										case 's': // Prefix: "s"
+											if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "ActionsListSelfHostedRunnersForOrg"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'd': // Prefix: "downloads"
+													if l := len("downloads"); len(elem) >= l && elem[0:l] == "downloads" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: ActionsListRunnerApplicationsForOrg
+														r.name = "ActionsListRunnerApplicationsForOrg"
+														r.args = args
+														r.count = 1
+														return r, true
+													}
+												}
+												// Param: "runner_id"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
+												if len(elem) == 0 {
+													// Leaf: ActionsGetSelfHostedRunnerForOrg
+													r.name = "ActionsGetSelfHostedRunnerForOrg"
+													r.args = args
+													r.count = 2
+													return r, true
+												}
+											}
+										}
+									case 's': // Prefix: "secrets"
+										if l := len("secrets"); len(elem) >= l && elem[0:l] == "secrets" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "ActionsListOrgSecrets"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "ActionsGetOrgSecret"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
+											switch elem[0] {
+											case 'p': // Prefix: "public-key"
+												if l := len("public-key"); len(elem) >= l && elem[0:l] == "public-key" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: ActionsGetOrgPublicKey
+													r.name = "ActionsGetOrgPublicKey"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+											}
+											// Param: "secret_name"
 											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
@@ -24110,185 +24986,43 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												elem = elem[idx:]
 
 												if len(elem) == 0 {
-													r.name = "ActionsGetSelfHostedRunnerGroupForOrg"
+													r.name = "ActionsGetOrgSecret"
 													r.args = args
 													r.count = 2
 													return r, true
 												}
 												switch elem[0] {
-												case '/': // Prefix: "/r"
-													if l := len("/r"); len(elem) >= l && elem[0:l] == "/r" {
+												case '/': // Prefix: "/repositories"
+													if l := len("/repositories"); len(elem) >= l && elem[0:l] == "/repositories" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														r.name = "ActionsListSelfHostedRunnersInGroupForOrg"
+														// Leaf: ActionsListSelectedReposForOrgSecret
+														r.name = "ActionsListSelectedReposForOrgSecret"
 														r.args = args
 														r.count = 2
 														return r, true
 													}
-													switch elem[0] {
-													case 'e': // Prefix: "epositories"
-														if l := len("epositories"); len(elem) >= l && elem[0:l] == "epositories" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf: ActionsListRepoAccessToSelfHostedRunnerGroupInOrg
-															r.name = "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg"
-															r.args = args
-															r.count = 2
-															return r, true
-														}
-													case 'u': // Prefix: "unners"
-														if l := len("unners"); len(elem) >= l && elem[0:l] == "unners" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf: ActionsListSelfHostedRunnersInGroupForOrg
-															r.name = "ActionsListSelfHostedRunnersInGroupForOrg"
-															r.args = args
-															r.count = 2
-															return r, true
-														}
-													}
 												}
-											}
-										}
-									case 's': // Prefix: "s"
-										if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "ActionsListSelfHostedRunnersForOrg"
-											r.args = args
-											r.count = 1
-											return r, true
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'd': // Prefix: "downloads"
-												if l := len("downloads"); len(elem) >= l && elem[0:l] == "downloads" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: ActionsListRunnerApplicationsForOrg
-													r.name = "ActionsListRunnerApplicationsForOrg"
-													r.args = args
-													r.count = 1
-													return r, true
-												}
-											}
-											// Param: "runner_id"
-											// Leaf parameter
-											args[1] = elem
-											elem = ""
-
-											if len(elem) == 0 {
-												// Leaf: ActionsGetSelfHostedRunnerForOrg
-												r.name = "ActionsGetSelfHostedRunnerForOrg"
-												r.args = args
-												r.count = 2
-												return r, true
 											}
 										}
 									}
-								case 's': // Prefix: "secrets"
-									if l := len("secrets"); len(elem) >= l && elem[0:l] == "secrets" {
+								case 'u': // Prefix: "udit-log"
+									if l := len("udit-log"); len(elem) >= l && elem[0:l] == "udit-log" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										r.name = "ActionsListOrgSecrets"
+										// Leaf: OrgsGetAuditLog
+										r.name = "OrgsGetAuditLog"
 										r.args = args
 										r.count = 1
 										return r, true
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "ActionsGetOrgSecret"
-											r.args = args
-											r.count = 1
-											return r, true
-										}
-										switch elem[0] {
-										case 'p': // Prefix: "public-key"
-											if l := len("public-key"); len(elem) >= l && elem[0:l] == "public-key" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: ActionsGetOrgPublicKey
-												r.name = "ActionsGetOrgPublicKey"
-												r.args = args
-												r.count = 1
-												return r, true
-											}
-										}
-										// Param: "secret_name"
-										// Match until "/"
-										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[1] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												r.name = "ActionsGetOrgSecret"
-												r.args = args
-												r.count = 2
-												return r, true
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/repositories"
-												if l := len("/repositories"); len(elem) >= l && elem[0:l] == "/repositories" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: ActionsListSelectedReposForOrgSecret
-													r.name = "ActionsListSelectedReposForOrgSecret"
-													r.args = args
-													r.count = 2
-													return r, true
-												}
-											}
-										}
 									}
 								}
 							case 'b': // Prefix: "blocks"
@@ -24613,65 +25347,83 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											return r, true
 										}
 									}
-								case 'i': // Prefix: "igrations/"
-									if l := len("igrations/"); len(elem) >= l && elem[0:l] == "igrations/" {
+								case 'i': // Prefix: "igrations"
+									if l := len("igrations"); len(elem) >= l && elem[0:l] == "igrations" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Param: "migration_id"
-									// Match until "/"
-									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[1] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										r.name = "MigrationsListForOrg"
+										r.args = args
+										r.count = 1
+										return r, true
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
+										} else {
 											break
 										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-												elem = elem[l:]
-											} else {
-												break
-											}
+
+										// Param: "migration_id"
+										// Match until "/"
+										idx := strings.IndexByte(elem, '/')
+										if idx > 0 {
+											args[1] = elem[:idx]
+											elem = elem[idx:]
 
 											if len(elem) == 0 {
-												r.name = "MigrationsListReposForOrg"
+												r.name = "MigrationsGetStatusForOrg"
 												r.args = args
 												r.count = 2
 												return r, true
 											}
 											switch elem[0] {
-											case 'a': // Prefix: "archive"
-												if l := len("archive"); len(elem) >= l && elem[0:l] == "archive" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													// Leaf: MigrationsDownloadArchiveForOrg
-													r.name = "MigrationsDownloadArchiveForOrg"
-													r.args = args
-													r.count = 2
-													return r, true
-												}
-											case 'r': // Prefix: "repositories"
-												if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: MigrationsListReposForOrg
 													r.name = "MigrationsListReposForOrg"
 													r.args = args
 													r.count = 2
 													return r, true
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "archive"
+													if l := len("archive"); len(elem) >= l && elem[0:l] == "archive" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: MigrationsDownloadArchiveForOrg
+														r.name = "MigrationsDownloadArchiveForOrg"
+														r.args = args
+														r.count = 2
+														return r, true
+													}
+												case 'r': // Prefix: "repositories"
+													if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: MigrationsListReposForOrg
+														r.name = "MigrationsListReposForOrg"
+														r.args = args
+														r.count = 2
+														return r, true
+													}
 												}
 											}
 										}
@@ -24699,7 +25451,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "PackagesGetPackageForOrganization"
+									r.name = "PackagesGetAllPackageVersionsForPackageOwnedByOrg"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -24745,16 +25497,54 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												// Param: "package_name"
-												// Leaf parameter
-												args[2] = elem
-												elem = ""
+												// Match until "/"
+												idx := strings.IndexByte(elem, '/')
+												if idx > 0 {
+													args[2] = elem[:idx]
+													elem = elem[idx:]
 
-												if len(elem) == 0 {
-													// Leaf: PackagesGetPackageForOrganization
-													r.name = "PackagesGetPackageForOrganization"
-													r.args = args
-													r.count = 3
-													return r, true
+													if len(elem) == 0 {
+														r.name = "PackagesGetPackageForOrganization"
+														r.args = args
+														r.count = 3
+														return r, true
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/versions"
+														if l := len("/versions"); len(elem) >= l && elem[0:l] == "/versions" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															r.name = "PackagesGetAllPackageVersionsForPackageOwnedByOrg"
+															r.args = args
+															r.count = 3
+															return r, true
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															// Param: "package_version_id"
+															// Leaf parameter
+															args[3] = elem
+															elem = ""
+
+															if len(elem) == 0 {
+																// Leaf: PackagesGetPackageVersionForOrganization
+																r.name = "PackagesGetPackageVersionForOrganization"
+																r.args = args
+																r.count = 4
+																return r, true
+															}
+														}
+													}
 												}
 											}
 										}
@@ -26421,7 +27211,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "CodeScanningGetAnalysis"
+													r.name = "CodeScanningGetAlert"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -26449,7 +27239,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "CodeScanningListAlertInstances"
+															r.name = "CodeScanningGetAnalysis"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -26484,7 +27274,10 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	elem = elem[idx:]
 
 																	if len(elem) == 0 {
-																		break
+																		r.name = "CodeScanningGetAlert"
+																		r.args = args
+																		r.count = 3
+																		return r, true
 																	}
 																	switch elem[0] {
 																	case '/': // Prefix: "/instances"
@@ -27748,89 +28541,104 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												return r, true
 											}
 											switch elem[0] {
-											case 'a': // Prefix: "ages/"
-												if l := len("ages/"); len(elem) >= l && elem[0:l] == "ages/" {
+											case 'a': // Prefix: "ages"
+												if l := len("ages"); len(elem) >= l && elem[0:l] == "ages" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													r.name = "ReposGetPagesHealthCheck"
+													r.name = "ReposGetPages"
 													r.args = args
 													r.count = 2
 													return r, true
 												}
 												switch elem[0] {
-												case 'b': // Prefix: "builds"
-													if l := len("builds"); len(elem) >= l && elem[0:l] == "builds" {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														r.name = "ReposListPagesBuilds"
+														r.name = "ReposGetPagesHealthCheck"
 														r.args = args
 														r.count = 2
 														return r, true
 													}
 													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													case 'b': // Prefix: "builds"
+														if l := len("builds"); len(elem) >= l && elem[0:l] == "builds" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
 														if len(elem) == 0 {
-															r.name = "ReposGetPagesBuild"
+															r.name = "ReposListPagesBuilds"
 															r.args = args
 															r.count = 2
 															return r, true
 														}
 														switch elem[0] {
-														case 'l': // Prefix: "latest"
-															if l := len("latest"); len(elem) >= l && elem[0:l] == "latest" {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 																elem = elem[l:]
 															} else {
 																break
 															}
 
 															if len(elem) == 0 {
-																// Leaf: ReposGetLatestPagesBuild
-																r.name = "ReposGetLatestPagesBuild"
+																r.name = "ReposGetPagesBuild"
 																r.args = args
 																r.count = 2
 																return r, true
 															}
+															switch elem[0] {
+															case 'l': // Prefix: "latest"
+																if l := len("latest"); len(elem) >= l && elem[0:l] == "latest" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	// Leaf: ReposGetLatestPagesBuild
+																	r.name = "ReposGetLatestPagesBuild"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																}
+															}
+															// Param: "build_id"
+															// Leaf parameter
+															args[2] = elem
+															elem = ""
+
+															if len(elem) == 0 {
+																// Leaf: ReposGetPagesBuild
+																r.name = "ReposGetPagesBuild"
+																r.args = args
+																r.count = 3
+																return r, true
+															}
 														}
-														// Param: "build_id"
-														// Leaf parameter
-														args[2] = elem
-														elem = ""
+													case 'h': // Prefix: "health"
+														if l := len("health"); len(elem) >= l && elem[0:l] == "health" {
+															elem = elem[l:]
+														} else {
+															break
+														}
 
 														if len(elem) == 0 {
-															// Leaf: ReposGetPagesBuild
-															r.name = "ReposGetPagesBuild"
+															// Leaf: ReposGetPagesHealthCheck
+															r.name = "ReposGetPagesHealthCheck"
 															r.args = args
-															r.count = 3
+															r.count = 2
 															return r, true
 														}
-													}
-												case 'h': // Prefix: "health"
-													if l := len("health"); len(elem) >= l && elem[0:l] == "health" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														// Leaf: ReposGetPagesHealthCheck
-														r.name = "ReposGetPagesHealthCheck"
-														r.args = args
-														r.count = 2
-														return r, true
 													}
 												}
 											case 'r': // Prefix: "rojects"
@@ -29546,6 +30354,40 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 							}
 						}
+					case 'g': // Prefix: "gpg_keys"
+						if l := len("gpg_keys"); len(elem) >= l && elem[0:l] == "gpg_keys" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							r.name = "UsersListGpgKeysForAuthenticated"
+							r.args = args
+							r.count = 0
+							return r, true
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							// Param: "gpg_key_id"
+							// Leaf parameter
+							args[0] = elem
+							elem = ""
+
+							if len(elem) == 0 {
+								// Leaf: UsersGetGpgKeyForAuthenticated
+								r.name = "UsersGetGpgKeyForAuthenticated"
+								r.args = args
+								r.count = 1
+								return r, true
+							}
+						}
 					case 'i': // Prefix: "i"
 						if l := len("i"); len(elem) >= l && elem[0:l] == "i" {
 							elem = elem[l:]
@@ -29720,65 +30562,83 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									return r, true
 								}
 							}
-						case 'i': // Prefix: "igrations/"
-							if l := len("igrations/"); len(elem) >= l && elem[0:l] == "igrations/" {
+						case 'i': // Prefix: "igrations"
+							if l := len("igrations"); len(elem) >= l && elem[0:l] == "igrations" {
 								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Param: "migration_id"
-							// Match until "/"
-							idx := strings.IndexByte(elem, '/')
-							if idx > 0 {
-								args[0] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
+							if len(elem) == 0 {
+								r.name = "MigrationsListForAuthenticatedUser"
+								r.args = args
+								r.count = 0
+								return r, true
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
+								} else {
 									break
 								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-										elem = elem[l:]
-									} else {
-										break
-									}
+
+								// Param: "migration_id"
+								// Match until "/"
+								idx := strings.IndexByte(elem, '/')
+								if idx > 0 {
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
 									if len(elem) == 0 {
-										r.name = "MigrationsListReposForUser"
+										r.name = "MigrationsGetStatusForAuthenticatedUser"
 										r.args = args
 										r.count = 1
 										return r, true
 									}
 									switch elem[0] {
-									case 'a': // Prefix: "archive"
-										if l := len("archive"); len(elem) >= l && elem[0:l] == "archive" {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											// Leaf: MigrationsGetArchiveForAuthenticatedUser
-											r.name = "MigrationsGetArchiveForAuthenticatedUser"
-											r.args = args
-											r.count = 1
-											return r, true
-										}
-									case 'r': // Prefix: "repositories"
-										if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											// Leaf: MigrationsListReposForUser
 											r.name = "MigrationsListReposForUser"
 											r.args = args
 											r.count = 1
 											return r, true
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "archive"
+											if l := len("archive"); len(elem) >= l && elem[0:l] == "archive" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf: MigrationsGetArchiveForAuthenticatedUser
+												r.name = "MigrationsGetArchiveForAuthenticatedUser"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
+										case 'r': // Prefix: "repositories"
+											if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf: MigrationsListReposForUser
+												r.name = "MigrationsListReposForUser"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
 										}
 									}
 								}
@@ -29852,16 +30712,54 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										// Param: "package_name"
-										// Leaf parameter
-										args[1] = elem
-										elem = ""
+										// Match until "/"
+										idx := strings.IndexByte(elem, '/')
+										if idx > 0 {
+											args[1] = elem[:idx]
+											elem = elem[idx:]
 
-										if len(elem) == 0 {
-											// Leaf: PackagesGetPackageForAuthenticatedUser
-											r.name = "PackagesGetPackageForAuthenticatedUser"
-											r.args = args
-											r.count = 2
-											return r, true
+											if len(elem) == 0 {
+												r.name = "PackagesGetPackageForAuthenticatedUser"
+												r.args = args
+												r.count = 2
+												return r, true
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/versions"
+												if l := len("/versions"); len(elem) >= l && elem[0:l] == "/versions" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser"
+													r.args = args
+													r.count = 2
+													return r, true
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "package_version_id"
+													// Leaf parameter
+													args[2] = elem
+													elem = ""
+
+													if len(elem) == 0 {
+														// Leaf: PackagesGetPackageVersionForAuthenticatedUser
+														r.name = "PackagesGetPackageVersionForAuthenticatedUser"
+														r.args = args
+														r.count = 3
+														return r, true
+													}
+												}
+											}
 										}
 									}
 								}
@@ -30183,6 +31081,49 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 										}
 									}
+								case 'g': // Prefix: "g"
+									if l := len("g"); len(elem) >= l && elem[0:l] == "g" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "UsersListGpgKeysForUser"
+										r.args = args
+										r.count = 1
+										return r, true
+									}
+									switch elem[0] {
+									case 'i': // Prefix: "ists"
+										if l := len("ists"); len(elem) >= l && elem[0:l] == "ists" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf: GistsListForUser
+											r.name = "GistsListForUser"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
+									case 'p': // Prefix: "pg_keys"
+										if l := len("pg_keys"); len(elem) >= l && elem[0:l] == "pg_keys" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf: UsersListGpgKeysForUser
+											r.name = "UsersListGpgKeysForUser"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
+									}
 								case 'h': // Prefix: "hovercard"
 									if l := len("hovercard"); len(elem) >= l && elem[0:l] == "hovercard" {
 										elem = elem[l:]
@@ -30279,16 +31220,54 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													// Param: "package_name"
-													// Leaf parameter
-													args[2] = elem
-													elem = ""
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx > 0 {
+														args[2] = elem[:idx]
+														elem = elem[idx:]
 
-													if len(elem) == 0 {
-														// Leaf: PackagesGetPackageForUser
-														r.name = "PackagesGetPackageForUser"
-														r.args = args
-														r.count = 3
-														return r, true
+														if len(elem) == 0 {
+															r.name = "PackagesGetPackageForUser"
+															r.args = args
+															r.count = 3
+															return r, true
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/versions"
+															if l := len("/versions"); len(elem) >= l && elem[0:l] == "/versions" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																r.name = "PackagesGetAllPackageVersionsForPackageOwnedByUser"
+																r.args = args
+																r.count = 3
+																return r, true
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																// Param: "package_version_id"
+																// Leaf parameter
+																args[3] = elem
+																elem = ""
+
+																if len(elem) == 0 {
+																	// Leaf: PackagesGetPackageVersionForUser
+																	r.name = "PackagesGetPackageVersionForUser"
+																	r.args = args
+																	r.count = 4
+																	return r, true
+																}
+															}
+														}
 													}
 												}
 											}
@@ -31051,7 +32030,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ReposUpdateCommitComment"
+										r.name = "CodeScanningUpdateAlert"
 										r.args = args
 										r.count = 2
 										return r, true
@@ -31071,24 +32050,58 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											r.count = 2
 											return r, true
 										}
-									case 'o': // Prefix: "omments/"
-										if l := len("omments/"); len(elem) >= l && elem[0:l] == "omments/" {
+									case 'o': // Prefix: "o"
+										if l := len("o"); len(elem) >= l && elem[0:l] == "o" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Param: "comment_id"
-										// Leaf parameter
-										args[2] = elem
-										elem = ""
-
 										if len(elem) == 0 {
-											// Leaf: ReposUpdateCommitComment
 											r.name = "ReposUpdateCommitComment"
 											r.args = args
-											r.count = 3
+											r.count = 2
 											return r, true
+										}
+										switch elem[0] {
+										case 'd': // Prefix: "de-scanning/alerts/"
+											if l := len("de-scanning/alerts/"); len(elem) >= l && elem[0:l] == "de-scanning/alerts/" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											// Param: "alert_number"
+											// Leaf parameter
+											args[2] = elem
+											elem = ""
+
+											if len(elem) == 0 {
+												// Leaf: CodeScanningUpdateAlert
+												r.name = "CodeScanningUpdateAlert"
+												r.args = args
+												r.count = 3
+												return r, true
+											}
+										case 'm': // Prefix: "mments/"
+											if l := len("mments/"); len(elem) >= l && elem[0:l] == "mments/" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											// Param: "comment_id"
+											// Leaf parameter
+											args[2] = elem
+											elem = ""
+
+											if len(elem) == 0 {
+												// Leaf: ReposUpdateCommitComment
+												r.name = "ReposUpdateCommitComment"
+												r.args = args
+												r.count = 3
+												return r, true
+											}
 										}
 									}
 								case 'g': // Prefix: "git/refs/"
@@ -31453,24 +32466,58 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						break
 					}
 					switch elem[0] {
-					case '/': // Prefix: "/Users/"
-						if l := len("/Users/"); len(elem) >= l && elem[0:l] == "/Users/" {
+					case '/': // Prefix: "/"
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Param: "scim_user_id"
-						// Leaf parameter
-						args[1] = elem
-						elem = ""
-
 						if len(elem) == 0 {
-							// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseUser
 							r.name = "EnterpriseAdminUpdateAttributeForEnterpriseUser"
 							r.args = args
-							r.count = 2
+							r.count = 1
 							return r, true
+						}
+						switch elem[0] {
+						case 'G': // Prefix: "Groups/"
+							if l := len("Groups/"); len(elem) >= l && elem[0:l] == "Groups/" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							// Param: "scim_group_id"
+							// Leaf parameter
+							args[1] = elem
+							elem = ""
+
+							if len(elem) == 0 {
+								// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseGroup
+								r.name = "EnterpriseAdminUpdateAttributeForEnterpriseGroup"
+								r.args = args
+								r.count = 2
+								return r, true
+							}
+						case 'U': // Prefix: "Users/"
+							if l := len("Users/"); len(elem) >= l && elem[0:l] == "Users/" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							// Param: "scim_user_id"
+							// Leaf parameter
+							args[1] = elem
+							elem = ""
+
+							if len(elem) == 0 {
+								// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseUser
+								r.name = "EnterpriseAdminUpdateAttributeForEnterpriseUser"
+								r.args = args
+								r.count = 2
+								return r, true
+							}
 						}
 					}
 				}
@@ -31939,37 +32986,81 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 					}
 				}
-			case 'g': // Prefix: "gists/"
-				if l := len("gists/"); len(elem) >= l && elem[0:l] == "gists/" {
+			case 'g': // Prefix: "gists"
+				if l := len("gists"); len(elem) >= l && elem[0:l] == "gists" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Param: "gist_id"
-				// Match until "/"
-				idx := strings.IndexByte(elem, '/')
-				if idx > 0 {
-					args[0] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
+				if len(elem) == 0 {
+					r.name = "GistsCreate"
+					r.args = args
+					r.count = 0
+					return r, true
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+						elem = elem[l:]
+					} else {
 						break
 					}
-					switch elem[0] {
-					case '/': // Prefix: "/comments"
-						if l := len("/comments"); len(elem) >= l && elem[0:l] == "/comments" {
-							elem = elem[l:]
-						} else {
-							break
-						}
+
+					// Param: "gist_id"
+					// Match until "/"
+					idx := strings.IndexByte(elem, '/')
+					if idx > 0 {
+						args[0] = elem[:idx]
+						elem = elem[idx:]
 
 						if len(elem) == 0 {
-							// Leaf: GistsCreateComment
-							r.name = "GistsCreateComment"
-							r.args = args
-							r.count = 1
-							return r, true
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								r.name = "GistsFork"
+								r.args = args
+								r.count = 1
+								return r, true
+							}
+							switch elem[0] {
+							case 'c': // Prefix: "comments"
+								if l := len("comments"); len(elem) >= l && elem[0:l] == "comments" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									// Leaf: GistsCreateComment
+									r.name = "GistsCreateComment"
+									r.args = args
+									r.count = 1
+									return r, true
+								}
+							case 'f': // Prefix: "forks"
+								if l := len("forks"); len(elem) >= l && elem[0:l] == "forks" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									// Leaf: GistsFork
+									r.name = "GistsFork"
+									r.args = args
+									r.count = 1
+									return r, true
+								}
+							}
 						}
 					}
 				}
@@ -31999,7 +33090,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "OrgsCreateInvitation"
+							r.name = "MigrationsStartForOrg"
 							r.args = args
 							r.count = 1
 							return r, true
@@ -32185,6 +33276,20 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							if len(elem) == 0 {
 								// Leaf: OrgsCreateInvitation
 								r.name = "OrgsCreateInvitation"
+								r.args = args
+								r.count = 1
+								return r, true
+							}
+						case 'm': // Prefix: "migrations"
+							if l := len("migrations"); len(elem) >= l && elem[0:l] == "migrations" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								// Leaf: MigrationsStartForOrg
+								r.name = "MigrationsStartForOrg"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -33839,19 +34944,34 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										return r, true
 									}
 									switch elem[0] {
-									case 'a': // Prefix: "ages/builds"
-										if l := len("ages/builds"); len(elem) >= l && elem[0:l] == "ages/builds" {
+									case 'a': // Prefix: "ages"
+										if l := len("ages"); len(elem) >= l && elem[0:l] == "ages" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											// Leaf: ReposRequestPagesBuild
-											r.name = "ReposRequestPagesBuild"
+											r.name = "ReposCreatePagesSite"
 											r.args = args
 											r.count = 2
 											return r, true
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/builds"
+											if l := len("/builds"); len(elem) >= l && elem[0:l] == "/builds" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf: ReposRequestPagesBuild
+												r.name = "ReposRequestPagesBuild"
+												r.args = args
+												r.count = 2
+												return r, true
+											}
 										}
 									case 'r': // Prefix: "rojects"
 										if l := len("rojects"); len(elem) >= l && elem[0:l] == "rojects" {
@@ -34360,7 +35480,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "ReposCreateForAuthenticatedUser"
+						r.name = "PackagesRestorePackageForAuthenticatedUser"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -34380,6 +35500,20 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							r.count = 0
 							return r, true
 						}
+					case 'g': // Prefix: "gpg_keys"
+						if l := len("gpg_keys"); len(elem) >= l && elem[0:l] == "gpg_keys" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf: UsersCreateGpgKeyForAuthenticated
+							r.name = "UsersCreateGpgKeyForAuthenticated"
+							r.args = args
+							r.count = 0
+							return r, true
+						}
 					case 'k': // Prefix: "keys"
 						if l := len("keys"); len(elem) >= l && elem[0:l] == "keys" {
 							elem = elem[l:]
@@ -34390,6 +35524,20 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						if len(elem) == 0 {
 							// Leaf: UsersCreatePublicSSHKeyForAuthenticated
 							r.name = "UsersCreatePublicSSHKeyForAuthenticated"
+							r.args = args
+							r.count = 0
+							return r, true
+						}
+					case 'm': // Prefix: "migrations"
+						if l := len("migrations"); len(elem) >= l && elem[0:l] == "migrations" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf: MigrationsStartForAuthenticatedUser
+							r.name = "MigrationsStartForAuthenticatedUser"
 							r.args = args
 							r.count = 0
 							return r, true

@@ -62,6 +62,12 @@ func Generic(name string, of *Type, v GenericVariant) *Type {
 	}
 }
 
+func Any() *Type {
+	return &Type{
+		Kind: KindAny,
+	}
+}
+
 func Stream(name string) *Type {
 	return &Type{
 		Kind: KindStream,

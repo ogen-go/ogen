@@ -65,6 +65,169 @@ var (
 )
 
 // Encode implements json.Marshaler.
+func (s AnyTest) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if len(s.Empty) != 0 {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+
+		if len(s.Empty) != 0 {
+			e.RawStr("\"empty\"" + ":")
+			e.Raw(s.Empty)
+		}
+	}
+	{
+		if s.AnyMap.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.AnyMap.Set {
+			e.RawStr("\"any_map\"" + ":")
+			s.AnyMap.Encode(e)
+		}
+	}
+	{
+		if s.AnyArray != nil {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.AnyArray != nil {
+			e.RawStr("\"any_array\"" + ":")
+			e.ArrStart()
+			if len(s.AnyArray) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.AnyArray[0]
+					if len(elem) != 0 {
+						e.Raw(elem)
+					}
+				}
+				for _, elem := range s.AnyArray[1:] {
+					e.Comma()
+					if len(elem) != 0 {
+						e.Raw(elem)
+					}
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfAnyTest = [3]string{
+	0: "empty",
+	1: "any_map",
+	2: "any_array",
+}
+
+// Decode decodes AnyTest from json.
+func (s *AnyTest) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AnyTest to nil`)
+	}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "empty":
+			v, err := d.Raw()
+			s.Empty = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+		case "any_map":
+			s.AnyMap.Reset()
+			if err := s.AnyMap.Decode(d); err != nil {
+				return err
+			}
+		case "any_array":
+			s.AnyArray = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem jx.Raw
+				v, err := d.Raw()
+				elem = jx.Raw(v)
+				if err != nil {
+					return err
+				}
+				s.AnyArray = append(s.AnyArray, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s AnyTestAnyMap) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfAnyTestAnyMap = [0]string{}
+
+// Decode decodes AnyTestAnyMap from json.
+func (s AnyTestAnyMap) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode AnyTestAnyMap to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem jx.Raw
+			v, err := d.Raw()
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
 func (s ArrayTest) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -2284,6 +2447,57 @@ func (s *OneVariantHasNoUniqueFields1) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// Encode encodes AnyTest as json.
+func (o OptAnyTest) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes AnyTest from json.
+func (o *OptAnyTest) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptAnyTest to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptAnyTest`, d.Next())
+	}
+}
+
+// Encode encodes AnyTestAnyMap as json.
+func (o OptAnyTestAnyMap) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes AnyTestAnyMap from json.
+func (o *OptAnyTestAnyMap) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptAnyTestAnyMap to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		o.Value = make(AnyTestAnyMap)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptAnyTestAnyMap`, d.Next())
+	}
+}
+
 // Encode encodes ArrayTest as json.
 func (o OptArrayTest) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -3061,6 +3275,15 @@ func (s Pet) Encode(e *jx.Writer) {
 		}
 	}
 	{
+		if s.TestAny.Set {
+			e.Comma()
+		}
+		if s.TestAny.Set {
+			e.RawStr("\"testAny\"" + ":")
+			s.TestAny.Encode(e)
+		}
+	}
+	{
 		if s.TestDate.Set {
 			e.Comma()
 		}
@@ -3099,7 +3322,7 @@ func (s Pet) Encode(e *jx.Writer) {
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfPet = [27]string{
+var jsonFieldsNameOfPet = [28]string{
 	0:  "primary",
 	1:  "id",
 	2:  "unique_id",
@@ -3123,10 +3346,11 @@ var jsonFieldsNameOfPet = [27]string{
 	20: "testArray2",
 	21: "testMap",
 	22: "testMapWithProps",
-	23: "testDate",
-	24: "testDuration",
-	25: "testTime",
-	26: "testDateTime",
+	23: "testAny",
+	24: "testDate",
+	25: "testDuration",
+	26: "testTime",
+	27: "testDateTime",
 }
 
 // Decode decodes Pet from json.
@@ -3295,6 +3519,11 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 		case "testMapWithProps":
 			s.TestMapWithProps.Reset()
 			if err := s.TestMapWithProps.Decode(d); err != nil {
+				return err
+			}
+		case "testAny":
+			s.TestAny.Reset()
+			if err := s.TestAny.Decode(d); err != nil {
 				return err
 			}
 		case "testDate":

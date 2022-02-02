@@ -64,6 +64,10 @@ func (g *Generator) boxStructFields(s *ir.Type) {
 }
 
 func (g *Generator) boxType(v ir.GenericVariant, t *ir.Type) *ir.Type {
+	if t.IsAny() {
+		// Do not wrap Any.
+		return t
+	}
 	if t.IsArray() || t.Primitive == ir.ByteSlice {
 		// Using special case for array nil value if possible.
 		switch {

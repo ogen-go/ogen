@@ -491,7 +491,11 @@
             "style": "form",
             "schema": {
               "type": "object",
-              "required": ["min", "max", "filter"],
+              "required": [
+                "min",
+                "max",
+                "filter"
+              ],
               "properties": {
                 "min": {
                   "type": "integer"
@@ -511,7 +515,11 @@
             "style": "deepObject",
             "schema": {
               "type": "object",
-              "required": ["min", "max", "filter"],
+              "required": [
+                "min",
+                "max",
+                "filter"
+              ],
               "properties": {
                 "min": {
                   "type": "integer"
@@ -533,7 +541,12 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": ["style", "min", "max", "filter"],
+                  "required": [
+                    "style",
+                    "min",
+                    "max",
+                    "filter"
+                  ],
                   "properties": {
                     "style": {
                       "type": "string"
@@ -885,6 +898,9 @@
           "testMapWithProps": {
             "$ref": "#/components/schemas/MapWithProperties"
           },
+          "testAny": {
+            "$ref": "#/components/schemas/AnyTest"
+          },
           "testDate": {
             "type": "string",
             "format": "date"
@@ -942,38 +958,78 @@
         "oneOf": [
           {
             "type": "object",
-            "required": ["common-1", "common-2", "unique-1"],
+            "required": [
+              "common-1",
+              "common-2",
+              "unique-1"
+            ],
             "properties": {
-              "common-1": {"type": "string"},
-              "common-2": {"type": "integer"},
-              "unique-1": {"type": "string"}
+              "common-1": {
+                "type": "string"
+              },
+              "common-2": {
+                "type": "integer"
+              },
+              "unique-1": {
+                "type": "string"
+              }
             }
           },
           {
             "type": "object",
-            "required": ["common-1", "common-2", "unique-2"],
+            "required": [
+              "common-1",
+              "common-2",
+              "unique-2"
+            ],
             "properties": {
-              "common-1": {"type": "string"},
-              "common-2": {"type": "integer"},
-              "unique-2": {"type": "string"}
+              "common-1": {
+                "type": "string"
+              },
+              "common-2": {
+                "type": "integer"
+              },
+              "unique-2": {
+                "type": "string"
+              }
             }
           },
           {
             "type": "object",
-            "required": ["common-1", "common-2", "unique-3"],
+            "required": [
+              "common-1",
+              "common-2",
+              "unique-3"
+            ],
             "properties": {
-              "common-1": {"type": "string"},
-              "common-2": {"type": "integer"},
-              "common-3": {"type": "integer"},
-              "unique-3": {"type": "string"}
+              "common-1": {
+                "type": "string"
+              },
+              "common-2": {
+                "type": "integer"
+              },
+              "common-3": {
+                "type": "integer"
+              },
+              "unique-3": {
+                "type": "string"
+              }
             }
           },
           {
             "type": "object",
-            "required": ["common-1", "common-2", "unique-4"],
+            "required": [
+              "common-1",
+              "common-2",
+              "unique-4"
+            ],
             "properties": {
-              "common-3": {"type": "integer"},
-              "unique-4": {"type": "string"}
+              "common-3": {
+                "type": "integer"
+              },
+              "unique-4": {
+                "type": "string"
+              }
             }
           }
         ]
@@ -982,37 +1038,69 @@
         "oneOf": [
           {
             "type": "object",
-            "required": ["a", "c"],
+            "required": [
+              "a",
+              "c"
+            ],
             "properties": {
-              "a": {"type": "string"},
-              "b": {"type": "integer"},
-              "c": {"type": "string"}
+              "a": {
+                "type": "string"
+              },
+              "b": {
+                "type": "integer"
+              },
+              "c": {
+                "type": "string"
+              }
             }
           },
           {
             "type": "object",
-            "required": ["a", "c"],
+            "required": [
+              "a",
+              "c"
+            ],
             "properties": {
-              "a": {"type": "string"},
-              "b": {"type": "integer"},
-              "c": {"type": "string"},
-              "d": {"type": "integer"}
+              "a": {
+                "type": "string"
+              },
+              "b": {
+                "type": "integer"
+              },
+              "c": {
+                "type": "string"
+              },
+              "d": {
+                "type": "integer"
+              }
             }
           }
         ]
       },
-      "OneOfBugs" : {
+      "OneOfBugs": {
         "type": "object",
         "required": [
           "issue143",
           "additional-fields"
         ],
         "properties": {
-          "issue143":{
+          "issue143": {
             "$ref": "#/components/schemas/Issue143"
           },
           "additional-fields": {
             "$ref": "#/components/schemas/OneVariantHasNoUniqueFields"
+          }
+        }
+      },
+      "AnyTest": {
+        "type": "object",
+        "properties": {
+          "empty": {},
+          "any_map": {
+            "additionalProperties": true
+          },
+          "any_array": {
+            "type": "array"
           }
         }
       }

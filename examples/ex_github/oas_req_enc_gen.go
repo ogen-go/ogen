@@ -296,6 +296,14 @@ func encodeChecksSetSuitesPreferencesRequestJSON(req ChecksSetSuitesPreferencesR
 	return e, nil
 }
 
+func encodeCodeScanningUpdateAlertRequestJSON(req CodeScanningUpdateAlertReq, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
 func encodeCodeScanningUploadSarifRequestJSON(req CodeScanningUploadSarifReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 
@@ -384,6 +392,14 @@ func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestJSON(re
 	return e, nil
 }
 
+func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequestJSON(req EnterpriseAdminUpdateAttributeForEnterpriseGroupReq, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
 func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequestJSON(req EnterpriseAdminUpdateAttributeForEnterpriseUserReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 
@@ -397,6 +413,14 @@ func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestJSON(re
 	if req.Set {
 		req.Encode(e)
 	}
+
+	return e, nil
+}
+
+func encodeGistsCreateRequestJSON(req GistsCreateReq, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
 
 	return e, nil
 }
@@ -593,6 +617,22 @@ func encodeMigrationsMapCommitAuthorRequestJSON(req OptMigrationsMapCommitAuthor
 }
 
 func encodeMigrationsSetLfsPreferenceRequestJSON(req MigrationsSetLfsPreferenceReq, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeMigrationsStartForAuthenticatedUserRequestJSON(req MigrationsStartForAuthenticatedUserReq, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeMigrationsStartForOrgRequestJSON(req MigrationsStartForOrgReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 
 	req.Encode(e)
@@ -1092,6 +1132,14 @@ func encodeReposCreateOrUpdateFileContentsRequestJSON(req ReposCreateOrUpdateFil
 	return e, nil
 }
 
+func encodeReposCreatePagesSiteRequestJSON(req ReposCreatePagesSiteReq, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
 func encodeReposCreateReleaseRequestJSON(req ReposCreateReleaseReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 
@@ -1500,6 +1548,14 @@ func encodeUsersAddEmailForAuthenticatedRequestJSON(req OptUsersAddEmailForAuthe
 	if req.Set {
 		req.Encode(e)
 	}
+
+	return e, nil
+}
+
+func encodeUsersCreateGpgKeyForAuthenticatedRequestJSON(req UsersCreateGpgKeyForAuthenticatedReq, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
 
 	return e, nil
 }

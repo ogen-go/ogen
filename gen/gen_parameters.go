@@ -109,6 +109,8 @@ func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error 
 		return &ErrNotImplemented{"sum type parameter"}
 	case ir.KindMap:
 		return &ErrNotImplemented{"object with additionalProperties"}
+	case ir.KindAny:
+		return &ErrNotImplemented{"any type parameter"}
 	default:
 		panic("unreachable")
 	}

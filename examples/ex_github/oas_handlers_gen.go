@@ -4691,6 +4691,35 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.
 	}
 }
 
+// HandleCodeScanningGetAlertRequest handles code-scanning/get-alert operation.
+//
+// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
+func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningGetAlert`,
+		trace.WithAttributes(otelogen.OperationID(`code-scanning/get-alert`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeCodeScanningGetAlertParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.CodeScanningGetAlert(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeCodeScanningGetAlertResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleCodeScanningGetAnalysisRequest handles code-scanning/get-analysis operation.
 //
 // GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
@@ -4831,6 +4860,41 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w h
 	}
 
 	if err := encodeCodeScanningListRecentAnalysesResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleCodeScanningUpdateAlertRequest handles code-scanning/update-alert operation.
+//
+// PATCH /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
+func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningUpdateAlert`,
+		trace.WithAttributes(otelogen.OperationID(`code-scanning/update-alert`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeCodeScanningUpdateAlertParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeCodeScanningUpdateAlertRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.CodeScanningUpdateAlert(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeCodeScanningUpdateAlertResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -5295,6 +5359,35 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 	}
 
 	if err := encodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleEnterpriseAdminGetAuditLogRequest handles enterprise-admin/get-audit-log operation.
+//
+// GET /enterprises/{enterprise}/audit-log
+func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetAuditLog`,
+		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-audit-log`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeEnterpriseAdminGetAuditLogParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.EnterpriseAdminGetAuditLog(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeEnterpriseAdminGetAuditLogResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -6050,6 +6143,41 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 	}
 }
 
+// HandleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest handles enterprise-admin/update-attribute-for-enterprise-group operation.
+//
+// PATCH /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
+func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminUpdateAttributeForEnterpriseGroup`,
+		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/update-attribute-for-enterprise-group`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest handles enterprise-admin/update-attribute-for-enterprise-user operation.
 //
 // PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
@@ -6149,6 +6277,35 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.Respons
 	}
 }
 
+// HandleGistsCreateRequest handles gists/create operation.
+//
+// POST /gists
+func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsCreate`,
+		trace.WithAttributes(otelogen.OperationID(`gists/create`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeGistsCreateRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GistsCreate(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGistsCreateResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleGistsCreateCommentRequest handles gists/create-comment operation.
 //
 // POST /gists/{gist_id}/comments
@@ -6242,6 +6399,64 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.Response
 	}
 }
 
+// HandleGistsForkRequest handles gists/fork operation.
+//
+// POST /gists/{gist_id}/forks
+func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsFork`,
+		trace.WithAttributes(otelogen.OperationID(`gists/fork`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGistsForkParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GistsFork(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGistsForkResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleGistsGetRequest handles gists/get operation.
+//
+// GET /gists/{gist_id}
+func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsGet`,
+		trace.WithAttributes(otelogen.OperationID(`gists/get`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGistsGetParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GistsGet(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGistsGetResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleGistsGetCommentRequest handles gists/get-comment operation.
 //
 // GET /gists/{gist_id}/comments/{comment_id}
@@ -6266,6 +6481,64 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWri
 	}
 
 	if err := encodeGistsGetCommentResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleGistsGetRevisionRequest handles gists/get-revision operation.
+//
+// GET /gists/{gist_id}/{sha}
+func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsGetRevision`,
+		trace.WithAttributes(otelogen.OperationID(`gists/get-revision`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGistsGetRevisionParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GistsGetRevision(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGistsGetRevisionResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleGistsListRequest handles gists/list operation.
+//
+// GET /gists
+func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsList`,
+		trace.WithAttributes(otelogen.OperationID(`gists/list`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGistsListParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GistsList(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGistsListResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -6324,6 +6597,122 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWr
 	}
 
 	if err := encodeGistsListCommitsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleGistsListForUserRequest handles gists/list-for-user operation.
+//
+// GET /users/{username}/gists
+func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListForUser`,
+		trace.WithAttributes(otelogen.OperationID(`gists/list-for-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGistsListForUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GistsListForUser(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGistsListForUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleGistsListForksRequest handles gists/list-forks operation.
+//
+// GET /gists/{gist_id}/forks
+func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListForks`,
+		trace.WithAttributes(otelogen.OperationID(`gists/list-forks`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGistsListForksParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GistsListForks(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGistsListForksResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleGistsListPublicRequest handles gists/list-public operation.
+//
+// GET /gists/public
+func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListPublic`,
+		trace.WithAttributes(otelogen.OperationID(`gists/list-public`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGistsListPublicParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GistsListPublic(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGistsListPublicResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleGistsListStarredRequest handles gists/list-starred operation.
+//
+// GET /gists/starred
+func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListStarred`,
+		trace.WithAttributes(otelogen.OperationID(`gists/list-starred`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeGistsListStarredParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.GistsListStarred(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeGistsListStarredResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -8513,6 +8902,122 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.Res
 	}
 }
 
+// HandleMigrationsGetStatusForAuthenticatedUserRequest handles migrations/get-status-for-authenticated-user operation.
+//
+// GET /user/migrations/{migration_id}
+func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetStatusForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`migrations/get-status-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeMigrationsGetStatusForAuthenticatedUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.MigrationsGetStatusForAuthenticatedUser(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeMigrationsGetStatusForAuthenticatedUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleMigrationsGetStatusForOrgRequest handles migrations/get-status-for-org operation.
+//
+// GET /orgs/{org}/migrations/{migration_id}
+func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetStatusForOrg`,
+		trace.WithAttributes(otelogen.OperationID(`migrations/get-status-for-org`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeMigrationsGetStatusForOrgParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.MigrationsGetStatusForOrg(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeMigrationsGetStatusForOrgResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleMigrationsListForAuthenticatedUserRequest handles migrations/list-for-authenticated-user operation.
+//
+// GET /user/migrations
+func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsListForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`migrations/list-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeMigrationsListForAuthenticatedUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.MigrationsListForAuthenticatedUser(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeMigrationsListForAuthenticatedUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleMigrationsListForOrgRequest handles migrations/list-for-org operation.
+//
+// GET /orgs/{org}/migrations
+func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsListForOrg`,
+		trace.WithAttributes(otelogen.OperationID(`migrations/list-for-org`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeMigrationsListForOrgParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.MigrationsListForOrg(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeMigrationsListForOrgResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleMigrationsListReposForOrgRequest handles migrations/list-repos-for-org operation.
 //
 // GET /orgs/{org}/migrations/{migration_id}/repositories
@@ -8636,6 +9141,70 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 	}
 
 	if err := encodeMigrationsSetLfsPreferenceResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleMigrationsStartForAuthenticatedUserRequest handles migrations/start-for-authenticated-user operation.
+//
+// POST /user/migrations
+func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsStartForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`migrations/start-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeMigrationsStartForAuthenticatedUserRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.MigrationsStartForAuthenticatedUser(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeMigrationsStartForAuthenticatedUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleMigrationsStartForOrgRequest handles migrations/start-for-org operation.
+//
+// POST /orgs/{org}/migrations
+func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsStartForOrg`,
+		trace.WithAttributes(otelogen.OperationID(`migrations/start-for-org`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeMigrationsStartForOrgParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeMigrationsStartForOrgRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.MigrationsStartForOrg(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeMigrationsStartForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -9374,6 +9943,35 @@ func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *
 	}
 
 	if err := encodeOrgsGetResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleOrgsGetAuditLogRequest handles orgs/get-audit-log operation.
+//
+// GET /orgs/{org}/audit-log
+func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGetAuditLog`,
+		trace.WithAttributes(otelogen.OperationID(`orgs/get-audit-log`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeOrgsGetAuditLogParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.OrgsGetAuditLog(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOrgsGetAuditLogResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -10505,6 +11103,93 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 	}
 }
 
+// HandlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest handles packages/get-all-package-versions-for-package-owned-by-authenticated-user operation.
+//
+// GET /user/packages/{package_type}/{package_name}/versions
+func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`packages/get-all-package-versions-for-package-owned-by-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest handles packages/get-all-package-versions-for-package-owned-by-org operation.
+//
+// GET /orgs/{org}/packages/{package_type}/{package_name}/versions
+func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetAllPackageVersionsForPackageOwnedByOrg`,
+		trace.WithAttributes(otelogen.OperationID(`packages/get-all-package-versions-for-package-owned-by-org`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest handles packages/get-all-package-versions-for-package-owned-by-user operation.
+//
+// GET /users/{username}/packages/{package_type}/{package_name}/versions
+func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetAllPackageVersionsForPackageOwnedByUser`,
+		trace.WithAttributes(otelogen.OperationID(`packages/get-all-package-versions-for-package-owned-by-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandlePackagesGetPackageForAuthenticatedUserRequest handles packages/get-package-for-authenticated-user operation.
 //
 // GET /user/packages/{package_type}/{package_name}
@@ -10587,6 +11272,93 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 	}
 
 	if err := encodePackagesGetPackageForUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandlePackagesGetPackageVersionForAuthenticatedUserRequest handles packages/get-package-version-for-authenticated-user operation.
+//
+// GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
+func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageVersionForAuthenticatedUser`,
+		trace.WithAttributes(otelogen.OperationID(`packages/get-package-version-for-authenticated-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePackagesGetPackageVersionForAuthenticatedUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.PackagesGetPackageVersionForAuthenticatedUser(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodePackagesGetPackageVersionForAuthenticatedUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandlePackagesGetPackageVersionForOrganizationRequest handles packages/get-package-version-for-organization operation.
+//
+// GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
+func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageVersionForOrganization`,
+		trace.WithAttributes(otelogen.OperationID(`packages/get-package-version-for-organization`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePackagesGetPackageVersionForOrganizationParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.PackagesGetPackageVersionForOrganization(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodePackagesGetPackageVersionForOrganizationResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandlePackagesGetPackageVersionForUserRequest handles packages/get-package-version-for-user operation.
+//
+// GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
+func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageVersionForUser`,
+		trace.WithAttributes(otelogen.OperationID(`packages/get-package-version-for-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePackagesGetPackageVersionForUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.PackagesGetPackageVersionForUser(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodePackagesGetPackageVersionForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -13901,6 +14673,41 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 	}
 }
 
+// HandleReposCreatePagesSiteRequest handles repos/create-pages-site operation.
+//
+// POST /repos/{owner}/{repo}/pages
+func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreatePagesSite`,
+		trace.WithAttributes(otelogen.OperationID(`repos/create-pages-site`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposCreatePagesSiteParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeReposCreatePagesSiteRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposCreatePagesSite(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposCreatePagesSiteResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleReposCreateReleaseRequest handles repos/create-release operation.
 //
 // POST /repos/{owner}/{repo}/releases
@@ -15457,6 +16264,35 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 	}
 
 	if err := encodeReposGetLatestReleaseResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleReposGetPagesRequest handles repos/get-pages operation.
+//
+// GET /repos/{owner}/{repo}/pages
+func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetPages`,
+		trace.WithAttributes(otelogen.OperationID(`repos/get-pages`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeReposGetPagesParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.ReposGetPages(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeReposGetPagesResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
@@ -20331,6 +21167,35 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 	}
 }
 
+// HandleUsersCreateGpgKeyForAuthenticatedRequest handles users/create-gpg-key-for-authenticated operation.
+//
+// POST /user/gpg_keys
+func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersCreateGpgKeyForAuthenticated`,
+		trace.WithAttributes(otelogen.OperationID(`users/create-gpg-key-for-authenticated`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeUsersCreateGpgKeyForAuthenticatedRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.UsersCreateGpgKeyForAuthenticated(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeUsersCreateGpgKeyForAuthenticatedResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleUsersCreatePublicSSHKeyForAuthenticatedRequest handles users/create-public-ssh-key-for-authenticated operation.
 //
 // POST /user/keys
@@ -20557,6 +21422,35 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.Resp
 	}
 }
 
+// HandleUsersGetGpgKeyForAuthenticatedRequest handles users/get-gpg-key-for-authenticated operation.
+//
+// GET /user/gpg_keys/{gpg_key_id}
+func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersGetGpgKeyForAuthenticated`,
+		trace.WithAttributes(otelogen.OperationID(`users/get-gpg-key-for-authenticated`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeUsersGetGpgKeyForAuthenticatedParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.UsersGetGpgKeyForAuthenticated(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeUsersGetGpgKeyForAuthenticatedResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleUsersGetPublicSSHKeyForAuthenticatedRequest handles users/get-public-ssh-key-for-authenticated operation.
 //
 // GET /user/keys/{key_id}
@@ -20778,6 +21672,64 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 	}
 
 	if err := encodeUsersListFollowingForUserResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleUsersListGpgKeysForAuthenticatedRequest handles users/list-gpg-keys-for-authenticated operation.
+//
+// GET /user/gpg_keys
+func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListGpgKeysForAuthenticated`,
+		trace.WithAttributes(otelogen.OperationID(`users/list-gpg-keys-for-authenticated`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeUsersListGpgKeysForAuthenticatedParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.UsersListGpgKeysForAuthenticated(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeUsersListGpgKeysForAuthenticatedResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
+// HandleUsersListGpgKeysForUserRequest handles users/list-gpg-keys-for-user operation.
+//
+// GET /users/{username}/gpg_keys
+func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListGpgKeysForUser`,
+		trace.WithAttributes(otelogen.OperationID(`users/list-gpg-keys-for-user`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeUsersListGpgKeysForUserParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.UsersListGpgKeysForUser(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeUsersListGpgKeysForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		return
 	}
