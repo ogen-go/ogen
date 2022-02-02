@@ -3759,7 +3759,21 @@ func (s RecursiveMap) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-	for k, elem := range s {
+	{
+		{
+			if s.OptionalRecursiveField != nil {
+				if !first {
+					e.Comma()
+				}
+				first = false
+			}
+			if s.OptionalRecursiveField != nil {
+				e.RawStr("\"optional_recursive_field\"" + ":")
+				s.OptionalRecursiveField.Encode(e)
+			}
+		}
+	}
+	for k, elem := range s.AdditionalProps {
 		if !first {
 			e.Comma()
 		}
@@ -3772,20 +3786,32 @@ func (s RecursiveMap) Encode(e *jx.Writer) {
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfRecursiveMap = [0]string{}
+var jsonFieldsNameOfRecursiveMap = [1]string{
+	0: "optional_recursive_field",
+}
 
 // Decode decodes RecursiveMap from json.
-func (s RecursiveMap) Decode(d *jx.Decoder) error {
+func (s *RecursiveMap) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode RecursiveMap to nil`)
 	}
 
-	m := s
+	m := s.AdditionalProps
+	if m == nil {
+		m = map[string]RecursiveMap{}
+		s.AdditionalProps = m
+	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "optional_recursive_field":
+			s.OptionalRecursiveField = nil
+			var elem RecursiveMap
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			s.OptionalRecursiveField = &elem
 		default:
 			var elem RecursiveMap
-			elem = make(RecursiveMap)
 			if err := elem.Decode(d); err != nil {
 				return err
 			}

@@ -1850,7 +1850,10 @@ func (s PetUploadAvatarByIDReq) Read(p []byte) (n int, err error) {
 }
 
 // Ref: #/components/schemas/RecursiveMap
-type RecursiveMap map[string]RecursiveMap
+type RecursiveMap struct {
+	OptionalRecursiveField *RecursiveMap `json:"optional_recursive_field"`
+	AdditionalProps        map[string]RecursiveMap
+}
 
 // Ref: #/components/schemas/StringMap
 type StringMap map[string]string

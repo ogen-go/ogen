@@ -621,7 +621,6 @@ func decodeRecursiveMapGetResponse(resp *http.Response, span trace.Span) (res Re
 
 			var response RecursiveMap
 			if err := func() error {
-				response = make(RecursiveMap)
 				if err := response.Decode(d); err != nil {
 					return err
 				}
