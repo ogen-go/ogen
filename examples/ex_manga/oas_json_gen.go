@@ -209,69 +209,123 @@ var jsonFieldsNameOfBook = [9]string{
 // Decode decodes Book from json.
 func (s *Book) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode Book to nil`)
+		return errors.New("invalid: unable to decode Book to nil")
 	}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
-			s.ID.Reset()
-			if err := s.ID.Decode(d); err != nil {
-				return err
-			}
-		case "media_id":
-			s.MediaID.Reset()
-			if err := s.MediaID.Decode(d); err != nil {
-				return err
-			}
-		case "images":
-			s.Images.Reset()
-			if err := s.Images.Decode(d); err != nil {
-				return err
-			}
-		case "title":
-			s.Title.Reset()
-			if err := s.Title.Decode(d); err != nil {
-				return err
-			}
-		case "tags":
-			s.Tags = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem Tag
-				if err := elem.Decode(d); err != nil {
+
+			if err := func() error {
+				s.ID.Reset()
+				if err := s.ID.Decode(d); err != nil {
 					return err
 				}
-				s.Tags = append(s.Tags, elem)
 				return nil
-			}); err != nil {
-				return err
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"id\"")
+			}
+		case "media_id":
+
+			if err := func() error {
+				s.MediaID.Reset()
+				if err := s.MediaID.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"media_id\"")
+			}
+		case "images":
+
+			if err := func() error {
+				s.Images.Reset()
+				if err := s.Images.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"images\"")
+			}
+		case "title":
+
+			if err := func() error {
+				s.Title.Reset()
+				if err := s.Title.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"title\"")
+			}
+		case "tags":
+
+			if err := func() error {
+				s.Tags = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem Tag
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					s.Tags = append(s.Tags, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"tags\"")
 			}
 		case "scanlator":
-			s.Scanlator.Reset()
-			if err := s.Scanlator.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.Scanlator.Reset()
+				if err := s.Scanlator.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"scanlator\"")
 			}
 		case "upload_date":
-			s.UploadDate.Reset()
-			if err := s.UploadDate.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.UploadDate.Reset()
+				if err := s.UploadDate.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"upload_date\"")
 			}
 		case "num_pages":
-			s.NumPages.Reset()
-			if err := s.NumPages.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.NumPages.Reset()
+				if err := s.NumPages.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"num_pages\"")
 			}
 		case "num_favorites":
-			s.NumFavorites.Reset()
-			if err := s.NumFavorites.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.NumFavorites.Reset()
+				if err := s.NumFavorites.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"num_favorites\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode Book")
 	}
 
 	return nil
@@ -332,32 +386,50 @@ var jsonFieldsNameOfImage = [3]string{
 // Decode decodes Image from json.
 func (s *Image) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode Image to nil`)
+		return errors.New("invalid: unable to decode Image to nil")
 	}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "t":
-			s.T.Reset()
-			if err := s.T.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.T.Reset()
+				if err := s.T.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"t\"")
 			}
 		case "w":
-			s.W.Reset()
-			if err := s.W.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.W.Reset()
+				if err := s.W.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"w\"")
 			}
 		case "h":
-			s.H.Reset()
-			if err := s.H.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.H.Reset()
+				if err := s.H.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"h\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode Image")
 	}
 
 	return nil
@@ -430,39 +502,57 @@ var jsonFieldsNameOfImages = [3]string{
 // Decode decodes Images from json.
 func (s *Images) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode Images to nil`)
+		return errors.New("invalid: unable to decode Images to nil")
 	}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "pages":
-			s.Pages = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem Image
-				if err := elem.Decode(d); err != nil {
+
+			if err := func() error {
+				s.Pages = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem Image
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					s.Pages = append(s.Pages, elem)
+					return nil
+				}); err != nil {
 					return err
 				}
-				s.Pages = append(s.Pages, elem)
 				return nil
-			}); err != nil {
-				return err
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"pages\"")
 			}
 		case "cover":
-			s.Cover.Reset()
-			if err := s.Cover.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.Cover.Reset()
+				if err := s.Cover.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"cover\"")
 			}
 		case "thumbnail":
-			s.Thumbnail.Reset()
-			if err := s.Thumbnail.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.Thumbnail.Reset()
+				if err := s.Thumbnail.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"thumbnail\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode Images")
 	}
 
 	return nil
@@ -479,7 +569,7 @@ func (o OptImage) Encode(e *jx.Writer) {
 // Decode decodes Image from json.
 func (o *OptImage) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptImage to nil`)
+		return errors.New("invalid: unable to decode OptImage to nil")
 	}
 	switch d.Next() {
 	case jx.Object:
@@ -489,7 +579,7 @@ func (o *OptImage) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptImage`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptImage", d.Next())
 	}
 }
 
@@ -504,7 +594,7 @@ func (o OptImages) Encode(e *jx.Writer) {
 // Decode decodes Images from json.
 func (o *OptImages) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptImages to nil`)
+		return errors.New("invalid: unable to decode OptImages to nil")
 	}
 	switch d.Next() {
 	case jx.Object:
@@ -514,7 +604,7 @@ func (o *OptImages) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptImages`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptImages", d.Next())
 	}
 }
 
@@ -529,7 +619,7 @@ func (o OptInt) Encode(e *jx.Writer) {
 // Decode decodes int from json.
 func (o *OptInt) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptInt to nil`)
+		return errors.New("invalid: unable to decode OptInt to nil")
 	}
 	switch d.Next() {
 	case jx.Number:
@@ -541,7 +631,7 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 		o.Value = int(v)
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptInt`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptInt", d.Next())
 	}
 }
 
@@ -556,7 +646,7 @@ func (o OptString) Encode(e *jx.Writer) {
 // Decode decodes string from json.
 func (o *OptString) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptString to nil`)
+		return errors.New("invalid: unable to decode OptString to nil")
 	}
 	switch d.Next() {
 	case jx.String:
@@ -568,7 +658,7 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 		o.Value = string(v)
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptString`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptString", d.Next())
 	}
 }
 
@@ -583,7 +673,7 @@ func (o OptTagType) Encode(e *jx.Writer) {
 // Decode decodes TagType from json.
 func (o *OptTagType) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptTagType to nil`)
+		return errors.New("invalid: unable to decode OptTagType to nil")
 	}
 	switch d.Next() {
 	case jx.String:
@@ -593,7 +683,7 @@ func (o *OptTagType) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptTagType`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptTagType", d.Next())
 	}
 }
 
@@ -608,7 +698,7 @@ func (o OptTitle) Encode(e *jx.Writer) {
 // Decode decodes Title from json.
 func (o *OptTitle) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptTitle to nil`)
+		return errors.New("invalid: unable to decode OptTitle to nil")
 	}
 	switch d.Next() {
 	case jx.Object:
@@ -618,7 +708,7 @@ func (o *OptTitle) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptTitle`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptTitle", d.Next())
 	}
 }
 
@@ -643,7 +733,7 @@ func (s SearchByTagIDOKApplicationJSON) Encode(e *jx.Writer) {
 // Decode decodes SearchByTagIDOKApplicationJSON from json.
 func (s *SearchByTagIDOKApplicationJSON) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode SearchByTagIDOKApplicationJSON to nil`)
+		return errors.New("invalid: unable to decode SearchByTagIDOKApplicationJSON to nil")
 	}
 	var unwrapped []SearchResponse
 	if err := func() error {
@@ -687,7 +777,7 @@ func (s SearchOKApplicationJSON) Encode(e *jx.Writer) {
 // Decode decodes SearchOKApplicationJSON from json.
 func (s *SearchOKApplicationJSON) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode SearchOKApplicationJSON to nil`)
+		return errors.New("invalid: unable to decode SearchOKApplicationJSON to nil")
 	}
 	var unwrapped []SearchResponse
 	if err := func() error {
@@ -777,39 +867,57 @@ var jsonFieldsNameOfSearchResponse = [3]string{
 // Decode decodes SearchResponse from json.
 func (s *SearchResponse) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode SearchResponse to nil`)
+		return errors.New("invalid: unable to decode SearchResponse to nil")
 	}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			s.Result = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem Book
-				if err := elem.Decode(d); err != nil {
+
+			if err := func() error {
+				s.Result = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem Book
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					s.Result = append(s.Result, elem)
+					return nil
+				}); err != nil {
 					return err
 				}
-				s.Result = append(s.Result, elem)
 				return nil
-			}); err != nil {
-				return err
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"result\"")
 			}
 		case "num_pages":
-			s.NumPages.Reset()
-			if err := s.NumPages.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.NumPages.Reset()
+				if err := s.NumPages.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"num_pages\"")
 			}
 		case "per_page":
-			s.PerPage.Reset()
-			if err := s.PerPage.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.PerPage.Reset()
+				if err := s.PerPage.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"per_page\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode SearchResponse")
 	}
 
 	return nil
@@ -896,42 +1004,72 @@ var jsonFieldsNameOfTag = [5]string{
 // Decode decodes Tag from json.
 func (s *Tag) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode Tag to nil`)
+		return errors.New("invalid: unable to decode Tag to nil")
 	}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
-			s.ID.Reset()
-			if err := s.ID.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.ID.Reset()
+				if err := s.ID.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "type":
-			s.Type.Reset()
-			if err := s.Type.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.Type.Reset()
+				if err := s.Type.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
 			}
 		case "name":
-			s.Name.Reset()
-			if err := s.Name.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.Name.Reset()
+				if err := s.Name.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "url":
-			s.URL.Reset()
-			if err := s.URL.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.URL.Reset()
+				if err := s.URL.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"url\"")
 			}
 		case "count":
-			s.Count.Reset()
-			if err := s.Count.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.Count.Reset()
+				if err := s.Count.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"count\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode Tag")
 	}
 
 	return nil
@@ -945,7 +1083,7 @@ func (s TagType) Encode(e *jx.Writer) {
 // Decode decodes TagType from json.
 func (s *TagType) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode TagType to nil`)
+		return errors.New("invalid: unable to decode TagType to nil")
 	}
 	v, err := d.StrBytes()
 	if err != nil {
@@ -1029,32 +1167,50 @@ var jsonFieldsNameOfTitle = [3]string{
 // Decode decodes Title from json.
 func (s *Title) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode Title to nil`)
+		return errors.New("invalid: unable to decode Title to nil")
 	}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "english":
-			s.English.Reset()
-			if err := s.English.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.English.Reset()
+				if err := s.English.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"english\"")
 			}
 		case "japanese":
-			s.Japanese.Reset()
-			if err := s.Japanese.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.Japanese.Reset()
+				if err := s.Japanese.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"japanese\"")
 			}
 		case "pretty":
-			s.Pretty.Reset()
-			if err := s.Pretty.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.Pretty.Reset()
+				if err := s.Pretty.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"pretty\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode Title")
 	}
 
 	return nil

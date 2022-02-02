@@ -96,7 +96,7 @@ func decodeDataGetParams(args [2]string, r *http.Request) (DataGetParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path: id: not specified`)
+			return params, errors.New("path: id: not specified")
 		}
 	}
 	// Decode path: key.
@@ -127,7 +127,7 @@ func decodeDataGetParams(args [2]string, r *http.Request) (DataGetParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path: key: not specified`)
+			return params, errors.New("path: key: not specified")
 		}
 	}
 	return params, nil
@@ -165,7 +165,7 @@ func decodeDataGetIDParams(args [1]string, r *http.Request) (DataGetIDParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path: id: not specified`)
+			return params, errors.New("path: id: not specified")
 		}
 	}
 	return params, nil

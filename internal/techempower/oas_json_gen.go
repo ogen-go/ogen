@@ -90,7 +90,7 @@ var jsonFieldsNameOfHelloWorld = [1]string{
 // Decode decodes HelloWorld from json.
 func (s *HelloWorld) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode HelloWorld to nil`)
+		return errors.New("invalid: unable to decode HelloWorld to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -98,17 +98,23 @@ func (s *HelloWorld) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "message":
 			requiredBitSet[0] |= 1 << 0
-			v, err := d.Str()
-			s.Message = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.Message = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"message\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode HelloWorld")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -178,7 +184,7 @@ var jsonFieldsNameOfWorldObject = [2]string{
 // Decode decodes WorldObject from json.
 func (s *WorldObject) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode WorldObject to nil`)
+		return errors.New("invalid: unable to decode WorldObject to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -186,24 +192,36 @@ func (s *WorldObject) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "id":
 			requiredBitSet[0] |= 1 << 0
-			v, err := d.Int64()
-			s.ID = int64(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Int64()
+				s.ID = int64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "randomNumber":
 			requiredBitSet[0] |= 1 << 1
-			v, err := d.Int64()
-			s.RandomNumber = int64(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Int64()
+				s.RandomNumber = int64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"randomNumber\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode WorldObject")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -261,7 +279,7 @@ func (s WorldObjects) Encode(e *jx.Writer) {
 // Decode decodes WorldObjects from json.
 func (s *WorldObjects) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode WorldObjects to nil`)
+		return errors.New("invalid: unable to decode WorldObjects to nil")
 	}
 	var unwrapped []WorldObject
 	if err := func() error {

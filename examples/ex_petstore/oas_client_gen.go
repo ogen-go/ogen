@@ -100,8 +100,8 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // POST /pets
 func (c *Client) CreatePets(ctx context.Context) (res CreatePetsRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `CreatePets`,
-		trace.WithAttributes(otelogen.OperationID(`createPets`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "CreatePets",
+		trace.WithAttributes(otelogen.OperationID("createPets")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -140,8 +140,8 @@ func (c *Client) CreatePets(ctx context.Context) (res CreatePetsRes, err error) 
 // GET /pets
 func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (res ListPetsRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `ListPets`,
-		trace.WithAttributes(otelogen.OperationID(`listPets`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "ListPets",
+		trace.WithAttributes(otelogen.OperationID("listPets")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -199,8 +199,8 @@ func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (res ListP
 // GET /pets/{petId}
 func (c *Client) ShowPetById(ctx context.Context, params ShowPetByIdParams) (res ShowPetByIdRes, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `ShowPetById`,
-		trace.WithAttributes(otelogen.OperationID(`showPetById`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "ShowPetById",
+		trace.WithAttributes(otelogen.OperationID("showPetById")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {

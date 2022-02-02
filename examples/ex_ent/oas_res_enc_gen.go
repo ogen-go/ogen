@@ -115,7 +115,7 @@ func encodeCreatePetResponse(response CreatePetRes, w http.ResponseWriter, span 
 
 		return nil
 	default:
-		return errors.Errorf(`/pets: unexpected response type: %T`, response)
+		return errors.Errorf("/pets"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -170,7 +170,7 @@ func encodeCreatePetCategoriesResponse(response CreatePetCategoriesRes, w http.R
 
 		return nil
 	default:
-		return errors.Errorf(`/pets/{id}/categories: unexpected response type: %T`, response)
+		return errors.Errorf("/pets/{id}/categories"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -225,7 +225,7 @@ func encodeCreatePetFriendsResponse(response CreatePetFriendsRes, w http.Respons
 
 		return nil
 	default:
-		return errors.Errorf(`/pets/{id}/friends: unexpected response type: %T`, response)
+		return errors.Errorf("/pets/{id}/friends"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -280,7 +280,7 @@ func encodeCreatePetOwnerResponse(response CreatePetOwnerRes, w http.ResponseWri
 
 		return nil
 	default:
-		return errors.Errorf(`/pets/{id}/owner: unexpected response type: %T`, response)
+		return errors.Errorf("/pets/{id}/owner"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -326,7 +326,7 @@ func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span 
 
 		return nil
 	default:
-		return errors.Errorf(`/pets/{id}: unexpected response type: %T`, response)
+		return errors.Errorf("/pets/{id}"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -372,7 +372,7 @@ func encodeDeletePetOwnerResponse(response DeletePetOwnerRes, w http.ResponseWri
 
 		return nil
 	default:
-		return errors.Errorf(`/pets/{id}/owner: unexpected response type: %T`, response)
+		return errors.Errorf("/pets/{id}/owner"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -427,7 +427,7 @@ func encodeListPetResponse(response ListPetRes, w http.ResponseWriter, span trac
 
 		return nil
 	default:
-		return errors.Errorf(`/pets: unexpected response type: %T`, response)
+		return errors.Errorf("/pets"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -482,7 +482,7 @@ func encodeListPetCategoriesResponse(response ListPetCategoriesRes, w http.Respo
 
 		return nil
 	default:
-		return errors.Errorf(`/pets/{id}/categories: unexpected response type: %T`, response)
+		return errors.Errorf("/pets/{id}/categories"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -537,7 +537,7 @@ func encodeListPetFriendsResponse(response ListPetFriendsRes, w http.ResponseWri
 
 		return nil
 	default:
-		return errors.Errorf(`/pets/{id}/friends: unexpected response type: %T`, response)
+		return errors.Errorf("/pets/{id}/friends"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -592,7 +592,7 @@ func encodeReadPetResponse(response ReadPetRes, w http.ResponseWriter, span trac
 
 		return nil
 	default:
-		return errors.Errorf(`/pets/{id}: unexpected response type: %T`, response)
+		return errors.Errorf("/pets/{id}"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -647,7 +647,7 @@ func encodeReadPetOwnerResponse(response ReadPetOwnerRes, w http.ResponseWriter,
 
 		return nil
 	default:
-		return errors.Errorf(`/pets/{id}/owner: unexpected response type: %T`, response)
+		return errors.Errorf("/pets/{id}/owner"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -702,6 +702,6 @@ func encodeUpdatePetResponse(response UpdatePetRes, w http.ResponseWriter, span 
 
 		return nil
 	default:
-		return errors.Errorf(`/pets/{id}: unexpected response type: %T`, response)
+		return errors.Errorf("/pets/{id}"+`: unexpected response type: %T`, response)
 	}
 }

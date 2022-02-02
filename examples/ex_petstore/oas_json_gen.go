@@ -97,7 +97,7 @@ var jsonFieldsNameOfError = [2]string{
 // Decode decodes Error from json.
 func (s *Error) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode Error to nil`)
+		return errors.New("invalid: unable to decode Error to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -105,24 +105,36 @@ func (s *Error) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "code":
 			requiredBitSet[0] |= 1 << 0
-			v, err := d.Int32()
-			s.Code = int32(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Int32()
+				s.Code = int32(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"code\"")
 			}
 		case "message":
 			requiredBitSet[0] |= 1 << 1
-			v, err := d.Str()
-			s.Message = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.Message = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"message\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode Error")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -170,7 +182,7 @@ func (o OptString) Encode(e *jx.Writer) {
 // Decode decodes string from json.
 func (o *OptString) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptString to nil`)
+		return errors.New("invalid: unable to decode OptString to nil")
 	}
 	switch d.Next() {
 	case jx.String:
@@ -182,7 +194,7 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 		o.Value = string(v)
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptString`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptString", d.Next())
 	}
 }
 
@@ -229,7 +241,7 @@ var jsonFieldsNameOfPet = [3]string{
 // Decode decodes Pet from json.
 func (s *Pet) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode Pet to nil`)
+		return errors.New("invalid: unable to decode Pet to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -237,29 +249,47 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "id":
 			requiredBitSet[0] |= 1 << 0
-			v, err := d.Int64()
-			s.ID = int64(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Int64()
+				s.ID = int64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-			v, err := d.Str()
-			s.Name = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.Name = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "tag":
-			s.Tag.Reset()
-			if err := s.Tag.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.Tag.Reset()
+				if err := s.Tag.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"tag\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode Pet")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -317,7 +347,7 @@ func (s Pets) Encode(e *jx.Writer) {
 // Decode decodes Pets from json.
 func (s *Pets) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode Pets to nil`)
+		return errors.New("invalid: unable to decode Pets to nil")
 	}
 	var unwrapped []Pet
 	if err := func() error {

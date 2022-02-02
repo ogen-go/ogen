@@ -110,7 +110,7 @@ func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter, span 
 		w.WriteHeader(404)
 		return nil
 	default:
-		return errors.Errorf(`/foobar: unexpected response type: %T`, response)
+		return errors.Errorf("/foobar"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -144,7 +144,7 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 
 		return nil
 	default:
-		return errors.Errorf(`/foobar: unexpected response type: %T`, response)
+		return errors.Errorf("/foobar"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -239,7 +239,7 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 
 		return nil
 	default:
-		return errors.Errorf(`/pet: unexpected response type: %T`, response)
+		return errors.Errorf("/pet"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -269,7 +269,7 @@ func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.Respons
 
 		return nil
 	default:
-		return errors.Errorf(`/pet/avatar: unexpected response type: %T`, response)
+		return errors.Errorf("/pet/avatar"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -332,7 +332,7 @@ func encodePetUploadAvatarByIDResponse(response PetUploadAvatarByIDRes, w http.R
 
 		return nil
 	default:
-		return errors.Errorf(`/pet/avatar: unexpected response type: %T`, response)
+		return errors.Errorf("/pet/avatar"+`: unexpected response type: %T`, response)
 	}
 }
 

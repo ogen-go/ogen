@@ -96,7 +96,7 @@ func decodeDeletePetParams(args [1]string, r *http.Request) (DeletePetParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path: id: not specified`)
+			return params, errors.New("path: id: not specified")
 		}
 	}
 	return params, nil

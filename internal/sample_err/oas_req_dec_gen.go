@@ -65,11 +65,12 @@ var (
 )
 
 func decodeDataCreateRequest(r *http.Request, span trace.Span) (req OptData, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
+
 		var request OptData
 		buf := getBuf()
 		defer putBuf(buf)
@@ -77,9 +78,11 @@ func decodeDataCreateRequest(r *http.Request, span trace.Span) (req OptData, err
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
 			return req, nil
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -90,10 +93,10 @@ func decodeDataCreateRequest(r *http.Request, span trace.Span) (req OptData, err
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode DataCreate:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }

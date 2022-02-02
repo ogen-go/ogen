@@ -67,7 +67,7 @@ var (
 func decodeAddStickerToSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -91,11 +91,11 @@ func decodeAddStickerToSetResponse(resp *http.Response, span trace.Span) (res Re
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -122,7 +122,7 @@ func decodeAddStickerToSetResponse(resp *http.Response, span trace.Span) (res Re
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -135,7 +135,7 @@ func decodeAddStickerToSetResponse(resp *http.Response, span trace.Span) (res Re
 func decodeAnswerCallbackQueryResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -159,11 +159,11 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response, span trace.Span) (re
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -190,7 +190,7 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response, span trace.Span) (re
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -203,7 +203,7 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response, span trace.Span) (re
 func decodeAnswerInlineQueryResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -227,11 +227,11 @@ func decodeAnswerInlineQueryResponse(resp *http.Response, span trace.Span) (res 
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -258,7 +258,7 @@ func decodeAnswerInlineQueryResponse(resp *http.Response, span trace.Span) (res 
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -271,7 +271,7 @@ func decodeAnswerInlineQueryResponse(resp *http.Response, span trace.Span) (res 
 func decodeAnswerPreCheckoutQueryResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -295,11 +295,11 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response, span trace.Span) 
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -326,7 +326,7 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response, span trace.Span) 
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -339,7 +339,7 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response, span trace.Span) 
 func decodeAnswerShippingQueryResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -363,11 +363,11 @@ func decodeAnswerShippingQueryResponse(resp *http.Response, span trace.Span) (re
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -394,7 +394,7 @@ func decodeAnswerShippingQueryResponse(resp *http.Response, span trace.Span) (re
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -407,7 +407,7 @@ func decodeAnswerShippingQueryResponse(resp *http.Response, span trace.Span) (re
 func decodeApproveChatJoinRequestResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -431,11 +431,11 @@ func decodeApproveChatJoinRequestResponse(resp *http.Response, span trace.Span) 
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -462,7 +462,7 @@ func decodeApproveChatJoinRequestResponse(resp *http.Response, span trace.Span) 
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -475,7 +475,7 @@ func decodeApproveChatJoinRequestResponse(resp *http.Response, span trace.Span) 
 func decodeBanChatMemberResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -499,11 +499,11 @@ func decodeBanChatMemberResponse(resp *http.Response, span trace.Span) (res Resu
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -530,7 +530,7 @@ func decodeBanChatMemberResponse(resp *http.Response, span trace.Span) (res Resu
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -543,7 +543,7 @@ func decodeBanChatMemberResponse(resp *http.Response, span trace.Span) (res Resu
 func decodeCopyMessageResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -567,11 +567,11 @@ func decodeCopyMessageResponse(resp *http.Response, span trace.Span) (res Result
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -598,7 +598,7 @@ func decodeCopyMessageResponse(resp *http.Response, span trace.Span) (res Result
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -611,7 +611,7 @@ func decodeCopyMessageResponse(resp *http.Response, span trace.Span) (res Result
 func decodeCreateChatInviteLinkResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -635,11 +635,11 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -666,7 +666,7 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -679,7 +679,7 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 func decodeCreateNewStickerSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -703,11 +703,11 @@ func decodeCreateNewStickerSetResponse(resp *http.Response, span trace.Span) (re
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -734,7 +734,7 @@ func decodeCreateNewStickerSetResponse(resp *http.Response, span trace.Span) (re
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -747,7 +747,7 @@ func decodeCreateNewStickerSetResponse(resp *http.Response, span trace.Span) (re
 func decodeDeclineChatJoinRequestResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -771,11 +771,11 @@ func decodeDeclineChatJoinRequestResponse(resp *http.Response, span trace.Span) 
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -802,7 +802,7 @@ func decodeDeclineChatJoinRequestResponse(resp *http.Response, span trace.Span) 
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -815,7 +815,7 @@ func decodeDeclineChatJoinRequestResponse(resp *http.Response, span trace.Span) 
 func decodeDeleteChatPhotoResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -839,11 +839,11 @@ func decodeDeleteChatPhotoResponse(resp *http.Response, span trace.Span) (res Re
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -870,7 +870,7 @@ func decodeDeleteChatPhotoResponse(resp *http.Response, span trace.Span) (res Re
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -883,7 +883,7 @@ func decodeDeleteChatPhotoResponse(resp *http.Response, span trace.Span) (res Re
 func decodeDeleteChatStickerSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -907,11 +907,11 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response, span trace.Span) (r
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -938,7 +938,7 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response, span trace.Span) (r
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -951,7 +951,7 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response, span trace.Span) (r
 func decodeDeleteMessageResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -975,11 +975,11 @@ func decodeDeleteMessageResponse(resp *http.Response, span trace.Span) (res Resu
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -1006,7 +1006,7 @@ func decodeDeleteMessageResponse(resp *http.Response, span trace.Span) (res Resu
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -1019,7 +1019,7 @@ func decodeDeleteMessageResponse(resp *http.Response, span trace.Span) (res Resu
 func decodeDeleteMyCommandsResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1043,11 +1043,11 @@ func decodeDeleteMyCommandsResponse(resp *http.Response, span trace.Span) (res R
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -1074,7 +1074,7 @@ func decodeDeleteMyCommandsResponse(resp *http.Response, span trace.Span) (res R
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -1087,7 +1087,7 @@ func decodeDeleteMyCommandsResponse(resp *http.Response, span trace.Span) (res R
 func decodeDeleteStickerFromSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1111,11 +1111,11 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response, span trace.Span) (r
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -1142,7 +1142,7 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response, span trace.Span) (r
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -1155,7 +1155,7 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response, span trace.Span) (r
 func decodeDeleteWebhookResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1179,11 +1179,11 @@ func decodeDeleteWebhookResponse(resp *http.Response, span trace.Span) (res Resu
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -1210,7 +1210,7 @@ func decodeDeleteWebhookResponse(resp *http.Response, span trace.Span) (res Resu
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -1223,7 +1223,7 @@ func decodeDeleteWebhookResponse(resp *http.Response, span trace.Span) (res Resu
 func decodeEditChatInviteLinkResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1247,11 +1247,11 @@ func decodeEditChatInviteLinkResponse(resp *http.Response, span trace.Span) (res
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -1278,7 +1278,7 @@ func decodeEditChatInviteLinkResponse(resp *http.Response, span trace.Span) (res
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -1291,7 +1291,7 @@ func decodeEditChatInviteLinkResponse(resp *http.Response, span trace.Span) (res
 func decodeEditMessageCaptionResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1315,11 +1315,11 @@ func decodeEditMessageCaptionResponse(resp *http.Response, span trace.Span) (res
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -1346,7 +1346,7 @@ func decodeEditMessageCaptionResponse(resp *http.Response, span trace.Span) (res
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -1359,7 +1359,7 @@ func decodeEditMessageCaptionResponse(resp *http.Response, span trace.Span) (res
 func decodeEditMessageLiveLocationResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1383,11 +1383,11 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -1414,7 +1414,7 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -1427,7 +1427,7 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 func decodeEditMessageMediaResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1451,11 +1451,11 @@ func decodeEditMessageMediaResponse(resp *http.Response, span trace.Span) (res R
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -1482,7 +1482,7 @@ func decodeEditMessageMediaResponse(resp *http.Response, span trace.Span) (res R
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -1495,7 +1495,7 @@ func decodeEditMessageMediaResponse(resp *http.Response, span trace.Span) (res R
 func decodeEditMessageReplyMarkupResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1519,11 +1519,11 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response, span trace.Span) 
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -1550,7 +1550,7 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response, span trace.Span) 
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -1563,7 +1563,7 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response, span trace.Span) 
 func decodeEditMessageTextResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1587,11 +1587,11 @@ func decodeEditMessageTextResponse(resp *http.Response, span trace.Span) (res Re
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -1618,7 +1618,7 @@ func decodeEditMessageTextResponse(resp *http.Response, span trace.Span) (res Re
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -1631,7 +1631,7 @@ func decodeEditMessageTextResponse(resp *http.Response, span trace.Span) (res Re
 func decodeExportChatInviteLinkResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1655,11 +1655,11 @@ func decodeExportChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -1686,7 +1686,7 @@ func decodeExportChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -1699,7 +1699,7 @@ func decodeExportChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 func decodeForwardMessageResponse(resp *http.Response, span trace.Span) (res ResultMsg, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1723,11 +1723,11 @@ func decodeForwardMessageResponse(resp *http.Response, span trace.Span) (res Res
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -1754,7 +1754,7 @@ func decodeForwardMessageResponse(resp *http.Response, span trace.Span) (res Res
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -1767,7 +1767,7 @@ func decodeForwardMessageResponse(resp *http.Response, span trace.Span) (res Res
 func decodeGetChatResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1791,11 +1791,11 @@ func decodeGetChatResponse(resp *http.Response, span trace.Span) (res Result, er
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -1822,7 +1822,7 @@ func decodeGetChatResponse(resp *http.Response, span trace.Span) (res Result, er
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -1835,7 +1835,7 @@ func decodeGetChatResponse(resp *http.Response, span trace.Span) (res Result, er
 func decodeGetChatAdministratorsResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1859,11 +1859,11 @@ func decodeGetChatAdministratorsResponse(resp *http.Response, span trace.Span) (
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -1890,7 +1890,7 @@ func decodeGetChatAdministratorsResponse(resp *http.Response, span trace.Span) (
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -1903,7 +1903,7 @@ func decodeGetChatAdministratorsResponse(resp *http.Response, span trace.Span) (
 func decodeGetChatMemberResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1927,11 +1927,11 @@ func decodeGetChatMemberResponse(resp *http.Response, span trace.Span) (res Resu
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -1958,7 +1958,7 @@ func decodeGetChatMemberResponse(resp *http.Response, span trace.Span) (res Resu
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -1971,7 +1971,7 @@ func decodeGetChatMemberResponse(resp *http.Response, span trace.Span) (res Resu
 func decodeGetChatMemberCountResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -1995,11 +1995,11 @@ func decodeGetChatMemberCountResponse(resp *http.Response, span trace.Span) (res
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -2026,7 +2026,7 @@ func decodeGetChatMemberCountResponse(resp *http.Response, span trace.Span) (res
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -2039,7 +2039,7 @@ func decodeGetChatMemberCountResponse(resp *http.Response, span trace.Span) (res
 func decodeGetFileResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -2063,11 +2063,11 @@ func decodeGetFileResponse(resp *http.Response, span trace.Span) (res Result, er
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -2094,7 +2094,7 @@ func decodeGetFileResponse(resp *http.Response, span trace.Span) (res Result, er
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -2107,7 +2107,7 @@ func decodeGetFileResponse(resp *http.Response, span trace.Span) (res Result, er
 func decodeGetGameHighScoresResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -2131,11 +2131,11 @@ func decodeGetGameHighScoresResponse(resp *http.Response, span trace.Span) (res 
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -2162,7 +2162,7 @@ func decodeGetGameHighScoresResponse(resp *http.Response, span trace.Span) (res 
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -2175,7 +2175,7 @@ func decodeGetGameHighScoresResponse(resp *http.Response, span trace.Span) (res 
 func decodeGetMeResponse(resp *http.Response, span trace.Span) (res ResultUsr, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -2199,11 +2199,11 @@ func decodeGetMeResponse(resp *http.Response, span trace.Span) (res ResultUsr, e
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -2230,7 +2230,7 @@ func decodeGetMeResponse(resp *http.Response, span trace.Span) (res ResultUsr, e
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -2243,7 +2243,7 @@ func decodeGetMeResponse(resp *http.Response, span trace.Span) (res ResultUsr, e
 func decodeGetMyCommandsResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -2267,11 +2267,11 @@ func decodeGetMyCommandsResponse(resp *http.Response, span trace.Span) (res Resu
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -2298,7 +2298,7 @@ func decodeGetMyCommandsResponse(resp *http.Response, span trace.Span) (res Resu
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -2311,7 +2311,7 @@ func decodeGetMyCommandsResponse(resp *http.Response, span trace.Span) (res Resu
 func decodeGetStickerSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -2335,11 +2335,11 @@ func decodeGetStickerSetResponse(resp *http.Response, span trace.Span) (res Resu
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -2366,7 +2366,7 @@ func decodeGetStickerSetResponse(resp *http.Response, span trace.Span) (res Resu
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -2379,7 +2379,7 @@ func decodeGetStickerSetResponse(resp *http.Response, span trace.Span) (res Resu
 func decodeGetUpdatesResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -2403,11 +2403,11 @@ func decodeGetUpdatesResponse(resp *http.Response, span trace.Span) (res Result,
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -2434,7 +2434,7 @@ func decodeGetUpdatesResponse(resp *http.Response, span trace.Span) (res Result,
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -2447,7 +2447,7 @@ func decodeGetUpdatesResponse(resp *http.Response, span trace.Span) (res Result,
 func decodeGetUserProfilePhotosResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -2471,11 +2471,11 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response, span trace.Span) (r
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -2502,7 +2502,7 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response, span trace.Span) (r
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -2515,7 +2515,7 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response, span trace.Span) (r
 func decodeLeaveChatResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -2539,11 +2539,11 @@ func decodeLeaveChatResponse(resp *http.Response, span trace.Span) (res Result, 
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -2570,7 +2570,7 @@ func decodeLeaveChatResponse(resp *http.Response, span trace.Span) (res Result, 
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -2583,7 +2583,7 @@ func decodeLeaveChatResponse(resp *http.Response, span trace.Span) (res Result, 
 func decodePinChatMessageResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -2607,11 +2607,11 @@ func decodePinChatMessageResponse(resp *http.Response, span trace.Span) (res Res
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -2638,7 +2638,7 @@ func decodePinChatMessageResponse(resp *http.Response, span trace.Span) (res Res
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -2651,7 +2651,7 @@ func decodePinChatMessageResponse(resp *http.Response, span trace.Span) (res Res
 func decodePromoteChatMemberResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -2675,11 +2675,11 @@ func decodePromoteChatMemberResponse(resp *http.Response, span trace.Span) (res 
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -2706,7 +2706,7 @@ func decodePromoteChatMemberResponse(resp *http.Response, span trace.Span) (res 
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -2719,7 +2719,7 @@ func decodePromoteChatMemberResponse(resp *http.Response, span trace.Span) (res 
 func decodeRestrictChatMemberResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -2743,11 +2743,11 @@ func decodeRestrictChatMemberResponse(resp *http.Response, span trace.Span) (res
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -2774,7 +2774,7 @@ func decodeRestrictChatMemberResponse(resp *http.Response, span trace.Span) (res
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -2787,7 +2787,7 @@ func decodeRestrictChatMemberResponse(resp *http.Response, span trace.Span) (res
 func decodeRevokeChatInviteLinkResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -2811,11 +2811,11 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -2842,7 +2842,7 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -2855,7 +2855,7 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 func decodeSendAnimationResponse(resp *http.Response, span trace.Span) (res ResultMsg, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -2879,11 +2879,11 @@ func decodeSendAnimationResponse(resp *http.Response, span trace.Span) (res Resu
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -2910,7 +2910,7 @@ func decodeSendAnimationResponse(resp *http.Response, span trace.Span) (res Resu
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -2923,7 +2923,7 @@ func decodeSendAnimationResponse(resp *http.Response, span trace.Span) (res Resu
 func decodeSendAudioResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -2947,11 +2947,11 @@ func decodeSendAudioResponse(resp *http.Response, span trace.Span) (res Result, 
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -2978,7 +2978,7 @@ func decodeSendAudioResponse(resp *http.Response, span trace.Span) (res Result, 
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -2991,7 +2991,7 @@ func decodeSendAudioResponse(resp *http.Response, span trace.Span) (res Result, 
 func decodeSendChatActionResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -3015,11 +3015,11 @@ func decodeSendChatActionResponse(resp *http.Response, span trace.Span) (res Res
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -3046,7 +3046,7 @@ func decodeSendChatActionResponse(resp *http.Response, span trace.Span) (res Res
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -3059,7 +3059,7 @@ func decodeSendChatActionResponse(resp *http.Response, span trace.Span) (res Res
 func decodeSendContactResponse(resp *http.Response, span trace.Span) (res ResultMsg, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -3083,11 +3083,11 @@ func decodeSendContactResponse(resp *http.Response, span trace.Span) (res Result
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -3114,7 +3114,7 @@ func decodeSendContactResponse(resp *http.Response, span trace.Span) (res Result
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -3127,7 +3127,7 @@ func decodeSendContactResponse(resp *http.Response, span trace.Span) (res Result
 func decodeSendDiceResponse(resp *http.Response, span trace.Span) (res ResultMsg, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -3151,11 +3151,11 @@ func decodeSendDiceResponse(resp *http.Response, span trace.Span) (res ResultMsg
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -3182,7 +3182,7 @@ func decodeSendDiceResponse(resp *http.Response, span trace.Span) (res ResultMsg
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -3195,7 +3195,7 @@ func decodeSendDiceResponse(resp *http.Response, span trace.Span) (res ResultMsg
 func decodeSendDocumentResponse(resp *http.Response, span trace.Span) (res ResultMsg, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -3219,11 +3219,11 @@ func decodeSendDocumentResponse(resp *http.Response, span trace.Span) (res Resul
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -3250,7 +3250,7 @@ func decodeSendDocumentResponse(resp *http.Response, span trace.Span) (res Resul
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -3263,7 +3263,7 @@ func decodeSendDocumentResponse(resp *http.Response, span trace.Span) (res Resul
 func decodeSendGameResponse(resp *http.Response, span trace.Span) (res ResultMsg, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -3287,11 +3287,11 @@ func decodeSendGameResponse(resp *http.Response, span trace.Span) (res ResultMsg
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -3318,7 +3318,7 @@ func decodeSendGameResponse(resp *http.Response, span trace.Span) (res ResultMsg
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -3331,7 +3331,7 @@ func decodeSendGameResponse(resp *http.Response, span trace.Span) (res ResultMsg
 func decodeSendInvoiceResponse(resp *http.Response, span trace.Span) (res ResultMsg, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -3355,11 +3355,11 @@ func decodeSendInvoiceResponse(resp *http.Response, span trace.Span) (res Result
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -3386,7 +3386,7 @@ func decodeSendInvoiceResponse(resp *http.Response, span trace.Span) (res Result
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -3399,7 +3399,7 @@ func decodeSendInvoiceResponse(resp *http.Response, span trace.Span) (res Result
 func decodeSendLocationResponse(resp *http.Response, span trace.Span) (res ResultMsg, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -3423,11 +3423,11 @@ func decodeSendLocationResponse(resp *http.Response, span trace.Span) (res Resul
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -3454,7 +3454,7 @@ func decodeSendLocationResponse(resp *http.Response, span trace.Span) (res Resul
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -3467,7 +3467,7 @@ func decodeSendLocationResponse(resp *http.Response, span trace.Span) (res Resul
 func decodeSendMediaGroupResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -3491,11 +3491,11 @@ func decodeSendMediaGroupResponse(resp *http.Response, span trace.Span) (res Res
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -3522,7 +3522,7 @@ func decodeSendMediaGroupResponse(resp *http.Response, span trace.Span) (res Res
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -3535,7 +3535,7 @@ func decodeSendMediaGroupResponse(resp *http.Response, span trace.Span) (res Res
 func decodeSendMessageResponse(resp *http.Response, span trace.Span) (res ResultMsg, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -3559,11 +3559,11 @@ func decodeSendMessageResponse(resp *http.Response, span trace.Span) (res Result
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -3590,7 +3590,7 @@ func decodeSendMessageResponse(resp *http.Response, span trace.Span) (res Result
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -3603,7 +3603,7 @@ func decodeSendMessageResponse(resp *http.Response, span trace.Span) (res Result
 func decodeSendPhotoResponse(resp *http.Response, span trace.Span) (res ResultMsg, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -3627,11 +3627,11 @@ func decodeSendPhotoResponse(resp *http.Response, span trace.Span) (res ResultMs
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -3658,7 +3658,7 @@ func decodeSendPhotoResponse(resp *http.Response, span trace.Span) (res ResultMs
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -3671,7 +3671,7 @@ func decodeSendPhotoResponse(resp *http.Response, span trace.Span) (res ResultMs
 func decodeSendPollResponse(resp *http.Response, span trace.Span) (res ResultMsg, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -3695,11 +3695,11 @@ func decodeSendPollResponse(resp *http.Response, span trace.Span) (res ResultMsg
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -3726,7 +3726,7 @@ func decodeSendPollResponse(resp *http.Response, span trace.Span) (res ResultMsg
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -3739,7 +3739,7 @@ func decodeSendPollResponse(resp *http.Response, span trace.Span) (res ResultMsg
 func decodeSendStickerResponse(resp *http.Response, span trace.Span) (res ResultMsg, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -3763,11 +3763,11 @@ func decodeSendStickerResponse(resp *http.Response, span trace.Span) (res Result
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -3794,7 +3794,7 @@ func decodeSendStickerResponse(resp *http.Response, span trace.Span) (res Result
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -3807,7 +3807,7 @@ func decodeSendStickerResponse(resp *http.Response, span trace.Span) (res Result
 func decodeSendVenueResponse(resp *http.Response, span trace.Span) (res ResultMsg, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -3831,11 +3831,11 @@ func decodeSendVenueResponse(resp *http.Response, span trace.Span) (res ResultMs
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -3862,7 +3862,7 @@ func decodeSendVenueResponse(resp *http.Response, span trace.Span) (res ResultMs
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -3875,7 +3875,7 @@ func decodeSendVenueResponse(resp *http.Response, span trace.Span) (res ResultMs
 func decodeSendVideoResponse(resp *http.Response, span trace.Span) (res ResultMsg, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -3899,11 +3899,11 @@ func decodeSendVideoResponse(resp *http.Response, span trace.Span) (res ResultMs
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -3930,7 +3930,7 @@ func decodeSendVideoResponse(resp *http.Response, span trace.Span) (res ResultMs
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -3943,7 +3943,7 @@ func decodeSendVideoResponse(resp *http.Response, span trace.Span) (res ResultMs
 func decodeSendVideoNoteResponse(resp *http.Response, span trace.Span) (res ResultMsg, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -3967,11 +3967,11 @@ func decodeSendVideoNoteResponse(resp *http.Response, span trace.Span) (res Resu
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -3998,7 +3998,7 @@ func decodeSendVideoNoteResponse(resp *http.Response, span trace.Span) (res Resu
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -4011,7 +4011,7 @@ func decodeSendVideoNoteResponse(resp *http.Response, span trace.Span) (res Resu
 func decodeSendVoiceResponse(resp *http.Response, span trace.Span) (res ResultMsg, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -4035,11 +4035,11 @@ func decodeSendVoiceResponse(resp *http.Response, span trace.Span) (res ResultMs
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -4066,7 +4066,7 @@ func decodeSendVoiceResponse(resp *http.Response, span trace.Span) (res ResultMs
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -4079,7 +4079,7 @@ func decodeSendVoiceResponse(resp *http.Response, span trace.Span) (res ResultMs
 func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -4103,11 +4103,11 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response, span tra
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -4134,7 +4134,7 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response, span tra
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -4147,7 +4147,7 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response, span tra
 func decodeSetChatDescriptionResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -4171,11 +4171,11 @@ func decodeSetChatDescriptionResponse(resp *http.Response, span trace.Span) (res
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -4202,7 +4202,7 @@ func decodeSetChatDescriptionResponse(resp *http.Response, span trace.Span) (res
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -4215,7 +4215,7 @@ func decodeSetChatDescriptionResponse(resp *http.Response, span trace.Span) (res
 func decodeSetChatPermissionsResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -4239,11 +4239,11 @@ func decodeSetChatPermissionsResponse(resp *http.Response, span trace.Span) (res
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -4270,7 +4270,7 @@ func decodeSetChatPermissionsResponse(resp *http.Response, span trace.Span) (res
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -4283,7 +4283,7 @@ func decodeSetChatPermissionsResponse(resp *http.Response, span trace.Span) (res
 func decodeSetChatPhotoResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -4307,11 +4307,11 @@ func decodeSetChatPhotoResponse(resp *http.Response, span trace.Span) (res Resul
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -4338,7 +4338,7 @@ func decodeSetChatPhotoResponse(resp *http.Response, span trace.Span) (res Resul
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -4351,7 +4351,7 @@ func decodeSetChatPhotoResponse(resp *http.Response, span trace.Span) (res Resul
 func decodeSetChatStickerSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -4375,11 +4375,11 @@ func decodeSetChatStickerSetResponse(resp *http.Response, span trace.Span) (res 
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -4406,7 +4406,7 @@ func decodeSetChatStickerSetResponse(resp *http.Response, span trace.Span) (res 
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -4419,7 +4419,7 @@ func decodeSetChatStickerSetResponse(resp *http.Response, span trace.Span) (res 
 func decodeSetChatTitleResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -4443,11 +4443,11 @@ func decodeSetChatTitleResponse(resp *http.Response, span trace.Span) (res Resul
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -4474,7 +4474,7 @@ func decodeSetChatTitleResponse(resp *http.Response, span trace.Span) (res Resul
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -4487,7 +4487,7 @@ func decodeSetChatTitleResponse(resp *http.Response, span trace.Span) (res Resul
 func decodeSetGameScoreResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -4511,11 +4511,11 @@ func decodeSetGameScoreResponse(resp *http.Response, span trace.Span) (res Resul
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -4542,7 +4542,7 @@ func decodeSetGameScoreResponse(resp *http.Response, span trace.Span) (res Resul
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -4555,7 +4555,7 @@ func decodeSetGameScoreResponse(resp *http.Response, span trace.Span) (res Resul
 func decodeSetMyCommandsResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -4579,11 +4579,11 @@ func decodeSetMyCommandsResponse(resp *http.Response, span trace.Span) (res Resu
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -4610,7 +4610,7 @@ func decodeSetMyCommandsResponse(resp *http.Response, span trace.Span) (res Resu
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -4623,7 +4623,7 @@ func decodeSetMyCommandsResponse(resp *http.Response, span trace.Span) (res Resu
 func decodeSetPassportDataErrorsResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -4647,11 +4647,11 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response, span trace.Span) (
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -4678,7 +4678,7 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response, span trace.Span) (
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -4691,7 +4691,7 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response, span trace.Span) (
 func decodeSetStickerPositionInSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -4715,11 +4715,11 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response, span trace.Span)
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -4746,7 +4746,7 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response, span trace.Span)
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -4759,7 +4759,7 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response, span trace.Span)
 func decodeSetStickerSetThumbResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -4783,11 +4783,11 @@ func decodeSetStickerSetThumbResponse(resp *http.Response, span trace.Span) (res
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -4814,7 +4814,7 @@ func decodeSetStickerSetThumbResponse(resp *http.Response, span trace.Span) (res
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -4827,7 +4827,7 @@ func decodeSetStickerSetThumbResponse(resp *http.Response, span trace.Span) (res
 func decodeSetWebhookResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -4851,11 +4851,11 @@ func decodeSetWebhookResponse(resp *http.Response, span trace.Span) (res Result,
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -4882,7 +4882,7 @@ func decodeSetWebhookResponse(resp *http.Response, span trace.Span) (res Result,
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -4895,7 +4895,7 @@ func decodeSetWebhookResponse(resp *http.Response, span trace.Span) (res Result,
 func decodeStopMessageLiveLocationResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -4919,11 +4919,11 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -4950,7 +4950,7 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -4963,7 +4963,7 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 func decodeStopPollResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -4987,11 +4987,11 @@ func decodeStopPollResponse(resp *http.Response, span trace.Span) (res Result, e
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -5018,7 +5018,7 @@ func decodeStopPollResponse(resp *http.Response, span trace.Span) (res Result, e
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -5031,7 +5031,7 @@ func decodeStopPollResponse(resp *http.Response, span trace.Span) (res Result, e
 func decodeUnbanChatMemberResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -5055,11 +5055,11 @@ func decodeUnbanChatMemberResponse(resp *http.Response, span trace.Span) (res Re
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -5086,7 +5086,7 @@ func decodeUnbanChatMemberResponse(resp *http.Response, span trace.Span) (res Re
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -5099,7 +5099,7 @@ func decodeUnbanChatMemberResponse(resp *http.Response, span trace.Span) (res Re
 func decodeUnpinAllChatMessagesResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -5123,11 +5123,11 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response, span trace.Span) (r
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -5154,7 +5154,7 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response, span trace.Span) (r
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -5167,7 +5167,7 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response, span trace.Span) (r
 func decodeUnpinChatMessageResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -5191,11 +5191,11 @@ func decodeUnpinChatMessageResponse(resp *http.Response, span trace.Span) (res R
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -5222,7 +5222,7 @@ func decodeUnpinChatMessageResponse(resp *http.Response, span trace.Span) (res R
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -5235,7 +5235,7 @@ func decodeUnpinChatMessageResponse(resp *http.Response, span trace.Span) (res R
 func decodeUploadStickerFileResponse(resp *http.Response, span trace.Span) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -5259,11 +5259,11 @@ func decodeUploadStickerFileResponse(resp *http.Response, span trace.Span) (res 
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -5290,7 +5290,7 @@ func decodeUploadStickerFileResponse(resp *http.Response, span trace.Span) (res 
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {

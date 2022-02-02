@@ -100,7 +100,7 @@ func decodeListPetsParams(args [0]string, r *http.Request) (ListPetsParams, erro
 				params.Limit.SetTo(paramsLimitVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: limit: parse`)
+				return params, errors.Wrap(err, "query: limit: parse")
 			}
 		}
 	}
@@ -139,7 +139,7 @@ func decodeShowPetByIdParams(args [1]string, r *http.Request) (ShowPetByIdParams
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path: petId: not specified`)
+			return params, errors.New("path: petId: not specified")
 		}
 	}
 	return params, nil

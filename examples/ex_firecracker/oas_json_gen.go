@@ -107,7 +107,7 @@ var jsonFieldsNameOfBalloon = [3]string{
 // Decode decodes Balloon from json.
 func (s *Balloon) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode Balloon to nil`)
+		return errors.New("invalid: unable to decode Balloon to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -115,29 +115,47 @@ func (s *Balloon) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "amount_mib":
 			requiredBitSet[0] |= 1 << 0
-			v, err := d.Int()
-			s.AmountMib = int(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Int()
+				s.AmountMib = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"amount_mib\"")
 			}
 		case "deflate_on_oom":
 			requiredBitSet[0] |= 1 << 1
-			v, err := d.Bool()
-			s.DeflateOnOom = bool(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Bool()
+				s.DeflateOnOom = bool(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"deflate_on_oom\"")
 			}
 		case "stats_polling_interval_s":
-			s.StatsPollingIntervalS.Reset()
-			if err := s.StatsPollingIntervalS.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.StatsPollingIntervalS.Reset()
+				if err := s.StatsPollingIntervalS.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"stats_polling_interval_s\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode Balloon")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -321,7 +339,7 @@ var jsonFieldsNameOfBalloonStats = [14]string{
 // Decode decodes BalloonStats from json.
 func (s *BalloonStats) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode BalloonStats to nil`)
+		return errors.New("invalid: unable to decode BalloonStats to nil")
 	}
 	var requiredBitSet [2]uint8
 
@@ -329,88 +347,172 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "target_pages":
 			requiredBitSet[0] |= 1 << 0
-			v, err := d.Int()
-			s.TargetPages = int(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Int()
+				s.TargetPages = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"target_pages\"")
 			}
 		case "actual_pages":
 			requiredBitSet[0] |= 1 << 1
-			v, err := d.Int()
-			s.ActualPages = int(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Int()
+				s.ActualPages = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"actual_pages\"")
 			}
 		case "target_mib":
 			requiredBitSet[0] |= 1 << 2
-			v, err := d.Int()
-			s.TargetMib = int(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Int()
+				s.TargetMib = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"target_mib\"")
 			}
 		case "actual_mib":
 			requiredBitSet[0] |= 1 << 3
-			v, err := d.Int()
-			s.ActualMib = int(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Int()
+				s.ActualMib = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"actual_mib\"")
 			}
 		case "swap_in":
-			s.SwapIn.Reset()
-			if err := s.SwapIn.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.SwapIn.Reset()
+				if err := s.SwapIn.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"swap_in\"")
 			}
 		case "swap_out":
-			s.SwapOut.Reset()
-			if err := s.SwapOut.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.SwapOut.Reset()
+				if err := s.SwapOut.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"swap_out\"")
 			}
 		case "major_faults":
-			s.MajorFaults.Reset()
-			if err := s.MajorFaults.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.MajorFaults.Reset()
+				if err := s.MajorFaults.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"major_faults\"")
 			}
 		case "minor_faults":
-			s.MinorFaults.Reset()
-			if err := s.MinorFaults.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.MinorFaults.Reset()
+				if err := s.MinorFaults.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"minor_faults\"")
 			}
 		case "free_memory":
-			s.FreeMemory.Reset()
-			if err := s.FreeMemory.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.FreeMemory.Reset()
+				if err := s.FreeMemory.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"free_memory\"")
 			}
 		case "total_memory":
-			s.TotalMemory.Reset()
-			if err := s.TotalMemory.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.TotalMemory.Reset()
+				if err := s.TotalMemory.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"total_memory\"")
 			}
 		case "available_memory":
-			s.AvailableMemory.Reset()
-			if err := s.AvailableMemory.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.AvailableMemory.Reset()
+				if err := s.AvailableMemory.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"available_memory\"")
 			}
 		case "disk_caches":
-			s.DiskCaches.Reset()
-			if err := s.DiskCaches.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.DiskCaches.Reset()
+				if err := s.DiskCaches.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"disk_caches\"")
 			}
 		case "hugetlb_allocations":
-			s.HugetlbAllocations.Reset()
-			if err := s.HugetlbAllocations.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.HugetlbAllocations.Reset()
+				if err := s.HugetlbAllocations.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"hugetlb_allocations\"")
 			}
 		case "hugetlb_failures":
-			s.HugetlbFailures.Reset()
-			if err := s.HugetlbFailures.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.HugetlbFailures.Reset()
+				if err := s.HugetlbFailures.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"hugetlb_failures\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode BalloonStats")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
@@ -474,7 +576,7 @@ var jsonFieldsNameOfBalloonStatsUpdate = [1]string{
 // Decode decodes BalloonStatsUpdate from json.
 func (s *BalloonStatsUpdate) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode BalloonStatsUpdate to nil`)
+		return errors.New("invalid: unable to decode BalloonStatsUpdate to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -482,17 +584,23 @@ func (s *BalloonStatsUpdate) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "stats_polling_interval_s":
 			requiredBitSet[0] |= 1 << 0
-			v, err := d.Int()
-			s.StatsPollingIntervalS = int(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Int()
+				s.StatsPollingIntervalS = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"stats_polling_interval_s\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode BalloonStatsUpdate")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -555,7 +663,7 @@ var jsonFieldsNameOfBalloonUpdate = [1]string{
 // Decode decodes BalloonUpdate from json.
 func (s *BalloonUpdate) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode BalloonUpdate to nil`)
+		return errors.New("invalid: unable to decode BalloonUpdate to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -563,17 +671,23 @@ func (s *BalloonUpdate) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "amount_mib":
 			requiredBitSet[0] |= 1 << 0
-			v, err := d.Int()
-			s.AmountMib = int(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Int()
+				s.AmountMib = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"amount_mib\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode BalloonUpdate")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -662,35 +776,53 @@ var jsonFieldsNameOfBootSource = [3]string{
 // Decode decodes BootSource from json.
 func (s *BootSource) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode BootSource to nil`)
+		return errors.New("invalid: unable to decode BootSource to nil")
 	}
 	var requiredBitSet [1]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "boot_args":
-			s.BootArgs.Reset()
-			if err := s.BootArgs.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.BootArgs.Reset()
+				if err := s.BootArgs.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"boot_args\"")
 			}
 		case "initrd_path":
-			s.InitrdPath.Reset()
-			if err := s.InitrdPath.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.InitrdPath.Reset()
+				if err := s.InitrdPath.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"initrd_path\"")
 			}
 		case "kernel_image_path":
 			requiredBitSet[0] |= 1 << 2
-			v, err := d.Str()
-			s.KernelImagePath = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.KernelImagePath = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"kernel_image_path\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode BootSource")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -735,7 +867,7 @@ func (s CpuTemplate) Encode(e *jx.Writer) {
 // Decode decodes CpuTemplate from json.
 func (s *CpuTemplate) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode CpuTemplate to nil`)
+		return errors.New("invalid: unable to decode CpuTemplate to nil")
 	}
 	v, err := d.StrBytes()
 	if err != nil {
@@ -831,7 +963,7 @@ var jsonFieldsNameOfDrive = [7]string{
 // Decode decodes Drive from json.
 func (s *Drive) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode Drive to nil`)
+		return errors.New("invalid: unable to decode Drive to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -839,53 +971,95 @@ func (s *Drive) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "drive_id":
 			requiredBitSet[0] |= 1 << 0
-			v, err := d.Str()
-			s.DriveID = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.DriveID = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"drive_id\"")
 			}
 		case "cache_type":
-			s.CacheType.Reset()
-			if err := s.CacheType.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.CacheType.Reset()
+				if err := s.CacheType.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"cache_type\"")
 			}
 		case "is_read_only":
 			requiredBitSet[0] |= 1 << 2
-			v, err := d.Bool()
-			s.IsReadOnly = bool(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Bool()
+				s.IsReadOnly = bool(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"is_read_only\"")
 			}
 		case "is_root_device":
 			requiredBitSet[0] |= 1 << 3
-			v, err := d.Bool()
-			s.IsRootDevice = bool(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Bool()
+				s.IsRootDevice = bool(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"is_root_device\"")
 			}
 		case "partuuid":
-			s.Partuuid.Reset()
-			if err := s.Partuuid.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.Partuuid.Reset()
+				if err := s.Partuuid.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"partuuid\"")
 			}
 		case "path_on_host":
 			requiredBitSet[0] |= 1 << 5
-			v, err := d.Str()
-			s.PathOnHost = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.PathOnHost = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"path_on_host\"")
 			}
 		case "rate_limiter":
-			s.RateLimiter.Reset()
-			if err := s.RateLimiter.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.RateLimiter.Reset()
+				if err := s.RateLimiter.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"rate_limiter\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode Drive")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -951,22 +1125,28 @@ var jsonFieldsNameOfError = [1]string{
 // Decode decodes Error from json.
 func (s *Error) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode Error to nil`)
+		return errors.New("invalid: unable to decode Error to nil")
 	}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fault_message":
-			s.FaultMessage.Reset()
-			if err := s.FaultMessage.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.FaultMessage.Reset()
+				if err := s.FaultMessage.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"fault_message\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode Error")
 	}
 
 	return nil
@@ -1129,76 +1309,130 @@ var jsonFieldsNameOfFullVmConfiguration = [9]string{
 // Decode decodes FullVmConfiguration from json.
 func (s *FullVmConfiguration) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode FullVmConfiguration to nil`)
+		return errors.New("invalid: unable to decode FullVmConfiguration to nil")
 	}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "balloon_device":
-			s.BalloonDevice.Reset()
-			if err := s.BalloonDevice.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.BalloonDevice.Reset()
+				if err := s.BalloonDevice.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"balloon_device\"")
 			}
 		case "block_devices":
-			s.BlockDevices = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem Drive
-				if err := elem.Decode(d); err != nil {
+
+			if err := func() error {
+				s.BlockDevices = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem Drive
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					s.BlockDevices = append(s.BlockDevices, elem)
+					return nil
+				}); err != nil {
 					return err
 				}
-				s.BlockDevices = append(s.BlockDevices, elem)
 				return nil
-			}); err != nil {
-				return err
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"block_devices\"")
 			}
 		case "boot_source":
-			s.BootSource.Reset()
-			if err := s.BootSource.Decode(d); err != nil {
-				return err
-			}
-		case "logger":
-			s.Logger.Reset()
-			if err := s.Logger.Decode(d); err != nil {
-				return err
-			}
-		case "machine_config":
-			s.MachineConfig.Reset()
-			if err := s.MachineConfig.Decode(d); err != nil {
-				return err
-			}
-		case "metrics":
-			s.Metrics.Reset()
-			if err := s.Metrics.Decode(d); err != nil {
-				return err
-			}
-		case "mmds_config":
-			s.MmdsConfig.Reset()
-			if err := s.MmdsConfig.Decode(d); err != nil {
-				return err
-			}
-		case "net_devices":
-			s.NetDevices = nil
-			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NetworkInterface
-				if err := elem.Decode(d); err != nil {
+
+			if err := func() error {
+				s.BootSource.Reset()
+				if err := s.BootSource.Decode(d); err != nil {
 					return err
 				}
-				s.NetDevices = append(s.NetDevices, elem)
 				return nil
-			}); err != nil {
-				return err
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"boot_source\"")
+			}
+		case "logger":
+
+			if err := func() error {
+				s.Logger.Reset()
+				if err := s.Logger.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"logger\"")
+			}
+		case "machine_config":
+
+			if err := func() error {
+				s.MachineConfig.Reset()
+				if err := s.MachineConfig.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"machine_config\"")
+			}
+		case "metrics":
+
+			if err := func() error {
+				s.Metrics.Reset()
+				if err := s.Metrics.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"metrics\"")
+			}
+		case "mmds_config":
+
+			if err := func() error {
+				s.MmdsConfig.Reset()
+				if err := s.MmdsConfig.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mmds_config\"")
+			}
+		case "net_devices":
+
+			if err := func() error {
+				s.NetDevices = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem NetworkInterface
+					if err := elem.Decode(d); err != nil {
+						return err
+					}
+					s.NetDevices = append(s.NetDevices, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"net_devices\"")
 			}
 		case "vsock_device":
-			s.VsockDevice.Reset()
-			if err := s.VsockDevice.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.VsockDevice.Reset()
+				if err := s.VsockDevice.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"vsock_device\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode FullVmConfiguration")
 	}
 
 	return nil
@@ -1230,7 +1464,7 @@ var jsonFieldsNameOfInstanceActionInfo = [1]string{
 // Decode decodes InstanceActionInfo from json.
 func (s *InstanceActionInfo) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode InstanceActionInfo to nil`)
+		return errors.New("invalid: unable to decode InstanceActionInfo to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -1238,15 +1472,21 @@ func (s *InstanceActionInfo) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "action_type":
 			requiredBitSet[0] |= 1 << 0
-			if err := s.ActionType.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				if err := s.ActionType.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"action_type\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode InstanceActionInfo")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -1291,7 +1531,7 @@ func (s InstanceActionInfoActionType) Encode(e *jx.Writer) {
 // Decode decodes InstanceActionInfoActionType from json.
 func (s *InstanceActionInfoActionType) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode InstanceActionInfoActionType to nil`)
+		return errors.New("invalid: unable to decode InstanceActionInfoActionType to nil")
 	}
 	v, err := d.StrBytes()
 	if err != nil {
@@ -1359,7 +1599,7 @@ var jsonFieldsNameOfInstanceInfo = [4]string{
 // Decode decodes InstanceInfo from json.
 func (s *InstanceInfo) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode InstanceInfo to nil`)
+		return errors.New("invalid: unable to decode InstanceInfo to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -1367,36 +1607,60 @@ func (s *InstanceInfo) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "app_name":
 			requiredBitSet[0] |= 1 << 0
-			v, err := d.Str()
-			s.AppName = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.AppName = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"app_name\"")
 			}
 		case "id":
 			requiredBitSet[0] |= 1 << 1
-			v, err := d.Str()
-			s.ID = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.ID = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "state":
 			requiredBitSet[0] |= 1 << 2
-			if err := s.State.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				if err := s.State.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"state\"")
 			}
 		case "vmm_version":
 			requiredBitSet[0] |= 1 << 3
-			v, err := d.Str()
-			s.VmmVersion = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.VmmVersion = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"vmm_version\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode InstanceInfo")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -1441,7 +1705,7 @@ func (s InstanceInfoState) Encode(e *jx.Writer) {
 // Decode decodes InstanceInfoState from json.
 func (s *InstanceInfoState) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode InstanceInfoState to nil`)
+		return errors.New("invalid: unable to decode InstanceInfoState to nil")
 	}
 	v, err := d.StrBytes()
 	if err != nil {
@@ -1521,40 +1785,64 @@ var jsonFieldsNameOfLogger = [4]string{
 // Decode decodes Logger from json.
 func (s *Logger) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode Logger to nil`)
+		return errors.New("invalid: unable to decode Logger to nil")
 	}
 	var requiredBitSet [1]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "level":
-			s.Level.Reset()
-			if err := s.Level.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.Level.Reset()
+				if err := s.Level.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"level\"")
 			}
 		case "log_path":
 			requiredBitSet[0] |= 1 << 1
-			v, err := d.Str()
-			s.LogPath = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.LogPath = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"log_path\"")
 			}
 		case "show_level":
-			s.ShowLevel.Reset()
-			if err := s.ShowLevel.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.ShowLevel.Reset()
+				if err := s.ShowLevel.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"show_level\"")
 			}
 		case "show_log_origin":
-			s.ShowLogOrigin.Reset()
-			if err := s.ShowLogOrigin.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.ShowLogOrigin.Reset()
+				if err := s.ShowLogOrigin.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"show_log_origin\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode Logger")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -1599,7 +1887,7 @@ func (s LoggerLevel) Encode(e *jx.Writer) {
 // Decode decodes LoggerLevel from json.
 func (s *LoggerLevel) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode LoggerLevel to nil`)
+		return errors.New("invalid: unable to decode LoggerLevel to nil")
 	}
 	v, err := d.StrBytes()
 	if err != nil {
@@ -1685,49 +1973,79 @@ var jsonFieldsNameOfMachineConfiguration = [5]string{
 // Decode decodes MachineConfiguration from json.
 func (s *MachineConfiguration) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode MachineConfiguration to nil`)
+		return errors.New("invalid: unable to decode MachineConfiguration to nil")
 	}
 	var requiredBitSet [1]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "cpu_template":
-			s.CPUTemplate.Reset()
-			if err := s.CPUTemplate.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.CPUTemplate.Reset()
+				if err := s.CPUTemplate.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"cpu_template\"")
 			}
 		case "ht_enabled":
 			requiredBitSet[0] |= 1 << 1
-			v, err := d.Bool()
-			s.HtEnabled = bool(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Bool()
+				s.HtEnabled = bool(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ht_enabled\"")
 			}
 		case "mem_size_mib":
 			requiredBitSet[0] |= 1 << 2
-			v, err := d.Int()
-			s.MemSizeMib = int(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Int()
+				s.MemSizeMib = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mem_size_mib\"")
 			}
 		case "track_dirty_pages":
-			s.TrackDirtyPages.Reset()
-			if err := s.TrackDirtyPages.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.TrackDirtyPages.Reset()
+				if err := s.TrackDirtyPages.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"track_dirty_pages\"")
 			}
 		case "vcpu_count":
 			requiredBitSet[0] |= 1 << 4
-			v, err := d.Int()
-			s.VcpuCount = int(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Int()
+				s.VcpuCount = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"vcpu_count\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode MachineConfiguration")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -1790,7 +2108,7 @@ var jsonFieldsNameOfMetrics = [1]string{
 // Decode decodes Metrics from json.
 func (s *Metrics) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode Metrics to nil`)
+		return errors.New("invalid: unable to decode Metrics to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -1798,17 +2116,23 @@ func (s *Metrics) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "metrics_path":
 			requiredBitSet[0] |= 1 << 0
-			v, err := d.Str()
-			s.MetricsPath = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.MetricsPath = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"metrics_path\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode Metrics")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -1874,22 +2198,28 @@ var jsonFieldsNameOfMmdsConfig = [1]string{
 // Decode decodes MmdsConfig from json.
 func (s *MmdsConfig) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode MmdsConfig to nil`)
+		return errors.New("invalid: unable to decode MmdsConfig to nil")
 	}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "ipv4_address":
-			s.Ipv4Address.Reset()
-			if err := s.Ipv4Address.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.Ipv4Address.Reset()
+				if err := s.Ipv4Address.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ipv4_address\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode MmdsConfig")
 	}
 
 	return nil
@@ -1910,7 +2240,7 @@ var jsonFieldsNameOfMmdsGetOK = [0]string{}
 // Decode decodes MmdsGetOK from json.
 func (s *MmdsGetOK) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode MmdsGetOK to nil`)
+		return errors.New("invalid: unable to decode MmdsGetOK to nil")
 	}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -1920,7 +2250,7 @@ func (s *MmdsGetOK) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode MmdsGetOK")
 	}
 
 	return nil
@@ -1941,7 +2271,7 @@ var jsonFieldsNameOfMmdsPatchReq = [0]string{}
 // Decode decodes MmdsPatchReq from json.
 func (s *MmdsPatchReq) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode MmdsPatchReq to nil`)
+		return errors.New("invalid: unable to decode MmdsPatchReq to nil")
 	}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -1951,7 +2281,7 @@ func (s *MmdsPatchReq) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode MmdsPatchReq")
 	}
 
 	return nil
@@ -1972,7 +2302,7 @@ var jsonFieldsNameOfMmdsPutReq = [0]string{}
 // Decode decodes MmdsPutReq from json.
 func (s *MmdsPutReq) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode MmdsPutReq to nil`)
+		return errors.New("invalid: unable to decode MmdsPutReq to nil")
 	}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -1982,7 +2312,7 @@ func (s *MmdsPutReq) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode MmdsPutReq")
 	}
 
 	return nil
@@ -2067,52 +2397,88 @@ var jsonFieldsNameOfNetworkInterface = [6]string{
 // Decode decodes NetworkInterface from json.
 func (s *NetworkInterface) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode NetworkInterface to nil`)
+		return errors.New("invalid: unable to decode NetworkInterface to nil")
 	}
 	var requiredBitSet [1]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "allow_mmds_requests":
-			s.AllowMmdsRequests.Reset()
-			if err := s.AllowMmdsRequests.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.AllowMmdsRequests.Reset()
+				if err := s.AllowMmdsRequests.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"allow_mmds_requests\"")
 			}
 		case "guest_mac":
-			s.GuestMAC.Reset()
-			if err := s.GuestMAC.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.GuestMAC.Reset()
+				if err := s.GuestMAC.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"guest_mac\"")
 			}
 		case "host_dev_name":
 			requiredBitSet[0] |= 1 << 2
-			v, err := d.Str()
-			s.HostDevName = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.HostDevName = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"host_dev_name\"")
 			}
 		case "iface_id":
 			requiredBitSet[0] |= 1 << 3
-			v, err := d.Str()
-			s.IfaceID = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.IfaceID = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"iface_id\"")
 			}
 		case "rx_rate_limiter":
-			s.RxRateLimiter.Reset()
-			if err := s.RxRateLimiter.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.RxRateLimiter.Reset()
+				if err := s.RxRateLimiter.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"rx_rate_limiter\"")
 			}
 		case "tx_rate_limiter":
-			s.TxRateLimiter.Reset()
-			if err := s.TxRateLimiter.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.TxRateLimiter.Reset()
+				if err := s.TxRateLimiter.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"tx_rate_limiter\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode NetworkInterface")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -2160,7 +2526,7 @@ func (o OptBalloon) Encode(e *jx.Writer) {
 // Decode decodes Balloon from json.
 func (o *OptBalloon) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptBalloon to nil`)
+		return errors.New("invalid: unable to decode OptBalloon to nil")
 	}
 	switch d.Next() {
 	case jx.Object:
@@ -2170,7 +2536,7 @@ func (o *OptBalloon) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptBalloon`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptBalloon", d.Next())
 	}
 }
 
@@ -2185,7 +2551,7 @@ func (o OptBool) Encode(e *jx.Writer) {
 // Decode decodes bool from json.
 func (o *OptBool) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptBool to nil`)
+		return errors.New("invalid: unable to decode OptBool to nil")
 	}
 	switch d.Next() {
 	case jx.Bool:
@@ -2197,7 +2563,7 @@ func (o *OptBool) Decode(d *jx.Decoder) error {
 		o.Value = bool(v)
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptBool`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptBool", d.Next())
 	}
 }
 
@@ -2212,7 +2578,7 @@ func (o OptBootSource) Encode(e *jx.Writer) {
 // Decode decodes BootSource from json.
 func (o *OptBootSource) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptBootSource to nil`)
+		return errors.New("invalid: unable to decode OptBootSource to nil")
 	}
 	switch d.Next() {
 	case jx.Object:
@@ -2222,7 +2588,7 @@ func (o *OptBootSource) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptBootSource`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptBootSource", d.Next())
 	}
 }
 
@@ -2237,7 +2603,7 @@ func (o OptCpuTemplate) Encode(e *jx.Writer) {
 // Decode decodes CpuTemplate from json.
 func (o *OptCpuTemplate) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptCpuTemplate to nil`)
+		return errors.New("invalid: unable to decode OptCpuTemplate to nil")
 	}
 	switch d.Next() {
 	case jx.String:
@@ -2247,7 +2613,7 @@ func (o *OptCpuTemplate) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptCpuTemplate`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptCpuTemplate", d.Next())
 	}
 }
 
@@ -2262,7 +2628,7 @@ func (o OptInt) Encode(e *jx.Writer) {
 // Decode decodes int from json.
 func (o *OptInt) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptInt to nil`)
+		return errors.New("invalid: unable to decode OptInt to nil")
 	}
 	switch d.Next() {
 	case jx.Number:
@@ -2274,7 +2640,7 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 		o.Value = int(v)
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptInt`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptInt", d.Next())
 	}
 }
 
@@ -2289,7 +2655,7 @@ func (o OptInt64) Encode(e *jx.Writer) {
 // Decode decodes int64 from json.
 func (o *OptInt64) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptInt64 to nil`)
+		return errors.New("invalid: unable to decode OptInt64 to nil")
 	}
 	switch d.Next() {
 	case jx.Number:
@@ -2301,7 +2667,7 @@ func (o *OptInt64) Decode(d *jx.Decoder) error {
 		o.Value = int64(v)
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptInt64`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptInt64", d.Next())
 	}
 }
 
@@ -2316,7 +2682,7 @@ func (o OptLogger) Encode(e *jx.Writer) {
 // Decode decodes Logger from json.
 func (o *OptLogger) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptLogger to nil`)
+		return errors.New("invalid: unable to decode OptLogger to nil")
 	}
 	switch d.Next() {
 	case jx.Object:
@@ -2326,7 +2692,7 @@ func (o *OptLogger) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptLogger`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptLogger", d.Next())
 	}
 }
 
@@ -2341,7 +2707,7 @@ func (o OptLoggerLevel) Encode(e *jx.Writer) {
 // Decode decodes LoggerLevel from json.
 func (o *OptLoggerLevel) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptLoggerLevel to nil`)
+		return errors.New("invalid: unable to decode OptLoggerLevel to nil")
 	}
 	switch d.Next() {
 	case jx.String:
@@ -2351,7 +2717,7 @@ func (o *OptLoggerLevel) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptLoggerLevel`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptLoggerLevel", d.Next())
 	}
 }
 
@@ -2366,7 +2732,7 @@ func (o OptMachineConfiguration) Encode(e *jx.Writer) {
 // Decode decodes MachineConfiguration from json.
 func (o *OptMachineConfiguration) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptMachineConfiguration to nil`)
+		return errors.New("invalid: unable to decode OptMachineConfiguration to nil")
 	}
 	switch d.Next() {
 	case jx.Object:
@@ -2376,7 +2742,7 @@ func (o *OptMachineConfiguration) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptMachineConfiguration`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptMachineConfiguration", d.Next())
 	}
 }
 
@@ -2391,7 +2757,7 @@ func (o OptMetrics) Encode(e *jx.Writer) {
 // Decode decodes Metrics from json.
 func (o *OptMetrics) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptMetrics to nil`)
+		return errors.New("invalid: unable to decode OptMetrics to nil")
 	}
 	switch d.Next() {
 	case jx.Object:
@@ -2401,7 +2767,7 @@ func (o *OptMetrics) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptMetrics`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptMetrics", d.Next())
 	}
 }
 
@@ -2416,7 +2782,7 @@ func (o OptMmdsConfig) Encode(e *jx.Writer) {
 // Decode decodes MmdsConfig from json.
 func (o *OptMmdsConfig) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptMmdsConfig to nil`)
+		return errors.New("invalid: unable to decode OptMmdsConfig to nil")
 	}
 	switch d.Next() {
 	case jx.Object:
@@ -2426,7 +2792,7 @@ func (o *OptMmdsConfig) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptMmdsConfig`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptMmdsConfig", d.Next())
 	}
 }
 
@@ -2441,7 +2807,7 @@ func (o OptMmdsPatchReq) Encode(e *jx.Writer) {
 // Decode decodes MmdsPatchReq from json.
 func (o *OptMmdsPatchReq) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptMmdsPatchReq to nil`)
+		return errors.New("invalid: unable to decode OptMmdsPatchReq to nil")
 	}
 	switch d.Next() {
 	case jx.Object:
@@ -2451,7 +2817,7 @@ func (o *OptMmdsPatchReq) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptMmdsPatchReq`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptMmdsPatchReq", d.Next())
 	}
 }
 
@@ -2466,7 +2832,7 @@ func (o OptMmdsPutReq) Encode(e *jx.Writer) {
 // Decode decodes MmdsPutReq from json.
 func (o *OptMmdsPutReq) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptMmdsPutReq to nil`)
+		return errors.New("invalid: unable to decode OptMmdsPutReq to nil")
 	}
 	switch d.Next() {
 	case jx.Object:
@@ -2476,7 +2842,7 @@ func (o *OptMmdsPutReq) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptMmdsPutReq`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptMmdsPutReq", d.Next())
 	}
 }
 
@@ -2491,7 +2857,7 @@ func (o OptRateLimiter) Encode(e *jx.Writer) {
 // Decode decodes RateLimiter from json.
 func (o *OptRateLimiter) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptRateLimiter to nil`)
+		return errors.New("invalid: unable to decode OptRateLimiter to nil")
 	}
 	switch d.Next() {
 	case jx.Object:
@@ -2501,7 +2867,7 @@ func (o *OptRateLimiter) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptRateLimiter`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptRateLimiter", d.Next())
 	}
 }
 
@@ -2516,7 +2882,7 @@ func (o OptSnapshotCreateParamsSnapshotType) Encode(e *jx.Writer) {
 // Decode decodes SnapshotCreateParamsSnapshotType from json.
 func (o *OptSnapshotCreateParamsSnapshotType) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptSnapshotCreateParamsSnapshotType to nil`)
+		return errors.New("invalid: unable to decode OptSnapshotCreateParamsSnapshotType to nil")
 	}
 	switch d.Next() {
 	case jx.String:
@@ -2526,7 +2892,7 @@ func (o *OptSnapshotCreateParamsSnapshotType) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptSnapshotCreateParamsSnapshotType`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptSnapshotCreateParamsSnapshotType", d.Next())
 	}
 }
 
@@ -2541,7 +2907,7 @@ func (o OptString) Encode(e *jx.Writer) {
 // Decode decodes string from json.
 func (o *OptString) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptString to nil`)
+		return errors.New("invalid: unable to decode OptString to nil")
 	}
 	switch d.Next() {
 	case jx.String:
@@ -2553,7 +2919,7 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 		o.Value = string(v)
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptString`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptString", d.Next())
 	}
 }
 
@@ -2568,7 +2934,7 @@ func (o OptTokenBucket) Encode(e *jx.Writer) {
 // Decode decodes TokenBucket from json.
 func (o *OptTokenBucket) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptTokenBucket to nil`)
+		return errors.New("invalid: unable to decode OptTokenBucket to nil")
 	}
 	switch d.Next() {
 	case jx.Object:
@@ -2578,7 +2944,7 @@ func (o *OptTokenBucket) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptTokenBucket`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptTokenBucket", d.Next())
 	}
 }
 
@@ -2593,7 +2959,7 @@ func (o OptVsock) Encode(e *jx.Writer) {
 // Decode decodes Vsock from json.
 func (o *OptVsock) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode OptVsock to nil`)
+		return errors.New("invalid: unable to decode OptVsock to nil")
 	}
 	switch d.Next() {
 	case jx.Object:
@@ -2603,7 +2969,7 @@ func (o *OptVsock) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	default:
-		return errors.Errorf(`unexpected type %q while reading OptVsock`, d.Next())
+		return errors.Errorf("unexpected type %q while reading OptVsock", d.Next())
 	}
 }
 
@@ -2653,7 +3019,7 @@ var jsonFieldsNameOfPartialDrive = [3]string{
 // Decode decodes PartialDrive from json.
 func (s *PartialDrive) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode PartialDrive to nil`)
+		return errors.New("invalid: unable to decode PartialDrive to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -2661,27 +3027,45 @@ func (s *PartialDrive) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "drive_id":
 			requiredBitSet[0] |= 1 << 0
-			v, err := d.Str()
-			s.DriveID = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.DriveID = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"drive_id\"")
 			}
 		case "path_on_host":
-			s.PathOnHost.Reset()
-			if err := s.PathOnHost.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.PathOnHost.Reset()
+				if err := s.PathOnHost.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"path_on_host\"")
 			}
 		case "rate_limiter":
-			s.RateLimiter.Reset()
-			if err := s.RateLimiter.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.RateLimiter.Reset()
+				if err := s.RateLimiter.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"rate_limiter\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode PartialDrive")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -2764,7 +3148,7 @@ var jsonFieldsNameOfPartialNetworkInterface = [3]string{
 // Decode decodes PartialNetworkInterface from json.
 func (s *PartialNetworkInterface) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode PartialNetworkInterface to nil`)
+		return errors.New("invalid: unable to decode PartialNetworkInterface to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -2772,27 +3156,45 @@ func (s *PartialNetworkInterface) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "iface_id":
 			requiredBitSet[0] |= 1 << 0
-			v, err := d.Str()
-			s.IfaceID = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.IfaceID = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"iface_id\"")
 			}
 		case "rx_rate_limiter":
-			s.RxRateLimiter.Reset()
-			if err := s.RxRateLimiter.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.RxRateLimiter.Reset()
+				if err := s.RxRateLimiter.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"rx_rate_limiter\"")
 			}
 		case "tx_rate_limiter":
-			s.TxRateLimiter.Reset()
-			if err := s.TxRateLimiter.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.TxRateLimiter.Reset()
+				if err := s.TxRateLimiter.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"tx_rate_limiter\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode PartialNetworkInterface")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -2871,27 +3273,39 @@ var jsonFieldsNameOfRateLimiter = [2]string{
 // Decode decodes RateLimiter from json.
 func (s *RateLimiter) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode RateLimiter to nil`)
+		return errors.New("invalid: unable to decode RateLimiter to nil")
 	}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "bandwidth":
-			s.Bandwidth.Reset()
-			if err := s.Bandwidth.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.Bandwidth.Reset()
+				if err := s.Bandwidth.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"bandwidth\"")
 			}
 		case "ops":
-			s.Ops.Reset()
-			if err := s.Ops.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.Ops.Reset()
+				if err := s.Ops.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ops\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode RateLimiter")
 	}
 
 	return nil
@@ -2950,7 +3364,7 @@ var jsonFieldsNameOfSnapshotCreateParams = [4]string{
 // Decode decodes SnapshotCreateParams from json.
 func (s *SnapshotCreateParams) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode SnapshotCreateParams to nil`)
+		return errors.New("invalid: unable to decode SnapshotCreateParams to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -2958,34 +3372,58 @@ func (s *SnapshotCreateParams) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "mem_file_path":
 			requiredBitSet[0] |= 1 << 0
-			v, err := d.Str()
-			s.MemFilePath = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.MemFilePath = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mem_file_path\"")
 			}
 		case "snapshot_path":
 			requiredBitSet[0] |= 1 << 1
-			v, err := d.Str()
-			s.SnapshotPath = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.SnapshotPath = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"snapshot_path\"")
 			}
 		case "snapshot_type":
-			s.SnapshotType.Reset()
-			if err := s.SnapshotType.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.SnapshotType.Reset()
+				if err := s.SnapshotType.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"snapshot_type\"")
 			}
 		case "version":
-			s.Version.Reset()
-			if err := s.Version.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.Version.Reset()
+				if err := s.Version.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"version\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode SnapshotCreateParams")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -3030,7 +3468,7 @@ func (s SnapshotCreateParamsSnapshotType) Encode(e *jx.Writer) {
 // Decode decodes SnapshotCreateParamsSnapshotType from json.
 func (s *SnapshotCreateParamsSnapshotType) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode SnapshotCreateParamsSnapshotType to nil`)
+		return errors.New("invalid: unable to decode SnapshotCreateParamsSnapshotType to nil")
 	}
 	v, err := d.StrBytes()
 	if err != nil {
@@ -3105,42 +3543,66 @@ var jsonFieldsNameOfSnapshotLoadParams = [4]string{
 // Decode decodes SnapshotLoadParams from json.
 func (s *SnapshotLoadParams) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode SnapshotLoadParams to nil`)
+		return errors.New("invalid: unable to decode SnapshotLoadParams to nil")
 	}
 	var requiredBitSet [1]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "enable_diff_snapshots":
-			s.EnableDiffSnapshots.Reset()
-			if err := s.EnableDiffSnapshots.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.EnableDiffSnapshots.Reset()
+				if err := s.EnableDiffSnapshots.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"enable_diff_snapshots\"")
 			}
 		case "mem_file_path":
 			requiredBitSet[0] |= 1 << 1
-			v, err := d.Str()
-			s.MemFilePath = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.MemFilePath = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"mem_file_path\"")
 			}
 		case "snapshot_path":
 			requiredBitSet[0] |= 1 << 2
-			v, err := d.Str()
-			s.SnapshotPath = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.SnapshotPath = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"snapshot_path\"")
 			}
 		case "resume_vm":
-			s.ResumeVM.Reset()
-			if err := s.ResumeVM.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.ResumeVM.Reset()
+				if err := s.ResumeVM.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"resume_vm\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode SnapshotLoadParams")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -3223,37 +3685,55 @@ var jsonFieldsNameOfTokenBucket = [3]string{
 // Decode decodes TokenBucket from json.
 func (s *TokenBucket) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode TokenBucket to nil`)
+		return errors.New("invalid: unable to decode TokenBucket to nil")
 	}
 	var requiredBitSet [1]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "one_time_burst":
-			s.OneTimeBurst.Reset()
-			if err := s.OneTimeBurst.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				s.OneTimeBurst.Reset()
+				if err := s.OneTimeBurst.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"one_time_burst\"")
 			}
 		case "refill_time":
 			requiredBitSet[0] |= 1 << 1
-			v, err := d.Int64()
-			s.RefillTime = int64(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Int64()
+				s.RefillTime = int64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"refill_time\"")
 			}
 		case "size":
 			requiredBitSet[0] |= 1 << 2
-			v, err := d.Int64()
-			s.Size = int64(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Int64()
+				s.Size = int64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"size\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode TokenBucket")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -3316,7 +3796,7 @@ var jsonFieldsNameOfVM = [1]string{
 // Decode decodes VM from json.
 func (s *VM) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode VM to nil`)
+		return errors.New("invalid: unable to decode VM to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -3324,15 +3804,21 @@ func (s *VM) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "state":
 			requiredBitSet[0] |= 1 << 0
-			if err := s.State.Decode(d); err != nil {
-				return err
+
+			if err := func() error {
+				if err := s.State.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"state\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode VM")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
@@ -3377,7 +3863,7 @@ func (s VMState) Encode(e *jx.Writer) {
 // Decode decodes VMState from json.
 func (s *VMState) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode VMState to nil`)
+		return errors.New("invalid: unable to decode VMState to nil")
 	}
 	v, err := d.StrBytes()
 	if err != nil {
@@ -3436,7 +3922,7 @@ var jsonFieldsNameOfVsock = [3]string{
 // Decode decodes Vsock from json.
 func (s *Vsock) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode Vsock to nil`)
+		return errors.New("invalid: unable to decode Vsock to nil")
 	}
 	var requiredBitSet [1]uint8
 
@@ -3444,31 +3930,49 @@ func (s *Vsock) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "guest_cid":
 			requiredBitSet[0] |= 1 << 0
-			v, err := d.Int()
-			s.GuestCid = int(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Int()
+				s.GuestCid = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"guest_cid\"")
 			}
 		case "uds_path":
 			requiredBitSet[0] |= 1 << 1
-			v, err := d.Str()
-			s.UdsPath = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.UdsPath = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"uds_path\"")
 			}
 		case "vsock_id":
 			requiredBitSet[0] |= 1 << 2
-			v, err := d.Str()
-			s.VsockID = string(v)
-			if err != nil {
-				return err
+
+			if err := func() error {
+				v, err := d.Str()
+				s.VsockID = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"vsock_id\"")
 			}
 		default:
 			return d.Skip()
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode Vsock")
 	}
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{

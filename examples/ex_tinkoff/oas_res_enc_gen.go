@@ -91,7 +91,7 @@ func encodeMarketBondsGetResponse(response MarketBondsGetRes, w http.ResponseWri
 
 		return nil
 	default:
-		return errors.Errorf(`/market/bonds: unexpected response type: %T`, response)
+		return errors.Errorf("/market/bonds"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -122,7 +122,7 @@ func encodeMarketCandlesGetResponse(response MarketCandlesGetRes, w http.Respons
 
 		return nil
 	default:
-		return errors.Errorf(`/market/candles: unexpected response type: %T`, response)
+		return errors.Errorf("/market/candles"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -153,7 +153,7 @@ func encodeMarketCurrenciesGetResponse(response MarketCurrenciesGetRes, w http.R
 
 		return nil
 	default:
-		return errors.Errorf(`/market/currencies: unexpected response type: %T`, response)
+		return errors.Errorf("/market/currencies"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -184,7 +184,7 @@ func encodeMarketEtfsGetResponse(response MarketEtfsGetRes, w http.ResponseWrite
 
 		return nil
 	default:
-		return errors.Errorf(`/market/etfs: unexpected response type: %T`, response)
+		return errors.Errorf("/market/etfs"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -215,7 +215,7 @@ func encodeMarketOrderbookGetResponse(response MarketOrderbookGetRes, w http.Res
 
 		return nil
 	default:
-		return errors.Errorf(`/market/orderbook: unexpected response type: %T`, response)
+		return errors.Errorf("/market/orderbook"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -246,7 +246,7 @@ func encodeMarketSearchByFigiGetResponse(response MarketSearchByFigiGetRes, w ht
 
 		return nil
 	default:
-		return errors.Errorf(`/market/search/by-figi: unexpected response type: %T`, response)
+		return errors.Errorf("/market/search/by-figi"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -277,7 +277,7 @@ func encodeMarketSearchByTickerGetResponse(response MarketSearchByTickerGetRes, 
 
 		return nil
 	default:
-		return errors.Errorf(`/market/search/by-ticker: unexpected response type: %T`, response)
+		return errors.Errorf("/market/search/by-ticker"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -308,7 +308,7 @@ func encodeMarketStocksGetResponse(response MarketStocksGetRes, w http.ResponseW
 
 		return nil
 	default:
-		return errors.Errorf(`/market/stocks: unexpected response type: %T`, response)
+		return errors.Errorf("/market/stocks"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -339,7 +339,7 @@ func encodeOperationsGetResponse(response OperationsGetRes, w http.ResponseWrite
 
 		return nil
 	default:
-		return errors.Errorf(`/operations: unexpected response type: %T`, response)
+		return errors.Errorf("/operations"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -370,7 +370,7 @@ func encodeOrdersCancelPostResponse(response OrdersCancelPostRes, w http.Respons
 
 		return nil
 	default:
-		return errors.Errorf(`/orders/cancel: unexpected response type: %T`, response)
+		return errors.Errorf("/orders/cancel"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -401,7 +401,7 @@ func encodeOrdersGetResponse(response OrdersGetRes, w http.ResponseWriter, span 
 
 		return nil
 	default:
-		return errors.Errorf(`/orders: unexpected response type: %T`, response)
+		return errors.Errorf("/orders"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -432,7 +432,7 @@ func encodeOrdersLimitOrderPostResponse(response OrdersLimitOrderPostRes, w http
 
 		return nil
 	default:
-		return errors.Errorf(`/orders/limit-order: unexpected response type: %T`, response)
+		return errors.Errorf("/orders/limit-order"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -463,7 +463,7 @@ func encodeOrdersMarketOrderPostResponse(response OrdersMarketOrderPostRes, w ht
 
 		return nil
 	default:
-		return errors.Errorf(`/orders/market-order: unexpected response type: %T`, response)
+		return errors.Errorf("/orders/market-order"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -494,7 +494,7 @@ func encodePortfolioCurrenciesGetResponse(response PortfolioCurrenciesGetRes, w 
 
 		return nil
 	default:
-		return errors.Errorf(`/portfolio/currencies: unexpected response type: %T`, response)
+		return errors.Errorf("/portfolio/currencies"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -525,7 +525,7 @@ func encodePortfolioGetResponse(response PortfolioGetRes, w http.ResponseWriter,
 
 		return nil
 	default:
-		return errors.Errorf(`/portfolio: unexpected response type: %T`, response)
+		return errors.Errorf("/portfolio"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -556,7 +556,7 @@ func encodeSandboxClearPostResponse(response SandboxClearPostRes, w http.Respons
 
 		return nil
 	default:
-		return errors.Errorf(`/sandbox/clear: unexpected response type: %T`, response)
+		return errors.Errorf("/sandbox/clear"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -587,7 +587,7 @@ func encodeSandboxCurrenciesBalancePostResponse(response SandboxCurrenciesBalanc
 
 		return nil
 	default:
-		return errors.Errorf(`/sandbox/currencies/balance: unexpected response type: %T`, response)
+		return errors.Errorf("/sandbox/currencies/balance"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -618,7 +618,7 @@ func encodeSandboxPositionsBalancePostResponse(response SandboxPositionsBalanceP
 
 		return nil
 	default:
-		return errors.Errorf(`/sandbox/positions/balance: unexpected response type: %T`, response)
+		return errors.Errorf("/sandbox/positions/balance"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -649,7 +649,7 @@ func encodeSandboxRegisterPostResponse(response SandboxRegisterPostRes, w http.R
 
 		return nil
 	default:
-		return errors.Errorf(`/sandbox/register: unexpected response type: %T`, response)
+		return errors.Errorf("/sandbox/register"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -680,7 +680,7 @@ func encodeSandboxRemovePostResponse(response SandboxRemovePostRes, w http.Respo
 
 		return nil
 	default:
-		return errors.Errorf(`/sandbox/remove: unexpected response type: %T`, response)
+		return errors.Errorf("/sandbox/remove"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -711,6 +711,6 @@ func encodeUserAccountsGetResponse(response UserAccountsGetRes, w http.ResponseW
 
 		return nil
 	default:
-		return errors.Errorf(`/user/accounts: unexpected response type: %T`, response)
+		return errors.Errorf("/user/accounts"+`: unexpected response type: %T`, response)
 	}
 }

@@ -93,10 +93,10 @@ func decodeCachingParams(args [0]string, r *http.Request) (CachingParams, error)
 				params.Count = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: count: parse`)
+				return params, errors.Wrap(err, "query: count: parse")
 			}
 		} else {
-			return params, errors.New(`query: count: not specified`)
+			return params, errors.New("query: count: not specified")
 		}
 	}
 	return params, nil
@@ -131,10 +131,10 @@ func decodeQueriesParams(args [0]string, r *http.Request) (QueriesParams, error)
 				params.Queries = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: queries: parse`)
+				return params, errors.Wrap(err, "query: queries: parse")
 			}
 		} else {
-			return params, errors.New(`query: queries: not specified`)
+			return params, errors.New("query: queries: not specified")
 		}
 	}
 	return params, nil
@@ -169,10 +169,10 @@ func decodeUpdatesParams(args [0]string, r *http.Request) (UpdatesParams, error)
 				params.Queries = c
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: queries: parse`)
+				return params, errors.Wrap(err, "query: queries: parse")
 			}
 		} else {
-			return params, errors.New(`query: queries: not specified`)
+			return params, errors.New("query: queries: not specified")
 		}
 	}
 	return params, nil

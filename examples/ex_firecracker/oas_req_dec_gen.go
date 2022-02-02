@@ -65,8 +65,12 @@ var (
 )
 
 func decodeCreateSnapshotRequest(r *http.Request, span trace.Span) (req SnapshotCreateParams, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SnapshotCreateParams
 		buf := getBuf()
 		defer putBuf(buf)
@@ -74,9 +78,11 @@ func decodeCreateSnapshotRequest(r *http.Request, span trace.Span) (req Snapshot
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -86,7 +92,7 @@ func decodeCreateSnapshotRequest(r *http.Request, span trace.Span) (req Snapshot
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode CreateSnapshot:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -94,17 +100,21 @@ func decodeCreateSnapshotRequest(r *http.Request, span trace.Span) (req Snapshot
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate CreateSnapshot request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeCreateSyncActionRequest(r *http.Request, span trace.Span) (req InstanceActionInfo, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request InstanceActionInfo
 		buf := getBuf()
 		defer putBuf(buf)
@@ -112,9 +122,11 @@ func decodeCreateSyncActionRequest(r *http.Request, span trace.Span) (req Instan
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -124,7 +136,7 @@ func decodeCreateSyncActionRequest(r *http.Request, span trace.Span) (req Instan
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode CreateSyncAction:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -132,17 +144,21 @@ func decodeCreateSyncActionRequest(r *http.Request, span trace.Span) (req Instan
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate CreateSyncAction request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeLoadSnapshotRequest(r *http.Request, span trace.Span) (req SnapshotLoadParams, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SnapshotLoadParams
 		buf := getBuf()
 		defer putBuf(buf)
@@ -150,9 +166,11 @@ func decodeLoadSnapshotRequest(r *http.Request, span trace.Span) (req SnapshotLo
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -162,17 +180,21 @@ func decodeLoadSnapshotRequest(r *http.Request, span trace.Span) (req SnapshotLo
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode LoadSnapshot:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeMmdsConfigPutRequest(r *http.Request, span trace.Span) (req MmdsConfig, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request MmdsConfig
 		buf := getBuf()
 		defer putBuf(buf)
@@ -180,9 +202,11 @@ func decodeMmdsConfigPutRequest(r *http.Request, span trace.Span) (req MmdsConfi
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -192,20 +216,21 @@ func decodeMmdsConfigPutRequest(r *http.Request, span trace.Span) (req MmdsConfi
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode MmdsConfigPut:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeMmdsPatchRequest(r *http.Request, span trace.Span) (req OptMmdsPatchReq, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
+
 		var request OptMmdsPatchReq
 		buf := getBuf()
 		defer putBuf(buf)
@@ -213,9 +238,11 @@ func decodeMmdsPatchRequest(r *http.Request, span trace.Span) (req OptMmdsPatchR
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
 			return req, nil
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -226,20 +253,21 @@ func decodeMmdsPatchRequest(r *http.Request, span trace.Span) (req OptMmdsPatchR
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode MmdsPatch:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeMmdsPutRequest(r *http.Request, span trace.Span) (req OptMmdsPutReq, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
+
 		var request OptMmdsPutReq
 		buf := getBuf()
 		defer putBuf(buf)
@@ -247,9 +275,11 @@ func decodeMmdsPutRequest(r *http.Request, span trace.Span) (req OptMmdsPutReq, 
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
 			return req, nil
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -260,17 +290,21 @@ func decodeMmdsPutRequest(r *http.Request, span trace.Span) (req OptMmdsPutReq, 
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode MmdsPut:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePatchBalloonRequest(r *http.Request, span trace.Span) (req BalloonUpdate, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request BalloonUpdate
 		buf := getBuf()
 		defer putBuf(buf)
@@ -278,9 +312,11 @@ func decodePatchBalloonRequest(r *http.Request, span trace.Span) (req BalloonUpd
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -290,17 +326,21 @@ func decodePatchBalloonRequest(r *http.Request, span trace.Span) (req BalloonUpd
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PatchBalloon:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePatchBalloonStatsIntervalRequest(r *http.Request, span trace.Span) (req BalloonStatsUpdate, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request BalloonStatsUpdate
 		buf := getBuf()
 		defer putBuf(buf)
@@ -308,9 +348,11 @@ func decodePatchBalloonStatsIntervalRequest(r *http.Request, span trace.Span) (r
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -320,17 +362,21 @@ func decodePatchBalloonStatsIntervalRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PatchBalloonStatsInterval:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePatchGuestDriveByIDRequest(r *http.Request, span trace.Span) (req PartialDrive, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request PartialDrive
 		buf := getBuf()
 		defer putBuf(buf)
@@ -338,9 +384,11 @@ func decodePatchGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Par
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -350,7 +398,7 @@ func decodePatchGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Par
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PatchGuestDriveByID:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -358,17 +406,21 @@ func decodePatchGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Par
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate PatchGuestDriveByID request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Span) (req PartialNetworkInterface, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request PartialNetworkInterface
 		buf := getBuf()
 		defer putBuf(buf)
@@ -376,9 +428,11 @@ func decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Spa
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -388,7 +442,7 @@ func decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PatchGuestNetworkInterfaceByID:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -396,20 +450,21 @@ func decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate PatchGuestNetworkInterfaceByID request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePatchMachineConfigurationRequest(r *http.Request, span trace.Span) (req OptMachineConfiguration, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
+
 		var request OptMachineConfiguration
 		buf := getBuf()
 		defer putBuf(buf)
@@ -417,9 +472,11 @@ func decodePatchMachineConfigurationRequest(r *http.Request, span trace.Span) (r
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
 			return req, nil
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -430,7 +487,7 @@ func decodePatchMachineConfigurationRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PatchMachineConfiguration:application/json request")
 		}
 		if err := func() error {
 			if request.Set {
@@ -446,17 +503,21 @@ func decodePatchMachineConfigurationRequest(r *http.Request, span trace.Span) (r
 			return nil
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate PatchMachineConfiguration request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePatchVmRequest(r *http.Request, span trace.Span) (req VM, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request VM
 		buf := getBuf()
 		defer putBuf(buf)
@@ -464,9 +525,11 @@ func decodePatchVmRequest(r *http.Request, span trace.Span) (req VM, err error) 
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -476,7 +539,7 @@ func decodePatchVmRequest(r *http.Request, span trace.Span) (req VM, err error) 
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PatchVm:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -484,17 +547,21 @@ func decodePatchVmRequest(r *http.Request, span trace.Span) (req VM, err error) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate PatchVm request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePutBalloonRequest(r *http.Request, span trace.Span) (req Balloon, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request Balloon
 		buf := getBuf()
 		defer putBuf(buf)
@@ -502,9 +569,11 @@ func decodePutBalloonRequest(r *http.Request, span trace.Span) (req Balloon, err
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -514,17 +583,21 @@ func decodePutBalloonRequest(r *http.Request, span trace.Span) (req Balloon, err
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PutBalloon:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePutGuestBootSourceRequest(r *http.Request, span trace.Span) (req BootSource, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request BootSource
 		buf := getBuf()
 		defer putBuf(buf)
@@ -532,9 +605,11 @@ func decodePutGuestBootSourceRequest(r *http.Request, span trace.Span) (req Boot
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -544,17 +619,21 @@ func decodePutGuestBootSourceRequest(r *http.Request, span trace.Span) (req Boot
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PutGuestBootSource:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePutGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Drive, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request Drive
 		buf := getBuf()
 		defer putBuf(buf)
@@ -562,9 +641,11 @@ func decodePutGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Drive
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -574,7 +655,7 @@ func decodePutGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Drive
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PutGuestDriveByID:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -582,17 +663,21 @@ func decodePutGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Drive
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate PutGuestDriveByID request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePutGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Span) (req NetworkInterface, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request NetworkInterface
 		buf := getBuf()
 		defer putBuf(buf)
@@ -600,9 +685,11 @@ func decodePutGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Span)
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -612,7 +699,7 @@ func decodePutGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PutGuestNetworkInterfaceByID:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -620,17 +707,21 @@ func decodePutGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate PutGuestNetworkInterfaceByID request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePutGuestVsockRequest(r *http.Request, span trace.Span) (req Vsock, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request Vsock
 		buf := getBuf()
 		defer putBuf(buf)
@@ -638,9 +729,11 @@ func decodePutGuestVsockRequest(r *http.Request, span trace.Span) (req Vsock, er
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -650,7 +743,7 @@ func decodePutGuestVsockRequest(r *http.Request, span trace.Span) (req Vsock, er
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PutGuestVsock:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -658,17 +751,21 @@ func decodePutGuestVsockRequest(r *http.Request, span trace.Span) (req Vsock, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate PutGuestVsock request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePutLoggerRequest(r *http.Request, span trace.Span) (req Logger, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request Logger
 		buf := getBuf()
 		defer putBuf(buf)
@@ -676,9 +773,11 @@ func decodePutLoggerRequest(r *http.Request, span trace.Span) (req Logger, err e
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -688,7 +787,7 @@ func decodePutLoggerRequest(r *http.Request, span trace.Span) (req Logger, err e
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PutLogger:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -696,20 +795,21 @@ func decodePutLoggerRequest(r *http.Request, span trace.Span) (req Logger, err e
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate PutLogger request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePutMachineConfigurationRequest(r *http.Request, span trace.Span) (req OptMachineConfiguration, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
+
 		var request OptMachineConfiguration
 		buf := getBuf()
 		defer putBuf(buf)
@@ -717,9 +817,11 @@ func decodePutMachineConfigurationRequest(r *http.Request, span trace.Span) (req
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
 			return req, nil
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -730,7 +832,7 @@ func decodePutMachineConfigurationRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PutMachineConfiguration:application/json request")
 		}
 		if err := func() error {
 			if request.Set {
@@ -746,17 +848,21 @@ func decodePutMachineConfigurationRequest(r *http.Request, span trace.Span) (req
 			return nil
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate PutMachineConfiguration request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePutMetricsRequest(r *http.Request, span trace.Span) (req Metrics, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request Metrics
 		buf := getBuf()
 		defer putBuf(buf)
@@ -764,9 +870,11 @@ func decodePutMetricsRequest(r *http.Request, span trace.Span) (req Metrics, err
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -776,10 +884,10 @@ func decodePutMetricsRequest(r *http.Request, span trace.Span) (req Metrics, err
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PutMetrics:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }

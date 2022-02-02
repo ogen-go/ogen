@@ -68,8 +68,8 @@ var (
 //
 // GET /cached-worlds
 func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `Caching`,
-		trace.WithAttributes(otelogen.OperationID(`Caching`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "Caching",
+		trace.WithAttributes(otelogen.OperationID("Caching")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -97,8 +97,8 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 //
 // GET /db
 func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `DB`,
-		trace.WithAttributes(otelogen.OperationID(`DB`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "DB",
+		trace.WithAttributes(otelogen.OperationID("DB")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -120,8 +120,8 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 //
 // GET /json
 func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `JSON`,
-		trace.WithAttributes(otelogen.OperationID(`json`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "JSON",
+		trace.WithAttributes(otelogen.OperationID("json")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -143,8 +143,8 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 //
 // GET /queries
 func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `Queries`,
-		trace.WithAttributes(otelogen.OperationID(`Queries`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "Queries",
+		trace.WithAttributes(otelogen.OperationID("Queries")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -172,8 +172,8 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 //
 // GET /updates
 func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `Updates`,
-		trace.WithAttributes(otelogen.OperationID(`Updates`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "Updates",
+		trace.WithAttributes(otelogen.OperationID("Updates")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()

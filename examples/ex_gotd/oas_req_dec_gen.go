@@ -65,8 +65,12 @@ var (
 )
 
 func decodeAddStickerToSetRequest(r *http.Request, span trace.Span) (req AddStickerToSet, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request AddStickerToSet
 		buf := getBuf()
 		defer putBuf(buf)
@@ -74,9 +78,11 @@ func decodeAddStickerToSetRequest(r *http.Request, span trace.Span) (req AddStic
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -86,7 +92,7 @@ func decodeAddStickerToSetRequest(r *http.Request, span trace.Span) (req AddStic
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode AddStickerToSet:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -94,17 +100,21 @@ func decodeAddStickerToSetRequest(r *http.Request, span trace.Span) (req AddStic
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate AddStickerToSet request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Span) (req AnswerCallbackQuery, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request AnswerCallbackQuery
 		buf := getBuf()
 		defer putBuf(buf)
@@ -112,9 +122,11 @@ func decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Span) (req Ans
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -124,7 +136,7 @@ func decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Span) (req Ans
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode AnswerCallbackQuery:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -132,17 +144,21 @@ func decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Span) (req Ans
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate AnswerCallbackQuery request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span) (req AnswerInlineQuery, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request AnswerInlineQuery
 		buf := getBuf()
 		defer putBuf(buf)
@@ -150,9 +166,11 @@ func decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span) (req Answe
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -162,7 +180,7 @@ func decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span) (req Answe
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode AnswerInlineQuery:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -170,17 +188,21 @@ func decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span) (req Answe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate AnswerInlineQuery request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeAnswerPreCheckoutQueryRequest(r *http.Request, span trace.Span) (req AnswerPreCheckoutQuery, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request AnswerPreCheckoutQuery
 		buf := getBuf()
 		defer putBuf(buf)
@@ -188,9 +210,11 @@ func decodeAnswerPreCheckoutQueryRequest(r *http.Request, span trace.Span) (req 
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -200,17 +224,21 @@ func decodeAnswerPreCheckoutQueryRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode AnswerPreCheckoutQuery:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeAnswerShippingQueryRequest(r *http.Request, span trace.Span) (req AnswerShippingQuery, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request AnswerShippingQuery
 		buf := getBuf()
 		defer putBuf(buf)
@@ -218,9 +246,11 @@ func decodeAnswerShippingQueryRequest(r *http.Request, span trace.Span) (req Ans
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -230,7 +260,7 @@ func decodeAnswerShippingQueryRequest(r *http.Request, span trace.Span) (req Ans
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode AnswerShippingQuery:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -238,17 +268,21 @@ func decodeAnswerShippingQueryRequest(r *http.Request, span trace.Span) (req Ans
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate AnswerShippingQuery request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeApproveChatJoinRequestRequest(r *http.Request, span trace.Span) (req ApproveChatJoinRequest, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request ApproveChatJoinRequest
 		buf := getBuf()
 		defer putBuf(buf)
@@ -256,9 +290,11 @@ func decodeApproveChatJoinRequestRequest(r *http.Request, span trace.Span) (req 
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -268,17 +304,21 @@ func decodeApproveChatJoinRequestRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode ApproveChatJoinRequest:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeBanChatMemberRequest(r *http.Request, span trace.Span) (req BanChatMember, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request BanChatMember
 		buf := getBuf()
 		defer putBuf(buf)
@@ -286,9 +326,11 @@ func decodeBanChatMemberRequest(r *http.Request, span trace.Span) (req BanChatMe
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -298,17 +340,21 @@ func decodeBanChatMemberRequest(r *http.Request, span trace.Span) (req BanChatMe
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode BanChatMember:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeCopyMessageRequest(r *http.Request, span trace.Span) (req CopyMessage, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request CopyMessage
 		buf := getBuf()
 		defer putBuf(buf)
@@ -316,9 +362,11 @@ func decodeCopyMessageRequest(r *http.Request, span trace.Span) (req CopyMessage
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -328,7 +376,7 @@ func decodeCopyMessageRequest(r *http.Request, span trace.Span) (req CopyMessage
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode CopyMessage:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -336,17 +384,21 @@ func decodeCopyMessageRequest(r *http.Request, span trace.Span) (req CopyMessage
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate CopyMessage request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeCreateChatInviteLinkRequest(r *http.Request, span trace.Span) (req CreateChatInviteLink, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request CreateChatInviteLink
 		buf := getBuf()
 		defer putBuf(buf)
@@ -354,9 +406,11 @@ func decodeCreateChatInviteLinkRequest(r *http.Request, span trace.Span) (req Cr
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -366,7 +420,7 @@ func decodeCreateChatInviteLinkRequest(r *http.Request, span trace.Span) (req Cr
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode CreateChatInviteLink:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -374,17 +428,21 @@ func decodeCreateChatInviteLinkRequest(r *http.Request, span trace.Span) (req Cr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate CreateChatInviteLink request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeCreateNewStickerSetRequest(r *http.Request, span trace.Span) (req CreateNewStickerSet, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request CreateNewStickerSet
 		buf := getBuf()
 		defer putBuf(buf)
@@ -392,9 +450,11 @@ func decodeCreateNewStickerSetRequest(r *http.Request, span trace.Span) (req Cre
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -404,7 +464,7 @@ func decodeCreateNewStickerSetRequest(r *http.Request, span trace.Span) (req Cre
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode CreateNewStickerSet:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -412,17 +472,21 @@ func decodeCreateNewStickerSetRequest(r *http.Request, span trace.Span) (req Cre
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate CreateNewStickerSet request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeDeclineChatJoinRequestRequest(r *http.Request, span trace.Span) (req DeclineChatJoinRequest, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request DeclineChatJoinRequest
 		buf := getBuf()
 		defer putBuf(buf)
@@ -430,9 +494,11 @@ func decodeDeclineChatJoinRequestRequest(r *http.Request, span trace.Span) (req 
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -442,17 +508,21 @@ func decodeDeclineChatJoinRequestRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode DeclineChatJoinRequest:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeDeleteChatPhotoRequest(r *http.Request, span trace.Span) (req DeleteChatPhoto, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request DeleteChatPhoto
 		buf := getBuf()
 		defer putBuf(buf)
@@ -460,9 +530,11 @@ func decodeDeleteChatPhotoRequest(r *http.Request, span trace.Span) (req DeleteC
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -472,17 +544,21 @@ func decodeDeleteChatPhotoRequest(r *http.Request, span trace.Span) (req DeleteC
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode DeleteChatPhoto:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeDeleteChatStickerSetRequest(r *http.Request, span trace.Span) (req DeleteChatStickerSet, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request DeleteChatStickerSet
 		buf := getBuf()
 		defer putBuf(buf)
@@ -490,9 +566,11 @@ func decodeDeleteChatStickerSetRequest(r *http.Request, span trace.Span) (req De
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -502,17 +580,21 @@ func decodeDeleteChatStickerSetRequest(r *http.Request, span trace.Span) (req De
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode DeleteChatStickerSet:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeDeleteMessageRequest(r *http.Request, span trace.Span) (req DeleteMessage, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request DeleteMessage
 		buf := getBuf()
 		defer putBuf(buf)
@@ -520,9 +602,11 @@ func decodeDeleteMessageRequest(r *http.Request, span trace.Span) (req DeleteMes
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -532,17 +616,21 @@ func decodeDeleteMessageRequest(r *http.Request, span trace.Span) (req DeleteMes
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode DeleteMessage:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeDeleteMyCommandsRequest(r *http.Request, span trace.Span) (req DeleteMyCommands, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request DeleteMyCommands
 		buf := getBuf()
 		defer putBuf(buf)
@@ -550,9 +638,11 @@ func decodeDeleteMyCommandsRequest(r *http.Request, span trace.Span) (req Delete
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -562,17 +652,21 @@ func decodeDeleteMyCommandsRequest(r *http.Request, span trace.Span) (req Delete
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode DeleteMyCommands:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeDeleteStickerFromSetRequest(r *http.Request, span trace.Span) (req DeleteStickerFromSet, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request DeleteStickerFromSet
 		buf := getBuf()
 		defer putBuf(buf)
@@ -580,9 +674,11 @@ func decodeDeleteStickerFromSetRequest(r *http.Request, span trace.Span) (req De
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -592,17 +688,21 @@ func decodeDeleteStickerFromSetRequest(r *http.Request, span trace.Span) (req De
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode DeleteStickerFromSet:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeDeleteWebhookRequest(r *http.Request, span trace.Span) (req DeleteWebhook, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request DeleteWebhook
 		buf := getBuf()
 		defer putBuf(buf)
@@ -610,9 +710,11 @@ func decodeDeleteWebhookRequest(r *http.Request, span trace.Span) (req DeleteWeb
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -622,17 +724,21 @@ func decodeDeleteWebhookRequest(r *http.Request, span trace.Span) (req DeleteWeb
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode DeleteWebhook:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeEditChatInviteLinkRequest(r *http.Request, span trace.Span) (req EditChatInviteLink, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request EditChatInviteLink
 		buf := getBuf()
 		defer putBuf(buf)
@@ -640,9 +746,11 @@ func decodeEditChatInviteLinkRequest(r *http.Request, span trace.Span) (req Edit
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -652,7 +760,7 @@ func decodeEditChatInviteLinkRequest(r *http.Request, span trace.Span) (req Edit
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode EditChatInviteLink:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -660,17 +768,21 @@ func decodeEditChatInviteLinkRequest(r *http.Request, span trace.Span) (req Edit
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate EditChatInviteLink request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeEditMessageCaptionRequest(r *http.Request, span trace.Span) (req EditMessageCaption, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request EditMessageCaption
 		buf := getBuf()
 		defer putBuf(buf)
@@ -678,9 +790,11 @@ func decodeEditMessageCaptionRequest(r *http.Request, span trace.Span) (req Edit
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -690,7 +804,7 @@ func decodeEditMessageCaptionRequest(r *http.Request, span trace.Span) (req Edit
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode EditMessageCaption:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -698,17 +812,21 @@ func decodeEditMessageCaptionRequest(r *http.Request, span trace.Span) (req Edit
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate EditMessageCaption request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeEditMessageLiveLocationRequest(r *http.Request, span trace.Span) (req EditMessageLiveLocation, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request EditMessageLiveLocation
 		buf := getBuf()
 		defer putBuf(buf)
@@ -716,9 +834,11 @@ func decodeEditMessageLiveLocationRequest(r *http.Request, span trace.Span) (req
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -728,7 +848,7 @@ func decodeEditMessageLiveLocationRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode EditMessageLiveLocation:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -736,17 +856,21 @@ func decodeEditMessageLiveLocationRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate EditMessageLiveLocation request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeEditMessageMediaRequest(r *http.Request, span trace.Span) (req EditMessageMedia, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request EditMessageMedia
 		buf := getBuf()
 		defer putBuf(buf)
@@ -754,9 +878,11 @@ func decodeEditMessageMediaRequest(r *http.Request, span trace.Span) (req EditMe
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -766,7 +892,7 @@ func decodeEditMessageMediaRequest(r *http.Request, span trace.Span) (req EditMe
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode EditMessageMedia:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -774,17 +900,21 @@ func decodeEditMessageMediaRequest(r *http.Request, span trace.Span) (req EditMe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate EditMessageMedia request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeEditMessageReplyMarkupRequest(r *http.Request, span trace.Span) (req EditMessageReplyMarkup, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request EditMessageReplyMarkup
 		buf := getBuf()
 		defer putBuf(buf)
@@ -792,9 +922,11 @@ func decodeEditMessageReplyMarkupRequest(r *http.Request, span trace.Span) (req 
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -804,7 +936,7 @@ func decodeEditMessageReplyMarkupRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode EditMessageReplyMarkup:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -812,17 +944,21 @@ func decodeEditMessageReplyMarkupRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate EditMessageReplyMarkup request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeEditMessageTextRequest(r *http.Request, span trace.Span) (req EditMessageText, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request EditMessageText
 		buf := getBuf()
 		defer putBuf(buf)
@@ -830,9 +966,11 @@ func decodeEditMessageTextRequest(r *http.Request, span trace.Span) (req EditMes
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -842,7 +980,7 @@ func decodeEditMessageTextRequest(r *http.Request, span trace.Span) (req EditMes
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode EditMessageText:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -850,17 +988,21 @@ func decodeEditMessageTextRequest(r *http.Request, span trace.Span) (req EditMes
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate EditMessageText request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeExportChatInviteLinkRequest(r *http.Request, span trace.Span) (req ExportChatInviteLink, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request ExportChatInviteLink
 		buf := getBuf()
 		defer putBuf(buf)
@@ -868,9 +1010,11 @@ func decodeExportChatInviteLinkRequest(r *http.Request, span trace.Span) (req Ex
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -880,17 +1024,21 @@ func decodeExportChatInviteLinkRequest(r *http.Request, span trace.Span) (req Ex
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode ExportChatInviteLink:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeForwardMessageRequest(r *http.Request, span trace.Span) (req ForwardMessage, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request ForwardMessage
 		buf := getBuf()
 		defer putBuf(buf)
@@ -898,9 +1046,11 @@ func decodeForwardMessageRequest(r *http.Request, span trace.Span) (req ForwardM
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -910,17 +1060,21 @@ func decodeForwardMessageRequest(r *http.Request, span trace.Span) (req ForwardM
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode ForwardMessage:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeGetChatRequest(r *http.Request, span trace.Span) (req GetChat, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request GetChat
 		buf := getBuf()
 		defer putBuf(buf)
@@ -928,9 +1082,11 @@ func decodeGetChatRequest(r *http.Request, span trace.Span) (req GetChat, err er
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -940,17 +1096,21 @@ func decodeGetChatRequest(r *http.Request, span trace.Span) (req GetChat, err er
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode GetChat:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeGetChatAdministratorsRequest(r *http.Request, span trace.Span) (req GetChatAdministrators, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request GetChatAdministrators
 		buf := getBuf()
 		defer putBuf(buf)
@@ -958,9 +1118,11 @@ func decodeGetChatAdministratorsRequest(r *http.Request, span trace.Span) (req G
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -970,17 +1132,21 @@ func decodeGetChatAdministratorsRequest(r *http.Request, span trace.Span) (req G
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode GetChatAdministrators:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeGetChatMemberRequest(r *http.Request, span trace.Span) (req GetChatMember, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request GetChatMember
 		buf := getBuf()
 		defer putBuf(buf)
@@ -988,9 +1154,11 @@ func decodeGetChatMemberRequest(r *http.Request, span trace.Span) (req GetChatMe
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1000,17 +1168,21 @@ func decodeGetChatMemberRequest(r *http.Request, span trace.Span) (req GetChatMe
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode GetChatMember:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeGetChatMemberCountRequest(r *http.Request, span trace.Span) (req GetChatMemberCount, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request GetChatMemberCount
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1018,9 +1190,11 @@ func decodeGetChatMemberCountRequest(r *http.Request, span trace.Span) (req GetC
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1030,17 +1204,21 @@ func decodeGetChatMemberCountRequest(r *http.Request, span trace.Span) (req GetC
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode GetChatMemberCount:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeGetFileRequest(r *http.Request, span trace.Span) (req GetFile, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request GetFile
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1048,9 +1226,11 @@ func decodeGetFileRequest(r *http.Request, span trace.Span) (req GetFile, err er
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1060,17 +1240,21 @@ func decodeGetFileRequest(r *http.Request, span trace.Span) (req GetFile, err er
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode GetFile:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeGetGameHighScoresRequest(r *http.Request, span trace.Span) (req GetGameHighScores, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request GetGameHighScores
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1078,9 +1262,11 @@ func decodeGetGameHighScoresRequest(r *http.Request, span trace.Span) (req GetGa
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1090,17 +1276,21 @@ func decodeGetGameHighScoresRequest(r *http.Request, span trace.Span) (req GetGa
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode GetGameHighScores:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeGetMyCommandsRequest(r *http.Request, span trace.Span) (req GetMyCommands, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request GetMyCommands
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1108,9 +1298,11 @@ func decodeGetMyCommandsRequest(r *http.Request, span trace.Span) (req GetMyComm
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1120,17 +1312,21 @@ func decodeGetMyCommandsRequest(r *http.Request, span trace.Span) (req GetMyComm
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode GetMyCommands:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeGetStickerSetRequest(r *http.Request, span trace.Span) (req GetStickerSet, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request GetStickerSet
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1138,9 +1334,11 @@ func decodeGetStickerSetRequest(r *http.Request, span trace.Span) (req GetSticke
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1150,17 +1348,21 @@ func decodeGetStickerSetRequest(r *http.Request, span trace.Span) (req GetSticke
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode GetStickerSet:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req GetUpdates, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request GetUpdates
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1168,9 +1370,11 @@ func decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req GetUpdates, 
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1180,7 +1384,7 @@ func decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req GetUpdates, 
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode GetUpdates:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1188,17 +1392,21 @@ func decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req GetUpdates, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate GetUpdates request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeGetUserProfilePhotosRequest(r *http.Request, span trace.Span) (req GetUserProfilePhotos, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request GetUserProfilePhotos
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1206,9 +1414,11 @@ func decodeGetUserProfilePhotosRequest(r *http.Request, span trace.Span) (req Ge
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1218,7 +1428,7 @@ func decodeGetUserProfilePhotosRequest(r *http.Request, span trace.Span) (req Ge
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode GetUserProfilePhotos:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1226,17 +1436,21 @@ func decodeGetUserProfilePhotosRequest(r *http.Request, span trace.Span) (req Ge
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate GetUserProfilePhotos request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeLeaveChatRequest(r *http.Request, span trace.Span) (req LeaveChat, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request LeaveChat
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1244,9 +1458,11 @@ func decodeLeaveChatRequest(r *http.Request, span trace.Span) (req LeaveChat, er
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1256,17 +1472,21 @@ func decodeLeaveChatRequest(r *http.Request, span trace.Span) (req LeaveChat, er
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode LeaveChat:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePinChatMessageRequest(r *http.Request, span trace.Span) (req PinChatMessage, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request PinChatMessage
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1274,9 +1494,11 @@ func decodePinChatMessageRequest(r *http.Request, span trace.Span) (req PinChatM
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1286,17 +1508,21 @@ func decodePinChatMessageRequest(r *http.Request, span trace.Span) (req PinChatM
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PinChatMessage:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodePromoteChatMemberRequest(r *http.Request, span trace.Span) (req PromoteChatMember, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request PromoteChatMember
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1304,9 +1530,11 @@ func decodePromoteChatMemberRequest(r *http.Request, span trace.Span) (req Promo
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1316,17 +1544,21 @@ func decodePromoteChatMemberRequest(r *http.Request, span trace.Span) (req Promo
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode PromoteChatMember:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeRestrictChatMemberRequest(r *http.Request, span trace.Span) (req RestrictChatMember, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request RestrictChatMember
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1334,9 +1566,11 @@ func decodeRestrictChatMemberRequest(r *http.Request, span trace.Span) (req Rest
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1346,17 +1580,21 @@ func decodeRestrictChatMemberRequest(r *http.Request, span trace.Span) (req Rest
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode RestrictChatMember:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeRevokeChatInviteLinkRequest(r *http.Request, span trace.Span) (req RevokeChatInviteLink, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request RevokeChatInviteLink
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1364,9 +1602,11 @@ func decodeRevokeChatInviteLinkRequest(r *http.Request, span trace.Span) (req Re
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1376,17 +1616,21 @@ func decodeRevokeChatInviteLinkRequest(r *http.Request, span trace.Span) (req Re
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode RevokeChatInviteLink:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSendAnimationRequest(r *http.Request, span trace.Span) (req SendAnimation, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SendAnimation
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1394,9 +1638,11 @@ func decodeSendAnimationRequest(r *http.Request, span trace.Span) (req SendAnima
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1406,7 +1652,7 @@ func decodeSendAnimationRequest(r *http.Request, span trace.Span) (req SendAnima
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SendAnimation:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1414,17 +1660,21 @@ func decodeSendAnimationRequest(r *http.Request, span trace.Span) (req SendAnima
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SendAnimation request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSendAudioRequest(r *http.Request, span trace.Span) (req SendAudio, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SendAudio
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1432,9 +1682,11 @@ func decodeSendAudioRequest(r *http.Request, span trace.Span) (req SendAudio, er
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1444,7 +1696,7 @@ func decodeSendAudioRequest(r *http.Request, span trace.Span) (req SendAudio, er
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SendAudio:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1452,17 +1704,21 @@ func decodeSendAudioRequest(r *http.Request, span trace.Span) (req SendAudio, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SendAudio request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSendChatActionRequest(r *http.Request, span trace.Span) (req SendChatAction, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SendChatAction
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1470,9 +1726,11 @@ func decodeSendChatActionRequest(r *http.Request, span trace.Span) (req SendChat
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1482,17 +1740,21 @@ func decodeSendChatActionRequest(r *http.Request, span trace.Span) (req SendChat
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SendChatAction:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSendContactRequest(r *http.Request, span trace.Span) (req SendContact, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SendContact
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1500,9 +1762,11 @@ func decodeSendContactRequest(r *http.Request, span trace.Span) (req SendContact
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1512,7 +1776,7 @@ func decodeSendContactRequest(r *http.Request, span trace.Span) (req SendContact
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SendContact:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1520,17 +1784,21 @@ func decodeSendContactRequest(r *http.Request, span trace.Span) (req SendContact
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SendContact request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSendDiceRequest(r *http.Request, span trace.Span) (req SendDice, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SendDice
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1538,9 +1806,11 @@ func decodeSendDiceRequest(r *http.Request, span trace.Span) (req SendDice, err 
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1550,7 +1820,7 @@ func decodeSendDiceRequest(r *http.Request, span trace.Span) (req SendDice, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SendDice:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1558,17 +1828,21 @@ func decodeSendDiceRequest(r *http.Request, span trace.Span) (req SendDice, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SendDice request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSendDocumentRequest(r *http.Request, span trace.Span) (req SendDocument, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SendDocument
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1576,9 +1850,11 @@ func decodeSendDocumentRequest(r *http.Request, span trace.Span) (req SendDocume
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1588,7 +1864,7 @@ func decodeSendDocumentRequest(r *http.Request, span trace.Span) (req SendDocume
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SendDocument:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1596,17 +1872,21 @@ func decodeSendDocumentRequest(r *http.Request, span trace.Span) (req SendDocume
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SendDocument request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSendGameRequest(r *http.Request, span trace.Span) (req SendGame, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SendGame
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1614,9 +1894,11 @@ func decodeSendGameRequest(r *http.Request, span trace.Span) (req SendGame, err 
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1626,7 +1908,7 @@ func decodeSendGameRequest(r *http.Request, span trace.Span) (req SendGame, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SendGame:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1634,17 +1916,21 @@ func decodeSendGameRequest(r *http.Request, span trace.Span) (req SendGame, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SendGame request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSendInvoiceRequest(r *http.Request, span trace.Span) (req SendInvoice, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SendInvoice
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1652,9 +1938,11 @@ func decodeSendInvoiceRequest(r *http.Request, span trace.Span) (req SendInvoice
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1664,7 +1952,7 @@ func decodeSendInvoiceRequest(r *http.Request, span trace.Span) (req SendInvoice
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SendInvoice:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1672,17 +1960,21 @@ func decodeSendInvoiceRequest(r *http.Request, span trace.Span) (req SendInvoice
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SendInvoice request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSendLocationRequest(r *http.Request, span trace.Span) (req SendLocation, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SendLocation
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1690,9 +1982,11 @@ func decodeSendLocationRequest(r *http.Request, span trace.Span) (req SendLocati
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1702,7 +1996,7 @@ func decodeSendLocationRequest(r *http.Request, span trace.Span) (req SendLocati
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SendLocation:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1710,17 +2004,21 @@ func decodeSendLocationRequest(r *http.Request, span trace.Span) (req SendLocati
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SendLocation request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (req SendMediaGroup, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SendMediaGroup
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1728,9 +2026,11 @@ func decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (req SendMedi
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1740,7 +2040,7 @@ func decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (req SendMedi
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SendMediaGroup:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1748,17 +2048,21 @@ func decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (req SendMedi
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SendMediaGroup request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSendMessageRequest(r *http.Request, span trace.Span) (req SendMessage, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SendMessage
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1766,9 +2070,11 @@ func decodeSendMessageRequest(r *http.Request, span trace.Span) (req SendMessage
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1778,7 +2084,7 @@ func decodeSendMessageRequest(r *http.Request, span trace.Span) (req SendMessage
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SendMessage:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1786,17 +2092,21 @@ func decodeSendMessageRequest(r *http.Request, span trace.Span) (req SendMessage
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SendMessage request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSendPhotoRequest(r *http.Request, span trace.Span) (req SendPhoto, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SendPhoto
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1804,9 +2114,11 @@ func decodeSendPhotoRequest(r *http.Request, span trace.Span) (req SendPhoto, er
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1816,7 +2128,7 @@ func decodeSendPhotoRequest(r *http.Request, span trace.Span) (req SendPhoto, er
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SendPhoto:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1824,17 +2136,21 @@ func decodeSendPhotoRequest(r *http.Request, span trace.Span) (req SendPhoto, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SendPhoto request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSendPollRequest(r *http.Request, span trace.Span) (req SendPoll, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SendPoll
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1842,9 +2158,11 @@ func decodeSendPollRequest(r *http.Request, span trace.Span) (req SendPoll, err 
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1854,7 +2172,7 @@ func decodeSendPollRequest(r *http.Request, span trace.Span) (req SendPoll, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SendPoll:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1862,17 +2180,21 @@ func decodeSendPollRequest(r *http.Request, span trace.Span) (req SendPoll, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SendPoll request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSendStickerRequest(r *http.Request, span trace.Span) (req SendSticker, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SendSticker
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1880,9 +2202,11 @@ func decodeSendStickerRequest(r *http.Request, span trace.Span) (req SendSticker
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1892,7 +2216,7 @@ func decodeSendStickerRequest(r *http.Request, span trace.Span) (req SendSticker
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SendSticker:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1900,17 +2224,21 @@ func decodeSendStickerRequest(r *http.Request, span trace.Span) (req SendSticker
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SendSticker request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSendVenueRequest(r *http.Request, span trace.Span) (req SendVenue, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SendVenue
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1918,9 +2246,11 @@ func decodeSendVenueRequest(r *http.Request, span trace.Span) (req SendVenue, er
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1930,7 +2260,7 @@ func decodeSendVenueRequest(r *http.Request, span trace.Span) (req SendVenue, er
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SendVenue:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1938,17 +2268,21 @@ func decodeSendVenueRequest(r *http.Request, span trace.Span) (req SendVenue, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SendVenue request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSendVideoRequest(r *http.Request, span trace.Span) (req SendVideo, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SendVideo
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1956,9 +2290,11 @@ func decodeSendVideoRequest(r *http.Request, span trace.Span) (req SendVideo, er
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -1968,7 +2304,7 @@ func decodeSendVideoRequest(r *http.Request, span trace.Span) (req SendVideo, er
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SendVideo:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1976,17 +2312,21 @@ func decodeSendVideoRequest(r *http.Request, span trace.Span) (req SendVideo, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SendVideo request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (req SendVideoNote, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SendVideoNote
 		buf := getBuf()
 		defer putBuf(buf)
@@ -1994,9 +2334,11 @@ func decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (req SendVideo
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2006,7 +2348,7 @@ func decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (req SendVideo
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SendVideoNote:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2014,17 +2356,21 @@ func decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (req SendVideo
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SendVideoNote request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSendVoiceRequest(r *http.Request, span trace.Span) (req SendVoice, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SendVoice
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2032,9 +2378,11 @@ func decodeSendVoiceRequest(r *http.Request, span trace.Span) (req SendVoice, er
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2044,7 +2392,7 @@ func decodeSendVoiceRequest(r *http.Request, span trace.Span) (req SendVoice, er
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SendVoice:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2052,17 +2400,21 @@ func decodeSendVoiceRequest(r *http.Request, span trace.Span) (req SendVoice, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SendVoice request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSetChatAdministratorCustomTitleRequest(r *http.Request, span trace.Span) (req SetChatAdministratorCustomTitle, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SetChatAdministratorCustomTitle
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2070,9 +2422,11 @@ func decodeSetChatAdministratorCustomTitleRequest(r *http.Request, span trace.Sp
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2082,7 +2436,7 @@ func decodeSetChatAdministratorCustomTitleRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SetChatAdministratorCustomTitle:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2090,17 +2444,21 @@ func decodeSetChatAdministratorCustomTitleRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SetChatAdministratorCustomTitle request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSetChatDescriptionRequest(r *http.Request, span trace.Span) (req SetChatDescription, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SetChatDescription
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2108,9 +2466,11 @@ func decodeSetChatDescriptionRequest(r *http.Request, span trace.Span) (req SetC
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2120,7 +2480,7 @@ func decodeSetChatDescriptionRequest(r *http.Request, span trace.Span) (req SetC
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SetChatDescription:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2128,17 +2488,21 @@ func decodeSetChatDescriptionRequest(r *http.Request, span trace.Span) (req SetC
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SetChatDescription request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSetChatPermissionsRequest(r *http.Request, span trace.Span) (req SetChatPermissions, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SetChatPermissions
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2146,9 +2510,11 @@ func decodeSetChatPermissionsRequest(r *http.Request, span trace.Span) (req SetC
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2158,17 +2524,21 @@ func decodeSetChatPermissionsRequest(r *http.Request, span trace.Span) (req SetC
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SetChatPermissions:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSetChatPhotoRequest(r *http.Request, span trace.Span) (req SetChatPhoto, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SetChatPhoto
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2176,9 +2546,11 @@ func decodeSetChatPhotoRequest(r *http.Request, span trace.Span) (req SetChatPho
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2188,17 +2560,21 @@ func decodeSetChatPhotoRequest(r *http.Request, span trace.Span) (req SetChatPho
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SetChatPhoto:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSetChatStickerSetRequest(r *http.Request, span trace.Span) (req SetChatStickerSet, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SetChatStickerSet
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2206,9 +2582,11 @@ func decodeSetChatStickerSetRequest(r *http.Request, span trace.Span) (req SetCh
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2218,17 +2596,21 @@ func decodeSetChatStickerSetRequest(r *http.Request, span trace.Span) (req SetCh
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SetChatStickerSet:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSetChatTitleRequest(r *http.Request, span trace.Span) (req SetChatTitle, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SetChatTitle
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2236,9 +2618,11 @@ func decodeSetChatTitleRequest(r *http.Request, span trace.Span) (req SetChatTit
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2248,7 +2632,7 @@ func decodeSetChatTitleRequest(r *http.Request, span trace.Span) (req SetChatTit
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SetChatTitle:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2256,17 +2640,21 @@ func decodeSetChatTitleRequest(r *http.Request, span trace.Span) (req SetChatTit
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SetChatTitle request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSetGameScoreRequest(r *http.Request, span trace.Span) (req SetGameScore, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SetGameScore
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2274,9 +2662,11 @@ func decodeSetGameScoreRequest(r *http.Request, span trace.Span) (req SetGameSco
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2286,17 +2676,21 @@ func decodeSetGameScoreRequest(r *http.Request, span trace.Span) (req SetGameSco
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SetGameScore:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (req SetMyCommands, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SetMyCommands
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2304,9 +2698,11 @@ func decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (req SetMyComm
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2316,7 +2712,7 @@ func decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (req SetMyComm
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SetMyCommands:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2324,17 +2720,21 @@ func decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (req SetMyComm
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SetMyCommands request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSetPassportDataErrorsRequest(r *http.Request, span trace.Span) (req SetPassportDataErrors, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SetPassportDataErrors
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2342,9 +2742,11 @@ func decodeSetPassportDataErrorsRequest(r *http.Request, span trace.Span) (req S
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2354,7 +2756,7 @@ func decodeSetPassportDataErrorsRequest(r *http.Request, span trace.Span) (req S
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SetPassportDataErrors:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2362,17 +2764,21 @@ func decodeSetPassportDataErrorsRequest(r *http.Request, span trace.Span) (req S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate SetPassportDataErrors request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSetStickerPositionInSetRequest(r *http.Request, span trace.Span) (req SetStickerPositionInSet, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SetStickerPositionInSet
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2380,9 +2786,11 @@ func decodeSetStickerPositionInSetRequest(r *http.Request, span trace.Span) (req
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2392,17 +2800,21 @@ func decodeSetStickerPositionInSetRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SetStickerPositionInSet:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSetStickerSetThumbRequest(r *http.Request, span trace.Span) (req SetStickerSetThumb, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SetStickerSetThumb
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2410,9 +2822,11 @@ func decodeSetStickerSetThumbRequest(r *http.Request, span trace.Span) (req SetS
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2422,17 +2836,21 @@ func decodeSetStickerSetThumbRequest(r *http.Request, span trace.Span) (req SetS
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SetStickerSetThumb:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeSetWebhookRequest(r *http.Request, span trace.Span) (req SetWebhook, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request SetWebhook
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2440,9 +2858,11 @@ func decodeSetWebhookRequest(r *http.Request, span trace.Span) (req SetWebhook, 
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2452,17 +2872,21 @@ func decodeSetWebhookRequest(r *http.Request, span trace.Span) (req SetWebhook, 
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode SetWebhook:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeStopMessageLiveLocationRequest(r *http.Request, span trace.Span) (req StopMessageLiveLocation, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request StopMessageLiveLocation
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2470,9 +2894,11 @@ func decodeStopMessageLiveLocationRequest(r *http.Request, span trace.Span) (req
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2482,7 +2908,7 @@ func decodeStopMessageLiveLocationRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode StopMessageLiveLocation:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2490,17 +2916,21 @@ func decodeStopMessageLiveLocationRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate StopMessageLiveLocation request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeStopPollRequest(r *http.Request, span trace.Span) (req StopPoll, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request StopPoll
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2508,9 +2938,11 @@ func decodeStopPollRequest(r *http.Request, span trace.Span) (req StopPoll, err 
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2520,7 +2952,7 @@ func decodeStopPollRequest(r *http.Request, span trace.Span) (req StopPoll, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode StopPoll:application/json request")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2528,17 +2960,21 @@ func decodeStopPollRequest(r *http.Request, span trace.Span) (req StopPoll, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate")
+			return req, errors.Wrap(err, "validate StopPoll request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeUnbanChatMemberRequest(r *http.Request, span trace.Span) (req UnbanChatMember, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request UnbanChatMember
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2546,9 +2982,11 @@ func decodeUnbanChatMemberRequest(r *http.Request, span trace.Span) (req UnbanCh
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2558,17 +2996,21 @@ func decodeUnbanChatMemberRequest(r *http.Request, span trace.Span) (req UnbanCh
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode UnbanChatMember:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeUnpinAllChatMessagesRequest(r *http.Request, span trace.Span) (req UnpinAllChatMessages, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request UnpinAllChatMessages
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2576,9 +3018,11 @@ func decodeUnpinAllChatMessagesRequest(r *http.Request, span trace.Span) (req Un
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2588,17 +3032,21 @@ func decodeUnpinAllChatMessagesRequest(r *http.Request, span trace.Span) (req Un
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode UnpinAllChatMessages:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeUnpinChatMessageRequest(r *http.Request, span trace.Span) (req UnpinChatMessage, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request UnpinChatMessage
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2606,9 +3054,11 @@ func decodeUnpinChatMessageRequest(r *http.Request, span trace.Span) (req UnpinC
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2618,17 +3068,21 @@ func decodeUnpinChatMessageRequest(r *http.Request, span trace.Span) (req UnpinC
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode UnpinChatMessage:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 
 func decodeUploadStickerFileRequest(r *http.Request, span trace.Span) (req UploadStickerFile, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
 		var request UploadStickerFile
 		buf := getBuf()
 		defer putBuf(buf)
@@ -2636,9 +3090,11 @@ func decodeUploadStickerFileRequest(r *http.Request, span trace.Span) (req Uploa
 		if err != nil {
 			return req, err
 		}
+
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
+
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
@@ -2648,10 +3104,10 @@ func decodeUploadStickerFileRequest(r *http.Request, span trace.Span) (req Uploa
 			}
 			return nil
 		}(); err != nil {
-			return req, err
+			return req, errors.Wrap(err, "decode UploadStickerFile:application/json request")
 		}
 		return request, nil
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }

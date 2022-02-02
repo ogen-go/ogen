@@ -68,8 +68,8 @@ var (
 //
 // POST /addStickerToSet
 func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `AddStickerToSet`,
-		trace.WithAttributes(otelogen.OperationID(`addStickerToSet`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "AddStickerToSet",
+		trace.WithAttributes(otelogen.OperationID("addStickerToSet")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -102,8 +102,8 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 //
 // POST /answerCallbackQuery
 func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `AnswerCallbackQuery`,
-		trace.WithAttributes(otelogen.OperationID(`answerCallbackQuery`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "AnswerCallbackQuery",
+		trace.WithAttributes(otelogen.OperationID("answerCallbackQuery")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -136,8 +136,8 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 //
 // POST /answerInlineQuery
 func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `AnswerInlineQuery`,
-		trace.WithAttributes(otelogen.OperationID(`answerInlineQuery`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "AnswerInlineQuery",
+		trace.WithAttributes(otelogen.OperationID("answerInlineQuery")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -170,8 +170,8 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 //
 // POST /answerPreCheckoutQuery
 func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `AnswerPreCheckoutQuery`,
-		trace.WithAttributes(otelogen.OperationID(`answerPreCheckoutQuery`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "AnswerPreCheckoutQuery",
+		trace.WithAttributes(otelogen.OperationID("answerPreCheckoutQuery")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -204,8 +204,8 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 //
 // POST /answerShippingQuery
 func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `AnswerShippingQuery`,
-		trace.WithAttributes(otelogen.OperationID(`answerShippingQuery`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "AnswerShippingQuery",
+		trace.WithAttributes(otelogen.OperationID("answerShippingQuery")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -238,8 +238,8 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 //
 // POST /approveChatJoinRequest
 func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `ApproveChatJoinRequest`,
-		trace.WithAttributes(otelogen.OperationID(`approveChatJoinRequest`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ApproveChatJoinRequest",
+		trace.WithAttributes(otelogen.OperationID("approveChatJoinRequest")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -272,8 +272,8 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 //
 // POST /banChatMember
 func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `BanChatMember`,
-		trace.WithAttributes(otelogen.OperationID(`banChatMember`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "BanChatMember",
+		trace.WithAttributes(otelogen.OperationID("banChatMember")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -306,8 +306,8 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 //
 // POST /copyMessage
 func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `CopyMessage`,
-		trace.WithAttributes(otelogen.OperationID(`copyMessage`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "CopyMessage",
+		trace.WithAttributes(otelogen.OperationID("copyMessage")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -340,8 +340,8 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 //
 // POST /createChatInviteLink
 func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `CreateChatInviteLink`,
-		trace.WithAttributes(otelogen.OperationID(`createChatInviteLink`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateChatInviteLink",
+		trace.WithAttributes(otelogen.OperationID("createChatInviteLink")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -374,8 +374,8 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 //
 // POST /createNewStickerSet
 func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `CreateNewStickerSet`,
-		trace.WithAttributes(otelogen.OperationID(`createNewStickerSet`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateNewStickerSet",
+		trace.WithAttributes(otelogen.OperationID("createNewStickerSet")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -408,8 +408,8 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 //
 // POST /declineChatJoinRequest
 func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `DeclineChatJoinRequest`,
-		trace.WithAttributes(otelogen.OperationID(`declineChatJoinRequest`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeclineChatJoinRequest",
+		trace.WithAttributes(otelogen.OperationID("declineChatJoinRequest")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -442,8 +442,8 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 //
 // POST /deleteChatPhoto
 func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `DeleteChatPhoto`,
-		trace.WithAttributes(otelogen.OperationID(`deleteChatPhoto`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeleteChatPhoto",
+		trace.WithAttributes(otelogen.OperationID("deleteChatPhoto")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -476,8 +476,8 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 //
 // POST /deleteChatStickerSet
 func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `DeleteChatStickerSet`,
-		trace.WithAttributes(otelogen.OperationID(`deleteChatStickerSet`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeleteChatStickerSet",
+		trace.WithAttributes(otelogen.OperationID("deleteChatStickerSet")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -510,8 +510,8 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 //
 // POST /deleteMessage
 func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `DeleteMessage`,
-		trace.WithAttributes(otelogen.OperationID(`deleteMessage`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeleteMessage",
+		trace.WithAttributes(otelogen.OperationID("deleteMessage")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -544,8 +544,8 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 //
 // POST /deleteMyCommands
 func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `DeleteMyCommands`,
-		trace.WithAttributes(otelogen.OperationID(`deleteMyCommands`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeleteMyCommands",
+		trace.WithAttributes(otelogen.OperationID("deleteMyCommands")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -578,8 +578,8 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 //
 // POST /deleteStickerFromSet
 func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `DeleteStickerFromSet`,
-		trace.WithAttributes(otelogen.OperationID(`deleteStickerFromSet`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeleteStickerFromSet",
+		trace.WithAttributes(otelogen.OperationID("deleteStickerFromSet")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -612,8 +612,8 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 //
 // POST /deleteWebhook
 func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `DeleteWebhook`,
-		trace.WithAttributes(otelogen.OperationID(`deleteWebhook`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeleteWebhook",
+		trace.WithAttributes(otelogen.OperationID("deleteWebhook")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -646,8 +646,8 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 //
 // POST /editChatInviteLink
 func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `EditChatInviteLink`,
-		trace.WithAttributes(otelogen.OperationID(`editChatInviteLink`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "EditChatInviteLink",
+		trace.WithAttributes(otelogen.OperationID("editChatInviteLink")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -680,8 +680,8 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 //
 // POST /editMessageCaption
 func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `EditMessageCaption`,
-		trace.WithAttributes(otelogen.OperationID(`editMessageCaption`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "EditMessageCaption",
+		trace.WithAttributes(otelogen.OperationID("editMessageCaption")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -714,8 +714,8 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 //
 // POST /editMessageLiveLocation
 func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `EditMessageLiveLocation`,
-		trace.WithAttributes(otelogen.OperationID(`editMessageLiveLocation`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "EditMessageLiveLocation",
+		trace.WithAttributes(otelogen.OperationID("editMessageLiveLocation")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -748,8 +748,8 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 //
 // POST /editMessageMedia
 func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `EditMessageMedia`,
-		trace.WithAttributes(otelogen.OperationID(`editMessageMedia`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "EditMessageMedia",
+		trace.WithAttributes(otelogen.OperationID("editMessageMedia")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -782,8 +782,8 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 //
 // POST /editMessageReplyMarkup
 func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `EditMessageReplyMarkup`,
-		trace.WithAttributes(otelogen.OperationID(`editMessageReplyMarkup`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "EditMessageReplyMarkup",
+		trace.WithAttributes(otelogen.OperationID("editMessageReplyMarkup")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -816,8 +816,8 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 //
 // POST /editMessageText
 func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `EditMessageText`,
-		trace.WithAttributes(otelogen.OperationID(`editMessageText`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "EditMessageText",
+		trace.WithAttributes(otelogen.OperationID("editMessageText")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -850,8 +850,8 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 //
 // POST /exportChatInviteLink
 func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `ExportChatInviteLink`,
-		trace.WithAttributes(otelogen.OperationID(`exportChatInviteLink`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ExportChatInviteLink",
+		trace.WithAttributes(otelogen.OperationID("exportChatInviteLink")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -884,8 +884,8 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 //
 // POST /forwardMessage
 func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `ForwardMessage`,
-		trace.WithAttributes(otelogen.OperationID(`forwardMessage`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ForwardMessage",
+		trace.WithAttributes(otelogen.OperationID("forwardMessage")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -918,8 +918,8 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 //
 // POST /getChat
 func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetChat`,
-		trace.WithAttributes(otelogen.OperationID(`getChat`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetChat",
+		trace.WithAttributes(otelogen.OperationID("getChat")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -952,8 +952,8 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 //
 // POST /getChatAdministrators
 func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetChatAdministrators`,
-		trace.WithAttributes(otelogen.OperationID(`getChatAdministrators`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetChatAdministrators",
+		trace.WithAttributes(otelogen.OperationID("getChatAdministrators")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -986,8 +986,8 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 //
 // POST /getChatMember
 func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetChatMember`,
-		trace.WithAttributes(otelogen.OperationID(`getChatMember`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetChatMember",
+		trace.WithAttributes(otelogen.OperationID("getChatMember")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1020,8 +1020,8 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 //
 // POST /getChatMemberCount
 func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetChatMemberCount`,
-		trace.WithAttributes(otelogen.OperationID(`getChatMemberCount`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetChatMemberCount",
+		trace.WithAttributes(otelogen.OperationID("getChatMemberCount")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1054,8 +1054,8 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 //
 // POST /getFile
 func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetFile`,
-		trace.WithAttributes(otelogen.OperationID(`getFile`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetFile",
+		trace.WithAttributes(otelogen.OperationID("getFile")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1088,8 +1088,8 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 //
 // POST /getGameHighScores
 func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetGameHighScores`,
-		trace.WithAttributes(otelogen.OperationID(`getGameHighScores`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetGameHighScores",
+		trace.WithAttributes(otelogen.OperationID("getGameHighScores")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1122,8 +1122,8 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 //
 // POST /getMe
 func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetMe`,
-		trace.WithAttributes(otelogen.OperationID(`getMe`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetMe",
+		trace.WithAttributes(otelogen.OperationID("getMe")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1150,8 +1150,8 @@ func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *ht
 //
 // POST /getMyCommands
 func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetMyCommands`,
-		trace.WithAttributes(otelogen.OperationID(`getMyCommands`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetMyCommands",
+		trace.WithAttributes(otelogen.OperationID("getMyCommands")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1184,8 +1184,8 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 //
 // POST /getStickerSet
 func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetStickerSet`,
-		trace.WithAttributes(otelogen.OperationID(`getStickerSet`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetStickerSet",
+		trace.WithAttributes(otelogen.OperationID("getStickerSet")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1218,8 +1218,8 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 //
 // POST /getUpdates
 func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetUpdates`,
-		trace.WithAttributes(otelogen.OperationID(`getUpdates`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetUpdates",
+		trace.WithAttributes(otelogen.OperationID("getUpdates")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1252,8 +1252,8 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 //
 // POST /getUserProfilePhotos
 func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetUserProfilePhotos`,
-		trace.WithAttributes(otelogen.OperationID(`getUserProfilePhotos`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetUserProfilePhotos",
+		trace.WithAttributes(otelogen.OperationID("getUserProfilePhotos")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1286,8 +1286,8 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 //
 // POST /leaveChat
 func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `LeaveChat`,
-		trace.WithAttributes(otelogen.OperationID(`leaveChat`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "LeaveChat",
+		trace.WithAttributes(otelogen.OperationID("leaveChat")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1320,8 +1320,8 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 //
 // POST /pinChatMessage
 func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `PinChatMessage`,
-		trace.WithAttributes(otelogen.OperationID(`pinChatMessage`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "PinChatMessage",
+		trace.WithAttributes(otelogen.OperationID("pinChatMessage")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1354,8 +1354,8 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 //
 // POST /promoteChatMember
 func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `PromoteChatMember`,
-		trace.WithAttributes(otelogen.OperationID(`promoteChatMember`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "PromoteChatMember",
+		trace.WithAttributes(otelogen.OperationID("promoteChatMember")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1388,8 +1388,8 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 //
 // POST /restrictChatMember
 func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `RestrictChatMember`,
-		trace.WithAttributes(otelogen.OperationID(`restrictChatMember`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "RestrictChatMember",
+		trace.WithAttributes(otelogen.OperationID("restrictChatMember")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1422,8 +1422,8 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 //
 // POST /revokeChatInviteLink
 func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `RevokeChatInviteLink`,
-		trace.WithAttributes(otelogen.OperationID(`revokeChatInviteLink`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "RevokeChatInviteLink",
+		trace.WithAttributes(otelogen.OperationID("revokeChatInviteLink")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1456,8 +1456,8 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 //
 // POST /sendAnimation
 func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendAnimation`,
-		trace.WithAttributes(otelogen.OperationID(`sendAnimation`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendAnimation",
+		trace.WithAttributes(otelogen.OperationID("sendAnimation")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1490,8 +1490,8 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 //
 // POST /sendAudio
 func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendAudio`,
-		trace.WithAttributes(otelogen.OperationID(`sendAudio`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendAudio",
+		trace.WithAttributes(otelogen.OperationID("sendAudio")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1524,8 +1524,8 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 //
 // POST /sendChatAction
 func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendChatAction`,
-		trace.WithAttributes(otelogen.OperationID(`sendChatAction`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendChatAction",
+		trace.WithAttributes(otelogen.OperationID("sendChatAction")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1558,8 +1558,8 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 //
 // POST /sendContact
 func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendContact`,
-		trace.WithAttributes(otelogen.OperationID(`sendContact`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendContact",
+		trace.WithAttributes(otelogen.OperationID("sendContact")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1592,8 +1592,8 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 //
 // POST /sendDice
 func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendDice`,
-		trace.WithAttributes(otelogen.OperationID(`sendDice`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendDice",
+		trace.WithAttributes(otelogen.OperationID("sendDice")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1626,8 +1626,8 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 //
 // POST /sendDocument
 func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendDocument`,
-		trace.WithAttributes(otelogen.OperationID(`sendDocument`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendDocument",
+		trace.WithAttributes(otelogen.OperationID("sendDocument")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1660,8 +1660,8 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 //
 // POST /sendGame
 func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendGame`,
-		trace.WithAttributes(otelogen.OperationID(`sendGame`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendGame",
+		trace.WithAttributes(otelogen.OperationID("sendGame")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1694,8 +1694,8 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 //
 // POST /sendInvoice
 func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendInvoice`,
-		trace.WithAttributes(otelogen.OperationID(`sendInvoice`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendInvoice",
+		trace.WithAttributes(otelogen.OperationID("sendInvoice")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1728,8 +1728,8 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 //
 // POST /sendLocation
 func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendLocation`,
-		trace.WithAttributes(otelogen.OperationID(`sendLocation`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendLocation",
+		trace.WithAttributes(otelogen.OperationID("sendLocation")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1762,8 +1762,8 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 //
 // POST /sendMediaGroup
 func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendMediaGroup`,
-		trace.WithAttributes(otelogen.OperationID(`sendMediaGroup`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendMediaGroup",
+		trace.WithAttributes(otelogen.OperationID("sendMediaGroup")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1796,8 +1796,8 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 //
 // POST /sendMessage
 func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendMessage`,
-		trace.WithAttributes(otelogen.OperationID(`sendMessage`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendMessage",
+		trace.WithAttributes(otelogen.OperationID("sendMessage")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1830,8 +1830,8 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 //
 // POST /sendPhoto
 func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendPhoto`,
-		trace.WithAttributes(otelogen.OperationID(`sendPhoto`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendPhoto",
+		trace.WithAttributes(otelogen.OperationID("sendPhoto")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1864,8 +1864,8 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 //
 // POST /sendPoll
 func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendPoll`,
-		trace.WithAttributes(otelogen.OperationID(`sendPoll`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendPoll",
+		trace.WithAttributes(otelogen.OperationID("sendPoll")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1898,8 +1898,8 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 //
 // POST /sendSticker
 func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendSticker`,
-		trace.WithAttributes(otelogen.OperationID(`sendSticker`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendSticker",
+		trace.WithAttributes(otelogen.OperationID("sendSticker")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1932,8 +1932,8 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 //
 // POST /sendVenue
 func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendVenue`,
-		trace.WithAttributes(otelogen.OperationID(`sendVenue`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendVenue",
+		trace.WithAttributes(otelogen.OperationID("sendVenue")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -1966,8 +1966,8 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 //
 // POST /sendVideo
 func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendVideo`,
-		trace.WithAttributes(otelogen.OperationID(`sendVideo`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendVideo",
+		trace.WithAttributes(otelogen.OperationID("sendVideo")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2000,8 +2000,8 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 //
 // POST /sendVideoNote
 func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendVideoNote`,
-		trace.WithAttributes(otelogen.OperationID(`sendVideoNote`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendVideoNote",
+		trace.WithAttributes(otelogen.OperationID("sendVideoNote")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2034,8 +2034,8 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 //
 // POST /sendVoice
 func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SendVoice`,
-		trace.WithAttributes(otelogen.OperationID(`sendVoice`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendVoice",
+		trace.WithAttributes(otelogen.OperationID("sendVoice")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2068,8 +2068,8 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 //
 // POST /setChatAdministratorCustomTitle
 func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SetChatAdministratorCustomTitle`,
-		trace.WithAttributes(otelogen.OperationID(`setChatAdministratorCustomTitle`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetChatAdministratorCustomTitle",
+		trace.WithAttributes(otelogen.OperationID("setChatAdministratorCustomTitle")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2102,8 +2102,8 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 //
 // POST /setChatDescription
 func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SetChatDescription`,
-		trace.WithAttributes(otelogen.OperationID(`setChatDescription`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetChatDescription",
+		trace.WithAttributes(otelogen.OperationID("setChatDescription")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2136,8 +2136,8 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 //
 // POST /setChatPermissions
 func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SetChatPermissions`,
-		trace.WithAttributes(otelogen.OperationID(`setChatPermissions`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetChatPermissions",
+		trace.WithAttributes(otelogen.OperationID("setChatPermissions")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2170,8 +2170,8 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 //
 // POST /setChatPhoto
 func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SetChatPhoto`,
-		trace.WithAttributes(otelogen.OperationID(`setChatPhoto`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetChatPhoto",
+		trace.WithAttributes(otelogen.OperationID("setChatPhoto")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2204,8 +2204,8 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 //
 // POST /setChatStickerSet
 func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SetChatStickerSet`,
-		trace.WithAttributes(otelogen.OperationID(`setChatStickerSet`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetChatStickerSet",
+		trace.WithAttributes(otelogen.OperationID("setChatStickerSet")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2238,8 +2238,8 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 //
 // POST /setChatTitle
 func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SetChatTitle`,
-		trace.WithAttributes(otelogen.OperationID(`setChatTitle`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetChatTitle",
+		trace.WithAttributes(otelogen.OperationID("setChatTitle")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2272,8 +2272,8 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 //
 // POST /setGameScore
 func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SetGameScore`,
-		trace.WithAttributes(otelogen.OperationID(`setGameScore`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetGameScore",
+		trace.WithAttributes(otelogen.OperationID("setGameScore")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2306,8 +2306,8 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 //
 // POST /setMyCommands
 func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SetMyCommands`,
-		trace.WithAttributes(otelogen.OperationID(`setMyCommands`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetMyCommands",
+		trace.WithAttributes(otelogen.OperationID("setMyCommands")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2340,8 +2340,8 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 //
 // POST /setPassportDataErrors
 func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SetPassportDataErrors`,
-		trace.WithAttributes(otelogen.OperationID(`setPassportDataErrors`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetPassportDataErrors",
+		trace.WithAttributes(otelogen.OperationID("setPassportDataErrors")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2374,8 +2374,8 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 //
 // POST /setStickerPositionInSet
 func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SetStickerPositionInSet`,
-		trace.WithAttributes(otelogen.OperationID(`setStickerPositionInSet`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetStickerPositionInSet",
+		trace.WithAttributes(otelogen.OperationID("setStickerPositionInSet")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2408,8 +2408,8 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 //
 // POST /setStickerSetThumb
 func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SetStickerSetThumb`,
-		trace.WithAttributes(otelogen.OperationID(`setStickerSetThumb`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetStickerSetThumb",
+		trace.WithAttributes(otelogen.OperationID("setStickerSetThumb")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2442,8 +2442,8 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 //
 // POST /setWebhook
 func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `SetWebhook`,
-		trace.WithAttributes(otelogen.OperationID(`setWebhook`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetWebhook",
+		trace.WithAttributes(otelogen.OperationID("setWebhook")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2476,8 +2476,8 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 //
 // POST /stopMessageLiveLocation
 func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `StopMessageLiveLocation`,
-		trace.WithAttributes(otelogen.OperationID(`stopMessageLiveLocation`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "StopMessageLiveLocation",
+		trace.WithAttributes(otelogen.OperationID("stopMessageLiveLocation")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2510,8 +2510,8 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 //
 // POST /stopPoll
 func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `StopPoll`,
-		trace.WithAttributes(otelogen.OperationID(`stopPoll`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "StopPoll",
+		trace.WithAttributes(otelogen.OperationID("stopPoll")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2544,8 +2544,8 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 //
 // POST /unbanChatMember
 func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `UnbanChatMember`,
-		trace.WithAttributes(otelogen.OperationID(`unbanChatMember`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "UnbanChatMember",
+		trace.WithAttributes(otelogen.OperationID("unbanChatMember")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2578,8 +2578,8 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 //
 // POST /unpinAllChatMessages
 func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `UnpinAllChatMessages`,
-		trace.WithAttributes(otelogen.OperationID(`unpinAllChatMessages`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "UnpinAllChatMessages",
+		trace.WithAttributes(otelogen.OperationID("unpinAllChatMessages")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2612,8 +2612,8 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 //
 // POST /unpinChatMessage
 func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `UnpinChatMessage`,
-		trace.WithAttributes(otelogen.OperationID(`unpinChatMessage`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "UnpinChatMessage",
+		trace.WithAttributes(otelogen.OperationID("unpinChatMessage")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -2646,8 +2646,8 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 //
 // POST /uploadStickerFile
 func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `UploadStickerFile`,
-		trace.WithAttributes(otelogen.OperationID(`uploadStickerFile`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "UploadStickerFile",
+		trace.WithAttributes(otelogen.OperationID("uploadStickerFile")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()

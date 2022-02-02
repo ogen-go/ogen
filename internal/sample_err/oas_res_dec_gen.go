@@ -67,7 +67,7 @@ var (
 func decodeDataCreateResponse(resp *http.Response, span trace.Span) (res Data, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -91,11 +91,11 @@ func decodeDataCreateResponse(resp *http.Response, span trace.Span) (res Data, e
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -122,7 +122,7 @@ func decodeDataCreateResponse(resp *http.Response, span trace.Span) (res Data, e
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {
@@ -135,7 +135,7 @@ func decodeDataCreateResponse(resp *http.Response, span trace.Span) (res Data, e
 func decodeDataGetResponse(resp *http.Response, span trace.Span) (res Data, err error) {
 	switch resp.StatusCode {
 	case 200:
-		switch resp.Header.Get("Content-Type") {
+		switch ct := resp.Header.Get("Content-Type"); ct {
 		case "application/json":
 			buf := getBuf()
 			defer putBuf(buf)
@@ -159,11 +159,11 @@ func decodeDataGetResponse(resp *http.Response, span trace.Span) (res Data, err 
 
 			return response, nil
 		default:
-			return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+			return res, validate.InvalidContentType(ct)
 		}
 	default:
 		defRes, err := func() (res ErrorStatusCode, err error) {
-			switch resp.Header.Get("Content-Type") {
+			switch ct := resp.Header.Get("Content-Type"); ct {
 			case "application/json":
 				buf := getBuf()
 				defer putBuf(buf)
@@ -190,7 +190,7 @@ func decodeDataGetResponse(resp *http.Response, span trace.Span) (res Data, err 
 					Response:   response,
 				}, nil
 			default:
-				return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+				return res, validate.InvalidContentType(ct)
 			}
 		}()
 		if err != nil {

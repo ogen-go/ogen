@@ -82,7 +82,7 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trac
 		w.WriteHeader(403)
 		return nil
 	default:
-		return errors.Errorf(`/api/gallery/{book_id}: unexpected response type: %T`, response)
+		return errors.Errorf("/api/gallery/{book_id}"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -104,7 +104,7 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.
 		w.WriteHeader(403)
 		return nil
 	default:
-		return errors.Errorf(`/api/galleries/search: unexpected response type: %T`, response)
+		return errors.Errorf("/api/galleries/search"+`: unexpected response type: %T`, response)
 	}
 }
 
@@ -126,6 +126,6 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 		w.WriteHeader(403)
 		return nil
 	default:
-		return errors.Errorf(`/api/galleries/tagged: unexpected response type: %T`, response)
+		return errors.Errorf("/api/galleries/tagged"+`: unexpected response type: %T`, response)
 	}
 }

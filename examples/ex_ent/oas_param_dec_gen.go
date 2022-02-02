@@ -96,7 +96,7 @@ func decodeCreatePetCategoriesParams(args [1]string, r *http.Request) (CreatePet
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path: id: not specified`)
+			return params, errors.New("path: id: not specified")
 		}
 	}
 	return params, nil
@@ -134,7 +134,7 @@ func decodeCreatePetFriendsParams(args [1]string, r *http.Request) (CreatePetFri
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path: id: not specified`)
+			return params, errors.New("path: id: not specified")
 		}
 	}
 	return params, nil
@@ -172,7 +172,7 @@ func decodeCreatePetOwnerParams(args [1]string, r *http.Request) (CreatePetOwner
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path: id: not specified`)
+			return params, errors.New("path: id: not specified")
 		}
 	}
 	return params, nil
@@ -210,7 +210,7 @@ func decodeDeletePetParams(args [1]string, r *http.Request) (DeletePetParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path: id: not specified`)
+			return params, errors.New("path: id: not specified")
 		}
 	}
 	return params, nil
@@ -248,7 +248,7 @@ func decodeDeletePetOwnerParams(args [1]string, r *http.Request) (DeletePetOwner
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path: id: not specified`)
+			return params, errors.New("path: id: not specified")
 		}
 	}
 	return params, nil
@@ -290,7 +290,7 @@ func decodeListPetParams(args [0]string, r *http.Request) (ListPetParams, error)
 				params.Page.SetTo(paramsPageVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: page: parse`)
+				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
 	}
@@ -325,7 +325,7 @@ func decodeListPetParams(args [0]string, r *http.Request) (ListPetParams, error)
 				params.ItemsPerPage.SetTo(paramsItemsPerPageVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: itemsPerPage: parse`)
+				return params, errors.Wrap(err, "query: itemsPerPage: parse")
 			}
 		}
 	}
@@ -365,7 +365,7 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (ListPetCate
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path: id: not specified`)
+			return params, errors.New("path: id: not specified")
 		}
 	}
 	// Decode query: page.
@@ -399,7 +399,7 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (ListPetCate
 				params.Page.SetTo(paramsPageVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: page: parse`)
+				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
 	}
@@ -434,7 +434,7 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (ListPetCate
 				params.ItemsPerPage.SetTo(paramsItemsPerPageVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: itemsPerPage: parse`)
+				return params, errors.Wrap(err, "query: itemsPerPage: parse")
 			}
 		}
 	}
@@ -474,7 +474,7 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (ListPetFriends
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path: id: not specified`)
+			return params, errors.New("path: id: not specified")
 		}
 	}
 	// Decode query: page.
@@ -508,7 +508,7 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (ListPetFriends
 				params.Page.SetTo(paramsPageVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: page: parse`)
+				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
 	}
@@ -543,7 +543,7 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (ListPetFriends
 				params.ItemsPerPage.SetTo(paramsItemsPerPageVal)
 				return nil
 			}(); err != nil {
-				return params, errors.Wrap(err, `query: itemsPerPage: parse`)
+				return params, errors.Wrap(err, "query: itemsPerPage: parse")
 			}
 		}
 	}
@@ -582,7 +582,7 @@ func decodeReadPetParams(args [1]string, r *http.Request) (ReadPetParams, error)
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path: id: not specified`)
+			return params, errors.New("path: id: not specified")
 		}
 	}
 	return params, nil
@@ -620,7 +620,7 @@ func decodeReadPetOwnerParams(args [1]string, r *http.Request) (ReadPetOwnerPara
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path: id: not specified`)
+			return params, errors.New("path: id: not specified")
 		}
 	}
 	return params, nil
@@ -658,7 +658,7 @@ func decodeUpdatePetParams(args [1]string, r *http.Request) (UpdatePetParams, er
 				return params, err
 			}
 		} else {
-			return params, errors.New(`path: id: not specified`)
+			return params, errors.New("path: id: not specified")
 		}
 	}
 	return params, nil

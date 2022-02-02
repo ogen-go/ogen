@@ -100,8 +100,8 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // GET /cached-worlds
 func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldObjects, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `Caching`,
-		trace.WithAttributes(otelogen.OperationID(`Caching`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "Caching",
+		trace.WithAttributes(otelogen.OperationID("Caching")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -156,8 +156,8 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 // GET /db
 func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `DB`,
-		trace.WithAttributes(otelogen.OperationID(`DB`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "DB",
+		trace.WithAttributes(otelogen.OperationID("DB")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -196,8 +196,8 @@ func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 // GET /json
 func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `JSON`,
-		trace.WithAttributes(otelogen.OperationID(`json`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "JSON",
+		trace.WithAttributes(otelogen.OperationID("json")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -236,8 +236,8 @@ func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 // GET /queries
 func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldObjects, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `Queries`,
-		trace.WithAttributes(otelogen.OperationID(`Queries`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "Queries",
+		trace.WithAttributes(otelogen.OperationID("Queries")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -292,8 +292,8 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 // GET /updates
 func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldObjects, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `Updates`,
-		trace.WithAttributes(otelogen.OperationID(`Updates`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "Updates",
+		trace.WithAttributes(otelogen.OperationID("Updates")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {

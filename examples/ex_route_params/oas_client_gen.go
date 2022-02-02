@@ -102,8 +102,8 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // GET /name/{id}/{key}
 func (c *Client) DataGet(ctx context.Context, params DataGetParams) (res string, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `DataGet`,
-		trace.WithAttributes(otelogen.OperationID(`dataGet`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "DataGet",
+		trace.WithAttributes(otelogen.OperationID("dataGet")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -173,8 +173,8 @@ func (c *Client) DataGet(ctx context.Context, params DataGetParams) (res string,
 // GET /name
 func (c *Client) DataGetAny(ctx context.Context) (res string, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `DataGetAny`,
-		trace.WithAttributes(otelogen.OperationID(`dataGetAny`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "DataGetAny",
+		trace.WithAttributes(otelogen.OperationID("dataGetAny")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
@@ -215,8 +215,8 @@ func (c *Client) DataGetAny(ctx context.Context) (res string, err error) {
 // GET /name/{id}
 func (c *Client) DataGetID(ctx context.Context, params DataGetIDParams) (res string, err error) {
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `DataGetID`,
-		trace.WithAttributes(otelogen.OperationID(`dataGetID`)),
+	ctx, span := c.cfg.Tracer.Start(ctx, "DataGetID",
+		trace.WithAttributes(otelogen.OperationID("dataGetID")),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {

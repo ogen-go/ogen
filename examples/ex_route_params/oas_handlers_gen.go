@@ -68,8 +68,8 @@ var (
 //
 // GET /name/{id}/{key}
 func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `DataGet`,
-		trace.WithAttributes(otelogen.OperationID(`dataGet`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "DataGet",
+		trace.WithAttributes(otelogen.OperationID("dataGet")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -97,8 +97,8 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 //
 // GET /name
 func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `DataGetAny`,
-		trace.WithAttributes(otelogen.OperationID(`dataGetAny`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "DataGetAny",
+		trace.WithAttributes(otelogen.OperationID("dataGetAny")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
@@ -120,8 +120,8 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, 
 //
 // GET /name/{id}
 func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
-	ctx, span := s.cfg.Tracer.Start(r.Context(), `DataGetID`,
-		trace.WithAttributes(otelogen.OperationID(`dataGetID`)),
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "DataGetID",
+		trace.WithAttributes(otelogen.OperationID("dataGetID")),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
 	defer span.End()
