@@ -587,6 +587,21 @@
           }
         }
       }
+    },
+    "/recursiveMap": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecursiveMap"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -635,6 +650,12 @@
         "additionalProperties": {
           "type": "string",
           "minLength": 1
+        }
+      },
+      "RecursiveMap": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/RecursiveMap"
         }
       },
       "NullableEnums": {
