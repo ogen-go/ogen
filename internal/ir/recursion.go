@@ -10,9 +10,18 @@ func (t *Type) RecursiveTo(target *Type) bool {
 }
 
 func (t *Type) recursive(target *Type, path *walkpath) bool {
-	if t.Is(KindPrimitive, KindPointer, KindAny, KindArray, KindEnum) ||
-		target.Is(KindPrimitive, KindPointer, KindAny, KindArray, KindEnum) {
-		return false
+	{
+		// This is a list of types that cannot cause recursion.
+		//
+		// Primitive - has no fields.
+		// Enum      - has no fields.
+		// Any       - has no fields.
+		// Pointer   - prevents recursion.
+		// Array     - prevents recursion.
+		whitelist := []Kind{KindPrimitive, KindEnum, KindAny, KindPointer, KindArray}
+		if t.Is(whitelist...) || target.Is(whitelist...) {
+			return false
+		}
 	}
 
 	if reflect.DeepEqual(t, target) {
