@@ -142,29 +142,23 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 			return false
 		}
 
-		var (
-			item       *oas.Schema
-			additional bool
-		)
+		s := hook(&oas.Schema{
+			Type:          oas.Object,
+			MaxProperties: schema.MaxProperties,
+			MinProperties: schema.MinProperties,
+		})
+
 		if ap := schema.AdditionalProperties; ap != nil {
-			additional = true
+			s.AdditionalProperties = true
 			if !ap.Bool {
-				sch := ap.Schema
-				prop, err := p.Parse(&sch)
+				item, err := p.Parse(&ap.Schema)
 				if err != nil {
 					return nil, errors.Wrapf(err, "additionalProperties")
 				}
-				item = prop
+				s.Item = item
 			}
 		}
 
-		s := hook(&oas.Schema{
-			Type:                 oas.Object,
-			Item:                 item,
-			AdditionalProperties: additional,
-			MaxProperties:        schema.MaxProperties,
-			MinProperties:        schema.MinProperties,
-		})
 		for _, propSpec := range schema.Properties {
 			prop, err := p.Parse(propSpec.Schema)
 			if err != nil {

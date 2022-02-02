@@ -213,6 +213,10 @@ func (s sampleAPIServer) OneofBug(ctx context.Context, req api.OneOfBugs) (api.O
 	panic("implement me")
 }
 
+func (s sampleAPIServer) RecursiveMapGet(ctx context.Context) (api.RecursiveMap, error) {
+	panic("implement me")
+}
+
 var _ api.Handler = (*sampleAPIServer)(nil)
 
 //go:embed _testdata/pet.json

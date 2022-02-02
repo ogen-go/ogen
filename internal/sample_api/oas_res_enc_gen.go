@@ -336,6 +336,20 @@ func encodePetUploadAvatarByIDResponse(response PetUploadAvatarByIDRes, w http.R
 	}
 }
 
+func encodeRecursiveMapGetResponse(response RecursiveMap, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
 func encodeTestObjectQueryParameterResponse(response TestObjectQueryParameterOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)

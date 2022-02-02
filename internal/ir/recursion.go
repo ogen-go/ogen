@@ -10,8 +10,8 @@ func (t *Type) RecursiveTo(target *Type) bool {
 }
 
 func (t *Type) recursive(target *Type, path *walkpath) bool {
-	if t.Is(KindPrimitive, KindPointer, KindMap, KindAny, KindArray, KindEnum) ||
-		target.Is(KindPrimitive, KindPointer, KindMap, KindAny, KindArray, KindEnum) {
+	if t.Is(KindPrimitive, KindPointer, KindAny, KindArray, KindEnum) ||
+		target.Is(KindPrimitive, KindPointer, KindAny, KindArray, KindEnum) {
 		return false
 	}
 
@@ -30,7 +30,7 @@ func (t *Type) recursive(target *Type, path *walkpath) bool {
 		return t.recursive(target.AliasTo, path)
 	case KindGeneric:
 		return t.recursive(target.GenericOf, path)
-	case KindStruct:
+	case KindStruct, KindMap:
 		for _, f := range target.Fields {
 			if !f.Spec.Required {
 				continue
