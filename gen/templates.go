@@ -3,6 +3,7 @@ package gen
 import (
 	"embed"
 	"fmt"
+	"strconv"
 	"text/template"
 
 	"github.com/go-faster/errors"
@@ -136,6 +137,15 @@ func templateFunctions() template.FuncMap {
 				ParameterIndex: currentIdx,
 				Route:          child,
 			}
+		},
+		// We use interface{} to prevent template type matching errors
+		// for type aliases (e.g. for quoting ir.ContentType).
+		"quote": func(v interface{}) string {
+			// Fast path for string.
+			if s, ok := v.(string); ok {
+				return strconv.Quote(s)
+			}
+			return fmt.Sprintf("%q", v)
 		},
 		"times": func(n int) []struct{} {
 			return make([]struct{}, n)

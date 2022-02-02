@@ -7,10 +7,10 @@
 {{- range $op := $.Operations }}
 {{- if $op.Request }}
 func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.Request.Type.Go }}, err error) {
-	switch r.Header.Get("Content-Type") {
+	switch ct := r.Header.Get("Content-Type"); ct {
 	{{- /* Range over all request types */ -}}
 	{{- range $contentType, $t := $op.Request.Contents }}
-	case "{{ $contentType }}":
+	case {{ quote $contentType }}:
 		{{- if $t.IsStream }}
 		return {{ $op.Request.Type.Go }}{Data: r.Body}, nil
 		{{- /* Decode json */ -}}

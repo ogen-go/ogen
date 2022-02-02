@@ -22,7 +22,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
 	{{- range $m := $router.Methods }}
-	case "{{ $m.Method }}":
+	case {{ quote $m.Method }}:
 		{{- template "route_edge" router_elem $m.Tree.Root 0 }}
 	{{- end }}
 	}
@@ -57,7 +57,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 	// Static code generated router with unwrapped path search.
 	switch method {
 	{{- range $m := $router.Methods }}
-	case "{{ $m.Method }}":
+	case {{ quote $m.Method }}:
 		{{- template "find_edge" router_elem $m.Tree.Root 0 }}
 	{{- end }}
 	}
@@ -96,8 +96,8 @@ s.handle{{ $.Name }}Request([{{ $.PathParamsCount }}]string{
 		}
 		switch elem[0] {
 		{{- range $c := $child }}
-		case {{ printf "%q" $c.Head }}: // Prefix: {{ printf "%q" $c.Prefix }}
-			if l := len({{ printf "%q" $c.Prefix }}); len(elem) >= l && elem[0:l] == {{ printf "%q" $c.Prefix }} {
+		case {{ quote $c.Head }}: // Prefix: {{ quote $c.Prefix }}
+			if l := len({{ quote $c.Prefix }}); len(elem) >= l && elem[0:l] == {{ quote $c.Prefix }} {
 				elem = elem[l:]
 			} else {
 				break
@@ -108,15 +108,15 @@ s.handle{{ $.Name }}Request([{{ $.PathParamsCount }}]string{
 	{{- end }}
 	{{- with $child := $r.ParamChildren }}
 		{{- range $c := $child }}
-			// Param: {{ printf "%q" $c.ParamName }}
+			// Param: {{ quote $c.ParamName }}
 			{{- with $tails := $c.Tails }}
 
 			{{- if eq (len $tails) 1 }}
-			// Match until {{ printf "%q" $tails }}
-			idx := strings.IndexByte(elem, {{ printf "%q" (index $tails 0) }})
+			// Match until {{ quote $tails }}
+			idx := strings.IndexByte(elem, {{ quote (index $tails 0) }})
 			{{- else }}
-			// Match until one of {{ printf "%q" $tails }}
-			idx := strings.IndexAny(elem, {{ printf "%q" $tails }})
+			// Match until one of {{ quote $tails }}
+			idx := strings.IndexAny(elem, {{ quote $tails }})
 			{{- end }}
 			if idx > 0 {
 				args[{{ $.ParameterIndex }}] = elem[:idx]
@@ -141,7 +141,7 @@ s.handle{{ $.Name }}Request([{{ $.PathParamsCount }}]string{
 {{- if $r.IsLeaf }}
 	if len(elem) == 0 {
 		// Leaf: {{ $r.Operation.Name }}
-		r.name = {{ printf "%q" $r.Operation.Name }}
+		r.name = {{ quote $r.Operation.Name }}
 		r.args = args
 		r.count = {{ $.ParameterIndex }}
 		return r, true
@@ -150,7 +150,7 @@ s.handle{{ $.Name }}Request([{{ $.PathParamsCount }}]string{
 	{{- with $child := $r.StaticChildren }}
 		if len(elem) == 0 {
 			{{- with $op := $r.Operation }}
-			r.name = {{ printf "%q" $op.Name }}
+			r.name = {{ quote $op.Name }}
 			r.args = args
 			r.count = {{ $.ParameterIndex }}
 			return r, true
@@ -160,8 +160,8 @@ s.handle{{ $.Name }}Request([{{ $.PathParamsCount }}]string{
 		}
 		switch elem[0] {
 		{{- range $c := $child }}
-		case {{ printf "%q" $c.Head }}: // Prefix: {{ printf "%q" $c.Prefix }}
-			if l := len({{ printf "%q" $c.Prefix }}); len(elem) >= l && elem[0:l] == {{ printf "%q" $c.Prefix }} {
+		case {{ quote $c.Head }}: // Prefix: {{ quote $c.Prefix }}
+			if l := len({{ quote $c.Prefix }}); len(elem) >= l && elem[0:l] == {{ quote $c.Prefix }} {
 				elem = elem[l:]
 			} else {
 				break
@@ -172,15 +172,15 @@ s.handle{{ $.Name }}Request([{{ $.PathParamsCount }}]string{
 	{{- end }}
 	{{- with $child := $r.ParamChildren }}
 		{{- range $c := $child }}
-			// Param: {{ printf "%q" $c.ParamName }}
+			// Param: {{ quote $c.ParamName }}
 			{{- with $tails := $c.Tails }}
 
 			{{- if eq (len $tails) 1 }}
-			// Match until {{ printf "%q" $tails }}
-			idx := strings.IndexByte(elem, {{ printf "%q" (index $tails 0) }})
+			// Match until {{ quote $tails }}
+			idx := strings.IndexByte(elem, {{ quote (index $tails 0) }})
 			{{- else }}
-			// Match until one of {{ printf "%q" $tails }}
-			idx := strings.IndexAny(elem, {{ printf "%q" $tails }})
+			// Match until one of {{ quote $tails }}
+			idx := strings.IndexAny(elem, {{ quote $tails }})
 			{{- end }}
 			if idx > 0 {
 				args[{{ $.ParameterIndex }}] = elem[:idx]

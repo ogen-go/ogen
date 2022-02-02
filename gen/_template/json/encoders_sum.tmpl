@@ -14,7 +14,7 @@ func (s {{ $.Name }}) Encode(e *jx.Writer) {
 // Decode decodes {{ $.Name }} from json.
 func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New(`invalid: unable to decode {{ $.Name }} to nil`)
+		return errors.New({{ printf "invalid: unable to decode %s to nil" $.Name | quote }})
 	}
 	// Sum type {{ $d }}.
 	{{- if or ($d.Primitive) ($d.TypeDiscriminator) }}
@@ -40,14 +40,14 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 			}
 			switch string(key) {
 			{{- if $d.Discriminator -}}
-			case "{{ $.SumSpec.Discriminator }}":
+			case {{ quote $.SumSpec.Discriminator }}:
 				typ, err := d.Str()
 				if err != nil {
 					return err
 				}
 				switch typ {
 				{{- range $m:= $.SumSpec.Mapping }}
-				case "{{ $m.Key }}":
+				case {{ quote $m.Key }}:
 					s.Type = {{ $m.Type }}{{ $.Name }}
 					found = true
 				{{- end }}
@@ -58,7 +58,7 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 			{{- else }}
 			{{- range $s := $.SumOf }}
 			{{- range $f := $s.SumSpec.Unique }}
-			case "{{ $f.Tag.JSON }}":
+			case {{ quote $f.Tag.JSON }}:
 				found = true
 				s.Type = {{ $s.Name }}{{ $.Name }}
 			{{- end }}

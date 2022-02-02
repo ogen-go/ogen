@@ -14,7 +14,7 @@ type {{ $.Name }}Type string
 // Possible values for {{ $.Name }}Type.
 const (
 	{{- range $s := $.SumOf }}
-		{{ $s.Name }}{{ $.Name }} {{ $.Name }}Type = "{{ $s.Go }}"
+		{{ $s.Name }}{{ $.Name }} {{ $.Name }}Type = {{ quote $s.Go }}
 	{{- end }}
 )
 

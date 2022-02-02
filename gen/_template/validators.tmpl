@@ -82,7 +82,7 @@
 			Email:          {{ $v.Email }},
 			Hostname:       {{ $v.Hostname }},
 			{{- if $v.Regex }}
-			Regex:          regexMap[{{ printf "%q" $v.Regex }}],
+			Regex:          regexMap[{{ quote $v.Regex }}],
             {{- else }}
 			Regex:          nil,
 			{{- end }}
@@ -134,7 +134,7 @@ func (s {{ $t.Name }}) Validate() error {
 			{{- template "validate" field_elem $f }}
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
-				Name: "{{ $f.Spec.Name }}",
+				Name: {{ quote $f.Spec.Name }},
 				Error: err,
 			})
 		}
@@ -154,7 +154,7 @@ func (s {{ $t.Name }}) Validate() error {
 			{{- template "validate" field_elem $f }}
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
-				Name: "{{ $f.Spec.Name }}",
+				Name: {{ quote $f.Spec.Name }},
 				Error: err,
 			})
 		}

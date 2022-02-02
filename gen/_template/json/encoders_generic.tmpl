@@ -31,7 +31,7 @@ func (o {{ $.Name }}) Encode(e *jx.Writer{{ if $g.Format }}, format func(*jx.Wri
 // Decode decodes {{ $g.Go }} from json.
 func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if $g.Format }}, format func(*jx.Decoder) ({{ $g.Go }}, error){{ end }}) error {
 	if o == nil {
-		return errors.New(`invalid: unable to decode {{ $.Name }} to nil`)
+		return errors.New({{ printf "invalid: unable to decode %s to nil" $.Name | quote }})
 	}
 	switch d.Next() {
 	case jx.{{ $g.JSON.Type }}:
@@ -90,7 +90,7 @@ func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if $g.Format }}, format func(*jx.D
 		return nil
 	{{- end }}
 	default:
-		return errors.Errorf(`unexpected type %q while reading {{ $.Name }}`, d.Next())
+		return errors.Errorf({{ printf "unexpected type %%q while reading %s" $.Name | quote }}, d.Next())
 	}
 }
 

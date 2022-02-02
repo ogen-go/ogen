@@ -67,7 +67,7 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 {{- else }}{{/* Decode content response */}}
 	switch resp.Header.Get("Content-Type") {
 	{{- range $contentType, $type := $response.Contents }}{{/* Range over contents */}}
-	case "{{ $contentType }}":
+	case {{ quote $contentType }}:
 		{{- if $contentType.JSON }}
 			{{- if $response.Wrapped }}
 				{{- template "dec_res_json" ($type.MustField "Response").Type }}

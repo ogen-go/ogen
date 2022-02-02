@@ -3,7 +3,7 @@
 {{/* Encode field */}}
 {{- define "json/enc_field" -}}
 {{- if $.Tag.JSON  }}
-e.RawStr({{ printf "%q" $.Tag.EscapedJSON }}+":")
+e.RawStr({{ quote $.Tag.EscapedJSON }}+":")
 {{- end }}
 {{- end -}}
 

@@ -70,9 +70,9 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 		{{- end }}
 	{{- end }}{{/* Request validation */}}
 	startTime := time.Now()
-	ctx, span := c.cfg.Tracer.Start(ctx, `{{ $op.Name }}`,
+	ctx, span := c.cfg.Tracer.Start(ctx, {{ quote $op.Name }},
 		{{- if $op.Spec.OperationID }}
-		trace.WithAttributes(otelogen.OperationID(`{{ $op.Spec.OperationID }}`)),
+		trace.WithAttributes(otelogen.OperationID({{ quote $op.Spec.OperationID }})),
 		{{- end }}
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -97,7 +97,7 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	{{- $requestsLength := len $op.Request.Contents }}
 	{{- if eq $requestsLength 1 }}
 	{{- range $contentType, $type := $op.Request.Contents }}
-		contentType = "{{$contentType}}"
+		contentType = {{ quote $contentType }}
 		buf, err := encode{{ $op.Name }}Request{{ $contentType.Name }}(request, span)
 		if err != nil {
 			return res, err
@@ -114,7 +114,7 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	switch req := req.(type) {
 	{{- range $contentType, $type := $op.Request.Contents }}
 	case *{{ $type.Go }}:
-		contentType = "{{$contentType}}"
+		contentType = {{ quote $contentType }}
 		buf, err := encode{{ $op.Name }}Request{{ $contentType.Name }}(request, span)
 		if err != nil {
 			return res, err
@@ -135,7 +135,7 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	{{- template "enc_param_path" $op }}
 	{{- template "enc_param_query" $op }}
 
-	r := ht.NewRequest(ctx, "{{ $op.Spec.HTTPMethod }}", u, {{ if $op.Request }}reqBody{{ else }}nil{{ end }})
+	r := ht.NewRequest(ctx, {{ quote $op.Spec.HTTPMethod }}, u, {{ if $op.Request }}reqBody{{ else }}nil{{ end }})
 	defer ht.PutRequest(r)
 
 	{{ if $op.Request }}r.Header.Set("Content-Type", contentType){{ end }}
@@ -166,13 +166,13 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 value := conv.{{ $param.Type.ToString }}(params.{{ $param.Name }})
 {{- if $param.Type.IsArray }}
 r.AddCookie(&http.Cookie{
-	Name: "{{ $param.Spec.Name }}",
+	Name: {{ quote $param.Spec.Name }},
 	Value: strings.Join(value, "/"),
 	MaxAge: 1337,
 })
 {{- else }}
 r.AddCookie(&http.Cookie{
-	Name: "{{ $param.Spec.Name }}",
+	Name: {{ quote $param.Spec.Name }},
 	Value: value,
 	MaxAge: 1337,
 })
@@ -191,10 +191,10 @@ r.AddCookie(&http.Cookie{
 	if err := func() error {
 		{{- template "uri/encode" elem $p.Type (printf "params.%s" $p.Name) }}
 	}(); err != nil {
-		return res, errors.Wrap(err, `encode header param {{ $p.Spec.Name }}`)
+		return res, errors.Wrap(err, {{ printf "encode header param %s" $p.Spec.Name | quote }})
 	}
 	if v, ok := e.Result(); ok {
-		r.Header.Set("{{ $p.Spec.Name }}", v)
+		r.Header.Set({{ quote $p.Spec.Name }}, v)
 	}
 }
 {{- end }}{{/* Range over params */}}
