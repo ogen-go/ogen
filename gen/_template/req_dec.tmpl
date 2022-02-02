@@ -19,7 +19,7 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		{{- if $t.GenericVariant.Optional }}
 			return req, nil
 		{{- else }}
-			return req, http.ErrBodyRequired
+			return req, validate.ErrBodyRequired
 		{{- end }}
 		}
 
@@ -35,7 +35,7 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		{{- if $t.GenericVariant.Optional }}
 			return req, nil
 		{{- else }}
-			return req, http.ErrBodyRequired
+			return req, validate.ErrBodyRequired
 		{{- end }}
 		}
 
@@ -62,7 +62,7 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 	{{- end }}
 	{{- /* Range over all request types */}}
 	default:
-		return req, errors.Errorf("unexpected content-type: %s", r.Header.Get("Content-Type"))
+		return req, validate.InvalidContentType(ct)
 	}
 }
 {{- end }}

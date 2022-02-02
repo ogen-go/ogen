@@ -44,7 +44,7 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 			}
 			return res, errors.Wrap(&defRes, "error")
 		{{- else }}
-			return res, errors.Errorf("unexpected statusCode: %d", resp.StatusCode)
+			return res, validate.UnexpectedStatusCode(resp.StatusCode)
 		{{- end }}
 	}
 }
@@ -65,7 +65,7 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 		return {{ if $ptr }}&{{ end }}{{ $response.NoContent.Name }}{}, nil
 	{{- end }}
 {{- else }}{{/* Decode content response */}}
-	switch resp.Header.Get("Content-Type") {
+	switch ct := resp.Header.Get("Content-Type"); ct {
 	{{- range $contentType, $type := $response.Contents }}{{/* Range over contents */}}
 	case {{ quote $contentType }}:
 		{{- if $contentType.JSON }}
@@ -102,7 +102,7 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 		{{- end }}
 	{{- end }}{{/* Range over contents */}}
 	default:
-		return res, errors.Errorf("unexpected content-type: %s", resp.Header.Get("Content-Type"))
+		return res, validate.InvalidContentType(ct)
 	}
 {{- end }}{{/* Decode content response */}}
 {{- end }}

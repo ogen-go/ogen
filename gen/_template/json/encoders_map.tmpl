@@ -55,11 +55,22 @@ func (s {{ if $fields.NotEmpty }}*{{ end }}{{ $.Name }}) Decode(d *jx.Decoder) e
 		{{- if $f.Spec.Required }}
 		requiredBitSet[{{ div $i 8 }}] |= 1 << {{ mod $i 8 }}
 		{{- end }}
-		{{- template "json/dec" field_elem $f }}
+
+		if err := func() error {
+			{{- template "json/dec" field_elem $f }}
+			return nil
+		}(); err != nil {
+			return errors.Wrap(err, {{ printf "decode field %q" $f.Spec.Name | quote }})
+		}
 	{{- end }}
 		default:
 			var elem {{ $.Item.Go }}
-			{{- template "json/dec" map_elem $.Item }}
+			if err := func() error {
+				{{- template "json/dec" map_elem $.Item }}
+				return nil
+			}(); err != nil {
+				return errors.Wrapf(err, "decode field %q", k)
+			}
 			m[string(k)] = elem
 		}
 		return nil
