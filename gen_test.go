@@ -32,6 +32,7 @@ func testGenerate(t *testing.T, name string, ignore ...string) {
 	require.NoError(t, err)
 	opt := gen.Options{
 		IgnoreNotImplemented: ignore,
+		InferSchemaType:      true,
 	}
 	t.Run("Gen", func(t *testing.T) {
 		g, err := gen.NewGenerator(spec, opt)
