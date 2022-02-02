@@ -321,6 +321,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
+			case 'r': // Prefix: "recursiveMap"
+				if l := len("recursiveMap"); len(elem) >= l && elem[0:l] == "recursiveMap" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: RecursiveMapGet
+					s.handleRecursiveMapGetRequest([0]string{}, w, r)
+
+					return
+				}
 			case 't': // Prefix: "test"
 				if l := len("test"); len(elem) >= l && elem[0:l] == "test" {
 					elem = elem[l:]
@@ -766,6 +779,20 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						r.count = 1
 						return r, true
 					}
+				}
+			case 'r': // Prefix: "recursiveMap"
+				if l := len("recursiveMap"); len(elem) >= l && elem[0:l] == "recursiveMap" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: RecursiveMapGet
+					r.name = "RecursiveMapGet"
+					r.args = args
+					r.count = 0
+					return r, true
 				}
 			case 't': // Prefix: "test"
 				if l := len("test"); len(elem) >= l && elem[0:l] == "test" {

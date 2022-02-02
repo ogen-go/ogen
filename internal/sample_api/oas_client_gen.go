@@ -1176,6 +1176,45 @@ func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvata
 	return result, nil
 }
 
+// RecursiveMapGet invokes  operation.
+//
+// GET /recursiveMap
+func (c *Client) RecursiveMapGet(ctx context.Context) (res RecursiveMap, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, `RecursiveMapGet`,
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/recursiveMap"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeRecursiveMapGetResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TestObjectQueryParameter invokes testObjectQueryParameter operation.
 //
 // GET /testObjectQueryParameter

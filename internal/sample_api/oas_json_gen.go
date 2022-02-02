@@ -3753,6 +3753,53 @@ func (s *PetType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
+func (s RecursiveMap) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = true
+		e.Str(k)
+		e.RawStr(`:`)
+
+		elem.Encode(e)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfRecursiveMap = [0]string{}
+
+// Decode decodes RecursiveMap from json.
+func (s RecursiveMap) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode RecursiveMap to nil`)
+	}
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var elem RecursiveMap
+			elem = make(RecursiveMap)
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
 func (s StringMap) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
