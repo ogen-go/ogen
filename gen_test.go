@@ -79,7 +79,7 @@ func TestGenerate(t *testing.T) {
 	))
 	t.Run("GitHub", g("api.github.com.json",
 		"complex parameter types",
-		"anyOf",
+		"complex anyOf",
 		"allOf",
 		"discriminator inference",
 		"sum types with same names",
