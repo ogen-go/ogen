@@ -1018,7 +1018,7 @@ func (s ActionsCancelWorkflowRunAccepted) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -1384,7 +1384,7 @@ func (s ActionsCreateOrUpdateRepoSecretCreated) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -4128,7 +4128,7 @@ func (s ActionsReRunWorkflowCreated) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -4316,7 +4316,7 @@ func (s ActionsRetryWorkflowCreated) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -9376,7 +9376,7 @@ func (s AppsCreateFromManifestReq) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -12738,7 +12738,7 @@ func (s AuditLogEventData) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -14433,7 +14433,7 @@ func (s BaseGistFiles) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -20757,7 +20757,7 @@ func (s ChecksRerequestSuiteCreated) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -32611,7 +32611,7 @@ func (s DeploymentPayload0) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -33918,7 +33918,7 @@ func (s EmojisGetOK) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -33971,7 +33971,7 @@ func (s EmptyObject) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -44310,7 +44310,7 @@ func (s GistSimpleFiles) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -45079,7 +45079,7 @@ func (s GistSimpleForkOfFiles) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -45434,7 +45434,7 @@ func (s GistsCheckIsStarredNotFound) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -45803,7 +45803,7 @@ func (s GistsCreateReqFiles) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -53067,7 +53067,7 @@ func (s HookDeliveryRequestHeaders) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -53122,7 +53122,7 @@ func (s HookDeliveryRequestPayload) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -53280,7 +53280,7 @@ func (s HookDeliveryResponseHeaders) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -55178,7 +55178,7 @@ func (s IntegrationPermissions) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -64700,7 +64700,7 @@ func (s Language) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -69123,7 +69123,7 @@ func (s MigrationsMapCommitAuthorReq) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -74731,7 +74731,7 @@ func (s NullableIntegrationPermissions) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -97374,7 +97374,7 @@ func (s OrgsConvertMemberToOutsideCollaboratorAccepted) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -99570,7 +99570,7 @@ func (s OrgsUpdateWebhookConfigForOrgReq) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -110000,7 +110000,7 @@ func (s ProjectsMoveCardCreated) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -110689,7 +110689,7 @@ func (s ProjectsMoveColumnCreated) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -111941,7 +111941,7 @@ func (s ProtectedBranchAllowDeletions) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -112058,7 +112058,7 @@ func (s ProtectedBranchAllowForcePushes) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -112181,7 +112181,7 @@ func (s ProtectedBranchEnforceAdmins) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -112681,7 +112681,7 @@ func (s ProtectedBranchRequiredConversationResolution) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -112764,7 +112764,7 @@ func (s ProtectedBranchRequiredLinearHistory) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -113614,7 +113614,7 @@ func (s PublicUser) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -136126,7 +136126,7 @@ func (s ReposCreateDeploymentReqPayload0) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -136566,7 +136566,7 @@ func (s ReposCreateDispatchEventReqClientPayload) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -137806,7 +137806,7 @@ func (s ReposCreateOrUpdateEnvironmentReq) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -139242,7 +139242,7 @@ func (s ReposCreateWebhookReq) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -146346,7 +146346,7 @@ func (s ReposUpdateWebhookConfigForRepoReq) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -168879,7 +168879,7 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 

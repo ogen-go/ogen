@@ -348,7 +348,7 @@ func (s AnyTestAnyMap) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -1982,7 +1982,7 @@ func (s MapWithProperties) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -2122,7 +2122,7 @@ func (s MapWithPropertiesInlinedSubMap) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -4454,7 +4454,7 @@ func (s RecursiveMap) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -4524,7 +4524,7 @@ func (s StringMap) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -4577,7 +4577,7 @@ func (s StringStringMap) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 

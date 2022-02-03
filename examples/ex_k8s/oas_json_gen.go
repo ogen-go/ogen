@@ -18261,7 +18261,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Encode(e *jx.W
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -19987,7 +19987,7 @@ func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Encode(e *jx.Wr
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -20211,7 +20211,7 @@ func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -21833,7 +21833,7 @@ func (s IoK8sAPICoreV1ConfigMapBinaryData) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -21886,7 +21886,7 @@ func (s IoK8sAPICoreV1ConfigMapData) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -28054,7 +28054,7 @@ func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -28278,7 +28278,7 @@ func (s IoK8sAPICoreV1FlexVolumeSourceOptions) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -30800,7 +30800,7 @@ func (s IoK8sAPICoreV1LimitRangeItemDefault) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -30857,7 +30857,7 @@ func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -30914,7 +30914,7 @@ func (s IoK8sAPICoreV1LimitRangeItemMax) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -30971,7 +30971,7 @@ func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -31028,7 +31028,7 @@ func (s IoK8sAPICoreV1LimitRangeItemMin) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -34509,7 +34509,7 @@ func (s IoK8sAPICoreV1NodeStatusAllocatable) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -34566,7 +34566,7 @@ func (s IoK8sAPICoreV1NodeStatusCapacity) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -36293,7 +36293,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Encode(e *jx.Writer) 
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -37532,7 +37532,7 @@ func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -40430,7 +40430,7 @@ func (s IoK8sAPICoreV1PodSpecNodeSelector) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -40483,7 +40483,7 @@ func (s IoK8sAPICoreV1PodSpecOverhead) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -43415,7 +43415,7 @@ func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -44277,7 +44277,7 @@ func (s IoK8sAPICoreV1ResourceQuotaSpecHard) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -44414,7 +44414,7 @@ func (s IoK8sAPICoreV1ResourceQuotaStatusHard) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -44471,7 +44471,7 @@ func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -44608,7 +44608,7 @@ func (s IoK8sAPICoreV1ResourceRequirementsLimits) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -44665,7 +44665,7 @@ func (s IoK8sAPICoreV1ResourceRequirementsRequests) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -45937,7 +45937,7 @@ func (s IoK8sAPICoreV1SecretData) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -46573,7 +46573,7 @@ func (s IoK8sAPICoreV1SecretStringData) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -48704,7 +48704,7 @@ func (s IoK8sAPICoreV1ServiceSpecSelector) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -52208,7 +52208,7 @@ func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -53889,7 +53889,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -64155,7 +64155,7 @@ func (s IoK8sAPINodeV1OverheadPodFixed) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -64677,7 +64677,7 @@ func (s IoK8sAPINodeV1SchedulingNodeSelector) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -64786,7 +64786,7 @@ func (s IoK8sAPINodeV1alpha1OverheadPodFixed) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -65402,7 +65402,7 @@ func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -65511,7 +65511,7 @@ func (s IoK8sAPINodeV1beta1OverheadPodFixed) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -66033,7 +66033,7 @@ func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -66745,7 +66745,7 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Wri
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -68028,7 +68028,7 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Encode(e *j
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -73915,7 +73915,7 @@ func (s IoK8sAPIStorageV1StorageClassParameters) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -74783,7 +74783,7 @@ func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Encode(e *jx.
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -79061,7 +79061,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefiniti
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -79112,7 +79112,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependen
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -79256,7 +79256,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternP
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -79307,7 +79307,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperti
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -81277,7 +81277,7 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Encode(e *jx.Wri
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -82310,7 +82310,7 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Encode(e *jx.Writer
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -82363,7 +82363,7 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 

@@ -17,7 +17,7 @@ func (s {{ $.Name }}) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 		{{ template "json/enc" map_elem $.Item }}

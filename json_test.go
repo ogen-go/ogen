@@ -370,6 +370,16 @@ func TestJSONAdditionalProperties(t *testing.T) {
 				`{"required": 1, "runtime_field": "field"}`,
 			},
 			{
+				api.MapWithProperties{
+					Required: 1,
+					AdditionalProps: map[string]string{
+						"a": "a",
+						"b": "b",
+					},
+				},
+				`{"required": 1, "a": "a", "b":"b"}`,
+			},
+			{
 				api.MapWithProperties{},
 				`{"required": 0}`,
 			},
