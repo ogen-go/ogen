@@ -16,10 +16,18 @@ package {{ $.Package }}
 package {{ $.Package }}
 
 {{ template "imports" $ }}
-import "testing"
+import (
+	std "encoding/json"
+	"testing"
+
+	"github.com/stretchr/testify/require"
+)
 
 {{ template "usage_assert" $ }}
-var _ = testing.TB(nil)
+var (
+	_ = testing.TB(nil)
+	_ = require.NoError
+)
 
 {{ end }}
 

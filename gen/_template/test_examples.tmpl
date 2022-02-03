@@ -6,7 +6,7 @@
 {{- range $typ := $.Types }}{{- if $typ.HasFeature "json" }}
 {{- with $examples := $typ.Examples }}
 
-func Test{{ $typ.Go }}_Decode(t *testing.T) {
+func Test{{ $typ.Go }}_JSON(t *testing.T) {
 	{{- if $.SkipTest $typ }}
 	t.Skip("Skipped by regex")
 	{{- end }}
@@ -32,9 +32,18 @@ func Test{{ $typ.Go }}_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 {{ $typ.Go }}
+			{{- if $typ.IsMap }}{{- if not $typ.Fields }}
+			typ2 = make({{ $typ.Go }})
+			{{- end }}{{- end }}
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
