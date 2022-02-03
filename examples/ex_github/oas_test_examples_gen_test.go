@@ -33,7 +33,12 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
-import "testing"
+import (
+	std "encoding/json"
+	"testing"
+
+	"github.com/stretchr/testify/require"
+)
 
 // No-op definition for keeping imports.
 var (
@@ -66,9 +71,12 @@ var (
 	_ = sync.Pool{}
 )
 
-var _ = testing.TB(nil)
+var (
+	_ = testing.TB(nil)
+	_ = require.NoError
+)
 
-func TestAPIOverview_Decode(t *testing.T) {
+func TestAPIOverview_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -86,14 +94,20 @@ func TestAPIOverview_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 APIOverview
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsBillingUsage_Decode(t *testing.T) {
+func TestActionsBillingUsage_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -111,14 +125,20 @@ func TestActionsBillingUsage_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsBillingUsage
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsEnterprisePermissions_Decode(t *testing.T) {
+func TestActionsEnterprisePermissions_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -136,14 +156,20 @@ func TestActionsEnterprisePermissions_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsEnterprisePermissions
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsListArtifactsForRepoOK_Decode(t *testing.T) {
+func TestActionsListArtifactsForRepoOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -161,14 +187,20 @@ func TestActionsListArtifactsForRepoOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsListArtifactsForRepoOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsListEnvironmentSecretsOK_Decode(t *testing.T) {
+func TestActionsListEnvironmentSecretsOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -186,14 +218,20 @@ func TestActionsListEnvironmentSecretsOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsListEnvironmentSecretsOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsListJobsForWorkflowRunOK_Decode(t *testing.T) {
+func TestActionsListJobsForWorkflowRunOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -211,14 +249,20 @@ func TestActionsListJobsForWorkflowRunOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsListJobsForWorkflowRunOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsListOrgSecretsOK_Decode(t *testing.T) {
+func TestActionsListOrgSecretsOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -236,14 +280,20 @@ func TestActionsListOrgSecretsOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsListOrgSecretsOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK_Decode(t *testing.T) {
+func TestActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -261,14 +311,20 @@ func TestActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK_Decode(t *testing.T
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsListRepoSecretsOK_Decode(t *testing.T) {
+func TestActionsListRepoSecretsOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -286,14 +342,20 @@ func TestActionsListRepoSecretsOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsListRepoSecretsOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsListRepoWorkflowsOK_Decode(t *testing.T) {
+func TestActionsListRepoWorkflowsOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -311,14 +373,20 @@ func TestActionsListRepoWorkflowsOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsListRepoWorkflowsOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsListSelectedReposForOrgSecretOK_Decode(t *testing.T) {
+func TestActionsListSelectedReposForOrgSecretOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -336,14 +404,20 @@ func TestActionsListSelectedReposForOrgSecretOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsListSelectedReposForOrgSecretOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK_Decode(t *testing.T) {
+func TestActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -361,14 +435,20 @@ func TestActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK_Decod
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsListSelfHostedRunnerGroupsForOrgOK_Decode(t *testing.T) {
+func TestActionsListSelfHostedRunnerGroupsForOrgOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -386,14 +466,20 @@ func TestActionsListSelfHostedRunnerGroupsForOrgOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsListSelfHostedRunnerGroupsForOrgOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsListSelfHostedRunnersForOrgOK_Decode(t *testing.T) {
+func TestActionsListSelfHostedRunnersForOrgOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -411,14 +497,20 @@ func TestActionsListSelfHostedRunnersForOrgOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsListSelfHostedRunnersForOrgOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsListSelfHostedRunnersForRepoOK_Decode(t *testing.T) {
+func TestActionsListSelfHostedRunnersForRepoOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -436,14 +528,20 @@ func TestActionsListSelfHostedRunnersForRepoOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsListSelfHostedRunnersForRepoOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsListSelfHostedRunnersInGroupForOrgOK_Decode(t *testing.T) {
+func TestActionsListSelfHostedRunnersInGroupForOrgOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -461,14 +559,20 @@ func TestActionsListSelfHostedRunnersInGroupForOrgOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsListSelfHostedRunnersInGroupForOrgOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsListWorkflowRunArtifactsOK_Decode(t *testing.T) {
+func TestActionsListWorkflowRunArtifactsOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -486,14 +590,20 @@ func TestActionsListWorkflowRunArtifactsOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsListWorkflowRunArtifactsOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsListWorkflowRunsForRepoOK_Decode(t *testing.T) {
+func TestActionsListWorkflowRunsForRepoOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -511,14 +621,20 @@ func TestActionsListWorkflowRunsForRepoOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsListWorkflowRunsForRepoOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsOrganizationPermissions_Decode(t *testing.T) {
+func TestActionsOrganizationPermissions_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -536,14 +652,20 @@ func TestActionsOrganizationPermissions_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsOrganizationPermissions
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsPublicKey_Decode(t *testing.T) {
+func TestActionsPublicKey_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -561,14 +683,20 @@ func TestActionsPublicKey_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsPublicKey
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsRepositoryPermissions_Decode(t *testing.T) {
+func TestActionsRepositoryPermissions_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -586,14 +714,20 @@ func TestActionsRepositoryPermissions_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsRepositoryPermissions
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsReviewPendingDeploymentsForRunReqState_Decode(t *testing.T) {
+func TestActionsReviewPendingDeploymentsForRunReqState_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -611,14 +745,20 @@ func TestActionsReviewPendingDeploymentsForRunReqState_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsReviewPendingDeploymentsForRunReqState
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestActionsSecret_Decode(t *testing.T) {
+func TestActionsSecret_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -636,14 +776,20 @@ func TestActionsSecret_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ActionsSecret
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestAppPermissions_Decode(t *testing.T) {
+func TestAppPermissions_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -661,14 +807,20 @@ func TestAppPermissions_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 AppPermissions
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestApplicationGrant_Decode(t *testing.T) {
+func TestApplicationGrant_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -686,14 +838,20 @@ func TestApplicationGrant_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ApplicationGrant
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestAppsListInstallationReposForAuthenticatedUserOK_Decode(t *testing.T) {
+func TestAppsListInstallationReposForAuthenticatedUserOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -711,14 +869,20 @@ func TestAppsListInstallationReposForAuthenticatedUserOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 AppsListInstallationReposForAuthenticatedUserOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestAppsListReposAccessibleToInstallationOK_Decode(t *testing.T) {
+func TestAppsListReposAccessibleToInstallationOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -736,14 +900,20 @@ func TestAppsListReposAccessibleToInstallationOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 AppsListReposAccessibleToInstallationOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestAppsUpdateWebhookConfigForAppReq_Decode(t *testing.T) {
+func TestAppsUpdateWebhookConfigForAppReq_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -761,14 +931,20 @@ func TestAppsUpdateWebhookConfigForAppReq_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 AppsUpdateWebhookConfigForAppReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestArtifact_Decode(t *testing.T) {
+func TestArtifact_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -786,14 +962,20 @@ func TestArtifact_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Artifact
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestAuthenticationToken_Decode(t *testing.T) {
+func TestAuthenticationToken_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -812,14 +994,20 @@ func TestAuthenticationToken_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 AuthenticationToken
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestAuthenticationTokenPermissions_Decode(t *testing.T) {
+func TestAuthenticationTokenPermissions_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -837,14 +1025,20 @@ func TestAuthenticationTokenPermissions_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 AuthenticationTokenPermissions
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestAuthorAssociation_Decode(t *testing.T) {
+func TestAuthorAssociation_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -862,14 +1056,20 @@ func TestAuthorAssociation_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 AuthorAssociation
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestAuthorization_Decode(t *testing.T) {
+func TestAuthorization_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -891,14 +1091,20 @@ func TestAuthorization_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Authorization
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestAutolink_Decode(t *testing.T) {
+func TestAutolink_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -916,14 +1122,20 @@ func TestAutolink_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Autolink
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestBaseGist_Decode(t *testing.T) {
+func TestBaseGist_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -941,14 +1153,20 @@ func TestBaseGist_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 BaseGist
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestBlob_Decode(t *testing.T) {
+func TestBlob_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -966,14 +1184,20 @@ func TestBlob_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Blob
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestBranchProtection_Decode(t *testing.T) {
+func TestBranchProtection_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -991,14 +1215,20 @@ func TestBranchProtection_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 BranchProtection
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestBranchRestrictionPolicy_Decode(t *testing.T) {
+func TestBranchRestrictionPolicy_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1016,14 +1246,20 @@ func TestBranchRestrictionPolicy_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 BranchRestrictionPolicy
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestBranchWithProtection_Decode(t *testing.T) {
+func TestBranchWithProtection_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1041,14 +1277,20 @@ func TestBranchWithProtection_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 BranchWithProtection
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCheckRun_Decode(t *testing.T) {
+func TestCheckRun_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1066,14 +1308,20 @@ func TestCheckRun_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CheckRun
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCheckRunConclusion_Decode(t *testing.T) {
+func TestCheckRunConclusion_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1091,14 +1339,20 @@ func TestCheckRunConclusion_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CheckRunConclusion
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCheckRunStatus_Decode(t *testing.T) {
+func TestCheckRunStatus_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1116,14 +1370,20 @@ func TestCheckRunStatus_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CheckRunStatus
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCheckSuite_Decode(t *testing.T) {
+func TestCheckSuite_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1141,14 +1401,20 @@ func TestCheckSuite_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CheckSuite
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCheckSuiteConclusion_Decode(t *testing.T) {
+func TestCheckSuiteConclusion_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1166,14 +1432,20 @@ func TestCheckSuiteConclusion_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CheckSuiteConclusion
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCheckSuitePreference_Decode(t *testing.T) {
+func TestCheckSuitePreference_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1191,14 +1463,20 @@ func TestCheckSuitePreference_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CheckSuitePreference
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCheckSuiteStatus_Decode(t *testing.T) {
+func TestCheckSuiteStatus_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1216,14 +1494,20 @@ func TestCheckSuiteStatus_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CheckSuiteStatus
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestChecksListForRefOK_Decode(t *testing.T) {
+func TestChecksListForRefOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1241,14 +1525,20 @@ func TestChecksListForRefOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ChecksListForRefOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestChecksListForSuiteOK_Decode(t *testing.T) {
+func TestChecksListForSuiteOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1266,14 +1556,20 @@ func TestChecksListForSuiteOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ChecksListForSuiteOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestChecksListSuitesForRefOK_Decode(t *testing.T) {
+func TestChecksListSuitesForRefOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1291,14 +1587,20 @@ func TestChecksListSuitesForRefOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ChecksListSuitesForRefOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCloneTraffic_Decode(t *testing.T) {
+func TestCloneTraffic_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1316,14 +1618,20 @@ func TestCloneTraffic_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CloneTraffic
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCodeOfConduct_Decode(t *testing.T) {
+func TestCodeOfConduct_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1341,14 +1649,20 @@ func TestCodeOfConduct_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CodeOfConduct
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCodeScanningAlert_Decode(t *testing.T) {
+func TestCodeScanningAlert_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1367,14 +1681,20 @@ func TestCodeScanningAlert_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CodeScanningAlert
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCodeScanningAnalysis_Decode(t *testing.T) {
+func TestCodeScanningAnalysis_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1392,14 +1712,20 @@ func TestCodeScanningAnalysis_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CodeScanningAnalysis
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCodeScanningAnalysisDeletion_Decode(t *testing.T) {
+func TestCodeScanningAnalysisDeletion_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1417,14 +1743,20 @@ func TestCodeScanningAnalysisDeletion_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CodeScanningAnalysisDeletion
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCodeScanningSarifsReceipt_Decode(t *testing.T) {
+func TestCodeScanningSarifsReceipt_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1442,14 +1774,20 @@ func TestCodeScanningSarifsReceipt_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CodeScanningSarifsReceipt
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCodeScanningSarifsStatus_Decode(t *testing.T) {
+func TestCodeScanningSarifsStatus_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1467,14 +1805,20 @@ func TestCodeScanningSarifsStatus_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CodeScanningSarifsStatus
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCombinedBillingUsage_Decode(t *testing.T) {
+func TestCombinedBillingUsage_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1492,14 +1836,20 @@ func TestCombinedBillingUsage_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CombinedBillingUsage
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCombinedCommitStatus_Decode(t *testing.T) {
+func TestCombinedCommitStatus_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1517,14 +1867,20 @@ func TestCombinedCommitStatus_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CombinedCommitStatus
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCommit_Decode(t *testing.T) {
+func TestCommit_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1542,14 +1898,20 @@ func TestCommit_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Commit
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCommitComment_Decode(t *testing.T) {
+func TestCommitComment_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1568,14 +1930,20 @@ func TestCommitComment_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CommitComment
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCommitComparison_Decode(t *testing.T) {
+func TestCommitComparison_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1593,14 +1961,20 @@ func TestCommitComparison_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CommitComparison
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCommitComparisonStatus_Decode(t *testing.T) {
+func TestCommitComparisonStatus_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1618,14 +1992,20 @@ func TestCommitComparisonStatus_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CommitComparisonStatus
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestCommunityProfile_Decode(t *testing.T) {
+func TestCommunityProfile_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1643,14 +2023,20 @@ func TestCommunityProfile_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 CommunityProfile
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestContentFile_Decode(t *testing.T) {
+func TestContentFile_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1668,14 +2054,20 @@ func TestContentFile_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ContentFile
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestContentReferenceAttachment_Decode(t *testing.T) {
+func TestContentReferenceAttachment_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1693,14 +2085,20 @@ func TestContentReferenceAttachment_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ContentReferenceAttachment
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestDeployKey_Decode(t *testing.T) {
+func TestDeployKey_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1718,14 +2116,20 @@ func TestDeployKey_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 DeployKey
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestDeployment_Decode(t *testing.T) {
+func TestDeployment_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1743,14 +2147,20 @@ func TestDeployment_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Deployment
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestDeploymentReviewerType_Decode(t *testing.T) {
+func TestDeploymentReviewerType_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1768,14 +2178,20 @@ func TestDeploymentReviewerType_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 DeploymentReviewerType
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestDeploymentStatus_Decode(t *testing.T) {
+func TestDeploymentStatus_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1793,14 +2209,20 @@ func TestDeploymentStatus_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 DeploymentStatus
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestDeploymentStatusState_Decode(t *testing.T) {
+func TestDeploymentStatusState_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1818,14 +2240,20 @@ func TestDeploymentStatusState_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 DeploymentStatusState
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestDiffEntryStatus_Decode(t *testing.T) {
+func TestDiffEntryStatus_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1843,14 +2271,20 @@ func TestDiffEntryStatus_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 DiffEntryStatus
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK_Decode(t *testing.T) {
+func TestEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1868,14 +2302,20 @@ func TestEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK_Decod
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK_Decode(t *testing.T) {
+func TestEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1893,14 +2333,20 @@ func TestEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseO
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK_Decode(t *testing.T) {
+func TestEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1918,14 +2364,20 @@ func TestEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK_Decode(t *test
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestEnterpriseAdminListSelfHostedRunnersForEnterpriseOK_Decode(t *testing.T) {
+func TestEnterpriseAdminListSelfHostedRunnersForEnterpriseOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1943,14 +2395,20 @@ func TestEnterpriseAdminListSelfHostedRunnersForEnterpriseOK_Decode(t *testing.T
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 EnterpriseAdminListSelfHostedRunnersForEnterpriseOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK_Decode(t *testing.T) {
+func TestEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1968,14 +2426,20 @@ func TestEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK_Decode(t *te
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestEnvironmentApprovalsState_Decode(t *testing.T) {
+func TestEnvironmentApprovalsState_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -1993,14 +2457,20 @@ func TestEnvironmentApprovalsState_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 EnvironmentApprovalsState
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestFeed_Decode(t *testing.T) {
+func TestFeed_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2018,14 +2488,20 @@ func TestFeed_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Feed
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestFileCommit_Decode(t *testing.T) {
+func TestFileCommit_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2045,14 +2521,20 @@ func TestFileCommit_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 FileCommit
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestFullRepository_Decode(t *testing.T) {
+func TestFullRepository_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2071,14 +2553,20 @@ func TestFullRepository_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 FullRepository
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestGistComment_Decode(t *testing.T) {
+func TestGistComment_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2096,14 +2584,20 @@ func TestGistComment_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 GistComment
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestGistSimple_Decode(t *testing.T) {
+func TestGistSimple_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2121,14 +2615,20 @@ func TestGistSimple_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 GistSimple
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestGistsCreateReqFiles_Decode(t *testing.T) {
+func TestGistsCreateReqFiles_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2147,14 +2647,21 @@ func TestGistsCreateReqFiles_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 GistsCreateReqFiles
+			typ2 = make(GistsCreateReqFiles)
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestGistsCreateReqPublic1_Decode(t *testing.T) {
+func TestGistsCreateReqPublic1_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2172,14 +2679,20 @@ func TestGistsCreateReqPublic1_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 GistsCreateReqPublic1
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestGitCommit_Decode(t *testing.T) {
+func TestGitCommit_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2198,14 +2711,20 @@ func TestGitCommit_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 GitCommit
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestGitRef_Decode(t *testing.T) {
+func TestGitRef_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2223,14 +2742,20 @@ func TestGitRef_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 GitRef
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestGitTag_Decode(t *testing.T) {
+func TestGitTag_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2248,14 +2773,20 @@ func TestGitTag_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 GitTag
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestGitTree_Decode(t *testing.T) {
+func TestGitTree_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2275,14 +2806,20 @@ func TestGitTree_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 GitTree
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestGitignoreTemplate_Decode(t *testing.T) {
+func TestGitignoreTemplate_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2300,14 +2837,20 @@ func TestGitignoreTemplate_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 GitignoreTemplate
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestGpgKey_Decode(t *testing.T) {
+func TestGpgKey_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2325,14 +2868,20 @@ func TestGpgKey_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 GpgKey
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestGroupMapping_Decode(t *testing.T) {
+func TestGroupMapping_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2351,14 +2900,20 @@ func TestGroupMapping_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 GroupMapping
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestHook_Decode(t *testing.T) {
+func TestHook_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2376,14 +2931,20 @@ func TestHook_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Hook
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestHookDelivery_Decode(t *testing.T) {
+func TestHookDelivery_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2401,14 +2962,20 @@ func TestHookDelivery_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 HookDelivery
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestHovercard_Decode(t *testing.T) {
+func TestHovercard_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2426,14 +2993,20 @@ func TestHovercard_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Hovercard
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestImport_Decode(t *testing.T) {
+func TestImport_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2454,14 +3027,20 @@ func TestImport_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Import
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestInstallationToken_Decode(t *testing.T) {
+func TestInstallationToken_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2479,14 +3058,20 @@ func TestInstallationToken_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 InstallationToken
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestIntegration_Decode(t *testing.T) {
+func TestIntegration_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2504,14 +3089,20 @@ func TestIntegration_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Integration
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestIntegrationPermissions_Decode(t *testing.T) {
+func TestIntegrationPermissions_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2529,14 +3120,20 @@ func TestIntegrationPermissions_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 IntegrationPermissions
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestInteractionExpiry_Decode(t *testing.T) {
+func TestInteractionExpiry_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2554,14 +3151,20 @@ func TestInteractionExpiry_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 InteractionExpiry
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestInteractionGroup_Decode(t *testing.T) {
+func TestInteractionGroup_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2579,14 +3182,20 @@ func TestInteractionGroup_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 InteractionGroup
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestInteractionLimitResponse_Decode(t *testing.T) {
+func TestInteractionLimitResponse_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2606,14 +3215,20 @@ func TestInteractionLimitResponse_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 InteractionLimitResponse
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestIssue_Decode(t *testing.T) {
+func TestIssue_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2631,14 +3246,20 @@ func TestIssue_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Issue
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestIssueComment_Decode(t *testing.T) {
+func TestIssueComment_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2656,14 +3277,20 @@ func TestIssueComment_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 IssueComment
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestIssueEvent_Decode(t *testing.T) {
+func TestIssueEvent_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2681,14 +3308,20 @@ func TestIssueEvent_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 IssueEvent
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestIssueSimple_Decode(t *testing.T) {
+func TestIssueSimple_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2706,14 +3339,20 @@ func TestIssueSimple_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 IssueSimple
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestJob_Decode(t *testing.T) {
+func TestJob_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2731,14 +3370,20 @@ func TestJob_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Job
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestJobStatus_Decode(t *testing.T) {
+func TestJobStatus_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2756,14 +3401,20 @@ func TestJobStatus_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 JobStatus
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestJobStepsItemStatus_Decode(t *testing.T) {
+func TestJobStepsItemStatus_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2781,14 +3432,20 @@ func TestJobStepsItemStatus_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 JobStepsItemStatus
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestKey_Decode(t *testing.T) {
+func TestKey_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2806,14 +3463,20 @@ func TestKey_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Key
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestLabel_Decode(t *testing.T) {
+func TestLabel_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2832,14 +3495,20 @@ func TestLabel_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Label
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestLanguage_Decode(t *testing.T) {
+func TestLanguage_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2858,14 +3527,21 @@ func TestLanguage_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Language
+			typ2 = make(Language)
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestLicense_Decode(t *testing.T) {
+func TestLicense_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2883,14 +3559,20 @@ func TestLicense_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 License
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestLicenseContent_Decode(t *testing.T) {
+func TestLicenseContent_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2908,14 +3590,20 @@ func TestLicenseContent_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 LicenseContent
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestMarkdownRenderReqMode_Decode(t *testing.T) {
+func TestMarkdownRenderReqMode_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2933,14 +3621,20 @@ func TestMarkdownRenderReqMode_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 MarkdownRenderReqMode
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestMarketplacePurchase_Decode(t *testing.T) {
+func TestMarketplacePurchase_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2958,14 +3652,20 @@ func TestMarketplacePurchase_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 MarketplacePurchase
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestMergedUpstream_Decode(t *testing.T) {
+func TestMergedUpstream_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -2983,14 +3683,20 @@ func TestMergedUpstream_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 MergedUpstream
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestMigration_Decode(t *testing.T) {
+func TestMigration_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3011,14 +3717,20 @@ func TestMigration_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Migration
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestMigrationsStartForAuthenticatedUserReqExcludeItem_Decode(t *testing.T) {
+func TestMigrationsStartForAuthenticatedUserReqExcludeItem_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3036,14 +3748,20 @@ func TestMigrationsStartForAuthenticatedUserReqExcludeItem_Decode(t *testing.T) 
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 MigrationsStartForAuthenticatedUserReqExcludeItem
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestMilestone_Decode(t *testing.T) {
+func TestMilestone_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3061,14 +3779,20 @@ func TestMilestone_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Milestone
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestMilestoneState_Decode(t *testing.T) {
+func TestMilestoneState_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3086,14 +3810,20 @@ func TestMilestoneState_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 MilestoneState
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestMinimalRepository_Decode(t *testing.T) {
+func TestMinimalRepository_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3111,14 +3841,20 @@ func TestMinimalRepository_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 MinimalRepository
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestNullableIntegrationPermissions_Decode(t *testing.T) {
+func TestNullableIntegrationPermissions_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3136,14 +3872,20 @@ func TestNullableIntegrationPermissions_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 NullableIntegrationPermissions
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestNullableMilestoneState_Decode(t *testing.T) {
+func TestNullableMilestoneState_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3161,14 +3903,20 @@ func TestNullableMilestoneState_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 NullableMilestoneState
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestOrgHook_Decode(t *testing.T) {
+func TestOrgHook_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3187,14 +3935,20 @@ func TestOrgHook_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 OrgHook
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestOrgMembership_Decode(t *testing.T) {
+func TestOrgMembership_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3213,14 +3967,20 @@ func TestOrgMembership_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 OrgMembership
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestOrgMembershipRole_Decode(t *testing.T) {
+func TestOrgMembershipRole_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3238,14 +3998,20 @@ func TestOrgMembershipRole_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 OrgMembershipRole
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestOrgMembershipState_Decode(t *testing.T) {
+func TestOrgMembershipState_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3263,14 +4029,20 @@ func TestOrgMembershipState_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 OrgMembershipState
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestOrganizationActionsSecret_Decode(t *testing.T) {
+func TestOrganizationActionsSecret_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3288,14 +4060,20 @@ func TestOrganizationActionsSecret_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 OrganizationActionsSecret
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestOrganizationFull_Decode(t *testing.T) {
+func TestOrganizationFull_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3314,14 +4092,20 @@ func TestOrganizationFull_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 OrganizationFull
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestOrganizationInvitation_Decode(t *testing.T) {
+func TestOrganizationInvitation_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3339,14 +4123,20 @@ func TestOrganizationInvitation_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 OrganizationInvitation
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestOrgsRemoveOutsideCollaboratorUnprocessableEntity_Decode(t *testing.T) {
+func TestOrgsRemoveOutsideCollaboratorUnprocessableEntity_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3364,14 +4154,20 @@ func TestOrgsRemoveOutsideCollaboratorUnprocessableEntity_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 OrgsRemoveOutsideCollaboratorUnprocessableEntity
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestOrgsUpdateWebhookConfigForOrgReq_Decode(t *testing.T) {
+func TestOrgsUpdateWebhookConfigForOrgReq_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3389,14 +4185,20 @@ func TestOrgsUpdateWebhookConfigForOrgReq_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 OrgsUpdateWebhookConfigForOrgReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPackage_Decode(t *testing.T) {
+func TestPackage_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3415,14 +4217,20 @@ func TestPackage_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Package
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPackagePackageType_Decode(t *testing.T) {
+func TestPackagePackageType_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3440,14 +4248,20 @@ func TestPackagePackageType_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PackagePackageType
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPackageVersion_Decode(t *testing.T) {
+func TestPackageVersion_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3467,14 +4281,20 @@ func TestPackageVersion_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PackageVersion
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPackageVersionMetadataPackageType_Decode(t *testing.T) {
+func TestPackageVersionMetadataPackageType_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3492,14 +4312,20 @@ func TestPackageVersionMetadataPackageType_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PackageVersionMetadataPackageType
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPackageVisibility_Decode(t *testing.T) {
+func TestPackageVisibility_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3517,14 +4343,20 @@ func TestPackageVisibility_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PackageVisibility
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPackagesBillingUsage_Decode(t *testing.T) {
+func TestPackagesBillingUsage_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3542,14 +4374,20 @@ func TestPackagesBillingUsage_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PackagesBillingUsage
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPage_Decode(t *testing.T) {
+func TestPage_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3567,14 +4405,20 @@ func TestPage_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Page
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPageBuild_Decode(t *testing.T) {
+func TestPageBuild_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3592,14 +4436,20 @@ func TestPageBuild_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PageBuild
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPageBuildStatus_Decode(t *testing.T) {
+func TestPageBuildStatus_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3617,14 +4467,20 @@ func TestPageBuildStatus_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PageBuildStatus
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPageProtectedDomainState_Decode(t *testing.T) {
+func TestPageProtectedDomainState_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3642,14 +4498,20 @@ func TestPageProtectedDomainState_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PageProtectedDomainState
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPageStatus_Decode(t *testing.T) {
+func TestPageStatus_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3667,14 +4529,20 @@ func TestPageStatus_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PageStatus
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPagesHTTPSCertificateState_Decode(t *testing.T) {
+func TestPagesHTTPSCertificateState_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3692,14 +4560,20 @@ func TestPagesHTTPSCertificateState_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PagesHTTPSCertificateState
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPagesHealthCheck_Decode(t *testing.T) {
+func TestPagesHealthCheck_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3717,14 +4591,20 @@ func TestPagesHealthCheck_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PagesHealthCheck
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestParticipationStats_Decode(t *testing.T) {
+func TestParticipationStats_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3742,14 +4622,20 @@ func TestParticipationStats_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ParticipationStats
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPorterAuthor_Decode(t *testing.T) {
+func TestPorterAuthor_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3767,14 +4653,20 @@ func TestPorterAuthor_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PorterAuthor
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPrivateUser_Decode(t *testing.T) {
+func TestPrivateUser_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3792,14 +4684,20 @@ func TestPrivateUser_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PrivateUser
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestProject_Decode(t *testing.T) {
+func TestProject_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3819,14 +4717,20 @@ func TestProject_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Project
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestProjectCard_Decode(t *testing.T) {
+func TestProjectCard_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3844,14 +4748,20 @@ func TestProjectCard_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ProjectCard
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestProjectColumn_Decode(t *testing.T) {
+func TestProjectColumn_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3870,14 +4780,20 @@ func TestProjectColumn_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ProjectColumn
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestProjectsAddCollaboratorReqPermission_Decode(t *testing.T) {
+func TestProjectsAddCollaboratorReqPermission_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3895,14 +4811,20 @@ func TestProjectsAddCollaboratorReqPermission_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ProjectsAddCollaboratorReqPermission
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestProtectedBranchAdminEnforced_Decode(t *testing.T) {
+func TestProtectedBranchAdminEnforced_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3921,14 +4843,20 @@ func TestProtectedBranchAdminEnforced_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ProtectedBranchAdminEnforced
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestProtectedBranchPullRequestReview_Decode(t *testing.T) {
+func TestProtectedBranchPullRequestReview_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3946,14 +4874,20 @@ func TestProtectedBranchPullRequestReview_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ProtectedBranchPullRequestReview
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPullRequest_Decode(t *testing.T) {
+func TestPullRequest_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3971,14 +4905,20 @@ func TestPullRequest_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PullRequest
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPullRequestMergeResult_Decode(t *testing.T) {
+func TestPullRequestMergeResult_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -3996,14 +4936,20 @@ func TestPullRequestMergeResult_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PullRequestMergeResult
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPullRequestReview_Decode(t *testing.T) {
+func TestPullRequestReview_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4024,14 +4970,20 @@ func TestPullRequestReview_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PullRequestReview
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPullRequestReviewComment_Decode(t *testing.T) {
+func TestPullRequestReviewComment_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4050,14 +5002,20 @@ func TestPullRequestReviewComment_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PullRequestReviewComment
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPullRequestReviewRequest_Decode(t *testing.T) {
+func TestPullRequestReviewRequest_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4075,14 +5033,20 @@ func TestPullRequestReviewRequest_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PullRequestReviewRequest
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPullRequestSimple_Decode(t *testing.T) {
+func TestPullRequestSimple_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4100,14 +5064,20 @@ func TestPullRequestSimple_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PullRequestSimple
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPullRequestState_Decode(t *testing.T) {
+func TestPullRequestState_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4125,14 +5095,20 @@ func TestPullRequestState_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PullRequestState
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPullsMergeConflict_Decode(t *testing.T) {
+func TestPullsMergeConflict_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4150,14 +5126,20 @@ func TestPullsMergeConflict_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PullsMergeConflict
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPullsMergeMethodNotAllowed_Decode(t *testing.T) {
+func TestPullsMergeMethodNotAllowed_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4175,14 +5157,20 @@ func TestPullsMergeMethodNotAllowed_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PullsMergeMethodNotAllowed
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestPullsUpdateBranchAccepted_Decode(t *testing.T) {
+func TestPullsUpdateBranchAccepted_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4200,14 +5188,20 @@ func TestPullsUpdateBranchAccepted_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 PullsUpdateBranchAccepted
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestRateLimitOverview_Decode(t *testing.T) {
+func TestRateLimitOverview_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4225,14 +5219,20 @@ func TestRateLimitOverview_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 RateLimitOverview
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestReaction_Decode(t *testing.T) {
+func TestReaction_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4250,14 +5250,20 @@ func TestReaction_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Reaction
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestReactionContent_Decode(t *testing.T) {
+func TestReactionContent_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4275,14 +5281,20 @@ func TestReactionContent_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ReactionContent
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestRelease_Decode(t *testing.T) {
+func TestRelease_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4300,14 +5312,20 @@ func TestRelease_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Release
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestReleaseAsset_Decode(t *testing.T) {
+func TestReleaseAsset_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4325,14 +5343,20 @@ func TestReleaseAsset_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ReleaseAsset
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestReposAddAppAccessRestrictionsReq0_Decode(t *testing.T) {
+func TestReposAddAppAccessRestrictionsReq0_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4350,14 +5374,20 @@ func TestReposAddAppAccessRestrictionsReq0_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ReposAddAppAccessRestrictionsReq0
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestReposAddStatusCheckContextsReq0_Decode(t *testing.T) {
+func TestReposAddStatusCheckContextsReq0_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4375,14 +5405,20 @@ func TestReposAddStatusCheckContextsReq0_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ReposAddStatusCheckContextsReq0
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestReposAddTeamAccessRestrictionsReq0_Decode(t *testing.T) {
+func TestReposAddTeamAccessRestrictionsReq0_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4400,14 +5436,20 @@ func TestReposAddTeamAccessRestrictionsReq0_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ReposAddTeamAccessRestrictionsReq0
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestReposAddUserAccessRestrictionsReq0_Decode(t *testing.T) {
+func TestReposAddUserAccessRestrictionsReq0_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4425,14 +5467,20 @@ func TestReposAddUserAccessRestrictionsReq0_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ReposAddUserAccessRestrictionsReq0
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestReposCreateDeploymentAccepted_Decode(t *testing.T) {
+func TestReposCreateDeploymentAccepted_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4450,14 +5498,20 @@ func TestReposCreateDeploymentAccepted_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ReposCreateDeploymentAccepted
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestReposDeleteForbidden_Decode(t *testing.T) {
+func TestReposDeleteForbidden_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4475,14 +5529,20 @@ func TestReposDeleteForbidden_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ReposDeleteForbidden
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestReposRemoveAppAccessRestrictionsReq0_Decode(t *testing.T) {
+func TestReposRemoveAppAccessRestrictionsReq0_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4500,14 +5560,20 @@ func TestReposRemoveAppAccessRestrictionsReq0_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ReposRemoveAppAccessRestrictionsReq0
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestReposRemoveStatusCheckContextsReq0_Decode(t *testing.T) {
+func TestReposRemoveStatusCheckContextsReq0_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4525,14 +5591,20 @@ func TestReposRemoveStatusCheckContextsReq0_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ReposRemoveStatusCheckContextsReq0
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestReposRemoveTeamAccessRestrictionsReq0_Decode(t *testing.T) {
+func TestReposRemoveTeamAccessRestrictionsReq0_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4550,14 +5622,20 @@ func TestReposRemoveTeamAccessRestrictionsReq0_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ReposRemoveTeamAccessRestrictionsReq0
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestReposRemoveUserAccessRestrictionsReq0_Decode(t *testing.T) {
+func TestReposRemoveUserAccessRestrictionsReq0_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4575,14 +5653,20 @@ func TestReposRemoveUserAccessRestrictionsReq0_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ReposRemoveUserAccessRestrictionsReq0
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestReposSetAppAccessRestrictionsReq0_Decode(t *testing.T) {
+func TestReposSetAppAccessRestrictionsReq0_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4600,14 +5684,20 @@ func TestReposSetAppAccessRestrictionsReq0_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ReposSetAppAccessRestrictionsReq0
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestReposSetStatusCheckContextsReq0_Decode(t *testing.T) {
+func TestReposSetStatusCheckContextsReq0_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4625,14 +5715,20 @@ func TestReposSetStatusCheckContextsReq0_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ReposSetStatusCheckContextsReq0
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestReposSetTeamAccessRestrictionsReq0_Decode(t *testing.T) {
+func TestReposSetTeamAccessRestrictionsReq0_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4650,14 +5746,20 @@ func TestReposSetTeamAccessRestrictionsReq0_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ReposSetTeamAccessRestrictionsReq0
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestReposSetUserAccessRestrictionsReq0_Decode(t *testing.T) {
+func TestReposSetUserAccessRestrictionsReq0_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4675,14 +5777,20 @@ func TestReposSetUserAccessRestrictionsReq0_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ReposSetUserAccessRestrictionsReq0
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestReposUpdateWebhookConfigForRepoReq_Decode(t *testing.T) {
+func TestReposUpdateWebhookConfigForRepoReq_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4700,14 +5808,20 @@ func TestReposUpdateWebhookConfigForRepoReq_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ReposUpdateWebhookConfigForRepoReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestRepository_Decode(t *testing.T) {
+func TestRepository_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4726,14 +5840,20 @@ func TestRepository_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Repository
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestRepositoryCollaboratorPermission_Decode(t *testing.T) {
+func TestRepositoryCollaboratorPermission_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4751,14 +5871,20 @@ func TestRepositoryCollaboratorPermission_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 RepositoryCollaboratorPermission
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestRepositoryInvitation_Decode(t *testing.T) {
+func TestRepositoryInvitation_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4777,14 +5903,20 @@ func TestRepositoryInvitation_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 RepositoryInvitation
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestRepositoryInvitationPermissions_Decode(t *testing.T) {
+func TestRepositoryInvitationPermissions_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4802,14 +5934,20 @@ func TestRepositoryInvitationPermissions_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 RepositoryInvitationPermissions
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestRepositorySubscription_Decode(t *testing.T) {
+func TestRepositorySubscription_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4827,14 +5965,20 @@ func TestRepositorySubscription_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 RepositorySubscription
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestRunner_Decode(t *testing.T) {
+func TestRunner_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4852,14 +5996,20 @@ func TestRunner_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Runner
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestRunnerGroupsEnterprise_Decode(t *testing.T) {
+func TestRunnerGroupsEnterprise_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4878,14 +6028,20 @@ func TestRunnerGroupsEnterprise_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 RunnerGroupsEnterprise
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestRunnerGroupsOrg_Decode(t *testing.T) {
+func TestRunnerGroupsOrg_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4904,14 +6060,20 @@ func TestRunnerGroupsOrg_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 RunnerGroupsOrg
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestScimEnterpriseGroup_Decode(t *testing.T) {
+func TestScimEnterpriseGroup_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4930,14 +6092,20 @@ func TestScimEnterpriseGroup_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ScimEnterpriseGroup
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestScimEnterpriseUser_Decode(t *testing.T) {
+func TestScimEnterpriseUser_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4956,14 +6124,20 @@ func TestScimEnterpriseUser_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ScimEnterpriseUser
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestScimGroupListEnterprise_Decode(t *testing.T) {
+func TestScimGroupListEnterprise_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -4981,14 +6155,20 @@ func TestScimGroupListEnterprise_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ScimGroupListEnterprise
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestScimProvisionAndInviteUserReqName_Decode(t *testing.T) {
+func TestScimProvisionAndInviteUserReqName_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5006,14 +6186,20 @@ func TestScimProvisionAndInviteUserReqName_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ScimProvisionAndInviteUserReqName
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestScimSetInformationForProvisionedUserReqName_Decode(t *testing.T) {
+func TestScimSetInformationForProvisionedUserReqName_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5031,14 +6217,20 @@ func TestScimSetInformationForProvisionedUserReqName_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ScimSetInformationForProvisionedUserReqName
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestScimUserListEnterprise_Decode(t *testing.T) {
+func TestScimUserListEnterprise_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5056,14 +6248,20 @@ func TestScimUserListEnterprise_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ScimUserListEnterprise
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestSearchCodeOK_Decode(t *testing.T) {
+func TestSearchCodeOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5081,14 +6279,20 @@ func TestSearchCodeOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 SearchCodeOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestSearchCommitsOK_Decode(t *testing.T) {
+func TestSearchCommitsOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5106,14 +6310,20 @@ func TestSearchCommitsOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 SearchCommitsOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestSearchIssuesAndPullRequestsOK_Decode(t *testing.T) {
+func TestSearchIssuesAndPullRequestsOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5131,14 +6341,20 @@ func TestSearchIssuesAndPullRequestsOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 SearchIssuesAndPullRequestsOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestSearchLabelsOK_Decode(t *testing.T) {
+func TestSearchLabelsOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5156,14 +6372,20 @@ func TestSearchLabelsOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 SearchLabelsOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestSearchReposOK_Decode(t *testing.T) {
+func TestSearchReposOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5181,14 +6403,20 @@ func TestSearchReposOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 SearchReposOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestSearchTopicsOK_Decode(t *testing.T) {
+func TestSearchTopicsOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5206,14 +6434,20 @@ func TestSearchTopicsOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 SearchTopicsOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestSearchUsersOK_Decode(t *testing.T) {
+func TestSearchUsersOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5231,14 +6465,20 @@ func TestSearchUsersOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 SearchUsersOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestSecretScanningAlert_Decode(t *testing.T) {
+func TestSecretScanningAlert_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5257,14 +6497,20 @@ func TestSecretScanningAlert_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 SecretScanningAlert
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestSelectedActions_Decode(t *testing.T) {
+func TestSelectedActions_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5282,14 +6528,20 @@ func TestSelectedActions_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 SelectedActions
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestShortBlob_Decode(t *testing.T) {
+func TestShortBlob_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5307,14 +6559,20 @@ func TestShortBlob_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ShortBlob
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestStatus_Decode(t *testing.T) {
+func TestStatus_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5332,14 +6590,20 @@ func TestStatus_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Status
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestStatusCheckPolicy_Decode(t *testing.T) {
+func TestStatusCheckPolicy_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5357,14 +6621,20 @@ func TestStatusCheckPolicy_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 StatusCheckPolicy
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestTeamDiscussion_Decode(t *testing.T) {
+func TestTeamDiscussion_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5383,14 +6653,20 @@ func TestTeamDiscussion_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 TeamDiscussion
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestTeamDiscussionComment_Decode(t *testing.T) {
+func TestTeamDiscussionComment_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5409,14 +6685,20 @@ func TestTeamDiscussionComment_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 TeamDiscussionComment
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestTeamFull_Decode(t *testing.T) {
+func TestTeamFull_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5434,14 +6716,20 @@ func TestTeamFull_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 TeamFull
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestTeamFullPrivacy_Decode(t *testing.T) {
+func TestTeamFullPrivacy_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5459,14 +6747,20 @@ func TestTeamFullPrivacy_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 TeamFullPrivacy
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestTeamMembership_Decode(t *testing.T) {
+func TestTeamMembership_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5485,14 +6779,20 @@ func TestTeamMembership_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 TeamMembership
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestTeamMembershipRole_Decode(t *testing.T) {
+func TestTeamMembershipRole_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5510,14 +6810,20 @@ func TestTeamMembershipRole_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 TeamMembershipRole
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestTeamProject_Decode(t *testing.T) {
+func TestTeamProject_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5535,14 +6841,20 @@ func TestTeamProject_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 TeamProject
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestTeamRepository_Decode(t *testing.T) {
+func TestTeamRepository_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5560,14 +6872,20 @@ func TestTeamRepository_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 TeamRepository
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestTeamsAddOrUpdateProjectPermissionsInOrgForbidden_Decode(t *testing.T) {
+func TestTeamsAddOrUpdateProjectPermissionsInOrgForbidden_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5585,14 +6903,20 @@ func TestTeamsAddOrUpdateProjectPermissionsInOrgForbidden_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 TeamsAddOrUpdateProjectPermissionsInOrgForbidden
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestTeamsAddOrUpdateProjectPermissionsLegacyForbidden_Decode(t *testing.T) {
+func TestTeamsAddOrUpdateProjectPermissionsLegacyForbidden_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5610,14 +6934,20 @@ func TestTeamsAddOrUpdateProjectPermissionsLegacyForbidden_Decode(t *testing.T) 
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 TeamsAddOrUpdateProjectPermissionsLegacyForbidden
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestThread_Decode(t *testing.T) {
+func TestThread_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5635,14 +6965,20 @@ func TestThread_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Thread
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestThreadSubscription_Decode(t *testing.T) {
+func TestThreadSubscription_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5660,14 +6996,20 @@ func TestThreadSubscription_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ThreadSubscription
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestTopic_Decode(t *testing.T) {
+func TestTopic_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5685,14 +7027,20 @@ func TestTopic_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Topic
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestUsersAddEmailForAuthenticatedReq0_Decode(t *testing.T) {
+func TestUsersAddEmailForAuthenticatedReq0_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5710,14 +7058,20 @@ func TestUsersAddEmailForAuthenticatedReq0_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 UsersAddEmailForAuthenticatedReq0
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestUsersDeleteEmailForAuthenticatedReq0_Decode(t *testing.T) {
+func TestUsersDeleteEmailForAuthenticatedReq0_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5735,14 +7089,20 @@ func TestUsersDeleteEmailForAuthenticatedReq0_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 UsersDeleteEmailForAuthenticatedReq0
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestUsersGetAuthenticatedOK_Decode(t *testing.T) {
+func TestUsersGetAuthenticatedOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5761,14 +7121,20 @@ func TestUsersGetAuthenticatedOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 UsersGetAuthenticatedOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestUsersGetByUsernameOK_Decode(t *testing.T) {
+func TestUsersGetByUsernameOK_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5787,14 +7153,20 @@ func TestUsersGetByUsernameOK_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 UsersGetByUsernameOK
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestViewTraffic_Decode(t *testing.T) {
+func TestViewTraffic_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5812,14 +7184,20 @@ func TestViewTraffic_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 ViewTraffic
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestWebhookConfig_Decode(t *testing.T) {
+func TestWebhookConfig_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5837,14 +7215,20 @@ func TestWebhookConfig_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 WebhookConfig
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestWorkflow_Decode(t *testing.T) {
+func TestWorkflow_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5862,14 +7246,20 @@ func TestWorkflow_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 Workflow
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestWorkflowRun_Decode(t *testing.T) {
+func TestWorkflowRun_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5887,14 +7277,20 @@ func TestWorkflowRun_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 WorkflowRun
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestWorkflowRunUsage_Decode(t *testing.T) {
+func TestWorkflowRunUsage_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5912,14 +7308,20 @@ func TestWorkflowRunUsage_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 WorkflowRunUsage
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
 
-func TestWorkflowState_Decode(t *testing.T) {
+func TestWorkflowState_JSON(t *testing.T) {
 	t.Parallel()
 
 	for i, tc := range []struct {
@@ -5937,9 +7339,15 @@ func TestWorkflowState_Decode(t *testing.T) {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
-				t.Log("Input:", tc.Input)
-				t.Fatalf("Unexpected error: %+v", err)
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
+
+			e := jx.Writer{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+			var typ2 WorkflowState
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
 }
