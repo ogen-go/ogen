@@ -90,7 +90,26 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 			return nil, errors.Wrapf(err, "anyOf")
 		}
 
-		return hook(&oas.Schema{AnyOf: schemas}), nil
+		return hook(&oas.Schema{
+			AnyOf: schemas,
+			// Object validators
+			MaxProperties: schema.MaxProperties,
+			MinProperties: schema.MinProperties,
+			// Array validators
+			MinItems:    schema.MinItems,
+			MaxItems:    schema.MaxItems,
+			UniqueItems: schema.UniqueItems,
+			// Number validators
+			Minimum:          schema.Minimum,
+			Maximum:          schema.Maximum,
+			ExclusiveMinimum: schema.ExclusiveMinimum,
+			ExclusiveMaximum: schema.ExclusiveMaximum,
+			MultipleOf:       schema.MultipleOf,
+			// String validators
+			MaxLength: schema.MaxLength,
+			MinLength: schema.MinLength,
+			Pattern:   schema.Pattern,
+		}), nil
 	case len(schema.AllOf) > 0:
 		schemas, err := p.parseMany(schema.AllOf)
 		if err != nil {

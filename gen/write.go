@@ -50,6 +50,12 @@ func (t TemplateConfig) RegexStrings() (r []string) {
 		for _, f := range typ.Fields {
 			addRegex(f.Type)
 		}
+		for _, f := range typ.SumOf {
+			addRegex(f)
+		}
+		addRegex(typ.AliasTo)
+		addRegex(typ.PointerTo)
+		addRegex(typ.Item)
 	}
 
 	for _, typ := range t.Types {
