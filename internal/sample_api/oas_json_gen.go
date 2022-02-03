@@ -65,6 +65,148 @@ var (
 )
 
 // Encode implements json.Marshaler.
+func (s AnyOfTest) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
+
+		e.RawStr("\"medium\"" + ":")
+		e.Str(s.Medium)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"sizeLimit\"" + ":")
+		s.SizeLimit.Encode(e)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfAnyOfTest = [2]string{
+	0: "medium",
+	1: "sizeLimit",
+}
+
+// Decode decodes AnyOfTest from json.
+func (s *AnyOfTest) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode AnyOfTest to nil")
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "medium":
+			requiredBitSet[0] |= 1 << 0
+
+			if err := func() error {
+				v, err := d.Str()
+				s.Medium = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"medium\"")
+			}
+		case "sizeLimit":
+			requiredBitSet[0] |= 1 << 1
+
+			if err := func() error {
+				if err := s.SizeLimit.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"sizeLimit\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode AnyOfTest")
+	}
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000011,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfAnyOfTest) {
+					name = jsonFieldsNameOfAnyOfTest[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode encodes AnyOfTestSizeLimit as json.
+func (s AnyOfTestSizeLimit) Encode(e *jx.Writer) {
+	switch s.Type {
+	case IntAnyOfTestSizeLimit:
+		e.Int(s.Int)
+	case StringAnyOfTestSizeLimit:
+		e.Str(s.String)
+	}
+}
+
+// Decode decodes AnyOfTestSizeLimit from json.
+func (s *AnyOfTestSizeLimit) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode AnyOfTestSizeLimit to nil")
+	}
+	// Sum type type_discriminator.
+	switch t := d.Next(); t {
+	case jx.Number:
+		v, err := d.Int()
+		s.Int = int(v)
+		if err != nil {
+			return err
+		}
+		s.Type = IntAnyOfTestSizeLimit
+	case jx.String:
+		v, err := d.Str()
+		s.String = string(v)
+		if err != nil {
+			return err
+		}
+		s.Type = StringAnyOfTestSizeLimit
+	default:
+		return errors.Errorf("unexpected json type %q", t)
+	}
+	return nil
+}
+
+// Encode implements json.Marshaler.
 func (s AnyTest) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -2762,6 +2904,31 @@ func (s *OneVariantHasNoUniqueFields1) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// Encode encodes AnyOfTest as json.
+func (o OptAnyOfTest) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes AnyOfTest from json.
+func (o *OptAnyOfTest) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptAnyOfTest to nil")
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptAnyOfTest", d.Next())
+	}
+}
+
 // Encode encodes AnyTest as json.
 func (o OptAnyTest) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -3599,6 +3766,15 @@ func (s Pet) Encode(e *jx.Writer) {
 		}
 	}
 	{
+		if s.TestAnyOf.Set {
+			e.Comma()
+		}
+		if s.TestAnyOf.Set {
+			e.RawStr("\"testAnyOf\"" + ":")
+			s.TestAnyOf.Encode(e)
+		}
+	}
+	{
 		if s.TestDate.Set {
 			e.Comma()
 		}
@@ -3637,7 +3813,7 @@ func (s Pet) Encode(e *jx.Writer) {
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfPet = [28]string{
+var jsonFieldsNameOfPet = [29]string{
 	0:  "primary",
 	1:  "id",
 	2:  "unique_id",
@@ -3662,10 +3838,11 @@ var jsonFieldsNameOfPet = [28]string{
 	21: "testMap",
 	22: "testMapWithProps",
 	23: "testAny",
-	24: "testDate",
-	25: "testDuration",
-	26: "testTime",
-	27: "testDateTime",
+	24: "testAnyOf",
+	25: "testDate",
+	26: "testDuration",
+	27: "testTime",
+	28: "testDateTime",
 }
 
 // Decode decodes Pet from json.
@@ -3984,6 +4161,17 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"testAny\"")
+			}
+		case "testAnyOf":
+
+			if err := func() error {
+				s.TestAnyOf.Reset()
+				if err := s.TestAnyOf.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"testAnyOf\"")
 			}
 		case "testDate":
 
