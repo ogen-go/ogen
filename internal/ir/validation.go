@@ -13,6 +13,7 @@ type Validators struct {
 	String validate.String
 	Int    validate.Int
 	Array  validate.Array
+	Object validate.Object
 }
 
 func (v *Validators) SetString(schema *oas.Schema) (err error) {
@@ -57,6 +58,15 @@ func (v *Validators) SetArray(schema *oas.Schema) {
 	}
 	if schema.MinItems != nil {
 		v.Array.SetMinLength(int(*schema.MinItems))
+	}
+}
+
+func (v *Validators) SetObject(schema *oas.Schema) {
+	if schema.MaxProperties != nil {
+		v.Object.SetMaxProperties(int(*schema.MaxProperties))
+	}
+	if schema.MinProperties != nil {
+		v.Object.SetMinProperties(int(*schema.MinProperties))
 	}
 }
 
@@ -122,6 +132,9 @@ func (t *Type) needValidation(path *walkpath) (result bool) {
 		}
 		return false
 	case KindMap:
+		if t.Validators.Object.Set() {
+			return true
+		}
 		return t.Item.needValidation(path)
 	case KindStream, KindAny:
 		// FIXME(tdakkota): try to validate Any.
