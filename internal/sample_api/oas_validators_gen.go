@@ -250,6 +250,52 @@ func (s Hash) Validate() error {
 	}
 	return nil
 }
+func (s MapWithProperties) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.SubMap.Set {
+			if err := func() error {
+				if err := s.SubMap.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "sub_map",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.MapValidation.Set {
+			if err := func() error {
+				if err := s.MapValidation.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "map_validation",
+			Error: err,
+		})
+	}
+
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 
 func (s NullableEnums) Validate() error {
 	var failures []validate.FieldError
@@ -616,6 +662,25 @@ func (s Pet) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.TestMapWithProps.Set {
+			if err := func() error {
+				if err := s.TestMapWithProps.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "testMapWithProps",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.TestAnyOf.Set {
 			if err := func() error {
 				if err := s.TestAnyOf.Value.Validate(); err != nil {
@@ -708,6 +773,35 @@ func (s StringStringMap) Validate() error {
 		if err := func() error {
 			if err := elem.Validate(); err != nil {
 				return err
+			}
+			return nil
+		}(); err != nil {
+			failures = append(failures, validate.FieldError{
+				Name:  key,
+				Error: err,
+			})
+		}
+	}
+
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ValidationStringMap) Validate() error {
+	var failures []validate.FieldError
+	for key, elem := range s {
+		if err := func() error {
+			if err := (validate.String{
+				MinLength:    1,
+				MinLengthSet: true,
+				MaxLength:    0,
+				MaxLengthSet: false,
+				Email:        false,
+				Hostname:     false,
+				Regex:        nil,
+			}).Validate(string(elem)); err != nil {
+				return errors.Wrap(err, "string")
 			}
 			return nil
 		}(); err != nil {

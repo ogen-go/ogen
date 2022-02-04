@@ -116,6 +116,7 @@ func (s *HelloWorld) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode HelloWorld")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -223,6 +224,7 @@ func (s *WorldObject) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode WorldObject")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,

@@ -486,10 +486,19 @@ type MapWithProperties struct {
 	Optional        OptInt                            `json:"optional"`
 	SubMap          OptStringMap                      `json:"sub_map"`
 	InlinedSubMap   OptMapWithPropertiesInlinedSubMap `json:"inlined_sub_map"`
+	MapValidation   OptValidationStringMap            `json:"map_validation"`
 	AdditionalProps map[string]string
 }
 
 type MapWithPropertiesInlinedSubMap map[string]string
+
+// Ref: #/components/schemas/MaxPropertiesTest
+type MaxPropertiesTest struct {
+	Required  int    `json:"required"`
+	OptionalA OptInt `json:"optional_a"`
+	OptionalB OptInt `json:"optional_b"`
+	OptionalC OptInt `json:"optional_c"`
+}
 
 // NewNilNullableEnumsBoth returns new NilNullableEnumsBoth with value set to v.
 func NewNilNullableEnumsBoth(v NullableEnumsBoth) NilNullableEnumsBoth {
@@ -1244,6 +1253,52 @@ func (o OptMapWithPropertiesInlinedSubMap) Or(d MapWithPropertiesInlinedSubMap) 
 	return d
 }
 
+// NewOptMaxPropertiesTest returns new OptMaxPropertiesTest with value set to v.
+func NewOptMaxPropertiesTest(v MaxPropertiesTest) OptMaxPropertiesTest {
+	return OptMaxPropertiesTest{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMaxPropertiesTest is optional MaxPropertiesTest.
+type OptMaxPropertiesTest struct {
+	Value MaxPropertiesTest
+	Set   bool
+}
+
+// IsSet returns true if OptMaxPropertiesTest was set.
+func (o OptMaxPropertiesTest) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMaxPropertiesTest) Reset() {
+	var v MaxPropertiesTest
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMaxPropertiesTest) SetTo(v MaxPropertiesTest) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMaxPropertiesTest) Get() (v MaxPropertiesTest, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMaxPropertiesTest) Or(d MaxPropertiesTest) MaxPropertiesTest {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilString returns new OptNilString with value set to v.
 func NewOptNilString(v string) OptNilString {
 	return OptNilString{
@@ -1860,38 +1915,85 @@ func (o OptUUID) Or(d uuid.UUID) uuid.UUID {
 	return d
 }
 
+// NewOptValidationStringMap returns new OptValidationStringMap with value set to v.
+func NewOptValidationStringMap(v ValidationStringMap) OptValidationStringMap {
+	return OptValidationStringMap{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptValidationStringMap is optional ValidationStringMap.
+type OptValidationStringMap struct {
+	Value ValidationStringMap
+	Set   bool
+}
+
+// IsSet returns true if OptValidationStringMap was set.
+func (o OptValidationStringMap) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptValidationStringMap) Reset() {
+	var v ValidationStringMap
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptValidationStringMap) SetTo(v ValidationStringMap) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptValidationStringMap) Get() (v ValidationStringMap, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptValidationStringMap) Or(d ValidationStringMap) ValidationStringMap {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // Cute and lovely creature.
 // Ref: #/components/schemas/Pet
 type Pet struct {
-	Primary          *Pet                 `json:"primary"`
-	ID               int64                `json:"id"`
-	UniqueID         uuid.UUID            `json:"unique_id"`
-	Name             string               `json:"name"`
-	Type             OptPetType           `json:"type"`
-	Kind             PetKind              `json:"kind"`
-	Tag              OptUUID              `json:"tag"`
-	IP               net.IP               `json:"ip"`
-	IPV4             net.IP               `json:"ip_v4"`
-	IPV6             net.IP               `json:"ip_v6"`
-	URI              url.URL              `json:"uri"`
-	Birthday         time.Time            `json:"birthday"`
-	Rate             time.Duration        `json:"rate"`
-	Nickname         NilString            `json:"nickname"`
-	NullStr          OptNilString         `json:"nullStr"`
-	Friends          []Pet                `json:"friends"`
-	Next             OptData              `json:"next"`
-	TestInteger1     OptInt               `json:"testInteger1"`
-	TestFloat1       OptFloat64           `json:"testFloat1"`
-	TestArray1       [][]string           `json:"testArray1"`
-	TestArray2       OptArrayTest         `json:"testArray2"`
-	TestMap          OptStringStringMap   `json:"testMap"`
-	TestMapWithProps OptMapWithProperties `json:"testMapWithProps"`
-	TestAny          OptAnyTest           `json:"testAny"`
-	TestAnyOf        OptAnyOfTest         `json:"testAnyOf"`
-	TestDate         OptTime              `json:"testDate"`
-	TestDuration     OptDuration          `json:"testDuration"`
-	TestTime         OptTime              `json:"testTime"`
-	TestDateTime     OptTime              `json:"testDateTime"`
+	Primary           *Pet                 `json:"primary"`
+	ID                int64                `json:"id"`
+	UniqueID          uuid.UUID            `json:"unique_id"`
+	Name              string               `json:"name"`
+	Type              OptPetType           `json:"type"`
+	Kind              PetKind              `json:"kind"`
+	Tag               OptUUID              `json:"tag"`
+	IP                net.IP               `json:"ip"`
+	IPV4              net.IP               `json:"ip_v4"`
+	IPV6              net.IP               `json:"ip_v6"`
+	URI               url.URL              `json:"uri"`
+	Birthday          time.Time            `json:"birthday"`
+	Rate              time.Duration        `json:"rate"`
+	Nickname          NilString            `json:"nickname"`
+	NullStr           OptNilString         `json:"nullStr"`
+	Friends           []Pet                `json:"friends"`
+	Next              OptData              `json:"next"`
+	TestInteger1      OptInt               `json:"testInteger1"`
+	TestFloat1        OptFloat64           `json:"testFloat1"`
+	TestArray1        [][]string           `json:"testArray1"`
+	TestArray2        OptArrayTest         `json:"testArray2"`
+	TestMap           OptStringStringMap   `json:"testMap"`
+	TestMapWithProps  OptMapWithProperties `json:"testMapWithProps"`
+	TestAny           OptAnyTest           `json:"testAny"`
+	TestAnyOf         OptAnyOfTest         `json:"testAnyOf"`
+	TestMaxProperties OptMaxPropertiesTest `json:"testMaxProperties"`
+	TestDate          OptTime              `json:"testDate"`
+	TestDuration      OptDuration          `json:"testDuration"`
+	TestTime          OptTime              `json:"testTime"`
+	TestDateTime      OptTime              `json:"testDateTime"`
 }
 
 func (*Pet) foobarGetRes()  {}
@@ -1997,3 +2099,6 @@ type TestObjectQueryParameterOK struct {
 	Max    int    `json:"max"`
 	Filter string `json:"filter"`
 }
+
+// Ref: #/components/schemas/ValidationStringMap
+type ValidationStringMap map[string]string

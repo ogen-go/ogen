@@ -515,6 +515,7 @@ func (s *APIOverview) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode APIOverview")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000001,
@@ -868,6 +869,7 @@ func (s *ActionsBillingUsage) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsBillingUsage")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -1018,7 +1020,7 @@ func (s ActionsCancelWorkflowRunAccepted) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -1056,7 +1058,7 @@ func (s ActionsCancelWorkflowRunAccepted) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode ActionsCancelWorkflowRunAccepted")
 	}
 
 	return nil
@@ -1134,6 +1136,7 @@ func (s *ActionsCreateOrUpdateEnvironmentSecretReq) Decode(d *jx.Decoder) error 
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsCreateOrUpdateEnvironmentSecretReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1309,6 +1312,7 @@ func (s *ActionsCreateOrUpdateOrgSecretReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsCreateOrUpdateOrgSecretReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000100,
@@ -1384,7 +1388,7 @@ func (s ActionsCreateOrUpdateRepoSecretCreated) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -1422,7 +1426,7 @@ func (s ActionsCreateOrUpdateRepoSecretCreated) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode ActionsCreateOrUpdateRepoSecretCreated")
 	}
 
 	return nil
@@ -1665,6 +1669,7 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) Decode(d *jx.Decoder) erro
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsCreateSelfHostedRunnerGroupForOrgReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -1868,6 +1873,7 @@ func (s *ActionsEnterprisePermissions) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsEnterprisePermissions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -1993,6 +1999,7 @@ func (s *ActionsListArtifactsForRepoOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsListArtifactsForRepoOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2118,6 +2125,7 @@ func (s *ActionsListEnvironmentSecretsOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsListEnvironmentSecretsOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2243,6 +2251,7 @@ func (s *ActionsListJobsForWorkflowRunOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsListJobsForWorkflowRunOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2368,6 +2377,7 @@ func (s *ActionsListOrgSecretsOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsListOrgSecretsOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2493,6 +2503,7 @@ func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) Decode(d *jx.Decod
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2618,6 +2629,7 @@ func (s *ActionsListRepoSecretsOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsListRepoSecretsOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2743,6 +2755,7 @@ func (s *ActionsListRepoWorkflowsOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsListRepoWorkflowsOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2868,6 +2881,7 @@ func (s *ActionsListSelectedReposForOrgSecretOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsListSelectedReposForOrgSecretOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2993,6 +3007,7 @@ func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Deco
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -3118,6 +3133,7 @@ func (s *ActionsListSelfHostedRunnerGroupsForOrgOK) Decode(d *jx.Decoder) error 
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsListSelfHostedRunnerGroupsForOrgOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -3243,6 +3259,7 @@ func (s *ActionsListSelfHostedRunnersForOrgOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsListSelfHostedRunnersForOrgOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -3368,6 +3385,7 @@ func (s *ActionsListSelfHostedRunnersForRepoOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsListSelfHostedRunnersForRepoOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -3493,6 +3511,7 @@ func (s *ActionsListSelfHostedRunnersInGroupForOrgOK) Decode(d *jx.Decoder) erro
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsListSelfHostedRunnersInGroupForOrgOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -3618,6 +3637,7 @@ func (s *ActionsListWorkflowRunArtifactsOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsListWorkflowRunArtifactsOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -3743,6 +3763,7 @@ func (s *ActionsListWorkflowRunsForRepoOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsListWorkflowRunsForRepoOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -3891,6 +3912,7 @@ func (s *ActionsOrganizationPermissions) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsOrganizationPermissions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -4082,6 +4104,7 @@ func (s *ActionsPublicKey) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsPublicKey")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -4128,7 +4151,7 @@ func (s ActionsReRunWorkflowCreated) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -4166,7 +4189,7 @@ func (s ActionsReRunWorkflowCreated) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode ActionsReRunWorkflowCreated")
 	}
 
 	return nil
@@ -4270,6 +4293,7 @@ func (s *ActionsRepositoryPermissions) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsRepositoryPermissions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -4316,7 +4340,7 @@ func (s ActionsRetryWorkflowCreated) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -4354,7 +4378,7 @@ func (s ActionsRetryWorkflowCreated) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode ActionsRetryWorkflowCreated")
 	}
 
 	return nil
@@ -4470,6 +4494,7 @@ func (s *ActionsReviewPendingDeploymentsForRunReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsReviewPendingDeploymentsForRunReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -4624,6 +4649,7 @@ func (s *ActionsSecret) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsSecret")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -4730,6 +4756,7 @@ func (s *ActionsSetGithubActionsPermissionsOrganizationReq) Decode(d *jx.Decoder
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsSetGithubActionsPermissionsOrganizationReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -4842,6 +4869,7 @@ func (s *ActionsSetGithubActionsPermissionsRepositoryReq) Decode(d *jx.Decoder) 
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsSetGithubActionsPermissionsRepositoryReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -4949,6 +4977,7 @@ func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) Decode(d *jx.Decod
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -5056,6 +5085,7 @@ func (s *ActionsSetSelectedReposForOrgSecretReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsSetSelectedReposForOrgSecretReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -5163,6 +5193,7 @@ func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Deco
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -5270,6 +5301,7 @@ func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) Decode(d *jx.Decoder) erro
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsSetSelfHostedRunnersInGroupForOrgReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -5378,6 +5410,7 @@ func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReq) Decode(d *jx.Decoder) erro
 	}); err != nil {
 		return errors.Wrap(err, "decode ActionsUpdateSelfHostedRunnerGroupForOrgReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -6893,6 +6926,7 @@ func (s *Actor) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Actor")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00111011,
@@ -8889,6 +8923,7 @@ func (s *ApplicationGrant) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ApplicationGrant")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00111111,
@@ -9016,6 +9051,7 @@ func (s *ApplicationGrantApp) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ApplicationGrantApp")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -9151,6 +9187,7 @@ func (s *AppsCheckTokenReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode AppsCheckTokenReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -9330,6 +9367,7 @@ func (s *AppsCreateContentAttachmentReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode AppsCreateContentAttachmentReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -9376,7 +9414,7 @@ func (s AppsCreateFromManifestReq) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -9414,7 +9452,7 @@ func (s AppsCreateFromManifestReq) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode AppsCreateFromManifestReq")
 	}
 
 	return nil
@@ -9690,6 +9728,7 @@ func (s *AppsDeleteAuthorizationReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode AppsDeleteAuthorizationReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -9777,6 +9816,7 @@ func (s *AppsDeleteTokenReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode AppsDeleteTokenReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -10203,6 +10243,7 @@ func (s *AppsListInstallationReposForAuthenticatedUserOK) Decode(d *jx.Decoder) 
 	}); err != nil {
 		return errors.Wrap(err, "decode AppsListInstallationReposForAuthenticatedUserOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000101,
@@ -10533,6 +10574,7 @@ func (s *AppsListReposAccessibleToInstallationOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode AppsListReposAccessibleToInstallationOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -10848,6 +10890,7 @@ func (s *AppsResetTokenReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode AppsResetTokenReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -11154,6 +11197,7 @@ func (s *AppsScopeTokenReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode AppsScopeTokenReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -11543,6 +11587,7 @@ func (s *Artifact) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Artifact")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -12738,7 +12783,7 @@ func (s AuditLogEventData) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -12776,7 +12821,7 @@ func (s AuditLogEventData) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode AuditLogEventData")
 	}
 
 	return nil
@@ -12959,6 +13004,7 @@ func (s *AuthenticationToken) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode AuthenticationToken")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -13442,6 +13488,7 @@ func (s *Authorization) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Authorization")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -13570,6 +13617,7 @@ func (s *AuthorizationApp) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode AuthorizationApp")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -13713,6 +13761,7 @@ func (s *AutoMerge) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode AutoMerge")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -13869,6 +13918,7 @@ func (s *Autolink) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Autolink")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -14385,6 +14435,7 @@ func (s *BaseGist) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode BaseGist")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b11111111,
@@ -14433,7 +14484,7 @@ func (s BaseGistFiles) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -14467,7 +14518,7 @@ func (s BaseGistFiles) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode BaseGistFiles")
 	}
 
 	return nil
@@ -14924,6 +14975,7 @@ func (s *Blob) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Blob")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00111111,
@@ -15599,6 +15651,7 @@ func (s *BranchProtectionRequiredSignatures) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode BranchProtectionRequiredSignatures")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -15796,6 +15849,7 @@ func (s *BranchProtectionRequiredStatusChecks) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode BranchProtectionRequiredStatusChecks")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000100,
@@ -16057,6 +16111,7 @@ func (s *BranchRestrictionPolicy) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode BranchRestrictionPolicy")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01111111,
@@ -18019,6 +18074,7 @@ func (s *BranchShort) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode BranchShort")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -18126,6 +18182,7 @@ func (s *BranchShortCommit) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode BranchShortCommit")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -18349,6 +18406,7 @@ func (s *BranchWithProtection) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode BranchWithProtection")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00111111,
@@ -18456,6 +18514,7 @@ func (s *BranchWithProtectionLinks) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode BranchWithProtectionLinks")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -18711,6 +18770,7 @@ func (s *CheckAnnotation) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CheckAnnotation")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -19118,6 +19178,7 @@ func (s *CheckRun) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CheckRun")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b11111111,
@@ -19207,6 +19268,7 @@ func (s *CheckRunCheckSuite) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CheckRunCheckSuite")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -19405,6 +19467,7 @@ func (s *CheckRunOutput) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CheckRunOutput")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -19848,6 +19911,7 @@ func (s *CheckSuite) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CheckSuite")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b11111111,
@@ -19990,6 +20054,7 @@ func (s *CheckSuitePreference) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CheckSuitePreference")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -20172,6 +20237,7 @@ func (s *CheckSuitePreferencePreferencesAutoTriggerChecksItem) Decode(d *jx.Deco
 	}); err != nil {
 		return errors.Wrap(err, "decode CheckSuitePreferencePreferencesAutoTriggerChecksItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -20336,6 +20402,7 @@ func (s *ChecksCreateSuiteReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ChecksCreateSuiteReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -20461,6 +20528,7 @@ func (s *ChecksListForRefOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ChecksListForRefOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -20586,6 +20654,7 @@ func (s *ChecksListForSuiteOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ChecksListForSuiteOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -20711,6 +20780,7 @@ func (s *ChecksListSuitesForRefOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ChecksListSuitesForRefOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -20757,7 +20827,7 @@ func (s ChecksRerequestSuiteCreated) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -20795,7 +20865,7 @@ func (s ChecksRerequestSuiteCreated) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode ChecksRerequestSuiteCreated")
 	}
 
 	return nil
@@ -20948,6 +21018,7 @@ func (s *ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) Decode(d *jx.Decode
 	}); err != nil {
 		return errors.Wrap(err, "decode ChecksSetSuitesPreferencesReqAutoTriggerChecksItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -21093,6 +21164,7 @@ func (s *CloneTraffic) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CloneTraffic")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -21305,6 +21377,7 @@ func (s *CodeOfConduct) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CodeOfConduct")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010111,
@@ -21450,6 +21523,7 @@ func (s *CodeOfConductSimple) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CodeOfConductSimple")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -21786,6 +21860,7 @@ func (s *CodeScanningAlert) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CodeScanningAlert")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11101111,
@@ -22559,6 +22634,7 @@ func (s *CodeScanningAlertItems) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CodeScanningAlertItems")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -23630,6 +23706,7 @@ func (s *CodeScanningAnalysis) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CodeScanningAnalysis")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11101111,
@@ -23838,6 +23915,7 @@ func (s *CodeScanningAnalysisDeletion) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CodeScanningAnalysisDeletion")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -24935,6 +25013,7 @@ func (s *CodeScanningUpdateAlertReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CodeScanningUpdateAlertReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -25185,6 +25264,7 @@ func (s *CodeScanningUploadSarifReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CodeScanningUploadSarifReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -25550,6 +25630,7 @@ func (s *CodeSearchResultItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CodeSearchResultItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -26083,6 +26164,7 @@ func (s *Collaborator) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Collaborator")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b11110011,
@@ -26254,6 +26336,7 @@ func (s *CollaboratorPermissions) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CollaboratorPermissions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010101,
@@ -26381,6 +26464,7 @@ func (s *CombinedBillingUsage) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CombinedBillingUsage")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -26604,6 +26688,7 @@ func (s *CombinedCommitStatus) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CombinedCommitStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01111111,
@@ -26924,6 +27009,7 @@ func (s *Commit) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Commit")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -27072,6 +27158,7 @@ func (s *CommitActivity) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CommitActivity")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -27410,6 +27497,7 @@ func (s *CommitComment) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CommitComment")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -27613,6 +27701,7 @@ func (s *CommitCommit) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CommitCommit")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00111111,
@@ -27720,6 +27809,7 @@ func (s *CommitCommitTree) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CommitCommitTree")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -28079,6 +28169,7 @@ func (s *CommitComparison) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CommitComparison")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -28535,6 +28626,7 @@ func (s *CommitParentsItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CommitParentsItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -28867,6 +28959,7 @@ func (s *CommitSearchResultItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CommitSearchResultItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -29070,6 +29163,7 @@ func (s *CommitSearchResultItemCommit) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CommitSearchResultItemCommit")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00111111,
@@ -29197,6 +29291,7 @@ func (s *CommitSearchResultItemCommitAuthor) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CommitSearchResultItemCommitAuthor")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -29304,6 +29399,7 @@ func (s *CommitSearchResultItemCommitTree) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CommitSearchResultItemCommitTree")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -29692,6 +29788,7 @@ func (s *CommunityProfile) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CommunityProfile")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -29885,6 +29982,7 @@ func (s *CommunityProfileFiles) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CommunityProfileFiles")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01111111,
@@ -30226,6 +30324,7 @@ func (s *ContentFile) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ContentFile")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -30350,6 +30449,7 @@ func (s *ContentFileLinks) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ContentFileLinks")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -30498,6 +30598,7 @@ func (s *ContentReferenceAttachment) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ContentReferenceAttachment")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -30645,6 +30746,7 @@ func (s *ContentTraffic) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ContentTraffic")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -31199,6 +31301,7 @@ func (s *Contributor) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Contributor")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b00000000,
@@ -31344,6 +31447,7 @@ func (s *ContributorActivity) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ContributorActivity")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -31787,6 +31891,7 @@ func (s *CredentialAuthorization) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CredentialAuthorization")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00010111,
@@ -31995,6 +32100,7 @@ func (s *DeployKey) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode DeployKey")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01111111,
@@ -32420,6 +32526,7 @@ func (s *Deployment) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Deployment")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b01111111,
@@ -32529,6 +32636,7 @@ func (s *DeploymentBranchPolicy) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode DeploymentBranchPolicy")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -32611,7 +32719,7 @@ func (s DeploymentPayload0) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -32649,7 +32757,7 @@ func (s DeploymentPayload0) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode DeploymentPayload0")
 	}
 
 	return nil
@@ -32996,6 +33104,7 @@ func (s *DeploymentSimple) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode DeploymentSimple")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11101111,
@@ -33364,6 +33473,7 @@ func (s *DeploymentStatus) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode DeploymentStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b10111111,
@@ -33689,6 +33799,7 @@ func (s *DiffEntry) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode DiffEntry")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -33872,6 +33983,7 @@ func (s *Email) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Email")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -33918,7 +34030,7 @@ func (s EmojisGetOK) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -33954,7 +34066,7 @@ func (s EmojisGetOK) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode EmojisGetOK")
 	}
 
 	return nil
@@ -33971,7 +34083,7 @@ func (s EmptyObject) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -34009,7 +34121,7 @@ func (s EmptyObject) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode EmptyObject")
 	}
 
 	return nil
@@ -34230,6 +34342,7 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) Decode(d *j
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -34382,6 +34495,7 @@ func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Deco
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -34507,6 +34621,7 @@ func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseO
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -34632,6 +34747,7 @@ func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) Decode(d *jx.
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -34856,6 +34972,7 @@ func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) Decode(d *j
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -35023,6 +35140,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) Decode(d *jx.Decod
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminProvisionAndInviteEnterpriseGroupReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -35110,6 +35228,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) Decode(
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -35333,6 +35452,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Decode(d *jx.Decode
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminProvisionAndInviteEnterpriseUserReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -35460,6 +35580,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) Decode(d 
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -35623,6 +35744,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) Decode(d *jx.De
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminProvisionAndInviteEnterpriseUserReqName")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -35729,6 +35851,7 @@ func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) Decode(d *jx.D
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -35896,6 +36019,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Decode(d
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -35983,6 +36107,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersIte
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -36206,6 +36331,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Decode(d 
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -36333,6 +36459,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem)
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -36496,6 +36623,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) Decod
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -36603,6 +36731,7 @@ func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Deco
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -36710,6 +36839,7 @@ func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRe
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -36817,6 +36947,7 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) Decode(d *j
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -36962,6 +37093,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) Decode(d *jx.Decod
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminUpdateAttributeForEnterpriseGroupReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -37089,6 +37221,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) Deco
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -37368,6 +37501,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Decode(d *jx.Decode
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminUpdateAttributeForEnterpriseUserReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -37667,6 +37801,7 @@ func (s *EnvironmentApprovals) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode EnvironmentApprovals")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -38112,6 +38247,7 @@ func (s *Event) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Event")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b11101111,
@@ -38562,6 +38698,7 @@ func (s *EventRepo) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode EventRepo")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -38834,6 +38971,7 @@ func (s *Feed) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Feed")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000011,
@@ -39083,6 +39221,7 @@ func (s *FeedLinks) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode FeedLinks")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -39186,6 +39325,7 @@ func (s *FileCommit) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode FileCommit")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -42556,6 +42696,7 @@ func (s *FullRepository) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode FullRepository")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [12]uint8{
 		0b11111111,
@@ -42736,6 +42877,7 @@ func (s *FullRepositoryPermissions) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode FullRepositoryPermissions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010101,
@@ -43205,6 +43347,7 @@ func (s *GistComment) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GistComment")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b11111111,
@@ -43368,6 +43511,7 @@ func (s *GistCommit) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GistCommit")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -44310,7 +44454,7 @@ func (s GistSimpleFiles) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -44344,7 +44488,7 @@ func (s GistSimpleFiles) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode GistSimpleFiles")
 	}
 
 	return nil
@@ -45031,6 +45175,7 @@ func (s *GistSimpleForkOf) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GistSimpleForkOf")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b11111111,
@@ -45079,7 +45224,7 @@ func (s GistSimpleForkOfFiles) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -45113,7 +45258,7 @@ func (s GistSimpleForkOfFiles) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode GistSimpleForkOfFiles")
 	}
 
 	return nil
@@ -45434,7 +45579,7 @@ func (s GistsCheckIsStarredNotFound) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -45472,7 +45617,7 @@ func (s GistsCheckIsStarredNotFound) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode GistsCheckIsStarredNotFound")
 	}
 
 	return nil
@@ -45626,6 +45771,7 @@ func (s *GistsCreateCommentReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GistsCreateCommentReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -45757,6 +45903,7 @@ func (s *GistsCreateReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GistsCreateReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -45803,7 +45950,7 @@ func (s GistsCreateReqFiles) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -45837,7 +45984,7 @@ func (s GistsCreateReqFiles) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode GistsCreateReqFiles")
 	}
 
 	return nil
@@ -45895,6 +46042,7 @@ func (s *GistsCreateReqFilesItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GistsCreateReqFilesItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -46832,6 +46980,7 @@ func (s *GistsUpdateCommentReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GistsUpdateCommentReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -47109,6 +47258,7 @@ func (s *GitCommit) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitCommit")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -47237,6 +47387,7 @@ func (s *GitCommitAuthor) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitCommitAuthor")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -47364,6 +47515,7 @@ func (s *GitCommitCommitter) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitCommitCommitter")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -47491,6 +47643,7 @@ func (s *GitCommitParentsItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitCommitParentsItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -47598,6 +47751,7 @@ func (s *GitCommitTree) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitCommitTree")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -47741,6 +47895,7 @@ func (s *GitCommitVerification) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitCommitVerification")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -47921,6 +48076,7 @@ func (s *GitCreateBlobReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitCreateBlobReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -48133,6 +48289,7 @@ func (s *GitCreateCommitReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitCreateCommitReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -48261,6 +48418,7 @@ func (s *GitCreateCommitReqAuthor) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitCreateCommitReqAuthor")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -48493,6 +48651,7 @@ func (s *GitCreateRefReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitCreateRefReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -48659,6 +48818,7 @@ func (s *GitCreateTagReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitCreateTagReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -48787,6 +48947,7 @@ func (s *GitCreateTagReqTagger) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitCreateTagReqTagger")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -48990,6 +49151,7 @@ func (s *GitCreateTreeReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitCreateTreeReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -49397,6 +49559,7 @@ func (s *GitRef) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitRef")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -49524,6 +49687,7 @@ func (s *GitRefObject) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitRefObject")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -49748,6 +49912,7 @@ func (s *GitTag) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitTag")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01111111,
@@ -49875,6 +50040,7 @@ func (s *GitTagObject) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitTagObject")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -50002,6 +50168,7 @@ func (s *GitTagTagger) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitTagTagger")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -50167,6 +50334,7 @@ func (s *GitTree) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitTree")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -50451,6 +50619,7 @@ func (s *GitUpdateRefReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitUpdateRefReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -50604,6 +50773,7 @@ func (s *GitignoreTemplate) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GitignoreTemplate")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -50961,6 +51131,7 @@ func (s *GpgKey) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GpgKey")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -51680,6 +51851,7 @@ func (s *GroupMappingGroupsItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode GroupMappingGroupsItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -52024,6 +52196,7 @@ func (s *Hook) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Hook")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -52635,6 +52808,7 @@ func (s *HookDelivery) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode HookDelivery")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -52917,6 +53091,7 @@ func (s *HookDeliveryItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode HookDeliveryItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -53021,6 +53196,7 @@ func (s *HookDeliveryRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode HookDeliveryRequest")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -53067,7 +53243,7 @@ func (s HookDeliveryRequestHeaders) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -53105,7 +53281,7 @@ func (s HookDeliveryRequestHeaders) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode HookDeliveryRequestHeaders")
 	}
 
 	return nil
@@ -53122,7 +53298,7 @@ func (s HookDeliveryRequestPayload) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -53160,7 +53336,7 @@ func (s HookDeliveryRequestPayload) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode HookDeliveryRequestPayload")
 	}
 
 	return nil
@@ -53234,6 +53410,7 @@ func (s *HookDeliveryResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode HookDeliveryResponse")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -53280,7 +53457,7 @@ func (s HookDeliveryResponseHeaders) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -53318,7 +53495,7 @@ func (s HookDeliveryResponseHeaders) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode HookDeliveryResponseHeaders")
 	}
 
 	return nil
@@ -53410,6 +53587,7 @@ func (s *HookResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode HookResponse")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -53515,6 +53693,7 @@ func (s *Hovercard) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Hovercard")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -53622,6 +53801,7 @@ func (s *HovercardContextsItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode HovercardContextsItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -54180,6 +54360,7 @@ func (s *Import) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Import")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b00100101,
@@ -54614,6 +54795,7 @@ func (s *InstallationToken) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode InstallationToken")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -55068,6 +55250,7 @@ func (s *Integration) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Integration")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b11111101,
@@ -55178,7 +55361,7 @@ func (s IntegrationPermissions) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -55279,7 +55462,7 @@ func (s *IntegrationPermissions) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IntegrationPermissions")
 	}
 
 	return nil
@@ -55418,6 +55601,7 @@ func (s *InteractionLimit) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode InteractionLimit")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -55543,6 +55727,7 @@ func (s *InteractionLimitResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode InteractionLimitResponse")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -56269,6 +56454,7 @@ func (s *Issue) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Issue")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [4]uint8{
 		0b11111111,
@@ -56620,6 +56806,7 @@ func (s *IssueComment) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IssueComment")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11000111,
@@ -57136,6 +57323,7 @@ func (s *IssueEvent) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IssueEvent")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b11111111,
@@ -57284,6 +57472,7 @@ func (s *IssueEventDismissedReview) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IssueEventDismissedReview")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -57387,6 +57576,7 @@ func (s *IssueEventLabel) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IssueEventLabel")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -57474,6 +57664,7 @@ func (s *IssueEventMilestone) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IssueEventMilestone")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -57662,6 +57853,7 @@ func (s *IssueEventProjectCard) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IssueEventProjectCard")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -57769,6 +57961,7 @@ func (s *IssueEventRename) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IssueEventRename")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -58167,6 +58360,7 @@ func (s *IssuePullRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IssuePullRequest")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011110,
@@ -58927,6 +59121,7 @@ func (s *IssueSearchResultItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IssueSearchResultItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [5]uint8{
 		0b11111111,
@@ -59294,6 +59489,7 @@ func (s *IssueSearchResultItemPullRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IssueSearchResultItemPullRequest")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011110,
@@ -59978,6 +60174,7 @@ func (s *IssueSimple) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IssueSimple")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [4]uint8{
 		0b11111111,
@@ -60144,6 +60341,7 @@ func (s *IssueSimplePullRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IssueSimplePullRequest")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011110,
@@ -60452,6 +60650,7 @@ func (s *IssuesCreateCommentReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IssuesCreateCommentReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -60581,6 +60780,7 @@ func (s *IssuesCreateLabelReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IssuesCreateLabelReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -60731,6 +60931,7 @@ func (s *IssuesCreateMilestoneReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IssuesCreateMilestoneReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -60988,6 +61189,7 @@ func (s *IssuesCreateReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IssuesCreateReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -62508,6 +62710,7 @@ func (s *IssuesUpdateCommentReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IssuesUpdateCommentReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -63630,6 +63833,7 @@ func (s *Job) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Job")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -63845,6 +64049,7 @@ func (s *JobStepsItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode JobStepsItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -64081,6 +64286,7 @@ func (s *Key) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Key")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01111111,
@@ -64188,6 +64394,7 @@ func (s *KeySimple) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode KeySimple")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -64393,6 +64600,7 @@ func (s *Label) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Label")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01111111,
@@ -64653,6 +64861,7 @@ func (s *LabelSearchResultItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode LabelSearchResultItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -64700,7 +64909,7 @@ func (s Language) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -64736,7 +64945,7 @@ func (s Language) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode Language")
 	}
 
 	return nil
@@ -65090,6 +65299,7 @@ func (s *License) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode License")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -65408,6 +65618,7 @@ func (s *LicenseContent) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode LicenseContent")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -65532,6 +65743,7 @@ func (s *LicenseContentLinks) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode LicenseContentLinks")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -65716,6 +65928,7 @@ func (s *LicenseSimple) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode LicenseSimple")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -65895,6 +66108,7 @@ func (s *Link) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Link")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -66002,6 +66216,7 @@ func (s *LinkWithType) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode LinkWithType")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -66131,6 +66346,7 @@ func (s *MarkdownRenderReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode MarkdownRenderReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -66368,6 +66584,7 @@ func (s *MarketplaceAccount) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode MarketplaceAccount")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010111,
@@ -66713,6 +66930,7 @@ func (s *MarketplaceListingPlan) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode MarketplaceListingPlan")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -66942,6 +67160,7 @@ func (s *MarketplacePurchase) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode MarketplacePurchase")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b10001111,
@@ -68179,6 +68398,7 @@ func (s *MetaRootOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode MetaRootOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [5]uint8{
 		0b11111111,
@@ -68633,6 +68853,7 @@ func (s *Migration) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Migration")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b11111111,
@@ -69123,7 +69344,7 @@ func (s MigrationsMapCommitAuthorReq) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -69190,7 +69411,7 @@ func (s *MigrationsMapCommitAuthorReq) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode MigrationsMapCommitAuthorReq")
 	}
 
 	return nil
@@ -69246,6 +69467,7 @@ func (s *MigrationsSetLfsPreferenceReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode MigrationsSetLfsPreferenceReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -69567,6 +69789,7 @@ func (s *MigrationsStartForAuthenticatedUserReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode MigrationsStartForAuthenticatedUserReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00100000,
@@ -69823,6 +70046,7 @@ func (s *MigrationsStartForOrgReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode MigrationsStartForOrgReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -70019,6 +70243,7 @@ func (s *MigrationsStartImportReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode MigrationsStartImportReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -70627,6 +70852,7 @@ func (s *Milestone) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Milestone")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -72457,6 +72683,7 @@ func (s *MinimalRepository) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode MinimalRepository")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [11]uint8{
 		0b11111111,
@@ -73983,6 +74210,7 @@ func (s *NullableCodeOfConductSimple) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode NullableCodeOfConductSimple")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -74090,6 +74318,7 @@ func (s *NullableCommunityHealthFile) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode NullableCommunityHealthFile")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -74621,6 +74850,7 @@ func (s *NullableIntegration) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode NullableIntegration")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b11111101,
@@ -74731,7 +74961,7 @@ func (s NullableIntegrationPermissions) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -74832,7 +75062,7 @@ func (s *NullableIntegrationPermissions) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode NullableIntegrationPermissions")
 	}
 
 	return nil
@@ -74987,6 +75217,7 @@ func (s *NullableLicenseSimple) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode NullableLicenseSimple")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -75364,6 +75595,7 @@ func (s *NullableMilestone) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode NullableMilestone")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -77194,6 +77426,7 @@ func (s *NullableMinimalRepository) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode NullableMinimalRepository")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [11]uint8{
 		0b11111111,
@@ -79395,6 +79628,7 @@ func (s *NullableRepository) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode NullableRepository")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [12]uint8{
 		0b01011111,
@@ -79575,6 +79809,7 @@ func (s *NullableRepositoryPermissions) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode NullableRepositoryPermissions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001011,
@@ -82410,6 +82645,7 @@ func (s *NullableScopedInstallation) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode NullableScopedInstallation")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01100111,
@@ -82620,6 +82856,7 @@ func (s *NullableSimpleCommit) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode NullableSimpleCommit")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00111111,
@@ -82727,6 +82964,7 @@ func (s *NullableSimpleCommitAuthor) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode NullableSimpleCommitAuthor")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -82834,6 +83072,7 @@ func (s *NullableSimpleCommitCommitter) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode NullableSimpleCommitCommitter")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -83328,6 +83567,7 @@ func (s *NullableSimpleUser) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode NullableSimpleUser")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b11111100,
@@ -83637,6 +83877,7 @@ func (s *NullableTeamSimple) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode NullableTeamSimple")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b01111111,
@@ -84276,6 +84517,7 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Dec
 	}); err != nil {
 		return errors.Wrap(err, "decode OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -84543,6 +84785,7 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) Decode(d *jx.Deco
 	}); err != nil {
 		return errors.Wrap(err, "decode OAuthAuthorizationsGetOrCreateAuthorizationForAppReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -94568,6 +94811,7 @@ func (s *OrgHook) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OrgHook")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11110111,
@@ -94897,6 +95141,7 @@ func (s *OrgMembership) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OrgMembership")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00111111,
@@ -94984,6 +95229,7 @@ func (s *OrgMembershipPermissions) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OrgMembershipPermissions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -95206,6 +95452,7 @@ func (s *OrganizationActionsSecret) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OrganizationActionsSecret")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -96244,6 +96491,7 @@ func (s *OrganizationFull) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OrganizationFull")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [6]uint8{
 		0b11111111,
@@ -96418,6 +96666,7 @@ func (s *OrganizationFullPlan) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OrganizationFullPlan")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -96701,6 +96950,7 @@ func (s *OrganizationInvitation) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OrganizationInvitation")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b10011111,
@@ -97327,6 +97577,7 @@ func (s *OrganizationSimple) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OrganizationSimple")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -97374,7 +97625,7 @@ func (s OrgsConvertMemberToOutsideCollaboratorAccepted) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -97412,7 +97663,7 @@ func (s OrgsConvertMemberToOutsideCollaboratorAccepted) Decode(d *jx.Decoder) er
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode OrgsConvertMemberToOutsideCollaboratorAccepted")
 	}
 
 	return nil
@@ -97729,6 +97980,7 @@ func (s *OrgsCreateWebhookReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OrgsCreateWebhookReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -97925,6 +98177,7 @@ func (s *OrgsCreateWebhookReqConfig) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OrgsCreateWebhookReqConfig")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -98901,6 +99154,7 @@ func (s *OrgsUpdateMembershipForAuthenticatedUserReq) Decode(d *jx.Decoder) erro
 	}); err != nil {
 		return errors.Wrap(err, "decode OrgsUpdateMembershipForAuthenticatedUserReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -99570,7 +99824,7 @@ func (s OrgsUpdateWebhookConfigForOrgReq) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -99661,7 +99915,7 @@ func (s *OrgsUpdateWebhookConfigForOrgReq) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode OrgsUpdateWebhookConfigForOrgReq")
 	}
 
 	return nil
@@ -99935,6 +100189,7 @@ func (s *OrgsUpdateWebhookReqConfig) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OrgsUpdateWebhookReqConfig")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -100220,6 +100475,7 @@ func (s *Package) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Package")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b01111111,
@@ -100548,6 +100804,7 @@ func (s *PackageVersion) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PackageVersion")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b10001111,
@@ -100676,6 +100933,7 @@ func (s *PackageVersionMetadata) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PackageVersionMetadata")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -100787,6 +101045,7 @@ func (s *PackageVersionMetadataContainer) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PackageVersionMetadataContainer")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -101057,6 +101316,7 @@ func (s *PackagesBillingUsage) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PackagesBillingUsage")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -102742,6 +103002,7 @@ func (s *Page) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Page")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00100111,
@@ -102966,6 +103227,7 @@ func (s *PageBuild) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PageBuild")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b11111111,
@@ -103051,6 +103313,7 @@ func (s *PageBuildError) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PageBuildError")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -103158,6 +103421,7 @@ func (s *PageBuildStatus) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PageBuildStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -103386,6 +103650,7 @@ func (s *PagesHTTPSCertificate) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PagesHTTPSCertificate")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -105028,6 +105293,7 @@ func (s *PagesSourceHash) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PagesSourceHash")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -105175,6 +105441,7 @@ func (s *ParticipationStats) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ParticipationStats")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -105382,6 +105649,7 @@ func (s *PorterAuthor) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PorterAuthor")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01111111,
@@ -105529,6 +105797,7 @@ func (s *PorterLargeFile) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PorterLargeFile")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -105636,6 +105905,7 @@ func (s *PreviewHeaderMissing) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PreviewHeaderMissing")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -106532,6 +106802,7 @@ func (s *PrivateUser) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PrivateUser")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [6]uint8{
 		0b11111111,
@@ -106684,6 +106955,7 @@ func (s *PrivateUserPlan) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PrivateUserPlan")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -107049,6 +107321,7 @@ func (s *Project) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Project")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -107377,6 +107650,7 @@ func (s *ProjectCard) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ProjectCard")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b01111111,
@@ -107605,6 +107879,7 @@ func (s *ProjectColumn) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ProjectColumn")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b11111111,
@@ -107938,6 +108213,7 @@ func (s *ProjectsCreateCardReq0) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ProjectsCreateCardReq0")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -108045,6 +108321,7 @@ func (s *ProjectsCreateCardReq1) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ProjectsCreateCardReq1")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -108180,6 +108457,7 @@ func (s *ProjectsCreateColumnReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ProjectsCreateColumnReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -108336,6 +108614,7 @@ func (s *ProjectsCreateForAuthenticatedUserReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ProjectsCreateForAuthenticatedUserReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -108540,6 +108819,7 @@ func (s *ProjectsCreateForOrgReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ProjectsCreateForOrgReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -108744,6 +109024,7 @@ func (s *ProjectsCreateForRepoReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ProjectsCreateForRepoReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -110000,7 +110281,7 @@ func (s ProjectsMoveCardCreated) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -110038,7 +110319,7 @@ func (s ProjectsMoveCardCreated) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode ProjectsMoveCardCreated")
 	}
 
 	return nil
@@ -110368,6 +110649,7 @@ func (s *ProjectsMoveCardReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ProjectsMoveCardReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -110689,7 +110971,7 @@ func (s ProjectsMoveColumnCreated) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -110727,7 +111009,7 @@ func (s ProjectsMoveColumnCreated) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode ProjectsMoveColumnCreated")
 	}
 
 	return nil
@@ -110785,6 +111067,7 @@ func (s *ProjectsMoveColumnReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ProjectsMoveColumnReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -111192,6 +111475,7 @@ func (s *ProjectsUpdateColumnReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ProjectsUpdateColumnReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -111776,6 +112060,7 @@ func (s *ProtectedBranch) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ProtectedBranch")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000001,
@@ -111884,6 +112169,7 @@ func (s *ProtectedBranchAdminEnforced) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ProtectedBranchAdminEnforced")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -111941,7 +112227,7 @@ func (s ProtectedBranchAllowDeletions) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -111999,8 +112285,9 @@ func (s *ProtectedBranchAllowDeletions) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode ProtectedBranchAllowDeletions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -112058,7 +112345,7 @@ func (s ProtectedBranchAllowForcePushes) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -112116,8 +112403,9 @@ func (s *ProtectedBranchAllowForcePushes) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode ProtectedBranchAllowForcePushes")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -112181,7 +112469,7 @@ func (s ProtectedBranchEnforceAdmins) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -112253,8 +112541,9 @@ func (s *ProtectedBranchEnforceAdmins) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode ProtectedBranchEnforceAdmins")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -112431,6 +112720,7 @@ func (s *ProtectedBranchPullRequestReview) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ProtectedBranchPullRequestReview")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001100,
@@ -112681,7 +112971,7 @@ func (s ProtectedBranchRequiredConversationResolution) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -112736,7 +113026,7 @@ func (s *ProtectedBranchRequiredConversationResolution) Decode(d *jx.Decoder) er
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode ProtectedBranchRequiredConversationResolution")
 	}
 
 	return nil
@@ -112764,7 +113054,7 @@ func (s ProtectedBranchRequiredLinearHistory) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -112822,8 +113112,9 @@ func (s *ProtectedBranchRequiredLinearHistory) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode ProtectedBranchRequiredLinearHistory")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -112995,6 +113286,7 @@ func (s *ProtectedBranchRequiredPullRequestReviews) Decode(d *jx.Decoder) error 
 	}); err != nil {
 		return errors.Wrap(err, "decode ProtectedBranchRequiredPullRequestReviews")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -113198,6 +113490,7 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Decode(
 	}); err != nil {
 		return errors.Wrap(err, "decode ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -113305,6 +113598,7 @@ func (s *ProtectedBranchRequiredSignatures) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ProtectedBranchRequiredSignatures")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -113614,7 +113908,7 @@ func (s PublicUser) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -114172,8 +114466,9 @@ func (s *PublicUser) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode PublicUser")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [5]uint8{
 		0b11111111,
@@ -114325,6 +114620,7 @@ func (s *PublicUserPlan) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PublicUserPlan")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -115346,6 +115642,7 @@ func (s *PullRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequest")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [6]uint8{
 		0b11111111,
@@ -115514,6 +115811,7 @@ func (s *PullRequestBase) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestBase")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -117218,6 +117516,7 @@ func (s *PullRequestBaseRepo) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestBaseRepo")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [11]uint8{
 		0b11111111,
@@ -117653,6 +117952,7 @@ func (s *PullRequestBaseRepoOwner) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestBaseRepoOwner")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b11111111,
@@ -117824,6 +118124,7 @@ func (s *PullRequestBaseRepoPermissions) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestBaseRepoPermissions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010101,
@@ -118249,6 +118550,7 @@ func (s *PullRequestBaseUser) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestBaseUser")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b11111111,
@@ -118414,6 +118716,7 @@ func (s *PullRequestHead) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestHead")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -120118,6 +120421,7 @@ func (s *PullRequestHeadRepo) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestHeadRepo")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [11]uint8{
 		0b11111111,
@@ -120291,6 +120595,7 @@ func (s *PullRequestHeadRepoLicense) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestHeadRepoLicense")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -120716,6 +121021,7 @@ func (s *PullRequestHeadRepoOwner) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestHeadRepoOwner")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b11111111,
@@ -120887,6 +121193,7 @@ func (s *PullRequestHeadRepoPermissions) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestHeadRepoPermissions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010101,
@@ -121312,6 +121619,7 @@ func (s *PullRequestHeadUser) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestHeadUser")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b11111111,
@@ -121725,6 +122033,7 @@ func (s *PullRequestLinks) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestLinks")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b11111111,
@@ -121852,6 +122161,7 @@ func (s *PullRequestMergeResult) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestMergeResult")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -122015,6 +122325,7 @@ func (s *PullRequestMinimal) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestMinimal")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -122140,6 +122451,7 @@ func (s *PullRequestMinimalBase) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestMinimalBase")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -122267,6 +122579,7 @@ func (s *PullRequestMinimalBaseRepo) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestMinimalBaseRepo")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -122392,6 +122705,7 @@ func (s *PullRequestMinimalHead) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestMinimalHead")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -122519,6 +122833,7 @@ func (s *PullRequestMinimalHeadRepo) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestMinimalHeadRepo")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -122843,6 +123158,7 @@ func (s *PullRequestReview) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestReview")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -123473,6 +123789,7 @@ func (s *PullRequestReviewComment) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestReviewComment")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [4]uint8{
 		0b11111111,
@@ -123597,6 +123914,7 @@ func (s *PullRequestReviewCommentLinks) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestReviewCommentLinks")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -123684,6 +124002,7 @@ func (s *PullRequestReviewCommentLinksHTML) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestReviewCommentLinksHTML")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -123771,6 +124090,7 @@ func (s *PullRequestReviewCommentLinksPullRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestReviewCommentLinksPullRequest")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -123858,6 +124178,7 @@ func (s *PullRequestReviewCommentLinksSelf) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestReviewCommentLinksSelf")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -124015,6 +124336,7 @@ func (s *PullRequestReviewLinks) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestReviewLinks")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -124102,6 +124424,7 @@ func (s *PullRequestReviewLinksHTML) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestReviewLinksHTML")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -124189,6 +124512,7 @@ func (s *PullRequestReviewLinksPullRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestReviewLinksPullRequest")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -124332,6 +124656,7 @@ func (s *PullRequestReviewRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestReviewRequest")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -125118,6 +125443,7 @@ func (s *PullRequestSimple) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestSimple")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [5]uint8{
 		0b11111111,
@@ -125285,6 +125611,7 @@ func (s *PullRequestSimpleBase) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestSimpleBase")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -125448,6 +125775,7 @@ func (s *PullRequestSimpleHead) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestSimpleHead")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -125859,6 +126187,7 @@ func (s *PullRequestSimpleLinks) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullRequestSimpleLinks")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b11111111,
@@ -125973,6 +126302,7 @@ func (s *PullsCreateReplyForReviewCommentReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullsCreateReplyForReviewCommentReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -126188,6 +126518,7 @@ func (s *PullsCreateReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullsCreateReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000110,
@@ -126443,6 +126774,7 @@ func (s *PullsCreateReviewCommentReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullsCreateReviewCommentReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000001,
@@ -126859,6 +127191,7 @@ func (s *PullsCreateReviewReqCommentsItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullsCreateReviewReqCommentsItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000101,
@@ -126996,6 +127329,7 @@ func (s *PullsDismissReviewReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullsDismissReviewReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -127690,6 +128024,7 @@ func (s *PullsRemoveRequestedReviewersReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullsRemoveRequestedReviewersReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -127847,6 +128182,7 @@ func (s *PullsSubmitReviewReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullsSubmitReviewReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -128278,6 +128614,7 @@ func (s *PullsUpdateReviewCommentReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullsUpdateReviewCommentReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -128365,6 +128702,7 @@ func (s *PullsUpdateReviewReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PullsUpdateReviewReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -128512,6 +128850,7 @@ func (s *RateLimit) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode RateLimit")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -128615,6 +128954,7 @@ func (s *RateLimitOverview) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode RateLimitOverview")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -128823,6 +129163,7 @@ func (s *RateLimitOverviewResources) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode RateLimitOverviewResources")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000101,
@@ -128986,6 +129327,7 @@ func (s *Reaction) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Reaction")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -129292,6 +129634,7 @@ func (s *ReactionRollup) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReactionRollup")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -129426,6 +129769,7 @@ func (s *ReactionsCreateForCommitCommentReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReactionsCreateForCommitCommentReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -129646,6 +129990,7 @@ func (s *ReactionsCreateForIssueCommentReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReactionsCreateForIssueCommentReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -129770,6 +130115,7 @@ func (s *ReactionsCreateForIssueReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReactionsCreateForIssueReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -129942,6 +130288,7 @@ func (s *ReactionsCreateForPullRequestReviewCommentReq) Decode(d *jx.Decoder) er
 	}); err != nil {
 		return errors.Wrap(err, "decode ReactionsCreateForPullRequestReviewCommentReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -130114,6 +130461,7 @@ func (s *ReactionsCreateForReleaseReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReactionsCreateForReleaseReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -130282,6 +130630,7 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgReq) Decode(d *jx.Decoder) 
 	}); err != nil {
 		return errors.Wrap(err, "decode ReactionsCreateForTeamDiscussionCommentInOrgReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -130406,6 +130755,7 @@ func (s *ReactionsCreateForTeamDiscussionCommentLegacyReq) Decode(d *jx.Decoder)
 	}); err != nil {
 		return errors.Wrap(err, "decode ReactionsCreateForTeamDiscussionCommentLegacyReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -130578,6 +130928,7 @@ func (s *ReactionsCreateForTeamDiscussionInOrgReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReactionsCreateForTeamDiscussionInOrgReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -130702,6 +131053,7 @@ func (s *ReactionsCreateForTeamDiscussionLegacyReq) Decode(d *jx.Decoder) error 
 	}); err != nil {
 		return errors.Wrap(err, "decode ReactionsCreateForTeamDiscussionLegacyReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -131164,6 +131516,7 @@ func (s *ReferrerTraffic) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReferrerTraffic")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -131705,6 +132058,7 @@ func (s *Release) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Release")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b11111111,
@@ -132028,6 +132382,7 @@ func (s *ReleaseAsset) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReleaseAsset")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -133857,6 +134212,7 @@ func (s *RepoSearchResultItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode RepoSearchResultItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [11]uint8{
 		0b11111111,
@@ -134036,6 +134392,7 @@ func (s *RepoSearchResultItemPermissions) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode RepoSearchResultItemPermissions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010101,
@@ -134314,6 +134671,7 @@ func (s *ReposAddAppAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposAddAppAccessRestrictionsReq0")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -134683,6 +135041,7 @@ func (s *ReposAddStatusCheckContextsReq0) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposAddStatusCheckContextsReq0")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -134889,6 +135248,7 @@ func (s *ReposAddTeamAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposAddTeamAccessRestrictionsReq0")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -135095,6 +135455,7 @@ func (s *ReposAddUserAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposAddUserAccessRestrictionsReq0")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -135250,6 +135611,7 @@ func (s *ReposCreateAutolinkReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposCreateAutolinkReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -135400,6 +135762,7 @@ func (s *ReposCreateCommitCommentReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposCreateCommitCommentReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -135548,6 +135911,7 @@ func (s *ReposCreateCommitStatusReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposCreateCommitStatusReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -135711,6 +136075,7 @@ func (s *ReposCreateDeployKeyReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposCreateDeployKeyReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -136043,6 +136408,7 @@ func (s *ReposCreateDeploymentReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposCreateDeploymentReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000001,
@@ -136126,7 +136492,7 @@ func (s ReposCreateDeploymentReqPayload0) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -136164,7 +136530,7 @@ func (s ReposCreateDeploymentReqPayload0) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode ReposCreateDeploymentReqPayload0")
 	}
 
 	return nil
@@ -136346,6 +136712,7 @@ func (s *ReposCreateDeploymentStatusReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposCreateDeploymentStatusReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -136520,6 +136887,7 @@ func (s *ReposCreateDispatchEventReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposCreateDispatchEventReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -136566,7 +136934,7 @@ func (s ReposCreateDispatchEventReqClientPayload) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -136584,9 +136952,11 @@ func (s ReposCreateDispatchEventReqClientPayload) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode ReposCreateDispatchEventReqClientPayload to nil")
 	}
+	var propertiesCount int
 
 	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		propertiesCount++
 		switch string(k) {
 		default:
 			var elem jx.Raw
@@ -136604,7 +136974,16 @@ func (s ReposCreateDispatchEventReqClientPayload) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode ReposCreateDispatchEventReqClientPayload")
+	}
+	// Validate properties count.
+	if err := (validate.Object{
+		MinProperties:    0,
+		MinPropertiesSet: false,
+		MaxProperties:    10,
+		MaxPropertiesSet: true,
+	}).ValidateProperties(propertiesCount); err != nil {
+		return errors.Wrap(err, "object")
 	}
 
 	return nil
@@ -137115,6 +137494,7 @@ func (s *ReposCreateForAuthenticatedUserReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposCreateForAuthenticatedUserReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b00000001,
@@ -137689,6 +138069,7 @@ func (s *ReposCreateInOrgReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposCreateInOrgReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b00000001,
@@ -137806,7 +138187,7 @@ func (s ReposCreateOrUpdateEnvironmentReq) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -137885,7 +138266,7 @@ func (s *ReposCreateOrUpdateEnvironmentReq) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode ReposCreateOrUpdateEnvironmentReq")
 	}
 
 	return nil
@@ -138223,6 +138604,7 @@ func (s *ReposCreateOrUpdateFileContentsReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposCreateOrUpdateFileContentsReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -138351,6 +138733,7 @@ func (s *ReposCreateOrUpdateFileContentsReqAuthor) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposCreateOrUpdateFileContentsReqAuthor")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -138479,6 +138862,7 @@ func (s *ReposCreateOrUpdateFileContentsReqCommitter) Decode(d *jx.Decoder) erro
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposCreateOrUpdateFileContentsReqCommitter")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -138564,6 +138948,7 @@ func (s *ReposCreatePagesSiteReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposCreatePagesSiteReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -138672,6 +139057,7 @@ func (s *ReposCreatePagesSiteReqSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposCreatePagesSiteReqSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -138912,6 +139298,7 @@ func (s *ReposCreateReleaseReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposCreateReleaseReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -139086,6 +139473,7 @@ func (s *ReposCreateUsingTemplateReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposCreateUsingTemplateReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -139242,7 +139630,7 @@ func (s ReposCreateWebhookReq) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -139342,7 +139730,7 @@ func (s *ReposCreateWebhookReq) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode ReposCreateWebhookReq")
 	}
 
 	return nil
@@ -139827,6 +140215,7 @@ func (s *ReposDeleteFileReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposDeleteFileReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -141713,6 +142102,7 @@ func (s *ReposMergeReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposMergeReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -141800,6 +142190,7 @@ func (s *ReposMergeUpstreamReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposMergeUpstreamReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -142006,6 +142397,7 @@ func (s *ReposRemoveAppAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposRemoveAppAccessRestrictionsReq0")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -142214,6 +142606,7 @@ func (s *ReposRemoveStatusCheckContextsReq0) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposRemoveStatusCheckContextsReq0")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -142420,6 +142813,7 @@ func (s *ReposRemoveTeamAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposRemoveTeamAccessRestrictionsReq0")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -142626,6 +143020,7 @@ func (s *ReposRemoveUserAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposRemoveUserAccessRestrictionsReq0")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -142761,6 +143156,7 @@ func (s *ReposRenameBranchReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposRenameBranchReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -142868,6 +143264,7 @@ func (s *ReposReplaceAllTopicsReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposReplaceAllTopicsReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -143074,6 +143471,7 @@ func (s *ReposSetAppAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposSetAppAccessRestrictionsReq0")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -143282,6 +143680,7 @@ func (s *ReposSetStatusCheckContextsReq0) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposSetStatusCheckContextsReq0")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -143488,6 +143887,7 @@ func (s *ReposSetTeamAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposSetTeamAccessRestrictionsReq0")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -143694,6 +144094,7 @@ func (s *ReposSetUserAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposSetUserAccessRestrictionsReq0")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -143823,6 +144224,7 @@ func (s *ReposTransferReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposTransferReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -144166,6 +144568,7 @@ func (s *ReposUpdateBranchProtectionReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposUpdateBranchProtectionReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -144543,6 +144946,7 @@ func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) Decode(d *jx.Decode
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposUpdateBranchProtectionReqRequiredStatusChecks")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -144732,6 +145136,7 @@ func (s *ReposUpdateBranchProtectionReqRestrictions) Decode(d *jx.Decoder) error
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposUpdateBranchProtectionReqRestrictions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -144819,6 +145224,7 @@ func (s *ReposUpdateCommitCommentReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposUpdateCommitCommentReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -146346,7 +146752,7 @@ func (s ReposUpdateWebhookConfigForRepoReq) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -146437,7 +146843,7 @@ func (s *ReposUpdateWebhookConfigForRepoReq) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode ReposUpdateWebhookConfigForRepoReq")
 	}
 
 	return nil
@@ -146819,6 +147225,7 @@ func (s *ReposUpdateWebhookReqConfig) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReposUpdateWebhookReqConfig")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -148706,6 +149113,7 @@ func (s *Repository) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Repository")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [12]uint8{
 		0b01011111,
@@ -148822,6 +149230,7 @@ func (s *RepositoryCollaboratorPermission) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode RepositoryCollaboratorPermission")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -149082,6 +149491,7 @@ func (s *RepositoryInvitation) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode RepositoryInvitation")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b10111111,
@@ -149285,6 +149695,7 @@ func (s *RepositoryPermissions) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode RepositoryPermissions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001011,
@@ -149470,6 +149881,7 @@ func (s *RepositorySubscription) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode RepositorySubscription")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00111111,
@@ -152710,6 +153122,7 @@ func (s *ReviewComment) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReviewComment")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [4]uint8{
 		0b11111111,
@@ -152834,6 +153247,7 @@ func (s *ReviewCommentLinks) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ReviewCommentLinks")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -153093,6 +153507,7 @@ func (s *Runner) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Runner")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00111111,
@@ -153282,6 +153697,7 @@ func (s *RunnerApplication) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode RunnerApplication")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -153490,6 +153906,7 @@ func (s *RunnerGroupsEnterprise) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode RunnerGroupsEnterprise")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01101111,
@@ -153739,6 +154156,7 @@ func (s *RunnerGroupsOrg) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode RunnerGroupsOrg")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b01101111,
@@ -154149,6 +154567,7 @@ func (s *ScimEnterpriseGroup) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ScimEnterpriseGroup")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -154693,6 +155112,7 @@ func (s *ScimEnterpriseUser) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ScimEnterpriseUser")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000011,
@@ -155464,6 +155884,7 @@ func (s *ScimGroupListEnterprise) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ScimGroupListEnterprise")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -155694,6 +156115,7 @@ func (s *ScimGroupListEnterpriseResourcesItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ScimGroupListEnterpriseResourcesItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -156216,6 +156638,7 @@ func (s *ScimProvisionAndInviteUserReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ScimProvisionAndInviteUserReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001101,
@@ -156345,6 +156768,7 @@ func (s *ScimProvisionAndInviteUserReqEmailsItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ScimProvisionAndInviteUserReqEmailsItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -156473,6 +156897,7 @@ func (s *ScimProvisionAndInviteUserReqName) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ScimProvisionAndInviteUserReqName")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -156778,6 +157203,7 @@ func (s *ScimSetInformationForProvisionedUserReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ScimSetInformationForProvisionedUserReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b11100000,
@@ -156910,6 +157336,7 @@ func (s *ScimSetInformationForProvisionedUserReqEmailsItem) Decode(d *jx.Decoder
 	}); err != nil {
 		return errors.Wrap(err, "decode ScimSetInformationForProvisionedUserReqEmailsItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -157038,6 +157465,7 @@ func (s *ScimSetInformationForProvisionedUserReqName) Decode(d *jx.Decoder) erro
 	}); err != nil {
 		return errors.Wrap(err, "decode ScimSetInformationForProvisionedUserReqName")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -157188,6 +157616,7 @@ func (s *ScimUpdateAttributeForUserReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ScimUpdateAttributeForUserReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -157315,6 +157744,7 @@ func (s *ScimUpdateAttributeForUserReqOperationsItem) Decode(d *jx.Decoder) erro
 	}); err != nil {
 		return errors.Wrap(err, "decode ScimUpdateAttributeForUserReqOperationsItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -157843,6 +158273,7 @@ func (s *ScimUserListEnterprise) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ScimUserListEnterprise")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -158155,6 +158586,7 @@ func (s *ScimUserListEnterpriseResourcesItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ScimUserListEnterpriseResourcesItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000011,
@@ -158669,6 +159101,7 @@ func (s *SearchCodeOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SearchCodeOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -158814,6 +159247,7 @@ func (s *SearchCommitsOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SearchCommitsOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -158959,6 +159393,7 @@ func (s *SearchIssuesAndPullRequestsOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SearchIssuesAndPullRequestsOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -159152,6 +159587,7 @@ func (s *SearchLabelsOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SearchLabelsOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -159297,6 +159733,7 @@ func (s *SearchReposOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SearchReposOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -159758,6 +160195,7 @@ func (s *SearchTopicsOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SearchTopicsOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -159903,6 +160341,7 @@ func (s *SearchUsersOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SearchUsersOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -160451,6 +160890,7 @@ func (s *SecretScanningUpdateAlertReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SecretScanningUpdateAlertReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -160813,6 +161253,7 @@ func (s *ShortBlob) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ShortBlob")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -160980,6 +161421,7 @@ func (s *ShortBranch) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ShortBranch")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -161087,6 +161529,7 @@ func (s *ShortBranchCommit) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ShortBranchCommit")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -161270,6 +161713,7 @@ func (s *SimpleCommit) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SimpleCommit")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00111111,
@@ -161377,6 +161821,7 @@ func (s *SimpleCommitAuthor) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SimpleCommitAuthor")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -161484,6 +161929,7 @@ func (s *SimpleCommitCommitter) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SimpleCommitCommitter")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -161768,6 +162214,7 @@ func (s *SimpleCommitStatus) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SimpleCommitStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b10111111,
@@ -162263,6 +162710,7 @@ func (s *SimpleUser) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SimpleUser")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b11111100,
@@ -162548,6 +162996,7 @@ func (s *Status) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Status")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -162716,6 +163165,7 @@ func (s *StatusCheckPolicy) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode StatusCheckPolicy")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -162881,6 +163331,7 @@ func (s *Tag) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Tag")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -162988,6 +163439,7 @@ func (s *TagCommit) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TagCommit")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -163313,6 +163765,7 @@ func (s *Team) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Team")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b01011111,
@@ -163738,6 +164191,7 @@ func (s *TeamDiscussion) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamDiscussion")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b11111111,
@@ -164064,6 +164518,7 @@ func (s *TeamDiscussionComment) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamDiscussionComment")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -164491,6 +164946,7 @@ func (s *TeamFull) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamFull")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b01111111,
@@ -164643,6 +165099,7 @@ func (s *TeamMembership) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamMembership")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -164864,6 +165321,7 @@ func (s *TeamPermissions) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamPermissions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -165247,6 +165705,7 @@ func (s *TeamProject) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamProject")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -165375,6 +165834,7 @@ func (s *TeamProjectPermissions) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamProjectPermissions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -167220,6 +167680,7 @@ func (s *TeamRepository) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamRepository")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [11]uint8{
 		0b10111111,
@@ -167399,6 +167860,7 @@ func (s *TeamRepositoryPermissions) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamRepositoryPermissions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001011,
@@ -167706,6 +168168,7 @@ func (s *TeamSimple) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamSimple")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b01111111,
@@ -168464,6 +168927,7 @@ func (s *TeamsCreateDiscussionCommentInOrgReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamsCreateDiscussionCommentInOrgReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -168551,6 +169015,7 @@ func (s *TeamsCreateDiscussionCommentLegacyReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamsCreateDiscussionCommentLegacyReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -168679,6 +169144,7 @@ func (s *TeamsCreateDiscussionInOrgReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamsCreateDiscussionInOrgReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -168807,6 +169273,7 @@ func (s *TeamsCreateDiscussionLegacyReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamsCreateDiscussionLegacyReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -168879,7 +169346,7 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Encode(e *jx.Writer) {
 		if !first {
 			e.Comma()
 		}
-		first = true
+		first = false
 		e.Str(k)
 		e.RawStr(`:`)
 
@@ -168941,7 +169408,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Decode(d *jx.Decoder) e
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq")
 	}
 
 	return nil
@@ -169039,6 +169506,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) Decode(d *jx.
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -169165,6 +169633,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) Decode(d *jx.Decoder) 
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -169355,6 +169824,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) Decode(d *jx
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -169610,6 +170080,7 @@ func (s *TeamsCreateReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamsCreateReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -170161,6 +170632,7 @@ func (s *TeamsUpdateDiscussionCommentInOrgReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamsUpdateDiscussionCommentInOrgReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -170248,6 +170720,7 @@ func (s *TeamsUpdateDiscussionCommentLegacyReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamsUpdateDiscussionCommentLegacyReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -170883,6 +171356,7 @@ func (s *TeamsUpdateLegacyReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TeamsUpdateLegacyReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -171180,6 +171654,7 @@ func (s *Thread) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Thread")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -171328,6 +171803,7 @@ func (s *ThreadSubject) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ThreadSubject")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -171533,6 +172009,7 @@ func (s *ThreadSubscription) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ThreadSubscription")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -171640,6 +172117,7 @@ func (s *Topic) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Topic")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -172036,6 +172514,7 @@ func (s *TopicSearchResultItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TopicSearchResultItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -172532,6 +173011,7 @@ func (s *Traffic) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Traffic")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -172747,6 +173227,7 @@ func (s *UserMarketplacePurchase) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode UserMarketplacePurchase")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b11111111,
@@ -173521,6 +174002,7 @@ func (s *UserSearchResultItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode UserSearchResultItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [5]uint8{
 		0b11111111,
@@ -173812,6 +174294,7 @@ func (s *UsersAddEmailForAuthenticatedReq0) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode UsersAddEmailForAuthenticatedReq0")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -174187,6 +174670,7 @@ func (s *UsersCreateGpgKeyForAuthenticatedReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode UsersCreateGpgKeyForAuthenticatedReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -174370,6 +174854,7 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) Decode(d *jx.Decoder) error
 	}); err != nil {
 		return errors.Wrap(err, "decode UsersCreatePublicSSHKeyForAuthenticatedReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -174613,6 +175098,7 @@ func (s *UsersDeleteEmailForAuthenticatedReq0) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode UsersDeleteEmailForAuthenticatedReq0")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -176150,6 +176636,7 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) Decode(d *jx.Decoder
 	}); err != nil {
 		return errors.Wrap(err, "decode UsersSetPrimaryEmailVisibilityForAuthenticatedReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -176764,6 +177251,7 @@ func (s *ValidationError) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ValidationError")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -176965,6 +177453,7 @@ func (s *ValidationErrorErrorsItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ValidationErrorErrorsItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001000,
@@ -177180,6 +177669,7 @@ func (s *ValidationErrorSimple) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ValidationErrorSimple")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -177323,6 +177813,7 @@ func (s *Verification) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Verification")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -177468,6 +177959,7 @@ func (s *ViewTraffic) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ViewTraffic")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -178023,6 +178515,7 @@ func (s *Workflow) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Workflow")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -178714,6 +179207,7 @@ func (s *WorkflowRun) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode WorkflowRun")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [4]uint8{
 		0b11100101,
@@ -178823,6 +179317,7 @@ func (s *WorkflowRunUsage) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode WorkflowRunUsage")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -179034,6 +179529,7 @@ func (s *WorkflowRunUsageBillableMACOS) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode WorkflowRunUsageBillableMACOS")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -179141,6 +179637,7 @@ func (s *WorkflowRunUsageBillableUBUNTU) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode WorkflowRunUsageBillableUBUNTU")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -179248,6 +179745,7 @@ func (s *WorkflowRunUsageBillableWINDOWS) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode WorkflowRunUsageBillableWINDOWS")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,

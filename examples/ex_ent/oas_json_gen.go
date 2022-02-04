@@ -158,6 +158,7 @@ func (s *CreatePetCategoriesReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CreatePetCategoriesReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -391,6 +392,7 @@ func (s *CreatePetFriendsReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CreatePetFriendsReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010001,
@@ -540,6 +542,7 @@ func (s *CreatePetOwnerReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CreatePetOwnerReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -773,6 +776,7 @@ func (s *CreatePetReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CreatePetReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010001,
@@ -1066,6 +1070,7 @@ func (s *PetCategoriesCreate) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PetCategoriesCreate")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1173,6 +1178,7 @@ func (s *PetCategoriesList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PetCategoriesList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1380,6 +1386,7 @@ func (s *PetCreate) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PetCreate")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00100011,
@@ -1487,6 +1494,7 @@ func (s *PetCreateCategories) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PetCreateCategories")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1614,6 +1622,7 @@ func (s *PetCreateOwner) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PetCreateOwner")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -1763,6 +1772,7 @@ func (s *PetFriendsCreate) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PetFriendsCreate")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1912,6 +1922,7 @@ func (s *PetFriendsList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PetFriendsList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2061,6 +2072,7 @@ func (s *PetList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PetList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2188,6 +2200,7 @@ func (s *PetOwnerCreate) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PetOwnerCreate")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -2315,6 +2328,7 @@ func (s *PetOwnerRead) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PetOwnerRead")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -2464,6 +2478,7 @@ func (s *PetRead) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PetRead")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2613,6 +2628,7 @@ func (s *PetUpdate) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PetUpdate")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2720,6 +2736,7 @@ func (s *R400) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode R400")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2827,6 +2844,7 @@ func (s *R404) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode R404")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2934,6 +2952,7 @@ func (s *R409) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode R409")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -3041,6 +3060,7 @@ func (s *R500) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode R500")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -3274,6 +3294,7 @@ func (s *UpdatePetReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode UpdatePetReq")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010001,
