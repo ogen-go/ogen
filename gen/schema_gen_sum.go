@@ -84,6 +84,10 @@ func (g *schemaGen) anyOf(name string, schema *oas.Schema) (*ir.Type, error) {
 				if !v.Validators.Array.Set() {
 					v.Validators.SetArray(schema)
 				}
+			case ir.KindMap, ir.KindStruct:
+				if !v.Validators.Object.Set() {
+					v.Validators.SetObject(schema)
+				}
 			}
 		}
 		return sum, nil

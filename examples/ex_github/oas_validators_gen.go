@@ -11834,6 +11834,33 @@ func (s ReposCreateDispatchEventReq) Validate() error {
 			Error: err,
 		})
 	}
+	if err := func() error {
+		if s.ClientPayload.Set {
+			if err := func() error {
+				if err := s.ClientPayload.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "client_payload",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s ReposCreateDispatchEventReqClientPayload) Validate() error {
+	var failures []validate.FieldError
+
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}

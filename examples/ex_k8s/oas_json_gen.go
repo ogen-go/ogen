@@ -386,6 +386,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Decode(d *jx.Decoder) e
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAdmissionregistrationV1MutatingWebhook")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00010011,
@@ -705,6 +706,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Decode
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -1090,6 +1092,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) Decode(d *jx.Decoder) 
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAdmissionregistrationV1ServiceReference")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1400,6 +1403,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Decode(d *jx.Decoder)
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAdmissionregistrationV1ValidatingWebhook")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00010011,
@@ -1719,6 +1723,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Deco
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -2115,6 +2120,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) Decode(d *jx.Decoder) 
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIApiserverinternalV1alpha1StorageVersion")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011000,
@@ -2314,6 +2320,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) Decode(d *jx.
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00111000,
@@ -2485,6 +2492,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Decode(d *jx.Decod
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIApiserverinternalV1alpha1StorageVersionList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -2843,6 +2851,7 @@ func (s *IoK8sAPIAppsV1ControllerRevision) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAppsV1ControllerRevision")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010000,
@@ -3014,6 +3023,7 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAppsV1ControllerRevisionList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -3345,6 +3355,7 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAppsV1DaemonSetCondition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011000,
@@ -3516,6 +3527,7 @@ func (s *IoK8sAPIAppsV1DaemonSetList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAppsV1DaemonSetList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -3688,6 +3700,7 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAppsV1DaemonSetSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001100,
@@ -3986,6 +3999,7 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAppsV1DaemonSetStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b01101100,
@@ -4422,6 +4436,7 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAppsV1DeploymentCondition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00110000,
@@ -4593,6 +4608,7 @@ func (s *IoK8sAPIAppsV1DeploymentList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAppsV1DeploymentList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -4837,6 +4853,7 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAppsV1DeploymentSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b10100000,
@@ -5491,6 +5508,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAppsV1ReplicaSetCondition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011000,
@@ -5662,6 +5680,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAppsV1ReplicaSetList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -5816,6 +5835,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetSpec) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAppsV1ReplicaSetSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000100,
@@ -6042,6 +6062,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAppsV1ReplicaSetStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00100000,
@@ -6589,6 +6610,7 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAppsV1StatefulSetCondition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011000,
@@ -6760,6 +6782,7 @@ func (s *IoK8sAPIAppsV1StatefulSetList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAppsV1StatefulSetList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -7040,6 +7063,7 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAppsV1StatefulSetSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b01110000,
@@ -7335,6 +7359,7 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAppsV1StatefulSetStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b10000001,
@@ -7547,6 +7572,7 @@ func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) Decode(d *jx.Decoder)
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV1CrossVersionObjectReference")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000110,
@@ -7870,6 +7896,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Decode(d *jx.Decoder)
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -8017,6 +8044,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Decode(d *jx.Decoder)
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000101,
@@ -8190,6 +8218,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Decode(d *jx.Decode
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000110,
@@ -8506,6 +8535,7 @@ func (s *IoK8sAPIAutoscalingV1ScaleStatus) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV1ScaleStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -8655,6 +8685,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Decode(d *jx.D
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -8807,6 +8838,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Decode(d *jx.D
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001101,
@@ -8938,6 +8970,7 @@ func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) Decode(d *jx.Dec
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000110,
@@ -9088,6 +9121,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) Decode(d *jx.Decoder) e
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta1ExternalMetricSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -9244,6 +9278,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Decode(d *jx.Decoder) e
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta1ExternalMetricStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000110,
@@ -9575,6 +9610,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) Decode(d *j
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011000,
@@ -9746,6 +9782,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Decode(d *jx.Dec
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -9912,6 +9949,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001001,
@@ -10139,6 +10177,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Decode(d *jx.D
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001101,
@@ -10346,6 +10385,7 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta1MetricSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00100000,
@@ -10553,6 +10593,7 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta1MetricStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00100000,
@@ -10727,6 +10768,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Decode(d *jx.Decoder) err
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta1ObjectMetricSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011010,
@@ -10901,6 +10943,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Decode(d *jx.Decoder) err
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta1ObjectMetricStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010110,
@@ -11033,6 +11076,7 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) Decode(d *jx.Decoder) error
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta1PodsMetricSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000101,
@@ -11165,6 +11209,7 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Decode(d *jx.Decoder) error
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta1PodsMetricStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -11294,6 +11339,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) Decode(d *jx.Decoder) e
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta1ResourceMetricSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -11429,6 +11475,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Decode(d *jx.Decoder) e
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta1ResourceMetricStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000110,
@@ -11554,6 +11601,7 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Decode(d *jx.D
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -11679,6 +11727,7 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Decode(d *jx.D
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -11810,6 +11859,7 @@ func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) Decode(d *jx.Dec
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000110,
@@ -11913,6 +11963,7 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricSource) Decode(d *jx.Decoder) e
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2ExternalMetricSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -12016,6 +12067,7 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Decode(d *jx.Decoder) e
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2ExternalMetricStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -12143,6 +12195,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) Decode(d *jx.Decoder) error
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2HPAScalingPolicy")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -12677,6 +12730,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) Decode(d *j
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011000,
@@ -12848,6 +12902,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Decode(d *jx.Dec
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -13038,6 +13093,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010010,
@@ -13265,6 +13321,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Decode(d *jx.D
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001101,
@@ -13373,6 +13430,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) Decode(d *jx.Decoder) error
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2MetricIdentifier")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -13580,6 +13638,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2MetricSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00100000,
@@ -13787,6 +13846,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2MetricStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00100000,
@@ -13943,6 +14003,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2MetricTarget")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000100,
@@ -14168,6 +14229,7 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) Decode(d *jx.Decoder) err
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2ObjectMetricSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -14289,6 +14351,7 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Decode(d *jx.Decoder) err
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2ObjectMetricStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -14392,6 +14455,7 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricSource) Decode(d *jx.Decoder) error
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2PodsMetricSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -14495,6 +14559,7 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricStatus) Decode(d *jx.Decoder) error
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2PodsMetricStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -14600,6 +14665,7 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) Decode(d *jx.Decoder) e
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2ResourceMetricSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -14705,6 +14771,7 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Decode(d *jx.Decoder) e
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIAutoscalingV2beta2ResourceMetricStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -15028,6 +15095,7 @@ func (s *IoK8sAPIBatchV1CronJobList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIBatchV1CronJobList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -15244,6 +15312,7 @@ func (s *IoK8sAPIBatchV1CronJobSpec) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIBatchV1CronJobSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001100,
@@ -15722,6 +15791,7 @@ func (s *IoK8sAPIBatchV1JobCondition) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIBatchV1JobCondition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00110000,
@@ -15893,6 +15963,7 @@ func (s *IoK8sAPIBatchV1JobList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIBatchV1JobList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -16191,6 +16262,7 @@ func (s *IoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIBatchV1JobSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000000,
@@ -16960,6 +17032,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIBatchV1beta1CronJobList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -17176,6 +17249,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIBatchV1beta1CronJobSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001100,
@@ -17557,6 +17631,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) Decode(d *jx.Decoder) 
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICertificatesV1CertificateSigningRequest")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001000,
@@ -17760,6 +17835,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) Decode(d *jx.
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICertificatesV1CertificateSigningRequestCondition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00110000,
@@ -17931,6 +18007,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) Decode(d *jx.Decod
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICertificatesV1CertificateSigningRequestList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -18215,6 +18292,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Decode(d *jx.Decod
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICertificatesV1CertificateSigningRequestSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011000,
@@ -18317,7 +18395,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Decode(d *jx.D
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra")
 	}
 
 	return nil
@@ -18681,6 +18759,7 @@ func (s *IoK8sAPICoordinationV1LeaseList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoordinationV1LeaseList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -18992,6 +19071,7 @@ func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Decode(d *jx.Decoder) e
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001000,
@@ -19203,6 +19283,7 @@ func (s *IoK8sAPICoreV1AttachedVolume) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1AttachedVolume")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -19397,6 +19478,7 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1AzureDiskVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000110,
@@ -19549,6 +19631,7 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) Decode(d *jx.Decoder) er
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1AzureFilePersistentVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001010,
@@ -19680,6 +19763,7 @@ func (s *IoK8sAPICoreV1AzureFileVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1AzureFileVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000110,
@@ -19940,6 +20024,7 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1CSIPersistentVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000100,
@@ -20023,7 +20108,7 @@ func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Decode(d *jx.De
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes")
 	}
 
 	return nil
@@ -20165,6 +20250,7 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1CSIVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -20247,7 +20333,7 @@ func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Decode(d *jx.Decoder) err
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes")
 	}
 
 	return nil
@@ -20552,6 +20638,7 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) Decode(d *jx.Decoder) error
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1CephFSPersistentVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -20764,6 +20851,7 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1CephFSVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -20923,6 +21011,7 @@ func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) Decode(d *jx.Decoder) error
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1CinderPersistentVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001000,
@@ -21082,6 +21171,7 @@ func (s *IoK8sAPICoreV1CinderVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1CinderVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001000,
@@ -21293,6 +21383,7 @@ func (s *IoK8sAPICoreV1ComponentCondition) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ComponentCondition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001100,
@@ -21611,6 +21702,7 @@ func (s *IoK8sAPICoreV1ComponentStatusList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ComponentStatusList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -21869,7 +21961,7 @@ func (s IoK8sAPICoreV1ConfigMapBinaryData) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1ConfigMapBinaryData")
 	}
 
 	return nil
@@ -21922,7 +22014,7 @@ func (s IoK8sAPICoreV1ConfigMapData) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1ConfigMapData")
 	}
 
 	return nil
@@ -22102,6 +22194,7 @@ func (s *IoK8sAPICoreV1ConfigMapKeySelector) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ConfigMapKeySelector")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -22273,6 +22366,7 @@ func (s *IoK8sAPICoreV1ConfigMapList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ConfigMapList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -22442,6 +22536,7 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ConfigMapNodeConfigSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -23401,6 +23496,7 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1Container")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b00000000,
@@ -23675,6 +23771,7 @@ func (s *IoK8sAPICoreV1ContainerPort) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ContainerPort")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -24051,6 +24148,7 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ContainerStateTerminated")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -24385,6 +24483,7 @@ func (s *IoK8sAPICoreV1ContainerStatus) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ContainerStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b01110110,
@@ -24473,6 +24572,7 @@ func (s *IoK8sAPICoreV1DaemonEndpoint) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1DaemonEndpoint")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -24704,6 +24804,7 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1DownwardAPIVolumeFile")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000100,
@@ -25036,6 +25137,7 @@ func (s *IoK8sAPICoreV1EndpointAddress) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1EndpointAddress")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -25192,6 +25294,7 @@ func (s *IoK8sAPICoreV1EndpointPort) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1EndpointPort")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000100,
@@ -25671,6 +25774,7 @@ func (s *IoK8sAPICoreV1EndpointsList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1EndpointsList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -25904,6 +26008,7 @@ func (s *IoK8sAPICoreV1EnvVar) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1EnvVar")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -26742,6 +26847,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1EphemeralContainer")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b00000000,
@@ -27233,6 +27339,7 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1Event")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b00100000,
@@ -27406,6 +27513,7 @@ func (s *IoK8sAPICoreV1EventList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1EventList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -28008,6 +28116,7 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1FlexPersistentVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -28090,7 +28199,7 @@ func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Decode(d *jx.Decoder) e
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1FlexPersistentVolumeSourceOptions")
 	}
 
 	return nil
@@ -28232,6 +28341,7 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1FlexVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -28314,7 +28424,7 @@ func (s IoK8sAPICoreV1FlexVolumeSourceOptions) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1FlexVolumeSourceOptions")
 	}
 
 	return nil
@@ -28521,6 +28631,7 @@ func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) Decode(d *jx.Decoder) erro
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1GCEPersistentDiskVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000100,
@@ -28653,6 +28764,7 @@ func (s *IoK8sAPICoreV1GitRepoVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1GitRepoVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -28802,6 +28914,7 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) Decode(d *jx.Decoder) er
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1GlusterfsPersistentVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000101,
@@ -28930,6 +29043,7 @@ func (s *IoK8sAPICoreV1GlusterfsVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1GlusterfsVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -29133,6 +29247,7 @@ func (s *IoK8sAPICoreV1HTTPGetAction) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1HTTPGetAction")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001000,
@@ -29240,6 +29355,7 @@ func (s *IoK8sAPICoreV1HTTPHeader) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1HTTPHeader")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -29553,6 +29669,7 @@ func (s *IoK8sAPICoreV1HostPathVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1HostPathVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -29881,6 +29998,7 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) error 
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ISCSIPersistentVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b01010000,
@@ -30210,6 +30328,7 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ISCSIVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b01010000,
@@ -30339,6 +30458,7 @@ func (s *IoK8sAPICoreV1KeyToPath) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1KeyToPath")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000101,
@@ -30754,6 +30874,7 @@ func (s *IoK8sAPICoreV1LimitRangeItem) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1LimitRangeItem")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00100000,
@@ -30840,7 +30961,7 @@ func (s IoK8sAPICoreV1LimitRangeItemDefault) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1LimitRangeItemDefault")
 	}
 
 	return nil
@@ -30897,7 +31018,7 @@ func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) Decode(d *jx.Decoder) error 
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1LimitRangeItemDefaultRequest")
 	}
 
 	return nil
@@ -30954,7 +31075,7 @@ func (s IoK8sAPICoreV1LimitRangeItemMax) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1LimitRangeItemMax")
 	}
 
 	return nil
@@ -31011,7 +31132,7 @@ func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Decode(d *jx.Decoder) 
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio")
 	}
 
 	return nil
@@ -31068,7 +31189,7 @@ func (s IoK8sAPICoreV1LimitRangeItemMin) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1LimitRangeItemMin")
 	}
 
 	return nil
@@ -31210,6 +31331,7 @@ func (s *IoK8sAPICoreV1LimitRangeList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1LimitRangeList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -31315,6 +31437,7 @@ func (s *IoK8sAPICoreV1LimitRangeSpec) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1LimitRangeSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -31680,6 +31803,7 @@ func (s *IoK8sAPICoreV1LocalVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1LocalVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -31808,6 +31932,7 @@ func (s *IoK8sAPICoreV1NFSVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1NFSVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000101,
@@ -32139,6 +32264,7 @@ func (s *IoK8sAPICoreV1NamespaceCondition) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1NamespaceCondition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011000,
@@ -32310,6 +32436,7 @@ func (s *IoK8sAPICoreV1NamespaceList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1NamespaceList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -32745,6 +32872,7 @@ func (s *IoK8sAPICoreV1NodeAddress) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1NodeAddress")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -33047,6 +33175,7 @@ func (s *IoK8sAPICoreV1NodeCondition) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1NodeCondition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00110000,
@@ -33458,6 +33587,7 @@ func (s *IoK8sAPICoreV1NodeList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1NodeList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -33563,6 +33693,7 @@ func (s *IoK8sAPICoreV1NodeSelector) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1NodeSelector")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -33712,6 +33843,7 @@ func (s *IoK8sAPICoreV1NodeSelectorRequirement) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1NodeSelectorRequirement")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -34549,7 +34681,7 @@ func (s IoK8sAPICoreV1NodeStatusAllocatable) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1NodeStatusAllocatable")
 	}
 
 	return nil
@@ -34606,7 +34738,7 @@ func (s IoK8sAPICoreV1NodeStatusCapacity) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1NodeStatusCapacity")
 	}
 
 	return nil
@@ -34844,6 +34976,7 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1NodeSystemInfo")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -34956,6 +35089,7 @@ func (s *IoK8sAPICoreV1ObjectFieldSelector) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ObjectFieldSelector")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -35663,6 +35797,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) Decode(d *jx.Decoder) err
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PersistentVolumeClaimCondition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00110000,
@@ -35834,6 +35969,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PersistentVolumeClaimList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -36333,7 +36469,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Decode(d *jx.Decoder)
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity")
 	}
 
 	return nil
@@ -36413,6 +36549,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) Decode(d *jx.Decoder) erro
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PersistentVolumeClaimTemplate")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -36521,6 +36658,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Decode(d *jx.Decoder) 
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PersistentVolumeClaimVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -36692,6 +36830,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PersistentVolumeList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -37572,7 +37711,7 @@ func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) Decode(d *jx.Decoder) error 
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1PersistentVolumeSpecCapacity")
 	}
 
 	return nil
@@ -37758,6 +37897,7 @@ func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Decode(d *jx.Decoder) e
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PhotonPersistentDiskVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -38208,6 +38348,7 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PodAffinityTerm")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001000,
@@ -38529,6 +38670,7 @@ func (s *IoK8sAPICoreV1PodCondition) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PodCondition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00110000,
@@ -39001,6 +39143,7 @@ func (s *IoK8sAPICoreV1PodList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PodList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -39088,6 +39231,7 @@ func (s *IoK8sAPICoreV1PodReadinessGate) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PodReadinessGate")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -40380,6 +40524,7 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PodSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [5]uint8{
 		0b00001000,
@@ -40466,7 +40611,7 @@ func (s IoK8sAPICoreV1PodSpecNodeSelector) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1PodSpecNodeSelector")
 	}
 
 	return nil
@@ -40523,7 +40668,7 @@ func (s IoK8sAPICoreV1PodSpecOverhead) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1PodSpecOverhead")
 	}
 
 	return nil
@@ -41232,6 +41377,7 @@ func (s *IoK8sAPICoreV1PodTemplateList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PodTemplateList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -41443,6 +41589,7 @@ func (s *IoK8sAPICoreV1PortStatus) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PortStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000110,
@@ -41578,6 +41725,7 @@ func (s *IoK8sAPICoreV1PortworxVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PortworxVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000100,
@@ -41683,6 +41831,7 @@ func (s *IoK8sAPICoreV1PreferredSchedulingTerm) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PreferredSchedulingTerm")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -42227,6 +42376,7 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1QuobyteVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00100100,
@@ -42483,6 +42633,7 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1RBDPersistentVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001010,
@@ -42739,6 +42890,7 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1RBDVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001010,
@@ -43070,6 +43222,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) Decode(d *jx.Decoder) err
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ReplicationControllerCondition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011000,
@@ -43241,6 +43394,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ReplicationControllerList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -43451,7 +43605,7 @@ func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) Decode(d *jx.Decoder) e
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1ReplicationControllerSpecSelector")
 	}
 
 	return nil
@@ -43648,6 +43802,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) Decode(d *jx.Decoder) error 
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ReplicationControllerStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00100000,
@@ -43783,6 +43938,7 @@ func (s *IoK8sAPICoreV1ResourceFieldSelector) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ResourceFieldSelector")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000100,
@@ -44106,6 +44262,7 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ResourceQuotaList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -44317,7 +44474,7 @@ func (s IoK8sAPICoreV1ResourceQuotaSpecHard) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1ResourceQuotaSpecHard")
 	}
 
 	return nil
@@ -44454,7 +44611,7 @@ func (s IoK8sAPICoreV1ResourceQuotaStatusHard) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1ResourceQuotaStatusHard")
 	}
 
 	return nil
@@ -44511,7 +44668,7 @@ func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1ResourceQuotaStatusUsed")
 	}
 
 	return nil
@@ -44648,7 +44805,7 @@ func (s IoK8sAPICoreV1ResourceRequirementsLimits) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1ResourceRequirementsLimits")
 	}
 
 	return nil
@@ -44705,7 +44862,7 @@ func (s IoK8sAPICoreV1ResourceRequirementsRequests) Decode(d *jx.Decoder) error 
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1ResourceRequirementsRequests")
 	}
 
 	return nil
@@ -45079,6 +45236,7 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) erro
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ScaleIOPersistentVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00010010,
@@ -45355,6 +45513,7 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ScaleIOVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00010010,
@@ -45580,6 +45739,7 @@ func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) Decode(d *jx.Decoder) 
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ScopedResourceSelectorRequirement")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -45691,6 +45851,7 @@ func (s *IoK8sAPICoreV1SeccompProfile) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1SeccompProfile")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -45973,7 +46134,7 @@ func (s IoK8sAPICoreV1SecretData) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1SecretData")
 	}
 
 	return nil
@@ -46153,6 +46314,7 @@ func (s *IoK8sAPICoreV1SecretKeySelector) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1SecretKeySelector")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -46324,6 +46486,7 @@ func (s *IoK8sAPICoreV1SecretList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1SecretList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -46609,7 +46772,7 @@ func (s IoK8sAPICoreV1SecretStringData) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1SecretStringData")
 	}
 
 	return nil
@@ -47560,6 +47723,7 @@ func (s *IoK8sAPICoreV1ServiceAccountList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ServiceAccountList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -47695,6 +47859,7 @@ func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) Decode(d *jx.Decoder) erro
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ServiceAccountTokenProjection")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000100,
@@ -47866,6 +48031,7 @@ func (s *IoK8sAPICoreV1ServiceList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ServiceList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -48067,6 +48233,7 @@ func (s *IoK8sAPICoreV1ServicePort) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ServicePort")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001000,
@@ -48740,7 +48907,7 @@ func (s IoK8sAPICoreV1ServiceSpecSelector) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPICoreV1ServiceSpecSelector")
 	}
 
 	return nil
@@ -49277,6 +49444,7 @@ func (s *IoK8sAPICoreV1Sysctl) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1Sysctl")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -49392,6 +49560,7 @@ func (s *IoK8sAPICoreV1TCPSocketAction) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1TCPSocketAction")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -49541,6 +49710,7 @@ func (s *IoK8sAPICoreV1Taint) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1Taint")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -49820,6 +49990,7 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) Decode(d *jx.Decoder) e
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1TopologySelectorLabelRequirement")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -50046,6 +50217,7 @@ func (s *IoK8sAPICoreV1TopologySpreadConstraint) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1TopologySpreadConstraint")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001110,
@@ -50177,6 +50349,7 @@ func (s *IoK8sAPICoreV1TypedLocalObjectReference) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1TypedLocalObjectReference")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000110,
@@ -50927,6 +51100,7 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1Volume")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [4]uint8{
 		0b00000000,
@@ -51037,6 +51211,7 @@ func (s *IoK8sAPICoreV1VolumeDevice) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1VolumeDevice")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -51228,6 +51403,7 @@ func (s *IoK8sAPICoreV1VolumeMount) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1VolumeMount")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000101,
@@ -51571,6 +51747,7 @@ func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Decode(d *jx.Decoder) err
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1VsphereVirtualDiskVolumeSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001000,
@@ -51676,6 +51853,7 @@ func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1WeightedPodAffinityTerm")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -52058,6 +52236,7 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIDiscoveryV1Endpoint")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -52244,7 +52423,7 @@ func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Decode(d *jx.Decoder) err
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPIDiscoveryV1EndpointDeprecatedTopology")
 	}
 
 	return nil
@@ -52646,6 +52825,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIDiscoveryV1EndpointSlice")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000101,
@@ -52817,6 +52997,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIDiscoveryV1EndpointSliceList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -52904,6 +53085,7 @@ func (s *IoK8sAPIDiscoveryV1ForZone) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIDiscoveryV1ForZone")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -53137,6 +53319,7 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIDiscoveryV1beta1Endpoint")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -53672,6 +53855,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIDiscoveryV1beta1EndpointSlice")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000101,
@@ -53843,6 +54027,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) Decode(d *jx.Decoder) error 
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIDiscoveryV1beta1EndpointSliceList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -53925,7 +54110,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPIDiscoveryV1beta1EndpointTopology")
 	}
 
 	return nil
@@ -53983,6 +54168,7 @@ func (s *IoK8sAPIDiscoveryV1beta1ForZone) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIDiscoveryV1beta1ForZone")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -54428,6 +54614,7 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIEventsV1Event")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b01000000,
@@ -54601,6 +54788,7 @@ func (s *IoK8sAPIEventsV1EventList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIEventsV1EventList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -54712,6 +54900,7 @@ func (s *IoK8sAPIEventsV1EventSeries) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIEventsV1EventSeries")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -55157,6 +55346,7 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIEventsV1beta1Event")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b01000000,
@@ -55330,6 +55520,7 @@ func (s *IoK8sAPIEventsV1beta1EventList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIEventsV1beta1EventList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -55441,6 +55632,7 @@ func (s *IoK8sAPIEventsV1beta1EventSeries) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIEventsV1beta1EventSeries")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -55528,6 +55720,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Decode(d *jx.Decoder
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -56003,6 +56196,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta1FlowSchemaList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -56176,6 +56370,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000100,
@@ -56338,6 +56533,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1GroupSubject) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta1GroupSubject")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -56449,6 +56645,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta1LimitResponse")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -56676,6 +56873,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Decode(d *jx.Decoder) 
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -56867,6 +57065,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Decode(d *jx.Decoder
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000100,
@@ -57342,6 +57541,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Decode(d *jx.
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -57429,6 +57629,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) Decode(d
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -57540,6 +57741,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Decode(d *jx.
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -57969,6 +58171,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Decode(d *jx.Decoder) err
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011001,
@@ -58076,6 +58279,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Decode(d *jx.Decoder) 
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -58229,6 +58433,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1Subject) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta1Subject")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -58316,6 +58521,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1UserSubject) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta1UserSubject")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -58403,6 +58609,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Decode(d *jx.Decoder
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -58878,6 +59085,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta2FlowSchemaList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -59051,6 +59259,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000100,
@@ -59213,6 +59422,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2GroupSubject) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta2GroupSubject")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -59324,6 +59534,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta2LimitResponse")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -59551,6 +59762,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Decode(d *jx.Decoder) 
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -59742,6 +59954,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Decode(d *jx.Decoder
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000100,
@@ -60217,6 +60430,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Decode(d *jx.
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -60304,6 +60518,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) Decode(d
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -60415,6 +60630,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Decode(d *jx.
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -60844,6 +61060,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Decode(d *jx.Decoder) err
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011001,
@@ -60951,6 +61168,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Decode(d *jx.Decoder) 
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -61104,6 +61322,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2Subject) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta2Subject")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -61191,6 +61410,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2UserSubject) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIFlowcontrolV1beta2UserSubject")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -61317,6 +61537,7 @@ func (s *IoK8sAPINetworkingV1HTTPIngressPath) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINetworkingV1HTTPIngressPath")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000101,
@@ -61422,6 +61643,7 @@ func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINetworkingV1HTTPIngressRuleValue")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -61551,6 +61773,7 @@ func (s *IoK8sAPINetworkingV1IPBlock) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINetworkingV1IPBlock")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -62082,6 +62305,7 @@ func (s *IoK8sAPINetworkingV1IngressClassList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINetworkingV1IngressClassList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -62255,6 +62479,7 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) Decode(d *jx.Decod
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINetworkingV1IngressClassParametersReference")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000110,
@@ -62506,6 +62731,7 @@ func (s *IoK8sAPINetworkingV1IngressList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINetworkingV1IngressList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -62694,6 +62920,7 @@ func (s *IoK8sAPINetworkingV1IngressServiceBackend) Decode(d *jx.Decoder) error 
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINetworkingV1IngressServiceBackend")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -63552,6 +63779,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINetworkingV1NetworkPolicyList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -63973,6 +64201,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINetworkingV1NetworkPolicySpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000100,
@@ -64195,7 +64424,7 @@ func (s IoK8sAPINodeV1OverheadPodFixed) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPINodeV1OverheadPodFixed")
 	}
 
 	return nil
@@ -64361,6 +64590,7 @@ func (s *IoK8sAPINodeV1RuntimeClass) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINodeV1RuntimeClass")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -64532,6 +64762,7 @@ func (s *IoK8sAPINodeV1RuntimeClassList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINodeV1RuntimeClassList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -64713,7 +64944,7 @@ func (s IoK8sAPINodeV1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPINodeV1SchedulingNodeSelector")
 	}
 
 	return nil
@@ -64826,7 +65057,7 @@ func (s IoK8sAPINodeV1alpha1OverheadPodFixed) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPINodeV1alpha1OverheadPodFixed")
 	}
 
 	return nil
@@ -64954,6 +65185,7 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClass) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINodeV1alpha1RuntimeClass")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001000,
@@ -65125,6 +65357,7 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINodeV1alpha1RuntimeClassList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -65257,6 +65490,7 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINodeV1alpha1RuntimeClassSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -65438,7 +65672,7 @@ func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) Decode(d *jx.Decoder) error 
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPINodeV1alpha1SchedulingNodeSelector")
 	}
 
 	return nil
@@ -65551,7 +65785,7 @@ func (s IoK8sAPINodeV1beta1OverheadPodFixed) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPINodeV1beta1OverheadPodFixed")
 	}
 
 	return nil
@@ -65717,6 +65951,7 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINodeV1beta1RuntimeClass")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -65888,6 +66123,7 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINodeV1beta1RuntimeClassList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -66069,7 +66305,7 @@ func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPINodeV1beta1SchedulingNodeSelector")
 	}
 
 	return nil
@@ -66363,6 +66599,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIPolicyV1PodDisruptionBudgetList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -66699,6 +66936,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) error 
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIPolicyV1PodDisruptionBudgetStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00110110,
@@ -66785,7 +67023,7 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Decode(d *jx.Dec
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods")
 	}
 
 	return nil
@@ -66843,6 +67081,7 @@ func (s *IoK8sAPIPolicyV1beta1AllowedCSIDriver) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIPolicyV1beta1AllowedCSIDriver")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -66930,6 +67169,7 @@ func (s *IoK8sAPIPolicyV1beta1AllowedFlexVolume) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIPolicyV1beta1AllowedFlexVolume")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -67216,6 +67456,7 @@ func (s *IoK8sAPIPolicyV1beta1HostPortRange) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIPolicyV1beta1HostPortRange")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -67323,6 +67564,7 @@ func (s *IoK8sAPIPolicyV1beta1IDRange) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIPolicyV1beta1IDRange")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -67646,6 +67888,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Decode(d *jx.Decoder) err
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIPolicyV1beta1PodDisruptionBudgetList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -67982,6 +68225,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) e
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00110110,
@@ -68068,7 +68312,7 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Decode(d *j
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods")
 	}
 
 	return nil
@@ -68338,6 +68582,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Decode(d *jx.Decoder) error
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIPolicyV1beta1PodSecurityPolicyList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -69150,6 +69395,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIPolicyV1beta1PodSecurityPolicySpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b00000000,
@@ -69282,6 +69528,7 @@ func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Decode(d *jx.Decoder) e
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -69412,6 +69659,7 @@ func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) Decode(d *jx.Decoder) er
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -69540,6 +69788,7 @@ func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Decode(d *jx.Decoder)
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -69648,6 +69897,7 @@ func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) Decode(d *jx.Decoder) erro
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIPolicyV1beta1SELinuxStrategyOptions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -70190,6 +70440,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIRbacV1ClusterRoleBinding")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001000,
@@ -70361,6 +70612,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIRbacV1ClusterRoleBindingList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -70532,6 +70784,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIRbacV1ClusterRoleList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -70819,6 +71072,7 @@ func (s *IoK8sAPIRbacV1PolicyRule) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIRbacV1PolicyRule")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010000,
@@ -71163,6 +71417,7 @@ func (s *IoK8sAPIRbacV1RoleBinding) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIRbacV1RoleBinding")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001000,
@@ -71334,6 +71589,7 @@ func (s *IoK8sAPIRbacV1RoleBindingList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIRbacV1RoleBindingList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -71505,6 +71761,7 @@ func (s *IoK8sAPIRbacV1RoleList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIRbacV1RoleList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -71632,6 +71889,7 @@ func (s *IoK8sAPIRbacV1RoleRef) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIRbacV1RoleRef")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -71784,6 +72042,7 @@ func (s *IoK8sAPIRbacV1Subject) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIRbacV1Subject")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000110,
@@ -72015,6 +72274,7 @@ func (s *IoK8sAPISchedulingV1PriorityClass) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPISchedulingV1PriorityClass")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01000000,
@@ -72186,6 +72446,7 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPISchedulingV1PriorityClassList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -72343,6 +72604,7 @@ func (s *IoK8sAPIStorageV1CSIDriver) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1CSIDriver")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001000,
@@ -72514,6 +72776,7 @@ func (s *IoK8sAPIStorageV1CSIDriverList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1CSIDriverList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -72911,6 +73174,7 @@ func (s *IoK8sAPIStorageV1CSINode) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1CSINode")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001000,
@@ -73084,6 +73348,7 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1CSINodeDriver")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000110,
@@ -73255,6 +73520,7 @@ func (s *IoK8sAPIStorageV1CSINodeList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1CSINodeList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -73360,6 +73626,7 @@ func (s *IoK8sAPIStorageV1CSINodeSpec) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1CSINodeSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -73697,6 +73964,7 @@ func (s *IoK8sAPIStorageV1StorageClass) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1StorageClass")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b10000000,
@@ -73869,6 +74137,7 @@ func (s *IoK8sAPIStorageV1StorageClassList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1StorageClassList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -73951,7 +74220,7 @@ func (s IoK8sAPIStorageV1StorageClassParameters) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPIStorageV1StorageClassParameters")
 	}
 
 	return nil
@@ -74030,6 +74299,7 @@ func (s *IoK8sAPIStorageV1TokenRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1TokenRequest")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -74208,6 +74478,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1VolumeAttachment")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001000,
@@ -74379,6 +74650,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1VolumeAttachmentList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -74584,6 +74856,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1VolumeAttachmentSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -74737,6 +75010,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1VolumeAttachmentStatus")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -74819,7 +75093,7 @@ func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Decode(d *jx.
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata")
 	}
 
 	return nil
@@ -75157,6 +75431,7 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) Decode(d *jx.Decoder) error 
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1alpha1CSIStorageCapacity")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01000000,
@@ -75328,6 +75603,7 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Decode(d *jx.Decoder) er
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1alpha1CSIStorageCapacityList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -75559,6 +75835,7 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1beta1CSIStorageCapacity")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01000000,
@@ -75730,6 +76007,7 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) Decode(d *jx.Decoder) err
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1beta1CSIStorageCapacityList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -75926,6 +76204,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00101100,
@@ -76034,6 +76313,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversi
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -76212,6 +76492,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001000,
@@ -76391,6 +76672,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011000,
@@ -76562,6 +76844,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -76798,6 +77081,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001010,
@@ -77006,6 +77290,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00110110,
@@ -77410,6 +77695,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01101000,
@@ -77541,6 +77827,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000110,
@@ -79095,7 +79382,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefiniti
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions")
 	}
 
 	return nil
@@ -79146,7 +79433,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependen
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies")
 	}
 
 	return nil
@@ -79290,7 +79577,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternP
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties")
 	}
 
 	return nil
@@ -79341,7 +79628,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperti
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties")
 	}
 
 	return nil
@@ -79461,6 +79748,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Deco
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -79688,6 +79976,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Dec
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -79948,6 +80237,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1APIGroup")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00100100,
@@ -80098,6 +80388,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) Decode(d *jx.Decoder) error
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1APIGroupList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -80438,6 +80729,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Decode(d *jx.Decoder) error 
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1APIResource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b01011100,
@@ -80609,6 +80901,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) Decode(d *jx.Decoder) er
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1APIResourceList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001010,
@@ -80802,6 +81095,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Decode(d *jx.Decoder) error 
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1APIVersions")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001100,
@@ -80994,6 +81288,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1Condition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00111011,
@@ -81132,6 +81427,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Decode(d *jx.De
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -81313,7 +81609,7 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Decode(d *jx.Dec
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels")
 	}
 
 	return nil
@@ -81433,6 +81729,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) Decode(d *jx.De
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -82346,7 +82643,7 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Decode(d *jx.Decode
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations")
 	}
 
 	return nil
@@ -82399,7 +82696,7 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Decode(d *jx.Decoder) er
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels")
 	}
 
 	return nil
@@ -82559,6 +82856,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) Decode(d *jx.Decoder) err
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1OwnerReference")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00111001,
@@ -82666,6 +82964,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) Decode(d *jx.D
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -82797,6 +83096,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1WatchEvent")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -83101,6 +83401,7 @@ func (s *IoK8sApimachineryPkgVersionInfo) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgVersionInfo")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -83433,6 +83734,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) Decode(
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011000,
@@ -83604,6 +83906,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Decode(d *jx
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -83814,6 +84117,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Decode(d *jx
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01000100,

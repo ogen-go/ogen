@@ -104,6 +104,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err e
 			Name:   name,
 			Schema: schema,
 		})
+		s.Validators.SetObject(schema)
 
 		for i := range schema.Properties {
 			prop := schema.Properties[i]

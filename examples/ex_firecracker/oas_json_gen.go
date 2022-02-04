@@ -157,6 +157,7 @@ func (s *Balloon) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Balloon")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -514,6 +515,7 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode BalloonStats")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00001111,
@@ -602,6 +604,7 @@ func (s *BalloonStatsUpdate) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode BalloonStatsUpdate")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -689,6 +692,7 @@ func (s *BalloonUpdate) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode BalloonUpdate")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -824,6 +828,7 @@ func (s *BootSource) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode BootSource")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000100,
@@ -1061,6 +1066,7 @@ func (s *Drive) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Drive")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00101101,
@@ -1488,6 +1494,7 @@ func (s *InstanceActionInfo) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode InstanceActionInfo")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -1662,6 +1669,7 @@ func (s *InstanceInfo) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode InstanceInfo")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -1844,6 +1852,7 @@ func (s *Logger) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Logger")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -2047,6 +2056,7 @@ func (s *MachineConfiguration) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode MachineConfiguration")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010110,
@@ -2134,6 +2144,7 @@ func (s *Metrics) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Metrics")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -2480,6 +2491,7 @@ func (s *NetworkInterface) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode NetworkInterface")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001100,
@@ -3067,6 +3079,7 @@ func (s *PartialDrive) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PartialDrive")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -3196,6 +3209,7 @@ func (s *PartialNetworkInterface) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PartialNetworkInterface")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -3425,6 +3439,7 @@ func (s *SnapshotCreateParams) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SnapshotCreateParams")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -3604,6 +3619,7 @@ func (s *SnapshotLoadParams) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SnapshotLoadParams")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000110,
@@ -3735,6 +3751,7 @@ func (s *TokenBucket) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TokenBucket")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000110,
@@ -3820,6 +3837,7 @@ func (s *VM) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode VM")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -3974,6 +3992,7 @@ func (s *Vsock) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Vsock")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,

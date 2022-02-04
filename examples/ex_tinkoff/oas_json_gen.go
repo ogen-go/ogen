@@ -281,6 +281,7 @@ func (s *Candle) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Candle")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b11111111,
@@ -469,6 +470,7 @@ func (s *Candles) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Candles")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -594,6 +596,7 @@ func (s *CandlesResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CandlesResponse")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -699,6 +702,7 @@ func (s *Currencies) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Currencies")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -866,6 +870,7 @@ func (s *CurrencyPosition) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode CurrencyPosition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -991,6 +996,7 @@ func (s *Empty) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Empty")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -1147,6 +1153,7 @@ func (s *Error) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Error")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -1383,6 +1390,7 @@ func (s *LimitOrderRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode LimitOrderRequest")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -1508,6 +1516,7 @@ func (s *LimitOrderResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode LimitOrderResponse")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -1757,6 +1766,7 @@ func (s *MarketInstrument) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode MarketInstrument")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b10010011,
@@ -1883,6 +1893,7 @@ func (s *MarketInstrumentList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode MarketInstrumentList")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2008,6 +2019,7 @@ func (s *MarketInstrumentListResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode MarketInstrumentListResponse")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -2113,6 +2125,7 @@ func (s *MarketOrderRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode MarketOrderRequest")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2238,6 +2251,7 @@ func (s *MarketOrderResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode MarketOrderResponse")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -2343,6 +2357,7 @@ func (s *MoneyAmount) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode MoneyAmount")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2713,6 +2728,7 @@ func (s *Operation) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Operation")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00110011,
@@ -2890,6 +2906,7 @@ func (s *OperationTrade) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OperationTrade")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -3087,6 +3104,7 @@ func (s *Operations) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Operations")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -3212,6 +3230,7 @@ func (s *OperationsResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OperationsResponse")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -3664,6 +3683,7 @@ func (s *Order) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Order")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b11111111,
@@ -3771,6 +3791,7 @@ func (s *OrderResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OrderResponse")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -4165,6 +4186,7 @@ func (s *Orderbook) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Orderbook")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00111111,
@@ -4291,6 +4313,7 @@ func (s *OrderbookResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OrderbookResponse")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -4436,6 +4459,7 @@ func (s *OrdersResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OrdersResponse")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -4662,6 +4686,7 @@ func (s *PlacedLimitOrder) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PlacedLimitOrder")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01100111,
@@ -4888,6 +4913,7 @@ func (s *PlacedMarketOrder) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PlacedMarketOrder")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01100111,
@@ -4993,6 +5019,7 @@ func (s *Portfolio) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Portfolio")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -5118,6 +5145,7 @@ func (s *PortfolioCurrenciesResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PortfolioCurrenciesResponse")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -5409,6 +5437,7 @@ func (s *PortfolioPosition) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PortfolioPosition")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b10011001,
@@ -5535,6 +5564,7 @@ func (s *PortfolioResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PortfolioResponse")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -5640,6 +5670,7 @@ func (s *SandboxAccount) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SandboxAccount")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -5862,6 +5893,7 @@ func (s *SandboxRegisterResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SandboxRegisterResponse")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -5967,6 +5999,7 @@ func (s *SandboxSetCurrencyBalanceRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SandboxSetCurrencyBalanceRequest")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -6078,6 +6111,7 @@ func (s *SandboxSetPositionBalanceRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SandboxSetPositionBalanceRequest")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -6306,6 +6340,7 @@ func (s *SearchMarketInstrument) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SearchMarketInstrument")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b11010011,
@@ -6431,6 +6466,7 @@ func (s *SearchMarketInstrumentResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode SearchMarketInstrumentResponse")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -6563,6 +6599,7 @@ func (s *UserAccount) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode UserAccount")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -6668,6 +6705,7 @@ func (s *UserAccounts) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode UserAccounts")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -6793,6 +6831,7 @@ func (s *UserAccountsResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode UserAccountsResponse")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,

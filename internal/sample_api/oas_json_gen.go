@@ -134,6 +134,7 @@ func (s *AnyOfTest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode AnyOfTest")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -386,7 +387,7 @@ func (s AnyTestAnyMap) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode AnyTestAnyMap")
 	}
 
 	return nil
@@ -578,6 +579,7 @@ func (s *ArrayTest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode ArrayTest")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000101,
@@ -781,6 +783,7 @@ func (s *Data) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Data")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -972,6 +975,7 @@ func (s *DescriptionDetailed) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode DescriptionDetailed")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1059,6 +1063,7 @@ func (s *DescriptionSimple) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode DescriptionSimple")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -1166,6 +1171,7 @@ func (s *Error) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Error")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1273,6 +1279,7 @@ func (s *Hash) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Hash")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1512,6 +1519,7 @@ func (s *Issue1430) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Issue1430")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -1639,6 +1647,7 @@ func (s *Issue1431) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Issue1431")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -1787,6 +1796,7 @@ func (s *Issue1432) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Issue1432")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001011,
@@ -1898,6 +1908,7 @@ func (s *Issue1433) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Issue1433")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -1977,6 +1988,15 @@ func (s MapWithProperties) Encode(e *jx.Writer) {
 				s.InlinedSubMap.Encode(e)
 			}
 		}
+		{
+			if s.MapValidation.Set {
+				e.Comma()
+			}
+			if s.MapValidation.Set {
+				e.RawStr("\"map_validation\"" + ":")
+				s.MapValidation.Encode(e)
+			}
+		}
 	}
 	for k, elem := range s.AdditionalProps {
 		if !first {
@@ -1991,11 +2011,12 @@ func (s MapWithProperties) Encode(e *jx.Writer) {
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfMapWithProperties = [4]string{
+var jsonFieldsNameOfMapWithProperties = [5]string{
 	0: "required",
 	1: "optional",
 	2: "sub_map",
 	3: "inlined_sub_map",
+	4: "map_validation",
 }
 
 // Decode decodes MapWithProperties from json.
@@ -2004,6 +2025,7 @@ func (s *MapWithProperties) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode MapWithProperties to nil")
 	}
 	var requiredBitSet [1]uint8
+	var propertiesCount int
 
 	m := s.AdditionalProps
 	if m == nil {
@@ -2011,6 +2033,7 @@ func (s *MapWithProperties) Decode(d *jx.Decoder) error {
 		s.AdditionalProps = m
 	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		propertiesCount++
 		switch string(k) {
 		case "required":
 			requiredBitSet[0] |= 1 << 0
@@ -2058,6 +2081,17 @@ func (s *MapWithProperties) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"inlined_sub_map\"")
 			}
+		case "map_validation":
+
+			if err := func() error {
+				s.MapValidation.Reset()
+				if err := s.MapValidation.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"map_validation\"")
+			}
 		default:
 			var elem string
 			if err := func() error {
@@ -2074,8 +2108,18 @@ func (s *MapWithProperties) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode MapWithProperties")
 	}
+	// Validate properties count.
+	if err := (validate.Object{
+		MinProperties:    0,
+		MinPropertiesSet: false,
+		MaxProperties:    7,
+		MaxPropertiesSet: true,
+	}).ValidateProperties(propertiesCount); err != nil {
+		return errors.Wrap(err, "object")
+	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -2158,7 +2202,169 @@ func (s MapWithPropertiesInlinedSubMap) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode MapWithPropertiesInlinedSubMap")
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s MaxPropertiesTest) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
+
+		e.RawStr("\"required\"" + ":")
+		e.Int(s.Required)
+	}
+	{
+		if s.OptionalA.Set {
+			e.Comma()
+		}
+		if s.OptionalA.Set {
+			e.RawStr("\"optional_a\"" + ":")
+			s.OptionalA.Encode(e)
+		}
+	}
+	{
+		if s.OptionalB.Set {
+			e.Comma()
+		}
+		if s.OptionalB.Set {
+			e.RawStr("\"optional_b\"" + ":")
+			s.OptionalB.Encode(e)
+		}
+	}
+	{
+		if s.OptionalC.Set {
+			e.Comma()
+		}
+		if s.OptionalC.Set {
+			e.RawStr("\"optional_c\"" + ":")
+			s.OptionalC.Encode(e)
+		}
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfMaxPropertiesTest = [4]string{
+	0: "required",
+	1: "optional_a",
+	2: "optional_b",
+	3: "optional_c",
+}
+
+// Decode decodes MaxPropertiesTest from json.
+func (s *MaxPropertiesTest) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode MaxPropertiesTest to nil")
+	}
+	var requiredBitSet [1]uint8
+	var propertiesCount int
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		propertiesCount++
+		switch string(k) {
+		case "required":
+			requiredBitSet[0] |= 1 << 0
+
+			if err := func() error {
+				v, err := d.Int()
+				s.Required = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required\"")
+			}
+		case "optional_a":
+
+			if err := func() error {
+				s.OptionalA.Reset()
+				if err := s.OptionalA.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_a\"")
+			}
+		case "optional_b":
+
+			if err := func() error {
+				s.OptionalB.Reset()
+				if err := s.OptionalB.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_b\"")
+			}
+		case "optional_c":
+
+			if err := func() error {
+				s.OptionalC.Reset()
+				if err := s.OptionalC.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_c\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode MaxPropertiesTest")
+	}
+	// Validate properties count.
+	if err := (validate.Object{
+		MinProperties:    2,
+		MinPropertiesSet: true,
+		MaxProperties:    2,
+		MaxPropertiesSet: true,
+	}).ValidateProperties(propertiesCount); err != nil {
+		return errors.Wrap(err, "object")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfMaxPropertiesTest) {
+					name = jsonFieldsNameOfMaxPropertiesTest[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
 	}
 
 	return nil
@@ -2354,6 +2560,7 @@ func (s *NullableEnums) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode NullableEnums")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -2538,6 +2745,7 @@ func (s *OneOfBugs) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OneOfBugs")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2720,6 +2928,7 @@ func (s *OneVariantHasNoUniqueFields0) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OneVariantHasNoUniqueFields0")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000101,
@@ -2869,6 +3078,7 @@ func (s *OneVariantHasNoUniqueFields1) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode OneVariantHasNoUniqueFields1")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000101,
@@ -3184,6 +3394,31 @@ func (o *OptMapWithPropertiesInlinedSubMap) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf("unexpected type %q while reading OptMapWithPropertiesInlinedSubMap", d.Next())
+	}
+}
+
+// Encode encodes MaxPropertiesTest as json.
+func (o OptMaxPropertiesTest) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes MaxPropertiesTest from json.
+func (o *OptMaxPropertiesTest) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptMaxPropertiesTest to nil")
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptMaxPropertiesTest", d.Next())
 	}
 }
 
@@ -3521,6 +3756,32 @@ func (o *OptUUID) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes ValidationStringMap as json.
+func (o OptValidationStringMap) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes ValidationStringMap from json.
+func (o *OptValidationStringMap) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptValidationStringMap to nil")
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		o.Value = make(ValidationStringMap)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptValidationStringMap", d.Next())
+	}
+}
+
 // Encode implements json.Marshaler.
 func (s Pet) Encode(e *jx.Writer) {
 	e.ObjStart()
@@ -3775,6 +4036,15 @@ func (s Pet) Encode(e *jx.Writer) {
 		}
 	}
 	{
+		if s.TestMaxProperties.Set {
+			e.Comma()
+		}
+		if s.TestMaxProperties.Set {
+			e.RawStr("\"testMaxProperties\"" + ":")
+			s.TestMaxProperties.Encode(e)
+		}
+	}
+	{
 		if s.TestDate.Set {
 			e.Comma()
 		}
@@ -3813,7 +4083,7 @@ func (s Pet) Encode(e *jx.Writer) {
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfPet = [29]string{
+var jsonFieldsNameOfPet = [30]string{
 	0:  "primary",
 	1:  "id",
 	2:  "unique_id",
@@ -3839,10 +4109,11 @@ var jsonFieldsNameOfPet = [29]string{
 	22: "testMapWithProps",
 	23: "testAny",
 	24: "testAnyOf",
-	25: "testDate",
-	26: "testDuration",
-	27: "testTime",
-	28: "testDateTime",
+	25: "testMaxProperties",
+	26: "testDate",
+	27: "testDuration",
+	28: "testTime",
+	29: "testDateTime",
 }
 
 // Decode decodes Pet from json.
@@ -4173,6 +4444,17 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"testAnyOf\"")
 			}
+		case "testMaxProperties":
+
+			if err := func() error {
+				s.TestMaxProperties.Reset()
+				if err := s.TestMaxProperties.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"testMaxProperties\"")
+			}
 		case "testDate":
 
 			if err := func() error {
@@ -4224,6 +4506,7 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Pet")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [4]uint8{
 		0b10101110,
@@ -4314,6 +4597,7 @@ func (s *PetGetDef) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode PetGetDef")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -4507,7 +4791,7 @@ func (s *RecursiveMap) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode RecursiveMap")
 	}
 
 	return nil
@@ -4560,7 +4844,7 @@ func (s StringMap) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode StringMap")
 	}
 
 	return nil
@@ -4612,7 +4896,7 @@ func (s StringStringMap) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return err
+		return errors.Wrap(err, "decode StringStringMap")
 	}
 
 	return nil
@@ -4730,6 +5014,7 @@ func (s *TestObjectQueryParameterOK) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode TestObjectQueryParameterOK")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -4760,6 +5045,70 @@ func (s *TestObjectQueryParameterOK) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s ValidationStringMap) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	for k, elem := range s {
+		if !first {
+			e.Comma()
+		}
+		first = false
+		e.Str(k)
+		e.RawStr(`:`)
+
+		e.Str(elem)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfValidationStringMap = [0]string{}
+
+// Decode decodes ValidationStringMap from json.
+func (s ValidationStringMap) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode ValidationStringMap to nil")
+	}
+	var propertiesCount int
+
+	m := s
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		propertiesCount++
+		switch string(k) {
+		default:
+			var elem string
+			if err := func() error {
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrapf(err, "decode field %q", k)
+			}
+			m[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode ValidationStringMap")
+	}
+	// Validate properties count.
+	if err := (validate.Object{
+		MinProperties:    1,
+		MinPropertiesSet: true,
+		MaxProperties:    4,
+		MaxPropertiesSet: true,
+	}).ValidateProperties(propertiesCount); err != nil {
+		return errors.Wrap(err, "object")
 	}
 
 	return nil

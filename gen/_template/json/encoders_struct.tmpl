@@ -25,6 +25,7 @@
 {{- define "json/encoders_struct" }}
 {{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
 {{- $fields := $.JSON.Fields }}
+{{- $va := $.Validators }}
 // Encode implements json.Marshaler.
 func (s {{ $.Name }}) Encode(e *jx.Writer) {
 	e.ObjStart()
@@ -52,8 +53,14 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	{{- if $fields.HasRequired }}
 	var requiredBitSet [{{ len $requiredMask }}]uint8
 	{{- end }}
+	{{- if $va.Object.Set }}
+	var propertiesCount int
+	{{- end }}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		{{- if $va.Object.Set }}
+		propertiesCount++
+		{{- end }}
 		switch string(k) {
 	{{- range $i, $f := $fields }}
 	case {{ quote $f.Tag.JSON }}:
@@ -76,7 +83,21 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 		return errors.Wrap(err, {{ printf "decode %s" $.Name | quote }})
 	}
 
+	{{- if $va.Object.Set }}
+	{{- $v := $va.Object }}
+	// Validate properties count.
+	if err := (validate.Object{
+		MinProperties:	{{ $v.MinProperties }},
+		MinPropertiesSet: {{ $v.MinPropertiesSet }},
+		MaxProperties:	{{ $v.MaxProperties }},
+		MaxPropertiesSet: {{ $v.MaxPropertiesSet }},
+	}).ValidateProperties(propertiesCount); err != nil {
+		return errors.Wrap(err, "object")
+	}
+	{{- end }}
+
 	{{- if $fields.HasRequired }}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [{{ len $requiredMask }}]uint8{
 	{{- range $mask := $requiredMask }}

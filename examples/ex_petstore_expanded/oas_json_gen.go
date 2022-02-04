@@ -136,6 +136,7 @@ func (s *Error) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode Error")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -244,6 +245,7 @@ func (s *NewPet) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return errors.Wrap(err, "decode NewPet")
 	}
+	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
