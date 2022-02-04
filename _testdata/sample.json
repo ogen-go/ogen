@@ -652,6 +652,15 @@
           "minLength": 1
         }
       },
+      "ValidationStringMap": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minProperties": 1,
+        "maxProperties": 4
+      },
       "RecursiveMap": {
         "type": "object",
         "additionalProperties": {
@@ -727,11 +736,37 @@
             "additionalProperties": {
               "type": "string"
             }
+          },
+          "map_validation": {
+            "$ref": "#/components/schemas/ValidationStringMap"
           }
         },
         "additionalProperties": {
           "type": "string"
-        }
+        },
+        "maxProperties": 7
+      },
+      "MaxPropertiesTest" : {
+        "type": "object",
+        "required": [
+          "required"
+        ],
+        "properties": {
+          "required": {
+            "type": "integer"
+          },
+          "optional_a": {
+            "type": "integer"
+          },
+          "optional_b": {
+            "type": "integer"
+          },
+          "optional_c": {
+            "type": "integer"
+          }
+        },
+        "minProperties": 2,
+        "maxProperties": 2
       },
       "Data": {
         "type": "object",
@@ -929,6 +964,9 @@
           },
           "testAnyOf": {
             "$ref": "#/components/schemas/AnyOfTest"
+          },
+          "testMaxProperties": {
+            "$ref": "#/components/schemas/MaxPropertiesTest"
           },
           "testDate": {
             "type": "string",

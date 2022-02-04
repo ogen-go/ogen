@@ -321,8 +321,73 @@ func TestJSONAdditionalProperties(t *testing.T) {
 				false,
 			},
 			{
+				// ValidationStringMap expects maximum 4 property.
+				`{"required": 1, "map_validation": {"1": "1", "2": "2"}}`,
+				api.MapWithProperties{
+					Required:        1,
+					AdditionalProps: map[string]string{},
+					MapValidation: api.NewOptValidationStringMap(api.ValidationStringMap{
+						"1": "1",
+						"2": "2",
+					}),
+				},
+				false,
+			},
+			{
+				// ValidationStringMap expects maximum 4 property.
+				`{"required": 1, "map_validation": {"1": "1", "2": "2", "3": "3", "4": "4"}}`,
+				api.MapWithProperties{
+					Required:        1,
+					AdditionalProps: map[string]string{},
+					MapValidation: api.NewOptValidationStringMap(api.ValidationStringMap{
+						"1": "1",
+						"2": "2",
+						"3": "3",
+						"4": "4",
+					}),
+				},
+				false,
+			},
+			{
 				// MapWithProperties expects string for `runtime_field`.
 				`{"required": 1, "runtime_field": 10}`,
+				api.MapWithProperties{},
+				true,
+			},
+			{
+				// MapWithProperties expects maximum 7 properties.
+				`{"required": 1, "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8":"8"}`,
+				api.MapWithProperties{},
+				true,
+			},
+			{
+				// MapWithProperties expects maximum 7 properties.
+				`{
+   "required":1,
+   "inlined_sub_map":{
+      "runtime_field":"field"
+   },
+   "sub_map":{
+      "runtime_field":"field"
+   },
+   "4":"4",
+   "5":"5",
+   "6":"6",
+   "7":"7",
+   "8":"8"
+}`,
+				api.MapWithProperties{},
+				true,
+			},
+			{
+				// ValidationStringMap expects minimum 1 property.
+				`{"required": 1, "map_validation": {}}`,
+				api.MapWithProperties{},
+				true,
+			},
+			{
+				// ValidationStringMap expects maximum 4 property.
+				`{"required": 1, "map_validation": {"1": "1", "2": "2", "3": "3", "4": "4", "5": "5"}}`,
 				api.MapWithProperties{},
 				true,
 			},
@@ -426,6 +491,48 @@ func TestJSONNullableEnum(t *testing.T) {
 			}
 			checker(t, tc.Type.Decode(jx.DecodeStr(`null`)))
 			require.NoError(t, tc.Type.Decode(jx.DecodeStr(`"asc"`)))
+		})
+	}
+}
+
+func TestJSONPropertiesCount(t *testing.T) {
+	for i, tc := range []struct {
+		Input string
+		Error bool
+	}{
+		{
+			`{"required": 1, "optional_a": 1}`,
+			false,
+		},
+		{
+			`{"required": 1, "optional_b": 1}`,
+			false,
+		},
+		{
+			`{}`,
+			true,
+		},
+		{
+			`{"required": 1}`,
+			true,
+		},
+		{
+			`{"optional_a": 1, "optional_b": 1}`,
+			true,
+		},
+		{
+			`{"required": 1, "optional_a": 1, "optional_b": 1}`,
+			true,
+		},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			m := api.MaxPropertiesTest{}
+			checker := require.NoError
+			if tc.Error {
+				checker = require.Error
+			}
+			checker(t, m.Decode(jx.DecodeStr(tc.Input)))
 		})
 	}
 }
