@@ -6,7 +6,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
-	"github.com/ogen-go/ogen/internal/jsonschema"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 func (g *schemaGen) primitive(name string, schema *jsonschema.Schema) (*ir.Type, error) {

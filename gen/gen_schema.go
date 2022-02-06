@@ -2,7 +2,7 @@ package gen
 
 import (
 	"github.com/ogen-go/ogen/internal/ir"
-	"github.com/ogen-go/ogen/internal/jsonschema"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 func (g *Generator) generateSchema(name string, schema *jsonschema.Schema) (*ir.Type, error) {

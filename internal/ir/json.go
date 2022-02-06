@@ -1,6 +1,6 @@
 package ir
 
-import "github.com/ogen-go/ogen/internal/jsonschema"
+import "github.com/ogen-go/ogen/jsonschema"
 
 // JSON returns json encoding/decoding rules for t.
 func (t *Type) JSON() JSON {

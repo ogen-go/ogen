@@ -3,7 +3,7 @@ package gen
 import (
 	"github.com/go-faster/errors"
 	"github.com/ogen-go/ogen/internal/ir"
-	"github.com/ogen-go/ogen/internal/jsonschema"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 func (g *Generator) generateContents(name string, contents map[string]*jsonschema.Schema) (map[ir.ContentType]*ir.Type, error) {

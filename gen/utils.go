@@ -1,7 +1,7 @@
 package gen
 
 import (
-	"github.com/ogen-go/ogen/internal/jsonschema"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 func isBinary(s *jsonschema.Schema) bool {

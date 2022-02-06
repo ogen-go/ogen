@@ -1,6 +1,6 @@
 package oas
 
-import "github.com/ogen-go/ogen/internal/jsonschema"
+import "github.com/ogen-go/ogen/jsonschema"
 
 // Operation is an OpenAPI Operation.
 type Operation struct {

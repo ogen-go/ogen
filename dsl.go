@@ -5,8 +5,8 @@ import (
 	"strings"
 
 	"github.com/ogen-go/ogen/internal/ir"
-	"github.com/ogen-go/ogen/internal/jsonschema"
 	"github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 // NewSpec returns a new Spec.

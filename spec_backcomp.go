@@ -1,6 +1,6 @@
 package ogen
 
-import "github.com/ogen-go/ogen/internal/jsonschema"
+import "github.com/ogen-go/ogen/jsonschema"
 
 func (s *Schema) ToJSONSchema() *jsonschema.RawSchema {
 	if s == nil {

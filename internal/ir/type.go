@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ogen-go/ogen/internal/jsonschema"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 type Kind string

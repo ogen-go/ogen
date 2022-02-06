@@ -3,7 +3,7 @@ package ir
 import (
 	"testing"
 
-	"github.com/ogen-go/ogen/internal/jsonschema"
+	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/stretchr/testify/require"
 )
 

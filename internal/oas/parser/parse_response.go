@@ -7,8 +7,8 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
-	"github.com/ogen-go/ogen/internal/jsonschema"
 	"github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 func (p *parser) parseResponses(responses ogen.Responses) (map[string]*oas.Response, error) {

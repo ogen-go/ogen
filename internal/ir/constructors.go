@@ -1,6 +1,6 @@
 package ir
 
-import "github.com/ogen-go/ogen/internal/jsonschema"
+import "github.com/ogen-go/ogen/jsonschema"
 
 func Primitive(typ PrimitiveType, schema *jsonschema.Schema) *Type {
 	return &Type{

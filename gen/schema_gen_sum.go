@@ -9,7 +9,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
-	"github.com/ogen-go/ogen/internal/jsonschema"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 func canUseTypeDiscriminator(sum []*ir.Type) bool {
@@ -152,10 +152,10 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 	}
 
 	// 3rd case: distinguish by unique fields.
-	var (
-		// Determine unique fields for each SumOf variant.
-		uniq = map[string]map[string]struct{}{}
-	)
+
+	// Determine unique fields for each SumOf variant.
+	uniq := map[string]map[string]struct{}{}
+
 	for _, s := range sum.SumOf {
 		uniq[s.Name] = map[string]struct{}{}
 		if !s.Is(ir.KindMap, ir.KindStruct) {
