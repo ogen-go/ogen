@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/ogen-go/ogen/internal/ir"
+	"github.com/ogen-go/ogen/internal/jsonschema"
 	"github.com/ogen-go/ogen/internal/oas"
 )
 
@@ -1003,7 +1004,7 @@ func schema(t, f string) *Schema {
 // AsArray returns a new "array" Schema wrapping the receiver.
 func (s *Schema) AsArray() *Schema {
 	return &Schema{
-		Type:  string(oas.Array),
+		Type:  string(jsonschema.Array),
 		Items: s,
 	}
 }

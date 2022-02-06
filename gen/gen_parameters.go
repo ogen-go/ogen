@@ -4,6 +4,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
+	"github.com/ogen-go/ogen/internal/jsonschema"
 	"github.com/ogen-go/ogen/internal/oas"
 )
 
@@ -122,7 +123,7 @@ func isSupportedParamStyle(param *oas.Parameter) error {
 		return &ErrNotImplemented{Name: "spaceDelimited parameter style"}
 
 	case oas.QueryStylePipeDelimited:
-		if param.Schema.Type == oas.Object {
+		if param.Schema.Type == jsonschema.Object {
 			return &ErrNotImplemented{Name: "pipeDelimited style for object parameters"}
 		}
 	}

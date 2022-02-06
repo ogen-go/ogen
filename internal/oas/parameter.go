@@ -1,5 +1,7 @@
 package oas
 
+import "github.com/ogen-go/ogen/internal/jsonschema"
+
 // ParameterLocation defines where OpenAPI parameter is located.
 type ParameterLocation string
 
@@ -22,7 +24,7 @@ func (l ParameterLocation) Cookie() bool { return l == LocationCookie }
 type Parameter struct {
 	Name        string
 	Description string
-	Schema      *Schema
+	Schema      *jsonschema.Schema
 	In          ParameterLocation
 	Style       ParameterStyle
 	Explode     bool

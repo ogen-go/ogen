@@ -3,10 +3,10 @@ package gen
 import (
 	"github.com/go-faster/errors"
 	"github.com/ogen-go/ogen/internal/ir"
-	"github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/internal/jsonschema"
 )
 
-func (g *Generator) generateContents(name string, contents map[string]*oas.Schema) (map[ir.ContentType]*ir.Type, error) {
+func (g *Generator) generateContents(name string, contents map[string]*jsonschema.Schema) (map[ir.ContentType]*ir.Type, error) {
 	var (
 		result      = make(map[ir.ContentType]*ir.Type, len(contents))
 		unsupported []string

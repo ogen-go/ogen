@@ -6,6 +6,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/jsonschema"
 	"github.com/ogen-go/ogen/internal/oas"
 )
 
@@ -16,13 +17,13 @@ type parser struct {
 	operations []*oas.Operation
 	// refs contains lazy-initialized referenced components.
 	refs struct {
-		schemas       map[string]*oas.Schema
 		requestBodies map[string]*oas.RequestBody
 		responses     map[string]*oas.Response
 		parameters    map[string]*oas.Parameter
 		examples      map[string]*oas.Example
 	}
-	inferTypes bool
+
+	schemaParser *jsonschema.Parser
 }
 
 func Parse(spec *ogen.Spec, inferTypes bool) ([]*oas.Operation, error) {
@@ -31,19 +32,20 @@ func Parse(spec *ogen.Spec, inferTypes bool) ([]*oas.Operation, error) {
 		spec:       spec,
 		operations: nil,
 		refs: struct {
-			schemas       map[string]*oas.Schema
 			requestBodies map[string]*oas.RequestBody
 			responses     map[string]*oas.Response
 			parameters    map[string]*oas.Parameter
 			examples      map[string]*oas.Example
 		}{
-			schemas:       map[string]*oas.Schema{},
 			requestBodies: map[string]*oas.RequestBody{},
 			responses:     map[string]*oas.Response{},
 			parameters:    map[string]*oas.Parameter{},
 			examples:      map[string]*oas.Example{},
 		},
-		inferTypes: inferTypes,
+		schemaParser: jsonschema.NewParser(jsonschema.Settings{
+			Resolver:   componentsResolver(spec.Components.Schemas),
+			InferTypes: inferTypes,
+		}),
 	}
 
 	err := p.parse()

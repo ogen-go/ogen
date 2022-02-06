@@ -1,19 +1,19 @@
 package gen
 
 import (
-	"github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/internal/jsonschema"
 )
 
-func isBinary(s *oas.Schema) bool {
+func isBinary(s *jsonschema.Schema) bool {
 	if s == nil {
 		return false
 	}
 
 	switch s.Type {
-	case "", oas.String:
+	case "", jsonschema.String:
 	default:
 		return false
 	}
 
-	return s.Format == oas.FormatBinary
+	return s.Format == jsonschema.FormatBinary
 }
