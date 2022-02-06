@@ -5,8 +5,27 @@ import (
 
 	"github.com/go-faster/errors"
 
+	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/jsonschema"
 )
+
+type componentsResolver map[string]*ogen.Schema
+
+func (c componentsResolver) ResolveReference(ref string) (*jsonschema.RawSchema, error) {
+	const prefix = "#/components/schemas/"
+	if !strings.HasPrefix(ref, prefix) {
+		return nil, errors.Errorf("invalid schema reference %q", ref)
+	}
+
+	name := strings.TrimPrefix(ref, prefix)
+	s, ok := c[name]
+	if !ok {
+		return nil, errors.New("schema not found")
+	}
+
+	return s.ToJSONSchema(), nil
+}
 
 func (p *parser) resolveRequestBody(ref string) (*oas.RequestBody, error) {
 	const prefix = "#/components/requestBodies/"

@@ -1,8 +1,6 @@
 package ir
 
-import (
-	"github.com/ogen-go/ogen/internal/oas"
-)
+import "github.com/ogen-go/ogen/jsonschema"
 
 // JSON returns json encoding/decoding rules for t.
 func (t *Type) JSON() JSON {
@@ -97,19 +95,19 @@ func (j JSON) Format() string {
 		return ""
 	}
 	switch j.t.Schema.Format {
-	case oas.FormatUUID:
+	case jsonschema.FormatUUID:
 		return "UUID"
-	case oas.FormatDate:
+	case jsonschema.FormatDate:
 		return "Date"
-	case oas.FormatTime:
+	case jsonschema.FormatTime:
 		return "Time"
-	case oas.FormatDateTime:
+	case jsonschema.FormatDateTime:
 		return "DateTime"
-	case oas.FormatDuration:
+	case jsonschema.FormatDuration:
 		return "Duration"
-	case oas.FormatIP, oas.FormatIPv4, oas.FormatIPv6:
+	case jsonschema.FormatIP, jsonschema.FormatIPv4, jsonschema.FormatIPv6:
 		return "IP"
-	case oas.FormatURI:
+	case jsonschema.FormatURI:
 		return "URI"
 	default:
 		return ""

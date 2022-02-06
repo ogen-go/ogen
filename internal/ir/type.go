@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 type Kind string
@@ -94,7 +94,7 @@ type Type struct {
 	Implements       map[*Type]struct{}  // only for struct, alias, enum
 	Implementations  map[*Type]struct{}  // only for interface
 	InterfaceMethods map[string]struct{} // only for interface
-	Schema           *oas.Schema         // for all kinds except pointer, interface. Can be nil.
+	Schema           *jsonschema.Schema  // for all kinds except pointer, interface. Can be nil.
 	NilSemantic      NilSemantic         // only for pointer
 	GenericOf        *Type               // only for generic
 	GenericVariant   GenericVariant      // only for generic
@@ -168,7 +168,7 @@ type Field struct {
 	Name string
 	Type *Type
 	Tag  Tag
-	Spec *oas.Property
+	Spec *jsonschema.Property
 }
 
 func (f Field) GoDoc() []string {

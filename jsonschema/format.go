@@ -1,4 +1,4 @@
-package oas
+package jsonschema
 
 // Format of Schema.
 type Format string

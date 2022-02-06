@@ -3,19 +3,18 @@ package ir
 import (
 	"testing"
 
+	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/stretchr/testify/require"
-
-	"github.com/ogen-go/ogen/internal/oas"
 )
 
 func TestJSONFields_RequiredMask(t *testing.T) {
 	required := &Field{
-		Spec: &oas.Property{
+		Spec: &jsonschema.Property{
 			Required: true,
 		},
 	}
 	optional := &Field{
-		Spec: &oas.Property{
+		Spec: &jsonschema.Property{
 			Required: false,
 		},
 	}

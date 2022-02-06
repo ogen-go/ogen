@@ -6,18 +6,19 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 func TestPathParser(t *testing.T) {
 	var (
 		bar = &oas.Parameter{
 			Name:   "bar",
-			Schema: &oas.Schema{Type: oas.Integer},
+			Schema: &jsonschema.Schema{Type: jsonschema.Integer},
 			In:     oas.LocationPath,
 		}
 		baz = &oas.Parameter{
 			Name:   "baz",
-			Schema: &oas.Schema{Type: oas.String},
+			Schema: &jsonschema.Schema{Type: jsonschema.String},
 			In:     oas.LocationPath,
 		}
 	)

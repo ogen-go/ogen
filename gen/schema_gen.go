@@ -8,7 +8,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
-	"github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 type schemaGen struct {
@@ -37,7 +37,7 @@ func variantFieldName(t *ir.Type) string {
 	return capitalize(result)
 }
 
-func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err error) {
+func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type, err error) {
 	if schema == nil {
 		return nil, &ErrNotImplemented{Name: "empty schema"}
 	}
@@ -93,7 +93,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err e
 	}
 
 	switch schema.Type {
-	case oas.Object:
+	case jsonschema.Object:
 		kind := ir.KindStruct
 		if schema.AdditionalProperties {
 			kind = ir.KindMap
@@ -135,7 +135,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err e
 		}
 
 		return s, nil
-	case oas.Array:
+	case jsonschema.Array:
 		array := &ir.Type{
 			Kind:        ir.KindArray,
 			Schema:      schema,
@@ -156,24 +156,24 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err e
 
 		return ret, nil
 
-	case oas.String, oas.Integer, oas.Number, oas.Boolean:
+	case jsonschema.String, jsonschema.Integer, jsonschema.Number, jsonschema.Boolean:
 		t, err := g.primitive(name, schema)
 		if err != nil {
 			return nil, errors.Wrap(err, "primitive")
 		}
 
 		switch schema.Type {
-		case oas.String:
+		case jsonschema.String:
 			if err := t.Validators.SetString(schema); err != nil {
 				return nil, errors.Wrap(err, "string validator")
 			}
 
-		case oas.Integer, oas.Number:
+		case jsonschema.Integer, jsonschema.Number:
 			t.Validators.SetInt(schema)
 		}
 
 		return side(t), nil
-	case oas.Empty:
+	case jsonschema.Empty:
 		return side(ir.Any()), nil
 	default:
 		panic("unreachable")

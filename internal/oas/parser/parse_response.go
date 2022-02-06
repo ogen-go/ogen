@@ -8,6 +8,7 @@ import (
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 func (p *parser) parseResponses(responses ogen.Responses) (map[string]*oas.Response, error) {
@@ -43,10 +44,10 @@ func (p *parser) parseResponse(resp *ogen.Response) (*oas.Response, error) {
 	}
 
 	response := &oas.Response{
-		Contents: make(map[string]*oas.Schema, len(resp.Content)),
+		Contents: make(map[string]*jsonschema.Schema, len(resp.Content)),
 	}
 	for contentType, media := range resp.Content {
-		schema, err := p.parseSchema(media.Schema)
+		schema, err := p.schemaParser.Parse(media.Schema.ToJSONSchema())
 		if err != nil {
 			return nil, errors.Wrapf(err, "content: %s: schema", contentType)
 		}

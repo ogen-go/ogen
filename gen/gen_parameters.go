@@ -5,6 +5,7 @@ import (
 
 	"github.com/ogen-go/ogen/internal/ir"
 	"github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 func (g *Generator) generateParameters(opName string, params []*oas.Parameter) ([]*ir.Parameter, error) {
@@ -122,7 +123,7 @@ func isSupportedParamStyle(param *oas.Parameter) error {
 		return &ErrNotImplemented{Name: "spaceDelimited parameter style"}
 
 	case oas.QueryStylePipeDelimited:
-		if param.Schema.Type == oas.Object {
+		if param.Schema.Type == jsonschema.Object {
 			return &ErrNotImplemented{Name: "pipeDelimited style for object parameters"}
 		}
 	}

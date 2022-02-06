@@ -1,8 +1,8 @@
 package ir
 
-import "github.com/ogen-go/ogen/internal/oas"
+import "github.com/ogen-go/ogen/jsonschema"
 
-func Primitive(typ PrimitiveType, schema *oas.Schema) *Type {
+func Primitive(typ PrimitiveType, schema *jsonschema.Schema) *Type {
 	return &Type{
 		Kind:      KindPrimitive,
 		Primitive: typ,
@@ -10,7 +10,7 @@ func Primitive(typ PrimitiveType, schema *oas.Schema) *Type {
 	}
 }
 
-func Array(item *Type, sem NilSemantic, schema *oas.Schema) *Type {
+func Array(item *Type, sem NilSemantic, schema *jsonschema.Schema) *Type {
 	return &Type{
 		Kind:        KindArray,
 		Item:        item,

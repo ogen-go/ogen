@@ -5,7 +5,7 @@ import (
 
 	"github.com/go-faster/errors"
 
-	"github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/validate"
 )
 
@@ -16,7 +16,7 @@ type Validators struct {
 	Object validate.Object
 }
 
-func (v *Validators) SetString(schema *oas.Schema) (err error) {
+func (v *Validators) SetString(schema *jsonschema.Schema) (err error) {
 	if schema.Pattern != "" {
 		v.String.Regex, err = regexp.Compile(schema.Pattern)
 		if err != nil {
@@ -29,16 +29,16 @@ func (v *Validators) SetString(schema *oas.Schema) (err error) {
 	if schema.MinLength != nil {
 		v.String.SetMinLength(int(*schema.MinLength))
 	}
-	if schema.Format == oas.FormatEmail {
+	if schema.Format == jsonschema.FormatEmail {
 		v.String.Email = true
 	}
-	if schema.Format == oas.FormatHostname {
+	if schema.Format == jsonschema.FormatHostname {
 		v.String.Hostname = true
 	}
 	return nil
 }
 
-func (v *Validators) SetInt(schema *oas.Schema) {
+func (v *Validators) SetInt(schema *jsonschema.Schema) {
 	if schema.MultipleOf != nil {
 		v.Int.SetMultipleOf(*schema.MultipleOf)
 	}
@@ -52,7 +52,7 @@ func (v *Validators) SetInt(schema *oas.Schema) {
 	v.Int.MinExclusive = schema.ExclusiveMinimum
 }
 
-func (v *Validators) SetArray(schema *oas.Schema) {
+func (v *Validators) SetArray(schema *jsonschema.Schema) {
 	if schema.MaxItems != nil {
 		v.Array.SetMaxLength(int(*schema.MaxItems))
 	}
@@ -61,7 +61,7 @@ func (v *Validators) SetArray(schema *oas.Schema) {
 	}
 }
 
-func (v *Validators) SetObject(schema *oas.Schema) {
+func (v *Validators) SetObject(schema *jsonschema.Schema) {
 	if schema.MaxProperties != nil {
 		v.Object.SetMaxProperties(int(*schema.MaxProperties))
 	}

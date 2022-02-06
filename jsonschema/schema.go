@@ -1,8 +1,8 @@
-package oas
+package jsonschema
 
 import "encoding/json"
 
-// SchemaType is an OpenAPI JSON Schema type.
+// SchemaType is a JSON Schema type.
 type SchemaType string
 
 const (
@@ -15,13 +15,7 @@ const (
 	Boolean SchemaType = "boolean"
 )
 
-// Discriminator discriminates types for OneOf, AllOf, AnyOf.
-type Discriminator struct {
-	PropertyName string
-	Mapping      map[string]string
-}
-
-// Schema is an OpenAPI JSON Schema.
+// Schema is a JSON Schema.
 type Schema struct {
 	Type        SchemaType
 	Format      Format // Schema format, optional.
@@ -70,7 +64,7 @@ func (s *Schema) AddExample(r json.RawMessage) {
 	}
 }
 
-// Property is an OpenAPI JSON Schema Object property.
+// Property is a JSON Schema Object property.
 type Property struct {
 	Name        string  // Property name.
 	Description string  // Property description.

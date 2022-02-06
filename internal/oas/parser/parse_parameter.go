@@ -68,7 +68,7 @@ func (p *parser) parseParameter(param *ogen.Parameter) (*oas.Parameter, error) {
 		return nil, errors.New("path parameters must be required")
 	}
 
-	schema, err := p.parseSchema(&param.Schema)
+	schema, err := p.schemaParser.Parse(param.Schema.ToJSONSchema())
 	if err != nil {
 		return nil, errors.Wrap(err, "schema")
 	}
@@ -77,7 +77,6 @@ func (p *parser) parseParameter(param *ogen.Parameter) (*oas.Parameter, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "style")
 	}
-
 	return &oas.Parameter{
 		Name:        param.Name,
 		Description: param.Description,

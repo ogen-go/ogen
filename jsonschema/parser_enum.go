@@ -1,12 +1,10 @@
-package parser
+package jsonschema
 
 import (
 	"encoding/json"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-
-	"github.com/ogen-go/ogen/internal/oas"
 )
 
 func inferEnumType(v json.RawMessage) (string, error) {
@@ -25,7 +23,7 @@ func inferEnumType(v json.RawMessage) (string, error) {
 	}
 }
 
-func parseEnumValues(typ oas.SchemaType, rawValues []json.RawMessage) ([]interface{}, error) {
+func parseEnumValues(typ SchemaType, rawValues []json.RawMessage) ([]interface{}, error) {
 	var (
 		values []interface{}
 		unique = map[interface{}]struct{}{}
@@ -46,7 +44,7 @@ func parseEnumValues(typ oas.SchemaType, rawValues []json.RawMessage) ([]interfa
 	return values, nil
 }
 
-func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) {
+func parseJSONValue(typ SchemaType, v json.RawMessage) (interface{}, error) {
 	var (
 		d    = jx.DecodeBytes(v)
 		next = d.Next()
@@ -55,12 +53,12 @@ func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) 
 		return nil, nil
 	}
 	switch typ {
-	case oas.String:
+	case String:
 		if next != jx.String {
 			return nil, errors.Errorf("expected type %q, got %q", typ, next)
 		}
 		return d.Str()
-	case oas.Integer:
+	case Integer:
 		if next != jx.Number {
 			return nil, errors.Errorf("expected type %q, got %q", typ, next)
 		}
@@ -72,7 +70,7 @@ func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) 
 			return nil, errors.New("expected integer, got float")
 		}
 		return n.Int64()
-	case oas.Number:
+	case Number:
 		if next != jx.Number {
 			return nil, errors.Errorf("expected type %q, got %q", typ, next)
 		}
@@ -81,7 +79,7 @@ func parseJSONValue(typ oas.SchemaType, v json.RawMessage) (interface{}, error) 
 			return nil, err
 		}
 		return n.Float64()
-	case oas.Boolean:
+	case Boolean:
 		if next != jx.Bool {
 			return nil, errors.Errorf("expected type %q, got %q", typ, next)
 		}

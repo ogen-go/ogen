@@ -9,7 +9,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
-	"github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 func canUseTypeDiscriminator(sum []*ir.Type) bool {
@@ -33,7 +33,7 @@ func canUseTypeDiscriminator(sum []*ir.Type) bool {
 	return true
 }
 
-func (g *schemaGen) collectSumVariants(name string, schemas []*oas.Schema) (sum []*ir.Type, _ error) {
+func (g *schemaGen) collectSumVariants(name string, schemas []*jsonschema.Schema) (sum []*ir.Type, _ error) {
 	names := map[string]struct{}{}
 	for i, s := range schemas {
 		t, err := g.generate(fmt.Sprintf("%s%d", name, i), s)
@@ -52,7 +52,7 @@ func (g *schemaGen) collectSumVariants(name string, schemas []*oas.Schema) (sum 
 	return sum, nil
 }
 
-func (g *schemaGen) anyOf(name string, schema *oas.Schema) (*ir.Type, error) {
+func (g *schemaGen) anyOf(name string, schema *jsonschema.Schema) (*ir.Type, error) {
 	sum := &ir.Type{
 		Name:   name,
 		Kind:   ir.KindSum,
@@ -95,7 +95,7 @@ func (g *schemaGen) anyOf(name string, schema *oas.Schema) (*ir.Type, error) {
 	return nil, &ErrNotImplemented{"complex anyOf"}
 }
 
-func (g *schemaGen) oneOf(name string, schema *oas.Schema) (*ir.Type, error) {
+func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, error) {
 	sum := &ir.Type{
 		Name:   name,
 		Kind:   ir.KindSum,
@@ -152,10 +152,10 @@ func (g *schemaGen) oneOf(name string, schema *oas.Schema) (*ir.Type, error) {
 	}
 
 	// 3rd case: distinguish by unique fields.
-	var (
-		// Determine unique fields for each SumOf variant.
-		uniq = map[string]map[string]struct{}{}
-	)
+
+	// Determine unique fields for each SumOf variant.
+	uniq := map[string]map[string]struct{}{}
+
 	for _, s := range sum.SumOf {
 		uniq[s.Name] = map[string]struct{}{}
 		if !s.Is(ir.KindMap, ir.KindStruct) {

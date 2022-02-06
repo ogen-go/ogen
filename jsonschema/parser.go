@@ -1,47 +1,37 @@
-package parser
+package jsonschema
 
 import (
-	"strings"
-
 	"github.com/go-faster/errors"
-
-	"github.com/ogen-go/ogen"
-	"github.com/ogen-go/ogen/internal/oas"
 )
 
-// schemaParser is used to parse OpenAPI schemas.
-type schemaParser struct {
-	// Schema components from OpenAPI document (readonly).
-	components map[string]*ogen.Schema
+// ReferenceResolver resolves JSON schema references.
+type ReferenceResolver interface {
+	ResolveReference(ref string) (*RawSchema, error)
+}
 
-	// Parsed schema components from *parser (readonly).
-	// Used as cache from previous parsing ops.
-	globalRefs map[string]*oas.Schema
-
-	// Parsed schema components current schema refers to.
-	localRefs map[string]*oas.Schema
-
-	// Enables type inference.
-	//
-	// For example:
-	//
-	//	{
-	//		"items": {
-	//			"type": "string"
-	//		}
-	//	}
-	//
-	// In that case schemaParser will handle that schema as "array" schema, because it has "items" field.
+// Parser parses JSON schemas.
+type Parser struct {
+	resolver   ReferenceResolver
+	refcache   map[string]*Schema
 	inferTypes bool
 }
 
-func (p *schemaParser) Parse(schema *ogen.Schema) (*oas.Schema, error) {
-	return p.parse(schema, func(s *oas.Schema) *oas.Schema {
+func NewParser(s Settings) *Parser {
+	s.setDefaults()
+	return &Parser{
+		resolver:   s.Resolver,
+		refcache:   map[string]*Schema{},
+		inferTypes: s.InferTypes,
+	}
+}
+
+func (p *Parser) Parse(schema *RawSchema) (*Schema, error) {
+	return p.parse(schema, func(s *Schema) *Schema {
 		return p.extendInfo(schema, s)
 	})
 }
 
-func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Schema) (*oas.Schema, error) {
+func (p *Parser) parse(schema *RawSchema, hook func(*Schema) *Schema) (*Schema, error) {
 	if schema == nil {
 		return nil, nil
 	}
@@ -67,14 +57,14 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 			return nil, errors.Wrap(err, "validate format")
 		}
 
-		values, err := parseEnumValues(oas.SchemaType(schema.Type), schema.Enum)
+		values, err := parseEnumValues(SchemaType(schema.Type), schema.Enum)
 		if err != nil {
 			return nil, errors.Wrap(err, "parse enum")
 		}
 
-		return hook(&oas.Schema{
-			Type:   oas.SchemaType(schema.Type),
-			Format: oas.Format(schema.Format),
+		return hook(&Schema{
+			Type:   SchemaType(schema.Type),
+			Format: Format(schema.Format),
 			Enum:   values,
 		}), nil
 	case len(schema.OneOf) > 0:
@@ -83,14 +73,14 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 			return nil, errors.Wrapf(err, "oneOf")
 		}
 
-		return hook(&oas.Schema{OneOf: schemas}), nil
+		return hook(&Schema{OneOf: schemas}), nil
 	case len(schema.AnyOf) > 0:
 		schemas, err := p.parseMany(schema.AnyOf)
 		if err != nil {
 			return nil, errors.Wrapf(err, "anyOf")
 		}
 
-		return hook(&oas.Schema{
+		return hook(&Schema{
 			AnyOf: schemas,
 			// Object validators
 			MaxProperties: schema.MaxProperties,
@@ -116,7 +106,7 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 			return nil, errors.Wrapf(err, "allOf")
 		}
 
-		return hook(&oas.Schema{AllOf: schemas}), nil
+		return hook(&Schema{AllOf: schemas}), nil
 	}
 
 	// Try to infer schema type from properties.
@@ -161,8 +151,8 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 			return false
 		}
 
-		s := hook(&oas.Schema{
-			Type:          oas.Object,
+		s := hook(&Schema{
+			Type:          Object,
 			MaxProperties: schema.MaxProperties,
 			MinProperties: schema.MinProperties,
 		})
@@ -184,7 +174,7 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 				return nil, errors.Wrapf(err, "%s", propSpec.Name)
 			}
 
-			s.Properties = append(s.Properties, oas.Property{
+			s.Properties = append(s.Properties, Property{
 				Name:        propSpec.Name,
 				Description: propSpec.Schema.Description,
 				Schema:      prop,
@@ -194,8 +184,8 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 		return s, nil
 
 	case "array":
-		array := hook(&oas.Schema{
-			Type:        oas.Array,
+		array := hook(&Schema{
+			Type:        Array,
 			MinItems:    schema.MinItems,
 			MaxItems:    schema.MaxItems,
 			UniqueItems: schema.UniqueItems,
@@ -221,9 +211,9 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 			return nil, errors.Wrap(err, "validate format")
 		}
 
-		return hook(&oas.Schema{
-			Type:             oas.SchemaType(schema.Type),
-			Format:           oas.Format(schema.Format),
+		return hook(&Schema{
+			Type:             SchemaType(schema.Type),
+			Format:           Format(schema.Format),
 			Minimum:          schema.Minimum,
 			Maximum:          schema.Maximum,
 			ExclusiveMinimum: schema.ExclusiveMinimum,
@@ -236,9 +226,9 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 			return nil, errors.Wrap(err, "validate format")
 		}
 
-		return hook(&oas.Schema{
-			Type:   oas.Boolean,
-			Format: oas.Format(schema.Format),
+		return hook(&Schema{
+			Type:   Boolean,
+			Format: Format(schema.Format),
 		}), nil
 
 	case "string":
@@ -246,24 +236,24 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 			return nil, errors.Wrap(err, "validate format")
 		}
 
-		return hook(&oas.Schema{
-			Type:      oas.String,
-			Format:    oas.Format(schema.Format),
+		return hook(&Schema{
+			Type:      String,
+			Format:    Format(schema.Format),
 			MaxLength: schema.MaxLength,
 			MinLength: schema.MinLength,
 			Pattern:   schema.Pattern,
 		}), nil
 
 	case "":
-		return hook(&oas.Schema{}), nil
+		return hook(&Schema{}), nil
 
 	default:
 		return nil, errors.Errorf("unexpected schema type: %q", schema.Type)
 	}
 }
 
-func (p *schemaParser) parseMany(schemas []*ogen.Schema) ([]*oas.Schema, error) {
-	result := make([]*oas.Schema, 0, len(schemas))
+func (p *Parser) parseMany(schemas []*RawSchema) ([]*Schema, error) {
+	result := make([]*Schema, 0, len(schemas))
 	for i, schema := range schemas {
 		s, err := p.Parse(schema)
 		if err != nil {
@@ -276,34 +266,24 @@ func (p *schemaParser) parseMany(schemas []*ogen.Schema) ([]*oas.Schema, error) 
 	return result, nil
 }
 
-func (p *schemaParser) resolve(ref string) (*oas.Schema, error) {
-	const prefix = "#/components/schemas/"
-	if !strings.HasPrefix(ref, prefix) {
-		return nil, errors.Errorf("invalid schema reference %q", ref)
-	}
-
-	if s, ok := p.globalRefs[ref]; ok {
+func (p *Parser) resolve(ref string) (*Schema, error) {
+	if s, ok := p.refcache[ref]; ok {
 		return s, nil
 	}
 
-	if s, ok := p.localRefs[ref]; ok {
-		return s, nil
+	raw, err := p.resolver.ResolveReference(ref)
+	if err != nil {
+		return nil, errors.Wrapf(err, "resolve reference %q", ref)
 	}
 
-	name := strings.TrimPrefix(ref, prefix)
-	component, found := p.components[name]
-	if !found {
-		return nil, errors.Errorf("component by reference %q not found", ref)
-	}
-
-	return p.parse(component, func(s *oas.Schema) *oas.Schema {
+	return p.parse(raw, func(s *Schema) *Schema {
 		s.Ref = ref
-		p.localRefs[ref] = s
-		return p.extendInfo(component, s)
+		p.refcache[ref] = s
+		return p.extendInfo(raw, s)
 	})
 }
 
-func (p *schemaParser) extendInfo(schema *ogen.Schema, s *oas.Schema) *oas.Schema {
+func (p *Parser) extendInfo(schema *RawSchema, s *Schema) *Schema {
 	s.Description = schema.Description
 	s.AddExample(schema.Example)
 
@@ -335,7 +315,7 @@ func (p *schemaParser) extendInfo(schema *ogen.Schema, s *oas.Schema) *oas.Schem
 		}
 	}
 	if d := schema.Discriminator; d != nil {
-		s.Discriminator = &oas.Discriminator{
+		s.Discriminator = &Discriminator{
 			PropertyName: d.PropertyName,
 			Mapping:      d.Mapping,
 		}

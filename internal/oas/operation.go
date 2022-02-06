@@ -1,5 +1,7 @@
 package oas
 
+import "github.com/ogen-go/ogen/jsonschema"
+
 // Operation is an OpenAPI Operation.
 type Operation struct {
 	OperationID string // optional
@@ -40,12 +42,12 @@ type PathPart struct {
 
 // RequestBody of an OpenAPI Operation.
 type RequestBody struct {
-	Contents map[string]*Schema
+	Contents map[string]*jsonschema.Schema
 	Required bool
 }
 
 // Response is an OpenAPI Response definition.
 type Response struct {
 	Ref      string
-	Contents map[string]*Schema
+	Contents map[string]*jsonschema.Schema
 }
