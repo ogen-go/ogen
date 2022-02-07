@@ -23,7 +23,7 @@ go get -d github.com/ogen-go/ogen
 # Features
 
 * No reflection or `interface{}`
-  * The json encoding is code-generated, optimized and uses [jx](https://github.com/go-faster/jx) for speed and overcoming `encoding/json` limitations
+  * The json encoding is code-generated, optimized and uses [go-faster/jx](https://github.com/go-faster/jx) for speed and overcoming `encoding/json` limitations
   * Validation is code-generated according to spec
 * Code-generated static radix router
 * No more boilerplate
