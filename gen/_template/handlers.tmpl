@@ -21,6 +21,7 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	params, err := decode{{ $op.Name }}Params(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -30,6 +31,7 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	request, err := decode{{ $op.Name }}Request(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -47,6 +49,7 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		{{- else }}
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
         {{- end }}
 		return
@@ -54,8 +57,10 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 
 	if err := encode{{ $op.Name }}Response(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 {{ end }}
 

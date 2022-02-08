@@ -51,6 +51,7 @@ import (
 	"regexp"
 
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 	"go.opentelemetry.io/otel/metric"
 	"github.com/google/uuid"
@@ -95,5 +96,6 @@ var (
 	_ = regexp.MustCompile
 	_ = jx.Null
 	_ = sync.Pool{}
+	_ = codes.Unset
 )
 {{ end }}
