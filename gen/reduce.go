@@ -14,7 +14,7 @@ import (
 // deduceDefault implements convenient errors, representing common default
 // response as error instead of variant of each response.
 func (g *Generator) reduceDefault(ops []*oas.Operation) error {
-	if len(ops) < 2 {
+	if len(ops) < 1 {
 		return nil
 	}
 

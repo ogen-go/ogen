@@ -14,7 +14,17 @@ import (
 	"github.com/ogen-go/ogen/conv"
 	api "github.com/ogen-go/ogen/internal/sample_api"
 	"github.com/ogen-go/ogen/internal/techempower"
+	singleEndpoint "github.com/ogen-go/ogen/internal/test_single_endpoint"
 	"github.com/ogen-go/ogen/json"
+)
+
+// Ensure that convenient errors triggered on single endpoint.
+//
+// See https://github.com/ogen-go/ogen/issues/63.
+var (
+	_                      = singleEndpoint.ErrorStatusCode{}
+	_ singleEndpoint.Error = singleEndpoint.ErrorStatusCode{}.Response
+	_                      = singleEndpoint.Handler.NewError
 )
 
 func TestExampleJSON(t *testing.T) {
