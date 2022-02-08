@@ -57,6 +57,10 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	var propertiesCount int
 	{{- end }}
 
+	{{- if $.HasDefaultFields }}
+	s.setDefaults()
+	{{- end }}
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		{{- if $va.Object.Set }}
 		propertiesCount++
@@ -66,7 +70,7 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	case {{ quote $f.Tag.JSON }}:
 		{{- if $f.Spec.Required }}
 		requiredBitSet[{{ div $i 8 }}] |= 1 << {{ mod $i 8 }}
-		{{- end }}
+		{{ end -}}
 
 		if err := func() error {
 			{{- template "json/dec" field_elem $f }}

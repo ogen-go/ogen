@@ -1,0 +1,50 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Field*/ -}}
+
+{{- define "defaults/set" -}}
+	{{ $t := $.Type }}
+	// {{ $.Name }} {{ $t.Name }}
+    {{- if or ($t.IsPrimitive) ($t.IsEnum) ($t.IsAlias) -}}{{ $j := $t.JSON }}
+		{{- if $j.Format }}
+		val, _ := json.Decode{{ $j.Format }}(jx.DecodeStr({{ print_go $.Default.Value | quote }}))
+		{{- else if $j.IsBase64 }}
+		val, _ := jx.DecodeStr({{ print_go $.Default.Value | quote }}).Base64()
+		{{- else }}
+		val := {{ $t.Go }}({{ print_go $.Default.Value }})
+		{{- end }}
+
+        s.{{ $.Name }} = val
+    {{- else if $t.IsGeneric -}}{{ $j := $t.GenericOf.JSON }}{{ $val := $.Default }}
+		{{- if $val.IsNil }}
+		{{- if $t.GenericVariant.Nullable }}
+		s.{{ $.Name }}.Null = true
+		{{- end }}
+		{{- else }}
+		{{- if $j.Format }}
+		val, _ := json.Decode{{ $j.Format }}(jx.DecodeStr({{ print_go $.Default.Value | quote }}))
+		{{- else if $j.IsBase64 }}
+		val, _ := jx.DecodeStr({{ print_go $.Default.Value | quote }}).Base64()
+		{{- else }}
+		val := {{ $t.GenericOf.Go }}({{ print_go $.Default.Value }})
+		{{- end }}
+
+		s.{{ $.Name }}.SetTo(val)
+		{{- end }}
+    {{- else if $t.IsArray -}}{{ $j := $t.Item.JSON }}
+        s.{{ $.Name }} = make({{ $t.Go }}, {{ len $.Default.Value }})
+		{{- range $i, $d := $.Default.Value }}
+		{
+			{{- if $j.Format }}
+			val, _ := json.Decode{{ $j.Format }}(jx.DecodeStr({{ print_go $.Default.Value | quote }}))
+			{{- else if $j.IsBase64 }}
+			val, _ := jx.DecodeStr({{ print_go $.Default.Value | quote }}).Base64()
+			{{- else }}
+			val := {{ $t.GenericOf.Go }}({{ print_go $.Default.Value }})
+			{{- end }}
+
+			s.{{ $.Name }}[{{ $i }}] = val
+		}
+		{{- end }}
+    {{- else -}}
+        {{ errorf "unsupported %#v: %s" $.Default.Value $t }}
+    {{- end }}
+{{- end -}}

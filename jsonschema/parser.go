@@ -32,6 +32,34 @@ func (p *Parser) Parse(schema *RawSchema) (*Schema, error) {
 }
 
 func (p *Parser) parse(schema *RawSchema, hook func(*Schema) *Schema) (*Schema, error) {
+	s, err := p.parseSchema(schema, hook)
+	if err != nil {
+		return nil, errors.Wrap(err, "parse schema")
+	}
+
+	if schema != nil && s != nil {
+		if len(schema.Enum) > 0 {
+			values, err := parseEnumValues(s, schema.Enum)
+			if err != nil {
+				return nil, errors.Wrap(err, "parse enum values")
+			}
+			s.Enum = values
+			handleNullableEnum(s)
+		}
+		if d := schema.Default; len(d) > 0 {
+			v, err := parseJSONValue(s, d)
+			if err != nil {
+				return nil, errors.Wrap(err, "parse default")
+			}
+			s.Default = v
+			s.DefaultSet = true
+		}
+	}
+
+	return s, nil
+}
+
+func (p *Parser) parseSchema(schema *RawSchema, hook func(*Schema) *Schema) (*Schema, error) {
 	if schema == nil {
 		return nil, nil
 	}
@@ -57,15 +85,9 @@ func (p *Parser) parse(schema *RawSchema, hook func(*Schema) *Schema) (*Schema, 
 			return nil, errors.Wrap(err, "validate format")
 		}
 
-		values, err := parseEnumValues(SchemaType(schema.Type), schema.Enum)
-		if err != nil {
-			return nil, errors.Wrap(err, "parse enum")
-		}
-
 		return hook(&Schema{
 			Type:   SchemaType(schema.Type),
 			Format: Format(schema.Format),
-			Enum:   values,
 		}), nil
 	case len(schema.OneOf) > 0:
 		schemas, err := p.parseMany(schema.OneOf)
@@ -190,6 +212,7 @@ func (p *Parser) parse(schema *RawSchema, hook func(*Schema) *Schema) (*Schema, 
 			MaxItems:    schema.MaxItems,
 			UniqueItems: schema.UniqueItems,
 		})
+
 		if schema.Items == nil {
 			// Keep items nil, we will use ir.Any for it.
 			return array, nil
@@ -287,32 +310,9 @@ func (p *Parser) extendInfo(schema *RawSchema, s *Schema) *Schema {
 	s.Description = schema.Description
 	s.AddExample(schema.Example)
 
-	// Workaround: handle nullable enums correctly.
-	//
-	// Notice that nullable enum requires `null` in value list.
-	//
-	// See https://github.com/OAI/OpenAPI-Specification/blob/main/proposals/2019-10-31-Clarify-Nullable.md#if-a-schema-specifies-nullable-true-and-enum-1-2-3-does-that-schema-allow-null-values-see-1900.
+	// Nullable enums will be handled later.
 	if len(s.Enum) < 1 {
 		s.Nullable = schema.Nullable
-	} else {
-		// Check that enum contains `null` value.
-		for _, v := range s.Enum {
-			if v == nil {
-				s.Nullable = true
-				break
-			}
-		}
-		// Filter all `null`s.
-		if s.Nullable {
-			n := 0
-			for _, v := range s.Enum {
-				if v != nil {
-					s.Enum[n] = v
-					n++
-				}
-			}
-			s.Enum = s.Enum[:n]
-		}
 	}
 	if d := schema.Discriminator; d != nil {
 		s.Discriminator = &Discriminator{

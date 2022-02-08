@@ -149,6 +149,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		"client",
 		"cfg",
 		"router",
+		"defaults",
 	} {
 		// Skip uri encode/decode if no types for that.
 		if name == "uri" && !g.hasURIObjectParams() {

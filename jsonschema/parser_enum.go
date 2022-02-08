@@ -8,8 +8,8 @@ import (
 )
 
 func inferEnumType(v json.RawMessage) (string, error) {
-	typ := jx.DecodeBytes(v).Next()
-	switch typ {
+	d := jx.DecodeBytes(v)
+	switch tt := d.Next(); tt {
 	case jx.String:
 		return "string", nil
 	case jx.Number:
@@ -23,13 +23,13 @@ func inferEnumType(v json.RawMessage) (string, error) {
 	}
 }
 
-func parseEnumValues(typ SchemaType, rawValues []json.RawMessage) ([]interface{}, error) {
+func parseEnumValues(s *Schema, rawValues []json.RawMessage) ([]interface{}, error) {
 	var (
 		values []interface{}
 		unique = map[interface{}]struct{}{}
 	)
 	for _, raw := range rawValues {
-		val, err := parseJSONValue(typ, raw)
+		val, err := parseJSONValue(s, raw)
 		if err != nil {
 			return nil, errors.Wrapf(err, "parse value %q", raw)
 		}
@@ -44,47 +44,94 @@ func parseEnumValues(typ SchemaType, rawValues []json.RawMessage) ([]interface{}
 	return values, nil
 }
 
-func parseJSONValue(typ SchemaType, v json.RawMessage) (interface{}, error) {
-	var (
-		d    = jx.DecodeBytes(v)
-		next = d.Next()
-	)
-	if next == jx.Null {
-		return nil, nil
+func parseJSONValue(root *Schema, v json.RawMessage) (interface{}, error) {
+	var parse func(typ *Schema, d *jx.Decoder) (interface{}, error)
+	parse = func(typ *Schema, d *jx.Decoder) (interface{}, error) {
+		next := d.Next()
+		if next == jx.Null {
+			return nil, nil
+		}
+		switch typ.Type {
+		case String:
+			if next != jx.String {
+				return nil, errors.Errorf("expected type %q, got %q", typ, next)
+			}
+			return d.Str()
+		case Integer:
+			if next != jx.Number {
+				return nil, errors.Errorf("expected type %q, got %q", typ, next)
+			}
+			n, err := d.Num()
+			if err != nil {
+				return nil, err
+			}
+			if !n.IsInt() {
+				return nil, errors.New("expected integer, got float")
+			}
+			return n.Int64()
+		case Number:
+			if next != jx.Number {
+				return nil, errors.Errorf("expected type %q, got %q", typ, next)
+			}
+			n, err := d.Num()
+			if err != nil {
+				return nil, err
+			}
+			return n.Float64()
+		case Boolean:
+			if next != jx.Bool {
+				return nil, errors.Errorf("expected type %q, got %q", typ, next)
+			}
+			return d.Bool()
+		case Array:
+			if next != jx.Array {
+				return nil, errors.Errorf("expected type %q, got %q", typ, next)
+			}
+			if typ.Item == nil {
+				return nil, errors.New("can't validate untyped array item")
+			}
+			var arr []interface{}
+			if err := d.Arr(func(d *jx.Decoder) error {
+				v, err := parse(typ.Item, d)
+				if err != nil {
+					return errors.Wrap(err, "validate item")
+				}
+				arr = append(arr, v)
+				return nil
+			}); err != nil {
+				return nil, err
+			}
+			return arr, nil
+		default:
+			return nil, errors.Errorf("unexpected type: %q", typ)
+		}
 	}
-	switch typ {
-	case String:
-		if next != jx.String {
-			return nil, errors.Errorf("expected type %q, got %q", typ, next)
+
+	return parse(root, jx.DecodeBytes(v))
+}
+
+// See https://github.com/OAI/OpenAPI-Specification/blob/main/proposals/2019-10-31-Clarify-Nullable.md#if-a-schema-specifies-nullable-true-and-enum-1-2-3-does-that-schema-allow-null-values-see-1900.
+func handleNullableEnum(s *Schema) {
+	// Workaround: handle nullable enums correctly.
+	//
+	// Notice that nullable enum requires `null` in value list.
+	//
+	// Check that enum contains `null` value.
+	for _, v := range s.Enum {
+		if v == nil {
+			s.Nullable = true
+			break
 		}
-		return d.Str()
-	case Integer:
-		if next != jx.Number {
-			return nil, errors.Errorf("expected type %q, got %q", typ, next)
+	}
+	// Filter all `null`s.
+	if s.Nullable {
+		n := 0
+		for _, v := range s.Enum {
+			if v != nil {
+				s.Enum[n] = v
+				n++
+			}
 		}
-		n, err := d.Num()
-		if err != nil {
-			return nil, err
-		}
-		if !n.IsInt() {
-			return nil, errors.New("expected integer, got float")
-		}
-		return n.Int64()
-	case Number:
-		if next != jx.Number {
-			return nil, errors.Errorf("expected type %q, got %q", typ, next)
-		}
-		n, err := d.Num()
-		if err != nil {
-			return nil, err
-		}
-		return n.Float64()
-	case Boolean:
-		if next != jx.Bool {
-			return nil, errors.Errorf("expected type %q, got %q", typ, next)
-		}
-		return d.Bool()
-	default:
-		return nil, errors.Errorf("unexpected type: %q", typ)
+		s.Enum = s.Enum[:n]
 	}
 }
