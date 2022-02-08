@@ -1,8 +1,6 @@
 name: Lint
 on:
   push:
-    tags:
-      - v*
     branches:
       - main
   pull_request:
