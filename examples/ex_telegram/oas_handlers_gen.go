@@ -29,6 +29,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
 )
@@ -62,6 +63,7 @@ var (
 	_ = regexp.MustCompile
 	_ = jx.Null
 	_ = sync.Pool{}
+	_ = codes.Unset
 )
 
 // HandleAddStickerToSetRequest handles addStickerToSet operation.
@@ -76,6 +78,7 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 	request, err := decodeAddStickerToSetRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -94,8 +97,10 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 
 	if err := encodeAddStickerToSetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAnswerCallbackQueryRequest handles answerCallbackQuery operation.
@@ -110,6 +115,7 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 	request, err := decodeAnswerCallbackQueryRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -128,8 +134,10 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 
 	if err := encodeAnswerCallbackQueryResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAnswerInlineQueryRequest handles answerInlineQuery operation.
@@ -144,6 +152,7 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 	request, err := decodeAnswerInlineQueryRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -162,8 +171,10 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 
 	if err := encodeAnswerInlineQueryResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAnswerPreCheckoutQueryRequest handles answerPreCheckoutQuery operation.
@@ -178,6 +189,7 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 	request, err := decodeAnswerPreCheckoutQueryRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -196,8 +208,10 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 
 	if err := encodeAnswerPreCheckoutQueryResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAnswerShippingQueryRequest handles answerShippingQuery operation.
@@ -212,6 +226,7 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 	request, err := decodeAnswerShippingQueryRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -230,8 +245,10 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 
 	if err := encodeAnswerShippingQueryResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleApproveChatJoinRequestRequest handles approveChatJoinRequest operation.
@@ -246,6 +263,7 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 	request, err := decodeApproveChatJoinRequestRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -264,8 +282,10 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 
 	if err := encodeApproveChatJoinRequestResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleBanChatMemberRequest handles banChatMember operation.
@@ -280,6 +300,7 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 	request, err := decodeBanChatMemberRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -298,8 +319,10 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 
 	if err := encodeBanChatMemberResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleBanChatSenderChatRequest handles banChatSenderChat operation.
@@ -314,6 +337,7 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 	request, err := decodeBanChatSenderChatRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -332,8 +356,10 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 
 	if err := encodeBanChatSenderChatResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleCloseRequest handles close operation.
@@ -360,8 +386,10 @@ func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *ht
 
 	if err := encodeCloseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleCopyMessageRequest handles copyMessage operation.
@@ -376,6 +404,7 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 	request, err := decodeCopyMessageRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -394,8 +423,10 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 
 	if err := encodeCopyMessageResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleCreateChatInviteLinkRequest handles createChatInviteLink operation.
@@ -410,6 +441,7 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 	request, err := decodeCreateChatInviteLinkRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -428,8 +460,10 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 
 	if err := encodeCreateChatInviteLinkResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleCreateNewStickerSetRequest handles createNewStickerSet operation.
@@ -444,6 +478,7 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 	request, err := decodeCreateNewStickerSetRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -462,8 +497,10 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 
 	if err := encodeCreateNewStickerSetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleDeclineChatJoinRequestRequest handles declineChatJoinRequest operation.
@@ -478,6 +515,7 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 	request, err := decodeDeclineChatJoinRequestRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -496,8 +534,10 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 
 	if err := encodeDeclineChatJoinRequestResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleDeleteChatPhotoRequest handles deleteChatPhoto operation.
@@ -512,6 +552,7 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 	request, err := decodeDeleteChatPhotoRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -530,8 +571,10 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 
 	if err := encodeDeleteChatPhotoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleDeleteChatStickerSetRequest handles deleteChatStickerSet operation.
@@ -546,6 +589,7 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 	request, err := decodeDeleteChatStickerSetRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -564,8 +608,10 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 
 	if err := encodeDeleteChatStickerSetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleDeleteMessageRequest handles deleteMessage operation.
@@ -580,6 +626,7 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 	request, err := decodeDeleteMessageRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -598,8 +645,10 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 
 	if err := encodeDeleteMessageResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleDeleteMyCommandsRequest handles deleteMyCommands operation.
@@ -614,6 +663,7 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 	request, err := decodeDeleteMyCommandsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -632,8 +682,10 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 
 	if err := encodeDeleteMyCommandsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleDeleteStickerFromSetRequest handles deleteStickerFromSet operation.
@@ -648,6 +700,7 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 	request, err := decodeDeleteStickerFromSetRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -666,8 +719,10 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 
 	if err := encodeDeleteStickerFromSetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleDeleteWebhookRequest handles deleteWebhook operation.
@@ -682,6 +737,7 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 	request, err := decodeDeleteWebhookRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -700,8 +756,10 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 
 	if err := encodeDeleteWebhookResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEditChatInviteLinkRequest handles editChatInviteLink operation.
@@ -716,6 +774,7 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 	request, err := decodeEditChatInviteLinkRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -734,8 +793,10 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 
 	if err := encodeEditChatInviteLinkResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEditMessageCaptionRequest handles editMessageCaption operation.
@@ -750,6 +811,7 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 	request, err := decodeEditMessageCaptionRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -768,8 +830,10 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 
 	if err := encodeEditMessageCaptionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEditMessageLiveLocationRequest handles editMessageLiveLocation operation.
@@ -784,6 +848,7 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 	request, err := decodeEditMessageLiveLocationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -802,8 +867,10 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 
 	if err := encodeEditMessageLiveLocationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEditMessageMediaRequest handles editMessageMedia operation.
@@ -818,6 +885,7 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 	request, err := decodeEditMessageMediaRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -836,8 +904,10 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 
 	if err := encodeEditMessageMediaResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEditMessageReplyMarkupRequest handles editMessageReplyMarkup operation.
@@ -852,6 +922,7 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 	request, err := decodeEditMessageReplyMarkupRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -870,8 +941,10 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 
 	if err := encodeEditMessageReplyMarkupResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEditMessageTextRequest handles editMessageText operation.
@@ -886,6 +959,7 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 	request, err := decodeEditMessageTextRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -904,8 +978,10 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 
 	if err := encodeEditMessageTextResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleExportChatInviteLinkRequest handles exportChatInviteLink operation.
@@ -920,6 +996,7 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 	request, err := decodeExportChatInviteLinkRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -938,8 +1015,10 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 
 	if err := encodeExportChatInviteLinkResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleForwardMessageRequest handles forwardMessage operation.
@@ -954,6 +1033,7 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 	request, err := decodeForwardMessageRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -972,8 +1052,10 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 
 	if err := encodeForwardMessageResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGetChatRequest handles getChat operation.
@@ -988,6 +1070,7 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 	request, err := decodeGetChatRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1006,8 +1089,10 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 
 	if err := encodeGetChatResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGetChatAdministratorsRequest handles getChatAdministrators operation.
@@ -1022,6 +1107,7 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 	request, err := decodeGetChatAdministratorsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1040,8 +1126,10 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 
 	if err := encodeGetChatAdministratorsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGetChatMemberRequest handles getChatMember operation.
@@ -1056,6 +1144,7 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 	request, err := decodeGetChatMemberRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1074,8 +1163,10 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 
 	if err := encodeGetChatMemberResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGetChatMemberCountRequest handles getChatMemberCount operation.
@@ -1090,6 +1181,7 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 	request, err := decodeGetChatMemberCountRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1108,8 +1200,10 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 
 	if err := encodeGetChatMemberCountResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGetFileRequest handles getFile operation.
@@ -1124,6 +1218,7 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 	request, err := decodeGetFileRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1142,8 +1237,10 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 
 	if err := encodeGetFileResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGetGameHighScoresRequest handles getGameHighScores operation.
@@ -1158,6 +1255,7 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 	request, err := decodeGetGameHighScoresRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1176,8 +1274,10 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 
 	if err := encodeGetGameHighScoresResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGetMeRequest handles getMe operation.
@@ -1204,8 +1304,10 @@ func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *ht
 
 	if err := encodeGetMeResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGetMyCommandsRequest handles getMyCommands operation.
@@ -1220,6 +1322,7 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	request, err := decodeGetMyCommandsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1238,8 +1341,10 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 
 	if err := encodeGetMyCommandsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGetStickerSetRequest handles getStickerSet operation.
@@ -1254,6 +1359,7 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 	request, err := decodeGetStickerSetRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1272,8 +1378,10 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 
 	if err := encodeGetStickerSetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGetUpdatesRequest handles getUpdates operation.
@@ -1288,6 +1396,7 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 	request, err := decodeGetUpdatesRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1306,8 +1415,10 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 
 	if err := encodeGetUpdatesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGetUserProfilePhotosRequest handles getUserProfilePhotos operation.
@@ -1322,6 +1433,7 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 	request, err := decodeGetUserProfilePhotosRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1340,8 +1452,10 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 
 	if err := encodeGetUserProfilePhotosResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGetWebhookInfoRequest handles getWebhookInfo operation.
@@ -1368,8 +1482,10 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWrit
 
 	if err := encodeGetWebhookInfoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleLeaveChatRequest handles leaveChat operation.
@@ -1384,6 +1500,7 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 	request, err := decodeLeaveChatRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1402,8 +1519,10 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 
 	if err := encodeLeaveChatResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleLogOutRequest handles logOut operation.
@@ -1430,8 +1549,10 @@ func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *h
 
 	if err := encodeLogOutResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePinChatMessageRequest handles pinChatMessage operation.
@@ -1446,6 +1567,7 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 	request, err := decodePinChatMessageRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1464,8 +1586,10 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 
 	if err := encodePinChatMessageResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePromoteChatMemberRequest handles promoteChatMember operation.
@@ -1480,6 +1604,7 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 	request, err := decodePromoteChatMemberRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1498,8 +1623,10 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 
 	if err := encodePromoteChatMemberResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleRestrictChatMemberRequest handles restrictChatMember operation.
@@ -1514,6 +1641,7 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 	request, err := decodeRestrictChatMemberRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1532,8 +1660,10 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 
 	if err := encodeRestrictChatMemberResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleRevokeChatInviteLinkRequest handles revokeChatInviteLink operation.
@@ -1548,6 +1678,7 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 	request, err := decodeRevokeChatInviteLinkRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1566,8 +1697,10 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 
 	if err := encodeRevokeChatInviteLinkResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSendAnimationRequest handles sendAnimation operation.
@@ -1582,6 +1715,7 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 	request, err := decodeSendAnimationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1600,8 +1734,10 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 
 	if err := encodeSendAnimationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSendAudioRequest handles sendAudio operation.
@@ -1616,6 +1752,7 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 	request, err := decodeSendAudioRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1634,8 +1771,10 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 
 	if err := encodeSendAudioResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSendChatActionRequest handles sendChatAction operation.
@@ -1650,6 +1789,7 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 	request, err := decodeSendChatActionRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1668,8 +1808,10 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 
 	if err := encodeSendChatActionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSendContactRequest handles sendContact operation.
@@ -1684,6 +1826,7 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 	request, err := decodeSendContactRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1702,8 +1845,10 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 
 	if err := encodeSendContactResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSendDiceRequest handles sendDice operation.
@@ -1718,6 +1863,7 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 	request, err := decodeSendDiceRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1736,8 +1882,10 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 
 	if err := encodeSendDiceResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSendDocumentRequest handles sendDocument operation.
@@ -1752,6 +1900,7 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 	request, err := decodeSendDocumentRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1770,8 +1919,10 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 
 	if err := encodeSendDocumentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSendGameRequest handles sendGame operation.
@@ -1786,6 +1937,7 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 	request, err := decodeSendGameRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1804,8 +1956,10 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 
 	if err := encodeSendGameResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSendInvoiceRequest handles sendInvoice operation.
@@ -1820,6 +1974,7 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 	request, err := decodeSendInvoiceRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1838,8 +1993,10 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 
 	if err := encodeSendInvoiceResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSendLocationRequest handles sendLocation operation.
@@ -1854,6 +2011,7 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 	request, err := decodeSendLocationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1872,8 +2030,10 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 
 	if err := encodeSendLocationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSendMediaGroupRequest handles sendMediaGroup operation.
@@ -1888,6 +2048,7 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 	request, err := decodeSendMediaGroupRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1906,8 +2067,10 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 
 	if err := encodeSendMediaGroupResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSendMessageRequest handles sendMessage operation.
@@ -1922,6 +2085,7 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 	request, err := decodeSendMessageRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1940,8 +2104,10 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 
 	if err := encodeSendMessageResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSendPhotoRequest handles sendPhoto operation.
@@ -1956,6 +2122,7 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 	request, err := decodeSendPhotoRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1974,8 +2141,10 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 
 	if err := encodeSendPhotoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSendPollRequest handles sendPoll operation.
@@ -1990,6 +2159,7 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 	request, err := decodeSendPollRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2008,8 +2178,10 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 
 	if err := encodeSendPollResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSendStickerRequest handles sendSticker operation.
@@ -2024,6 +2196,7 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 	request, err := decodeSendStickerRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2042,8 +2215,10 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 
 	if err := encodeSendStickerResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSendVenueRequest handles sendVenue operation.
@@ -2058,6 +2233,7 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 	request, err := decodeSendVenueRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2076,8 +2252,10 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 
 	if err := encodeSendVenueResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSendVideoRequest handles sendVideo operation.
@@ -2092,6 +2270,7 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 	request, err := decodeSendVideoRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2110,8 +2289,10 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 
 	if err := encodeSendVideoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSendVideoNoteRequest handles sendVideoNote operation.
@@ -2126,6 +2307,7 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 	request, err := decodeSendVideoNoteRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2144,8 +2326,10 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 
 	if err := encodeSendVideoNoteResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSendVoiceRequest handles sendVoice operation.
@@ -2160,6 +2344,7 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 	request, err := decodeSendVoiceRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2178,8 +2363,10 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 
 	if err := encodeSendVoiceResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSetChatAdministratorCustomTitleRequest handles setChatAdministratorCustomTitle operation.
@@ -2194,6 +2381,7 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 	request, err := decodeSetChatAdministratorCustomTitleRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2212,8 +2400,10 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 
 	if err := encodeSetChatAdministratorCustomTitleResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSetChatDescriptionRequest handles setChatDescription operation.
@@ -2228,6 +2418,7 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 	request, err := decodeSetChatDescriptionRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2246,8 +2437,10 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 
 	if err := encodeSetChatDescriptionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSetChatPermissionsRequest handles setChatPermissions operation.
@@ -2262,6 +2455,7 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 	request, err := decodeSetChatPermissionsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2280,8 +2474,10 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 
 	if err := encodeSetChatPermissionsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSetChatPhotoRequest handles setChatPhoto operation.
@@ -2296,6 +2492,7 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 	request, err := decodeSetChatPhotoRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2314,8 +2511,10 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 
 	if err := encodeSetChatPhotoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSetChatStickerSetRequest handles setChatStickerSet operation.
@@ -2330,6 +2529,7 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 	request, err := decodeSetChatStickerSetRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2348,8 +2548,10 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 
 	if err := encodeSetChatStickerSetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSetChatTitleRequest handles setChatTitle operation.
@@ -2364,6 +2566,7 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 	request, err := decodeSetChatTitleRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2382,8 +2585,10 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 
 	if err := encodeSetChatTitleResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSetGameScoreRequest handles setGameScore operation.
@@ -2398,6 +2603,7 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 	request, err := decodeSetGameScoreRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2416,8 +2622,10 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 
 	if err := encodeSetGameScoreResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSetMyCommandsRequest handles setMyCommands operation.
@@ -2432,6 +2640,7 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	request, err := decodeSetMyCommandsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2450,8 +2659,10 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 
 	if err := encodeSetMyCommandsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSetPassportDataErrorsRequest handles setPassportDataErrors operation.
@@ -2466,6 +2677,7 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 	request, err := decodeSetPassportDataErrorsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2484,8 +2696,10 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 
 	if err := encodeSetPassportDataErrorsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSetStickerPositionInSetRequest handles setStickerPositionInSet operation.
@@ -2500,6 +2714,7 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 	request, err := decodeSetStickerPositionInSetRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2518,8 +2733,10 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 
 	if err := encodeSetStickerPositionInSetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSetStickerSetThumbRequest handles setStickerSetThumb operation.
@@ -2534,6 +2751,7 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 	request, err := decodeSetStickerSetThumbRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2552,8 +2770,10 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 
 	if err := encodeSetStickerSetThumbResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSetWebhookRequest handles setWebhook operation.
@@ -2568,6 +2788,7 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 	request, err := decodeSetWebhookRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2586,8 +2807,10 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 
 	if err := encodeSetWebhookResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleStopMessageLiveLocationRequest handles stopMessageLiveLocation operation.
@@ -2602,6 +2825,7 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 	request, err := decodeStopMessageLiveLocationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2620,8 +2844,10 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 
 	if err := encodeStopMessageLiveLocationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleStopPollRequest handles stopPoll operation.
@@ -2636,6 +2862,7 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 	request, err := decodeStopPollRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2654,8 +2881,10 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 
 	if err := encodeStopPollResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUnbanChatMemberRequest handles unbanChatMember operation.
@@ -2670,6 +2899,7 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 	request, err := decodeUnbanChatMemberRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2688,8 +2918,10 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 
 	if err := encodeUnbanChatMemberResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUnbanChatSenderChatRequest handles unbanChatSenderChat operation.
@@ -2704,6 +2936,7 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 	request, err := decodeUnbanChatSenderChatRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2722,8 +2955,10 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 
 	if err := encodeUnbanChatSenderChatResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUnpinAllChatMessagesRequest handles unpinAllChatMessages operation.
@@ -2738,6 +2973,7 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 	request, err := decodeUnpinAllChatMessagesRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2756,8 +2992,10 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 
 	if err := encodeUnpinAllChatMessagesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUnpinChatMessageRequest handles unpinChatMessage operation.
@@ -2772,6 +3010,7 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 	request, err := decodeUnpinChatMessageRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2790,8 +3029,10 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 
 	if err := encodeUnpinChatMessageResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUploadStickerFileRequest handles uploadStickerFile operation.
@@ -2806,6 +3047,7 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 	request, err := decodeUploadStickerFileRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2824,8 +3066,10 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 
 	if err := encodeUploadStickerFileResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 func respondError(w http.ResponseWriter, code int, err error) {
