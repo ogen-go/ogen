@@ -29,6 +29,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
 )
@@ -62,6 +63,7 @@ var (
 	_ = regexp.MustCompile
 	_ = jx.Null
 	_ = sync.Pool{}
+	_ = codes.Unset
 )
 
 // HandleCreatePetRequest handles createPet operation.
@@ -76,6 +78,7 @@ func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r
 	request, err := decodeCreatePetRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -83,14 +86,17 @@ func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r
 	response, err := s.h.CreatePet(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeCreatePetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleCreatePetCategoriesRequest handles createPetCategories operation.
@@ -105,12 +111,14 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 	params, err := decodeCreatePetCategoriesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeCreatePetCategoriesRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -118,14 +126,17 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 	response, err := s.h.CreatePetCategories(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeCreatePetCategoriesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleCreatePetFriendsRequest handles createPetFriends operation.
@@ -140,12 +151,14 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 	params, err := decodeCreatePetFriendsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeCreatePetFriendsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -153,14 +166,17 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 	response, err := s.h.CreatePetFriends(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeCreatePetFriendsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleCreatePetOwnerRequest handles createPetOwner operation.
@@ -175,12 +191,14 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeCreatePetOwnerParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeCreatePetOwnerRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -188,14 +206,17 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 	response, err := s.h.CreatePetOwner(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeCreatePetOwnerResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleDeletePetRequest handles deletePet operation.
@@ -210,6 +231,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 	params, err := decodeDeletePetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -217,14 +239,17 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 	response, err := s.h.DeletePet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeDeletePetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleDeletePetOwnerRequest handles deletePetOwner operation.
@@ -239,6 +264,7 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeDeletePetOwnerParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -246,14 +272,17 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWrit
 	response, err := s.h.DeletePetOwner(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeDeletePetOwnerResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleListPetRequest handles listPet operation.
@@ -268,6 +297,7 @@ func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *
 	params, err := decodeListPetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -275,14 +305,17 @@ func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *
 	response, err := s.h.ListPet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeListPetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleListPetCategoriesRequest handles listPetCategories operation.
@@ -297,6 +330,7 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseW
 	params, err := decodeListPetCategoriesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -304,14 +338,17 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseW
 	response, err := s.h.ListPetCategories(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeListPetCategoriesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleListPetFriendsRequest handles listPetFriends operation.
@@ -326,6 +363,7 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeListPetFriendsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -333,14 +371,17 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWrit
 	response, err := s.h.ListPetFriends(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeListPetFriendsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReadPetRequest handles readPet operation.
@@ -355,6 +396,7 @@ func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *
 	params, err := decodeReadPetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -362,14 +404,17 @@ func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *
 	response, err := s.h.ReadPet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReadPetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReadPetOwnerRequest handles readPetOwner operation.
@@ -384,6 +429,7 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter
 	params, err := decodeReadPetOwnerParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -391,14 +437,17 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter
 	response, err := s.h.ReadPetOwner(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReadPetOwnerResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUpdatePetRequest handles updatePet operation.
@@ -413,12 +462,14 @@ func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r
 	params, err := decodeUpdatePetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeUpdatePetRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -426,14 +477,17 @@ func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r
 	response, err := s.h.UpdatePet(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUpdatePetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 func respondError(w http.ResponseWriter, code int, err error) {

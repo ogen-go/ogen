@@ -29,6 +29,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
 )
@@ -62,6 +63,7 @@ var (
 	_ = regexp.MustCompile
 	_ = jx.Null
 	_ = sync.Pool{}
+	_ = codes.Unset
 )
 
 // HandleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/add-repo-access-to-self-hosted-runner-group-in-org operation.
@@ -76,6 +78,7 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	params, err := decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -83,14 +86,17 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	response, err := s.h.ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsAddSelectedRepoToOrgSecretRequest handles actions/add-selected-repo-to-org-secret operation.
@@ -105,6 +111,7 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 	params, err := decodeActionsAddSelectedRepoToOrgSecretParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -112,14 +119,17 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 	response, err := s.h.ActionsAddSelectedRepoToOrgSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsAddSelectedRepoToOrgSecretResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsAddSelfHostedRunnerToGroupForOrgRequest handles actions/add-self-hosted-runner-to-group-for-org operation.
@@ -134,6 +144,7 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 	params, err := decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -141,14 +152,17 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 	response, err := s.h.ActionsAddSelfHostedRunnerToGroupForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsAddSelfHostedRunnerToGroupForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsApproveWorkflowRunRequest handles actions/approve-workflow-run operation.
@@ -163,6 +177,7 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.R
 	params, err := decodeActionsApproveWorkflowRunParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -170,14 +185,17 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.R
 	response, err := s.h.ActionsApproveWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsApproveWorkflowRunResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsCancelWorkflowRunRequest handles actions/cancel-workflow-run operation.
@@ -192,6 +210,7 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.Re
 	params, err := decodeActionsCancelWorkflowRunParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -199,14 +218,17 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.Re
 	response, err := s.h.ActionsCancelWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsCancelWorkflowRunResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsCreateOrUpdateEnvironmentSecretRequest handles actions/create-or-update-environment-secret operation.
@@ -221,12 +243,14 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 	params, err := decodeActionsCreateOrUpdateEnvironmentSecretParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeActionsCreateOrUpdateEnvironmentSecretRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -234,14 +258,17 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 	response, err := s.h.ActionsCreateOrUpdateEnvironmentSecret(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsCreateOrUpdateEnvironmentSecretResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsCreateOrUpdateOrgSecretRequest handles actions/create-or-update-org-secret operation.
@@ -256,12 +283,14 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 	params, err := decodeActionsCreateOrUpdateOrgSecretParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeActionsCreateOrUpdateOrgSecretRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -269,14 +298,17 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 	response, err := s.h.ActionsCreateOrUpdateOrgSecret(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsCreateOrUpdateOrgSecretResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsCreateOrUpdateRepoSecretRequest handles actions/create-or-update-repo-secret operation.
@@ -291,12 +323,14 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 	params, err := decodeActionsCreateOrUpdateRepoSecretParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeActionsCreateOrUpdateRepoSecretRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -304,14 +338,17 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 	response, err := s.h.ActionsCreateOrUpdateRepoSecret(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsCreateOrUpdateRepoSecretResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsCreateRegistrationTokenForOrgRequest handles actions/create-registration-token-for-org operation.
@@ -326,6 +363,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 	params, err := decodeActionsCreateRegistrationTokenForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -333,14 +371,17 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 	response, err := s.h.ActionsCreateRegistrationTokenForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsCreateRegistrationTokenForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsCreateRegistrationTokenForRepoRequest handles actions/create-registration-token-for-repo operation.
@@ -355,6 +396,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 	params, err := decodeActionsCreateRegistrationTokenForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -362,14 +404,17 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 	response, err := s.h.ActionsCreateRegistrationTokenForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsCreateRegistrationTokenForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsCreateRemoveTokenForOrgRequest handles actions/create-remove-token-for-org operation.
@@ -384,6 +429,7 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w h
 	params, err := decodeActionsCreateRemoveTokenForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -391,14 +437,17 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w h
 	response, err := s.h.ActionsCreateRemoveTokenForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsCreateRemoveTokenForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsCreateRemoveTokenForRepoRequest handles actions/create-remove-token-for-repo operation.
@@ -413,6 +462,7 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w 
 	params, err := decodeActionsCreateRemoveTokenForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -420,14 +470,17 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w 
 	response, err := s.h.ActionsCreateRemoveTokenForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsCreateRemoveTokenForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsCreateSelfHostedRunnerGroupForOrgRequest handles actions/create-self-hosted-runner-group-for-org operation.
@@ -442,12 +495,14 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 	params, err := decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -455,14 +510,17 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 	response, err := s.h.ActionsCreateSelfHostedRunnerGroupForOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsDeleteArtifactRequest handles actions/delete-artifact operation.
@@ -477,6 +535,7 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 	params, err := decodeActionsDeleteArtifactParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -484,14 +543,17 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 	response, err := s.h.ActionsDeleteArtifact(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsDeleteArtifactResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsDeleteEnvironmentSecretRequest handles actions/delete-environment-secret operation.
@@ -506,6 +568,7 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 	params, err := decodeActionsDeleteEnvironmentSecretParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -513,14 +576,17 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 	response, err := s.h.ActionsDeleteEnvironmentSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsDeleteEnvironmentSecretResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsDeleteOrgSecretRequest handles actions/delete-org-secret operation.
@@ -535,6 +601,7 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 	params, err := decodeActionsDeleteOrgSecretParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -542,14 +609,17 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 	response, err := s.h.ActionsDeleteOrgSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsDeleteOrgSecretResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsDeleteRepoSecretRequest handles actions/delete-repo-secret operation.
@@ -564,6 +634,7 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 	params, err := decodeActionsDeleteRepoSecretParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -571,14 +642,17 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 	response, err := s.h.ActionsDeleteRepoSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsDeleteRepoSecretResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsDeleteSelfHostedRunnerFromOrgRequest handles actions/delete-self-hosted-runner-from-org operation.
@@ -593,6 +667,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 	params, err := decodeActionsDeleteSelfHostedRunnerFromOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -600,14 +675,17 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 	response, err := s.h.ActionsDeleteSelfHostedRunnerFromOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsDeleteSelfHostedRunnerFromOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsDeleteSelfHostedRunnerFromRepoRequest handles actions/delete-self-hosted-runner-from-repo operation.
@@ -622,6 +700,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 	params, err := decodeActionsDeleteSelfHostedRunnerFromRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -629,14 +708,17 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 	response, err := s.h.ActionsDeleteSelfHostedRunnerFromRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsDeleteSelfHostedRunnerFromRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsDeleteSelfHostedRunnerGroupFromOrgRequest handles actions/delete-self-hosted-runner-group-from-org operation.
@@ -651,6 +733,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 	params, err := decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -658,14 +741,17 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 	response, err := s.h.ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsDeleteWorkflowRunRequest handles actions/delete-workflow-run operation.
@@ -680,6 +766,7 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 	params, err := decodeActionsDeleteWorkflowRunParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -687,14 +774,17 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 	response, err := s.h.ActionsDeleteWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsDeleteWorkflowRunResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsDeleteWorkflowRunLogsRequest handles actions/delete-workflow-run-logs operation.
@@ -709,6 +799,7 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 	params, err := decodeActionsDeleteWorkflowRunLogsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -716,14 +807,17 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 	response, err := s.h.ActionsDeleteWorkflowRunLogs(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsDeleteWorkflowRunLogsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest handles actions/disable-selected-repository-github-actions-organization operation.
@@ -738,6 +832,7 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 	params, err := decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -745,14 +840,17 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 	response, err := s.h.ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsDownloadArtifactRequest handles actions/download-artifact operation.
@@ -767,6 +865,7 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.Res
 	params, err := decodeActionsDownloadArtifactParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -774,14 +873,17 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.Res
 	response, err := s.h.ActionsDownloadArtifact(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsDownloadArtifactResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsDownloadJobLogsForWorkflowRunRequest handles actions/download-job-logs-for-workflow-run operation.
@@ -796,6 +898,7 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 	params, err := decodeActionsDownloadJobLogsForWorkflowRunParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -803,14 +906,17 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 	response, err := s.h.ActionsDownloadJobLogsForWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsDownloadJobLogsForWorkflowRunResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsDownloadWorkflowRunLogsRequest handles actions/download-workflow-run-logs operation.
@@ -825,6 +931,7 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w h
 	params, err := decodeActionsDownloadWorkflowRunLogsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -832,14 +939,17 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w h
 	response, err := s.h.ActionsDownloadWorkflowRunLogs(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsDownloadWorkflowRunLogsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest handles actions/enable-selected-repository-github-actions-organization operation.
@@ -854,6 +964,7 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 	params, err := decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -861,14 +972,17 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 	response, err := s.h.ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsGetAllowedActionsOrganizationRequest handles actions/get-allowed-actions-organization operation.
@@ -883,6 +997,7 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 	params, err := decodeActionsGetAllowedActionsOrganizationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -890,14 +1005,17 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 	response, err := s.h.ActionsGetAllowedActionsOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsGetAllowedActionsOrganizationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsGetAllowedActionsRepositoryRequest handles actions/get-allowed-actions-repository operation.
@@ -912,6 +1030,7 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 	params, err := decodeActionsGetAllowedActionsRepositoryParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -919,14 +1038,17 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 	response, err := s.h.ActionsGetAllowedActionsRepository(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsGetAllowedActionsRepositoryResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsGetArtifactRequest handles actions/get-artifact operation.
@@ -941,6 +1063,7 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.Response
 	params, err := decodeActionsGetArtifactParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -948,14 +1071,17 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.Response
 	response, err := s.h.ActionsGetArtifact(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsGetArtifactResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsGetEnvironmentPublicKeyRequest handles actions/get-environment-public-key operation.
@@ -970,6 +1096,7 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w h
 	params, err := decodeActionsGetEnvironmentPublicKeyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -977,14 +1104,17 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w h
 	response, err := s.h.ActionsGetEnvironmentPublicKey(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsGetEnvironmentPublicKeyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsGetEnvironmentSecretRequest handles actions/get-environment-secret operation.
@@ -999,6 +1129,7 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http
 	params, err := decodeActionsGetEnvironmentSecretParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1006,14 +1137,17 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http
 	response, err := s.h.ActionsGetEnvironmentSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsGetEnvironmentSecretResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsGetGithubActionsPermissionsOrganizationRequest handles actions/get-github-actions-permissions-organization operation.
@@ -1028,6 +1162,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 	params, err := decodeActionsGetGithubActionsPermissionsOrganizationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1035,14 +1170,17 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 	response, err := s.h.ActionsGetGithubActionsPermissionsOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsGetGithubActionsPermissionsOrganizationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsGetGithubActionsPermissionsRepositoryRequest handles actions/get-github-actions-permissions-repository operation.
@@ -1057,6 +1195,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 	params, err := decodeActionsGetGithubActionsPermissionsRepositoryParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1064,14 +1203,17 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 	response, err := s.h.ActionsGetGithubActionsPermissionsRepository(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsGetGithubActionsPermissionsRepositoryResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsGetJobForWorkflowRunRequest handles actions/get-job-for-workflow-run operation.
@@ -1086,6 +1228,7 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http
 	params, err := decodeActionsGetJobForWorkflowRunParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1093,14 +1236,17 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http
 	response, err := s.h.ActionsGetJobForWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsGetJobForWorkflowRunResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsGetOrgPublicKeyRequest handles actions/get-org-public-key operation.
@@ -1115,6 +1261,7 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.Resp
 	params, err := decodeActionsGetOrgPublicKeyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1122,14 +1269,17 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.Resp
 	response, err := s.h.ActionsGetOrgPublicKey(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsGetOrgPublicKeyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsGetOrgSecretRequest handles actions/get-org-secret operation.
@@ -1144,6 +1294,7 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.Respons
 	params, err := decodeActionsGetOrgSecretParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1151,14 +1302,17 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.Respons
 	response, err := s.h.ActionsGetOrgSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsGetOrgSecretResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsGetRepoPublicKeyRequest handles actions/get-repo-public-key operation.
@@ -1173,6 +1327,7 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.Res
 	params, err := decodeActionsGetRepoPublicKeyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1180,14 +1335,17 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.Res
 	response, err := s.h.ActionsGetRepoPublicKey(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsGetRepoPublicKeyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsGetRepoSecretRequest handles actions/get-repo-secret operation.
@@ -1202,6 +1360,7 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.Respon
 	params, err := decodeActionsGetRepoSecretParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1209,14 +1368,17 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.Respon
 	response, err := s.h.ActionsGetRepoSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsGetRepoSecretResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsGetReviewsForRunRequest handles actions/get-reviews-for-run operation.
@@ -1231,6 +1393,7 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.Res
 	params, err := decodeActionsGetReviewsForRunParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1238,14 +1401,17 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.Res
 	response, err := s.h.ActionsGetReviewsForRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsGetReviewsForRunResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsGetSelfHostedRunnerForOrgRequest handles actions/get-self-hosted-runner-for-org operation.
@@ -1260,6 +1426,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w
 	params, err := decodeActionsGetSelfHostedRunnerForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1267,14 +1434,17 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w
 	response, err := s.h.ActionsGetSelfHostedRunnerForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsGetSelfHostedRunnerForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsGetSelfHostedRunnerForRepoRequest handles actions/get-self-hosted-runner-for-repo operation.
@@ -1289,6 +1459,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 	params, err := decodeActionsGetSelfHostedRunnerForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1296,14 +1467,17 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 	response, err := s.h.ActionsGetSelfHostedRunnerForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsGetSelfHostedRunnerForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsGetSelfHostedRunnerGroupForOrgRequest handles actions/get-self-hosted-runner-group-for-org operation.
@@ -1318,6 +1492,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 	params, err := decodeActionsGetSelfHostedRunnerGroupForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1325,14 +1500,17 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 	response, err := s.h.ActionsGetSelfHostedRunnerGroupForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsGetWorkflowRunRequest handles actions/get-workflow-run operation.
@@ -1347,6 +1525,7 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.Respo
 	params, err := decodeActionsGetWorkflowRunParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1354,14 +1533,17 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.Respo
 	response, err := s.h.ActionsGetWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsGetWorkflowRunResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsGetWorkflowRunUsageRequest handles actions/get-workflow-run-usage operation.
@@ -1376,6 +1558,7 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.
 	params, err := decodeActionsGetWorkflowRunUsageParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1383,14 +1566,17 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.
 	response, err := s.h.ActionsGetWorkflowRunUsage(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsGetWorkflowRunUsageResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsListArtifactsForRepoRequest handles actions/list-artifacts-for-repo operation.
@@ -1405,6 +1591,7 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http
 	params, err := decodeActionsListArtifactsForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1412,14 +1599,17 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http
 	response, err := s.h.ActionsListArtifactsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsListArtifactsForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsListEnvironmentSecretsRequest handles actions/list-environment-secrets operation.
@@ -1434,6 +1624,7 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w ht
 	params, err := decodeActionsListEnvironmentSecretsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1441,14 +1632,17 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w ht
 	response, err := s.h.ActionsListEnvironmentSecrets(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsListEnvironmentSecretsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsListJobsForWorkflowRunRequest handles actions/list-jobs-for-workflow-run operation.
@@ -1463,6 +1657,7 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w ht
 	params, err := decodeActionsListJobsForWorkflowRunParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1470,14 +1665,17 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w ht
 	response, err := s.h.ActionsListJobsForWorkflowRun(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsListJobsForWorkflowRunResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsListOrgSecretsRequest handles actions/list-org-secrets operation.
@@ -1492,6 +1690,7 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.Respo
 	params, err := decodeActionsListOrgSecretsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1499,14 +1698,17 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.Respo
 	response, err := s.h.ActionsListOrgSecrets(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsListOrgSecretsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/list-repo-access-to-self-hosted-runner-group-in-org operation.
@@ -1521,6 +1723,7 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 	params, err := decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1528,14 +1731,17 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 	response, err := s.h.ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsListRepoSecretsRequest handles actions/list-repo-secrets operation.
@@ -1550,6 +1756,7 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.Resp
 	params, err := decodeActionsListRepoSecretsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1557,14 +1764,17 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.Resp
 	response, err := s.h.ActionsListRepoSecrets(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsListRepoSecretsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsListRepoWorkflowsRequest handles actions/list-repo-workflows operation.
@@ -1579,6 +1789,7 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.Re
 	params, err := decodeActionsListRepoWorkflowsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1586,14 +1797,17 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.Re
 	response, err := s.h.ActionsListRepoWorkflows(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsListRepoWorkflowsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsListRunnerApplicationsForOrgRequest handles actions/list-runner-applications-for-org operation.
@@ -1608,6 +1822,7 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 	params, err := decodeActionsListRunnerApplicationsForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1615,14 +1830,17 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 	response, err := s.h.ActionsListRunnerApplicationsForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsListRunnerApplicationsForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsListRunnerApplicationsForRepoRequest handles actions/list-runner-applications-for-repo operation.
@@ -1637,6 +1855,7 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 	params, err := decodeActionsListRunnerApplicationsForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1644,14 +1863,17 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 	response, err := s.h.ActionsListRunnerApplicationsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsListRunnerApplicationsForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsListSelectedReposForOrgSecretRequest handles actions/list-selected-repos-for-org-secret operation.
@@ -1666,6 +1888,7 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 	params, err := decodeActionsListSelectedReposForOrgSecretParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1673,14 +1896,17 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 	response, err := s.h.ActionsListSelectedReposForOrgSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsListSelectedReposForOrgSecretResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest handles actions/list-selected-repositories-enabled-github-actions-organization operation.
@@ -1695,6 +1921,7 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 	params, err := decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1702,14 +1929,17 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 	response, err := s.h.ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsListSelfHostedRunnerGroupsForOrgRequest handles actions/list-self-hosted-runner-groups-for-org operation.
@@ -1724,6 +1954,7 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 	params, err := decodeActionsListSelfHostedRunnerGroupsForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1731,14 +1962,17 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 	response, err := s.h.ActionsListSelfHostedRunnerGroupsForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsListSelfHostedRunnersForOrgRequest handles actions/list-self-hosted-runners-for-org operation.
@@ -1753,6 +1987,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 	params, err := decodeActionsListSelfHostedRunnersForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1760,14 +1995,17 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 	response, err := s.h.ActionsListSelfHostedRunnersForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsListSelfHostedRunnersForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsListSelfHostedRunnersForRepoRequest handles actions/list-self-hosted-runners-for-repo operation.
@@ -1782,6 +2020,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 	params, err := decodeActionsListSelfHostedRunnersForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1789,14 +2028,17 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 	response, err := s.h.ActionsListSelfHostedRunnersForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsListSelfHostedRunnersForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsListSelfHostedRunnersInGroupForOrgRequest handles actions/list-self-hosted-runners-in-group-for-org operation.
@@ -1811,6 +2053,7 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 	params, err := decodeActionsListSelfHostedRunnersInGroupForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1818,14 +2061,17 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 	response, err := s.h.ActionsListSelfHostedRunnersInGroupForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsListWorkflowRunArtifactsRequest handles actions/list-workflow-run-artifacts operation.
@@ -1840,6 +2086,7 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w 
 	params, err := decodeActionsListWorkflowRunArtifactsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1847,14 +2094,17 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w 
 	response, err := s.h.ActionsListWorkflowRunArtifacts(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsListWorkflowRunArtifactsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsListWorkflowRunsForRepoRequest handles actions/list-workflow-runs-for-repo operation.
@@ -1869,6 +2119,7 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w h
 	params, err := decodeActionsListWorkflowRunsForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1876,14 +2127,17 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w h
 	response, err := s.h.ActionsListWorkflowRunsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsListWorkflowRunsForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsReRunWorkflowRequest handles actions/re-run-workflow operation.
@@ -1898,6 +2152,7 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.Respon
 	params, err := decodeActionsReRunWorkflowParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1905,14 +2160,17 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.Respon
 	response, err := s.h.ActionsReRunWorkflow(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsReRunWorkflowResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/remove-repo-access-to-self-hosted-runner-group-in-org operation.
@@ -1927,6 +2185,7 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 	params, err := decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1934,14 +2193,17 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 	response, err := s.h.ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsRemoveSelectedRepoFromOrgSecretRequest handles actions/remove-selected-repo-from-org-secret operation.
@@ -1956,6 +2218,7 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 	params, err := decodeActionsRemoveSelectedRepoFromOrgSecretParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1963,14 +2226,17 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 	response, err := s.h.ActionsRemoveSelectedRepoFromOrgSecret(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsRemoveSelectedRepoFromOrgSecretResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest handles actions/remove-self-hosted-runner-from-group-for-org operation.
@@ -1985,6 +2251,7 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 	params, err := decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1992,14 +2259,17 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 	response, err := s.h.ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsRetryWorkflowRequest handles actions/retry-workflow operation.
@@ -2014,6 +2284,7 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.Respon
 	params, err := decodeActionsRetryWorkflowParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2021,14 +2292,17 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.Respon
 	response, err := s.h.ActionsRetryWorkflow(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsRetryWorkflowResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsReviewPendingDeploymentsForRunRequest handles actions/review-pending-deployments-for-run operation.
@@ -2043,12 +2317,14 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 	params, err := decodeActionsReviewPendingDeploymentsForRunParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeActionsReviewPendingDeploymentsForRunRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2056,14 +2332,17 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 	response, err := s.h.ActionsReviewPendingDeploymentsForRun(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsReviewPendingDeploymentsForRunResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsSetAllowedActionsOrganizationRequest handles actions/set-allowed-actions-organization operation.
@@ -2078,12 +2357,14 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 	params, err := decodeActionsSetAllowedActionsOrganizationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeActionsSetAllowedActionsOrganizationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2091,14 +2372,17 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 	response, err := s.h.ActionsSetAllowedActionsOrganization(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsSetAllowedActionsOrganizationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsSetAllowedActionsRepositoryRequest handles actions/set-allowed-actions-repository operation.
@@ -2113,12 +2397,14 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 	params, err := decodeActionsSetAllowedActionsRepositoryParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeActionsSetAllowedActionsRepositoryRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2126,14 +2412,17 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 	response, err := s.h.ActionsSetAllowedActionsRepository(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsSetAllowedActionsRepositoryResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsSetGithubActionsPermissionsOrganizationRequest handles actions/set-github-actions-permissions-organization operation.
@@ -2148,12 +2437,14 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 	params, err := decodeActionsSetGithubActionsPermissionsOrganizationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeActionsSetGithubActionsPermissionsOrganizationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2161,14 +2452,17 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 	response, err := s.h.ActionsSetGithubActionsPermissionsOrganization(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsSetGithubActionsPermissionsOrganizationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsSetGithubActionsPermissionsRepositoryRequest handles actions/set-github-actions-permissions-repository operation.
@@ -2183,12 +2477,14 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 	params, err := decodeActionsSetGithubActionsPermissionsRepositoryParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeActionsSetGithubActionsPermissionsRepositoryRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2196,14 +2492,17 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 	response, err := s.h.ActionsSetGithubActionsPermissionsRepository(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsSetGithubActionsPermissionsRepositoryResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/set-repo-access-to-self-hosted-runner-group-in-org operation.
@@ -2218,12 +2517,14 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	params, err := decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2231,14 +2532,17 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	response, err := s.h.ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsSetSelectedReposForOrgSecretRequest handles actions/set-selected-repos-for-org-secret operation.
@@ -2253,12 +2557,14 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 	params, err := decodeActionsSetSelectedReposForOrgSecretParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeActionsSetSelectedReposForOrgSecretRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2266,14 +2572,17 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 	response, err := s.h.ActionsSetSelectedReposForOrgSecret(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsSetSelectedReposForOrgSecretResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest handles actions/set-selected-repositories-enabled-github-actions-organization operation.
@@ -2288,12 +2597,14 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 	params, err := decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2301,14 +2612,17 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 	response, err := s.h.ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsSetSelfHostedRunnersInGroupForOrgRequest handles actions/set-self-hosted-runners-in-group-for-org operation.
@@ -2323,12 +2637,14 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 	params, err := decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2336,14 +2652,17 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 	response, err := s.h.ActionsSetSelfHostedRunnersInGroupForOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsSetSelfHostedRunnersInGroupForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActionsUpdateSelfHostedRunnerGroupForOrgRequest handles actions/update-self-hosted-runner-group-for-org operation.
@@ -2358,12 +2677,14 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 	params, err := decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2371,14 +2692,17 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 	response, err := s.h.ActionsUpdateSelfHostedRunnerGroupForOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityCheckRepoIsStarredByAuthenticatedUserRequest handles activity/check-repo-is-starred-by-authenticated-user operation.
@@ -2393,6 +2717,7 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 	params, err := decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2400,14 +2725,17 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 	response, err := s.h.ActivityCheckRepoIsStarredByAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityDeleteRepoSubscriptionRequest handles activity/delete-repo-subscription operation.
@@ -2422,6 +2750,7 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 	params, err := decodeActivityDeleteRepoSubscriptionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2429,14 +2758,17 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 	response, err := s.h.ActivityDeleteRepoSubscription(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityDeleteRepoSubscriptionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityDeleteThreadSubscriptionRequest handles activity/delete-thread-subscription operation.
@@ -2451,6 +2783,7 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w
 	params, err := decodeActivityDeleteThreadSubscriptionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2458,14 +2791,17 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w
 	response, err := s.h.ActivityDeleteThreadSubscription(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityDeleteThreadSubscriptionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityGetFeedsRequest handles activity/get-feeds operation.
@@ -2481,14 +2817,17 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, w http.ResponseWr
 	response, err := s.h.ActivityGetFeeds(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityGetFeedsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityGetRepoSubscriptionRequest handles activity/get-repo-subscription operation.
@@ -2503,6 +2842,7 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http
 	params, err := decodeActivityGetRepoSubscriptionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2510,14 +2850,17 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http
 	response, err := s.h.ActivityGetRepoSubscription(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityGetRepoSubscriptionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityGetThreadRequest handles activity/get-thread operation.
@@ -2532,6 +2875,7 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseW
 	params, err := decodeActivityGetThreadParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2539,14 +2883,17 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseW
 	response, err := s.h.ActivityGetThread(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityGetThreadResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityGetThreadSubscriptionForAuthenticatedUserRequest handles activity/get-thread-subscription-for-authenticated-user operation.
@@ -2561,6 +2908,7 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 	params, err := decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2568,14 +2916,17 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 	response, err := s.h.ActivityGetThreadSubscriptionForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityListEventsForAuthenticatedUserRequest handles activity/list-events-for-authenticated-user operation.
@@ -2590,6 +2941,7 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 	params, err := decodeActivityListEventsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2597,14 +2949,17 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 	response, err := s.h.ActivityListEventsForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityListEventsForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityListNotificationsForAuthenticatedUserRequest handles activity/list-notifications-for-authenticated-user operation.
@@ -2619,6 +2974,7 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 	params, err := decodeActivityListNotificationsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2626,14 +2982,17 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 	response, err := s.h.ActivityListNotificationsForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityListNotificationsForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityListOrgEventsForAuthenticatedUserRequest handles activity/list-org-events-for-authenticated-user operation.
@@ -2648,6 +3007,7 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 	params, err := decodeActivityListOrgEventsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2655,14 +3015,17 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 	response, err := s.h.ActivityListOrgEventsForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityListOrgEventsForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityListPublicEventsRequest handles activity/list-public-events operation.
@@ -2677,6 +3040,7 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.Re
 	params, err := decodeActivityListPublicEventsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2684,14 +3048,17 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.Re
 	response, err := s.h.ActivityListPublicEvents(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityListPublicEventsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityListPublicEventsForRepoNetworkRequest handles activity/list-public-events-for-repo-network operation.
@@ -2706,6 +3073,7 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 	params, err := decodeActivityListPublicEventsForRepoNetworkParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2713,14 +3081,17 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 	response, err := s.h.ActivityListPublicEventsForRepoNetwork(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityListPublicEventsForRepoNetworkResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityListPublicEventsForUserRequest handles activity/list-public-events-for-user operation.
@@ -2735,6 +3106,7 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w 
 	params, err := decodeActivityListPublicEventsForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2742,14 +3114,17 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w 
 	response, err := s.h.ActivityListPublicEventsForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityListPublicEventsForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityListPublicOrgEventsRequest handles activity/list-public-org-events operation.
@@ -2764,6 +3139,7 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http
 	params, err := decodeActivityListPublicOrgEventsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2771,14 +3147,17 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http
 	response, err := s.h.ActivityListPublicOrgEvents(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityListPublicOrgEventsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityListReceivedEventsForUserRequest handles activity/list-received-events-for-user operation.
@@ -2793,6 +3172,7 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 	params, err := decodeActivityListReceivedEventsForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2800,14 +3180,17 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 	response, err := s.h.ActivityListReceivedEventsForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityListReceivedEventsForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityListReceivedPublicEventsForUserRequest handles activity/list-received-public-events-for-user operation.
@@ -2822,6 +3205,7 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 	params, err := decodeActivityListReceivedPublicEventsForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2829,14 +3213,17 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 	response, err := s.h.ActivityListReceivedPublicEventsForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityListReceivedPublicEventsForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityListRepoEventsRequest handles activity/list-repo-events operation.
@@ -2851,6 +3238,7 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.Resp
 	params, err := decodeActivityListRepoEventsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2858,14 +3246,17 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.Resp
 	response, err := s.h.ActivityListRepoEvents(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityListRepoEventsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityListRepoNotificationsForAuthenticatedUserRequest handles activity/list-repo-notifications-for-authenticated-user operation.
@@ -2880,6 +3271,7 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 	params, err := decodeActivityListRepoNotificationsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2887,14 +3279,17 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 	response, err := s.h.ActivityListRepoNotificationsForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityListReposStarredByAuthenticatedUserRequest handles activity/list-repos-starred-by-authenticated-user operation.
@@ -2909,6 +3304,7 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 	params, err := decodeActivityListReposStarredByAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2916,14 +3312,17 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 	response, err := s.h.ActivityListReposStarredByAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityListReposStarredByAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityListReposWatchedByUserRequest handles activity/list-repos-watched-by-user operation.
@@ -2938,6 +3337,7 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w h
 	params, err := decodeActivityListReposWatchedByUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2945,14 +3345,17 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w h
 	response, err := s.h.ActivityListReposWatchedByUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityListReposWatchedByUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityListWatchedReposForAuthenticatedUserRequest handles activity/list-watched-repos-for-authenticated-user operation.
@@ -2967,6 +3370,7 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 	params, err := decodeActivityListWatchedReposForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2974,14 +3378,17 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 	response, err := s.h.ActivityListWatchedReposForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityListWatchedReposForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityListWatchersForRepoRequest handles activity/list-watchers-for-repo operation.
@@ -2996,6 +3403,7 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http
 	params, err := decodeActivityListWatchersForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3003,14 +3411,17 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http
 	response, err := s.h.ActivityListWatchersForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityListWatchersForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityMarkNotificationsAsReadRequest handles activity/mark-notifications-as-read operation.
@@ -3025,6 +3436,7 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w 
 	request, err := decodeActivityMarkNotificationsAsReadRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3032,14 +3444,17 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w 
 	response, err := s.h.ActivityMarkNotificationsAsRead(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityMarkNotificationsAsReadResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityMarkRepoNotificationsAsReadRequest handles activity/mark-repo-notifications-as-read operation.
@@ -3054,12 +3469,14 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 	params, err := decodeActivityMarkRepoNotificationsAsReadParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeActivityMarkRepoNotificationsAsReadRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3067,14 +3484,17 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 	response, err := s.h.ActivityMarkRepoNotificationsAsRead(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityMarkRepoNotificationsAsReadResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityMarkThreadAsReadRequest handles activity/mark-thread-as-read operation.
@@ -3089,6 +3509,7 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.Re
 	params, err := decodeActivityMarkThreadAsReadParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3096,14 +3517,17 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.Re
 	response, err := s.h.ActivityMarkThreadAsRead(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityMarkThreadAsReadResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivitySetRepoSubscriptionRequest handles activity/set-repo-subscription operation.
@@ -3118,12 +3542,14 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 	params, err := decodeActivitySetRepoSubscriptionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeActivitySetRepoSubscriptionRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3131,14 +3557,17 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 	response, err := s.h.ActivitySetRepoSubscription(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivitySetRepoSubscriptionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivitySetThreadSubscriptionRequest handles activity/set-thread-subscription operation.
@@ -3153,12 +3582,14 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 	params, err := decodeActivitySetThreadSubscriptionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeActivitySetThreadSubscriptionRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3166,14 +3597,17 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 	response, err := s.h.ActivitySetThreadSubscription(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivitySetThreadSubscriptionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityStarRepoForAuthenticatedUserRequest handles activity/star-repo-for-authenticated-user operation.
@@ -3188,6 +3622,7 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 	params, err := decodeActivityStarRepoForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3195,14 +3630,17 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 	response, err := s.h.ActivityStarRepoForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityStarRepoForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleActivityUnstarRepoForAuthenticatedUserRequest handles activity/unstar-repo-for-authenticated-user operation.
@@ -3217,6 +3655,7 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 	params, err := decodeActivityUnstarRepoForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3224,14 +3663,17 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 	response, err := s.h.ActivityUnstarRepoForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeActivityUnstarRepoForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsAddRepoToInstallationRequest handles apps/add-repo-to-installation operation.
@@ -3246,6 +3688,7 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.R
 	params, err := decodeAppsAddRepoToInstallationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3253,14 +3696,17 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.R
 	response, err := s.h.AppsAddRepoToInstallation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsAddRepoToInstallationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsCheckTokenRequest handles apps/check-token operation.
@@ -3275,12 +3721,14 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeAppsCheckTokenParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeAppsCheckTokenRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3288,14 +3736,17 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 	response, err := s.h.AppsCheckToken(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsCheckTokenResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsCreateContentAttachmentRequest handles apps/create-content-attachment operation.
@@ -3310,12 +3761,14 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 	params, err := decodeAppsCreateContentAttachmentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeAppsCreateContentAttachmentRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3323,14 +3776,17 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 	response, err := s.h.AppsCreateContentAttachment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsCreateContentAttachmentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsCreateInstallationAccessTokenRequest handles apps/create-installation-access-token operation.
@@ -3345,12 +3801,14 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 	params, err := decodeAppsCreateInstallationAccessTokenParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeAppsCreateInstallationAccessTokenRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3358,14 +3816,17 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 	response, err := s.h.AppsCreateInstallationAccessToken(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsCreateInstallationAccessTokenResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsDeleteAuthorizationRequest handles apps/delete-authorization operation.
@@ -3380,12 +3841,14 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 	params, err := decodeAppsDeleteAuthorizationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeAppsDeleteAuthorizationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3393,14 +3856,17 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 	response, err := s.h.AppsDeleteAuthorization(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsDeleteAuthorizationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsDeleteInstallationRequest handles apps/delete-installation operation.
@@ -3415,6 +3881,7 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.Resp
 	params, err := decodeAppsDeleteInstallationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3422,14 +3889,17 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.Resp
 	response, err := s.h.AppsDeleteInstallation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsDeleteInstallationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsDeleteTokenRequest handles apps/delete-token operation.
@@ -3444,12 +3914,14 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 	params, err := decodeAppsDeleteTokenParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeAppsDeleteTokenRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3457,14 +3929,17 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 	response, err := s.h.AppsDeleteToken(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsDeleteTokenResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsGetAuthenticatedRequest handles apps/get-authenticated operation.
@@ -3480,14 +3955,17 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, w http.Respon
 	response, err := s.h.AppsGetAuthenticated(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsGetAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsGetBySlugRequest handles apps/get-by-slug operation.
@@ -3502,6 +3980,7 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWrite
 	params, err := decodeAppsGetBySlugParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3509,14 +3988,17 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWrite
 	response, err := s.h.AppsGetBySlug(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsGetBySlugResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsGetSubscriptionPlanForAccountRequest handles apps/get-subscription-plan-for-account operation.
@@ -3531,6 +4013,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 	params, err := decodeAppsGetSubscriptionPlanForAccountParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3538,14 +4021,17 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 	response, err := s.h.AppsGetSubscriptionPlanForAccount(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsGetSubscriptionPlanForAccountResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsGetSubscriptionPlanForAccountStubbedRequest handles apps/get-subscription-plan-for-account-stubbed operation.
@@ -3560,6 +4046,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 	params, err := decodeAppsGetSubscriptionPlanForAccountStubbedParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3567,14 +4054,17 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 	response, err := s.h.AppsGetSubscriptionPlanForAccountStubbed(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsGetWebhookConfigForAppRequest handles apps/get-webhook-config-for-app operation.
@@ -3590,14 +4080,17 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, w http.
 	response, err := s.h.AppsGetWebhookConfigForApp(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsGetWebhookConfigForAppResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsGetWebhookDeliveryRequest handles apps/get-webhook-delivery operation.
@@ -3612,6 +4105,7 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.Resp
 	params, err := decodeAppsGetWebhookDeliveryParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3619,14 +4113,17 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.Resp
 	response, err := s.h.AppsGetWebhookDelivery(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsGetWebhookDeliveryResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsListAccountsForPlanRequest handles apps/list-accounts-for-plan operation.
@@ -3641,6 +4138,7 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.Res
 	params, err := decodeAppsListAccountsForPlanParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3648,14 +4146,17 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.Res
 	response, err := s.h.AppsListAccountsForPlan(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsListAccountsForPlanResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsListAccountsForPlanStubbedRequest handles apps/list-accounts-for-plan-stubbed operation.
@@ -3670,6 +4171,7 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w h
 	params, err := decodeAppsListAccountsForPlanStubbedParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3677,14 +4179,17 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w h
 	response, err := s.h.AppsListAccountsForPlanStubbed(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsListAccountsForPlanStubbedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsListInstallationReposForAuthenticatedUserRequest handles apps/list-installation-repos-for-authenticated-user operation.
@@ -3699,6 +4204,7 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 	params, err := decodeAppsListInstallationReposForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3706,14 +4212,17 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 	response, err := s.h.AppsListInstallationReposForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsListInstallationReposForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsListPlansRequest handles apps/list-plans operation.
@@ -3728,6 +4237,7 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWrite
 	params, err := decodeAppsListPlansParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3735,14 +4245,17 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.AppsListPlans(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsListPlansResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsListPlansStubbedRequest handles apps/list-plans-stubbed operation.
@@ -3757,6 +4270,7 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.Respon
 	params, err := decodeAppsListPlansStubbedParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3764,14 +4278,17 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.Respon
 	response, err := s.h.AppsListPlansStubbed(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsListPlansStubbedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsListReposAccessibleToInstallationRequest handles apps/list-repos-accessible-to-installation operation.
@@ -3786,6 +4303,7 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 	params, err := decodeAppsListReposAccessibleToInstallationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3793,14 +4311,17 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 	response, err := s.h.AppsListReposAccessibleToInstallation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsListReposAccessibleToInstallationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsListSubscriptionsForAuthenticatedUserRequest handles apps/list-subscriptions-for-authenticated-user operation.
@@ -3815,6 +4336,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 	params, err := decodeAppsListSubscriptionsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3822,14 +4344,17 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 	response, err := s.h.AppsListSubscriptionsForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsListSubscriptionsForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsListSubscriptionsForAuthenticatedUserStubbedRequest handles apps/list-subscriptions-for-authenticated-user-stubbed operation.
@@ -3844,6 +4369,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 	params, err := decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3851,14 +4377,17 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 	response, err := s.h.AppsListSubscriptionsForAuthenticatedUserStubbed(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsListWebhookDeliveriesRequest handles apps/list-webhook-deliveries operation.
@@ -3873,6 +4402,7 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.R
 	params, err := decodeAppsListWebhookDeliveriesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3880,14 +4410,17 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.R
 	response, err := s.h.AppsListWebhookDeliveries(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsListWebhookDeliveriesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsRedeliverWebhookDeliveryRequest handles apps/redeliver-webhook-delivery operation.
@@ -3902,6 +4435,7 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w htt
 	params, err := decodeAppsRedeliverWebhookDeliveryParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3909,14 +4443,17 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w htt
 	response, err := s.h.AppsRedeliverWebhookDelivery(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsRedeliverWebhookDeliveryResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsRemoveRepoFromInstallationRequest handles apps/remove-repo-from-installation operation.
@@ -3931,6 +4468,7 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w h
 	params, err := decodeAppsRemoveRepoFromInstallationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3938,14 +4476,17 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w h
 	response, err := s.h.AppsRemoveRepoFromInstallation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsRemoveRepoFromInstallationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsResetTokenRequest handles apps/reset-token operation.
@@ -3960,12 +4501,14 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeAppsResetTokenParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeAppsResetTokenRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3973,14 +4516,17 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 	response, err := s.h.AppsResetToken(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsResetTokenResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsRevokeInstallationAccessTokenRequest handles apps/revoke-installation-access-token operation.
@@ -3996,14 +4542,17 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 	response, err := s.h.AppsRevokeInstallationAccessToken(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsRevokeInstallationAccessTokenResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsScopeTokenRequest handles apps/scope-token operation.
@@ -4018,12 +4567,14 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeAppsScopeTokenParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeAppsScopeTokenRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4031,14 +4582,17 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 	response, err := s.h.AppsScopeToken(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsScopeTokenResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsSuspendInstallationRequest handles apps/suspend-installation operation.
@@ -4053,6 +4607,7 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.Res
 	params, err := decodeAppsSuspendInstallationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4060,14 +4615,17 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.Res
 	response, err := s.h.AppsSuspendInstallation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsSuspendInstallationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsUnsuspendInstallationRequest handles apps/unsuspend-installation operation.
@@ -4082,6 +4640,7 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.R
 	params, err := decodeAppsUnsuspendInstallationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4089,14 +4648,17 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.R
 	response, err := s.h.AppsUnsuspendInstallation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsUnsuspendInstallationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleAppsUpdateWebhookConfigForAppRequest handles apps/update-webhook-config-for-app operation.
@@ -4111,6 +4673,7 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 	request, err := decodeAppsUpdateWebhookConfigForAppRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4118,14 +4681,17 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 	response, err := s.h.AppsUpdateWebhookConfigForApp(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeAppsUpdateWebhookConfigForAppResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleBillingGetGithubActionsBillingGheRequest handles billing/get-github-actions-billing-ghe operation.
@@ -4140,6 +4706,7 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 	params, err := decodeBillingGetGithubActionsBillingGheParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4147,14 +4714,17 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 	response, err := s.h.BillingGetGithubActionsBillingGhe(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeBillingGetGithubActionsBillingGheResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleBillingGetGithubActionsBillingOrgRequest handles billing/get-github-actions-billing-org operation.
@@ -4169,6 +4739,7 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 	params, err := decodeBillingGetGithubActionsBillingOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4176,14 +4747,17 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 	response, err := s.h.BillingGetGithubActionsBillingOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeBillingGetGithubActionsBillingOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleBillingGetGithubActionsBillingUserRequest handles billing/get-github-actions-billing-user operation.
@@ -4198,6 +4772,7 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 	params, err := decodeBillingGetGithubActionsBillingUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4205,14 +4780,17 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 	response, err := s.h.BillingGetGithubActionsBillingUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeBillingGetGithubActionsBillingUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleBillingGetGithubPackagesBillingGheRequest handles billing/get-github-packages-billing-ghe operation.
@@ -4227,6 +4805,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 	params, err := decodeBillingGetGithubPackagesBillingGheParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4234,14 +4813,17 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 	response, err := s.h.BillingGetGithubPackagesBillingGhe(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeBillingGetGithubPackagesBillingGheResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleBillingGetGithubPackagesBillingOrgRequest handles billing/get-github-packages-billing-org operation.
@@ -4256,6 +4838,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 	params, err := decodeBillingGetGithubPackagesBillingOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4263,14 +4846,17 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 	response, err := s.h.BillingGetGithubPackagesBillingOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeBillingGetGithubPackagesBillingOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleBillingGetGithubPackagesBillingUserRequest handles billing/get-github-packages-billing-user operation.
@@ -4285,6 +4871,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 	params, err := decodeBillingGetGithubPackagesBillingUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4292,14 +4879,17 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 	response, err := s.h.BillingGetGithubPackagesBillingUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeBillingGetGithubPackagesBillingUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleBillingGetSharedStorageBillingGheRequest handles billing/get-shared-storage-billing-ghe operation.
@@ -4314,6 +4904,7 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 	params, err := decodeBillingGetSharedStorageBillingGheParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4321,14 +4912,17 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 	response, err := s.h.BillingGetSharedStorageBillingGhe(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeBillingGetSharedStorageBillingGheResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleBillingGetSharedStorageBillingOrgRequest handles billing/get-shared-storage-billing-org operation.
@@ -4343,6 +4937,7 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 	params, err := decodeBillingGetSharedStorageBillingOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4350,14 +4945,17 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 	response, err := s.h.BillingGetSharedStorageBillingOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeBillingGetSharedStorageBillingOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleBillingGetSharedStorageBillingUserRequest handles billing/get-shared-storage-billing-user operation.
@@ -4372,6 +4970,7 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 	params, err := decodeBillingGetSharedStorageBillingUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4379,14 +4978,17 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 	response, err := s.h.BillingGetSharedStorageBillingUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeBillingGetSharedStorageBillingUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleChecksCreateSuiteRequest handles checks/create-suite operation.
@@ -4401,12 +5003,14 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 	params, err := decodeChecksCreateSuiteParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeChecksCreateSuiteRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4414,14 +5018,17 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 	response, err := s.h.ChecksCreateSuite(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeChecksCreateSuiteResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleChecksGetRequest handles checks/get operation.
@@ -4436,6 +5043,7 @@ func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r
 	params, err := decodeChecksGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4443,14 +5051,17 @@ func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r
 	response, err := s.h.ChecksGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeChecksGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleChecksGetSuiteRequest handles checks/get-suite operation.
@@ -4465,6 +5076,7 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWrit
 	params, err := decodeChecksGetSuiteParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4472,14 +5084,17 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWrit
 	response, err := s.h.ChecksGetSuite(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeChecksGetSuiteResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleChecksListAnnotationsRequest handles checks/list-annotations operation.
@@ -4494,6 +5109,7 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.Respo
 	params, err := decodeChecksListAnnotationsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4501,14 +5117,17 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.Respo
 	response, err := s.h.ChecksListAnnotations(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeChecksListAnnotationsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleChecksListForRefRequest handles checks/list-for-ref operation.
@@ -4523,6 +5142,7 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWr
 	params, err := decodeChecksListForRefParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4530,14 +5150,17 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWr
 	response, err := s.h.ChecksListForRef(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeChecksListForRefResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleChecksListForSuiteRequest handles checks/list-for-suite operation.
@@ -4552,6 +5175,7 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.Response
 	params, err := decodeChecksListForSuiteParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4559,14 +5183,17 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.Response
 	response, err := s.h.ChecksListForSuite(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeChecksListForSuiteResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleChecksListSuitesForRefRequest handles checks/list-suites-for-ref operation.
@@ -4581,6 +5208,7 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.Resp
 	params, err := decodeChecksListSuitesForRefParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4588,14 +5216,17 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.Resp
 	response, err := s.h.ChecksListSuitesForRef(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeChecksListSuitesForRefResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleChecksRerequestSuiteRequest handles checks/rerequest-suite operation.
@@ -4610,6 +5241,7 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.Respon
 	params, err := decodeChecksRerequestSuiteParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4617,14 +5249,17 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.Respon
 	response, err := s.h.ChecksRerequestSuite(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeChecksRerequestSuiteResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleChecksSetSuitesPreferencesRequest handles checks/set-suites-preferences operation.
@@ -4639,12 +5274,14 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 	params, err := decodeChecksSetSuitesPreferencesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeChecksSetSuitesPreferencesRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4652,14 +5289,17 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 	response, err := s.h.ChecksSetSuitesPreferences(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeChecksSetSuitesPreferencesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleCodeScanningDeleteAnalysisRequest handles code-scanning/delete-analysis operation.
@@ -4674,6 +5314,7 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.
 	params, err := decodeCodeScanningDeleteAnalysisParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4681,14 +5322,17 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.
 	response, err := s.h.CodeScanningDeleteAnalysis(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeCodeScanningDeleteAnalysisResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleCodeScanningGetAlertRequest handles code-scanning/get-alert operation.
@@ -4703,6 +5347,7 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.Respon
 	params, err := decodeCodeScanningGetAlertParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4710,14 +5355,17 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.Respon
 	response, err := s.h.CodeScanningGetAlert(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeCodeScanningGetAlertResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleCodeScanningGetAnalysisRequest handles code-scanning/get-analysis operation.
@@ -4732,6 +5380,7 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.Res
 	params, err := decodeCodeScanningGetAnalysisParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4739,14 +5388,17 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.Res
 	response, err := s.h.CodeScanningGetAnalysis(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeCodeScanningGetAnalysisResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleCodeScanningGetSarifRequest handles code-scanning/get-sarif operation.
@@ -4761,6 +5413,7 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.Respon
 	params, err := decodeCodeScanningGetSarifParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4768,14 +5421,17 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.Respon
 	response, err := s.h.CodeScanningGetSarif(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeCodeScanningGetSarifResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleCodeScanningListAlertInstancesRequest handles code-scanning/list-alert-instances operation.
@@ -4790,6 +5446,7 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w h
 	params, err := decodeCodeScanningListAlertInstancesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4797,14 +5454,17 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w h
 	response, err := s.h.CodeScanningListAlertInstances(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeCodeScanningListAlertInstancesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleCodeScanningListAlertsForRepoRequest handles code-scanning/list-alerts-for-repo operation.
@@ -4819,6 +5479,7 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w ht
 	params, err := decodeCodeScanningListAlertsForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4826,14 +5487,17 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w ht
 	response, err := s.h.CodeScanningListAlertsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeCodeScanningListAlertsForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleCodeScanningListRecentAnalysesRequest handles code-scanning/list-recent-analyses operation.
@@ -4848,6 +5512,7 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w h
 	params, err := decodeCodeScanningListRecentAnalysesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4855,14 +5520,17 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w h
 	response, err := s.h.CodeScanningListRecentAnalyses(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeCodeScanningListRecentAnalysesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleCodeScanningUpdateAlertRequest handles code-scanning/update-alert operation.
@@ -4877,12 +5545,14 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 	params, err := decodeCodeScanningUpdateAlertParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeCodeScanningUpdateAlertRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4890,14 +5560,17 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 	response, err := s.h.CodeScanningUpdateAlert(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeCodeScanningUpdateAlertResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleCodeScanningUploadSarifRequest handles code-scanning/upload-sarif operation.
@@ -4912,12 +5585,14 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 	params, err := decodeCodeScanningUploadSarifParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeCodeScanningUploadSarifRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4925,14 +5600,17 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 	response, err := s.h.CodeScanningUploadSarif(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeCodeScanningUploadSarifResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleCodesOfConductGetAllCodesOfConductRequest handles codes-of-conduct/get-all-codes-of-conduct operation.
@@ -4948,14 +5626,17 @@ func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string,
 	response, err := s.h.CodesOfConductGetAllCodesOfConduct(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeCodesOfConductGetAllCodesOfConductResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleCodesOfConductGetConductCodeRequest handles codes-of-conduct/get-conduct-code operation.
@@ -4970,6 +5651,7 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w htt
 	params, err := decodeCodesOfConductGetConductCodeParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4977,14 +5659,17 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w htt
 	response, err := s.h.CodesOfConductGetConductCode(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeCodesOfConductGetConductCodeResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEmojisGetRequest handles emojis/get operation.
@@ -5000,14 +5685,17 @@ func (s *Server) handleEmojisGetRequest(args [0]string, w http.ResponseWriter, r
 	response, err := s.h.EmojisGet(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEmojisGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise operation.
@@ -5022,6 +5710,7 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 	params, err := decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5029,14 +5718,17 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 	response, err := s.h.EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest handles enterprise-admin/add-self-hosted-runner-to-group-for-enterprise operation.
@@ -5051,6 +5743,7 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 	params, err := decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5058,14 +5751,17 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 	response, err := s.h.EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest handles enterprise-admin/create-registration-token-for-enterprise operation.
@@ -5080,6 +5776,7 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 	params, err := decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5087,14 +5784,17 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 	response, err := s.h.EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest handles enterprise-admin/create-remove-token-for-enterprise operation.
@@ -5109,6 +5809,7 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 	params, err := decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5116,14 +5817,17 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 	response, err := s.h.EnterpriseAdminCreateRemoveTokenForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest handles enterprise-admin/create-self-hosted-runner-group-for-enterprise operation.
@@ -5138,12 +5842,14 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 	params, err := decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5151,14 +5857,17 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 	response, err := s.h.EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest handles enterprise-admin/delete-scim-group-from-enterprise operation.
@@ -5173,6 +5882,7 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 	params, err := decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5180,14 +5890,17 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 	response, err := s.h.EnterpriseAdminDeleteScimGroupFromEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest handles enterprise-admin/delete-self-hosted-runner-from-enterprise operation.
@@ -5202,6 +5915,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 	params, err := decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5209,14 +5923,17 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 	response, err := s.h.EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest handles enterprise-admin/delete-self-hosted-runner-group-from-enterprise operation.
@@ -5231,6 +5948,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 	params, err := decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5238,14 +5956,17 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 	response, err := s.h.EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminDeleteUserFromEnterpriseRequest handles enterprise-admin/delete-user-from-enterprise operation.
@@ -5260,6 +5981,7 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 	params, err := decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5267,14 +5989,17 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 	response, err := s.h.EnterpriseAdminDeleteUserFromEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminDeleteUserFromEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest handles enterprise-admin/disable-selected-organization-github-actions-enterprise operation.
@@ -5289,6 +6014,7 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 	params, err := decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5296,14 +6022,17 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 	response, err := s.h.EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest handles enterprise-admin/enable-selected-organization-github-actions-enterprise operation.
@@ -5318,6 +6047,7 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 	params, err := decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5325,14 +6055,17 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 	response, err := s.h.EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminGetAllowedActionsEnterpriseRequest handles enterprise-admin/get-allowed-actions-enterprise operation.
@@ -5347,6 +6080,7 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 	params, err := decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5354,14 +6088,17 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 	response, err := s.h.EnterpriseAdminGetAllowedActionsEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminGetAuditLogRequest handles enterprise-admin/get-audit-log operation.
@@ -5376,6 +6113,7 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.
 	params, err := decodeEnterpriseAdminGetAuditLogParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5383,14 +6121,17 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.
 	response, err := s.h.EnterpriseAdminGetAuditLog(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminGetAuditLogResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest handles enterprise-admin/get-github-actions-permissions-enterprise operation.
@@ -5405,6 +6146,7 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 	params, err := decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5412,14 +6154,17 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 	response, err := s.h.EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest handles enterprise-admin/get-provisioning-information-for-enterprise-group operation.
@@ -5434,6 +6179,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 	params, err := decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5441,14 +6187,17 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 	response, err := s.h.EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest handles enterprise-admin/get-provisioning-information-for-enterprise-user operation.
@@ -5463,6 +6212,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 	params, err := decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5470,14 +6220,17 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 	response, err := s.h.EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest handles enterprise-admin/get-self-hosted-runner-for-enterprise operation.
@@ -5492,6 +6245,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 	params, err := decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5499,14 +6253,17 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 	response, err := s.h.EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest handles enterprise-admin/get-self-hosted-runner-group-for-enterprise operation.
@@ -5521,6 +6278,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 	params, err := decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5528,14 +6286,17 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 	response, err := s.h.EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise operation.
@@ -5550,6 +6311,7 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 	params, err := decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5557,14 +6319,17 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 	response, err := s.h.EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminListProvisionedGroupsEnterpriseRequest handles enterprise-admin/list-provisioned-groups-enterprise operation.
@@ -5579,6 +6344,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 	params, err := decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5586,14 +6352,17 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 	response, err := s.h.EnterpriseAdminListProvisionedGroupsEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest handles enterprise-admin/list-provisioned-identities-enterprise operation.
@@ -5608,6 +6377,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 	params, err := decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5615,14 +6385,17 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 	response, err := s.h.EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest handles enterprise-admin/list-runner-applications-for-enterprise operation.
@@ -5637,6 +6410,7 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 	params, err := decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5644,14 +6418,17 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 	response, err := s.h.EnterpriseAdminListRunnerApplicationsForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest handles enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise operation.
@@ -5666,6 +6443,7 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 	params, err := decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5673,14 +6451,17 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 	response, err := s.h.EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest handles enterprise-admin/list-self-hosted-runner-groups-for-enterprise operation.
@@ -5695,6 +6476,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 	params, err := decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5702,14 +6484,17 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 	response, err := s.h.EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest handles enterprise-admin/list-self-hosted-runners-for-enterprise operation.
@@ -5724,6 +6509,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 	params, err := decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5731,14 +6517,17 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 	response, err := s.h.EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest handles enterprise-admin/list-self-hosted-runners-in-group-for-enterprise operation.
@@ -5753,6 +6542,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 	params, err := decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5760,14 +6550,17 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 	response, err := s.h.EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest handles enterprise-admin/provision-and-invite-enterprise-group operation.
@@ -5782,12 +6575,14 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 	params, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5795,14 +6590,17 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 	response, err := s.h.EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest handles enterprise-admin/provision-and-invite-enterprise-user operation.
@@ -5817,12 +6615,14 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 	params, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5830,14 +6630,17 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 	response, err := s.h.EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise operation.
@@ -5852,6 +6655,7 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 	params, err := decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5859,14 +6663,17 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 	response, err := s.h.EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest handles enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise operation.
@@ -5881,6 +6688,7 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 	params, err := decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5888,14 +6696,17 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 	response, err := s.h.EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminSetAllowedActionsEnterpriseRequest handles enterprise-admin/set-allowed-actions-enterprise operation.
@@ -5910,12 +6721,14 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 	params, err := decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5923,14 +6736,17 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 	response, err := s.h.EnterpriseAdminSetAllowedActionsEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest handles enterprise-admin/set-github-actions-permissions-enterprise operation.
@@ -5945,12 +6761,14 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 	params, err := decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5958,14 +6776,17 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 	response, err := s.h.EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest handles enterprise-admin/set-information-for-provisioned-enterprise-group operation.
@@ -5980,12 +6801,14 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 	params, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5993,14 +6816,17 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 	response, err := s.h.EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest handles enterprise-admin/set-information-for-provisioned-enterprise-user operation.
@@ -6015,12 +6841,14 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 	params, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6028,14 +6856,17 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 	response, err := s.h.EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise operation.
@@ -6050,12 +6881,14 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 	params, err := decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6063,14 +6896,17 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 	response, err := s.h.EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest handles enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
@@ -6085,12 +6921,14 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 	params, err := decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6098,14 +6936,17 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 	response, err := s.h.EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest handles enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
@@ -6120,12 +6961,14 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 	params, err := decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6133,14 +6976,17 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 	response, err := s.h.EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest handles enterprise-admin/update-attribute-for-enterprise-group operation.
@@ -6155,12 +7001,14 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 	params, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6168,14 +7016,17 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 	response, err := s.h.EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest handles enterprise-admin/update-attribute-for-enterprise-user operation.
@@ -6190,12 +7041,14 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 	params, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6203,14 +7056,17 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 	response, err := s.h.EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest handles enterprise-admin/update-self-hosted-runner-group-for-enterprise operation.
@@ -6225,12 +7081,14 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 	params, err := decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6238,14 +7096,17 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 	response, err := s.h.EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsCheckIsStarredRequest handles gists/check-is-starred operation.
@@ -6260,6 +7121,7 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.Respons
 	params, err := decodeGistsCheckIsStarredParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6267,14 +7129,17 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.Respons
 	response, err := s.h.GistsCheckIsStarred(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsCheckIsStarredResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsCreateRequest handles gists/create operation.
@@ -6289,6 +7154,7 @@ func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter,
 	request, err := decodeGistsCreateRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6296,14 +7162,17 @@ func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter,
 	response, err := s.h.GistsCreate(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsCreateResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsCreateCommentRequest handles gists/create-comment operation.
@@ -6318,12 +7187,14 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 	params, err := decodeGistsCreateCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeGistsCreateCommentRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6331,14 +7202,17 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 	response, err := s.h.GistsCreateComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsCreateCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsDeleteRequest handles gists/delete operation.
@@ -6353,6 +7227,7 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter,
 	params, err := decodeGistsDeleteParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6360,14 +7235,17 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter,
 	response, err := s.h.GistsDelete(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsDeleteResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsDeleteCommentRequest handles gists/delete-comment operation.
@@ -6382,6 +7260,7 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.Response
 	params, err := decodeGistsDeleteCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6389,14 +7268,17 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.Response
 	response, err := s.h.GistsDeleteComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsDeleteCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsForkRequest handles gists/fork operation.
@@ -6411,6 +7293,7 @@ func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r
 	params, err := decodeGistsForkParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6418,14 +7301,17 @@ func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r
 	response, err := s.h.GistsFork(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsForkResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsGetRequest handles gists/get operation.
@@ -6440,6 +7326,7 @@ func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r 
 	params, err := decodeGistsGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6447,14 +7334,17 @@ func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r 
 	response, err := s.h.GistsGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsGetCommentRequest handles gists/get-comment operation.
@@ -6469,6 +7359,7 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWri
 	params, err := decodeGistsGetCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6476,14 +7367,17 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWri
 	response, err := s.h.GistsGetComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsGetCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsGetRevisionRequest handles gists/get-revision operation.
@@ -6498,6 +7392,7 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWr
 	params, err := decodeGistsGetRevisionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6505,14 +7400,17 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWr
 	response, err := s.h.GistsGetRevision(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsGetRevisionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsListRequest handles gists/list operation.
@@ -6527,6 +7425,7 @@ func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r
 	params, err := decodeGistsListParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6534,14 +7433,17 @@ func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r
 	response, err := s.h.GistsList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsListResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsListCommentsRequest handles gists/list-comments operation.
@@ -6556,6 +7458,7 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseW
 	params, err := decodeGistsListCommentsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6563,14 +7466,17 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseW
 	response, err := s.h.GistsListComments(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsListCommentsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsListCommitsRequest handles gists/list-commits operation.
@@ -6585,6 +7491,7 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWr
 	params, err := decodeGistsListCommitsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6592,14 +7499,17 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWr
 	response, err := s.h.GistsListCommits(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsListCommitsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsListForUserRequest handles gists/list-for-user operation.
@@ -6614,6 +7524,7 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWr
 	params, err := decodeGistsListForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6621,14 +7532,17 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWr
 	response, err := s.h.GistsListForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsListForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsListForksRequest handles gists/list-forks operation.
@@ -6643,6 +7557,7 @@ func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeGistsListForksParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6650,14 +7565,17 @@ func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWrit
 	response, err := s.h.GistsListForks(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsListForksResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsListPublicRequest handles gists/list-public operation.
@@ -6672,6 +7590,7 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWri
 	params, err := decodeGistsListPublicParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6679,14 +7598,17 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWri
 	response, err := s.h.GistsListPublic(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsListPublicResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsListStarredRequest handles gists/list-starred operation.
@@ -6701,6 +7623,7 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWr
 	params, err := decodeGistsListStarredParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6708,14 +7631,17 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWr
 	response, err := s.h.GistsListStarred(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsListStarredResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsStarRequest handles gists/star operation.
@@ -6730,6 +7656,7 @@ func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r
 	params, err := decodeGistsStarParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6737,14 +7664,17 @@ func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r
 	response, err := s.h.GistsStar(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsStarResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsUnstarRequest handles gists/unstar operation.
@@ -6759,6 +7689,7 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter,
 	params, err := decodeGistsUnstarParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6766,14 +7697,17 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter,
 	response, err := s.h.GistsUnstar(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsUnstarResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGistsUpdateCommentRequest handles gists/update-comment operation.
@@ -6788,12 +7722,14 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 	params, err := decodeGistsUpdateCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeGistsUpdateCommentRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6801,14 +7737,17 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 	response, err := s.h.GistsUpdateComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGistsUpdateCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGitCreateBlobRequest handles git/create-blob operation.
@@ -6823,12 +7762,14 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 	params, err := decodeGitCreateBlobParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeGitCreateBlobRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6836,14 +7777,17 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 	response, err := s.h.GitCreateBlob(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGitCreateBlobResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGitCreateCommitRequest handles git/create-commit operation.
@@ -6858,12 +7802,14 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 	params, err := decodeGitCreateCommitParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeGitCreateCommitRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6871,14 +7817,17 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 	response, err := s.h.GitCreateCommit(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGitCreateCommitResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGitCreateRefRequest handles git/create-ref operation.
@@ -6893,12 +7842,14 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 	params, err := decodeGitCreateRefParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeGitCreateRefRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6906,14 +7857,17 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 	response, err := s.h.GitCreateRef(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGitCreateRefResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGitCreateTagRequest handles git/create-tag operation.
@@ -6928,12 +7882,14 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 	params, err := decodeGitCreateTagParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeGitCreateTagRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6941,14 +7897,17 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 	response, err := s.h.GitCreateTag(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGitCreateTagResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGitCreateTreeRequest handles git/create-tree operation.
@@ -6963,12 +7922,14 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 	params, err := decodeGitCreateTreeParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeGitCreateTreeRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6976,14 +7937,17 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 	response, err := s.h.GitCreateTree(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGitCreateTreeResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGitDeleteRefRequest handles git/delete-ref operation.
@@ -6998,6 +7962,7 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter
 	params, err := decodeGitDeleteRefParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7005,14 +7970,17 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter
 	response, err := s.h.GitDeleteRef(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGitDeleteRefResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGitGetBlobRequest handles git/get-blob operation.
@@ -7027,6 +7995,7 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, 
 	params, err := decodeGitGetBlobParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7034,14 +8003,17 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, 
 	response, err := s.h.GitGetBlob(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGitGetBlobResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGitGetCommitRequest handles git/get-commit operation.
@@ -7056,6 +8028,7 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter
 	params, err := decodeGitGetCommitParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7063,14 +8036,17 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter
 	response, err := s.h.GitGetCommit(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGitGetCommitResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGitGetRefRequest handles git/get-ref operation.
@@ -7085,6 +8061,7 @@ func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r
 	params, err := decodeGitGetRefParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7092,14 +8069,17 @@ func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r
 	response, err := s.h.GitGetRef(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGitGetRefResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGitGetTagRequest handles git/get-tag operation.
@@ -7114,6 +8094,7 @@ func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r
 	params, err := decodeGitGetTagParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7121,14 +8102,17 @@ func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r
 	response, err := s.h.GitGetTag(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGitGetTagResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGitGetTreeRequest handles git/get-tree operation.
@@ -7143,6 +8127,7 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, 
 	params, err := decodeGitGetTreeParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7150,14 +8135,17 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, 
 	response, err := s.h.GitGetTree(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGitGetTreeResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGitListMatchingRefsRequest handles git/list-matching-refs operation.
@@ -7172,6 +8160,7 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.Respons
 	params, err := decodeGitListMatchingRefsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7179,14 +8168,17 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.Respons
 	response, err := s.h.GitListMatchingRefs(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGitListMatchingRefsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGitUpdateRefRequest handles git/update-ref operation.
@@ -7201,12 +8193,14 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 	params, err := decodeGitUpdateRefParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeGitUpdateRefRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7214,14 +8208,17 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 	response, err := s.h.GitUpdateRef(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGitUpdateRefResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGitignoreGetAllTemplatesRequest handles gitignore/get-all-templates operation.
@@ -7237,14 +8234,17 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, w http.Re
 	response, err := s.h.GitignoreGetAllTemplates(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGitignoreGetAllTemplatesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleGitignoreGetTemplateRequest handles gitignore/get-template operation.
@@ -7259,6 +8259,7 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.Respon
 	params, err := decodeGitignoreGetTemplateParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7266,14 +8267,17 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.Respon
 	response, err := s.h.GitignoreGetTemplate(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeGitignoreGetTemplateResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleInteractionsRemoveRestrictionsForAuthenticatedUserRequest handles interactions/remove-restrictions-for-authenticated-user operation.
@@ -7289,14 +8293,17 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 	response, err := s.h.InteractionsRemoveRestrictionsForAuthenticatedUser(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleInteractionsRemoveRestrictionsForOrgRequest handles interactions/remove-restrictions-for-org operation.
@@ -7311,6 +8318,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 	params, err := decodeInteractionsRemoveRestrictionsForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7318,14 +8326,17 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 	response, err := s.h.InteractionsRemoveRestrictionsForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeInteractionsRemoveRestrictionsForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleInteractionsRemoveRestrictionsForRepoRequest handles interactions/remove-restrictions-for-repo operation.
@@ -7340,6 +8351,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 	params, err := decodeInteractionsRemoveRestrictionsForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7347,14 +8359,17 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 	response, err := s.h.InteractionsRemoveRestrictionsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeInteractionsRemoveRestrictionsForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleInteractionsSetRestrictionsForAuthenticatedUserRequest handles interactions/set-restrictions-for-authenticated-user operation.
@@ -7369,6 +8384,7 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 	request, err := decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7376,14 +8392,17 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 	response, err := s.h.InteractionsSetRestrictionsForAuthenticatedUser(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeInteractionsSetRestrictionsForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleInteractionsSetRestrictionsForOrgRequest handles interactions/set-restrictions-for-org operation.
@@ -7398,12 +8417,14 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 	params, err := decodeInteractionsSetRestrictionsForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeInteractionsSetRestrictionsForOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7411,14 +8432,17 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 	response, err := s.h.InteractionsSetRestrictionsForOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeInteractionsSetRestrictionsForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleInteractionsSetRestrictionsForRepoRequest handles interactions/set-restrictions-for-repo operation.
@@ -7433,12 +8457,14 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 	params, err := decodeInteractionsSetRestrictionsForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeInteractionsSetRestrictionsForRepoRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7446,14 +8472,17 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 	response, err := s.h.InteractionsSetRestrictionsForRepo(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeInteractionsSetRestrictionsForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesAddAssigneesRequest handles issues/add-assignees operation.
@@ -7468,12 +8497,14 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 	params, err := decodeIssuesAddAssigneesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeIssuesAddAssigneesRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7481,14 +8512,17 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 	response, err := s.h.IssuesAddAssignees(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesAddAssigneesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesCheckUserCanBeAssignedRequest handles issues/check-user-can-be-assigned operation.
@@ -7503,6 +8537,7 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w htt
 	params, err := decodeIssuesCheckUserCanBeAssignedParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7510,14 +8545,17 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w htt
 	response, err := s.h.IssuesCheckUserCanBeAssigned(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesCheckUserCanBeAssignedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesCreateRequest handles issues/create operation.
@@ -7532,12 +8570,14 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 	params, err := decodeIssuesCreateParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeIssuesCreateRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7545,14 +8585,17 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 	response, err := s.h.IssuesCreate(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesCreateResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesCreateCommentRequest handles issues/create-comment operation.
@@ -7567,12 +8610,14 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 	params, err := decodeIssuesCreateCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeIssuesCreateCommentRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7580,14 +8625,17 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 	response, err := s.h.IssuesCreateComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesCreateCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesCreateLabelRequest handles issues/create-label operation.
@@ -7602,12 +8650,14 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 	params, err := decodeIssuesCreateLabelParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeIssuesCreateLabelRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7615,14 +8665,17 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 	response, err := s.h.IssuesCreateLabel(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesCreateLabelResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesCreateMilestoneRequest handles issues/create-milestone operation.
@@ -7637,12 +8690,14 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 	params, err := decodeIssuesCreateMilestoneParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeIssuesCreateMilestoneRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7650,14 +8705,17 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 	response, err := s.h.IssuesCreateMilestone(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesCreateMilestoneResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesDeleteCommentRequest handles issues/delete-comment operation.
@@ -7672,6 +8730,7 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 	params, err := decodeIssuesDeleteCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7679,14 +8738,17 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 	response, err := s.h.IssuesDeleteComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesDeleteCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesDeleteLabelRequest handles issues/delete-label operation.
@@ -7701,6 +8763,7 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 	params, err := decodeIssuesDeleteLabelParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7708,14 +8771,17 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 	response, err := s.h.IssuesDeleteLabel(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesDeleteLabelResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesDeleteMilestoneRequest handles issues/delete-milestone operation.
@@ -7730,6 +8796,7 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.Respo
 	params, err := decodeIssuesDeleteMilestoneParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7737,14 +8804,17 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.Respo
 	response, err := s.h.IssuesDeleteMilestone(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesDeleteMilestoneResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesGetRequest handles issues/get operation.
@@ -7759,6 +8829,7 @@ func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r
 	params, err := decodeIssuesGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7766,14 +8837,17 @@ func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r
 	response, err := s.h.IssuesGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesGetCommentRequest handles issues/get-comment operation.
@@ -7788,6 +8862,7 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWr
 	params, err := decodeIssuesGetCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7795,14 +8870,17 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWr
 	response, err := s.h.IssuesGetComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesGetCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesGetEventRequest handles issues/get-event operation.
@@ -7817,6 +8895,7 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWrit
 	params, err := decodeIssuesGetEventParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7824,14 +8903,17 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWrit
 	response, err := s.h.IssuesGetEvent(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesGetEventResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesGetLabelRequest handles issues/get-label operation.
@@ -7846,6 +8928,7 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWrit
 	params, err := decodeIssuesGetLabelParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7853,14 +8936,17 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWrit
 	response, err := s.h.IssuesGetLabel(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesGetLabelResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesGetMilestoneRequest handles issues/get-milestone operation.
@@ -7875,6 +8961,7 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.Response
 	params, err := decodeIssuesGetMilestoneParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7882,14 +8969,17 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.Response
 	response, err := s.h.IssuesGetMilestone(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesGetMilestoneResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesListRequest handles issues/list operation.
@@ -7904,6 +8994,7 @@ func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, 
 	params, err := decodeIssuesListParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7911,14 +9002,17 @@ func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, 
 	response, err := s.h.IssuesList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesListResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesListAssigneesRequest handles issues/list-assignees operation.
@@ -7933,6 +9027,7 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.Respons
 	params, err := decodeIssuesListAssigneesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7940,14 +9035,17 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.Respons
 	response, err := s.h.IssuesListAssignees(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesListAssigneesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesListCommentsRequest handles issues/list-comments operation.
@@ -7962,6 +9060,7 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.Response
 	params, err := decodeIssuesListCommentsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7969,14 +9068,17 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.Response
 	response, err := s.h.IssuesListComments(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesListCommentsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesListCommentsForRepoRequest handles issues/list-comments-for-repo operation.
@@ -7991,6 +9093,7 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.R
 	params, err := decodeIssuesListCommentsForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7998,14 +9101,17 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.R
 	response, err := s.h.IssuesListCommentsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesListCommentsForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesListEventsForRepoRequest handles issues/list-events-for-repo operation.
@@ -8020,6 +9126,7 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.Res
 	params, err := decodeIssuesListEventsForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8027,14 +9134,17 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.Res
 	response, err := s.h.IssuesListEventsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesListEventsForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesListForAuthenticatedUserRequest handles issues/list-for-authenticated-user operation.
@@ -8049,6 +9159,7 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w h
 	params, err := decodeIssuesListForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8056,14 +9167,17 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w h
 	response, err := s.h.IssuesListForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesListForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesListForOrgRequest handles issues/list-for-org operation.
@@ -8078,6 +9192,7 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWr
 	params, err := decodeIssuesListForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8085,14 +9200,17 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWr
 	response, err := s.h.IssuesListForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesListForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesListForRepoRequest handles issues/list-for-repo operation.
@@ -8107,6 +9225,7 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseW
 	params, err := decodeIssuesListForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8114,14 +9233,17 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseW
 	response, err := s.h.IssuesListForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesListForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesListLabelsForMilestoneRequest handles issues/list-labels-for-milestone operation.
@@ -8136,6 +9258,7 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w htt
 	params, err := decodeIssuesListLabelsForMilestoneParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8143,14 +9266,17 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w htt
 	response, err := s.h.IssuesListLabelsForMilestone(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesListLabelsForMilestoneResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesListLabelsForRepoRequest handles issues/list-labels-for-repo operation.
@@ -8165,6 +9291,7 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.Res
 	params, err := decodeIssuesListLabelsForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8172,14 +9299,17 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.Res
 	response, err := s.h.IssuesListLabelsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesListLabelsForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesListLabelsOnIssueRequest handles issues/list-labels-on-issue operation.
@@ -8194,6 +9324,7 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.Res
 	params, err := decodeIssuesListLabelsOnIssueParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8201,14 +9332,17 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.Res
 	response, err := s.h.IssuesListLabelsOnIssue(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesListLabelsOnIssueResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesListMilestonesRequest handles issues/list-milestones operation.
@@ -8223,6 +9357,7 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.Respon
 	params, err := decodeIssuesListMilestonesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8230,14 +9365,17 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.Respon
 	response, err := s.h.IssuesListMilestones(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesListMilestonesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesLockRequest handles issues/lock operation.
@@ -8252,12 +9390,14 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 	params, err := decodeIssuesLockParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeIssuesLockRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8265,14 +9405,17 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 	response, err := s.h.IssuesLock(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesLockResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesRemoveAllLabelsRequest handles issues/remove-all-labels operation.
@@ -8287,6 +9430,7 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.Respo
 	params, err := decodeIssuesRemoveAllLabelsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8294,14 +9438,17 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.Respo
 	response, err := s.h.IssuesRemoveAllLabels(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesRemoveAllLabelsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesRemoveAssigneesRequest handles issues/remove-assignees operation.
@@ -8316,12 +9463,14 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 	params, err := decodeIssuesRemoveAssigneesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeIssuesRemoveAssigneesRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8329,14 +9478,17 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 	response, err := s.h.IssuesRemoveAssignees(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesRemoveAssigneesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesRemoveLabelRequest handles issues/remove-label operation.
@@ -8351,6 +9503,7 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseW
 	params, err := decodeIssuesRemoveLabelParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8358,14 +9511,17 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseW
 	response, err := s.h.IssuesRemoveLabel(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesRemoveLabelResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesUnlockRequest handles issues/unlock operation.
@@ -8380,6 +9536,7 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter
 	params, err := decodeIssuesUnlockParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8387,14 +9544,17 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter
 	response, err := s.h.IssuesUnlock(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesUnlockResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesUpdateRequest handles issues/update operation.
@@ -8409,12 +9569,14 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 	params, err := decodeIssuesUpdateParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeIssuesUpdateRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8422,14 +9584,17 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 	response, err := s.h.IssuesUpdate(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesUpdateResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesUpdateCommentRequest handles issues/update-comment operation.
@@ -8444,12 +9609,14 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 	params, err := decodeIssuesUpdateCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeIssuesUpdateCommentRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8457,14 +9624,17 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 	response, err := s.h.IssuesUpdateComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesUpdateCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesUpdateLabelRequest handles issues/update-label operation.
@@ -8479,12 +9649,14 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 	params, err := decodeIssuesUpdateLabelParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeIssuesUpdateLabelRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8492,14 +9664,17 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 	response, err := s.h.IssuesUpdateLabel(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesUpdateLabelResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleIssuesUpdateMilestoneRequest handles issues/update-milestone operation.
@@ -8514,12 +9689,14 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 	params, err := decodeIssuesUpdateMilestoneParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeIssuesUpdateMilestoneRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8527,14 +9704,17 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 	response, err := s.h.IssuesUpdateMilestone(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeIssuesUpdateMilestoneResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleLicensesGetRequest handles licenses/get operation.
@@ -8549,6 +9729,7 @@ func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter,
 	params, err := decodeLicensesGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8556,14 +9737,17 @@ func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter,
 	response, err := s.h.LicensesGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeLicensesGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleLicensesGetAllCommonlyUsedRequest handles licenses/get-all-commonly-used operation.
@@ -8578,6 +9762,7 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.
 	params, err := decodeLicensesGetAllCommonlyUsedParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8585,14 +9770,17 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.
 	response, err := s.h.LicensesGetAllCommonlyUsed(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeLicensesGetAllCommonlyUsedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleLicensesGetForRepoRequest handles licenses/get-for-repo operation.
@@ -8607,6 +9795,7 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 	params, err := decodeLicensesGetForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8614,14 +9803,17 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 	response, err := s.h.LicensesGetForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeLicensesGetForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMetaGetRequest handles meta/get operation.
@@ -8637,14 +9829,17 @@ func (s *Server) handleMetaGetRequest(args [0]string, w http.ResponseWriter, r *
 	response, err := s.h.MetaGet(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMetaGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMetaRootRequest handles meta/root operation.
@@ -8660,14 +9855,17 @@ func (s *Server) handleMetaRootRequest(args [0]string, w http.ResponseWriter, r 
 	response, err := s.h.MetaRoot(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMetaRootResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsCancelImportRequest handles migrations/cancel-import operation.
@@ -8682,6 +9880,7 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 	params, err := decodeMigrationsCancelImportParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8689,14 +9888,17 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 	response, err := s.h.MigrationsCancelImport(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsCancelImportResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsDeleteArchiveForAuthenticatedUserRequest handles migrations/delete-archive-for-authenticated-user operation.
@@ -8711,6 +9913,7 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 	params, err := decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8718,14 +9921,17 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 	response, err := s.h.MigrationsDeleteArchiveForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsDeleteArchiveForOrgRequest handles migrations/delete-archive-for-org operation.
@@ -8740,6 +9946,7 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w ht
 	params, err := decodeMigrationsDeleteArchiveForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8747,14 +9954,17 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w ht
 	response, err := s.h.MigrationsDeleteArchiveForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsDeleteArchiveForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsDownloadArchiveForOrgRequest handles migrations/download-archive-for-org operation.
@@ -8769,6 +9979,7 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w 
 	params, err := decodeMigrationsDownloadArchiveForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8776,14 +9987,17 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w 
 	response, err := s.h.MigrationsDownloadArchiveForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsDownloadArchiveForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsGetArchiveForAuthenticatedUserRequest handles migrations/get-archive-for-authenticated-user operation.
@@ -8798,6 +10012,7 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 	params, err := decodeMigrationsGetArchiveForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8805,14 +10020,17 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 	response, err := s.h.MigrationsGetArchiveForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsGetArchiveForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsGetCommitAuthorsRequest handles migrations/get-commit-authors operation.
@@ -8827,6 +10045,7 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.
 	params, err := decodeMigrationsGetCommitAuthorsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8834,14 +10053,17 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.
 	response, err := s.h.MigrationsGetCommitAuthors(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsGetCommitAuthorsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsGetImportStatusRequest handles migrations/get-import-status operation.
@@ -8856,6 +10078,7 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.R
 	params, err := decodeMigrationsGetImportStatusParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8863,14 +10086,17 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.R
 	response, err := s.h.MigrationsGetImportStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsGetImportStatusResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsGetLargeFilesRequest handles migrations/get-large-files operation.
@@ -8885,6 +10111,7 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.Res
 	params, err := decodeMigrationsGetLargeFilesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8892,14 +10119,17 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.Res
 	response, err := s.h.MigrationsGetLargeFiles(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsGetLargeFilesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsGetStatusForAuthenticatedUserRequest handles migrations/get-status-for-authenticated-user operation.
@@ -8914,6 +10144,7 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 	params, err := decodeMigrationsGetStatusForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8921,14 +10152,17 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 	response, err := s.h.MigrationsGetStatusForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsGetStatusForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsGetStatusForOrgRequest handles migrations/get-status-for-org operation.
@@ -8943,6 +10177,7 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.R
 	params, err := decodeMigrationsGetStatusForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8950,14 +10185,17 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.R
 	response, err := s.h.MigrationsGetStatusForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsGetStatusForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsListForAuthenticatedUserRequest handles migrations/list-for-authenticated-user operation.
@@ -8972,6 +10210,7 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 	params, err := decodeMigrationsListForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8979,14 +10218,17 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 	response, err := s.h.MigrationsListForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsListForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsListForOrgRequest handles migrations/list-for-org operation.
@@ -9001,6 +10243,7 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.Respon
 	params, err := decodeMigrationsListForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9008,14 +10251,17 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.Respon
 	response, err := s.h.MigrationsListForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsListForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsListReposForOrgRequest handles migrations/list-repos-for-org operation.
@@ -9030,6 +10276,7 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.R
 	params, err := decodeMigrationsListReposForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9037,14 +10284,17 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.R
 	response, err := s.h.MigrationsListReposForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsListReposForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsListReposForUserRequest handles migrations/list-repos-for-user operation.
@@ -9059,6 +10309,7 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.
 	params, err := decodeMigrationsListReposForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9066,14 +10317,17 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.
 	response, err := s.h.MigrationsListReposForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsListReposForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsMapCommitAuthorRequest handles migrations/map-commit-author operation.
@@ -9088,12 +10342,14 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 	params, err := decodeMigrationsMapCommitAuthorParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeMigrationsMapCommitAuthorRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9101,14 +10357,17 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 	response, err := s.h.MigrationsMapCommitAuthor(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsMapCommitAuthorResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsSetLfsPreferenceRequest handles migrations/set-lfs-preference operation.
@@ -9123,12 +10382,14 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 	params, err := decodeMigrationsSetLfsPreferenceParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeMigrationsSetLfsPreferenceRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9136,14 +10397,17 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 	response, err := s.h.MigrationsSetLfsPreference(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsSetLfsPreferenceResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsStartForAuthenticatedUserRequest handles migrations/start-for-authenticated-user operation.
@@ -9158,6 +10422,7 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 	request, err := decodeMigrationsStartForAuthenticatedUserRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9165,14 +10430,17 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 	response, err := s.h.MigrationsStartForAuthenticatedUser(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsStartForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsStartForOrgRequest handles migrations/start-for-org operation.
@@ -9187,12 +10455,14 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 	params, err := decodeMigrationsStartForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeMigrationsStartForOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9200,14 +10470,17 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 	response, err := s.h.MigrationsStartForOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsStartForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsStartImportRequest handles migrations/start-import operation.
@@ -9222,12 +10495,14 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 	params, err := decodeMigrationsStartImportParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeMigrationsStartImportRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9235,14 +10510,17 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 	response, err := s.h.MigrationsStartImport(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsStartImportResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsUnlockRepoForAuthenticatedUserRequest handles migrations/unlock-repo-for-authenticated-user operation.
@@ -9257,6 +10535,7 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 	params, err := decodeMigrationsUnlockRepoForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9264,14 +10543,17 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 	response, err := s.h.MigrationsUnlockRepoForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsUnlockRepoForOrgRequest handles migrations/unlock-repo-for-org operation.
@@ -9286,6 +10568,7 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.
 	params, err := decodeMigrationsUnlockRepoForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9293,14 +10576,17 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.
 	response, err := s.h.MigrationsUnlockRepoForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsUnlockRepoForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMigrationsUpdateImportRequest handles migrations/update-import operation.
@@ -9315,12 +10601,14 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 	params, err := decodeMigrationsUpdateImportParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeMigrationsUpdateImportRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9328,14 +10616,17 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 	response, err := s.h.MigrationsUpdateImport(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMigrationsUpdateImportResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOAuthAuthorizationsCreateAuthorizationRequest handles oauth-authorizations/create-authorization operation.
@@ -9350,6 +10641,7 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 	request, err := decodeOAuthAuthorizationsCreateAuthorizationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9357,14 +10649,17 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 	response, err := s.h.OAuthAuthorizationsCreateAuthorization(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOAuthAuthorizationsCreateAuthorizationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOAuthAuthorizationsDeleteAuthorizationRequest handles oauth-authorizations/delete-authorization operation.
@@ -9379,6 +10674,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 	params, err := decodeOAuthAuthorizationsDeleteAuthorizationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9386,14 +10682,17 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 	response, err := s.h.OAuthAuthorizationsDeleteAuthorization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOAuthAuthorizationsDeleteAuthorizationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOAuthAuthorizationsDeleteGrantRequest handles oauth-authorizations/delete-grant operation.
@@ -9408,6 +10707,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w h
 	params, err := decodeOAuthAuthorizationsDeleteGrantParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9415,14 +10715,17 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w h
 	response, err := s.h.OAuthAuthorizationsDeleteGrant(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOAuthAuthorizationsDeleteGrantResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOAuthAuthorizationsGetAuthorizationRequest handles oauth-authorizations/get-authorization operation.
@@ -9437,6 +10740,7 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 	params, err := decodeOAuthAuthorizationsGetAuthorizationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9444,14 +10748,17 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 	response, err := s.h.OAuthAuthorizationsGetAuthorization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOAuthAuthorizationsGetAuthorizationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOAuthAuthorizationsGetGrantRequest handles oauth-authorizations/get-grant operation.
@@ -9466,6 +10773,7 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http
 	params, err := decodeOAuthAuthorizationsGetGrantParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9473,14 +10781,17 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http
 	response, err := s.h.OAuthAuthorizationsGetGrant(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOAuthAuthorizationsGetGrantResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest handles oauth-authorizations/get-or-create-authorization-for-app operation.
@@ -9495,12 +10806,14 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 	params, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9508,14 +10821,17 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 	response, err := s.h.OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest handles oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint operation.
@@ -9530,12 +10846,14 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 	params, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9543,14 +10861,17 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 	response, err := s.h.OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOAuthAuthorizationsListAuthorizationsRequest handles oauth-authorizations/list-authorizations operation.
@@ -9565,6 +10886,7 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 	params, err := decodeOAuthAuthorizationsListAuthorizationsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9572,14 +10894,17 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 	response, err := s.h.OAuthAuthorizationsListAuthorizations(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOAuthAuthorizationsListAuthorizationsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOAuthAuthorizationsListGrantsRequest handles oauth-authorizations/list-grants operation.
@@ -9594,6 +10919,7 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w ht
 	params, err := decodeOAuthAuthorizationsListGrantsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9601,14 +10927,17 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w ht
 	response, err := s.h.OAuthAuthorizationsListGrants(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOAuthAuthorizationsListGrantsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOAuthAuthorizationsUpdateAuthorizationRequest handles oauth-authorizations/update-authorization operation.
@@ -9623,12 +10952,14 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 	params, err := decodeOAuthAuthorizationsUpdateAuthorizationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeOAuthAuthorizationsUpdateAuthorizationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9636,14 +10967,17 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 	response, err := s.h.OAuthAuthorizationsUpdateAuthorization(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOAuthAuthorizationsUpdateAuthorizationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsBlockUserRequest handles orgs/block-user operation.
@@ -9658,6 +10992,7 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWrite
 	params, err := decodeOrgsBlockUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9665,14 +11000,17 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWrite
 	response, err := s.h.OrgsBlockUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsBlockUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsCancelInvitationRequest handles orgs/cancel-invitation operation.
@@ -9687,6 +11025,7 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.Respon
 	params, err := decodeOrgsCancelInvitationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9694,14 +11033,17 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.Respon
 	response, err := s.h.OrgsCancelInvitation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsCancelInvitationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsCheckBlockedUserRequest handles orgs/check-blocked-user operation.
@@ -9716,6 +11058,7 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.Respon
 	params, err := decodeOrgsCheckBlockedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9723,14 +11066,17 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.Respon
 	response, err := s.h.OrgsCheckBlockedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsCheckBlockedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsCheckMembershipForUserRequest handles orgs/check-membership-for-user operation.
@@ -9745,6 +11091,7 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.
 	params, err := decodeOrgsCheckMembershipForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9752,14 +11099,17 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.
 	response, err := s.h.OrgsCheckMembershipForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsCheckMembershipForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsCheckPublicMembershipForUserRequest handles orgs/check-public-membership-for-user operation.
@@ -9774,6 +11124,7 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w
 	params, err := decodeOrgsCheckPublicMembershipForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9781,14 +11132,17 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w
 	response, err := s.h.OrgsCheckPublicMembershipForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsCheckPublicMembershipForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsConvertMemberToOutsideCollaboratorRequest handles orgs/convert-member-to-outside-collaborator operation.
@@ -9803,6 +11157,7 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 	params, err := decodeOrgsConvertMemberToOutsideCollaboratorParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9810,14 +11165,17 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 	response, err := s.h.OrgsConvertMemberToOutsideCollaborator(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsConvertMemberToOutsideCollaboratorResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsCreateInvitationRequest handles orgs/create-invitation operation.
@@ -9832,12 +11190,14 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 	params, err := decodeOrgsCreateInvitationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeOrgsCreateInvitationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9845,14 +11205,17 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 	response, err := s.h.OrgsCreateInvitation(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsCreateInvitationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsCreateWebhookRequest handles orgs/create-webhook operation.
@@ -9867,12 +11230,14 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 	params, err := decodeOrgsCreateWebhookParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeOrgsCreateWebhookRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9880,14 +11245,17 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 	response, err := s.h.OrgsCreateWebhook(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsCreateWebhookResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsDeleteWebhookRequest handles orgs/delete-webhook operation.
@@ -9902,6 +11270,7 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseW
 	params, err := decodeOrgsDeleteWebhookParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9909,14 +11278,17 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseW
 	response, err := s.h.OrgsDeleteWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsDeleteWebhookResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsGetRequest handles orgs/get operation.
@@ -9931,6 +11303,7 @@ func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *
 	params, err := decodeOrgsGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9938,14 +11311,17 @@ func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *
 	response, err := s.h.OrgsGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsGetAuditLogRequest handles orgs/get-audit-log operation.
@@ -9960,6 +11336,7 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWri
 	params, err := decodeOrgsGetAuditLogParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9967,14 +11344,17 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWri
 	response, err := s.h.OrgsGetAuditLog(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsGetAuditLogResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsGetMembershipForAuthenticatedUserRequest handles orgs/get-membership-for-authenticated-user operation.
@@ -9989,6 +11369,7 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 	params, err := decodeOrgsGetMembershipForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9996,14 +11377,17 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 	response, err := s.h.OrgsGetMembershipForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsGetMembershipForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsGetMembershipForUserRequest handles orgs/get-membership-for-user operation.
@@ -10018,6 +11402,7 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.Re
 	params, err := decodeOrgsGetMembershipForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10025,14 +11410,17 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.Re
 	response, err := s.h.OrgsGetMembershipForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsGetMembershipForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsGetWebhookRequest handles orgs/get-webhook operation.
@@ -10047,6 +11435,7 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWrit
 	params, err := decodeOrgsGetWebhookParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10054,14 +11443,17 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWrit
 	response, err := s.h.OrgsGetWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsGetWebhookResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsGetWebhookConfigForOrgRequest handles orgs/get-webhook-config-for-org operation.
@@ -10076,6 +11468,7 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.
 	params, err := decodeOrgsGetWebhookConfigForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10083,14 +11476,17 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.
 	response, err := s.h.OrgsGetWebhookConfigForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsGetWebhookConfigForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsGetWebhookDeliveryRequest handles orgs/get-webhook-delivery operation.
@@ -10105,6 +11501,7 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.Resp
 	params, err := decodeOrgsGetWebhookDeliveryParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10112,14 +11509,17 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.Resp
 	response, err := s.h.OrgsGetWebhookDelivery(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsGetWebhookDeliveryResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsListRequest handles orgs/list operation.
@@ -10134,6 +11534,7 @@ func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r 
 	params, err := decodeOrgsListParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10141,14 +11542,17 @@ func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r 
 	response, err := s.h.OrgsList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsListResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsListBlockedUsersRequest handles orgs/list-blocked-users operation.
@@ -10163,6 +11567,7 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.Respon
 	params, err := decodeOrgsListBlockedUsersParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10170,14 +11575,17 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.Respon
 	response, err := s.h.OrgsListBlockedUsers(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsListBlockedUsersResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsListFailedInvitationsRequest handles orgs/list-failed-invitations operation.
@@ -10192,6 +11600,7 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.R
 	params, err := decodeOrgsListFailedInvitationsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10199,14 +11608,17 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.R
 	response, err := s.h.OrgsListFailedInvitations(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsListFailedInvitationsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsListForAuthenticatedUserRequest handles orgs/list-for-authenticated-user operation.
@@ -10221,6 +11633,7 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w htt
 	params, err := decodeOrgsListForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10228,14 +11641,17 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w htt
 	response, err := s.h.OrgsListForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsListForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsListForUserRequest handles orgs/list-for-user operation.
@@ -10250,6 +11666,7 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWri
 	params, err := decodeOrgsListForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10257,14 +11674,17 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWri
 	response, err := s.h.OrgsListForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsListForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsListInvitationTeamsRequest handles orgs/list-invitation-teams operation.
@@ -10279,6 +11699,7 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.Res
 	params, err := decodeOrgsListInvitationTeamsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10286,14 +11707,17 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.Res
 	response, err := s.h.OrgsListInvitationTeams(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsListInvitationTeamsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsListMembersRequest handles orgs/list-members operation.
@@ -10308,6 +11732,7 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWri
 	params, err := decodeOrgsListMembersParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10315,14 +11740,17 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWri
 	response, err := s.h.OrgsListMembers(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsListMembersResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsListMembershipsForAuthenticatedUserRequest handles orgs/list-memberships-for-authenticated-user operation.
@@ -10337,6 +11765,7 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 	params, err := decodeOrgsListMembershipsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10344,14 +11773,17 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 	response, err := s.h.OrgsListMembershipsForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsListMembershipsForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsListOutsideCollaboratorsRequest handles orgs/list-outside-collaborators operation.
@@ -10366,6 +11798,7 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w htt
 	params, err := decodeOrgsListOutsideCollaboratorsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10373,14 +11806,17 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w htt
 	response, err := s.h.OrgsListOutsideCollaborators(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsListOutsideCollaboratorsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsListPendingInvitationsRequest handles orgs/list-pending-invitations operation.
@@ -10395,6 +11831,7 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.
 	params, err := decodeOrgsListPendingInvitationsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10402,14 +11839,17 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.
 	response, err := s.h.OrgsListPendingInvitations(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsListPendingInvitationsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsListPublicMembersRequest handles orgs/list-public-members operation.
@@ -10424,6 +11864,7 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.Respo
 	params, err := decodeOrgsListPublicMembersParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10431,14 +11872,17 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.Respo
 	response, err := s.h.OrgsListPublicMembers(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsListPublicMembersResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsListSamlSSOAuthorizationsRequest handles orgs/list-saml-sso-authorizations operation.
@@ -10453,6 +11897,7 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w ht
 	params, err := decodeOrgsListSamlSSOAuthorizationsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10460,14 +11905,17 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w ht
 	response, err := s.h.OrgsListSamlSSOAuthorizations(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsListSamlSSOAuthorizationsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsListWebhookDeliveriesRequest handles orgs/list-webhook-deliveries operation.
@@ -10482,6 +11930,7 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.R
 	params, err := decodeOrgsListWebhookDeliveriesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10489,14 +11938,17 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.R
 	response, err := s.h.OrgsListWebhookDeliveries(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsListWebhookDeliveriesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsListWebhooksRequest handles orgs/list-webhooks operation.
@@ -10511,6 +11963,7 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWr
 	params, err := decodeOrgsListWebhooksParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10518,14 +11971,17 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWr
 	response, err := s.h.OrgsListWebhooks(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsListWebhooksResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsPingWebhookRequest handles orgs/ping-webhook operation.
@@ -10540,6 +11996,7 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWri
 	params, err := decodeOrgsPingWebhookParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10547,14 +12004,17 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWri
 	response, err := s.h.OrgsPingWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsPingWebhookResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsRedeliverWebhookDeliveryRequest handles orgs/redeliver-webhook-delivery operation.
@@ -10569,6 +12029,7 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w htt
 	params, err := decodeOrgsRedeliverWebhookDeliveryParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10576,14 +12037,17 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w htt
 	response, err := s.h.OrgsRedeliverWebhookDelivery(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsRedeliverWebhookDeliveryResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsRemoveMemberRequest handles orgs/remove-member operation.
@@ -10598,6 +12062,7 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWr
 	params, err := decodeOrgsRemoveMemberParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10605,14 +12070,17 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWr
 	response, err := s.h.OrgsRemoveMember(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsRemoveMemberResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsRemoveMembershipForUserRequest handles orgs/remove-membership-for-user operation.
@@ -10627,6 +12095,7 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http
 	params, err := decodeOrgsRemoveMembershipForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10634,14 +12103,17 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http
 	response, err := s.h.OrgsRemoveMembershipForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsRemoveMembershipForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsRemoveOutsideCollaboratorRequest handles orgs/remove-outside-collaborator operation.
@@ -10656,6 +12128,7 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w ht
 	params, err := decodeOrgsRemoveOutsideCollaboratorParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10663,14 +12136,17 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w ht
 	response, err := s.h.OrgsRemoveOutsideCollaborator(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsRemoveOutsideCollaboratorResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsRemovePublicMembershipForAuthenticatedUserRequest handles orgs/remove-public-membership-for-authenticated-user operation.
@@ -10685,6 +12161,7 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 	params, err := decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10692,14 +12169,17 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 	response, err := s.h.OrgsRemovePublicMembershipForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsRemoveSamlSSOAuthorizationRequest handles orgs/remove-saml-sso-authorization operation.
@@ -10714,6 +12194,7 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w h
 	params, err := decodeOrgsRemoveSamlSSOAuthorizationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10721,14 +12202,17 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w h
 	response, err := s.h.OrgsRemoveSamlSSOAuthorization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsRemoveSamlSSOAuthorizationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsSetMembershipForUserRequest handles orgs/set-membership-for-user operation.
@@ -10743,12 +12227,14 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 	params, err := decodeOrgsSetMembershipForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeOrgsSetMembershipForUserRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10756,14 +12242,17 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 	response, err := s.h.OrgsSetMembershipForUser(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsSetMembershipForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsSetPublicMembershipForAuthenticatedUserRequest handles orgs/set-public-membership-for-authenticated-user operation.
@@ -10778,6 +12267,7 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 	params, err := decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10785,14 +12275,17 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 	response, err := s.h.OrgsSetPublicMembershipForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsUnblockUserRequest handles orgs/unblock-user operation.
@@ -10807,6 +12300,7 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 	params, err := decodeOrgsUnblockUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10814,14 +12308,17 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 	response, err := s.h.OrgsUnblockUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsUnblockUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsUpdateMembershipForAuthenticatedUserRequest handles orgs/update-membership-for-authenticated-user operation.
@@ -10836,12 +12333,14 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 	params, err := decodeOrgsUpdateMembershipForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10849,14 +12348,17 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 	response, err := s.h.OrgsUpdateMembershipForAuthenticatedUser(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsUpdateWebhookRequest handles orgs/update-webhook operation.
@@ -10871,12 +12373,14 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 	params, err := decodeOrgsUpdateWebhookParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeOrgsUpdateWebhookRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10884,14 +12388,17 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 	response, err := s.h.OrgsUpdateWebhook(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsUpdateWebhookResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrgsUpdateWebhookConfigForOrgRequest handles orgs/update-webhook-config-for-org operation.
@@ -10906,12 +12413,14 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 	params, err := decodeOrgsUpdateWebhookConfigForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeOrgsUpdateWebhookConfigForOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10919,14 +12428,17 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 	response, err := s.h.OrgsUpdateWebhookConfigForOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrgsUpdateWebhookConfigForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesDeletePackageForAuthenticatedUserRequest handles packages/delete-package-for-authenticated-user operation.
@@ -10941,6 +12453,7 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 	params, err := decodePackagesDeletePackageForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10948,14 +12461,17 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 	response, err := s.h.PackagesDeletePackageForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesDeletePackageForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesDeletePackageForOrgRequest handles packages/delete-package-for-org operation.
@@ -10970,6 +12486,7 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http
 	params, err := decodePackagesDeletePackageForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10977,14 +12494,17 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http
 	response, err := s.h.PackagesDeletePackageForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesDeletePackageForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesDeletePackageForUserRequest handles packages/delete-package-for-user operation.
@@ -10999,6 +12519,7 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w htt
 	params, err := decodePackagesDeletePackageForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11006,14 +12527,17 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w htt
 	response, err := s.h.PackagesDeletePackageForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesDeletePackageForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesDeletePackageVersionForAuthenticatedUserRequest handles packages/delete-package-version-for-authenticated-user operation.
@@ -11028,6 +12552,7 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 	params, err := decodePackagesDeletePackageVersionForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11035,14 +12560,17 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 	response, err := s.h.PackagesDeletePackageVersionForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesDeletePackageVersionForOrgRequest handles packages/delete-package-version-for-org operation.
@@ -11057,6 +12585,7 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 	params, err := decodePackagesDeletePackageVersionForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11064,14 +12593,17 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 	response, err := s.h.PackagesDeletePackageVersionForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesDeletePackageVersionForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesDeletePackageVersionForUserRequest handles packages/delete-package-version-for-user operation.
@@ -11086,6 +12618,7 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 	params, err := decodePackagesDeletePackageVersionForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11093,14 +12626,17 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 	response, err := s.h.PackagesDeletePackageVersionForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesDeletePackageVersionForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest handles packages/get-all-package-versions-for-package-owned-by-authenticated-user operation.
@@ -11115,6 +12651,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11122,14 +12659,17 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 	response, err := s.h.PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest handles packages/get-all-package-versions-for-package-owned-by-org operation.
@@ -11144,6 +12684,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11151,14 +12692,17 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 	response, err := s.h.PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest handles packages/get-all-package-versions-for-package-owned-by-user operation.
@@ -11173,6 +12717,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11180,14 +12725,17 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 	response, err := s.h.PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesGetPackageForAuthenticatedUserRequest handles packages/get-package-for-authenticated-user operation.
@@ -11202,6 +12750,7 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 	params, err := decodePackagesGetPackageForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11209,14 +12758,17 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 	response, err := s.h.PackagesGetPackageForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesGetPackageForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesGetPackageForOrganizationRequest handles packages/get-package-for-organization operation.
@@ -11231,6 +12783,7 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 	params, err := decodePackagesGetPackageForOrganizationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11238,14 +12791,17 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 	response, err := s.h.PackagesGetPackageForOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesGetPackageForOrganizationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesGetPackageForUserRequest handles packages/get-package-for-user operation.
@@ -11260,6 +12816,7 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 	params, err := decodePackagesGetPackageForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11267,14 +12824,17 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 	response, err := s.h.PackagesGetPackageForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesGetPackageForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesGetPackageVersionForAuthenticatedUserRequest handles packages/get-package-version-for-authenticated-user operation.
@@ -11289,6 +12849,7 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 	params, err := decodePackagesGetPackageVersionForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11296,14 +12857,17 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 	response, err := s.h.PackagesGetPackageVersionForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesGetPackageVersionForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesGetPackageVersionForOrganizationRequest handles packages/get-package-version-for-organization operation.
@@ -11318,6 +12882,7 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 	params, err := decodePackagesGetPackageVersionForOrganizationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11325,14 +12890,17 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 	response, err := s.h.PackagesGetPackageVersionForOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesGetPackageVersionForOrganizationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesGetPackageVersionForUserRequest handles packages/get-package-version-for-user operation.
@@ -11347,6 +12915,7 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w
 	params, err := decodePackagesGetPackageVersionForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11354,14 +12923,17 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w
 	response, err := s.h.PackagesGetPackageVersionForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesGetPackageVersionForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesListPackagesForAuthenticatedUserRequest handles packages/list-packages-for-authenticated-user operation.
@@ -11376,6 +12948,7 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 	params, err := decodePackagesListPackagesForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11383,14 +12956,17 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 	response, err := s.h.PackagesListPackagesForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesListPackagesForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesListPackagesForOrganizationRequest handles packages/list-packages-for-organization operation.
@@ -11405,6 +12981,7 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 	params, err := decodePackagesListPackagesForOrganizationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11412,14 +12989,17 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 	response, err := s.h.PackagesListPackagesForOrganization(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesListPackagesForOrganizationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesListPackagesForUserRequest handles packages/list-packages-for-user operation.
@@ -11434,6 +13014,7 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http
 	params, err := decodePackagesListPackagesForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11441,14 +13022,17 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http
 	response, err := s.h.PackagesListPackagesForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesListPackagesForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesRestorePackageForAuthenticatedUserRequest handles packages/restore-package-for-authenticated-user operation.
@@ -11463,6 +13047,7 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 	params, err := decodePackagesRestorePackageForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11470,14 +13055,17 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 	response, err := s.h.PackagesRestorePackageForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesRestorePackageForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesRestorePackageForOrgRequest handles packages/restore-package-for-org operation.
@@ -11492,6 +13080,7 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w htt
 	params, err := decodePackagesRestorePackageForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11499,14 +13088,17 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w htt
 	response, err := s.h.PackagesRestorePackageForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesRestorePackageForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesRestorePackageForUserRequest handles packages/restore-package-for-user operation.
@@ -11521,6 +13113,7 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w ht
 	params, err := decodePackagesRestorePackageForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11528,14 +13121,17 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w ht
 	response, err := s.h.PackagesRestorePackageForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesRestorePackageForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesRestorePackageVersionForAuthenticatedUserRequest handles packages/restore-package-version-for-authenticated-user operation.
@@ -11550,6 +13146,7 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 	params, err := decodePackagesRestorePackageVersionForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11557,14 +13154,17 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 	response, err := s.h.PackagesRestorePackageVersionForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesRestorePackageVersionForOrgRequest handles packages/restore-package-version-for-org operation.
@@ -11579,6 +13179,7 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 	params, err := decodePackagesRestorePackageVersionForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11586,14 +13187,17 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 	response, err := s.h.PackagesRestorePackageVersionForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesRestorePackageVersionForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePackagesRestorePackageVersionForUserRequest handles packages/restore-package-version-for-user operation.
@@ -11608,6 +13212,7 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 	params, err := decodePackagesRestorePackageVersionForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11615,14 +13220,17 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 	response, err := s.h.PackagesRestorePackageVersionForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePackagesRestorePackageVersionForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsAddCollaboratorRequest handles projects/add-collaborator operation.
@@ -11637,12 +13245,14 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 	params, err := decodeProjectsAddCollaboratorParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeProjectsAddCollaboratorRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11650,14 +13260,17 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 	response, err := s.h.ProjectsAddCollaborator(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsAddCollaboratorResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsCreateColumnRequest handles projects/create-column operation.
@@ -11672,12 +13285,14 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 	params, err := decodeProjectsCreateColumnParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeProjectsCreateColumnRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11685,14 +13300,17 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 	response, err := s.h.ProjectsCreateColumn(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsCreateColumnResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsCreateForAuthenticatedUserRequest handles projects/create-for-authenticated-user operation.
@@ -11707,6 +13325,7 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 	request, err := decodeProjectsCreateForAuthenticatedUserRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11714,14 +13333,17 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 	response, err := s.h.ProjectsCreateForAuthenticatedUser(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsCreateForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsCreateForOrgRequest handles projects/create-for-org operation.
@@ -11736,12 +13358,14 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 	params, err := decodeProjectsCreateForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeProjectsCreateForOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11749,14 +13373,17 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 	response, err := s.h.ProjectsCreateForOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsCreateForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsCreateForRepoRequest handles projects/create-for-repo operation.
@@ -11771,12 +13398,14 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 	params, err := decodeProjectsCreateForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeProjectsCreateForRepoRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11784,14 +13413,17 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 	response, err := s.h.ProjectsCreateForRepo(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsCreateForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsDeleteRequest handles projects/delete operation.
@@ -11806,6 +13438,7 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeProjectsDeleteParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11813,14 +13446,17 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWrit
 	response, err := s.h.ProjectsDelete(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsDeleteResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsDeleteCardRequest handles projects/delete-card operation.
@@ -11835,6 +13471,7 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.Response
 	params, err := decodeProjectsDeleteCardParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11842,14 +13479,17 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.Response
 	response, err := s.h.ProjectsDeleteCard(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsDeleteCardResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsDeleteColumnRequest handles projects/delete-column operation.
@@ -11864,6 +13504,7 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.Respon
 	params, err := decodeProjectsDeleteColumnParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11871,14 +13512,17 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.Respon
 	response, err := s.h.ProjectsDeleteColumn(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsDeleteColumnResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsGetRequest handles projects/get operation.
@@ -11893,6 +13537,7 @@ func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter,
 	params, err := decodeProjectsGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11900,14 +13545,17 @@ func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter,
 	response, err := s.h.ProjectsGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsGetCardRequest handles projects/get-card operation.
@@ -11922,6 +13570,7 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWri
 	params, err := decodeProjectsGetCardParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11929,14 +13578,17 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWri
 	response, err := s.h.ProjectsGetCard(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsGetCardResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsGetColumnRequest handles projects/get-column operation.
@@ -11951,6 +13603,7 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseW
 	params, err := decodeProjectsGetColumnParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11958,14 +13611,17 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseW
 	response, err := s.h.ProjectsGetColumn(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsGetColumnResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsGetPermissionForUserRequest handles projects/get-permission-for-user operation.
@@ -11980,6 +13636,7 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w htt
 	params, err := decodeProjectsGetPermissionForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11987,14 +13644,17 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w htt
 	response, err := s.h.ProjectsGetPermissionForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsGetPermissionForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsListCardsRequest handles projects/list-cards operation.
@@ -12009,6 +13669,7 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseW
 	params, err := decodeProjectsListCardsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12016,14 +13677,17 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseW
 	response, err := s.h.ProjectsListCards(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsListCardsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsListCollaboratorsRequest handles projects/list-collaborators operation.
@@ -12038,6 +13702,7 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.R
 	params, err := decodeProjectsListCollaboratorsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12045,14 +13710,17 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.R
 	response, err := s.h.ProjectsListCollaborators(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsListCollaboratorsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsListColumnsRequest handles projects/list-columns operation.
@@ -12067,6 +13735,7 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.Respons
 	params, err := decodeProjectsListColumnsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12074,14 +13743,17 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.Respons
 	response, err := s.h.ProjectsListColumns(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsListColumnsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsListForOrgRequest handles projects/list-for-org operation.
@@ -12096,6 +13768,7 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.Response
 	params, err := decodeProjectsListForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12103,14 +13776,17 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.Response
 	response, err := s.h.ProjectsListForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsListForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsListForRepoRequest handles projects/list-for-repo operation.
@@ -12125,6 +13801,7 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.Respons
 	params, err := decodeProjectsListForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12132,14 +13809,17 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.Respons
 	response, err := s.h.ProjectsListForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsListForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsListForUserRequest handles projects/list-for-user operation.
@@ -12154,6 +13834,7 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.Respons
 	params, err := decodeProjectsListForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12161,14 +13842,17 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.Respons
 	response, err := s.h.ProjectsListForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsListForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsMoveCardRequest handles projects/move-card operation.
@@ -12183,12 +13867,14 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 	params, err := decodeProjectsMoveCardParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeProjectsMoveCardRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12196,14 +13882,17 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 	response, err := s.h.ProjectsMoveCard(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsMoveCardResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsMoveColumnRequest handles projects/move-column operation.
@@ -12218,12 +13907,14 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 	params, err := decodeProjectsMoveColumnParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeProjectsMoveColumnRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12231,14 +13922,17 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 	response, err := s.h.ProjectsMoveColumn(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsMoveColumnResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsRemoveCollaboratorRequest handles projects/remove-collaborator operation.
@@ -12253,6 +13947,7 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.
 	params, err := decodeProjectsRemoveCollaboratorParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12260,14 +13955,17 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.
 	response, err := s.h.ProjectsRemoveCollaborator(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsRemoveCollaboratorResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsUpdateRequest handles projects/update operation.
@@ -12282,12 +13980,14 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeProjectsUpdateParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeProjectsUpdateRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12295,14 +13995,17 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 	response, err := s.h.ProjectsUpdate(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsUpdateResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsUpdateCardRequest handles projects/update-card operation.
@@ -12317,12 +14020,14 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 	params, err := decodeProjectsUpdateCardParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeProjectsUpdateCardRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12330,14 +14035,17 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 	response, err := s.h.ProjectsUpdateCard(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsUpdateCardResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleProjectsUpdateColumnRequest handles projects/update-column operation.
@@ -12352,12 +14060,14 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 	params, err := decodeProjectsUpdateColumnParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeProjectsUpdateColumnRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12365,14 +14075,17 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 	response, err := s.h.ProjectsUpdateColumn(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeProjectsUpdateColumnResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsCheckIfMergedRequest handles pulls/check-if-merged operation.
@@ -12387,6 +14100,7 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.Response
 	params, err := decodePullsCheckIfMergedParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12394,14 +14108,17 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.Response
 	response, err := s.h.PullsCheckIfMerged(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsCheckIfMergedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsCreateRequest handles pulls/create operation.
@@ -12416,12 +14133,14 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 	params, err := decodePullsCreateParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodePullsCreateRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12429,14 +14148,17 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 	response, err := s.h.PullsCreate(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsCreateResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsCreateReplyForReviewCommentRequest handles pulls/create-reply-for-review-comment operation.
@@ -12451,12 +14173,14 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 	params, err := decodePullsCreateReplyForReviewCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodePullsCreateReplyForReviewCommentRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12464,14 +14188,17 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 	response, err := s.h.PullsCreateReplyForReviewComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsCreateReplyForReviewCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsCreateReviewRequest handles pulls/create-review operation.
@@ -12486,12 +14213,14 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 	params, err := decodePullsCreateReviewParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodePullsCreateReviewRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12499,14 +14228,17 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 	response, err := s.h.PullsCreateReview(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsCreateReviewResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsCreateReviewCommentRequest handles pulls/create-review-comment operation.
@@ -12521,12 +14253,14 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 	params, err := decodePullsCreateReviewCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodePullsCreateReviewCommentRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12534,14 +14268,17 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 	response, err := s.h.PullsCreateReviewComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsCreateReviewCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsDeletePendingReviewRequest handles pulls/delete-pending-review operation.
@@ -12556,6 +14293,7 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.Re
 	params, err := decodePullsDeletePendingReviewParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12563,14 +14301,17 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.Re
 	response, err := s.h.PullsDeletePendingReview(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsDeletePendingReviewResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsDeleteReviewCommentRequest handles pulls/delete-review-comment operation.
@@ -12585,6 +14326,7 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.Re
 	params, err := decodePullsDeleteReviewCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12592,14 +14334,17 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.Re
 	response, err := s.h.PullsDeleteReviewComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsDeleteReviewCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsDismissReviewRequest handles pulls/dismiss-review operation.
@@ -12614,12 +14359,14 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 	params, err := decodePullsDismissReviewParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodePullsDismissReviewRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12627,14 +14374,17 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 	response, err := s.h.PullsDismissReview(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsDismissReviewResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsGetRequest handles pulls/get operation.
@@ -12649,6 +14399,7 @@ func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r 
 	params, err := decodePullsGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12656,14 +14407,17 @@ func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r 
 	response, err := s.h.PullsGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsGetReviewRequest handles pulls/get-review operation.
@@ -12678,6 +14432,7 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWrit
 	params, err := decodePullsGetReviewParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12685,14 +14440,17 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWrit
 	response, err := s.h.PullsGetReview(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsGetReviewResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsGetReviewCommentRequest handles pulls/get-review-comment operation.
@@ -12707,6 +14465,7 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.Respo
 	params, err := decodePullsGetReviewCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12714,14 +14473,17 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.Respo
 	response, err := s.h.PullsGetReviewComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsGetReviewCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsListRequest handles pulls/list operation.
@@ -12736,6 +14498,7 @@ func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r
 	params, err := decodePullsListParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12743,14 +14506,17 @@ func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r
 	response, err := s.h.PullsList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsListResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsListCommentsForReviewRequest handles pulls/list-comments-for-review operation.
@@ -12765,6 +14531,7 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.
 	params, err := decodePullsListCommentsForReviewParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12772,14 +14539,17 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.
 	response, err := s.h.PullsListCommentsForReview(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsListCommentsForReviewResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsListCommitsRequest handles pulls/list-commits operation.
@@ -12794,6 +14564,7 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWr
 	params, err := decodePullsListCommitsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12801,14 +14572,17 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWr
 	response, err := s.h.PullsListCommits(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsListCommitsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsListFilesRequest handles pulls/list-files operation.
@@ -12823,6 +14597,7 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWrit
 	params, err := decodePullsListFilesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12830,14 +14605,17 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWrit
 	response, err := s.h.PullsListFiles(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsListFilesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsListRequestedReviewersRequest handles pulls/list-requested-reviewers operation.
@@ -12852,6 +14630,7 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http
 	params, err := decodePullsListRequestedReviewersParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12859,14 +14638,17 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http
 	response, err := s.h.PullsListRequestedReviewers(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsListRequestedReviewersResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsListReviewCommentsRequest handles pulls/list-review-comments operation.
@@ -12881,6 +14663,7 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.Res
 	params, err := decodePullsListReviewCommentsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12888,14 +14671,17 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.Res
 	response, err := s.h.PullsListReviewComments(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsListReviewCommentsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsListReviewCommentsForRepoRequest handles pulls/list-review-comments-for-repo operation.
@@ -12910,6 +14696,7 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w h
 	params, err := decodePullsListReviewCommentsForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12917,14 +14704,17 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w h
 	response, err := s.h.PullsListReviewCommentsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsListReviewCommentsForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsListReviewsRequest handles pulls/list-reviews operation.
@@ -12939,6 +14729,7 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWr
 	params, err := decodePullsListReviewsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12946,14 +14737,17 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWr
 	response, err := s.h.PullsListReviews(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsListReviewsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsMergeRequest handles pulls/merge operation.
@@ -12968,12 +14762,14 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 	params, err := decodePullsMergeParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodePullsMergeRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12981,14 +14777,17 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 	response, err := s.h.PullsMerge(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsMergeResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsRemoveRequestedReviewersRequest handles pulls/remove-requested-reviewers operation.
@@ -13003,12 +14802,14 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 	params, err := decodePullsRemoveRequestedReviewersParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodePullsRemoveRequestedReviewersRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13016,14 +14817,17 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 	response, err := s.h.PullsRemoveRequestedReviewers(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsRemoveRequestedReviewersResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsSubmitReviewRequest handles pulls/submit-review operation.
@@ -13038,12 +14842,14 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 	params, err := decodePullsSubmitReviewParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodePullsSubmitReviewRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13051,14 +14857,17 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 	response, err := s.h.PullsSubmitReview(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsSubmitReviewResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsUpdateRequest handles pulls/update operation.
@@ -13073,12 +14882,14 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 	params, err := decodePullsUpdateParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodePullsUpdateRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13086,14 +14897,17 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 	response, err := s.h.PullsUpdate(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsUpdateResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsUpdateBranchRequest handles pulls/update-branch operation.
@@ -13108,12 +14922,14 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 	params, err := decodePullsUpdateBranchParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodePullsUpdateBranchRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13121,14 +14937,17 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 	response, err := s.h.PullsUpdateBranch(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsUpdateBranchResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsUpdateReviewRequest handles pulls/update-review operation.
@@ -13143,12 +14962,14 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 	params, err := decodePullsUpdateReviewParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodePullsUpdateReviewRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13156,14 +14977,17 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 	response, err := s.h.PullsUpdateReview(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsUpdateReviewResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePullsUpdateReviewCommentRequest handles pulls/update-review-comment operation.
@@ -13178,12 +15002,14 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 	params, err := decodePullsUpdateReviewCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodePullsUpdateReviewCommentRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13191,14 +15017,17 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 	response, err := s.h.PullsUpdateReviewComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePullsUpdateReviewCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleRateLimitGetRequest handles rate-limit/get operation.
@@ -13214,14 +15043,17 @@ func (s *Server) handleRateLimitGetRequest(args [0]string, w http.ResponseWriter
 	response, err := s.h.RateLimitGet(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeRateLimitGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsCreateForCommitCommentRequest handles reactions/create-for-commit-comment operation.
@@ -13236,12 +15068,14 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 	params, err := decodeReactionsCreateForCommitCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReactionsCreateForCommitCommentRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13249,14 +15083,17 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 	response, err := s.h.ReactionsCreateForCommitComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsCreateForCommitCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsCreateForIssueRequest handles reactions/create-for-issue operation.
@@ -13271,12 +15108,14 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 	params, err := decodeReactionsCreateForIssueParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReactionsCreateForIssueRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13284,14 +15123,17 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 	response, err := s.h.ReactionsCreateForIssue(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsCreateForIssueResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsCreateForIssueCommentRequest handles reactions/create-for-issue-comment operation.
@@ -13306,12 +15148,14 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 	params, err := decodeReactionsCreateForIssueCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReactionsCreateForIssueCommentRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13319,14 +15163,17 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 	response, err := s.h.ReactionsCreateForIssueComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsCreateForIssueCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsCreateForPullRequestReviewCommentRequest handles reactions/create-for-pull-request-review-comment operation.
@@ -13341,12 +15188,14 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 	params, err := decodeReactionsCreateForPullRequestReviewCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReactionsCreateForPullRequestReviewCommentRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13354,14 +15203,17 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 	response, err := s.h.ReactionsCreateForPullRequestReviewComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsCreateForPullRequestReviewCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsCreateForReleaseRequest handles reactions/create-for-release operation.
@@ -13376,12 +15228,14 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 	params, err := decodeReactionsCreateForReleaseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReactionsCreateForReleaseRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13389,14 +15243,17 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 	response, err := s.h.ReactionsCreateForRelease(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsCreateForReleaseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsCreateForTeamDiscussionCommentInOrgRequest handles reactions/create-for-team-discussion-comment-in-org operation.
@@ -13411,12 +15268,14 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 	params, err := decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13424,14 +15283,17 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 	response, err := s.h.ReactionsCreateForTeamDiscussionCommentInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsCreateForTeamDiscussionCommentLegacyRequest handles reactions/create-for-team-discussion-comment-legacy operation.
@@ -13446,12 +15308,14 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 	params, err := decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13459,14 +15323,17 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 	response, err := s.h.ReactionsCreateForTeamDiscussionCommentLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsCreateForTeamDiscussionInOrgRequest handles reactions/create-for-team-discussion-in-org operation.
@@ -13481,12 +15348,14 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 	params, err := decodeReactionsCreateForTeamDiscussionInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReactionsCreateForTeamDiscussionInOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13494,14 +15363,17 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 	response, err := s.h.ReactionsCreateForTeamDiscussionInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsCreateForTeamDiscussionInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsCreateForTeamDiscussionLegacyRequest handles reactions/create-for-team-discussion-legacy operation.
@@ -13516,12 +15388,14 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 	params, err := decodeReactionsCreateForTeamDiscussionLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReactionsCreateForTeamDiscussionLegacyRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13529,14 +15403,17 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 	response, err := s.h.ReactionsCreateForTeamDiscussionLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsCreateForTeamDiscussionLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsDeleteForCommitCommentRequest handles reactions/delete-for-commit-comment operation.
@@ -13551,6 +15428,7 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 	params, err := decodeReactionsDeleteForCommitCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13558,14 +15436,17 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 	response, err := s.h.ReactionsDeleteForCommitComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsDeleteForCommitCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsDeleteForIssueRequest handles reactions/delete-for-issue operation.
@@ -13580,6 +15461,7 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 	params, err := decodeReactionsDeleteForIssueParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13587,14 +15469,17 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 	response, err := s.h.ReactionsDeleteForIssue(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsDeleteForIssueResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsDeleteForIssueCommentRequest handles reactions/delete-for-issue-comment operation.
@@ -13609,6 +15494,7 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 	params, err := decodeReactionsDeleteForIssueCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13616,14 +15502,17 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 	response, err := s.h.ReactionsDeleteForIssueComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsDeleteForIssueCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsDeleteForPullRequestCommentRequest handles reactions/delete-for-pull-request-comment operation.
@@ -13638,6 +15527,7 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 	params, err := decodeReactionsDeleteForPullRequestCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13645,14 +15535,17 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 	response, err := s.h.ReactionsDeleteForPullRequestComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsDeleteForPullRequestCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsDeleteForTeamDiscussionRequest handles reactions/delete-for-team-discussion operation.
@@ -13667,6 +15560,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 	params, err := decodeReactionsDeleteForTeamDiscussionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13674,14 +15568,17 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 	response, err := s.h.ReactionsDeleteForTeamDiscussion(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsDeleteForTeamDiscussionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsDeleteForTeamDiscussionCommentRequest handles reactions/delete-for-team-discussion-comment operation.
@@ -13696,6 +15593,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 	params, err := decodeReactionsDeleteForTeamDiscussionCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13703,14 +15601,17 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 	response, err := s.h.ReactionsDeleteForTeamDiscussionComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsDeleteForTeamDiscussionCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsDeleteLegacyRequest handles reactions/delete-legacy operation.
@@ -13725,6 +15626,7 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.Respo
 	params, err := decodeReactionsDeleteLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13732,14 +15634,17 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.Respo
 	response, err := s.h.ReactionsDeleteLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsDeleteLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsListForCommitCommentRequest handles reactions/list-for-commit-comment operation.
@@ -13754,6 +15659,7 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w ht
 	params, err := decodeReactionsListForCommitCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13761,14 +15667,17 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w ht
 	response, err := s.h.ReactionsListForCommitComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsListForCommitCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsListForIssueRequest handles reactions/list-for-issue operation.
@@ -13783,6 +15692,7 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.Respo
 	params, err := decodeReactionsListForIssueParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13790,14 +15700,17 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.Respo
 	response, err := s.h.ReactionsListForIssue(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsListForIssueResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsListForIssueCommentRequest handles reactions/list-for-issue-comment operation.
@@ -13812,6 +15725,7 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w htt
 	params, err := decodeReactionsListForIssueCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13819,14 +15733,17 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w htt
 	response, err := s.h.ReactionsListForIssueComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsListForIssueCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsListForPullRequestReviewCommentRequest handles reactions/list-for-pull-request-review-comment operation.
@@ -13841,6 +15758,7 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 	params, err := decodeReactionsListForPullRequestReviewCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13848,14 +15766,17 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 	response, err := s.h.ReactionsListForPullRequestReviewComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsListForPullRequestReviewCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsListForTeamDiscussionCommentInOrgRequest handles reactions/list-for-team-discussion-comment-in-org operation.
@@ -13870,6 +15791,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 	params, err := decodeReactionsListForTeamDiscussionCommentInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13877,14 +15799,17 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 	response, err := s.h.ReactionsListForTeamDiscussionCommentInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsListForTeamDiscussionCommentInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsListForTeamDiscussionCommentLegacyRequest handles reactions/list-for-team-discussion-comment-legacy operation.
@@ -13899,6 +15824,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 	params, err := decodeReactionsListForTeamDiscussionCommentLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13906,14 +15832,17 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 	response, err := s.h.ReactionsListForTeamDiscussionCommentLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsListForTeamDiscussionCommentLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsListForTeamDiscussionInOrgRequest handles reactions/list-for-team-discussion-in-org operation.
@@ -13928,6 +15857,7 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 	params, err := decodeReactionsListForTeamDiscussionInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13935,14 +15865,17 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 	response, err := s.h.ReactionsListForTeamDiscussionInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsListForTeamDiscussionInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReactionsListForTeamDiscussionLegacyRequest handles reactions/list-for-team-discussion-legacy operation.
@@ -13957,6 +15890,7 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 	params, err := decodeReactionsListForTeamDiscussionLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13964,14 +15898,17 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 	response, err := s.h.ReactionsListForTeamDiscussionLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReactionsListForTeamDiscussionLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposAcceptInvitationRequest handles repos/accept-invitation operation.
@@ -13986,6 +15923,7 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.Respo
 	params, err := decodeReposAcceptInvitationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13993,14 +15931,17 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.Respo
 	response, err := s.h.ReposAcceptInvitation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposAcceptInvitationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposAddAppAccessRestrictionsRequest handles repos/add-app-access-restrictions operation.
@@ -14015,12 +15956,14 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 	params, err := decodeReposAddAppAccessRestrictionsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposAddAppAccessRestrictionsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14028,14 +15971,17 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 	response, err := s.h.ReposAddAppAccessRestrictions(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposAddAppAccessRestrictionsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposAddCollaboratorRequest handles repos/add-collaborator operation.
@@ -14050,12 +15996,14 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 	params, err := decodeReposAddCollaboratorParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposAddCollaboratorRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14063,14 +16011,17 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 	response, err := s.h.ReposAddCollaborator(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposAddCollaboratorResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposAddStatusCheckContextsRequest handles repos/add-status-check-contexts operation.
@@ -14085,12 +16036,14 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 	params, err := decodeReposAddStatusCheckContextsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposAddStatusCheckContextsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14098,14 +16051,17 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 	response, err := s.h.ReposAddStatusCheckContexts(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposAddStatusCheckContextsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposAddTeamAccessRestrictionsRequest handles repos/add-team-access-restrictions operation.
@@ -14120,12 +16076,14 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 	params, err := decodeReposAddTeamAccessRestrictionsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposAddTeamAccessRestrictionsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14133,14 +16091,17 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 	response, err := s.h.ReposAddTeamAccessRestrictions(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposAddTeamAccessRestrictionsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposAddUserAccessRestrictionsRequest handles repos/add-user-access-restrictions operation.
@@ -14155,12 +16116,14 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 	params, err := decodeReposAddUserAccessRestrictionsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposAddUserAccessRestrictionsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14168,14 +16131,17 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 	response, err := s.h.ReposAddUserAccessRestrictions(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposAddUserAccessRestrictionsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCheckCollaboratorRequest handles repos/check-collaborator operation.
@@ -14190,6 +16156,7 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.Resp
 	params, err := decodeReposCheckCollaboratorParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14197,14 +16164,17 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.Resp
 	response, err := s.h.ReposCheckCollaborator(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCheckCollaboratorResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCheckVulnerabilityAlertsRequest handles repos/check-vulnerability-alerts operation.
@@ -14219,6 +16189,7 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w ht
 	params, err := decodeReposCheckVulnerabilityAlertsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14226,14 +16197,17 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w ht
 	response, err := s.h.ReposCheckVulnerabilityAlerts(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCheckVulnerabilityAlertsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCompareCommitsRequest handles repos/compare-commits operation.
@@ -14248,6 +16222,7 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.Respons
 	params, err := decodeReposCompareCommitsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14255,14 +16230,17 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.Respons
 	response, err := s.h.ReposCompareCommits(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCompareCommitsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCreateAutolinkRequest handles repos/create-autolink operation.
@@ -14277,12 +16255,14 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 	params, err := decodeReposCreateAutolinkParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposCreateAutolinkRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14290,14 +16270,17 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 	response, err := s.h.ReposCreateAutolink(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCreateAutolinkResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCreateCommitCommentRequest handles repos/create-commit-comment operation.
@@ -14312,12 +16295,14 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 	params, err := decodeReposCreateCommitCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposCreateCommitCommentRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14325,14 +16310,17 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 	response, err := s.h.ReposCreateCommitComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCreateCommitCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCreateCommitSignatureProtectionRequest handles repos/create-commit-signature-protection operation.
@@ -14347,6 +16335,7 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 	params, err := decodeReposCreateCommitSignatureProtectionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14354,14 +16343,17 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 	response, err := s.h.ReposCreateCommitSignatureProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCreateCommitSignatureProtectionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCreateCommitStatusRequest handles repos/create-commit-status operation.
@@ -14376,12 +16368,14 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 	params, err := decodeReposCreateCommitStatusParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposCreateCommitStatusRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14389,14 +16383,17 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 	response, err := s.h.ReposCreateCommitStatus(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCreateCommitStatusResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCreateDeployKeyRequest handles repos/create-deploy-key operation.
@@ -14411,12 +16408,14 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 	params, err := decodeReposCreateDeployKeyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposCreateDeployKeyRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14424,14 +16423,17 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 	response, err := s.h.ReposCreateDeployKey(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCreateDeployKeyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCreateDeploymentRequest handles repos/create-deployment operation.
@@ -14446,12 +16448,14 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 	params, err := decodeReposCreateDeploymentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposCreateDeploymentRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14459,14 +16463,17 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 	response, err := s.h.ReposCreateDeployment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCreateDeploymentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCreateDeploymentStatusRequest handles repos/create-deployment-status operation.
@@ -14481,12 +16488,14 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 	params, err := decodeReposCreateDeploymentStatusParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposCreateDeploymentStatusRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14494,14 +16503,17 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 	response, err := s.h.ReposCreateDeploymentStatus(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCreateDeploymentStatusResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCreateDispatchEventRequest handles repos/create-dispatch-event operation.
@@ -14516,12 +16528,14 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 	params, err := decodeReposCreateDispatchEventParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposCreateDispatchEventRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14529,14 +16543,17 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 	response, err := s.h.ReposCreateDispatchEvent(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCreateDispatchEventResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCreateForAuthenticatedUserRequest handles repos/create-for-authenticated-user operation.
@@ -14551,6 +16568,7 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w 
 	request, err := decodeReposCreateForAuthenticatedUserRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14558,14 +16576,17 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w 
 	response, err := s.h.ReposCreateForAuthenticatedUser(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCreateForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCreateForkRequest handles repos/create-fork operation.
@@ -14580,12 +16601,14 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 	params, err := decodeReposCreateForkParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposCreateForkRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14593,14 +16616,17 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 	response, err := s.h.ReposCreateFork(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCreateForkResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCreateInOrgRequest handles repos/create-in-org operation.
@@ -14615,12 +16641,14 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 	params, err := decodeReposCreateInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposCreateInOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14628,14 +16656,17 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 	response, err := s.h.ReposCreateInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCreateInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCreateOrUpdateFileContentsRequest handles repos/create-or-update-file-contents operation.
@@ -14650,12 +16681,14 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 	params, err := decodeReposCreateOrUpdateFileContentsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposCreateOrUpdateFileContentsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14663,14 +16696,17 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 	response, err := s.h.ReposCreateOrUpdateFileContents(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCreateOrUpdateFileContentsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCreatePagesSiteRequest handles repos/create-pages-site operation.
@@ -14685,12 +16721,14 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 	params, err := decodeReposCreatePagesSiteParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposCreatePagesSiteRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14698,14 +16736,17 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 	response, err := s.h.ReposCreatePagesSite(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCreatePagesSiteResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCreateReleaseRequest handles repos/create-release operation.
@@ -14720,12 +16761,14 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 	params, err := decodeReposCreateReleaseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposCreateReleaseRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14733,14 +16776,17 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 	response, err := s.h.ReposCreateRelease(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCreateReleaseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCreateUsingTemplateRequest handles repos/create-using-template operation.
@@ -14755,12 +16801,14 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 	params, err := decodeReposCreateUsingTemplateParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposCreateUsingTemplateRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14768,14 +16816,17 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 	response, err := s.h.ReposCreateUsingTemplate(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCreateUsingTemplateResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposCreateWebhookRequest handles repos/create-webhook operation.
@@ -14790,12 +16841,14 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 	params, err := decodeReposCreateWebhookParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposCreateWebhookRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14803,14 +16856,17 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 	response, err := s.h.ReposCreateWebhook(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposCreateWebhookResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDeclineInvitationRequest handles repos/decline-invitation operation.
@@ -14825,6 +16881,7 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.Resp
 	params, err := decodeReposDeclineInvitationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14832,14 +16889,17 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.Resp
 	response, err := s.h.ReposDeclineInvitation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDeclineInvitationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDeleteRequest handles repos/delete operation.
@@ -14854,6 +16914,7 @@ func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter,
 	params, err := decodeReposDeleteParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14861,14 +16922,17 @@ func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter,
 	response, err := s.h.ReposDelete(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDeleteResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDeleteAccessRestrictionsRequest handles repos/delete-access-restrictions operation.
@@ -14883,6 +16947,7 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 	params, err := decodeReposDeleteAccessRestrictionsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14890,14 +16955,17 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 	response, err := s.h.ReposDeleteAccessRestrictions(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDeleteAccessRestrictionsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDeleteAdminBranchProtectionRequest handles repos/delete-admin-branch-protection operation.
@@ -14912,6 +16980,7 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w
 	params, err := decodeReposDeleteAdminBranchProtectionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14919,14 +16988,17 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w
 	response, err := s.h.ReposDeleteAdminBranchProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDeleteAdminBranchProtectionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDeleteAnEnvironmentRequest handles repos/delete-an-environment operation.
@@ -14941,6 +17013,7 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 	params, err := decodeReposDeleteAnEnvironmentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14948,14 +17021,17 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 	response, err := s.h.ReposDeleteAnEnvironment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDeleteAnEnvironmentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDeleteAutolinkRequest handles repos/delete-autolink operation.
@@ -14970,6 +17046,7 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.Respons
 	params, err := decodeReposDeleteAutolinkParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14977,14 +17054,17 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.Respons
 	response, err := s.h.ReposDeleteAutolink(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDeleteAutolinkResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDeleteBranchProtectionRequest handles repos/delete-branch-protection operation.
@@ -14999,6 +17079,7 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http
 	params, err := decodeReposDeleteBranchProtectionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15006,14 +17087,17 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http
 	response, err := s.h.ReposDeleteBranchProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDeleteBranchProtectionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDeleteCommitCommentRequest handles repos/delete-commit-comment operation.
@@ -15028,6 +17112,7 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.Re
 	params, err := decodeReposDeleteCommitCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15035,14 +17120,17 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.Re
 	response, err := s.h.ReposDeleteCommitComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDeleteCommitCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDeleteCommitSignatureProtectionRequest handles repos/delete-commit-signature-protection operation.
@@ -15057,6 +17145,7 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 	params, err := decodeReposDeleteCommitSignatureProtectionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15064,14 +17153,17 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 	response, err := s.h.ReposDeleteCommitSignatureProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDeleteCommitSignatureProtectionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDeleteDeployKeyRequest handles repos/delete-deploy-key operation.
@@ -15086,6 +17178,7 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 	params, err := decodeReposDeleteDeployKeyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15093,14 +17186,17 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 	response, err := s.h.ReposDeleteDeployKey(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDeleteDeployKeyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDeleteDeploymentRequest handles repos/delete-deployment operation.
@@ -15115,6 +17211,7 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.Respo
 	params, err := decodeReposDeleteDeploymentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15122,14 +17219,17 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.Respo
 	response, err := s.h.ReposDeleteDeployment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDeleteDeploymentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDeleteFileRequest handles repos/delete-file operation.
@@ -15144,12 +17244,14 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 	params, err := decodeReposDeleteFileParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposDeleteFileRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15157,14 +17259,17 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 	response, err := s.h.ReposDeleteFile(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDeleteFileResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDeleteInvitationRequest handles repos/delete-invitation operation.
@@ -15179,6 +17284,7 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 	params, err := decodeReposDeleteInvitationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15186,14 +17292,17 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 	response, err := s.h.ReposDeleteInvitation(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDeleteInvitationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDeletePagesSiteRequest handles repos/delete-pages-site operation.
@@ -15208,6 +17317,7 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.Respon
 	params, err := decodeReposDeletePagesSiteParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15215,14 +17325,17 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.Respon
 	response, err := s.h.ReposDeletePagesSite(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDeletePagesSiteResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDeletePullRequestReviewProtectionRequest handles repos/delete-pull-request-review-protection operation.
@@ -15237,6 +17350,7 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 	params, err := decodeReposDeletePullRequestReviewProtectionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15244,14 +17358,17 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 	response, err := s.h.ReposDeletePullRequestReviewProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDeletePullRequestReviewProtectionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDeleteReleaseRequest handles repos/delete-release operation.
@@ -15266,6 +17383,7 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 	params, err := decodeReposDeleteReleaseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15273,14 +17391,17 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 	response, err := s.h.ReposDeleteRelease(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDeleteReleaseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDeleteReleaseAssetRequest handles repos/delete-release-asset operation.
@@ -15295,6 +17416,7 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 	params, err := decodeReposDeleteReleaseAssetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15302,14 +17424,17 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 	response, err := s.h.ReposDeleteReleaseAsset(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDeleteReleaseAssetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDeleteWebhookRequest handles repos/delete-webhook operation.
@@ -15324,6 +17449,7 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.Response
 	params, err := decodeReposDeleteWebhookParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15331,14 +17457,17 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.Response
 	response, err := s.h.ReposDeleteWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDeleteWebhookResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDisableAutomatedSecurityFixesRequest handles repos/disable-automated-security-fixes operation.
@@ -15353,6 +17482,7 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 	params, err := decodeReposDisableAutomatedSecurityFixesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15360,14 +17490,17 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 	response, err := s.h.ReposDisableAutomatedSecurityFixes(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDisableAutomatedSecurityFixesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDisableLfsForRepoRequest handles repos/disable-lfs-for-repo operation.
@@ -15382,6 +17515,7 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 	params, err := decodeReposDisableLfsForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15389,14 +17523,17 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 	response, err := s.h.ReposDisableLfsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDisableLfsForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDisableVulnerabilityAlertsRequest handles repos/disable-vulnerability-alerts operation.
@@ -15411,6 +17548,7 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 	params, err := decodeReposDisableVulnerabilityAlertsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15418,14 +17556,17 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 	response, err := s.h.ReposDisableVulnerabilityAlerts(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDisableVulnerabilityAlertsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDownloadTarballArchiveRequest handles repos/download-tarball-archive operation.
@@ -15440,6 +17581,7 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http
 	params, err := decodeReposDownloadTarballArchiveParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15447,14 +17589,17 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http
 	response, err := s.h.ReposDownloadTarballArchive(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDownloadTarballArchiveResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposDownloadZipballArchiveRequest handles repos/download-zipball-archive operation.
@@ -15469,6 +17614,7 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http
 	params, err := decodeReposDownloadZipballArchiveParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15476,14 +17622,17 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http
 	response, err := s.h.ReposDownloadZipballArchive(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposDownloadZipballArchiveResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposEnableAutomatedSecurityFixesRequest handles repos/enable-automated-security-fixes operation.
@@ -15498,6 +17647,7 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 	params, err := decodeReposEnableAutomatedSecurityFixesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15505,14 +17655,17 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 	response, err := s.h.ReposEnableAutomatedSecurityFixes(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposEnableAutomatedSecurityFixesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposEnableLfsForRepoRequest handles repos/enable-lfs-for-repo operation.
@@ -15527,6 +17680,7 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.Respo
 	params, err := decodeReposEnableLfsForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15534,14 +17688,17 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.Respo
 	response, err := s.h.ReposEnableLfsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposEnableLfsForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposEnableVulnerabilityAlertsRequest handles repos/enable-vulnerability-alerts operation.
@@ -15556,6 +17713,7 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 	params, err := decodeReposEnableVulnerabilityAlertsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15563,14 +17721,17 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 	response, err := s.h.ReposEnableVulnerabilityAlerts(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposEnableVulnerabilityAlertsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetRequest handles repos/get operation.
@@ -15585,6 +17746,7 @@ func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r 
 	params, err := decodeReposGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15592,14 +17754,17 @@ func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r 
 	response, err := s.h.ReposGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetAccessRestrictionsRequest handles repos/get-access-restrictions operation.
@@ -15614,6 +17779,7 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.
 	params, err := decodeReposGetAccessRestrictionsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15621,14 +17787,17 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.
 	response, err := s.h.ReposGetAccessRestrictions(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetAccessRestrictionsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetAdminBranchProtectionRequest handles repos/get-admin-branch-protection operation.
@@ -15643,6 +17812,7 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w ht
 	params, err := decodeReposGetAdminBranchProtectionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15650,14 +17820,17 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w ht
 	response, err := s.h.ReposGetAdminBranchProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetAdminBranchProtectionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetAllStatusCheckContextsRequest handles repos/get-all-status-check-contexts operation.
@@ -15672,6 +17845,7 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w h
 	params, err := decodeReposGetAllStatusCheckContextsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15679,14 +17853,17 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w h
 	response, err := s.h.ReposGetAllStatusCheckContexts(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetAllStatusCheckContextsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetAllTopicsRequest handles repos/get-all-topics operation.
@@ -15701,6 +17878,7 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseW
 	params, err := decodeReposGetAllTopicsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15708,14 +17886,17 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseW
 	response, err := s.h.ReposGetAllTopics(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetAllTopicsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetAppsWithAccessToProtectedBranchRequest handles repos/get-apps-with-access-to-protected-branch operation.
@@ -15730,6 +17911,7 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 	params, err := decodeReposGetAppsWithAccessToProtectedBranchParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15737,14 +17919,17 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 	response, err := s.h.ReposGetAppsWithAccessToProtectedBranch(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetAppsWithAccessToProtectedBranchResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetAutolinkRequest handles repos/get-autolink operation.
@@ -15759,6 +17944,7 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWr
 	params, err := decodeReposGetAutolinkParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15766,14 +17952,17 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWr
 	response, err := s.h.ReposGetAutolink(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetAutolinkResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetBranchRequest handles repos/get-branch operation.
@@ -15788,6 +17977,7 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWrit
 	params, err := decodeReposGetBranchParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15795,14 +17985,17 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWrit
 	response, err := s.h.ReposGetBranch(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetBranchResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetBranchProtectionRequest handles repos/get-branch-protection operation.
@@ -15817,6 +18010,7 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.Re
 	params, err := decodeReposGetBranchProtectionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15824,14 +18018,17 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.Re
 	response, err := s.h.ReposGetBranchProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetBranchProtectionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetClonesRequest handles repos/get-clones operation.
@@ -15846,6 +18043,7 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWrit
 	params, err := decodeReposGetClonesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15853,14 +18051,17 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWrit
 	response, err := s.h.ReposGetClones(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetClonesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetCodeFrequencyStatsRequest handles repos/get-code-frequency-stats operation.
@@ -15875,6 +18076,7 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.
 	params, err := decodeReposGetCodeFrequencyStatsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15882,14 +18084,17 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.
 	response, err := s.h.ReposGetCodeFrequencyStats(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetCodeFrequencyStatsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetCollaboratorPermissionLevelRequest handles repos/get-collaborator-permission-level operation.
@@ -15904,6 +18109,7 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 	params, err := decodeReposGetCollaboratorPermissionLevelParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15911,14 +18117,17 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 	response, err := s.h.ReposGetCollaboratorPermissionLevel(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetCollaboratorPermissionLevelResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetCombinedStatusForRefRequest handles repos/get-combined-status-for-ref operation.
@@ -15933,6 +18142,7 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w htt
 	params, err := decodeReposGetCombinedStatusForRefParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15940,14 +18150,17 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w htt
 	response, err := s.h.ReposGetCombinedStatusForRef(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetCombinedStatusForRefResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetCommitRequest handles repos/get-commit operation.
@@ -15962,6 +18175,7 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWrit
 	params, err := decodeReposGetCommitParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15969,14 +18183,17 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWrit
 	response, err := s.h.ReposGetCommit(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetCommitResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetCommitActivityStatsRequest handles repos/get-commit-activity-stats operation.
@@ -15991,6 +18208,7 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http
 	params, err := decodeReposGetCommitActivityStatsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -15998,14 +18216,17 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http
 	response, err := s.h.ReposGetCommitActivityStats(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetCommitActivityStatsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetCommitCommentRequest handles repos/get-commit-comment operation.
@@ -16020,6 +18241,7 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.Respo
 	params, err := decodeReposGetCommitCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16027,14 +18249,17 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.Respo
 	response, err := s.h.ReposGetCommitComment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetCommitCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetCommitSignatureProtectionRequest handles repos/get-commit-signature-protection operation.
@@ -16049,6 +18274,7 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 	params, err := decodeReposGetCommitSignatureProtectionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16056,14 +18282,17 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 	response, err := s.h.ReposGetCommitSignatureProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetCommitSignatureProtectionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetCommunityProfileMetricsRequest handles repos/get-community-profile-metrics operation.
@@ -16078,6 +18307,7 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w 
 	params, err := decodeReposGetCommunityProfileMetricsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16085,14 +18315,17 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w 
 	response, err := s.h.ReposGetCommunityProfileMetrics(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetCommunityProfileMetricsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetContributorsStatsRequest handles repos/get-contributors-stats operation.
@@ -16107,6 +18340,7 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.R
 	params, err := decodeReposGetContributorsStatsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16114,14 +18348,17 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.R
 	response, err := s.h.ReposGetContributorsStats(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetContributorsStatsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetDeployKeyRequest handles repos/get-deploy-key operation.
@@ -16136,6 +18373,7 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseW
 	params, err := decodeReposGetDeployKeyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16143,14 +18381,17 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseW
 	response, err := s.h.ReposGetDeployKey(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetDeployKeyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetDeploymentRequest handles repos/get-deployment operation.
@@ -16165,6 +18406,7 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.Response
 	params, err := decodeReposGetDeploymentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16172,14 +18414,17 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.Response
 	response, err := s.h.ReposGetDeployment(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetDeploymentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetDeploymentStatusRequest handles repos/get-deployment-status operation.
@@ -16194,6 +18439,7 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.Re
 	params, err := decodeReposGetDeploymentStatusParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16201,14 +18447,17 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.Re
 	response, err := s.h.ReposGetDeploymentStatus(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetDeploymentStatusResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetLatestPagesBuildRequest handles repos/get-latest-pages-build operation.
@@ -16223,6 +18472,7 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.Re
 	params, err := decodeReposGetLatestPagesBuildParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16230,14 +18480,17 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.Re
 	response, err := s.h.ReposGetLatestPagesBuild(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetLatestPagesBuildResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetLatestReleaseRequest handles repos/get-latest-release operation.
@@ -16252,6 +18505,7 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 	params, err := decodeReposGetLatestReleaseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16259,14 +18513,17 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 	response, err := s.h.ReposGetLatestRelease(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetLatestReleaseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetPagesRequest handles repos/get-pages operation.
@@ -16281,6 +18538,7 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWrite
 	params, err := decodeReposGetPagesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16288,14 +18546,17 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWrite
 	response, err := s.h.ReposGetPages(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetPagesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetPagesBuildRequest handles repos/get-pages-build operation.
@@ -16310,6 +18571,7 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.Response
 	params, err := decodeReposGetPagesBuildParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16317,14 +18579,17 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.Response
 	response, err := s.h.ReposGetPagesBuild(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetPagesBuildResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetPagesHealthCheckRequest handles repos/get-pages-health-check operation.
@@ -16339,6 +18604,7 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.Re
 	params, err := decodeReposGetPagesHealthCheckParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16346,14 +18612,17 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.Re
 	response, err := s.h.ReposGetPagesHealthCheck(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetPagesHealthCheckResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetParticipationStatsRequest handles repos/get-participation-stats operation.
@@ -16368,6 +18637,7 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.
 	params, err := decodeReposGetParticipationStatsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16375,14 +18645,17 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.
 	response, err := s.h.ReposGetParticipationStats(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetParticipationStatsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetPullRequestReviewProtectionRequest handles repos/get-pull-request-review-protection operation.
@@ -16397,6 +18670,7 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 	params, err := decodeReposGetPullRequestReviewProtectionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16404,14 +18678,17 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 	response, err := s.h.ReposGetPullRequestReviewProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetPullRequestReviewProtectionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetPunchCardStatsRequest handles repos/get-punch-card-stats operation.
@@ -16426,6 +18703,7 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.Resp
 	params, err := decodeReposGetPunchCardStatsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16433,14 +18711,17 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.Resp
 	response, err := s.h.ReposGetPunchCardStats(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetPunchCardStatsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetReadmeRequest handles repos/get-readme operation.
@@ -16455,6 +18736,7 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWrit
 	params, err := decodeReposGetReadmeParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16462,14 +18744,17 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWrit
 	response, err := s.h.ReposGetReadme(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetReadmeResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetReadmeInDirectoryRequest handles repos/get-readme-in-directory operation.
@@ -16484,6 +18769,7 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.R
 	params, err := decodeReposGetReadmeInDirectoryParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16491,14 +18777,17 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.R
 	response, err := s.h.ReposGetReadmeInDirectory(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetReadmeInDirectoryResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetReleaseRequest handles repos/get-release operation.
@@ -16513,6 +18802,7 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWri
 	params, err := decodeReposGetReleaseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16520,14 +18810,17 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWri
 	response, err := s.h.ReposGetRelease(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetReleaseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetReleaseAssetRequest handles repos/get-release-asset operation.
@@ -16542,6 +18835,7 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.Respon
 	params, err := decodeReposGetReleaseAssetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16549,14 +18843,17 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.Respon
 	response, err := s.h.ReposGetReleaseAsset(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetReleaseAssetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetReleaseByTagRequest handles repos/get-release-by-tag operation.
@@ -16571,6 +18868,7 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.Respon
 	params, err := decodeReposGetReleaseByTagParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16578,14 +18876,17 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.Respon
 	response, err := s.h.ReposGetReleaseByTag(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetReleaseByTagResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetStatusChecksProtectionRequest handles repos/get-status-checks-protection operation.
@@ -16600,6 +18901,7 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w h
 	params, err := decodeReposGetStatusChecksProtectionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16607,14 +18909,17 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w h
 	response, err := s.h.ReposGetStatusChecksProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetStatusChecksProtectionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetTeamsWithAccessToProtectedBranchRequest handles repos/get-teams-with-access-to-protected-branch operation.
@@ -16629,6 +18934,7 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 	params, err := decodeReposGetTeamsWithAccessToProtectedBranchParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16636,14 +18942,17 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 	response, err := s.h.ReposGetTeamsWithAccessToProtectedBranch(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetTeamsWithAccessToProtectedBranchResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetTopPathsRequest handles repos/get-top-paths operation.
@@ -16658,6 +18967,7 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWr
 	params, err := decodeReposGetTopPathsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16665,14 +18975,17 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWr
 	response, err := s.h.ReposGetTopPaths(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetTopPathsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetTopReferrersRequest handles repos/get-top-referrers operation.
@@ -16687,6 +19000,7 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.Respon
 	params, err := decodeReposGetTopReferrersParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16694,14 +19008,17 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.Respon
 	response, err := s.h.ReposGetTopReferrers(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetTopReferrersResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetUsersWithAccessToProtectedBranchRequest handles repos/get-users-with-access-to-protected-branch operation.
@@ -16716,6 +19033,7 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 	params, err := decodeReposGetUsersWithAccessToProtectedBranchParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16723,14 +19041,17 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 	response, err := s.h.ReposGetUsersWithAccessToProtectedBranch(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetUsersWithAccessToProtectedBranchResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetViewsRequest handles repos/get-views operation.
@@ -16745,6 +19066,7 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWrite
 	params, err := decodeReposGetViewsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16752,14 +19074,17 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWrite
 	response, err := s.h.ReposGetViews(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetViewsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetWebhookRequest handles repos/get-webhook operation.
@@ -16774,6 +19099,7 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWri
 	params, err := decodeReposGetWebhookParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16781,14 +19107,17 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWri
 	response, err := s.h.ReposGetWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetWebhookResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetWebhookConfigForRepoRequest handles repos/get-webhook-config-for-repo operation.
@@ -16803,6 +19132,7 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w htt
 	params, err := decodeReposGetWebhookConfigForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16810,14 +19140,17 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w htt
 	response, err := s.h.ReposGetWebhookConfigForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetWebhookConfigForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposGetWebhookDeliveryRequest handles repos/get-webhook-delivery operation.
@@ -16832,6 +19165,7 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.Res
 	params, err := decodeReposGetWebhookDeliveryParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16839,14 +19173,17 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.Res
 	response, err := s.h.ReposGetWebhookDelivery(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposGetWebhookDeliveryResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListAutolinksRequest handles repos/list-autolinks operation.
@@ -16861,6 +19198,7 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.Response
 	params, err := decodeReposListAutolinksParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16868,14 +19206,17 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.Response
 	response, err := s.h.ReposListAutolinks(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListAutolinksResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListBranchesRequest handles repos/list-branches operation.
@@ -16890,6 +19231,7 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseW
 	params, err := decodeReposListBranchesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16897,14 +19239,17 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseW
 	response, err := s.h.ReposListBranches(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListBranchesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListBranchesForHeadCommitRequest handles repos/list-branches-for-head-commit operation.
@@ -16919,6 +19264,7 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w h
 	params, err := decodeReposListBranchesForHeadCommitParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16926,14 +19272,17 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w h
 	response, err := s.h.ReposListBranchesForHeadCommit(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListBranchesForHeadCommitResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListCollaboratorsRequest handles repos/list-collaborators operation.
@@ -16948,6 +19297,7 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.Resp
 	params, err := decodeReposListCollaboratorsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16955,14 +19305,17 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.Resp
 	response, err := s.h.ReposListCollaborators(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListCollaboratorsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListCommentsForCommitRequest handles repos/list-comments-for-commit operation.
@@ -16977,6 +19330,7 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.
 	params, err := decodeReposListCommentsForCommitParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -16984,14 +19338,17 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.
 	response, err := s.h.ReposListCommentsForCommit(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListCommentsForCommitResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListCommitCommentsForRepoRequest handles repos/list-commit-comments-for-repo operation.
@@ -17006,6 +19363,7 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w h
 	params, err := decodeReposListCommitCommentsForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17013,14 +19371,17 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w h
 	response, err := s.h.ReposListCommitCommentsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListCommitCommentsForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListCommitStatusesForRefRequest handles repos/list-commit-statuses-for-ref operation.
@@ -17035,6 +19396,7 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w ht
 	params, err := decodeReposListCommitStatusesForRefParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17042,14 +19404,17 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w ht
 	response, err := s.h.ReposListCommitStatusesForRef(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListCommitStatusesForRefResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListCommitsRequest handles repos/list-commits operation.
@@ -17064,6 +19429,7 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWr
 	params, err := decodeReposListCommitsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17071,14 +19437,17 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWr
 	response, err := s.h.ReposListCommits(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListCommitsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListContributorsRequest handles repos/list-contributors operation.
@@ -17093,6 +19462,7 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, w http.Respo
 	params, err := decodeReposListContributorsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17100,14 +19470,17 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, w http.Respo
 	response, err := s.h.ReposListContributors(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListContributorsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListDeployKeysRequest handles repos/list-deploy-keys operation.
@@ -17122,6 +19495,7 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.Respons
 	params, err := decodeReposListDeployKeysParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17129,14 +19503,17 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.Respons
 	response, err := s.h.ReposListDeployKeys(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListDeployKeysResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListDeploymentStatusesRequest handles repos/list-deployment-statuses operation.
@@ -17151,6 +19528,7 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http
 	params, err := decodeReposListDeploymentStatusesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17158,14 +19536,17 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http
 	response, err := s.h.ReposListDeploymentStatuses(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListDeploymentStatusesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListDeploymentsRequest handles repos/list-deployments operation.
@@ -17180,6 +19561,7 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.Respon
 	params, err := decodeReposListDeploymentsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17187,14 +19569,17 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.Respon
 	response, err := s.h.ReposListDeployments(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListDeploymentsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListForAuthenticatedUserRequest handles repos/list-for-authenticated-user operation.
@@ -17209,6 +19594,7 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w ht
 	params, err := decodeReposListForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17216,14 +19602,17 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w ht
 	response, err := s.h.ReposListForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListForOrgRequest handles repos/list-for-org operation.
@@ -17238,6 +19627,7 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWri
 	params, err := decodeReposListForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17245,14 +19635,17 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWri
 	response, err := s.h.ReposListForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListForUserRequest handles repos/list-for-user operation.
@@ -17267,6 +19660,7 @@ func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWr
 	params, err := decodeReposListForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17274,14 +19668,17 @@ func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWr
 	response, err := s.h.ReposListForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListForksRequest handles repos/list-forks operation.
@@ -17296,6 +19693,7 @@ func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWrit
 	params, err := decodeReposListForksParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17303,14 +19701,17 @@ func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWrit
 	response, err := s.h.ReposListForks(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListForksResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListInvitationsRequest handles repos/list-invitations operation.
@@ -17325,6 +19726,7 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.Respon
 	params, err := decodeReposListInvitationsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17332,14 +19734,17 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.Respon
 	response, err := s.h.ReposListInvitations(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListInvitationsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListInvitationsForAuthenticatedUserRequest handles repos/list-invitations-for-authenticated-user operation.
@@ -17354,6 +19759,7 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 	params, err := decodeReposListInvitationsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17361,14 +19767,17 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 	response, err := s.h.ReposListInvitationsForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListInvitationsForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListLanguagesRequest handles repos/list-languages operation.
@@ -17383,6 +19792,7 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.Response
 	params, err := decodeReposListLanguagesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17390,14 +19800,17 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.Response
 	response, err := s.h.ReposListLanguages(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListLanguagesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListPagesBuildsRequest handles repos/list-pages-builds operation.
@@ -17412,6 +19825,7 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.Respon
 	params, err := decodeReposListPagesBuildsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17419,14 +19833,17 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.Respon
 	response, err := s.h.ReposListPagesBuilds(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListPagesBuildsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListPublicRequest handles repos/list-public operation.
@@ -17441,6 +19858,7 @@ func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWri
 	params, err := decodeReposListPublicParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17448,14 +19866,17 @@ func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWri
 	response, err := s.h.ReposListPublic(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListPublicResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListPullRequestsAssociatedWithCommitRequest handles repos/list-pull-requests-associated-with-commit operation.
@@ -17470,6 +19891,7 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 	params, err := decodeReposListPullRequestsAssociatedWithCommitParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17477,14 +19899,17 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 	response, err := s.h.ReposListPullRequestsAssociatedWithCommit(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListPullRequestsAssociatedWithCommitResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListReleaseAssetsRequest handles repos/list-release-assets operation.
@@ -17499,6 +19924,7 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.Resp
 	params, err := decodeReposListReleaseAssetsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17506,14 +19932,17 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.Resp
 	response, err := s.h.ReposListReleaseAssets(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListReleaseAssetsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListReleasesRequest handles repos/list-releases operation.
@@ -17528,6 +19957,7 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseW
 	params, err := decodeReposListReleasesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17535,14 +19965,17 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseW
 	response, err := s.h.ReposListReleases(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListReleasesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListTagsRequest handles repos/list-tags operation.
@@ -17557,6 +19990,7 @@ func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWrite
 	params, err := decodeReposListTagsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17564,14 +19998,17 @@ func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWrite
 	response, err := s.h.ReposListTags(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListTagsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListTeamsRequest handles repos/list-teams operation.
@@ -17586,6 +20023,7 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWrit
 	params, err := decodeReposListTeamsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17593,14 +20031,17 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWrit
 	response, err := s.h.ReposListTeams(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListTeamsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListWebhookDeliveriesRequest handles repos/list-webhook-deliveries operation.
@@ -17615,6 +20056,7 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.
 	params, err := decodeReposListWebhookDeliveriesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17622,14 +20064,17 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.
 	response, err := s.h.ReposListWebhookDeliveries(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListWebhookDeliveriesResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposListWebhooksRequest handles repos/list-webhooks operation.
@@ -17644,6 +20089,7 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseW
 	params, err := decodeReposListWebhooksParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17651,14 +20097,17 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseW
 	response, err := s.h.ReposListWebhooks(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposListWebhooksResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposMergeRequest handles repos/merge operation.
@@ -17673,12 +20122,14 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 	params, err := decodeReposMergeParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposMergeRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17686,14 +20137,17 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 	response, err := s.h.ReposMerge(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposMergeResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposMergeUpstreamRequest handles repos/merge-upstream operation.
@@ -17708,12 +20162,14 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 	params, err := decodeReposMergeUpstreamParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposMergeUpstreamRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17721,14 +20177,17 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 	response, err := s.h.ReposMergeUpstream(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposMergeUpstreamResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposPingWebhookRequest handles repos/ping-webhook operation.
@@ -17743,6 +20202,7 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWr
 	params, err := decodeReposPingWebhookParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17750,14 +20210,17 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWr
 	response, err := s.h.ReposPingWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposPingWebhookResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposRedeliverWebhookDeliveryRequest handles repos/redeliver-webhook-delivery operation.
@@ -17772,6 +20235,7 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w ht
 	params, err := decodeReposRedeliverWebhookDeliveryParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17779,14 +20243,17 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w ht
 	response, err := s.h.ReposRedeliverWebhookDelivery(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposRedeliverWebhookDeliveryResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposRemoveAppAccessRestrictionsRequest handles repos/remove-app-access-restrictions operation.
@@ -17801,12 +20268,14 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 	params, err := decodeReposRemoveAppAccessRestrictionsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposRemoveAppAccessRestrictionsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17814,14 +20283,17 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 	response, err := s.h.ReposRemoveAppAccessRestrictions(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposRemoveAppAccessRestrictionsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposRemoveCollaboratorRequest handles repos/remove-collaborator operation.
@@ -17836,6 +20308,7 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 	params, err := decodeReposRemoveCollaboratorParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17843,14 +20316,17 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 	response, err := s.h.ReposRemoveCollaborator(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposRemoveCollaboratorResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposRemoveStatusCheckContextsRequest handles repos/remove-status-check-contexts operation.
@@ -17865,12 +20341,14 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 	params, err := decodeReposRemoveStatusCheckContextsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposRemoveStatusCheckContextsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17878,14 +20356,17 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 	response, err := s.h.ReposRemoveStatusCheckContexts(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposRemoveStatusCheckContextsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposRemoveStatusCheckProtectionRequest handles repos/remove-status-check-protection operation.
@@ -17900,6 +20381,7 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 	params, err := decodeReposRemoveStatusCheckProtectionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17907,14 +20389,17 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 	response, err := s.h.ReposRemoveStatusCheckProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposRemoveStatusCheckProtectionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposRemoveTeamAccessRestrictionsRequest handles repos/remove-team-access-restrictions operation.
@@ -17929,12 +20414,14 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 	params, err := decodeReposRemoveTeamAccessRestrictionsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposRemoveTeamAccessRestrictionsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17942,14 +20429,17 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 	response, err := s.h.ReposRemoveTeamAccessRestrictions(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposRemoveTeamAccessRestrictionsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposRemoveUserAccessRestrictionsRequest handles repos/remove-user-access-restrictions operation.
@@ -17964,12 +20454,14 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 	params, err := decodeReposRemoveUserAccessRestrictionsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposRemoveUserAccessRestrictionsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -17977,14 +20469,17 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 	response, err := s.h.ReposRemoveUserAccessRestrictions(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposRemoveUserAccessRestrictionsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposRenameBranchRequest handles repos/rename-branch operation.
@@ -17999,12 +20494,14 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 	params, err := decodeReposRenameBranchParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposRenameBranchRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18012,14 +20509,17 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 	response, err := s.h.ReposRenameBranch(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposRenameBranchResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposReplaceAllTopicsRequest handles repos/replace-all-topics operation.
@@ -18034,12 +20534,14 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 	params, err := decodeReposReplaceAllTopicsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposReplaceAllTopicsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18047,14 +20549,17 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 	response, err := s.h.ReposReplaceAllTopics(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposReplaceAllTopicsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposRequestPagesBuildRequest handles repos/request-pages-build operation.
@@ -18069,6 +20574,7 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.Resp
 	params, err := decodeReposRequestPagesBuildParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18076,14 +20582,17 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.Resp
 	response, err := s.h.ReposRequestPagesBuild(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposRequestPagesBuildResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposSetAdminBranchProtectionRequest handles repos/set-admin-branch-protection operation.
@@ -18098,6 +20607,7 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w ht
 	params, err := decodeReposSetAdminBranchProtectionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18105,14 +20615,17 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w ht
 	response, err := s.h.ReposSetAdminBranchProtection(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposSetAdminBranchProtectionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposSetAppAccessRestrictionsRequest handles repos/set-app-access-restrictions operation.
@@ -18127,12 +20640,14 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 	params, err := decodeReposSetAppAccessRestrictionsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposSetAppAccessRestrictionsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18140,14 +20655,17 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 	response, err := s.h.ReposSetAppAccessRestrictions(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposSetAppAccessRestrictionsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposSetStatusCheckContextsRequest handles repos/set-status-check-contexts operation.
@@ -18162,12 +20680,14 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 	params, err := decodeReposSetStatusCheckContextsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposSetStatusCheckContextsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18175,14 +20695,17 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 	response, err := s.h.ReposSetStatusCheckContexts(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposSetStatusCheckContextsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposSetTeamAccessRestrictionsRequest handles repos/set-team-access-restrictions operation.
@@ -18197,12 +20720,14 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 	params, err := decodeReposSetTeamAccessRestrictionsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposSetTeamAccessRestrictionsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18210,14 +20735,17 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 	response, err := s.h.ReposSetTeamAccessRestrictions(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposSetTeamAccessRestrictionsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposSetUserAccessRestrictionsRequest handles repos/set-user-access-restrictions operation.
@@ -18232,12 +20760,14 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 	params, err := decodeReposSetUserAccessRestrictionsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposSetUserAccessRestrictionsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18245,14 +20775,17 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 	response, err := s.h.ReposSetUserAccessRestrictions(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposSetUserAccessRestrictionsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposTestPushWebhookRequest handles repos/test-push-webhook operation.
@@ -18267,6 +20800,7 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.Respon
 	params, err := decodeReposTestPushWebhookParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18274,14 +20808,17 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.Respon
 	response, err := s.h.ReposTestPushWebhook(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposTestPushWebhookResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposTransferRequest handles repos/transfer operation.
@@ -18296,12 +20833,14 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 	params, err := decodeReposTransferParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposTransferRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18309,14 +20848,17 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 	response, err := s.h.ReposTransfer(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposTransferResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposUpdateRequest handles repos/update operation.
@@ -18331,12 +20873,14 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 	params, err := decodeReposUpdateParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposUpdateRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18344,14 +20888,17 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 	response, err := s.h.ReposUpdate(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposUpdateResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposUpdateBranchProtectionRequest handles repos/update-branch-protection operation.
@@ -18366,12 +20913,14 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 	params, err := decodeReposUpdateBranchProtectionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposUpdateBranchProtectionRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18379,14 +20928,17 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 	response, err := s.h.ReposUpdateBranchProtection(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposUpdateBranchProtectionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposUpdateCommitCommentRequest handles repos/update-commit-comment operation.
@@ -18401,12 +20953,14 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 	params, err := decodeReposUpdateCommitCommentParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposUpdateCommitCommentRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18414,14 +20968,17 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 	response, err := s.h.ReposUpdateCommitComment(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposUpdateCommitCommentResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposUpdateInvitationRequest handles repos/update-invitation operation.
@@ -18436,12 +20993,14 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 	params, err := decodeReposUpdateInvitationParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposUpdateInvitationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18449,14 +21008,17 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 	response, err := s.h.ReposUpdateInvitation(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposUpdateInvitationResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposUpdatePullRequestReviewProtectionRequest handles repos/update-pull-request-review-protection operation.
@@ -18471,12 +21033,14 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 	params, err := decodeReposUpdatePullRequestReviewProtectionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposUpdatePullRequestReviewProtectionRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18484,14 +21048,17 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 	response, err := s.h.ReposUpdatePullRequestReviewProtection(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposUpdatePullRequestReviewProtectionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposUpdateReleaseRequest handles repos/update-release operation.
@@ -18506,12 +21073,14 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 	params, err := decodeReposUpdateReleaseParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposUpdateReleaseRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18519,14 +21088,17 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 	response, err := s.h.ReposUpdateRelease(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposUpdateReleaseResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposUpdateReleaseAssetRequest handles repos/update-release-asset operation.
@@ -18541,12 +21113,14 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 	params, err := decodeReposUpdateReleaseAssetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposUpdateReleaseAssetRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18554,14 +21128,17 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 	response, err := s.h.ReposUpdateReleaseAsset(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposUpdateReleaseAssetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposUpdateStatusCheckProtectionRequest handles repos/update-status-check-protection operation.
@@ -18576,12 +21153,14 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 	params, err := decodeReposUpdateStatusCheckProtectionParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposUpdateStatusCheckProtectionRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18589,14 +21168,17 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 	response, err := s.h.ReposUpdateStatusCheckProtection(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposUpdateStatusCheckProtectionResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposUpdateWebhookRequest handles repos/update-webhook operation.
@@ -18611,12 +21193,14 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 	params, err := decodeReposUpdateWebhookParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposUpdateWebhookRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18624,14 +21208,17 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 	response, err := s.h.ReposUpdateWebhook(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposUpdateWebhookResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleReposUpdateWebhookConfigForRepoRequest handles repos/update-webhook-config-for-repo operation.
@@ -18646,12 +21233,14 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 	params, err := decodeReposUpdateWebhookConfigForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeReposUpdateWebhookConfigForRepoRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18659,14 +21248,17 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 	response, err := s.h.ReposUpdateWebhookConfigForRepo(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeReposUpdateWebhookConfigForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleScimDeleteUserFromOrgRequest handles scim/delete-user-from-org operation.
@@ -18681,6 +21273,7 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.Respo
 	params, err := decodeScimDeleteUserFromOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18688,14 +21281,17 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.Respo
 	response, err := s.h.ScimDeleteUserFromOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeScimDeleteUserFromOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSearchCodeRequest handles search/code operation.
@@ -18710,6 +21306,7 @@ func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, 
 	params, err := decodeSearchCodeParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18717,14 +21314,17 @@ func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, 
 	response, err := s.h.SearchCode(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeSearchCodeResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSearchCommitsRequest handles search/commits operation.
@@ -18739,6 +21339,7 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWrite
 	params, err := decodeSearchCommitsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18746,14 +21347,17 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.SearchCommits(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeSearchCommitsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSearchIssuesAndPullRequestsRequest handles search/issues-and-pull-requests operation.
@@ -18768,6 +21372,7 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http
 	params, err := decodeSearchIssuesAndPullRequestsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18775,14 +21380,17 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http
 	response, err := s.h.SearchIssuesAndPullRequests(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeSearchIssuesAndPullRequestsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSearchLabelsRequest handles search/labels operation.
@@ -18797,6 +21405,7 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter
 	params, err := decodeSearchLabelsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18804,14 +21413,17 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter
 	response, err := s.h.SearchLabels(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeSearchLabelsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSearchReposRequest handles search/repos operation.
@@ -18826,6 +21438,7 @@ func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter,
 	params, err := decodeSearchReposParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18833,14 +21446,17 @@ func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter,
 	response, err := s.h.SearchRepos(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeSearchReposResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSearchTopicsRequest handles search/topics operation.
@@ -18855,6 +21471,7 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter
 	params, err := decodeSearchTopicsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18862,14 +21479,17 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter
 	response, err := s.h.SearchTopics(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeSearchTopicsResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSearchUsersRequest handles search/users operation.
@@ -18884,6 +21504,7 @@ func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter,
 	params, err := decodeSearchUsersParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18891,14 +21512,17 @@ func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter,
 	response, err := s.h.SearchUsers(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeSearchUsersResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSecretScanningGetAlertRequest handles secret-scanning/get-alert operation.
@@ -18913,6 +21537,7 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.Resp
 	params, err := decodeSecretScanningGetAlertParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18920,14 +21545,17 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.Resp
 	response, err := s.h.SecretScanningGetAlert(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeSecretScanningGetAlertResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSecretScanningListAlertsForOrgRequest handles secret-scanning/list-alerts-for-org operation.
@@ -18942,6 +21570,7 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w h
 	params, err := decodeSecretScanningListAlertsForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18949,14 +21578,17 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w h
 	response, err := s.h.SecretScanningListAlertsForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeSecretScanningListAlertsForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSecretScanningListAlertsForRepoRequest handles secret-scanning/list-alerts-for-repo operation.
@@ -18971,6 +21603,7 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w 
 	params, err := decodeSecretScanningListAlertsForRepoParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -18978,14 +21611,17 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w 
 	response, err := s.h.SecretScanningListAlertsForRepo(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeSecretScanningListAlertsForRepoResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSecretScanningUpdateAlertRequest handles secret-scanning/update-alert operation.
@@ -19000,12 +21636,14 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 	params, err := decodeSecretScanningUpdateAlertParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeSecretScanningUpdateAlertRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19013,14 +21651,17 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 	response, err := s.h.SecretScanningUpdateAlert(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeSecretScanningUpdateAlertResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsAddMemberLegacyRequest handles teams/add-member-legacy operation.
@@ -19035,6 +21676,7 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.Respon
 	params, err := decodeTeamsAddMemberLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19042,14 +21684,17 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.Respon
 	response, err := s.h.TeamsAddMemberLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsAddMemberLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsAddOrUpdateMembershipForUserInOrgRequest handles teams/add-or-update-membership-for-user-in-org operation.
@@ -19064,12 +21709,14 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 	params, err := decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19077,14 +21724,17 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 	response, err := s.h.TeamsAddOrUpdateMembershipForUserInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsAddOrUpdateMembershipForUserLegacyRequest handles teams/add-or-update-membership-for-user-legacy operation.
@@ -19099,12 +21749,14 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 	params, err := decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19112,14 +21764,17 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 	response, err := s.h.TeamsAddOrUpdateMembershipForUserLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsAddOrUpdateProjectPermissionsInOrgRequest handles teams/add-or-update-project-permissions-in-org operation.
@@ -19134,12 +21789,14 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 	params, err := decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19147,14 +21804,17 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 	response, err := s.h.TeamsAddOrUpdateProjectPermissionsInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsAddOrUpdateProjectPermissionsLegacyRequest handles teams/add-or-update-project-permissions-legacy operation.
@@ -19169,12 +21829,14 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 	params, err := decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19182,14 +21844,17 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 	response, err := s.h.TeamsAddOrUpdateProjectPermissionsLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsAddOrUpdateRepoPermissionsInOrgRequest handles teams/add-or-update-repo-permissions-in-org operation.
@@ -19204,12 +21869,14 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 	params, err := decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19217,14 +21884,17 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 	response, err := s.h.TeamsAddOrUpdateRepoPermissionsInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsAddOrUpdateRepoPermissionsLegacyRequest handles teams/add-or-update-repo-permissions-legacy operation.
@@ -19239,12 +21909,14 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 	params, err := decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19252,14 +21924,17 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 	response, err := s.h.TeamsAddOrUpdateRepoPermissionsLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsCheckPermissionsForProjectInOrgRequest handles teams/check-permissions-for-project-in-org operation.
@@ -19274,6 +21949,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 	params, err := decodeTeamsCheckPermissionsForProjectInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19281,14 +21957,17 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 	response, err := s.h.TeamsCheckPermissionsForProjectInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsCheckPermissionsForProjectInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsCheckPermissionsForProjectLegacyRequest handles teams/check-permissions-for-project-legacy operation.
@@ -19303,6 +21982,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 	params, err := decodeTeamsCheckPermissionsForProjectLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19310,14 +21990,17 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 	response, err := s.h.TeamsCheckPermissionsForProjectLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsCheckPermissionsForProjectLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsCheckPermissionsForRepoInOrgRequest handles teams/check-permissions-for-repo-in-org operation.
@@ -19332,6 +22015,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 	params, err := decodeTeamsCheckPermissionsForRepoInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19339,14 +22023,17 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 	response, err := s.h.TeamsCheckPermissionsForRepoInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsCheckPermissionsForRepoInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsCheckPermissionsForRepoLegacyRequest handles teams/check-permissions-for-repo-legacy operation.
@@ -19361,6 +22048,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 	params, err := decodeTeamsCheckPermissionsForRepoLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19368,14 +22056,17 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 	response, err := s.h.TeamsCheckPermissionsForRepoLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsCheckPermissionsForRepoLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsCreateRequest handles teams/create operation.
@@ -19390,12 +22081,14 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 	params, err := decodeTeamsCreateParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsCreateRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19403,14 +22096,17 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 	response, err := s.h.TeamsCreate(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsCreateResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsCreateDiscussionCommentInOrgRequest handles teams/create-discussion-comment-in-org operation.
@@ -19425,12 +22121,14 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 	params, err := decodeTeamsCreateDiscussionCommentInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsCreateDiscussionCommentInOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19438,14 +22136,17 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 	response, err := s.h.TeamsCreateDiscussionCommentInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsCreateDiscussionCommentInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsCreateDiscussionCommentLegacyRequest handles teams/create-discussion-comment-legacy operation.
@@ -19460,12 +22161,14 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 	params, err := decodeTeamsCreateDiscussionCommentLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsCreateDiscussionCommentLegacyRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19473,14 +22176,17 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 	response, err := s.h.TeamsCreateDiscussionCommentLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsCreateDiscussionCommentLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsCreateDiscussionInOrgRequest handles teams/create-discussion-in-org operation.
@@ -19495,12 +22201,14 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 	params, err := decodeTeamsCreateDiscussionInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsCreateDiscussionInOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19508,14 +22216,17 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 	response, err := s.h.TeamsCreateDiscussionInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsCreateDiscussionInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsCreateDiscussionLegacyRequest handles teams/create-discussion-legacy operation.
@@ -19530,12 +22241,14 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 	params, err := decodeTeamsCreateDiscussionLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsCreateDiscussionLegacyRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19543,14 +22256,17 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 	response, err := s.h.TeamsCreateDiscussionLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsCreateDiscussionLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest handles teams/create-or-update-idp-group-connections-in-org operation.
@@ -19565,12 +22281,14 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 	params, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19578,14 +22296,17 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 	response, err := s.h.TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest handles teams/create-or-update-idp-group-connections-legacy operation.
@@ -19600,12 +22321,14 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 	params, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19613,14 +22336,17 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 	response, err := s.h.TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsDeleteDiscussionCommentInOrgRequest handles teams/delete-discussion-comment-in-org operation.
@@ -19635,6 +22361,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 	params, err := decodeTeamsDeleteDiscussionCommentInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19642,14 +22369,17 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 	response, err := s.h.TeamsDeleteDiscussionCommentInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsDeleteDiscussionCommentInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsDeleteDiscussionCommentLegacyRequest handles teams/delete-discussion-comment-legacy operation.
@@ -19664,6 +22394,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 	params, err := decodeTeamsDeleteDiscussionCommentLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19671,14 +22402,17 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 	response, err := s.h.TeamsDeleteDiscussionCommentLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsDeleteDiscussionCommentLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsDeleteDiscussionInOrgRequest handles teams/delete-discussion-in-org operation.
@@ -19693,6 +22427,7 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 	params, err := decodeTeamsDeleteDiscussionInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19700,14 +22435,17 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 	response, err := s.h.TeamsDeleteDiscussionInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsDeleteDiscussionInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsDeleteDiscussionLegacyRequest handles teams/delete-discussion-legacy operation.
@@ -19722,6 +22460,7 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 	params, err := decodeTeamsDeleteDiscussionLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19729,14 +22468,17 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 	response, err := s.h.TeamsDeleteDiscussionLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsDeleteDiscussionLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsDeleteInOrgRequest handles teams/delete-in-org operation.
@@ -19751,6 +22493,7 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 	params, err := decodeTeamsDeleteInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19758,14 +22501,17 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 	response, err := s.h.TeamsDeleteInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsDeleteInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsDeleteLegacyRequest handles teams/delete-legacy operation.
@@ -19780,6 +22526,7 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseW
 	params, err := decodeTeamsDeleteLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19787,14 +22534,17 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseW
 	response, err := s.h.TeamsDeleteLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsDeleteLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsGetByNameRequest handles teams/get-by-name operation.
@@ -19809,6 +22559,7 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWrit
 	params, err := decodeTeamsGetByNameParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19816,14 +22567,17 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWrit
 	response, err := s.h.TeamsGetByName(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsGetByNameResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsGetDiscussionCommentInOrgRequest handles teams/get-discussion-comment-in-org operation.
@@ -19838,6 +22592,7 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w h
 	params, err := decodeTeamsGetDiscussionCommentInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19845,14 +22600,17 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w h
 	response, err := s.h.TeamsGetDiscussionCommentInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsGetDiscussionCommentInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsGetDiscussionCommentLegacyRequest handles teams/get-discussion-comment-legacy operation.
@@ -19867,6 +22625,7 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w 
 	params, err := decodeTeamsGetDiscussionCommentLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19874,14 +22633,17 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w 
 	response, err := s.h.TeamsGetDiscussionCommentLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsGetDiscussionCommentLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsGetDiscussionInOrgRequest handles teams/get-discussion-in-org operation.
@@ -19896,6 +22658,7 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.Res
 	params, err := decodeTeamsGetDiscussionInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19903,14 +22666,17 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.Res
 	response, err := s.h.TeamsGetDiscussionInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsGetDiscussionInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsGetDiscussionLegacyRequest handles teams/get-discussion-legacy operation.
@@ -19925,6 +22691,7 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.Re
 	params, err := decodeTeamsGetDiscussionLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19932,14 +22699,17 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.Re
 	response, err := s.h.TeamsGetDiscussionLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsGetDiscussionLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsGetLegacyRequest handles teams/get-legacy operation.
@@ -19954,6 +22724,7 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeTeamsGetLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19961,14 +22732,17 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWrit
 	response, err := s.h.TeamsGetLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsGetLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsGetMemberLegacyRequest handles teams/get-member-legacy operation.
@@ -19983,6 +22757,7 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.Respon
 	params, err := decodeTeamsGetMemberLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -19990,14 +22765,17 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.Respon
 	response, err := s.h.TeamsGetMemberLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsGetMemberLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsGetMembershipForUserInOrgRequest handles teams/get-membership-for-user-in-org operation.
@@ -20012,6 +22790,7 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w h
 	params, err := decodeTeamsGetMembershipForUserInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20019,14 +22798,17 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w h
 	response, err := s.h.TeamsGetMembershipForUserInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsGetMembershipForUserInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsGetMembershipForUserLegacyRequest handles teams/get-membership-for-user-legacy operation.
@@ -20041,6 +22823,7 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w 
 	params, err := decodeTeamsGetMembershipForUserLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20048,14 +22831,17 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w 
 	response, err := s.h.TeamsGetMembershipForUserLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsGetMembershipForUserLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListRequest handles teams/list operation.
@@ -20070,6 +22856,7 @@ func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r
 	params, err := decodeTeamsListParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20077,14 +22864,17 @@ func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r
 	response, err := s.h.TeamsList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListChildInOrgRequest handles teams/list-child-in-org operation.
@@ -20099,6 +22889,7 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.Respons
 	params, err := decodeTeamsListChildInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20106,14 +22897,17 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.Respons
 	response, err := s.h.TeamsListChildInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListChildInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListChildLegacyRequest handles teams/list-child-legacy operation.
@@ -20128,6 +22922,7 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.Respon
 	params, err := decodeTeamsListChildLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20135,14 +22930,17 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.Respon
 	response, err := s.h.TeamsListChildLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListChildLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListDiscussionCommentsInOrgRequest handles teams/list-discussion-comments-in-org operation.
@@ -20157,6 +22955,7 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w
 	params, err := decodeTeamsListDiscussionCommentsInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20164,14 +22963,17 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w
 	response, err := s.h.TeamsListDiscussionCommentsInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListDiscussionCommentsInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListDiscussionCommentsLegacyRequest handles teams/list-discussion-comments-legacy operation.
@@ -20186,6 +22988,7 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 	params, err := decodeTeamsListDiscussionCommentsLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20193,14 +22996,17 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 	response, err := s.h.TeamsListDiscussionCommentsLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListDiscussionCommentsLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListDiscussionsInOrgRequest handles teams/list-discussions-in-org operation.
@@ -20215,6 +23021,7 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.R
 	params, err := decodeTeamsListDiscussionsInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20222,14 +23029,17 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.R
 	response, err := s.h.TeamsListDiscussionsInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListDiscussionsInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListDiscussionsLegacyRequest handles teams/list-discussions-legacy operation.
@@ -20244,6 +23054,7 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.
 	params, err := decodeTeamsListDiscussionsLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20251,14 +23062,17 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.
 	response, err := s.h.TeamsListDiscussionsLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListDiscussionsLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListForAuthenticatedUserRequest handles teams/list-for-authenticated-user operation.
@@ -20273,6 +23087,7 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w ht
 	params, err := decodeTeamsListForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20280,14 +23095,17 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w ht
 	response, err := s.h.TeamsListForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListIdpGroupsForLegacyRequest handles teams/list-idp-groups-for-legacy operation.
@@ -20302,6 +23120,7 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http
 	params, err := decodeTeamsListIdpGroupsForLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20309,14 +23128,17 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http
 	response, err := s.h.TeamsListIdpGroupsForLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListIdpGroupsForLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListIdpGroupsForOrgRequest handles teams/list-idp-groups-for-org operation.
@@ -20331,6 +23153,7 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.Re
 	params, err := decodeTeamsListIdpGroupsForOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20338,14 +23161,17 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.Re
 	response, err := s.h.TeamsListIdpGroupsForOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListIdpGroupsForOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListIdpGroupsInOrgRequest handles teams/list-idp-groups-in-org operation.
@@ -20360,6 +23186,7 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.Res
 	params, err := decodeTeamsListIdpGroupsInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20367,14 +23194,17 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.Res
 	response, err := s.h.TeamsListIdpGroupsInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListIdpGroupsInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListMembersInOrgRequest handles teams/list-members-in-org operation.
@@ -20389,6 +23219,7 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.Respo
 	params, err := decodeTeamsListMembersInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20396,14 +23227,17 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.Respo
 	response, err := s.h.TeamsListMembersInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListMembersInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListMembersLegacyRequest handles teams/list-members-legacy operation.
@@ -20418,6 +23252,7 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.Resp
 	params, err := decodeTeamsListMembersLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20425,14 +23260,17 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.Resp
 	response, err := s.h.TeamsListMembersLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListMembersLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListPendingInvitationsInOrgRequest handles teams/list-pending-invitations-in-org operation.
@@ -20447,6 +23285,7 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w
 	params, err := decodeTeamsListPendingInvitationsInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20454,14 +23293,17 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w
 	response, err := s.h.TeamsListPendingInvitationsInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListPendingInvitationsInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListPendingInvitationsLegacyRequest handles teams/list-pending-invitations-legacy operation.
@@ -20476,6 +23318,7 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 	params, err := decodeTeamsListPendingInvitationsLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20483,14 +23326,17 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 	response, err := s.h.TeamsListPendingInvitationsLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListPendingInvitationsLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListProjectsInOrgRequest handles teams/list-projects-in-org operation.
@@ -20505,6 +23351,7 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.Resp
 	params, err := decodeTeamsListProjectsInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20512,14 +23359,17 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.Resp
 	response, err := s.h.TeamsListProjectsInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListProjectsInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListProjectsLegacyRequest handles teams/list-projects-legacy operation.
@@ -20534,6 +23384,7 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.Res
 	params, err := decodeTeamsListProjectsLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20541,14 +23392,17 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.Res
 	response, err := s.h.TeamsListProjectsLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListProjectsLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListReposInOrgRequest handles teams/list-repos-in-org operation.
@@ -20563,6 +23417,7 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.Respons
 	params, err := decodeTeamsListReposInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20570,14 +23425,17 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.Respons
 	response, err := s.h.TeamsListReposInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListReposInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsListReposLegacyRequest handles teams/list-repos-legacy operation.
@@ -20592,6 +23450,7 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.Respon
 	params, err := decodeTeamsListReposLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20599,14 +23458,17 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.Respon
 	response, err := s.h.TeamsListReposLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsListReposLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsRemoveMemberLegacyRequest handles teams/remove-member-legacy operation.
@@ -20621,6 +23483,7 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.Res
 	params, err := decodeTeamsRemoveMemberLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20628,14 +23491,17 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.Res
 	response, err := s.h.TeamsRemoveMemberLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsRemoveMemberLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsRemoveMembershipForUserInOrgRequest handles teams/remove-membership-for-user-in-org operation.
@@ -20650,6 +23516,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 	params, err := decodeTeamsRemoveMembershipForUserInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20657,14 +23524,17 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 	response, err := s.h.TeamsRemoveMembershipForUserInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsRemoveMembershipForUserInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsRemoveMembershipForUserLegacyRequest handles teams/remove-membership-for-user-legacy operation.
@@ -20679,6 +23549,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 	params, err := decodeTeamsRemoveMembershipForUserLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20686,14 +23557,17 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 	response, err := s.h.TeamsRemoveMembershipForUserLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsRemoveMembershipForUserLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsRemoveProjectInOrgRequest handles teams/remove-project-in-org operation.
@@ -20708,6 +23582,7 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 	params, err := decodeTeamsRemoveProjectInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20715,14 +23590,17 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 	response, err := s.h.TeamsRemoveProjectInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsRemoveProjectInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsRemoveProjectLegacyRequest handles teams/remove-project-legacy operation.
@@ -20737,6 +23615,7 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.Re
 	params, err := decodeTeamsRemoveProjectLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20744,14 +23623,17 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.Re
 	response, err := s.h.TeamsRemoveProjectLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsRemoveProjectLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsRemoveRepoInOrgRequest handles teams/remove-repo-in-org operation.
@@ -20766,6 +23648,7 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 	params, err := decodeTeamsRemoveRepoInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20773,14 +23656,17 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 	response, err := s.h.TeamsRemoveRepoInOrg(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsRemoveRepoInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsRemoveRepoLegacyRequest handles teams/remove-repo-legacy operation.
@@ -20795,6 +23681,7 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 	params, err := decodeTeamsRemoveRepoLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20802,14 +23689,17 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 	response, err := s.h.TeamsRemoveRepoLegacy(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsRemoveRepoLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsUpdateDiscussionCommentInOrgRequest handles teams/update-discussion-comment-in-org operation.
@@ -20824,12 +23714,14 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 	params, err := decodeTeamsUpdateDiscussionCommentInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsUpdateDiscussionCommentInOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20837,14 +23729,17 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 	response, err := s.h.TeamsUpdateDiscussionCommentInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsUpdateDiscussionCommentInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsUpdateDiscussionCommentLegacyRequest handles teams/update-discussion-comment-legacy operation.
@@ -20859,12 +23754,14 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 	params, err := decodeTeamsUpdateDiscussionCommentLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsUpdateDiscussionCommentLegacyRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20872,14 +23769,17 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 	response, err := s.h.TeamsUpdateDiscussionCommentLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsUpdateDiscussionCommentLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsUpdateDiscussionInOrgRequest handles teams/update-discussion-in-org operation.
@@ -20894,12 +23794,14 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 	params, err := decodeTeamsUpdateDiscussionInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsUpdateDiscussionInOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20907,14 +23809,17 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 	response, err := s.h.TeamsUpdateDiscussionInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsUpdateDiscussionInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsUpdateDiscussionLegacyRequest handles teams/update-discussion-legacy operation.
@@ -20929,12 +23834,14 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 	params, err := decodeTeamsUpdateDiscussionLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsUpdateDiscussionLegacyRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20942,14 +23849,17 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 	response, err := s.h.TeamsUpdateDiscussionLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsUpdateDiscussionLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsUpdateInOrgRequest handles teams/update-in-org operation.
@@ -20964,12 +23874,14 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 	params, err := decodeTeamsUpdateInOrgParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsUpdateInOrgRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -20977,14 +23889,17 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 	response, err := s.h.TeamsUpdateInOrg(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsUpdateInOrgResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleTeamsUpdateLegacyRequest handles teams/update-legacy operation.
@@ -20999,12 +23914,14 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 	params, err := decodeTeamsUpdateLegacyParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeTeamsUpdateLegacyRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21012,14 +23929,17 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 	response, err := s.h.TeamsUpdateLegacy(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeTeamsUpdateLegacyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersAddEmailForAuthenticatedRequest handles users/add-email-for-authenticated operation.
@@ -21034,6 +23954,7 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w ht
 	request, err := decodeUsersAddEmailForAuthenticatedRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21041,14 +23962,17 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w ht
 	response, err := s.h.UsersAddEmailForAuthenticated(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersAddEmailForAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersBlockRequest handles users/block operation.
@@ -21063,6 +23987,7 @@ func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, 
 	params, err := decodeUsersBlockParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21070,14 +23995,17 @@ func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, 
 	response, err := s.h.UsersBlock(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersBlockResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersCheckBlockedRequest handles users/check-blocked operation.
@@ -21092,6 +24020,7 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseW
 	params, err := decodeUsersCheckBlockedParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21099,14 +24028,17 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseW
 	response, err := s.h.UsersCheckBlocked(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersCheckBlockedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersCheckFollowingForUserRequest handles users/check-following-for-user operation.
@@ -21121,6 +24053,7 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.
 	params, err := decodeUsersCheckFollowingForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21128,14 +24061,17 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.
 	response, err := s.h.UsersCheckFollowingForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersCheckFollowingForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersCheckPersonIsFollowedByAuthenticatedRequest handles users/check-person-is-followed-by-authenticated operation.
@@ -21150,6 +24086,7 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 	params, err := decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21157,14 +24094,17 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 	response, err := s.h.UsersCheckPersonIsFollowedByAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersCreateGpgKeyForAuthenticatedRequest handles users/create-gpg-key-for-authenticated operation.
@@ -21179,6 +24119,7 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 	request, err := decodeUsersCreateGpgKeyForAuthenticatedRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21186,14 +24127,17 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 	response, err := s.h.UsersCreateGpgKeyForAuthenticated(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersCreateGpgKeyForAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersCreatePublicSSHKeyForAuthenticatedRequest handles users/create-public-ssh-key-for-authenticated operation.
@@ -21208,6 +24152,7 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 	request, err := decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21215,14 +24160,17 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 	response, err := s.h.UsersCreatePublicSSHKeyForAuthenticated(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersDeleteEmailForAuthenticatedRequest handles users/delete-email-for-authenticated operation.
@@ -21237,6 +24185,7 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w
 	request, err := decodeUsersDeleteEmailForAuthenticatedRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21244,14 +24193,17 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w
 	response, err := s.h.UsersDeleteEmailForAuthenticated(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersDeleteEmailForAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersDeleteGpgKeyForAuthenticatedRequest handles users/delete-gpg-key-for-authenticated operation.
@@ -21266,6 +24218,7 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 	params, err := decodeUsersDeleteGpgKeyForAuthenticatedParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21273,14 +24226,17 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 	response, err := s.h.UsersDeleteGpgKeyForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersDeleteGpgKeyForAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersDeletePublicSSHKeyForAuthenticatedRequest handles users/delete-public-ssh-key-for-authenticated operation.
@@ -21295,6 +24251,7 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 	params, err := decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21302,14 +24259,17 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 	response, err := s.h.UsersDeletePublicSSHKeyForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersFollowRequest handles users/follow operation.
@@ -21324,6 +24284,7 @@ func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter,
 	params, err := decodeUsersFollowParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21331,14 +24292,17 @@ func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter,
 	response, err := s.h.UsersFollow(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersFollowResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersGetAuthenticatedRequest handles users/get-authenticated operation.
@@ -21354,14 +24318,17 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, w http.Respo
 	response, err := s.h.UsersGetAuthenticated(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersGetAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersGetByUsernameRequest handles users/get-by-username operation.
@@ -21376,6 +24343,7 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.Response
 	params, err := decodeUsersGetByUsernameParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21383,14 +24351,17 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.Response
 	response, err := s.h.UsersGetByUsername(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersGetByUsernameResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersGetContextForUserRequest handles users/get-context-for-user operation.
@@ -21405,6 +24376,7 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.Resp
 	params, err := decodeUsersGetContextForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21412,14 +24384,17 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.Resp
 	response, err := s.h.UsersGetContextForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersGetContextForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersGetGpgKeyForAuthenticatedRequest handles users/get-gpg-key-for-authenticated operation.
@@ -21434,6 +24409,7 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w h
 	params, err := decodeUsersGetGpgKeyForAuthenticatedParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21441,14 +24417,17 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w h
 	response, err := s.h.UsersGetGpgKeyForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersGetGpgKeyForAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersGetPublicSSHKeyForAuthenticatedRequest handles users/get-public-ssh-key-for-authenticated operation.
@@ -21463,6 +24442,7 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 	params, err := decodeUsersGetPublicSSHKeyForAuthenticatedParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21470,14 +24450,17 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 	response, err := s.h.UsersGetPublicSSHKeyForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersListRequest handles users/list operation.
@@ -21492,6 +24475,7 @@ func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r
 	params, err := decodeUsersListParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21499,14 +24483,17 @@ func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r
 	response, err := s.h.UsersList(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersListResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersListBlockedByAuthenticatedRequest handles users/list-blocked-by-authenticated operation.
@@ -21522,14 +24509,17 @@ func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, w 
 	response, err := s.h.UsersListBlockedByAuthenticated(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersListBlockedByAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersListEmailsForAuthenticatedRequest handles users/list-emails-for-authenticated operation.
@@ -21544,6 +24534,7 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w 
 	params, err := decodeUsersListEmailsForAuthenticatedParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21551,14 +24542,17 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w 
 	response, err := s.h.UsersListEmailsForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersListEmailsForAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersListFollowedByAuthenticatedRequest handles users/list-followed-by-authenticated operation.
@@ -21573,6 +24567,7 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w
 	params, err := decodeUsersListFollowedByAuthenticatedParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21580,14 +24575,17 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w
 	response, err := s.h.UsersListFollowedByAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersListFollowedByAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersListFollowersForAuthenticatedUserRequest handles users/list-followers-for-authenticated-user operation.
@@ -21602,6 +24600,7 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 	params, err := decodeUsersListFollowersForAuthenticatedUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21609,14 +24608,17 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 	response, err := s.h.UsersListFollowersForAuthenticatedUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersListFollowersForAuthenticatedUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersListFollowersForUserRequest handles users/list-followers-for-user operation.
@@ -21631,6 +24633,7 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.R
 	params, err := decodeUsersListFollowersForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21638,14 +24641,17 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.R
 	response, err := s.h.UsersListFollowersForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersListFollowersForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersListFollowingForUserRequest handles users/list-following-for-user operation.
@@ -21660,6 +24666,7 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 	params, err := decodeUsersListFollowingForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21667,14 +24674,17 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 	response, err := s.h.UsersListFollowingForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersListFollowingForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersListGpgKeysForAuthenticatedRequest handles users/list-gpg-keys-for-authenticated operation.
@@ -21689,6 +24699,7 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w
 	params, err := decodeUsersListGpgKeysForAuthenticatedParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21696,14 +24707,17 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w
 	response, err := s.h.UsersListGpgKeysForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersListGpgKeysForAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersListGpgKeysForUserRequest handles users/list-gpg-keys-for-user operation.
@@ -21718,6 +24732,7 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.Res
 	params, err := decodeUsersListGpgKeysForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21725,14 +24740,17 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.Res
 	response, err := s.h.UsersListGpgKeysForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersListGpgKeysForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersListPublicEmailsForAuthenticatedRequest handles users/list-public-emails-for-authenticated operation.
@@ -21747,6 +24765,7 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 	params, err := decodeUsersListPublicEmailsForAuthenticatedParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21754,14 +24773,17 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 	response, err := s.h.UsersListPublicEmailsForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersListPublicEmailsForAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersListPublicKeysForUserRequest handles users/list-public-keys-for-user operation.
@@ -21776,6 +24798,7 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.
 	params, err := decodeUsersListPublicKeysForUserParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21783,14 +24806,17 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.
 	response, err := s.h.UsersListPublicKeysForUser(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersListPublicKeysForUserResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersListPublicSSHKeysForAuthenticatedRequest handles users/list-public-ssh-keys-for-authenticated operation.
@@ -21805,6 +24831,7 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 	params, err := decodeUsersListPublicSSHKeysForAuthenticatedParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21812,14 +24839,17 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 	response, err := s.h.UsersListPublicSSHKeysForAuthenticated(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersListPublicSSHKeysForAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest handles users/set-primary-email-visibility-for-authenticated operation.
@@ -21834,6 +24864,7 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 	request, err := decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21841,14 +24872,17 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 	response, err := s.h.UsersSetPrimaryEmailVisibilityForAuthenticated(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersUnblockRequest handles users/unblock operation.
@@ -21863,6 +24897,7 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter
 	params, err := decodeUsersUnblockParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21870,14 +24905,17 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter
 	response, err := s.h.UsersUnblock(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersUnblockResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersUnfollowRequest handles users/unfollow operation.
@@ -21892,6 +24930,7 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWrite
 	params, err := decodeUsersUnfollowParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21899,14 +24938,17 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWrite
 	response, err := s.h.UsersUnfollow(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersUnfollowResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUsersUpdateAuthenticatedRequest handles users/update-authenticated operation.
@@ -21921,6 +24963,7 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.Re
 	request, err := decodeUsersUpdateAuthenticatedRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -21928,14 +24971,17 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.Re
 	response, err := s.h.UsersUpdateAuthenticated(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUsersUpdateAuthenticatedResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 func respondError(w http.ResponseWriter, code int, err error) {

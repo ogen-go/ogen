@@ -29,6 +29,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
 )
@@ -62,6 +63,7 @@ var (
 	_ = regexp.MustCompile
 	_ = jx.Null
 	_ = sync.Pool{}
+	_ = codes.Unset
 )
 
 // HandleMarketBondsGetRequest handles  operation.
@@ -76,14 +78,17 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 	response, err := s.h.MarketBondsGet(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMarketBondsGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMarketCandlesGetRequest handles  operation.
@@ -97,6 +102,7 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 	params, err := decodeMarketCandlesGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -104,14 +110,17 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 	response, err := s.h.MarketCandlesGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMarketCandlesGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMarketCurrenciesGetRequest handles  operation.
@@ -126,14 +135,17 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 	response, err := s.h.MarketCurrenciesGet(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMarketCurrenciesGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMarketEtfsGetRequest handles  operation.
@@ -148,14 +160,17 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.MarketEtfsGet(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMarketEtfsGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMarketOrderbookGetRequest handles  operation.
@@ -169,6 +184,7 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 	params, err := decodeMarketOrderbookGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -176,14 +192,17 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 	response, err := s.h.MarketOrderbookGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMarketOrderbookGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMarketSearchByFigiGetRequest handles  operation.
@@ -197,6 +216,7 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 	params, err := decodeMarketSearchByFigiGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -204,14 +224,17 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 	response, err := s.h.MarketSearchByFigiGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMarketSearchByFigiGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMarketSearchByTickerGetRequest handles  operation.
@@ -225,6 +248,7 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 	params, err := decodeMarketSearchByTickerGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -232,14 +256,17 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 	response, err := s.h.MarketSearchByTickerGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMarketSearchByTickerGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleMarketStocksGetRequest handles  operation.
@@ -254,14 +281,17 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 	response, err := s.h.MarketStocksGet(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeMarketStocksGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOperationsGetRequest handles  operation.
@@ -275,6 +305,7 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 	params, err := decodeOperationsGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -282,14 +313,17 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.OperationsGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOperationsGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrdersCancelPostRequest handles  operation.
@@ -303,6 +337,7 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 	params, err := decodeOrdersCancelPostParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -310,14 +345,17 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 	response, err := s.h.OrdersCancelPost(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrdersCancelPostResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrdersGetRequest handles  operation.
@@ -331,6 +369,7 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 	params, err := decodeOrdersGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -338,14 +377,17 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 	response, err := s.h.OrdersGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrdersGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrdersLimitOrderPostRequest handles  operation.
@@ -359,12 +401,14 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 	params, err := decodeOrdersLimitOrderPostParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeOrdersLimitOrderPostRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -372,14 +416,17 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 	response, err := s.h.OrdersLimitOrderPost(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrdersLimitOrderPostResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleOrdersMarketOrderPostRequest handles  operation.
@@ -393,12 +440,14 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 	params, err := decodeOrdersMarketOrderPostParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeOrdersMarketOrderPostRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -406,14 +455,17 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 	response, err := s.h.OrdersMarketOrderPost(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeOrdersMarketOrderPostResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePortfolioCurrenciesGetRequest handles  operation.
@@ -427,6 +479,7 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 	params, err := decodePortfolioCurrenciesGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -434,14 +487,17 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 	response, err := s.h.PortfolioCurrenciesGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePortfolioCurrenciesGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePortfolioGetRequest handles  operation.
@@ -455,6 +511,7 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 	params, err := decodePortfolioGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -462,14 +519,17 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 	response, err := s.h.PortfolioGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePortfolioGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSandboxClearPostRequest handles  operation.
@@ -483,6 +543,7 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 	params, err := decodeSandboxClearPostParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -490,14 +551,17 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 	response, err := s.h.SandboxClearPost(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeSandboxClearPostResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSandboxCurrenciesBalancePostRequest handles  operation.
@@ -511,12 +575,14 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 	params, err := decodeSandboxCurrenciesBalancePostParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeSandboxCurrenciesBalancePostRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -524,14 +590,17 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 	response, err := s.h.SandboxCurrenciesBalancePost(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeSandboxCurrenciesBalancePostResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSandboxPositionsBalancePostRequest handles  operation.
@@ -545,12 +614,14 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 	params, err := decodeSandboxPositionsBalancePostParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
 	request, err := decodeSandboxPositionsBalancePostRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -558,14 +629,17 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 	response, err := s.h.SandboxPositionsBalancePost(ctx, request, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeSandboxPositionsBalancePostResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSandboxRegisterPostRequest handles  operation.
@@ -579,6 +653,7 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 	request, err := decodeSandboxRegisterPostRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -586,14 +661,17 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 	response, err := s.h.SandboxRegisterPost(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeSandboxRegisterPostResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleSandboxRemovePostRequest handles  operation.
@@ -607,6 +685,7 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 	params, err := decodeSandboxRemovePostParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -614,14 +693,17 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 	response, err := s.h.SandboxRemovePost(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeSandboxRemovePostResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleUserAccountsGetRequest handles  operation.
@@ -636,14 +718,17 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWri
 	response, err := s.h.UserAccountsGet(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeUserAccountsGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 func respondError(w http.ResponseWriter, code int, err error) {

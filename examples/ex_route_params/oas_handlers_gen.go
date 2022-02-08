@@ -29,6 +29,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
 )
@@ -62,6 +63,7 @@ var (
 	_ = regexp.MustCompile
 	_ = jx.Null
 	_ = sync.Pool{}
+	_ = codes.Unset
 )
 
 // HandleDataGetRequest handles dataGet operation.
@@ -76,6 +78,7 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 	params, err := decodeDataGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -83,14 +86,17 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 	response, err := s.h.DataGet(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeDataGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleDataGetAnyRequest handles dataGetAny operation.
@@ -106,14 +112,17 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, 
 	response, err := s.h.DataGetAny(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeDataGetAnyResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandleDataGetIDRequest handles dataGetID operation.
@@ -128,6 +137,7 @@ func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r
 	params, err := decodeDataGetIDParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -135,14 +145,17 @@ func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r
 	response, err := s.h.DataGetID(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodeDataGetIDResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 func respondError(w http.ResponseWriter, code int, err error) {
