@@ -257,6 +257,7 @@ type ErrorStatusCode struct {
 
 func (*ErrorStatusCode) foobarPostRes()          {}
 func (*ErrorStatusCode) petGetAvatarByIDRes()    {}
+func (*ErrorStatusCode) petGetAvatarByNameRes()  {}
 func (*ErrorStatusCode) petUploadAvatarByIDRes() {}
 
 // FoobarPutDef is default response for FoobarPut operation.
@@ -620,6 +621,7 @@ type NotFound struct{}
 func (*NotFound) foobarGetRes()           {}
 func (*NotFound) foobarPostRes()          {}
 func (*NotFound) petGetAvatarByIDRes()    {}
+func (*NotFound) petGetAvatarByNameRes()  {}
 func (*NotFound) petUploadAvatarByIDRes() {}
 
 // Ref: #/components/schemas/NullableEnums
@@ -2009,6 +2011,16 @@ func (s PetGetAvatarByIDOK) Read(p []byte) (n int, err error) {
 }
 
 func (*PetGetAvatarByIDOK) petGetAvatarByIDRes() {}
+
+type PetGetAvatarByNameOK struct {
+	Data io.Reader
+}
+
+func (s PetGetAvatarByNameOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*PetGetAvatarByNameOK) petGetAvatarByNameRes() {}
 
 type PetGetDef struct {
 	Message string `json:"message"`

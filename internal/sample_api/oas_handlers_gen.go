@@ -370,6 +370,35 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 	}
 }
 
+// HandlePetGetAvatarByNameRequest handles petGetAvatarByName operation.
+//
+// GET /pet/{name}/avatar
+func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetGetAvatarByName",
+		trace.WithAttributes(otelogen.OperationID("petGetAvatarByName")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodePetGetAvatarByNameParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.PetGetAvatarByName(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodePetGetAvatarByNameResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandlePetGetByNameRequest handles petGetByName operation.
 //
 // GET /pet/{name}

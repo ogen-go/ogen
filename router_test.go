@@ -47,6 +47,7 @@ func TestRouter(t *testing.T) {
 		get("/pet/avatar", "PetGetAvatarByID"),
 		post("/pet/avatar", "PetUploadAvatarByID"),
 		get("/pet/aboba", "PetGetByName", "aboba"),
+		get("/pet/aboba/avatar", "PetGetAvatarByName", "aboba"),
 		get("/foobar", "FoobarGet"),
 		post("/foobar", "FoobarPost"),
 		put("/foobar", "FoobarPut"),

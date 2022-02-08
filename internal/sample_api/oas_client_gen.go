@@ -847,6 +847,63 @@ func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDPa
 	return result, nil
 }
 
+// PetGetAvatarByName invokes petGetAvatarByName operation.
+//
+// Returns pet's avatar by name.
+//
+// GET /pet/{name}/avatar
+func (c *Client) PetGetAvatarByName(ctx context.Context, params PetGetAvatarByNameParams) (res PetGetAvatarByNameRes, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, "PetGetAvatarByName",
+		trace.WithAttributes(otelogen.OperationID("petGetAvatarByName")),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/pet/"
+	{
+		// Encode "name" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "name",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Name))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/avatar"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePetGetAvatarByNameResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // PetGetByName invokes petGetByName operation.
 //
 // Returns pet by name from the system that the user has access to.

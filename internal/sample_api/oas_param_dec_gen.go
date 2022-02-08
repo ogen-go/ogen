@@ -562,6 +562,44 @@ func decodePetGetAvatarByIDParams(args [0]string, r *http.Request) (PetGetAvatar
 	return params, nil
 }
 
+func decodePetGetAvatarByNameParams(args [1]string, r *http.Request) (PetGetAvatarByNameParams, error) {
+	var (
+		params PetGetAvatarByNameParams
+	)
+	// Decode path: name.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	return params, nil
+}
+
 func decodePetGetByNameParams(args [1]string, r *http.Request) (PetGetByNameParams, error) {
 	var (
 		params PetGetByNameParams

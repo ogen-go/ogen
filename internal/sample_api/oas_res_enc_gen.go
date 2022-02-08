@@ -273,6 +273,36 @@ func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.Respons
 	}
 }
 
+func encodePetGetAvatarByNameResponse(response PetGetAvatarByNameRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *PetGetAvatarByNameOK:
+		w.Header().Set("Content-Type", "application/octet-stream")
+		w.WriteHeader(200)
+		if _, err := io.Copy(w, response); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *NotFound:
+		w.WriteHeader(404)
+		return nil
+	case *ErrorStatusCode:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(response.StatusCode)
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
+
+		response.Response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf("/pet/{name}/avatar"+`: unexpected response type: %T`, response)
+	}
+}
+
 func encodePetGetByNameResponse(response Pet, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
