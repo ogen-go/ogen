@@ -2,10 +2,10 @@
 <img width="256" height="256" src="_logo/logo.svg" alt="ogen logo">
 </p>
 <p align="right">
-<a href="https://vk.company/en/">
+<a href="https://vk.company/en/" target="_blank">
 <img height="35" src="https://raw.githubusercontent.com/go-faster/.github/main/profile/sponsor_vk.svg" alt="sponsored by vk">
 </a>
-<a href="https://go-faster.org/">
+<a href="https://go-faster.org/" target="_blank">
 <img height="27" src="https://github.com/go-faster/.github/raw/main/profile/logo_borderless.svg" alt="go faster project">
 </a>
 </p>
