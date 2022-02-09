@@ -109,39 +109,40 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				// Param: "id"
 				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
-				if idx > 0 {
-					args[0] = elem[:idx]
-					elem = elem[idx:]
+				if idx < 0 {
+					idx = len(elem)
+				}
+				args[0] = elem[:idx]
+				elem = elem[idx:]
+
+				if len(elem) == 0 {
+					s.handleDataGetIDRequest([1]string{
+						args[0],
+					}, w, r)
+
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					// Param: "key"
+					// Leaf parameter
+					args[1] = elem
+					elem = ""
 
 					if len(elem) == 0 {
-						s.handleDataGetIDRequest([1]string{
+						// Leaf: DataGet
+						s.handleDataGetRequest([2]string{
 							args[0],
+							args[1],
 						}, w, r)
 
 						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						// Param: "key"
-						// Leaf parameter
-						args[1] = elem
-						elem = ""
-
-						if len(elem) == 0 {
-							// Leaf: DataGet
-							s.handleDataGetRequest([2]string{
-								args[0],
-								args[1],
-							}, w, r)
-
-							return
-						}
 					}
 				}
 			}
@@ -206,36 +207,37 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				// Param: "id"
 				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
-				if idx > 0 {
-					args[0] = elem[:idx]
-					elem = elem[idx:]
+				if idx < 0 {
+					idx = len(elem)
+				}
+				args[0] = elem[:idx]
+				elem = elem[idx:]
+
+				if len(elem) == 0 {
+					r.name = "DataGetID"
+					r.args = args
+					r.count = 1
+					return r, true
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					// Param: "key"
+					// Leaf parameter
+					args[1] = elem
+					elem = ""
 
 					if len(elem) == 0 {
-						r.name = "DataGetID"
+						// Leaf: DataGet
+						r.name = "DataGet"
 						r.args = args
-						r.count = 1
+						r.count = 2
 						return r, true
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						// Param: "key"
-						// Leaf parameter
-						args[1] = elem
-						elem = ""
-
-						if len(elem) == 0 {
-							// Leaf: DataGet
-							r.name = "DataGet"
-							r.args = args
-							r.count = 2
-							return r, true
-						}
 					}
 				}
 			}

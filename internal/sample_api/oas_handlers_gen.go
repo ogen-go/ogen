@@ -426,6 +426,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 	params, err := decodePetGetAvatarByNameParams(args, r)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -433,14 +434,17 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 	response, err := s.h.PetGetAvatarByName(ctx, params)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
 
 	if err := encodePetGetAvatarByNameResponse(response, w, span); err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
 		return
 	}
+	span.SetStatus(codes.Ok, "Ok")
 }
 
 // HandlePetGetByNameRequest handles petGetByName operation.

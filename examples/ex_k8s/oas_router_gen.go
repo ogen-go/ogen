@@ -301,42 +301,96 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										s.handleReadCoreV1NamespaceRequest([1]string{
+											args[0],
+										}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
+										} else {
+											break
+										}
 
 										if len(elem) == 0 {
-											s.handleReadCoreV1NamespaceRequest([1]string{
+											s.handleListCoreV1NamespacedEndpointsRequest([1]string{
 												args[0],
 											}, w, r)
 
 											return
 										}
 										switch elem[0] {
-										case '/': // Prefix: "/"
-											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										case 'c': // Prefix: "configmaps"
+											if l := len("configmaps"); len(elem) >= l && elem[0:l] == "configmaps" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												s.handleListCoreV1NamespacedEndpointsRequest([1]string{
+												s.handleListCoreV1NamespacedConfigMapRequest([1]string{
 													args[0],
 												}, w, r)
 
 												return
 											}
 											switch elem[0] {
-											case 'c': // Prefix: "configmaps"
-												if l := len("configmaps"); len(elem) >= l && elem[0:l] == "configmaps" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
+												if len(elem) == 0 {
+													// Leaf: ReadCoreV1NamespacedConfigMap
+													s.handleReadCoreV1NamespacedConfigMapRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+
+													return
+												}
+											}
+										case 'e': // Prefix: "e"
+											if l := len("e"); len(elem) >= l && elem[0:l] == "e" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListCoreV1NamespacedEventRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case 'n': // Prefix: "ndpoints"
+												if l := len("ndpoints"); len(elem) >= l && elem[0:l] == "ndpoints" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													s.handleListCoreV1NamespacedConfigMapRequest([1]string{
+													s.handleListCoreV1NamespacedEndpointsRequest([1]string{
 														args[0],
 													}, w, r)
 
@@ -356,8 +410,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: ReadCoreV1NamespacedConfigMap
-														s.handleReadCoreV1NamespacedConfigMapRequest([2]string{
+														// Leaf: ReadCoreV1NamespacedEndpoints
+														s.handleReadCoreV1NamespacedEndpointsRequest([2]string{
 															args[0],
 															args[1],
 														}, w, r)
@@ -365,8 +419,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														return
 													}
 												}
-											case 'e': // Prefix: "e"
-												if l := len("e"); len(elem) >= l && elem[0:l] == "e" {
+											case 'v': // Prefix: "vents"
+												if l := len("vents"); len(elem) >= l && elem[0:l] == "vents" {
 													elem = elem[l:]
 												} else {
 													break
@@ -380,90 +434,90 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													return
 												}
 												switch elem[0] {
-												case 'n': // Prefix: "ndpoints"
-													if l := len("ndpoints"); len(elem) >= l && elem[0:l] == "ndpoints" {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
+													// Param: "name"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
+
 													if len(elem) == 0 {
-														s.handleListCoreV1NamespacedEndpointsRequest([1]string{
+														// Leaf: ReadCoreV1NamespacedEvent
+														s.handleReadCoreV1NamespacedEventRequest([2]string{
 															args[0],
+															args[1],
 														}, w, r)
 
 														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Leaf parameter
-														args[1] = elem
-														elem = ""
-
-														if len(elem) == 0 {
-															// Leaf: ReadCoreV1NamespacedEndpoints
-															s.handleReadCoreV1NamespacedEndpointsRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-
-															return
-														}
-													}
-												case 'v': // Prefix: "vents"
-													if l := len("vents"); len(elem) >= l && elem[0:l] == "vents" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleListCoreV1NamespacedEventRequest([1]string{
-															args[0],
-														}, w, r)
-
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Leaf parameter
-														args[1] = elem
-														elem = ""
-
-														if len(elem) == 0 {
-															// Leaf: ReadCoreV1NamespacedEvent
-															s.handleReadCoreV1NamespacedEventRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-
-															return
-														}
 													}
 												}
-											case 'l': // Prefix: "limitranges"
-												if l := len("limitranges"); len(elem) >= l && elem[0:l] == "limitranges" {
+											}
+										case 'l': // Prefix: "limitranges"
+											if l := len("limitranges"); len(elem) >= l && elem[0:l] == "limitranges" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListCoreV1NamespacedLimitRangeRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
+												if len(elem) == 0 {
+													// Leaf: ReadCoreV1NamespacedLimitRange
+													s.handleReadCoreV1NamespacedLimitRangeRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+
+													return
+												}
+											}
+										case 'p': // Prefix: "p"
+											if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListCoreV1NamespacedPodRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case 'e': // Prefix: "ersistentvolumeclaims"
+												if l := len("ersistentvolumeclaims"); len(elem) >= l && elem[0:l] == "ersistentvolumeclaims" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													s.handleListCoreV1NamespacedLimitRangeRequest([1]string{
+													s.handleListCoreV1NamespacedPersistentVolumeClaimRequest([1]string{
 														args[0],
 													}, w, r)
 
@@ -478,44 +532,65 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[1] = elem[:idx]
+													elem = elem[idx:]
 
 													if len(elem) == 0 {
-														// Leaf: ReadCoreV1NamespacedLimitRange
-														s.handleReadCoreV1NamespacedLimitRangeRequest([2]string{
+														s.handleReadCoreV1NamespacedPersistentVolumeClaimRequest([2]string{
 															args[0],
 															args[1],
 														}, w, r)
 
 														return
 													}
+													switch elem[0] {
+													case '/': // Prefix: "/status"
+														if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf: ReadCoreV1NamespacedPersistentVolumeClaimStatus
+															s.handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+
+															return
+														}
+													}
 												}
-											case 'p': // Prefix: "p"
-												if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+											case 'o': // Prefix: "od"
+												if l := len("od"); len(elem) >= l && elem[0:l] == "od" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													s.handleListCoreV1NamespacedPodRequest([1]string{
+													s.handleListCoreV1NamespacedPodTemplateRequest([1]string{
 														args[0],
 													}, w, r)
 
 													return
 												}
 												switch elem[0] {
-												case 'e': // Prefix: "ersistentvolumeclaims"
-													if l := len("ersistentvolumeclaims"); len(elem) >= l && elem[0:l] == "ersistentvolumeclaims" {
+												case 's': // Prefix: "s"
+													if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														s.handleListCoreV1NamespacedPersistentVolumeClaimRequest([1]string{
+														s.handleListCoreV1NamespacedPodRequest([1]string{
 															args[0],
 														}, w, r)
 
@@ -532,12 +607,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Param: "name"
 														// Match until "/"
 														idx := strings.IndexByte(elem, '/')
-														if idx > 0 {
-															args[1] = elem[:idx]
-															elem = elem[idx:]
+														if idx < 0 {
+															idx = len(elem)
+														}
+														args[1] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handleReadCoreV1NamespacedPodRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
+															} else {
+																break
+															}
 
 															if len(elem) == 0 {
-																s.handleReadCoreV1NamespacedPersistentVolumeClaimRequest([2]string{
+																s.handleReadCoreV1NamespacedPodLogRequest([2]string{
 																	args[0],
 																	args[1],
 																}, w, r)
@@ -545,16 +638,48 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																return
 															}
 															switch elem[0] {
-															case '/': // Prefix: "/status"
-																if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+															case 'e': // Prefix: "ephemeralcontainers"
+																if l := len("ephemeralcontainers"); len(elem) >= l && elem[0:l] == "ephemeralcontainers" {
 																	elem = elem[l:]
 																} else {
 																	break
 																}
 
 																if len(elem) == 0 {
-																	// Leaf: ReadCoreV1NamespacedPersistentVolumeClaimStatus
-																	s.handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest([2]string{
+																	// Leaf: ReadCoreV1NamespacedPodEphemeralcontainers
+																	s.handleReadCoreV1NamespacedPodEphemeralcontainersRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+
+																	return
+																}
+															case 'l': // Prefix: "log"
+																if l := len("log"); len(elem) >= l && elem[0:l] == "log" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	// Leaf: ReadCoreV1NamespacedPodLog
+																	s.handleReadCoreV1NamespacedPodLogRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
+
+																	return
+																}
+															case 's': // Prefix: "status"
+																if l := len("status"); len(elem) >= l && elem[0:l] == "status" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	// Leaf: ReadCoreV1NamespacedPodStatus
+																	s.handleReadCoreV1NamespacedPodStatusRequest([2]string{
 																		args[0],
 																		args[1],
 																	}, w, r)
@@ -564,8 +689,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 														}
 													}
-												case 'o': // Prefix: "od"
-													if l := len("od"); len(elem) >= l && elem[0:l] == "od" {
+												case 't': // Prefix: "templates"
+													if l := len("templates"); len(elem) >= l && elem[0:l] == "templates" {
 														elem = elem[l:]
 													} else {
 														break
@@ -579,6 +704,314 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														return
 													}
 													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
+														if len(elem) == 0 {
+															// Leaf: ReadCoreV1NamespacedPodTemplate
+															s.handleReadCoreV1NamespacedPodTemplateRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+
+															return
+														}
+													}
+												}
+											}
+										case 'r': // Prefix: "re"
+											if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListCoreV1NamespacedResourceQuotaRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case 'p': // Prefix: "plicationcontrollers"
+												if l := len("plicationcontrollers"); len(elem) >= l && elem[0:l] == "plicationcontrollers" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleListCoreV1NamespacedReplicationControllerRequest([1]string{
+														args[0],
+													}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[1] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleReadCoreV1NamespacedReplicationControllerRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/s"
+														if l := len("/s"); len(elem) >= l && elem[0:l] == "/s" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReadCoreV1NamespacedReplicationControllerStatusRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+
+															return
+														}
+														switch elem[0] {
+														case 'c': // Prefix: "cale"
+															if l := len("cale"); len(elem) >= l && elem[0:l] == "cale" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf: ReadCoreV1NamespacedReplicationControllerScale
+																s.handleReadCoreV1NamespacedReplicationControllerScaleRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+
+																return
+															}
+														case 't': // Prefix: "tatus"
+															if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf: ReadCoreV1NamespacedReplicationControllerStatus
+																s.handleReadCoreV1NamespacedReplicationControllerStatusRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+
+																return
+															}
+														}
+													}
+												}
+											case 's': // Prefix: "sourcequotas"
+												if l := len("sourcequotas"); len(elem) >= l && elem[0:l] == "sourcequotas" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleListCoreV1NamespacedResourceQuotaRequest([1]string{
+														args[0],
+													}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[1] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleReadCoreV1NamespacedResourceQuotaRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/status"
+														if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf: ReadCoreV1NamespacedResourceQuotaStatus
+															s.handleReadCoreV1NamespacedResourceQuotaStatusRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+
+															return
+														}
+													}
+												}
+											}
+										case 's': // Prefix: "s"
+											if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReadCoreV1NamespaceStatusRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case 'e': // Prefix: "e"
+												if l := len("e"); len(elem) >= l && elem[0:l] == "e" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleListCoreV1NamespacedServiceRequest([1]string{
+														args[0],
+													}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "crets"
+													if l := len("crets"); len(elem) >= l && elem[0:l] == "crets" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleListCoreV1NamespacedSecretRequest([1]string{
+															args[0],
+														}, w, r)
+
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
+														if len(elem) == 0 {
+															// Leaf: ReadCoreV1NamespacedSecret
+															s.handleReadCoreV1NamespacedSecretRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+
+															return
+														}
+													}
+												case 'r': // Prefix: "rvice"
+													if l := len("rvice"); len(elem) >= l && elem[0:l] == "rvice" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleListCoreV1NamespacedServiceAccountRequest([1]string{
+															args[0],
+														}, w, r)
+
+														return
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "accounts"
+														if l := len("accounts"); len(elem) >= l && elem[0:l] == "accounts" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleListCoreV1NamespacedServiceAccountRequest([1]string{
+																args[0],
+															}, w, r)
+
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args[1] = elem
+															elem = ""
+
+															if len(elem) == 0 {
+																// Leaf: ReadCoreV1NamespacedServiceAccount
+																s.handleReadCoreV1NamespacedServiceAccountRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+
+																return
+															}
+														}
 													case 's': // Prefix: "s"
 														if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
 															elem = elem[l:]
@@ -587,7 +1020,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleListCoreV1NamespacedPodRequest([1]string{
+															s.handleListCoreV1NamespacedServiceRequest([1]string{
 																args[0],
 															}, w, r)
 
@@ -604,262 +1037,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Param: "name"
 															// Match until "/"
 															idx := strings.IndexByte(elem, '/')
-															if idx > 0 {
-																args[1] = elem[:idx]
-																elem = elem[idx:]
-
-																if len(elem) == 0 {
-																	s.handleReadCoreV1NamespacedPodRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
-
-																	return
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/"
-																	if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		s.handleReadCoreV1NamespacedPodLogRequest([2]string{
-																			args[0],
-																			args[1],
-																		}, w, r)
-
-																		return
-																	}
-																	switch elem[0] {
-																	case 'e': // Prefix: "ephemeralcontainers"
-																		if l := len("ephemeralcontainers"); len(elem) >= l && elem[0:l] == "ephemeralcontainers" {
-																			elem = elem[l:]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			// Leaf: ReadCoreV1NamespacedPodEphemeralcontainers
-																			s.handleReadCoreV1NamespacedPodEphemeralcontainersRequest([2]string{
-																				args[0],
-																				args[1],
-																			}, w, r)
-
-																			return
-																		}
-																	case 'l': // Prefix: "log"
-																		if l := len("log"); len(elem) >= l && elem[0:l] == "log" {
-																			elem = elem[l:]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			// Leaf: ReadCoreV1NamespacedPodLog
-																			s.handleReadCoreV1NamespacedPodLogRequest([2]string{
-																				args[0],
-																				args[1],
-																			}, w, r)
-
-																			return
-																		}
-																	case 's': // Prefix: "status"
-																		if l := len("status"); len(elem) >= l && elem[0:l] == "status" {
-																			elem = elem[l:]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			// Leaf: ReadCoreV1NamespacedPodStatus
-																			s.handleReadCoreV1NamespacedPodStatusRequest([2]string{
-																				args[0],
-																				args[1],
-																			}, w, r)
-
-																			return
-																		}
-																	}
-																}
+															if idx < 0 {
+																idx = len(elem)
 															}
-														}
-													case 't': // Prefix: "templates"
-														if l := len("templates"); len(elem) >= l && elem[0:l] == "templates" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleListCoreV1NamespacedPodTemplateRequest([1]string{
-																args[0],
-															}, w, r)
-
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf: ReadCoreV1NamespacedPodTemplate
-																s.handleReadCoreV1NamespacedPodTemplateRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
-
-																return
-															}
-														}
-													}
-												}
-											case 'r': // Prefix: "re"
-												if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleListCoreV1NamespacedResourceQuotaRequest([1]string{
-														args[0],
-													}, w, r)
-
-													return
-												}
-												switch elem[0] {
-												case 'p': // Prefix: "plicationcontrollers"
-													if l := len("plicationcontrollers"); len(elem) >= l && elem[0:l] == "plicationcontrollers" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleListCoreV1NamespacedReplicationControllerRequest([1]string{
-															args[0],
-														}, w, r)
-
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Match until "/"
-														idx := strings.IndexByte(elem, '/')
-														if idx > 0 {
 															args[1] = elem[:idx]
 															elem = elem[idx:]
 
 															if len(elem) == 0 {
-																s.handleReadCoreV1NamespacedReplicationControllerRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
-
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/s"
-																if l := len("/s"); len(elem) >= l && elem[0:l] == "/s" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	s.handleReadCoreV1NamespacedReplicationControllerStatusRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
-
-																	return
-																}
-																switch elem[0] {
-																case 'c': // Prefix: "cale"
-																	if l := len("cale"); len(elem) >= l && elem[0:l] == "cale" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		// Leaf: ReadCoreV1NamespacedReplicationControllerScale
-																		s.handleReadCoreV1NamespacedReplicationControllerScaleRequest([2]string{
-																			args[0],
-																			args[1],
-																		}, w, r)
-
-																		return
-																	}
-																case 't': // Prefix: "tatus"
-																	if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		// Leaf: ReadCoreV1NamespacedReplicationControllerStatus
-																		s.handleReadCoreV1NamespacedReplicationControllerStatusRequest([2]string{
-																			args[0],
-																			args[1],
-																		}, w, r)
-
-																		return
-																	}
-																}
-															}
-														}
-													}
-												case 's': // Prefix: "sourcequotas"
-													if l := len("sourcequotas"); len(elem) >= l && elem[0:l] == "sourcequotas" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleListCoreV1NamespacedResourceQuotaRequest([1]string{
-															args[0],
-														}, w, r)
-
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Match until "/"
-														idx := strings.IndexByte(elem, '/')
-														if idx > 0 {
-															args[1] = elem[:idx]
-															elem = elem[idx:]
-
-															if len(elem) == 0 {
-																s.handleReadCoreV1NamespacedResourceQuotaRequest([2]string{
+																s.handleReadCoreV1NamespacedServiceRequest([2]string{
 																	args[0],
 																	args[1],
 																}, w, r)
@@ -875,8 +1060,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 
 																if len(elem) == 0 {
-																	// Leaf: ReadCoreV1NamespacedResourceQuotaStatus
-																	s.handleReadCoreV1NamespacedResourceQuotaStatusRequest([2]string{
+																	// Leaf: ReadCoreV1NamespacedServiceStatus
+																	s.handleReadCoreV1NamespacedServiceStatusRequest([2]string{
 																		args[0],
 																		args[1],
 																	}, w, r)
@@ -887,199 +1072,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 													}
 												}
-											case 's': // Prefix: "s"
-												if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+											case 't': // Prefix: "tatus"
+												if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
+													// Leaf: ReadCoreV1NamespaceStatus
 													s.handleReadCoreV1NamespaceStatusRequest([1]string{
 														args[0],
 													}, w, r)
 
 													return
-												}
-												switch elem[0] {
-												case 'e': // Prefix: "e"
-													if l := len("e"); len(elem) >= l && elem[0:l] == "e" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleListCoreV1NamespacedServiceRequest([1]string{
-															args[0],
-														}, w, r)
-
-														return
-													}
-													switch elem[0] {
-													case 'c': // Prefix: "crets"
-														if l := len("crets"); len(elem) >= l && elem[0:l] == "crets" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleListCoreV1NamespacedSecretRequest([1]string{
-																args[0],
-															}, w, r)
-
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf: ReadCoreV1NamespacedSecret
-																s.handleReadCoreV1NamespacedSecretRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
-
-																return
-															}
-														}
-													case 'r': // Prefix: "rvice"
-														if l := len("rvice"); len(elem) >= l && elem[0:l] == "rvice" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleListCoreV1NamespacedServiceAccountRequest([1]string{
-																args[0],
-															}, w, r)
-
-															return
-														}
-														switch elem[0] {
-														case 'a': // Prefix: "accounts"
-															if l := len("accounts"); len(elem) >= l && elem[0:l] == "accounts" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleListCoreV1NamespacedServiceAccountRequest([1]string{
-																	args[0],
-																}, w, r)
-
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args[1] = elem
-																elem = ""
-
-																if len(elem) == 0 {
-																	// Leaf: ReadCoreV1NamespacedServiceAccount
-																	s.handleReadCoreV1NamespacedServiceAccountRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
-
-																	return
-																}
-															}
-														case 's': // Prefix: "s"
-															if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleListCoreV1NamespacedServiceRequest([1]string{
-																	args[0],
-																}, w, r)
-
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Match until "/"
-																idx := strings.IndexByte(elem, '/')
-																if idx > 0 {
-																	args[1] = elem[:idx]
-																	elem = elem[idx:]
-
-																	if len(elem) == 0 {
-																		s.handleReadCoreV1NamespacedServiceRequest([2]string{
-																			args[0],
-																			args[1],
-																		}, w, r)
-
-																		return
-																	}
-																	switch elem[0] {
-																	case '/': // Prefix: "/status"
-																		if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-																			elem = elem[l:]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			// Leaf: ReadCoreV1NamespacedServiceStatus
-																			s.handleReadCoreV1NamespacedServiceStatusRequest([2]string{
-																				args[0],
-																				args[1],
-																			}, w, r)
-
-																			return
-																		}
-																	}
-																}
-															}
-														}
-													}
-												case 't': // Prefix: "tatus"
-													if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														// Leaf: ReadCoreV1NamespaceStatus
-														s.handleReadCoreV1NamespaceStatusRequest([1]string{
-															args[0],
-														}, w, r)
-
-														return
-													}
 												}
 											}
 										}
@@ -1108,33 +1114,34 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "name"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										s.handleReadCoreV1NodeRequest([1]string{
+											args[0],
+										}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/status"
+										if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+											elem = elem[l:]
+										} else {
+											break
+										}
 
 										if len(elem) == 0 {
-											s.handleReadCoreV1NodeRequest([1]string{
+											// Leaf: ReadCoreV1NodeStatus
+											s.handleReadCoreV1NodeStatusRequest([1]string{
 												args[0],
 											}, w, r)
 
 											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/status"
-											if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: ReadCoreV1NodeStatus
-												s.handleReadCoreV1NodeStatusRequest([1]string{
-													args[0],
-												}, w, r)
-
-												return
-											}
 										}
 									}
 								}
@@ -1201,33 +1208,34 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "name"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											s.handleReadCoreV1PersistentVolumeRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/status"
+											if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+												elem = elem[l:]
+											} else {
+												break
+											}
 
 											if len(elem) == 0 {
-												s.handleReadCoreV1PersistentVolumeRequest([1]string{
+												// Leaf: ReadCoreV1PersistentVolumeStatus
+												s.handleReadCoreV1PersistentVolumeStatusRequest([1]string{
 													args[0],
 												}, w, r)
 
 												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/status"
-												if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: ReadCoreV1PersistentVolumeStatus
-													s.handleReadCoreV1PersistentVolumeStatusRequest([1]string{
-														args[0],
-													}, w, r)
-
-													return
-												}
 											}
 										}
 									}
@@ -1497,27 +1505,82 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "name"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											s.handleWatchCoreV1NamespaceRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
+												break
+											}
 
 											if len(elem) == 0 {
-												s.handleWatchCoreV1NamespaceRequest([1]string{
+												s.handleWatchCoreV1NamespacedEndpointsRequest([2]string{
 													args[0],
+													args[1],
 												}, w, r)
 
 												return
 											}
 											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											case 'c': // Prefix: "configmaps"
+												if l := len("configmaps"); len(elem) >= l && elem[0:l] == "configmaps" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													s.handleWatchCoreV1NamespacedEndpointsRequest([2]string{
+													s.handleWatchCoreV1NamespacedConfigMapListRequest([1]string{
+														args[0],
+													}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
+
+													if len(elem) == 0 {
+														// Leaf: WatchCoreV1NamespacedConfigMap
+														s.handleWatchCoreV1NamespacedConfigMapRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+
+														return
+													}
+												}
+											case 'e': // Prefix: "e"
+												if l := len("e"); len(elem) >= l && elem[0:l] == "e" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchCoreV1NamespacedEventRequest([2]string{
 														args[0],
 														args[1],
 													}, w, r)
@@ -1525,15 +1588,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													return
 												}
 												switch elem[0] {
-												case 'c': // Prefix: "configmaps"
-													if l := len("configmaps"); len(elem) >= l && elem[0:l] == "configmaps" {
+												case 'n': // Prefix: "ndpoints"
+													if l := len("ndpoints"); len(elem) >= l && elem[0:l] == "ndpoints" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchCoreV1NamespacedConfigMapListRequest([1]string{
+														s.handleWatchCoreV1NamespacedEndpointsListRequest([1]string{
 															args[0],
 														}, w, r)
 
@@ -1553,8 +1616,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchCoreV1NamespacedConfigMap
-															s.handleWatchCoreV1NamespacedConfigMapRequest([2]string{
+															// Leaf: WatchCoreV1NamespacedEndpoints
+															s.handleWatchCoreV1NamespacedEndpointsRequest([2]string{
 																args[0],
 																args[1],
 															}, w, r)
@@ -1562,106 +1625,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															return
 														}
 													}
-												case 'e': // Prefix: "e"
-													if l := len("e"); len(elem) >= l && elem[0:l] == "e" {
+												case 'v': // Prefix: "vents"
+													if l := len("vents"); len(elem) >= l && elem[0:l] == "vents" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchCoreV1NamespacedEventRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
-													}
-													switch elem[0] {
-													case 'n': // Prefix: "ndpoints"
-														if l := len("ndpoints"); len(elem) >= l && elem[0:l] == "ndpoints" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleWatchCoreV1NamespacedEndpointsListRequest([1]string{
-																args[0],
-															}, w, r)
-
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedEndpoints
-																s.handleWatchCoreV1NamespacedEndpointsRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
-
-																return
-															}
-														}
-													case 'v': // Prefix: "vents"
-														if l := len("vents"); len(elem) >= l && elem[0:l] == "vents" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleWatchCoreV1NamespacedEventListRequest([1]string{
-																args[0],
-															}, w, r)
-
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedEvent
-																s.handleWatchCoreV1NamespacedEventRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
-
-																return
-															}
-														}
-													}
-												case 'l': // Prefix: "limitranges"
-													if l := len("limitranges"); len(elem) >= l && elem[0:l] == "limitranges" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleWatchCoreV1NamespacedLimitRangeListRequest([1]string{
+														s.handleWatchCoreV1NamespacedEventListRequest([1]string{
 															args[0],
 														}, w, r)
 
@@ -1681,8 +1653,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchCoreV1NamespacedLimitRange
-															s.handleWatchCoreV1NamespacedLimitRangeRequest([2]string{
+															// Leaf: WatchCoreV1NamespacedEvent
+															s.handleWatchCoreV1NamespacedEventRequest([2]string{
 																args[0],
 																args[1],
 															}, w, r)
@@ -1690,160 +1662,106 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															return
 														}
 													}
-												case 'p': // Prefix: "p"
-													if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+												}
+											case 'l': // Prefix: "limitranges"
+												if l := len("limitranges"); len(elem) >= l && elem[0:l] == "limitranges" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchCoreV1NamespacedLimitRangeListRequest([1]string{
+														args[0],
+													}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
+													// Param: "name"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
+
 													if len(elem) == 0 {
-														s.handleWatchCoreV1NamespacedPodRequest([2]string{
+														// Leaf: WatchCoreV1NamespacedLimitRange
+														s.handleWatchCoreV1NamespacedLimitRangeRequest([2]string{
 															args[0],
 															args[1],
 														}, w, r)
 
 														return
 													}
+												}
+											case 'p': // Prefix: "p"
+												if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchCoreV1NamespacedPodRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case 'e': // Prefix: "ersistentvolumeclaims"
+													if l := len("ersistentvolumeclaims"); len(elem) >= l && elem[0:l] == "ersistentvolumeclaims" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest([1]string{
+															args[0],
+														}, w, r)
+
+														return
+													}
 													switch elem[0] {
-													case 'e': // Prefix: "ersistentvolumeclaims"
-														if l := len("ersistentvolumeclaims"); len(elem) >= l && elem[0:l] == "ersistentvolumeclaims" {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
-														if len(elem) == 0 {
-															s.handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest([1]string{
-																args[0],
-															}, w, r)
-
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedPersistentVolumeClaim
-																s.handleWatchCoreV1NamespacedPersistentVolumeClaimRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
-
-																return
-															}
-														}
-													case 'o': // Prefix: "od"
-														if l := len("od"); len(elem) >= l && elem[0:l] == "od" {
-															elem = elem[l:]
-														} else {
-															break
-														}
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
 
 														if len(elem) == 0 {
-															s.handleWatchCoreV1NamespacedPodTemplateRequest([2]string{
+															// Leaf: WatchCoreV1NamespacedPersistentVolumeClaim
+															s.handleWatchCoreV1NamespacedPersistentVolumeClaimRequest([2]string{
 																args[0],
 																args[1],
 															}, w, r)
 
 															return
 														}
-														switch elem[0] {
-														case 's': // Prefix: "s"
-															if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleWatchCoreV1NamespacedPodListRequest([1]string{
-																	args[0],
-																}, w, r)
-
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args[1] = elem
-																elem = ""
-
-																if len(elem) == 0 {
-																	// Leaf: WatchCoreV1NamespacedPod
-																	s.handleWatchCoreV1NamespacedPodRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
-
-																	return
-																}
-															}
-														case 't': // Prefix: "templates"
-															if l := len("templates"); len(elem) >= l && elem[0:l] == "templates" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleWatchCoreV1NamespacedPodTemplateListRequest([1]string{
-																	args[0],
-																}, w, r)
-
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args[1] = elem
-																elem = ""
-
-																if len(elem) == 0 {
-																	// Leaf: WatchCoreV1NamespacedPodTemplate
-																	s.handleWatchCoreV1NamespacedPodTemplateRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
-
-																	return
-																}
-															}
-														}
 													}
-												case 'r': // Prefix: "re"
-													if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
+												case 'o': // Prefix: "od"
+													if l := len("od"); len(elem) >= l && elem[0:l] == "od" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchCoreV1NamespacedResourceQuotaRequest([2]string{
+														s.handleWatchCoreV1NamespacedPodTemplateRequest([2]string{
 															args[0],
 															args[1],
 														}, w, r)
@@ -1851,15 +1769,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														return
 													}
 													switch elem[0] {
-													case 'p': // Prefix: "plicationcontrollers"
-														if l := len("plicationcontrollers"); len(elem) >= l && elem[0:l] == "plicationcontrollers" {
+													case 's': // Prefix: "s"
+														if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
 														if len(elem) == 0 {
-															s.handleWatchCoreV1NamespacedReplicationControllerListRequest([1]string{
+															s.handleWatchCoreV1NamespacedPodListRequest([1]string{
 																args[0],
 															}, w, r)
 
@@ -1879,8 +1797,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedReplicationController
-																s.handleWatchCoreV1NamespacedReplicationControllerRequest([2]string{
+																// Leaf: WatchCoreV1NamespacedPod
+																s.handleWatchCoreV1NamespacedPodRequest([2]string{
 																	args[0],
 																	args[1],
 																}, w, r)
@@ -1888,15 +1806,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																return
 															}
 														}
-													case 's': // Prefix: "sourcequotas"
-														if l := len("sourcequotas"); len(elem) >= l && elem[0:l] == "sourcequotas" {
+													case 't': // Prefix: "templates"
+														if l := len("templates"); len(elem) >= l && elem[0:l] == "templates" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
 														if len(elem) == 0 {
-															s.handleWatchCoreV1NamespacedResourceQuotaListRequest([1]string{
+															s.handleWatchCoreV1NamespacedPodTemplateListRequest([1]string{
 																args[0],
 															}, w, r)
 
@@ -1916,8 +1834,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedResourceQuota
-																s.handleWatchCoreV1NamespacedResourceQuotaRequest([2]string{
+																// Leaf: WatchCoreV1NamespacedPodTemplate
+																s.handleWatchCoreV1NamespacedPodTemplateRequest([2]string{
 																	args[0],
 																	args[1],
 																}, w, r)
@@ -1926,148 +1844,239 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 														}
 													}
-												case 's': // Prefix: "se"
-													if l := len("se"); len(elem) >= l && elem[0:l] == "se" {
+												}
+											case 'r': // Prefix: "re"
+												if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchCoreV1NamespacedResourceQuotaRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case 'p': // Prefix: "plicationcontrollers"
+													if l := len("plicationcontrollers"); len(elem) >= l && elem[0:l] == "plicationcontrollers" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchCoreV1NamespacedServiceRequest([2]string{
+														s.handleWatchCoreV1NamespacedReplicationControllerListRequest([1]string{
 															args[0],
-															args[1],
 														}, w, r)
 
 														return
 													}
 													switch elem[0] {
-													case 'c': // Prefix: "crets"
-														if l := len("crets"); len(elem) >= l && elem[0:l] == "crets" {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
-														if len(elem) == 0 {
-															s.handleWatchCoreV1NamespacedSecretListRequest([1]string{
-																args[0],
-															}, w, r)
-
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedSecret
-																s.handleWatchCoreV1NamespacedSecretRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
-
-																return
-															}
-														}
-													case 'r': // Prefix: "rvice"
-														if l := len("rvice"); len(elem) >= l && elem[0:l] == "rvice" {
-															elem = elem[l:]
-														} else {
-															break
-														}
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
 
 														if len(elem) == 0 {
-															s.handleWatchCoreV1NamespacedServiceAccountRequest([2]string{
+															// Leaf: WatchCoreV1NamespacedReplicationController
+															s.handleWatchCoreV1NamespacedReplicationControllerRequest([2]string{
 																args[0],
 																args[1],
 															}, w, r)
 
 															return
 														}
+													}
+												case 's': // Prefix: "sourcequotas"
+													if l := len("sourcequotas"); len(elem) >= l && elem[0:l] == "sourcequotas" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchCoreV1NamespacedResourceQuotaListRequest([1]string{
+															args[0],
+														}, w, r)
+
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
+														if len(elem) == 0 {
+															// Leaf: WatchCoreV1NamespacedResourceQuota
+															s.handleWatchCoreV1NamespacedResourceQuotaRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+
+															return
+														}
+													}
+												}
+											case 's': // Prefix: "se"
+												if l := len("se"); len(elem) >= l && elem[0:l] == "se" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchCoreV1NamespacedServiceRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "crets"
+													if l := len("crets"); len(elem) >= l && elem[0:l] == "crets" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchCoreV1NamespacedSecretListRequest([1]string{
+															args[0],
+														}, w, r)
+
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
+														if len(elem) == 0 {
+															// Leaf: WatchCoreV1NamespacedSecret
+															s.handleWatchCoreV1NamespacedSecretRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+
+															return
+														}
+													}
+												case 'r': // Prefix: "rvice"
+													if l := len("rvice"); len(elem) >= l && elem[0:l] == "rvice" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchCoreV1NamespacedServiceAccountRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+
+														return
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "accounts"
+														if l := len("accounts"); len(elem) >= l && elem[0:l] == "accounts" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleWatchCoreV1NamespacedServiceAccountListRequest([1]string{
+																args[0],
+															}, w, r)
+
+															return
+														}
 														switch elem[0] {
-														case 'a': // Prefix: "accounts"
-															if l := len("accounts"); len(elem) >= l && elem[0:l] == "accounts" {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 																elem = elem[l:]
 															} else {
 																break
 															}
 
+															// Param: "name"
+															// Leaf parameter
+															args[1] = elem
+															elem = ""
+
 															if len(elem) == 0 {
-																s.handleWatchCoreV1NamespacedServiceAccountListRequest([1]string{
+																// Leaf: WatchCoreV1NamespacedServiceAccount
+																s.handleWatchCoreV1NamespacedServiceAccountRequest([2]string{
 																	args[0],
+																	args[1],
 																}, w, r)
 
 																return
 															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
+														}
+													case 's': // Prefix: "s"
+														if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+															elem = elem[l:]
+														} else {
+															break
+														}
 
-																// Param: "name"
-																// Leaf parameter
-																args[1] = elem
-																elem = ""
+														if len(elem) == 0 {
+															s.handleWatchCoreV1NamespacedServiceListRequest([1]string{
+																args[0],
+															}, w, r)
 
-																if len(elem) == 0 {
-																	// Leaf: WatchCoreV1NamespacedServiceAccount
-																	s.handleWatchCoreV1NamespacedServiceAccountRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
-
-																	return
-																}
-															}
-														case 's': // Prefix: "s"
-															if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 																elem = elem[l:]
 															} else {
 																break
 															}
 
+															// Param: "name"
+															// Leaf parameter
+															args[1] = elem
+															elem = ""
+
 															if len(elem) == 0 {
-																s.handleWatchCoreV1NamespacedServiceListRequest([1]string{
+																// Leaf: WatchCoreV1NamespacedService
+																s.handleWatchCoreV1NamespacedServiceRequest([2]string{
 																	args[0],
+																	args[1],
 																}, w, r)
 
 																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args[1] = elem
-																elem = ""
-
-																if len(elem) == 0 {
-																	// Leaf: WatchCoreV1NamespacedService
-																	s.handleWatchCoreV1NamespacedServiceRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
-
-																	return
-																}
 															}
 														}
 													}
@@ -2616,33 +2625,34 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "name"
 												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
-												if idx > 0 {
-													args[0] = elem[:idx]
-													elem = elem[idx:]
+												if idx < 0 {
+													idx = len(elem)
+												}
+												args[0] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													s.handleReadApiextensionsV1CustomResourceDefinitionRequest([1]string{
+														args[0],
+													}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/status"
+													if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+														elem = elem[l:]
+													} else {
+														break
+													}
 
 													if len(elem) == 0 {
-														s.handleReadApiextensionsV1CustomResourceDefinitionRequest([1]string{
+														// Leaf: ReadApiextensionsV1CustomResourceDefinitionStatus
+														s.handleReadApiextensionsV1CustomResourceDefinitionStatusRequest([1]string{
 															args[0],
 														}, w, r)
 
 														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/status"
-														if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf: ReadApiextensionsV1CustomResourceDefinitionStatus
-															s.handleReadApiextensionsV1CustomResourceDefinitionStatusRequest([1]string{
-																args[0],
-															}, w, r)
-
-															return
-														}
 													}
 												}
 											}
@@ -2731,33 +2741,34 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "name"
 												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
-												if idx > 0 {
-													args[0] = elem[:idx]
-													elem = elem[idx:]
+												if idx < 0 {
+													idx = len(elem)
+												}
+												args[0] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													s.handleReadApiregistrationV1APIServiceRequest([1]string{
+														args[0],
+													}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/status"
+													if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+														elem = elem[l:]
+													} else {
+														break
+													}
 
 													if len(elem) == 0 {
-														s.handleReadApiregistrationV1APIServiceRequest([1]string{
+														// Leaf: ReadApiregistrationV1APIServiceStatus
+														s.handleReadApiregistrationV1APIServiceStatusRequest([1]string{
 															args[0],
 														}, w, r)
 
 														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/status"
-														if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf: ReadApiregistrationV1APIServiceStatus
-															s.handleReadApiregistrationV1APIServiceStatusRequest([1]string{
-																args[0],
-															}, w, r)
-
-															return
-														}
 													}
 												}
 											}
@@ -2887,38 +2898,92 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												s.handleListAppsV1NamespacedDaemonSetRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											case 'c': // Prefix: "controllerrevisions"
+												if l := len("controllerrevisions"); len(elem) >= l && elem[0:l] == "controllerrevisions" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													s.handleListAppsV1NamespacedDaemonSetRequest([1]string{
+													s.handleListAppsV1NamespacedControllerRevisionRequest([1]string{
 														args[0],
 													}, w, r)
 
 													return
 												}
 												switch elem[0] {
-												case 'c': // Prefix: "controllerrevisions"
-													if l := len("controllerrevisions"); len(elem) >= l && elem[0:l] == "controllerrevisions" {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
+
+													if len(elem) == 0 {
+														// Leaf: ReadAppsV1NamespacedControllerRevision
+														s.handleReadAppsV1NamespacedControllerRevisionRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+
+														return
+													}
+												}
+											case 'd': // Prefix: "d"
+												if l := len("d"); len(elem) >= l && elem[0:l] == "d" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleListAppsV1NamespacedDeploymentRequest([1]string{
+														args[0],
+													}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "aemonsets"
+													if l := len("aemonsets"); len(elem) >= l && elem[0:l] == "aemonsets" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														s.handleListAppsV1NamespacedControllerRevisionRequest([1]string{
+														s.handleListAppsV1NamespacedDaemonSetRequest([1]string{
 															args[0],
 														}, w, r)
 
@@ -2933,22 +2998,43 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
-														args[1] = elem
-														elem = ""
+														// Match until "/"
+														idx := strings.IndexByte(elem, '/')
+														if idx < 0 {
+															idx = len(elem)
+														}
+														args[1] = elem[:idx]
+														elem = elem[idx:]
 
 														if len(elem) == 0 {
-															// Leaf: ReadAppsV1NamespacedControllerRevision
-															s.handleReadAppsV1NamespacedControllerRevisionRequest([2]string{
+															s.handleReadAppsV1NamespacedDaemonSetRequest([2]string{
 																args[0],
 																args[1],
 															}, w, r)
 
 															return
 														}
+														switch elem[0] {
+														case '/': // Prefix: "/status"
+															if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf: ReadAppsV1NamespacedDaemonSetStatus
+																s.handleReadAppsV1NamespacedDaemonSetStatusRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+
+																return
+															}
+														}
 													}
-												case 'd': // Prefix: "d"
-													if l := len("d"); len(elem) >= l && elem[0:l] == "d" {
+												case 'e': // Prefix: "eployments"
+													if l := len("eployments"); len(elem) >= l && elem[0:l] == "eployments" {
 														elem = elem[l:]
 													} else {
 														break
@@ -2962,169 +3048,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														return
 													}
 													switch elem[0] {
-													case 'a': // Prefix: "aemonsets"
-														if l := len("aemonsets"); len(elem) >= l && elem[0:l] == "aemonsets" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleListAppsV1NamespacedDaemonSetRequest([1]string{
-																args[0],
-															}, w, r)
-
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Match until "/"
-															idx := strings.IndexByte(elem, '/')
-															if idx > 0 {
-																args[1] = elem[:idx]
-																elem = elem[idx:]
-
-																if len(elem) == 0 {
-																	s.handleReadAppsV1NamespacedDaemonSetRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
-
-																	return
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/status"
-																	if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		// Leaf: ReadAppsV1NamespacedDaemonSetStatus
-																		s.handleReadAppsV1NamespacedDaemonSetStatusRequest([2]string{
-																			args[0],
-																			args[1],
-																		}, w, r)
-
-																		return
-																	}
-																}
-															}
-														}
-													case 'e': // Prefix: "eployments"
-														if l := len("eployments"); len(elem) >= l && elem[0:l] == "eployments" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleListAppsV1NamespacedDeploymentRequest([1]string{
-																args[0],
-															}, w, r)
-
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Match until "/"
-															idx := strings.IndexByte(elem, '/')
-															if idx > 0 {
-																args[1] = elem[:idx]
-																elem = elem[idx:]
-
-																if len(elem) == 0 {
-																	s.handleReadAppsV1NamespacedDeploymentRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
-
-																	return
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/s"
-																	if l := len("/s"); len(elem) >= l && elem[0:l] == "/s" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		s.handleReadAppsV1NamespacedDeploymentStatusRequest([2]string{
-																			args[0],
-																			args[1],
-																		}, w, r)
-
-																		return
-																	}
-																	switch elem[0] {
-																	case 'c': // Prefix: "cale"
-																		if l := len("cale"); len(elem) >= l && elem[0:l] == "cale" {
-																			elem = elem[l:]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			// Leaf: ReadAppsV1NamespacedDeploymentScale
-																			s.handleReadAppsV1NamespacedDeploymentScaleRequest([2]string{
-																				args[0],
-																				args[1],
-																			}, w, r)
-
-																			return
-																		}
-																	case 't': // Prefix: "tatus"
-																		if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
-																			elem = elem[l:]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			// Leaf: ReadAppsV1NamespacedDeploymentStatus
-																			s.handleReadAppsV1NamespacedDeploymentStatusRequest([2]string{
-																				args[0],
-																				args[1],
-																			}, w, r)
-
-																			return
-																		}
-																	}
-																}
-															}
-														}
-													}
-												case 'r': // Prefix: "replicasets"
-													if l := len("replicasets"); len(elem) >= l && elem[0:l] == "replicasets" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleListAppsV1NamespacedReplicaSetRequest([1]string{
-															args[0],
-														}, w, r)
-
-														return
-													}
-													switch elem[0] {
 													case '/': // Prefix: "/"
 														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
@@ -3135,12 +3058,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Param: "name"
 														// Match until "/"
 														idx := strings.IndexByte(elem, '/')
-														if idx > 0 {
-															args[1] = elem[:idx]
-															elem = elem[idx:]
+														if idx < 0 {
+															idx = len(elem)
+														}
+														args[1] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handleReadAppsV1NamespacedDeploymentRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/s"
+															if l := len("/s"); len(elem) >= l && elem[0:l] == "/s" {
+																elem = elem[l:]
+															} else {
+																break
+															}
 
 															if len(elem) == 0 {
-																s.handleReadAppsV1NamespacedReplicaSetRequest([2]string{
+																s.handleReadAppsV1NamespacedDeploymentStatusRequest([2]string{
 																	args[0],
 																	args[1],
 																}, w, r)
@@ -3148,145 +3089,220 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																return
 															}
 															switch elem[0] {
-															case '/': // Prefix: "/s"
-																if l := len("/s"); len(elem) >= l && elem[0:l] == "/s" {
+															case 'c': // Prefix: "cale"
+																if l := len("cale"); len(elem) >= l && elem[0:l] == "cale" {
 																	elem = elem[l:]
 																} else {
 																	break
 																}
 
 																if len(elem) == 0 {
-																	s.handleReadAppsV1NamespacedReplicaSetStatusRequest([2]string{
+																	// Leaf: ReadAppsV1NamespacedDeploymentScale
+																	s.handleReadAppsV1NamespacedDeploymentScaleRequest([2]string{
 																		args[0],
 																		args[1],
 																	}, w, r)
 
 																	return
 																}
-																switch elem[0] {
-																case 'c': // Prefix: "cale"
-																	if l := len("cale"); len(elem) >= l && elem[0:l] == "cale" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
+															case 't': // Prefix: "tatus"
+																if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
 
-																	if len(elem) == 0 {
-																		// Leaf: ReadAppsV1NamespacedReplicaSetScale
-																		s.handleReadAppsV1NamespacedReplicaSetScaleRequest([2]string{
-																			args[0],
-																			args[1],
-																		}, w, r)
+																if len(elem) == 0 {
+																	// Leaf: ReadAppsV1NamespacedDeploymentStatus
+																	s.handleReadAppsV1NamespacedDeploymentStatusRequest([2]string{
+																		args[0],
+																		args[1],
+																	}, w, r)
 
-																		return
-																	}
-																case 't': // Prefix: "tatus"
-																	if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		// Leaf: ReadAppsV1NamespacedReplicaSetStatus
-																		s.handleReadAppsV1NamespacedReplicaSetStatusRequest([2]string{
-																			args[0],
-																			args[1],
-																		}, w, r)
-
-																		return
-																	}
+																	return
 																}
 															}
 														}
 													}
-												case 's': // Prefix: "statefulsets"
-													if l := len("statefulsets"); len(elem) >= l && elem[0:l] == "statefulsets" {
+												}
+											case 'r': // Prefix: "replicasets"
+												if l := len("replicasets"); len(elem) >= l && elem[0:l] == "replicasets" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleListAppsV1NamespacedReplicaSetRequest([1]string{
+														args[0],
+													}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
+													// Param: "name"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[1] = elem[:idx]
+													elem = elem[idx:]
+
 													if len(elem) == 0 {
-														s.handleListAppsV1NamespacedStatefulSetRequest([1]string{
+														s.handleReadAppsV1NamespacedReplicaSetRequest([2]string{
 															args[0],
+															args[1],
 														}, w, r)
 
 														return
 													}
 													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													case '/': // Prefix: "/s"
+														if l := len("/s"); len(elem) >= l && elem[0:l] == "/s" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Param: "name"
-														// Match until "/"
-														idx := strings.IndexByte(elem, '/')
-														if idx > 0 {
-															args[1] = elem[:idx]
-															elem = elem[idx:]
+														if len(elem) == 0 {
+															s.handleReadAppsV1NamespacedReplicaSetStatusRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+
+															return
+														}
+														switch elem[0] {
+														case 'c': // Prefix: "cale"
+															if l := len("cale"); len(elem) >= l && elem[0:l] == "cale" {
+																elem = elem[l:]
+															} else {
+																break
+															}
 
 															if len(elem) == 0 {
-																s.handleReadAppsV1NamespacedStatefulSetRequest([2]string{
+																// Leaf: ReadAppsV1NamespacedReplicaSetScale
+																s.handleReadAppsV1NamespacedReplicaSetScaleRequest([2]string{
 																	args[0],
 																	args[1],
 																}, w, r)
 
 																return
 															}
-															switch elem[0] {
-															case '/': // Prefix: "/s"
-																if l := len("/s"); len(elem) >= l && elem[0:l] == "/s" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
+														case 't': // Prefix: "tatus"
+															if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
+																elem = elem[l:]
+															} else {
+																break
+															}
 
-																if len(elem) == 0 {
-																	s.handleReadAppsV1NamespacedStatefulSetStatusRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
+															if len(elem) == 0 {
+																// Leaf: ReadAppsV1NamespacedReplicaSetStatus
+																s.handleReadAppsV1NamespacedReplicaSetStatusRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
 
-																	return
-																}
-																switch elem[0] {
-																case 'c': // Prefix: "cale"
-																	if l := len("cale"); len(elem) >= l && elem[0:l] == "cale" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
+																return
+															}
+														}
+													}
+												}
+											case 's': // Prefix: "statefulsets"
+												if l := len("statefulsets"); len(elem) >= l && elem[0:l] == "statefulsets" {
+													elem = elem[l:]
+												} else {
+													break
+												}
 
-																	if len(elem) == 0 {
-																		// Leaf: ReadAppsV1NamespacedStatefulSetScale
-																		s.handleReadAppsV1NamespacedStatefulSetScaleRequest([2]string{
-																			args[0],
-																			args[1],
-																		}, w, r)
+												if len(elem) == 0 {
+													s.handleListAppsV1NamespacedStatefulSetRequest([1]string{
+														args[0],
+													}, w, r)
 
-																		return
-																	}
-																case 't': // Prefix: "tatus"
-																	if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
 
-																	if len(elem) == 0 {
-																		// Leaf: ReadAppsV1NamespacedStatefulSetStatus
-																		s.handleReadAppsV1NamespacedStatefulSetStatusRequest([2]string{
-																			args[0],
-																			args[1],
-																		}, w, r)
+													// Param: "name"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[1] = elem[:idx]
+													elem = elem[idx:]
 
-																		return
-																	}
-																}
+													if len(elem) == 0 {
+														s.handleReadAppsV1NamespacedStatefulSetRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/s"
+														if l := len("/s"); len(elem) >= l && elem[0:l] == "/s" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReadAppsV1NamespacedStatefulSetStatusRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+
+															return
+														}
+														switch elem[0] {
+														case 'c': // Prefix: "cale"
+															if l := len("cale"); len(elem) >= l && elem[0:l] == "cale" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf: ReadAppsV1NamespacedStatefulSetScale
+																s.handleReadAppsV1NamespacedStatefulSetScaleRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+
+																return
+															}
+														case 't': // Prefix: "tatus"
+															if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf: ReadAppsV1NamespacedStatefulSetStatus
+																s.handleReadAppsV1NamespacedStatefulSetStatusRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+
+																return
 															}
 														}
 													}
@@ -3395,23 +3411,78 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "namespace"
 											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
-											if idx > 0 {
-												args[0] = elem[:idx]
-												elem = elem[idx:]
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[0] = elem[:idx]
+											elem = elem[idx:]
 
-												if len(elem) == 0 {
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
 													break
 												}
+
+												if len(elem) == 0 {
+													s.handleWatchAppsV1NamespacedDaemonSetRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+
+													return
+												}
 												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												case 'c': // Prefix: "controllerrevisions"
+													if l := len("controllerrevisions"); len(elem) >= l && elem[0:l] == "controllerrevisions" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchAppsV1NamespacedDaemonSetRequest([2]string{
+														s.handleWatchAppsV1NamespacedControllerRevisionListRequest([1]string{
+															args[0],
+														}, w, r)
+
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
+														if len(elem) == 0 {
+															// Leaf: WatchAppsV1NamespacedControllerRevision
+															s.handleWatchAppsV1NamespacedControllerRevisionRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+
+															return
+														}
+													}
+												case 'd': // Prefix: "d"
+													if l := len("d"); len(elem) >= l && elem[0:l] == "d" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchAppsV1NamespacedDeploymentRequest([2]string{
 															args[0],
 															args[1],
 														}, w, r)
@@ -3419,15 +3490,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														return
 													}
 													switch elem[0] {
-													case 'c': // Prefix: "controllerrevisions"
-														if l := len("controllerrevisions"); len(elem) >= l && elem[0:l] == "controllerrevisions" {
+													case 'a': // Prefix: "aemonsets"
+														if l := len("aemonsets"); len(elem) >= l && elem[0:l] == "aemonsets" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
 														if len(elem) == 0 {
-															s.handleWatchAppsV1NamespacedControllerRevisionListRequest([1]string{
+															s.handleWatchAppsV1NamespacedDaemonSetListRequest([1]string{
 																args[0],
 															}, w, r)
 
@@ -3447,8 +3518,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchAppsV1NamespacedControllerRevision
-																s.handleWatchAppsV1NamespacedControllerRevisionRequest([2]string{
+																// Leaf: WatchAppsV1NamespacedDaemonSet
+																s.handleWatchAppsV1NamespacedDaemonSetRequest([2]string{
 																	args[0],
 																	args[1],
 																}, w, r)
@@ -3456,170 +3527,116 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																return
 															}
 														}
-													case 'd': // Prefix: "d"
-														if l := len("d"); len(elem) >= l && elem[0:l] == "d" {
+													case 'e': // Prefix: "eployments"
+														if l := len("eployments"); len(elem) >= l && elem[0:l] == "eployments" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
 														if len(elem) == 0 {
-															s.handleWatchAppsV1NamespacedDeploymentRequest([2]string{
+															s.handleWatchAppsV1NamespacedDeploymentListRequest([1]string{
+																args[0],
+															}, w, r)
+
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args[1] = elem
+															elem = ""
+
+															if len(elem) == 0 {
+																// Leaf: WatchAppsV1NamespacedDeployment
+																s.handleWatchAppsV1NamespacedDeploymentRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+
+																return
+															}
+														}
+													}
+												case 'r': // Prefix: "replicasets"
+													if l := len("replicasets"); len(elem) >= l && elem[0:l] == "replicasets" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchAppsV1NamespacedReplicaSetListRequest([1]string{
+															args[0],
+														}, w, r)
+
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
+														if len(elem) == 0 {
+															// Leaf: WatchAppsV1NamespacedReplicaSet
+															s.handleWatchAppsV1NamespacedReplicaSetRequest([2]string{
 																args[0],
 																args[1],
 															}, w, r)
 
 															return
 														}
-														switch elem[0] {
-														case 'a': // Prefix: "aemonsets"
-															if l := len("aemonsets"); len(elem) >= l && elem[0:l] == "aemonsets" {
-																elem = elem[l:]
-															} else {
-																break
-															}
+													}
+												case 's': // Prefix: "statefulsets"
+													if l := len("statefulsets"); len(elem) >= l && elem[0:l] == "statefulsets" {
+														elem = elem[l:]
+													} else {
+														break
+													}
 
-															if len(elem) == 0 {
-																s.handleWatchAppsV1NamespacedDaemonSetListRequest([1]string{
-																	args[0],
-																}, w, r)
+													if len(elem) == 0 {
+														s.handleWatchAppsV1NamespacedStatefulSetListRequest([1]string{
+															args[0],
+														}, w, r)
 
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args[1] = elem
-																elem = ""
-
-																if len(elem) == 0 {
-																	// Leaf: WatchAppsV1NamespacedDaemonSet
-																	s.handleWatchAppsV1NamespacedDaemonSetRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
-
-																	return
-																}
-															}
-														case 'e': // Prefix: "eployments"
-															if l := len("eployments"); len(elem) >= l && elem[0:l] == "eployments" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleWatchAppsV1NamespacedDeploymentListRequest([1]string{
-																	args[0],
-																}, w, r)
-
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args[1] = elem
-																elem = ""
-
-																if len(elem) == 0 {
-																	// Leaf: WatchAppsV1NamespacedDeployment
-																	s.handleWatchAppsV1NamespacedDeploymentRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
-
-																	return
-																}
-															}
-														}
-													case 'r': // Prefix: "replicasets"
-														if l := len("replicasets"); len(elem) >= l && elem[0:l] == "replicasets" {
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
 														if len(elem) == 0 {
-															s.handleWatchAppsV1NamespacedReplicaSetListRequest([1]string{
+															// Leaf: WatchAppsV1NamespacedStatefulSet
+															s.handleWatchAppsV1NamespacedStatefulSetRequest([2]string{
 																args[0],
+																args[1],
 															}, w, r)
 
 															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf: WatchAppsV1NamespacedReplicaSet
-																s.handleWatchAppsV1NamespacedReplicaSetRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
-
-																return
-															}
-														}
-													case 's': // Prefix: "statefulsets"
-														if l := len("statefulsets"); len(elem) >= l && elem[0:l] == "statefulsets" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleWatchAppsV1NamespacedStatefulSetListRequest([1]string{
-																args[0],
-															}, w, r)
-
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf: WatchAppsV1NamespacedStatefulSet
-																s.handleWatchAppsV1NamespacedStatefulSetRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
-
-																return
-															}
 														}
 													}
 												}
@@ -3797,69 +3814,71 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "namespace"
 											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
-											if idx > 0 {
-												args[0] = elem[:idx]
-												elem = elem[idx:]
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[0] = elem[:idx]
+											elem = elem[idx:]
 
-												if len(elem) == 0 {
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/horizontalpodautoscalers"
+												if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+													elem = elem[l:]
+												} else {
 													break
 												}
+
+												if len(elem) == 0 {
+													s.handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest([1]string{
+														args[0],
+													}, w, r)
+
+													return
+												}
 												switch elem[0] {
-												case '/': // Prefix: "/horizontalpodautoscalers"
-													if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
+													// Param: "name"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[1] = elem[:idx]
+													elem = elem[idx:]
+
 													if len(elem) == 0 {
-														s.handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest([1]string{
+														s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest([2]string{
 															args[0],
+															args[1],
 														}, w, r)
 
 														return
 													}
 													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													case '/': // Prefix: "/status"
+														if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Param: "name"
-														// Match until "/"
-														idx := strings.IndexByte(elem, '/')
-														if idx > 0 {
-															args[1] = elem[:idx]
-															elem = elem[idx:]
+														if len(elem) == 0 {
+															// Leaf: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus
+															s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
 
-															if len(elem) == 0 {
-																s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
-
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/status"
-																if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	// Leaf: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus
-																	s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
-
-																	return
-																}
-															}
+															return
 														}
 													}
 												}
@@ -3903,50 +3922,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "namespace"
 												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
-												if idx > 0 {
-													args[0] = elem[:idx]
-													elem = elem[idx:]
+												if idx < 0 {
+													idx = len(elem)
+												}
+												args[0] = elem[:idx]
+												elem = elem[idx:]
 
-													if len(elem) == 0 {
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/horizontalpodautoscalers"
+													if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+														elem = elem[l:]
+													} else {
 														break
 													}
+
+													if len(elem) == 0 {
+														s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest([1]string{
+															args[0],
+														}, w, r)
+
+														return
+													}
 													switch elem[0] {
-													case '/': // Prefix: "/horizontalpodautoscalers"
-														if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
 														if len(elem) == 0 {
-															s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest([1]string{
+															// Leaf: WatchAutoscalingV1NamespacedHorizontalPodAutoscaler
+															s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest([2]string{
 																args[0],
+																args[1],
 															}, w, r)
 
 															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf: WatchAutoscalingV1NamespacedHorizontalPodAutoscaler
-																s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
-
-																return
-															}
 														}
 													}
 												}
@@ -4001,69 +4021,71 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "namespace"
 												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
-												if idx > 0 {
-													args[0] = elem[:idx]
-													elem = elem[idx:]
+												if idx < 0 {
+													idx = len(elem)
+												}
+												args[0] = elem[:idx]
+												elem = elem[idx:]
 
-													if len(elem) == 0 {
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/horizontalpodautoscalers"
+													if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+														elem = elem[l:]
+													} else {
 														break
 													}
+
+													if len(elem) == 0 {
+														s.handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest([1]string{
+															args[0],
+														}, w, r)
+
+														return
+													}
 													switch elem[0] {
-													case '/': // Prefix: "/horizontalpodautoscalers"
-														if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
+														// Param: "name"
+														// Match until "/"
+														idx := strings.IndexByte(elem, '/')
+														if idx < 0 {
+															idx = len(elem)
+														}
+														args[1] = elem[:idx]
+														elem = elem[idx:]
+
 														if len(elem) == 0 {
-															s.handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest([1]string{
+															s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest([2]string{
 																args[0],
+																args[1],
 															}, w, r)
 
 															return
 														}
 														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														case '/': // Prefix: "/status"
+															if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
 																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Param: "name"
-															// Match until "/"
-															idx := strings.IndexByte(elem, '/')
-															if idx > 0 {
-																args[1] = elem[:idx]
-																elem = elem[idx:]
+															if len(elem) == 0 {
+																// Leaf: ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus
+																s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
 
-																if len(elem) == 0 {
-																	s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
-
-																	return
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/status"
-																	if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		// Leaf: ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus
-																		s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest([2]string{
-																			args[0],
-																			args[1],
-																		}, w, r)
-
-																		return
-																	}
-																}
+																return
 															}
 														}
 													}
@@ -4107,50 +4129,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Param: "namespace"
 													// Match until "/"
 													idx := strings.IndexByte(elem, '/')
-													if idx > 0 {
-														args[0] = elem[:idx]
-														elem = elem[idx:]
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[0] = elem[:idx]
+													elem = elem[idx:]
 
-														if len(elem) == 0 {
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/horizontalpodautoscalers"
+														if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+															elem = elem[l:]
+														} else {
 															break
 														}
+
+														if len(elem) == 0 {
+															s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest([1]string{
+																args[0],
+															}, w, r)
+
+															return
+														}
 														switch elem[0] {
-														case '/': // Prefix: "/horizontalpodautoscalers"
-															if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 																elem = elem[l:]
 															} else {
 																break
 															}
 
+															// Param: "name"
+															// Leaf parameter
+															args[1] = elem
+															elem = ""
+
 															if len(elem) == 0 {
-																s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest([1]string{
+																// Leaf: WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler
+																s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest([2]string{
 																	args[0],
+																	args[1],
 																}, w, r)
 
 																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args[1] = elem
-																elem = ""
-
-																if len(elem) == 0 {
-																	// Leaf: WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler
-																	s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
-
-																	return
-																}
 															}
 														}
 													}
@@ -4192,69 +4215,71 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "namespace"
 												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
-												if idx > 0 {
-													args[0] = elem[:idx]
-													elem = elem[idx:]
+												if idx < 0 {
+													idx = len(elem)
+												}
+												args[0] = elem[:idx]
+												elem = elem[idx:]
 
-													if len(elem) == 0 {
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/horizontalpodautoscalers"
+													if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+														elem = elem[l:]
+													} else {
 														break
 													}
+
+													if len(elem) == 0 {
+														s.handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest([1]string{
+															args[0],
+														}, w, r)
+
+														return
+													}
 													switch elem[0] {
-													case '/': // Prefix: "/horizontalpodautoscalers"
-														if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
+														// Param: "name"
+														// Match until "/"
+														idx := strings.IndexByte(elem, '/')
+														if idx < 0 {
+															idx = len(elem)
+														}
+														args[1] = elem[:idx]
+														elem = elem[idx:]
+
 														if len(elem) == 0 {
-															s.handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest([1]string{
+															s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest([2]string{
 																args[0],
+																args[1],
 															}, w, r)
 
 															return
 														}
 														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														case '/': // Prefix: "/status"
+															if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
 																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Param: "name"
-															// Match until "/"
-															idx := strings.IndexByte(elem, '/')
-															if idx > 0 {
-																args[1] = elem[:idx]
-																elem = elem[idx:]
+															if len(elem) == 0 {
+																// Leaf: ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus
+																s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
 
-																if len(elem) == 0 {
-																	s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
-
-																	return
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/status"
-																	if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		// Leaf: ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus
-																		s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest([2]string{
-																			args[0],
-																			args[1],
-																		}, w, r)
-
-																		return
-																	}
-																}
+																return
 															}
 														}
 													}
@@ -4298,50 +4323,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Param: "namespace"
 													// Match until "/"
 													idx := strings.IndexByte(elem, '/')
-													if idx > 0 {
-														args[0] = elem[:idx]
-														elem = elem[idx:]
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[0] = elem[:idx]
+													elem = elem[idx:]
 
-														if len(elem) == 0 {
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/horizontalpodautoscalers"
+														if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+															elem = elem[l:]
+														} else {
 															break
 														}
+
+														if len(elem) == 0 {
+															s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest([1]string{
+																args[0],
+															}, w, r)
+
+															return
+														}
 														switch elem[0] {
-														case '/': // Prefix: "/horizontalpodautoscalers"
-															if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 																elem = elem[l:]
 															} else {
 																break
 															}
 
+															// Param: "name"
+															// Leaf parameter
+															args[1] = elem
+															elem = ""
+
 															if len(elem) == 0 {
-																s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest([1]string{
+																// Leaf: WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler
+																s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest([2]string{
 																	args[0],
+																	args[1],
 																}, w, r)
 
 																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args[1] = elem
-																elem = ""
-
-																if len(elem) == 0 {
-																	// Leaf: WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler
-																	s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
-
-																	return
-																}
 															}
 														}
 													}
@@ -4427,16 +4453,91 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											s.handleListBatchV1NamespacedJobRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/"
-											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										case 'c': // Prefix: "cronjobs"
+											if l := len("cronjobs"); len(elem) >= l && elem[0:l] == "cronjobs" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListBatchV1NamespacedCronJobRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Match until "/"
+												idx := strings.IndexByte(elem, '/')
+												if idx < 0 {
+													idx = len(elem)
+												}
+												args[1] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													s.handleReadBatchV1NamespacedCronJobRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/status"
+													if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: ReadBatchV1NamespacedCronJobStatus
+														s.handleReadBatchV1NamespacedCronJobStatusRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+
+														return
+													}
+												}
+											}
+										case 'j': // Prefix: "jobs"
+											if l := len("jobs"); len(elem) >= l && elem[0:l] == "jobs" {
 												elem = elem[l:]
 											} else {
 												break
@@ -4450,118 +4551,46 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												return
 											}
 											switch elem[0] {
-											case 'c': // Prefix: "cronjobs"
-												if l := len("cronjobs"); len(elem) >= l && elem[0:l] == "cronjobs" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Match until "/"
+												idx := strings.IndexByte(elem, '/')
+												if idx < 0 {
+													idx = len(elem)
+												}
+												args[1] = elem[:idx]
+												elem = elem[idx:]
+
 												if len(elem) == 0 {
-													s.handleListBatchV1NamespacedCronJobRequest([1]string{
+													s.handleReadBatchV1NamespacedJobRequest([2]string{
 														args[0],
+														args[1],
 													}, w, r)
 
 													return
 												}
 												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												case '/': // Prefix: "/status"
+													if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Param: "name"
-													// Match until "/"
-													idx := strings.IndexByte(elem, '/')
-													if idx > 0 {
-														args[1] = elem[:idx]
-														elem = elem[idx:]
+													if len(elem) == 0 {
+														// Leaf: ReadBatchV1NamespacedJobStatus
+														s.handleReadBatchV1NamespacedJobStatusRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
 
-														if len(elem) == 0 {
-															s.handleReadBatchV1NamespacedCronJobRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/status"
-															if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																// Leaf: ReadBatchV1NamespacedCronJobStatus
-																s.handleReadBatchV1NamespacedCronJobStatusRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
-
-																return
-															}
-														}
-													}
-												}
-											case 'j': // Prefix: "jobs"
-												if l := len("jobs"); len(elem) >= l && elem[0:l] == "jobs" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleListBatchV1NamespacedJobRequest([1]string{
-														args[0],
-													}, w, r)
-
-													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Match until "/"
-													idx := strings.IndexByte(elem, '/')
-													if idx > 0 {
-														args[1] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															s.handleReadBatchV1NamespacedJobRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/status"
-															if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																// Leaf: ReadBatchV1NamespacedJobStatus
-																s.handleReadBatchV1NamespacedJobStatusRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
-
-																return
-															}
-														}
+														return
 													}
 												}
 											}
@@ -4616,103 +4645,104 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												s.handleWatchBatchV1NamespacedJobRequest([2]string{
+													args[0],
+													args[1],
+												}, w, r)
+
+												return
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											case 'c': // Prefix: "cronjobs"
+												if l := len("cronjobs"); len(elem) >= l && elem[0:l] == "cronjobs" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													s.handleWatchBatchV1NamespacedJobRequest([2]string{
+													s.handleWatchBatchV1NamespacedCronJobListRequest([1]string{
 														args[0],
-														args[1],
 													}, w, r)
 
 													return
 												}
 												switch elem[0] {
-												case 'c': // Prefix: "cronjobs"
-													if l := len("cronjobs"); len(elem) >= l && elem[0:l] == "cronjobs" {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
+													// Param: "name"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
+
 													if len(elem) == 0 {
-														s.handleWatchBatchV1NamespacedCronJobListRequest([1]string{
+														// Leaf: WatchBatchV1NamespacedCronJob
+														s.handleWatchBatchV1NamespacedCronJobRequest([2]string{
 															args[0],
+															args[1],
 														}, w, r)
 
 														return
 													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
+												}
+											case 'j': // Prefix: "jobs"
+												if l := len("jobs"); len(elem) >= l && elem[0:l] == "jobs" {
+													elem = elem[l:]
+												} else {
+													break
+												}
 
-														// Param: "name"
-														// Leaf parameter
-														args[1] = elem
-														elem = ""
+												if len(elem) == 0 {
+													s.handleWatchBatchV1NamespacedJobListRequest([1]string{
+														args[0],
+													}, w, r)
 
-														if len(elem) == 0 {
-															// Leaf: WatchBatchV1NamespacedCronJob
-															s.handleWatchBatchV1NamespacedCronJobRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-
-															return
-														}
-													}
-												case 'j': // Prefix: "jobs"
-													if l := len("jobs"); len(elem) >= l && elem[0:l] == "jobs" {
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
+													// Param: "name"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
+
 													if len(elem) == 0 {
-														s.handleWatchBatchV1NamespacedJobListRequest([1]string{
+														// Leaf: WatchBatchV1NamespacedJob
+														s.handleWatchBatchV1NamespacedJobRequest([2]string{
 															args[0],
+															args[1],
 														}, w, r)
 
 														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Leaf parameter
-														args[1] = elem
-														elem = ""
-
-														if len(elem) == 0 {
-															// Leaf: WatchBatchV1NamespacedJob
-															s.handleWatchBatchV1NamespacedJobRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-
-															return
-														}
 													}
 												}
 											}
@@ -4755,69 +4785,71 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/cronjobs"
+										if l := len("/cronjobs"); len(elem) >= l && elem[0:l] == "/cronjobs" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											s.handleListBatchV1beta1NamespacedCronJobRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/cronjobs"
-											if l := len("/cronjobs"); len(elem) >= l && elem[0:l] == "/cronjobs" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Match until "/"
+											idx := strings.IndexByte(elem, '/')
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[1] = elem[:idx]
+											elem = elem[idx:]
+
 											if len(elem) == 0 {
-												s.handleListBatchV1beta1NamespacedCronJobRequest([1]string{
+												s.handleReadBatchV1beta1NamespacedCronJobRequest([2]string{
 													args[0],
+													args[1],
 												}, w, r)
 
 												return
 											}
 											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											case '/': // Prefix: "/status"
+												if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Param: "name"
-												// Match until "/"
-												idx := strings.IndexByte(elem, '/')
-												if idx > 0 {
-													args[1] = elem[:idx]
-													elem = elem[idx:]
+												if len(elem) == 0 {
+													// Leaf: ReadBatchV1beta1NamespacedCronJobStatus
+													s.handleReadBatchV1beta1NamespacedCronJobStatusRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
 
-													if len(elem) == 0 {
-														s.handleReadBatchV1beta1NamespacedCronJobRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/status"
-														if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf: ReadBatchV1beta1NamespacedCronJobStatus
-															s.handleReadBatchV1beta1NamespacedCronJobStatusRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-
-															return
-														}
-													}
+													return
 												}
 											}
 										}
@@ -4861,50 +4893,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/cronjobs"
+											if l := len("/cronjobs"); len(elem) >= l && elem[0:l] == "/cronjobs" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												s.handleWatchBatchV1beta1NamespacedCronJobListRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/cronjobs"
-												if l := len("/cronjobs"); len(elem) >= l && elem[0:l] == "/cronjobs" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													s.handleWatchBatchV1beta1NamespacedCronJobListRequest([1]string{
+													// Leaf: WatchBatchV1beta1NamespacedCronJob
+													s.handleWatchBatchV1beta1NamespacedCronJobRequest([2]string{
 														args[0],
+														args[1],
 													}, w, r)
 
 													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchBatchV1beta1NamespacedCronJob
-														s.handleWatchBatchV1beta1NamespacedCronJobRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
-													}
 												}
 											}
 										}
@@ -4974,63 +5007,64 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "name"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											s.handleReadCertificatesV1CertificateSigningRequestRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
+												break
+											}
 
 											if len(elem) == 0 {
-												s.handleReadCertificatesV1CertificateSigningRequestRequest([1]string{
+												s.handleReadCertificatesV1CertificateSigningRequestStatusRequest([1]string{
 													args[0],
 												}, w, r)
 
 												return
 											}
 											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											case 'a': // Prefix: "approval"
+												if l := len("approval"); len(elem) >= l && elem[0:l] == "approval" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													s.handleReadCertificatesV1CertificateSigningRequestStatusRequest([1]string{
+													// Leaf: ReadCertificatesV1CertificateSigningRequestApproval
+													s.handleReadCertificatesV1CertificateSigningRequestApprovalRequest([1]string{
 														args[0],
 													}, w, r)
 
 													return
 												}
-												switch elem[0] {
-												case 'a': // Prefix: "approval"
-													if l := len("approval"); len(elem) >= l && elem[0:l] == "approval" {
-														elem = elem[l:]
-													} else {
-														break
-													}
+											case 's': // Prefix: "status"
+												if l := len("status"); len(elem) >= l && elem[0:l] == "status" {
+													elem = elem[l:]
+												} else {
+													break
+												}
 
-													if len(elem) == 0 {
-														// Leaf: ReadCertificatesV1CertificateSigningRequestApproval
-														s.handleReadCertificatesV1CertificateSigningRequestApprovalRequest([1]string{
-															args[0],
-														}, w, r)
+												if len(elem) == 0 {
+													// Leaf: ReadCertificatesV1CertificateSigningRequestStatus
+													s.handleReadCertificatesV1CertificateSigningRequestStatusRequest([1]string{
+														args[0],
+													}, w, r)
 
-														return
-													}
-												case 's': // Prefix: "status"
-													if l := len("status"); len(elem) >= l && elem[0:l] == "status" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														// Leaf: ReadCertificatesV1CertificateSigningRequestStatus
-														s.handleReadCertificatesV1CertificateSigningRequestStatusRequest([1]string{
-															args[0],
-														}, w, r)
-
-														return
-													}
+													return
 												}
 											}
 										}
@@ -5120,50 +5154,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/leases"
+										if l := len("/leases"); len(elem) >= l && elem[0:l] == "/leases" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											s.handleListCoordinationV1NamespacedLeaseRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/leases"
-											if l := len("/leases"); len(elem) >= l && elem[0:l] == "/leases" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Leaf parameter
+											args[1] = elem
+											elem = ""
+
 											if len(elem) == 0 {
-												s.handleListCoordinationV1NamespacedLeaseRequest([1]string{
+												// Leaf: ReadCoordinationV1NamespacedLease
+												s.handleReadCoordinationV1NamespacedLeaseRequest([2]string{
 													args[0],
+													args[1],
 												}, w, r)
 
 												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "name"
-												// Leaf parameter
-												args[1] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													// Leaf: ReadCoordinationV1NamespacedLease
-													s.handleReadCoordinationV1NamespacedLeaseRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
-												}
 											}
 										}
 									}
@@ -5206,50 +5241,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/leases"
+											if l := len("/leases"); len(elem) >= l && elem[0:l] == "/leases" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												s.handleWatchCoordinationV1NamespacedLeaseListRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/leases"
-												if l := len("/leases"); len(elem) >= l && elem[0:l] == "/leases" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													s.handleWatchCoordinationV1NamespacedLeaseListRequest([1]string{
+													// Leaf: WatchCoordinationV1NamespacedLease
+													s.handleWatchCoordinationV1NamespacedLeaseRequest([2]string{
 														args[0],
+														args[1],
 													}, w, r)
 
 													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchCoordinationV1NamespacedLease
-														s.handleWatchCoordinationV1NamespacedLeaseRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
-													}
 												}
 											}
 										}
@@ -5319,50 +5355,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/endpointslices"
+										if l := len("/endpointslices"); len(elem) >= l && elem[0:l] == "/endpointslices" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											s.handleListDiscoveryV1NamespacedEndpointSliceRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/endpointslices"
-											if l := len("/endpointslices"); len(elem) >= l && elem[0:l] == "/endpointslices" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Leaf parameter
+											args[1] = elem
+											elem = ""
+
 											if len(elem) == 0 {
-												s.handleListDiscoveryV1NamespacedEndpointSliceRequest([1]string{
+												// Leaf: ReadDiscoveryV1NamespacedEndpointSlice
+												s.handleReadDiscoveryV1NamespacedEndpointSliceRequest([2]string{
 													args[0],
+													args[1],
 												}, w, r)
 
 												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "name"
-												// Leaf parameter
-												args[1] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													// Leaf: ReadDiscoveryV1NamespacedEndpointSlice
-													s.handleReadDiscoveryV1NamespacedEndpointSliceRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
-												}
 											}
 										}
 									}
@@ -5405,50 +5442,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/endpointslices"
+											if l := len("/endpointslices"); len(elem) >= l && elem[0:l] == "/endpointslices" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												s.handleWatchDiscoveryV1NamespacedEndpointSliceListRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/endpointslices"
-												if l := len("/endpointslices"); len(elem) >= l && elem[0:l] == "/endpointslices" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													s.handleWatchDiscoveryV1NamespacedEndpointSliceListRequest([1]string{
+													// Leaf: WatchDiscoveryV1NamespacedEndpointSlice
+													s.handleWatchDiscoveryV1NamespacedEndpointSliceRequest([2]string{
 														args[0],
+														args[1],
 													}, w, r)
 
 													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchDiscoveryV1NamespacedEndpointSlice
-														s.handleWatchDiscoveryV1NamespacedEndpointSliceRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
-													}
 												}
 											}
 										}
@@ -5490,50 +5528,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/endpointslices"
+										if l := len("/endpointslices"); len(elem) >= l && elem[0:l] == "/endpointslices" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											s.handleListDiscoveryV1beta1NamespacedEndpointSliceRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/endpointslices"
-											if l := len("/endpointslices"); len(elem) >= l && elem[0:l] == "/endpointslices" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Leaf parameter
+											args[1] = elem
+											elem = ""
+
 											if len(elem) == 0 {
-												s.handleListDiscoveryV1beta1NamespacedEndpointSliceRequest([1]string{
+												// Leaf: ReadDiscoveryV1beta1NamespacedEndpointSlice
+												s.handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest([2]string{
 													args[0],
+													args[1],
 												}, w, r)
 
 												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "name"
-												// Leaf parameter
-												args[1] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													// Leaf: ReadDiscoveryV1beta1NamespacedEndpointSlice
-													s.handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
-												}
 											}
 										}
 									}
@@ -5576,50 +5615,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/endpointslices"
+											if l := len("/endpointslices"); len(elem) >= l && elem[0:l] == "/endpointslices" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/endpointslices"
-												if l := len("/endpointslices"); len(elem) >= l && elem[0:l] == "/endpointslices" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest([1]string{
+													// Leaf: WatchDiscoveryV1beta1NamespacedEndpointSlice
+													s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest([2]string{
 														args[0],
+														args[1],
 													}, w, r)
 
 													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchDiscoveryV1beta1NamespacedEndpointSlice
-														s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
-													}
 												}
 											}
 										}
@@ -5689,50 +5729,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/events"
+										if l := len("/events"); len(elem) >= l && elem[0:l] == "/events" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											s.handleListEventsV1NamespacedEventRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/events"
-											if l := len("/events"); len(elem) >= l && elem[0:l] == "/events" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Leaf parameter
+											args[1] = elem
+											elem = ""
+
 											if len(elem) == 0 {
-												s.handleListEventsV1NamespacedEventRequest([1]string{
+												// Leaf: ReadEventsV1NamespacedEvent
+												s.handleReadEventsV1NamespacedEventRequest([2]string{
 													args[0],
+													args[1],
 												}, w, r)
 
 												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "name"
-												// Leaf parameter
-												args[1] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													// Leaf: ReadEventsV1NamespacedEvent
-													s.handleReadEventsV1NamespacedEventRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
-												}
 											}
 										}
 									}
@@ -5775,50 +5816,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/events"
+											if l := len("/events"); len(elem) >= l && elem[0:l] == "/events" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												s.handleWatchEventsV1NamespacedEventListRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/events"
-												if l := len("/events"); len(elem) >= l && elem[0:l] == "/events" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													s.handleWatchEventsV1NamespacedEventListRequest([1]string{
+													// Leaf: WatchEventsV1NamespacedEvent
+													s.handleWatchEventsV1NamespacedEventRequest([2]string{
 														args[0],
+														args[1],
 													}, w, r)
 
 													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchEventsV1NamespacedEvent
-														s.handleWatchEventsV1NamespacedEventRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
-													}
 												}
 											}
 										}
@@ -5860,50 +5902,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/events"
+										if l := len("/events"); len(elem) >= l && elem[0:l] == "/events" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											s.handleListEventsV1beta1NamespacedEventRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/events"
-											if l := len("/events"); len(elem) >= l && elem[0:l] == "/events" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Leaf parameter
+											args[1] = elem
+											elem = ""
+
 											if len(elem) == 0 {
-												s.handleListEventsV1beta1NamespacedEventRequest([1]string{
+												// Leaf: ReadEventsV1beta1NamespacedEvent
+												s.handleReadEventsV1beta1NamespacedEventRequest([2]string{
 													args[0],
+													args[1],
 												}, w, r)
 
 												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "name"
-												// Leaf parameter
-												args[1] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													// Leaf: ReadEventsV1beta1NamespacedEvent
-													s.handleReadEventsV1beta1NamespacedEventRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
-												}
 											}
 										}
 									}
@@ -5946,50 +5989,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/events"
+											if l := len("/events"); len(elem) >= l && elem[0:l] == "/events" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												s.handleWatchEventsV1beta1NamespacedEventListRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/events"
-												if l := len("/events"); len(elem) >= l && elem[0:l] == "/events" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													s.handleWatchEventsV1beta1NamespacedEventListRequest([1]string{
+													// Leaf: WatchEventsV1beta1NamespacedEvent
+													s.handleWatchEventsV1beta1NamespacedEventRequest([2]string{
 														args[0],
+														args[1],
 													}, w, r)
 
 													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchEventsV1beta1NamespacedEvent
-														s.handleWatchEventsV1beta1NamespacedEventRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
-													}
 												}
 											}
 										}
@@ -6059,33 +6103,34 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "name"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											s.handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/status"
+											if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+												elem = elem[l:]
+											} else {
+												break
+											}
 
 											if len(elem) == 0 {
-												s.handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest([1]string{
+												// Leaf: ReadFlowcontrolApiserverV1beta1FlowSchemaStatus
+												s.handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest([1]string{
 													args[0],
 												}, w, r)
 
 												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/status"
-												if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: ReadFlowcontrolApiserverV1beta1FlowSchemaStatus
-													s.handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest([1]string{
-														args[0],
-													}, w, r)
-
-													return
-												}
 											}
 										}
 									}
@@ -6112,33 +6157,34 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "name"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/status"
+											if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+												elem = elem[l:]
+											} else {
+												break
+											}
 
 											if len(elem) == 0 {
-												s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest([1]string{
+												// Leaf: ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
+												s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest([1]string{
 													args[0],
 												}, w, r)
 
 												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/status"
-												if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
-													s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest([1]string{
-														args[0],
-													}, w, r)
-
-													return
-												}
 											}
 										}
 									}
@@ -6263,33 +6309,34 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "name"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											s.handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/status"
+											if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+												elem = elem[l:]
+											} else {
+												break
+											}
 
 											if len(elem) == 0 {
-												s.handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest([1]string{
+												// Leaf: ReadFlowcontrolApiserverV1beta2FlowSchemaStatus
+												s.handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest([1]string{
 													args[0],
 												}, w, r)
 
 												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/status"
-												if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: ReadFlowcontrolApiserverV1beta2FlowSchemaStatus
-													s.handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest([1]string{
-														args[0],
-													}, w, r)
-
-													return
-												}
 											}
 										}
 									}
@@ -6316,33 +6363,34 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "name"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/status"
+											if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+												elem = elem[l:]
+											} else {
+												break
+											}
 
 											if len(elem) == 0 {
-												s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest([1]string{
+												// Leaf: ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
+												s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest([1]string{
 													args[0],
 												}, w, r)
 
 												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/status"
-												if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
-													s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest([1]string{
-														args[0],
-													}, w, r)
-
-													return
-												}
 											}
 										}
 									}
@@ -6482,33 +6530,34 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "name"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										s.handleReadInternalApiserverV1alpha1StorageVersionRequest([1]string{
+											args[0],
+										}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/status"
+										if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+											elem = elem[l:]
+										} else {
+											break
+										}
 
 										if len(elem) == 0 {
-											s.handleReadInternalApiserverV1alpha1StorageVersionRequest([1]string{
+											// Leaf: ReadInternalApiserverV1alpha1StorageVersionStatus
+											s.handleReadInternalApiserverV1alpha1StorageVersionStatusRequest([1]string{
 												args[0],
 											}, w, r)
 
 											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/status"
-											if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: ReadInternalApiserverV1alpha1StorageVersionStatus
-												s.handleReadInternalApiserverV1alpha1StorageVersionStatusRequest([1]string{
-													args[0],
-												}, w, r)
-
-												return
-											}
 										}
 									}
 								}
@@ -6671,16 +6720,91 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												s.handleListNetworkingV1NamespacedNetworkPolicyRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											case 'i': // Prefix: "ingresses"
+												if l := len("ingresses"); len(elem) >= l && elem[0:l] == "ingresses" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleListNetworkingV1NamespacedIngressRequest([1]string{
+														args[0],
+													}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[1] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleReadNetworkingV1NamespacedIngressRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/status"
+														if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf: ReadNetworkingV1NamespacedIngressStatus
+															s.handleReadNetworkingV1NamespacedIngressStatusRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "networkpolicies"
+												if l := len("networkpolicies"); len(elem) >= l && elem[0:l] == "networkpolicies" {
 													elem = elem[l:]
 												} else {
 													break
@@ -6694,99 +6818,26 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													return
 												}
 												switch elem[0] {
-												case 'i': // Prefix: "ingresses"
-													if l := len("ingresses"); len(elem) >= l && elem[0:l] == "ingresses" {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
+													// Param: "name"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
+
 													if len(elem) == 0 {
-														s.handleListNetworkingV1NamespacedIngressRequest([1]string{
+														// Leaf: ReadNetworkingV1NamespacedNetworkPolicy
+														s.handleReadNetworkingV1NamespacedNetworkPolicyRequest([2]string{
 															args[0],
+															args[1],
 														}, w, r)
 
 														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Match until "/"
-														idx := strings.IndexByte(elem, '/')
-														if idx > 0 {
-															args[1] = elem[:idx]
-															elem = elem[idx:]
-
-															if len(elem) == 0 {
-																s.handleReadNetworkingV1NamespacedIngressRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
-
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/status"
-																if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	// Leaf: ReadNetworkingV1NamespacedIngressStatus
-																	s.handleReadNetworkingV1NamespacedIngressStatusRequest([2]string{
-																		args[0],
-																		args[1],
-																	}, w, r)
-
-																	return
-																}
-															}
-														}
-													}
-												case 'n': // Prefix: "networkpolicies"
-													if l := len("networkpolicies"); len(elem) >= l && elem[0:l] == "networkpolicies" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleListNetworkingV1NamespacedNetworkPolicyRequest([1]string{
-															args[0],
-														}, w, r)
-
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Leaf parameter
-														args[1] = elem
-														elem = ""
-
-														if len(elem) == 0 {
-															// Leaf: ReadNetworkingV1NamespacedNetworkPolicy
-															s.handleReadNetworkingV1NamespacedNetworkPolicyRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-
-															return
-														}
 													}
 												}
 											}
@@ -6905,103 +6956,104 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "namespace"
 											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
-											if idx > 0 {
-												args[0] = elem[:idx]
-												elem = elem[idx:]
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[0] = elem[:idx]
+											elem = elem[idx:]
 
-												if len(elem) == 0 {
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
 													break
 												}
+
+												if len(elem) == 0 {
+													s.handleWatchNetworkingV1NamespacedNetworkPolicyRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+
+													return
+												}
 												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												case 'i': // Prefix: "ingresses"
+													if l := len("ingresses"); len(elem) >= l && elem[0:l] == "ingresses" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchNetworkingV1NamespacedNetworkPolicyRequest([2]string{
+														s.handleWatchNetworkingV1NamespacedIngressListRequest([1]string{
 															args[0],
-															args[1],
 														}, w, r)
 
 														return
 													}
 													switch elem[0] {
-													case 'i': // Prefix: "ingresses"
-														if l := len("ingresses"); len(elem) >= l && elem[0:l] == "ingresses" {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
 														if len(elem) == 0 {
-															s.handleWatchNetworkingV1NamespacedIngressListRequest([1]string{
+															// Leaf: WatchNetworkingV1NamespacedIngress
+															s.handleWatchNetworkingV1NamespacedIngressRequest([2]string{
 																args[0],
+																args[1],
 															}, w, r)
 
 															return
 														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
+													}
+												case 'n': // Prefix: "networkpolicies"
+													if l := len("networkpolicies"); len(elem) >= l && elem[0:l] == "networkpolicies" {
+														elem = elem[l:]
+													} else {
+														break
+													}
 
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
+													if len(elem) == 0 {
+														s.handleWatchNetworkingV1NamespacedNetworkPolicyListRequest([1]string{
+															args[0],
+														}, w, r)
 
-															if len(elem) == 0 {
-																// Leaf: WatchNetworkingV1NamespacedIngress
-																s.handleWatchNetworkingV1NamespacedIngressRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
-
-																return
-															}
-														}
-													case 'n': // Prefix: "networkpolicies"
-														if l := len("networkpolicies"); len(elem) >= l && elem[0:l] == "networkpolicies" {
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
 														if len(elem) == 0 {
-															s.handleWatchNetworkingV1NamespacedNetworkPolicyListRequest([1]string{
+															// Leaf: WatchNetworkingV1NamespacedNetworkPolicy
+															s.handleWatchNetworkingV1NamespacedNetworkPolicyRequest([2]string{
 																args[0],
+																args[1],
 															}, w, r)
 
 															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf: WatchNetworkingV1NamespacedNetworkPolicy
-																s.handleWatchNetworkingV1NamespacedNetworkPolicyRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
-
-																return
-															}
 														}
 													}
 												}
@@ -7347,69 +7399,71 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/poddisruptionbudgets"
+										if l := len("/poddisruptionbudgets"); len(elem) >= l && elem[0:l] == "/poddisruptionbudgets" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											s.handleListPolicyV1NamespacedPodDisruptionBudgetRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/poddisruptionbudgets"
-											if l := len("/poddisruptionbudgets"); len(elem) >= l && elem[0:l] == "/poddisruptionbudgets" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Match until "/"
+											idx := strings.IndexByte(elem, '/')
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[1] = elem[:idx]
+											elem = elem[idx:]
+
 											if len(elem) == 0 {
-												s.handleListPolicyV1NamespacedPodDisruptionBudgetRequest([1]string{
+												s.handleReadPolicyV1NamespacedPodDisruptionBudgetRequest([2]string{
 													args[0],
+													args[1],
 												}, w, r)
 
 												return
 											}
 											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											case '/': // Prefix: "/status"
+												if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Param: "name"
-												// Match until "/"
-												idx := strings.IndexByte(elem, '/')
-												if idx > 0 {
-													args[1] = elem[:idx]
-													elem = elem[idx:]
+												if len(elem) == 0 {
+													// Leaf: ReadPolicyV1NamespacedPodDisruptionBudgetStatus
+													s.handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
 
-													if len(elem) == 0 {
-														s.handleReadPolicyV1NamespacedPodDisruptionBudgetRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/status"
-														if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf: ReadPolicyV1NamespacedPodDisruptionBudgetStatus
-															s.handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-
-															return
-														}
-													}
+													return
 												}
 											}
 										}
@@ -7450,50 +7504,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/poddisruptionbudgets"
+											if l := len("/poddisruptionbudgets"); len(elem) >= l && elem[0:l] == "/poddisruptionbudgets" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												s.handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/poddisruptionbudgets"
-												if l := len("/poddisruptionbudgets"); len(elem) >= l && elem[0:l] == "/poddisruptionbudgets" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													s.handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest([1]string{
+													// Leaf: WatchPolicyV1NamespacedPodDisruptionBudget
+													s.handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest([2]string{
 														args[0],
+														args[1],
 													}, w, r)
 
 													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchPolicyV1NamespacedPodDisruptionBudget
-														s.handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
-													}
 												}
 											}
 										}
@@ -7535,69 +7590,71 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/poddisruptionbudgets"
+										if l := len("/poddisruptionbudgets"); len(elem) >= l && elem[0:l] == "/poddisruptionbudgets" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											s.handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest([1]string{
+												args[0],
+											}, w, r)
+
+											return
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/poddisruptionbudgets"
-											if l := len("/poddisruptionbudgets"); len(elem) >= l && elem[0:l] == "/poddisruptionbudgets" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Match until "/"
+											idx := strings.IndexByte(elem, '/')
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[1] = elem[:idx]
+											elem = elem[idx:]
+
 											if len(elem) == 0 {
-												s.handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest([1]string{
+												s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest([2]string{
 													args[0],
+													args[1],
 												}, w, r)
 
 												return
 											}
 											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											case '/': // Prefix: "/status"
+												if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Param: "name"
-												// Match until "/"
-												idx := strings.IndexByte(elem, '/')
-												if idx > 0 {
-													args[1] = elem[:idx]
-													elem = elem[idx:]
+												if len(elem) == 0 {
+													// Leaf: ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus
+													s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
 
-													if len(elem) == 0 {
-														s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/status"
-														if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf: ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus
-															s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-
-															return
-														}
-													}
+													return
 												}
 											}
 										}
@@ -7686,50 +7743,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/poddisruptionbudgets"
+											if l := len("/poddisruptionbudgets"); len(elem) >= l && elem[0:l] == "/poddisruptionbudgets" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												s.handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/poddisruptionbudgets"
-												if l := len("/poddisruptionbudgets"); len(elem) >= l && elem[0:l] == "/poddisruptionbudgets" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													s.handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest([1]string{
+													// Leaf: WatchPolicyV1beta1NamespacedPodDisruptionBudget
+													s.handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest([2]string{
 														args[0],
+														args[1],
 													}, w, r)
 
 													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchPolicyV1beta1NamespacedPodDisruptionBudget
-														s.handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
-													}
 												}
 											}
 										}
@@ -7918,16 +7976,33 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "namespace"
 								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
-								if idx > 0 {
-									args[0] = elem[:idx]
-									elem = elem[idx:]
+								if idx < 0 {
+									idx = len(elem)
+								}
+								args[0] = elem[:idx]
+								elem = elem[idx:]
 
-									if len(elem) == 0 {
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/role"
+									if l := len("/role"); len(elem) >= l && elem[0:l] == "/role" {
+										elem = elem[l:]
+									} else {
 										break
 									}
+
+									if len(elem) == 0 {
+										s.handleListRbacAuthorizationV1NamespacedRoleBindingRequest([1]string{
+											args[0],
+										}, w, r)
+
+										return
+									}
 									switch elem[0] {
-									case '/': // Prefix: "/role"
-										if l := len("/role"); len(elem) >= l && elem[0:l] == "/role" {
+									case 'b': // Prefix: "bindings"
+										if l := len("bindings"); len(elem) >= l && elem[0:l] == "bindings" {
 											elem = elem[l:]
 										} else {
 											break
@@ -7941,79 +8016,63 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											return
 										}
 										switch elem[0] {
-										case 'b': // Prefix: "bindings"
-											if l := len("bindings"); len(elem) >= l && elem[0:l] == "bindings" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Leaf parameter
+											args[1] = elem
+											elem = ""
+
 											if len(elem) == 0 {
-												s.handleListRbacAuthorizationV1NamespacedRoleBindingRequest([1]string{
+												// Leaf: ReadRbacAuthorizationV1NamespacedRoleBinding
+												s.handleReadRbacAuthorizationV1NamespacedRoleBindingRequest([2]string{
 													args[0],
+													args[1],
 												}, w, r)
 
 												return
 											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
+										}
+									case 's': // Prefix: "s"
+										if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+											elem = elem[l:]
+										} else {
+											break
+										}
 
-												// Param: "name"
-												// Leaf parameter
-												args[1] = elem
-												elem = ""
+										if len(elem) == 0 {
+											s.handleListRbacAuthorizationV1NamespacedRoleRequest([1]string{
+												args[0],
+											}, w, r)
 
-												if len(elem) == 0 {
-													// Leaf: ReadRbacAuthorizationV1NamespacedRoleBinding
-													s.handleReadRbacAuthorizationV1NamespacedRoleBindingRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
-												}
-											}
-										case 's': // Prefix: "s"
-											if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Leaf parameter
+											args[1] = elem
+											elem = ""
+
 											if len(elem) == 0 {
-												s.handleListRbacAuthorizationV1NamespacedRoleRequest([1]string{
+												// Leaf: ReadRbacAuthorizationV1NamespacedRole
+												s.handleReadRbacAuthorizationV1NamespacedRoleRequest([2]string{
 													args[0],
+													args[1],
 												}, w, r)
 
 												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "name"
-												// Leaf parameter
-												args[1] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													// Leaf: ReadRbacAuthorizationV1NamespacedRole
-													s.handleReadRbacAuthorizationV1NamespacedRoleRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
-												}
 											}
 										}
 									}
@@ -8168,103 +8227,104 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/role"
+										if l := len("/role"); len(elem) >= l && elem[0:l] == "/role" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											s.handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest([2]string{
+												args[0],
+												args[1],
+											}, w, r)
+
+											return
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/role"
-											if l := len("/role"); len(elem) >= l && elem[0:l] == "/role" {
+										case 'b': // Prefix: "bindings"
+											if l := len("bindings"); len(elem) >= l && elem[0:l] == "bindings" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest([2]string{
+												s.handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest([1]string{
 													args[0],
-													args[1],
 												}, w, r)
 
 												return
 											}
 											switch elem[0] {
-											case 'b': // Prefix: "bindings"
-												if l := len("bindings"); len(elem) >= l && elem[0:l] == "bindings" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													s.handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest([1]string{
+													// Leaf: WatchRbacAuthorizationV1NamespacedRoleBinding
+													s.handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest([2]string{
 														args[0],
+														args[1],
 													}, w, r)
 
 													return
 												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
+											}
+										case 's': // Prefix: "s"
+											if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+												elem = elem[l:]
+											} else {
+												break
+											}
 
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
+											if len(elem) == 0 {
+												s.handleWatchRbacAuthorizationV1NamespacedRoleListRequest([1]string{
+													args[0],
+												}, w, r)
 
-													if len(elem) == 0 {
-														// Leaf: WatchRbacAuthorizationV1NamespacedRoleBinding
-														s.handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
-													}
-												}
-											case 's': // Prefix: "s"
-												if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													s.handleWatchRbacAuthorizationV1NamespacedRoleListRequest([1]string{
+													// Leaf: WatchRbacAuthorizationV1NamespacedRole
+													s.handleWatchRbacAuthorizationV1NamespacedRoleRequest([2]string{
 														args[0],
+														args[1],
 													}, w, r)
 
 													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchRbacAuthorizationV1NamespacedRole
-														s.handleWatchRbacAuthorizationV1NamespacedRoleRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
-													}
 												}
 											}
 										}
@@ -8599,33 +8659,34 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "name"
 											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
-											if idx > 0 {
-												args[0] = elem[:idx]
-												elem = elem[idx:]
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[0] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handleReadStorageV1VolumeAttachmentRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/status"
+												if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+													elem = elem[l:]
+												} else {
+													break
+												}
 
 												if len(elem) == 0 {
-													s.handleReadStorageV1VolumeAttachmentRequest([1]string{
+													// Leaf: ReadStorageV1VolumeAttachmentStatus
+													s.handleReadStorageV1VolumeAttachmentStatusRequest([1]string{
 														args[0],
 													}, w, r)
 
 													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/status"
-													if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														// Leaf: ReadStorageV1VolumeAttachmentStatus
-														s.handleReadStorageV1VolumeAttachmentStatusRequest([1]string{
-															args[0],
-														}, w, r)
-
-														return
-													}
 												}
 											}
 										}
@@ -8834,50 +8895,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/csistoragecapacities"
+											if l := len("/csistoragecapacities"); len(elem) >= l && elem[0:l] == "/csistoragecapacities" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												s.handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/csistoragecapacities"
-												if l := len("/csistoragecapacities"); len(elem) >= l && elem[0:l] == "/csistoragecapacities" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													s.handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest([1]string{
+													// Leaf: ReadStorageV1alpha1NamespacedCSIStorageCapacity
+													s.handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest([2]string{
 														args[0],
+														args[1],
 													}, w, r)
 
 													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: ReadStorageV1alpha1NamespacedCSIStorageCapacity
-														s.handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
-													}
 												}
 											}
 										}
@@ -8920,50 +8982,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "namespace"
 											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
-											if idx > 0 {
-												args[0] = elem[:idx]
-												elem = elem[idx:]
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[0] = elem[:idx]
+											elem = elem[idx:]
 
-												if len(elem) == 0 {
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/csistoragecapacities"
+												if l := len("/csistoragecapacities"); len(elem) >= l && elem[0:l] == "/csistoragecapacities" {
+													elem = elem[l:]
+												} else {
 													break
 												}
+
+												if len(elem) == 0 {
+													s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest([1]string{
+														args[0],
+													}, w, r)
+
+													return
+												}
 												switch elem[0] {
-												case '/': // Prefix: "/csistoragecapacities"
-													if l := len("/csistoragecapacities"); len(elem) >= l && elem[0:l] == "/csistoragecapacities" {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
+													// Param: "name"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
+
 													if len(elem) == 0 {
-														s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest([1]string{
+														// Leaf: WatchStorageV1alpha1NamespacedCSIStorageCapacity
+														s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest([2]string{
 															args[0],
+															args[1],
 														}, w, r)
 
 														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Leaf parameter
-														args[1] = elem
-														elem = ""
-
-														if len(elem) == 0 {
-															// Leaf: WatchStorageV1alpha1NamespacedCSIStorageCapacity
-															s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-
-															return
-														}
 													}
 												}
 											}
@@ -9005,50 +9068,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/csistoragecapacities"
+											if l := len("/csistoragecapacities"); len(elem) >= l && elem[0:l] == "/csistoragecapacities" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												s.handleListStorageV1beta1NamespacedCSIStorageCapacityRequest([1]string{
+													args[0],
+												}, w, r)
+
+												return
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/csistoragecapacities"
-												if l := len("/csistoragecapacities"); len(elem) >= l && elem[0:l] == "/csistoragecapacities" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													s.handleListStorageV1beta1NamespacedCSIStorageCapacityRequest([1]string{
+													// Leaf: ReadStorageV1beta1NamespacedCSIStorageCapacity
+													s.handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest([2]string{
 														args[0],
+														args[1],
 													}, w, r)
 
 													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: ReadStorageV1beta1NamespacedCSIStorageCapacity
-														s.handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
-													}
 												}
 											}
 										}
@@ -9091,50 +9155,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "namespace"
 											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
-											if idx > 0 {
-												args[0] = elem[:idx]
-												elem = elem[idx:]
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[0] = elem[:idx]
+											elem = elem[idx:]
 
-												if len(elem) == 0 {
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/csistoragecapacities"
+												if l := len("/csistoragecapacities"); len(elem) >= l && elem[0:l] == "/csistoragecapacities" {
+													elem = elem[l:]
+												} else {
 													break
 												}
+
+												if len(elem) == 0 {
+													s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest([1]string{
+														args[0],
+													}, w, r)
+
+													return
+												}
 												switch elem[0] {
-												case '/': // Prefix: "/csistoragecapacities"
-													if l := len("/csistoragecapacities"); len(elem) >= l && elem[0:l] == "/csistoragecapacities" {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
+													// Param: "name"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
+
 													if len(elem) == 0 {
-														s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest([1]string{
+														// Leaf: WatchStorageV1beta1NamespacedCSIStorageCapacity
+														s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest([2]string{
 															args[0],
+															args[1],
 														}, w, r)
 
 														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Leaf parameter
-														args[1] = elem
-														elem = ""
-
-														if len(elem) == 0 {
-															// Leaf: WatchStorageV1beta1NamespacedCSIStorageCapacity
-															s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-
-															return
-														}
 													}
 												}
 											}
@@ -9444,40 +9509,90 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										r.name = "ReadCoreV1Namespace"
+										r.args = args
+										r.count = 1
+										return r, true
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
+										} else {
+											break
+										}
 
 										if len(elem) == 0 {
-											r.name = "ReadCoreV1Namespace"
+											r.name = "ListCoreV1NamespacedEndpoints"
 											r.args = args
 											r.count = 1
 											return r, true
 										}
 										switch elem[0] {
-										case '/': // Prefix: "/"
-											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										case 'c': // Prefix: "configmaps"
+											if l := len("configmaps"); len(elem) >= l && elem[0:l] == "configmaps" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												r.name = "ListCoreV1NamespacedEndpoints"
+												r.name = "ListCoreV1NamespacedConfigMap"
 												r.args = args
 												r.count = 1
 												return r, true
 											}
 											switch elem[0] {
-											case 'c': // Prefix: "configmaps"
-												if l := len("configmaps"); len(elem) >= l && elem[0:l] == "configmaps" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
+												if len(elem) == 0 {
+													// Leaf: ReadCoreV1NamespacedConfigMap
+													r.name = "ReadCoreV1NamespacedConfigMap"
+													r.args = args
+													r.count = 2
+													return r, true
+												}
+											}
+										case 'e': // Prefix: "e"
+											if l := len("e"); len(elem) >= l && elem[0:l] == "e" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "ListCoreV1NamespacedEvent"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
+											switch elem[0] {
+											case 'n': // Prefix: "ndpoints"
+												if l := len("ndpoints"); len(elem) >= l && elem[0:l] == "ndpoints" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													r.name = "ListCoreV1NamespacedConfigMap"
+													r.name = "ListCoreV1NamespacedEndpoints"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -9496,15 +9611,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: ReadCoreV1NamespacedConfigMap
-														r.name = "ReadCoreV1NamespacedConfigMap"
+														// Leaf: ReadCoreV1NamespacedEndpoints
+														r.name = "ReadCoreV1NamespacedEndpoints"
 														r.args = args
 														r.count = 2
 														return r, true
 													}
 												}
-											case 'e': // Prefix: "e"
-												if l := len("e"); len(elem) >= l && elem[0:l] == "e" {
+											case 'v': // Prefix: "vents"
+												if l := len("vents"); len(elem) >= l && elem[0:l] == "vents" {
 													elem = elem[l:]
 												} else {
 													break
@@ -9517,89 +9632,6 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													return r, true
 												}
 												switch elem[0] {
-												case 'n': // Prefix: "ndpoints"
-													if l := len("ndpoints"); len(elem) >= l && elem[0:l] == "ndpoints" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														r.name = "ListCoreV1NamespacedEndpoints"
-														r.args = args
-														r.count = 1
-														return r, true
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Leaf parameter
-														args[1] = elem
-														elem = ""
-
-														if len(elem) == 0 {
-															// Leaf: ReadCoreV1NamespacedEndpoints
-															r.name = "ReadCoreV1NamespacedEndpoints"
-															r.args = args
-															r.count = 2
-															return r, true
-														}
-													}
-												case 'v': // Prefix: "vents"
-													if l := len("vents"); len(elem) >= l && elem[0:l] == "vents" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														r.name = "ListCoreV1NamespacedEvent"
-														r.args = args
-														r.count = 1
-														return r, true
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Leaf parameter
-														args[1] = elem
-														elem = ""
-
-														if len(elem) == 0 {
-															// Leaf: ReadCoreV1NamespacedEvent
-															r.name = "ReadCoreV1NamespacedEvent"
-															r.args = args
-															r.count = 2
-															return r, true
-														}
-													}
-												}
-											case 'l': // Prefix: "limitranges"
-												if l := len("limitranges"); len(elem) >= l && elem[0:l] == "limitranges" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													r.name = "ListCoreV1NamespacedLimitRange"
-													r.args = args
-													r.count = 1
-													return r, true
-												}
-												switch elem[0] {
 												case '/': // Prefix: "/"
 													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
@@ -9613,36 +9645,138 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
-														// Leaf: ReadCoreV1NamespacedLimitRange
-														r.name = "ReadCoreV1NamespacedLimitRange"
+														// Leaf: ReadCoreV1NamespacedEvent
+														r.name = "ReadCoreV1NamespacedEvent"
 														r.args = args
 														r.count = 2
 														return r, true
 													}
 												}
-											case 'p': // Prefix: "p"
-												if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+											}
+										case 'l': // Prefix: "limitranges"
+											if l := len("limitranges"); len(elem) >= l && elem[0:l] == "limitranges" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "ListCoreV1NamespacedLimitRange"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
+												if len(elem) == 0 {
+													// Leaf: ReadCoreV1NamespacedLimitRange
+													r.name = "ReadCoreV1NamespacedLimitRange"
+													r.args = args
+													r.count = 2
+													return r, true
+												}
+											}
+										case 'p': // Prefix: "p"
+											if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "ListCoreV1NamespacedPod"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
+											switch elem[0] {
+											case 'e': // Prefix: "ersistentvolumeclaims"
+												if l := len("ersistentvolumeclaims"); len(elem) >= l && elem[0:l] == "ersistentvolumeclaims" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													r.name = "ListCoreV1NamespacedPod"
+													r.name = "ListCoreV1NamespacedPersistentVolumeClaim"
 													r.args = args
 													r.count = 1
 													return r, true
 												}
 												switch elem[0] {
-												case 'e': // Prefix: "ersistentvolumeclaims"
-													if l := len("ersistentvolumeclaims"); len(elem) >= l && elem[0:l] == "ersistentvolumeclaims" {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[1] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														r.name = "ReadCoreV1NamespacedPersistentVolumeClaim"
+														r.args = args
+														r.count = 2
+														return r, true
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/status"
+														if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf: ReadCoreV1NamespacedPersistentVolumeClaimStatus
+															r.name = "ReadCoreV1NamespacedPersistentVolumeClaimStatus"
+															r.args = args
+															r.count = 2
+															return r, true
+														}
+													}
+												}
+											case 'o': // Prefix: "od"
+												if l := len("od"); len(elem) >= l && elem[0:l] == "od" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "ListCoreV1NamespacedPodTemplate"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+												switch elem[0] {
+												case 's': // Prefix: "s"
+													if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														r.name = "ListCoreV1NamespacedPersistentVolumeClaim"
+														r.name = "ListCoreV1NamespacedPod"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -9658,27 +9792,71 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														// Param: "name"
 														// Match until "/"
 														idx := strings.IndexByte(elem, '/')
-														if idx > 0 {
-															args[1] = elem[:idx]
-															elem = elem[idx:]
+														if idx < 0 {
+															idx = len(elem)
+														}
+														args[1] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															r.name = "ReadCoreV1NamespacedPod"
+															r.args = args
+															r.count = 2
+															return r, true
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
+															} else {
+																break
+															}
 
 															if len(elem) == 0 {
-																r.name = "ReadCoreV1NamespacedPersistentVolumeClaim"
+																r.name = "ReadCoreV1NamespacedPodLog"
 																r.args = args
 																r.count = 2
 																return r, true
 															}
 															switch elem[0] {
-															case '/': // Prefix: "/status"
-																if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+															case 'e': // Prefix: "ephemeralcontainers"
+																if l := len("ephemeralcontainers"); len(elem) >= l && elem[0:l] == "ephemeralcontainers" {
 																	elem = elem[l:]
 																} else {
 																	break
 																}
 
 																if len(elem) == 0 {
-																	// Leaf: ReadCoreV1NamespacedPersistentVolumeClaimStatus
-																	r.name = "ReadCoreV1NamespacedPersistentVolumeClaimStatus"
+																	// Leaf: ReadCoreV1NamespacedPodEphemeralcontainers
+																	r.name = "ReadCoreV1NamespacedPodEphemeralcontainers"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																}
+															case 'l': // Prefix: "log"
+																if l := len("log"); len(elem) >= l && elem[0:l] == "log" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	// Leaf: ReadCoreV1NamespacedPodLog
+																	r.name = "ReadCoreV1NamespacedPodLog"
+																	r.args = args
+																	r.count = 2
+																	return r, true
+																}
+															case 's': // Prefix: "status"
+																if l := len("status"); len(elem) >= l && elem[0:l] == "status" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	// Leaf: ReadCoreV1NamespacedPodStatus
+																	r.name = "ReadCoreV1NamespacedPodStatus"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -9686,8 +9864,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															}
 														}
 													}
-												case 'o': // Prefix: "od"
-													if l := len("od"); len(elem) >= l && elem[0:l] == "od" {
+												case 't': // Prefix: "templates"
+													if l := len("templates"); len(elem) >= l && elem[0:l] == "templates" {
 														elem = elem[l:]
 													} else {
 														break
@@ -9700,6 +9878,288 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														return r, true
 													}
 													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
+														if len(elem) == 0 {
+															// Leaf: ReadCoreV1NamespacedPodTemplate
+															r.name = "ReadCoreV1NamespacedPodTemplate"
+															r.args = args
+															r.count = 2
+															return r, true
+														}
+													}
+												}
+											}
+										case 'r': // Prefix: "re"
+											if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "ListCoreV1NamespacedResourceQuota"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
+											switch elem[0] {
+											case 'p': // Prefix: "plicationcontrollers"
+												if l := len("plicationcontrollers"); len(elem) >= l && elem[0:l] == "plicationcontrollers" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "ListCoreV1NamespacedReplicationController"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[1] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														r.name = "ReadCoreV1NamespacedReplicationController"
+														r.args = args
+														r.count = 2
+														return r, true
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/s"
+														if l := len("/s"); len(elem) >= l && elem[0:l] == "/s" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															r.name = "ReadCoreV1NamespacedReplicationControllerStatus"
+															r.args = args
+															r.count = 2
+															return r, true
+														}
+														switch elem[0] {
+														case 'c': // Prefix: "cale"
+															if l := len("cale"); len(elem) >= l && elem[0:l] == "cale" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf: ReadCoreV1NamespacedReplicationControllerScale
+																r.name = "ReadCoreV1NamespacedReplicationControllerScale"
+																r.args = args
+																r.count = 2
+																return r, true
+															}
+														case 't': // Prefix: "tatus"
+															if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf: ReadCoreV1NamespacedReplicationControllerStatus
+																r.name = "ReadCoreV1NamespacedReplicationControllerStatus"
+																r.args = args
+																r.count = 2
+																return r, true
+															}
+														}
+													}
+												}
+											case 's': // Prefix: "sourcequotas"
+												if l := len("sourcequotas"); len(elem) >= l && elem[0:l] == "sourcequotas" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "ListCoreV1NamespacedResourceQuota"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[1] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														r.name = "ReadCoreV1NamespacedResourceQuota"
+														r.args = args
+														r.count = 2
+														return r, true
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/status"
+														if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf: ReadCoreV1NamespacedResourceQuotaStatus
+															r.name = "ReadCoreV1NamespacedResourceQuotaStatus"
+															r.args = args
+															r.count = 2
+															return r, true
+														}
+													}
+												}
+											}
+										case 's': // Prefix: "s"
+											if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "ReadCoreV1NamespaceStatus"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
+											switch elem[0] {
+											case 'e': // Prefix: "e"
+												if l := len("e"); len(elem) >= l && elem[0:l] == "e" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "ListCoreV1NamespacedService"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "crets"
+													if l := len("crets"); len(elem) >= l && elem[0:l] == "crets" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														r.name = "ListCoreV1NamespacedSecret"
+														r.args = args
+														r.count = 1
+														return r, true
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
+														if len(elem) == 0 {
+															// Leaf: ReadCoreV1NamespacedSecret
+															r.name = "ReadCoreV1NamespacedSecret"
+															r.args = args
+															r.count = 2
+															return r, true
+														}
+													}
+												case 'r': // Prefix: "rvice"
+													if l := len("rvice"); len(elem) >= l && elem[0:l] == "rvice" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														r.name = "ListCoreV1NamespacedServiceAccount"
+														r.args = args
+														r.count = 1
+														return r, true
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "accounts"
+														if l := len("accounts"); len(elem) >= l && elem[0:l] == "accounts" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															r.name = "ListCoreV1NamespacedServiceAccount"
+															r.args = args
+															r.count = 1
+															return r, true
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args[1] = elem
+															elem = ""
+
+															if len(elem) == 0 {
+																// Leaf: ReadCoreV1NamespacedServiceAccount
+																r.name = "ReadCoreV1NamespacedServiceAccount"
+																r.args = args
+																r.count = 2
+																return r, true
+															}
+														}
 													case 's': // Prefix: "s"
 														if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
 															elem = elem[l:]
@@ -9708,7 +10168,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "ListCoreV1NamespacedPod"
+															r.name = "ListCoreV1NamespacedService"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -9724,238 +10184,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															// Param: "name"
 															// Match until "/"
 															idx := strings.IndexByte(elem, '/')
-															if idx > 0 {
-																args[1] = elem[:idx]
-																elem = elem[idx:]
-
-																if len(elem) == 0 {
-																	r.name = "ReadCoreV1NamespacedPod"
-																	r.args = args
-																	r.count = 2
-																	return r, true
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/"
-																	if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		r.name = "ReadCoreV1NamespacedPodLog"
-																		r.args = args
-																		r.count = 2
-																		return r, true
-																	}
-																	switch elem[0] {
-																	case 'e': // Prefix: "ephemeralcontainers"
-																		if l := len("ephemeralcontainers"); len(elem) >= l && elem[0:l] == "ephemeralcontainers" {
-																			elem = elem[l:]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			// Leaf: ReadCoreV1NamespacedPodEphemeralcontainers
-																			r.name = "ReadCoreV1NamespacedPodEphemeralcontainers"
-																			r.args = args
-																			r.count = 2
-																			return r, true
-																		}
-																	case 'l': // Prefix: "log"
-																		if l := len("log"); len(elem) >= l && elem[0:l] == "log" {
-																			elem = elem[l:]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			// Leaf: ReadCoreV1NamespacedPodLog
-																			r.name = "ReadCoreV1NamespacedPodLog"
-																			r.args = args
-																			r.count = 2
-																			return r, true
-																		}
-																	case 's': // Prefix: "status"
-																		if l := len("status"); len(elem) >= l && elem[0:l] == "status" {
-																			elem = elem[l:]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			// Leaf: ReadCoreV1NamespacedPodStatus
-																			r.name = "ReadCoreV1NamespacedPodStatus"
-																			r.args = args
-																			r.count = 2
-																			return r, true
-																		}
-																	}
-																}
+															if idx < 0 {
+																idx = len(elem)
 															}
-														}
-													case 't': // Prefix: "templates"
-														if l := len("templates"); len(elem) >= l && elem[0:l] == "templates" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															r.name = "ListCoreV1NamespacedPodTemplate"
-															r.args = args
-															r.count = 1
-															return r, true
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf: ReadCoreV1NamespacedPodTemplate
-																r.name = "ReadCoreV1NamespacedPodTemplate"
-																r.args = args
-																r.count = 2
-																return r, true
-															}
-														}
-													}
-												}
-											case 'r': // Prefix: "re"
-												if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													r.name = "ListCoreV1NamespacedResourceQuota"
-													r.args = args
-													r.count = 1
-													return r, true
-												}
-												switch elem[0] {
-												case 'p': // Prefix: "plicationcontrollers"
-													if l := len("plicationcontrollers"); len(elem) >= l && elem[0:l] == "plicationcontrollers" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														r.name = "ListCoreV1NamespacedReplicationController"
-														r.args = args
-														r.count = 1
-														return r, true
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Match until "/"
-														idx := strings.IndexByte(elem, '/')
-														if idx > 0 {
 															args[1] = elem[:idx]
 															elem = elem[idx:]
 
 															if len(elem) == 0 {
-																r.name = "ReadCoreV1NamespacedReplicationController"
-																r.args = args
-																r.count = 2
-																return r, true
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/s"
-																if l := len("/s"); len(elem) >= l && elem[0:l] == "/s" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	r.name = "ReadCoreV1NamespacedReplicationControllerStatus"
-																	r.args = args
-																	r.count = 2
-																	return r, true
-																}
-																switch elem[0] {
-																case 'c': // Prefix: "cale"
-																	if l := len("cale"); len(elem) >= l && elem[0:l] == "cale" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		// Leaf: ReadCoreV1NamespacedReplicationControllerScale
-																		r.name = "ReadCoreV1NamespacedReplicationControllerScale"
-																		r.args = args
-																		r.count = 2
-																		return r, true
-																	}
-																case 't': // Prefix: "tatus"
-																	if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		// Leaf: ReadCoreV1NamespacedReplicationControllerStatus
-																		r.name = "ReadCoreV1NamespacedReplicationControllerStatus"
-																		r.args = args
-																		r.count = 2
-																		return r, true
-																	}
-																}
-															}
-														}
-													}
-												case 's': // Prefix: "sourcequotas"
-													if l := len("sourcequotas"); len(elem) >= l && elem[0:l] == "sourcequotas" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														r.name = "ListCoreV1NamespacedResourceQuota"
-														r.args = args
-														r.count = 1
-														return r, true
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Match until "/"
-														idx := strings.IndexByte(elem, '/')
-														if idx > 0 {
-															args[1] = elem[:idx]
-															elem = elem[idx:]
-
-															if len(elem) == 0 {
-																r.name = "ReadCoreV1NamespacedResourceQuota"
+																r.name = "ReadCoreV1NamespacedService"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -9969,8 +10205,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
-																	// Leaf: ReadCoreV1NamespacedResourceQuotaStatus
-																	r.name = "ReadCoreV1NamespacedResourceQuotaStatus"
+																	// Leaf: ReadCoreV1NamespacedServiceStatus
+																	r.name = "ReadCoreV1NamespacedServiceStatus"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -9979,184 +10215,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 													}
 												}
-											case 's': // Prefix: "s"
-												if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+											case 't': // Prefix: "tatus"
+												if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
+													// Leaf: ReadCoreV1NamespaceStatus
 													r.name = "ReadCoreV1NamespaceStatus"
 													r.args = args
 													r.count = 1
 													return r, true
-												}
-												switch elem[0] {
-												case 'e': // Prefix: "e"
-													if l := len("e"); len(elem) >= l && elem[0:l] == "e" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														r.name = "ListCoreV1NamespacedService"
-														r.args = args
-														r.count = 1
-														return r, true
-													}
-													switch elem[0] {
-													case 'c': // Prefix: "crets"
-														if l := len("crets"); len(elem) >= l && elem[0:l] == "crets" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															r.name = "ListCoreV1NamespacedSecret"
-															r.args = args
-															r.count = 1
-															return r, true
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf: ReadCoreV1NamespacedSecret
-																r.name = "ReadCoreV1NamespacedSecret"
-																r.args = args
-																r.count = 2
-																return r, true
-															}
-														}
-													case 'r': // Prefix: "rvice"
-														if l := len("rvice"); len(elem) >= l && elem[0:l] == "rvice" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															r.name = "ListCoreV1NamespacedServiceAccount"
-															r.args = args
-															r.count = 1
-															return r, true
-														}
-														switch elem[0] {
-														case 'a': // Prefix: "accounts"
-															if l := len("accounts"); len(elem) >= l && elem[0:l] == "accounts" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																r.name = "ListCoreV1NamespacedServiceAccount"
-																r.args = args
-																r.count = 1
-																return r, true
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args[1] = elem
-																elem = ""
-
-																if len(elem) == 0 {
-																	// Leaf: ReadCoreV1NamespacedServiceAccount
-																	r.name = "ReadCoreV1NamespacedServiceAccount"
-																	r.args = args
-																	r.count = 2
-																	return r, true
-																}
-															}
-														case 's': // Prefix: "s"
-															if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																r.name = "ListCoreV1NamespacedService"
-																r.args = args
-																r.count = 1
-																return r, true
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Match until "/"
-																idx := strings.IndexByte(elem, '/')
-																if idx > 0 {
-																	args[1] = elem[:idx]
-																	elem = elem[idx:]
-
-																	if len(elem) == 0 {
-																		r.name = "ReadCoreV1NamespacedService"
-																		r.args = args
-																		r.count = 2
-																		return r, true
-																	}
-																	switch elem[0] {
-																	case '/': // Prefix: "/status"
-																		if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-																			elem = elem[l:]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			// Leaf: ReadCoreV1NamespacedServiceStatus
-																			r.name = "ReadCoreV1NamespacedServiceStatus"
-																			r.args = args
-																			r.count = 2
-																			return r, true
-																		}
-																	}
-																}
-															}
-														}
-													}
-												case 't': // Prefix: "tatus"
-													if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														// Leaf: ReadCoreV1NamespaceStatus
-														r.name = "ReadCoreV1NamespaceStatus"
-														r.args = args
-														r.count = 1
-														return r, true
-													}
 												}
 											}
 										}
@@ -10186,31 +10257,32 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									// Param: "name"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										r.name = "ReadCoreV1Node"
+										r.args = args
+										r.count = 1
+										return r, true
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/status"
+										if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+											elem = elem[l:]
+										} else {
+											break
+										}
 
 										if len(elem) == 0 {
-											r.name = "ReadCoreV1Node"
+											// Leaf: ReadCoreV1NodeStatus
+											r.name = "ReadCoreV1NodeStatus"
 											r.args = args
 											r.count = 1
 											return r, true
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/status"
-											if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: ReadCoreV1NodeStatus
-												r.name = "ReadCoreV1NodeStatus"
-												r.args = args
-												r.count = 1
-												return r, true
-											}
 										}
 									}
 								}
@@ -10281,31 +10353,32 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "name"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											r.name = "ReadCoreV1PersistentVolume"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/status"
+											if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+												elem = elem[l:]
+											} else {
+												break
+											}
 
 											if len(elem) == 0 {
-												r.name = "ReadCoreV1PersistentVolume"
+												// Leaf: ReadCoreV1PersistentVolumeStatus
+												r.name = "ReadCoreV1PersistentVolumeStatus"
 												r.args = args
 												r.count = 1
 												return r, true
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/status"
-												if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: ReadCoreV1PersistentVolumeStatus
-													r.name = "ReadCoreV1PersistentVolumeStatus"
-													r.args = args
-													r.count = 1
-													return r, true
-												}
 											}
 										}
 									}
@@ -10592,40 +10665,90 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "name"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											r.name = "WatchCoreV1Namespace"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
+												break
+											}
 
 											if len(elem) == 0 {
-												r.name = "WatchCoreV1Namespace"
+												r.name = "WatchCoreV1NamespacedEndpoints"
 												r.args = args
 												r.count = 1
 												return r, true
 											}
 											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											case 'c': // Prefix: "configmaps"
+												if l := len("configmaps"); len(elem) >= l && elem[0:l] == "configmaps" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													r.name = "WatchCoreV1NamespacedEndpoints"
+													r.name = "WatchCoreV1NamespacedConfigMapList"
 													r.args = args
 													r.count = 1
 													return r, true
 												}
 												switch elem[0] {
-												case 'c': // Prefix: "configmaps"
-													if l := len("configmaps"); len(elem) >= l && elem[0:l] == "configmaps" {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
+
+													if len(elem) == 0 {
+														// Leaf: WatchCoreV1NamespacedConfigMap
+														r.name = "WatchCoreV1NamespacedConfigMap"
+														r.args = args
+														r.count = 2
+														return r, true
+													}
+												}
+											case 'e': // Prefix: "e"
+												if l := len("e"); len(elem) >= l && elem[0:l] == "e" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "WatchCoreV1NamespacedEvent"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+												switch elem[0] {
+												case 'n': // Prefix: "ndpoints"
+													if l := len("ndpoints"); len(elem) >= l && elem[0:l] == "ndpoints" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchCoreV1NamespacedConfigMapList"
+														r.name = "WatchCoreV1NamespacedEndpointsList"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -10644,105 +10767,22 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchCoreV1NamespacedConfigMap
-															r.name = "WatchCoreV1NamespacedConfigMap"
+															// Leaf: WatchCoreV1NamespacedEndpoints
+															r.name = "WatchCoreV1NamespacedEndpoints"
 															r.args = args
 															r.count = 2
 															return r, true
 														}
 													}
-												case 'e': // Prefix: "e"
-													if l := len("e"); len(elem) >= l && elem[0:l] == "e" {
+												case 'v': // Prefix: "vents"
+													if l := len("vents"); len(elem) >= l && elem[0:l] == "vents" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchCoreV1NamespacedEvent"
-														r.args = args
-														r.count = 1
-														return r, true
-													}
-													switch elem[0] {
-													case 'n': // Prefix: "ndpoints"
-														if l := len("ndpoints"); len(elem) >= l && elem[0:l] == "ndpoints" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															r.name = "WatchCoreV1NamespacedEndpointsList"
-															r.args = args
-															r.count = 1
-															return r, true
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedEndpoints
-																r.name = "WatchCoreV1NamespacedEndpoints"
-																r.args = args
-																r.count = 2
-																return r, true
-															}
-														}
-													case 'v': // Prefix: "vents"
-														if l := len("vents"); len(elem) >= l && elem[0:l] == "vents" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															r.name = "WatchCoreV1NamespacedEventList"
-															r.args = args
-															r.count = 1
-															return r, true
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedEvent
-																r.name = "WatchCoreV1NamespacedEvent"
-																r.args = args
-																r.count = 2
-																return r, true
-															}
-														}
-													}
-												case 'l': // Prefix: "limitranges"
-													if l := len("limitranges"); len(elem) >= l && elem[0:l] == "limitranges" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														r.name = "WatchCoreV1NamespacedLimitRangeList"
+														r.name = "WatchCoreV1NamespacedEventList"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -10761,168 +10801,119 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
-															// Leaf: WatchCoreV1NamespacedLimitRange
-															r.name = "WatchCoreV1NamespacedLimitRange"
+															// Leaf: WatchCoreV1NamespacedEvent
+															r.name = "WatchCoreV1NamespacedEvent"
 															r.args = args
 															r.count = 2
 															return r, true
 														}
 													}
-												case 'p': // Prefix: "p"
-													if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+												}
+											case 'l': // Prefix: "limitranges"
+												if l := len("limitranges"); len(elem) >= l && elem[0:l] == "limitranges" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "WatchCoreV1NamespacedLimitRangeList"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
+
+													if len(elem) == 0 {
+														// Leaf: WatchCoreV1NamespacedLimitRange
+														r.name = "WatchCoreV1NamespacedLimitRange"
+														r.args = args
+														r.count = 2
+														return r, true
+													}
+												}
+											case 'p': // Prefix: "p"
+												if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "WatchCoreV1NamespacedPod"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+												switch elem[0] {
+												case 'e': // Prefix: "ersistentvolumeclaims"
+													if l := len("ersistentvolumeclaims"); len(elem) >= l && elem[0:l] == "ersistentvolumeclaims" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchCoreV1NamespacedPod"
+														r.name = "WatchCoreV1NamespacedPersistentVolumeClaimList"
 														r.args = args
 														r.count = 1
 														return r, true
 													}
 													switch elem[0] {
-													case 'e': // Prefix: "ersistentvolumeclaims"
-														if l := len("ersistentvolumeclaims"); len(elem) >= l && elem[0:l] == "ersistentvolumeclaims" {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
-														if len(elem) == 0 {
-															r.name = "WatchCoreV1NamespacedPersistentVolumeClaimList"
-															r.args = args
-															r.count = 1
-															return r, true
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedPersistentVolumeClaim
-																r.name = "WatchCoreV1NamespacedPersistentVolumeClaim"
-																r.args = args
-																r.count = 2
-																return r, true
-															}
-														}
-													case 'o': // Prefix: "od"
-														if l := len("od"); len(elem) >= l && elem[0:l] == "od" {
-															elem = elem[l:]
-														} else {
-															break
-														}
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
 
 														if len(elem) == 0 {
-															r.name = "WatchCoreV1NamespacedPodTemplate"
+															// Leaf: WatchCoreV1NamespacedPersistentVolumeClaim
+															r.name = "WatchCoreV1NamespacedPersistentVolumeClaim"
 															r.args = args
-															r.count = 1
+															r.count = 2
 															return r, true
-														}
-														switch elem[0] {
-														case 's': // Prefix: "s"
-															if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																r.name = "WatchCoreV1NamespacedPodList"
-																r.args = args
-																r.count = 1
-																return r, true
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args[1] = elem
-																elem = ""
-
-																if len(elem) == 0 {
-																	// Leaf: WatchCoreV1NamespacedPod
-																	r.name = "WatchCoreV1NamespacedPod"
-																	r.args = args
-																	r.count = 2
-																	return r, true
-																}
-															}
-														case 't': // Prefix: "templates"
-															if l := len("templates"); len(elem) >= l && elem[0:l] == "templates" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																r.name = "WatchCoreV1NamespacedPodTemplateList"
-																r.args = args
-																r.count = 1
-																return r, true
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args[1] = elem
-																elem = ""
-
-																if len(elem) == 0 {
-																	// Leaf: WatchCoreV1NamespacedPodTemplate
-																	r.name = "WatchCoreV1NamespacedPodTemplate"
-																	r.args = args
-																	r.count = 2
-																	return r, true
-																}
-															}
 														}
 													}
-												case 'r': // Prefix: "re"
-													if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
+												case 'o': // Prefix: "od"
+													if l := len("od"); len(elem) >= l && elem[0:l] == "od" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchCoreV1NamespacedResourceQuota"
+														r.name = "WatchCoreV1NamespacedPodTemplate"
 														r.args = args
 														r.count = 1
 														return r, true
 													}
 													switch elem[0] {
-													case 'p': // Prefix: "plicationcontrollers"
-														if l := len("plicationcontrollers"); len(elem) >= l && elem[0:l] == "plicationcontrollers" {
+													case 's': // Prefix: "s"
+														if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
 														if len(elem) == 0 {
-															r.name = "WatchCoreV1NamespacedReplicationControllerList"
+															r.name = "WatchCoreV1NamespacedPodList"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -10941,22 +10932,22 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedReplicationController
-																r.name = "WatchCoreV1NamespacedReplicationController"
+																// Leaf: WatchCoreV1NamespacedPod
+																r.name = "WatchCoreV1NamespacedPod"
 																r.args = args
 																r.count = 2
 																return r, true
 															}
 														}
-													case 's': // Prefix: "sourcequotas"
-														if l := len("sourcequotas"); len(elem) >= l && elem[0:l] == "sourcequotas" {
+													case 't': // Prefix: "templates"
+														if l := len("templates"); len(elem) >= l && elem[0:l] == "templates" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
 														if len(elem) == 0 {
-															r.name = "WatchCoreV1NamespacedResourceQuotaList"
+															r.name = "WatchCoreV1NamespacedPodTemplateList"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -10975,37 +10966,169 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedResourceQuota
-																r.name = "WatchCoreV1NamespacedResourceQuota"
+																// Leaf: WatchCoreV1NamespacedPodTemplate
+																r.name = "WatchCoreV1NamespacedPodTemplate"
 																r.args = args
 																r.count = 2
 																return r, true
 															}
 														}
 													}
-												case 's': // Prefix: "se"
-													if l := len("se"); len(elem) >= l && elem[0:l] == "se" {
+												}
+											case 'r': // Prefix: "re"
+												if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "WatchCoreV1NamespacedResourceQuota"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+												switch elem[0] {
+												case 'p': // Prefix: "plicationcontrollers"
+													if l := len("plicationcontrollers"); len(elem) >= l && elem[0:l] == "plicationcontrollers" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchCoreV1NamespacedService"
+														r.name = "WatchCoreV1NamespacedReplicationControllerList"
 														r.args = args
 														r.count = 1
 														return r, true
 													}
 													switch elem[0] {
-													case 'c': // Prefix: "crets"
-														if l := len("crets"); len(elem) >= l && elem[0:l] == "crets" {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
+														if len(elem) == 0 {
+															// Leaf: WatchCoreV1NamespacedReplicationController
+															r.name = "WatchCoreV1NamespacedReplicationController"
+															r.args = args
+															r.count = 2
+															return r, true
+														}
+													}
+												case 's': // Prefix: "sourcequotas"
+													if l := len("sourcequotas"); len(elem) >= l && elem[0:l] == "sourcequotas" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														r.name = "WatchCoreV1NamespacedResourceQuotaList"
+														r.args = args
+														r.count = 1
+														return r, true
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
+														if len(elem) == 0 {
+															// Leaf: WatchCoreV1NamespacedResourceQuota
+															r.name = "WatchCoreV1NamespacedResourceQuota"
+															r.args = args
+															r.count = 2
+															return r, true
+														}
+													}
+												}
+											case 's': // Prefix: "se"
+												if l := len("se"); len(elem) >= l && elem[0:l] == "se" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "WatchCoreV1NamespacedService"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "crets"
+													if l := len("crets"); len(elem) >= l && elem[0:l] == "crets" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														r.name = "WatchCoreV1NamespacedSecretList"
+														r.args = args
+														r.count = 1
+														return r, true
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
+														if len(elem) == 0 {
+															// Leaf: WatchCoreV1NamespacedSecret
+															r.name = "WatchCoreV1NamespacedSecret"
+															r.args = args
+															r.count = 2
+															return r, true
+														}
+													}
+												case 'r': // Prefix: "rvice"
+													if l := len("rvice"); len(elem) >= l && elem[0:l] == "rvice" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														r.name = "WatchCoreV1NamespacedServiceAccount"
+														r.args = args
+														r.count = 1
+														return r, true
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "accounts"
+														if l := len("accounts"); len(elem) >= l && elem[0:l] == "accounts" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
 														if len(elem) == 0 {
-															r.name = "WatchCoreV1NamespacedSecretList"
+															r.name = "WatchCoreV1NamespacedServiceAccountList"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -11024,94 +11147,45 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchCoreV1NamespacedSecret
-																r.name = "WatchCoreV1NamespacedSecret"
+																// Leaf: WatchCoreV1NamespacedServiceAccount
+																r.name = "WatchCoreV1NamespacedServiceAccount"
 																r.args = args
 																r.count = 2
 																return r, true
 															}
 														}
-													case 'r': // Prefix: "rvice"
-														if l := len("rvice"); len(elem) >= l && elem[0:l] == "rvice" {
+													case 's': // Prefix: "s"
+														if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
 														if len(elem) == 0 {
-															r.name = "WatchCoreV1NamespacedServiceAccount"
+															r.name = "WatchCoreV1NamespacedServiceList"
 															r.args = args
 															r.count = 1
 															return r, true
 														}
 														switch elem[0] {
-														case 'a': // Prefix: "accounts"
-															if l := len("accounts"); len(elem) >= l && elem[0:l] == "accounts" {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 																elem = elem[l:]
 															} else {
 																break
 															}
 
-															if len(elem) == 0 {
-																r.name = "WatchCoreV1NamespacedServiceAccountList"
-																r.args = args
-																r.count = 1
-																return r, true
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args[1] = elem
-																elem = ""
-
-																if len(elem) == 0 {
-																	// Leaf: WatchCoreV1NamespacedServiceAccount
-																	r.name = "WatchCoreV1NamespacedServiceAccount"
-																	r.args = args
-																	r.count = 2
-																	return r, true
-																}
-															}
-														case 's': // Prefix: "s"
-															if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
-																elem = elem[l:]
-															} else {
-																break
-															}
+															// Param: "name"
+															// Leaf parameter
+															args[1] = elem
+															elem = ""
 
 															if len(elem) == 0 {
-																r.name = "WatchCoreV1NamespacedServiceList"
+																// Leaf: WatchCoreV1NamespacedService
+																r.name = "WatchCoreV1NamespacedService"
 																r.args = args
-																r.count = 1
+																r.count = 2
 																return r, true
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args[1] = elem
-																elem = ""
-
-																if len(elem) == 0 {
-																	// Leaf: WatchCoreV1NamespacedService
-																	r.name = "WatchCoreV1NamespacedService"
-																	r.args = args
-																	r.count = 2
-																	return r, true
-																}
 															}
 														}
 													}
@@ -11682,31 +11756,32 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												// Param: "name"
 												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
-												if idx > 0 {
-													args[0] = elem[:idx]
-													elem = elem[idx:]
+												if idx < 0 {
+													idx = len(elem)
+												}
+												args[0] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													r.name = "ReadApiextensionsV1CustomResourceDefinition"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/status"
+													if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+														elem = elem[l:]
+													} else {
+														break
+													}
 
 													if len(elem) == 0 {
-														r.name = "ReadApiextensionsV1CustomResourceDefinition"
+														// Leaf: ReadApiextensionsV1CustomResourceDefinitionStatus
+														r.name = "ReadApiextensionsV1CustomResourceDefinitionStatus"
 														r.args = args
 														r.count = 1
 														return r, true
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/status"
-														if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf: ReadApiextensionsV1CustomResourceDefinitionStatus
-															r.name = "ReadApiextensionsV1CustomResourceDefinitionStatus"
-															r.args = args
-															r.count = 1
-															return r, true
-														}
 													}
 												}
 											}
@@ -11798,31 +11873,32 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												// Param: "name"
 												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
-												if idx > 0 {
-													args[0] = elem[:idx]
-													elem = elem[idx:]
+												if idx < 0 {
+													idx = len(elem)
+												}
+												args[0] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													r.name = "ReadApiregistrationV1APIService"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/status"
+													if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+														elem = elem[l:]
+													} else {
+														break
+													}
 
 													if len(elem) == 0 {
-														r.name = "ReadApiregistrationV1APIService"
+														// Leaf: ReadApiregistrationV1APIServiceStatus
+														r.name = "ReadApiregistrationV1APIServiceStatus"
 														r.args = args
 														r.count = 1
 														return r, true
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/status"
-														if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf: ReadApiregistrationV1APIServiceStatus
-															r.name = "ReadApiregistrationV1APIServiceStatus"
-															r.args = args
-															r.count = 1
-															return r, true
-														}
 													}
 												}
 											}
@@ -11958,37 +12034,87 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												r.name = "ListAppsV1NamespacedDaemonSet"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											case 'c': // Prefix: "controllerrevisions"
+												if l := len("controllerrevisions"); len(elem) >= l && elem[0:l] == "controllerrevisions" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													r.name = "ListAppsV1NamespacedDaemonSet"
+													r.name = "ListAppsV1NamespacedControllerRevision"
 													r.args = args
 													r.count = 1
 													return r, true
 												}
 												switch elem[0] {
-												case 'c': // Prefix: "controllerrevisions"
-													if l := len("controllerrevisions"); len(elem) >= l && elem[0:l] == "controllerrevisions" {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
+
+													if len(elem) == 0 {
+														// Leaf: ReadAppsV1NamespacedControllerRevision
+														r.name = "ReadAppsV1NamespacedControllerRevision"
+														r.args = args
+														r.count = 2
+														return r, true
+													}
+												}
+											case 'd': // Prefix: "d"
+												if l := len("d"); len(elem) >= l && elem[0:l] == "d" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "ListAppsV1NamespacedDeployment"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "aemonsets"
+													if l := len("aemonsets"); len(elem) >= l && elem[0:l] == "aemonsets" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														r.name = "ListAppsV1NamespacedControllerRevision"
+														r.name = "ListAppsV1NamespacedDaemonSet"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -12002,20 +12128,39 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
-														args[1] = elem
-														elem = ""
+														// Match until "/"
+														idx := strings.IndexByte(elem, '/')
+														if idx < 0 {
+															idx = len(elem)
+														}
+														args[1] = elem[:idx]
+														elem = elem[idx:]
 
 														if len(elem) == 0 {
-															// Leaf: ReadAppsV1NamespacedControllerRevision
-															r.name = "ReadAppsV1NamespacedControllerRevision"
+															r.name = "ReadAppsV1NamespacedDaemonSet"
 															r.args = args
 															r.count = 2
 															return r, true
 														}
+														switch elem[0] {
+														case '/': // Prefix: "/status"
+															if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf: ReadAppsV1NamespacedDaemonSetStatus
+																r.name = "ReadAppsV1NamespacedDaemonSetStatus"
+																r.args = args
+																r.count = 2
+																return r, true
+															}
+														}
 													}
-												case 'd': // Prefix: "d"
-													if l := len("d"); len(elem) >= l && elem[0:l] == "d" {
+												case 'e': // Prefix: "eployments"
+													if l := len("eployments"); len(elem) >= l && elem[0:l] == "eployments" {
 														elem = elem[l:]
 													} else {
 														break
@@ -12028,154 +12173,6 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														return r, true
 													}
 													switch elem[0] {
-													case 'a': // Prefix: "aemonsets"
-														if l := len("aemonsets"); len(elem) >= l && elem[0:l] == "aemonsets" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															r.name = "ListAppsV1NamespacedDaemonSet"
-															r.args = args
-															r.count = 1
-															return r, true
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Match until "/"
-															idx := strings.IndexByte(elem, '/')
-															if idx > 0 {
-																args[1] = elem[:idx]
-																elem = elem[idx:]
-
-																if len(elem) == 0 {
-																	r.name = "ReadAppsV1NamespacedDaemonSet"
-																	r.args = args
-																	r.count = 2
-																	return r, true
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/status"
-																	if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		// Leaf: ReadAppsV1NamespacedDaemonSetStatus
-																		r.name = "ReadAppsV1NamespacedDaemonSetStatus"
-																		r.args = args
-																		r.count = 2
-																		return r, true
-																	}
-																}
-															}
-														}
-													case 'e': // Prefix: "eployments"
-														if l := len("eployments"); len(elem) >= l && elem[0:l] == "eployments" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															r.name = "ListAppsV1NamespacedDeployment"
-															r.args = args
-															r.count = 1
-															return r, true
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Match until "/"
-															idx := strings.IndexByte(elem, '/')
-															if idx > 0 {
-																args[1] = elem[:idx]
-																elem = elem[idx:]
-
-																if len(elem) == 0 {
-																	r.name = "ReadAppsV1NamespacedDeployment"
-																	r.args = args
-																	r.count = 2
-																	return r, true
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/s"
-																	if l := len("/s"); len(elem) >= l && elem[0:l] == "/s" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		r.name = "ReadAppsV1NamespacedDeploymentStatus"
-																		r.args = args
-																		r.count = 2
-																		return r, true
-																	}
-																	switch elem[0] {
-																	case 'c': // Prefix: "cale"
-																		if l := len("cale"); len(elem) >= l && elem[0:l] == "cale" {
-																			elem = elem[l:]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			// Leaf: ReadAppsV1NamespacedDeploymentScale
-																			r.name = "ReadAppsV1NamespacedDeploymentScale"
-																			r.args = args
-																			r.count = 2
-																			return r, true
-																		}
-																	case 't': // Prefix: "tatus"
-																		if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
-																			elem = elem[l:]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			// Leaf: ReadAppsV1NamespacedDeploymentStatus
-																			r.name = "ReadAppsV1NamespacedDeploymentStatus"
-																			r.args = args
-																			r.count = 2
-																			return r, true
-																		}
-																	}
-																}
-															}
-														}
-													}
-												case 'r': // Prefix: "replicasets"
-													if l := len("replicasets"); len(elem) >= l && elem[0:l] == "replicasets" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														r.name = "ListAppsV1NamespacedReplicaSet"
-														r.args = args
-														r.count = 1
-														return r, true
-													}
-													switch elem[0] {
 													case '/': // Prefix: "/"
 														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
@@ -12186,141 +12183,225 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														// Param: "name"
 														// Match until "/"
 														idx := strings.IndexByte(elem, '/')
-														if idx > 0 {
-															args[1] = elem[:idx]
-															elem = elem[idx:]
+														if idx < 0 {
+															idx = len(elem)
+														}
+														args[1] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															r.name = "ReadAppsV1NamespacedDeployment"
+															r.args = args
+															r.count = 2
+															return r, true
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/s"
+															if l := len("/s"); len(elem) >= l && elem[0:l] == "/s" {
+																elem = elem[l:]
+															} else {
+																break
+															}
 
 															if len(elem) == 0 {
-																r.name = "ReadAppsV1NamespacedReplicaSet"
+																r.name = "ReadAppsV1NamespacedDeploymentStatus"
 																r.args = args
 																r.count = 2
 																return r, true
 															}
 															switch elem[0] {
-															case '/': // Prefix: "/s"
-																if l := len("/s"); len(elem) >= l && elem[0:l] == "/s" {
+															case 'c': // Prefix: "cale"
+																if l := len("cale"); len(elem) >= l && elem[0:l] == "cale" {
 																	elem = elem[l:]
 																} else {
 																	break
 																}
 
 																if len(elem) == 0 {
-																	r.name = "ReadAppsV1NamespacedReplicaSetStatus"
+																	// Leaf: ReadAppsV1NamespacedDeploymentScale
+																	r.name = "ReadAppsV1NamespacedDeploymentScale"
 																	r.args = args
 																	r.count = 2
 																	return r, true
 																}
-																switch elem[0] {
-																case 'c': // Prefix: "cale"
-																	if l := len("cale"); len(elem) >= l && elem[0:l] == "cale" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
+															case 't': // Prefix: "tatus"
+																if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
 
-																	if len(elem) == 0 {
-																		// Leaf: ReadAppsV1NamespacedReplicaSetScale
-																		r.name = "ReadAppsV1NamespacedReplicaSetScale"
-																		r.args = args
-																		r.count = 2
-																		return r, true
-																	}
-																case 't': // Prefix: "tatus"
-																	if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		// Leaf: ReadAppsV1NamespacedReplicaSetStatus
-																		r.name = "ReadAppsV1NamespacedReplicaSetStatus"
-																		r.args = args
-																		r.count = 2
-																		return r, true
-																	}
+																if len(elem) == 0 {
+																	// Leaf: ReadAppsV1NamespacedDeploymentStatus
+																	r.name = "ReadAppsV1NamespacedDeploymentStatus"
+																	r.args = args
+																	r.count = 2
+																	return r, true
 																}
 															}
 														}
 													}
-												case 's': // Prefix: "statefulsets"
-													if l := len("statefulsets"); len(elem) >= l && elem[0:l] == "statefulsets" {
+												}
+											case 'r': // Prefix: "replicasets"
+												if l := len("replicasets"); len(elem) >= l && elem[0:l] == "replicasets" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "ListAppsV1NamespacedReplicaSet"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
+													// Param: "name"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[1] = elem[:idx]
+													elem = elem[idx:]
+
 													if len(elem) == 0 {
-														r.name = "ListAppsV1NamespacedStatefulSet"
+														r.name = "ReadAppsV1NamespacedReplicaSet"
 														r.args = args
-														r.count = 1
+														r.count = 2
 														return r, true
 													}
 													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													case '/': // Prefix: "/s"
+														if l := len("/s"); len(elem) >= l && elem[0:l] == "/s" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Param: "name"
-														// Match until "/"
-														idx := strings.IndexByte(elem, '/')
-														if idx > 0 {
-															args[1] = elem[:idx]
-															elem = elem[idx:]
+														if len(elem) == 0 {
+															r.name = "ReadAppsV1NamespacedReplicaSetStatus"
+															r.args = args
+															r.count = 2
+															return r, true
+														}
+														switch elem[0] {
+														case 'c': // Prefix: "cale"
+															if l := len("cale"); len(elem) >= l && elem[0:l] == "cale" {
+																elem = elem[l:]
+															} else {
+																break
+															}
 
 															if len(elem) == 0 {
-																r.name = "ReadAppsV1NamespacedStatefulSet"
+																// Leaf: ReadAppsV1NamespacedReplicaSetScale
+																r.name = "ReadAppsV1NamespacedReplicaSetScale"
 																r.args = args
 																r.count = 2
 																return r, true
 															}
-															switch elem[0] {
-															case '/': // Prefix: "/s"
-																if l := len("/s"); len(elem) >= l && elem[0:l] == "/s" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
+														case 't': // Prefix: "tatus"
+															if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
+																elem = elem[l:]
+															} else {
+																break
+															}
 
-																if len(elem) == 0 {
-																	r.name = "ReadAppsV1NamespacedStatefulSetStatus"
-																	r.args = args
-																	r.count = 2
-																	return r, true
-																}
-																switch elem[0] {
-																case 'c': // Prefix: "cale"
-																	if l := len("cale"); len(elem) >= l && elem[0:l] == "cale" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
+															if len(elem) == 0 {
+																// Leaf: ReadAppsV1NamespacedReplicaSetStatus
+																r.name = "ReadAppsV1NamespacedReplicaSetStatus"
+																r.args = args
+																r.count = 2
+																return r, true
+															}
+														}
+													}
+												}
+											case 's': // Prefix: "statefulsets"
+												if l := len("statefulsets"); len(elem) >= l && elem[0:l] == "statefulsets" {
+													elem = elem[l:]
+												} else {
+													break
+												}
 
-																	if len(elem) == 0 {
-																		// Leaf: ReadAppsV1NamespacedStatefulSetScale
-																		r.name = "ReadAppsV1NamespacedStatefulSetScale"
-																		r.args = args
-																		r.count = 2
-																		return r, true
-																	}
-																case 't': // Prefix: "tatus"
-																	if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
+												if len(elem) == 0 {
+													r.name = "ListAppsV1NamespacedStatefulSet"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
 
-																	if len(elem) == 0 {
-																		// Leaf: ReadAppsV1NamespacedStatefulSetStatus
-																		r.name = "ReadAppsV1NamespacedStatefulSetStatus"
-																		r.args = args
-																		r.count = 2
-																		return r, true
-																	}
-																}
+													// Param: "name"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[1] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														r.name = "ReadAppsV1NamespacedStatefulSet"
+														r.args = args
+														r.count = 2
+														return r, true
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/s"
+														if l := len("/s"); len(elem) >= l && elem[0:l] == "/s" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															r.name = "ReadAppsV1NamespacedStatefulSetStatus"
+															r.args = args
+															r.count = 2
+															return r, true
+														}
+														switch elem[0] {
+														case 'c': // Prefix: "cale"
+															if l := len("cale"); len(elem) >= l && elem[0:l] == "cale" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf: ReadAppsV1NamespacedStatefulSetScale
+																r.name = "ReadAppsV1NamespacedStatefulSetScale"
+																r.args = args
+																r.count = 2
+																return r, true
+															}
+														case 't': // Prefix: "tatus"
+															if l := len("tatus"); len(elem) >= l && elem[0:l] == "tatus" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf: ReadAppsV1NamespacedStatefulSetStatus
+																r.name = "ReadAppsV1NamespacedStatefulSetStatus"
+																r.args = args
+																r.count = 2
+																return r, true
 															}
 														}
 													}
@@ -12436,37 +12517,87 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											// Param: "namespace"
 											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
-											if idx > 0 {
-												args[0] = elem[:idx]
-												elem = elem[idx:]
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[0] = elem[:idx]
+											elem = elem[idx:]
 
-												if len(elem) == 0 {
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
 													break
 												}
+
+												if len(elem) == 0 {
+													r.name = "WatchAppsV1NamespacedDaemonSet"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
 												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												case 'c': // Prefix: "controllerrevisions"
+													if l := len("controllerrevisions"); len(elem) >= l && elem[0:l] == "controllerrevisions" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchAppsV1NamespacedDaemonSet"
+														r.name = "WatchAppsV1NamespacedControllerRevisionList"
 														r.args = args
 														r.count = 1
 														return r, true
 													}
 													switch elem[0] {
-													case 'c': // Prefix: "controllerrevisions"
-														if l := len("controllerrevisions"); len(elem) >= l && elem[0:l] == "controllerrevisions" {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
+														if len(elem) == 0 {
+															// Leaf: WatchAppsV1NamespacedControllerRevision
+															r.name = "WatchAppsV1NamespacedControllerRevision"
+															r.args = args
+															r.count = 2
+															return r, true
+														}
+													}
+												case 'd': // Prefix: "d"
+													if l := len("d"); len(elem) >= l && elem[0:l] == "d" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														r.name = "WatchAppsV1NamespacedDeployment"
+														r.args = args
+														r.count = 1
+														return r, true
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "aemonsets"
+														if l := len("aemonsets"); len(elem) >= l && elem[0:l] == "aemonsets" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
 														if len(elem) == 0 {
-															r.name = "WatchAppsV1NamespacedControllerRevisionList"
+															r.name = "WatchAppsV1NamespacedDaemonSetList"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -12485,105 +12616,22 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchAppsV1NamespacedControllerRevision
-																r.name = "WatchAppsV1NamespacedControllerRevision"
+																// Leaf: WatchAppsV1NamespacedDaemonSet
+																r.name = "WatchAppsV1NamespacedDaemonSet"
 																r.args = args
 																r.count = 2
 																return r, true
 															}
 														}
-													case 'd': // Prefix: "d"
-														if l := len("d"); len(elem) >= l && elem[0:l] == "d" {
+													case 'e': // Prefix: "eployments"
+														if l := len("eployments"); len(elem) >= l && elem[0:l] == "eployments" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
 														if len(elem) == 0 {
-															r.name = "WatchAppsV1NamespacedDeployment"
-															r.args = args
-															r.count = 1
-															return r, true
-														}
-														switch elem[0] {
-														case 'a': // Prefix: "aemonsets"
-															if l := len("aemonsets"); len(elem) >= l && elem[0:l] == "aemonsets" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																r.name = "WatchAppsV1NamespacedDaemonSetList"
-																r.args = args
-																r.count = 1
-																return r, true
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args[1] = elem
-																elem = ""
-
-																if len(elem) == 0 {
-																	// Leaf: WatchAppsV1NamespacedDaemonSet
-																	r.name = "WatchAppsV1NamespacedDaemonSet"
-																	r.args = args
-																	r.count = 2
-																	return r, true
-																}
-															}
-														case 'e': // Prefix: "eployments"
-															if l := len("eployments"); len(elem) >= l && elem[0:l] == "eployments" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																r.name = "WatchAppsV1NamespacedDeploymentList"
-																r.args = args
-																r.count = 1
-																return r, true
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args[1] = elem
-																elem = ""
-
-																if len(elem) == 0 {
-																	// Leaf: WatchAppsV1NamespacedDeployment
-																	r.name = "WatchAppsV1NamespacedDeployment"
-																	r.args = args
-																	r.count = 2
-																	return r, true
-																}
-															}
-														}
-													case 'r': // Prefix: "replicasets"
-														if l := len("replicasets"); len(elem) >= l && elem[0:l] == "replicasets" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															r.name = "WatchAppsV1NamespacedReplicaSetList"
+															r.name = "WatchAppsV1NamespacedDeploymentList"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -12602,46 +12650,80 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															elem = ""
 
 															if len(elem) == 0 {
-																// Leaf: WatchAppsV1NamespacedReplicaSet
-																r.name = "WatchAppsV1NamespacedReplicaSet"
+																// Leaf: WatchAppsV1NamespacedDeployment
+																r.name = "WatchAppsV1NamespacedDeployment"
 																r.args = args
 																r.count = 2
 																return r, true
 															}
 														}
-													case 's': // Prefix: "statefulsets"
-														if l := len("statefulsets"); len(elem) >= l && elem[0:l] == "statefulsets" {
+													}
+												case 'r': // Prefix: "replicasets"
+													if l := len("replicasets"); len(elem) >= l && elem[0:l] == "replicasets" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														r.name = "WatchAppsV1NamespacedReplicaSetList"
+														r.args = args
+														r.count = 1
+														return r, true
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
 														if len(elem) == 0 {
-															r.name = "WatchAppsV1NamespacedStatefulSetList"
+															// Leaf: WatchAppsV1NamespacedReplicaSet
+															r.name = "WatchAppsV1NamespacedReplicaSet"
 															r.args = args
-															r.count = 1
+															r.count = 2
 															return r, true
 														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
+													}
+												case 's': // Prefix: "statefulsets"
+													if l := len("statefulsets"); len(elem) >= l && elem[0:l] == "statefulsets" {
+														elem = elem[l:]
+													} else {
+														break
+													}
 
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
+													if len(elem) == 0 {
+														r.name = "WatchAppsV1NamespacedStatefulSetList"
+														r.args = args
+														r.count = 1
+														return r, true
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
 
-															if len(elem) == 0 {
-																// Leaf: WatchAppsV1NamespacedStatefulSet
-																r.name = "WatchAppsV1NamespacedStatefulSet"
-																r.args = args
-																r.count = 2
-																return r, true
-															}
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
+														if len(elem) == 0 {
+															// Leaf: WatchAppsV1NamespacedStatefulSet
+															r.name = "WatchAppsV1NamespacedStatefulSet"
+															r.args = args
+															r.count = 2
+															return r, true
 														}
 													}
 												}
@@ -12831,64 +12913,66 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											// Param: "namespace"
 											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
-											if idx > 0 {
-												args[0] = elem[:idx]
-												elem = elem[idx:]
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[0] = elem[:idx]
+											elem = elem[idx:]
 
-												if len(elem) == 0 {
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/horizontalpodautoscalers"
+												if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+													elem = elem[l:]
+												} else {
 													break
 												}
+
+												if len(elem) == 0 {
+													r.name = "ListAutoscalingV1NamespacedHorizontalPodAutoscaler"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
 												switch elem[0] {
-												case '/': // Prefix: "/horizontalpodautoscalers"
-													if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
+													// Param: "name"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[1] = elem[:idx]
+													elem = elem[idx:]
+
 													if len(elem) == 0 {
-														r.name = "ListAutoscalingV1NamespacedHorizontalPodAutoscaler"
+														r.name = "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler"
 														r.args = args
-														r.count = 1
+														r.count = 2
 														return r, true
 													}
 													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													case '/': // Prefix: "/status"
+														if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Param: "name"
-														// Match until "/"
-														idx := strings.IndexByte(elem, '/')
-														if idx > 0 {
-															args[1] = elem[:idx]
-															elem = elem[idx:]
-
-															if len(elem) == 0 {
-																r.name = "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler"
-																r.args = args
-																r.count = 2
-																return r, true
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/status"
-																if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	// Leaf: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus
-																	r.name = "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus"
-																	r.args = args
-																	r.count = 2
-																	return r, true
-																}
-															}
+														if len(elem) == 0 {
+															// Leaf: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus
+															r.name = "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus"
+															r.args = args
+															r.count = 2
+															return r, true
 														}
 													}
 												}
@@ -12931,47 +13015,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												// Param: "namespace"
 												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
-												if idx > 0 {
-													args[0] = elem[:idx]
-													elem = elem[idx:]
+												if idx < 0 {
+													idx = len(elem)
+												}
+												args[0] = elem[:idx]
+												elem = elem[idx:]
 
-													if len(elem) == 0 {
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/horizontalpodautoscalers"
+													if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+														elem = elem[l:]
+													} else {
 														break
 													}
+
+													if len(elem) == 0 {
+														r.name = "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList"
+														r.args = args
+														r.count = 1
+														return r, true
+													}
 													switch elem[0] {
-													case '/': // Prefix: "/horizontalpodautoscalers"
-														if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
 														if len(elem) == 0 {
-															r.name = "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList"
+															// Leaf: WatchAutoscalingV1NamespacedHorizontalPodAutoscaler
+															r.name = "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler"
 															r.args = args
-															r.count = 1
+															r.count = 2
 															return r, true
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf: WatchAutoscalingV1NamespacedHorizontalPodAutoscaler
-																r.name = "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler"
-																r.args = args
-																r.count = 2
-																return r, true
-															}
 														}
 													}
 												}
@@ -13029,64 +13114,66 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												// Param: "namespace"
 												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
-												if idx > 0 {
-													args[0] = elem[:idx]
-													elem = elem[idx:]
+												if idx < 0 {
+													idx = len(elem)
+												}
+												args[0] = elem[:idx]
+												elem = elem[idx:]
 
-													if len(elem) == 0 {
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/horizontalpodautoscalers"
+													if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+														elem = elem[l:]
+													} else {
 														break
 													}
+
+													if len(elem) == 0 {
+														r.name = "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
+														r.args = args
+														r.count = 1
+														return r, true
+													}
 													switch elem[0] {
-													case '/': // Prefix: "/horizontalpodautoscalers"
-														if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
+														// Param: "name"
+														// Match until "/"
+														idx := strings.IndexByte(elem, '/')
+														if idx < 0 {
+															idx = len(elem)
+														}
+														args[1] = elem[:idx]
+														elem = elem[idx:]
+
 														if len(elem) == 0 {
-															r.name = "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
+															r.name = "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
 															r.args = args
-															r.count = 1
+															r.count = 2
 															return r, true
 														}
 														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														case '/': // Prefix: "/status"
+															if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
 																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Param: "name"
-															// Match until "/"
-															idx := strings.IndexByte(elem, '/')
-															if idx > 0 {
-																args[1] = elem[:idx]
-																elem = elem[idx:]
-
-																if len(elem) == 0 {
-																	r.name = "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
-																	r.args = args
-																	r.count = 2
-																	return r, true
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/status"
-																	if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		// Leaf: ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus
-																		r.name = "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus"
-																		r.args = args
-																		r.count = 2
-																		return r, true
-																	}
-																}
+															if len(elem) == 0 {
+																// Leaf: ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus
+																r.name = "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus"
+																r.args = args
+																r.count = 2
+																return r, true
 															}
 														}
 													}
@@ -13129,47 +13216,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													// Param: "namespace"
 													// Match until "/"
 													idx := strings.IndexByte(elem, '/')
-													if idx > 0 {
-														args[0] = elem[:idx]
-														elem = elem[idx:]
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[0] = elem[:idx]
+													elem = elem[idx:]
 
-														if len(elem) == 0 {
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/horizontalpodautoscalers"
+														if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+															elem = elem[l:]
+														} else {
 															break
 														}
+
+														if len(elem) == 0 {
+															r.name = "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList"
+															r.args = args
+															r.count = 1
+															return r, true
+														}
 														switch elem[0] {
-														case '/': // Prefix: "/horizontalpodautoscalers"
-															if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 																elem = elem[l:]
 															} else {
 																break
 															}
 
+															// Param: "name"
+															// Leaf parameter
+															args[1] = elem
+															elem = ""
+
 															if len(elem) == 0 {
-																r.name = "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList"
+																// Leaf: WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler
+																r.name = "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
 																r.args = args
-																r.count = 1
+																r.count = 2
 																return r, true
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args[1] = elem
-																elem = ""
-
-																if len(elem) == 0 {
-																	// Leaf: WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler
-																	r.name = "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
-																	r.args = args
-																	r.count = 2
-																	return r, true
-																}
 															}
 														}
 													}
@@ -13213,64 +13301,66 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												// Param: "namespace"
 												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
-												if idx > 0 {
-													args[0] = elem[:idx]
-													elem = elem[idx:]
+												if idx < 0 {
+													idx = len(elem)
+												}
+												args[0] = elem[:idx]
+												elem = elem[idx:]
 
-													if len(elem) == 0 {
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/horizontalpodautoscalers"
+													if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+														elem = elem[l:]
+													} else {
 														break
 													}
+
+													if len(elem) == 0 {
+														r.name = "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
+														r.args = args
+														r.count = 1
+														return r, true
+													}
 													switch elem[0] {
-													case '/': // Prefix: "/horizontalpodautoscalers"
-														if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
+														// Param: "name"
+														// Match until "/"
+														idx := strings.IndexByte(elem, '/')
+														if idx < 0 {
+															idx = len(elem)
+														}
+														args[1] = elem[:idx]
+														elem = elem[idx:]
+
 														if len(elem) == 0 {
-															r.name = "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
+															r.name = "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
 															r.args = args
-															r.count = 1
+															r.count = 2
 															return r, true
 														}
 														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														case '/': // Prefix: "/status"
+															if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
 																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Param: "name"
-															// Match until "/"
-															idx := strings.IndexByte(elem, '/')
-															if idx > 0 {
-																args[1] = elem[:idx]
-																elem = elem[idx:]
-
-																if len(elem) == 0 {
-																	r.name = "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
-																	r.args = args
-																	r.count = 2
-																	return r, true
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/status"
-																	if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		// Leaf: ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus
-																		r.name = "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus"
-																		r.args = args
-																		r.count = 2
-																		return r, true
-																	}
-																}
+															if len(elem) == 0 {
+																// Leaf: ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus
+																r.name = "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus"
+																r.args = args
+																r.count = 2
+																return r, true
 															}
 														}
 													}
@@ -13313,47 +13403,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													// Param: "namespace"
 													// Match until "/"
 													idx := strings.IndexByte(elem, '/')
-													if idx > 0 {
-														args[0] = elem[:idx]
-														elem = elem[idx:]
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[0] = elem[:idx]
+													elem = elem[idx:]
 
-														if len(elem) == 0 {
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/horizontalpodautoscalers"
+														if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+															elem = elem[l:]
+														} else {
 															break
 														}
+
+														if len(elem) == 0 {
+															r.name = "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList"
+															r.args = args
+															r.count = 1
+															return r, true
+														}
 														switch elem[0] {
-														case '/': // Prefix: "/horizontalpodautoscalers"
-															if l := len("/horizontalpodautoscalers"); len(elem) >= l && elem[0:l] == "/horizontalpodautoscalers" {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 																elem = elem[l:]
 															} else {
 																break
 															}
 
+															// Param: "name"
+															// Leaf parameter
+															args[1] = elem
+															elem = ""
+
 															if len(elem) == 0 {
-																r.name = "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList"
+																// Leaf: WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler
+																r.name = "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
 																r.args = args
-																r.count = 1
+																r.count = 2
 																return r, true
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args[1] = elem
-																elem = ""
-
-																if len(elem) == 0 {
-																	// Leaf: WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler
-																	r.name = "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
-																	r.args = args
-																	r.count = 2
-																	return r, true
-																}
 															}
 														}
 													}
@@ -13444,16 +13535,85 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											r.name = "ListBatchV1NamespacedJob"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/"
-											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										case 'c': // Prefix: "cronjobs"
+											if l := len("cronjobs"); len(elem) >= l && elem[0:l] == "cronjobs" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "ListBatchV1NamespacedCronJob"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Match until "/"
+												idx := strings.IndexByte(elem, '/')
+												if idx < 0 {
+													idx = len(elem)
+												}
+												args[1] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													r.name = "ReadBatchV1NamespacedCronJob"
+													r.args = args
+													r.count = 2
+													return r, true
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/status"
+													if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: ReadBatchV1NamespacedCronJobStatus
+														r.name = "ReadBatchV1NamespacedCronJobStatus"
+														r.args = args
+														r.count = 2
+														return r, true
+													}
+												}
+											}
+										case 'j': // Prefix: "jobs"
+											if l := len("jobs"); len(elem) >= l && elem[0:l] == "jobs" {
 												elem = elem[l:]
 											} else {
 												break
@@ -13466,108 +13626,42 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												return r, true
 											}
 											switch elem[0] {
-											case 'c': // Prefix: "cronjobs"
-												if l := len("cronjobs"); len(elem) >= l && elem[0:l] == "cronjobs" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Match until "/"
+												idx := strings.IndexByte(elem, '/')
+												if idx < 0 {
+													idx = len(elem)
+												}
+												args[1] = elem[:idx]
+												elem = elem[idx:]
+
 												if len(elem) == 0 {
-													r.name = "ListBatchV1NamespacedCronJob"
+													r.name = "ReadBatchV1NamespacedJob"
 													r.args = args
-													r.count = 1
+													r.count = 2
 													return r, true
 												}
 												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												case '/': // Prefix: "/status"
+													if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Param: "name"
-													// Match until "/"
-													idx := strings.IndexByte(elem, '/')
-													if idx > 0 {
-														args[1] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															r.name = "ReadBatchV1NamespacedCronJob"
-															r.args = args
-															r.count = 2
-															return r, true
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/status"
-															if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																// Leaf: ReadBatchV1NamespacedCronJobStatus
-																r.name = "ReadBatchV1NamespacedCronJobStatus"
-																r.args = args
-																r.count = 2
-																return r, true
-															}
-														}
-													}
-												}
-											case 'j': // Prefix: "jobs"
-												if l := len("jobs"); len(elem) >= l && elem[0:l] == "jobs" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													r.name = "ListBatchV1NamespacedJob"
-													r.args = args
-													r.count = 1
-													return r, true
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Match until "/"
-													idx := strings.IndexByte(elem, '/')
-													if idx > 0 {
-														args[1] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															r.name = "ReadBatchV1NamespacedJob"
-															r.args = args
-															r.count = 2
-															return r, true
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/status"
-															if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																// Leaf: ReadBatchV1NamespacedJobStatus
-																r.name = "ReadBatchV1NamespacedJobStatus"
-																r.args = args
-																r.count = 2
-																return r, true
-															}
-														}
+													if len(elem) == 0 {
+														// Leaf: ReadBatchV1NamespacedJobStatus
+														r.name = "ReadBatchV1NamespacedJobStatus"
+														r.args = args
+														r.count = 2
+														return r, true
 													}
 												}
 											}
@@ -13625,95 +13719,96 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												r.name = "WatchBatchV1NamespacedJob"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											case 'c': // Prefix: "cronjobs"
+												if l := len("cronjobs"); len(elem) >= l && elem[0:l] == "cronjobs" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													r.name = "WatchBatchV1NamespacedJob"
+													r.name = "WatchBatchV1NamespacedCronJobList"
 													r.args = args
 													r.count = 1
 													return r, true
 												}
 												switch elem[0] {
-												case 'c': // Prefix: "cronjobs"
-													if l := len("cronjobs"); len(elem) >= l && elem[0:l] == "cronjobs" {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
+													// Param: "name"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
+
 													if len(elem) == 0 {
-														r.name = "WatchBatchV1NamespacedCronJobList"
+														// Leaf: WatchBatchV1NamespacedCronJob
+														r.name = "WatchBatchV1NamespacedCronJob"
 														r.args = args
-														r.count = 1
+														r.count = 2
 														return r, true
 													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
+												}
+											case 'j': // Prefix: "jobs"
+												if l := len("jobs"); len(elem) >= l && elem[0:l] == "jobs" {
+													elem = elem[l:]
+												} else {
+													break
+												}
 
-														// Param: "name"
-														// Leaf parameter
-														args[1] = elem
-														elem = ""
-
-														if len(elem) == 0 {
-															// Leaf: WatchBatchV1NamespacedCronJob
-															r.name = "WatchBatchV1NamespacedCronJob"
-															r.args = args
-															r.count = 2
-															return r, true
-														}
-													}
-												case 'j': // Prefix: "jobs"
-													if l := len("jobs"); len(elem) >= l && elem[0:l] == "jobs" {
+												if len(elem) == 0 {
+													r.name = "WatchBatchV1NamespacedJobList"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
+													// Param: "name"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
+
 													if len(elem) == 0 {
-														r.name = "WatchBatchV1NamespacedJobList"
+														// Leaf: WatchBatchV1NamespacedJob
+														r.name = "WatchBatchV1NamespacedJob"
 														r.args = args
-														r.count = 1
+														r.count = 2
 														return r, true
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Leaf parameter
-														args[1] = elem
-														elem = ""
-
-														if len(elem) == 0 {
-															// Leaf: WatchBatchV1NamespacedJob
-															r.name = "WatchBatchV1NamespacedJob"
-															r.args = args
-															r.count = 2
-															return r, true
-														}
 													}
 												}
 											}
@@ -13758,64 +13853,66 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/cronjobs"
+										if l := len("/cronjobs"); len(elem) >= l && elem[0:l] == "/cronjobs" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											r.name = "ListBatchV1beta1NamespacedCronJob"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/cronjobs"
-											if l := len("/cronjobs"); len(elem) >= l && elem[0:l] == "/cronjobs" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Match until "/"
+											idx := strings.IndexByte(elem, '/')
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[1] = elem[:idx]
+											elem = elem[idx:]
+
 											if len(elem) == 0 {
-												r.name = "ListBatchV1beta1NamespacedCronJob"
+												r.name = "ReadBatchV1beta1NamespacedCronJob"
 												r.args = args
-												r.count = 1
+												r.count = 2
 												return r, true
 											}
 											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											case '/': // Prefix: "/status"
+												if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Param: "name"
-												// Match until "/"
-												idx := strings.IndexByte(elem, '/')
-												if idx > 0 {
-													args[1] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														r.name = "ReadBatchV1beta1NamespacedCronJob"
-														r.args = args
-														r.count = 2
-														return r, true
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/status"
-														if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf: ReadBatchV1beta1NamespacedCronJobStatus
-															r.name = "ReadBatchV1beta1NamespacedCronJobStatus"
-															r.args = args
-															r.count = 2
-															return r, true
-														}
-													}
+												if len(elem) == 0 {
+													// Leaf: ReadBatchV1beta1NamespacedCronJobStatus
+													r.name = "ReadBatchV1beta1NamespacedCronJobStatus"
+													r.args = args
+													r.count = 2
+													return r, true
 												}
 											}
 										}
@@ -13858,47 +13955,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/cronjobs"
+											if l := len("/cronjobs"); len(elem) >= l && elem[0:l] == "/cronjobs" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												r.name = "WatchBatchV1beta1NamespacedCronJobList"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/cronjobs"
-												if l := len("/cronjobs"); len(elem) >= l && elem[0:l] == "/cronjobs" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													r.name = "WatchBatchV1beta1NamespacedCronJobList"
+													// Leaf: WatchBatchV1beta1NamespacedCronJob
+													r.name = "WatchBatchV1beta1NamespacedCronJob"
 													r.args = args
-													r.count = 1
+													r.count = 2
 													return r, true
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchBatchV1beta1NamespacedCronJob
-														r.name = "WatchBatchV1beta1NamespacedCronJob"
-														r.args = args
-														r.count = 2
-														return r, true
-													}
 												}
 											}
 										}
@@ -13972,59 +14070,60 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "name"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											r.name = "ReadCertificatesV1CertificateSigningRequest"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
+												break
+											}
 
 											if len(elem) == 0 {
-												r.name = "ReadCertificatesV1CertificateSigningRequest"
+												r.name = "ReadCertificatesV1CertificateSigningRequestStatus"
 												r.args = args
 												r.count = 1
 												return r, true
 											}
 											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											case 'a': // Prefix: "approval"
+												if l := len("approval"); len(elem) >= l && elem[0:l] == "approval" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													r.name = "ReadCertificatesV1CertificateSigningRequestStatus"
+													// Leaf: ReadCertificatesV1CertificateSigningRequestApproval
+													r.name = "ReadCertificatesV1CertificateSigningRequestApproval"
 													r.args = args
 													r.count = 1
 													return r, true
 												}
-												switch elem[0] {
-												case 'a': // Prefix: "approval"
-													if l := len("approval"); len(elem) >= l && elem[0:l] == "approval" {
-														elem = elem[l:]
-													} else {
-														break
-													}
+											case 's': // Prefix: "status"
+												if l := len("status"); len(elem) >= l && elem[0:l] == "status" {
+													elem = elem[l:]
+												} else {
+													break
+												}
 
-													if len(elem) == 0 {
-														// Leaf: ReadCertificatesV1CertificateSigningRequestApproval
-														r.name = "ReadCertificatesV1CertificateSigningRequestApproval"
-														r.args = args
-														r.count = 1
-														return r, true
-													}
-												case 's': // Prefix: "status"
-													if l := len("status"); len(elem) >= l && elem[0:l] == "status" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														// Leaf: ReadCertificatesV1CertificateSigningRequestStatus
-														r.name = "ReadCertificatesV1CertificateSigningRequestStatus"
-														r.args = args
-														r.count = 1
-														return r, true
-													}
+												if len(elem) == 0 {
+													// Leaf: ReadCertificatesV1CertificateSigningRequestStatus
+													r.name = "ReadCertificatesV1CertificateSigningRequestStatus"
+													r.args = args
+													r.count = 1
+													return r, true
 												}
 											}
 										}
@@ -14117,47 +14216,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/leases"
+										if l := len("/leases"); len(elem) >= l && elem[0:l] == "/leases" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											r.name = "ListCoordinationV1NamespacedLease"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/leases"
-											if l := len("/leases"); len(elem) >= l && elem[0:l] == "/leases" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Leaf parameter
+											args[1] = elem
+											elem = ""
+
 											if len(elem) == 0 {
-												r.name = "ListCoordinationV1NamespacedLease"
+												// Leaf: ReadCoordinationV1NamespacedLease
+												r.name = "ReadCoordinationV1NamespacedLease"
 												r.args = args
-												r.count = 1
+												r.count = 2
 												return r, true
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "name"
-												// Leaf parameter
-												args[1] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													// Leaf: ReadCoordinationV1NamespacedLease
-													r.name = "ReadCoordinationV1NamespacedLease"
-													r.args = args
-													r.count = 2
-													return r, true
-												}
 											}
 										}
 									}
@@ -14199,47 +14299,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/leases"
+											if l := len("/leases"); len(elem) >= l && elem[0:l] == "/leases" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												r.name = "WatchCoordinationV1NamespacedLeaseList"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/leases"
-												if l := len("/leases"); len(elem) >= l && elem[0:l] == "/leases" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													r.name = "WatchCoordinationV1NamespacedLeaseList"
+													// Leaf: WatchCoordinationV1NamespacedLease
+													r.name = "WatchCoordinationV1NamespacedLease"
 													r.args = args
-													r.count = 1
+													r.count = 2
 													return r, true
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchCoordinationV1NamespacedLease
-														r.name = "WatchCoordinationV1NamespacedLease"
-														r.args = args
-														r.count = 2
-														return r, true
-													}
 												}
 											}
 										}
@@ -14313,47 +14414,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/endpointslices"
+										if l := len("/endpointslices"); len(elem) >= l && elem[0:l] == "/endpointslices" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											r.name = "ListDiscoveryV1NamespacedEndpointSlice"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/endpointslices"
-											if l := len("/endpointslices"); len(elem) >= l && elem[0:l] == "/endpointslices" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Leaf parameter
+											args[1] = elem
+											elem = ""
+
 											if len(elem) == 0 {
-												r.name = "ListDiscoveryV1NamespacedEndpointSlice"
+												// Leaf: ReadDiscoveryV1NamespacedEndpointSlice
+												r.name = "ReadDiscoveryV1NamespacedEndpointSlice"
 												r.args = args
-												r.count = 1
+												r.count = 2
 												return r, true
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "name"
-												// Leaf parameter
-												args[1] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													// Leaf: ReadDiscoveryV1NamespacedEndpointSlice
-													r.name = "ReadDiscoveryV1NamespacedEndpointSlice"
-													r.args = args
-													r.count = 2
-													return r, true
-												}
 											}
 										}
 									}
@@ -14395,47 +14497,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/endpointslices"
+											if l := len("/endpointslices"); len(elem) >= l && elem[0:l] == "/endpointslices" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												r.name = "WatchDiscoveryV1NamespacedEndpointSliceList"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/endpointslices"
-												if l := len("/endpointslices"); len(elem) >= l && elem[0:l] == "/endpointslices" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													r.name = "WatchDiscoveryV1NamespacedEndpointSliceList"
+													// Leaf: WatchDiscoveryV1NamespacedEndpointSlice
+													r.name = "WatchDiscoveryV1NamespacedEndpointSlice"
 													r.args = args
-													r.count = 1
+													r.count = 2
 													return r, true
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchDiscoveryV1NamespacedEndpointSlice
-														r.name = "WatchDiscoveryV1NamespacedEndpointSlice"
-														r.args = args
-														r.count = 2
-														return r, true
-													}
 												}
 											}
 										}
@@ -14479,47 +14582,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/endpointslices"
+										if l := len("/endpointslices"); len(elem) >= l && elem[0:l] == "/endpointslices" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											r.name = "ListDiscoveryV1beta1NamespacedEndpointSlice"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/endpointslices"
-											if l := len("/endpointslices"); len(elem) >= l && elem[0:l] == "/endpointslices" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Leaf parameter
+											args[1] = elem
+											elem = ""
+
 											if len(elem) == 0 {
-												r.name = "ListDiscoveryV1beta1NamespacedEndpointSlice"
+												// Leaf: ReadDiscoveryV1beta1NamespacedEndpointSlice
+												r.name = "ReadDiscoveryV1beta1NamespacedEndpointSlice"
 												r.args = args
-												r.count = 1
+												r.count = 2
 												return r, true
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "name"
-												// Leaf parameter
-												args[1] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													// Leaf: ReadDiscoveryV1beta1NamespacedEndpointSlice
-													r.name = "ReadDiscoveryV1beta1NamespacedEndpointSlice"
-													r.args = args
-													r.count = 2
-													return r, true
-												}
 											}
 										}
 									}
@@ -14561,47 +14665,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/endpointslices"
+											if l := len("/endpointslices"); len(elem) >= l && elem[0:l] == "/endpointslices" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												r.name = "WatchDiscoveryV1beta1NamespacedEndpointSliceList"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/endpointslices"
-												if l := len("/endpointslices"); len(elem) >= l && elem[0:l] == "/endpointslices" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													r.name = "WatchDiscoveryV1beta1NamespacedEndpointSliceList"
+													// Leaf: WatchDiscoveryV1beta1NamespacedEndpointSlice
+													r.name = "WatchDiscoveryV1beta1NamespacedEndpointSlice"
 													r.args = args
-													r.count = 1
+													r.count = 2
 													return r, true
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchDiscoveryV1beta1NamespacedEndpointSlice
-														r.name = "WatchDiscoveryV1beta1NamespacedEndpointSlice"
-														r.args = args
-														r.count = 2
-														return r, true
-													}
 												}
 											}
 										}
@@ -14675,47 +14780,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/events"
+										if l := len("/events"); len(elem) >= l && elem[0:l] == "/events" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											r.name = "ListEventsV1NamespacedEvent"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/events"
-											if l := len("/events"); len(elem) >= l && elem[0:l] == "/events" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Leaf parameter
+											args[1] = elem
+											elem = ""
+
 											if len(elem) == 0 {
-												r.name = "ListEventsV1NamespacedEvent"
+												// Leaf: ReadEventsV1NamespacedEvent
+												r.name = "ReadEventsV1NamespacedEvent"
 												r.args = args
-												r.count = 1
+												r.count = 2
 												return r, true
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "name"
-												// Leaf parameter
-												args[1] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													// Leaf: ReadEventsV1NamespacedEvent
-													r.name = "ReadEventsV1NamespacedEvent"
-													r.args = args
-													r.count = 2
-													return r, true
-												}
 											}
 										}
 									}
@@ -14757,47 +14863,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/events"
+											if l := len("/events"); len(elem) >= l && elem[0:l] == "/events" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												r.name = "WatchEventsV1NamespacedEventList"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/events"
-												if l := len("/events"); len(elem) >= l && elem[0:l] == "/events" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													r.name = "WatchEventsV1NamespacedEventList"
+													// Leaf: WatchEventsV1NamespacedEvent
+													r.name = "WatchEventsV1NamespacedEvent"
 													r.args = args
-													r.count = 1
+													r.count = 2
 													return r, true
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchEventsV1NamespacedEvent
-														r.name = "WatchEventsV1NamespacedEvent"
-														r.args = args
-														r.count = 2
-														return r, true
-													}
 												}
 											}
 										}
@@ -14841,47 +14948,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/events"
+										if l := len("/events"); len(elem) >= l && elem[0:l] == "/events" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											r.name = "ListEventsV1beta1NamespacedEvent"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/events"
-											if l := len("/events"); len(elem) >= l && elem[0:l] == "/events" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Leaf parameter
+											args[1] = elem
+											elem = ""
+
 											if len(elem) == 0 {
-												r.name = "ListEventsV1beta1NamespacedEvent"
+												// Leaf: ReadEventsV1beta1NamespacedEvent
+												r.name = "ReadEventsV1beta1NamespacedEvent"
 												r.args = args
-												r.count = 1
+												r.count = 2
 												return r, true
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "name"
-												// Leaf parameter
-												args[1] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													// Leaf: ReadEventsV1beta1NamespacedEvent
-													r.name = "ReadEventsV1beta1NamespacedEvent"
-													r.args = args
-													r.count = 2
-													return r, true
-												}
 											}
 										}
 									}
@@ -14923,47 +15031,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/events"
+											if l := len("/events"); len(elem) >= l && elem[0:l] == "/events" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												r.name = "WatchEventsV1beta1NamespacedEventList"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/events"
-												if l := len("/events"); len(elem) >= l && elem[0:l] == "/events" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													r.name = "WatchEventsV1beta1NamespacedEventList"
+													// Leaf: WatchEventsV1beta1NamespacedEvent
+													r.name = "WatchEventsV1beta1NamespacedEvent"
 													r.args = args
-													r.count = 1
+													r.count = 2
 													return r, true
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchEventsV1beta1NamespacedEvent
-														r.name = "WatchEventsV1beta1NamespacedEvent"
-														r.args = args
-														r.count = 2
-														return r, true
-													}
 												}
 											}
 										}
@@ -15037,31 +15146,32 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "name"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											r.name = "ReadFlowcontrolApiserverV1beta1FlowSchema"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/status"
+											if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+												elem = elem[l:]
+											} else {
+												break
+											}
 
 											if len(elem) == 0 {
-												r.name = "ReadFlowcontrolApiserverV1beta1FlowSchema"
+												// Leaf: ReadFlowcontrolApiserverV1beta1FlowSchemaStatus
+												r.name = "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus"
 												r.args = args
 												r.count = 1
 												return r, true
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/status"
-												if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: ReadFlowcontrolApiserverV1beta1FlowSchemaStatus
-													r.name = "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus"
-													r.args = args
-													r.count = 1
-													return r, true
-												}
 											}
 										}
 									}
@@ -15089,31 +15199,32 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "name"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											r.name = "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/status"
+											if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+												elem = elem[l:]
+											} else {
+												break
+											}
 
 											if len(elem) == 0 {
-												r.name = "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
+												// Leaf: ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
+												r.name = "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus"
 												r.args = args
 												r.count = 1
 												return r, true
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/status"
-												if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
-													r.name = "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus"
-													r.args = args
-													r.count = 1
-													return r, true
-												}
 											}
 										}
 									}
@@ -15239,31 +15350,32 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "name"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											r.name = "ReadFlowcontrolApiserverV1beta2FlowSchema"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/status"
+											if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+												elem = elem[l:]
+											} else {
+												break
+											}
 
 											if len(elem) == 0 {
-												r.name = "ReadFlowcontrolApiserverV1beta2FlowSchema"
+												// Leaf: ReadFlowcontrolApiserverV1beta2FlowSchemaStatus
+												r.name = "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus"
 												r.args = args
 												r.count = 1
 												return r, true
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/status"
-												if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: ReadFlowcontrolApiserverV1beta2FlowSchemaStatus
-													r.name = "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus"
-													r.args = args
-													r.count = 1
-													return r, true
-												}
 											}
 										}
 									}
@@ -15291,31 +15403,32 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "name"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											r.name = "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/status"
+											if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+												elem = elem[l:]
+											} else {
+												break
+											}
 
 											if len(elem) == 0 {
-												r.name = "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
+												// Leaf: ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
+												r.name = "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus"
 												r.args = args
 												r.count = 1
 												return r, true
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/status"
-												if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
-													r.name = "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus"
-													r.args = args
-													r.count = 1
-													return r, true
-												}
 											}
 										}
 									}
@@ -15457,31 +15570,32 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									// Param: "name"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										r.name = "ReadInternalApiserverV1alpha1StorageVersion"
+										r.args = args
+										r.count = 1
+										return r, true
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/status"
+										if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+											elem = elem[l:]
+										} else {
+											break
+										}
 
 										if len(elem) == 0 {
-											r.name = "ReadInternalApiserverV1alpha1StorageVersion"
+											// Leaf: ReadInternalApiserverV1alpha1StorageVersionStatus
+											r.name = "ReadInternalApiserverV1alpha1StorageVersionStatus"
 											r.args = args
 											r.count = 1
 											return r, true
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/status"
-											if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: ReadInternalApiserverV1alpha1StorageVersionStatus
-												r.name = "ReadInternalApiserverV1alpha1StorageVersionStatus"
-												r.args = args
-												r.count = 1
-												return r, true
-											}
 										}
 									}
 								}
@@ -15650,16 +15764,85 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												r.name = "ListNetworkingV1NamespacedNetworkPolicy"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											case 'i': // Prefix: "ingresses"
+												if l := len("ingresses"); len(elem) >= l && elem[0:l] == "ingresses" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "ListNetworkingV1NamespacedIngress"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[1] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														r.name = "ReadNetworkingV1NamespacedIngress"
+														r.args = args
+														r.count = 2
+														return r, true
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/status"
+														if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf: ReadNetworkingV1NamespacedIngressStatus
+															r.name = "ReadNetworkingV1NamespacedIngressStatus"
+															r.args = args
+															r.count = 2
+															return r, true
+														}
+													}
+												}
+											case 'n': // Prefix: "networkpolicies"
+												if l := len("networkpolicies"); len(elem) >= l && elem[0:l] == "networkpolicies" {
 													elem = elem[l:]
 												} else {
 													break
@@ -15672,91 +15855,24 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													return r, true
 												}
 												switch elem[0] {
-												case 'i': // Prefix: "ingresses"
-													if l := len("ingresses"); len(elem) >= l && elem[0:l] == "ingresses" {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
-													if len(elem) == 0 {
-														r.name = "ListNetworkingV1NamespacedIngress"
-														r.args = args
-														r.count = 1
-														return r, true
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Match until "/"
-														idx := strings.IndexByte(elem, '/')
-														if idx > 0 {
-															args[1] = elem[:idx]
-															elem = elem[idx:]
-
-															if len(elem) == 0 {
-																r.name = "ReadNetworkingV1NamespacedIngress"
-																r.args = args
-																r.count = 2
-																return r, true
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/status"
-																if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	// Leaf: ReadNetworkingV1NamespacedIngressStatus
-																	r.name = "ReadNetworkingV1NamespacedIngressStatus"
-																	r.args = args
-																	r.count = 2
-																	return r, true
-																}
-															}
-														}
-													}
-												case 'n': // Prefix: "networkpolicies"
-													if l := len("networkpolicies"); len(elem) >= l && elem[0:l] == "networkpolicies" {
-														elem = elem[l:]
-													} else {
-														break
-													}
+													// Param: "name"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
 
 													if len(elem) == 0 {
-														r.name = "ListNetworkingV1NamespacedNetworkPolicy"
+														// Leaf: ReadNetworkingV1NamespacedNetworkPolicy
+														r.name = "ReadNetworkingV1NamespacedNetworkPolicy"
 														r.args = args
-														r.count = 1
+														r.count = 2
 														return r, true
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Leaf parameter
-														args[1] = elem
-														elem = ""
-
-														if len(elem) == 0 {
-															// Leaf: ReadNetworkingV1NamespacedNetworkPolicy
-															r.name = "ReadNetworkingV1NamespacedNetworkPolicy"
-															r.args = args
-															r.count = 2
-															return r, true
-														}
 													}
 												}
 											}
@@ -15877,95 +15993,96 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											// Param: "namespace"
 											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
-											if idx > 0 {
-												args[0] = elem[:idx]
-												elem = elem[idx:]
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[0] = elem[:idx]
+											elem = elem[idx:]
 
-												if len(elem) == 0 {
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
 													break
 												}
+
+												if len(elem) == 0 {
+													r.name = "WatchNetworkingV1NamespacedNetworkPolicy"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
 												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												case 'i': // Prefix: "ingresses"
+													if l := len("ingresses"); len(elem) >= l && elem[0:l] == "ingresses" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchNetworkingV1NamespacedNetworkPolicy"
+														r.name = "WatchNetworkingV1NamespacedIngressList"
 														r.args = args
 														r.count = 1
 														return r, true
 													}
 													switch elem[0] {
-													case 'i': // Prefix: "ingresses"
-														if l := len("ingresses"); len(elem) >= l && elem[0:l] == "ingresses" {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
 														if len(elem) == 0 {
-															r.name = "WatchNetworkingV1NamespacedIngressList"
+															// Leaf: WatchNetworkingV1NamespacedIngress
+															r.name = "WatchNetworkingV1NamespacedIngress"
 															r.args = args
-															r.count = 1
+															r.count = 2
 															return r, true
 														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
+													}
+												case 'n': // Prefix: "networkpolicies"
+													if l := len("networkpolicies"); len(elem) >= l && elem[0:l] == "networkpolicies" {
+														elem = elem[l:]
+													} else {
+														break
+													}
 
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf: WatchNetworkingV1NamespacedIngress
-																r.name = "WatchNetworkingV1NamespacedIngress"
-																r.args = args
-																r.count = 2
-																return r, true
-															}
-														}
-													case 'n': // Prefix: "networkpolicies"
-														if l := len("networkpolicies"); len(elem) >= l && elem[0:l] == "networkpolicies" {
+													if len(elem) == 0 {
+														r.name = "WatchNetworkingV1NamespacedNetworkPolicyList"
+														r.args = args
+														r.count = 1
+														return r, true
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
+														// Param: "name"
+														// Leaf parameter
+														args[1] = elem
+														elem = ""
+
 														if len(elem) == 0 {
-															r.name = "WatchNetworkingV1NamespacedNetworkPolicyList"
+															// Leaf: WatchNetworkingV1NamespacedNetworkPolicy
+															r.name = "WatchNetworkingV1NamespacedNetworkPolicy"
 															r.args = args
-															r.count = 1
+															r.count = 2
 															return r, true
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args[1] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf: WatchNetworkingV1NamespacedNetworkPolicy
-																r.name = "WatchNetworkingV1NamespacedNetworkPolicy"
-																r.args = args
-																r.count = 2
-																return r, true
-															}
 														}
 													}
 												}
@@ -16320,64 +16437,66 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/poddisruptionbudgets"
+										if l := len("/poddisruptionbudgets"); len(elem) >= l && elem[0:l] == "/poddisruptionbudgets" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											r.name = "ListPolicyV1NamespacedPodDisruptionBudget"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/poddisruptionbudgets"
-											if l := len("/poddisruptionbudgets"); len(elem) >= l && elem[0:l] == "/poddisruptionbudgets" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Match until "/"
+											idx := strings.IndexByte(elem, '/')
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[1] = elem[:idx]
+											elem = elem[idx:]
+
 											if len(elem) == 0 {
-												r.name = "ListPolicyV1NamespacedPodDisruptionBudget"
+												r.name = "ReadPolicyV1NamespacedPodDisruptionBudget"
 												r.args = args
-												r.count = 1
+												r.count = 2
 												return r, true
 											}
 											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											case '/': // Prefix: "/status"
+												if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Param: "name"
-												// Match until "/"
-												idx := strings.IndexByte(elem, '/')
-												if idx > 0 {
-													args[1] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														r.name = "ReadPolicyV1NamespacedPodDisruptionBudget"
-														r.args = args
-														r.count = 2
-														return r, true
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/status"
-														if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf: ReadPolicyV1NamespacedPodDisruptionBudgetStatus
-															r.name = "ReadPolicyV1NamespacedPodDisruptionBudgetStatus"
-															r.args = args
-															r.count = 2
-															return r, true
-														}
-													}
+												if len(elem) == 0 {
+													// Leaf: ReadPolicyV1NamespacedPodDisruptionBudgetStatus
+													r.name = "ReadPolicyV1NamespacedPodDisruptionBudgetStatus"
+													r.args = args
+													r.count = 2
+													return r, true
 												}
 											}
 										}
@@ -16420,47 +16539,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/poddisruptionbudgets"
+											if l := len("/poddisruptionbudgets"); len(elem) >= l && elem[0:l] == "/poddisruptionbudgets" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												r.name = "WatchPolicyV1NamespacedPodDisruptionBudgetList"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/poddisruptionbudgets"
-												if l := len("/poddisruptionbudgets"); len(elem) >= l && elem[0:l] == "/poddisruptionbudgets" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													r.name = "WatchPolicyV1NamespacedPodDisruptionBudgetList"
+													// Leaf: WatchPolicyV1NamespacedPodDisruptionBudget
+													r.name = "WatchPolicyV1NamespacedPodDisruptionBudget"
 													r.args = args
-													r.count = 1
+													r.count = 2
 													return r, true
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchPolicyV1NamespacedPodDisruptionBudget
-														r.name = "WatchPolicyV1NamespacedPodDisruptionBudget"
-														r.args = args
-														r.count = 2
-														return r, true
-													}
 												}
 											}
 										}
@@ -16504,64 +16624,66 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/poddisruptionbudgets"
+										if l := len("/poddisruptionbudgets"); len(elem) >= l && elem[0:l] == "/poddisruptionbudgets" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											r.name = "ListPolicyV1beta1NamespacedPodDisruptionBudget"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/poddisruptionbudgets"
-											if l := len("/poddisruptionbudgets"); len(elem) >= l && elem[0:l] == "/poddisruptionbudgets" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Match until "/"
+											idx := strings.IndexByte(elem, '/')
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[1] = elem[:idx]
+											elem = elem[idx:]
+
 											if len(elem) == 0 {
-												r.name = "ListPolicyV1beta1NamespacedPodDisruptionBudget"
+												r.name = "ReadPolicyV1beta1NamespacedPodDisruptionBudget"
 												r.args = args
-												r.count = 1
+												r.count = 2
 												return r, true
 											}
 											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											case '/': // Prefix: "/status"
+												if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Param: "name"
-												// Match until "/"
-												idx := strings.IndexByte(elem, '/')
-												if idx > 0 {
-													args[1] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														r.name = "ReadPolicyV1beta1NamespacedPodDisruptionBudget"
-														r.args = args
-														r.count = 2
-														return r, true
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/status"
-														if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf: ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus
-															r.name = "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus"
-															r.args = args
-															r.count = 2
-															return r, true
-														}
-													}
+												if len(elem) == 0 {
+													// Leaf: ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus
+													r.name = "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus"
+													r.args = args
+													r.count = 2
+													return r, true
 												}
 											}
 										}
@@ -16653,47 +16775,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/poddisruptionbudgets"
+											if l := len("/poddisruptionbudgets"); len(elem) >= l && elem[0:l] == "/poddisruptionbudgets" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												r.name = "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/poddisruptionbudgets"
-												if l := len("/poddisruptionbudgets"); len(elem) >= l && elem[0:l] == "/poddisruptionbudgets" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													r.name = "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList"
+													// Leaf: WatchPolicyV1beta1NamespacedPodDisruptionBudget
+													r.name = "WatchPolicyV1beta1NamespacedPodDisruptionBudget"
 													r.args = args
-													r.count = 1
+													r.count = 2
 													return r, true
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchPolicyV1beta1NamespacedPodDisruptionBudget
-														r.name = "WatchPolicyV1beta1NamespacedPodDisruptionBudget"
-														r.args = args
-														r.count = 2
-														return r, true
-													}
 												}
 											}
 										}
@@ -16885,16 +17008,32 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								// Param: "namespace"
 								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
-								if idx > 0 {
-									args[0] = elem[:idx]
-									elem = elem[idx:]
+								if idx < 0 {
+									idx = len(elem)
+								}
+								args[0] = elem[:idx]
+								elem = elem[idx:]
 
-									if len(elem) == 0 {
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/role"
+									if l := len("/role"); len(elem) >= l && elem[0:l] == "/role" {
+										elem = elem[l:]
+									} else {
 										break
 									}
+
+									if len(elem) == 0 {
+										r.name = "ListRbacAuthorizationV1NamespacedRoleBinding"
+										r.args = args
+										r.count = 1
+										return r, true
+									}
 									switch elem[0] {
-									case '/': // Prefix: "/role"
-										if l := len("/role"); len(elem) >= l && elem[0:l] == "/role" {
+									case 'b': // Prefix: "bindings"
+										if l := len("bindings"); len(elem) >= l && elem[0:l] == "bindings" {
 											elem = elem[l:]
 										} else {
 											break
@@ -16907,73 +17046,58 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											return r, true
 										}
 										switch elem[0] {
-										case 'b': // Prefix: "bindings"
-											if l := len("bindings"); len(elem) >= l && elem[0:l] == "bindings" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Leaf parameter
+											args[1] = elem
+											elem = ""
+
 											if len(elem) == 0 {
-												r.name = "ListRbacAuthorizationV1NamespacedRoleBinding"
+												// Leaf: ReadRbacAuthorizationV1NamespacedRoleBinding
+												r.name = "ReadRbacAuthorizationV1NamespacedRoleBinding"
 												r.args = args
-												r.count = 1
+												r.count = 2
 												return r, true
 											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
+										}
+									case 's': // Prefix: "s"
+										if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+											elem = elem[l:]
+										} else {
+											break
+										}
 
-												// Param: "name"
-												// Leaf parameter
-												args[1] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													// Leaf: ReadRbacAuthorizationV1NamespacedRoleBinding
-													r.name = "ReadRbacAuthorizationV1NamespacedRoleBinding"
-													r.args = args
-													r.count = 2
-													return r, true
-												}
-											}
-										case 's': // Prefix: "s"
-											if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+										if len(elem) == 0 {
+											r.name = "ListRbacAuthorizationV1NamespacedRole"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
+											// Param: "name"
+											// Leaf parameter
+											args[1] = elem
+											elem = ""
+
 											if len(elem) == 0 {
-												r.name = "ListRbacAuthorizationV1NamespacedRole"
+												// Leaf: ReadRbacAuthorizationV1NamespacedRole
+												r.name = "ReadRbacAuthorizationV1NamespacedRole"
 												r.args = args
-												r.count = 1
+												r.count = 2
 												return r, true
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "name"
-												// Leaf parameter
-												args[1] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													// Leaf: ReadRbacAuthorizationV1NamespacedRole
-													r.name = "ReadRbacAuthorizationV1NamespacedRole"
-													r.args = args
-													r.count = 2
-													return r, true
-												}
 											}
 										}
 									}
@@ -17128,95 +17252,96 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									// Param: "namespace"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
-									if idx > 0 {
-										args[0] = elem[:idx]
-										elem = elem[idx:]
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
 
-										if len(elem) == 0 {
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/role"
+										if l := len("/role"); len(elem) >= l && elem[0:l] == "/role" {
+											elem = elem[l:]
+										} else {
 											break
 										}
+
+										if len(elem) == 0 {
+											r.name = "WatchRbacAuthorizationV1NamespacedRoleBinding"
+											r.args = args
+											r.count = 1
+											return r, true
+										}
 										switch elem[0] {
-										case '/': // Prefix: "/role"
-											if l := len("/role"); len(elem) >= l && elem[0:l] == "/role" {
+										case 'b': // Prefix: "bindings"
+											if l := len("bindings"); len(elem) >= l && elem[0:l] == "bindings" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchRbacAuthorizationV1NamespacedRoleBinding"
+												r.name = "WatchRbacAuthorizationV1NamespacedRoleBindingList"
 												r.args = args
 												r.count = 1
 												return r, true
 											}
 											switch elem[0] {
-											case 'b': // Prefix: "bindings"
-												if l := len("bindings"); len(elem) >= l && elem[0:l] == "bindings" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													r.name = "WatchRbacAuthorizationV1NamespacedRoleBindingList"
+													// Leaf: WatchRbacAuthorizationV1NamespacedRoleBinding
+													r.name = "WatchRbacAuthorizationV1NamespacedRoleBinding"
 													r.args = args
-													r.count = 1
+													r.count = 2
 													return r, true
 												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
+											}
+										case 's': // Prefix: "s"
+											if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+												elem = elem[l:]
+											} else {
+												break
+											}
 
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchRbacAuthorizationV1NamespacedRoleBinding
-														r.name = "WatchRbacAuthorizationV1NamespacedRoleBinding"
-														r.args = args
-														r.count = 2
-														return r, true
-													}
-												}
-											case 's': // Prefix: "s"
-												if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+											if len(elem) == 0 {
+												r.name = "WatchRbacAuthorizationV1NamespacedRoleList"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													r.name = "WatchRbacAuthorizationV1NamespacedRoleList"
+													// Leaf: WatchRbacAuthorizationV1NamespacedRole
+													r.name = "WatchRbacAuthorizationV1NamespacedRole"
 													r.args = args
-													r.count = 1
+													r.count = 2
 													return r, true
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: WatchRbacAuthorizationV1NamespacedRole
-														r.name = "WatchRbacAuthorizationV1NamespacedRole"
-														r.args = args
-														r.count = 2
-														return r, true
-													}
 												}
 											}
 										}
@@ -17562,31 +17687,32 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											// Param: "name"
 											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
-											if idx > 0 {
-												args[0] = elem[:idx]
-												elem = elem[idx:]
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[0] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												r.name = "ReadStorageV1VolumeAttachment"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/status"
+												if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+													elem = elem[l:]
+												} else {
+													break
+												}
 
 												if len(elem) == 0 {
-													r.name = "ReadStorageV1VolumeAttachment"
+													// Leaf: ReadStorageV1VolumeAttachmentStatus
+													r.name = "ReadStorageV1VolumeAttachmentStatus"
 													r.args = args
 													r.count = 1
 													return r, true
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/status"
-													if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														// Leaf: ReadStorageV1VolumeAttachmentStatus
-														r.name = "ReadStorageV1VolumeAttachmentStatus"
-														r.args = args
-														r.count = 1
-														return r, true
-													}
 												}
 											}
 										}
@@ -17795,47 +17921,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/csistoragecapacities"
+											if l := len("/csistoragecapacities"); len(elem) >= l && elem[0:l] == "/csistoragecapacities" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												r.name = "ListStorageV1alpha1NamespacedCSIStorageCapacity"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/csistoragecapacities"
-												if l := len("/csistoragecapacities"); len(elem) >= l && elem[0:l] == "/csistoragecapacities" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													r.name = "ListStorageV1alpha1NamespacedCSIStorageCapacity"
+													// Leaf: ReadStorageV1alpha1NamespacedCSIStorageCapacity
+													r.name = "ReadStorageV1alpha1NamespacedCSIStorageCapacity"
 													r.args = args
-													r.count = 1
+													r.count = 2
 													return r, true
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: ReadStorageV1alpha1NamespacedCSIStorageCapacity
-														r.name = "ReadStorageV1alpha1NamespacedCSIStorageCapacity"
-														r.args = args
-														r.count = 2
-														return r, true
-													}
 												}
 											}
 										}
@@ -17877,47 +18004,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											// Param: "namespace"
 											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
-											if idx > 0 {
-												args[0] = elem[:idx]
-												elem = elem[idx:]
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[0] = elem[:idx]
+											elem = elem[idx:]
 
-												if len(elem) == 0 {
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/csistoragecapacities"
+												if l := len("/csistoragecapacities"); len(elem) >= l && elem[0:l] == "/csistoragecapacities" {
+													elem = elem[l:]
+												} else {
 													break
 												}
+
+												if len(elem) == 0 {
+													r.name = "WatchStorageV1alpha1NamespacedCSIStorageCapacityList"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
 												switch elem[0] {
-												case '/': // Prefix: "/csistoragecapacities"
-													if l := len("/csistoragecapacities"); len(elem) >= l && elem[0:l] == "/csistoragecapacities" {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
+													// Param: "name"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
+
 													if len(elem) == 0 {
-														r.name = "WatchStorageV1alpha1NamespacedCSIStorageCapacityList"
+														// Leaf: WatchStorageV1alpha1NamespacedCSIStorageCapacity
+														r.name = "WatchStorageV1alpha1NamespacedCSIStorageCapacity"
 														r.args = args
-														r.count = 1
+														r.count = 2
 														return r, true
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Leaf parameter
-														args[1] = elem
-														elem = ""
-
-														if len(elem) == 0 {
-															// Leaf: WatchStorageV1alpha1NamespacedCSIStorageCapacity
-															r.name = "WatchStorageV1alpha1NamespacedCSIStorageCapacity"
-															r.args = args
-															r.count = 2
-															return r, true
-														}
 													}
 												}
 											}
@@ -17961,47 +18089,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										// Param: "namespace"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
-										if idx > 0 {
-											args[0] = elem[:idx]
-											elem = elem[idx:]
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[0] = elem[:idx]
+										elem = elem[idx:]
 
-											if len(elem) == 0 {
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/csistoragecapacities"
+											if l := len("/csistoragecapacities"); len(elem) >= l && elem[0:l] == "/csistoragecapacities" {
+												elem = elem[l:]
+											} else {
 												break
 											}
+
+											if len(elem) == 0 {
+												r.name = "ListStorageV1beta1NamespacedCSIStorageCapacity"
+												r.args = args
+												r.count = 1
+												return r, true
+											}
 											switch elem[0] {
-											case '/': // Prefix: "/csistoragecapacities"
-												if l := len("/csistoragecapacities"); len(elem) >= l && elem[0:l] == "/csistoragecapacities" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
+												// Param: "name"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
 												if len(elem) == 0 {
-													r.name = "ListStorageV1beta1NamespacedCSIStorageCapacity"
+													// Leaf: ReadStorageV1beta1NamespacedCSIStorageCapacity
+													r.name = "ReadStorageV1beta1NamespacedCSIStorageCapacity"
 													r.args = args
-													r.count = 1
+													r.count = 2
 													return r, true
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args[1] = elem
-													elem = ""
-
-													if len(elem) == 0 {
-														// Leaf: ReadStorageV1beta1NamespacedCSIStorageCapacity
-														r.name = "ReadStorageV1beta1NamespacedCSIStorageCapacity"
-														r.args = args
-														r.count = 2
-														return r, true
-													}
 												}
 											}
 										}
@@ -18043,47 +18172,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											// Param: "namespace"
 											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
-											if idx > 0 {
-												args[0] = elem[:idx]
-												elem = elem[idx:]
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[0] = elem[:idx]
+											elem = elem[idx:]
 
-												if len(elem) == 0 {
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/csistoragecapacities"
+												if l := len("/csistoragecapacities"); len(elem) >= l && elem[0:l] == "/csistoragecapacities" {
+													elem = elem[l:]
+												} else {
 													break
 												}
+
+												if len(elem) == 0 {
+													r.name = "WatchStorageV1beta1NamespacedCSIStorageCapacityList"
+													r.args = args
+													r.count = 1
+													return r, true
+												}
 												switch elem[0] {
-												case '/': // Prefix: "/csistoragecapacities"
-													if l := len("/csistoragecapacities"); len(elem) >= l && elem[0:l] == "/csistoragecapacities" {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
+													// Param: "name"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
+
 													if len(elem) == 0 {
-														r.name = "WatchStorageV1beta1NamespacedCSIStorageCapacityList"
+														// Leaf: WatchStorageV1beta1NamespacedCSIStorageCapacity
+														r.name = "WatchStorageV1beta1NamespacedCSIStorageCapacity"
 														r.args = args
-														r.count = 1
+														r.count = 2
 														return r, true
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Leaf parameter
-														args[1] = elem
-														elem = ""
-
-														if len(elem) == 0 {
-															// Leaf: WatchStorageV1beta1NamespacedCSIStorageCapacity
-															r.name = "WatchStorageV1beta1NamespacedCSIStorageCapacity"
-															r.args = args
-															r.count = 2
-															return r, true
-														}
 													}
 												}
 											}
