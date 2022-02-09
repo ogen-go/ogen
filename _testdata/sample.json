@@ -654,7 +654,15 @@
         },
         "responses": {
           "200": {
-            "description": "Ok"
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
           }
         }
       }

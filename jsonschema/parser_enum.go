@@ -45,13 +45,13 @@ func parseEnumValues(s *Schema, rawValues []json.RawMessage) ([]interface{}, err
 }
 
 func parseJSONValue(root *Schema, v json.RawMessage) (interface{}, error) {
-	var parse func(typ *Schema, d *jx.Decoder) (interface{}, error)
-	parse = func(typ *Schema, d *jx.Decoder) (interface{}, error) {
+	var parse func(s *Schema, d *jx.Decoder) (interface{}, error)
+	parse = func(s *Schema, d *jx.Decoder) (interface{}, error) {
 		next := d.Next()
 		if next == jx.Null {
 			return nil, nil
 		}
-		switch typ.Type {
+		switch typ := s.Type; typ {
 		case String:
 			if next != jx.String {
 				return nil, errors.Errorf("expected type %q, got %q", typ, next)
@@ -87,12 +87,12 @@ func parseJSONValue(root *Schema, v json.RawMessage) (interface{}, error) {
 			if next != jx.Array {
 				return nil, errors.Errorf("expected type %q, got %q", typ, next)
 			}
-			if typ.Item == nil {
+			if s.Item == nil {
 				return nil, errors.New("can't validate untyped array item")
 			}
 			var arr []interface{}
 			if err := d.Arr(func(d *jx.Decoder) error {
-				v, err := parse(typ.Item, d)
+				v, err := parse(s.Item, d)
 				if err != nil {
 					return errors.Wrap(err, "validate item")
 				}

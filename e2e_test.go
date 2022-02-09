@@ -223,8 +223,8 @@ func (s sampleAPIServer) RecursiveMapGet(ctx context.Context) (api.RecursiveMap,
 	panic("implement me")
 }
 
-func (s sampleAPIServer) DefaultTest(ctx context.Context, req api.DefaultTest, params api.DefaultTestParams) (api.DefaultTestOK, error) {
-	panic("implement me")
+func (s sampleAPIServer) DefaultTest(ctx context.Context, req api.DefaultTest, params api.DefaultTestParams) (int32, error) {
+	return params.Default.Value, nil
 }
 
 var _ api.Handler = (*sampleAPIServer)(nil)
@@ -523,6 +523,19 @@ func TestIntegration(t *testing.T) {
 				require.Equal(t, resp.Max, max)
 				require.Equal(t, resp.Filter, filter)
 			})
+		})
+		t.Run("defaultParameters", func(t *testing.T) {
+			a := require.New(t)
+
+			resp, err := client.DefaultTest(ctx, api.DefaultTest{}, api.DefaultTestParams{})
+			a.NoError(err)
+			a.Equal(int32(10), resp)
+
+			resp, err = client.DefaultTest(ctx, api.DefaultTest{}, api.DefaultTestParams{
+				Default: api.NewOptInt32(42),
+			})
+			a.NoError(err)
+			a.Equal(int32(42), resp)
 		})
 	})
 
