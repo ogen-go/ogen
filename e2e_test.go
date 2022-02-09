@@ -223,6 +223,10 @@ func (s sampleAPIServer) RecursiveMapGet(ctx context.Context) (api.RecursiveMap,
 	panic("implement me")
 }
 
+func (s sampleAPIServer) DefaultTest(ctx context.Context, req api.DefaultTest, params api.DefaultTestParams) (api.DefaultTestOK, error) {
+	panic("implement me")
+}
+
 var _ api.Handler = (*sampleAPIServer)(nil)
 
 //go:embed _testdata/pet.json
