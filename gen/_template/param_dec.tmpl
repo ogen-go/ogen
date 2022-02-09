@@ -20,6 +20,13 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
     {{- $errInvalid      := printf "%s: invalid"       $loc }}
     {{- $errNotSpecified := printf "%s: not specified" $loc }}
     {{- $el              := elem $p.Type (printf "params.%s" $p.Name) }}
+	{{- $default 		 := $p.Default }}
+	{{- if $default.Set }}
+	// Set default value for {{ $loc }}.
+	{
+    {{- template "defaults/set" default_elem $p.Type (printf "params.%s" $p.Name) $default }}
+	}
+	{{- end }}
 	// Decode {{ $loc }}.
 	{{- if $p.Spec.In.Query }}{{/* Switch location */}}
 	{

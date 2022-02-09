@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 type Operation struct {
@@ -38,6 +39,24 @@ type Parameter struct {
 	Name string
 	Type *Type
 	Spec *oas.Parameter
+}
+
+// Default returns default value of this field, if it is set.
+func (op Parameter) Default() Default {
+	var schema *jsonschema.Schema
+	if spec := op.Spec; spec != nil {
+		schema = spec.Schema
+	}
+	if schema != nil {
+		return Default{
+			Value: schema.Default,
+			Set:   schema.DefaultSet,
+		}
+	}
+	if typ := op.Type; typ != nil {
+		return typ.Default()
+	}
+	return Default{}
 }
 
 func (op Parameter) GoDoc() []string {
