@@ -1,6 +1,7 @@
 package ir
 
 import (
+	"fmt"
 	"regexp"
 
 	"github.com/go-faster/errors"
@@ -140,6 +141,6 @@ func (t *Type) needValidation(path *walkpath) (result bool) {
 		// FIXME(tdakkota): try to validate Any.
 		return false
 	default:
-		panic("unreachable")
+		panic(fmt.Sprintf("unreachable: %s", t.Kind))
 	}
 }

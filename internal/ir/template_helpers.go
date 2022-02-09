@@ -111,7 +111,7 @@ func (t *Type) needsPointerReceiverType() bool {
 
 func (t *Type) MustField(name string) *Field {
 	if !t.Is(KindStruct) {
-		panic("unreachable")
+		panic(fmt.Sprintf("unreachable: %s", t.Kind))
 	}
 
 	for _, f := range t.Fields {
