@@ -11,7 +11,7 @@
 func (s *{{ $s.Name }}) setDefaults()  {
 	{{- range $f := $defaults }}
 	{
-	{{- template "defaults/set" $f }}
+	{{- template "defaults/set" default_elem $f.Type (printf "s.%s" $f.Name) $f.Default }}
 	}
 	{{- end }}
 }
