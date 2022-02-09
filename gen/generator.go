@@ -86,11 +86,12 @@ func (g *Generator) makeIR(ops []*oas.Operation) error {
 
 		op, err := g.generateOperation(spec)
 		if err != nil {
+			err = errors.Wrapf(err, "path %q: %s",
+				spec.Path.String(),
+				strings.ToLower(spec.HTTPMethod),
+			)
 			if err := g.fail(err); err != nil {
-				return errors.Wrapf(err, "%q: %s",
-					spec.Path.String(),
-					strings.ToLower(spec.HTTPMethod),
-				)
+				return err
 			}
 
 			continue
