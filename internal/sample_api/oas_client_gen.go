@@ -213,6 +213,87 @@ func (c *Client) DataGetFormat(ctx context.Context, params DataGetFormatParams) 
 	return result, nil
 }
 
+// DefaultTest invokes defaultTest operation.
+//
+// POST /defaultTest
+func (c *Client) DefaultTest(ctx context.Context, request DefaultTest, params DefaultTestParams) (res int32, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, "DefaultTest",
+		trace.WithAttributes(otelogen.OperationID("defaultTest")),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeDefaultTestRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/defaultTest"
+
+	q := u.Query()
+	{
+		// Encode "default" parameter.
+		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		})
+		if err := func() error {
+			if val, ok := params.Default.Get(); ok {
+				return e.EncodeValue(conv.Int32ToString(val))
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+		q["default"] = e.Result()
+	}
+	u.RawQuery = q.Encode()
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeDefaultTestResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ErrorGet invokes errorGet operation.
 //
 // Returns error.

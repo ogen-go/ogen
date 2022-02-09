@@ -107,7 +107,6 @@ func (s *Error) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "code":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Code = int32(v)
@@ -120,7 +119,6 @@ func (s *Error) Decode(d *jx.Decoder) error {
 			}
 		case "message":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Message = string(v)
@@ -252,7 +250,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "id":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int64()
 				s.ID = int64(v)
@@ -265,7 +262,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -277,7 +273,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "tag":
-
 			if err := func() error {
 				s.Tag.Reset()
 				if err := s.Tag.Decode(d); err != nil {

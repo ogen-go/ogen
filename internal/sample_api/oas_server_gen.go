@@ -74,6 +74,10 @@ type Handler interface {
 	//
 	// GET /name/{id}/{foo}1234{bar}-{baz}!{kek}
 	DataGetFormat(ctx context.Context, params DataGetFormatParams) (string, error)
+	// DefaultTest implements defaultTest operation.
+	//
+	// POST /defaultTest
+	DefaultTest(ctx context.Context, req DefaultTest, params DefaultTestParams) (int32, error)
 	// ErrorGet implements errorGet operation.
 	//
 	// Returns error.

@@ -122,7 +122,6 @@ func (s *CreatePetCategoriesReq) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -134,7 +133,6 @@ func (s *CreatePetCategoriesReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "pets":
-
 			if err := func() error {
 				s.Pets = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -301,7 +299,6 @@ func (s *CreatePetFriendsReq) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -313,7 +310,6 @@ func (s *CreatePetFriendsReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "weight":
-
 			if err := func() error {
 				s.Weight.Reset()
 				if err := s.Weight.Decode(d); err != nil {
@@ -324,7 +320,6 @@ func (s *CreatePetFriendsReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"weight\"")
 			}
 		case "birthday":
-
 			if err := func() error {
 				s.Birthday.Reset()
 				if err := s.Birthday.Decode(d, json.DecodeDateTime); err != nil {
@@ -335,7 +330,6 @@ func (s *CreatePetFriendsReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"birthday\"")
 			}
 		case "categories":
-
 			if err := func() error {
 				s.Categories = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -356,7 +350,6 @@ func (s *CreatePetFriendsReq) Decode(d *jx.Decoder) error {
 			}
 		case "owner":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Int()
 				s.Owner = int(v)
@@ -368,7 +361,6 @@ func (s *CreatePetFriendsReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"owner\"")
 			}
 		case "friends":
-
 			if err := func() error {
 				s.Friends = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -493,7 +485,6 @@ func (s *CreatePetOwnerReq) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -506,7 +497,6 @@ func (s *CreatePetOwnerReq) Decode(d *jx.Decoder) error {
 			}
 		case "age":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int()
 				s.Age = int(v)
@@ -518,7 +508,6 @@ func (s *CreatePetOwnerReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"age\"")
 			}
 		case "pets":
-
 			if err := func() error {
 				s.Pets = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -685,7 +674,6 @@ func (s *CreatePetReq) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -697,7 +685,6 @@ func (s *CreatePetReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "weight":
-
 			if err := func() error {
 				s.Weight.Reset()
 				if err := s.Weight.Decode(d); err != nil {
@@ -708,7 +695,6 @@ func (s *CreatePetReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"weight\"")
 			}
 		case "birthday":
-
 			if err := func() error {
 				s.Birthday.Reset()
 				if err := s.Birthday.Decode(d, json.DecodeDateTime); err != nil {
@@ -719,7 +705,6 @@ func (s *CreatePetReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"birthday\"")
 			}
 		case "categories":
-
 			if err := func() error {
 				s.Categories = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -740,7 +725,6 @@ func (s *CreatePetReq) Decode(d *jx.Decoder) error {
 			}
 		case "owner":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Int()
 				s.Owner = int(v)
@@ -752,7 +736,6 @@ func (s *CreatePetReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"owner\"")
 			}
 		case "friends":
-
 			if err := func() error {
 				s.Friends = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -1041,7 +1024,6 @@ func (s *PetCategoriesCreate) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "id":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.ID = int(v)
@@ -1054,7 +1036,6 @@ func (s *PetCategoriesCreate) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -1149,7 +1130,6 @@ func (s *PetCategoriesList) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "id":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.ID = int(v)
@@ -1162,7 +1142,6 @@ func (s *PetCategoriesList) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -1306,7 +1285,6 @@ func (s *PetCreate) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "id":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.ID = int(v)
@@ -1319,7 +1297,6 @@ func (s *PetCreate) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -1331,7 +1308,6 @@ func (s *PetCreate) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "weight":
-
 			if err := func() error {
 				s.Weight.Reset()
 				if err := s.Weight.Decode(d); err != nil {
@@ -1342,7 +1318,6 @@ func (s *PetCreate) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"weight\"")
 			}
 		case "birthday":
-
 			if err := func() error {
 				s.Birthday.Reset()
 				if err := s.Birthday.Decode(d, json.DecodeDateTime); err != nil {
@@ -1353,7 +1328,6 @@ func (s *PetCreate) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"birthday\"")
 			}
 		case "categories":
-
 			if err := func() error {
 				s.Categories = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -1372,7 +1346,6 @@ func (s *PetCreate) Decode(d *jx.Decoder) error {
 			}
 		case "owner":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				if err := s.Owner.Decode(d); err != nil {
 					return err
@@ -1465,7 +1438,6 @@ func (s *PetCreateCategories) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "id":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.ID = int(v)
@@ -1478,7 +1450,6 @@ func (s *PetCreateCategories) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -1580,7 +1551,6 @@ func (s *PetCreateOwner) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "id":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.ID = int(v)
@@ -1593,7 +1563,6 @@ func (s *PetCreateOwner) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -1606,7 +1575,6 @@ func (s *PetCreateOwner) Decode(d *jx.Decoder) error {
 			}
 		case "age":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Int()
 				s.Age = int(v)
@@ -1721,7 +1689,6 @@ func (s *PetFriendsCreate) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "id":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.ID = int(v)
@@ -1734,7 +1701,6 @@ func (s *PetFriendsCreate) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -1746,7 +1712,6 @@ func (s *PetFriendsCreate) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "weight":
-
 			if err := func() error {
 				s.Weight.Reset()
 				if err := s.Weight.Decode(d); err != nil {
@@ -1757,7 +1722,6 @@ func (s *PetFriendsCreate) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"weight\"")
 			}
 		case "birthday":
-
 			if err := func() error {
 				s.Birthday.Reset()
 				if err := s.Birthday.Decode(d, json.DecodeDateTime); err != nil {
@@ -1871,7 +1835,6 @@ func (s *PetFriendsList) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "id":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.ID = int(v)
@@ -1884,7 +1847,6 @@ func (s *PetFriendsList) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -1896,7 +1858,6 @@ func (s *PetFriendsList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "weight":
-
 			if err := func() error {
 				s.Weight.Reset()
 				if err := s.Weight.Decode(d); err != nil {
@@ -1907,7 +1868,6 @@ func (s *PetFriendsList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"weight\"")
 			}
 		case "birthday":
-
 			if err := func() error {
 				s.Birthday.Reset()
 				if err := s.Birthday.Decode(d, json.DecodeDateTime); err != nil {
@@ -2021,7 +1981,6 @@ func (s *PetList) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "id":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.ID = int(v)
@@ -2034,7 +1993,6 @@ func (s *PetList) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -2046,7 +2004,6 @@ func (s *PetList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "weight":
-
 			if err := func() error {
 				s.Weight.Reset()
 				if err := s.Weight.Decode(d); err != nil {
@@ -2057,7 +2014,6 @@ func (s *PetList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"weight\"")
 			}
 		case "birthday":
-
 			if err := func() error {
 				s.Birthday.Reset()
 				if err := s.Birthday.Decode(d, json.DecodeDateTime); err != nil {
@@ -2158,7 +2114,6 @@ func (s *PetOwnerCreate) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "id":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.ID = int(v)
@@ -2171,7 +2126,6 @@ func (s *PetOwnerCreate) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -2184,7 +2138,6 @@ func (s *PetOwnerCreate) Decode(d *jx.Decoder) error {
 			}
 		case "age":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Int()
 				s.Age = int(v)
@@ -2286,7 +2239,6 @@ func (s *PetOwnerRead) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "id":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.ID = int(v)
@@ -2299,7 +2251,6 @@ func (s *PetOwnerRead) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -2312,7 +2263,6 @@ func (s *PetOwnerRead) Decode(d *jx.Decoder) error {
 			}
 		case "age":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Int()
 				s.Age = int(v)
@@ -2427,7 +2377,6 @@ func (s *PetRead) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "id":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.ID = int(v)
@@ -2440,7 +2389,6 @@ func (s *PetRead) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -2452,7 +2400,6 @@ func (s *PetRead) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "weight":
-
 			if err := func() error {
 				s.Weight.Reset()
 				if err := s.Weight.Decode(d); err != nil {
@@ -2463,7 +2410,6 @@ func (s *PetRead) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"weight\"")
 			}
 		case "birthday":
-
 			if err := func() error {
 				s.Birthday.Reset()
 				if err := s.Birthday.Decode(d, json.DecodeDateTime); err != nil {
@@ -2577,7 +2523,6 @@ func (s *PetUpdate) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "id":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.ID = int(v)
@@ -2590,7 +2535,6 @@ func (s *PetUpdate) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -2602,7 +2546,6 @@ func (s *PetUpdate) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "weight":
-
 			if err := func() error {
 				s.Weight.Reset()
 				if err := s.Weight.Decode(d); err != nil {
@@ -2613,7 +2556,6 @@ func (s *PetUpdate) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"weight\"")
 			}
 		case "birthday":
-
 			if err := func() error {
 				s.Birthday.Reset()
 				if err := s.Birthday.Decode(d, json.DecodeDateTime); err != nil {
@@ -2707,7 +2649,6 @@ func (s *R400) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "code":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.Code = int(v)
@@ -2720,7 +2661,6 @@ func (s *R400) Decode(d *jx.Decoder) error {
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -2815,7 +2755,6 @@ func (s *R404) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "code":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.Code = int(v)
@@ -2828,7 +2767,6 @@ func (s *R404) Decode(d *jx.Decoder) error {
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -2923,7 +2861,6 @@ func (s *R409) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "code":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.Code = int(v)
@@ -2936,7 +2873,6 @@ func (s *R409) Decode(d *jx.Decoder) error {
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -3031,7 +2967,6 @@ func (s *R500) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "code":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.Code = int(v)
@@ -3044,7 +2979,6 @@ func (s *R500) Decode(d *jx.Decoder) error {
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -3203,7 +3137,6 @@ func (s *UpdatePetReq) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -3215,7 +3148,6 @@ func (s *UpdatePetReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "weight":
-
 			if err := func() error {
 				s.Weight.Reset()
 				if err := s.Weight.Decode(d); err != nil {
@@ -3226,7 +3158,6 @@ func (s *UpdatePetReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"weight\"")
 			}
 		case "birthday":
-
 			if err := func() error {
 				s.Birthday.Reset()
 				if err := s.Birthday.Decode(d, json.DecodeDateTime); err != nil {
@@ -3237,7 +3168,6 @@ func (s *UpdatePetReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"birthday\"")
 			}
 		case "categories":
-
 			if err := func() error {
 				s.Categories = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -3258,7 +3188,6 @@ func (s *UpdatePetReq) Decode(d *jx.Decoder) error {
 			}
 		case "owner":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Int()
 				s.Owner = int(v)
@@ -3270,7 +3199,6 @@ func (s *UpdatePetReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"owner\"")
 			}
 		case "friends":
-
 			if err := func() error {
 				s.Friends = nil
 				if err := d.Arr(func(d *jx.Decoder) error {

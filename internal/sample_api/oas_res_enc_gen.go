@@ -80,6 +80,20 @@ func encodeDataGetFormatResponse(response string, w http.ResponseWriter, span tr
 	return nil
 }
 
+func encodeDefaultTestResponse(response int32, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
+
+	e.Int32(response)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
 func encodeErrorGetResponse(response ErrorStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(response.StatusCode)

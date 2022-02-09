@@ -228,6 +228,55 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (DataGetFormatPa
 	return params, nil
 }
 
+func decodeDefaultTestParams(args [0]string, r *http.Request) (DefaultTestParams, error) {
+	var (
+		params    DefaultTestParams
+		queryArgs = r.URL.Query()
+	)
+	// Set default value for query: default.
+	{
+		val := int32(10)
+
+		params.Default.SetTo(val)
+	}
+	// Decode query: default.
+	{
+		values, ok := queryArgs["default"]
+		if ok {
+			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
+				Values:  values,
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			})
+
+			if err := func() error {
+				var paramsDefaultVal int32
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt32(s)
+					if err != nil {
+						return err
+					}
+
+					paramsDefaultVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Default.SetTo(paramsDefaultVal)
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "query: default: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
 func decodeFoobarGetParams(args [0]string, r *http.Request) (FoobarGetParams, error) {
 	var (
 		params    FoobarGetParams

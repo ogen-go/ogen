@@ -234,6 +234,32 @@ func NewDescriptionSimpleDataDescription(v DescriptionSimple) DataDescription {
 	return s
 }
 
+// Ref: #/components/schemas/DefaultTest
+type DefaultTest struct {
+	Required string             `json:"required"`
+	Str      OptString          `json:"str"`
+	NullStr  OptNilString       `json:"nullStr"`
+	Enum     OptDefaultTestEnum `json:"enum"`
+	UUID     OptUUID            `json:"uuid"`
+	IP       OptIP              `json:"ip"`
+	IPV4     OptIP              `json:"ip_v4"`
+	IPV6     OptIP              `json:"ip_v6"`
+	URI      OptURL             `json:"uri"`
+	Birthday OptTime            `json:"birthday"`
+	Rate     OptDuration        `json:"rate"`
+	Email    OptString          `json:"email"`
+	Hostname OptString          `json:"hostname"`
+	Format   OptString          `json:"format"`
+	Base64   []byte             `json:"base64"`
+}
+
+type DefaultTestEnum string
+
+const (
+	DefaultTestEnumBig  DefaultTestEnum = "big"
+	DefaultTestEnumSmol DefaultTestEnum = "smol"
+)
+
 // Ref: #/components/schemas/DescriptionDetailed
 type DescriptionDetailed struct {
 	Name  string `json:"name"`
@@ -579,6 +605,44 @@ func (o NilNullableEnumsOnlyNullValue) Or(d NullableEnumsOnlyNullValue) Nullable
 	return d
 }
 
+// NewNilNullableEnumsOnlyNullable returns new NilNullableEnumsOnlyNullable with value set to v.
+func NewNilNullableEnumsOnlyNullable(v NullableEnumsOnlyNullable) NilNullableEnumsOnlyNullable {
+	return NilNullableEnumsOnlyNullable{
+		Value: v,
+	}
+}
+
+// NilNullableEnumsOnlyNullable is nullable NullableEnumsOnlyNullable.
+type NilNullableEnumsOnlyNullable struct {
+	Value NullableEnumsOnlyNullable
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilNullableEnumsOnlyNullable) SetTo(v NullableEnumsOnlyNullable) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilNullableEnumsOnlyNullable) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilNullableEnumsOnlyNullable) Get() (v NullableEnumsOnlyNullable, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilNullableEnumsOnlyNullable) Or(d NullableEnumsOnlyNullable) NullableEnumsOnlyNullable {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilString returns new NilString with value set to v.
 func NewNilString(v string) NilString {
 	return NilString{
@@ -629,7 +693,7 @@ func (*NotFound) petUploadAvatarByIDRes() {}
 // Ref: #/components/schemas/NullableEnums
 type NullableEnums struct {
 	// Must not be nullable.
-	OnlyNullable NullableEnumsOnlyNullable `json:"only_nullable"`
+	OnlyNullable NilNullableEnumsOnlyNullable `json:"only_nullable"`
 	// Must be nullable.
 	OnlyNullValue NilNullableEnumsOnlyNullValue `json:"only_null_value"`
 	// Must be nullable.
@@ -981,6 +1045,52 @@ func (o OptData) Or(d Data) Data {
 	return d
 }
 
+// NewOptDefaultTestEnum returns new OptDefaultTestEnum with value set to v.
+func NewOptDefaultTestEnum(v DefaultTestEnum) OptDefaultTestEnum {
+	return OptDefaultTestEnum{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDefaultTestEnum is optional DefaultTestEnum.
+type OptDefaultTestEnum struct {
+	Value DefaultTestEnum
+	Set   bool
+}
+
+// IsSet returns true if OptDefaultTestEnum was set.
+func (o OptDefaultTestEnum) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDefaultTestEnum) Reset() {
+	var v DefaultTestEnum
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDefaultTestEnum) SetTo(v DefaultTestEnum) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDefaultTestEnum) Get() (v DefaultTestEnum, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDefaultTestEnum) Or(d DefaultTestEnum) DefaultTestEnum {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptDuration returns new OptDuration with value set to v.
 func NewOptDuration(v time.Duration) OptDuration {
 	return OptDuration{
@@ -1119,6 +1229,52 @@ func (o OptID) Or(d ID) ID {
 	return d
 }
 
+// NewOptIP returns new OptIP with value set to v.
+func NewOptIP(v net.IP) OptIP {
+	return OptIP{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIP is optional net.IP.
+type OptIP struct {
+	Value net.IP
+	Set   bool
+}
+
+// IsSet returns true if OptIP was set.
+func (o OptIP) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIP) Reset() {
+	var v net.IP
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIP) SetTo(v net.IP) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIP) Get() (v net.IP, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIP) Or(d net.IP) net.IP {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptInt returns new OptInt with value set to v.
 func NewOptInt(v int) OptInt {
 	return OptInt{
@@ -1159,6 +1315,52 @@ func (o OptInt) Get() (v int, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptInt) Or(d int) int {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptInt32 returns new OptInt32 with value set to v.
+func NewOptInt32(v int32) OptInt32 {
+	return OptInt32{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInt32 is optional int32.
+type OptInt32 struct {
+	Value int32
+	Set   bool
+}
+
+// IsSet returns true if OptInt32 was set.
+func (o OptInt32) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInt32) Reset() {
+	var v int32
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInt32) SetTo(v int32) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInt32) Get() (v int32, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInt32) Or(d int32) int32 {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -1867,6 +2069,52 @@ func (o OptTime) Get() (v time.Time, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptTime) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptURL returns new OptURL with value set to v.
+func NewOptURL(v url.URL) OptURL {
+	return OptURL{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptURL is optional url.URL.
+type OptURL struct {
+	Value url.URL
+	Set   bool
+}
+
+// IsSet returns true if OptURL was set.
+func (o OptURL) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptURL) Reset() {
+	var v url.URL
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptURL) SetTo(v url.URL) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptURL) Get() (v url.URL, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptURL) Or(d url.URL) url.URL {
 	if v, ok := o.Get(); ok {
 		return v
 	}

@@ -226,6 +226,123 @@ func (s Data) Validate() error {
 	}
 	return nil
 }
+func (s DefaultTest) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Enum.Set {
+			if err := func() error {
+				if err := s.Enum.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "enum",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.Email.Set {
+			if err := func() error {
+				if err := (validate.String{
+					MinLength:    0,
+					MinLengthSet: false,
+					MaxLength:    0,
+					MaxLengthSet: false,
+					Email:        true,
+					Hostname:     false,
+					Regex:        nil,
+				}).Validate(string(s.Email.Value)); err != nil {
+					return errors.Wrap(err, "string")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "email",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.Hostname.Set {
+			if err := func() error {
+				if err := (validate.String{
+					MinLength:    0,
+					MinLengthSet: false,
+					MaxLength:    0,
+					MaxLengthSet: false,
+					Email:        false,
+					Hostname:     true,
+					Regex:        nil,
+				}).Validate(string(s.Hostname.Value)); err != nil {
+					return errors.Wrap(err, "string")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "hostname",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.Format.Set {
+			if err := func() error {
+				if err := (validate.String{
+					MinLength:    0,
+					MinLengthSet: false,
+					MaxLength:    0,
+					MaxLengthSet: false,
+					Email:        false,
+					Hostname:     false,
+					Regex:        regexMap["^\\d-\\d$"],
+				}).Validate(string(s.Format.Value)); err != nil {
+					return errors.Wrap(err, "string")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "format",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s DefaultTestEnum) Validate() error {
+	switch s {
+	case "big":
+		return nil
+	case "smol":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
 func (s Hash) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -302,9 +419,10 @@ func (s MapWithProperties) Validate() error {
 func (s NullableEnums) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if err := s.OnlyNullable.Validate(); err != nil {
+		if err := s.OnlyNullable.Value.Validate(); err != nil {
 			return err
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{

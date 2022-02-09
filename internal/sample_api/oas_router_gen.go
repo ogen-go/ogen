@@ -415,11 +415,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleOneofBugRequest([0]string{}, w, r)
+				s.handleFoobarPostRequest([0]string{}, w, r)
 
 				return
 			}
 			switch elem[0] {
+			case 'd': // Prefix: "defaultTest"
+				if l := len("defaultTest"); len(elem) >= l && elem[0:l] == "defaultTest" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: DefaultTest
+					s.handleDefaultTestRequest([0]string{}, w, r)
+
+					return
+				}
 			case 'f': // Prefix: "foobar"
 				if l := len("foobar"); len(elem) >= l && elem[0:l] == "foobar" {
 					elem = elem[l:]
@@ -901,12 +914,26 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "OneofBug"
+				r.name = "FoobarPost"
 				r.args = args
 				r.count = 0
 				return r, true
 			}
 			switch elem[0] {
+			case 'd': // Prefix: "defaultTest"
+				if l := len("defaultTest"); len(elem) >= l && elem[0:l] == "defaultTest" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: DefaultTest
+					r.name = "DefaultTest"
+					r.args = args
+					r.count = 0
+					return r, true
+				}
 			case 'f': // Prefix: "foobar"
 				if l := len("foobar"); len(elem) >= l && elem[0:l] == "foobar" {
 					elem = elem[l:]

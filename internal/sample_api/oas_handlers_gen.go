@@ -99,6 +99,46 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 	span.SetStatus(codes.Ok, "Ok")
 }
 
+// HandleDefaultTestRequest handles defaultTest operation.
+//
+// POST /defaultTest
+func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "DefaultTest",
+		trace.WithAttributes(otelogen.OperationID("defaultTest")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeDefaultTestParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	request, err := decodeDefaultTestRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.DefaultTest(ctx, request, params)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeDefaultTestResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
 // HandleErrorGetRequest handles errorGet operation.
 //
 // GET /error

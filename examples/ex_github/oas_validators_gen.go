@@ -2685,9 +2685,10 @@ func (s CheckRun) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.Conclusion.Validate(); err != nil {
+		if err := s.Conclusion.Value.Validate(); err != nil {
 			return err
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2777,9 +2778,10 @@ func (s CheckRunStatus) Validate() error {
 func (s CheckSuite) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if err := s.Status.Validate(); err != nil {
+		if err := s.Status.Value.Validate(); err != nil {
 			return err
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2788,9 +2790,10 @@ func (s CheckSuite) Validate() error {
 		})
 	}
 	if err := func() error {
-		if err := s.Conclusion.Validate(); err != nil {
+		if err := s.Conclusion.Value.Validate(); err != nil {
 			return err
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -9244,9 +9247,10 @@ func (s PackagesRestorePackageVersionForUserPackageType) Validate() error {
 func (s Page) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if err := s.Status.Validate(); err != nil {
+		if err := s.Status.Value.Validate(); err != nil {
 			return err
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
