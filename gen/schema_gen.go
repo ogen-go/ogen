@@ -176,6 +176,6 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 	case jsonschema.Empty:
 		return side(ir.Any()), nil
 	default:
-		panic("unreachable")
+		panic(unreachable(schema.Type))
 	}
 }

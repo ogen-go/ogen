@@ -8,7 +8,7 @@ import (
 
 func (g *Generator) saveIface(t *ir.Type) {
 	if !t.Is(ir.KindInterface) {
-		panic("unreachable")
+		panic(unreachable(t))
 	}
 
 	if _, ok := g.interfaces[t.Name]; ok {
@@ -20,7 +20,7 @@ func (g *Generator) saveIface(t *ir.Type) {
 
 func (g *Generator) saveType(t *ir.Type) {
 	if !t.Is(ir.KindStruct, ir.KindMap, ir.KindEnum, ir.KindAlias, ir.KindGeneric, ir.KindSum, ir.KindStream) {
-		panic("unreachable")
+		panic(unreachable(t))
 	}
 
 	if confT, ok := g.types[t.Name]; ok {
@@ -47,7 +47,7 @@ func (g *Generator) saveType(t *ir.Type) {
 
 func (g *Generator) saveRef(ref string, t *ir.Type) {
 	if !t.Is(ir.KindStruct, ir.KindMap, ir.KindEnum, ir.KindAlias, ir.KindGeneric, ir.KindSum) {
-		panic("unreachable")
+		panic(unreachable(t))
 	}
 
 	if _, ok := g.refs.types[ref]; ok && !t.IsGeneric() {

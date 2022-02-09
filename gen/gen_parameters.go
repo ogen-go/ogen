@@ -55,7 +55,7 @@ func (g *Generator) generateParameters(opName string, params []*oas.Parameter) (
 
 			if p.Name == pp.Name {
 				if p.Spec.In == pp.Spec.In {
-					panic("unreachable")
+					panic(unreachable(pp.Name))
 				}
 				p.Name = string(p.Spec.In) + p.Name
 				pp.Name = string(pp.Spec.In) + pp.Name
@@ -113,7 +113,7 @@ func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error 
 	case ir.KindAny:
 		return &ErrNotImplemented{"any type parameter"}
 	default:
-		panic("unreachable")
+		panic(unreachable(t))
 	}
 }
 
