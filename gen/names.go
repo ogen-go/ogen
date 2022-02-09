@@ -22,6 +22,16 @@ func (g *nameGen) next() (rune, bool) {
 	return g.src[g.pos], true
 }
 
+var namedChar = map[rune][]rune{
+	'+': []rune("Plus"),
+	'-': []rune("Minus"),
+	'/': []rune("Slash"),
+	'<': []rune("Less"),
+	'>': []rune("Greater"),
+	'=': []rune("Eq"),
+	'.': []rune("Dot"),
+}
+
 func (g *nameGen) generate() string {
 	var (
 		part     []rune
@@ -50,16 +60,9 @@ func (g *nameGen) generate() string {
 
 		upper = true
 		if g.allowSpecial {
-			switch r {
-			case '+':
+			if p, ok := namedChar[r]; ok {
 				pushPart()
-				part = []rune("Plus")
-			case '-':
-				pushPart()
-				part = []rune("Minus")
-			case '/':
-				pushPart()
-				part = []rune("Slash")
+				part = p
 			}
 		}
 
