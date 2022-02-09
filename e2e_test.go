@@ -229,7 +229,7 @@ func (s sampleAPIServer) DefaultTest(ctx context.Context, req api.DefaultTest, p
 
 var _ api.Handler = (*sampleAPIServer)(nil)
 
-//go:embed _testdata/pet.json
+//go:embed _testdata/payloads/pet.json
 var petTestData string
 
 func TestIntegration(t *testing.T) {
