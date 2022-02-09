@@ -155,6 +155,16 @@ func templateFunctions() template.FuncMap {
 				Default: value,
 			}
 		},
+		"sub_default_elem": func(t *ir.Type, v string, val interface{}) DefaultElem {
+			return DefaultElem{
+				Type: t,
+				Var:  v,
+				Default: ir.Default{
+					Value: val,
+					Set:   true,
+				},
+			}
+		},
 		"print_go": func(val interface{}) string {
 			return ir.PrintGoValue(val)
 		},

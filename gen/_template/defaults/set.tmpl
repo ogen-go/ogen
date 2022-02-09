@@ -20,7 +20,7 @@
         {{ $.Var }} = make({{ $t.Go }}, {{ len $.Default.Value }})
 		{{- range $i, $d := $.Default.Value }}
 		{
-			{{- template "defaults/val" default_elem $t.Item $.Var $.Default }}
+			{{- template "defaults/val" sub_default_elem $t.Item $.Var $d }}
 
 			{{ $.Var }}[{{ $i }}] = val
 		}
@@ -31,14 +31,13 @@
 {{- end -}}
 
 {{- define "defaults/val" -}}
-{{ $t := $.Type }}{{ $j := $t.JSON }}
-
+{{ $t := $.Type }}{{ $j := $t.JSON }}{{- $val := print_go $.Default.Value }}
 {{- if $j.Format }}
-val, _ := json.Decode{{ $j.Format }}(jx.DecodeStr({{ print_go $.Default.Value | quote }}))
+val, _ := json.Decode{{ $j.Format }}(jx.DecodeStr({{ quote $val }}))
 {{- else if $j.IsBase64 }}
-val, _ := jx.DecodeStr({{ print_go $.Default.Value | quote }}).Base64()
+val, _ := jx.DecodeStr({{ quote $val }}).Base64()
 {{- else }}
-val := {{ $t.Go }}({{ print_go $.Default.Value }})
+val := {{ $t.Go }}({{ $val }})
 {{- end }}
 
 {{- end }}
