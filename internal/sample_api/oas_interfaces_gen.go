@@ -13,6 +13,10 @@ type PetGetAvatarByIDRes interface {
 	petGetAvatarByIDRes()
 }
 
+type PetGetAvatarByNameRes interface {
+	petGetAvatarByNameRes()
+}
+
 type PetGetRes interface {
 	petGetRes()
 }

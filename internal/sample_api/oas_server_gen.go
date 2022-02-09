@@ -130,6 +130,12 @@ type Handler interface {
 	//
 	// GET /pet/avatar
 	PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDParams) (PetGetAvatarByIDRes, error)
+	// PetGetAvatarByName implements petGetAvatarByName operation.
+	//
+	// Returns pet's avatar by name.
+	//
+	// GET /pet/{name}/avatar
+	PetGetAvatarByName(ctx context.Context, params PetGetAvatarByNameParams) (PetGetAvatarByNameRes, error)
 	// PetGetByName implements petGetByName operation.
 	//
 	// Returns pet by name from the system that the user has access to.

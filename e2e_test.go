@@ -135,6 +135,12 @@ func (s *sampleAPIServer) PetGetByName(ctx context.Context, params api.PetGetByN
 	return s.pet, nil
 }
 
+func (s *sampleAPIServer) PetGetAvatarByName(ctx context.Context, params api.PetGetAvatarByNameParams) (api.PetGetAvatarByNameRes, error) {
+	return &api.PetGetAvatarByNameOK{
+		Data: bytes.NewReader(petAvatar),
+	}, nil
+}
+
 func (s *sampleAPIServer) PetGetAvatarByID(ctx context.Context, params api.PetGetAvatarByIDParams) (api.PetGetAvatarByIDRes, error) {
 	switch params.PetID {
 	case petNotFoundID:

@@ -479,6 +479,56 @@ func decodePetGetAvatarByIDResponse(resp *http.Response, span trace.Span) (res P
 	}
 }
 
+func decodePetGetAvatarByNameResponse(resp *http.Response, span trace.Span) (res PetGetAvatarByNameRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/octet-stream":
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return res, err
+			}
+			return &PetGetAvatarByNameOK{
+				Data: bytes.NewReader(b),
+			}, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	case 404:
+		return &NotFound{}, nil
+	default:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &ErrorStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	}
+}
+
 func decodePetGetByNameResponse(resp *http.Response, span trace.Span) (res Pet, err error) {
 	switch resp.StatusCode {
 	case 200:

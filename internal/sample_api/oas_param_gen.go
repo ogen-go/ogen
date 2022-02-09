@@ -106,6 +106,11 @@ type PetGetAvatarByIDParams struct {
 	PetID int64
 }
 
+type PetGetAvatarByNameParams struct {
+	// Name of pet.
+	Name string
+}
+
 type PetGetByNameParams struct {
 	// Name of pet.
 	Name string

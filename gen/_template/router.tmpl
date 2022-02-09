@@ -118,11 +118,12 @@ s.handle{{ $.Name }}Request([{{ $.PathParamsCount }}]string{
 			// Match until one of {{ quote $tails }}
 			idx := strings.IndexAny(elem, {{ quote $tails }})
 			{{- end }}
-			if idx > 0 {
-				args[{{ $.ParameterIndex }}] = elem[:idx]
-				elem = elem[idx:]
-				{{ template "route_edge" router_elem $c $.ParameterIndex }}
+			if (idx < 0) {
+				idx = len(elem)
 			}
+			args[{{ $.ParameterIndex }}] = elem[:idx]
+			elem = elem[idx:]
+			{{ template "route_edge" router_elem $c $.ParameterIndex }}
 			{{- else }}
 			// Leaf parameter
 			args[{{ $.ParameterIndex }}] = elem
@@ -182,11 +183,12 @@ s.handle{{ $.Name }}Request([{{ $.PathParamsCount }}]string{
 			// Match until one of {{ quote $tails }}
 			idx := strings.IndexAny(elem, {{ quote $tails }})
 			{{- end }}
-			if idx > 0 {
-				args[{{ $.ParameterIndex }}] = elem[:idx]
-				elem = elem[idx:]
-				{{ template "find_edge" router_elem $c $.ParameterIndex }}
+			if (idx < 0) {
+				idx = len(elem)
 			}
+			args[{{ $.ParameterIndex }}] = elem[:idx]
+			elem = elem[idx:]
+			{{ template "find_edge" router_elem $c $.ParameterIndex }}
 			{{- else }}
 			// Leaf parameter
 			args[{{ $.ParameterIndex }}] = elem

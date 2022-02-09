@@ -279,6 +279,37 @@
         }
       }
     },
+    "/pet/{name}/avatar": {
+      "get": {
+        "description": "Returns pet's avatar by name",
+        "operationId": "petGetAvatarByName",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "Name of pet",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A pet avatar",
+            "content": {
+              "application/octet-stream": {}
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
+          }
+        }
+      }
+    },
     "/foobar": {
       "get": {
         "description": "Dumb endpoint for testing things",
