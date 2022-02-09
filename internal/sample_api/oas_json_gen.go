@@ -107,7 +107,6 @@ func (s *AnyOfTest) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "medium":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Medium = string(v)
@@ -120,7 +119,6 @@ func (s *AnyOfTest) Decode(d *jx.Decoder) error {
 			}
 		case "sizeLimit":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				if err := s.SizeLimit.Decode(d); err != nil {
 					return err
@@ -287,7 +285,6 @@ func (s *AnyTest) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "empty":
-
 			if err := func() error {
 				v, err := d.Raw()
 				s.Empty = jx.Raw(v)
@@ -299,7 +296,6 @@ func (s *AnyTest) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"empty\"")
 			}
 		case "any_map":
-
 			if err := func() error {
 				s.AnyMap.Reset()
 				if err := s.AnyMap.Decode(d); err != nil {
@@ -310,7 +306,6 @@ func (s *AnyTest) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"any_map\"")
 			}
 		case "any_array":
-
 			if err := func() error {
 				s.AnyArray = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -496,7 +491,6 @@ func (s *ArrayTest) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "required":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				s.Required = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -516,7 +510,6 @@ func (s *ArrayTest) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required\"")
 			}
 		case "optional":
-
 			if err := func() error {
 				s.Optional = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -537,7 +530,6 @@ func (s *ArrayTest) Decode(d *jx.Decoder) error {
 			}
 		case "nullable_required":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				s.NullableRequired = nil
 				switch tt := d.Next(); tt {
@@ -564,7 +556,6 @@ func (s *ArrayTest) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nullable_required\"")
 			}
 		case "nullable_optional":
-
 			if err := func() error {
 				s.NullableOptional.Reset()
 				if err := s.NullableOptional.Decode(d); err != nil {
@@ -696,7 +687,6 @@ func (s *Data) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "id":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				if err := s.ID.Decode(d); err != nil {
 					return err
@@ -707,7 +697,6 @@ func (s *Data) Decode(d *jx.Decoder) error {
 			}
 		case "description":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				if err := s.Description.Decode(d); err != nil {
 					return err
@@ -718,7 +707,6 @@ func (s *Data) Decode(d *jx.Decoder) error {
 			}
 		case "email":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Email = string(v)
@@ -731,7 +719,6 @@ func (s *Data) Decode(d *jx.Decoder) error {
 			}
 		case "hostname":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Hostname = string(v)
@@ -744,7 +731,6 @@ func (s *Data) Decode(d *jx.Decoder) error {
 			}
 		case "format":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Format = string(v)
@@ -756,7 +742,6 @@ func (s *Data) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"format\"")
 			}
 		case "base64":
-
 			if err := func() error {
 				v, err := d.Base64()
 				s.Base64 = []byte(v)
@@ -768,7 +753,6 @@ func (s *Data) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"base64\"")
 			}
 		case "nullable_enum":
-
 			if err := func() error {
 				s.NullableEnum.Reset()
 				if err := s.NullableEnum.Decode(d); err != nil {
@@ -885,6 +869,400 @@ func (s *DataDescription) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
+func (s DefaultTest) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
+
+		e.RawStr("\"required\"" + ":")
+		e.Str(s.Required)
+	}
+	{
+		if s.Str.Set {
+			e.Comma()
+		}
+		if s.Str.Set {
+			e.RawStr("\"str\"" + ":")
+			s.Str.Encode(e)
+		}
+	}
+	{
+		if s.NullStr.Set {
+			e.Comma()
+		}
+		if s.NullStr.Set {
+			e.RawStr("\"nullStr\"" + ":")
+			s.NullStr.Encode(e)
+		}
+	}
+	{
+		if s.Enum.Set {
+			e.Comma()
+		}
+		if s.Enum.Set {
+			e.RawStr("\"enum\"" + ":")
+			s.Enum.Encode(e)
+		}
+	}
+	{
+		if s.UUID.Set {
+			e.Comma()
+		}
+		if s.UUID.Set {
+			e.RawStr("\"uuid\"" + ":")
+			s.UUID.Encode(e)
+		}
+	}
+	{
+		if s.IP.Set {
+			e.Comma()
+		}
+		if s.IP.Set {
+			e.RawStr("\"ip\"" + ":")
+			s.IP.Encode(e)
+		}
+	}
+	{
+		if s.IPV4.Set {
+			e.Comma()
+		}
+		if s.IPV4.Set {
+			e.RawStr("\"ip_v4\"" + ":")
+			s.IPV4.Encode(e)
+		}
+	}
+	{
+		if s.IPV6.Set {
+			e.Comma()
+		}
+		if s.IPV6.Set {
+			e.RawStr("\"ip_v6\"" + ":")
+			s.IPV6.Encode(e)
+		}
+	}
+	{
+		if s.URI.Set {
+			e.Comma()
+		}
+		if s.URI.Set {
+			e.RawStr("\"uri\"" + ":")
+			s.URI.Encode(e)
+		}
+	}
+	{
+		if s.Birthday.Set {
+			e.Comma()
+		}
+		if s.Birthday.Set {
+			e.RawStr("\"birthday\"" + ":")
+			s.Birthday.Encode(e, json.EncodeDate)
+		}
+	}
+	{
+		if s.Rate.Set {
+			e.Comma()
+		}
+		if s.Rate.Set {
+			e.RawStr("\"rate\"" + ":")
+			s.Rate.Encode(e)
+		}
+	}
+	{
+		if s.Email.Set {
+			e.Comma()
+		}
+		if s.Email.Set {
+			e.RawStr("\"email\"" + ":")
+			s.Email.Encode(e)
+		}
+	}
+	{
+		if s.Hostname.Set {
+			e.Comma()
+		}
+		if s.Hostname.Set {
+			e.RawStr("\"hostname\"" + ":")
+			s.Hostname.Encode(e)
+		}
+	}
+	{
+		if s.Format.Set {
+			e.Comma()
+		}
+		if s.Format.Set {
+			e.RawStr("\"format\"" + ":")
+			s.Format.Encode(e)
+		}
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"base64\"" + ":")
+		e.Base64(s.Base64)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfDefaultTest = [15]string{
+	0:  "required",
+	1:  "str",
+	2:  "nullStr",
+	3:  "enum",
+	4:  "uuid",
+	5:  "ip",
+	6:  "ip_v4",
+	7:  "ip_v6",
+	8:  "uri",
+	9:  "birthday",
+	10: "rate",
+	11: "email",
+	12: "hostname",
+	13: "format",
+	14: "base64",
+}
+
+// Decode decodes DefaultTest from json.
+func (s *DefaultTest) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode DefaultTest to nil")
+	}
+	var requiredBitSet [2]uint8
+	s.setDefaults()
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "required":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Required = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required\"")
+			}
+		case "str":
+			if err := func() error {
+				s.Str.Reset()
+				if err := s.Str.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"str\"")
+			}
+		case "nullStr":
+			if err := func() error {
+				s.NullStr.Reset()
+				if err := s.NullStr.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"nullStr\"")
+			}
+		case "enum":
+			if err := func() error {
+				s.Enum.Reset()
+				if err := s.Enum.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"enum\"")
+			}
+		case "uuid":
+			if err := func() error {
+				s.UUID.Reset()
+				if err := s.UUID.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"uuid\"")
+			}
+		case "ip":
+			if err := func() error {
+				s.IP.Reset()
+				if err := s.IP.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ip\"")
+			}
+		case "ip_v4":
+			if err := func() error {
+				s.IPV4.Reset()
+				if err := s.IPV4.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ip_v4\"")
+			}
+		case "ip_v6":
+			if err := func() error {
+				s.IPV6.Reset()
+				if err := s.IPV6.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"ip_v6\"")
+			}
+		case "uri":
+			if err := func() error {
+				s.URI.Reset()
+				if err := s.URI.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"uri\"")
+			}
+		case "birthday":
+			if err := func() error {
+				s.Birthday.Reset()
+				if err := s.Birthday.Decode(d, json.DecodeDate); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"birthday\"")
+			}
+		case "rate":
+			if err := func() error {
+				s.Rate.Reset()
+				if err := s.Rate.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"rate\"")
+			}
+		case "email":
+			if err := func() error {
+				s.Email.Reset()
+				if err := s.Email.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"email\"")
+			}
+		case "hostname":
+			if err := func() error {
+				s.Hostname.Reset()
+				if err := s.Hostname.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"hostname\"")
+			}
+		case "format":
+			if err := func() error {
+				s.Format.Reset()
+				if err := s.Format.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"format\"")
+			}
+		case "base64":
+			if err := func() error {
+				v, err := d.Base64()
+				s.Base64 = []byte(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"base64\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode DefaultTest")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [2]uint8{
+		0b00000001,
+		0b00000000,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfDefaultTest) {
+					name = jsonFieldsNameOfDefaultTest[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode encodes DefaultTestEnum as json.
+func (s DefaultTestEnum) Encode(e *jx.Writer) {
+	e.Str(string(s))
+}
+
+// Decode decodes DefaultTestEnum from json.
+func (s *DefaultTestEnum) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode DefaultTestEnum to nil")
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch DefaultTestEnum(v) {
+	case DefaultTestEnumBig:
+		*s = DefaultTestEnumBig
+	case DefaultTestEnumSmol:
+		*s = DefaultTestEnumSmol
+	default:
+		*s = DefaultTestEnum(v)
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
 func (s DescriptionDetailed) Encode(e *jx.Writer) {
 	e.ObjStart()
 	var (
@@ -935,7 +1313,6 @@ func (s *DescriptionDetailed) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -948,7 +1325,6 @@ func (s *DescriptionDetailed) Decode(d *jx.Decoder) error {
 			}
 		case "count":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int()
 				s.Count = int(v)
@@ -960,7 +1336,6 @@ func (s *DescriptionDetailed) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"count\"")
 			}
 		case "id":
-
 			if err := func() error {
 				s.ID.Reset()
 				if err := s.ID.Decode(d); err != nil {
@@ -1047,7 +1422,6 @@ func (s *DescriptionSimple) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "description":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Description = string(v)
@@ -1142,7 +1516,6 @@ func (s *Error) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "code":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int64()
 				s.Code = int64(v)
@@ -1155,7 +1528,6 @@ func (s *Error) Decode(d *jx.Decoder) error {
 			}
 		case "message":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Message = string(v)
@@ -1250,7 +1622,6 @@ func (s *Hash) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "raw":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Base64()
 				s.Raw = []byte(v)
@@ -1263,7 +1634,6 @@ func (s *Hash) Decode(d *jx.Decoder) error {
 			}
 		case "hex":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Hex = string(v)
@@ -1477,7 +1847,6 @@ func (s *Issue1430) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "common-1":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.CommonMinus1 = string(v)
@@ -1490,7 +1859,6 @@ func (s *Issue1430) Decode(d *jx.Decoder) error {
 			}
 		case "common-2":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int()
 				s.CommonMinus2 = int(v)
@@ -1503,7 +1871,6 @@ func (s *Issue1430) Decode(d *jx.Decoder) error {
 			}
 		case "unique-1":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.UniqueMinus1 = string(v)
@@ -1605,7 +1972,6 @@ func (s *Issue1431) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "common-1":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.CommonMinus1 = string(v)
@@ -1618,7 +1984,6 @@ func (s *Issue1431) Decode(d *jx.Decoder) error {
 			}
 		case "common-2":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int()
 				s.CommonMinus2 = int(v)
@@ -1631,7 +1996,6 @@ func (s *Issue1431) Decode(d *jx.Decoder) error {
 			}
 		case "unique-2":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.UniqueMinus2 = string(v)
@@ -1743,7 +2107,6 @@ func (s *Issue1432) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "common-1":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.CommonMinus1 = string(v)
@@ -1756,7 +2119,6 @@ func (s *Issue1432) Decode(d *jx.Decoder) error {
 			}
 		case "common-2":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int()
 				s.CommonMinus2 = int(v)
@@ -1768,7 +2130,6 @@ func (s *Issue1432) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"common-2\"")
 			}
 		case "common-3":
-
 			if err := func() error {
 				s.CommonMinus3.Reset()
 				if err := s.CommonMinus3.Decode(d); err != nil {
@@ -1780,7 +2141,6 @@ func (s *Issue1432) Decode(d *jx.Decoder) error {
 			}
 		case "unique-3":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.UniqueMinus3 = string(v)
@@ -1880,7 +2240,6 @@ func (s *Issue1433) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "common-3":
-
 			if err := func() error {
 				s.CommonMinus3.Reset()
 				if err := s.CommonMinus3.Decode(d); err != nil {
@@ -1892,7 +2251,6 @@ func (s *Issue1433) Decode(d *jx.Decoder) error {
 			}
 		case "unique-4":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.UniqueMinus4 = string(v)
@@ -2039,7 +2397,6 @@ func (s *MapWithProperties) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "required":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.Required = int(v)
@@ -2051,7 +2408,6 @@ func (s *MapWithProperties) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required\"")
 			}
 		case "optional":
-
 			if err := func() error {
 				s.Optional.Reset()
 				if err := s.Optional.Decode(d); err != nil {
@@ -2062,7 +2418,6 @@ func (s *MapWithProperties) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"optional\"")
 			}
 		case "sub_map":
-
 			if err := func() error {
 				s.SubMap.Reset()
 				if err := s.SubMap.Decode(d); err != nil {
@@ -2073,7 +2428,6 @@ func (s *MapWithProperties) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"sub_map\"")
 			}
 		case "inlined_sub_map":
-
 			if err := func() error {
 				s.InlinedSubMap.Reset()
 				if err := s.InlinedSubMap.Decode(d); err != nil {
@@ -2084,7 +2438,6 @@ func (s *MapWithProperties) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"inlined_sub_map\"")
 			}
 		case "map_validation":
-
 			if err := func() error {
 				s.MapValidation.Reset()
 				if err := s.MapValidation.Decode(d); err != nil {
@@ -2276,7 +2629,6 @@ func (s *MaxPropertiesTest) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "required":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.Required = int(v)
@@ -2288,7 +2640,6 @@ func (s *MaxPropertiesTest) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required\"")
 			}
 		case "optional_a":
-
 			if err := func() error {
 				s.OptionalA.Reset()
 				if err := s.OptionalA.Decode(d); err != nil {
@@ -2299,7 +2650,6 @@ func (s *MaxPropertiesTest) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"optional_a\"")
 			}
 		case "optional_b":
-
 			if err := func() error {
 				s.OptionalB.Reset()
 				if err := s.OptionalB.Decode(d); err != nil {
@@ -2310,7 +2660,6 @@ func (s *MaxPropertiesTest) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"optional_b\"")
 			}
 		case "optional_c":
-
 			if err := func() error {
 				s.OptionalC.Reset()
 				if err := s.OptionalC.Decode(d); err != nil {
@@ -2440,6 +2789,40 @@ func (o *NilNullableEnumsOnlyNullValue) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes NullableEnumsOnlyNullable as json.
+func (o NilNullableEnumsOnlyNullable) Encode(e *jx.Writer) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	e.Str(string(o.Value))
+}
+
+// Decode decodes NullableEnumsOnlyNullable from json.
+func (o *NilNullableEnumsOnlyNullable) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode NilNullableEnumsOnlyNullable to nil")
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Null = false
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		var v NullableEnumsOnlyNullable
+		o.Value = v
+		o.Null = true
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading NilNullableEnumsOnlyNullable", d.Next())
+	}
+}
+
 // Encode encodes string as json.
 func (o NilString) Encode(e *jx.Writer) {
 	if o.Null {
@@ -2524,7 +2907,6 @@ func (s *NullableEnums) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "only_nullable":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				if err := s.OnlyNullable.Decode(d); err != nil {
 					return err
@@ -2535,7 +2917,6 @@ func (s *NullableEnums) Decode(d *jx.Decoder) error {
 			}
 		case "only_null_value":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				if err := s.OnlyNullValue.Decode(d); err != nil {
 					return err
@@ -2546,7 +2927,6 @@ func (s *NullableEnums) Decode(d *jx.Decoder) error {
 			}
 		case "both":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				if err := s.Both.Decode(d); err != nil {
 					return err
@@ -2720,7 +3100,6 @@ func (s *OneOfBugs) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "issue143":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				if err := s.Issue143.Decode(d); err != nil {
 					return err
@@ -2731,7 +3110,6 @@ func (s *OneOfBugs) Decode(d *jx.Decoder) error {
 			}
 		case "additional-fields":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				if err := s.AdditionalMinusFields.Decode(d); err != nil {
 					return err
@@ -2888,7 +3266,6 @@ func (s *OneVariantHasNoUniqueFields0) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "a":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.A = string(v)
@@ -2900,7 +3277,6 @@ func (s *OneVariantHasNoUniqueFields0) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"a\"")
 			}
 		case "b":
-
 			if err := func() error {
 				s.B.Reset()
 				if err := s.B.Decode(d); err != nil {
@@ -2912,7 +3288,6 @@ func (s *OneVariantHasNoUniqueFields0) Decode(d *jx.Decoder) error {
 			}
 		case "c":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.C = string(v)
@@ -3027,7 +3402,6 @@ func (s *OneVariantHasNoUniqueFields1) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "a":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.A = string(v)
@@ -3039,7 +3413,6 @@ func (s *OneVariantHasNoUniqueFields1) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"a\"")
 			}
 		case "b":
-
 			if err := func() error {
 				s.B.Reset()
 				if err := s.B.Decode(d); err != nil {
@@ -3051,7 +3424,6 @@ func (s *OneVariantHasNoUniqueFields1) Decode(d *jx.Decoder) error {
 			}
 		case "c":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.C = string(v)
@@ -3063,7 +3435,6 @@ func (s *OneVariantHasNoUniqueFields1) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"c\"")
 			}
 		case "d":
-
 			if err := func() error {
 				s.D.Reset()
 				if err := s.D.Decode(d); err != nil {
@@ -3242,6 +3613,31 @@ func (o *OptData) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes DefaultTestEnum as json.
+func (o OptDefaultTestEnum) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	e.Str(string(o.Value))
+}
+
+// Decode decodes DefaultTestEnum from json.
+func (o *OptDefaultTestEnum) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptDefaultTestEnum to nil")
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptDefaultTestEnum", d.Next())
+	}
+}
+
 // Encode encodes time.Duration as json.
 func (o OptDuration) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -3318,6 +3714,33 @@ func (o *OptID) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf("unexpected type %q while reading OptID", d.Next())
+	}
+}
+
+// Encode encodes net.IP as json.
+func (o OptIP) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	json.EncodeIP(e, o.Value)
+}
+
+// Decode decodes net.IP from json.
+func (o *OptIP) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptIP to nil")
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		v, err := json.DecodeIP(d)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptIP", d.Next())
 	}
 }
 
@@ -3731,6 +4154,33 @@ func (o *OptTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 	}
 }
 
+// Encode encodes url.URL as json.
+func (o OptURL) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	json.EncodeURI(e, o.Value)
+}
+
+// Decode decodes url.URL from json.
+func (o *OptURL) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptURL to nil")
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		v, err := json.DecodeURI(d)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptURL", d.Next())
+	}
+}
+
 // Encode encodes uuid.UUID as json.
 func (o OptUUID) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -4128,7 +4578,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "primary":
-
 			if err := func() error {
 				s.Primary = nil
 				var elem Pet
@@ -4142,7 +4591,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 			}
 		case "id":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int64()
 				s.ID = int64(v)
@@ -4155,7 +4603,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 			}
 		case "unique_id":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := json.DecodeUUID(d)
 				s.UniqueID = v
@@ -4168,7 +4615,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -4180,7 +4626,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "type":
-
 			if err := func() error {
 				s.Type.Reset()
 				if err := s.Type.Decode(d); err != nil {
@@ -4192,7 +4637,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 			}
 		case "kind":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				if err := s.Kind.Decode(d); err != nil {
 					return err
@@ -4202,7 +4646,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "tag":
-
 			if err := func() error {
 				s.Tag.Reset()
 				if err := s.Tag.Decode(d); err != nil {
@@ -4214,7 +4657,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 			}
 		case "ip":
 			requiredBitSet[0] |= 1 << 7
-
 			if err := func() error {
 				v, err := json.DecodeIP(d)
 				s.IP = v
@@ -4227,7 +4669,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 			}
 		case "ip_v4":
 			requiredBitSet[1] |= 1 << 0
-
 			if err := func() error {
 				v, err := json.DecodeIP(d)
 				s.IPV4 = v
@@ -4240,7 +4681,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 			}
 		case "ip_v6":
 			requiredBitSet[1] |= 1 << 1
-
 			if err := func() error {
 				v, err := json.DecodeIP(d)
 				s.IPV6 = v
@@ -4253,7 +4693,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 			}
 		case "uri":
 			requiredBitSet[1] |= 1 << 2
-
 			if err := func() error {
 				v, err := json.DecodeURI(d)
 				s.URI = v
@@ -4266,7 +4705,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 			}
 		case "birthday":
 			requiredBitSet[1] |= 1 << 3
-
 			if err := func() error {
 				v, err := json.DecodeDate(d)
 				s.Birthday = v
@@ -4279,7 +4717,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 			}
 		case "rate":
 			requiredBitSet[1] |= 1 << 4
-
 			if err := func() error {
 				v, err := json.DecodeDuration(d)
 				s.Rate = v
@@ -4292,7 +4729,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 			}
 		case "nickname":
 			requiredBitSet[1] |= 1 << 5
-
 			if err := func() error {
 				if err := s.Nickname.Decode(d); err != nil {
 					return err
@@ -4302,7 +4738,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nickname\"")
 			}
 		case "nullStr":
-
 			if err := func() error {
 				s.NullStr.Reset()
 				if err := s.NullStr.Decode(d); err != nil {
@@ -4313,7 +4748,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nullStr\"")
 			}
 		case "friends":
-
 			if err := func() error {
 				s.Friends = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4331,7 +4765,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"friends\"")
 			}
 		case "next":
-
 			if err := func() error {
 				s.Next.Reset()
 				if err := s.Next.Decode(d); err != nil {
@@ -4342,7 +4775,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"next\"")
 			}
 		case "testInteger1":
-
 			if err := func() error {
 				s.TestInteger1.Reset()
 				if err := s.TestInteger1.Decode(d); err != nil {
@@ -4353,7 +4785,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"testInteger1\"")
 			}
 		case "testFloat1":
-
 			if err := func() error {
 				s.TestFloat1.Reset()
 				if err := s.TestFloat1.Decode(d); err != nil {
@@ -4364,7 +4795,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"testFloat1\"")
 			}
 		case "testArray1":
-
 			if err := func() error {
 				s.TestArray1 = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4392,7 +4822,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"testArray1\"")
 			}
 		case "testArray2":
-
 			if err := func() error {
 				s.TestArray2.Reset()
 				if err := s.TestArray2.Decode(d); err != nil {
@@ -4403,7 +4832,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"testArray2\"")
 			}
 		case "testMap":
-
 			if err := func() error {
 				s.TestMap.Reset()
 				if err := s.TestMap.Decode(d); err != nil {
@@ -4414,7 +4842,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"testMap\"")
 			}
 		case "testMapWithProps":
-
 			if err := func() error {
 				s.TestMapWithProps.Reset()
 				if err := s.TestMapWithProps.Decode(d); err != nil {
@@ -4425,7 +4852,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"testMapWithProps\"")
 			}
 		case "testAny":
-
 			if err := func() error {
 				s.TestAny.Reset()
 				if err := s.TestAny.Decode(d); err != nil {
@@ -4436,7 +4862,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"testAny\"")
 			}
 		case "testAnyOf":
-
 			if err := func() error {
 				s.TestAnyOf.Reset()
 				if err := s.TestAnyOf.Decode(d); err != nil {
@@ -4447,7 +4872,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"testAnyOf\"")
 			}
 		case "testMaxProperties":
-
 			if err := func() error {
 				s.TestMaxProperties.Reset()
 				if err := s.TestMaxProperties.Decode(d); err != nil {
@@ -4458,7 +4882,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"testMaxProperties\"")
 			}
 		case "testDate":
-
 			if err := func() error {
 				s.TestDate.Reset()
 				if err := s.TestDate.Decode(d, json.DecodeDate); err != nil {
@@ -4469,7 +4892,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"testDate\"")
 			}
 		case "testDuration":
-
 			if err := func() error {
 				s.TestDuration.Reset()
 				if err := s.TestDuration.Decode(d); err != nil {
@@ -4480,7 +4902,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"testDuration\"")
 			}
 		case "testTime":
-
 			if err := func() error {
 				s.TestTime.Reset()
 				if err := s.TestTime.Decode(d, json.DecodeTime); err != nil {
@@ -4491,7 +4912,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"testTime\"")
 			}
 		case "testDateTime":
-
 			if err := func() error {
 				s.TestDateTime.Reset()
 				if err := s.TestDateTime.Decode(d, json.DecodeDateTime); err != nil {
@@ -4581,7 +5001,6 @@ func (s *PetGetDef) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "message":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Message = string(v)
@@ -4767,7 +5186,6 @@ func (s *RecursiveMap) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "optional_recursive_field":
-
 			if err := func() error {
 				s.OptionalRecursiveField = nil
 				var elem RecursiveMap
@@ -4959,7 +5377,6 @@ func (s *TestObjectQueryParameterOK) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "style":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Style = string(v)
@@ -4972,7 +5389,6 @@ func (s *TestObjectQueryParameterOK) Decode(d *jx.Decoder) error {
 			}
 		case "min":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int()
 				s.Min = int(v)
@@ -4985,7 +5401,6 @@ func (s *TestObjectQueryParameterOK) Decode(d *jx.Decoder) error {
 			}
 		case "max":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Int()
 				s.Max = int(v)
@@ -4998,7 +5413,6 @@ func (s *TestObjectQueryParameterOK) Decode(d *jx.Decoder) error {
 			}
 		case "filter":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Filter = string(v)

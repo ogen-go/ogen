@@ -18,7 +18,17 @@ type RouterElem struct {
 	Route          *RouteNode
 }
 
-// Elem variable helper for recursive array or object encoding or decoding.
+// DefaultElem is variable helper for setting default values.
+type DefaultElem struct {
+	// Type is type of this DefaultElem.
+	Type *ir.Type
+	// Var is decoding/encoding variable Go name (obj) or selector (obj.Field).
+	Var string
+	// Default is default value to set.
+	Default ir.Default
+}
+
+// Elem is variable helper for recursive array or object encoding or decoding.
 type Elem struct {
 	// Sub whether this Elem has parent Elem.
 	Sub bool
@@ -137,6 +147,26 @@ func templateFunctions() template.FuncMap {
 				ParameterIndex: currentIdx,
 				Route:          child,
 			}
+		},
+		"default_elem": func(t *ir.Type, v string, value ir.Default) DefaultElem {
+			return DefaultElem{
+				Type:    t,
+				Var:     v,
+				Default: value,
+			}
+		},
+		"sub_default_elem": func(t *ir.Type, v string, val interface{}) DefaultElem {
+			return DefaultElem{
+				Type: t,
+				Var:  v,
+				Default: ir.Default{
+					Value: val,
+					Set:   true,
+				},
+			}
+		},
+		"print_go": func(val interface{}) string {
+			return ir.PrintGoValue(val)
 		},
 		// We use interface{} to prevent template type matching errors
 		// for type aliases (e.g. for quoting ir.ContentType).

@@ -3,7 +3,6 @@ package ir
 import (
 	"fmt"
 	"sort"
-	"strconv"
 	"strings"
 
 	"github.com/ogen-go/ogen/jsonschema"
@@ -108,11 +107,24 @@ type Type struct {
 	Features []string
 }
 
+// GoDoc returns type godoc.
 func (t Type) GoDoc() []string {
 	if t.Schema == nil {
 		return nil
 	}
 	return prettyDoc(t.Schema.Description)
+}
+
+// Default returns default value of this type, if it is set.
+func (t Type) Default() Default {
+	schema := t.Schema
+	if schema == nil {
+		return Default{}
+	}
+	return Default{
+		Value: schema.Default,
+		Set:   schema.DefaultSet,
+	}
 }
 
 func (t Type) String() string {
@@ -122,20 +134,6 @@ func (t Type) String() string {
 	b.WriteString(t.Go())
 	b.WriteRune(')')
 	return b.String()
-}
-
-type EnumVariant struct {
-	Name  string
-	Value interface{}
-}
-
-func (v *EnumVariant) ValueGo() string {
-	switch v := v.Value.(type) {
-	case string:
-		return `"` + v + `"`
-	default:
-		return fmt.Sprintf("%v", v)
-	}
 }
 
 func (t *Type) Pointer(sem NilSemantic) *Type {
@@ -151,31 +149,6 @@ func (t *Type) Format() bool {
 		return false
 	}
 	return t.Primitive == Time
-}
-
-// Tag of Field.
-type Tag struct {
-	JSON string // json tag, empty for none
-}
-
-// EscapedJSON returns quoted and escaped JSON tag.
-func (t Tag) EscapedJSON() string {
-	return strconv.Quote(t.JSON)
-}
-
-// Field of structure.
-type Field struct {
-	Name string
-	Type *Type
-	Tag  Tag
-	Spec *jsonschema.Property
-}
-
-func (f Field) GoDoc() []string {
-	if f.Spec == nil {
-		return nil
-	}
-	return prettyDoc(f.Spec.Description)
 }
 
 func (t *Type) Is(vs ...Kind) bool {

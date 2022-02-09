@@ -107,7 +107,6 @@ func (s *Error) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "code":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int64()
 				s.Code = int64(v)
@@ -120,7 +119,6 @@ func (s *Error) Decode(d *jx.Decoder) error {
 			}
 		case "message":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Message = string(v)

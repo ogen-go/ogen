@@ -51,11 +51,14 @@ type Schema struct {
 	MinItems    *uint64
 	UniqueItems bool
 
-	// Struct validation.
+	// Object validation.
 	MaxProperties *uint64
 	MinProperties *uint64
 
 	Examples []json.RawMessage
+	// Default schema value.
+	Default    interface{}
+	DefaultSet bool
 }
 
 func (s *Schema) AddExample(r json.RawMessage) {

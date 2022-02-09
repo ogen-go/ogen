@@ -66,58 +66,29 @@ var (
 	_ = codes.Unset
 )
 
-func encodeDefaultTestRequestJSON(req DefaultTest, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+// setDefaults set default value of fields.
+func (s *Drive) setDefaults() {
+	{
+		val := string("Unsafe")
 
-	req.Encode(e)
-
-	return e, nil
-}
-
-func encodeFoobarPostRequestJSON(req OptPet, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+		s.CacheType.SetTo(val)
 	}
-
-	return e, nil
 }
 
-func encodeOneofBugRequestJSON(req OneOfBugs, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+// setDefaults set default value of fields.
+func (s *Logger) setDefaults() {
+	{
+		val := LoggerLevel("Warning")
 
-	req.Encode(e)
-
-	return e, nil
-}
-
-func encodePetCreateRequestJSON(req OptPet, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+		s.Level.SetTo(val)
 	}
-
-	return e, nil
 }
 
-func encodePetUpdateNameAliasPostRequestJSON(req OptPetName, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+// setDefaults set default value of fields.
+func (s *MmdsConfig) setDefaults() {
+	{
+		val := string("169.254.169.254")
+
+		s.Ipv4Address.SetTo(val)
 	}
-
-	return e, nil
-}
-
-func encodePetUpdateNamePostRequestJSON(req OptString, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodePetUploadAvatarByIDRequestOctetStream(req PetUploadAvatarByIDReq, span trace.Span) (data io.Reader, err error) {
-	return req, nil
 }

@@ -102,6 +102,42 @@ func decodeDataGetFormatResponse(resp *http.Response, span trace.Span) (res stri
 	}
 }
 
+func decodeDefaultTestResponse(resp *http.Response, span trace.Span) (res int32, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response int32
+			if err := func() error {
+				v, err := d.Int32()
+				response = int32(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
 func decodeErrorGetResponse(resp *http.Response, span trace.Span) (res ErrorStatusCode, err error) {
 	switch resp.StatusCode {
 	default:

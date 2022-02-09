@@ -117,7 +117,6 @@ func (s *Balloon) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "amount_mib":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.AmountMib = int(v)
@@ -130,7 +129,6 @@ func (s *Balloon) Decode(d *jx.Decoder) error {
 			}
 		case "deflate_on_oom":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Bool()
 				s.DeflateOnOom = bool(v)
@@ -142,7 +140,6 @@ func (s *Balloon) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"deflate_on_oom\"")
 			}
 		case "stats_polling_interval_s":
-
 			if err := func() error {
 				s.StatsPollingIntervalS.Reset()
 				if err := s.StatsPollingIntervalS.Decode(d); err != nil {
@@ -350,7 +347,6 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "target_pages":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.TargetPages = int(v)
@@ -363,7 +359,6 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 			}
 		case "actual_pages":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int()
 				s.ActualPages = int(v)
@@ -376,7 +371,6 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 			}
 		case "target_mib":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Int()
 				s.TargetMib = int(v)
@@ -389,7 +383,6 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 			}
 		case "actual_mib":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Int()
 				s.ActualMib = int(v)
@@ -401,7 +394,6 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"actual_mib\"")
 			}
 		case "swap_in":
-
 			if err := func() error {
 				s.SwapIn.Reset()
 				if err := s.SwapIn.Decode(d); err != nil {
@@ -412,7 +404,6 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"swap_in\"")
 			}
 		case "swap_out":
-
 			if err := func() error {
 				s.SwapOut.Reset()
 				if err := s.SwapOut.Decode(d); err != nil {
@@ -423,7 +414,6 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"swap_out\"")
 			}
 		case "major_faults":
-
 			if err := func() error {
 				s.MajorFaults.Reset()
 				if err := s.MajorFaults.Decode(d); err != nil {
@@ -434,7 +424,6 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"major_faults\"")
 			}
 		case "minor_faults":
-
 			if err := func() error {
 				s.MinorFaults.Reset()
 				if err := s.MinorFaults.Decode(d); err != nil {
@@ -445,7 +434,6 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"minor_faults\"")
 			}
 		case "free_memory":
-
 			if err := func() error {
 				s.FreeMemory.Reset()
 				if err := s.FreeMemory.Decode(d); err != nil {
@@ -456,7 +444,6 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"free_memory\"")
 			}
 		case "total_memory":
-
 			if err := func() error {
 				s.TotalMemory.Reset()
 				if err := s.TotalMemory.Decode(d); err != nil {
@@ -467,7 +454,6 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"total_memory\"")
 			}
 		case "available_memory":
-
 			if err := func() error {
 				s.AvailableMemory.Reset()
 				if err := s.AvailableMemory.Decode(d); err != nil {
@@ -478,7 +464,6 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"available_memory\"")
 			}
 		case "disk_caches":
-
 			if err := func() error {
 				s.DiskCaches.Reset()
 				if err := s.DiskCaches.Decode(d); err != nil {
@@ -489,7 +474,6 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"disk_caches\"")
 			}
 		case "hugetlb_allocations":
-
 			if err := func() error {
 				s.HugetlbAllocations.Reset()
 				if err := s.HugetlbAllocations.Decode(d); err != nil {
@@ -500,7 +484,6 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hugetlb_allocations\"")
 			}
 		case "hugetlb_failures":
-
 			if err := func() error {
 				s.HugetlbFailures.Reset()
 				if err := s.HugetlbFailures.Decode(d); err != nil {
@@ -588,7 +571,6 @@ func (s *BalloonStatsUpdate) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "stats_polling_interval_s":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.StatsPollingIntervalS = int(v)
@@ -676,7 +658,6 @@ func (s *BalloonUpdate) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "amount_mib":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.AmountMib = int(v)
@@ -789,7 +770,6 @@ func (s *BootSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "boot_args":
-
 			if err := func() error {
 				s.BootArgs.Reset()
 				if err := s.BootArgs.Decode(d); err != nil {
@@ -800,7 +780,6 @@ func (s *BootSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"boot_args\"")
 			}
 		case "initrd_path":
-
 			if err := func() error {
 				s.InitrdPath.Reset()
 				if err := s.InitrdPath.Decode(d); err != nil {
@@ -812,7 +791,6 @@ func (s *BootSource) Decode(d *jx.Decoder) error {
 			}
 		case "kernel_image_path":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.KernelImagePath = string(v)
@@ -973,12 +951,12 @@ func (s *Drive) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Drive to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "drive_id":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.DriveID = string(v)
@@ -990,7 +968,6 @@ func (s *Drive) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"drive_id\"")
 			}
 		case "cache_type":
-
 			if err := func() error {
 				s.CacheType.Reset()
 				if err := s.CacheType.Decode(d); err != nil {
@@ -1002,7 +979,6 @@ func (s *Drive) Decode(d *jx.Decoder) error {
 			}
 		case "is_read_only":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Bool()
 				s.IsReadOnly = bool(v)
@@ -1015,7 +991,6 @@ func (s *Drive) Decode(d *jx.Decoder) error {
 			}
 		case "is_root_device":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Bool()
 				s.IsRootDevice = bool(v)
@@ -1027,7 +1002,6 @@ func (s *Drive) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"is_root_device\"")
 			}
 		case "partuuid":
-
 			if err := func() error {
 				s.Partuuid.Reset()
 				if err := s.Partuuid.Decode(d); err != nil {
@@ -1039,7 +1013,6 @@ func (s *Drive) Decode(d *jx.Decoder) error {
 			}
 		case "path_on_host":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.PathOnHost = string(v)
@@ -1051,7 +1024,6 @@ func (s *Drive) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"path_on_host\"")
 			}
 		case "rate_limiter":
-
 			if err := func() error {
 				s.RateLimiter.Reset()
 				if err := s.RateLimiter.Decode(d); err != nil {
@@ -1139,7 +1111,6 @@ func (s *Error) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fault_message":
-
 			if err := func() error {
 				s.FaultMessage.Reset()
 				if err := s.FaultMessage.Decode(d); err != nil {
@@ -1323,7 +1294,6 @@ func (s *FullVmConfiguration) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "balloon_device":
-
 			if err := func() error {
 				s.BalloonDevice.Reset()
 				if err := s.BalloonDevice.Decode(d); err != nil {
@@ -1334,7 +1304,6 @@ func (s *FullVmConfiguration) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"balloon_device\"")
 			}
 		case "block_devices":
-
 			if err := func() error {
 				s.BlockDevices = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -1352,7 +1321,6 @@ func (s *FullVmConfiguration) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"block_devices\"")
 			}
 		case "boot_source":
-
 			if err := func() error {
 				s.BootSource.Reset()
 				if err := s.BootSource.Decode(d); err != nil {
@@ -1363,7 +1331,6 @@ func (s *FullVmConfiguration) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"boot_source\"")
 			}
 		case "logger":
-
 			if err := func() error {
 				s.Logger.Reset()
 				if err := s.Logger.Decode(d); err != nil {
@@ -1374,7 +1341,6 @@ func (s *FullVmConfiguration) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"logger\"")
 			}
 		case "machine_config":
-
 			if err := func() error {
 				s.MachineConfig.Reset()
 				if err := s.MachineConfig.Decode(d); err != nil {
@@ -1385,7 +1351,6 @@ func (s *FullVmConfiguration) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"machine_config\"")
 			}
 		case "metrics":
-
 			if err := func() error {
 				s.Metrics.Reset()
 				if err := s.Metrics.Decode(d); err != nil {
@@ -1396,7 +1361,6 @@ func (s *FullVmConfiguration) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metrics\"")
 			}
 		case "mmds_config":
-
 			if err := func() error {
 				s.MmdsConfig.Reset()
 				if err := s.MmdsConfig.Decode(d); err != nil {
@@ -1407,7 +1371,6 @@ func (s *FullVmConfiguration) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"mmds_config\"")
 			}
 		case "net_devices":
-
 			if err := func() error {
 				s.NetDevices = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -1425,7 +1388,6 @@ func (s *FullVmConfiguration) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"net_devices\"")
 			}
 		case "vsock_device":
-
 			if err := func() error {
 				s.VsockDevice.Reset()
 				if err := s.VsockDevice.Decode(d); err != nil {
@@ -1480,7 +1442,6 @@ func (s *InstanceActionInfo) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "action_type":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				if err := s.ActionType.Decode(d); err != nil {
 					return err
@@ -1616,7 +1577,6 @@ func (s *InstanceInfo) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "app_name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.AppName = string(v)
@@ -1629,7 +1589,6 @@ func (s *InstanceInfo) Decode(d *jx.Decoder) error {
 			}
 		case "id":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.ID = string(v)
@@ -1642,7 +1601,6 @@ func (s *InstanceInfo) Decode(d *jx.Decoder) error {
 			}
 		case "state":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				if err := s.State.Decode(d); err != nil {
 					return err
@@ -1653,7 +1611,6 @@ func (s *InstanceInfo) Decode(d *jx.Decoder) error {
 			}
 		case "vmm_version":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.VmmVersion = string(v)
@@ -1798,11 +1755,11 @@ func (s *Logger) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Logger to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "level":
-
 			if err := func() error {
 				s.Level.Reset()
 				if err := s.Level.Decode(d); err != nil {
@@ -1814,7 +1771,6 @@ func (s *Logger) Decode(d *jx.Decoder) error {
 			}
 		case "log_path":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.LogPath = string(v)
@@ -1826,7 +1782,6 @@ func (s *Logger) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"log_path\"")
 			}
 		case "show_level":
-
 			if err := func() error {
 				s.ShowLevel.Reset()
 				if err := s.ShowLevel.Decode(d); err != nil {
@@ -1837,7 +1792,6 @@ func (s *Logger) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"show_level\"")
 			}
 		case "show_log_origin":
-
 			if err := func() error {
 				s.ShowLogOrigin.Reset()
 				if err := s.ShowLogOrigin.Decode(d); err != nil {
@@ -1991,7 +1945,6 @@ func (s *MachineConfiguration) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "cpu_template":
-
 			if err := func() error {
 				s.CPUTemplate.Reset()
 				if err := s.CPUTemplate.Decode(d); err != nil {
@@ -2003,7 +1956,6 @@ func (s *MachineConfiguration) Decode(d *jx.Decoder) error {
 			}
 		case "ht_enabled":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Bool()
 				s.HtEnabled = bool(v)
@@ -2016,7 +1968,6 @@ func (s *MachineConfiguration) Decode(d *jx.Decoder) error {
 			}
 		case "mem_size_mib":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Int()
 				s.MemSizeMib = int(v)
@@ -2028,7 +1979,6 @@ func (s *MachineConfiguration) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"mem_size_mib\"")
 			}
 		case "track_dirty_pages":
-
 			if err := func() error {
 				s.TrackDirtyPages.Reset()
 				if err := s.TrackDirtyPages.Decode(d); err != nil {
@@ -2040,7 +1990,6 @@ func (s *MachineConfiguration) Decode(d *jx.Decoder) error {
 			}
 		case "vcpu_count":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Int()
 				s.VcpuCount = int(v)
@@ -2128,7 +2077,6 @@ func (s *Metrics) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "metrics_path":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.MetricsPath = string(v)
@@ -2213,11 +2161,11 @@ func (s *MmdsConfig) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode MmdsConfig to nil")
 	}
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "ipv4_address":
-
 			if err := func() error {
 				s.Ipv4Address.Reset()
 				if err := s.Ipv4Address.Decode(d); err != nil {
@@ -2417,7 +2365,6 @@ func (s *NetworkInterface) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "allow_mmds_requests":
-
 			if err := func() error {
 				s.AllowMmdsRequests.Reset()
 				if err := s.AllowMmdsRequests.Decode(d); err != nil {
@@ -2428,7 +2375,6 @@ func (s *NetworkInterface) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"allow_mmds_requests\"")
 			}
 		case "guest_mac":
-
 			if err := func() error {
 				s.GuestMAC.Reset()
 				if err := s.GuestMAC.Decode(d); err != nil {
@@ -2440,7 +2386,6 @@ func (s *NetworkInterface) Decode(d *jx.Decoder) error {
 			}
 		case "host_dev_name":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.HostDevName = string(v)
@@ -2453,7 +2398,6 @@ func (s *NetworkInterface) Decode(d *jx.Decoder) error {
 			}
 		case "iface_id":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.IfaceID = string(v)
@@ -2465,7 +2409,6 @@ func (s *NetworkInterface) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"iface_id\"")
 			}
 		case "rx_rate_limiter":
-
 			if err := func() error {
 				s.RxRateLimiter.Reset()
 				if err := s.RxRateLimiter.Decode(d); err != nil {
@@ -2476,7 +2419,6 @@ func (s *NetworkInterface) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"rx_rate_limiter\"")
 			}
 		case "tx_rate_limiter":
-
 			if err := func() error {
 				s.TxRateLimiter.Reset()
 				if err := s.TxRateLimiter.Decode(d); err != nil {
@@ -3041,7 +2983,6 @@ func (s *PartialDrive) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "drive_id":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.DriveID = string(v)
@@ -3053,7 +2994,6 @@ func (s *PartialDrive) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"drive_id\"")
 			}
 		case "path_on_host":
-
 			if err := func() error {
 				s.PathOnHost.Reset()
 				if err := s.PathOnHost.Decode(d); err != nil {
@@ -3064,7 +3004,6 @@ func (s *PartialDrive) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"path_on_host\"")
 			}
 		case "rate_limiter":
-
 			if err := func() error {
 				s.RateLimiter.Reset()
 				if err := s.RateLimiter.Decode(d); err != nil {
@@ -3171,7 +3110,6 @@ func (s *PartialNetworkInterface) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "iface_id":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.IfaceID = string(v)
@@ -3183,7 +3121,6 @@ func (s *PartialNetworkInterface) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"iface_id\"")
 			}
 		case "rx_rate_limiter":
-
 			if err := func() error {
 				s.RxRateLimiter.Reset()
 				if err := s.RxRateLimiter.Decode(d); err != nil {
@@ -3194,7 +3131,6 @@ func (s *PartialNetworkInterface) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"rx_rate_limiter\"")
 			}
 		case "tx_rate_limiter":
-
 			if err := func() error {
 				s.TxRateLimiter.Reset()
 				if err := s.TxRateLimiter.Decode(d); err != nil {
@@ -3295,7 +3231,6 @@ func (s *RateLimiter) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "bandwidth":
-
 			if err := func() error {
 				s.Bandwidth.Reset()
 				if err := s.Bandwidth.Decode(d); err != nil {
@@ -3306,7 +3241,6 @@ func (s *RateLimiter) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"bandwidth\"")
 			}
 		case "ops":
-
 			if err := func() error {
 				s.Ops.Reset()
 				if err := s.Ops.Decode(d); err != nil {
@@ -3388,7 +3322,6 @@ func (s *SnapshotCreateParams) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "mem_file_path":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.MemFilePath = string(v)
@@ -3401,7 +3334,6 @@ func (s *SnapshotCreateParams) Decode(d *jx.Decoder) error {
 			}
 		case "snapshot_path":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.SnapshotPath = string(v)
@@ -3413,7 +3345,6 @@ func (s *SnapshotCreateParams) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"snapshot_path\"")
 			}
 		case "snapshot_type":
-
 			if err := func() error {
 				s.SnapshotType.Reset()
 				if err := s.SnapshotType.Decode(d); err != nil {
@@ -3424,7 +3355,6 @@ func (s *SnapshotCreateParams) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"snapshot_type\"")
 			}
 		case "version":
-
 			if err := func() error {
 				s.Version.Reset()
 				if err := s.Version.Decode(d); err != nil {
@@ -3567,7 +3497,6 @@ func (s *SnapshotLoadParams) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "enable_diff_snapshots":
-
 			if err := func() error {
 				s.EnableDiffSnapshots.Reset()
 				if err := s.EnableDiffSnapshots.Decode(d); err != nil {
@@ -3579,7 +3508,6 @@ func (s *SnapshotLoadParams) Decode(d *jx.Decoder) error {
 			}
 		case "mem_file_path":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.MemFilePath = string(v)
@@ -3592,7 +3520,6 @@ func (s *SnapshotLoadParams) Decode(d *jx.Decoder) error {
 			}
 		case "snapshot_path":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.SnapshotPath = string(v)
@@ -3604,7 +3531,6 @@ func (s *SnapshotLoadParams) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"snapshot_path\"")
 			}
 		case "resume_vm":
-
 			if err := func() error {
 				s.ResumeVM.Reset()
 				if err := s.ResumeVM.Decode(d); err != nil {
@@ -3710,7 +3636,6 @@ func (s *TokenBucket) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "one_time_burst":
-
 			if err := func() error {
 				s.OneTimeBurst.Reset()
 				if err := s.OneTimeBurst.Decode(d); err != nil {
@@ -3722,7 +3647,6 @@ func (s *TokenBucket) Decode(d *jx.Decoder) error {
 			}
 		case "refill_time":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int64()
 				s.RefillTime = int64(v)
@@ -3735,7 +3659,6 @@ func (s *TokenBucket) Decode(d *jx.Decoder) error {
 			}
 		case "size":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Int64()
 				s.Size = int64(v)
@@ -3823,7 +3746,6 @@ func (s *VM) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "state":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				if err := s.State.Decode(d); err != nil {
 					return err
@@ -3950,7 +3872,6 @@ func (s *Vsock) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "guest_cid":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int()
 				s.GuestCid = int(v)
@@ -3963,7 +3884,6 @@ func (s *Vsock) Decode(d *jx.Decoder) error {
 			}
 		case "uds_path":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.UdsPath = string(v)
@@ -3976,7 +3896,6 @@ func (s *Vsock) Decode(d *jx.Decoder) error {
 			}
 		case "vsock_id":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.VsockID = string(v)

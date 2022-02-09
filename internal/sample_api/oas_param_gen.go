@@ -74,6 +74,10 @@ type DataGetFormatParams struct {
 	Kek string
 }
 
+type DefaultTestParams struct {
+	Default OptInt32
+}
+
 type FoobarGetParams struct {
 	// InlinedParam.
 	InlinedParam int64

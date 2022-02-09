@@ -95,12 +95,12 @@ func (s *HelloWorld) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode HelloWorld to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "message":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Message = string(v)
@@ -195,7 +195,6 @@ func (s *WorldObject) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "id":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int64()
 				s.ID = int64(v)
@@ -208,7 +207,6 @@ func (s *WorldObject) Decode(d *jx.Decoder) error {
 			}
 		case "randomNumber":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int64()
 				s.RandomNumber = int64(v)

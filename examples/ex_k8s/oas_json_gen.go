@@ -241,7 +241,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Decode(d *jx.Decoder) e
 		switch string(k) {
 		case "admissionReviewVersions":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				s.AdmissionReviewVersions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -262,7 +261,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Decode(d *jx.Decoder) e
 			}
 		case "clientConfig":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				if err := s.ClientConfig.Decode(d); err != nil {
 					return err
@@ -272,7 +270,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"clientConfig\"")
 			}
 		case "failurePolicy":
-
 			if err := func() error {
 				s.FailurePolicy.Reset()
 				if err := s.FailurePolicy.Decode(d); err != nil {
@@ -283,7 +280,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"failurePolicy\"")
 			}
 		case "matchPolicy":
-
 			if err := func() error {
 				s.MatchPolicy.Reset()
 				if err := s.MatchPolicy.Decode(d); err != nil {
@@ -295,7 +291,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Decode(d *jx.Decoder) e
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -307,7 +302,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "namespaceSelector":
-
 			if err := func() error {
 				s.NamespaceSelector.Reset()
 				if err := s.NamespaceSelector.Decode(d); err != nil {
@@ -318,7 +312,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"namespaceSelector\"")
 			}
 		case "objectSelector":
-
 			if err := func() error {
 				s.ObjectSelector.Reset()
 				if err := s.ObjectSelector.Decode(d); err != nil {
@@ -329,7 +322,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"objectSelector\"")
 			}
 		case "reinvocationPolicy":
-
 			if err := func() error {
 				s.ReinvocationPolicy.Reset()
 				if err := s.ReinvocationPolicy.Decode(d); err != nil {
@@ -340,7 +332,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"reinvocationPolicy\"")
 			}
 		case "rules":
-
 			if err := func() error {
 				s.Rules = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -359,7 +350,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Decode(d *jx.Decoder) e
 			}
 		case "sideEffects":
 			requiredBitSet[1] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.SideEffects = string(v)
@@ -371,7 +361,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"sideEffects\"")
 			}
 		case "timeoutSeconds":
-
 			if err := func() error {
 				s.TimeoutSeconds.Reset()
 				if err := s.TimeoutSeconds.Decode(d); err != nil {
@@ -511,7 +500,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Decode(d *
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -522,7 +510,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Decode(d *
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -533,7 +520,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Decode(d *
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -544,7 +530,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Decode(d *
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "webhooks":
-
 			if err := func() error {
 				s.Webhooks = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -650,7 +635,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Decode
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -662,7 +646,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Decode
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -680,7 +663,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Decode
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -691,7 +673,6 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Decode
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -879,7 +860,6 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) Decode(d *jx.Decoder
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiGroups":
-
 			if err := func() error {
 				s.ApiGroups = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -899,7 +879,6 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) Decode(d *jx.Decoder
 				return errors.Wrap(err, "decode field \"apiGroups\"")
 			}
 		case "apiVersions":
-
 			if err := func() error {
 				s.ApiVersions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -919,7 +898,6 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) Decode(d *jx.Decoder
 				return errors.Wrap(err, "decode field \"apiVersions\"")
 			}
 		case "operations":
-
 			if err := func() error {
 				s.Operations = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -939,7 +917,6 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) Decode(d *jx.Decoder
 				return errors.Wrap(err, "decode field \"operations\"")
 			}
 		case "resources":
-
 			if err := func() error {
 				s.Resources = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -959,7 +936,6 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) Decode(d *jx.Decoder
 				return errors.Wrap(err, "decode field \"resources\"")
 			}
 		case "scope":
-
 			if err := func() error {
 				s.Scope.Reset()
 				if err := s.Scope.Decode(d); err != nil {
@@ -1041,7 +1017,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) Decode(d *jx.Decoder) 
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -1054,7 +1029,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) Decode(d *jx.Decoder) 
 			}
 		case "namespace":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Namespace = string(v)
@@ -1066,7 +1040,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) Decode(d *jx.Decoder) 
 				return errors.Wrap(err, "decode field \"namespace\"")
 			}
 		case "path":
-
 			if err := func() error {
 				s.Path.Reset()
 				if err := s.Path.Decode(d); err != nil {
@@ -1077,7 +1050,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) Decode(d *jx.Decoder) 
 				return errors.Wrap(err, "decode field \"path\"")
 			}
 		case "port":
-
 			if err := func() error {
 				s.Port.Reset()
 				if err := s.Port.Decode(d); err != nil {
@@ -1269,7 +1241,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Decode(d *jx.Decoder)
 		switch string(k) {
 		case "admissionReviewVersions":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				s.AdmissionReviewVersions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -1290,7 +1261,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Decode(d *jx.Decoder)
 			}
 		case "clientConfig":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				if err := s.ClientConfig.Decode(d); err != nil {
 					return err
@@ -1300,7 +1270,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Decode(d *jx.Decoder)
 				return errors.Wrap(err, "decode field \"clientConfig\"")
 			}
 		case "failurePolicy":
-
 			if err := func() error {
 				s.FailurePolicy.Reset()
 				if err := s.FailurePolicy.Decode(d); err != nil {
@@ -1311,7 +1280,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Decode(d *jx.Decoder)
 				return errors.Wrap(err, "decode field \"failurePolicy\"")
 			}
 		case "matchPolicy":
-
 			if err := func() error {
 				s.MatchPolicy.Reset()
 				if err := s.MatchPolicy.Decode(d); err != nil {
@@ -1323,7 +1291,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Decode(d *jx.Decoder)
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -1335,7 +1302,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Decode(d *jx.Decoder)
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "namespaceSelector":
-
 			if err := func() error {
 				s.NamespaceSelector.Reset()
 				if err := s.NamespaceSelector.Decode(d); err != nil {
@@ -1346,7 +1312,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Decode(d *jx.Decoder)
 				return errors.Wrap(err, "decode field \"namespaceSelector\"")
 			}
 		case "objectSelector":
-
 			if err := func() error {
 				s.ObjectSelector.Reset()
 				if err := s.ObjectSelector.Decode(d); err != nil {
@@ -1357,7 +1322,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Decode(d *jx.Decoder)
 				return errors.Wrap(err, "decode field \"objectSelector\"")
 			}
 		case "rules":
-
 			if err := func() error {
 				s.Rules = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -1376,7 +1340,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Decode(d *jx.Decoder)
 			}
 		case "sideEffects":
 			requiredBitSet[1] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.SideEffects = string(v)
@@ -1388,7 +1351,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Decode(d *jx.Decoder)
 				return errors.Wrap(err, "decode field \"sideEffects\"")
 			}
 		case "timeoutSeconds":
-
 			if err := func() error {
 				s.TimeoutSeconds.Reset()
 				if err := s.TimeoutSeconds.Decode(d); err != nil {
@@ -1528,7 +1490,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Decode(d
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -1539,7 +1500,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Decode(d
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -1550,7 +1510,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Decode(d
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -1561,7 +1520,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Decode(d
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "webhooks":
-
 			if err := func() error {
 				s.Webhooks = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -1667,7 +1625,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Deco
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -1679,7 +1636,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Deco
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -1697,7 +1653,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Deco
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -1708,7 +1663,6 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Deco
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -1813,7 +1767,6 @@ func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Decode(d *jx.Decode
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "caBundle":
-
 			if err := func() error {
 				v, err := d.Base64()
 				s.CaBundle = []byte(v)
@@ -1825,7 +1778,6 @@ func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Decode(d *jx.Decode
 				return errors.Wrap(err, "decode field \"caBundle\"")
 			}
 		case "service":
-
 			if err := func() error {
 				s.Service.Reset()
 				if err := s.Service.Decode(d); err != nil {
@@ -1836,7 +1788,6 @@ func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Decode(d *jx.Decode
 				return errors.Wrap(err, "decode field \"service\"")
 			}
 		case "url":
-
 			if err := func() error {
 				s.URL.Reset()
 				if err := s.URL.Decode(d); err != nil {
@@ -1930,7 +1881,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) Decode(d *jx.Dec
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiServerID":
-
 			if err := func() error {
 				s.ApiServerID.Reset()
 				if err := s.ApiServerID.Decode(d); err != nil {
@@ -1941,7 +1891,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) Decode(d *jx.Dec
 				return errors.Wrap(err, "decode field \"apiServerID\"")
 			}
 		case "decodableVersions":
-
 			if err := func() error {
 				s.DecodableVersions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -1961,7 +1910,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) Decode(d *jx.Dec
 				return errors.Wrap(err, "decode field \"decodableVersions\"")
 			}
 		case "encodingVersion":
-
 			if err := func() error {
 				s.EncodingVersion.Reset()
 				if err := s.EncodingVersion.Decode(d); err != nil {
@@ -2061,7 +2009,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) Decode(d *jx.Decoder) 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -2072,7 +2019,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) Decode(d *jx.Decoder) 
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -2083,7 +2029,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) Decode(d *jx.Decoder) 
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -2095,7 +2040,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) Decode(d *jx.Decoder) 
 			}
 		case "spec":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				if err := s.Spec.Decode(d); err != nil {
 					return err
@@ -2106,7 +2050,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) Decode(d *jx.Decoder) 
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				if err := s.Status.Decode(d); err != nil {
 					return err
@@ -2244,7 +2187,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) Decode(d *jx.
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -2255,7 +2197,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) Decode(d *jx.
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -2266,7 +2207,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) Decode(d *jx.
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "observedGeneration":
-
 			if err := func() error {
 				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.Decode(d); err != nil {
@@ -2278,7 +2218,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) Decode(d *jx.
 			}
 		case "reason":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Reason = string(v)
@@ -2291,7 +2230,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) Decode(d *jx.
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -2304,7 +2242,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) Decode(d *jx.
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -2436,7 +2373,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Decode(d *jx.Decod
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -2448,7 +2384,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Decode(d *jx.Decod
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -2466,7 +2401,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Decode(d *jx.Decod
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -2477,7 +2411,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Decode(d *jx.Decod
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -2646,7 +2579,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) Decode(d *jx.Dec
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "commonEncodingVersion":
-
 			if err := func() error {
 				s.CommonEncodingVersion.Reset()
 				if err := s.CommonEncodingVersion.Decode(d); err != nil {
@@ -2657,7 +2589,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) Decode(d *jx.Dec
 				return errors.Wrap(err, "decode field \"commonEncodingVersion\"")
 			}
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -2675,7 +2606,6 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) Decode(d *jx.Dec
 				return errors.Wrap(err, "decode field \"conditions\"")
 			}
 		case "storageVersions":
-
 			if err := func() error {
 				s.StorageVersions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -2788,7 +2718,6 @@ func (s *IoK8sAPIAppsV1ControllerRevision) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -2799,7 +2728,6 @@ func (s *IoK8sAPIAppsV1ControllerRevision) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "data":
-
 			if err := func() error {
 				s.Data = nil
 				var elem IoK8sApimachineryPkgRuntimeRawExtension
@@ -2812,7 +2740,6 @@ func (s *IoK8sAPIAppsV1ControllerRevision) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"data\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -2823,7 +2750,6 @@ func (s *IoK8sAPIAppsV1ControllerRevision) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -2835,7 +2761,6 @@ func (s *IoK8sAPIAppsV1ControllerRevision) Decode(d *jx.Decoder) error {
 			}
 		case "revision":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Int64()
 				s.Revision = int64(v)
@@ -2967,7 +2892,6 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -2979,7 +2903,6 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -2997,7 +2920,6 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -3008,7 +2930,6 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -3148,7 +3069,6 @@ func (s *IoK8sAPIAppsV1DaemonSet) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -3159,7 +3079,6 @@ func (s *IoK8sAPIAppsV1DaemonSet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -3170,7 +3089,6 @@ func (s *IoK8sAPIAppsV1DaemonSet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -3181,7 +3099,6 @@ func (s *IoK8sAPIAppsV1DaemonSet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -3192,7 +3109,6 @@ func (s *IoK8sAPIAppsV1DaemonSet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -3292,7 +3208,6 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -3303,7 +3218,6 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -3314,7 +3228,6 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -3326,7 +3239,6 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) Decode(d *jx.Decoder) error {
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -3339,7 +3251,6 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -3471,7 +3382,6 @@ func (s *IoK8sAPIAppsV1DaemonSetList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -3483,7 +3393,6 @@ func (s *IoK8sAPIAppsV1DaemonSetList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -3501,7 +3410,6 @@ func (s *IoK8sAPIAppsV1DaemonSetList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -3512,7 +3420,6 @@ func (s *IoK8sAPIAppsV1DaemonSetList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -3641,7 +3548,6 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "minReadySeconds":
-
 			if err := func() error {
 				s.MinReadySeconds.Reset()
 				if err := s.MinReadySeconds.Decode(d); err != nil {
@@ -3652,7 +3558,6 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"minReadySeconds\"")
 			}
 		case "revisionHistoryLimit":
-
 			if err := func() error {
 				s.RevisionHistoryLimit.Reset()
 				if err := s.RevisionHistoryLimit.Decode(d); err != nil {
@@ -3664,7 +3569,6 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) Decode(d *jx.Decoder) error {
 			}
 		case "selector":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				if err := s.Selector.Decode(d); err != nil {
 					return err
@@ -3675,7 +3579,6 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) Decode(d *jx.Decoder) error {
 			}
 		case "template":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				if err := s.Template.Decode(d); err != nil {
 					return err
@@ -3685,7 +3588,6 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"template\"")
 			}
 		case "updateStrategy":
-
 			if err := func() error {
 				s.UpdateStrategy.Reset()
 				if err := s.UpdateStrategy.Decode(d); err != nil {
@@ -3870,7 +3772,6 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "collisionCount":
-
 			if err := func() error {
 				s.CollisionCount.Reset()
 				if err := s.CollisionCount.Decode(d); err != nil {
@@ -3881,7 +3782,6 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"collisionCount\"")
 			}
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -3900,7 +3800,6 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 			}
 		case "currentNumberScheduled":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.CurrentNumberScheduled = int32(v)
@@ -3913,7 +3812,6 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 			}
 		case "desiredNumberScheduled":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.DesiredNumberScheduled = int32(v)
@@ -3925,7 +3823,6 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"desiredNumberScheduled\"")
 			}
 		case "numberAvailable":
-
 			if err := func() error {
 				s.NumberAvailable.Reset()
 				if err := s.NumberAvailable.Decode(d); err != nil {
@@ -3937,7 +3834,6 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 			}
 		case "numberMisscheduled":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.NumberMisscheduled = int32(v)
@@ -3950,7 +3846,6 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 			}
 		case "numberReady":
 			requiredBitSet[0] |= 1 << 6
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.NumberReady = int32(v)
@@ -3962,7 +3857,6 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"numberReady\"")
 			}
 		case "numberUnavailable":
-
 			if err := func() error {
 				s.NumberUnavailable.Reset()
 				if err := s.NumberUnavailable.Decode(d); err != nil {
@@ -3973,7 +3867,6 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"numberUnavailable\"")
 			}
 		case "observedGeneration":
-
 			if err := func() error {
 				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.Decode(d); err != nil {
@@ -3984,7 +3877,6 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"observedGeneration\"")
 			}
 		case "updatedNumberScheduled":
-
 			if err := func() error {
 				s.UpdatedNumberScheduled.Reset()
 				if err := s.UpdatedNumberScheduled.Decode(d); err != nil {
@@ -4086,7 +3978,6 @@ func (s *IoK8sAPIAppsV1DaemonSetUpdateStrategy) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "rollingUpdate":
-
 			if err := func() error {
 				s.RollingUpdate.Reset()
 				if err := s.RollingUpdate.Decode(d); err != nil {
@@ -4097,7 +3988,6 @@ func (s *IoK8sAPIAppsV1DaemonSetUpdateStrategy) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"rollingUpdate\"")
 			}
 		case "type":
-
 			if err := func() error {
 				s.Type.Reset()
 				if err := s.Type.Decode(d); err != nil {
@@ -4205,7 +4095,6 @@ func (s *IoK8sAPIAppsV1Deployment) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -4216,7 +4105,6 @@ func (s *IoK8sAPIAppsV1Deployment) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -4227,7 +4115,6 @@ func (s *IoK8sAPIAppsV1Deployment) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -4238,7 +4125,6 @@ func (s *IoK8sAPIAppsV1Deployment) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -4249,7 +4135,6 @@ func (s *IoK8sAPIAppsV1Deployment) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -4362,7 +4247,6 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -4373,7 +4257,6 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "lastUpdateTime":
-
 			if err := func() error {
 				s.LastUpdateTime.Reset()
 				if err := s.LastUpdateTime.Decode(d); err != nil {
@@ -4384,7 +4267,6 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lastUpdateTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -4395,7 +4277,6 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -4407,7 +4288,6 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) Decode(d *jx.Decoder) error {
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -4420,7 +4300,6 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -4552,7 +4431,6 @@ func (s *IoK8sAPIAppsV1DeploymentList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -4564,7 +4442,6 @@ func (s *IoK8sAPIAppsV1DeploymentList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4582,7 +4459,6 @@ func (s *IoK8sAPIAppsV1DeploymentList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -4593,7 +4469,6 @@ func (s *IoK8sAPIAppsV1DeploymentList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -4761,7 +4636,6 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "minReadySeconds":
-
 			if err := func() error {
 				s.MinReadySeconds.Reset()
 				if err := s.MinReadySeconds.Decode(d); err != nil {
@@ -4772,7 +4646,6 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"minReadySeconds\"")
 			}
 		case "paused":
-
 			if err := func() error {
 				s.Paused.Reset()
 				if err := s.Paused.Decode(d); err != nil {
@@ -4783,7 +4656,6 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"paused\"")
 			}
 		case "progressDeadlineSeconds":
-
 			if err := func() error {
 				s.ProgressDeadlineSeconds.Reset()
 				if err := s.ProgressDeadlineSeconds.Decode(d); err != nil {
@@ -4794,7 +4666,6 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"progressDeadlineSeconds\"")
 			}
 		case "replicas":
-
 			if err := func() error {
 				s.Replicas.Reset()
 				if err := s.Replicas.Decode(d); err != nil {
@@ -4805,7 +4676,6 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"replicas\"")
 			}
 		case "revisionHistoryLimit":
-
 			if err := func() error {
 				s.RevisionHistoryLimit.Reset()
 				if err := s.RevisionHistoryLimit.Decode(d); err != nil {
@@ -4817,7 +4687,6 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) Decode(d *jx.Decoder) error {
 			}
 		case "selector":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				if err := s.Selector.Decode(d); err != nil {
 					return err
@@ -4827,7 +4696,6 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"selector\"")
 			}
 		case "strategy":
-
 			if err := func() error {
 				s.Strategy.Reset()
 				if err := s.Strategy.Decode(d); err != nil {
@@ -4839,7 +4707,6 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) Decode(d *jx.Decoder) error {
 			}
 		case "template":
 			requiredBitSet[0] |= 1 << 7
-
 			if err := func() error {
 				if err := s.Template.Decode(d); err != nil {
 					return err
@@ -5029,7 +4896,6 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "availableReplicas":
-
 			if err := func() error {
 				s.AvailableReplicas.Reset()
 				if err := s.AvailableReplicas.Decode(d); err != nil {
@@ -5040,7 +4906,6 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"availableReplicas\"")
 			}
 		case "collisionCount":
-
 			if err := func() error {
 				s.CollisionCount.Reset()
 				if err := s.CollisionCount.Decode(d); err != nil {
@@ -5051,7 +4916,6 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"collisionCount\"")
 			}
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -5069,7 +4933,6 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"conditions\"")
 			}
 		case "observedGeneration":
-
 			if err := func() error {
 				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.Decode(d); err != nil {
@@ -5080,7 +4943,6 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"observedGeneration\"")
 			}
 		case "readyReplicas":
-
 			if err := func() error {
 				s.ReadyReplicas.Reset()
 				if err := s.ReadyReplicas.Decode(d); err != nil {
@@ -5091,7 +4953,6 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"readyReplicas\"")
 			}
 		case "replicas":
-
 			if err := func() error {
 				s.Replicas.Reset()
 				if err := s.Replicas.Decode(d); err != nil {
@@ -5102,7 +4963,6 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"replicas\"")
 			}
 		case "unavailableReplicas":
-
 			if err := func() error {
 				s.UnavailableReplicas.Reset()
 				if err := s.UnavailableReplicas.Decode(d); err != nil {
@@ -5113,7 +4973,6 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"unavailableReplicas\"")
 			}
 		case "updatedReplicas":
-
 			if err := func() error {
 				s.UpdatedReplicas.Reset()
 				if err := s.UpdatedReplicas.Decode(d); err != nil {
@@ -5182,7 +5041,6 @@ func (s *IoK8sAPIAppsV1DeploymentStrategy) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "rollingUpdate":
-
 			if err := func() error {
 				s.RollingUpdate.Reset()
 				if err := s.RollingUpdate.Decode(d); err != nil {
@@ -5193,7 +5051,6 @@ func (s *IoK8sAPIAppsV1DeploymentStrategy) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"rollingUpdate\"")
 			}
 		case "type":
-
 			if err := func() error {
 				s.Type.Reset()
 				if err := s.Type.Decode(d); err != nil {
@@ -5301,7 +5158,6 @@ func (s *IoK8sAPIAppsV1ReplicaSet) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -5312,7 +5168,6 @@ func (s *IoK8sAPIAppsV1ReplicaSet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -5323,7 +5178,6 @@ func (s *IoK8sAPIAppsV1ReplicaSet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -5334,7 +5188,6 @@ func (s *IoK8sAPIAppsV1ReplicaSet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -5345,7 +5198,6 @@ func (s *IoK8sAPIAppsV1ReplicaSet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -5445,7 +5297,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -5456,7 +5307,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -5467,7 +5317,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -5479,7 +5328,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) Decode(d *jx.Decoder) error {
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -5492,7 +5340,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -5624,7 +5471,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -5636,7 +5482,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -5654,7 +5499,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -5665,7 +5509,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -5787,7 +5630,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "minReadySeconds":
-
 			if err := func() error {
 				s.MinReadySeconds.Reset()
 				if err := s.MinReadySeconds.Decode(d); err != nil {
@@ -5798,7 +5640,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"minReadySeconds\"")
 			}
 		case "replicas":
-
 			if err := func() error {
 				s.Replicas.Reset()
 				if err := s.Replicas.Decode(d); err != nil {
@@ -5810,7 +5651,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetSpec) Decode(d *jx.Decoder) error {
 			}
 		case "selector":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				if err := s.Selector.Decode(d); err != nil {
 					return err
@@ -5820,7 +5660,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"selector\"")
 			}
 		case "template":
-
 			if err := func() error {
 				s.Template.Reset()
 				if err := s.Template.Decode(d); err != nil {
@@ -5983,7 +5822,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "availableReplicas":
-
 			if err := func() error {
 				s.AvailableReplicas.Reset()
 				if err := s.AvailableReplicas.Decode(d); err != nil {
@@ -5994,7 +5832,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"availableReplicas\"")
 			}
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -6012,7 +5849,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"conditions\"")
 			}
 		case "fullyLabeledReplicas":
-
 			if err := func() error {
 				s.FullyLabeledReplicas.Reset()
 				if err := s.FullyLabeledReplicas.Decode(d); err != nil {
@@ -6023,7 +5859,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fullyLabeledReplicas\"")
 			}
 		case "observedGeneration":
-
 			if err := func() error {
 				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.Decode(d); err != nil {
@@ -6034,7 +5869,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"observedGeneration\"")
 			}
 		case "readyReplicas":
-
 			if err := func() error {
 				s.ReadyReplicas.Reset()
 				if err := s.ReadyReplicas.Decode(d); err != nil {
@@ -6046,7 +5880,6 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) Decode(d *jx.Decoder) error {
 			}
 		case "replicas":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Replicas = int32(v)
@@ -6148,7 +5981,6 @@ func (s *IoK8sAPIAppsV1RollingUpdateDaemonSet) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "maxSurge":
-
 			if err := func() error {
 				s.MaxSurge.Reset()
 				if err := s.MaxSurge.Decode(d); err != nil {
@@ -6159,7 +5991,6 @@ func (s *IoK8sAPIAppsV1RollingUpdateDaemonSet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"maxSurge\"")
 			}
 		case "maxUnavailable":
-
 			if err := func() error {
 				s.MaxUnavailable.Reset()
 				if err := s.MaxUnavailable.Decode(d); err != nil {
@@ -6228,7 +6059,6 @@ func (s *IoK8sAPIAppsV1RollingUpdateDeployment) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "maxSurge":
-
 			if err := func() error {
 				s.MaxSurge.Reset()
 				if err := s.MaxSurge.Decode(d); err != nil {
@@ -6239,7 +6069,6 @@ func (s *IoK8sAPIAppsV1RollingUpdateDeployment) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"maxSurge\"")
 			}
 		case "maxUnavailable":
-
 			if err := func() error {
 				s.MaxUnavailable.Reset()
 				if err := s.MaxUnavailable.Decode(d); err != nil {
@@ -6295,7 +6124,6 @@ func (s *IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Decode(d *jx.Decoder) e
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "partition":
-
 			if err := func() error {
 				s.Partition.Reset()
 				if err := s.Partition.Decode(d); err != nil {
@@ -6403,7 +6231,6 @@ func (s *IoK8sAPIAppsV1StatefulSet) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -6414,7 +6241,6 @@ func (s *IoK8sAPIAppsV1StatefulSet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -6425,7 +6251,6 @@ func (s *IoK8sAPIAppsV1StatefulSet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -6436,7 +6261,6 @@ func (s *IoK8sAPIAppsV1StatefulSet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -6447,7 +6271,6 @@ func (s *IoK8sAPIAppsV1StatefulSet) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -6547,7 +6370,6 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -6558,7 +6380,6 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -6569,7 +6390,6 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -6581,7 +6401,6 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) Decode(d *jx.Decoder) error {
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -6594,7 +6413,6 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -6726,7 +6544,6 @@ func (s *IoK8sAPIAppsV1StatefulSetList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -6738,7 +6555,6 @@ func (s *IoK8sAPIAppsV1StatefulSetList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -6756,7 +6572,6 @@ func (s *IoK8sAPIAppsV1StatefulSetList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -6767,7 +6582,6 @@ func (s *IoK8sAPIAppsV1StatefulSetList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -6951,7 +6765,6 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "minReadySeconds":
-
 			if err := func() error {
 				s.MinReadySeconds.Reset()
 				if err := s.MinReadySeconds.Decode(d); err != nil {
@@ -6962,7 +6775,6 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"minReadySeconds\"")
 			}
 		case "podManagementPolicy":
-
 			if err := func() error {
 				s.PodManagementPolicy.Reset()
 				if err := s.PodManagementPolicy.Decode(d); err != nil {
@@ -6973,7 +6785,6 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"podManagementPolicy\"")
 			}
 		case "replicas":
-
 			if err := func() error {
 				s.Replicas.Reset()
 				if err := s.Replicas.Decode(d); err != nil {
@@ -6984,7 +6795,6 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"replicas\"")
 			}
 		case "revisionHistoryLimit":
-
 			if err := func() error {
 				s.RevisionHistoryLimit.Reset()
 				if err := s.RevisionHistoryLimit.Decode(d); err != nil {
@@ -6996,7 +6806,6 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 			}
 		case "selector":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				if err := s.Selector.Decode(d); err != nil {
 					return err
@@ -7007,7 +6816,6 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 			}
 		case "serviceName":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.ServiceName = string(v)
@@ -7020,7 +6828,6 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 			}
 		case "template":
 			requiredBitSet[0] |= 1 << 6
-
 			if err := func() error {
 				if err := s.Template.Decode(d); err != nil {
 					return err
@@ -7030,7 +6837,6 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"template\"")
 			}
 		case "updateStrategy":
-
 			if err := func() error {
 				s.UpdateStrategy.Reset()
 				if err := s.UpdateStrategy.Decode(d); err != nil {
@@ -7041,7 +6847,6 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"updateStrategy\"")
 			}
 		case "volumeClaimTemplates":
-
 			if err := func() error {
 				s.VolumeClaimTemplates = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -7235,7 +7040,6 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "availableReplicas":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.AvailableReplicas = int32(v)
@@ -7247,7 +7051,6 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"availableReplicas\"")
 			}
 		case "collisionCount":
-
 			if err := func() error {
 				s.CollisionCount.Reset()
 				if err := s.CollisionCount.Decode(d); err != nil {
@@ -7258,7 +7061,6 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"collisionCount\"")
 			}
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -7276,7 +7078,6 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"conditions\"")
 			}
 		case "currentReplicas":
-
 			if err := func() error {
 				s.CurrentReplicas.Reset()
 				if err := s.CurrentReplicas.Decode(d); err != nil {
@@ -7287,7 +7088,6 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"currentReplicas\"")
 			}
 		case "currentRevision":
-
 			if err := func() error {
 				s.CurrentRevision.Reset()
 				if err := s.CurrentRevision.Decode(d); err != nil {
@@ -7298,7 +7098,6 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"currentRevision\"")
 			}
 		case "observedGeneration":
-
 			if err := func() error {
 				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.Decode(d); err != nil {
@@ -7309,7 +7108,6 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"observedGeneration\"")
 			}
 		case "readyReplicas":
-
 			if err := func() error {
 				s.ReadyReplicas.Reset()
 				if err := s.ReadyReplicas.Decode(d); err != nil {
@@ -7321,7 +7119,6 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 			}
 		case "replicas":
 			requiredBitSet[0] |= 1 << 7
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Replicas = int32(v)
@@ -7333,7 +7130,6 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"replicas\"")
 			}
 		case "updateRevision":
-
 			if err := func() error {
 				s.UpdateRevision.Reset()
 				if err := s.UpdateRevision.Decode(d); err != nil {
@@ -7344,7 +7140,6 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"updateRevision\"")
 			}
 		case "updatedReplicas":
-
 			if err := func() error {
 				s.UpdatedReplicas.Reset()
 				if err := s.UpdatedReplicas.Decode(d); err != nil {
@@ -7446,7 +7241,6 @@ func (s *IoK8sAPIAppsV1StatefulSetUpdateStrategy) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "rollingUpdate":
-
 			if err := func() error {
 				s.RollingUpdate.Reset()
 				if err := s.RollingUpdate.Decode(d); err != nil {
@@ -7457,7 +7251,6 @@ func (s *IoK8sAPIAppsV1StatefulSetUpdateStrategy) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"rollingUpdate\"")
 			}
 		case "type":
-
 			if err := func() error {
 				s.Type.Reset()
 				if err := s.Type.Decode(d); err != nil {
@@ -7531,7 +7324,6 @@ func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) Decode(d *jx.Decoder)
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -7543,7 +7335,6 @@ func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) Decode(d *jx.Decoder)
 			}
 		case "kind":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Kind = string(v)
@@ -7556,7 +7347,6 @@ func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) Decode(d *jx.Decoder)
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -7697,7 +7487,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) Decode(d *jx.Decoder) err
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -7708,7 +7497,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -7719,7 +7507,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -7730,7 +7517,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -7741,7 +7527,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -7840,7 +7625,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Decode(d *jx.Decoder)
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -7852,7 +7636,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Decode(d *jx.Decoder)
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -7870,7 +7653,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Decode(d *jx.Decoder)
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -7881,7 +7663,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Decode(d *jx.Decoder)
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -7995,7 +7776,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Decode(d *jx.Decoder)
 		switch string(k) {
 		case "maxReplicas":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.MaxReplicas = int32(v)
@@ -8007,7 +7787,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Decode(d *jx.Decoder)
 				return errors.Wrap(err, "decode field \"maxReplicas\"")
 			}
 		case "minReplicas":
-
 			if err := func() error {
 				s.MinReplicas.Reset()
 				if err := s.MinReplicas.Decode(d); err != nil {
@@ -8019,7 +7798,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Decode(d *jx.Decoder)
 			}
 		case "scaleTargetRef":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				if err := s.ScaleTargetRef.Decode(d); err != nil {
 					return err
@@ -8029,7 +7807,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Decode(d *jx.Decoder)
 				return errors.Wrap(err, "decode field \"scaleTargetRef\"")
 			}
 		case "targetCPUUtilizationPercentage":
-
 			if err := func() error {
 				s.TargetCPUUtilizationPercentage.Reset()
 				if err := s.TargetCPUUtilizationPercentage.Decode(d); err != nil {
@@ -8155,7 +7932,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Decode(d *jx.Decode
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "currentCPUUtilizationPercentage":
-
 			if err := func() error {
 				s.CurrentCPUUtilizationPercentage.Reset()
 				if err := s.CurrentCPUUtilizationPercentage.Decode(d); err != nil {
@@ -8167,7 +7943,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Decode(d *jx.Decode
 			}
 		case "currentReplicas":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.CurrentReplicas = int32(v)
@@ -8180,7 +7955,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Decode(d *jx.Decode
 			}
 		case "desiredReplicas":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.DesiredReplicas = int32(v)
@@ -8192,7 +7966,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Decode(d *jx.Decode
 				return errors.Wrap(err, "decode field \"desiredReplicas\"")
 			}
 		case "lastScaleTime":
-
 			if err := func() error {
 				s.LastScaleTime.Reset()
 				if err := s.LastScaleTime.Decode(d); err != nil {
@@ -8203,7 +7976,6 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Decode(d *jx.Decode
 				return errors.Wrap(err, "decode field \"lastScaleTime\"")
 			}
 		case "observedGeneration":
-
 			if err := func() error {
 				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.Decode(d); err != nil {
@@ -8343,7 +8115,6 @@ func (s *IoK8sAPIAutoscalingV1Scale) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -8354,7 +8125,6 @@ func (s *IoK8sAPIAutoscalingV1Scale) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -8365,7 +8135,6 @@ func (s *IoK8sAPIAutoscalingV1Scale) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -8376,7 +8145,6 @@ func (s *IoK8sAPIAutoscalingV1Scale) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -8387,7 +8155,6 @@ func (s *IoK8sAPIAutoscalingV1Scale) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -8443,7 +8210,6 @@ func (s *IoK8sAPIAutoscalingV1ScaleSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "replicas":
-
 			if err := func() error {
 				s.Replicas.Reset()
 				if err := s.Replicas.Decode(d); err != nil {
@@ -8508,7 +8274,6 @@ func (s *IoK8sAPIAutoscalingV1ScaleStatus) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "replicas":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Replicas = int32(v)
@@ -8520,7 +8285,6 @@ func (s *IoK8sAPIAutoscalingV1ScaleStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"replicas\"")
 			}
 		case "selector":
-
 			if err := func() error {
 				s.Selector.Reset()
 				if err := s.Selector.Decode(d); err != nil {
@@ -8634,7 +8398,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Decode(d *jx.D
 		switch string(k) {
 		case "container":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Container = string(v)
@@ -8647,7 +8410,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Decode(d *jx.D
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -8659,7 +8421,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Decode(d *jx.D
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "targetAverageUtilization":
-
 			if err := func() error {
 				s.TargetAverageUtilization.Reset()
 				if err := s.TargetAverageUtilization.Decode(d); err != nil {
@@ -8670,7 +8431,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Decode(d *jx.D
 				return errors.Wrap(err, "decode field \"targetAverageUtilization\"")
 			}
 		case "targetAverageValue":
-
 			if err := func() error {
 				s.TargetAverageValue.Reset()
 				if err := s.TargetAverageValue.Decode(d); err != nil {
@@ -8781,7 +8541,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Decode(d *jx.D
 		switch string(k) {
 		case "container":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Container = string(v)
@@ -8793,7 +8552,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Decode(d *jx.D
 				return errors.Wrap(err, "decode field \"container\"")
 			}
 		case "currentAverageUtilization":
-
 			if err := func() error {
 				s.CurrentAverageUtilization.Reset()
 				if err := s.CurrentAverageUtilization.Decode(d); err != nil {
@@ -8805,7 +8563,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Decode(d *jx.D
 			}
 		case "currentAverageValue":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				{
 					var unwrapped string
@@ -8822,7 +8579,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Decode(d *jx.D
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -8929,7 +8685,6 @@ func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) Decode(d *jx.Dec
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -8941,7 +8696,6 @@ func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) Decode(d *jx.Dec
 			}
 		case "kind":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Kind = string(v)
@@ -8954,7 +8708,6 @@ func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) Decode(d *jx.Dec
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -9072,7 +8825,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) Decode(d *jx.Decoder) e
 		switch string(k) {
 		case "metricName":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.MetricName = string(v)
@@ -9084,7 +8836,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"metricName\"")
 			}
 		case "metricSelector":
-
 			if err := func() error {
 				s.MetricSelector.Reset()
 				if err := s.MetricSelector.Decode(d); err != nil {
@@ -9095,7 +8846,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"metricSelector\"")
 			}
 		case "targetAverageValue":
-
 			if err := func() error {
 				s.TargetAverageValue.Reset()
 				if err := s.TargetAverageValue.Decode(d); err != nil {
@@ -9106,7 +8856,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"targetAverageValue\"")
 			}
 		case "targetValue":
-
 			if err := func() error {
 				s.TargetValue.Reset()
 				if err := s.TargetValue.Decode(d); err != nil {
@@ -9222,7 +8971,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Decode(d *jx.Decoder) e
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "currentAverageValue":
-
 			if err := func() error {
 				s.CurrentAverageValue.Reset()
 				if err := s.CurrentAverageValue.Decode(d); err != nil {
@@ -9234,7 +8982,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Decode(d *jx.Decoder) e
 			}
 		case "currentValue":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				{
 					var unwrapped string
@@ -9251,7 +8998,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Decode(d *jx.Decoder) e
 			}
 		case "metricName":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.MetricName = string(v)
@@ -9263,7 +9009,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"metricName\"")
 			}
 		case "metricSelector":
-
 			if err := func() error {
 				s.MetricSelector.Reset()
 				if err := s.MetricSelector.Decode(d); err != nil {
@@ -9403,7 +9148,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Decode(d *jx.Decoder
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -9414,7 +9158,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Decode(d *jx.Decoder
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -9425,7 +9168,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Decode(d *jx.Decoder
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -9436,7 +9178,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Decode(d *jx.Decoder
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -9447,7 +9188,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Decode(d *jx.Decoder
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -9547,7 +9287,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) Decode(d *j
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -9558,7 +9297,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) Decode(d *j
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -9569,7 +9307,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) Decode(d *j
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -9581,7 +9318,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) Decode(d *j
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -9594,7 +9330,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) Decode(d *j
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -9726,7 +9461,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Decode(d *jx.Dec
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -9738,7 +9472,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Decode(d *jx.Dec
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9756,7 +9489,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Decode(d *jx.Dec
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -9767,7 +9499,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Decode(d *jx.Dec
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -9893,7 +9624,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 		switch string(k) {
 		case "maxReplicas":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.MaxReplicas = int32(v)
@@ -9905,7 +9635,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 				return errors.Wrap(err, "decode field \"maxReplicas\"")
 			}
 		case "metrics":
-
 			if err := func() error {
 				s.Metrics = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9923,7 +9652,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 				return errors.Wrap(err, "decode field \"metrics\"")
 			}
 		case "minReplicas":
-
 			if err := func() error {
 				s.MinReplicas.Reset()
 				if err := s.MinReplicas.Decode(d); err != nil {
@@ -9935,7 +9663,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 			}
 		case "scaleTargetRef":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				if err := s.ScaleTargetRef.Decode(d); err != nil {
 					return err
@@ -10089,7 +9816,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Decode(d *jx.D
 		switch string(k) {
 		case "conditions":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -10107,7 +9833,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Decode(d *jx.D
 				return errors.Wrap(err, "decode field \"conditions\"")
 			}
 		case "currentMetrics":
-
 			if err := func() error {
 				s.CurrentMetrics = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -10126,7 +9851,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Decode(d *jx.D
 			}
 		case "currentReplicas":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.CurrentReplicas = int32(v)
@@ -10139,7 +9863,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Decode(d *jx.D
 			}
 		case "desiredReplicas":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.DesiredReplicas = int32(v)
@@ -10151,7 +9874,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Decode(d *jx.D
 				return errors.Wrap(err, "decode field \"desiredReplicas\"")
 			}
 		case "lastScaleTime":
-
 			if err := func() error {
 				s.LastScaleTime.Reset()
 				if err := s.LastScaleTime.Decode(d); err != nil {
@@ -10162,7 +9884,6 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Decode(d *jx.D
 				return errors.Wrap(err, "decode field \"lastScaleTime\"")
 			}
 		case "observedGeneration":
-
 			if err := func() error {
 				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.Decode(d); err != nil {
@@ -10313,7 +10034,6 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "containerResource":
-
 			if err := func() error {
 				s.ContainerResource.Reset()
 				if err := s.ContainerResource.Decode(d); err != nil {
@@ -10324,7 +10044,6 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"containerResource\"")
 			}
 		case "external":
-
 			if err := func() error {
 				s.External.Reset()
 				if err := s.External.Decode(d); err != nil {
@@ -10335,7 +10054,6 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"external\"")
 			}
 		case "object":
-
 			if err := func() error {
 				s.Object.Reset()
 				if err := s.Object.Decode(d); err != nil {
@@ -10346,7 +10064,6 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"object\"")
 			}
 		case "pods":
-
 			if err := func() error {
 				s.Pods.Reset()
 				if err := s.Pods.Decode(d); err != nil {
@@ -10357,7 +10074,6 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"pods\"")
 			}
 		case "resource":
-
 			if err := func() error {
 				s.Resource.Reset()
 				if err := s.Resource.Decode(d); err != nil {
@@ -10369,7 +10085,6 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -10521,7 +10236,6 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "containerResource":
-
 			if err := func() error {
 				s.ContainerResource.Reset()
 				if err := s.ContainerResource.Decode(d); err != nil {
@@ -10532,7 +10246,6 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"containerResource\"")
 			}
 		case "external":
-
 			if err := func() error {
 				s.External.Reset()
 				if err := s.External.Decode(d); err != nil {
@@ -10543,7 +10256,6 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"external\"")
 			}
 		case "object":
-
 			if err := func() error {
 				s.Object.Reset()
 				if err := s.Object.Decode(d); err != nil {
@@ -10554,7 +10266,6 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"object\"")
 			}
 		case "pods":
-
 			if err := func() error {
 				s.Pods.Reset()
 				if err := s.Pods.Decode(d); err != nil {
@@ -10565,7 +10276,6 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"pods\"")
 			}
 		case "resource":
-
 			if err := func() error {
 				s.Resource.Reset()
 				if err := s.Resource.Decode(d); err != nil {
@@ -10577,7 +10287,6 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -10701,7 +10410,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Decode(d *jx.Decoder) err
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "averageValue":
-
 			if err := func() error {
 				s.AverageValue.Reset()
 				if err := s.AverageValue.Decode(d); err != nil {
@@ -10713,7 +10421,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Decode(d *jx.Decoder) err
 			}
 		case "metricName":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.MetricName = string(v)
@@ -10725,7 +10432,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"metricName\"")
 			}
 		case "selector":
-
 			if err := func() error {
 				s.Selector.Reset()
 				if err := s.Selector.Decode(d); err != nil {
@@ -10737,7 +10443,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Decode(d *jx.Decoder) err
 			}
 		case "target":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				if err := s.Target.Decode(d); err != nil {
 					return err
@@ -10748,7 +10453,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Decode(d *jx.Decoder) err
 			}
 		case "targetValue":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				{
 					var unwrapped string
@@ -10876,7 +10580,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Decode(d *jx.Decoder) err
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "averageValue":
-
 			if err := func() error {
 				s.AverageValue.Reset()
 				if err := s.AverageValue.Decode(d); err != nil {
@@ -10888,7 +10591,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Decode(d *jx.Decoder) err
 			}
 		case "currentValue":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				{
 					var unwrapped string
@@ -10905,7 +10607,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Decode(d *jx.Decoder) err
 			}
 		case "metricName":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.MetricName = string(v)
@@ -10917,7 +10618,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"metricName\"")
 			}
 		case "selector":
-
 			if err := func() error {
 				s.Selector.Reset()
 				if err := s.Selector.Decode(d); err != nil {
@@ -10929,7 +10629,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Decode(d *jx.Decoder) err
 			}
 		case "target":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				if err := s.Target.Decode(d); err != nil {
 					return err
@@ -11032,7 +10731,6 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) Decode(d *jx.Decoder) error
 		switch string(k) {
 		case "metricName":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.MetricName = string(v)
@@ -11044,7 +10742,6 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"metricName\"")
 			}
 		case "selector":
-
 			if err := func() error {
 				s.Selector.Reset()
 				if err := s.Selector.Decode(d); err != nil {
@@ -11056,7 +10753,6 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) Decode(d *jx.Decoder) error
 			}
 		case "targetAverageValue":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				{
 					var unwrapped string
@@ -11165,7 +10861,6 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Decode(d *jx.Decoder) error
 		switch string(k) {
 		case "currentAverageValue":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				{
 					var unwrapped string
@@ -11182,7 +10877,6 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Decode(d *jx.Decoder) error
 			}
 		case "metricName":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.MetricName = string(v)
@@ -11194,7 +10888,6 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"metricName\"")
 			}
 		case "selector":
-
 			if err := func() error {
 				s.Selector.Reset()
 				if err := s.Selector.Decode(d); err != nil {
@@ -11301,7 +10994,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) Decode(d *jx.Decoder) e
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -11313,7 +11005,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "targetAverageUtilization":
-
 			if err := func() error {
 				s.TargetAverageUtilization.Reset()
 				if err := s.TargetAverageUtilization.Decode(d); err != nil {
@@ -11324,7 +11015,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"targetAverageUtilization\"")
 			}
 		case "targetAverageValue":
-
 			if err := func() error {
 				s.TargetAverageValue.Reset()
 				if err := s.TargetAverageValue.Decode(d); err != nil {
@@ -11430,7 +11120,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Decode(d *jx.Decoder) e
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "currentAverageUtilization":
-
 			if err := func() error {
 				s.CurrentAverageUtilization.Reset()
 				if err := s.CurrentAverageUtilization.Decode(d); err != nil {
@@ -11442,7 +11131,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Decode(d *jx.Decoder) e
 			}
 		case "currentAverageValue":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				{
 					var unwrapped string
@@ -11459,7 +11147,6 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Decode(d *jx.Decoder) e
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -11561,7 +11248,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Decode(d *jx.D
 		switch string(k) {
 		case "container":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Container = string(v)
@@ -11574,7 +11260,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Decode(d *jx.D
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -11587,7 +11272,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Decode(d *jx.D
 			}
 		case "target":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				if err := s.Target.Decode(d); err != nil {
 					return err
@@ -11687,7 +11371,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Decode(d *jx.D
 		switch string(k) {
 		case "container":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Container = string(v)
@@ -11700,7 +11383,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Decode(d *jx.D
 			}
 		case "current":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				if err := s.Current.Decode(d); err != nil {
 					return err
@@ -11711,7 +11393,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Decode(d *jx.D
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -11818,7 +11499,6 @@ func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) Decode(d *jx.Dec
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -11830,7 +11510,6 @@ func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) Decode(d *jx.Dec
 			}
 		case "kind":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Kind = string(v)
@@ -11843,7 +11522,6 @@ func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) Decode(d *jx.Dec
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -11938,7 +11616,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricSource) Decode(d *jx.Decoder) e
 		switch string(k) {
 		case "metric":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				if err := s.Metric.Decode(d); err != nil {
 					return err
@@ -11949,7 +11626,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricSource) Decode(d *jx.Decoder) e
 			}
 		case "target":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				if err := s.Target.Decode(d); err != nil {
 					return err
@@ -12042,7 +11718,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Decode(d *jx.Decoder) e
 		switch string(k) {
 		case "current":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				if err := s.Current.Decode(d); err != nil {
 					return err
@@ -12053,7 +11728,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Decode(d *jx.Decoder) e
 			}
 		case "metric":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				if err := s.Metric.Decode(d); err != nil {
 					return err
@@ -12153,7 +11827,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) Decode(d *jx.Decoder) error
 		switch string(k) {
 		case "periodSeconds":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.PeriodSeconds = int32(v)
@@ -12166,7 +11839,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) Decode(d *jx.Decoder) error
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -12179,7 +11851,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) Decode(d *jx.Decoder) error
 			}
 		case "value":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Value = int32(v)
@@ -12306,7 +11977,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) Decode(d *jx.Decoder) error 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "policies":
-
 			if err := func() error {
 				s.Policies = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -12324,7 +11994,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"policies\"")
 			}
 		case "selectPolicy":
-
 			if err := func() error {
 				s.SelectPolicy.Reset()
 				if err := s.SelectPolicy.Decode(d); err != nil {
@@ -12335,7 +12004,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"selectPolicy\"")
 			}
 		case "stabilizationWindowSeconds":
-
 			if err := func() error {
 				s.StabilizationWindowSeconds.Reset()
 				if err := s.StabilizationWindowSeconds.Decode(d); err != nil {
@@ -12443,7 +12111,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Decode(d *jx.Decoder
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -12454,7 +12121,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Decode(d *jx.Decoder
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -12465,7 +12131,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Decode(d *jx.Decoder
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -12476,7 +12141,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Decode(d *jx.Decoder
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -12487,7 +12151,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Decode(d *jx.Decoder
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -12556,7 +12219,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Decode(d *jx
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "scaleDown":
-
 			if err := func() error {
 				s.ScaleDown.Reset()
 				if err := s.ScaleDown.Decode(d); err != nil {
@@ -12567,7 +12229,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Decode(d *jx
 				return errors.Wrap(err, "decode field \"scaleDown\"")
 			}
 		case "scaleUp":
-
 			if err := func() error {
 				s.ScaleUp.Reset()
 				if err := s.ScaleUp.Decode(d); err != nil {
@@ -12667,7 +12328,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) Decode(d *j
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -12678,7 +12338,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) Decode(d *j
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -12689,7 +12348,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) Decode(d *j
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -12701,7 +12359,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) Decode(d *j
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -12714,7 +12371,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) Decode(d *j
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -12846,7 +12502,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Decode(d *jx.Dec
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -12858,7 +12513,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Decode(d *jx.Dec
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -12876,7 +12530,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Decode(d *jx.Dec
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -12887,7 +12540,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Decode(d *jx.Dec
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -13025,7 +12677,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "behavior":
-
 			if err := func() error {
 				s.Behavior.Reset()
 				if err := s.Behavior.Decode(d); err != nil {
@@ -13037,7 +12688,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 			}
 		case "maxReplicas":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.MaxReplicas = int32(v)
@@ -13049,7 +12699,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 				return errors.Wrap(err, "decode field \"maxReplicas\"")
 			}
 		case "metrics":
-
 			if err := func() error {
 				s.Metrics = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -13067,7 +12716,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 				return errors.Wrap(err, "decode field \"metrics\"")
 			}
 		case "minReplicas":
-
 			if err := func() error {
 				s.MinReplicas.Reset()
 				if err := s.MinReplicas.Decode(d); err != nil {
@@ -13079,7 +12727,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 			}
 		case "scaleTargetRef":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				if err := s.ScaleTargetRef.Decode(d); err != nil {
 					return err
@@ -13233,7 +12880,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Decode(d *jx.D
 		switch string(k) {
 		case "conditions":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -13251,7 +12897,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Decode(d *jx.D
 				return errors.Wrap(err, "decode field \"conditions\"")
 			}
 		case "currentMetrics":
-
 			if err := func() error {
 				s.CurrentMetrics = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -13270,7 +12915,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Decode(d *jx.D
 			}
 		case "currentReplicas":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.CurrentReplicas = int32(v)
@@ -13283,7 +12927,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Decode(d *jx.D
 			}
 		case "desiredReplicas":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.DesiredReplicas = int32(v)
@@ -13295,7 +12938,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Decode(d *jx.D
 				return errors.Wrap(err, "decode field \"desiredReplicas\"")
 			}
 		case "lastScaleTime":
-
 			if err := func() error {
 				s.LastScaleTime.Reset()
 				if err := s.LastScaleTime.Decode(d); err != nil {
@@ -13306,7 +12948,6 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Decode(d *jx.D
 				return errors.Wrap(err, "decode field \"lastScaleTime\"")
 			}
 		case "observedGeneration":
-
 			if err := func() error {
 				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.Decode(d); err != nil {
@@ -13403,7 +13044,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) Decode(d *jx.Decoder) error
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -13415,7 +13055,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "selector":
-
 			if err := func() error {
 				s.Selector.Reset()
 				if err := s.Selector.Decode(d); err != nil {
@@ -13566,7 +13205,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "containerResource":
-
 			if err := func() error {
 				s.ContainerResource.Reset()
 				if err := s.ContainerResource.Decode(d); err != nil {
@@ -13577,7 +13215,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"containerResource\"")
 			}
 		case "external":
-
 			if err := func() error {
 				s.External.Reset()
 				if err := s.External.Decode(d); err != nil {
@@ -13588,7 +13225,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"external\"")
 			}
 		case "object":
-
 			if err := func() error {
 				s.Object.Reset()
 				if err := s.Object.Decode(d); err != nil {
@@ -13599,7 +13235,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"object\"")
 			}
 		case "pods":
-
 			if err := func() error {
 				s.Pods.Reset()
 				if err := s.Pods.Decode(d); err != nil {
@@ -13610,7 +13245,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"pods\"")
 			}
 		case "resource":
-
 			if err := func() error {
 				s.Resource.Reset()
 				if err := s.Resource.Decode(d); err != nil {
@@ -13622,7 +13256,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -13774,7 +13407,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "containerResource":
-
 			if err := func() error {
 				s.ContainerResource.Reset()
 				if err := s.ContainerResource.Decode(d); err != nil {
@@ -13785,7 +13417,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"containerResource\"")
 			}
 		case "external":
-
 			if err := func() error {
 				s.External.Reset()
 				if err := s.External.Decode(d); err != nil {
@@ -13796,7 +13427,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"external\"")
 			}
 		case "object":
-
 			if err := func() error {
 				s.Object.Reset()
 				if err := s.Object.Decode(d); err != nil {
@@ -13807,7 +13437,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"object\"")
 			}
 		case "pods":
-
 			if err := func() error {
 				s.Pods.Reset()
 				if err := s.Pods.Decode(d); err != nil {
@@ -13818,7 +13447,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"pods\"")
 			}
 		case "resource":
-
 			if err := func() error {
 				s.Resource.Reset()
 				if err := s.Resource.Decode(d); err != nil {
@@ -13830,7 +13458,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -13953,7 +13580,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "averageUtilization":
-
 			if err := func() error {
 				s.AverageUtilization.Reset()
 				if err := s.AverageUtilization.Decode(d); err != nil {
@@ -13964,7 +13590,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"averageUtilization\"")
 			}
 		case "averageValue":
-
 			if err := func() error {
 				s.AverageValue.Reset()
 				if err := s.AverageValue.Decode(d); err != nil {
@@ -13976,7 +13601,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -13988,7 +13612,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"type\"")
 			}
 		case "value":
-
 			if err := func() error {
 				s.Value.Reset()
 				if err := s.Value.Decode(d); err != nil {
@@ -14102,7 +13725,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) Decode(d *jx.Decoder) erro
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "averageUtilization":
-
 			if err := func() error {
 				s.AverageUtilization.Reset()
 				if err := s.AverageUtilization.Decode(d); err != nil {
@@ -14113,7 +13735,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) Decode(d *jx.Decoder) erro
 				return errors.Wrap(err, "decode field \"averageUtilization\"")
 			}
 		case "averageValue":
-
 			if err := func() error {
 				s.AverageValue.Reset()
 				if err := s.AverageValue.Decode(d); err != nil {
@@ -14124,7 +13745,6 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) Decode(d *jx.Decoder) erro
 				return errors.Wrap(err, "decode field \"averageValue\"")
 			}
 		case "value":
-
 			if err := func() error {
 				s.Value.Reset()
 				if err := s.Value.Decode(d); err != nil {
@@ -14193,7 +13813,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) Decode(d *jx.Decoder) err
 		switch string(k) {
 		case "describedObject":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				if err := s.DescribedObject.Decode(d); err != nil {
 					return err
@@ -14204,7 +13823,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) Decode(d *jx.Decoder) err
 			}
 		case "metric":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				if err := s.Metric.Decode(d); err != nil {
 					return err
@@ -14215,7 +13833,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) Decode(d *jx.Decoder) err
 			}
 		case "target":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				if err := s.Target.Decode(d); err != nil {
 					return err
@@ -14315,7 +13932,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Decode(d *jx.Decoder) err
 		switch string(k) {
 		case "current":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				if err := s.Current.Decode(d); err != nil {
 					return err
@@ -14326,7 +13942,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Decode(d *jx.Decoder) err
 			}
 		case "describedObject":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				if err := s.DescribedObject.Decode(d); err != nil {
 					return err
@@ -14337,7 +13952,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Decode(d *jx.Decoder) err
 			}
 		case "metric":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				if err := s.Metric.Decode(d); err != nil {
 					return err
@@ -14430,7 +14044,6 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricSource) Decode(d *jx.Decoder) error
 		switch string(k) {
 		case "metric":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				if err := s.Metric.Decode(d); err != nil {
 					return err
@@ -14441,7 +14054,6 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricSource) Decode(d *jx.Decoder) error
 			}
 		case "target":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				if err := s.Target.Decode(d); err != nil {
 					return err
@@ -14534,7 +14146,6 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricStatus) Decode(d *jx.Decoder) error
 		switch string(k) {
 		case "current":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				if err := s.Current.Decode(d); err != nil {
 					return err
@@ -14545,7 +14156,6 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricStatus) Decode(d *jx.Decoder) error
 			}
 		case "metric":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				if err := s.Metric.Decode(d); err != nil {
 					return err
@@ -14638,7 +14248,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) Decode(d *jx.Decoder) e
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -14651,7 +14260,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) Decode(d *jx.Decoder) e
 			}
 		case "target":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				if err := s.Target.Decode(d); err != nil {
 					return err
@@ -14744,7 +14352,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Decode(d *jx.Decoder) e
 		switch string(k) {
 		case "current":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				if err := s.Current.Decode(d); err != nil {
 					return err
@@ -14755,7 +14362,6 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Decode(d *jx.Decoder) e
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -14896,7 +14502,6 @@ func (s *IoK8sAPIBatchV1CronJob) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -14907,7 +14512,6 @@ func (s *IoK8sAPIBatchV1CronJob) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -14918,7 +14522,6 @@ func (s *IoK8sAPIBatchV1CronJob) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -14929,7 +14532,6 @@ func (s *IoK8sAPIBatchV1CronJob) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -14940,7 +14542,6 @@ func (s *IoK8sAPIBatchV1CronJob) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -15039,7 +14640,6 @@ func (s *IoK8sAPIBatchV1CronJobList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -15051,7 +14651,6 @@ func (s *IoK8sAPIBatchV1CronJobList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -15069,7 +14668,6 @@ func (s *IoK8sAPIBatchV1CronJobList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -15080,7 +14678,6 @@ func (s *IoK8sAPIBatchV1CronJobList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -15229,7 +14826,6 @@ func (s *IoK8sAPIBatchV1CronJobSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "concurrencyPolicy":
-
 			if err := func() error {
 				s.ConcurrencyPolicy.Reset()
 				if err := s.ConcurrencyPolicy.Decode(d); err != nil {
@@ -15240,7 +14836,6 @@ func (s *IoK8sAPIBatchV1CronJobSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"concurrencyPolicy\"")
 			}
 		case "failedJobsHistoryLimit":
-
 			if err := func() error {
 				s.FailedJobsHistoryLimit.Reset()
 				if err := s.FailedJobsHistoryLimit.Decode(d); err != nil {
@@ -15252,7 +14847,6 @@ func (s *IoK8sAPIBatchV1CronJobSpec) Decode(d *jx.Decoder) error {
 			}
 		case "jobTemplate":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				if err := s.JobTemplate.Decode(d); err != nil {
 					return err
@@ -15263,7 +14857,6 @@ func (s *IoK8sAPIBatchV1CronJobSpec) Decode(d *jx.Decoder) error {
 			}
 		case "schedule":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Schedule = string(v)
@@ -15275,7 +14868,6 @@ func (s *IoK8sAPIBatchV1CronJobSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"schedule\"")
 			}
 		case "startingDeadlineSeconds":
-
 			if err := func() error {
 				s.StartingDeadlineSeconds.Reset()
 				if err := s.StartingDeadlineSeconds.Decode(d); err != nil {
@@ -15286,7 +14878,6 @@ func (s *IoK8sAPIBatchV1CronJobSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"startingDeadlineSeconds\"")
 			}
 		case "successfulJobsHistoryLimit":
-
 			if err := func() error {
 				s.SuccessfulJobsHistoryLimit.Reset()
 				if err := s.SuccessfulJobsHistoryLimit.Decode(d); err != nil {
@@ -15297,7 +14888,6 @@ func (s *IoK8sAPIBatchV1CronJobSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"successfulJobsHistoryLimit\"")
 			}
 		case "suspend":
-
 			if err := func() error {
 				s.Suspend.Reset()
 				if err := s.Suspend.Decode(d); err != nil {
@@ -15423,7 +15013,6 @@ func (s *IoK8sAPIBatchV1CronJobStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "active":
-
 			if err := func() error {
 				s.Active = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -15441,7 +15030,6 @@ func (s *IoK8sAPIBatchV1CronJobStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"active\"")
 			}
 		case "lastScheduleTime":
-
 			if err := func() error {
 				s.LastScheduleTime.Reset()
 				if err := s.LastScheduleTime.Decode(d); err != nil {
@@ -15452,7 +15040,6 @@ func (s *IoK8sAPIBatchV1CronJobStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lastScheduleTime\"")
 			}
 		case "lastSuccessfulTime":
-
 			if err := func() error {
 				s.LastSuccessfulTime.Reset()
 				if err := s.LastSuccessfulTime.Decode(d); err != nil {
@@ -15560,7 +15147,6 @@ func (s *IoK8sAPIBatchV1Job) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -15571,7 +15157,6 @@ func (s *IoK8sAPIBatchV1Job) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -15582,7 +15167,6 @@ func (s *IoK8sAPIBatchV1Job) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -15593,7 +15177,6 @@ func (s *IoK8sAPIBatchV1Job) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -15604,7 +15187,6 @@ func (s *IoK8sAPIBatchV1Job) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -15717,7 +15299,6 @@ func (s *IoK8sAPIBatchV1JobCondition) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastProbeTime":
-
 			if err := func() error {
 				s.LastProbeTime.Reset()
 				if err := s.LastProbeTime.Decode(d); err != nil {
@@ -15728,7 +15309,6 @@ func (s *IoK8sAPIBatchV1JobCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lastProbeTime\"")
 			}
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -15739,7 +15319,6 @@ func (s *IoK8sAPIBatchV1JobCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -15750,7 +15329,6 @@ func (s *IoK8sAPIBatchV1JobCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -15762,7 +15340,6 @@ func (s *IoK8sAPIBatchV1JobCondition) Decode(d *jx.Decoder) error {
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -15775,7 +15352,6 @@ func (s *IoK8sAPIBatchV1JobCondition) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -15907,7 +15483,6 @@ func (s *IoK8sAPIBatchV1JobList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -15919,7 +15494,6 @@ func (s *IoK8sAPIBatchV1JobList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -15937,7 +15511,6 @@ func (s *IoK8sAPIBatchV1JobList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -15948,7 +15521,6 @@ func (s *IoK8sAPIBatchV1JobList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -16148,7 +15720,6 @@ func (s *IoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "activeDeadlineSeconds":
-
 			if err := func() error {
 				s.ActiveDeadlineSeconds.Reset()
 				if err := s.ActiveDeadlineSeconds.Decode(d); err != nil {
@@ -16159,7 +15730,6 @@ func (s *IoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"activeDeadlineSeconds\"")
 			}
 		case "backoffLimit":
-
 			if err := func() error {
 				s.BackoffLimit.Reset()
 				if err := s.BackoffLimit.Decode(d); err != nil {
@@ -16170,7 +15740,6 @@ func (s *IoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"backoffLimit\"")
 			}
 		case "completionMode":
-
 			if err := func() error {
 				s.CompletionMode.Reset()
 				if err := s.CompletionMode.Decode(d); err != nil {
@@ -16181,7 +15750,6 @@ func (s *IoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"completionMode\"")
 			}
 		case "completions":
-
 			if err := func() error {
 				s.Completions.Reset()
 				if err := s.Completions.Decode(d); err != nil {
@@ -16192,7 +15760,6 @@ func (s *IoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"completions\"")
 			}
 		case "manualSelector":
-
 			if err := func() error {
 				s.ManualSelector.Reset()
 				if err := s.ManualSelector.Decode(d); err != nil {
@@ -16203,7 +15770,6 @@ func (s *IoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"manualSelector\"")
 			}
 		case "parallelism":
-
 			if err := func() error {
 				s.Parallelism.Reset()
 				if err := s.Parallelism.Decode(d); err != nil {
@@ -16214,7 +15780,6 @@ func (s *IoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"parallelism\"")
 			}
 		case "selector":
-
 			if err := func() error {
 				s.Selector.Reset()
 				if err := s.Selector.Decode(d); err != nil {
@@ -16225,7 +15790,6 @@ func (s *IoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"selector\"")
 			}
 		case "suspend":
-
 			if err := func() error {
 				s.Suspend.Reset()
 				if err := s.Suspend.Decode(d); err != nil {
@@ -16237,7 +15801,6 @@ func (s *IoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 			}
 		case "template":
 			requiredBitSet[1] |= 1 << 0
-
 			if err := func() error {
 				if err := s.Template.Decode(d); err != nil {
 					return err
@@ -16247,7 +15810,6 @@ func (s *IoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"template\"")
 			}
 		case "ttlSecondsAfterFinished":
-
 			if err := func() error {
 				s.TtlSecondsAfterFinished.Reset()
 				if err := s.TtlSecondsAfterFinished.Decode(d); err != nil {
@@ -16439,7 +16001,6 @@ func (s *IoK8sAPIBatchV1JobStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "active":
-
 			if err := func() error {
 				s.Active.Reset()
 				if err := s.Active.Decode(d); err != nil {
@@ -16450,7 +16011,6 @@ func (s *IoK8sAPIBatchV1JobStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"active\"")
 			}
 		case "completedIndexes":
-
 			if err := func() error {
 				s.CompletedIndexes.Reset()
 				if err := s.CompletedIndexes.Decode(d); err != nil {
@@ -16461,7 +16021,6 @@ func (s *IoK8sAPIBatchV1JobStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"completedIndexes\"")
 			}
 		case "completionTime":
-
 			if err := func() error {
 				s.CompletionTime.Reset()
 				if err := s.CompletionTime.Decode(d); err != nil {
@@ -16472,7 +16031,6 @@ func (s *IoK8sAPIBatchV1JobStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"completionTime\"")
 			}
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -16490,7 +16048,6 @@ func (s *IoK8sAPIBatchV1JobStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"conditions\"")
 			}
 		case "failed":
-
 			if err := func() error {
 				s.Failed.Reset()
 				if err := s.Failed.Decode(d); err != nil {
@@ -16501,7 +16058,6 @@ func (s *IoK8sAPIBatchV1JobStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"failed\"")
 			}
 		case "startTime":
-
 			if err := func() error {
 				s.StartTime.Reset()
 				if err := s.StartTime.Decode(d); err != nil {
@@ -16512,7 +16068,6 @@ func (s *IoK8sAPIBatchV1JobStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"startTime\"")
 			}
 		case "succeeded":
-
 			if err := func() error {
 				s.Succeeded.Reset()
 				if err := s.Succeeded.Decode(d); err != nil {
@@ -16523,7 +16078,6 @@ func (s *IoK8sAPIBatchV1JobStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"succeeded\"")
 			}
 		case "uncountedTerminatedPods":
-
 			if err := func() error {
 				s.UncountedTerminatedPods.Reset()
 				if err := s.UncountedTerminatedPods.Decode(d); err != nil {
@@ -16592,7 +16146,6 @@ func (s *IoK8sAPIBatchV1JobTemplateSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -16603,7 +16156,6 @@ func (s *IoK8sAPIBatchV1JobTemplateSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -16696,7 +16248,6 @@ func (s *IoK8sAPIBatchV1UncountedTerminatedPods) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "failed":
-
 			if err := func() error {
 				s.Failed = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -16716,7 +16267,6 @@ func (s *IoK8sAPIBatchV1UncountedTerminatedPods) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"failed\"")
 			}
 		case "succeeded":
-
 			if err := func() error {
 				s.Succeeded = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -16833,7 +16383,6 @@ func (s *IoK8sAPIBatchV1beta1CronJob) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -16844,7 +16393,6 @@ func (s *IoK8sAPIBatchV1beta1CronJob) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -16855,7 +16403,6 @@ func (s *IoK8sAPIBatchV1beta1CronJob) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -16866,7 +16413,6 @@ func (s *IoK8sAPIBatchV1beta1CronJob) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -16877,7 +16423,6 @@ func (s *IoK8sAPIBatchV1beta1CronJob) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -16976,7 +16521,6 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -16988,7 +16532,6 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -17006,7 +16549,6 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -17017,7 +16559,6 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -17166,7 +16707,6 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "concurrencyPolicy":
-
 			if err := func() error {
 				s.ConcurrencyPolicy.Reset()
 				if err := s.ConcurrencyPolicy.Decode(d); err != nil {
@@ -17177,7 +16717,6 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"concurrencyPolicy\"")
 			}
 		case "failedJobsHistoryLimit":
-
 			if err := func() error {
 				s.FailedJobsHistoryLimit.Reset()
 				if err := s.FailedJobsHistoryLimit.Decode(d); err != nil {
@@ -17189,7 +16728,6 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) Decode(d *jx.Decoder) error {
 			}
 		case "jobTemplate":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				if err := s.JobTemplate.Decode(d); err != nil {
 					return err
@@ -17200,7 +16738,6 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) Decode(d *jx.Decoder) error {
 			}
 		case "schedule":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Schedule = string(v)
@@ -17212,7 +16749,6 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"schedule\"")
 			}
 		case "startingDeadlineSeconds":
-
 			if err := func() error {
 				s.StartingDeadlineSeconds.Reset()
 				if err := s.StartingDeadlineSeconds.Decode(d); err != nil {
@@ -17223,7 +16759,6 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"startingDeadlineSeconds\"")
 			}
 		case "successfulJobsHistoryLimit":
-
 			if err := func() error {
 				s.SuccessfulJobsHistoryLimit.Reset()
 				if err := s.SuccessfulJobsHistoryLimit.Decode(d); err != nil {
@@ -17234,7 +16769,6 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"successfulJobsHistoryLimit\"")
 			}
 		case "suspend":
-
 			if err := func() error {
 				s.Suspend.Reset()
 				if err := s.Suspend.Decode(d); err != nil {
@@ -17360,7 +16894,6 @@ func (s *IoK8sAPIBatchV1beta1CronJobStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "active":
-
 			if err := func() error {
 				s.Active = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -17378,7 +16911,6 @@ func (s *IoK8sAPIBatchV1beta1CronJobStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"active\"")
 			}
 		case "lastScheduleTime":
-
 			if err := func() error {
 				s.LastScheduleTime.Reset()
 				if err := s.LastScheduleTime.Decode(d); err != nil {
@@ -17389,7 +16921,6 @@ func (s *IoK8sAPIBatchV1beta1CronJobStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lastScheduleTime\"")
 			}
 		case "lastSuccessfulTime":
-
 			if err := func() error {
 				s.LastSuccessfulTime.Reset()
 				if err := s.LastSuccessfulTime.Decode(d); err != nil {
@@ -17458,7 +16989,6 @@ func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -17469,7 +16999,6 @@ func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -17572,7 +17101,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) Decode(d *jx.Decoder) 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -17583,7 +17111,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) Decode(d *jx.Decoder) 
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -17594,7 +17121,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) Decode(d *jx.Decoder) 
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -17606,7 +17132,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) Decode(d *jx.Decoder) 
 			}
 		case "spec":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				if err := s.Spec.Decode(d); err != nil {
 					return err
@@ -17616,7 +17141,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) Decode(d *jx.Decoder) 
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -17761,7 +17285,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) Decode(d *jx.
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -17772,7 +17295,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) Decode(d *jx.
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "lastUpdateTime":
-
 			if err := func() error {
 				s.LastUpdateTime.Reset()
 				if err := s.LastUpdateTime.Decode(d); err != nil {
@@ -17783,7 +17305,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) Decode(d *jx.
 				return errors.Wrap(err, "decode field \"lastUpdateTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -17794,7 +17315,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) Decode(d *jx.
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -17806,7 +17326,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) Decode(d *jx.
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -17819,7 +17338,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) Decode(d *jx.
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -17951,7 +17469,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) Decode(d *jx.Decod
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -17963,7 +17480,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) Decode(d *jx.Decod
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -17981,7 +17497,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) Decode(d *jx.Decod
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -17992,7 +17507,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) Decode(d *jx.Decod
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -18178,7 +17692,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Decode(d *jx.Decod
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "expirationSeconds":
-
 			if err := func() error {
 				s.ExpirationSeconds.Reset()
 				if err := s.ExpirationSeconds.Decode(d); err != nil {
@@ -18189,7 +17702,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Decode(d *jx.Decod
 				return errors.Wrap(err, "decode field \"expirationSeconds\"")
 			}
 		case "extra":
-
 			if err := func() error {
 				s.Extra.Reset()
 				if err := s.Extra.Decode(d); err != nil {
@@ -18200,7 +17712,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Decode(d *jx.Decod
 				return errors.Wrap(err, "decode field \"extra\"")
 			}
 		case "groups":
-
 			if err := func() error {
 				s.Groups = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -18221,7 +17732,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Decode(d *jx.Decod
 			}
 		case "request":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Base64()
 				s.Request = []byte(v)
@@ -18234,7 +17744,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Decode(d *jx.Decod
 			}
 		case "signerName":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.SignerName = string(v)
@@ -18246,7 +17755,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Decode(d *jx.Decod
 				return errors.Wrap(err, "decode field \"signerName\"")
 			}
 		case "uid":
-
 			if err := func() error {
 				s.UID.Reset()
 				if err := s.UID.Decode(d); err != nil {
@@ -18257,7 +17765,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Decode(d *jx.Decod
 				return errors.Wrap(err, "decode field \"uid\"")
 			}
 		case "usages":
-
 			if err := func() error {
 				s.Usages = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -18277,7 +17784,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Decode(d *jx.Decod
 				return errors.Wrap(err, "decode field \"usages\"")
 			}
 		case "username":
-
 			if err := func() error {
 				s.Username.Reset()
 				if err := s.Username.Decode(d); err != nil {
@@ -18457,7 +17963,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) Decode(d *jx.Dec
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "certificate":
-
 			if err := func() error {
 				v, err := d.Base64()
 				s.Certificate = []byte(v)
@@ -18469,7 +17974,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) Decode(d *jx.Dec
 				return errors.Wrap(err, "decode field \"certificate\"")
 			}
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -18571,7 +18075,6 @@ func (s *IoK8sAPICoordinationV1Lease) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -18582,7 +18085,6 @@ func (s *IoK8sAPICoordinationV1Lease) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -18593,7 +18095,6 @@ func (s *IoK8sAPICoordinationV1Lease) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -18604,7 +18105,6 @@ func (s *IoK8sAPICoordinationV1Lease) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -18703,7 +18203,6 @@ func (s *IoK8sAPICoordinationV1LeaseList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -18715,7 +18214,6 @@ func (s *IoK8sAPICoordinationV1LeaseList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -18733,7 +18231,6 @@ func (s *IoK8sAPICoordinationV1LeaseList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -18744,7 +18241,6 @@ func (s *IoK8sAPICoordinationV1LeaseList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -18884,7 +18380,6 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "acquireTime":
-
 			if err := func() error {
 				s.AcquireTime.Reset()
 				if err := s.AcquireTime.Decode(d); err != nil {
@@ -18895,7 +18390,6 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"acquireTime\"")
 			}
 		case "holderIdentity":
-
 			if err := func() error {
 				s.HolderIdentity.Reset()
 				if err := s.HolderIdentity.Decode(d); err != nil {
@@ -18906,7 +18400,6 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"holderIdentity\"")
 			}
 		case "leaseDurationSeconds":
-
 			if err := func() error {
 				s.LeaseDurationSeconds.Reset()
 				if err := s.LeaseDurationSeconds.Decode(d); err != nil {
@@ -18917,7 +18410,6 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"leaseDurationSeconds\"")
 			}
 		case "leaseTransitions":
-
 			if err := func() error {
 				s.LeaseTransitions.Reset()
 				if err := s.LeaseTransitions.Decode(d); err != nil {
@@ -18928,7 +18420,6 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"leaseTransitions\"")
 			}
 		case "renewTime":
-
 			if err := func() error {
 				s.RenewTime.Reset()
 				if err := s.RenewTime.Decode(d); err != nil {
@@ -19021,7 +18512,6 @@ func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Decode(d *jx.Decoder) e
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -19032,7 +18522,6 @@ func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"fsType\"")
 			}
 		case "partition":
-
 			if err := func() error {
 				s.Partition.Reset()
 				if err := s.Partition.Decode(d); err != nil {
@@ -19043,7 +18532,6 @@ func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"partition\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -19055,7 +18543,6 @@ func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Decode(d *jx.Decoder) e
 			}
 		case "volumeID":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.VolumeID = string(v)
@@ -19170,7 +18657,6 @@ func (s *IoK8sAPICoreV1Affinity) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "nodeAffinity":
-
 			if err := func() error {
 				s.NodeAffinity.Reset()
 				if err := s.NodeAffinity.Decode(d); err != nil {
@@ -19181,7 +18667,6 @@ func (s *IoK8sAPICoreV1Affinity) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nodeAffinity\"")
 			}
 		case "podAffinity":
-
 			if err := func() error {
 				s.PodAffinity.Reset()
 				if err := s.PodAffinity.Decode(d); err != nil {
@@ -19192,7 +18677,6 @@ func (s *IoK8sAPICoreV1Affinity) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"podAffinity\"")
 			}
 		case "podAntiAffinity":
-
 			if err := func() error {
 				s.PodAntiAffinity.Reset()
 				if err := s.PodAntiAffinity.Decode(d); err != nil {
@@ -19254,7 +18738,6 @@ func (s *IoK8sAPICoreV1AttachedVolume) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "devicePath":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.DevicePath = string(v)
@@ -19267,7 +18750,6 @@ func (s *IoK8sAPICoreV1AttachedVolume) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -19404,7 +18886,6 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "cachingMode":
-
 			if err := func() error {
 				s.CachingMode.Reset()
 				if err := s.CachingMode.Decode(d); err != nil {
@@ -19416,7 +18897,6 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "diskName":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.DiskName = string(v)
@@ -19429,7 +18909,6 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "diskURI":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.DiskURI = string(v)
@@ -19441,7 +18920,6 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"diskURI\"")
 			}
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -19452,7 +18930,6 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fsType\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -19463,7 +18940,6 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -19579,7 +19055,6 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) Decode(d *jx.Decoder) er
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -19591,7 +19066,6 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) Decode(d *jx.Decoder) er
 			}
 		case "secretName":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.SecretName = string(v)
@@ -19603,7 +19077,6 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) Decode(d *jx.Decoder) er
 				return errors.Wrap(err, "decode field \"secretName\"")
 			}
 		case "secretNamespace":
-
 			if err := func() error {
 				s.SecretNamespace.Reset()
 				if err := s.SecretNamespace.Decode(d); err != nil {
@@ -19615,7 +19088,6 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) Decode(d *jx.Decoder) er
 			}
 		case "shareName":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.ShareName = string(v)
@@ -19722,7 +19194,6 @@ func (s *IoK8sAPICoreV1AzureFileVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -19734,7 +19205,6 @@ func (s *IoK8sAPICoreV1AzureFileVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "secretName":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.SecretName = string(v)
@@ -19747,7 +19217,6 @@ func (s *IoK8sAPICoreV1AzureFileVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "shareName":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.ShareName = string(v)
@@ -19917,7 +19386,6 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "controllerExpandSecretRef":
-
 			if err := func() error {
 				s.ControllerExpandSecretRef.Reset()
 				if err := s.ControllerExpandSecretRef.Decode(d); err != nil {
@@ -19928,7 +19396,6 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"controllerExpandSecretRef\"")
 			}
 		case "controllerPublishSecretRef":
-
 			if err := func() error {
 				s.ControllerPublishSecretRef.Reset()
 				if err := s.ControllerPublishSecretRef.Decode(d); err != nil {
@@ -19940,7 +19407,6 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "driver":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Driver = string(v)
@@ -19952,7 +19418,6 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"driver\"")
 			}
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -19963,7 +19428,6 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fsType\"")
 			}
 		case "nodePublishSecretRef":
-
 			if err := func() error {
 				s.NodePublishSecretRef.Reset()
 				if err := s.NodePublishSecretRef.Decode(d); err != nil {
@@ -19974,7 +19438,6 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nodePublishSecretRef\"")
 			}
 		case "nodeStageSecretRef":
-
 			if err := func() error {
 				s.NodeStageSecretRef.Reset()
 				if err := s.NodeStageSecretRef.Decode(d); err != nil {
@@ -19985,7 +19448,6 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nodeStageSecretRef\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -19996,7 +19458,6 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"readOnly\"")
 			}
 		case "volumeAttributes":
-
 			if err := func() error {
 				s.VolumeAttributes.Reset()
 				if err := s.VolumeAttributes.Decode(d); err != nil {
@@ -20008,7 +19469,6 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "volumeHandle":
 			requiredBitSet[1] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.VolumeHandle = string(v)
@@ -20190,7 +19650,6 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "driver":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Driver = string(v)
@@ -20202,7 +19661,6 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"driver\"")
 			}
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -20213,7 +19671,6 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fsType\"")
 			}
 		case "nodePublishSecretRef":
-
 			if err := func() error {
 				s.NodePublishSecretRef.Reset()
 				if err := s.NodePublishSecretRef.Decode(d); err != nil {
@@ -20224,7 +19681,6 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nodePublishSecretRef\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -20235,7 +19691,6 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"readOnly\"")
 			}
 		case "volumeAttributes":
-
 			if err := func() error {
 				s.VolumeAttributes.Reset()
 				if err := s.VolumeAttributes.Decode(d); err != nil {
@@ -20413,7 +19868,6 @@ func (s *IoK8sAPICoreV1Capabilities) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "add":
-
 			if err := func() error {
 				s.Add = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -20433,7 +19887,6 @@ func (s *IoK8sAPICoreV1Capabilities) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"add\"")
 			}
 		case "drop":
-
 			if err := func() error {
 				s.Drop = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -20559,7 +20012,6 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) Decode(d *jx.Decoder) error
 		switch string(k) {
 		case "monitors":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				s.Monitors = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -20579,7 +20031,6 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"monitors\"")
 			}
 		case "path":
-
 			if err := func() error {
 				s.Path.Reset()
 				if err := s.Path.Decode(d); err != nil {
@@ -20590,7 +20041,6 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"path\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -20601,7 +20051,6 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"readOnly\"")
 			}
 		case "secretFile":
-
 			if err := func() error {
 				s.SecretFile.Reset()
 				if err := s.SecretFile.Decode(d); err != nil {
@@ -20612,7 +20061,6 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"secretFile\"")
 			}
 		case "secretRef":
-
 			if err := func() error {
 				s.SecretRef.Reset()
 				if err := s.SecretRef.Decode(d); err != nil {
@@ -20623,7 +20071,6 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"secretRef\"")
 			}
 		case "user":
-
 			if err := func() error {
 				s.User.Reset()
 				if err := s.User.Decode(d); err != nil {
@@ -20772,7 +20219,6 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "monitors":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				s.Monitors = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -20792,7 +20238,6 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"monitors\"")
 			}
 		case "path":
-
 			if err := func() error {
 				s.Path.Reset()
 				if err := s.Path.Decode(d); err != nil {
@@ -20803,7 +20248,6 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"path\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -20814,7 +20258,6 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"readOnly\"")
 			}
 		case "secretFile":
-
 			if err := func() error {
 				s.SecretFile.Reset()
 				if err := s.SecretFile.Decode(d); err != nil {
@@ -20825,7 +20268,6 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"secretFile\"")
 			}
 		case "secretRef":
-
 			if err := func() error {
 				s.SecretRef.Reset()
 				if err := s.SecretRef.Decode(d); err != nil {
@@ -20836,7 +20278,6 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"secretRef\"")
 			}
 		case "user":
-
 			if err := func() error {
 				s.User.Reset()
 				if err := s.User.Decode(d); err != nil {
@@ -20961,7 +20402,6 @@ func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) Decode(d *jx.Decoder) error
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -20972,7 +20412,6 @@ func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"fsType\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -20983,7 +20422,6 @@ func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"readOnly\"")
 			}
 		case "secretRef":
-
 			if err := func() error {
 				s.SecretRef.Reset()
 				if err := s.SecretRef.Decode(d); err != nil {
@@ -20995,7 +20433,6 @@ func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) Decode(d *jx.Decoder) error
 			}
 		case "volumeID":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.VolumeID = string(v)
@@ -21121,7 +20558,6 @@ func (s *IoK8sAPICoreV1CinderVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -21132,7 +20568,6 @@ func (s *IoK8sAPICoreV1CinderVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fsType\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -21143,7 +20578,6 @@ func (s *IoK8sAPICoreV1CinderVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"readOnly\"")
 			}
 		case "secretRef":
-
 			if err := func() error {
 				s.SecretRef.Reset()
 				if err := s.SecretRef.Decode(d); err != nil {
@@ -21155,7 +20589,6 @@ func (s *IoK8sAPICoreV1CinderVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "volumeID":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.VolumeID = string(v)
@@ -21244,7 +20677,6 @@ func (s *IoK8sAPICoreV1ClientIPConfig) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "timeoutSeconds":
-
 			if err := func() error {
 				s.TimeoutSeconds.Reset()
 				if err := s.TimeoutSeconds.Decode(d); err != nil {
@@ -21331,7 +20763,6 @@ func (s *IoK8sAPICoreV1ComponentCondition) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "error":
-
 			if err := func() error {
 				s.Error.Reset()
 				if err := s.Error.Decode(d); err != nil {
@@ -21342,7 +20773,6 @@ func (s *IoK8sAPICoreV1ComponentCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"error\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -21354,7 +20784,6 @@ func (s *IoK8sAPICoreV1ComponentCondition) Decode(d *jx.Decoder) error {
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -21367,7 +20796,6 @@ func (s *IoK8sAPICoreV1ComponentCondition) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -21507,7 +20935,6 @@ func (s *IoK8sAPICoreV1ComponentStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -21518,7 +20945,6 @@ func (s *IoK8sAPICoreV1ComponentStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -21536,7 +20962,6 @@ func (s *IoK8sAPICoreV1ComponentStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"conditions\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -21547,7 +20972,6 @@ func (s *IoK8sAPICoreV1ComponentStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -21646,7 +21070,6 @@ func (s *IoK8sAPICoreV1ComponentStatusList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -21658,7 +21081,6 @@ func (s *IoK8sAPICoreV1ComponentStatusList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -21676,7 +21098,6 @@ func (s *IoK8sAPICoreV1ComponentStatusList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -21687,7 +21108,6 @@ func (s *IoK8sAPICoreV1ComponentStatusList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -21840,7 +21260,6 @@ func (s *IoK8sAPICoreV1ConfigMap) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -21851,7 +21270,6 @@ func (s *IoK8sAPICoreV1ConfigMap) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "binaryData":
-
 			if err := func() error {
 				s.BinaryData.Reset()
 				if err := s.BinaryData.Decode(d); err != nil {
@@ -21862,7 +21280,6 @@ func (s *IoK8sAPICoreV1ConfigMap) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"binaryData\"")
 			}
 		case "data":
-
 			if err := func() error {
 				s.Data.Reset()
 				if err := s.Data.Decode(d); err != nil {
@@ -21873,7 +21290,6 @@ func (s *IoK8sAPICoreV1ConfigMap) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"data\"")
 			}
 		case "immutable":
-
 			if err := func() error {
 				s.Immutable.Reset()
 				if err := s.Immutable.Decode(d); err != nil {
@@ -21884,7 +21300,6 @@ func (s *IoK8sAPICoreV1ConfigMap) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"immutable\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -21895,7 +21310,6 @@ func (s *IoK8sAPICoreV1ConfigMap) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -22070,7 +21484,6 @@ func (s *IoK8sAPICoreV1ConfigMapEnvSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -22081,7 +21494,6 @@ func (s *IoK8sAPICoreV1ConfigMapEnvSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "optional":
-
 			if err := func() error {
 				s.Optional.Reset()
 				if err := s.Optional.Decode(d); err != nil {
@@ -22156,7 +21568,6 @@ func (s *IoK8sAPICoreV1ConfigMapKeySelector) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "key":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Key = string(v)
@@ -22168,7 +21579,6 @@ func (s *IoK8sAPICoreV1ConfigMapKeySelector) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"key\"")
 			}
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -22179,7 +21589,6 @@ func (s *IoK8sAPICoreV1ConfigMapKeySelector) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "optional":
-
 			if err := func() error {
 				s.Optional.Reset()
 				if err := s.Optional.Decode(d); err != nil {
@@ -22310,7 +21719,6 @@ func (s *IoK8sAPICoreV1ConfigMapList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -22322,7 +21730,6 @@ func (s *IoK8sAPICoreV1ConfigMapList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -22340,7 +21747,6 @@ func (s *IoK8sAPICoreV1ConfigMapList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -22351,7 +21757,6 @@ func (s *IoK8sAPICoreV1ConfigMapList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -22472,7 +21877,6 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "kubeletConfigKey":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.KubeletConfigKey = string(v)
@@ -22485,7 +21889,6 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -22498,7 +21901,6 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) Decode(d *jx.Decoder) error {
 			}
 		case "namespace":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Namespace = string(v)
@@ -22510,7 +21912,6 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"namespace\"")
 			}
 		case "resourceVersion":
-
 			if err := func() error {
 				s.ResourceVersion.Reset()
 				if err := s.ResourceVersion.Decode(d); err != nil {
@@ -22521,7 +21922,6 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"resourceVersion\"")
 			}
 		case "uid":
-
 			if err := func() error {
 				s.UID.Reset()
 				if err := s.UID.Decode(d); err != nil {
@@ -22647,7 +22047,6 @@ func (s *IoK8sAPICoreV1ConfigMapProjection) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "items":
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -22665,7 +22064,6 @@ func (s *IoK8sAPICoreV1ConfigMapProjection) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -22676,7 +22074,6 @@ func (s *IoK8sAPICoreV1ConfigMapProjection) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "optional":
-
 			if err := func() error {
 				s.Optional.Reset()
 				if err := s.Optional.Decode(d); err != nil {
@@ -22783,7 +22180,6 @@ func (s *IoK8sAPICoreV1ConfigMapVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "defaultMode":
-
 			if err := func() error {
 				s.DefaultMode.Reset()
 				if err := s.DefaultMode.Decode(d); err != nil {
@@ -22794,7 +22190,6 @@ func (s *IoK8sAPICoreV1ConfigMapVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"defaultMode\"")
 			}
 		case "items":
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -22812,7 +22207,6 @@ func (s *IoK8sAPICoreV1ConfigMapVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -22823,7 +22217,6 @@ func (s *IoK8sAPICoreV1ConfigMapVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "optional":
-
 			if err := func() error {
 				s.Optional.Reset()
 				if err := s.Optional.Decode(d); err != nil {
@@ -23195,7 +22588,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "args":
-
 			if err := func() error {
 				s.Args = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -23215,7 +22607,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"args\"")
 			}
 		case "command":
-
 			if err := func() error {
 				s.Command = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -23235,7 +22626,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"command\"")
 			}
 		case "env":
-
 			if err := func() error {
 				s.Env = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -23253,7 +22643,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"env\"")
 			}
 		case "envFrom":
-
 			if err := func() error {
 				s.EnvFrom = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -23271,7 +22660,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"envFrom\"")
 			}
 		case "image":
-
 			if err := func() error {
 				s.Image.Reset()
 				if err := s.Image.Decode(d); err != nil {
@@ -23282,7 +22670,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"image\"")
 			}
 		case "imagePullPolicy":
-
 			if err := func() error {
 				s.ImagePullPolicy.Reset()
 				if err := s.ImagePullPolicy.Decode(d); err != nil {
@@ -23293,7 +22680,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"imagePullPolicy\"")
 			}
 		case "lifecycle":
-
 			if err := func() error {
 				s.Lifecycle.Reset()
 				if err := s.Lifecycle.Decode(d); err != nil {
@@ -23304,7 +22690,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lifecycle\"")
 			}
 		case "livenessProbe":
-
 			if err := func() error {
 				s.LivenessProbe.Reset()
 				if err := s.LivenessProbe.Decode(d); err != nil {
@@ -23316,7 +22701,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[1] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -23328,7 +22712,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "ports":
-
 			if err := func() error {
 				s.Ports = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -23346,7 +22729,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"ports\"")
 			}
 		case "readinessProbe":
-
 			if err := func() error {
 				s.ReadinessProbe.Reset()
 				if err := s.ReadinessProbe.Decode(d); err != nil {
@@ -23357,7 +22739,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"readinessProbe\"")
 			}
 		case "resources":
-
 			if err := func() error {
 				s.Resources.Reset()
 				if err := s.Resources.Decode(d); err != nil {
@@ -23368,7 +22749,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"resources\"")
 			}
 		case "securityContext":
-
 			if err := func() error {
 				s.SecurityContext.Reset()
 				if err := s.SecurityContext.Decode(d); err != nil {
@@ -23379,7 +22759,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"securityContext\"")
 			}
 		case "startupProbe":
-
 			if err := func() error {
 				s.StartupProbe.Reset()
 				if err := s.StartupProbe.Decode(d); err != nil {
@@ -23390,7 +22769,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"startupProbe\"")
 			}
 		case "stdin":
-
 			if err := func() error {
 				s.Stdin.Reset()
 				if err := s.Stdin.Decode(d); err != nil {
@@ -23401,7 +22779,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"stdin\"")
 			}
 		case "stdinOnce":
-
 			if err := func() error {
 				s.StdinOnce.Reset()
 				if err := s.StdinOnce.Decode(d); err != nil {
@@ -23412,7 +22789,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"stdinOnce\"")
 			}
 		case "terminationMessagePath":
-
 			if err := func() error {
 				s.TerminationMessagePath.Reset()
 				if err := s.TerminationMessagePath.Decode(d); err != nil {
@@ -23423,7 +22799,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"terminationMessagePath\"")
 			}
 		case "terminationMessagePolicy":
-
 			if err := func() error {
 				s.TerminationMessagePolicy.Reset()
 				if err := s.TerminationMessagePolicy.Decode(d); err != nil {
@@ -23434,7 +22809,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"terminationMessagePolicy\"")
 			}
 		case "tty":
-
 			if err := func() error {
 				s.Tty.Reset()
 				if err := s.Tty.Decode(d); err != nil {
@@ -23445,7 +22819,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"tty\"")
 			}
 		case "volumeDevices":
-
 			if err := func() error {
 				s.VolumeDevices = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -23463,7 +22836,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"volumeDevices\"")
 			}
 		case "volumeMounts":
-
 			if err := func() error {
 				s.VolumeMounts = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -23481,7 +22853,6 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"volumeMounts\"")
 			}
 		case "workingDir":
-
 			if err := func() error {
 				s.WorkingDir.Reset()
 				if err := s.WorkingDir.Decode(d); err != nil {
@@ -23596,7 +22967,6 @@ func (s *IoK8sAPICoreV1ContainerImage) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "names":
-
 			if err := func() error {
 				s.Names = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -23616,7 +22986,6 @@ func (s *IoK8sAPICoreV1ContainerImage) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"names\"")
 			}
 		case "sizeBytes":
-
 			if err := func() error {
 				s.SizeBytes.Reset()
 				if err := s.SizeBytes.Decode(d); err != nil {
@@ -23711,7 +23080,6 @@ func (s *IoK8sAPICoreV1ContainerPort) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "containerPort":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.ContainerPort = int32(v)
@@ -23723,7 +23091,6 @@ func (s *IoK8sAPICoreV1ContainerPort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"containerPort\"")
 			}
 		case "hostIP":
-
 			if err := func() error {
 				s.HostIP.Reset()
 				if err := s.HostIP.Decode(d); err != nil {
@@ -23734,7 +23101,6 @@ func (s *IoK8sAPICoreV1ContainerPort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hostIP\"")
 			}
 		case "hostPort":
-
 			if err := func() error {
 				s.HostPort.Reset()
 				if err := s.HostPort.Decode(d); err != nil {
@@ -23745,7 +23111,6 @@ func (s *IoK8sAPICoreV1ContainerPort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hostPort\"")
 			}
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -23756,7 +23121,6 @@ func (s *IoK8sAPICoreV1ContainerPort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "protocol":
-
 			if err := func() error {
 				s.Protocol.Reset()
 				if err := s.Protocol.Decode(d); err != nil {
@@ -23870,7 +23234,6 @@ func (s *IoK8sAPICoreV1ContainerState) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "running":
-
 			if err := func() error {
 				s.Running.Reset()
 				if err := s.Running.Decode(d); err != nil {
@@ -23881,7 +23244,6 @@ func (s *IoK8sAPICoreV1ContainerState) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"running\"")
 			}
 		case "terminated":
-
 			if err := func() error {
 				s.Terminated.Reset()
 				if err := s.Terminated.Decode(d); err != nil {
@@ -23892,7 +23254,6 @@ func (s *IoK8sAPICoreV1ContainerState) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"terminated\"")
 			}
 		case "waiting":
-
 			if err := func() error {
 				s.Waiting.Reset()
 				if err := s.Waiting.Decode(d); err != nil {
@@ -23948,7 +23309,6 @@ func (s *IoK8sAPICoreV1ContainerStateRunning) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "startedAt":
-
 			if err := func() error {
 				s.StartedAt.Reset()
 				if err := s.StartedAt.Decode(d); err != nil {
@@ -24065,7 +23425,6 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "containerID":
-
 			if err := func() error {
 				s.ContainerID.Reset()
 				if err := s.ContainerID.Decode(d); err != nil {
@@ -24077,7 +23436,6 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) Decode(d *jx.Decoder) error {
 			}
 		case "exitCode":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.ExitCode = int32(v)
@@ -24089,7 +23447,6 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"exitCode\"")
 			}
 		case "finishedAt":
-
 			if err := func() error {
 				s.FinishedAt.Reset()
 				if err := s.FinishedAt.Decode(d); err != nil {
@@ -24100,7 +23457,6 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"finishedAt\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -24111,7 +23467,6 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -24122,7 +23477,6 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"reason\"")
 			}
 		case "signal":
-
 			if err := func() error {
 				s.Signal.Reset()
 				if err := s.Signal.Decode(d); err != nil {
@@ -24133,7 +23487,6 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"signal\"")
 			}
 		case "startedAt":
-
 			if err := func() error {
 				s.StartedAt.Reset()
 				if err := s.StartedAt.Decode(d); err != nil {
@@ -24234,7 +23587,6 @@ func (s *IoK8sAPICoreV1ContainerStateWaiting) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -24245,7 +23597,6 @@ func (s *IoK8sAPICoreV1ContainerStateWaiting) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -24370,7 +23721,6 @@ func (s *IoK8sAPICoreV1ContainerStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "containerID":
-
 			if err := func() error {
 				s.ContainerID.Reset()
 				if err := s.ContainerID.Decode(d); err != nil {
@@ -24382,7 +23732,6 @@ func (s *IoK8sAPICoreV1ContainerStatus) Decode(d *jx.Decoder) error {
 			}
 		case "image":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Image = string(v)
@@ -24395,7 +23744,6 @@ func (s *IoK8sAPICoreV1ContainerStatus) Decode(d *jx.Decoder) error {
 			}
 		case "imageID":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.ImageID = string(v)
@@ -24407,7 +23755,6 @@ func (s *IoK8sAPICoreV1ContainerStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"imageID\"")
 			}
 		case "lastState":
-
 			if err := func() error {
 				s.LastState.Reset()
 				if err := s.LastState.Decode(d); err != nil {
@@ -24419,7 +23766,6 @@ func (s *IoK8sAPICoreV1ContainerStatus) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -24432,7 +23778,6 @@ func (s *IoK8sAPICoreV1ContainerStatus) Decode(d *jx.Decoder) error {
 			}
 		case "ready":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Bool()
 				s.Ready = bool(v)
@@ -24445,7 +23790,6 @@ func (s *IoK8sAPICoreV1ContainerStatus) Decode(d *jx.Decoder) error {
 			}
 		case "restartCount":
 			requiredBitSet[0] |= 1 << 6
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.RestartCount = int32(v)
@@ -24457,7 +23801,6 @@ func (s *IoK8sAPICoreV1ContainerStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"restartCount\"")
 			}
 		case "started":
-
 			if err := func() error {
 				s.Started.Reset()
 				if err := s.Started.Decode(d); err != nil {
@@ -24468,7 +23811,6 @@ func (s *IoK8sAPICoreV1ContainerStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"started\"")
 			}
 		case "state":
-
 			if err := func() error {
 				s.State.Reset()
 				if err := s.State.Decode(d); err != nil {
@@ -24556,7 +23898,6 @@ func (s *IoK8sAPICoreV1DaemonEndpoint) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "Port":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Port = int32(v)
@@ -24657,7 +23998,6 @@ func (s *IoK8sAPICoreV1DownwardAPIProjection) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "items":
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -24754,7 +24094,6 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fieldRef":
-
 			if err := func() error {
 				s.FieldRef.Reset()
 				if err := s.FieldRef.Decode(d); err != nil {
@@ -24765,7 +24104,6 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fieldRef\"")
 			}
 		case "mode":
-
 			if err := func() error {
 				s.Mode.Reset()
 				if err := s.Mode.Decode(d); err != nil {
@@ -24777,7 +24115,6 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) Decode(d *jx.Decoder) error {
 			}
 		case "path":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Path = string(v)
@@ -24789,7 +24126,6 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"path\"")
 			}
 		case "resourceFieldRef":
-
 			if err := func() error {
 				s.ResourceFieldRef.Reset()
 				if err := s.ResourceFieldRef.Decode(d); err != nil {
@@ -24902,7 +24238,6 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "defaultMode":
-
 			if err := func() error {
 				s.DefaultMode.Reset()
 				if err := s.DefaultMode.Decode(d); err != nil {
@@ -24913,7 +24248,6 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"defaultMode\"")
 			}
 		case "items":
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -24989,7 +24323,6 @@ func (s *IoK8sAPICoreV1EmptyDirVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "medium":
-
 			if err := func() error {
 				s.Medium.Reset()
 				if err := s.Medium.Decode(d); err != nil {
@@ -25000,7 +24333,6 @@ func (s *IoK8sAPICoreV1EmptyDirVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"medium\"")
 			}
 		case "sizeLimit":
-
 			if err := func() error {
 				s.SizeLimit.Reset()
 				if err := s.SizeLimit.Decode(d); err != nil {
@@ -25087,7 +24419,6 @@ func (s *IoK8sAPICoreV1EndpointAddress) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "hostname":
-
 			if err := func() error {
 				s.Hostname.Reset()
 				if err := s.Hostname.Decode(d); err != nil {
@@ -25099,7 +24430,6 @@ func (s *IoK8sAPICoreV1EndpointAddress) Decode(d *jx.Decoder) error {
 			}
 		case "ip":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.IP = string(v)
@@ -25111,7 +24441,6 @@ func (s *IoK8sAPICoreV1EndpointAddress) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"ip\"")
 			}
 		case "nodeName":
-
 			if err := func() error {
 				s.NodeName.Reset()
 				if err := s.NodeName.Decode(d); err != nil {
@@ -25122,7 +24451,6 @@ func (s *IoK8sAPICoreV1EndpointAddress) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nodeName\"")
 			}
 		case "targetRef":
-
 			if err := func() error {
 				s.TargetRef.Reset()
 				if err := s.TargetRef.Decode(d); err != nil {
@@ -25244,7 +24572,6 @@ func (s *IoK8sAPICoreV1EndpointPort) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "appProtocol":
-
 			if err := func() error {
 				s.AppProtocol.Reset()
 				if err := s.AppProtocol.Decode(d); err != nil {
@@ -25255,7 +24582,6 @@ func (s *IoK8sAPICoreV1EndpointPort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"appProtocol\"")
 			}
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -25267,7 +24593,6 @@ func (s *IoK8sAPICoreV1EndpointPort) Decode(d *jx.Decoder) error {
 			}
 		case "port":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Port = int32(v)
@@ -25279,7 +24604,6 @@ func (s *IoK8sAPICoreV1EndpointPort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"port\"")
 			}
 		case "protocol":
-
 			if err := func() error {
 				s.Protocol.Reset()
 				if err := s.Protocol.Decode(d); err != nil {
@@ -25429,7 +24753,6 @@ func (s *IoK8sAPICoreV1EndpointSubset) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "addresses":
-
 			if err := func() error {
 				s.Addresses = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -25447,7 +24770,6 @@ func (s *IoK8sAPICoreV1EndpointSubset) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"addresses\"")
 			}
 		case "notReadyAddresses":
-
 			if err := func() error {
 				s.NotReadyAddresses = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -25465,7 +24787,6 @@ func (s *IoK8sAPICoreV1EndpointSubset) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"notReadyAddresses\"")
 			}
 		case "ports":
-
 			if err := func() error {
 				s.Ports = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -25579,7 +24900,6 @@ func (s *IoK8sAPICoreV1Endpoints) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -25590,7 +24910,6 @@ func (s *IoK8sAPICoreV1Endpoints) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -25601,7 +24920,6 @@ func (s *IoK8sAPICoreV1Endpoints) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -25612,7 +24930,6 @@ func (s *IoK8sAPICoreV1Endpoints) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "subsets":
-
 			if err := func() error {
 				s.Subsets = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -25718,7 +25035,6 @@ func (s *IoK8sAPICoreV1EndpointsList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -25730,7 +25046,6 @@ func (s *IoK8sAPICoreV1EndpointsList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -25748,7 +25063,6 @@ func (s *IoK8sAPICoreV1EndpointsList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -25759,7 +25073,6 @@ func (s *IoK8sAPICoreV1EndpointsList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -25873,7 +25186,6 @@ func (s *IoK8sAPICoreV1EnvFromSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "configMapRef":
-
 			if err := func() error {
 				s.ConfigMapRef.Reset()
 				if err := s.ConfigMapRef.Decode(d); err != nil {
@@ -25884,7 +25196,6 @@ func (s *IoK8sAPICoreV1EnvFromSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"configMapRef\"")
 			}
 		case "prefix":
-
 			if err := func() error {
 				s.Prefix.Reset()
 				if err := s.Prefix.Decode(d); err != nil {
@@ -25895,7 +25206,6 @@ func (s *IoK8sAPICoreV1EnvFromSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"prefix\"")
 			}
 		case "secretRef":
-
 			if err := func() error {
 				s.SecretRef.Reset()
 				if err := s.SecretRef.Decode(d); err != nil {
@@ -25970,7 +25280,6 @@ func (s *IoK8sAPICoreV1EnvVar) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -25982,7 +25291,6 @@ func (s *IoK8sAPICoreV1EnvVar) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "value":
-
 			if err := func() error {
 				s.Value.Reset()
 				if err := s.Value.Decode(d); err != nil {
@@ -25993,7 +25301,6 @@ func (s *IoK8sAPICoreV1EnvVar) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"value\"")
 			}
 		case "valueFrom":
-
 			if err := func() error {
 				s.ValueFrom.Reset()
 				if err := s.ValueFrom.Decode(d); err != nil {
@@ -26120,7 +25427,6 @@ func (s *IoK8sAPICoreV1EnvVarSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "configMapKeyRef":
-
 			if err := func() error {
 				s.ConfigMapKeyRef.Reset()
 				if err := s.ConfigMapKeyRef.Decode(d); err != nil {
@@ -26131,7 +25437,6 @@ func (s *IoK8sAPICoreV1EnvVarSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"configMapKeyRef\"")
 			}
 		case "fieldRef":
-
 			if err := func() error {
 				s.FieldRef.Reset()
 				if err := s.FieldRef.Decode(d); err != nil {
@@ -26142,7 +25447,6 @@ func (s *IoK8sAPICoreV1EnvVarSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fieldRef\"")
 			}
 		case "resourceFieldRef":
-
 			if err := func() error {
 				s.ResourceFieldRef.Reset()
 				if err := s.ResourceFieldRef.Decode(d); err != nil {
@@ -26153,7 +25457,6 @@ func (s *IoK8sAPICoreV1EnvVarSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"resourceFieldRef\"")
 			}
 		case "secretKeyRef":
-
 			if err := func() error {
 				s.SecretKeyRef.Reset()
 				if err := s.SecretKeyRef.Decode(d); err != nil {
@@ -26535,7 +25838,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "args":
-
 			if err := func() error {
 				s.Args = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -26555,7 +25857,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"args\"")
 			}
 		case "command":
-
 			if err := func() error {
 				s.Command = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -26575,7 +25876,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"command\"")
 			}
 		case "env":
-
 			if err := func() error {
 				s.Env = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -26593,7 +25893,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"env\"")
 			}
 		case "envFrom":
-
 			if err := func() error {
 				s.EnvFrom = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -26611,7 +25910,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"envFrom\"")
 			}
 		case "image":
-
 			if err := func() error {
 				s.Image.Reset()
 				if err := s.Image.Decode(d); err != nil {
@@ -26622,7 +25920,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"image\"")
 			}
 		case "imagePullPolicy":
-
 			if err := func() error {
 				s.ImagePullPolicy.Reset()
 				if err := s.ImagePullPolicy.Decode(d); err != nil {
@@ -26633,7 +25930,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"imagePullPolicy\"")
 			}
 		case "lifecycle":
-
 			if err := func() error {
 				s.Lifecycle.Reset()
 				if err := s.Lifecycle.Decode(d); err != nil {
@@ -26644,7 +25940,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lifecycle\"")
 			}
 		case "livenessProbe":
-
 			if err := func() error {
 				s.LivenessProbe.Reset()
 				if err := s.LivenessProbe.Decode(d); err != nil {
@@ -26656,7 +25951,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[1] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -26668,7 +25962,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "ports":
-
 			if err := func() error {
 				s.Ports = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -26686,7 +25979,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"ports\"")
 			}
 		case "readinessProbe":
-
 			if err := func() error {
 				s.ReadinessProbe.Reset()
 				if err := s.ReadinessProbe.Decode(d); err != nil {
@@ -26697,7 +25989,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"readinessProbe\"")
 			}
 		case "resources":
-
 			if err := func() error {
 				s.Resources.Reset()
 				if err := s.Resources.Decode(d); err != nil {
@@ -26708,7 +25999,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"resources\"")
 			}
 		case "securityContext":
-
 			if err := func() error {
 				s.SecurityContext.Reset()
 				if err := s.SecurityContext.Decode(d); err != nil {
@@ -26719,7 +26009,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"securityContext\"")
 			}
 		case "startupProbe":
-
 			if err := func() error {
 				s.StartupProbe.Reset()
 				if err := s.StartupProbe.Decode(d); err != nil {
@@ -26730,7 +26019,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"startupProbe\"")
 			}
 		case "stdin":
-
 			if err := func() error {
 				s.Stdin.Reset()
 				if err := s.Stdin.Decode(d); err != nil {
@@ -26741,7 +26029,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"stdin\"")
 			}
 		case "stdinOnce":
-
 			if err := func() error {
 				s.StdinOnce.Reset()
 				if err := s.StdinOnce.Decode(d); err != nil {
@@ -26752,7 +26039,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"stdinOnce\"")
 			}
 		case "targetContainerName":
-
 			if err := func() error {
 				s.TargetContainerName.Reset()
 				if err := s.TargetContainerName.Decode(d); err != nil {
@@ -26763,7 +26049,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"targetContainerName\"")
 			}
 		case "terminationMessagePath":
-
 			if err := func() error {
 				s.TerminationMessagePath.Reset()
 				if err := s.TerminationMessagePath.Decode(d); err != nil {
@@ -26774,7 +26059,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"terminationMessagePath\"")
 			}
 		case "terminationMessagePolicy":
-
 			if err := func() error {
 				s.TerminationMessagePolicy.Reset()
 				if err := s.TerminationMessagePolicy.Decode(d); err != nil {
@@ -26785,7 +26069,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"terminationMessagePolicy\"")
 			}
 		case "tty":
-
 			if err := func() error {
 				s.Tty.Reset()
 				if err := s.Tty.Decode(d); err != nil {
@@ -26796,7 +26079,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"tty\"")
 			}
 		case "volumeDevices":
-
 			if err := func() error {
 				s.VolumeDevices = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -26814,7 +26096,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"volumeDevices\"")
 			}
 		case "volumeMounts":
-
 			if err := func() error {
 				s.VolumeMounts = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -26832,7 +26113,6 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"volumeMounts\"")
 			}
 		case "workingDir":
-
 			if err := func() error {
 				s.WorkingDir.Reset()
 				if err := s.WorkingDir.Decode(d); err != nil {
@@ -26922,7 +26202,6 @@ func (s *IoK8sAPICoreV1EphemeralVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "volumeClaimTemplate":
-
 			if err := func() error {
 				s.VolumeClaimTemplate.Reset()
 				if err := s.VolumeClaimTemplate.Decode(d); err != nil {
@@ -27148,7 +26427,6 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "action":
-
 			if err := func() error {
 				s.Action.Reset()
 				if err := s.Action.Decode(d); err != nil {
@@ -27159,7 +26437,6 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"action\"")
 			}
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -27170,7 +26447,6 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "count":
-
 			if err := func() error {
 				s.Count.Reset()
 				if err := s.Count.Decode(d); err != nil {
@@ -27181,7 +26457,6 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"count\"")
 			}
 		case "eventTime":
-
 			if err := func() error {
 				s.EventTime.Reset()
 				if err := s.EventTime.Decode(d); err != nil {
@@ -27192,7 +26467,6 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"eventTime\"")
 			}
 		case "firstTimestamp":
-
 			if err := func() error {
 				s.FirstTimestamp.Reset()
 				if err := s.FirstTimestamp.Decode(d); err != nil {
@@ -27204,7 +26478,6 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 			}
 		case "involvedObject":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				if err := s.InvolvedObject.Decode(d); err != nil {
 					return err
@@ -27214,7 +26487,6 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"involvedObject\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -27225,7 +26497,6 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "lastTimestamp":
-
 			if err := func() error {
 				s.LastTimestamp.Reset()
 				if err := s.LastTimestamp.Decode(d); err != nil {
@@ -27236,7 +26507,6 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lastTimestamp\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -27248,7 +26518,6 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 			}
 		case "metadata":
 			requiredBitSet[1] |= 1 << 1
-
 			if err := func() error {
 				if err := s.Metadata.Decode(d); err != nil {
 					return err
@@ -27258,7 +26527,6 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -27269,7 +26537,6 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"reason\"")
 			}
 		case "related":
-
 			if err := func() error {
 				s.Related.Reset()
 				if err := s.Related.Decode(d); err != nil {
@@ -27280,7 +26547,6 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"related\"")
 			}
 		case "reportingComponent":
-
 			if err := func() error {
 				s.ReportingComponent.Reset()
 				if err := s.ReportingComponent.Decode(d); err != nil {
@@ -27291,7 +26557,6 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"reportingComponent\"")
 			}
 		case "reportingInstance":
-
 			if err := func() error {
 				s.ReportingInstance.Reset()
 				if err := s.ReportingInstance.Decode(d); err != nil {
@@ -27302,7 +26567,6 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"reportingInstance\"")
 			}
 		case "series":
-
 			if err := func() error {
 				s.Series.Reset()
 				if err := s.Series.Decode(d); err != nil {
@@ -27313,7 +26577,6 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"series\"")
 			}
 		case "source":
-
 			if err := func() error {
 				s.Source.Reset()
 				if err := s.Source.Decode(d); err != nil {
@@ -27324,7 +26587,6 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"source\"")
 			}
 		case "type":
-
 			if err := func() error {
 				s.Type.Reset()
 				if err := s.Type.Decode(d); err != nil {
@@ -27457,7 +26719,6 @@ func (s *IoK8sAPICoreV1EventList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -27469,7 +26730,6 @@ func (s *IoK8sAPICoreV1EventList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -27487,7 +26747,6 @@ func (s *IoK8sAPICoreV1EventList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -27498,7 +26757,6 @@ func (s *IoK8sAPICoreV1EventList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -27599,7 +26857,6 @@ func (s *IoK8sAPICoreV1EventSeries) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "count":
-
 			if err := func() error {
 				s.Count.Reset()
 				if err := s.Count.Decode(d); err != nil {
@@ -27610,7 +26867,6 @@ func (s *IoK8sAPICoreV1EventSeries) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"count\"")
 			}
 		case "lastObservedTime":
-
 			if err := func() error {
 				s.LastObservedTime.Reset()
 				if err := s.LastObservedTime.Decode(d); err != nil {
@@ -27679,7 +26935,6 @@ func (s *IoK8sAPICoreV1EventSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "component":
-
 			if err := func() error {
 				s.Component.Reset()
 				if err := s.Component.Decode(d); err != nil {
@@ -27690,7 +26945,6 @@ func (s *IoK8sAPICoreV1EventSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"component\"")
 			}
 		case "host":
-
 			if err := func() error {
 				s.Host.Reset()
 				if err := s.Host.Decode(d); err != nil {
@@ -27758,7 +27012,6 @@ func (s *IoK8sAPICoreV1ExecAction) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "command":
-
 			if err := func() error {
 				s.Command = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -27899,7 +27152,6 @@ func (s *IoK8sAPICoreV1FCVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -27910,7 +27162,6 @@ func (s *IoK8sAPICoreV1FCVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fsType\"")
 			}
 		case "lun":
-
 			if err := func() error {
 				s.Lun.Reset()
 				if err := s.Lun.Decode(d); err != nil {
@@ -27921,7 +27172,6 @@ func (s *IoK8sAPICoreV1FCVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lun\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -27932,7 +27182,6 @@ func (s *IoK8sAPICoreV1FCVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"readOnly\"")
 			}
 		case "targetWWNs":
-
 			if err := func() error {
 				s.TargetWWNs = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -27952,7 +27201,6 @@ func (s *IoK8sAPICoreV1FCVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"targetWWNs\"")
 			}
 		case "wwids":
-
 			if err := func() error {
 				s.Wwids = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -28056,7 +27304,6 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "driver":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Driver = string(v)
@@ -28068,7 +27315,6 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"driver\"")
 			}
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -28079,7 +27325,6 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fsType\"")
 			}
 		case "options":
-
 			if err := func() error {
 				s.Options.Reset()
 				if err := s.Options.Decode(d); err != nil {
@@ -28090,7 +27335,6 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"options\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -28101,7 +27345,6 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"readOnly\"")
 			}
 		case "secretRef":
-
 			if err := func() error {
 				s.SecretRef.Reset()
 				if err := s.SecretRef.Decode(d); err != nil {
@@ -28281,7 +27524,6 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "driver":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Driver = string(v)
@@ -28293,7 +27535,6 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"driver\"")
 			}
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -28304,7 +27545,6 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fsType\"")
 			}
 		case "options":
-
 			if err := func() error {
 				s.Options.Reset()
 				if err := s.Options.Decode(d); err != nil {
@@ -28315,7 +27555,6 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"options\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -28326,7 +27565,6 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"readOnly\"")
 			}
 		case "secretRef":
-
 			if err := func() error {
 				s.SecretRef.Reset()
 				if err := s.SecretRef.Decode(d); err != nil {
@@ -28480,7 +27718,6 @@ func (s *IoK8sAPICoreV1FlockerVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "datasetName":
-
 			if err := func() error {
 				s.DatasetName.Reset()
 				if err := s.DatasetName.Decode(d); err != nil {
@@ -28491,7 +27728,6 @@ func (s *IoK8sAPICoreV1FlockerVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"datasetName\"")
 			}
 		case "datasetUUID":
-
 			if err := func() error {
 				s.DatasetUUID.Reset()
 				if err := s.DatasetUUID.Decode(d); err != nil {
@@ -28581,7 +27817,6 @@ func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) Decode(d *jx.Decoder) erro
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -28592,7 +27827,6 @@ func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) Decode(d *jx.Decoder) erro
 				return errors.Wrap(err, "decode field \"fsType\"")
 			}
 		case "partition":
-
 			if err := func() error {
 				s.Partition.Reset()
 				if err := s.Partition.Decode(d); err != nil {
@@ -28604,7 +27838,6 @@ func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) Decode(d *jx.Decoder) erro
 			}
 		case "pdName":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.PdName = string(v)
@@ -28616,7 +27849,6 @@ func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) Decode(d *jx.Decoder) erro
 				return errors.Wrap(err, "decode field \"pdName\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -28725,7 +27957,6 @@ func (s *IoK8sAPICoreV1GitRepoVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "directory":
-
 			if err := func() error {
 				s.Directory.Reset()
 				if err := s.Directory.Decode(d); err != nil {
@@ -28737,7 +27968,6 @@ func (s *IoK8sAPICoreV1GitRepoVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "repository":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Repository = string(v)
@@ -28749,7 +27979,6 @@ func (s *IoK8sAPICoreV1GitRepoVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"repository\"")
 			}
 		case "revision":
-
 			if err := func() error {
 				s.Revision.Reset()
 				if err := s.Revision.Decode(d); err != nil {
@@ -28863,7 +28092,6 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) Decode(d *jx.Decoder) er
 		switch string(k) {
 		case "endpoints":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Endpoints = string(v)
@@ -28875,7 +28103,6 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) Decode(d *jx.Decoder) er
 				return errors.Wrap(err, "decode field \"endpoints\"")
 			}
 		case "endpointsNamespace":
-
 			if err := func() error {
 				s.EndpointsNamespace.Reset()
 				if err := s.EndpointsNamespace.Decode(d); err != nil {
@@ -28887,7 +28114,6 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) Decode(d *jx.Decoder) er
 			}
 		case "path":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Path = string(v)
@@ -28899,7 +28125,6 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) Decode(d *jx.Decoder) er
 				return errors.Wrap(err, "decode field \"path\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -29003,7 +28228,6 @@ func (s *IoK8sAPICoreV1GlusterfsVolumeSource) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "endpoints":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Endpoints = string(v)
@@ -29016,7 +28240,6 @@ func (s *IoK8sAPICoreV1GlusterfsVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "path":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Path = string(v)
@@ -29028,7 +28251,6 @@ func (s *IoK8sAPICoreV1GlusterfsVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"path\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -29175,7 +28397,6 @@ func (s *IoK8sAPICoreV1HTTPGetAction) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "host":
-
 			if err := func() error {
 				s.Host.Reset()
 				if err := s.Host.Decode(d); err != nil {
@@ -29186,7 +28407,6 @@ func (s *IoK8sAPICoreV1HTTPGetAction) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"host\"")
 			}
 		case "httpHeaders":
-
 			if err := func() error {
 				s.HttpHeaders = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -29204,7 +28424,6 @@ func (s *IoK8sAPICoreV1HTTPGetAction) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"httpHeaders\"")
 			}
 		case "path":
-
 			if err := func() error {
 				s.Path.Reset()
 				if err := s.Path.Decode(d); err != nil {
@@ -29216,7 +28435,6 @@ func (s *IoK8sAPICoreV1HTTPGetAction) Decode(d *jx.Decoder) error {
 			}
 		case "port":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				{
 					var unwrapped string
@@ -29232,7 +28450,6 @@ func (s *IoK8sAPICoreV1HTTPGetAction) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"port\"")
 			}
 		case "scheme":
-
 			if err := func() error {
 				s.Scheme.Reset()
 				if err := s.Scheme.Decode(d); err != nil {
@@ -29326,7 +28543,6 @@ func (s *IoK8sAPICoreV1HTTPHeader) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -29339,7 +28555,6 @@ func (s *IoK8sAPICoreV1HTTPHeader) Decode(d *jx.Decoder) error {
 			}
 		case "value":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Value = string(v)
@@ -29454,7 +28669,6 @@ func (s *IoK8sAPICoreV1Handler) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "exec":
-
 			if err := func() error {
 				s.Exec.Reset()
 				if err := s.Exec.Decode(d); err != nil {
@@ -29465,7 +28679,6 @@ func (s *IoK8sAPICoreV1Handler) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"exec\"")
 			}
 		case "httpGet":
-
 			if err := func() error {
 				s.HttpGet.Reset()
 				if err := s.HttpGet.Decode(d); err != nil {
@@ -29476,7 +28689,6 @@ func (s *IoK8sAPICoreV1Handler) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"httpGet\"")
 			}
 		case "tcpSocket":
-
 			if err := func() error {
 				s.TcpSocket.Reset()
 				if err := s.TcpSocket.Decode(d); err != nil {
@@ -29557,7 +28769,6 @@ func (s *IoK8sAPICoreV1HostAlias) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "hostnames":
-
 			if err := func() error {
 				s.Hostnames = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -29577,7 +28788,6 @@ func (s *IoK8sAPICoreV1HostAlias) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hostnames\"")
 			}
 		case "ip":
-
 			if err := func() error {
 				s.IP.Reset()
 				if err := s.IP.Decode(d); err != nil {
@@ -29642,7 +28852,6 @@ func (s *IoK8sAPICoreV1HostPathVolumeSource) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "path":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Path = string(v)
@@ -29654,7 +28863,6 @@ func (s *IoK8sAPICoreV1HostPathVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"path\"")
 			}
 		case "type":
-
 			if err := func() error {
 				s.Type.Reset()
 				if err := s.Type.Decode(d); err != nil {
@@ -29858,7 +29066,6 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) error 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chapAuthDiscovery":
-
 			if err := func() error {
 				s.ChapAuthDiscovery.Reset()
 				if err := s.ChapAuthDiscovery.Decode(d); err != nil {
@@ -29869,7 +29076,6 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"chapAuthDiscovery\"")
 			}
 		case "chapAuthSession":
-
 			if err := func() error {
 				s.ChapAuthSession.Reset()
 				if err := s.ChapAuthSession.Decode(d); err != nil {
@@ -29880,7 +29086,6 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"chapAuthSession\"")
 			}
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -29891,7 +29096,6 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"fsType\"")
 			}
 		case "initiatorName":
-
 			if err := func() error {
 				s.InitiatorName.Reset()
 				if err := s.InitiatorName.Decode(d); err != nil {
@@ -29903,7 +29107,6 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) error 
 			}
 		case "iqn":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Iqn = string(v)
@@ -29915,7 +29118,6 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"iqn\"")
 			}
 		case "iscsiInterface":
-
 			if err := func() error {
 				s.IscsiInterface.Reset()
 				if err := s.IscsiInterface.Decode(d); err != nil {
@@ -29927,7 +29129,6 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) error 
 			}
 		case "lun":
 			requiredBitSet[0] |= 1 << 6
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Lun = int32(v)
@@ -29939,7 +29140,6 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"lun\"")
 			}
 		case "portals":
-
 			if err := func() error {
 				s.Portals = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -29959,7 +29159,6 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"portals\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -29970,7 +29169,6 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"readOnly\"")
 			}
 		case "secretRef":
-
 			if err := func() error {
 				s.SecretRef.Reset()
 				if err := s.SecretRef.Decode(d); err != nil {
@@ -29982,7 +29180,6 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) error 
 			}
 		case "targetPortal":
 			requiredBitSet[1] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.TargetPortal = string(v)
@@ -30188,7 +29385,6 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chapAuthDiscovery":
-
 			if err := func() error {
 				s.ChapAuthDiscovery.Reset()
 				if err := s.ChapAuthDiscovery.Decode(d); err != nil {
@@ -30199,7 +29395,6 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"chapAuthDiscovery\"")
 			}
 		case "chapAuthSession":
-
 			if err := func() error {
 				s.ChapAuthSession.Reset()
 				if err := s.ChapAuthSession.Decode(d); err != nil {
@@ -30210,7 +29405,6 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"chapAuthSession\"")
 			}
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -30221,7 +29415,6 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fsType\"")
 			}
 		case "initiatorName":
-
 			if err := func() error {
 				s.InitiatorName.Reset()
 				if err := s.InitiatorName.Decode(d); err != nil {
@@ -30233,7 +29426,6 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "iqn":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Iqn = string(v)
@@ -30245,7 +29437,6 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"iqn\"")
 			}
 		case "iscsiInterface":
-
 			if err := func() error {
 				s.IscsiInterface.Reset()
 				if err := s.IscsiInterface.Decode(d); err != nil {
@@ -30257,7 +29448,6 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "lun":
 			requiredBitSet[0] |= 1 << 6
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Lun = int32(v)
@@ -30269,7 +29459,6 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lun\"")
 			}
 		case "portals":
-
 			if err := func() error {
 				s.Portals = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -30289,7 +29478,6 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"portals\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -30300,7 +29488,6 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"readOnly\"")
 			}
 		case "secretRef":
-
 			if err := func() error {
 				s.SecretRef.Reset()
 				if err := s.SecretRef.Decode(d); err != nil {
@@ -30312,7 +29499,6 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "targetPortal":
 			requiredBitSet[1] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.TargetPortal = string(v)
@@ -30418,7 +29604,6 @@ func (s *IoK8sAPICoreV1KeyToPath) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "key":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Key = string(v)
@@ -30430,7 +29615,6 @@ func (s *IoK8sAPICoreV1KeyToPath) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"key\"")
 			}
 		case "mode":
-
 			if err := func() error {
 				s.Mode.Reset()
 				if err := s.Mode.Decode(d); err != nil {
@@ -30442,7 +29626,6 @@ func (s *IoK8sAPICoreV1KeyToPath) Decode(d *jx.Decoder) error {
 			}
 		case "path":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Path = string(v)
@@ -30544,7 +29727,6 @@ func (s *IoK8sAPICoreV1Lifecycle) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "postStart":
-
 			if err := func() error {
 				s.PostStart.Reset()
 				if err := s.PostStart.Decode(d); err != nil {
@@ -30555,7 +29737,6 @@ func (s *IoK8sAPICoreV1Lifecycle) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"postStart\"")
 			}
 		case "preStop":
-
 			if err := func() error {
 				s.PreStop.Reset()
 				if err := s.PreStop.Decode(d); err != nil {
@@ -30650,7 +29831,6 @@ func (s *IoK8sAPICoreV1LimitRange) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -30661,7 +29841,6 @@ func (s *IoK8sAPICoreV1LimitRange) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -30672,7 +29851,6 @@ func (s *IoK8sAPICoreV1LimitRange) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -30683,7 +29861,6 @@ func (s *IoK8sAPICoreV1LimitRange) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -30802,7 +29979,6 @@ func (s *IoK8sAPICoreV1LimitRangeItem) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "default":
-
 			if err := func() error {
 				s.Default.Reset()
 				if err := s.Default.Decode(d); err != nil {
@@ -30813,7 +29989,6 @@ func (s *IoK8sAPICoreV1LimitRangeItem) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"default\"")
 			}
 		case "defaultRequest":
-
 			if err := func() error {
 				s.DefaultRequest.Reset()
 				if err := s.DefaultRequest.Decode(d); err != nil {
@@ -30824,7 +29999,6 @@ func (s *IoK8sAPICoreV1LimitRangeItem) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"defaultRequest\"")
 			}
 		case "max":
-
 			if err := func() error {
 				s.Max.Reset()
 				if err := s.Max.Decode(d); err != nil {
@@ -30835,7 +30009,6 @@ func (s *IoK8sAPICoreV1LimitRangeItem) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"max\"")
 			}
 		case "maxLimitRequestRatio":
-
 			if err := func() error {
 				s.MaxLimitRequestRatio.Reset()
 				if err := s.MaxLimitRequestRatio.Decode(d); err != nil {
@@ -30846,7 +30019,6 @@ func (s *IoK8sAPICoreV1LimitRangeItem) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"maxLimitRequestRatio\"")
 			}
 		case "min":
-
 			if err := func() error {
 				s.Min.Reset()
 				if err := s.Min.Decode(d); err != nil {
@@ -30858,7 +30030,6 @@ func (s *IoK8sAPICoreV1LimitRangeItem) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -31275,7 +30446,6 @@ func (s *IoK8sAPICoreV1LimitRangeList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -31287,7 +30457,6 @@ func (s *IoK8sAPICoreV1LimitRangeList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -31305,7 +30474,6 @@ func (s *IoK8sAPICoreV1LimitRangeList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -31316,7 +30484,6 @@ func (s *IoK8sAPICoreV1LimitRangeList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -31415,7 +30582,6 @@ func (s *IoK8sAPICoreV1LimitRangeSpec) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "limits":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				s.Limits = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -31548,7 +30714,6 @@ func (s *IoK8sAPICoreV1LoadBalancerIngress) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "hostname":
-
 			if err := func() error {
 				s.Hostname.Reset()
 				if err := s.Hostname.Decode(d); err != nil {
@@ -31559,7 +30724,6 @@ func (s *IoK8sAPICoreV1LoadBalancerIngress) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hostname\"")
 			}
 		case "ip":
-
 			if err := func() error {
 				s.IP.Reset()
 				if err := s.IP.Decode(d); err != nil {
@@ -31570,7 +30734,6 @@ func (s *IoK8sAPICoreV1LoadBalancerIngress) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"ip\"")
 			}
 		case "ports":
-
 			if err := func() error {
 				s.Ports = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -31645,7 +30808,6 @@ func (s *IoK8sAPICoreV1LoadBalancerStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "ingress":
-
 			if err := func() error {
 				s.Ingress = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -31708,7 +30870,6 @@ func (s *IoK8sAPICoreV1LocalObjectReference) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -31775,7 +30936,6 @@ func (s *IoK8sAPICoreV1LocalVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -31787,7 +30947,6 @@ func (s *IoK8sAPICoreV1LocalVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "path":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Path = string(v)
@@ -31892,7 +31051,6 @@ func (s *IoK8sAPICoreV1NFSVolumeSource) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "path":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Path = string(v)
@@ -31904,7 +31062,6 @@ func (s *IoK8sAPICoreV1NFSVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"path\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -31916,7 +31073,6 @@ func (s *IoK8sAPICoreV1NFSVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "server":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Server = string(v)
@@ -32057,7 +31213,6 @@ func (s *IoK8sAPICoreV1Namespace) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -32068,7 +31223,6 @@ func (s *IoK8sAPICoreV1Namespace) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -32079,7 +31233,6 @@ func (s *IoK8sAPICoreV1Namespace) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -32090,7 +31243,6 @@ func (s *IoK8sAPICoreV1Namespace) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -32101,7 +31253,6 @@ func (s *IoK8sAPICoreV1Namespace) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -32201,7 +31352,6 @@ func (s *IoK8sAPICoreV1NamespaceCondition) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -32212,7 +31362,6 @@ func (s *IoK8sAPICoreV1NamespaceCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -32223,7 +31372,6 @@ func (s *IoK8sAPICoreV1NamespaceCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -32235,7 +31383,6 @@ func (s *IoK8sAPICoreV1NamespaceCondition) Decode(d *jx.Decoder) error {
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -32248,7 +31395,6 @@ func (s *IoK8sAPICoreV1NamespaceCondition) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -32380,7 +31526,6 @@ func (s *IoK8sAPICoreV1NamespaceList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -32392,7 +31537,6 @@ func (s *IoK8sAPICoreV1NamespaceList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -32410,7 +31554,6 @@ func (s *IoK8sAPICoreV1NamespaceList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -32421,7 +31564,6 @@ func (s *IoK8sAPICoreV1NamespaceList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -32521,7 +31663,6 @@ func (s *IoK8sAPICoreV1NamespaceSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "finalizers":
-
 			if err := func() error {
 				s.Finalizers = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -32611,7 +31752,6 @@ func (s *IoK8sAPICoreV1NamespaceStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -32629,7 +31769,6 @@ func (s *IoK8sAPICoreV1NamespaceStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"conditions\"")
 			}
 		case "phase":
-
 			if err := func() error {
 				s.Phase.Reset()
 				if err := s.Phase.Decode(d); err != nil {
@@ -32737,7 +31876,6 @@ func (s *IoK8sAPICoreV1Node) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -32748,7 +31886,6 @@ func (s *IoK8sAPICoreV1Node) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -32759,7 +31896,6 @@ func (s *IoK8sAPICoreV1Node) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -32770,7 +31906,6 @@ func (s *IoK8sAPICoreV1Node) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -32781,7 +31916,6 @@ func (s *IoK8sAPICoreV1Node) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -32843,7 +31977,6 @@ func (s *IoK8sAPICoreV1NodeAddress) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "address":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Address = string(v)
@@ -32856,7 +31989,6 @@ func (s *IoK8sAPICoreV1NodeAddress) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -32970,7 +32102,6 @@ func (s *IoK8sAPICoreV1NodeAffinity) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "preferredDuringSchedulingIgnoredDuringExecution":
-
 			if err := func() error {
 				s.PreferredDuringSchedulingIgnoredDuringExecution = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -32988,7 +32119,6 @@ func (s *IoK8sAPICoreV1NodeAffinity) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"preferredDuringSchedulingIgnoredDuringExecution\"")
 			}
 		case "requiredDuringSchedulingIgnoredDuringExecution":
-
 			if err := func() error {
 				s.RequiredDuringSchedulingIgnoredDuringExecution.Reset()
 				if err := s.RequiredDuringSchedulingIgnoredDuringExecution.Decode(d); err != nil {
@@ -33101,7 +32231,6 @@ func (s *IoK8sAPICoreV1NodeCondition) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastHeartbeatTime":
-
 			if err := func() error {
 				s.LastHeartbeatTime.Reset()
 				if err := s.LastHeartbeatTime.Decode(d); err != nil {
@@ -33112,7 +32241,6 @@ func (s *IoK8sAPICoreV1NodeCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lastHeartbeatTime\"")
 			}
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -33123,7 +32251,6 @@ func (s *IoK8sAPICoreV1NodeCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -33134,7 +32261,6 @@ func (s *IoK8sAPICoreV1NodeCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -33146,7 +32272,6 @@ func (s *IoK8sAPICoreV1NodeCondition) Decode(d *jx.Decoder) error {
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -33159,7 +32284,6 @@ func (s *IoK8sAPICoreV1NodeCondition) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -33248,7 +32372,6 @@ func (s *IoK8sAPICoreV1NodeConfigSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "configMap":
-
 			if err := func() error {
 				s.ConfigMap.Reset()
 				if err := s.ConfigMap.Decode(d); err != nil {
@@ -33343,7 +32466,6 @@ func (s *IoK8sAPICoreV1NodeConfigStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "active":
-
 			if err := func() error {
 				s.Active.Reset()
 				if err := s.Active.Decode(d); err != nil {
@@ -33354,7 +32476,6 @@ func (s *IoK8sAPICoreV1NodeConfigStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"active\"")
 			}
 		case "assigned":
-
 			if err := func() error {
 				s.Assigned.Reset()
 				if err := s.Assigned.Decode(d); err != nil {
@@ -33365,7 +32486,6 @@ func (s *IoK8sAPICoreV1NodeConfigStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"assigned\"")
 			}
 		case "error":
-
 			if err := func() error {
 				s.Error.Reset()
 				if err := s.Error.Decode(d); err != nil {
@@ -33376,7 +32496,6 @@ func (s *IoK8sAPICoreV1NodeConfigStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"error\"")
 			}
 		case "lastKnownGood":
-
 			if err := func() error {
 				s.LastKnownGood.Reset()
 				if err := s.LastKnownGood.Decode(d); err != nil {
@@ -33432,7 +32551,6 @@ func (s *IoK8sAPICoreV1NodeDaemonEndpoints) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "kubeletEndpoint":
-
 			if err := func() error {
 				s.KubeletEndpoint.Reset()
 				if err := s.KubeletEndpoint.Decode(d); err != nil {
@@ -33531,7 +32649,6 @@ func (s *IoK8sAPICoreV1NodeList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -33543,7 +32660,6 @@ func (s *IoK8sAPICoreV1NodeList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -33561,7 +32677,6 @@ func (s *IoK8sAPICoreV1NodeList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -33572,7 +32687,6 @@ func (s *IoK8sAPICoreV1NodeList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -33671,7 +32785,6 @@ func (s *IoK8sAPICoreV1NodeSelector) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "nodeSelectorTerms":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				s.NodeSelectorTerms = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -33794,7 +32907,6 @@ func (s *IoK8sAPICoreV1NodeSelectorRequirement) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "key":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Key = string(v)
@@ -33807,7 +32919,6 @@ func (s *IoK8sAPICoreV1NodeSelectorRequirement) Decode(d *jx.Decoder) error {
 			}
 		case "operator":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Operator = string(v)
@@ -33819,7 +32930,6 @@ func (s *IoK8sAPICoreV1NodeSelectorRequirement) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"operator\"")
 			}
 		case "values":
-
 			if err := func() error {
 				s.Values = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -33953,7 +33063,6 @@ func (s *IoK8sAPICoreV1NodeSelectorTerm) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "matchExpressions":
-
 			if err := func() error {
 				s.MatchExpressions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -33971,7 +33080,6 @@ func (s *IoK8sAPICoreV1NodeSelectorTerm) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"matchExpressions\"")
 			}
 		case "matchFields":
-
 			if err := func() error {
 				s.MatchFields = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -34136,7 +33244,6 @@ func (s *IoK8sAPICoreV1NodeSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "configSource":
-
 			if err := func() error {
 				s.ConfigSource.Reset()
 				if err := s.ConfigSource.Decode(d); err != nil {
@@ -34147,7 +33254,6 @@ func (s *IoK8sAPICoreV1NodeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"configSource\"")
 			}
 		case "externalID":
-
 			if err := func() error {
 				s.ExternalID.Reset()
 				if err := s.ExternalID.Decode(d); err != nil {
@@ -34158,7 +33264,6 @@ func (s *IoK8sAPICoreV1NodeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"externalID\"")
 			}
 		case "podCIDR":
-
 			if err := func() error {
 				s.PodCIDR.Reset()
 				if err := s.PodCIDR.Decode(d); err != nil {
@@ -34169,7 +33274,6 @@ func (s *IoK8sAPICoreV1NodeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"podCIDR\"")
 			}
 		case "podCIDRs":
-
 			if err := func() error {
 				s.PodCIDRs = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -34189,7 +33293,6 @@ func (s *IoK8sAPICoreV1NodeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"podCIDRs\"")
 			}
 		case "providerID":
-
 			if err := func() error {
 				s.ProviderID.Reset()
 				if err := s.ProviderID.Decode(d); err != nil {
@@ -34200,7 +33303,6 @@ func (s *IoK8sAPICoreV1NodeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"providerID\"")
 			}
 		case "taints":
-
 			if err := func() error {
 				s.Taints = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -34218,7 +33320,6 @@ func (s *IoK8sAPICoreV1NodeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"taints\"")
 			}
 		case "unschedulable":
-
 			if err := func() error {
 				s.Unschedulable.Reset()
 				if err := s.Unschedulable.Decode(d); err != nil {
@@ -34464,7 +33565,6 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "addresses":
-
 			if err := func() error {
 				s.Addresses = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -34482,7 +33582,6 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"addresses\"")
 			}
 		case "allocatable":
-
 			if err := func() error {
 				s.Allocatable.Reset()
 				if err := s.Allocatable.Decode(d); err != nil {
@@ -34493,7 +33592,6 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"allocatable\"")
 			}
 		case "capacity":
-
 			if err := func() error {
 				s.Capacity.Reset()
 				if err := s.Capacity.Decode(d); err != nil {
@@ -34504,7 +33602,6 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"capacity\"")
 			}
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -34522,7 +33619,6 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"conditions\"")
 			}
 		case "config":
-
 			if err := func() error {
 				s.Config.Reset()
 				if err := s.Config.Decode(d); err != nil {
@@ -34533,7 +33629,6 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"config\"")
 			}
 		case "daemonEndpoints":
-
 			if err := func() error {
 				s.DaemonEndpoints.Reset()
 				if err := s.DaemonEndpoints.Decode(d); err != nil {
@@ -34544,7 +33639,6 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"daemonEndpoints\"")
 			}
 		case "images":
-
 			if err := func() error {
 				s.Images = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -34562,7 +33656,6 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"images\"")
 			}
 		case "nodeInfo":
-
 			if err := func() error {
 				s.NodeInfo.Reset()
 				if err := s.NodeInfo.Decode(d); err != nil {
@@ -34573,7 +33666,6 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nodeInfo\"")
 			}
 		case "phase":
-
 			if err := func() error {
 				s.Phase.Reset()
 				if err := s.Phase.Decode(d); err != nil {
@@ -34584,7 +33676,6 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"phase\"")
 			}
 		case "volumesAttached":
-
 			if err := func() error {
 				s.VolumesAttached = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -34602,7 +33693,6 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"volumesAttached\"")
 			}
 		case "volumesInUse":
-
 			if err := func() error {
 				s.VolumesInUse = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -34843,7 +33933,6 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "architecture":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Architecture = string(v)
@@ -34856,7 +33945,6 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 			}
 		case "bootID":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.BootID = string(v)
@@ -34869,7 +33957,6 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 			}
 		case "containerRuntimeVersion":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.ContainerRuntimeVersion = string(v)
@@ -34882,7 +33969,6 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 			}
 		case "kernelVersion":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.KernelVersion = string(v)
@@ -34895,7 +33981,6 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 			}
 		case "kubeProxyVersion":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.KubeProxyVersion = string(v)
@@ -34908,7 +33993,6 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 			}
 		case "kubeletVersion":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.KubeletVersion = string(v)
@@ -34921,7 +34005,6 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 			}
 		case "machineID":
 			requiredBitSet[0] |= 1 << 6
-
 			if err := func() error {
 				v, err := d.Str()
 				s.MachineID = string(v)
@@ -34934,7 +34017,6 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 			}
 		case "operatingSystem":
 			requiredBitSet[0] |= 1 << 7
-
 			if err := func() error {
 				v, err := d.Str()
 				s.OperatingSystem = string(v)
@@ -34947,7 +34029,6 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 			}
 		case "osImage":
 			requiredBitSet[1] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.OsImage = string(v)
@@ -34960,7 +34041,6 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 			}
 		case "systemUUID":
 			requiredBitSet[1] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.SystemUUID = string(v)
@@ -35061,7 +34141,6 @@ func (s *IoK8sAPICoreV1ObjectFieldSelector) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -35073,7 +34152,6 @@ func (s *IoK8sAPICoreV1ObjectFieldSelector) Decode(d *jx.Decoder) error {
 			}
 		case "fieldPath":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.FieldPath = string(v)
@@ -35240,7 +34318,6 @@ func (s *IoK8sAPICoreV1ObjectReference) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -35251,7 +34328,6 @@ func (s *IoK8sAPICoreV1ObjectReference) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "fieldPath":
-
 			if err := func() error {
 				s.FieldPath.Reset()
 				if err := s.FieldPath.Decode(d); err != nil {
@@ -35262,7 +34338,6 @@ func (s *IoK8sAPICoreV1ObjectReference) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fieldPath\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -35273,7 +34348,6 @@ func (s *IoK8sAPICoreV1ObjectReference) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -35284,7 +34358,6 @@ func (s *IoK8sAPICoreV1ObjectReference) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "namespace":
-
 			if err := func() error {
 				s.Namespace.Reset()
 				if err := s.Namespace.Decode(d); err != nil {
@@ -35295,7 +34368,6 @@ func (s *IoK8sAPICoreV1ObjectReference) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"namespace\"")
 			}
 		case "resourceVersion":
-
 			if err := func() error {
 				s.ResourceVersion.Reset()
 				if err := s.ResourceVersion.Decode(d); err != nil {
@@ -35306,7 +34378,6 @@ func (s *IoK8sAPICoreV1ObjectReference) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"resourceVersion\"")
 			}
 		case "uid":
-
 			if err := func() error {
 				s.UID.Reset()
 				if err := s.UID.Decode(d); err != nil {
@@ -35414,7 +34485,6 @@ func (s *IoK8sAPICoreV1PersistentVolume) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -35425,7 +34495,6 @@ func (s *IoK8sAPICoreV1PersistentVolume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -35436,7 +34505,6 @@ func (s *IoK8sAPICoreV1PersistentVolume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -35447,7 +34515,6 @@ func (s *IoK8sAPICoreV1PersistentVolume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -35458,7 +34525,6 @@ func (s *IoK8sAPICoreV1PersistentVolume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -35566,7 +34632,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaim) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -35577,7 +34642,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaim) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -35588,7 +34652,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaim) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -35599,7 +34662,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaim) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -35610,7 +34672,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaim) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -35723,7 +34784,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) Decode(d *jx.Decoder) err
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastProbeTime":
-
 			if err := func() error {
 				s.LastProbeTime.Reset()
 				if err := s.LastProbeTime.Decode(d); err != nil {
@@ -35734,7 +34794,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"lastProbeTime\"")
 			}
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -35745,7 +34804,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -35756,7 +34814,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -35768,7 +34825,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) Decode(d *jx.Decoder) err
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -35781,7 +34837,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) Decode(d *jx.Decoder) err
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -35913,7 +34968,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -35925,7 +34979,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -35943,7 +34996,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -35954,7 +35006,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -36145,7 +35196,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "accessModes":
-
 			if err := func() error {
 				s.AccessModes = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -36165,7 +35215,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"accessModes\"")
 			}
 		case "dataSource":
-
 			if err := func() error {
 				s.DataSource.Reset()
 				if err := s.DataSource.Decode(d); err != nil {
@@ -36176,7 +35225,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"dataSource\"")
 			}
 		case "dataSourceRef":
-
 			if err := func() error {
 				s.DataSourceRef.Reset()
 				if err := s.DataSourceRef.Decode(d); err != nil {
@@ -36187,7 +35235,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"dataSourceRef\"")
 			}
 		case "resources":
-
 			if err := func() error {
 				s.Resources.Reset()
 				if err := s.Resources.Decode(d); err != nil {
@@ -36198,7 +35245,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"resources\"")
 			}
 		case "selector":
-
 			if err := func() error {
 				s.Selector.Reset()
 				if err := s.Selector.Decode(d); err != nil {
@@ -36209,7 +35255,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"selector\"")
 			}
 		case "storageClassName":
-
 			if err := func() error {
 				s.StorageClassName.Reset()
 				if err := s.StorageClassName.Decode(d); err != nil {
@@ -36220,7 +35265,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"storageClassName\"")
 			}
 		case "volumeMode":
-
 			if err := func() error {
 				s.VolumeMode.Reset()
 				if err := s.VolumeMode.Decode(d); err != nil {
@@ -36231,7 +35275,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"volumeMode\"")
 			}
 		case "volumeName":
-
 			if err := func() error {
 				s.VolumeName.Reset()
 				if err := s.VolumeName.Decode(d); err != nil {
@@ -36350,7 +35393,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) Decode(d *jx.Decoder) error 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "accessModes":
-
 			if err := func() error {
 				s.AccessModes = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -36370,7 +35412,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"accessModes\"")
 			}
 		case "capacity":
-
 			if err := func() error {
 				s.Capacity.Reset()
 				if err := s.Capacity.Decode(d); err != nil {
@@ -36381,7 +35422,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"capacity\"")
 			}
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -36399,7 +35439,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"conditions\"")
 			}
 		case "phase":
-
 			if err := func() error {
 				s.Phase.Reset()
 				if err := s.Phase.Decode(d); err != nil {
@@ -36523,7 +35562,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) Decode(d *jx.Decoder) erro
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -36535,7 +35573,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) Decode(d *jx.Decoder) erro
 			}
 		case "spec":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				if err := s.Spec.Decode(d); err != nil {
 					return err
@@ -36631,7 +35668,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Decode(d *jx.Decoder) 
 		switch string(k) {
 		case "claimName":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.ClaimName = string(v)
@@ -36643,7 +35679,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Decode(d *jx.Decoder) 
 				return errors.Wrap(err, "decode field \"claimName\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -36774,7 +35809,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -36786,7 +35820,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -36804,7 +35837,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -36815,7 +35847,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -37304,7 +36335,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "accessModes":
-
 			if err := func() error {
 				s.AccessModes = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -37324,7 +36354,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"accessModes\"")
 			}
 		case "awsElasticBlockStore":
-
 			if err := func() error {
 				s.AwsElasticBlockStore.Reset()
 				if err := s.AwsElasticBlockStore.Decode(d); err != nil {
@@ -37335,7 +36364,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"awsElasticBlockStore\"")
 			}
 		case "azureDisk":
-
 			if err := func() error {
 				s.AzureDisk.Reset()
 				if err := s.AzureDisk.Decode(d); err != nil {
@@ -37346,7 +36374,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"azureDisk\"")
 			}
 		case "azureFile":
-
 			if err := func() error {
 				s.AzureFile.Reset()
 				if err := s.AzureFile.Decode(d); err != nil {
@@ -37357,7 +36384,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"azureFile\"")
 			}
 		case "capacity":
-
 			if err := func() error {
 				s.Capacity.Reset()
 				if err := s.Capacity.Decode(d); err != nil {
@@ -37368,7 +36394,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"capacity\"")
 			}
 		case "cephfs":
-
 			if err := func() error {
 				s.Cephfs.Reset()
 				if err := s.Cephfs.Decode(d); err != nil {
@@ -37379,7 +36404,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"cephfs\"")
 			}
 		case "cinder":
-
 			if err := func() error {
 				s.Cinder.Reset()
 				if err := s.Cinder.Decode(d); err != nil {
@@ -37390,7 +36414,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"cinder\"")
 			}
 		case "claimRef":
-
 			if err := func() error {
 				s.ClaimRef.Reset()
 				if err := s.ClaimRef.Decode(d); err != nil {
@@ -37401,7 +36424,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"claimRef\"")
 			}
 		case "csi":
-
 			if err := func() error {
 				s.Csi.Reset()
 				if err := s.Csi.Decode(d); err != nil {
@@ -37412,7 +36434,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"csi\"")
 			}
 		case "fc":
-
 			if err := func() error {
 				s.Fc.Reset()
 				if err := s.Fc.Decode(d); err != nil {
@@ -37423,7 +36444,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fc\"")
 			}
 		case "flexVolume":
-
 			if err := func() error {
 				s.FlexVolume.Reset()
 				if err := s.FlexVolume.Decode(d); err != nil {
@@ -37434,7 +36454,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"flexVolume\"")
 			}
 		case "flocker":
-
 			if err := func() error {
 				s.Flocker.Reset()
 				if err := s.Flocker.Decode(d); err != nil {
@@ -37445,7 +36464,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"flocker\"")
 			}
 		case "gcePersistentDisk":
-
 			if err := func() error {
 				s.GcePersistentDisk.Reset()
 				if err := s.GcePersistentDisk.Decode(d); err != nil {
@@ -37456,7 +36474,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"gcePersistentDisk\"")
 			}
 		case "glusterfs":
-
 			if err := func() error {
 				s.Glusterfs.Reset()
 				if err := s.Glusterfs.Decode(d); err != nil {
@@ -37467,7 +36484,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"glusterfs\"")
 			}
 		case "hostPath":
-
 			if err := func() error {
 				s.HostPath.Reset()
 				if err := s.HostPath.Decode(d); err != nil {
@@ -37478,7 +36494,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hostPath\"")
 			}
 		case "iscsi":
-
 			if err := func() error {
 				s.Iscsi.Reset()
 				if err := s.Iscsi.Decode(d); err != nil {
@@ -37489,7 +36504,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"iscsi\"")
 			}
 		case "local":
-
 			if err := func() error {
 				s.Local.Reset()
 				if err := s.Local.Decode(d); err != nil {
@@ -37500,7 +36514,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"local\"")
 			}
 		case "mountOptions":
-
 			if err := func() error {
 				s.MountOptions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -37520,7 +36533,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"mountOptions\"")
 			}
 		case "nfs":
-
 			if err := func() error {
 				s.Nfs.Reset()
 				if err := s.Nfs.Decode(d); err != nil {
@@ -37531,7 +36543,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nfs\"")
 			}
 		case "nodeAffinity":
-
 			if err := func() error {
 				s.NodeAffinity.Reset()
 				if err := s.NodeAffinity.Decode(d); err != nil {
@@ -37542,7 +36553,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nodeAffinity\"")
 			}
 		case "persistentVolumeReclaimPolicy":
-
 			if err := func() error {
 				s.PersistentVolumeReclaimPolicy.Reset()
 				if err := s.PersistentVolumeReclaimPolicy.Decode(d); err != nil {
@@ -37553,7 +36563,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"persistentVolumeReclaimPolicy\"")
 			}
 		case "photonPersistentDisk":
-
 			if err := func() error {
 				s.PhotonPersistentDisk.Reset()
 				if err := s.PhotonPersistentDisk.Decode(d); err != nil {
@@ -37564,7 +36573,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"photonPersistentDisk\"")
 			}
 		case "portworxVolume":
-
 			if err := func() error {
 				s.PortworxVolume.Reset()
 				if err := s.PortworxVolume.Decode(d); err != nil {
@@ -37575,7 +36583,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"portworxVolume\"")
 			}
 		case "quobyte":
-
 			if err := func() error {
 				s.Quobyte.Reset()
 				if err := s.Quobyte.Decode(d); err != nil {
@@ -37586,7 +36593,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"quobyte\"")
 			}
 		case "rbd":
-
 			if err := func() error {
 				s.Rbd.Reset()
 				if err := s.Rbd.Decode(d); err != nil {
@@ -37597,7 +36603,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"rbd\"")
 			}
 		case "scaleIO":
-
 			if err := func() error {
 				s.ScaleIO.Reset()
 				if err := s.ScaleIO.Decode(d); err != nil {
@@ -37608,7 +36613,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"scaleIO\"")
 			}
 		case "storageClassName":
-
 			if err := func() error {
 				s.StorageClassName.Reset()
 				if err := s.StorageClassName.Decode(d); err != nil {
@@ -37619,7 +36623,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"storageClassName\"")
 			}
 		case "storageos":
-
 			if err := func() error {
 				s.Storageos.Reset()
 				if err := s.Storageos.Decode(d); err != nil {
@@ -37630,7 +36633,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"storageos\"")
 			}
 		case "volumeMode":
-
 			if err := func() error {
 				s.VolumeMode.Reset()
 				if err := s.VolumeMode.Decode(d); err != nil {
@@ -37641,7 +36643,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"volumeMode\"")
 			}
 		case "vsphereVolume":
-
 			if err := func() error {
 				s.VsphereVolume.Reset()
 				if err := s.VsphereVolume.Decode(d); err != nil {
@@ -37780,7 +36781,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -37791,7 +36791,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "phase":
-
 			if err := func() error {
 				s.Phase.Reset()
 				if err := s.Phase.Decode(d); err != nil {
@@ -37802,7 +36801,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"phase\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -37869,7 +36867,6 @@ func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Decode(d *jx.Decoder) e
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -37881,7 +36878,6 @@ func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Decode(d *jx.Decoder) e
 			}
 		case "pdID":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.PdID = string(v)
@@ -38022,7 +37018,6 @@ func (s *IoK8sAPICoreV1Pod) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -38033,7 +37028,6 @@ func (s *IoK8sAPICoreV1Pod) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -38044,7 +37038,6 @@ func (s *IoK8sAPICoreV1Pod) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -38055,7 +37048,6 @@ func (s *IoK8sAPICoreV1Pod) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -38066,7 +37058,6 @@ func (s *IoK8sAPICoreV1Pod) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -38159,7 +37150,6 @@ func (s *IoK8sAPICoreV1PodAffinity) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "preferredDuringSchedulingIgnoredDuringExecution":
-
 			if err := func() error {
 				s.PreferredDuringSchedulingIgnoredDuringExecution = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -38177,7 +37167,6 @@ func (s *IoK8sAPICoreV1PodAffinity) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"preferredDuringSchedulingIgnoredDuringExecution\"")
 			}
 		case "requiredDuringSchedulingIgnoredDuringExecution":
-
 			if err := func() error {
 				s.RequiredDuringSchedulingIgnoredDuringExecution = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -38289,7 +37278,6 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "labelSelector":
-
 			if err := func() error {
 				s.LabelSelector.Reset()
 				if err := s.LabelSelector.Decode(d); err != nil {
@@ -38300,7 +37288,6 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"labelSelector\"")
 			}
 		case "namespaceSelector":
-
 			if err := func() error {
 				s.NamespaceSelector.Reset()
 				if err := s.NamespaceSelector.Decode(d); err != nil {
@@ -38311,7 +37298,6 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"namespaceSelector\"")
 			}
 		case "namespaces":
-
 			if err := func() error {
 				s.Namespaces = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -38332,7 +37318,6 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) Decode(d *jx.Decoder) error {
 			}
 		case "topologyKey":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.TopologyKey = string(v)
@@ -38458,7 +37443,6 @@ func (s *IoK8sAPICoreV1PodAntiAffinity) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "preferredDuringSchedulingIgnoredDuringExecution":
-
 			if err := func() error {
 				s.PreferredDuringSchedulingIgnoredDuringExecution = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -38476,7 +37460,6 @@ func (s *IoK8sAPICoreV1PodAntiAffinity) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"preferredDuringSchedulingIgnoredDuringExecution\"")
 			}
 		case "requiredDuringSchedulingIgnoredDuringExecution":
-
 			if err := func() error {
 				s.RequiredDuringSchedulingIgnoredDuringExecution = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -38596,7 +37579,6 @@ func (s *IoK8sAPICoreV1PodCondition) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastProbeTime":
-
 			if err := func() error {
 				s.LastProbeTime.Reset()
 				if err := s.LastProbeTime.Decode(d); err != nil {
@@ -38607,7 +37589,6 @@ func (s *IoK8sAPICoreV1PodCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lastProbeTime\"")
 			}
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -38618,7 +37599,6 @@ func (s *IoK8sAPICoreV1PodCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -38629,7 +37609,6 @@ func (s *IoK8sAPICoreV1PodCondition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -38641,7 +37620,6 @@ func (s *IoK8sAPICoreV1PodCondition) Decode(d *jx.Decoder) error {
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -38654,7 +37632,6 @@ func (s *IoK8sAPICoreV1PodCondition) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -38805,7 +37782,6 @@ func (s *IoK8sAPICoreV1PodDNSConfig) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "nameservers":
-
 			if err := func() error {
 				s.Nameservers = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -38825,7 +37801,6 @@ func (s *IoK8sAPICoreV1PodDNSConfig) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nameservers\"")
 			}
 		case "options":
-
 			if err := func() error {
 				s.Options = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -38843,7 +37818,6 @@ func (s *IoK8sAPICoreV1PodDNSConfig) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"options\"")
 			}
 		case "searches":
-
 			if err := func() error {
 				s.Searches = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -38921,7 +37895,6 @@ func (s *IoK8sAPICoreV1PodDNSConfigOption) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -38932,7 +37905,6 @@ func (s *IoK8sAPICoreV1PodDNSConfigOption) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "value":
-
 			if err := func() error {
 				s.Value.Reset()
 				if err := s.Value.Decode(d); err != nil {
@@ -38988,7 +37960,6 @@ func (s *IoK8sAPICoreV1PodIP) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "ip":
-
 			if err := func() error {
 				s.IP.Reset()
 				if err := s.IP.Decode(d); err != nil {
@@ -39087,7 +38058,6 @@ func (s *IoK8sAPICoreV1PodList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -39099,7 +38069,6 @@ func (s *IoK8sAPICoreV1PodList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -39117,7 +38086,6 @@ func (s *IoK8sAPICoreV1PodList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -39128,7 +38096,6 @@ func (s *IoK8sAPICoreV1PodList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -39215,7 +38182,6 @@ func (s *IoK8sAPICoreV1PodReadinessGate) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "conditionType":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.ConditionType = string(v)
@@ -39445,7 +38411,6 @@ func (s *IoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fsGroup":
-
 			if err := func() error {
 				s.FsGroup.Reset()
 				if err := s.FsGroup.Decode(d); err != nil {
@@ -39456,7 +38421,6 @@ func (s *IoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fsGroup\"")
 			}
 		case "fsGroupChangePolicy":
-
 			if err := func() error {
 				s.FsGroupChangePolicy.Reset()
 				if err := s.FsGroupChangePolicy.Decode(d); err != nil {
@@ -39467,7 +38431,6 @@ func (s *IoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fsGroupChangePolicy\"")
 			}
 		case "runAsGroup":
-
 			if err := func() error {
 				s.RunAsGroup.Reset()
 				if err := s.RunAsGroup.Decode(d); err != nil {
@@ -39478,7 +38441,6 @@ func (s *IoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"runAsGroup\"")
 			}
 		case "runAsNonRoot":
-
 			if err := func() error {
 				s.RunAsNonRoot.Reset()
 				if err := s.RunAsNonRoot.Decode(d); err != nil {
@@ -39489,7 +38451,6 @@ func (s *IoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"runAsNonRoot\"")
 			}
 		case "runAsUser":
-
 			if err := func() error {
 				s.RunAsUser.Reset()
 				if err := s.RunAsUser.Decode(d); err != nil {
@@ -39500,7 +38461,6 @@ func (s *IoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"runAsUser\"")
 			}
 		case "seLinuxOptions":
-
 			if err := func() error {
 				s.SeLinuxOptions.Reset()
 				if err := s.SeLinuxOptions.Decode(d); err != nil {
@@ -39511,7 +38471,6 @@ func (s *IoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"seLinuxOptions\"")
 			}
 		case "seccompProfile":
-
 			if err := func() error {
 				s.SeccompProfile.Reset()
 				if err := s.SeccompProfile.Decode(d); err != nil {
@@ -39522,7 +38481,6 @@ func (s *IoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"seccompProfile\"")
 			}
 		case "supplementalGroups":
-
 			if err := func() error {
 				s.SupplementalGroups = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -39542,7 +38500,6 @@ func (s *IoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"supplementalGroups\"")
 			}
 		case "sysctls":
-
 			if err := func() error {
 				s.Sysctls = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -39560,7 +38517,6 @@ func (s *IoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"sysctls\"")
 			}
 		case "windowsOptions":
-
 			if err := func() error {
 				s.WindowsOptions.Reset()
 				if err := s.WindowsOptions.Decode(d); err != nil {
@@ -40071,7 +39027,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "activeDeadlineSeconds":
-
 			if err := func() error {
 				s.ActiveDeadlineSeconds.Reset()
 				if err := s.ActiveDeadlineSeconds.Decode(d); err != nil {
@@ -40082,7 +39037,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"activeDeadlineSeconds\"")
 			}
 		case "affinity":
-
 			if err := func() error {
 				s.Affinity.Reset()
 				if err := s.Affinity.Decode(d); err != nil {
@@ -40093,7 +39047,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"affinity\"")
 			}
 		case "automountServiceAccountToken":
-
 			if err := func() error {
 				s.AutomountServiceAccountToken.Reset()
 				if err := s.AutomountServiceAccountToken.Decode(d); err != nil {
@@ -40105,7 +39058,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 			}
 		case "containers":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				s.Containers = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -40123,7 +39075,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"containers\"")
 			}
 		case "dnsConfig":
-
 			if err := func() error {
 				s.DnsConfig.Reset()
 				if err := s.DnsConfig.Decode(d); err != nil {
@@ -40134,7 +39085,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"dnsConfig\"")
 			}
 		case "dnsPolicy":
-
 			if err := func() error {
 				s.DnsPolicy.Reset()
 				if err := s.DnsPolicy.Decode(d); err != nil {
@@ -40145,7 +39095,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"dnsPolicy\"")
 			}
 		case "enableServiceLinks":
-
 			if err := func() error {
 				s.EnableServiceLinks.Reset()
 				if err := s.EnableServiceLinks.Decode(d); err != nil {
@@ -40156,7 +39105,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"enableServiceLinks\"")
 			}
 		case "ephemeralContainers":
-
 			if err := func() error {
 				s.EphemeralContainers = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -40174,7 +39122,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"ephemeralContainers\"")
 			}
 		case "hostAliases":
-
 			if err := func() error {
 				s.HostAliases = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -40192,7 +39139,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hostAliases\"")
 			}
 		case "hostIPC":
-
 			if err := func() error {
 				s.HostIPC.Reset()
 				if err := s.HostIPC.Decode(d); err != nil {
@@ -40203,7 +39149,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hostIPC\"")
 			}
 		case "hostNetwork":
-
 			if err := func() error {
 				s.HostNetwork.Reset()
 				if err := s.HostNetwork.Decode(d); err != nil {
@@ -40214,7 +39159,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hostNetwork\"")
 			}
 		case "hostPID":
-
 			if err := func() error {
 				s.HostPID.Reset()
 				if err := s.HostPID.Decode(d); err != nil {
@@ -40225,7 +39169,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hostPID\"")
 			}
 		case "hostname":
-
 			if err := func() error {
 				s.Hostname.Reset()
 				if err := s.Hostname.Decode(d); err != nil {
@@ -40236,7 +39179,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hostname\"")
 			}
 		case "imagePullSecrets":
-
 			if err := func() error {
 				s.ImagePullSecrets = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -40254,7 +39196,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"imagePullSecrets\"")
 			}
 		case "initContainers":
-
 			if err := func() error {
 				s.InitContainers = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -40272,7 +39213,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"initContainers\"")
 			}
 		case "nodeName":
-
 			if err := func() error {
 				s.NodeName.Reset()
 				if err := s.NodeName.Decode(d); err != nil {
@@ -40283,7 +39223,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nodeName\"")
 			}
 		case "nodeSelector":
-
 			if err := func() error {
 				s.NodeSelector.Reset()
 				if err := s.NodeSelector.Decode(d); err != nil {
@@ -40294,7 +39233,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nodeSelector\"")
 			}
 		case "overhead":
-
 			if err := func() error {
 				s.Overhead.Reset()
 				if err := s.Overhead.Decode(d); err != nil {
@@ -40305,7 +39243,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"overhead\"")
 			}
 		case "preemptionPolicy":
-
 			if err := func() error {
 				s.PreemptionPolicy.Reset()
 				if err := s.PreemptionPolicy.Decode(d); err != nil {
@@ -40316,7 +39253,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"preemptionPolicy\"")
 			}
 		case "priority":
-
 			if err := func() error {
 				s.Priority.Reset()
 				if err := s.Priority.Decode(d); err != nil {
@@ -40327,7 +39263,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"priority\"")
 			}
 		case "priorityClassName":
-
 			if err := func() error {
 				s.PriorityClassName.Reset()
 				if err := s.PriorityClassName.Decode(d); err != nil {
@@ -40338,7 +39273,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"priorityClassName\"")
 			}
 		case "readinessGates":
-
 			if err := func() error {
 				s.ReadinessGates = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -40356,7 +39290,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"readinessGates\"")
 			}
 		case "restartPolicy":
-
 			if err := func() error {
 				s.RestartPolicy.Reset()
 				if err := s.RestartPolicy.Decode(d); err != nil {
@@ -40367,7 +39300,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"restartPolicy\"")
 			}
 		case "runtimeClassName":
-
 			if err := func() error {
 				s.RuntimeClassName.Reset()
 				if err := s.RuntimeClassName.Decode(d); err != nil {
@@ -40378,7 +39310,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"runtimeClassName\"")
 			}
 		case "schedulerName":
-
 			if err := func() error {
 				s.SchedulerName.Reset()
 				if err := s.SchedulerName.Decode(d); err != nil {
@@ -40389,7 +39320,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"schedulerName\"")
 			}
 		case "securityContext":
-
 			if err := func() error {
 				s.SecurityContext.Reset()
 				if err := s.SecurityContext.Decode(d); err != nil {
@@ -40400,7 +39330,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"securityContext\"")
 			}
 		case "serviceAccount":
-
 			if err := func() error {
 				s.ServiceAccount.Reset()
 				if err := s.ServiceAccount.Decode(d); err != nil {
@@ -40411,7 +39340,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"serviceAccount\"")
 			}
 		case "serviceAccountName":
-
 			if err := func() error {
 				s.ServiceAccountName.Reset()
 				if err := s.ServiceAccountName.Decode(d); err != nil {
@@ -40422,7 +39350,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"serviceAccountName\"")
 			}
 		case "setHostnameAsFQDN":
-
 			if err := func() error {
 				s.SetHostnameAsFQDN.Reset()
 				if err := s.SetHostnameAsFQDN.Decode(d); err != nil {
@@ -40433,7 +39360,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"setHostnameAsFQDN\"")
 			}
 		case "shareProcessNamespace":
-
 			if err := func() error {
 				s.ShareProcessNamespace.Reset()
 				if err := s.ShareProcessNamespace.Decode(d); err != nil {
@@ -40444,7 +39370,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"shareProcessNamespace\"")
 			}
 		case "subdomain":
-
 			if err := func() error {
 				s.Subdomain.Reset()
 				if err := s.Subdomain.Decode(d); err != nil {
@@ -40455,7 +39380,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"subdomain\"")
 			}
 		case "terminationGracePeriodSeconds":
-
 			if err := func() error {
 				s.TerminationGracePeriodSeconds.Reset()
 				if err := s.TerminationGracePeriodSeconds.Decode(d); err != nil {
@@ -40466,7 +39390,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"terminationGracePeriodSeconds\"")
 			}
 		case "tolerations":
-
 			if err := func() error {
 				s.Tolerations = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -40484,7 +39407,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"tolerations\"")
 			}
 		case "topologySpreadConstraints":
-
 			if err := func() error {
 				s.TopologySpreadConstraints = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -40502,7 +39424,6 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"topologySpreadConstraints\"")
 			}
 		case "volumes":
-
 			if err := func() error {
 				s.Volumes = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -40927,7 +39848,6 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -40945,7 +39865,6 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"conditions\"")
 			}
 		case "containerStatuses":
-
 			if err := func() error {
 				s.ContainerStatuses = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -40963,7 +39882,6 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"containerStatuses\"")
 			}
 		case "ephemeralContainerStatuses":
-
 			if err := func() error {
 				s.EphemeralContainerStatuses = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -40981,7 +39899,6 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"ephemeralContainerStatuses\"")
 			}
 		case "hostIP":
-
 			if err := func() error {
 				s.HostIP.Reset()
 				if err := s.HostIP.Decode(d); err != nil {
@@ -40992,7 +39909,6 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hostIP\"")
 			}
 		case "initContainerStatuses":
-
 			if err := func() error {
 				s.InitContainerStatuses = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -41010,7 +39926,6 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"initContainerStatuses\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -41021,7 +39936,6 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "nominatedNodeName":
-
 			if err := func() error {
 				s.NominatedNodeName.Reset()
 				if err := s.NominatedNodeName.Decode(d); err != nil {
@@ -41032,7 +39946,6 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nominatedNodeName\"")
 			}
 		case "phase":
-
 			if err := func() error {
 				s.Phase.Reset()
 				if err := s.Phase.Decode(d); err != nil {
@@ -41043,7 +39956,6 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"phase\"")
 			}
 		case "podIP":
-
 			if err := func() error {
 				s.PodIP.Reset()
 				if err := s.PodIP.Decode(d); err != nil {
@@ -41054,7 +39966,6 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"podIP\"")
 			}
 		case "podIPs":
-
 			if err := func() error {
 				s.PodIPs = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -41072,7 +39983,6 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"podIPs\"")
 			}
 		case "qosClass":
-
 			if err := func() error {
 				s.QosClass.Reset()
 				if err := s.QosClass.Decode(d); err != nil {
@@ -41083,7 +39993,6 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"qosClass\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -41094,7 +40003,6 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"reason\"")
 			}
 		case "startTime":
-
 			if err := func() error {
 				s.StartTime.Reset()
 				if err := s.StartTime.Decode(d); err != nil {
@@ -41189,7 +40097,6 @@ func (s *IoK8sAPICoreV1PodTemplate) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -41200,7 +40107,6 @@ func (s *IoK8sAPICoreV1PodTemplate) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -41211,7 +40117,6 @@ func (s *IoK8sAPICoreV1PodTemplate) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -41222,7 +40127,6 @@ func (s *IoK8sAPICoreV1PodTemplate) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "template":
-
 			if err := func() error {
 				s.Template.Reset()
 				if err := s.Template.Decode(d); err != nil {
@@ -41321,7 +40225,6 @@ func (s *IoK8sAPICoreV1PodTemplateList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -41333,7 +40236,6 @@ func (s *IoK8sAPICoreV1PodTemplateList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -41351,7 +40253,6 @@ func (s *IoK8sAPICoreV1PodTemplateList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -41362,7 +40263,6 @@ func (s *IoK8sAPICoreV1PodTemplateList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -41463,7 +40363,6 @@ func (s *IoK8sAPICoreV1PodTemplateSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -41474,7 +40373,6 @@ func (s *IoK8sAPICoreV1PodTemplateSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -41548,7 +40446,6 @@ func (s *IoK8sAPICoreV1PortStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "error":
-
 			if err := func() error {
 				s.Error.Reset()
 				if err := s.Error.Decode(d); err != nil {
@@ -41560,7 +40457,6 @@ func (s *IoK8sAPICoreV1PortStatus) Decode(d *jx.Decoder) error {
 			}
 		case "port":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Port = int32(v)
@@ -41573,7 +40469,6 @@ func (s *IoK8sAPICoreV1PortStatus) Decode(d *jx.Decoder) error {
 			}
 		case "protocol":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Protocol = string(v)
@@ -41686,7 +40581,6 @@ func (s *IoK8sAPICoreV1PortworxVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -41697,7 +40591,6 @@ func (s *IoK8sAPICoreV1PortworxVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fsType\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -41709,7 +40602,6 @@ func (s *IoK8sAPICoreV1PortworxVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "volumeID":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.VolumeID = string(v)
@@ -41804,7 +40696,6 @@ func (s *IoK8sAPICoreV1PreferredSchedulingTerm) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "preference":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				if err := s.Preference.Decode(d); err != nil {
 					return err
@@ -41815,7 +40706,6 @@ func (s *IoK8sAPICoreV1PreferredSchedulingTerm) Decode(d *jx.Decoder) error {
 			}
 		case "weight":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Weight = int32(v)
@@ -42008,7 +40898,6 @@ func (s *IoK8sAPICoreV1Probe) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "exec":
-
 			if err := func() error {
 				s.Exec.Reset()
 				if err := s.Exec.Decode(d); err != nil {
@@ -42019,7 +40908,6 @@ func (s *IoK8sAPICoreV1Probe) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"exec\"")
 			}
 		case "failureThreshold":
-
 			if err := func() error {
 				s.FailureThreshold.Reset()
 				if err := s.FailureThreshold.Decode(d); err != nil {
@@ -42030,7 +40918,6 @@ func (s *IoK8sAPICoreV1Probe) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"failureThreshold\"")
 			}
 		case "httpGet":
-
 			if err := func() error {
 				s.HttpGet.Reset()
 				if err := s.HttpGet.Decode(d); err != nil {
@@ -42041,7 +40928,6 @@ func (s *IoK8sAPICoreV1Probe) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"httpGet\"")
 			}
 		case "initialDelaySeconds":
-
 			if err := func() error {
 				s.InitialDelaySeconds.Reset()
 				if err := s.InitialDelaySeconds.Decode(d); err != nil {
@@ -42052,7 +40938,6 @@ func (s *IoK8sAPICoreV1Probe) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"initialDelaySeconds\"")
 			}
 		case "periodSeconds":
-
 			if err := func() error {
 				s.PeriodSeconds.Reset()
 				if err := s.PeriodSeconds.Decode(d); err != nil {
@@ -42063,7 +40948,6 @@ func (s *IoK8sAPICoreV1Probe) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"periodSeconds\"")
 			}
 		case "successThreshold":
-
 			if err := func() error {
 				s.SuccessThreshold.Reset()
 				if err := s.SuccessThreshold.Decode(d); err != nil {
@@ -42074,7 +40958,6 @@ func (s *IoK8sAPICoreV1Probe) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"successThreshold\"")
 			}
 		case "tcpSocket":
-
 			if err := func() error {
 				s.TcpSocket.Reset()
 				if err := s.TcpSocket.Decode(d); err != nil {
@@ -42085,7 +40968,6 @@ func (s *IoK8sAPICoreV1Probe) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"tcpSocket\"")
 			}
 		case "terminationGracePeriodSeconds":
-
 			if err := func() error {
 				s.TerminationGracePeriodSeconds.Reset()
 				if err := s.TerminationGracePeriodSeconds.Decode(d); err != nil {
@@ -42096,7 +40978,6 @@ func (s *IoK8sAPICoreV1Probe) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"terminationGracePeriodSeconds\"")
 			}
 		case "timeoutSeconds":
-
 			if err := func() error {
 				s.TimeoutSeconds.Reset()
 				if err := s.TimeoutSeconds.Decode(d); err != nil {
@@ -42177,7 +41058,6 @@ func (s *IoK8sAPICoreV1ProjectedVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "defaultMode":
-
 			if err := func() error {
 				s.DefaultMode.Reset()
 				if err := s.DefaultMode.Decode(d); err != nil {
@@ -42188,7 +41068,6 @@ func (s *IoK8sAPICoreV1ProjectedVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"defaultMode\"")
 			}
 		case "sources":
-
 			if err := func() error {
 				s.Sources = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -42302,7 +41181,6 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "group":
-
 			if err := func() error {
 				s.Group.Reset()
 				if err := s.Group.Decode(d); err != nil {
@@ -42313,7 +41191,6 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"group\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -42325,7 +41202,6 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "registry":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Registry = string(v)
@@ -42337,7 +41213,6 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"registry\"")
 			}
 		case "tenant":
-
 			if err := func() error {
 				s.Tenant.Reset()
 				if err := s.Tenant.Decode(d); err != nil {
@@ -42348,7 +41223,6 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"tenant\"")
 			}
 		case "user":
-
 			if err := func() error {
 				s.User.Reset()
 				if err := s.User.Decode(d); err != nil {
@@ -42360,7 +41234,6 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "volume":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Volume = string(v)
@@ -42529,7 +41402,6 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -42541,7 +41413,6 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "image":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Image = string(v)
@@ -42553,7 +41424,6 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"image\"")
 			}
 		case "keyring":
-
 			if err := func() error {
 				s.Keyring.Reset()
 				if err := s.Keyring.Decode(d); err != nil {
@@ -42565,7 +41435,6 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "monitors":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				s.Monitors = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -42585,7 +41454,6 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"monitors\"")
 			}
 		case "pool":
-
 			if err := func() error {
 				s.Pool.Reset()
 				if err := s.Pool.Decode(d); err != nil {
@@ -42596,7 +41464,6 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"pool\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -42607,7 +41474,6 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"readOnly\"")
 			}
 		case "secretRef":
-
 			if err := func() error {
 				s.SecretRef.Reset()
 				if err := s.SecretRef.Decode(d); err != nil {
@@ -42618,7 +41484,6 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"secretRef\"")
 			}
 		case "user":
-
 			if err := func() error {
 				s.User.Reset()
 				if err := s.User.Decode(d); err != nil {
@@ -42786,7 +41651,6 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -42798,7 +41662,6 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "image":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Image = string(v)
@@ -42810,7 +41673,6 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"image\"")
 			}
 		case "keyring":
-
 			if err := func() error {
 				s.Keyring.Reset()
 				if err := s.Keyring.Decode(d); err != nil {
@@ -42822,7 +41684,6 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "monitors":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				s.Monitors = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -42842,7 +41703,6 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"monitors\"")
 			}
 		case "pool":
-
 			if err := func() error {
 				s.Pool.Reset()
 				if err := s.Pool.Decode(d); err != nil {
@@ -42853,7 +41713,6 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"pool\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -42864,7 +41723,6 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"readOnly\"")
 			}
 		case "secretRef":
-
 			if err := func() error {
 				s.SecretRef.Reset()
 				if err := s.SecretRef.Decode(d); err != nil {
@@ -42875,7 +41733,6 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"secretRef\"")
 			}
 		case "user":
-
 			if err := func() error {
 				s.User.Reset()
 				if err := s.User.Decode(d); err != nil {
@@ -43015,7 +41872,6 @@ func (s *IoK8sAPICoreV1ReplicationController) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -43026,7 +41882,6 @@ func (s *IoK8sAPICoreV1ReplicationController) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -43037,7 +41892,6 @@ func (s *IoK8sAPICoreV1ReplicationController) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -43048,7 +41902,6 @@ func (s *IoK8sAPICoreV1ReplicationController) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -43059,7 +41912,6 @@ func (s *IoK8sAPICoreV1ReplicationController) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -43159,7 +42011,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) Decode(d *jx.Decoder) err
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -43170,7 +42021,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -43181,7 +42031,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -43193,7 +42042,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) Decode(d *jx.Decoder) err
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -43206,7 +42054,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) Decode(d *jx.Decoder) err
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -43338,7 +42185,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -43350,7 +42196,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -43368,7 +42213,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -43379,7 +42223,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -43506,7 +42349,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "minReadySeconds":
-
 			if err := func() error {
 				s.MinReadySeconds.Reset()
 				if err := s.MinReadySeconds.Decode(d); err != nil {
@@ -43517,7 +42359,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"minReadySeconds\"")
 			}
 		case "replicas":
-
 			if err := func() error {
 				s.Replicas.Reset()
 				if err := s.Replicas.Decode(d); err != nil {
@@ -43528,7 +42369,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"replicas\"")
 			}
 		case "selector":
-
 			if err := func() error {
 				s.Selector.Reset()
 				if err := s.Selector.Decode(d); err != nil {
@@ -43539,7 +42379,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"selector\"")
 			}
 		case "template":
-
 			if err := func() error {
 				s.Template.Reset()
 				if err := s.Template.Decode(d); err != nil {
@@ -43723,7 +42562,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) Decode(d *jx.Decoder) error 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "availableReplicas":
-
 			if err := func() error {
 				s.AvailableReplicas.Reset()
 				if err := s.AvailableReplicas.Decode(d); err != nil {
@@ -43734,7 +42572,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"availableReplicas\"")
 			}
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -43752,7 +42589,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"conditions\"")
 			}
 		case "fullyLabeledReplicas":
-
 			if err := func() error {
 				s.FullyLabeledReplicas.Reset()
 				if err := s.FullyLabeledReplicas.Decode(d); err != nil {
@@ -43763,7 +42599,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"fullyLabeledReplicas\"")
 			}
 		case "observedGeneration":
-
 			if err := func() error {
 				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.Decode(d); err != nil {
@@ -43774,7 +42609,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"observedGeneration\"")
 			}
 		case "readyReplicas":
-
 			if err := func() error {
 				s.ReadyReplicas.Reset()
 				if err := s.ReadyReplicas.Decode(d); err != nil {
@@ -43786,7 +42620,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) Decode(d *jx.Decoder) error 
 			}
 		case "replicas":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Replicas = int32(v)
@@ -43899,7 +42732,6 @@ func (s *IoK8sAPICoreV1ResourceFieldSelector) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "containerName":
-
 			if err := func() error {
 				s.ContainerName.Reset()
 				if err := s.ContainerName.Decode(d); err != nil {
@@ -43910,7 +42742,6 @@ func (s *IoK8sAPICoreV1ResourceFieldSelector) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"containerName\"")
 			}
 		case "divisor":
-
 			if err := func() error {
 				s.Divisor.Reset()
 				if err := s.Divisor.Decode(d); err != nil {
@@ -43922,7 +42753,6 @@ func (s *IoK8sAPICoreV1ResourceFieldSelector) Decode(d *jx.Decoder) error {
 			}
 		case "resource":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Resource = string(v)
@@ -44063,7 +42893,6 @@ func (s *IoK8sAPICoreV1ResourceQuota) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -44074,7 +42903,6 @@ func (s *IoK8sAPICoreV1ResourceQuota) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -44085,7 +42913,6 @@ func (s *IoK8sAPICoreV1ResourceQuota) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -44096,7 +42923,6 @@ func (s *IoK8sAPICoreV1ResourceQuota) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -44107,7 +42933,6 @@ func (s *IoK8sAPICoreV1ResourceQuota) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -44206,7 +43031,6 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -44218,7 +43042,6 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -44236,7 +43059,6 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -44247,7 +43069,6 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -44373,7 +43194,6 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "hard":
-
 			if err := func() error {
 				s.Hard.Reset()
 				if err := s.Hard.Decode(d); err != nil {
@@ -44384,7 +43204,6 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hard\"")
 			}
 		case "scopeSelector":
-
 			if err := func() error {
 				s.ScopeSelector.Reset()
 				if err := s.ScopeSelector.Decode(d); err != nil {
@@ -44395,7 +43214,6 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"scopeSelector\"")
 			}
 		case "scopes":
-
 			if err := func() error {
 				s.Scopes = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -44530,7 +43348,6 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "hard":
-
 			if err := func() error {
 				s.Hard.Reset()
 				if err := s.Hard.Decode(d); err != nil {
@@ -44541,7 +43358,6 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hard\"")
 			}
 		case "used":
-
 			if err := func() error {
 				s.Used.Reset()
 				if err := s.Used.Decode(d); err != nil {
@@ -44724,7 +43540,6 @@ func (s *IoK8sAPICoreV1ResourceRequirements) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "limits":
-
 			if err := func() error {
 				s.Limits.Reset()
 				if err := s.Limits.Decode(d); err != nil {
@@ -44735,7 +43550,6 @@ func (s *IoK8sAPICoreV1ResourceRequirements) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"limits\"")
 			}
 		case "requests":
-
 			if err := func() error {
 				s.Requests.Reset()
 				if err := s.Requests.Decode(d); err != nil {
@@ -44944,7 +43758,6 @@ func (s *IoK8sAPICoreV1SELinuxOptions) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "level":
-
 			if err := func() error {
 				s.Level.Reset()
 				if err := s.Level.Decode(d); err != nil {
@@ -44955,7 +43768,6 @@ func (s *IoK8sAPICoreV1SELinuxOptions) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"level\"")
 			}
 		case "role":
-
 			if err := func() error {
 				s.Role.Reset()
 				if err := s.Role.Decode(d); err != nil {
@@ -44966,7 +43778,6 @@ func (s *IoK8sAPICoreV1SELinuxOptions) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"role\"")
 			}
 		case "type":
-
 			if err := func() error {
 				s.Type.Reset()
 				if err := s.Type.Decode(d); err != nil {
@@ -44977,7 +43788,6 @@ func (s *IoK8sAPICoreV1SELinuxOptions) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"type\"")
 			}
 		case "user":
-
 			if err := func() error {
 				s.User.Reset()
 				if err := s.User.Decode(d); err != nil {
@@ -45118,7 +43928,6 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) erro
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -45130,7 +43939,6 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) erro
 			}
 		case "gateway":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Gateway = string(v)
@@ -45142,7 +43950,6 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) erro
 				return errors.Wrap(err, "decode field \"gateway\"")
 			}
 		case "protectionDomain":
-
 			if err := func() error {
 				s.ProtectionDomain.Reset()
 				if err := s.ProtectionDomain.Decode(d); err != nil {
@@ -45153,7 +43960,6 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) erro
 				return errors.Wrap(err, "decode field \"protectionDomain\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -45165,7 +43971,6 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) erro
 			}
 		case "secretRef":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				if err := s.SecretRef.Decode(d); err != nil {
 					return err
@@ -45175,7 +43980,6 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) erro
 				return errors.Wrap(err, "decode field \"secretRef\"")
 			}
 		case "sslEnabled":
-
 			if err := func() error {
 				s.SslEnabled.Reset()
 				if err := s.SslEnabled.Decode(d); err != nil {
@@ -45186,7 +43990,6 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) erro
 				return errors.Wrap(err, "decode field \"sslEnabled\"")
 			}
 		case "storageMode":
-
 			if err := func() error {
 				s.StorageMode.Reset()
 				if err := s.StorageMode.Decode(d); err != nil {
@@ -45197,7 +44000,6 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) erro
 				return errors.Wrap(err, "decode field \"storageMode\"")
 			}
 		case "storagePool":
-
 			if err := func() error {
 				s.StoragePool.Reset()
 				if err := s.StoragePool.Decode(d); err != nil {
@@ -45209,7 +44011,6 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) erro
 			}
 		case "system":
 			requiredBitSet[1] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.System = string(v)
@@ -45221,7 +44022,6 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) erro
 				return errors.Wrap(err, "decode field \"system\"")
 			}
 		case "volumeName":
-
 			if err := func() error {
 				s.VolumeName.Reset()
 				if err := s.VolumeName.Decode(d); err != nil {
@@ -45395,7 +44195,6 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -45407,7 +44206,6 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "gateway":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Gateway = string(v)
@@ -45419,7 +44217,6 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"gateway\"")
 			}
 		case "protectionDomain":
-
 			if err := func() error {
 				s.ProtectionDomain.Reset()
 				if err := s.ProtectionDomain.Decode(d); err != nil {
@@ -45430,7 +44227,6 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"protectionDomain\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -45442,7 +44238,6 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "secretRef":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				if err := s.SecretRef.Decode(d); err != nil {
 					return err
@@ -45452,7 +44247,6 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"secretRef\"")
 			}
 		case "sslEnabled":
-
 			if err := func() error {
 				s.SslEnabled.Reset()
 				if err := s.SslEnabled.Decode(d); err != nil {
@@ -45463,7 +44257,6 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"sslEnabled\"")
 			}
 		case "storageMode":
-
 			if err := func() error {
 				s.StorageMode.Reset()
 				if err := s.StorageMode.Decode(d); err != nil {
@@ -45474,7 +44267,6 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"storageMode\"")
 			}
 		case "storagePool":
-
 			if err := func() error {
 				s.StoragePool.Reset()
 				if err := s.StoragePool.Decode(d); err != nil {
@@ -45486,7 +44278,6 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "system":
 			requiredBitSet[1] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.System = string(v)
@@ -45498,7 +44289,6 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"system\"")
 			}
 		case "volumeName":
-
 			if err := func() error {
 				s.VolumeName.Reset()
 				if err := s.VolumeName.Decode(d); err != nil {
@@ -45599,7 +44389,6 @@ func (s *IoK8sAPICoreV1ScopeSelector) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "matchExpressions":
-
 			if err := func() error {
 				s.MatchExpressions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -45690,7 +44479,6 @@ func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) Decode(d *jx.Decoder) 
 		switch string(k) {
 		case "operator":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Operator = string(v)
@@ -45703,7 +44491,6 @@ func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) Decode(d *jx.Decoder) 
 			}
 		case "scopeName":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.ScopeName = string(v)
@@ -45715,7 +44502,6 @@ func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) Decode(d *jx.Decoder) 
 				return errors.Wrap(err, "decode field \"scopeName\"")
 			}
 		case "values":
-
 			if err := func() error {
 				s.Values = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -45823,7 +44609,6 @@ func (s *IoK8sAPICoreV1SeccompProfile) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "localhostProfile":
-
 			if err := func() error {
 				s.LocalhostProfile.Reset()
 				if err := s.LocalhostProfile.Decode(d); err != nil {
@@ -45835,7 +44620,6 @@ func (s *IoK8sAPICoreV1SeccompProfile) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -46002,7 +44786,6 @@ func (s *IoK8sAPICoreV1Secret) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -46013,7 +44796,6 @@ func (s *IoK8sAPICoreV1Secret) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "data":
-
 			if err := func() error {
 				s.Data.Reset()
 				if err := s.Data.Decode(d); err != nil {
@@ -46024,7 +44806,6 @@ func (s *IoK8sAPICoreV1Secret) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"data\"")
 			}
 		case "immutable":
-
 			if err := func() error {
 				s.Immutable.Reset()
 				if err := s.Immutable.Decode(d); err != nil {
@@ -46035,7 +44816,6 @@ func (s *IoK8sAPICoreV1Secret) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"immutable\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -46046,7 +44826,6 @@ func (s *IoK8sAPICoreV1Secret) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -46057,7 +44836,6 @@ func (s *IoK8sAPICoreV1Secret) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "stringData":
-
 			if err := func() error {
 				s.StringData.Reset()
 				if err := s.StringData.Decode(d); err != nil {
@@ -46068,7 +44846,6 @@ func (s *IoK8sAPICoreV1Secret) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"stringData\"")
 			}
 		case "type":
-
 			if err := func() error {
 				s.Type.Reset()
 				if err := s.Type.Decode(d); err != nil {
@@ -46190,7 +44967,6 @@ func (s *IoK8sAPICoreV1SecretEnvSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -46201,7 +44977,6 @@ func (s *IoK8sAPICoreV1SecretEnvSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "optional":
-
 			if err := func() error {
 				s.Optional.Reset()
 				if err := s.Optional.Decode(d); err != nil {
@@ -46276,7 +45051,6 @@ func (s *IoK8sAPICoreV1SecretKeySelector) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "key":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Key = string(v)
@@ -46288,7 +45062,6 @@ func (s *IoK8sAPICoreV1SecretKeySelector) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"key\"")
 			}
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -46299,7 +45072,6 @@ func (s *IoK8sAPICoreV1SecretKeySelector) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "optional":
-
 			if err := func() error {
 				s.Optional.Reset()
 				if err := s.Optional.Decode(d); err != nil {
@@ -46430,7 +45202,6 @@ func (s *IoK8sAPICoreV1SecretList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -46442,7 +45213,6 @@ func (s *IoK8sAPICoreV1SecretList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -46460,7 +45230,6 @@ func (s *IoK8sAPICoreV1SecretList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -46471,7 +45240,6 @@ func (s *IoK8sAPICoreV1SecretList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -46597,7 +45365,6 @@ func (s *IoK8sAPICoreV1SecretProjection) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "items":
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -46615,7 +45382,6 @@ func (s *IoK8sAPICoreV1SecretProjection) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -46626,7 +45392,6 @@ func (s *IoK8sAPICoreV1SecretProjection) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "optional":
-
 			if err := func() error {
 				s.Optional.Reset()
 				if err := s.Optional.Decode(d); err != nil {
@@ -46695,7 +45460,6 @@ func (s *IoK8sAPICoreV1SecretReference) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -46706,7 +45470,6 @@ func (s *IoK8sAPICoreV1SecretReference) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "namespace":
-
 			if err := func() error {
 				s.Namespace.Reset()
 				if err := s.Namespace.Decode(d); err != nil {
@@ -46866,7 +45629,6 @@ func (s *IoK8sAPICoreV1SecretVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "defaultMode":
-
 			if err := func() error {
 				s.DefaultMode.Reset()
 				if err := s.DefaultMode.Decode(d); err != nil {
@@ -46877,7 +45639,6 @@ func (s *IoK8sAPICoreV1SecretVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"defaultMode\"")
 			}
 		case "items":
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -46895,7 +45656,6 @@ func (s *IoK8sAPICoreV1SecretVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "optional":
-
 			if err := func() error {
 				s.Optional.Reset()
 				if err := s.Optional.Decode(d); err != nil {
@@ -46906,7 +45666,6 @@ func (s *IoK8sAPICoreV1SecretVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"optional\"")
 			}
 		case "secretName":
-
 			if err := func() error {
 				s.SecretName.Reset()
 				if err := s.SecretName.Decode(d); err != nil {
@@ -47092,7 +45851,6 @@ func (s *IoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "allowPrivilegeEscalation":
-
 			if err := func() error {
 				s.AllowPrivilegeEscalation.Reset()
 				if err := s.AllowPrivilegeEscalation.Decode(d); err != nil {
@@ -47103,7 +45861,6 @@ func (s *IoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"allowPrivilegeEscalation\"")
 			}
 		case "capabilities":
-
 			if err := func() error {
 				s.Capabilities.Reset()
 				if err := s.Capabilities.Decode(d); err != nil {
@@ -47114,7 +45871,6 @@ func (s *IoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"capabilities\"")
 			}
 		case "privileged":
-
 			if err := func() error {
 				s.Privileged.Reset()
 				if err := s.Privileged.Decode(d); err != nil {
@@ -47125,7 +45881,6 @@ func (s *IoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"privileged\"")
 			}
 		case "procMount":
-
 			if err := func() error {
 				s.ProcMount.Reset()
 				if err := s.ProcMount.Decode(d); err != nil {
@@ -47136,7 +45891,6 @@ func (s *IoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"procMount\"")
 			}
 		case "readOnlyRootFilesystem":
-
 			if err := func() error {
 				s.ReadOnlyRootFilesystem.Reset()
 				if err := s.ReadOnlyRootFilesystem.Decode(d); err != nil {
@@ -47147,7 +45901,6 @@ func (s *IoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"readOnlyRootFilesystem\"")
 			}
 		case "runAsGroup":
-
 			if err := func() error {
 				s.RunAsGroup.Reset()
 				if err := s.RunAsGroup.Decode(d); err != nil {
@@ -47158,7 +45911,6 @@ func (s *IoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"runAsGroup\"")
 			}
 		case "runAsNonRoot":
-
 			if err := func() error {
 				s.RunAsNonRoot.Reset()
 				if err := s.RunAsNonRoot.Decode(d); err != nil {
@@ -47169,7 +45921,6 @@ func (s *IoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"runAsNonRoot\"")
 			}
 		case "runAsUser":
-
 			if err := func() error {
 				s.RunAsUser.Reset()
 				if err := s.RunAsUser.Decode(d); err != nil {
@@ -47180,7 +45931,6 @@ func (s *IoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"runAsUser\"")
 			}
 		case "seLinuxOptions":
-
 			if err := func() error {
 				s.SeLinuxOptions.Reset()
 				if err := s.SeLinuxOptions.Decode(d); err != nil {
@@ -47191,7 +45941,6 @@ func (s *IoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"seLinuxOptions\"")
 			}
 		case "seccompProfile":
-
 			if err := func() error {
 				s.SeccompProfile.Reset()
 				if err := s.SeccompProfile.Decode(d); err != nil {
@@ -47202,7 +45951,6 @@ func (s *IoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"seccompProfile\"")
 			}
 		case "windowsOptions":
-
 			if err := func() error {
 				s.WindowsOptions.Reset()
 				if err := s.WindowsOptions.Decode(d); err != nil {
@@ -47310,7 +46058,6 @@ func (s *IoK8sAPICoreV1Service) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -47321,7 +46068,6 @@ func (s *IoK8sAPICoreV1Service) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -47332,7 +46078,6 @@ func (s *IoK8sAPICoreV1Service) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -47343,7 +46088,6 @@ func (s *IoK8sAPICoreV1Service) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -47354,7 +46098,6 @@ func (s *IoK8sAPICoreV1Service) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -47499,7 +46242,6 @@ func (s *IoK8sAPICoreV1ServiceAccount) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -47510,7 +46252,6 @@ func (s *IoK8sAPICoreV1ServiceAccount) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "automountServiceAccountToken":
-
 			if err := func() error {
 				s.AutomountServiceAccountToken.Reset()
 				if err := s.AutomountServiceAccountToken.Decode(d); err != nil {
@@ -47521,7 +46262,6 @@ func (s *IoK8sAPICoreV1ServiceAccount) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"automountServiceAccountToken\"")
 			}
 		case "imagePullSecrets":
-
 			if err := func() error {
 				s.ImagePullSecrets = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -47539,7 +46279,6 @@ func (s *IoK8sAPICoreV1ServiceAccount) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"imagePullSecrets\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -47550,7 +46289,6 @@ func (s *IoK8sAPICoreV1ServiceAccount) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -47561,7 +46299,6 @@ func (s *IoK8sAPICoreV1ServiceAccount) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "secrets":
-
 			if err := func() error {
 				s.Secrets = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -47667,7 +46404,6 @@ func (s *IoK8sAPICoreV1ServiceAccountList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -47679,7 +46415,6 @@ func (s *IoK8sAPICoreV1ServiceAccountList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -47697,7 +46432,6 @@ func (s *IoK8sAPICoreV1ServiceAccountList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -47708,7 +46442,6 @@ func (s *IoK8sAPICoreV1ServiceAccountList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -47820,7 +46553,6 @@ func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) Decode(d *jx.Decoder) erro
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "audience":
-
 			if err := func() error {
 				s.Audience.Reset()
 				if err := s.Audience.Decode(d); err != nil {
@@ -47831,7 +46563,6 @@ func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) Decode(d *jx.Decoder) erro
 				return errors.Wrap(err, "decode field \"audience\"")
 			}
 		case "expirationSeconds":
-
 			if err := func() error {
 				s.ExpirationSeconds.Reset()
 				if err := s.ExpirationSeconds.Decode(d); err != nil {
@@ -47843,7 +46574,6 @@ func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) Decode(d *jx.Decoder) erro
 			}
 		case "path":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Path = string(v)
@@ -47975,7 +46705,6 @@ func (s *IoK8sAPICoreV1ServiceList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -47987,7 +46716,6 @@ func (s *IoK8sAPICoreV1ServiceList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -48005,7 +46733,6 @@ func (s *IoK8sAPICoreV1ServiceList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -48016,7 +46743,6 @@ func (s *IoK8sAPICoreV1ServiceList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -48161,7 +46887,6 @@ func (s *IoK8sAPICoreV1ServicePort) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "appProtocol":
-
 			if err := func() error {
 				s.AppProtocol.Reset()
 				if err := s.AppProtocol.Decode(d); err != nil {
@@ -48172,7 +46897,6 @@ func (s *IoK8sAPICoreV1ServicePort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"appProtocol\"")
 			}
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -48183,7 +46907,6 @@ func (s *IoK8sAPICoreV1ServicePort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "nodePort":
-
 			if err := func() error {
 				s.NodePort.Reset()
 				if err := s.NodePort.Decode(d); err != nil {
@@ -48195,7 +46918,6 @@ func (s *IoK8sAPICoreV1ServicePort) Decode(d *jx.Decoder) error {
 			}
 		case "port":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Port = int32(v)
@@ -48207,7 +46929,6 @@ func (s *IoK8sAPICoreV1ServicePort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"port\"")
 			}
 		case "protocol":
-
 			if err := func() error {
 				s.Protocol.Reset()
 				if err := s.Protocol.Decode(d); err != nil {
@@ -48218,7 +46939,6 @@ func (s *IoK8sAPICoreV1ServicePort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"protocol\"")
 			}
 		case "targetPort":
-
 			if err := func() error {
 				s.TargetPort.Reset()
 				if err := s.TargetPort.Decode(d); err != nil {
@@ -48600,7 +47320,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "allocateLoadBalancerNodePorts":
-
 			if err := func() error {
 				s.AllocateLoadBalancerNodePorts.Reset()
 				if err := s.AllocateLoadBalancerNodePorts.Decode(d); err != nil {
@@ -48611,7 +47330,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"allocateLoadBalancerNodePorts\"")
 			}
 		case "clusterIP":
-
 			if err := func() error {
 				s.ClusterIP.Reset()
 				if err := s.ClusterIP.Decode(d); err != nil {
@@ -48622,7 +47340,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"clusterIP\"")
 			}
 		case "clusterIPs":
-
 			if err := func() error {
 				s.ClusterIPs = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -48642,7 +47359,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"clusterIPs\"")
 			}
 		case "externalIPs":
-
 			if err := func() error {
 				s.ExternalIPs = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -48662,7 +47378,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"externalIPs\"")
 			}
 		case "externalName":
-
 			if err := func() error {
 				s.ExternalName.Reset()
 				if err := s.ExternalName.Decode(d); err != nil {
@@ -48673,7 +47388,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"externalName\"")
 			}
 		case "externalTrafficPolicy":
-
 			if err := func() error {
 				s.ExternalTrafficPolicy.Reset()
 				if err := s.ExternalTrafficPolicy.Decode(d); err != nil {
@@ -48684,7 +47398,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"externalTrafficPolicy\"")
 			}
 		case "healthCheckNodePort":
-
 			if err := func() error {
 				s.HealthCheckNodePort.Reset()
 				if err := s.HealthCheckNodePort.Decode(d); err != nil {
@@ -48695,7 +47408,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"healthCheckNodePort\"")
 			}
 		case "internalTrafficPolicy":
-
 			if err := func() error {
 				s.InternalTrafficPolicy.Reset()
 				if err := s.InternalTrafficPolicy.Decode(d); err != nil {
@@ -48706,7 +47418,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"internalTrafficPolicy\"")
 			}
 		case "ipFamilies":
-
 			if err := func() error {
 				s.IpFamilies = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -48726,7 +47437,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"ipFamilies\"")
 			}
 		case "ipFamilyPolicy":
-
 			if err := func() error {
 				s.IpFamilyPolicy.Reset()
 				if err := s.IpFamilyPolicy.Decode(d); err != nil {
@@ -48737,7 +47447,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"ipFamilyPolicy\"")
 			}
 		case "loadBalancerClass":
-
 			if err := func() error {
 				s.LoadBalancerClass.Reset()
 				if err := s.LoadBalancerClass.Decode(d); err != nil {
@@ -48748,7 +47457,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"loadBalancerClass\"")
 			}
 		case "loadBalancerIP":
-
 			if err := func() error {
 				s.LoadBalancerIP.Reset()
 				if err := s.LoadBalancerIP.Decode(d); err != nil {
@@ -48759,7 +47467,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"loadBalancerIP\"")
 			}
 		case "loadBalancerSourceRanges":
-
 			if err := func() error {
 				s.LoadBalancerSourceRanges = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -48779,7 +47486,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"loadBalancerSourceRanges\"")
 			}
 		case "ports":
-
 			if err := func() error {
 				s.Ports = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -48797,7 +47503,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"ports\"")
 			}
 		case "publishNotReadyAddresses":
-
 			if err := func() error {
 				s.PublishNotReadyAddresses.Reset()
 				if err := s.PublishNotReadyAddresses.Decode(d); err != nil {
@@ -48808,7 +47513,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"publishNotReadyAddresses\"")
 			}
 		case "selector":
-
 			if err := func() error {
 				s.Selector.Reset()
 				if err := s.Selector.Decode(d); err != nil {
@@ -48819,7 +47523,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"selector\"")
 			}
 		case "sessionAffinity":
-
 			if err := func() error {
 				s.SessionAffinity.Reset()
 				if err := s.SessionAffinity.Decode(d); err != nil {
@@ -48830,7 +47533,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"sessionAffinity\"")
 			}
 		case "sessionAffinityConfig":
-
 			if err := func() error {
 				s.SessionAffinityConfig.Reset()
 				if err := s.SessionAffinityConfig.Decode(d); err != nil {
@@ -48841,7 +47543,6 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"sessionAffinityConfig\"")
 			}
 		case "type":
-
 			if err := func() error {
 				s.Type.Reset()
 				if err := s.Type.Decode(d); err != nil {
@@ -48975,7 +47676,6 @@ func (s *IoK8sAPICoreV1ServiceStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -48993,7 +47693,6 @@ func (s *IoK8sAPICoreV1ServiceStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"conditions\"")
 			}
 		case "loadBalancer":
-
 			if err := func() error {
 				s.LoadBalancer.Reset()
 				if err := s.LoadBalancer.Decode(d); err != nil {
@@ -49049,7 +47748,6 @@ func (s *IoK8sAPICoreV1SessionAffinityConfig) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "clientIP":
-
 			if err := func() error {
 				s.ClientIP.Reset()
 				if err := s.ClientIP.Decode(d); err != nil {
@@ -49157,7 +47855,6 @@ func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) Decode(d *jx.Decoder) er
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -49168,7 +47865,6 @@ func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) Decode(d *jx.Decoder) er
 				return errors.Wrap(err, "decode field \"fsType\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -49179,7 +47875,6 @@ func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) Decode(d *jx.Decoder) er
 				return errors.Wrap(err, "decode field \"readOnly\"")
 			}
 		case "secretRef":
-
 			if err := func() error {
 				s.SecretRef.Reset()
 				if err := s.SecretRef.Decode(d); err != nil {
@@ -49190,7 +47885,6 @@ func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) Decode(d *jx.Decoder) er
 				return errors.Wrap(err, "decode field \"secretRef\"")
 			}
 		case "volumeName":
-
 			if err := func() error {
 				s.VolumeName.Reset()
 				if err := s.VolumeName.Decode(d); err != nil {
@@ -49201,7 +47895,6 @@ func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) Decode(d *jx.Decoder) er
 				return errors.Wrap(err, "decode field \"volumeName\"")
 			}
 		case "volumeNamespace":
-
 			if err := func() error {
 				s.VolumeNamespace.Reset()
 				if err := s.VolumeNamespace.Decode(d); err != nil {
@@ -49309,7 +48002,6 @@ func (s *IoK8sAPICoreV1StorageOSVolumeSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -49320,7 +48012,6 @@ func (s *IoK8sAPICoreV1StorageOSVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fsType\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -49331,7 +48022,6 @@ func (s *IoK8sAPICoreV1StorageOSVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"readOnly\"")
 			}
 		case "secretRef":
-
 			if err := func() error {
 				s.SecretRef.Reset()
 				if err := s.SecretRef.Decode(d); err != nil {
@@ -49342,7 +48032,6 @@ func (s *IoK8sAPICoreV1StorageOSVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"secretRef\"")
 			}
 		case "volumeName":
-
 			if err := func() error {
 				s.VolumeName.Reset()
 				if err := s.VolumeName.Decode(d); err != nil {
@@ -49353,7 +48042,6 @@ func (s *IoK8sAPICoreV1StorageOSVolumeSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"volumeName\"")
 			}
 		case "volumeNamespace":
-
 			if err := func() error {
 				s.VolumeNamespace.Reset()
 				if err := s.VolumeNamespace.Decode(d); err != nil {
@@ -49415,7 +48103,6 @@ func (s *IoK8sAPICoreV1Sysctl) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -49428,7 +48115,6 @@ func (s *IoK8sAPICoreV1Sysctl) Decode(d *jx.Decoder) error {
 			}
 		case "value":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Value = string(v)
@@ -49528,7 +48214,6 @@ func (s *IoK8sAPICoreV1TCPSocketAction) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "host":
-
 			if err := func() error {
 				s.Host.Reset()
 				if err := s.Host.Decode(d); err != nil {
@@ -49540,7 +48225,6 @@ func (s *IoK8sAPICoreV1TCPSocketAction) Decode(d *jx.Decoder) error {
 			}
 		case "port":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				{
 					var unwrapped string
@@ -49659,7 +48343,6 @@ func (s *IoK8sAPICoreV1Taint) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "effect":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Effect = string(v)
@@ -49672,7 +48355,6 @@ func (s *IoK8sAPICoreV1Taint) Decode(d *jx.Decoder) error {
 			}
 		case "key":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Key = string(v)
@@ -49684,7 +48366,6 @@ func (s *IoK8sAPICoreV1Taint) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"key\"")
 			}
 		case "timeAdded":
-
 			if err := func() error {
 				s.TimeAdded.Reset()
 				if err := s.TimeAdded.Decode(d); err != nil {
@@ -49695,7 +48376,6 @@ func (s *IoK8sAPICoreV1Taint) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"timeAdded\"")
 			}
 		case "value":
-
 			if err := func() error {
 				s.Value.Reset()
 				if err := s.Value.Decode(d); err != nil {
@@ -49835,7 +48515,6 @@ func (s *IoK8sAPICoreV1Toleration) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "effect":
-
 			if err := func() error {
 				s.Effect.Reset()
 				if err := s.Effect.Decode(d); err != nil {
@@ -49846,7 +48525,6 @@ func (s *IoK8sAPICoreV1Toleration) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"effect\"")
 			}
 		case "key":
-
 			if err := func() error {
 				s.Key.Reset()
 				if err := s.Key.Decode(d); err != nil {
@@ -49857,7 +48535,6 @@ func (s *IoK8sAPICoreV1Toleration) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"key\"")
 			}
 		case "operator":
-
 			if err := func() error {
 				s.Operator.Reset()
 				if err := s.Operator.Decode(d); err != nil {
@@ -49868,7 +48545,6 @@ func (s *IoK8sAPICoreV1Toleration) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"operator\"")
 			}
 		case "tolerationSeconds":
-
 			if err := func() error {
 				s.TolerationSeconds.Reset()
 				if err := s.TolerationSeconds.Decode(d); err != nil {
@@ -49879,7 +48555,6 @@ func (s *IoK8sAPICoreV1Toleration) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"tolerationSeconds\"")
 			}
 		case "value":
-
 			if err := func() error {
 				s.Value.Reset()
 				if err := s.Value.Decode(d); err != nil {
@@ -49953,7 +48628,6 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) Decode(d *jx.Decoder) e
 		switch string(k) {
 		case "key":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Key = string(v)
@@ -49966,7 +48640,6 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) Decode(d *jx.Decoder) e
 			}
 		case "values":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Values = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -50075,7 +48748,6 @@ func (s *IoK8sAPICoreV1TopologySelectorTerm) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "matchLabelExpressions":
-
 			if err := func() error {
 				s.MatchLabelExpressions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -50163,7 +48835,6 @@ func (s *IoK8sAPICoreV1TopologySpreadConstraint) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "labelSelector":
-
 			if err := func() error {
 				s.LabelSelector.Reset()
 				if err := s.LabelSelector.Decode(d); err != nil {
@@ -50175,7 +48846,6 @@ func (s *IoK8sAPICoreV1TopologySpreadConstraint) Decode(d *jx.Decoder) error {
 			}
 		case "maxSkew":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.MaxSkew = int32(v)
@@ -50188,7 +48858,6 @@ func (s *IoK8sAPICoreV1TopologySpreadConstraint) Decode(d *jx.Decoder) error {
 			}
 		case "topologyKey":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.TopologyKey = string(v)
@@ -50201,7 +48870,6 @@ func (s *IoK8sAPICoreV1TopologySpreadConstraint) Decode(d *jx.Decoder) error {
 			}
 		case "whenUnsatisfiable":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.WhenUnsatisfiable = string(v)
@@ -50308,7 +48976,6 @@ func (s *IoK8sAPICoreV1TypedLocalObjectReference) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiGroup":
-
 			if err := func() error {
 				s.ApiGroup.Reset()
 				if err := s.ApiGroup.Decode(d); err != nil {
@@ -50320,7 +48987,6 @@ func (s *IoK8sAPICoreV1TypedLocalObjectReference) Decode(d *jx.Decoder) error {
 			}
 		case "kind":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Kind = string(v)
@@ -50333,7 +48999,6 @@ func (s *IoK8sAPICoreV1TypedLocalObjectReference) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -50764,7 +49429,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "awsElasticBlockStore":
-
 			if err := func() error {
 				s.AwsElasticBlockStore.Reset()
 				if err := s.AwsElasticBlockStore.Decode(d); err != nil {
@@ -50775,7 +49439,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"awsElasticBlockStore\"")
 			}
 		case "azureDisk":
-
 			if err := func() error {
 				s.AzureDisk.Reset()
 				if err := s.AzureDisk.Decode(d); err != nil {
@@ -50786,7 +49449,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"azureDisk\"")
 			}
 		case "azureFile":
-
 			if err := func() error {
 				s.AzureFile.Reset()
 				if err := s.AzureFile.Decode(d); err != nil {
@@ -50797,7 +49459,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"azureFile\"")
 			}
 		case "cephfs":
-
 			if err := func() error {
 				s.Cephfs.Reset()
 				if err := s.Cephfs.Decode(d); err != nil {
@@ -50808,7 +49469,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"cephfs\"")
 			}
 		case "cinder":
-
 			if err := func() error {
 				s.Cinder.Reset()
 				if err := s.Cinder.Decode(d); err != nil {
@@ -50819,7 +49479,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"cinder\"")
 			}
 		case "configMap":
-
 			if err := func() error {
 				s.ConfigMap.Reset()
 				if err := s.ConfigMap.Decode(d); err != nil {
@@ -50830,7 +49489,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"configMap\"")
 			}
 		case "csi":
-
 			if err := func() error {
 				s.Csi.Reset()
 				if err := s.Csi.Decode(d); err != nil {
@@ -50841,7 +49499,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"csi\"")
 			}
 		case "downwardAPI":
-
 			if err := func() error {
 				s.DownwardAPI.Reset()
 				if err := s.DownwardAPI.Decode(d); err != nil {
@@ -50852,7 +49509,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"downwardAPI\"")
 			}
 		case "emptyDir":
-
 			if err := func() error {
 				s.EmptyDir.Reset()
 				if err := s.EmptyDir.Decode(d); err != nil {
@@ -50863,7 +49519,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"emptyDir\"")
 			}
 		case "ephemeral":
-
 			if err := func() error {
 				s.Ephemeral.Reset()
 				if err := s.Ephemeral.Decode(d); err != nil {
@@ -50874,7 +49529,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"ephemeral\"")
 			}
 		case "fc":
-
 			if err := func() error {
 				s.Fc.Reset()
 				if err := s.Fc.Decode(d); err != nil {
@@ -50885,7 +49539,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fc\"")
 			}
 		case "flexVolume":
-
 			if err := func() error {
 				s.FlexVolume.Reset()
 				if err := s.FlexVolume.Decode(d); err != nil {
@@ -50896,7 +49549,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"flexVolume\"")
 			}
 		case "flocker":
-
 			if err := func() error {
 				s.Flocker.Reset()
 				if err := s.Flocker.Decode(d); err != nil {
@@ -50907,7 +49559,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"flocker\"")
 			}
 		case "gcePersistentDisk":
-
 			if err := func() error {
 				s.GcePersistentDisk.Reset()
 				if err := s.GcePersistentDisk.Decode(d); err != nil {
@@ -50918,7 +49569,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"gcePersistentDisk\"")
 			}
 		case "gitRepo":
-
 			if err := func() error {
 				s.GitRepo.Reset()
 				if err := s.GitRepo.Decode(d); err != nil {
@@ -50929,7 +49579,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"gitRepo\"")
 			}
 		case "glusterfs":
-
 			if err := func() error {
 				s.Glusterfs.Reset()
 				if err := s.Glusterfs.Decode(d); err != nil {
@@ -50940,7 +49589,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"glusterfs\"")
 			}
 		case "hostPath":
-
 			if err := func() error {
 				s.HostPath.Reset()
 				if err := s.HostPath.Decode(d); err != nil {
@@ -50951,7 +49599,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hostPath\"")
 			}
 		case "iscsi":
-
 			if err := func() error {
 				s.Iscsi.Reset()
 				if err := s.Iscsi.Decode(d); err != nil {
@@ -50963,7 +49610,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[2] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -50975,7 +49621,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "nfs":
-
 			if err := func() error {
 				s.Nfs.Reset()
 				if err := s.Nfs.Decode(d); err != nil {
@@ -50986,7 +49631,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nfs\"")
 			}
 		case "persistentVolumeClaim":
-
 			if err := func() error {
 				s.PersistentVolumeClaim.Reset()
 				if err := s.PersistentVolumeClaim.Decode(d); err != nil {
@@ -50997,7 +49641,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"persistentVolumeClaim\"")
 			}
 		case "photonPersistentDisk":
-
 			if err := func() error {
 				s.PhotonPersistentDisk.Reset()
 				if err := s.PhotonPersistentDisk.Decode(d); err != nil {
@@ -51008,7 +49651,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"photonPersistentDisk\"")
 			}
 		case "portworxVolume":
-
 			if err := func() error {
 				s.PortworxVolume.Reset()
 				if err := s.PortworxVolume.Decode(d); err != nil {
@@ -51019,7 +49661,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"portworxVolume\"")
 			}
 		case "projected":
-
 			if err := func() error {
 				s.Projected.Reset()
 				if err := s.Projected.Decode(d); err != nil {
@@ -51030,7 +49671,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"projected\"")
 			}
 		case "quobyte":
-
 			if err := func() error {
 				s.Quobyte.Reset()
 				if err := s.Quobyte.Decode(d); err != nil {
@@ -51041,7 +49681,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"quobyte\"")
 			}
 		case "rbd":
-
 			if err := func() error {
 				s.Rbd.Reset()
 				if err := s.Rbd.Decode(d); err != nil {
@@ -51052,7 +49691,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"rbd\"")
 			}
 		case "scaleIO":
-
 			if err := func() error {
 				s.ScaleIO.Reset()
 				if err := s.ScaleIO.Decode(d); err != nil {
@@ -51063,7 +49701,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"scaleIO\"")
 			}
 		case "secret":
-
 			if err := func() error {
 				s.Secret.Reset()
 				if err := s.Secret.Decode(d); err != nil {
@@ -51074,7 +49711,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"secret\"")
 			}
 		case "storageos":
-
 			if err := func() error {
 				s.Storageos.Reset()
 				if err := s.Storageos.Decode(d); err != nil {
@@ -51085,7 +49721,6 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"storageos\"")
 			}
 		case "vsphereVolume":
-
 			if err := func() error {
 				s.VsphereVolume.Reset()
 				if err := s.VsphereVolume.Decode(d); err != nil {
@@ -51182,7 +49817,6 @@ func (s *IoK8sAPICoreV1VolumeDevice) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "devicePath":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.DevicePath = string(v)
@@ -51195,7 +49829,6 @@ func (s *IoK8sAPICoreV1VolumeDevice) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -51330,7 +49963,6 @@ func (s *IoK8sAPICoreV1VolumeMount) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "mountPath":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.MountPath = string(v)
@@ -51342,7 +49974,6 @@ func (s *IoK8sAPICoreV1VolumeMount) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"mountPath\"")
 			}
 		case "mountPropagation":
-
 			if err := func() error {
 				s.MountPropagation.Reset()
 				if err := s.MountPropagation.Decode(d); err != nil {
@@ -51354,7 +49985,6 @@ func (s *IoK8sAPICoreV1VolumeMount) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -51366,7 +49996,6 @@ func (s *IoK8sAPICoreV1VolumeMount) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -51377,7 +50006,6 @@ func (s *IoK8sAPICoreV1VolumeMount) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"readOnly\"")
 			}
 		case "subPath":
-
 			if err := func() error {
 				s.SubPath.Reset()
 				if err := s.SubPath.Decode(d); err != nil {
@@ -51388,7 +50016,6 @@ func (s *IoK8sAPICoreV1VolumeMount) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"subPath\"")
 			}
 		case "subPathExpr":
-
 			if err := func() error {
 				s.SubPathExpr.Reset()
 				if err := s.SubPathExpr.Decode(d); err != nil {
@@ -51476,7 +50103,6 @@ func (s *IoK8sAPICoreV1VolumeNodeAffinity) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "required":
-
 			if err := func() error {
 				s.Required.Reset()
 				if err := s.Required.Decode(d); err != nil {
@@ -51571,7 +50197,6 @@ func (s *IoK8sAPICoreV1VolumeProjection) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "configMap":
-
 			if err := func() error {
 				s.ConfigMap.Reset()
 				if err := s.ConfigMap.Decode(d); err != nil {
@@ -51582,7 +50207,6 @@ func (s *IoK8sAPICoreV1VolumeProjection) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"configMap\"")
 			}
 		case "downwardAPI":
-
 			if err := func() error {
 				s.DownwardAPI.Reset()
 				if err := s.DownwardAPI.Decode(d); err != nil {
@@ -51593,7 +50217,6 @@ func (s *IoK8sAPICoreV1VolumeProjection) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"downwardAPI\"")
 			}
 		case "secret":
-
 			if err := func() error {
 				s.Secret.Reset()
 				if err := s.Secret.Decode(d); err != nil {
@@ -51604,7 +50227,6 @@ func (s *IoK8sAPICoreV1VolumeProjection) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"secret\"")
 			}
 		case "serviceAccountToken":
-
 			if err := func() error {
 				s.ServiceAccountToken.Reset()
 				if err := s.ServiceAccountToken.Decode(d); err != nil {
@@ -51697,7 +50319,6 @@ func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Decode(d *jx.Decoder) err
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "fsType":
-
 			if err := func() error {
 				s.FsType.Reset()
 				if err := s.FsType.Decode(d); err != nil {
@@ -51708,7 +50329,6 @@ func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"fsType\"")
 			}
 		case "storagePolicyID":
-
 			if err := func() error {
 				s.StoragePolicyID.Reset()
 				if err := s.StoragePolicyID.Decode(d); err != nil {
@@ -51719,7 +50339,6 @@ func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"storagePolicyID\"")
 			}
 		case "storagePolicyName":
-
 			if err := func() error {
 				s.StoragePolicyName.Reset()
 				if err := s.StoragePolicyName.Decode(d); err != nil {
@@ -51731,7 +50350,6 @@ func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Decode(d *jx.Decoder) err
 			}
 		case "volumePath":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.VolumePath = string(v)
@@ -51826,7 +50444,6 @@ func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "podAffinityTerm":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				if err := s.PodAffinityTerm.Decode(d); err != nil {
 					return err
@@ -51837,7 +50454,6 @@ func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) Decode(d *jx.Decoder) error {
 			}
 		case "weight":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Weight = int32(v)
@@ -51965,7 +50581,6 @@ func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) Decode(d *jx.Decoder) erro
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "gmsaCredentialSpec":
-
 			if err := func() error {
 				s.GmsaCredentialSpec.Reset()
 				if err := s.GmsaCredentialSpec.Decode(d); err != nil {
@@ -51976,7 +50591,6 @@ func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) Decode(d *jx.Decoder) erro
 				return errors.Wrap(err, "decode field \"gmsaCredentialSpec\"")
 			}
 		case "gmsaCredentialSpecName":
-
 			if err := func() error {
 				s.GmsaCredentialSpecName.Reset()
 				if err := s.GmsaCredentialSpecName.Decode(d); err != nil {
@@ -51987,7 +50601,6 @@ func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) Decode(d *jx.Decoder) erro
 				return errors.Wrap(err, "decode field \"gmsaCredentialSpecName\"")
 			}
 		case "hostProcess":
-
 			if err := func() error {
 				s.HostProcess.Reset()
 				if err := s.HostProcess.Decode(d); err != nil {
@@ -51998,7 +50611,6 @@ func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) Decode(d *jx.Decoder) erro
 				return errors.Wrap(err, "decode field \"hostProcess\"")
 			}
 		case "runAsUserName":
-
 			if err := func() error {
 				s.RunAsUserName.Reset()
 				if err := s.RunAsUserName.Decode(d); err != nil {
@@ -52135,7 +50747,6 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "addresses":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				s.Addresses = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -52155,7 +50766,6 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"addresses\"")
 			}
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions.Reset()
 				if err := s.Conditions.Decode(d); err != nil {
@@ -52166,7 +50776,6 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"conditions\"")
 			}
 		case "deprecatedTopology":
-
 			if err := func() error {
 				s.DeprecatedTopology.Reset()
 				if err := s.DeprecatedTopology.Decode(d); err != nil {
@@ -52177,7 +50786,6 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"deprecatedTopology\"")
 			}
 		case "hints":
-
 			if err := func() error {
 				s.Hints.Reset()
 				if err := s.Hints.Decode(d); err != nil {
@@ -52188,7 +50796,6 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hints\"")
 			}
 		case "hostname":
-
 			if err := func() error {
 				s.Hostname.Reset()
 				if err := s.Hostname.Decode(d); err != nil {
@@ -52199,7 +50806,6 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hostname\"")
 			}
 		case "nodeName":
-
 			if err := func() error {
 				s.NodeName.Reset()
 				if err := s.NodeName.Decode(d); err != nil {
@@ -52210,7 +50816,6 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nodeName\"")
 			}
 		case "targetRef":
-
 			if err := func() error {
 				s.TargetRef.Reset()
 				if err := s.TargetRef.Decode(d); err != nil {
@@ -52221,7 +50826,6 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"targetRef\"")
 			}
 		case "zone":
-
 			if err := func() error {
 				s.Zone.Reset()
 				if err := s.Zone.Decode(d); err != nil {
@@ -52335,7 +50939,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointConditions) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "ready":
-
 			if err := func() error {
 				s.Ready.Reset()
 				if err := s.Ready.Decode(d); err != nil {
@@ -52346,7 +50949,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointConditions) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"ready\"")
 			}
 		case "serving":
-
 			if err := func() error {
 				s.Serving.Reset()
 				if err := s.Serving.Decode(d); err != nil {
@@ -52357,7 +50959,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointConditions) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"serving\"")
 			}
 		case "terminating":
-
 			if err := func() error {
 				s.Terminating.Reset()
 				if err := s.Terminating.Decode(d); err != nil {
@@ -52478,7 +51079,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointHints) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "forZones":
-
 			if err := func() error {
 				s.ForZones = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -52580,7 +51180,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointPort) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "appProtocol":
-
 			if err := func() error {
 				s.AppProtocol.Reset()
 				if err := s.AppProtocol.Decode(d); err != nil {
@@ -52591,7 +51190,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointPort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"appProtocol\"")
 			}
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -52602,7 +51200,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointPort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "port":
-
 			if err := func() error {
 				s.Port.Reset()
 				if err := s.Port.Decode(d); err != nil {
@@ -52613,7 +51210,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointPort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"port\"")
 			}
 		case "protocol":
-
 			if err := func() error {
 				s.Protocol.Reset()
 				if err := s.Protocol.Decode(d); err != nil {
@@ -52739,7 +51335,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "addressType":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.AddressType = string(v)
@@ -52751,7 +51346,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"addressType\"")
 			}
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -52763,7 +51357,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) Decode(d *jx.Decoder) error {
 			}
 		case "endpoints":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				s.Endpoints = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -52781,7 +51374,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"endpoints\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -52792,7 +51384,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -52803,7 +51394,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "ports":
-
 			if err := func() error {
 				s.Ports = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -52941,7 +51531,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -52953,7 +51542,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -52971,7 +51559,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -52982,7 +51569,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -53069,7 +51655,6 @@ func (s *IoK8sAPIDiscoveryV1ForZone) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -53229,7 +51814,6 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "addresses":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				s.Addresses = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -53249,7 +51833,6 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"addresses\"")
 			}
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions.Reset()
 				if err := s.Conditions.Decode(d); err != nil {
@@ -53260,7 +51843,6 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"conditions\"")
 			}
 		case "hints":
-
 			if err := func() error {
 				s.Hints.Reset()
 				if err := s.Hints.Decode(d); err != nil {
@@ -53271,7 +51853,6 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hints\"")
 			}
 		case "hostname":
-
 			if err := func() error {
 				s.Hostname.Reset()
 				if err := s.Hostname.Decode(d); err != nil {
@@ -53282,7 +51863,6 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hostname\"")
 			}
 		case "nodeName":
-
 			if err := func() error {
 				s.NodeName.Reset()
 				if err := s.NodeName.Decode(d); err != nil {
@@ -53293,7 +51873,6 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nodeName\"")
 			}
 		case "targetRef":
-
 			if err := func() error {
 				s.TargetRef.Reset()
 				if err := s.TargetRef.Decode(d); err != nil {
@@ -53304,7 +51883,6 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"targetRef\"")
 			}
 		case "topology":
-
 			if err := func() error {
 				s.Topology.Reset()
 				if err := s.Topology.Decode(d); err != nil {
@@ -53418,7 +51996,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) Decode(d *jx.Decoder) error
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "ready":
-
 			if err := func() error {
 				s.Ready.Reset()
 				if err := s.Ready.Decode(d); err != nil {
@@ -53429,7 +52006,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"ready\"")
 			}
 		case "serving":
-
 			if err := func() error {
 				s.Serving.Reset()
 				if err := s.Serving.Decode(d); err != nil {
@@ -53440,7 +52016,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"serving\"")
 			}
 		case "terminating":
-
 			if err := func() error {
 				s.Terminating.Reset()
 				if err := s.Terminating.Decode(d); err != nil {
@@ -53508,7 +52083,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointHints) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "forZones":
-
 			if err := func() error {
 				s.ForZones = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -53610,7 +52184,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "appProtocol":
-
 			if err := func() error {
 				s.AppProtocol.Reset()
 				if err := s.AppProtocol.Decode(d); err != nil {
@@ -53621,7 +52194,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"appProtocol\"")
 			}
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -53632,7 +52204,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "port":
-
 			if err := func() error {
 				s.Port.Reset()
 				if err := s.Port.Decode(d); err != nil {
@@ -53643,7 +52214,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"port\"")
 			}
 		case "protocol":
-
 			if err := func() error {
 				s.Protocol.Reset()
 				if err := s.Protocol.Decode(d); err != nil {
@@ -53769,7 +52339,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "addressType":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.AddressType = string(v)
@@ -53781,7 +52350,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"addressType\"")
 			}
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -53793,7 +52361,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) Decode(d *jx.Decoder) error {
 			}
 		case "endpoints":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				s.Endpoints = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -53811,7 +52378,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"endpoints\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -53822,7 +52388,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -53833,7 +52398,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "ports":
-
 			if err := func() error {
 				s.Ports = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -53971,7 +52535,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) Decode(d *jx.Decoder) error 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -53983,7 +52546,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) Decode(d *jx.Decoder) error 
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -54001,7 +52563,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -54012,7 +52573,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -54152,7 +52712,6 @@ func (s *IoK8sAPIDiscoveryV1beta1ForZone) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -54417,7 +52976,6 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "action":
-
 			if err := func() error {
 				s.Action.Reset()
 				if err := s.Action.Decode(d); err != nil {
@@ -54428,7 +52986,6 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"action\"")
 			}
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -54439,7 +52996,6 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "deprecatedCount":
-
 			if err := func() error {
 				s.DeprecatedCount.Reset()
 				if err := s.DeprecatedCount.Decode(d); err != nil {
@@ -54450,7 +53006,6 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"deprecatedCount\"")
 			}
 		case "deprecatedFirstTimestamp":
-
 			if err := func() error {
 				s.DeprecatedFirstTimestamp.Reset()
 				if err := s.DeprecatedFirstTimestamp.Decode(d); err != nil {
@@ -54461,7 +53016,6 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"deprecatedFirstTimestamp\"")
 			}
 		case "deprecatedLastTimestamp":
-
 			if err := func() error {
 				s.DeprecatedLastTimestamp.Reset()
 				if err := s.DeprecatedLastTimestamp.Decode(d); err != nil {
@@ -54472,7 +53026,6 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"deprecatedLastTimestamp\"")
 			}
 		case "deprecatedSource":
-
 			if err := func() error {
 				s.DeprecatedSource.Reset()
 				if err := s.DeprecatedSource.Decode(d); err != nil {
@@ -54484,7 +53037,6 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 			}
 		case "eventTime":
 			requiredBitSet[0] |= 1 << 6
-
 			if err := func() error {
 				{
 					var unwrapped time.Time
@@ -54500,7 +53052,6 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"eventTime\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -54511,7 +53062,6 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -54522,7 +53072,6 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "note":
-
 			if err := func() error {
 				s.Note.Reset()
 				if err := s.Note.Decode(d); err != nil {
@@ -54533,7 +53082,6 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"note\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -54544,7 +53092,6 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"reason\"")
 			}
 		case "regarding":
-
 			if err := func() error {
 				s.Regarding.Reset()
 				if err := s.Regarding.Decode(d); err != nil {
@@ -54555,7 +53102,6 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"regarding\"")
 			}
 		case "related":
-
 			if err := func() error {
 				s.Related.Reset()
 				if err := s.Related.Decode(d); err != nil {
@@ -54566,7 +53112,6 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"related\"")
 			}
 		case "reportingController":
-
 			if err := func() error {
 				s.ReportingController.Reset()
 				if err := s.ReportingController.Decode(d); err != nil {
@@ -54577,7 +53122,6 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"reportingController\"")
 			}
 		case "reportingInstance":
-
 			if err := func() error {
 				s.ReportingInstance.Reset()
 				if err := s.ReportingInstance.Decode(d); err != nil {
@@ -54588,7 +53132,6 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"reportingInstance\"")
 			}
 		case "series":
-
 			if err := func() error {
 				s.Series.Reset()
 				if err := s.Series.Decode(d); err != nil {
@@ -54599,7 +53142,6 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"series\"")
 			}
 		case "type":
-
 			if err := func() error {
 				s.Type.Reset()
 				if err := s.Type.Decode(d); err != nil {
@@ -54732,7 +53274,6 @@ func (s *IoK8sAPIEventsV1EventList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -54744,7 +53285,6 @@ func (s *IoK8sAPIEventsV1EventList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -54762,7 +53302,6 @@ func (s *IoK8sAPIEventsV1EventList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -54773,7 +53312,6 @@ func (s *IoK8sAPIEventsV1EventList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -54867,7 +53405,6 @@ func (s *IoK8sAPIEventsV1EventSeries) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "count":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Count = int32(v)
@@ -54880,7 +53417,6 @@ func (s *IoK8sAPIEventsV1EventSeries) Decode(d *jx.Decoder) error {
 			}
 		case "lastObservedTime":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				{
 					var unwrapped time.Time
@@ -55149,7 +53685,6 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "action":
-
 			if err := func() error {
 				s.Action.Reset()
 				if err := s.Action.Decode(d); err != nil {
@@ -55160,7 +53695,6 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"action\"")
 			}
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -55171,7 +53705,6 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "deprecatedCount":
-
 			if err := func() error {
 				s.DeprecatedCount.Reset()
 				if err := s.DeprecatedCount.Decode(d); err != nil {
@@ -55182,7 +53715,6 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"deprecatedCount\"")
 			}
 		case "deprecatedFirstTimestamp":
-
 			if err := func() error {
 				s.DeprecatedFirstTimestamp.Reset()
 				if err := s.DeprecatedFirstTimestamp.Decode(d); err != nil {
@@ -55193,7 +53725,6 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"deprecatedFirstTimestamp\"")
 			}
 		case "deprecatedLastTimestamp":
-
 			if err := func() error {
 				s.DeprecatedLastTimestamp.Reset()
 				if err := s.DeprecatedLastTimestamp.Decode(d); err != nil {
@@ -55204,7 +53735,6 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"deprecatedLastTimestamp\"")
 			}
 		case "deprecatedSource":
-
 			if err := func() error {
 				s.DeprecatedSource.Reset()
 				if err := s.DeprecatedSource.Decode(d); err != nil {
@@ -55216,7 +53746,6 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 			}
 		case "eventTime":
 			requiredBitSet[0] |= 1 << 6
-
 			if err := func() error {
 				{
 					var unwrapped time.Time
@@ -55232,7 +53761,6 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"eventTime\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -55243,7 +53771,6 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -55254,7 +53781,6 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "note":
-
 			if err := func() error {
 				s.Note.Reset()
 				if err := s.Note.Decode(d); err != nil {
@@ -55265,7 +53791,6 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"note\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -55276,7 +53801,6 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"reason\"")
 			}
 		case "regarding":
-
 			if err := func() error {
 				s.Regarding.Reset()
 				if err := s.Regarding.Decode(d); err != nil {
@@ -55287,7 +53811,6 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"regarding\"")
 			}
 		case "related":
-
 			if err := func() error {
 				s.Related.Reset()
 				if err := s.Related.Decode(d); err != nil {
@@ -55298,7 +53821,6 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"related\"")
 			}
 		case "reportingController":
-
 			if err := func() error {
 				s.ReportingController.Reset()
 				if err := s.ReportingController.Decode(d); err != nil {
@@ -55309,7 +53831,6 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"reportingController\"")
 			}
 		case "reportingInstance":
-
 			if err := func() error {
 				s.ReportingInstance.Reset()
 				if err := s.ReportingInstance.Decode(d); err != nil {
@@ -55320,7 +53841,6 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"reportingInstance\"")
 			}
 		case "series":
-
 			if err := func() error {
 				s.Series.Reset()
 				if err := s.Series.Decode(d); err != nil {
@@ -55331,7 +53851,6 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"series\"")
 			}
 		case "type":
-
 			if err := func() error {
 				s.Type.Reset()
 				if err := s.Type.Decode(d); err != nil {
@@ -55464,7 +53983,6 @@ func (s *IoK8sAPIEventsV1beta1EventList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -55476,7 +53994,6 @@ func (s *IoK8sAPIEventsV1beta1EventList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -55494,7 +54011,6 @@ func (s *IoK8sAPIEventsV1beta1EventList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -55505,7 +54021,6 @@ func (s *IoK8sAPIEventsV1beta1EventList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -55599,7 +54114,6 @@ func (s *IoK8sAPIEventsV1beta1EventSeries) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "count":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Count = int32(v)
@@ -55612,7 +54126,6 @@ func (s *IoK8sAPIEventsV1beta1EventSeries) Decode(d *jx.Decoder) error {
 			}
 		case "lastObservedTime":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				{
 					var unwrapped time.Time
@@ -55704,7 +54217,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Decode(d *jx.Decoder
 		switch string(k) {
 		case "type":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -55845,7 +54357,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -55856,7 +54367,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -55867,7 +54377,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -55878,7 +54387,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -55889,7 +54397,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -55997,7 +54504,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) Decode(d *jx.Decoder) er
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -56008,7 +54514,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) Decode(d *jx.Decoder) er
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -56019,7 +54524,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) Decode(d *jx.Decoder) er
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -56030,7 +54534,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) Decode(d *jx.Decoder) er
 				return errors.Wrap(err, "decode field \"reason\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -56041,7 +54544,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) Decode(d *jx.Decoder) er
 				return errors.Wrap(err, "decode field \"status\"")
 			}
 		case "type":
-
 			if err := func() error {
 				s.Type.Reset()
 				if err := s.Type.Decode(d); err != nil {
@@ -56140,7 +54642,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -56152,7 +54653,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -56170,7 +54670,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -56181,7 +54680,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -56315,7 +54813,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "distinguisherMethod":
-
 			if err := func() error {
 				s.DistinguisherMethod.Reset()
 				if err := s.DistinguisherMethod.Decode(d); err != nil {
@@ -56326,7 +54823,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"distinguisherMethod\"")
 			}
 		case "matchingPrecedence":
-
 			if err := func() error {
 				s.MatchingPrecedence.Reset()
 				if err := s.MatchingPrecedence.Decode(d); err != nil {
@@ -56338,7 +54834,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Decode(d *jx.Decoder) error {
 			}
 		case "priorityLevelConfiguration":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				if err := s.PriorityLevelConfiguration.Decode(d); err != nil {
 					return err
@@ -56348,7 +54843,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"priorityLevelConfiguration\"")
 			}
 		case "rules":
-
 			if err := func() error {
 				s.Rules = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -56455,7 +54949,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Decode(d *jx.Decoder) error
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -56517,7 +55010,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1GroupSubject) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -56617,7 +55109,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "queuing":
-
 			if err := func() error {
 				s.Queuing.Reset()
 				if err := s.Queuing.Decode(d); err != nil {
@@ -56629,7 +55120,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -56731,7 +55221,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Decode(d *
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "assuredConcurrencyShares":
-
 			if err := func() error {
 				s.AssuredConcurrencyShares.Reset()
 				if err := s.AssuredConcurrencyShares.Decode(d); err != nil {
@@ -56742,7 +55231,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Decode(d *
 				return errors.Wrap(err, "decode field \"assuredConcurrencyShares\"")
 			}
 		case "limitResponse":
-
 			if err := func() error {
 				s.LimitResponse.Reset()
 				if err := s.LimitResponse.Decode(d); err != nil {
@@ -56828,7 +55316,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Decode(d *jx.Decoder) 
 		switch string(k) {
 		case "nonResourceURLs":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				s.NonResourceURLs = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -56849,7 +55336,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Decode(d *jx.Decoder) 
 			}
 		case "verbs":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Verbs = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -57006,7 +55492,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Decode(d *jx.Decoder
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "nonResourceRules":
-
 			if err := func() error {
 				s.NonResourceRules = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -57024,7 +55509,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Decode(d *jx.Decoder
 				return errors.Wrap(err, "decode field \"nonResourceRules\"")
 			}
 		case "resourceRules":
-
 			if err := func() error {
 				s.ResourceRules = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -57043,7 +55527,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Decode(d *jx.Decoder
 			}
 		case "subjects":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				s.Subjects = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -57190,7 +55673,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) Decode(d *jx.Deco
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -57201,7 +55683,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) Decode(d *jx.Deco
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -57212,7 +55693,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) Decode(d *jx.Deco
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -57223,7 +55703,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) Decode(d *jx.Deco
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -57234,7 +55713,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) Decode(d *jx.Deco
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -57342,7 +55820,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) Decode(d
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -57353,7 +55830,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) Decode(d
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -57364,7 +55840,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) Decode(d
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -57375,7 +55850,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) Decode(d
 				return errors.Wrap(err, "decode field \"reason\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -57386,7 +55860,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) Decode(d
 				return errors.Wrap(err, "decode field \"status\"")
 			}
 		case "type":
-
 			if err := func() error {
 				s.Type.Reset()
 				if err := s.Type.Decode(d); err != nil {
@@ -57485,7 +55958,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Decode(d *jx.
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -57497,7 +55969,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Decode(d *jx.
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -57515,7 +55986,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Decode(d *jx.
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -57526,7 +55996,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Decode(d *jx.
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -57613,7 +56082,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) Decode(d
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -57713,7 +56181,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Decode(d *jx.
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "limited":
-
 			if err := func() error {
 				s.Limited.Reset()
 				if err := s.Limited.Decode(d); err != nil {
@@ -57725,7 +56192,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Decode(d *jx.
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -57826,7 +56292,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Decode(d *j
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -57915,7 +56380,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Decode(d *jx.Decoder) e
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "handSize":
-
 			if err := func() error {
 				s.HandSize.Reset()
 				if err := s.HandSize.Decode(d); err != nil {
@@ -57926,7 +56390,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"handSize\"")
 			}
 		case "queueLengthLimit":
-
 			if err := func() error {
 				s.QueueLengthLimit.Reset()
 				if err := s.QueueLengthLimit.Decode(d); err != nil {
@@ -57937,7 +56400,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"queueLengthLimit\"")
 			}
 		case "queues":
-
 			if err := func() error {
 				s.Queues.Reset()
 				if err := s.Queues.Decode(d); err != nil {
@@ -58074,7 +56536,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Decode(d *jx.Decoder) err
 		switch string(k) {
 		case "apiGroups":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				s.ApiGroups = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -58094,7 +56555,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"apiGroups\"")
 			}
 		case "clusterScope":
-
 			if err := func() error {
 				s.ClusterScope.Reset()
 				if err := s.ClusterScope.Decode(d); err != nil {
@@ -58105,7 +56565,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"clusterScope\"")
 			}
 		case "namespaces":
-
 			if err := func() error {
 				s.Namespaces = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -58126,7 +56585,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Decode(d *jx.Decoder) err
 			}
 		case "resources":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				s.Resources = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -58147,7 +56605,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Decode(d *jx.Decoder) err
 			}
 		case "verbs":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				s.Verbs = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -58250,7 +56707,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Decode(d *jx.Decoder) 
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -58263,7 +56719,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Decode(d *jx.Decoder) 
 			}
 		case "namespace":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Namespace = string(v)
@@ -58383,7 +56838,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1Subject) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "group":
-
 			if err := func() error {
 				s.Group.Reset()
 				if err := s.Group.Decode(d); err != nil {
@@ -58395,7 +56849,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1Subject) Decode(d *jx.Decoder) error {
 			}
 		case "kind":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Kind = string(v)
@@ -58407,7 +56860,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1Subject) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "serviceAccount":
-
 			if err := func() error {
 				s.ServiceAccount.Reset()
 				if err := s.ServiceAccount.Decode(d); err != nil {
@@ -58418,7 +56870,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1Subject) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"serviceAccount\"")
 			}
 		case "user":
-
 			if err := func() error {
 				s.User.Reset()
 				if err := s.User.Decode(d); err != nil {
@@ -58505,7 +56956,6 @@ func (s *IoK8sAPIFlowcontrolV1beta1UserSubject) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -58593,7 +57043,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Decode(d *jx.Decoder
 		switch string(k) {
 		case "type":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -58734,7 +57183,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -58745,7 +57193,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -58756,7 +57203,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -58767,7 +57213,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -58778,7 +57223,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -58886,7 +57330,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) Decode(d *jx.Decoder) er
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -58897,7 +57340,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) Decode(d *jx.Decoder) er
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -58908,7 +57350,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) Decode(d *jx.Decoder) er
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -58919,7 +57360,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) Decode(d *jx.Decoder) er
 				return errors.Wrap(err, "decode field \"reason\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -58930,7 +57370,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) Decode(d *jx.Decoder) er
 				return errors.Wrap(err, "decode field \"status\"")
 			}
 		case "type":
-
 			if err := func() error {
 				s.Type.Reset()
 				if err := s.Type.Decode(d); err != nil {
@@ -59029,7 +57468,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -59041,7 +57479,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -59059,7 +57496,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -59070,7 +57506,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -59204,7 +57639,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "distinguisherMethod":
-
 			if err := func() error {
 				s.DistinguisherMethod.Reset()
 				if err := s.DistinguisherMethod.Decode(d); err != nil {
@@ -59215,7 +57649,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"distinguisherMethod\"")
 			}
 		case "matchingPrecedence":
-
 			if err := func() error {
 				s.MatchingPrecedence.Reset()
 				if err := s.MatchingPrecedence.Decode(d); err != nil {
@@ -59227,7 +57660,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Decode(d *jx.Decoder) error {
 			}
 		case "priorityLevelConfiguration":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				if err := s.PriorityLevelConfiguration.Decode(d); err != nil {
 					return err
@@ -59237,7 +57669,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"priorityLevelConfiguration\"")
 			}
 		case "rules":
-
 			if err := func() error {
 				s.Rules = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -59344,7 +57775,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Decode(d *jx.Decoder) error
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -59406,7 +57836,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2GroupSubject) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -59506,7 +57935,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "queuing":
-
 			if err := func() error {
 				s.Queuing.Reset()
 				if err := s.Queuing.Decode(d); err != nil {
@@ -59518,7 +57946,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -59620,7 +58047,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Decode(d *
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "assuredConcurrencyShares":
-
 			if err := func() error {
 				s.AssuredConcurrencyShares.Reset()
 				if err := s.AssuredConcurrencyShares.Decode(d); err != nil {
@@ -59631,7 +58057,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Decode(d *
 				return errors.Wrap(err, "decode field \"assuredConcurrencyShares\"")
 			}
 		case "limitResponse":
-
 			if err := func() error {
 				s.LimitResponse.Reset()
 				if err := s.LimitResponse.Decode(d); err != nil {
@@ -59717,7 +58142,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Decode(d *jx.Decoder) 
 		switch string(k) {
 		case "nonResourceURLs":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				s.NonResourceURLs = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -59738,7 +58162,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Decode(d *jx.Decoder) 
 			}
 		case "verbs":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Verbs = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -59895,7 +58318,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Decode(d *jx.Decoder
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "nonResourceRules":
-
 			if err := func() error {
 				s.NonResourceRules = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -59913,7 +58335,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Decode(d *jx.Decoder
 				return errors.Wrap(err, "decode field \"nonResourceRules\"")
 			}
 		case "resourceRules":
-
 			if err := func() error {
 				s.ResourceRules = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -59932,7 +58353,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Decode(d *jx.Decoder
 			}
 		case "subjects":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				s.Subjects = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -60079,7 +58499,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) Decode(d *jx.Deco
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -60090,7 +58509,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) Decode(d *jx.Deco
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -60101,7 +58519,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) Decode(d *jx.Deco
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -60112,7 +58529,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) Decode(d *jx.Deco
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -60123,7 +58539,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) Decode(d *jx.Deco
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -60231,7 +58646,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) Decode(d
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -60242,7 +58656,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) Decode(d
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -60253,7 +58666,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) Decode(d
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -60264,7 +58676,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) Decode(d
 				return errors.Wrap(err, "decode field \"reason\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -60275,7 +58686,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) Decode(d
 				return errors.Wrap(err, "decode field \"status\"")
 			}
 		case "type":
-
 			if err := func() error {
 				s.Type.Reset()
 				if err := s.Type.Decode(d); err != nil {
@@ -60374,7 +58784,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Decode(d *jx.
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -60386,7 +58795,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Decode(d *jx.
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -60404,7 +58812,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Decode(d *jx.
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -60415,7 +58822,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Decode(d *jx.
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -60502,7 +58908,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) Decode(d
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -60602,7 +59007,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Decode(d *jx.
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "limited":
-
 			if err := func() error {
 				s.Limited.Reset()
 				if err := s.Limited.Decode(d); err != nil {
@@ -60614,7 +59018,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Decode(d *jx.
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -60715,7 +59118,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Decode(d *j
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -60804,7 +59206,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Decode(d *jx.Decoder) e
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "handSize":
-
 			if err := func() error {
 				s.HandSize.Reset()
 				if err := s.HandSize.Decode(d); err != nil {
@@ -60815,7 +59216,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"handSize\"")
 			}
 		case "queueLengthLimit":
-
 			if err := func() error {
 				s.QueueLengthLimit.Reset()
 				if err := s.QueueLengthLimit.Decode(d); err != nil {
@@ -60826,7 +59226,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"queueLengthLimit\"")
 			}
 		case "queues":
-
 			if err := func() error {
 				s.Queues.Reset()
 				if err := s.Queues.Decode(d); err != nil {
@@ -60963,7 +59362,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Decode(d *jx.Decoder) err
 		switch string(k) {
 		case "apiGroups":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				s.ApiGroups = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -60983,7 +59381,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"apiGroups\"")
 			}
 		case "clusterScope":
-
 			if err := func() error {
 				s.ClusterScope.Reset()
 				if err := s.ClusterScope.Decode(d); err != nil {
@@ -60994,7 +59391,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"clusterScope\"")
 			}
 		case "namespaces":
-
 			if err := func() error {
 				s.Namespaces = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -61015,7 +59411,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Decode(d *jx.Decoder) err
 			}
 		case "resources":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				s.Resources = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -61036,7 +59431,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Decode(d *jx.Decoder) err
 			}
 		case "verbs":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				s.Verbs = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -61139,7 +59533,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Decode(d *jx.Decoder) 
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -61152,7 +59545,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Decode(d *jx.Decoder) 
 			}
 		case "namespace":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Namespace = string(v)
@@ -61272,7 +59664,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2Subject) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "group":
-
 			if err := func() error {
 				s.Group.Reset()
 				if err := s.Group.Decode(d); err != nil {
@@ -61284,7 +59675,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2Subject) Decode(d *jx.Decoder) error {
 			}
 		case "kind":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Kind = string(v)
@@ -61296,7 +59686,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2Subject) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "serviceAccount":
-
 			if err := func() error {
 				s.ServiceAccount.Reset()
 				if err := s.ServiceAccount.Decode(d); err != nil {
@@ -61307,7 +59696,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2Subject) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"serviceAccount\"")
 			}
 		case "user":
-
 			if err := func() error {
 				s.User.Reset()
 				if err := s.User.Decode(d); err != nil {
@@ -61394,7 +59782,6 @@ func (s *IoK8sAPIFlowcontrolV1beta2UserSubject) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -61499,7 +59886,6 @@ func (s *IoK8sAPINetworkingV1HTTPIngressPath) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "backend":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				if err := s.Backend.Decode(d); err != nil {
 					return err
@@ -61509,7 +59895,6 @@ func (s *IoK8sAPINetworkingV1HTTPIngressPath) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"backend\"")
 			}
 		case "path":
-
 			if err := func() error {
 				s.Path.Reset()
 				if err := s.Path.Decode(d); err != nil {
@@ -61521,7 +59906,6 @@ func (s *IoK8sAPINetworkingV1HTTPIngressPath) Decode(d *jx.Decoder) error {
 			}
 		case "pathType":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.PathType = string(v)
@@ -61621,7 +60005,6 @@ func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "paths":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				s.Paths = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -61737,7 +60120,6 @@ func (s *IoK8sAPINetworkingV1IPBlock) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "cidr":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Cidr = string(v)
@@ -61749,7 +60131,6 @@ func (s *IoK8sAPINetworkingV1IPBlock) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"cidr\"")
 			}
 		case "except":
-
 			if err := func() error {
 				s.Except = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -61898,7 +60279,6 @@ func (s *IoK8sAPINetworkingV1Ingress) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -61909,7 +60289,6 @@ func (s *IoK8sAPINetworkingV1Ingress) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -61920,7 +60299,6 @@ func (s *IoK8sAPINetworkingV1Ingress) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -61931,7 +60309,6 @@ func (s *IoK8sAPINetworkingV1Ingress) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -61942,7 +60319,6 @@ func (s *IoK8sAPINetworkingV1Ingress) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -62011,7 +60387,6 @@ func (s *IoK8sAPINetworkingV1IngressBackend) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "resource":
-
 			if err := func() error {
 				s.Resource.Reset()
 				if err := s.Resource.Decode(d); err != nil {
@@ -62022,7 +60397,6 @@ func (s *IoK8sAPINetworkingV1IngressBackend) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"resource\"")
 			}
 		case "service":
-
 			if err := func() error {
 				s.Service.Reset()
 				if err := s.Service.Decode(d); err != nil {
@@ -62117,7 +60491,6 @@ func (s *IoK8sAPINetworkingV1IngressClass) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -62128,7 +60501,6 @@ func (s *IoK8sAPINetworkingV1IngressClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -62139,7 +60511,6 @@ func (s *IoK8sAPINetworkingV1IngressClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -62150,7 +60521,6 @@ func (s *IoK8sAPINetworkingV1IngressClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -62249,7 +60619,6 @@ func (s *IoK8sAPINetworkingV1IngressClassList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -62261,7 +60630,6 @@ func (s *IoK8sAPINetworkingV1IngressClassList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -62279,7 +60647,6 @@ func (s *IoK8sAPINetworkingV1IngressClassList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -62290,7 +60657,6 @@ func (s *IoK8sAPINetworkingV1IngressClassList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -62416,7 +60782,6 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) Decode(d *jx.Decod
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiGroup":
-
 			if err := func() error {
 				s.ApiGroup.Reset()
 				if err := s.ApiGroup.Decode(d); err != nil {
@@ -62428,7 +60793,6 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) Decode(d *jx.Decod
 			}
 		case "kind":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Kind = string(v)
@@ -62441,7 +60805,6 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) Decode(d *jx.Decod
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -62453,7 +60816,6 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) Decode(d *jx.Decod
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "namespace":
-
 			if err := func() error {
 				s.Namespace.Reset()
 				if err := s.Namespace.Decode(d); err != nil {
@@ -62464,7 +60826,6 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) Decode(d *jx.Decod
 				return errors.Wrap(err, "decode field \"namespace\"")
 			}
 		case "scope":
-
 			if err := func() error {
 				s.Scope.Reset()
 				if err := s.Scope.Decode(d); err != nil {
@@ -62565,7 +60926,6 @@ func (s *IoK8sAPINetworkingV1IngressClassSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "controller":
-
 			if err := func() error {
 				s.Controller.Reset()
 				if err := s.Controller.Decode(d); err != nil {
@@ -62576,7 +60936,6 @@ func (s *IoK8sAPINetworkingV1IngressClassSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"controller\"")
 			}
 		case "parameters":
-
 			if err := func() error {
 				s.Parameters.Reset()
 				if err := s.Parameters.Decode(d); err != nil {
@@ -62675,7 +61034,6 @@ func (s *IoK8sAPINetworkingV1IngressList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -62687,7 +61045,6 @@ func (s *IoK8sAPINetworkingV1IngressList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -62705,7 +61062,6 @@ func (s *IoK8sAPINetworkingV1IngressList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -62716,7 +61072,6 @@ func (s *IoK8sAPINetworkingV1IngressList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -62817,7 +61172,6 @@ func (s *IoK8sAPINetworkingV1IngressRule) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "host":
-
 			if err := func() error {
 				s.Host.Reset()
 				if err := s.Host.Decode(d); err != nil {
@@ -62828,7 +61182,6 @@ func (s *IoK8sAPINetworkingV1IngressRule) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"host\"")
 			}
 		case "http":
-
 			if err := func() error {
 				s.HTTP.Reset()
 				if err := s.HTTP.Decode(d); err != nil {
@@ -62893,7 +61246,6 @@ func (s *IoK8sAPINetworkingV1IngressServiceBackend) Decode(d *jx.Decoder) error 
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -62905,7 +61257,6 @@ func (s *IoK8sAPINetworkingV1IngressServiceBackend) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "port":
-
 			if err := func() error {
 				s.Port.Reset()
 				if err := s.Port.Decode(d); err != nil {
@@ -63056,7 +61407,6 @@ func (s *IoK8sAPINetworkingV1IngressSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "defaultBackend":
-
 			if err := func() error {
 				s.DefaultBackend.Reset()
 				if err := s.DefaultBackend.Decode(d); err != nil {
@@ -63067,7 +61417,6 @@ func (s *IoK8sAPINetworkingV1IngressSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"defaultBackend\"")
 			}
 		case "ingressClassName":
-
 			if err := func() error {
 				s.IngressClassName.Reset()
 				if err := s.IngressClassName.Decode(d); err != nil {
@@ -63078,7 +61427,6 @@ func (s *IoK8sAPINetworkingV1IngressSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"ingressClassName\"")
 			}
 		case "rules":
-
 			if err := func() error {
 				s.Rules = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -63096,7 +61444,6 @@ func (s *IoK8sAPINetworkingV1IngressSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"rules\"")
 			}
 		case "tls":
-
 			if err := func() error {
 				s.TLS = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -63159,7 +61506,6 @@ func (s *IoK8sAPINetworkingV1IngressStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "loadBalancer":
-
 			if err := func() error {
 				s.LoadBalancer.Reset()
 				if err := s.LoadBalancer.Decode(d); err != nil {
@@ -63240,7 +61586,6 @@ func (s *IoK8sAPINetworkingV1IngressTLS) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "hosts":
-
 			if err := func() error {
 				s.Hosts = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -63260,7 +61605,6 @@ func (s *IoK8sAPINetworkingV1IngressTLS) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"hosts\"")
 			}
 		case "secretName":
-
 			if err := func() error {
 				s.SecretName.Reset()
 				if err := s.SecretName.Decode(d); err != nil {
@@ -63355,7 +61699,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicy) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -63366,7 +61709,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicy) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -63377,7 +61719,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicy) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -63388,7 +61729,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicy) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -63481,7 +61821,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) Decode(d *jx.Decoder) erro
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "ports":
-
 			if err := func() error {
 				s.Ports = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -63499,7 +61838,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) Decode(d *jx.Decoder) erro
 				return errors.Wrap(err, "decode field \"ports\"")
 			}
 		case "to":
-
 			if err := func() error {
 				s.To = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -63599,7 +61937,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) Decode(d *jx.Decoder) err
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "from":
-
 			if err := func() error {
 				s.From = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -63617,7 +61954,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"from\"")
 			}
 		case "ports":
-
 			if err := func() error {
 				s.Ports = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -63723,7 +62059,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -63735,7 +62070,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -63753,7 +62087,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -63764,7 +62097,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -63878,7 +62210,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "ipBlock":
-
 			if err := func() error {
 				s.IpBlock.Reset()
 				if err := s.IpBlock.Decode(d); err != nil {
@@ -63889,7 +62220,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"ipBlock\"")
 			}
 		case "namespaceSelector":
-
 			if err := func() error {
 				s.NamespaceSelector.Reset()
 				if err := s.NamespaceSelector.Decode(d); err != nil {
@@ -63900,7 +62230,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"namespaceSelector\"")
 			}
 		case "podSelector":
-
 			if err := func() error {
 				s.PodSelector.Reset()
 				if err := s.PodSelector.Decode(d); err != nil {
@@ -63982,7 +62311,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPort) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "endPort":
-
 			if err := func() error {
 				s.EndPort.Reset()
 				if err := s.EndPort.Decode(d); err != nil {
@@ -63993,7 +62321,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"endPort\"")
 			}
 		case "port":
-
 			if err := func() error {
 				s.Port.Reset()
 				if err := s.Port.Decode(d); err != nil {
@@ -64004,7 +62331,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"port\"")
 			}
 		case "protocol":
-
 			if err := func() error {
 				s.Protocol.Reset()
 				if err := s.Protocol.Decode(d); err != nil {
@@ -64130,7 +62456,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "egress":
-
 			if err := func() error {
 				s.Egress = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -64148,7 +62473,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"egress\"")
 			}
 		case "ingress":
-
 			if err := func() error {
 				s.Ingress = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -64167,7 +62491,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) Decode(d *jx.Decoder) error {
 			}
 		case "podSelector":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				if err := s.PodSelector.Decode(d); err != nil {
 					return err
@@ -64177,7 +62500,6 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"podSelector\"")
 			}
 		case "policyTypes":
-
 			if err := func() error {
 				s.PolicyTypes = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -64287,7 +62609,6 @@ func (s *IoK8sAPINetworkingV1ServiceBackendPort) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -64298,7 +62619,6 @@ func (s *IoK8sAPINetworkingV1ServiceBackendPort) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "number":
-
 			if err := func() error {
 				s.Number.Reset()
 				if err := s.Number.Decode(d); err != nil {
@@ -64354,7 +62674,6 @@ func (s *IoK8sAPINodeV1Overhead) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "podFixed":
-
 			if err := func() error {
 				s.PodFixed.Reset()
 				if err := s.PodFixed.Decode(d); err != nil {
@@ -64518,7 +62837,6 @@ func (s *IoK8sAPINodeV1RuntimeClass) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -64530,7 +62848,6 @@ func (s *IoK8sAPINodeV1RuntimeClass) Decode(d *jx.Decoder) error {
 			}
 		case "handler":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Handler = string(v)
@@ -64542,7 +62859,6 @@ func (s *IoK8sAPINodeV1RuntimeClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"handler\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -64553,7 +62869,6 @@ func (s *IoK8sAPINodeV1RuntimeClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -64564,7 +62879,6 @@ func (s *IoK8sAPINodeV1RuntimeClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "overhead":
-
 			if err := func() error {
 				s.Overhead.Reset()
 				if err := s.Overhead.Decode(d); err != nil {
@@ -64575,7 +62889,6 @@ func (s *IoK8sAPINodeV1RuntimeClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"overhead\"")
 			}
 		case "scheduling":
-
 			if err := func() error {
 				s.Scheduling.Reset()
 				if err := s.Scheduling.Decode(d); err != nil {
@@ -64706,7 +63019,6 @@ func (s *IoK8sAPINodeV1RuntimeClassList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -64718,7 +63030,6 @@ func (s *IoK8sAPINodeV1RuntimeClassList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -64736,7 +63047,6 @@ func (s *IoK8sAPINodeV1RuntimeClassList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -64747,7 +63057,6 @@ func (s *IoK8sAPINodeV1RuntimeClassList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -64860,7 +63169,6 @@ func (s *IoK8sAPINodeV1Scheduling) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "nodeSelector":
-
 			if err := func() error {
 				s.NodeSelector.Reset()
 				if err := s.NodeSelector.Decode(d); err != nil {
@@ -64871,7 +63179,6 @@ func (s *IoK8sAPINodeV1Scheduling) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nodeSelector\"")
 			}
 		case "tolerations":
-
 			if err := func() error {
 				s.Tolerations = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -64987,7 +63294,6 @@ func (s *IoK8sAPINodeV1alpha1Overhead) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "podFixed":
-
 			if err := func() error {
 				s.PodFixed.Reset()
 				if err := s.PodFixed.Decode(d); err != nil {
@@ -65137,7 +63443,6 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClass) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -65148,7 +63453,6 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -65159,7 +63463,6 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -65171,7 +63474,6 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClass) Decode(d *jx.Decoder) error {
 			}
 		case "spec":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				if err := s.Spec.Decode(d); err != nil {
 					return err
@@ -65301,7 +63603,6 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -65313,7 +63614,6 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -65331,7 +63631,6 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -65342,7 +63641,6 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -65451,7 +63749,6 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "overhead":
-
 			if err := func() error {
 				s.Overhead.Reset()
 				if err := s.Overhead.Decode(d); err != nil {
@@ -65463,7 +63760,6 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) Decode(d *jx.Decoder) error {
 			}
 		case "runtimeHandler":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.RuntimeHandler = string(v)
@@ -65475,7 +63771,6 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"runtimeHandler\"")
 			}
 		case "scheduling":
-
 			if err := func() error {
 				s.Scheduling.Reset()
 				if err := s.Scheduling.Decode(d); err != nil {
@@ -65588,7 +63883,6 @@ func (s *IoK8sAPINodeV1alpha1Scheduling) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "nodeSelector":
-
 			if err := func() error {
 				s.NodeSelector.Reset()
 				if err := s.NodeSelector.Decode(d); err != nil {
@@ -65599,7 +63893,6 @@ func (s *IoK8sAPINodeV1alpha1Scheduling) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nodeSelector\"")
 			}
 		case "tolerations":
-
 			if err := func() error {
 				s.Tolerations = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -65715,7 +64008,6 @@ func (s *IoK8sAPINodeV1beta1Overhead) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "podFixed":
-
 			if err := func() error {
 				s.PodFixed.Reset()
 				if err := s.PodFixed.Decode(d); err != nil {
@@ -65879,7 +64171,6 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -65891,7 +64182,6 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) Decode(d *jx.Decoder) error {
 			}
 		case "handler":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Handler = string(v)
@@ -65903,7 +64193,6 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"handler\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -65914,7 +64203,6 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -65925,7 +64213,6 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "overhead":
-
 			if err := func() error {
 				s.Overhead.Reset()
 				if err := s.Overhead.Decode(d); err != nil {
@@ -65936,7 +64223,6 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"overhead\"")
 			}
 		case "scheduling":
-
 			if err := func() error {
 				s.Scheduling.Reset()
 				if err := s.Scheduling.Decode(d); err != nil {
@@ -66067,7 +64353,6 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -66079,7 +64364,6 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -66097,7 +64381,6 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -66108,7 +64391,6 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -66221,7 +64503,6 @@ func (s *IoK8sAPINodeV1beta1Scheduling) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "nodeSelector":
-
 			if err := func() error {
 				s.NodeSelector.Reset()
 				if err := s.NodeSelector.Decode(d); err != nil {
@@ -66232,7 +64513,6 @@ func (s *IoK8sAPINodeV1beta1Scheduling) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nodeSelector\"")
 			}
 		case "tolerations":
-
 			if err := func() error {
 				s.Tolerations = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -66400,7 +64680,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudget) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -66411,7 +64690,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudget) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -66422,7 +64700,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudget) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -66433,7 +64710,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudget) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -66444,7 +64720,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudget) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -66543,7 +64818,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -66555,7 +64829,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -66573,7 +64846,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -66584,7 +64856,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -66698,7 +64969,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "maxUnavailable":
-
 			if err := func() error {
 				s.MaxUnavailable.Reset()
 				if err := s.MaxUnavailable.Decode(d); err != nil {
@@ -66709,7 +64979,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"maxUnavailable\"")
 			}
 		case "minAvailable":
-
 			if err := func() error {
 				s.MinAvailable.Reset()
 				if err := s.MinAvailable.Decode(d); err != nil {
@@ -66720,7 +64989,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"minAvailable\"")
 			}
 		case "selector":
-
 			if err := func() error {
 				s.Selector.Reset()
 				if err := s.Selector.Decode(d); err != nil {
@@ -66840,7 +65108,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) error 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -66859,7 +65126,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) error 
 			}
 		case "currentHealthy":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.CurrentHealthy = int32(v)
@@ -66872,7 +65138,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) error 
 			}
 		case "desiredHealthy":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.DesiredHealthy = int32(v)
@@ -66884,7 +65149,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"desiredHealthy\"")
 			}
 		case "disruptedPods":
-
 			if err := func() error {
 				s.DisruptedPods.Reset()
 				if err := s.DisruptedPods.Decode(d); err != nil {
@@ -66896,7 +65160,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) error 
 			}
 		case "disruptionsAllowed":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.DisruptionsAllowed = int32(v)
@@ -66909,7 +65172,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) error 
 			}
 		case "expectedPods":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.ExpectedPods = int32(v)
@@ -66921,7 +65183,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"expectedPods\"")
 			}
 		case "observedGeneration":
-
 			if err := func() error {
 				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.Decode(d); err != nil {
@@ -67065,7 +65326,6 @@ func (s *IoK8sAPIPolicyV1beta1AllowedCSIDriver) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -67153,7 +65413,6 @@ func (s *IoK8sAPIPolicyV1beta1AllowedFlexVolume) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "driver":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Driver = string(v)
@@ -67255,7 +65514,6 @@ func (s *IoK8sAPIPolicyV1beta1AllowedHostPath) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "pathPrefix":
-
 			if err := func() error {
 				s.PathPrefix.Reset()
 				if err := s.PathPrefix.Decode(d); err != nil {
@@ -67266,7 +65524,6 @@ func (s *IoK8sAPIPolicyV1beta1AllowedHostPath) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"pathPrefix\"")
 			}
 		case "readOnly":
-
 			if err := func() error {
 				s.ReadOnly.Reset()
 				if err := s.ReadOnly.Decode(d); err != nil {
@@ -67347,7 +65604,6 @@ func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) Decode(d *jx.Decoder) erro
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "ranges":
-
 			if err := func() error {
 				s.Ranges = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -67365,7 +65621,6 @@ func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) Decode(d *jx.Decoder) erro
 				return errors.Wrap(err, "decode field \"ranges\"")
 			}
 		case "rule":
-
 			if err := func() error {
 				s.Rule.Reset()
 				if err := s.Rule.Decode(d); err != nil {
@@ -67427,7 +65682,6 @@ func (s *IoK8sAPIPolicyV1beta1HostPortRange) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "max":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Max = int32(v)
@@ -67440,7 +65694,6 @@ func (s *IoK8sAPIPolicyV1beta1HostPortRange) Decode(d *jx.Decoder) error {
 			}
 		case "min":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Min = int32(v)
@@ -67535,7 +65788,6 @@ func (s *IoK8sAPIPolicyV1beta1IDRange) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "max":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Int64()
 				s.Max = int64(v)
@@ -67548,7 +65800,6 @@ func (s *IoK8sAPIPolicyV1beta1IDRange) Decode(d *jx.Decoder) error {
 			}
 		case "min":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int64()
 				s.Min = int64(v)
@@ -67689,7 +65940,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -67700,7 +65950,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -67711,7 +65960,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -67722,7 +65970,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -67733,7 +65980,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -67832,7 +66078,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Decode(d *jx.Decoder) err
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -67844,7 +66089,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Decode(d *jx.Decoder) err
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -67862,7 +66106,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -67873,7 +66116,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -67987,7 +66229,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) err
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "maxUnavailable":
-
 			if err := func() error {
 				s.MaxUnavailable.Reset()
 				if err := s.MaxUnavailable.Decode(d); err != nil {
@@ -67998,7 +66239,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"maxUnavailable\"")
 			}
 		case "minAvailable":
-
 			if err := func() error {
 				s.MinAvailable.Reset()
 				if err := s.MinAvailable.Decode(d); err != nil {
@@ -68009,7 +66249,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"minAvailable\"")
 			}
 		case "selector":
-
 			if err := func() error {
 				s.Selector.Reset()
 				if err := s.Selector.Decode(d); err != nil {
@@ -68129,7 +66368,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) e
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -68148,7 +66386,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) e
 			}
 		case "currentHealthy":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.CurrentHealthy = int32(v)
@@ -68161,7 +66398,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) e
 			}
 		case "desiredHealthy":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.DesiredHealthy = int32(v)
@@ -68173,7 +66409,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"desiredHealthy\"")
 			}
 		case "disruptedPods":
-
 			if err := func() error {
 				s.DisruptedPods.Reset()
 				if err := s.DisruptedPods.Decode(d); err != nil {
@@ -68185,7 +66420,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) e
 			}
 		case "disruptionsAllowed":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.DisruptionsAllowed = int32(v)
@@ -68198,7 +66432,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) e
 			}
 		case "expectedPods":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.ExpectedPods = int32(v)
@@ -68210,7 +66443,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) e
 				return errors.Wrap(err, "decode field \"expectedPods\"")
 			}
 		case "observedGeneration":
-
 			if err := func() error {
 				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.Decode(d); err != nil {
@@ -68394,7 +66626,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -68405,7 +66636,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -68416,7 +66646,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -68427,7 +66656,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -68526,7 +66754,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Decode(d *jx.Decoder) error
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -68538,7 +66765,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Decode(d *jx.Decoder) error
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -68556,7 +66782,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -68567,7 +66792,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -69036,7 +67260,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "allowPrivilegeEscalation":
-
 			if err := func() error {
 				s.AllowPrivilegeEscalation.Reset()
 				if err := s.AllowPrivilegeEscalation.Decode(d); err != nil {
@@ -69047,7 +67270,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"allowPrivilegeEscalation\"")
 			}
 		case "allowedCSIDrivers":
-
 			if err := func() error {
 				s.AllowedCSIDrivers = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -69065,7 +67287,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"allowedCSIDrivers\"")
 			}
 		case "allowedCapabilities":
-
 			if err := func() error {
 				s.AllowedCapabilities = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -69085,7 +67306,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"allowedCapabilities\"")
 			}
 		case "allowedFlexVolumes":
-
 			if err := func() error {
 				s.AllowedFlexVolumes = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -69103,7 +67323,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"allowedFlexVolumes\"")
 			}
 		case "allowedHostPaths":
-
 			if err := func() error {
 				s.AllowedHostPaths = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -69121,7 +67340,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"allowedHostPaths\"")
 			}
 		case "allowedProcMountTypes":
-
 			if err := func() error {
 				s.AllowedProcMountTypes = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -69141,7 +67359,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"allowedProcMountTypes\"")
 			}
 		case "allowedUnsafeSysctls":
-
 			if err := func() error {
 				s.AllowedUnsafeSysctls = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -69161,7 +67378,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"allowedUnsafeSysctls\"")
 			}
 		case "defaultAddCapabilities":
-
 			if err := func() error {
 				s.DefaultAddCapabilities = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -69181,7 +67397,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"defaultAddCapabilities\"")
 			}
 		case "defaultAllowPrivilegeEscalation":
-
 			if err := func() error {
 				s.DefaultAllowPrivilegeEscalation.Reset()
 				if err := s.DefaultAllowPrivilegeEscalation.Decode(d); err != nil {
@@ -69192,7 +67407,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"defaultAllowPrivilegeEscalation\"")
 			}
 		case "forbiddenSysctls":
-
 			if err := func() error {
 				s.ForbiddenSysctls = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -69213,7 +67427,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 			}
 		case "fsGroup":
 			requiredBitSet[1] |= 1 << 2
-
 			if err := func() error {
 				if err := s.FsGroup.Decode(d); err != nil {
 					return err
@@ -69223,7 +67436,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"fsGroup\"")
 			}
 		case "hostIPC":
-
 			if err := func() error {
 				s.HostIPC.Reset()
 				if err := s.HostIPC.Decode(d); err != nil {
@@ -69234,7 +67446,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"hostIPC\"")
 			}
 		case "hostNetwork":
-
 			if err := func() error {
 				s.HostNetwork.Reset()
 				if err := s.HostNetwork.Decode(d); err != nil {
@@ -69245,7 +67456,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"hostNetwork\"")
 			}
 		case "hostPID":
-
 			if err := func() error {
 				s.HostPID.Reset()
 				if err := s.HostPID.Decode(d); err != nil {
@@ -69256,7 +67466,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"hostPID\"")
 			}
 		case "hostPorts":
-
 			if err := func() error {
 				s.HostPorts = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -69274,7 +67483,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"hostPorts\"")
 			}
 		case "privileged":
-
 			if err := func() error {
 				s.Privileged.Reset()
 				if err := s.Privileged.Decode(d); err != nil {
@@ -69285,7 +67493,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"privileged\"")
 			}
 		case "readOnlyRootFilesystem":
-
 			if err := func() error {
 				s.ReadOnlyRootFilesystem.Reset()
 				if err := s.ReadOnlyRootFilesystem.Decode(d); err != nil {
@@ -69296,7 +67503,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"readOnlyRootFilesystem\"")
 			}
 		case "requiredDropCapabilities":
-
 			if err := func() error {
 				s.RequiredDropCapabilities = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -69316,7 +67522,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"requiredDropCapabilities\"")
 			}
 		case "runAsGroup":
-
 			if err := func() error {
 				s.RunAsGroup.Reset()
 				if err := s.RunAsGroup.Decode(d); err != nil {
@@ -69328,7 +67533,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 			}
 		case "runAsUser":
 			requiredBitSet[2] |= 1 << 3
-
 			if err := func() error {
 				if err := s.RunAsUser.Decode(d); err != nil {
 					return err
@@ -69338,7 +67542,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"runAsUser\"")
 			}
 		case "runtimeClass":
-
 			if err := func() error {
 				s.RuntimeClass.Reset()
 				if err := s.RuntimeClass.Decode(d); err != nil {
@@ -69350,7 +67553,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 			}
 		case "seLinux":
 			requiredBitSet[2] |= 1 << 5
-
 			if err := func() error {
 				if err := s.SeLinux.Decode(d); err != nil {
 					return err
@@ -69361,7 +67563,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 			}
 		case "supplementalGroups":
 			requiredBitSet[2] |= 1 << 6
-
 			if err := func() error {
 				if err := s.SupplementalGroups.Decode(d); err != nil {
 					return err
@@ -69371,7 +67572,6 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"supplementalGroups\"")
 			}
 		case "volumes":
-
 			if err := func() error {
 				s.Volumes = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -69493,7 +67693,6 @@ func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Decode(d *jx.Decoder) e
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "ranges":
-
 			if err := func() error {
 				s.Ranges = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -69512,7 +67711,6 @@ func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Decode(d *jx.Decoder) e
 			}
 		case "rule":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Rule = string(v)
@@ -69624,7 +67822,6 @@ func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) Decode(d *jx.Decoder) er
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "ranges":
-
 			if err := func() error {
 				s.Ranges = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -69643,7 +67840,6 @@ func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) Decode(d *jx.Decoder) er
 			}
 		case "rule":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Rule = string(v)
@@ -69753,7 +67949,6 @@ func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Decode(d *jx.Decoder)
 		switch string(k) {
 		case "allowedRuntimeClassNames":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				s.AllowedRuntimeClassNames = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -69773,7 +67968,6 @@ func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Decode(d *jx.Decoder)
 				return errors.Wrap(err, "decode field \"allowedRuntimeClassNames\"")
 			}
 		case "defaultRuntimeClassName":
-
 			if err := func() error {
 				s.DefaultRuntimeClassName.Reset()
 				if err := s.DefaultRuntimeClassName.Decode(d); err != nil {
@@ -69870,7 +68064,6 @@ func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) Decode(d *jx.Decoder) erro
 		switch string(k) {
 		case "rule":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Rule = string(v)
@@ -69882,7 +68075,6 @@ func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) Decode(d *jx.Decoder) erro
 				return errors.Wrap(err, "decode field \"rule\"")
 			}
 		case "seLinuxOptions":
-
 			if err := func() error {
 				s.SeLinuxOptions.Reset()
 				if err := s.SeLinuxOptions.Decode(d); err != nil {
@@ -69995,7 +68187,6 @@ func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) Decode(d *jx.De
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "ranges":
-
 			if err := func() error {
 				s.Ranges = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -70013,7 +68204,6 @@ func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) Decode(d *jx.De
 				return errors.Wrap(err, "decode field \"ranges\"")
 			}
 		case "rule":
-
 			if err := func() error {
 				s.Rule.Reset()
 				if err := s.Rule.Decode(d); err != nil {
@@ -70081,7 +68271,6 @@ func (s *IoK8sAPIRbacV1AggregationRule) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "clusterRoleSelectors":
-
 			if err := func() error {
 				s.ClusterRoleSelectors = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -70208,7 +68397,6 @@ func (s *IoK8sAPIRbacV1ClusterRole) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "aggregationRule":
-
 			if err := func() error {
 				s.AggregationRule.Reset()
 				if err := s.AggregationRule.Decode(d); err != nil {
@@ -70219,7 +68407,6 @@ func (s *IoK8sAPIRbacV1ClusterRole) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"aggregationRule\"")
 			}
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -70230,7 +68417,6 @@ func (s *IoK8sAPIRbacV1ClusterRole) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -70241,7 +68427,6 @@ func (s *IoK8sAPIRbacV1ClusterRole) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -70252,7 +68437,6 @@ func (s *IoK8sAPIRbacV1ClusterRole) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "rules":
-
 			if err := func() error {
 				s.Rules = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -70374,7 +68558,6 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -70385,7 +68568,6 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -70396,7 +68578,6 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -70408,7 +68589,6 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) Decode(d *jx.Decoder) error {
 			}
 		case "roleRef":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				if err := s.RoleRef.Decode(d); err != nil {
 					return err
@@ -70418,7 +68598,6 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"roleRef\"")
 			}
 		case "subjects":
-
 			if err := func() error {
 				s.Subjects = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -70556,7 +68735,6 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -70568,7 +68746,6 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -70586,7 +68763,6 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -70597,7 +68773,6 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -70728,7 +68903,6 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -70740,7 +68914,6 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -70758,7 +68931,6 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -70769,7 +68941,6 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -70967,7 +69138,6 @@ func (s *IoK8sAPIRbacV1PolicyRule) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiGroups":
-
 			if err := func() error {
 				s.ApiGroups = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -70987,7 +69157,6 @@ func (s *IoK8sAPIRbacV1PolicyRule) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiGroups\"")
 			}
 		case "nonResourceURLs":
-
 			if err := func() error {
 				s.NonResourceURLs = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -71007,7 +69176,6 @@ func (s *IoK8sAPIRbacV1PolicyRule) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nonResourceURLs\"")
 			}
 		case "resourceNames":
-
 			if err := func() error {
 				s.ResourceNames = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -71027,7 +69195,6 @@ func (s *IoK8sAPIRbacV1PolicyRule) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"resourceNames\"")
 			}
 		case "resources":
-
 			if err := func() error {
 				s.Resources = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -71048,7 +69215,6 @@ func (s *IoK8sAPIRbacV1PolicyRule) Decode(d *jx.Decoder) error {
 			}
 		case "verbs":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				s.Verbs = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -71196,7 +69362,6 @@ func (s *IoK8sAPIRbacV1Role) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -71207,7 +69372,6 @@ func (s *IoK8sAPIRbacV1Role) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -71218,7 +69382,6 @@ func (s *IoK8sAPIRbacV1Role) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -71229,7 +69392,6 @@ func (s *IoK8sAPIRbacV1Role) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "rules":
-
 			if err := func() error {
 				s.Rules = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -71351,7 +69513,6 @@ func (s *IoK8sAPIRbacV1RoleBinding) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -71362,7 +69523,6 @@ func (s *IoK8sAPIRbacV1RoleBinding) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -71373,7 +69533,6 @@ func (s *IoK8sAPIRbacV1RoleBinding) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -71385,7 +69544,6 @@ func (s *IoK8sAPIRbacV1RoleBinding) Decode(d *jx.Decoder) error {
 			}
 		case "roleRef":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				if err := s.RoleRef.Decode(d); err != nil {
 					return err
@@ -71395,7 +69553,6 @@ func (s *IoK8sAPIRbacV1RoleBinding) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"roleRef\"")
 			}
 		case "subjects":
-
 			if err := func() error {
 				s.Subjects = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -71533,7 +69690,6 @@ func (s *IoK8sAPIRbacV1RoleBindingList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -71545,7 +69701,6 @@ func (s *IoK8sAPIRbacV1RoleBindingList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -71563,7 +69718,6 @@ func (s *IoK8sAPIRbacV1RoleBindingList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -71574,7 +69728,6 @@ func (s *IoK8sAPIRbacV1RoleBindingList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -71705,7 +69858,6 @@ func (s *IoK8sAPIRbacV1RoleList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -71717,7 +69869,6 @@ func (s *IoK8sAPIRbacV1RoleList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -71735,7 +69886,6 @@ func (s *IoK8sAPIRbacV1RoleList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -71746,7 +69896,6 @@ func (s *IoK8sAPIRbacV1RoleList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -71847,7 +69996,6 @@ func (s *IoK8sAPIRbacV1RoleRef) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "apiGroup":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.ApiGroup = string(v)
@@ -71860,7 +70008,6 @@ func (s *IoK8sAPIRbacV1RoleRef) Decode(d *jx.Decoder) error {
 			}
 		case "kind":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Kind = string(v)
@@ -71873,7 +70020,6 @@ func (s *IoK8sAPIRbacV1RoleRef) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -71990,7 +70136,6 @@ func (s *IoK8sAPIRbacV1Subject) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiGroup":
-
 			if err := func() error {
 				s.ApiGroup.Reset()
 				if err := s.ApiGroup.Decode(d); err != nil {
@@ -72002,7 +70147,6 @@ func (s *IoK8sAPIRbacV1Subject) Decode(d *jx.Decoder) error {
 			}
 		case "kind":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Kind = string(v)
@@ -72015,7 +70159,6 @@ func (s *IoK8sAPIRbacV1Subject) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -72027,7 +70170,6 @@ func (s *IoK8sAPIRbacV1Subject) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "namespace":
-
 			if err := func() error {
 				s.Namespace.Reset()
 				if err := s.Namespace.Decode(d); err != nil {
@@ -72191,7 +70333,6 @@ func (s *IoK8sAPISchedulingV1PriorityClass) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -72202,7 +70343,6 @@ func (s *IoK8sAPISchedulingV1PriorityClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "description":
-
 			if err := func() error {
 				s.Description.Reset()
 				if err := s.Description.Decode(d); err != nil {
@@ -72213,7 +70353,6 @@ func (s *IoK8sAPISchedulingV1PriorityClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"description\"")
 			}
 		case "globalDefault":
-
 			if err := func() error {
 				s.GlobalDefault.Reset()
 				if err := s.GlobalDefault.Decode(d); err != nil {
@@ -72224,7 +70363,6 @@ func (s *IoK8sAPISchedulingV1PriorityClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"globalDefault\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -72235,7 +70373,6 @@ func (s *IoK8sAPISchedulingV1PriorityClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -72246,7 +70383,6 @@ func (s *IoK8sAPISchedulingV1PriorityClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "preemptionPolicy":
-
 			if err := func() error {
 				s.PreemptionPolicy.Reset()
 				if err := s.PreemptionPolicy.Decode(d); err != nil {
@@ -72258,7 +70394,6 @@ func (s *IoK8sAPISchedulingV1PriorityClass) Decode(d *jx.Decoder) error {
 			}
 		case "value":
 			requiredBitSet[0] |= 1 << 6
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.Value = int32(v)
@@ -72390,7 +70525,6 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -72402,7 +70536,6 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -72420,7 +70553,6 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -72431,7 +70563,6 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -72556,7 +70687,6 @@ func (s *IoK8sAPIStorageV1CSIDriver) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -72567,7 +70697,6 @@ func (s *IoK8sAPIStorageV1CSIDriver) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -72578,7 +70707,6 @@ func (s *IoK8sAPIStorageV1CSIDriver) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -72590,7 +70718,6 @@ func (s *IoK8sAPIStorageV1CSIDriver) Decode(d *jx.Decoder) error {
 			}
 		case "spec":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				if err := s.Spec.Decode(d); err != nil {
 					return err
@@ -72720,7 +70847,6 @@ func (s *IoK8sAPIStorageV1CSIDriverList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -72732,7 +70858,6 @@ func (s *IoK8sAPIStorageV1CSIDriverList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -72750,7 +70875,6 @@ func (s *IoK8sAPIStorageV1CSIDriverList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -72761,7 +70885,6 @@ func (s *IoK8sAPIStorageV1CSIDriverList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -72951,7 +71074,6 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "attachRequired":
-
 			if err := func() error {
 				s.AttachRequired.Reset()
 				if err := s.AttachRequired.Decode(d); err != nil {
@@ -72962,7 +71084,6 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"attachRequired\"")
 			}
 		case "fsGroupPolicy":
-
 			if err := func() error {
 				s.FsGroupPolicy.Reset()
 				if err := s.FsGroupPolicy.Decode(d); err != nil {
@@ -72973,7 +71094,6 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"fsGroupPolicy\"")
 			}
 		case "podInfoOnMount":
-
 			if err := func() error {
 				s.PodInfoOnMount.Reset()
 				if err := s.PodInfoOnMount.Decode(d); err != nil {
@@ -72984,7 +71104,6 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"podInfoOnMount\"")
 			}
 		case "requiresRepublish":
-
 			if err := func() error {
 				s.RequiresRepublish.Reset()
 				if err := s.RequiresRepublish.Decode(d); err != nil {
@@ -72995,7 +71114,6 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"requiresRepublish\"")
 			}
 		case "storageCapacity":
-
 			if err := func() error {
 				s.StorageCapacity.Reset()
 				if err := s.StorageCapacity.Decode(d); err != nil {
@@ -73006,7 +71124,6 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"storageCapacity\"")
 			}
 		case "tokenRequests":
-
 			if err := func() error {
 				s.TokenRequests = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -73024,7 +71141,6 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"tokenRequests\"")
 			}
 		case "volumeLifecycleModes":
-
 			if err := func() error {
 				s.VolumeLifecycleModes = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -73126,7 +71242,6 @@ func (s *IoK8sAPIStorageV1CSINode) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -73137,7 +71252,6 @@ func (s *IoK8sAPIStorageV1CSINode) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -73148,7 +71262,6 @@ func (s *IoK8sAPIStorageV1CSINode) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -73160,7 +71273,6 @@ func (s *IoK8sAPIStorageV1CSINode) Decode(d *jx.Decoder) error {
 			}
 		case "spec":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				if err := s.Spec.Decode(d); err != nil {
 					return err
@@ -73287,7 +71399,6 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "allocatable":
-
 			if err := func() error {
 				s.Allocatable.Reset()
 				if err := s.Allocatable.Decode(d); err != nil {
@@ -73299,7 +71410,6 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -73312,7 +71422,6 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) Decode(d *jx.Decoder) error {
 			}
 		case "nodeID":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.NodeID = string(v)
@@ -73324,7 +71433,6 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"nodeID\"")
 			}
 		case "topologyKeys":
-
 			if err := func() error {
 				s.TopologyKeys = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -73464,7 +71572,6 @@ func (s *IoK8sAPIStorageV1CSINodeList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -73476,7 +71583,6 @@ func (s *IoK8sAPIStorageV1CSINodeList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -73494,7 +71600,6 @@ func (s *IoK8sAPIStorageV1CSINodeList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -73505,7 +71610,6 @@ func (s *IoK8sAPIStorageV1CSINodeList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -73604,7 +71708,6 @@ func (s *IoK8sAPIStorageV1CSINodeSpec) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "drivers":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				s.Drivers = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -73832,7 +71935,6 @@ func (s *IoK8sAPIStorageV1StorageClass) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "allowVolumeExpansion":
-
 			if err := func() error {
 				s.AllowVolumeExpansion.Reset()
 				if err := s.AllowVolumeExpansion.Decode(d); err != nil {
@@ -73843,7 +71945,6 @@ func (s *IoK8sAPIStorageV1StorageClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"allowVolumeExpansion\"")
 			}
 		case "allowedTopologies":
-
 			if err := func() error {
 				s.AllowedTopologies = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -73861,7 +71962,6 @@ func (s *IoK8sAPIStorageV1StorageClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"allowedTopologies\"")
 			}
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -73872,7 +71972,6 @@ func (s *IoK8sAPIStorageV1StorageClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -73883,7 +71982,6 @@ func (s *IoK8sAPIStorageV1StorageClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -73894,7 +71992,6 @@ func (s *IoK8sAPIStorageV1StorageClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "mountOptions":
-
 			if err := func() error {
 				s.MountOptions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -73914,7 +72011,6 @@ func (s *IoK8sAPIStorageV1StorageClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"mountOptions\"")
 			}
 		case "parameters":
-
 			if err := func() error {
 				s.Parameters.Reset()
 				if err := s.Parameters.Decode(d); err != nil {
@@ -73926,7 +72022,6 @@ func (s *IoK8sAPIStorageV1StorageClass) Decode(d *jx.Decoder) error {
 			}
 		case "provisioner":
 			requiredBitSet[0] |= 1 << 7
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Provisioner = string(v)
@@ -73938,7 +72033,6 @@ func (s *IoK8sAPIStorageV1StorageClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"provisioner\"")
 			}
 		case "reclaimPolicy":
-
 			if err := func() error {
 				s.ReclaimPolicy.Reset()
 				if err := s.ReclaimPolicy.Decode(d); err != nil {
@@ -73949,7 +72043,6 @@ func (s *IoK8sAPIStorageV1StorageClass) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"reclaimPolicy\"")
 			}
 		case "volumeBindingMode":
-
 			if err := func() error {
 				s.VolumeBindingMode.Reset()
 				if err := s.VolumeBindingMode.Decode(d); err != nil {
@@ -74081,7 +72174,6 @@ func (s *IoK8sAPIStorageV1StorageClassList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -74093,7 +72185,6 @@ func (s *IoK8sAPIStorageV1StorageClassList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -74111,7 +72202,6 @@ func (s *IoK8sAPIStorageV1StorageClassList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -74122,7 +72212,6 @@ func (s *IoK8sAPIStorageV1StorageClassList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -74272,7 +72361,6 @@ func (s *IoK8sAPIStorageV1TokenRequest) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "audience":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Audience = string(v)
@@ -74284,7 +72372,6 @@ func (s *IoK8sAPIStorageV1TokenRequest) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"audience\"")
 			}
 		case "expirationSeconds":
-
 			if err := func() error {
 				s.ExpirationSeconds.Reset()
 				if err := s.ExpirationSeconds.Decode(d); err != nil {
@@ -74419,7 +72506,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -74430,7 +72516,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -74441,7 +72526,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -74453,7 +72537,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) Decode(d *jx.Decoder) error {
 			}
 		case "spec":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				if err := s.Spec.Decode(d); err != nil {
 					return err
@@ -74463,7 +72546,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -74594,7 +72676,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -74606,7 +72687,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -74624,7 +72704,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -74635,7 +72714,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -74736,7 +72814,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSource) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "inlineVolumeSpec":
-
 			if err := func() error {
 				s.InlineVolumeSpec.Reset()
 				if err := s.InlineVolumeSpec.Decode(d); err != nil {
@@ -74747,7 +72824,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSource) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"inlineVolumeSpec\"")
 			}
 		case "persistentVolumeName":
-
 			if err := func() error {
 				s.PersistentVolumeName.Reset()
 				if err := s.PersistentVolumeName.Decode(d); err != nil {
@@ -74816,7 +72892,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "attacher":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Attacher = string(v)
@@ -74829,7 +72904,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) Decode(d *jx.Decoder) error {
 			}
 		case "nodeName":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.NodeName = string(v)
@@ -74842,7 +72916,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) Decode(d *jx.Decoder) error {
 			}
 		case "source":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				if err := s.Source.Decode(d); err != nil {
 					return err
@@ -74960,7 +73033,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "attachError":
-
 			if err := func() error {
 				s.AttachError.Reset()
 				if err := s.AttachError.Decode(d); err != nil {
@@ -74972,7 +73044,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) Decode(d *jx.Decoder) error {
 			}
 		case "attached":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Bool()
 				s.Attached = bool(v)
@@ -74984,7 +73055,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"attached\"")
 			}
 		case "attachmentMetadata":
-
 			if err := func() error {
 				s.AttachmentMetadata.Reset()
 				if err := s.AttachmentMetadata.Decode(d); err != nil {
@@ -74995,7 +73065,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"attachmentMetadata\"")
 			}
 		case "detachError":
-
 			if err := func() error {
 				s.DetachError.Reset()
 				if err := s.DetachError.Decode(d); err != nil {
@@ -75149,7 +73218,6 @@ func (s *IoK8sAPIStorageV1VolumeError) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -75160,7 +73228,6 @@ func (s *IoK8sAPIStorageV1VolumeError) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "time":
-
 			if err := func() error {
 				s.Time.Reset()
 				if err := s.Time.Decode(d); err != nil {
@@ -75216,7 +73283,6 @@ func (s *IoK8sAPIStorageV1VolumeNodeResources) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "count":
-
 			if err := func() error {
 				s.Count.Reset()
 				if err := s.Count.Decode(d); err != nil {
@@ -75348,7 +73414,6 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) Decode(d *jx.Decoder) error 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -75359,7 +73424,6 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "capacity":
-
 			if err := func() error {
 				s.Capacity.Reset()
 				if err := s.Capacity.Decode(d); err != nil {
@@ -75370,7 +73434,6 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"capacity\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -75381,7 +73444,6 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "maximumVolumeSize":
-
 			if err := func() error {
 				s.MaximumVolumeSize.Reset()
 				if err := s.MaximumVolumeSize.Decode(d); err != nil {
@@ -75392,7 +73454,6 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"maximumVolumeSize\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -75403,7 +73464,6 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "nodeTopology":
-
 			if err := func() error {
 				s.NodeTopology.Reset()
 				if err := s.NodeTopology.Decode(d); err != nil {
@@ -75415,7 +73475,6 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) Decode(d *jx.Decoder) error 
 			}
 		case "storageClassName":
 			requiredBitSet[0] |= 1 << 6
-
 			if err := func() error {
 				v, err := d.Str()
 				s.StorageClassName = string(v)
@@ -75547,7 +73606,6 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Decode(d *jx.Decoder) er
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -75559,7 +73617,6 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Decode(d *jx.Decoder) er
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -75577,7 +73634,6 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Decode(d *jx.Decoder) er
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -75588,7 +73644,6 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Decode(d *jx.Decoder) er
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -75752,7 +73807,6 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -75763,7 +73817,6 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "capacity":
-
 			if err := func() error {
 				s.Capacity.Reset()
 				if err := s.Capacity.Decode(d); err != nil {
@@ -75774,7 +73827,6 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"capacity\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -75785,7 +73837,6 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "maximumVolumeSize":
-
 			if err := func() error {
 				s.MaximumVolumeSize.Reset()
 				if err := s.MaximumVolumeSize.Decode(d); err != nil {
@@ -75796,7 +73847,6 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"maximumVolumeSize\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -75807,7 +73857,6 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "nodeTopology":
-
 			if err := func() error {
 				s.NodeTopology.Reset()
 				if err := s.NodeTopology.Decode(d); err != nil {
@@ -75819,7 +73868,6 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) Decode(d *jx.Decoder) error {
 			}
 		case "storageClassName":
 			requiredBitSet[0] |= 1 << 6
-
 			if err := func() error {
 				v, err := d.Str()
 				s.StorageClassName = string(v)
@@ -75951,7 +73999,6 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) Decode(d *jx.Decoder) err
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -75963,7 +74010,6 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) Decode(d *jx.Decoder) err
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -75981,7 +74027,6 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -75992,7 +74037,6 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -76128,7 +74172,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "description":
-
 			if err := func() error {
 				s.Description.Reset()
 				if err := s.Description.Decode(d); err != nil {
@@ -76139,7 +74182,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 				return errors.Wrap(err, "decode field \"description\"")
 			}
 		case "format":
-
 			if err := func() error {
 				s.Format.Reset()
 				if err := s.Format.Decode(d); err != nil {
@@ -76151,7 +74193,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 			}
 		case "jsonPath":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.JsonPath = string(v)
@@ -76164,7 +74205,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -76176,7 +74216,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "priority":
-
 			if err := func() error {
 				s.Priority.Reset()
 				if err := s.Priority.Decode(d); err != nil {
@@ -76188,7 +74227,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -76286,7 +74324,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversi
 		switch string(k) {
 		case "strategy":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Strategy = string(v)
@@ -76298,7 +74335,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversi
 				return errors.Wrap(err, "decode field \"strategy\"")
 			}
 		case "webhook":
-
 			if err := func() error {
 				s.Webhook.Reset()
 				if err := s.Webhook.Decode(d); err != nil {
@@ -76433,7 +74469,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -76444,7 +74479,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -76455,7 +74489,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -76467,7 +74500,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 		case "spec":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				if err := s.Spec.Decode(d); err != nil {
 					return err
@@ -76477,7 +74509,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -76609,7 +74640,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -76620,7 +74650,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -76631,7 +74660,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -76643,7 +74671,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -76656,7 +74683,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -76788,7 +74814,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -76800,7 +74825,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -76818,7 +74842,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -76829,7 +74852,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -76989,7 +75011,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "categories":
-
 			if err := func() error {
 				s.Categories = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -77010,7 +75031,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 		case "kind":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Kind = string(v)
@@ -77022,7 +75042,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "listKind":
-
 			if err := func() error {
 				s.ListKind.Reset()
 				if err := s.ListKind.Decode(d); err != nil {
@@ -77034,7 +75053,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 		case "plural":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Plural = string(v)
@@ -77046,7 +75064,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return errors.Wrap(err, "decode field \"plural\"")
 			}
 		case "shortNames":
-
 			if err := func() error {
 				s.ShortNames = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -77066,7 +75083,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return errors.Wrap(err, "decode field \"shortNames\"")
 			}
 		case "singular":
-
 			if err := func() error {
 				s.Singular.Reset()
 				if err := s.Singular.Decode(d); err != nil {
@@ -77208,7 +75224,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "conversion":
-
 			if err := func() error {
 				s.Conversion.Reset()
 				if err := s.Conversion.Decode(d); err != nil {
@@ -77220,7 +75235,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 		case "group":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Group = string(v)
@@ -77233,7 +75247,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 		case "names":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				if err := s.Names.Decode(d); err != nil {
 					return err
@@ -77243,7 +75256,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return errors.Wrap(err, "decode field \"names\"")
 			}
 		case "preserveUnknownFields":
-
 			if err := func() error {
 				s.PreserveUnknownFields.Reset()
 				if err := s.PreserveUnknownFields.Decode(d); err != nil {
@@ -77255,7 +75267,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 		case "scope":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Scope = string(v)
@@ -77268,7 +75279,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 		case "versions":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				s.Versions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -77413,7 +75423,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "acceptedNames":
-
 			if err := func() error {
 				s.AcceptedNames.Reset()
 				if err := s.AcceptedNames.Decode(d); err != nil {
@@ -77424,7 +75433,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return errors.Wrap(err, "decode field \"acceptedNames\"")
 			}
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -77442,7 +75450,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return errors.Wrap(err, "decode field \"conditions\"")
 			}
 		case "storedVersions":
-
 			if err := func() error {
 				s.StoredVersions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -77590,7 +75597,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "additionalPrinterColumns":
-
 			if err := func() error {
 				s.AdditionalPrinterColumns = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -77608,7 +75614,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return errors.Wrap(err, "decode field \"additionalPrinterColumns\"")
 			}
 		case "deprecated":
-
 			if err := func() error {
 				s.Deprecated.Reset()
 				if err := s.Deprecated.Decode(d); err != nil {
@@ -77619,7 +75624,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return errors.Wrap(err, "decode field \"deprecated\"")
 			}
 		case "deprecationWarning":
-
 			if err := func() error {
 				s.DeprecationWarning.Reset()
 				if err := s.DeprecationWarning.Decode(d); err != nil {
@@ -77631,7 +75635,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -77643,7 +75646,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "schema":
-
 			if err := func() error {
 				s.Schema.Reset()
 				if err := s.Schema.Decode(d); err != nil {
@@ -77655,7 +75657,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 		case "served":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Bool()
 				s.Served = bool(v)
@@ -77668,7 +75669,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 		case "storage":
 			requiredBitSet[0] |= 1 << 6
-
 			if err := func() error {
 				v, err := d.Bool()
 				s.Storage = bool(v)
@@ -77680,7 +75680,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				return errors.Wrap(err, "decode field \"storage\"")
 			}
 		case "subresources":
-
 			if err := func() error {
 				s.Subresources.Reset()
 				if err := s.Subresources.Decode(d); err != nil {
@@ -77786,7 +75785,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "labelSelectorPath":
-
 			if err := func() error {
 				s.LabelSelectorPath.Reset()
 				if err := s.LabelSelectorPath.Decode(d); err != nil {
@@ -77798,7 +75796,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 			}
 		case "specReplicasPath":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.SpecReplicasPath = string(v)
@@ -77811,7 +75808,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 			}
 		case "statusReplicasPath":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.StatusReplicasPath = string(v)
@@ -77944,7 +75940,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "scale":
-
 			if err := func() error {
 				s.Scale.Reset()
 				if err := s.Scale.Decode(d); err != nil {
@@ -77955,7 +75950,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 				return errors.Wrap(err, "decode field \"scale\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status = nil
 				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus
@@ -78013,7 +76007,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidati
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "openAPIV3Schema":
-
 			if err := func() error {
 				s.OpenAPIV3Schema.Reset()
 				if err := s.OpenAPIV3Schema.Decode(d); err != nil {
@@ -78082,7 +76075,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation)
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "description":
-
 			if err := func() error {
 				s.Description.Reset()
 				if err := s.Description.Decode(d); err != nil {
@@ -78093,7 +76085,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation)
 				return errors.Wrap(err, "decode field \"description\"")
 			}
 		case "url":
-
 			if err := func() error {
 				s.URL.Reset()
 				if err := s.URL.Decode(d); err != nil {
@@ -78798,7 +76789,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "$ref":
-
 			if err := func() error {
 				s.Ref.Reset()
 				if err := s.Ref.Decode(d); err != nil {
@@ -78809,7 +76799,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"$ref\"")
 			}
 		case "$schema":
-
 			if err := func() error {
 				s.Schema.Reset()
 				if err := s.Schema.Decode(d); err != nil {
@@ -78820,7 +76809,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"$schema\"")
 			}
 		case "additionalItems":
-
 			if err := func() error {
 				s.AdditionalItems = nil
 				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool
@@ -78833,7 +76821,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"additionalItems\"")
 			}
 		case "additionalProperties":
-
 			if err := func() error {
 				s.AdditionalProperties = nil
 				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool
@@ -78846,7 +76833,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"additionalProperties\"")
 			}
 		case "allOf":
-
 			if err := func() error {
 				s.AllOf = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -78864,7 +76850,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"allOf\"")
 			}
 		case "anyOf":
-
 			if err := func() error {
 				s.AnyOf = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -78882,7 +76867,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"anyOf\"")
 			}
 		case "default":
-
 			if err := func() error {
 				s.Default = nil
 				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON
@@ -78895,7 +76879,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"default\"")
 			}
 		case "definitions":
-
 			if err := func() error {
 				s.Definitions.Reset()
 				if err := s.Definitions.Decode(d); err != nil {
@@ -78906,7 +76889,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"definitions\"")
 			}
 		case "dependencies":
-
 			if err := func() error {
 				s.Dependencies.Reset()
 				if err := s.Dependencies.Decode(d); err != nil {
@@ -78917,7 +76899,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"dependencies\"")
 			}
 		case "description":
-
 			if err := func() error {
 				s.Description.Reset()
 				if err := s.Description.Decode(d); err != nil {
@@ -78928,7 +76909,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"description\"")
 			}
 		case "enum":
-
 			if err := func() error {
 				s.Enum = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -78946,7 +76926,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"enum\"")
 			}
 		case "example":
-
 			if err := func() error {
 				s.Example = nil
 				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON
@@ -78959,7 +76938,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"example\"")
 			}
 		case "exclusiveMaximum":
-
 			if err := func() error {
 				s.ExclusiveMaximum.Reset()
 				if err := s.ExclusiveMaximum.Decode(d); err != nil {
@@ -78970,7 +76948,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"exclusiveMaximum\"")
 			}
 		case "exclusiveMinimum":
-
 			if err := func() error {
 				s.ExclusiveMinimum.Reset()
 				if err := s.ExclusiveMinimum.Decode(d); err != nil {
@@ -78981,7 +76958,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"exclusiveMinimum\"")
 			}
 		case "externalDocs":
-
 			if err := func() error {
 				s.ExternalDocs.Reset()
 				if err := s.ExternalDocs.Decode(d); err != nil {
@@ -78992,7 +76968,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"externalDocs\"")
 			}
 		case "format":
-
 			if err := func() error {
 				s.Format.Reset()
 				if err := s.Format.Decode(d); err != nil {
@@ -79003,7 +76978,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"format\"")
 			}
 		case "id":
-
 			if err := func() error {
 				s.ID.Reset()
 				if err := s.ID.Decode(d); err != nil {
@@ -79014,7 +76988,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "items":
-
 			if err := func() error {
 				s.Items = nil
 				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray
@@ -79027,7 +77000,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "maxItems":
-
 			if err := func() error {
 				s.MaxItems.Reset()
 				if err := s.MaxItems.Decode(d); err != nil {
@@ -79038,7 +77010,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"maxItems\"")
 			}
 		case "maxLength":
-
 			if err := func() error {
 				s.MaxLength.Reset()
 				if err := s.MaxLength.Decode(d); err != nil {
@@ -79049,7 +77020,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"maxLength\"")
 			}
 		case "maxProperties":
-
 			if err := func() error {
 				s.MaxProperties.Reset()
 				if err := s.MaxProperties.Decode(d); err != nil {
@@ -79060,7 +77030,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"maxProperties\"")
 			}
 		case "maximum":
-
 			if err := func() error {
 				s.Maximum.Reset()
 				if err := s.Maximum.Decode(d); err != nil {
@@ -79071,7 +77040,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"maximum\"")
 			}
 		case "minItems":
-
 			if err := func() error {
 				s.MinItems.Reset()
 				if err := s.MinItems.Decode(d); err != nil {
@@ -79082,7 +77050,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"minItems\"")
 			}
 		case "minLength":
-
 			if err := func() error {
 				s.MinLength.Reset()
 				if err := s.MinLength.Decode(d); err != nil {
@@ -79093,7 +77060,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"minLength\"")
 			}
 		case "minProperties":
-
 			if err := func() error {
 				s.MinProperties.Reset()
 				if err := s.MinProperties.Decode(d); err != nil {
@@ -79104,7 +77070,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"minProperties\"")
 			}
 		case "minimum":
-
 			if err := func() error {
 				s.Minimum.Reset()
 				if err := s.Minimum.Decode(d); err != nil {
@@ -79115,7 +77080,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"minimum\"")
 			}
 		case "multipleOf":
-
 			if err := func() error {
 				s.MultipleOf.Reset()
 				if err := s.MultipleOf.Decode(d); err != nil {
@@ -79126,7 +77090,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"multipleOf\"")
 			}
 		case "not":
-
 			if err := func() error {
 				s.Not = nil
 				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
@@ -79139,7 +77102,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"not\"")
 			}
 		case "nullable":
-
 			if err := func() error {
 				s.Nullable.Reset()
 				if err := s.Nullable.Decode(d); err != nil {
@@ -79150,7 +77112,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"nullable\"")
 			}
 		case "oneOf":
-
 			if err := func() error {
 				s.OneOf = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -79168,7 +77129,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"oneOf\"")
 			}
 		case "pattern":
-
 			if err := func() error {
 				s.Pattern.Reset()
 				if err := s.Pattern.Decode(d); err != nil {
@@ -79179,7 +77139,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"pattern\"")
 			}
 		case "patternProperties":
-
 			if err := func() error {
 				s.PatternProperties.Reset()
 				if err := s.PatternProperties.Decode(d); err != nil {
@@ -79190,7 +77149,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"patternProperties\"")
 			}
 		case "properties":
-
 			if err := func() error {
 				s.Properties.Reset()
 				if err := s.Properties.Decode(d); err != nil {
@@ -79201,7 +77159,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"properties\"")
 			}
 		case "required":
-
 			if err := func() error {
 				s.Required = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -79221,7 +77178,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"required\"")
 			}
 		case "title":
-
 			if err := func() error {
 				s.Title.Reset()
 				if err := s.Title.Decode(d); err != nil {
@@ -79232,7 +77188,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"title\"")
 			}
 		case "type":
-
 			if err := func() error {
 				s.Type.Reset()
 				if err := s.Type.Decode(d); err != nil {
@@ -79243,7 +77198,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"type\"")
 			}
 		case "uniqueItems":
-
 			if err := func() error {
 				s.UniqueItems.Reset()
 				if err := s.UniqueItems.Decode(d); err != nil {
@@ -79254,7 +77208,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"uniqueItems\"")
 			}
 		case "x-kubernetes-embedded-resource":
-
 			if err := func() error {
 				s.XMinusKubernetesMinusEmbeddedMinusResource.Reset()
 				if err := s.XMinusKubernetesMinusEmbeddedMinusResource.Decode(d); err != nil {
@@ -79265,7 +77218,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"x-kubernetes-embedded-resource\"")
 			}
 		case "x-kubernetes-int-or-string":
-
 			if err := func() error {
 				s.XMinusKubernetesMinusIntMinusOrMinusString.Reset()
 				if err := s.XMinusKubernetesMinusIntMinusOrMinusString.Decode(d); err != nil {
@@ -79276,7 +77228,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"x-kubernetes-int-or-string\"")
 			}
 		case "x-kubernetes-list-map-keys":
-
 			if err := func() error {
 				s.XMinusKubernetesMinusListMinusMapMinusKeys = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -79296,7 +77247,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"x-kubernetes-list-map-keys\"")
 			}
 		case "x-kubernetes-list-type":
-
 			if err := func() error {
 				s.XMinusKubernetesMinusListMinusType.Reset()
 				if err := s.XMinusKubernetesMinusListMinusType.Decode(d); err != nil {
@@ -79307,7 +77257,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"x-kubernetes-list-type\"")
 			}
 		case "x-kubernetes-map-type":
-
 			if err := func() error {
 				s.XMinusKubernetesMinusMapMinusType.Reset()
 				if err := s.XMinusKubernetesMinusMapMinusType.Decode(d); err != nil {
@@ -79318,7 +77267,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 				return errors.Wrap(err, "decode field \"x-kubernetes-map-type\"")
 			}
 		case "x-kubernetes-preserve-unknown-fields":
-
 			if err := func() error {
 				s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields.Reset()
 				if err := s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields.Decode(d); err != nil {
@@ -79697,7 +77645,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Deco
 		switch string(k) {
 		case "name":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -79710,7 +77657,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Deco
 			}
 		case "namespace":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Namespace = string(v)
@@ -79722,7 +77668,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Deco
 				return errors.Wrap(err, "decode field \"namespace\"")
 			}
 		case "path":
-
 			if err := func() error {
 				s.Path.Reset()
 				if err := s.Path.Decode(d); err != nil {
@@ -79733,7 +77678,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Deco
 				return errors.Wrap(err, "decode field \"path\"")
 			}
 		case "port":
-
 			if err := func() error {
 				s.Port.Reset()
 				if err := s.Port.Decode(d); err != nil {
@@ -79838,7 +77782,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) D
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "caBundle":
-
 			if err := func() error {
 				v, err := d.Base64()
 				s.CaBundle = []byte(v)
@@ -79850,7 +77793,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) D
 				return errors.Wrap(err, "decode field \"caBundle\"")
 			}
 		case "service":
-
 			if err := func() error {
 				s.Service.Reset()
 				if err := s.Service.Decode(d); err != nil {
@@ -79861,7 +77803,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) D
 				return errors.Wrap(err, "decode field \"service\"")
 			}
 		case "url":
-
 			if err := func() error {
 				s.URL.Reset()
 				if err := s.URL.Decode(d); err != nil {
@@ -79940,7 +77881,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Dec
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "clientConfig":
-
 			if err := func() error {
 				s.ClientConfig.Reset()
 				if err := s.ClientConfig.Decode(d); err != nil {
@@ -79952,7 +77892,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Dec
 			}
 		case "conversionReviewVersions":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.ConversionReviewVersions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -80150,7 +78089,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -80161,7 +78099,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -80173,7 +78110,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) Decode(d *jx.Decoder) error {
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -80185,7 +78121,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "preferredVersion":
-
 			if err := func() error {
 				s.PreferredVersion.Reset()
 				if err := s.PreferredVersion.Decode(d); err != nil {
@@ -80196,7 +78131,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"preferredVersion\"")
 			}
 		case "serverAddressByClientCIDRs":
-
 			if err := func() error {
 				s.ServerAddressByClientCIDRs = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -80215,7 +78149,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) Decode(d *jx.Decoder) error {
 			}
 		case "versions":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				s.Versions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -80343,7 +78276,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) Decode(d *jx.Decoder) error
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -80355,7 +78287,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) Decode(d *jx.Decoder) error
 			}
 		case "groups":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Groups = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -80373,7 +78304,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) Decode(d *jx.Decoder) error
 				return errors.Wrap(err, "decode field \"groups\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -80579,7 +78509,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Decode(d *jx.Decoder) error 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "categories":
-
 			if err := func() error {
 				s.Categories = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -80599,7 +78528,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"categories\"")
 			}
 		case "group":
-
 			if err := func() error {
 				s.Group.Reset()
 				if err := s.Group.Decode(d); err != nil {
@@ -80611,7 +78539,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Decode(d *jx.Decoder) error 
 			}
 		case "kind":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Kind = string(v)
@@ -80624,7 +78551,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Decode(d *jx.Decoder) error 
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -80637,7 +78563,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Decode(d *jx.Decoder) error 
 			}
 		case "namespaced":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Bool()
 				s.Namespaced = bool(v)
@@ -80649,7 +78574,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"namespaced\"")
 			}
 		case "shortNames":
-
 			if err := func() error {
 				s.ShortNames = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -80670,7 +78594,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Decode(d *jx.Decoder) error 
 			}
 		case "singularName":
 			requiredBitSet[0] |= 1 << 6
-
 			if err := func() error {
 				v, err := d.Str()
 				s.SingularName = string(v)
@@ -80682,7 +78605,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"singularName\"")
 			}
 		case "storageVersionHash":
-
 			if err := func() error {
 				s.StorageVersionHash.Reset()
 				if err := s.StorageVersionHash.Decode(d); err != nil {
@@ -80694,7 +78616,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Decode(d *jx.Decoder) error 
 			}
 		case "verbs":
 			requiredBitSet[1] |= 1 << 0
-
 			if err := func() error {
 				s.Verbs = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -80714,7 +78635,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"verbs\"")
 			}
 		case "version":
-
 			if err := func() error {
 				s.Version.Reset()
 				if err := s.Version.Decode(d); err != nil {
@@ -80843,7 +78763,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) Decode(d *jx.Decoder) er
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -80855,7 +78774,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) Decode(d *jx.Decoder) er
 			}
 		case "groupVersion":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.GroupVersion = string(v)
@@ -80867,7 +78785,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) Decode(d *jx.Decoder) er
 				return errors.Wrap(err, "decode field \"groupVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -80879,7 +78796,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) Decode(d *jx.Decoder) er
 			}
 		case "resources":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				s.Resources = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -81029,7 +78945,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Decode(d *jx.Decoder) error 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -81040,7 +78955,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Decode(d *jx.Decoder) error 
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -81052,7 +78966,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Decode(d *jx.Decoder) error 
 			}
 		case "serverAddressByClientCIDRs":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				s.ServerAddressByClientCIDRs = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -81071,7 +78984,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Decode(d *jx.Decoder) error 
 			}
 		case "versions":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				s.Versions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -81205,7 +79117,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "lastTransitionTime":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				{
 					var unwrapped time.Time
@@ -81222,7 +79133,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) Decode(d *jx.Decoder) error {
 			}
 		case "message":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Message = string(v)
@@ -81234,7 +79144,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "observedGeneration":
-
 			if err := func() error {
 				s.ObservedGeneration.Reset()
 				if err := s.ObservedGeneration.Decode(d); err != nil {
@@ -81246,7 +79155,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) Decode(d *jx.Decoder) error {
 			}
 		case "reason":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Reason = string(v)
@@ -81259,7 +79167,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) Decode(d *jx.Decoder) error {
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -81272,7 +79179,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -81398,7 +79304,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Decode(d *jx.De
 		switch string(k) {
 		case "groupVersion":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.GroupVersion = string(v)
@@ -81411,7 +79316,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Decode(d *jx.De
 			}
 		case "version":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Version = string(v)
@@ -81525,7 +79429,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) Decode(d *jx.Decoder) erro
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "matchExpressions":
-
 			if err := func() error {
 				s.MatchExpressions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -81543,7 +79446,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) Decode(d *jx.Decoder) erro
 				return errors.Wrap(err, "decode field \"matchExpressions\"")
 			}
 		case "matchLabels":
-
 			if err := func() error {
 				s.MatchLabels.Reset()
 				if err := s.MatchLabels.Decode(d); err != nil {
@@ -81680,7 +79582,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) Decode(d *jx.De
 		switch string(k) {
 		case "key":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Key = string(v)
@@ -81693,7 +79594,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) Decode(d *jx.De
 			}
 		case "operator":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Operator = string(v)
@@ -81705,7 +79605,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) Decode(d *jx.De
 				return errors.Wrap(err, "decode field \"operator\"")
 			}
 		case "values":
-
 			if err := func() error {
 				s.Values = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -81841,7 +79740,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "continue":
-
 			if err := func() error {
 				s.Continue.Reset()
 				if err := s.Continue.Decode(d); err != nil {
@@ -81852,7 +79750,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"continue\"")
 			}
 		case "remainingItemCount":
-
 			if err := func() error {
 				s.RemainingItemCount.Reset()
 				if err := s.RemainingItemCount.Decode(d); err != nil {
@@ -81863,7 +79760,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"remainingItemCount\"")
 			}
 		case "resourceVersion":
-
 			if err := func() error {
 				s.ResourceVersion.Reset()
 				if err := s.ResourceVersion.Decode(d); err != nil {
@@ -81874,7 +79770,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"resourceVersion\"")
 			}
 		case "selfLink":
-
 			if err := func() error {
 				s.SelfLink.Reset()
 				if err := s.SelfLink.Decode(d); err != nil {
@@ -82008,7 +79903,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) Decode(d *jx.Decoder)
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -82019,7 +79913,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) Decode(d *jx.Decoder)
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "fieldsType":
-
 			if err := func() error {
 				s.FieldsType.Reset()
 				if err := s.FieldsType.Decode(d); err != nil {
@@ -82030,7 +79923,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) Decode(d *jx.Decoder)
 				return errors.Wrap(err, "decode field \"fieldsType\"")
 			}
 		case "fieldsV1":
-
 			if err := func() error {
 				s.FieldsV1 = nil
 				var elem IoK8sApimachineryPkgApisMetaV1FieldsV1
@@ -82043,7 +79935,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) Decode(d *jx.Decoder)
 				return errors.Wrap(err, "decode field \"fieldsV1\"")
 			}
 		case "manager":
-
 			if err := func() error {
 				s.Manager.Reset()
 				if err := s.Manager.Decode(d); err != nil {
@@ -82054,7 +79945,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) Decode(d *jx.Decoder)
 				return errors.Wrap(err, "decode field \"manager\"")
 			}
 		case "operation":
-
 			if err := func() error {
 				s.Operation.Reset()
 				if err := s.Operation.Decode(d); err != nil {
@@ -82065,7 +79955,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) Decode(d *jx.Decoder)
 				return errors.Wrap(err, "decode field \"operation\"")
 			}
 		case "subresource":
-
 			if err := func() error {
 				s.Subresource.Reset()
 				if err := s.Subresource.Decode(d); err != nil {
@@ -82076,7 +79965,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) Decode(d *jx.Decoder)
 				return errors.Wrap(err, "decode field \"subresource\"")
 			}
 		case "time":
-
 			if err := func() error {
 				s.Time.Reset()
 				if err := s.Time.Decode(d); err != nil {
@@ -82389,7 +80277,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "annotations":
-
 			if err := func() error {
 				s.Annotations.Reset()
 				if err := s.Annotations.Decode(d); err != nil {
@@ -82400,7 +80287,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"annotations\"")
 			}
 		case "clusterName":
-
 			if err := func() error {
 				s.ClusterName.Reset()
 				if err := s.ClusterName.Decode(d); err != nil {
@@ -82411,7 +80297,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"clusterName\"")
 			}
 		case "creationTimestamp":
-
 			if err := func() error {
 				s.CreationTimestamp.Reset()
 				if err := s.CreationTimestamp.Decode(d); err != nil {
@@ -82422,7 +80307,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"creationTimestamp\"")
 			}
 		case "deletionGracePeriodSeconds":
-
 			if err := func() error {
 				s.DeletionGracePeriodSeconds.Reset()
 				if err := s.DeletionGracePeriodSeconds.Decode(d); err != nil {
@@ -82433,7 +80317,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"deletionGracePeriodSeconds\"")
 			}
 		case "deletionTimestamp":
-
 			if err := func() error {
 				s.DeletionTimestamp.Reset()
 				if err := s.DeletionTimestamp.Decode(d); err != nil {
@@ -82444,7 +80327,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"deletionTimestamp\"")
 			}
 		case "finalizers":
-
 			if err := func() error {
 				s.Finalizers = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -82464,7 +80346,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"finalizers\"")
 			}
 		case "generateName":
-
 			if err := func() error {
 				s.GenerateName.Reset()
 				if err := s.GenerateName.Decode(d); err != nil {
@@ -82475,7 +80356,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"generateName\"")
 			}
 		case "generation":
-
 			if err := func() error {
 				s.Generation.Reset()
 				if err := s.Generation.Decode(d); err != nil {
@@ -82486,7 +80366,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"generation\"")
 			}
 		case "labels":
-
 			if err := func() error {
 				s.Labels.Reset()
 				if err := s.Labels.Decode(d); err != nil {
@@ -82497,7 +80376,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"labels\"")
 			}
 		case "managedFields":
-
 			if err := func() error {
 				s.ManagedFields = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -82515,7 +80393,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"managedFields\"")
 			}
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -82526,7 +80403,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "namespace":
-
 			if err := func() error {
 				s.Namespace.Reset()
 				if err := s.Namespace.Decode(d); err != nil {
@@ -82537,7 +80413,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"namespace\"")
 			}
 		case "ownerReferences":
-
 			if err := func() error {
 				s.OwnerReferences = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -82555,7 +80430,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"ownerReferences\"")
 			}
 		case "resourceVersion":
-
 			if err := func() error {
 				s.ResourceVersion.Reset()
 				if err := s.ResourceVersion.Decode(d); err != nil {
@@ -82566,7 +80440,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"resourceVersion\"")
 			}
 		case "selfLink":
-
 			if err := func() error {
 				s.SelfLink.Reset()
 				if err := s.SelfLink.Decode(d); err != nil {
@@ -82577,7 +80450,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"selfLink\"")
 			}
 		case "uid":
-
 			if err := func() error {
 				s.UID.Reset()
 				if err := s.UID.Decode(d); err != nil {
@@ -82779,7 +80651,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) Decode(d *jx.Decoder) err
 		switch string(k) {
 		case "apiVersion":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.ApiVersion = string(v)
@@ -82791,7 +80662,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "blockOwnerDeletion":
-
 			if err := func() error {
 				s.BlockOwnerDeletion.Reset()
 				if err := s.BlockOwnerDeletion.Decode(d); err != nil {
@@ -82802,7 +80672,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) Decode(d *jx.Decoder) err
 				return errors.Wrap(err, "decode field \"blockOwnerDeletion\"")
 			}
 		case "controller":
-
 			if err := func() error {
 				s.Controller.Reset()
 				if err := s.Controller.Decode(d); err != nil {
@@ -82814,7 +80683,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) Decode(d *jx.Decoder) err
 			}
 		case "kind":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Kind = string(v)
@@ -82827,7 +80695,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) Decode(d *jx.Decoder) err
 			}
 		case "name":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Name = string(v)
@@ -82840,7 +80707,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) Decode(d *jx.Decoder) err
 			}
 		case "uid":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.UID = string(v)
@@ -82935,7 +80801,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) Decode(d *jx.D
 		switch string(k) {
 		case "clientCIDR":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.ClientCIDR = string(v)
@@ -82948,7 +80813,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) Decode(d *jx.D
 			}
 		case "serverAddress":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.ServerAddress = string(v)
@@ -83069,7 +80933,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "object":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				if err := s.Object.Decode(d); err != nil {
 					return err
@@ -83080,7 +80943,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) Decode(d *jx.Decoder) error {
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -83281,7 +81143,6 @@ func (s *IoK8sApimachineryPkgVersionInfo) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "buildDate":
 			requiredBitSet[0] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.BuildDate = string(v)
@@ -83294,7 +81155,6 @@ func (s *IoK8sApimachineryPkgVersionInfo) Decode(d *jx.Decoder) error {
 			}
 		case "compiler":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Compiler = string(v)
@@ -83307,7 +81167,6 @@ func (s *IoK8sApimachineryPkgVersionInfo) Decode(d *jx.Decoder) error {
 			}
 		case "gitCommit":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Str()
 				s.GitCommit = string(v)
@@ -83320,7 +81179,6 @@ func (s *IoK8sApimachineryPkgVersionInfo) Decode(d *jx.Decoder) error {
 			}
 		case "gitTreeState":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.GitTreeState = string(v)
@@ -83333,7 +81191,6 @@ func (s *IoK8sApimachineryPkgVersionInfo) Decode(d *jx.Decoder) error {
 			}
 		case "gitVersion":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.GitVersion = string(v)
@@ -83346,7 +81203,6 @@ func (s *IoK8sApimachineryPkgVersionInfo) Decode(d *jx.Decoder) error {
 			}
 		case "goVersion":
 			requiredBitSet[0] |= 1 << 5
-
 			if err := func() error {
 				v, err := d.Str()
 				s.GoVersion = string(v)
@@ -83359,7 +81215,6 @@ func (s *IoK8sApimachineryPkgVersionInfo) Decode(d *jx.Decoder) error {
 			}
 		case "major":
 			requiredBitSet[0] |= 1 << 6
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Major = string(v)
@@ -83372,7 +81227,6 @@ func (s *IoK8sApimachineryPkgVersionInfo) Decode(d *jx.Decoder) error {
 			}
 		case "minor":
 			requiredBitSet[0] |= 1 << 7
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Minor = string(v)
@@ -83385,7 +81239,6 @@ func (s *IoK8sApimachineryPkgVersionInfo) Decode(d *jx.Decoder) error {
 			}
 		case "platform":
 			requiredBitSet[1] |= 1 << 0
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Platform = string(v)
@@ -83527,7 +81380,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Decode(d *jx.Dec
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -83538,7 +81390,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Decode(d *jx.Dec
 				return errors.Wrap(err, "decode field \"apiVersion\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -83549,7 +81400,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Decode(d *jx.Dec
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -83560,7 +81410,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Decode(d *jx.Dec
 				return errors.Wrap(err, "decode field \"metadata\"")
 			}
 		case "spec":
-
 			if err := func() error {
 				s.Spec.Reset()
 				if err := s.Spec.Decode(d); err != nil {
@@ -83571,7 +81420,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Decode(d *jx.Dec
 				return errors.Wrap(err, "decode field \"spec\"")
 			}
 		case "status":
-
 			if err := func() error {
 				s.Status.Reset()
 				if err := s.Status.Decode(d); err != nil {
@@ -83671,7 +81519,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) Decode(
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lastTransitionTime":
-
 			if err := func() error {
 				s.LastTransitionTime.Reset()
 				if err := s.LastTransitionTime.Decode(d); err != nil {
@@ -83682,7 +81529,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) Decode(
 				return errors.Wrap(err, "decode field \"lastTransitionTime\"")
 			}
 		case "message":
-
 			if err := func() error {
 				s.Message.Reset()
 				if err := s.Message.Decode(d); err != nil {
@@ -83693,7 +81539,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) Decode(
 				return errors.Wrap(err, "decode field \"message\"")
 			}
 		case "reason":
-
 			if err := func() error {
 				s.Reason.Reset()
 				if err := s.Reason.Decode(d); err != nil {
@@ -83705,7 +81550,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) Decode(
 			}
 		case "status":
 			requiredBitSet[0] |= 1 << 3
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Status = string(v)
@@ -83718,7 +81562,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) Decode(
 			}
 		case "type":
 			requiredBitSet[0] |= 1 << 4
-
 			if err := func() error {
 				v, err := d.Str()
 				s.Type = string(v)
@@ -83850,7 +81693,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Decode(d *jx
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "apiVersion":
-
 			if err := func() error {
 				s.ApiVersion.Reset()
 				if err := s.ApiVersion.Decode(d); err != nil {
@@ -83862,7 +81704,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Decode(d *jx
 			}
 		case "items":
 			requiredBitSet[0] |= 1 << 1
-
 			if err := func() error {
 				s.Items = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -83880,7 +81721,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Decode(d *jx
 				return errors.Wrap(err, "decode field \"items\"")
 			}
 		case "kind":
-
 			if err := func() error {
 				s.Kind.Reset()
 				if err := s.Kind.Decode(d); err != nil {
@@ -83891,7 +81731,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Decode(d *jx
 				return errors.Wrap(err, "decode field \"kind\"")
 			}
 		case "metadata":
-
 			if err := func() error {
 				s.Metadata.Reset()
 				if err := s.Metadata.Decode(d); err != nil {
@@ -84031,7 +81870,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Decode(d *jx
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "caBundle":
-
 			if err := func() error {
 				v, err := d.Base64()
 				s.CaBundle = []byte(v)
@@ -84043,7 +81881,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Decode(d *jx
 				return errors.Wrap(err, "decode field \"caBundle\"")
 			}
 		case "group":
-
 			if err := func() error {
 				s.Group.Reset()
 				if err := s.Group.Decode(d); err != nil {
@@ -84055,7 +81892,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Decode(d *jx
 			}
 		case "groupPriorityMinimum":
 			requiredBitSet[0] |= 1 << 2
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.GroupPriorityMinimum = int32(v)
@@ -84067,7 +81903,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Decode(d *jx
 				return errors.Wrap(err, "decode field \"groupPriorityMinimum\"")
 			}
 		case "insecureSkipTLSVerify":
-
 			if err := func() error {
 				s.InsecureSkipTLSVerify.Reset()
 				if err := s.InsecureSkipTLSVerify.Decode(d); err != nil {
@@ -84078,7 +81913,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Decode(d *jx
 				return errors.Wrap(err, "decode field \"insecureSkipTLSVerify\"")
 			}
 		case "service":
-
 			if err := func() error {
 				s.Service.Reset()
 				if err := s.Service.Decode(d); err != nil {
@@ -84089,7 +81923,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Decode(d *jx
 				return errors.Wrap(err, "decode field \"service\"")
 			}
 		case "version":
-
 			if err := func() error {
 				s.Version.Reset()
 				if err := s.Version.Decode(d); err != nil {
@@ -84101,7 +81934,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Decode(d *jx
 			}
 		case "versionPriority":
 			requiredBitSet[0] |= 1 << 6
-
 			if err := func() error {
 				v, err := d.Int32()
 				s.VersionPriority = int32(v)
@@ -84202,7 +82034,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Decode(d *
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "conditions":
-
 			if err := func() error {
 				s.Conditions = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -84291,7 +82122,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Decode(d *
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -84302,7 +82132,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Decode(d *
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "namespace":
-
 			if err := func() error {
 				s.Namespace.Reset()
 				if err := s.Namespace.Decode(d); err != nil {
@@ -84313,7 +82142,6 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Decode(d *
 				return errors.Wrap(err, "decode field \"namespace\"")
 			}
 		case "port":
-
 			if err := func() error {
 				s.Port.Reset()
 				if err := s.Port.Decode(d); err != nil {

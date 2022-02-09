@@ -189,6 +189,11 @@ func (j JSON) Fn() string {
 	}
 }
 
+// IsBase64 whether field has base64 encoding.
+func (j JSON) IsBase64() bool {
+	return j.t.Primitive == ByteSlice
+}
+
 // Sum returns specification for parsing value as sum type.
 func (j JSON) Sum() SumJSON {
 	if j.t.SumSpec.Discriminator != "" {

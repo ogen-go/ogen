@@ -217,7 +217,6 @@ func (s *Book) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
-
 			if err := func() error {
 				s.ID.Reset()
 				if err := s.ID.Decode(d); err != nil {
@@ -228,7 +227,6 @@ func (s *Book) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "media_id":
-
 			if err := func() error {
 				s.MediaID.Reset()
 				if err := s.MediaID.Decode(d); err != nil {
@@ -239,7 +237,6 @@ func (s *Book) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"media_id\"")
 			}
 		case "images":
-
 			if err := func() error {
 				s.Images.Reset()
 				if err := s.Images.Decode(d); err != nil {
@@ -250,7 +247,6 @@ func (s *Book) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"images\"")
 			}
 		case "title":
-
 			if err := func() error {
 				s.Title.Reset()
 				if err := s.Title.Decode(d); err != nil {
@@ -261,7 +257,6 @@ func (s *Book) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"title\"")
 			}
 		case "tags":
-
 			if err := func() error {
 				s.Tags = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -279,7 +274,6 @@ func (s *Book) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"tags\"")
 			}
 		case "scanlator":
-
 			if err := func() error {
 				s.Scanlator.Reset()
 				if err := s.Scanlator.Decode(d); err != nil {
@@ -290,7 +284,6 @@ func (s *Book) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"scanlator\"")
 			}
 		case "upload_date":
-
 			if err := func() error {
 				s.UploadDate.Reset()
 				if err := s.UploadDate.Decode(d); err != nil {
@@ -301,7 +294,6 @@ func (s *Book) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"upload_date\"")
 			}
 		case "num_pages":
-
 			if err := func() error {
 				s.NumPages.Reset()
 				if err := s.NumPages.Decode(d); err != nil {
@@ -312,7 +304,6 @@ func (s *Book) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"num_pages\"")
 			}
 		case "num_favorites":
-
 			if err := func() error {
 				s.NumFavorites.Reset()
 				if err := s.NumFavorites.Decode(d); err != nil {
@@ -394,7 +385,6 @@ func (s *Image) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "t":
-
 			if err := func() error {
 				s.T.Reset()
 				if err := s.T.Decode(d); err != nil {
@@ -405,7 +395,6 @@ func (s *Image) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"t\"")
 			}
 		case "w":
-
 			if err := func() error {
 				s.W.Reset()
 				if err := s.W.Decode(d); err != nil {
@@ -416,7 +405,6 @@ func (s *Image) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"w\"")
 			}
 		case "h":
-
 			if err := func() error {
 				s.H.Reset()
 				if err := s.H.Decode(d); err != nil {
@@ -510,7 +498,6 @@ func (s *Images) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "pages":
-
 			if err := func() error {
 				s.Pages = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -528,7 +515,6 @@ func (s *Images) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"pages\"")
 			}
 		case "cover":
-
 			if err := func() error {
 				s.Cover.Reset()
 				if err := s.Cover.Decode(d); err != nil {
@@ -539,7 +525,6 @@ func (s *Images) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"cover\"")
 			}
 		case "thumbnail":
-
 			if err := func() error {
 				s.Thumbnail.Reset()
 				if err := s.Thumbnail.Decode(d); err != nil {
@@ -875,7 +860,6 @@ func (s *SearchResponse) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-
 			if err := func() error {
 				s.Result = nil
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -893,7 +877,6 @@ func (s *SearchResponse) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"result\"")
 			}
 		case "num_pages":
-
 			if err := func() error {
 				s.NumPages.Reset()
 				if err := s.NumPages.Decode(d); err != nil {
@@ -904,7 +887,6 @@ func (s *SearchResponse) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"num_pages\"")
 			}
 		case "per_page":
-
 			if err := func() error {
 				s.PerPage.Reset()
 				if err := s.PerPage.Decode(d); err != nil {
@@ -1012,7 +994,6 @@ func (s *Tag) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
-
 			if err := func() error {
 				s.ID.Reset()
 				if err := s.ID.Decode(d); err != nil {
@@ -1023,7 +1004,6 @@ func (s *Tag) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "type":
-
 			if err := func() error {
 				s.Type.Reset()
 				if err := s.Type.Decode(d); err != nil {
@@ -1034,7 +1014,6 @@ func (s *Tag) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"type\"")
 			}
 		case "name":
-
 			if err := func() error {
 				s.Name.Reset()
 				if err := s.Name.Decode(d); err != nil {
@@ -1045,7 +1024,6 @@ func (s *Tag) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"name\"")
 			}
 		case "url":
-
 			if err := func() error {
 				s.URL.Reset()
 				if err := s.URL.Decode(d); err != nil {
@@ -1056,7 +1034,6 @@ func (s *Tag) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"url\"")
 			}
 		case "count":
-
 			if err := func() error {
 				s.Count.Reset()
 				if err := s.Count.Decode(d); err != nil {
@@ -1175,7 +1152,6 @@ func (s *Title) Decode(d *jx.Decoder) error {
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "english":
-
 			if err := func() error {
 				s.English.Reset()
 				if err := s.English.Decode(d); err != nil {
@@ -1186,7 +1162,6 @@ func (s *Title) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"english\"")
 			}
 		case "japanese":
-
 			if err := func() error {
 				s.Japanese.Reset()
 				if err := s.Japanese.Decode(d); err != nil {
@@ -1197,7 +1172,6 @@ func (s *Title) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"japanese\"")
 			}
 		case "pretty":
-
 			if err := func() error {
 				s.Pretty.Reset()
 				if err := s.Pretty.Decode(d); err != nil {

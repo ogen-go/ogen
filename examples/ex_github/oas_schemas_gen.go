@@ -2596,11 +2596,11 @@ type CheckRun struct {
 	HTMLURL    NilString `json:"html_url"`
 	DetailsURL NilString `json:"details_url"`
 	// The phase of the lifecycle that the check is currently in.
-	Status      CheckRunStatus     `json:"status"`
-	Conclusion  CheckRunConclusion `json:"conclusion"`
-	StartedAt   NilTime            `json:"started_at"`
-	CompletedAt NilTime            `json:"completed_at"`
-	Output      CheckRunOutput     `json:"output"`
+	Status      CheckRunStatus        `json:"status"`
+	Conclusion  NilCheckRunConclusion `json:"conclusion"`
+	StartedAt   NilTime               `json:"started_at"`
+	CompletedAt NilTime               `json:"completed_at"`
+	Output      CheckRunOutput        `json:"output"`
 	// The name of the check.
 	Name         string                 `json:"name"`
 	CheckSuite   NilCheckRunCheckSuite  `json:"check_suite"`
@@ -2649,20 +2649,20 @@ type CheckSuite struct {
 	NodeID     string    `json:"node_id"`
 	HeadBranch NilString `json:"head_branch"`
 	// The SHA of the head commit that is being checked.
-	HeadSha              string                 `json:"head_sha"`
-	Status               CheckSuiteStatus       `json:"status"`
-	Conclusion           CheckSuiteConclusion   `json:"conclusion"`
-	URL                  NilString              `json:"url"`
-	Before               NilString              `json:"before"`
-	After                NilString              `json:"after"`
-	PullRequests         []PullRequestMinimal   `json:"pull_requests"`
-	App                  NilNullableIntegration `json:"app"`
-	Repository           MinimalRepository      `json:"repository"`
-	CreatedAt            NilTime                `json:"created_at"`
-	UpdatedAt            NilTime                `json:"updated_at"`
-	HeadCommit           SimpleCommit           `json:"head_commit"`
-	LatestCheckRunsCount int                    `json:"latest_check_runs_count"`
-	CheckRunsURL         string                 `json:"check_runs_url"`
+	HeadSha              string                  `json:"head_sha"`
+	Status               NilCheckSuiteStatus     `json:"status"`
+	Conclusion           NilCheckSuiteConclusion `json:"conclusion"`
+	URL                  NilString               `json:"url"`
+	Before               NilString               `json:"before"`
+	After                NilString               `json:"after"`
+	PullRequests         []PullRequestMinimal    `json:"pull_requests"`
+	App                  NilNullableIntegration  `json:"app"`
+	Repository           MinimalRepository       `json:"repository"`
+	CreatedAt            NilTime                 `json:"created_at"`
+	UpdatedAt            NilTime                 `json:"updated_at"`
+	HeadCommit           SimpleCommit            `json:"head_commit"`
+	LatestCheckRunsCount int                     `json:"latest_check_runs_count"`
+	CheckRunsURL         string                  `json:"check_runs_url"`
 }
 
 type CheckSuiteConclusion string
@@ -2908,9 +2908,9 @@ type CodeScanningAlertRule struct {
 	// The name of the rule used to detect the alert.
 	Name OptString `json:"name"`
 	// The severity of the alert.
-	Severity OptCodeScanningAlertRuleSeverity `json:"severity"`
+	Severity OptNilCodeScanningAlertRuleSeverity `json:"severity"`
 	// The security severity of the alert.
-	SecuritySeverityLevel OptCodeScanningAlertRuleSecuritySeverityLevel `json:"security_severity_level"`
+	SecuritySeverityLevel OptNilCodeScanningAlertRuleSecuritySeverityLevel `json:"security_severity_level"`
 	// A short description of the rule used to detect the alert.
 	Description OptString `json:"description"`
 	// Description of the rule used to detect the alert.
@@ -2948,7 +2948,7 @@ type CodeScanningAlertRuleSummary struct {
 	// The name of the rule used to detect the alert.
 	Name OptString `json:"name"`
 	// The severity of the alert.
-	Severity OptCodeScanningAlertRuleSummarySeverity `json:"severity"`
+	Severity OptNilCodeScanningAlertRuleSummarySeverity `json:"severity"`
 	// A short description of the rule used to detect the alert.
 	Description OptString `json:"description"`
 }
@@ -7780,6 +7780,120 @@ func (o NilCheckRunCheckSuite) Or(d CheckRunCheckSuite) CheckRunCheckSuite {
 	return d
 }
 
+// NewNilCheckRunConclusion returns new NilCheckRunConclusion with value set to v.
+func NewNilCheckRunConclusion(v CheckRunConclusion) NilCheckRunConclusion {
+	return NilCheckRunConclusion{
+		Value: v,
+	}
+}
+
+// NilCheckRunConclusion is nullable CheckRunConclusion.
+type NilCheckRunConclusion struct {
+	Value CheckRunConclusion
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilCheckRunConclusion) SetTo(v CheckRunConclusion) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilCheckRunConclusion) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilCheckRunConclusion) Get() (v CheckRunConclusion, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilCheckRunConclusion) Or(d CheckRunConclusion) CheckRunConclusion {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilCheckSuiteConclusion returns new NilCheckSuiteConclusion with value set to v.
+func NewNilCheckSuiteConclusion(v CheckSuiteConclusion) NilCheckSuiteConclusion {
+	return NilCheckSuiteConclusion{
+		Value: v,
+	}
+}
+
+// NilCheckSuiteConclusion is nullable CheckSuiteConclusion.
+type NilCheckSuiteConclusion struct {
+	Value CheckSuiteConclusion
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilCheckSuiteConclusion) SetTo(v CheckSuiteConclusion) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilCheckSuiteConclusion) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilCheckSuiteConclusion) Get() (v CheckSuiteConclusion, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilCheckSuiteConclusion) Or(d CheckSuiteConclusion) CheckSuiteConclusion {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilCheckSuiteStatus returns new NilCheckSuiteStatus with value set to v.
+func NewNilCheckSuiteStatus(v CheckSuiteStatus) NilCheckSuiteStatus {
+	return NilCheckSuiteStatus{
+		Value: v,
+	}
+}
+
+// NilCheckSuiteStatus is nullable CheckSuiteStatus.
+type NilCheckSuiteStatus struct {
+	Value CheckSuiteStatus
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilCheckSuiteStatus) SetTo(v CheckSuiteStatus) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilCheckSuiteStatus) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilCheckSuiteStatus) Get() (v CheckSuiteStatus, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilCheckSuiteStatus) Or(d CheckSuiteStatus) CheckSuiteStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilCodeScanningAlertDismissedAt returns new NilCodeScanningAlertDismissedAt with value set to v.
 func NewNilCodeScanningAlertDismissedAt(v CodeScanningAlertDismissedAt) NilCodeScanningAlertDismissedAt {
 	return NilCodeScanningAlertDismissedAt{
@@ -8458,6 +8572,44 @@ func (o NilNullableTeamSimple) Get() (v NullableTeamSimple, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o NilNullableTeamSimple) Or(d NullableTeamSimple) NullableTeamSimple {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilPageStatus returns new NilPageStatus with value set to v.
+func NewNilPageStatus(v PageStatus) NilPageStatus {
+	return NilPageStatus{
+		Value: v,
+	}
+}
+
+// NilPageStatus is nullable PageStatus.
+type NilPageStatus struct {
+	Value PageStatus
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilPageStatus) SetTo(v PageStatus) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilPageStatus) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilPageStatus) Get() (v PageStatus, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilPageStatus) Or(d PageStatus) PageStatus {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -13385,144 +13537,6 @@ func (o OptCodeScanningAlertLocation) Or(d CodeScanningAlertLocation) CodeScanni
 	return d
 }
 
-// NewOptCodeScanningAlertRuleSecuritySeverityLevel returns new OptCodeScanningAlertRuleSecuritySeverityLevel with value set to v.
-func NewOptCodeScanningAlertRuleSecuritySeverityLevel(v CodeScanningAlertRuleSecuritySeverityLevel) OptCodeScanningAlertRuleSecuritySeverityLevel {
-	return OptCodeScanningAlertRuleSecuritySeverityLevel{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptCodeScanningAlertRuleSecuritySeverityLevel is optional CodeScanningAlertRuleSecuritySeverityLevel.
-type OptCodeScanningAlertRuleSecuritySeverityLevel struct {
-	Value CodeScanningAlertRuleSecuritySeverityLevel
-	Set   bool
-}
-
-// IsSet returns true if OptCodeScanningAlertRuleSecuritySeverityLevel was set.
-func (o OptCodeScanningAlertRuleSecuritySeverityLevel) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptCodeScanningAlertRuleSecuritySeverityLevel) Reset() {
-	var v CodeScanningAlertRuleSecuritySeverityLevel
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptCodeScanningAlertRuleSecuritySeverityLevel) SetTo(v CodeScanningAlertRuleSecuritySeverityLevel) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptCodeScanningAlertRuleSecuritySeverityLevel) Get() (v CodeScanningAlertRuleSecuritySeverityLevel, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptCodeScanningAlertRuleSecuritySeverityLevel) Or(d CodeScanningAlertRuleSecuritySeverityLevel) CodeScanningAlertRuleSecuritySeverityLevel {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptCodeScanningAlertRuleSeverity returns new OptCodeScanningAlertRuleSeverity with value set to v.
-func NewOptCodeScanningAlertRuleSeverity(v CodeScanningAlertRuleSeverity) OptCodeScanningAlertRuleSeverity {
-	return OptCodeScanningAlertRuleSeverity{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptCodeScanningAlertRuleSeverity is optional CodeScanningAlertRuleSeverity.
-type OptCodeScanningAlertRuleSeverity struct {
-	Value CodeScanningAlertRuleSeverity
-	Set   bool
-}
-
-// IsSet returns true if OptCodeScanningAlertRuleSeverity was set.
-func (o OptCodeScanningAlertRuleSeverity) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptCodeScanningAlertRuleSeverity) Reset() {
-	var v CodeScanningAlertRuleSeverity
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptCodeScanningAlertRuleSeverity) SetTo(v CodeScanningAlertRuleSeverity) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptCodeScanningAlertRuleSeverity) Get() (v CodeScanningAlertRuleSeverity, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptCodeScanningAlertRuleSeverity) Or(d CodeScanningAlertRuleSeverity) CodeScanningAlertRuleSeverity {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptCodeScanningAlertRuleSummarySeverity returns new OptCodeScanningAlertRuleSummarySeverity with value set to v.
-func NewOptCodeScanningAlertRuleSummarySeverity(v CodeScanningAlertRuleSummarySeverity) OptCodeScanningAlertRuleSummarySeverity {
-	return OptCodeScanningAlertRuleSummarySeverity{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptCodeScanningAlertRuleSummarySeverity is optional CodeScanningAlertRuleSummarySeverity.
-type OptCodeScanningAlertRuleSummarySeverity struct {
-	Value CodeScanningAlertRuleSummarySeverity
-	Set   bool
-}
-
-// IsSet returns true if OptCodeScanningAlertRuleSummarySeverity was set.
-func (o OptCodeScanningAlertRuleSummarySeverity) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptCodeScanningAlertRuleSummarySeverity) Reset() {
-	var v CodeScanningAlertRuleSummarySeverity
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptCodeScanningAlertRuleSummarySeverity) SetTo(v CodeScanningAlertRuleSummarySeverity) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptCodeScanningAlertRuleSummarySeverity) Get() (v CodeScanningAlertRuleSummarySeverity, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptCodeScanningAlertRuleSummarySeverity) Or(d CodeScanningAlertRuleSummarySeverity) CodeScanningAlertRuleSummarySeverity {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptCodeScanningAlertState returns new OptCodeScanningAlertState with value set to v.
 func NewOptCodeScanningAlertState(v CodeScanningAlertState) OptCodeScanningAlertState {
 	return OptCodeScanningAlertState{
@@ -17779,6 +17793,171 @@ func (o OptNilCodeScanningAlertDismissedReason) Or(d CodeScanningAlertDismissedR
 	return d
 }
 
+// NewOptNilCodeScanningAlertRuleSecuritySeverityLevel returns new OptNilCodeScanningAlertRuleSecuritySeverityLevel with value set to v.
+func NewOptNilCodeScanningAlertRuleSecuritySeverityLevel(v CodeScanningAlertRuleSecuritySeverityLevel) OptNilCodeScanningAlertRuleSecuritySeverityLevel {
+	return OptNilCodeScanningAlertRuleSecuritySeverityLevel{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilCodeScanningAlertRuleSecuritySeverityLevel is optional nullable CodeScanningAlertRuleSecuritySeverityLevel.
+type OptNilCodeScanningAlertRuleSecuritySeverityLevel struct {
+	Value CodeScanningAlertRuleSecuritySeverityLevel
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilCodeScanningAlertRuleSecuritySeverityLevel was set.
+func (o OptNilCodeScanningAlertRuleSecuritySeverityLevel) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilCodeScanningAlertRuleSecuritySeverityLevel) Reset() {
+	var v CodeScanningAlertRuleSecuritySeverityLevel
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilCodeScanningAlertRuleSecuritySeverityLevel) SetTo(v CodeScanningAlertRuleSecuritySeverityLevel) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilCodeScanningAlertRuleSecuritySeverityLevel) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilCodeScanningAlertRuleSecuritySeverityLevel) Get() (v CodeScanningAlertRuleSecuritySeverityLevel, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilCodeScanningAlertRuleSecuritySeverityLevel) Or(d CodeScanningAlertRuleSecuritySeverityLevel) CodeScanningAlertRuleSecuritySeverityLevel {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilCodeScanningAlertRuleSeverity returns new OptNilCodeScanningAlertRuleSeverity with value set to v.
+func NewOptNilCodeScanningAlertRuleSeverity(v CodeScanningAlertRuleSeverity) OptNilCodeScanningAlertRuleSeverity {
+	return OptNilCodeScanningAlertRuleSeverity{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilCodeScanningAlertRuleSeverity is optional nullable CodeScanningAlertRuleSeverity.
+type OptNilCodeScanningAlertRuleSeverity struct {
+	Value CodeScanningAlertRuleSeverity
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilCodeScanningAlertRuleSeverity was set.
+func (o OptNilCodeScanningAlertRuleSeverity) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilCodeScanningAlertRuleSeverity) Reset() {
+	var v CodeScanningAlertRuleSeverity
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilCodeScanningAlertRuleSeverity) SetTo(v CodeScanningAlertRuleSeverity) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilCodeScanningAlertRuleSeverity) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilCodeScanningAlertRuleSeverity) Get() (v CodeScanningAlertRuleSeverity, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilCodeScanningAlertRuleSeverity) Or(d CodeScanningAlertRuleSeverity) CodeScanningAlertRuleSeverity {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilCodeScanningAlertRuleSummarySeverity returns new OptNilCodeScanningAlertRuleSummarySeverity with value set to v.
+func NewOptNilCodeScanningAlertRuleSummarySeverity(v CodeScanningAlertRuleSummarySeverity) OptNilCodeScanningAlertRuleSummarySeverity {
+	return OptNilCodeScanningAlertRuleSummarySeverity{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilCodeScanningAlertRuleSummarySeverity is optional nullable CodeScanningAlertRuleSummarySeverity.
+type OptNilCodeScanningAlertRuleSummarySeverity struct {
+	Value CodeScanningAlertRuleSummarySeverity
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilCodeScanningAlertRuleSummarySeverity was set.
+func (o OptNilCodeScanningAlertRuleSummarySeverity) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilCodeScanningAlertRuleSummarySeverity) Reset() {
+	var v CodeScanningAlertRuleSummarySeverity
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilCodeScanningAlertRuleSummarySeverity) SetTo(v CodeScanningAlertRuleSummarySeverity) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilCodeScanningAlertRuleSummarySeverity) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilCodeScanningAlertRuleSummarySeverity) Get() (v CodeScanningAlertRuleSummarySeverity, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilCodeScanningAlertRuleSummarySeverity) Or(d CodeScanningAlertRuleSummarySeverity) CodeScanningAlertRuleSummarySeverity {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilCodeScanningAnalysisToolGUID returns new OptNilCodeScanningAnalysisToolGUID with value set to v.
 func NewOptNilCodeScanningAnalysisToolGUID(v CodeScanningAnalysisToolGUID) OptNilCodeScanningAnalysisToolGUID {
 	return OptNilCodeScanningAnalysisToolGUID{
@@ -18934,6 +19113,61 @@ func (o OptNilNullableTeamSimple) Or(d NullableTeamSimple) NullableTeamSimple {
 	return d
 }
 
+// NewOptNilPageProtectedDomainState returns new OptNilPageProtectedDomainState with value set to v.
+func NewOptNilPageProtectedDomainState(v PageProtectedDomainState) OptNilPageProtectedDomainState {
+	return OptNilPageProtectedDomainState{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilPageProtectedDomainState is optional nullable PageProtectedDomainState.
+type OptNilPageProtectedDomainState struct {
+	Value PageProtectedDomainState
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilPageProtectedDomainState was set.
+func (o OptNilPageProtectedDomainState) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilPageProtectedDomainState) Reset() {
+	var v PageProtectedDomainState
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilPageProtectedDomainState) SetTo(v PageProtectedDomainState) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilPageProtectedDomainState) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilPageProtectedDomainState) Get() (v PageProtectedDomainState, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilPageProtectedDomainState) Or(d PageProtectedDomainState) PageProtectedDomainState {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilPagesHealthCheckAltDomain returns new OptNilPagesHealthCheckAltDomain with value set to v.
 func NewOptNilPagesHealthCheckAltDomain(v PagesHealthCheckAltDomain) OptNilPagesHealthCheckAltDomain {
 	return OptNilPagesHealthCheckAltDomain{
@@ -18983,6 +19217,61 @@ func (o OptNilPagesHealthCheckAltDomain) Get() (v PagesHealthCheckAltDomain, ok 
 
 // Or returns value if set, or given parameter if does not.
 func (o OptNilPagesHealthCheckAltDomain) Or(d PagesHealthCheckAltDomain) PagesHealthCheckAltDomain {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilPullRequestReviewCommentStartSide returns new OptNilPullRequestReviewCommentStartSide with value set to v.
+func NewOptNilPullRequestReviewCommentStartSide(v PullRequestReviewCommentStartSide) OptNilPullRequestReviewCommentStartSide {
+	return OptNilPullRequestReviewCommentStartSide{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilPullRequestReviewCommentStartSide is optional nullable PullRequestReviewCommentStartSide.
+type OptNilPullRequestReviewCommentStartSide struct {
+	Value PullRequestReviewCommentStartSide
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilPullRequestReviewCommentStartSide was set.
+func (o OptNilPullRequestReviewCommentStartSide) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilPullRequestReviewCommentStartSide) Reset() {
+	var v PullRequestReviewCommentStartSide
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilPullRequestReviewCommentStartSide) SetTo(v PullRequestReviewCommentStartSide) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilPullRequestReviewCommentStartSide) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilPullRequestReviewCommentStartSide) Get() (v PullRequestReviewCommentStartSide, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilPullRequestReviewCommentStartSide) Or(d PullRequestReviewCommentStartSide) PullRequestReviewCommentStartSide {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -19148,6 +19437,61 @@ func (o OptNilRepositoryTemplateRepository) Get() (v RepositoryTemplateRepositor
 
 // Or returns value if set, or given parameter if does not.
 func (o OptNilRepositoryTemplateRepository) Or(d RepositoryTemplateRepository) RepositoryTemplateRepository {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilReviewCommentStartSide returns new OptNilReviewCommentStartSide with value set to v.
+func NewOptNilReviewCommentStartSide(v ReviewCommentStartSide) OptNilReviewCommentStartSide {
+	return OptNilReviewCommentStartSide{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilReviewCommentStartSide is optional nullable ReviewCommentStartSide.
+type OptNilReviewCommentStartSide struct {
+	Value ReviewCommentStartSide
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilReviewCommentStartSide was set.
+func (o OptNilReviewCommentStartSide) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilReviewCommentStartSide) Reset() {
+	var v ReviewCommentStartSide
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilReviewCommentStartSide) SetTo(v ReviewCommentStartSide) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilReviewCommentStartSide) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilReviewCommentStartSide) Get() (v ReviewCommentStartSide, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilReviewCommentStartSide) Or(d ReviewCommentStartSide) ReviewCommentStartSide {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -21178,52 +21522,6 @@ func (o OptPackagesListPackagesForUserVisibility) Or(d PackagesListPackagesForUs
 	return d
 }
 
-// NewOptPageProtectedDomainState returns new OptPageProtectedDomainState with value set to v.
-func NewOptPageProtectedDomainState(v PageProtectedDomainState) OptPageProtectedDomainState {
-	return OptPageProtectedDomainState{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptPageProtectedDomainState is optional PageProtectedDomainState.
-type OptPageProtectedDomainState struct {
-	Value PageProtectedDomainState
-	Set   bool
-}
-
-// IsSet returns true if OptPageProtectedDomainState was set.
-func (o OptPageProtectedDomainState) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptPageProtectedDomainState) Reset() {
-	var v PageProtectedDomainState
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptPageProtectedDomainState) SetTo(v PageProtectedDomainState) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptPageProtectedDomainState) Get() (v PageProtectedDomainState, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptPageProtectedDomainState) Or(d PageProtectedDomainState) PageProtectedDomainState {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptPagesHTTPSCertificate returns new OptPagesHTTPSCertificate with value set to v.
 func NewOptPagesHTTPSCertificate(v PagesHTTPSCertificate) OptPagesHTTPSCertificate {
 	return OptPagesHTTPSCertificate{
@@ -22644,52 +22942,6 @@ func (o OptPullRequestReviewCommentSide) Get() (v PullRequestReviewCommentSide, 
 
 // Or returns value if set, or given parameter if does not.
 func (o OptPullRequestReviewCommentSide) Or(d PullRequestReviewCommentSide) PullRequestReviewCommentSide {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptPullRequestReviewCommentStartSide returns new OptPullRequestReviewCommentStartSide with value set to v.
-func NewOptPullRequestReviewCommentStartSide(v PullRequestReviewCommentStartSide) OptPullRequestReviewCommentStartSide {
-	return OptPullRequestReviewCommentStartSide{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptPullRequestReviewCommentStartSide is optional PullRequestReviewCommentStartSide.
-type OptPullRequestReviewCommentStartSide struct {
-	Value PullRequestReviewCommentStartSide
-	Set   bool
-}
-
-// IsSet returns true if OptPullRequestReviewCommentStartSide was set.
-func (o OptPullRequestReviewCommentStartSide) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptPullRequestReviewCommentStartSide) Reset() {
-	var v PullRequestReviewCommentStartSide
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptPullRequestReviewCommentStartSide) SetTo(v PullRequestReviewCommentStartSide) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptPullRequestReviewCommentStartSide) Get() (v PullRequestReviewCommentStartSide, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptPullRequestReviewCommentStartSide) Or(d PullRequestReviewCommentStartSide) PullRequestReviewCommentStartSide {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -26786,52 +27038,6 @@ func (o OptReviewCommentSide) Get() (v ReviewCommentSide, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptReviewCommentSide) Or(d ReviewCommentSide) ReviewCommentSide {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptReviewCommentStartSide returns new OptReviewCommentStartSide with value set to v.
-func NewOptReviewCommentStartSide(v ReviewCommentStartSide) OptReviewCommentStartSide {
-	return OptReviewCommentStartSide{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptReviewCommentStartSide is optional ReviewCommentStartSide.
-type OptReviewCommentStartSide struct {
-	Value ReviewCommentStartSide
-	Set   bool
-}
-
-// IsSet returns true if OptReviewCommentStartSide was set.
-func (o OptReviewCommentStartSide) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptReviewCommentStartSide) Reset() {
-	var v ReviewCommentStartSide
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptReviewCommentStartSide) SetTo(v ReviewCommentStartSide) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptReviewCommentStartSide) Get() (v ReviewCommentStartSide, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptReviewCommentStartSide) Or(d ReviewCommentStartSide) ReviewCommentStartSide {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -31785,11 +31991,11 @@ type Page struct {
 	// The API address for accessing this Page resource.
 	URL url.URL `json:"url"`
 	// The status of the most recent build of the Page.
-	Status PageStatus `json:"status"`
+	Status NilPageStatus `json:"status"`
 	// The Pages site's custom domain.
 	Cname NilString `json:"cname"`
 	// The state if the domain is protected.
-	ProtectedDomainState OptPageProtectedDomainState `json:"protected_domain_state"`
+	ProtectedDomainState OptNilPageProtectedDomainState `json:"protected_domain_state"`
 	// The timestamp when a pending domain becomes unverified.
 	PendingDomainUnverifiedAt OptNilTime `json:"pending_domain_unverified_at"`
 	// Whether the Page has a custom 404 page.
@@ -33345,7 +33551,7 @@ type PullRequestReviewComment struct {
 	// The first line of the range for a multi-line comment.
 	OriginalStartLine OptNilInt `json:"original_start_line"`
 	// The side of the first line of the range for a multi-line comment.
-	StartSide OptPullRequestReviewCommentStartSide `json:"start_side"`
+	StartSide OptNilPullRequestReviewCommentStartSide `json:"start_side"`
 	// The line of the blob to which the comment applies. The last line of the range for a multi-line
 	// comment.
 	Line OptInt `json:"line"`
@@ -37308,7 +37514,7 @@ type ReviewComment struct {
 	// The side of the first line of the range for a multi-line comment.
 	Side OptReviewCommentSide `json:"side"`
 	// The side of the first line of the range for a multi-line comment.
-	StartSide OptReviewCommentStartSide `json:"start_side"`
+	StartSide OptNilReviewCommentStartSide `json:"start_side"`
 	// The line of the blob to which the comment applies. The last line of the range for a multi-line
 	// comment.
 	Line OptInt `json:"line"`

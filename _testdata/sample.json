@@ -633,6 +633,39 @@
           }
         }
       }
+    },
+    "/defaultTest": {
+      "post": {
+        "operationId": "defaultTest",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/defaultQueryParameter"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DefaultTest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -777,7 +810,7 @@
         },
         "maxProperties": 7
       },
-      "MaxPropertiesTest" : {
+      "MaxPropertiesTest": {
         "type": "object",
         "required": [
           "required"
@@ -1227,9 +1260,102 @@
             "type": "array"
           }
         }
+      },
+      "DefaultTest": {
+        "type": "object",
+        "required": [
+          "required"
+        ],
+        "properties": {
+          "required": {
+            "type": "string",
+            "default": "required"
+          },
+          "str": {
+            "type": "string",
+            "default": "str"
+          },
+          "nullStr": {
+            "type": "string",
+            "nullable": true,
+            "default": null
+          },
+          "enum": {
+            "type": "string",
+            "enum": [
+              "big",
+              "smol"
+            ],
+            "default": "big"
+          },
+          "uuid": {
+            "type": "string",
+            "format": "uuid",
+            "default": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "ip": {
+            "type": "string",
+            "format": "ip",
+            "default": "1.1.1.1"
+          },
+          "ip_v4": {
+            "type": "string",
+            "format": "ipv4",
+            "default": "1.1.1.1"
+          },
+          "ip_v6": {
+            "type": "string",
+            "format": "ipv6",
+            "default": "2001:db8:85a3::8a2e:370:7334"
+          },
+          "uri": {
+            "type": "string",
+            "format": "uri",
+            "default": "s3://foo/baz"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date",
+            "default": "2011-10-10"
+          },
+          "rate": {
+            "type": "string",
+            "format": "duration",
+            "default": "5s"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "default": "foo@example.com"
+          },
+          "hostname": {
+            "type": "string",
+            "format": "hostname",
+            "default": "example.org"
+          },
+          "format": {
+            "type": "string",
+            "pattern": "^\\d-\\d$",
+            "default": "1-2"
+          },
+          "base64": {
+            "type": "string",
+            "format": "byte",
+            "default": "aGVsbG8sIHdvcmxkIQ=="
+          }
+        }
       }
     },
     "parameters": {
+      "defaultQueryParameter": {
+        "name": "default",
+        "in": "query",
+        "schema": {
+          "type": "integer",
+          "format": "int32",
+          "default": 10
+        }
+      },
       "skipParam": {
         "name": "skip",
         "in": "query",

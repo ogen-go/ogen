@@ -46,6 +46,10 @@ func (s {{ if $fields.NotEmpty }}*{{ end }}{{ $.Name }}) Decode(d *jx.Decoder) e
 	var propertiesCount int
 	{{- end }}
 
+	{{- if $.HasDefaultFields }}
+	s.setDefaults()
+	{{- end }}
+
 	m := s{{ if $fields.NotEmpty }}.{{ $.AdditionalPropsField }}
 	if m == nil {
 		m = map[string]{{ $.Item.Go }}{}
@@ -61,7 +65,7 @@ func (s {{ if $fields.NotEmpty }}*{{ end }}{{ $.Name }}) Decode(d *jx.Decoder) e
 	case {{ quote $f.Tag.JSON }}:
 		{{- if $f.Spec.Required }}
 		requiredBitSet[{{ div $i 8 }}] |= 1 << {{ mod $i 8 }}
-		{{- end }}
+        {{ end -}}
 
 		if err := func() error {
 			{{- template "json/dec" field_elem $f }}
