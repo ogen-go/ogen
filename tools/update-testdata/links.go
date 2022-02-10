@@ -79,9 +79,8 @@ var redocFixtures = []Schema{
 
 var autoRestLinks = []Schema{
 	{
-		File:       "autorest/ApiManagementClient-openapi.json",
-		Link:       "https://raw.githubusercontent.com/Azure/autorest/main/packages/libs/oai2-to-oai3/test/resources/conversion/oai3/ApiManagementClient-openapi.json",
-		SkipReason: "unsupported schema: name collision",
+		File: "autorest/ApiManagementClient-openapi.json",
+		Link: "https://raw.githubusercontent.com/Azure/autorest/main/packages/libs/oai2-to-oai3/test/resources/conversion/oai3/ApiManagementClient-openapi.json",
 	},
 	{
 		File: "autorest/additionalProperties.json",
