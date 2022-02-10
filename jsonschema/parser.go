@@ -144,7 +144,8 @@ func (p *Parser) parseSchema(schema *RawSchema, hook func(*Schema) *Schema) (*Sc
 	// Try to infer schema type from properties.
 	if p.inferTypes && schema.Type == "" {
 		switch {
-		case schema.AdditionalProperties != nil ||
+		case len(schema.Properties) > 0 ||
+			schema.AdditionalProperties != nil ||
 			schema.MaxProperties != nil ||
 			schema.MinProperties != nil:
 			schema.Type = "object"
