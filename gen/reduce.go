@@ -42,7 +42,7 @@ func (g *Generator) reduceDefault(ops []*oas.Operation) error {
 		return errors.Wrap(err, "too complicated to reduce default error")
 	}
 
-	g.errType = g.wrapResponseStatusCode(resp)
+	g.errType = g.wrapResponseStatusCode("", resp)
 
 	return nil
 }

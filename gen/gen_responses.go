@@ -60,7 +60,7 @@ func (g *Generator) generateResponses(opName string, responses map[string]*oas.R
 			return nil, errors.Wrap(err, "default")
 		}
 
-		result.Default = g.wrapResponseStatusCode(resp)
+		result.Default = g.wrapResponseStatusCode(respName, resp)
 	}
 
 	var (
@@ -136,7 +136,7 @@ func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (ret *ir.
 	}, nil
 }
 
-func (g *Generator) wrapResponseStatusCode(resp *ir.StatusResponse) (ret *ir.StatusResponse) {
+func (g *Generator) wrapResponseStatusCode(name string, resp *ir.StatusResponse) (ret *ir.StatusResponse) {
 	if ref := resp.Spec.Ref; ref != "" {
 		if r, ok := g.wrapped.responses[ref]; ok {
 			return r
@@ -147,14 +147,14 @@ func (g *Generator) wrapResponseStatusCode(resp *ir.StatusResponse) (ret *ir.Sta
 	if noc := resp.NoContent; noc != nil {
 		return &ir.StatusResponse{
 			Wrapped:   true,
-			NoContent: g.wrapStatusCode(noc),
+			NoContent: g.wrapStatusCode(name, noc),
 			Spec:      resp.Spec,
 		}
 	}
 
 	contents := make(map[ir.ContentType]*ir.Type, len(resp.Contents))
 	for contentType, t := range resp.Contents {
-		contents[contentType] = g.wrapStatusCode(t)
+		contents[contentType] = g.wrapStatusCode(name, t)
 	}
 
 	return &ir.StatusResponse{
@@ -164,7 +164,7 @@ func (g *Generator) wrapResponseStatusCode(resp *ir.StatusResponse) (ret *ir.Sta
 	}
 }
 
-func (g *Generator) wrapStatusCode(t *ir.Type) (ret *ir.Type) {
+func (g *Generator) wrapStatusCode(name string, t *ir.Type) (ret *ir.Type) {
 	if schema := t.Schema; schema != nil && schema.Ref != "" {
 		if t, ok := g.wrapped.types[schema.Ref]; ok {
 			return t
@@ -174,7 +174,11 @@ func (g *Generator) wrapStatusCode(t *ir.Type) (ret *ir.Type) {
 		defer func() { g.saveType(ret) }()
 	}
 
-	name := t.Name + "StatusCode"
+	if t.Name != "" {
+		name = t.Name
+	}
+
+	name = name + "StatusCode"
 	return &ir.Type{
 		Kind: ir.KindStruct,
 		Name: name,
