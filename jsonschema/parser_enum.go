@@ -7,7 +7,7 @@ import (
 	"github.com/go-faster/jx"
 )
 
-func inferEnumType(v json.RawMessage) (string, error) {
+func inferJSONType(v json.RawMessage) (string, error) {
 	d := jx.DecodeBytes(v)
 	switch tt := d.Next(); tt {
 	case jx.String:
@@ -17,9 +17,9 @@ func inferEnumType(v json.RawMessage) (string, error) {
 	case jx.Bool:
 		return "bool", nil
 	case jx.Null:
-		return "", errors.Errorf("cannot infer enum type from %q", v)
+		return "", errors.Errorf("cannot infer type from %q", v)
 	default:
-		return "", errors.Errorf("invalid enum value %q", v)
+		return "", errors.Errorf("invalid value %q", v)
 	}
 }
 

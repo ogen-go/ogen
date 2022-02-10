@@ -22,6 +22,16 @@ func (g *nameGen) next() (rune, bool) {
 	return g.src[g.pos], true
 }
 
+var namedChar = map[rune][]rune{
+	'+': []rune("Plus"),
+	'-': []rune("Minus"),
+	'/': []rune("Slash"),
+	'<': []rune("Less"),
+	'>': []rune("Greater"),
+	'=': []rune("Eq"),
+	'.': []rune("Dot"),
+}
+
 func (g *nameGen) generate() string {
 	var (
 		part     []rune
@@ -50,16 +60,40 @@ func (g *nameGen) generate() string {
 
 		upper = true
 		if g.allowSpecial {
-			switch r {
-			case '+':
+			if p, ok := namedChar[r]; ok {
 				pushPart()
-				part = []rune("Plus")
-			case '-':
+				part = p
+			}
+		}
+
+		pushPart()
+	}
+}
+
+func (g *nameGen) clean() string {
+	var (
+		part     []rune
+		pushPart = func() {
+			g.parts = append(g.parts, g.checkPart(string(part)))
+			part = nil
+		}
+	)
+	for {
+		r, ok := g.next()
+		if !ok {
+			pushPart()
+			return strings.Join(g.parts, "")
+		}
+
+		if g.isAllowed(r) {
+			part = append(part, r)
+			continue
+		}
+
+		if g.allowSpecial {
+			if p, ok := namedChar[r]; ok {
 				pushPart()
-				part = []rune("Minus")
-			case '/':
-				pushPart()
-				part = []rune("Slash")
+				part = p
 			}
 		}
 
@@ -96,6 +130,13 @@ func (g *nameGen) checkPart(part string) string {
 	}
 
 	return part
+}
+
+func cleanSpecial(strs ...string) string {
+	return (&nameGen{
+		src:          []rune(strings.Join(strs, " ")),
+		allowSpecial: true,
+	}).clean()
 }
 
 func pascal(strs ...string) string {

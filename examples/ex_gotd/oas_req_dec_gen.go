@@ -350,6 +350,42 @@ func decodeBanChatMemberRequest(r *http.Request, span trace.Span) (req BanChatMe
 	}
 }
 
+func decodeBanChatSenderChatRequest(r *http.Request, span trace.Span) (req BanChatSenderChat, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request BanChatSenderChat
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode BanChatSenderChat:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
 func decodeCopyMessageRequest(r *http.Request, span trace.Span) (req CopyMessage, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
@@ -626,14 +662,14 @@ func decodeDeleteMessageRequest(r *http.Request, span trace.Span) (req DeleteMes
 	}
 }
 
-func decodeDeleteMyCommandsRequest(r *http.Request, span trace.Span) (req DeleteMyCommands, err error) {
+func decodeDeleteMyCommandsRequest(r *http.Request, span trace.Span) (req OptDeleteMyCommands, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, nil
 		}
 
-		var request DeleteMyCommands
+		var request OptDeleteMyCommands
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -642,13 +678,14 @@ func decodeDeleteMyCommandsRequest(r *http.Request, span trace.Span) (req Delete
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, nil
 		}
 
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
+			request.Reset()
 			if err := request.Decode(d); err != nil {
 				return err
 			}
@@ -698,14 +735,14 @@ func decodeDeleteStickerFromSetRequest(r *http.Request, span trace.Span) (req De
 	}
 }
 
-func decodeDeleteWebhookRequest(r *http.Request, span trace.Span) (req DeleteWebhook, err error) {
+func decodeDeleteWebhookRequest(r *http.Request, span trace.Span) (req OptDeleteWebhook, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, nil
 		}
 
-		var request DeleteWebhook
+		var request OptDeleteWebhook
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -714,13 +751,14 @@ func decodeDeleteWebhookRequest(r *http.Request, span trace.Span) (req DeleteWeb
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, nil
 		}
 
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
+			request.Reset()
 			if err := request.Decode(d); err != nil {
 				return err
 			}
@@ -1286,14 +1324,14 @@ func decodeGetGameHighScoresRequest(r *http.Request, span trace.Span) (req GetGa
 	}
 }
 
-func decodeGetMyCommandsRequest(r *http.Request, span trace.Span) (req GetMyCommands, err error) {
+func decodeGetMyCommandsRequest(r *http.Request, span trace.Span) (req OptGetMyCommands, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, nil
 		}
 
-		var request GetMyCommands
+		var request OptGetMyCommands
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1302,13 +1340,14 @@ func decodeGetMyCommandsRequest(r *http.Request, span trace.Span) (req GetMyComm
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, nil
 		}
 
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
+			request.Reset()
 			if err := request.Decode(d); err != nil {
 				return err
 			}
@@ -1358,14 +1397,14 @@ func decodeGetStickerSetRequest(r *http.Request, span trace.Span) (req GetSticke
 	}
 }
 
-func decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req GetUpdates, err error) {
+func decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req OptGetUpdates, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, validate.ErrBodyRequired
+			return req, nil
 		}
 
-		var request GetUpdates
+		var request OptGetUpdates
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1374,13 +1413,14 @@ func decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req GetUpdates, 
 		}
 
 		if written == 0 {
-			return req, validate.ErrBodyRequired
+			return req, nil
 		}
 
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
+			request.Reset()
 			if err := request.Decode(d); err != nil {
 				return err
 			}
@@ -1389,9 +1429,17 @@ func decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req GetUpdates, 
 			return req, errors.Wrap(err, "decode GetUpdates:application/json request")
 		}
 		if err := func() error {
-			if err := request.Validate(); err != nil {
-				return err
+			if request.Set {
+				if err := func() error {
+					if err := request.Value.Validate(); err != nil {
+						return err
+					}
+					return nil
+				}(); err != nil {
+					return err
+				}
 			}
+			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate GetUpdates request")
@@ -2999,6 +3047,42 @@ func decodeUnbanChatMemberRequest(r *http.Request, span trace.Span) (req UnbanCh
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode UnbanChatMember:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeUnbanChatSenderChatRequest(r *http.Request, span trace.Span) (req UnbanChatSenderChat, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request UnbanChatSenderChat
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode UnbanChatSenderChat:application/json request")
 		}
 		return request, nil
 	default:

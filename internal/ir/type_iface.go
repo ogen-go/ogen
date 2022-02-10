@@ -12,7 +12,7 @@ func (t *Type) CanHaveMethods() bool {
 
 func (t *Type) Implement(i *Type) {
 	if !t.CanHaveMethods() || !i.Is(KindInterface) {
-		panic("unreachable")
+		panic(unreachable(t))
 	}
 
 	if t.Implements == nil {
@@ -25,7 +25,7 @@ func (t *Type) Implement(i *Type) {
 
 func (t *Type) Unimplement(i *Type) {
 	if !t.CanHaveMethods() || !i.Is(KindInterface) {
-		panic("unreachable")
+		panic(unreachable(t))
 	}
 
 	delete(i.Implementations, t)
@@ -34,7 +34,7 @@ func (t *Type) Unimplement(i *Type) {
 
 func (t *Type) AddMethod(name string) {
 	if !t.Is(KindInterface) {
-		panic("unreachable")
+		panic(unreachable(t))
 	}
 
 	t.InterfaceMethods[name] = struct{}{}
@@ -65,7 +65,7 @@ func (t *Type) Methods() []string {
 
 func (t *Type) ListImplementations() []*Type {
 	if !t.Is(KindInterface) {
-		panic("unreachable")
+		panic(unreachable(t))
 	}
 
 	result := make([]*Type, 0, len(t.Implementations))

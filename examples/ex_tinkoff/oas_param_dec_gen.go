@@ -422,7 +422,7 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (OperationsGetPa
 			})
 
 			if err := func() error {
-				var paramsFigiVal string
+				var paramsDotFigiVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -434,12 +434,12 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (OperationsGetPa
 						return err
 					}
 
-					paramsFigiVal = c
+					paramsDotFigiVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Figi.SetTo(paramsFigiVal)
+				params.Figi.SetTo(paramsDotFigiVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: figi: parse")
@@ -457,7 +457,7 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (OperationsGetPa
 			})
 
 			if err := func() error {
-				var paramsBrokerAccountIdVal string
+				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -469,12 +469,12 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (OperationsGetPa
 						return err
 					}
 
-					paramsBrokerAccountIdVal = c
+					paramsDotBrokerAccountIdVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
+				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: brokerAccountId: parse")
@@ -530,7 +530,7 @@ func decodeOrdersCancelPostParams(args [0]string, r *http.Request) (OrdersCancel
 			})
 
 			if err := func() error {
-				var paramsBrokerAccountIdVal string
+				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -542,12 +542,12 @@ func decodeOrdersCancelPostParams(args [0]string, r *http.Request) (OrdersCancel
 						return err
 					}
 
-					paramsBrokerAccountIdVal = c
+					paramsDotBrokerAccountIdVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
+				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: brokerAccountId: parse")
@@ -573,7 +573,7 @@ func decodeOrdersGetParams(args [0]string, r *http.Request) (OrdersGetParams, er
 			})
 
 			if err := func() error {
-				var paramsBrokerAccountIdVal string
+				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -585,12 +585,12 @@ func decodeOrdersGetParams(args [0]string, r *http.Request) (OrdersGetParams, er
 						return err
 					}
 
-					paramsBrokerAccountIdVal = c
+					paramsDotBrokerAccountIdVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
+				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: brokerAccountId: parse")
@@ -646,7 +646,7 @@ func decodeOrdersLimitOrderPostParams(args [0]string, r *http.Request) (OrdersLi
 			})
 
 			if err := func() error {
-				var paramsBrokerAccountIdVal string
+				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -658,12 +658,12 @@ func decodeOrdersLimitOrderPostParams(args [0]string, r *http.Request) (OrdersLi
 						return err
 					}
 
-					paramsBrokerAccountIdVal = c
+					paramsDotBrokerAccountIdVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
+				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: brokerAccountId: parse")
@@ -719,7 +719,7 @@ func decodeOrdersMarketOrderPostParams(args [0]string, r *http.Request) (OrdersM
 			})
 
 			if err := func() error {
-				var paramsBrokerAccountIdVal string
+				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -731,12 +731,12 @@ func decodeOrdersMarketOrderPostParams(args [0]string, r *http.Request) (OrdersM
 						return err
 					}
 
-					paramsBrokerAccountIdVal = c
+					paramsDotBrokerAccountIdVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
+				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: brokerAccountId: parse")
@@ -762,7 +762,7 @@ func decodePortfolioCurrenciesGetParams(args [0]string, r *http.Request) (Portfo
 			})
 
 			if err := func() error {
-				var paramsBrokerAccountIdVal string
+				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -774,12 +774,12 @@ func decodePortfolioCurrenciesGetParams(args [0]string, r *http.Request) (Portfo
 						return err
 					}
 
-					paramsBrokerAccountIdVal = c
+					paramsDotBrokerAccountIdVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
+				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: brokerAccountId: parse")
@@ -805,7 +805,7 @@ func decodePortfolioGetParams(args [0]string, r *http.Request) (PortfolioGetPara
 			})
 
 			if err := func() error {
-				var paramsBrokerAccountIdVal string
+				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -817,12 +817,12 @@ func decodePortfolioGetParams(args [0]string, r *http.Request) (PortfolioGetPara
 						return err
 					}
 
-					paramsBrokerAccountIdVal = c
+					paramsDotBrokerAccountIdVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
+				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: brokerAccountId: parse")
@@ -848,7 +848,7 @@ func decodeSandboxClearPostParams(args [0]string, r *http.Request) (SandboxClear
 			})
 
 			if err := func() error {
-				var paramsBrokerAccountIdVal string
+				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -860,12 +860,12 @@ func decodeSandboxClearPostParams(args [0]string, r *http.Request) (SandboxClear
 						return err
 					}
 
-					paramsBrokerAccountIdVal = c
+					paramsDotBrokerAccountIdVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
+				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: brokerAccountId: parse")
@@ -891,7 +891,7 @@ func decodeSandboxCurrenciesBalancePostParams(args [0]string, r *http.Request) (
 			})
 
 			if err := func() error {
-				var paramsBrokerAccountIdVal string
+				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -903,12 +903,12 @@ func decodeSandboxCurrenciesBalancePostParams(args [0]string, r *http.Request) (
 						return err
 					}
 
-					paramsBrokerAccountIdVal = c
+					paramsDotBrokerAccountIdVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
+				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: brokerAccountId: parse")
@@ -934,7 +934,7 @@ func decodeSandboxPositionsBalancePostParams(args [0]string, r *http.Request) (S
 			})
 
 			if err := func() error {
-				var paramsBrokerAccountIdVal string
+				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -946,12 +946,12 @@ func decodeSandboxPositionsBalancePostParams(args [0]string, r *http.Request) (S
 						return err
 					}
 
-					paramsBrokerAccountIdVal = c
+					paramsDotBrokerAccountIdVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
+				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: brokerAccountId: parse")
@@ -977,7 +977,7 @@ func decodeSandboxRemovePostParams(args [0]string, r *http.Request) (SandboxRemo
 			})
 
 			if err := func() error {
-				var paramsBrokerAccountIdVal string
+				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -989,12 +989,12 @@ func decodeSandboxRemovePostParams(args [0]string, r *http.Request) (SandboxRemo
 						return err
 					}
 
-					paramsBrokerAccountIdVal = c
+					paramsDotBrokerAccountIdVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.BrokerAccountId.SetTo(paramsBrokerAccountIdVal)
+				params.BrokerAccountId.SetTo(paramsDotBrokerAccountIdVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: brokerAccountId: parse")

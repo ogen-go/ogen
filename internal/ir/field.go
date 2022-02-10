@@ -1,7 +1,6 @@
 package ir
 
 import (
-	"fmt"
 	"reflect"
 	"strconv"
 
@@ -54,12 +53,6 @@ func (f Field) GoDoc() []string {
 
 // DefaultFields returns fields with default values.
 func (t Type) DefaultFields() (r []*Field) {
-	defer func() {
-		if r := recover(); r != nil {
-			fmt.Println("boom", r)
-			panic(r)
-		}
-	}()
 	for _, f := range t.Fields {
 		if val := f.Default(); val.Set {
 			if val.Value == nil || !reflect.ValueOf(val.Value).IsZero() {

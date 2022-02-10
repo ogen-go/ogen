@@ -3,7 +3,9 @@ package ogen_test
 import (
 	"embed"
 	"go/format"
-	"path"
+	"io/fs"
+	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -26,7 +28,7 @@ func (n fmtFs) WriteFile(baseName string, source []byte) error {
 func testGenerate(t *testing.T, name string, ignore ...string) {
 	t.Helper()
 
-	data, err := testdata.ReadFile(path.Join("_testdata", name))
+	data, err := testdata.ReadFile(name)
 	require.NoError(t, err)
 	spec, err := ogen.Parse(data)
 	require.NoError(t, err)
@@ -35,6 +37,12 @@ func testGenerate(t *testing.T, name string, ignore ...string) {
 		InferSchemaType:      true,
 	}
 	t.Run("Gen", func(t *testing.T) {
+		defer func() {
+			if rr := recover(); rr != nil {
+				t.Fatalf("panic: %+v", rr)
+			}
+		}()
+
 		g, err := gen.NewGenerator(spec, opt)
 		require.NoError(t, err)
 
@@ -57,35 +65,53 @@ func TestGenerate(t *testing.T) {
 		}
 	}
 
-	t.Run("Pet store", g("petstore.yaml"))
-	t.Run("Pet store expanded", g("petstore-expanded.yaml",
-		"allOf",
-	))
-	t.Run("Firecracker", g("firecracker.json"))
-	t.Run("Sample", g("sample.json"))
-	t.Run("Manga gallery", g("manga.json",
-		"unsupported content types",
-	))
-	t.Run("TechEmpower", g("techempower.json"))
-	t.Run("telegram bot api", g("telegram_bot_api.json",
-		"anyOf",
-		"unsupported content types",
-	))
-	t.Run("gotd botapi", g("gotd_bot_api.json",
-		"unsupported content types",
-	))
-	t.Run("Kubernetes", g("k8s.json",
-		"unsupported content types",
-	))
-	t.Run("GitHub", g("api.github.com.json",
-		"complex parameter types",
-		"complex anyOf",
-		"allOf",
-		"discriminator inference",
-		"sum types with same names",
-		"sum type parameter",
-		"unsupported content types",
-		"empty schema",
-	))
-	t.Run("Tinkoff", g("tinkoff.json"))
+	skipSets := map[string][]string{
+		"petstore.yaml": {},
+		"petstore-expanded.yaml": {
+			"allOf",
+		},
+		"firecracker.json": {},
+		"sample.json":      {},
+		"manga.json": {
+			"unsupported content types",
+		},
+		"techempower.json": {},
+		"telegram_bot_api.json": {
+			"anyOf",
+			"unsupported content types",
+		},
+		"gotd_bot_api.json": {
+			"unsupported content types",
+		},
+		"k8s.json": {
+			"unsupported content types",
+		},
+		"api.github.com.json": {
+			"complex parameter types",
+			"complex anyOf",
+			"allOf",
+			"discriminator inference",
+			"sum types with same names",
+			"sum type parameter",
+			"unsupported content types",
+			"empty schema",
+		},
+		"tinkoff.json": {},
+	}
+
+	if err := fs.WalkDir(testdata, "_testdata", func(path string, d fs.DirEntry, err error) error {
+		if err != nil || d == nil || d.IsDir() {
+			return err
+		}
+		_, file := filepath.Split(path)
+
+		skip, ok := skipSets[file]
+		if !ok {
+			skip = []string{"all"}
+		}
+		t.Run(strings.TrimSuffix(file, ".json"), g(path, skip...))
+		return nil
+	}); err != nil {
+		t.Fatal(err)
+	}
 }

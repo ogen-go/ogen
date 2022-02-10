@@ -62,7 +62,7 @@ func convertPathParts(parts []oas.PathPart, params []*ir.Parameter) []*ir.PathPa
 
 		param, found := find(part.Param.Name)
 		if !found {
-			panic("unreachable")
+			panic(unreachable(part.Param.Name))
 		}
 
 		result = append(result, &ir.PathPart{Param: param})

@@ -130,6 +130,186 @@ func (s *BotCommandScopeDefault) setDefaults() {
 }
 
 // setDefaults set default value of fields.
+func (s *InlineQueryResultArticle) setDefaults() {
+	{
+		val := string("article")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultAudio) setDefaults() {
+	{
+		val := string("audio")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultCachedAudio) setDefaults() {
+	{
+		val := string("audio")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultCachedDocument) setDefaults() {
+	{
+		val := string("document")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultCachedGif) setDefaults() {
+	{
+		val := string("gif")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultCachedMpeg4Gif) setDefaults() {
+	{
+		val := string("mpeg4_gif")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultCachedPhoto) setDefaults() {
+	{
+		val := string("photo")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultCachedSticker) setDefaults() {
+	{
+		val := string("sticker")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultCachedVideo) setDefaults() {
+	{
+		val := string("video")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultCachedVoice) setDefaults() {
+	{
+		val := string("voice")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultContact) setDefaults() {
+	{
+		val := string("contact")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultDocument) setDefaults() {
+	{
+		val := string("document")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultGame) setDefaults() {
+	{
+		val := string("game")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultGif) setDefaults() {
+	{
+		val := string("gif")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultLocation) setDefaults() {
+	{
+		val := string("location")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultMpeg4Gif) setDefaults() {
+	{
+		val := string("mpeg4_gif")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultPhoto) setDefaults() {
+	{
+		val := string("photo")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultVenue) setDefaults() {
+	{
+		val := string("venue")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultVideo) setDefaults() {
+	{
+		val := string("video")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *InlineQueryResultVoice) setDefaults() {
+	{
+		val := string("voice")
+
+		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
 func (s *InputMediaAnimation) setDefaults() {
 	{
 		val := string("animation")
@@ -265,7 +445,7 @@ func (s *Result) setDefaults() {
 }
 
 // setDefaults set default value of fields.
-func (s *ResultMsg) setDefaults() {
+func (s *ResultArrayOfBotCommand) setDefaults() {
 	{
 		val := bool(true)
 
@@ -274,7 +454,160 @@ func (s *ResultMsg) setDefaults() {
 }
 
 // setDefaults set default value of fields.
-func (s *ResultUsr) setDefaults() {
+func (s *ResultArrayOfChatMember) setDefaults() {
+	{
+		val := bool(true)
+
+		s.Ok = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ResultArrayOfGameHighScore) setDefaults() {
+	{
+		val := bool(true)
+
+		s.Ok = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ResultArrayOfMessage) setDefaults() {
+	{
+		val := bool(true)
+
+		s.Ok = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ResultArrayOfUpdate) setDefaults() {
+	{
+		val := bool(true)
+
+		s.Ok = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ResultChat) setDefaults() {
+	{
+		val := bool(true)
+
+		s.Ok = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ResultChatInviteLink) setDefaults() {
+	{
+		val := bool(true)
+
+		s.Ok = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ResultChatMember) setDefaults() {
+	{
+		val := bool(true)
+
+		s.Ok = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ResultFile) setDefaults() {
+	{
+		val := bool(true)
+
+		s.Ok = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ResultInt) setDefaults() {
+	{
+		val := bool(true)
+
+		s.Ok = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ResultMessage) setDefaults() {
+	{
+		val := bool(true)
+
+		s.Ok = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ResultMessageId) setDefaults() {
+	{
+		val := bool(true)
+
+		s.Ok = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ResultMessageOrBoolean) setDefaults() {
+	{
+		val := bool(true)
+
+		s.Ok = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ResultPoll) setDefaults() {
+	{
+		val := bool(true)
+
+		s.Ok = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ResultStickerSet) setDefaults() {
+	{
+		val := bool(true)
+
+		s.Ok = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ResultString) setDefaults() {
+	{
+		val := bool(true)
+
+		s.Ok = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ResultUser) setDefaults() {
+	{
+		val := bool(true)
+
+		s.Ok = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ResultUserProfilePhotos) setDefaults() {
+	{
+		val := bool(true)
+
+		s.Ok = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ResultWebhookInfo) setDefaults() {
 	{
 		val := bool(true)
 

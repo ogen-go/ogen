@@ -122,6 +122,14 @@ func encodeBanChatMemberRequestJSON(req BanChatMember, span trace.Span) (data *j
 	return e, nil
 }
 
+func encodeBanChatSenderChatRequestJSON(req BanChatSenderChat, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
 func encodeCopyMessageRequestJSON(req CopyMessage, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 
@@ -178,10 +186,11 @@ func encodeDeleteMessageRequestJSON(req DeleteMessage, span trace.Span) (data *j
 	return e, nil
 }
 
-func encodeDeleteMyCommandsRequestJSON(req DeleteMyCommands, span trace.Span) (data *jx.Writer, err error) {
+func encodeDeleteMyCommandsRequestJSON(req OptDeleteMyCommands, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-
-	req.Encode(e)
+	if req.Set {
+		req.Encode(e)
+	}
 
 	return e, nil
 }
@@ -194,10 +203,11 @@ func encodeDeleteStickerFromSetRequestJSON(req DeleteStickerFromSet, span trace.
 	return e, nil
 }
 
-func encodeDeleteWebhookRequestJSON(req DeleteWebhook, span trace.Span) (data *jx.Writer, err error) {
+func encodeDeleteWebhookRequestJSON(req OptDeleteWebhook, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-
-	req.Encode(e)
+	if req.Set {
+		req.Encode(e)
+	}
 
 	return e, nil
 }
@@ -314,10 +324,11 @@ func encodeGetGameHighScoresRequestJSON(req GetGameHighScores, span trace.Span) 
 	return e, nil
 }
 
-func encodeGetMyCommandsRequestJSON(req GetMyCommands, span trace.Span) (data *jx.Writer, err error) {
+func encodeGetMyCommandsRequestJSON(req OptGetMyCommands, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-
-	req.Encode(e)
+	if req.Set {
+		req.Encode(e)
+	}
 
 	return e, nil
 }
@@ -330,10 +341,11 @@ func encodeGetStickerSetRequestJSON(req GetStickerSet, span trace.Span) (data *j
 	return e, nil
 }
 
-func encodeGetUpdatesRequestJSON(req GetUpdates, span trace.Span) (data *jx.Writer, err error) {
+func encodeGetUpdatesRequestJSON(req OptGetUpdates, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-
-	req.Encode(e)
+	if req.Set {
+		req.Encode(e)
+	}
 
 	return e, nil
 }
@@ -643,6 +655,14 @@ func encodeStopPollRequestJSON(req StopPoll, span trace.Span) (data *jx.Writer, 
 }
 
 func encodeUnbanChatMemberRequestJSON(req UnbanChatMember, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeUnbanChatSenderChatRequestJSON(req UnbanChatSenderChat, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 
 	req.Encode(e)

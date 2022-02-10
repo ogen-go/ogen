@@ -272,7 +272,7 @@ func decodeListPetParams(args [0]string, r *http.Request) (ListPetParams, error)
 			})
 
 			if err := func() error {
-				var paramsPageVal int32
+				var paramsDotPageVal int32
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -284,12 +284,12 @@ func decodeListPetParams(args [0]string, r *http.Request) (ListPetParams, error)
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -307,7 +307,7 @@ func decodeListPetParams(args [0]string, r *http.Request) (ListPetParams, error)
 			})
 
 			if err := func() error {
-				var paramsItemsPerPageVal int32
+				var paramsDotItemsPerPageVal int32
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -319,12 +319,12 @@ func decodeListPetParams(args [0]string, r *http.Request) (ListPetParams, error)
 						return err
 					}
 
-					paramsItemsPerPageVal = c
+					paramsDotItemsPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.ItemsPerPage.SetTo(paramsItemsPerPageVal)
+				params.ItemsPerPage.SetTo(paramsDotItemsPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: itemsPerPage: parse")
@@ -381,7 +381,7 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (ListPetCate
 			})
 
 			if err := func() error {
-				var paramsPageVal int32
+				var paramsDotPageVal int32
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -393,12 +393,12 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (ListPetCate
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -416,7 +416,7 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (ListPetCate
 			})
 
 			if err := func() error {
-				var paramsItemsPerPageVal int32
+				var paramsDotItemsPerPageVal int32
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -428,12 +428,12 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (ListPetCate
 						return err
 					}
 
-					paramsItemsPerPageVal = c
+					paramsDotItemsPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.ItemsPerPage.SetTo(paramsItemsPerPageVal)
+				params.ItemsPerPage.SetTo(paramsDotItemsPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: itemsPerPage: parse")
@@ -490,7 +490,7 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (ListPetFriends
 			})
 
 			if err := func() error {
-				var paramsPageVal int32
+				var paramsDotPageVal int32
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -502,12 +502,12 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (ListPetFriends
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -525,7 +525,7 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (ListPetFriends
 			})
 
 			if err := func() error {
-				var paramsItemsPerPageVal int32
+				var paramsDotItemsPerPageVal int32
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -537,12 +537,12 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (ListPetFriends
 						return err
 					}
 
-					paramsItemsPerPageVal = c
+					paramsDotItemsPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.ItemsPerPage.SetTo(paramsItemsPerPageVal)
+				params.ItemsPerPage.SetTo(paramsDotItemsPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: itemsPerPage: parse")

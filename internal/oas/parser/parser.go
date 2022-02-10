@@ -74,7 +74,7 @@ func (p *parser) parse() error {
 
 			parsedOp, err := p.parseOp(path, method, op, itemParams)
 			if err != nil {
-				return err
+				return errors.Wrap(err, op.OperationID)
 			}
 
 			p.operations = append(p.operations, parsedOp)
