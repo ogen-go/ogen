@@ -10,10 +10,7 @@ import (
 )
 
 func (g *schemaGen) primitive(name string, schema *jsonschema.Schema) (*ir.Type, error) {
-	t, err := parseSimple(schema)
-	if err != nil {
-		return nil, err
-	}
+	t := parseSimple(schema)
 
 	if len(schema.Enum) > 0 {
 		if !t.Is(ir.KindPrimitive) {
@@ -70,7 +67,7 @@ func (g *schemaGen) primitive(name string, schema *jsonschema.Schema) (*ir.Type,
 	return t, nil
 }
 
-func parseSimple(schema *jsonschema.Schema) (*ir.Type, error) {
+func parseSimple(schema *jsonschema.Schema) *ir.Type {
 	mapping := map[jsonschema.SchemaType]map[string]ir.PrimitiveType{
 		jsonschema.Integer: {
 			"int32": ir.Int32,
@@ -105,12 +102,9 @@ func parseSimple(schema *jsonschema.Schema) (*ir.Type, error) {
 
 	t, found := mapping[schema.Type][schema.Format]
 	if !found {
-		// Return string type for unknown string formats.
-		if schema.Type == jsonschema.String {
-			return ir.Primitive(ir.String, schema), nil
-		}
-		return nil, errors.Errorf("unexpected %q format: %q", schema.Type, schema.Format)
+		// Fallback to default.
+		t = mapping[schema.Type][""]
 	}
 
-	return ir.Primitive(t, schema), nil
+	return ir.Primitive(t, schema)
 }
