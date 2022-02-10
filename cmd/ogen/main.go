@@ -115,10 +115,10 @@ func main() {
 
 	g, err := gen.NewGenerator(spec, opts)
 	if err != nil {
-		panic(fmt.Sprintf("%+v", err))
+		panic(fmt.Sprintf("%s: %+v", *specPath, err))
 	}
 
 	if err := g.WriteSource(fs, *packageName); err != nil {
-		panic(fmt.Sprintf("%+v", err))
+		panic(fmt.Sprintf("%s: %+v", *specPath, err))
 	}
 }
