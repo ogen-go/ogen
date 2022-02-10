@@ -71,35 +71,35 @@ func (g *schemaGen) primitive(name string, schema *jsonschema.Schema) (*ir.Type,
 }
 
 func parseSimple(schema *jsonschema.Schema) (*ir.Type, error) {
-	mapping := map[jsonschema.SchemaType]map[jsonschema.Format]ir.PrimitiveType{
+	mapping := map[jsonschema.SchemaType]map[string]ir.PrimitiveType{
 		jsonschema.Integer: {
-			jsonschema.FormatInt32: ir.Int32,
-			jsonschema.FormatInt64: ir.Int64,
-			jsonschema.FormatNone:  ir.Int,
+			"int32": ir.Int32,
+			"int64": ir.Int64,
+			"":      ir.Int,
 		},
 		jsonschema.Number: {
-			jsonschema.FormatFloat:  ir.Float32,
-			jsonschema.FormatDouble: ir.Float64,
-			jsonschema.FormatNone:   ir.Float64,
-			jsonschema.FormatInt32:  ir.Int32,
-			jsonschema.FormatInt64:  ir.Int64,
+			"float":  ir.Float32,
+			"double": ir.Float64,
+			"int32":  ir.Int32,
+			"int64":  ir.Int64,
+			"":       ir.Float64,
 		},
 		jsonschema.String: {
-			jsonschema.FormatByte:     ir.ByteSlice,
-			jsonschema.FormatDateTime: ir.Time,
-			jsonschema.FormatDate:     ir.Time,
-			jsonschema.FormatTime:     ir.Time,
-			jsonschema.FormatDuration: ir.Duration,
-			jsonschema.FormatUUID:     ir.UUID,
-			jsonschema.FormatIP:       ir.IP,
-			jsonschema.FormatIPv4:     ir.IP,
-			jsonschema.FormatIPv6:     ir.IP,
-			jsonschema.FormatURI:      ir.URL,
-			jsonschema.FormatPassword: ir.String,
-			jsonschema.FormatNone:     ir.String,
+			"byte":      ir.ByteSlice,
+			"date-time": ir.Time,
+			"date":      ir.Time,
+			"time":      ir.Time,
+			"duration":  ir.Duration,
+			"uuid":      ir.UUID,
+			"ip":        ir.IP,
+			"ipv4":      ir.IP,
+			"ipv6":      ir.IP,
+			"uri":       ir.URL,
+			"password":  ir.String,
+			"":          ir.String,
 		},
 		jsonschema.Boolean: {
-			jsonschema.FormatNone: ir.Bool,
+			"": ir.Bool,
 		},
 	}
 

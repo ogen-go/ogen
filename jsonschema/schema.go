@@ -18,7 +18,7 @@ const (
 // Schema is a JSON Schema.
 type Schema struct {
 	Type        SchemaType
-	Format      Format // Schema format, optional.
+	Format      string // Schema format, optional.
 	Description string // Schema description, optional.
 	Ref         string // Whether schema is referenced.
 

@@ -29,10 +29,10 @@ func (v *Validators) SetString(schema *jsonschema.Schema) (err error) {
 	if schema.MinLength != nil {
 		v.String.SetMinLength(int(*schema.MinLength))
 	}
-	if schema.Format == jsonschema.FormatEmail {
+	if schema.Format == "email" {
 		v.String.Email = true
 	}
-	if schema.Format == jsonschema.FormatHostname {
+	if schema.Format == "hostname" {
 		v.String.Hostname = true
 	}
 	return nil

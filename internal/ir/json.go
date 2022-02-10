@@ -1,7 +1,5 @@
 package ir
 
-import "github.com/ogen-go/ogen/jsonschema"
-
 // JSON returns json encoding/decoding rules for t.
 func (t *Type) JSON() JSON {
 	return JSON{
@@ -95,19 +93,19 @@ func (j JSON) Format() string {
 		return ""
 	}
 	switch j.t.Schema.Format {
-	case jsonschema.FormatUUID:
+	case "uuid":
 		return "UUID"
-	case jsonschema.FormatDate:
+	case "date":
 		return "Date"
-	case jsonschema.FormatTime:
+	case "time":
 		return "Time"
-	case jsonschema.FormatDateTime:
+	case "date-time":
 		return "DateTime"
-	case jsonschema.FormatDuration:
+	case "duration":
 		return "Duration"
-	case jsonschema.FormatIP, jsonschema.FormatIPv4, jsonschema.FormatIPv6:
+	case "ip", "ipv4", "ipv6":
 		return "IP"
-	case jsonschema.FormatURI:
+	case "uri":
 		return "URI"
 	default:
 		return ""

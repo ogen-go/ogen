@@ -87,7 +87,7 @@ func (p *Parser) parseSchema(schema *RawSchema, hook func(*Schema) *Schema) (*Sc
 
 		return hook(&Schema{
 			Type:   SchemaType(schema.Type),
-			Format: Format(schema.Format),
+			Format: schema.Format,
 		}), nil
 	case len(schema.OneOf) > 0:
 		schemas, err := p.parseMany(schema.OneOf)
@@ -236,7 +236,7 @@ func (p *Parser) parseSchema(schema *RawSchema, hook func(*Schema) *Schema) (*Sc
 
 		return hook(&Schema{
 			Type:             SchemaType(schema.Type),
-			Format:           Format(schema.Format),
+			Format:           schema.Format,
 			Minimum:          schema.Minimum,
 			Maximum:          schema.Maximum,
 			ExclusiveMinimum: schema.ExclusiveMinimum,
@@ -251,7 +251,7 @@ func (p *Parser) parseSchema(schema *RawSchema, hook func(*Schema) *Schema) (*Sc
 
 		return hook(&Schema{
 			Type:   Boolean,
-			Format: Format(schema.Format),
+			Format: schema.Format,
 		}), nil
 
 	case "string":
@@ -261,7 +261,7 @@ func (p *Parser) parseSchema(schema *RawSchema, hook func(*Schema) *Schema) (*Sc
 
 		return hook(&Schema{
 			Type:      String,
-			Format:    Format(schema.Format),
+			Format:    schema.Format,
 			MaxLength: schema.MaxLength,
 			MinLength: schema.MinLength,
 			Pattern:   schema.Pattern,

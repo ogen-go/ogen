@@ -1,8 +1,6 @@
 package gen
 
-import (
-	"github.com/ogen-go/ogen/jsonschema"
-)
+import "github.com/ogen-go/ogen/jsonschema"
 
 func isBinary(s *jsonschema.Schema) bool {
 	if s == nil {
@@ -15,5 +13,5 @@ func isBinary(s *jsonschema.Schema) bool {
 		return false
 	}
 
-	return s.Format == jsonschema.FormatBinary
+	return s.Format == "binary"
 }
