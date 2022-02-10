@@ -4,7 +4,7 @@
     "title": "Telegram Bot API",
     "description": "API for Telegram bots",
     "termsOfService": "https://telegram.org/tos",
-    "version": "5.3"
+    "version": "5.7"
   },
   "servers": [
     {
@@ -14,7 +14,7 @@
   ],
   "paths": {
     "/addStickerToSet": {
-      "description": "Use this method to add a new sticker to a set created by the bot. You must use exactly one of the fields png_sticker or tgs_sticker. Animated stickers can be added to animated sticker sets and only to them. Animated sticker sets can have up to 50 stickers. Static sticker sets can have up to 120 stickers. Returns True on success.",
+      "description": "Use this method to add a new sticker to a set created by the bot. You must use exactly one of the fields png_sticker, tgs_sticker, or webm_sticker. Animated stickers can be added to animated sticker sets and only to them. Animated sticker sets can have up to 50 stickers. Static sticker sets can have up to 120 stickers. Returns True on success.",
       "post": {
         "operationId": "addStickerToSet",
         "requestBody": {
@@ -181,6 +181,44 @@
         }
       }
     },
+    "/banChatSenderChat": {
+      "description": "Use this method to ban a channel chat in a supergroup or a channel. Until the chat is unbanned, the owner of the banned chat won't be able to send messages on behalf of any of their channels. The bot must be an administrator in the supergroup or channel for this to work and must have the appropriate administrator rights. Returns True on success.",
+      "post": {
+        "operationId": "banChatSenderChat",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/banChatSenderChat"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
+          }
+        }
+      }
+    },
+    "/close": {
+      "description": "Use this method to close the bot instance before moving it from one local server to another. You need to delete the webhook before calling this method to ensure that the bot isn't launched again after server restart. The method will return error 429 in the first 10 minutes after the bot is launched. Returns True on success. Requires no parameters.",
+      "post": {
+        "operationId": "close",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
+          }
+        }
+      }
+    },
     "/copyMessage": {
       "description": "Use this method to copy messages of any kind. Service messages and invoice messages can't be copied. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.",
       "post": {
@@ -197,7 +235,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultMessageId"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -221,7 +259,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultChatInviteLink"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -230,7 +268,7 @@
       }
     },
     "/createNewStickerSet": {
-      "description": "Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. You must use exactly one of the fields png_sticker or tgs_sticker. Returns True on success.",
+      "description": "Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. You must use exactly one of the fields png_sticker, tgs_sticker, or webm_sticker. Returns True on success.",
       "post": {
         "operationId": "createNewStickerSet",
         "requestBody": {
@@ -360,8 +398,7 @@
                 "$ref": "#/components/schemas/deleteMyCommands"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -408,8 +445,7 @@
                 "$ref": "#/components/schemas/deleteWebhook"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -437,7 +473,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultChatInviteLink"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -461,7 +497,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultMessageOrBoolean"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -485,7 +521,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultMessageOrBoolean"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -509,7 +545,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultMessageOrBoolean"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -533,7 +569,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultMessageOrBoolean"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -557,7 +593,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultMessageOrBoolean"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -581,7 +617,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultString"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -605,7 +641,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ResultMsg"
+            "$ref": "#/components/responses/ResultMessage"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -629,7 +665,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultChat"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -653,7 +689,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultArrayOfChatMember"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -677,7 +713,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultChatMember"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -701,7 +737,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultInt"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -725,7 +761,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultFile"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -749,7 +785,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultArrayOfGameHighScore"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -763,7 +799,7 @@
         "operationId": "getMe",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ResultUsr"
+            "$ref": "#/components/responses/ResultUser"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -782,12 +818,11 @@
                 "$ref": "#/components/schemas/getMyCommands"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultArrayOfBotCommand"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -811,7 +846,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultStickerSet"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -830,12 +865,11 @@
                 "$ref": "#/components/schemas/getUpdates"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultArrayOfUpdate"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -859,7 +893,21 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultUserProfilePhotos"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
+          }
+        }
+      }
+    },
+    "/getWebhookInfo": {
+      "description": "Use this method to get current webhook status. Requires no parameters. On success, returns a WebhookInfo object. If the bot is using getUpdates, will return an object with the url field empty.",
+      "post": {
+        "operationId": "getWebhookInfo",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ResultWebhookInfo"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -881,6 +929,20 @@
           },
           "required": true
         },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
+          }
+        }
+      }
+    },
+    "/logOut": {
+      "description": "Use this method to log out from the cloud Bot API server before launching the bot locally. You must log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns True on success. Requires no parameters.",
+      "post": {
+        "operationId": "logOut",
         "responses": {
           "200": {
             "$ref": "#/components/responses/Result"
@@ -979,7 +1041,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultChatInviteLink"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1003,7 +1065,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ResultMsg"
+            "$ref": "#/components/responses/ResultMessage"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1027,7 +1089,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultMessage"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1075,7 +1137,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ResultMsg"
+            "$ref": "#/components/responses/ResultMessage"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1099,7 +1161,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ResultMsg"
+            "$ref": "#/components/responses/ResultMessage"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1123,7 +1185,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ResultMsg"
+            "$ref": "#/components/responses/ResultMessage"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1147,7 +1209,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ResultMsg"
+            "$ref": "#/components/responses/ResultMessage"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1171,7 +1233,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ResultMsg"
+            "$ref": "#/components/responses/ResultMessage"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1195,7 +1257,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ResultMsg"
+            "$ref": "#/components/responses/ResultMessage"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1219,7 +1281,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultArrayOfMessage"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1243,7 +1305,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ResultMsg"
+            "$ref": "#/components/responses/ResultMessage"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1267,7 +1329,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ResultMsg"
+            "$ref": "#/components/responses/ResultMessage"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1291,7 +1353,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ResultMsg"
+            "$ref": "#/components/responses/ResultMessage"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1300,7 +1362,7 @@
       }
     },
     "/sendSticker": {
-      "description": "Use this method to send static .WEBP or animated .TGS stickers. On success, the sent Message is returned.",
+      "description": "Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers. On success, the sent Message is returned.",
       "post": {
         "operationId": "sendSticker",
         "requestBody": {
@@ -1315,7 +1377,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ResultMsg"
+            "$ref": "#/components/responses/ResultMessage"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1339,7 +1401,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ResultMsg"
+            "$ref": "#/components/responses/ResultMessage"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1363,7 +1425,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ResultMsg"
+            "$ref": "#/components/responses/ResultMessage"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1387,7 +1449,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ResultMsg"
+            "$ref": "#/components/responses/ResultMessage"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1411,7 +1473,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ResultMsg"
+            "$ref": "#/components/responses/ResultMessage"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1660,7 +1722,7 @@
       }
     },
     "/setStickerSetThumb": {
-      "description": "Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Returns True on success.",
+      "description": "Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Video thumbnails can be set only for video sticker sets only. Returns True on success.",
       "post": {
         "operationId": "setStickerSetThumb",
         "requestBody": {
@@ -1723,7 +1785,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultMessageOrBoolean"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1747,7 +1809,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultPoll"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1764,6 +1826,30 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/unbanChatMember"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
+          }
+        }
+      }
+    },
+    "/unbanChatSenderChat": {
+      "description": "Use this method to unban a previously banned channel chat in a supergroup or channel. The bot must be an administrator for this to work and must have the appropriate administrator rights. Returns True on success.",
+      "post": {
+        "operationId": "unbanChatSenderChat",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/unbanChatSenderChat"
               }
             }
           },
@@ -1843,7 +1929,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/Result"
+            "$ref": "#/components/responses/ResultFile"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1961,16 +2047,16 @@
         "type": "object",
         "properties": {
           "command": {
-            "description": "Text of the command, 1-32 characters. Can contain only lowercase English letters, digits and underscores",
+            "description": "Text of the command; 1-32 characters. Can contain only lowercase English letters, digits and underscores",
             "type": "string",
             "maxLength": 32,
             "minLength": 1
           },
           "description": {
-            "description": "Description of the command, 3-256 characters",
+            "description": "Description of the command; 1-256 characters",
             "type": "string",
             "maxLength": 256,
-            "minLength": 3
+            "minLength": 1
           }
         },
         "required": [
@@ -1980,7 +2066,6 @@
       },
       "BotCommandScope": {
         "description": "This object represents the scope to which bot commands are applied.  7 scopes are supported:",
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/BotCommandScopeDefault"
@@ -2109,7 +2194,8 @@
           },
           "user_id": {
             "description": "Unique identifier of the target user",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           }
         },
         "required": [
@@ -2179,11 +2265,18 @@
         "properties": {
           "id": {
             "description": "Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "type": {
             "description": "Type of chat, can be either “private”, “group”, “supergroup” or “channel”",
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "private",
+              "group",
+              "supergroup",
+              "channel"
+            ]
           },
           "title": {
             "description": "Title, for supergroups, channels and group chats",
@@ -2208,6 +2301,10 @@
             "description": "Bio of the other party in a private chat. Returned only in getChat",
             "type": "string"
           },
+          "has_private_forwards": {
+            "description": "True, if privacy settings of the other party in the private chat allows to use tg://user?id=\u003cuser_id\u003e links only in chats with the user. Returned only in getChat",
+            "type": "boolean"
+          },
           "description": {
             "description": "Description, for groups, supergroups and channel chats. Returned only in getChat",
             "type": "string"
@@ -2230,6 +2327,10 @@
             "description": "The time after which all messages sent to the chat will be automatically deleted; in seconds. Returned only in getChat",
             "type": "integer"
           },
+          "has_protected_content": {
+            "description": "True, if messages from the chat can't be forwarded to other chats. Returned only in getChat",
+            "type": "boolean"
+          },
           "sticker_set_name": {
             "description": "For supergroups, name of group sticker set. Returned only in getChat",
             "type": "string"
@@ -2240,10 +2341,14 @@
           },
           "linked_chat_id": {
             "description": "Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier. Returned only in getChat",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "location": {
             "$ref": "#/components/schemas/ChatLocation"
+          },
+          "all_members_are_administrators": {
+            "type": "boolean"
           }
         },
         "required": [
@@ -2284,7 +2389,9 @@
           },
           "member_limit": {
             "description": "Maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999",
-            "type": "integer"
+            "type": "integer",
+            "maximum": 99999,
+            "minimum": 1
           },
           "pending_join_request_count": {
             "description": "Number of pending join requests created using this link",
@@ -2348,7 +2455,6 @@
       },
       "ChatMember": {
         "description": "This object contains information about one member of a chat.  6 types of chat members are supported:",
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/ChatMemberOwner"
@@ -2368,7 +2474,10 @@
           {
             "$ref": "#/components/schemas/ChatMemberBanned"
           }
-        ]
+        ],
+        "discriminator": {
+          "propertyName": "status"
+        }
       },
       "ChatMemberAdministrator": {
         "description": "Represents a chat member that has some additional privileges.",
@@ -2742,7 +2851,8 @@
           },
           "user_id": {
             "description": "Contact's user identifier in Telegram. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "vcard": {
             "description": "Additional data about the contact in the form of a vCard",
@@ -2834,7 +2944,22 @@
         "properties": {
           "type": {
             "description": "Element type. One of “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”, “phone_number”, “email”",
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "personal_details",
+              "passport",
+              "driver_license",
+              "identity_card",
+              "internal_passport",
+              "address",
+              "utility_bill",
+              "bank_statement",
+              "rental_agreement",
+              "passport_registration",
+              "temporary_registration",
+              "phone_number",
+              "email"
+            ]
           },
           "data": {
             "description": "Base64-encoded encrypted Telegram Passport element data provided by the user, available for “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport” and “address” types. Can be decrypted and verified using the accompanying EncryptedCredentials",
@@ -3022,7 +3147,8 @@
             "type": "string"
           },
           {
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           }
         ]
       },
@@ -3035,16 +3161,17 @@
             "type": "string"
           },
           "url": {
-            "description": "HTTP or tg:// url to be opened when button is pressed",
-            "type": "string",
-            "format": "uri"
+            "description": "HTTP or tg:// url to be opened when the button is pressed. Links tg://user?id=\u003cuser_id\u003e can be used to mention a user by their ID without using a username, if this is allowed by their privacy settings",
+            "type": "string"
           },
           "login_url": {
             "$ref": "#/components/schemas/LoginUrl"
           },
           "callback_data": {
             "description": "Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "switch_inline_query": {
             "description": "If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. Can be empty, in which case just the bot's username will be inserted.Note: This offers an easy way for users to start using your bot in inline mode when they are currently in a private chat with it. Especially useful when combined with switch_pm… actions – in this case the user will be automatically returned to the chat they switched from, skipping the chat selection screen",
@@ -3058,7 +3185,7 @@
             "$ref": "#/components/schemas/CallbackGame"
           },
           "pay": {
-            "description": "Specify True, to send a Pay button.NOTE: This type of button must always be the first button in the first row",
+            "description": "Specify True, to send a Pay button.NOTE: This type of button must always be the first button in the first row and can only be used in invoice messages",
             "type": "boolean"
           }
         },
@@ -3106,7 +3233,14 @@
           },
           "chat_type": {
             "description": "Type of the chat, from which the inline query was sent. Can be either “sender” for a private chat with the inline query sender, “private”, “group”, “supergroup”, or “channel”. The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat",
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "sender",
+              "private",
+              "group",
+              "supergroup",
+              "channel"
+            ]
           },
           "location": {
             "$ref": "#/components/schemas/Location"
@@ -3120,8 +3254,87 @@
         ]
       },
       "InlineQueryResult": {
-        "description": "Hack",
-        "type": "string"
+        "description": "an inline query. Telegram clients currently support results of the following 20 types:",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/InlineQueryResultCachedAudio"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultCachedDocument"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultCachedGif"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultCachedMpeg4Gif"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultCachedPhoto"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultCachedSticker"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultCachedVideo"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultCachedVoice"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultArticle"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultAudio"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultContact"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultGame"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultDocument"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultGif"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultLocation"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultMpeg4Gif"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultPhoto"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultVenue"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultVideo"
+          },
+          {
+            "$ref": "#/components/schemas/InlineQueryResultVoice"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "article": "InlineQueryResultArticle",
+            "audio": "InlineQueryResultAudio",
+            "contact": "InlineQueryResultContact",
+            "document": "InlineQueryResultDocument",
+            "game": "InlineQueryResultGame",
+            "gif": "InlineQueryResultGif",
+            "location": "InlineQueryResultLocation",
+            "mpeg4_gif": "InlineQueryResultMpeg4Gif",
+            "photo": "InlineQueryResultPhoto",
+            "sticker": "InlineQueryResultCachedSticker",
+            "venue": "InlineQueryResultVenue",
+            "video": "InlineQueryResultVideo",
+            "voice": "InlineQueryResultVoice"
+          }
+        }
       },
       "InlineQueryResultArticle": {
         "description": "Represents a link to an article or web page.",
@@ -3148,8 +3361,7 @@
           },
           "url": {
             "description": "URL of the result",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "hide_url": {
             "description": "Pass True, if you don't want the URL to be shown in the message",
@@ -3161,8 +3373,7 @@
           },
           "thumb_url": {
             "description": "URL of the thumbnail for the result",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "thumb_width": {
             "description": "Thumbnail width",
@@ -3195,12 +3406,13 @@
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "audio_url": {
             "description": "A valid URL for the audio file",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "title": {
             "description": "Title",
@@ -3257,7 +3469,9 @@
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "audio_file_id": {
             "description": "A valid file identifier for the audio file",
@@ -3303,7 +3517,9 @@
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "title": {
             "description": "Title for the result",
@@ -3358,7 +3574,9 @@
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "gif_file_id": {
             "description": "A valid file identifier for the GIF file",
@@ -3408,7 +3626,9 @@
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "mpeg4_file_id": {
             "description": "A valid file identifier for the MP4 file",
@@ -3458,7 +3678,9 @@
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "photo_file_id": {
             "description": "A valid file identifier of the photo",
@@ -3512,7 +3734,9 @@
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "sticker_file_id": {
             "description": "A valid file identifier of the sticker",
@@ -3542,7 +3766,9 @@
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "video_file_id": {
             "description": "A valid file identifier for the video file",
@@ -3597,7 +3823,9 @@
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "voice_file_id": {
             "description": "A valid file identifier for the voice message",
@@ -3664,7 +3892,8 @@
           },
           "vcard": {
             "description": "Additional data about the contact in the form of a vCard, 0-2048 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 2048
           },
           "reply_markup": {
             "$ref": "#/components/schemas/InlineKeyboardMarkup"
@@ -3674,8 +3903,7 @@
           },
           "thumb_url": {
             "description": "URL of the thumbnail for the result",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "thumb_width": {
             "description": "Thumbnail width",
@@ -3708,7 +3936,9 @@
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "title": {
             "description": "Title for the result",
@@ -3732,8 +3962,7 @@
           },
           "document_url": {
             "description": "A valid URL for the file",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "mime_type": {
             "description": "Mime type of the content of the file, either “application/pdf” or “application/zip”",
@@ -3751,8 +3980,7 @@
           },
           "thumb_url": {
             "description": "URL of the thumbnail (JPEG only) for the file",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "thumb_width": {
             "description": "Thumbnail width",
@@ -3786,7 +4014,9 @@
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "game_short_name": {
             "description": "Short name of the game",
@@ -3813,12 +4043,13 @@
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "gif_url": {
             "description": "A valid URL for the GIF file. File size must not exceed 1MB",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "gif_width": {
             "description": "Width of the GIF",
@@ -3840,8 +4071,7 @@
           },
           "thumb_url": {
             "description": "URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "thumb_mime_type": {
             "description": "MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”",
@@ -3912,15 +4142,21 @@
           },
           "live_period": {
             "description": "Period in seconds for which the location can be updated, should be between 60 and 86400",
-            "type": "integer"
+            "type": "integer",
+            "maximum": 86400,
+            "minimum": 60
           },
           "heading": {
             "description": "For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified",
-            "type": "integer"
+            "type": "integer",
+            "maximum": 360,
+            "minimum": 1
           },
           "proximity_alert_radius": {
             "description": "For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified",
-            "type": "integer"
+            "type": "integer",
+            "maximum": 100000,
+            "minimum": 1
           },
           "reply_markup": {
             "$ref": "#/components/schemas/InlineKeyboardMarkup"
@@ -3930,8 +4166,7 @@
           },
           "thumb_url": {
             "description": "URL of the thumbnail for the result",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "thumb_width": {
             "description": "Thumbnail width",
@@ -3965,12 +4200,13 @@
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "mpeg4_url": {
             "description": "A valid URL for the MP4 file. File size must not exceed 1MB",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "mpeg4_width": {
             "description": "Video width",
@@ -3992,8 +4228,7 @@
           },
           "thumb_url": {
             "description": "URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "thumb_mime_type": {
             "description": "MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”",
@@ -4044,17 +4279,17 @@
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "photo_url": {
             "description": "A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "thumb_url": {
             "description": "URL of the thumbnail for the photo",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "photo_width": {
             "description": "Width of the photo",
@@ -4159,8 +4394,7 @@
           },
           "thumb_url": {
             "description": "URL of the thumbnail for the result",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "thumb_width": {
             "description": "Thumbnail width",
@@ -4195,12 +4429,13 @@
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "video_url": {
             "description": "A valid URL for the embedded video player or video file",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "mime_type": {
             "description": "Mime type of the content of video url, “text/html” or “video/mp4”",
@@ -4208,8 +4443,7 @@
           },
           "thumb_url": {
             "description": "URL of the thumbnail (JPEG only) for the video",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "title": {
             "description": "Title for the result",
@@ -4280,12 +4514,13 @@
           },
           "id": {
             "description": "Unique identifier for this result, 1-64 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1
           },
           "voice_url": {
             "description": "A valid URL for the voice recording",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "title": {
             "description": "Recording title",
@@ -4345,7 +4580,8 @@
           },
           "vcard": {
             "description": "Additional data about the contact in the form of a vCard, 0-2048 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 2048
           }
         },
         "required": [
@@ -4371,7 +4607,9 @@
           },
           "payload": {
             "description": "Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1
           },
           "provider_token": {
             "description": "Payment provider token, obtained via Botfather",
@@ -4396,7 +4634,8 @@
             "description": "A JSON-serialized array of suggested amounts of tip in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount",
             "type": "array",
             "items": {
-              "type": "integer"
+              "type": "integer",
+              "format": "int64"
             }
           },
           "provider_data": {
@@ -4405,8 +4644,7 @@
           },
           "photo_url": {
             "description": "URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a service. People like it better when they see what they are paying for",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "photo_size": {
             "description": "Photo size",
@@ -4480,15 +4718,21 @@
           },
           "live_period": {
             "description": "Period in seconds for which the location can be updated, should be between 60 and 86400",
-            "type": "integer"
+            "type": "integer",
+            "maximum": 86400,
+            "minimum": 60
           },
           "heading": {
             "description": "For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified",
-            "type": "integer"
+            "type": "integer",
+            "maximum": 360,
+            "minimum": 1
           },
           "proximity_alert_radius": {
             "description": "For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified",
-            "type": "integer"
+            "type": "integer",
+            "maximum": 100000,
+            "minimum": 1
           }
         },
         "required": [
@@ -4498,7 +4742,6 @@
       },
       "InputMedia": {
         "description": "This object represents the content of a media message to be sent.",
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/InputMediaAnimation"
@@ -4778,7 +5021,6 @@
       },
       "InputMessageContent": {
         "description": "This object represents the content of a message to be sent as a result of an inline query.  5 types:",
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/InputTextMessageContent"
@@ -4906,6 +5148,17 @@
       },
       "KeyboardButton": {
         "description": "This object represents one button of the reply keyboard. For simple text buttons String can be used instead of this object to specify text of the button. Optional fields request_contact, request_location, and request_poll are mutually exclusive.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/KeyboardButtonObject"
+          }
+        ]
+      },
+      "KeyboardButtonObject": {
+        "description": "This object represents one button of the reply keyboard. For simple text buttons String can be used instead of this object to specify text of the button. Optional fields request_contact, request_location, and request_poll are mutually exclusive.",
         "type": "object",
         "properties": {
           "text": {
@@ -4978,7 +5231,9 @@
           },
           "heading": {
             "description": "The direction in which user is moving, in degrees; 1-360. For active live locations only",
-            "type": "integer"
+            "type": "integer",
+            "maximum": 360,
+            "minimum": 1
           },
           "proximity_alert_radius": {
             "description": "Maximum distance for proximity alerts about approaching another chat member, in meters. For sent live locations only",
@@ -4996,8 +5251,7 @@
         "properties": {
           "url": {
             "description": "An HTTP URL to be opened with user authorization data added to the query string when the button is pressed. If the user refuses to provide authorization data, the original URL without information about the user will be opened. The data added is the same as described in Receiving authorization data.NOTE: You must always check the hash of the received data to verify the authentication and the integrity of the data as described in Checking authorization",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "forward_text": {
             "description": "New text of the button in forwarded messages",
@@ -5076,7 +5330,7 @@
             "type": "integer"
           },
           "forward_signature": {
-            "description": "For messages forwarded from channels, signature of the post author if present",
+            "description": "For forwarded messages that were originally sent in channels or by an anonymous chat administrator, signature of the message sender if present",
             "type": "string"
           },
           "forward_sender_name": {
@@ -5087,6 +5341,10 @@
             "description": "For forwarded messages, date the original message was sent in Unix time",
             "type": "integer"
           },
+          "is_automatic_forward": {
+            "description": "True, if the message is a channel post that was automatically forwarded to the connected discussion group",
+            "type": "boolean"
+          },
           "reply_to_message": {
             "$ref": "#/components/schemas/Message"
           },
@@ -5096,6 +5354,10 @@
           "edit_date": {
             "description": "Date the message was last edited in Unix time",
             "type": "integer"
+          },
+          "has_protected_content": {
+            "description": "True, if the message can't be forwarded",
+            "type": "boolean"
           },
           "media_group_id": {
             "description": "The unique identifier of a media message group this message belongs to",
@@ -5217,11 +5479,13 @@
           },
           "migrate_to_chat_id": {
             "description": "The group has been migrated to a supergroup with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "migrate_from_chat_id": {
             "description": "The supergroup has been migrated from a group with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "pinned_message": {
             "$ref": "#/components/schemas/Message"
@@ -5256,6 +5520,15 @@
           },
           "reply_markup": {
             "$ref": "#/components/schemas/InlineKeyboardMarkup"
+          },
+          "new_chat_member": {
+            "$ref": "#/components/schemas/User"
+          },
+          "new_chat_participant": {
+            "$ref": "#/components/schemas/User"
+          },
+          "left_chat_participant": {
+            "$ref": "#/components/schemas/User"
           }
         },
         "required": [
@@ -5282,8 +5555,26 @@
         "type": "object",
         "properties": {
           "type": {
-            "description": "Type of the entity. Can be “mention” (@username), “hashtag” (#hashtag), “cashtag” ($USD), “bot_command” (/start@jobs_bot), “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text), “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough text), “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames)",
-            "type": "string"
+            "description": "Type of the entity. Currently, can be “mention” (@username), “hashtag” (#hashtag), “cashtag” ($USD), “bot_command” (/start@jobs_bot), “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text), “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough text), “spoiler” (spoiler message), “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames)",
+            "type": "string",
+            "enum": [
+              "mention",
+              "hashtag",
+              "cashtag",
+              "bot_command",
+              "url",
+              "email",
+              "phone_number",
+              "bold",
+              "italic",
+              "underline",
+              "strikethrough",
+              "spoiler",
+              "code",
+              "pre",
+              "text_link",
+              "text_mention"
+            ]
           },
           "offset": {
             "description": "Offset in UTF-16 code units to the start of the entity",
@@ -5296,8 +5587,7 @@
           },
           "url": {
             "description": "For “text_link” only, url that will be opened after user taps on the text",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "user": {
             "$ref": "#/components/schemas/User"
@@ -5369,7 +5659,6 @@
       },
       "PassportElementError": {
         "description": "This object represents an error in the Telegram Passport element which was submitted that should be resolved by the user. :",
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/PassportElementErrorDataField"
@@ -5400,7 +5689,7 @@
           }
         ],
         "discriminator": {
-          "propertyName": "source",
+          "propertyName": "type",
           "mapping": {
             "data": "PassportElementErrorDataField",
             "file": "PassportElementErrorFile",
@@ -5425,7 +5714,15 @@
           },
           "type": {
             "description": "The section of the user's Telegram Passport which has the error, one of “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”",
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "personal_details",
+              "passport",
+              "driver_license",
+              "identity_card",
+              "internal_passport",
+              "address"
+            ]
           },
           "field_name": {
             "description": "Name of the data field which has the error",
@@ -5459,7 +5756,14 @@
           },
           "type": {
             "description": "The section of the user's Telegram Passport which has the issue, one of “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”",
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "utility_bill",
+              "bank_statement",
+              "rental_agreement",
+              "passport_registration",
+              "temporary_registration"
+            ]
           },
           "file_hash": {
             "description": "Base64-encoded file hash",
@@ -5488,7 +5792,14 @@
           },
           "type": {
             "description": "The section of the user's Telegram Passport which has the issue, one of “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”",
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "utility_bill",
+              "bank_statement",
+              "rental_agreement",
+              "passport_registration",
+              "temporary_registration"
+            ]
           },
           "file_hashes": {
             "description": "List of base64-encoded file hashes",
@@ -5520,7 +5831,13 @@
           },
           "type": {
             "description": "The section of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”",
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "passport",
+              "driver_license",
+              "identity_card",
+              "internal_passport"
+            ]
           },
           "file_hash": {
             "description": "Base64-encoded hash of the file with the front side of the document",
@@ -5549,7 +5866,11 @@
           },
           "type": {
             "description": "The section of the user's Telegram Passport which has the issue, one of “driver_license”, “identity_card”",
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "driver_license",
+              "identity_card"
+            ]
           },
           "file_hash": {
             "description": "Base64-encoded hash of the file with the reverse side of the document",
@@ -5578,7 +5899,13 @@
           },
           "type": {
             "description": "The section of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”",
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "passport",
+              "driver_license",
+              "identity_card",
+              "internal_passport"
+            ]
           },
           "file_hash": {
             "description": "Base64-encoded hash of the file with the selfie",
@@ -5607,7 +5934,18 @@
           },
           "type": {
             "description": "Type of element of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”",
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "passport",
+              "driver_license",
+              "identity_card",
+              "internal_passport",
+              "utility_bill",
+              "bank_statement",
+              "rental_agreement",
+              "passport_registration",
+              "temporary_registration"
+            ]
           },
           "file_hash": {
             "description": "Base64-encoded file hash",
@@ -5636,7 +5974,18 @@
           },
           "type": {
             "description": "Type of element of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”",
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "passport",
+              "driver_license",
+              "identity_card",
+              "internal_passport",
+              "utility_bill",
+              "bank_statement",
+              "rental_agreement",
+              "passport_registration",
+              "temporary_registration"
+            ]
           },
           "file_hashes": {
             "description": "List of base64-encoded file hashes",
@@ -5785,7 +6134,11 @@
           },
           "type": {
             "description": "Poll type, currently can be “regular” or “quiz”",
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "regular",
+              "quiz"
+            ]
           },
           "allows_multiple_answers": {
             "description": "True, if the poll allows multiple answers",
@@ -6007,7 +6360,8 @@
         "properties": {
           "migrate_to_chat_id": {
             "description": "The group has been migrated to a supergroup with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "retry_after": {
             "description": "In case of exceeding flood control, the number of seconds left to wait before the request can be repeated",
@@ -6030,7 +6384,202 @@
           "ok"
         ]
       },
-      "ResultMsg": {
+      "ResultArrayOfBotCommand": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BotCommand"
+            }
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "ResultArrayOfChatMember": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChatMember"
+            }
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "ResultArrayOfGameHighScore": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GameHighScore"
+            }
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "ResultArrayOfMessage": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Message"
+            }
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "ResultArrayOfUpdate": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Update"
+            }
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "ResultBotCommand": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/BotCommand"
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "ResultChat": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/Chat"
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "ResultChatInviteLink": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/ChatInviteLink"
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "ResultChatMember": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/ChatMember"
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "ResultFile": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/File"
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "ResultGameHighScore": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/GameHighScore"
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "ResultInt": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "integer"
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "ResultMessage": {
         "type": "object",
         "properties": {
           "result": {
@@ -6045,7 +6594,74 @@
           "ok"
         ]
       },
-      "ResultStr": {
+      "ResultMessageId": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/MessageId"
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "ResultMessageOrBoolean": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Message"
+              },
+              {
+                "type": "boolean"
+              }
+            ]
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "ResultPoll": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/Poll"
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "ResultStickerSet": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/StickerSet"
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "ResultString": {
         "type": "object",
         "properties": {
           "result": {
@@ -6060,7 +6676,22 @@
           "ok"
         ]
       },
-      "ResultUsr": {
+      "ResultUpdate": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/Update"
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "ResultUser": {
         "type": "object",
         "properties": {
           "result": {
@@ -6073,6 +6704,52 @@
         },
         "required": [
           "ok"
+        ]
+      },
+      "ResultUserProfilePhotos": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/UserProfilePhotos"
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "ResultWebhookInfo": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/WebhookInfo"
+          },
+          "ok": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "ok"
+        ]
+      },
+      "SendReplyMarkup": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/InlineKeyboardMarkup"
+          },
+          {
+            "$ref": "#/components/schemas/ReplyKeyboardMarkup"
+          },
+          {
+            "$ref": "#/components/schemas/ReplyKeyboardRemove"
+          },
+          {
+            "$ref": "#/components/schemas/ForceReply"
+          }
         ]
       },
       "ShippingAddress": {
@@ -6193,6 +6870,10 @@
             "description": "True, if the sticker is animated",
             "type": "boolean"
           },
+          "is_video": {
+            "description": "True, if the sticker is a video sticker",
+            "type": "boolean"
+          },
           "thumb": {
             "$ref": "#/components/schemas/PhotoSize"
           },
@@ -6217,7 +6898,8 @@
           "file_unique_id",
           "width",
           "height",
-          "is_animated"
+          "is_animated",
+          "is_video"
         ]
       },
       "StickerSet": {
@@ -6234,6 +6916,10 @@
           },
           "is_animated": {
             "description": "True, if the sticker set contains animated stickers",
+            "type": "boolean"
+          },
+          "is_video": {
+            "description": "True, if the sticker set contains video stickers",
             "type": "boolean"
           },
           "contains_masks": {
@@ -6255,6 +6941,7 @@
           "name",
           "title",
           "is_animated",
+          "is_video",
           "contains_masks",
           "stickers"
         ]
@@ -6360,7 +7047,8 @@
         "properties": {
           "id": {
             "description": "Unique identifier for this user or bot. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "is_bot": {
             "description": "True, if this user is a bot",
@@ -6638,8 +7326,7 @@
         "properties": {
           "url": {
             "description": "Webhook URL, may be empty if webhook is not set up",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "has_custom_certificate": {
             "description": "True, if a custom certificate was provided for webhook certificate checks",
@@ -6685,7 +7372,8 @@
         "properties": {
           "user_id": {
             "description": "User identifier of sticker set owner",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "name": {
             "description": "Sticker set name",
@@ -6696,7 +7384,11 @@
             "type": "string"
           },
           "tgs_sticker": {
-            "description": "TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements",
+            "description": "TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/stickers#animated-sticker-requirements for technical requirements",
+            "type": "string"
+          },
+          "webm_sticker": {
+            "description": "WEBM video with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/stickers#video-sticker-requirements for technical requirements",
             "type": "string"
           },
           "emojis": {
@@ -6732,8 +7424,7 @@
           },
           "url": {
             "description": "URL that will be opened by the user's client. If you have created a Game and accepted the conditions via @Botfather, specify the URL that opens your game — note that this will only work if the query comes from a callback_game button.Otherwise, you may use links like t.me/your_bot?start=XXXX that open your bot with a parameter",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "cache_time": {
             "description": "The maximum amount of time in seconds that the result of the callback query may be cached client-side. Telegram apps will support caching starting in version 3.14. Defaults to 0",
@@ -6847,7 +7538,8 @@
           },
           "user_id": {
             "description": "Unique identifier of the target user",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           }
         },
         "required": [
@@ -6864,7 +7556,8 @@
           },
           "user_id": {
             "description": "Unique identifier of the target user",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "until_date": {
             "description": "Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever. Applied for supergroups and channels only",
@@ -6878,6 +7571,24 @@
         "required": [
           "chat_id",
           "user_id"
+        ]
+      },
+      "banChatSenderChat": {
+        "description": "Input for banChatSenderChat",
+        "type": "object",
+        "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "sender_chat_id": {
+            "description": "Unique identifier of the target sender chat",
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "required": [
+          "chat_id",
+          "sender_chat_id"
         ]
       },
       "copyMessage": {
@@ -6914,6 +7625,10 @@
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
           },
+          "protect_content": {
+            "description": "Protects the contents of the sent message from forwarding and saving",
+            "type": "boolean"
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -6923,21 +7638,7 @@
             "type": "boolean"
           },
           "reply_markup": {
-            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/InlineKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardRemove"
-              },
-              {
-                "$ref": "#/components/schemas/ForceReply"
-              }
-            ]
+            "$ref": "#/components/schemas/SendReplyMarkup"
           }
         },
         "required": [
@@ -6964,7 +7665,9 @@
           },
           "member_limit": {
             "description": "Maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999",
-            "type": "integer"
+            "type": "integer",
+            "maximum": 99999,
+            "minimum": 1
           },
           "creates_join_request": {
             "description": "True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified",
@@ -6981,7 +7684,8 @@
         "properties": {
           "user_id": {
             "description": "User identifier of created sticker set owner",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "name": {
             "description": "Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only english letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in “_by_\u003cbot username\u003e”. \u003cbot_username\u003e is case insensitive. 1-64 characters",
@@ -7000,7 +7704,11 @@
             "type": "string"
           },
           "tgs_sticker": {
-            "description": "TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements",
+            "description": "TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/stickers#animated-sticker-requirements for technical requirements",
+            "type": "string"
+          },
+          "webm_sticker": {
+            "description": "WEBM video with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/stickers#video-sticker-requirements for technical requirements",
             "type": "string"
           },
           "emojis": {
@@ -7031,7 +7739,8 @@
           },
           "user_id": {
             "description": "Unique identifier of the target user",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           }
         },
         "required": [
@@ -7138,7 +7847,9 @@
           },
           "member_limit": {
             "description": "Maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999",
-            "type": "integer"
+            "type": "integer",
+            "maximum": 99999,
+            "minimum": 1
           },
           "creates_join_request": {
             "description": "True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified",
@@ -7215,11 +7926,15 @@
           },
           "heading": {
             "description": "Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified",
-            "type": "integer"
+            "type": "integer",
+            "maximum": 360,
+            "minimum": 1
           },
           "proximity_alert_radius": {
             "description": "Maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified",
-            "type": "integer"
+            "type": "integer",
+            "maximum": 100000,
+            "minimum": 1
           },
           "reply_markup": {
             "$ref": "#/components/schemas/InlineKeyboardMarkup"
@@ -7346,6 +8061,10 @@
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
           },
+          "protect_content": {
+            "description": "Protects the contents of the forwarded message from forwarding and saving",
+            "type": "boolean"
+          },
           "message_id": {
             "description": "Message identifier in the chat specified in from_chat_id",
             "type": "integer"
@@ -7390,7 +8109,8 @@
           },
           "user_id": {
             "description": "Unique identifier of the target user",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           }
         },
         "required": [
@@ -7429,11 +8149,13 @@
         "properties": {
           "user_id": {
             "description": "Target user id",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "chat_id": {
             "description": "Required if inline_message_id is not specified. Unique identifier for the target chat",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "message_id": {
             "description": "Required if inline_message_id is not specified. Identifier of the sent message",
@@ -7508,7 +8230,8 @@
         "properties": {
           "user_id": {
             "description": "Unique identifier of the target user",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "offset": {
             "description": "Sequential number of the first photo to be returned. By default, all photos are returned",
@@ -7568,7 +8291,8 @@
           },
           "user_id": {
             "description": "Unique identifier of the target user",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "is_anonymous": {
             "description": "Pass True, if the administrator's presence in the chat is hidden",
@@ -7629,7 +8353,8 @@
           },
           "user_id": {
             "description": "Unique identifier of the target user",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "permissions": {
             "$ref": "#/components/schemas/ChatPermissions"
@@ -7715,6 +8440,10 @@
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
           },
+          "protect_content": {
+            "description": "Protects the contents of the sent message from forwarding and saving",
+            "type": "boolean"
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -7724,21 +8453,7 @@
             "type": "boolean"
           },
           "reply_markup": {
-            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/InlineKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardRemove"
-              },
-              {
-                "$ref": "#/components/schemas/ForceReply"
-              }
-            ]
+            "$ref": "#/components/schemas/SendReplyMarkup"
           }
         },
         "required": [
@@ -7795,6 +8510,10 @@
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
           },
+          "protect_content": {
+            "description": "Protects the contents of the sent message from forwarding and saving",
+            "type": "boolean"
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -7804,21 +8523,7 @@
             "type": "boolean"
           },
           "reply_markup": {
-            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/InlineKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardRemove"
-              },
-              {
-                "$ref": "#/components/schemas/ForceReply"
-              }
-            ]
+            "$ref": "#/components/schemas/SendReplyMarkup"
           }
         },
         "required": [
@@ -7864,10 +8569,15 @@
           },
           "vcard": {
             "description": "Additional data about the contact in the form of a vCard, 0-2048 bytes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 2048
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
+            "type": "boolean"
+          },
+          "protect_content": {
+            "description": "Protects the contents of the sent message from forwarding and saving",
             "type": "boolean"
           },
           "reply_to_message_id": {
@@ -7879,21 +8589,7 @@
             "type": "boolean"
           },
           "reply_markup": {
-            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove keyboard or to force a reply from the user",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/InlineKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardRemove"
-              },
-              {
-                "$ref": "#/components/schemas/ForceReply"
-              }
-            ]
+            "$ref": "#/components/schemas/SendReplyMarkup"
           }
         },
         "required": [
@@ -7917,6 +8613,10 @@
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
           },
+          "protect_content": {
+            "description": "Protects the contents of the sent message from forwarding",
+            "type": "boolean"
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -7926,21 +8626,7 @@
             "type": "boolean"
           },
           "reply_markup": {
-            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/InlineKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardRemove"
-              },
-              {
-                "$ref": "#/components/schemas/ForceReply"
-              }
-            ]
+            "$ref": "#/components/schemas/SendReplyMarkup"
           }
         },
         "required": [
@@ -7986,6 +8672,10 @@
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
           },
+          "protect_content": {
+            "description": "Protects the contents of the sent message from forwarding and saving",
+            "type": "boolean"
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -7995,21 +8685,7 @@
             "type": "boolean"
           },
           "reply_markup": {
-            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/InlineKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardRemove"
-              },
-              {
-                "$ref": "#/components/schemas/ForceReply"
-              }
-            ]
+            "$ref": "#/components/schemas/SendReplyMarkup"
           }
         },
         "required": [
@@ -8023,7 +8699,8 @@
         "properties": {
           "chat_id": {
             "description": "Unique identifier for the target chat",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "game_short_name": {
             "description": "Short name of the game, serves as the unique identifier for the game. Set up your games via Botfather",
@@ -8031,6 +8708,10 @@
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
+            "type": "boolean"
+          },
+          "protect_content": {
+            "description": "Protects the contents of the sent message from forwarding and saving",
             "type": "boolean"
           },
           "reply_to_message_id": {
@@ -8071,7 +8752,9 @@
           },
           "payload": {
             "description": "Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes",
-            "type": "string"
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1
           },
           "provider_token": {
             "description": "Payments provider token, obtained via Botfather",
@@ -8096,7 +8779,8 @@
             "description": "A JSON-serialized array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount",
             "type": "array",
             "items": {
-              "type": "integer"
+              "type": "integer",
+              "format": "int64"
             }
           },
           "start_parameter": {
@@ -8109,8 +8793,7 @@
           },
           "photo_url": {
             "description": "URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a service. People like it better when they see what they are paying for",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "photo_size": {
             "description": "Photo size",
@@ -8160,6 +8843,10 @@
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
           },
+          "protect_content": {
+            "description": "Protects the contents of the sent message from forwarding and saving",
+            "type": "boolean"
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -8203,18 +8890,28 @@
           },
           "live_period": {
             "description": "Period in seconds for which the location will be updated (see Live Locations, should be between 60 and 86400",
-            "type": "integer"
+            "type": "integer",
+            "maximum": 86400,
+            "minimum": 60
           },
           "heading": {
             "description": "For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified",
-            "type": "integer"
+            "type": "integer",
+            "maximum": 360,
+            "minimum": 1
           },
           "proximity_alert_radius": {
             "description": "For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified",
-            "type": "integer"
+            "type": "integer",
+            "maximum": 100000,
+            "minimum": 1
           },
           "disable_notification": {
             "description": "Sends the message silently. Users will receive a notification with no sound",
+            "type": "boolean"
+          },
+          "protect_content": {
+            "description": "Protects the contents of the sent message from forwarding and saving",
             "type": "boolean"
           },
           "reply_to_message_id": {
@@ -8226,21 +8923,7 @@
             "type": "boolean"
           },
           "reply_markup": {
-            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/InlineKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardRemove"
-              },
-              {
-                "$ref": "#/components/schemas/ForceReply"
-              }
-            ]
+            "$ref": "#/components/schemas/SendReplyMarkup"
           }
         },
         "required": [
@@ -8289,6 +8972,10 @@
             "description": "Sends messages silently. Users will receive a notification with no sound",
             "type": "boolean"
           },
+          "protect_content": {
+            "description": "Protects the contents of the sent messages from forwarding and saving",
+            "type": "boolean"
+          },
           "reply_to_message_id": {
             "description": "If the messages are a reply, ID of the original message",
             "type": "integer"
@@ -8335,6 +9022,10 @@
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
           },
+          "protect_content": {
+            "description": "Protects the contents of the sent message from forwarding and saving",
+            "type": "boolean"
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -8344,21 +9035,7 @@
             "type": "boolean"
           },
           "reply_markup": {
-            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/InlineKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardRemove"
-              },
-              {
-                "$ref": "#/components/schemas/ForceReply"
-              }
-            ]
+            "$ref": "#/components/schemas/SendReplyMarkup"
           }
         },
         "required": [
@@ -8397,6 +9074,10 @@
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
           },
+          "protect_content": {
+            "description": "Protects the contents of the sent message from forwarding and saving",
+            "type": "boolean"
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -8406,21 +9087,7 @@
             "type": "boolean"
           },
           "reply_markup": {
-            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/InlineKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardRemove"
-              },
-              {
-                "$ref": "#/components/schemas/ForceReply"
-              }
-            ]
+            "$ref": "#/components/schemas/SendReplyMarkup"
           }
         },
         "required": [
@@ -8496,6 +9163,10 @@
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
           },
+          "protect_content": {
+            "description": "Protects the contents of the sent message from forwarding and saving",
+            "type": "boolean"
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -8505,21 +9176,7 @@
             "type": "boolean"
           },
           "reply_markup": {
-            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/InlineKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardRemove"
-              },
-              {
-                "$ref": "#/components/schemas/ForceReply"
-              }
-            ]
+            "$ref": "#/components/schemas/SendReplyMarkup"
           }
         },
         "required": [
@@ -8543,6 +9200,10 @@
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
           },
+          "protect_content": {
+            "description": "Protects the contents of the sent message from forwarding and saving",
+            "type": "boolean"
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -8552,21 +9213,7 @@
             "type": "boolean"
           },
           "reply_markup": {
-            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/InlineKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardRemove"
-              },
-              {
-                "$ref": "#/components/schemas/ForceReply"
-              }
-            ]
+            "$ref": "#/components/schemas/SendReplyMarkup"
           }
         },
         "required": [
@@ -8617,6 +9264,10 @@
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
           },
+          "protect_content": {
+            "description": "Protects the contents of the sent message from forwarding and saving",
+            "type": "boolean"
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -8626,21 +9277,7 @@
             "type": "boolean"
           },
           "reply_markup": {
-            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/InlineKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardRemove"
-              },
-              {
-                "$ref": "#/components/schemas/ForceReply"
-              }
-            ]
+            "$ref": "#/components/schemas/SendReplyMarkup"
           }
         },
         "required": [
@@ -8708,6 +9345,10 @@
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
           },
+          "protect_content": {
+            "description": "Protects the contents of the sent message from forwarding and saving",
+            "type": "boolean"
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -8717,21 +9358,7 @@
             "type": "boolean"
           },
           "reply_markup": {
-            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/InlineKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardRemove"
-              },
-              {
-                "$ref": "#/components/schemas/ForceReply"
-              }
-            ]
+            "$ref": "#/components/schemas/SendReplyMarkup"
           }
         },
         "required": [
@@ -8768,6 +9395,10 @@
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
           },
+          "protect_content": {
+            "description": "Protects the contents of the sent message from forwarding and saving",
+            "type": "boolean"
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -8777,21 +9408,7 @@
             "type": "boolean"
           },
           "reply_markup": {
-            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/InlineKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardRemove"
-              },
-              {
-                "$ref": "#/components/schemas/ForceReply"
-              }
-            ]
+            "$ref": "#/components/schemas/SendReplyMarkup"
           }
         },
         "required": [
@@ -8836,6 +9453,10 @@
             "description": "Sends the message silently. Users will receive a notification with no sound",
             "type": "boolean"
           },
+          "protect_content": {
+            "description": "Protects the contents of the sent message from forwarding and saving",
+            "type": "boolean"
+          },
           "reply_to_message_id": {
             "description": "If the message is a reply, ID of the original message",
             "type": "integer"
@@ -8845,21 +9466,7 @@
             "type": "boolean"
           },
           "reply_markup": {
-            "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/InlineKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardMarkup"
-              },
-              {
-                "$ref": "#/components/schemas/ReplyKeyboardRemove"
-              },
-              {
-                "$ref": "#/components/schemas/ForceReply"
-              }
-            ]
+            "$ref": "#/components/schemas/SendReplyMarkup"
           }
         },
         "required": [
@@ -8876,7 +9483,8 @@
           },
           "user_id": {
             "description": "Unique identifier of the target user",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "custom_title": {
             "description": "New custom title for the administrator; 0-16 characters, emoji are not allowed",
@@ -8982,7 +9590,8 @@
         "properties": {
           "user_id": {
             "description": "User identifier",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "score": {
             "description": "New score, must be non-negative",
@@ -8998,7 +9607,8 @@
           },
           "chat_id": {
             "description": "Required if inline_message_id is not specified. Unique identifier for the target chat",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "message_id": {
             "description": "Required if inline_message_id is not specified. Identifier of the sent message",
@@ -9043,7 +9653,8 @@
         "properties": {
           "user_id": {
             "description": "User identifier",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "errors": {
             "description": "A JSON-serialized array describing the errors",
@@ -9086,10 +9697,11 @@
           },
           "user_id": {
             "description": "User identifier of the sticker set owner",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "thumb": {
-            "description": "A PNG image with the thumbnail, must be up to 128 kilobytes in size and have width and height exactly 100px, or a TGS animation with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/animated_stickers#technical-requirements for animated sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files ». Animated sticker set thumbnail can't be uploaded via HTTP URL",
+            "description": "A PNG image with the thumbnail, must be up to 128 kilobytes in size and have width and height exactly 100px, or a TGS animation with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/stickers#animated-sticker-requirements for animated sticker technical requirements, or a WEBM video with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/stickers#video-sticker-requirements for video sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files ». Animated sticker set thumbnails can't be uploaded via HTTP URL",
             "type": "string"
           }
         },
@@ -9104,8 +9716,7 @@
         "properties": {
           "url": {
             "description": "HTTPS url to send updates to. Use an empty string to remove webhook integration",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "certificate": {
             "description": "Upload your public key certificate so that the root certificate in use can be checked. See our self-signed guide for details",
@@ -9184,7 +9795,8 @@
           },
           "user_id": {
             "description": "Unique identifier of the target user",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "only_if_banned": {
             "description": "Do nothing if the user is not banned",
@@ -9194,6 +9806,24 @@
         "required": [
           "chat_id",
           "user_id"
+        ]
+      },
+      "unbanChatSenderChat": {
+        "description": "Input for unbanChatSenderChat",
+        "type": "object",
+        "properties": {
+          "chat_id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "sender_chat_id": {
+            "description": "Unique identifier of the target sender chat",
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "required": [
+          "chat_id",
+          "sender_chat_id"
         ]
       },
       "unpinAllChatMessages": {
@@ -9230,7 +9860,8 @@
         "properties": {
           "user_id": {
             "description": "User identifier of sticker file owner",
-            "type": "integer"
+            "type": "integer",
+            "format": "int64"
           },
           "png_sticker": {
             "description": "PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. More info on Sending Files »",
@@ -9265,32 +9896,222 @@
           }
         }
       },
-      "ResultMsg": {
+      "ResultArrayOfBotCommand": {
         "description": "Result of method invocation",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ResultMsg"
+              "$ref": "#/components/schemas/ResultArrayOfBotCommand"
             }
           }
         }
       },
-      "ResultStr": {
+      "ResultArrayOfChatMember": {
         "description": "Result of method invocation",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ResultStr"
+              "$ref": "#/components/schemas/ResultArrayOfChatMember"
             }
           }
         }
       },
-      "ResultUsr": {
+      "ResultArrayOfGameHighScore": {
         "description": "Result of method invocation",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ResultUsr"
+              "$ref": "#/components/schemas/ResultArrayOfGameHighScore"
+            }
+          }
+        }
+      },
+      "ResultArrayOfMessage": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultArrayOfMessage"
+            }
+          }
+        }
+      },
+      "ResultArrayOfUpdate": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultArrayOfUpdate"
+            }
+          }
+        }
+      },
+      "ResultBotCommand": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultBotCommand"
+            }
+          }
+        }
+      },
+      "ResultChat": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultChat"
+            }
+          }
+        }
+      },
+      "ResultChatInviteLink": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultChatInviteLink"
+            }
+          }
+        }
+      },
+      "ResultChatMember": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultChatMember"
+            }
+          }
+        }
+      },
+      "ResultFile": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultFile"
+            }
+          }
+        }
+      },
+      "ResultGameHighScore": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultGameHighScore"
+            }
+          }
+        }
+      },
+      "ResultInt": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultInt"
+            }
+          }
+        }
+      },
+      "ResultMessage": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultMessage"
+            }
+          }
+        }
+      },
+      "ResultMessageId": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultMessageId"
+            }
+          }
+        }
+      },
+      "ResultMessageOrBoolean": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultMessageOrBoolean"
+            }
+          }
+        }
+      },
+      "ResultPoll": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultPoll"
+            }
+          }
+        }
+      },
+      "ResultStickerSet": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultStickerSet"
+            }
+          }
+        }
+      },
+      "ResultString": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultString"
+            }
+          }
+        }
+      },
+      "ResultUpdate": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultUpdate"
+            }
+          }
+        }
+      },
+      "ResultUser": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultUser"
+            }
+          }
+        }
+      },
+      "ResultUserProfilePhotos": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultUserProfilePhotos"
+            }
+          }
+        }
+      },
+      "ResultWebhookInfo": {
+        "description": "Result of method invocation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultWebhookInfo"
             }
           }
         }
