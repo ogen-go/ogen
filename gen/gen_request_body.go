@@ -49,13 +49,10 @@ func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.R
 	iface.AddMethod(camel(name))
 	g.saveIface(iface)
 	for contentType, t := range contents {
-		switch t.Kind {
-		case ir.KindPrimitive, ir.KindArray:
-			// Primitive types cannot have methods, wrap it with alias.
+		if !t.CanHaveMethods() {
 			t = ir.Alias(pascal(name, string(contentType)), t)
 			contents[contentType] = t
 			g.saveType(t)
-		default:
 		}
 
 		t.Implement(iface)

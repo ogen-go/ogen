@@ -83,11 +83,9 @@ func (g *Generator) generateResponses(opName string, responses map[string]*oas.R
 	iface.AddMethod(camel(name))
 	g.saveIface(iface)
 	walkResponseTypes(result, func(resName string, t *ir.Type) *ir.Type {
-		switch t.Kind {
-		case ir.KindPrimitive, ir.KindArray:
+		if !t.CanHaveMethods() {
 			t = ir.Alias(pascal(opName, resName), t)
 			g.saveType(t)
-		default:
 		}
 
 		t.Implement(iface)
