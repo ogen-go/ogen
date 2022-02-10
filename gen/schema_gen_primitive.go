@@ -44,7 +44,7 @@ func (g *schemaGen) primitive(name string, schema *jsonschema.Schema) (*ir.Type,
 
 			var variantName string
 			if hasDuplicateNames {
-				variantName = name + "_" + pascalSpecial(vstr)
+				variantName = name + "_" + cleanSpecial(vstr)
 			} else {
 				variantName = pascalSpecial(name, vstr)
 			}

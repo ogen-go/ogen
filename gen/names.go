@@ -70,6 +70,37 @@ func (g *nameGen) generate() string {
 	}
 }
 
+func (g *nameGen) clean() string {
+	var (
+		part     []rune
+		pushPart = func() {
+			g.parts = append(g.parts, g.checkPart(string(part)))
+			part = nil
+		}
+	)
+	for {
+		r, ok := g.next()
+		if !ok {
+			pushPart()
+			return strings.Join(g.parts, "")
+		}
+
+		if g.isAllowed(r) {
+			part = append(part, r)
+			continue
+		}
+
+		if g.allowSpecial {
+			if p, ok := namedChar[r]; ok {
+				pushPart()
+				part = p
+			}
+		}
+
+		pushPart()
+	}
+}
+
 func (g *nameGen) isAllowed(r rune) bool {
 	const alphabet = "abcdefghijklmnopqrstuvwxyz0123456789"
 	for _, c := range alphabet {
@@ -99,6 +130,13 @@ func (g *nameGen) checkPart(part string) string {
 	}
 
 	return part
+}
+
+func cleanSpecial(strs ...string) string {
+	return (&nameGen{
+		src:          []rune(strings.Join(strs, " ")),
+		allowSpecial: true,
+	}).clean()
 }
 
 func pascal(strs ...string) string {
