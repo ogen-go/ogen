@@ -145,10 +145,6 @@ func (g *Generator) wrapResponseStatusCode(resp *ir.StatusResponse) (ret *ir.Sta
 	}
 
 	if noc := resp.NoContent; noc != nil {
-		if !noc.Is(ir.KindStruct, ir.KindAlias) {
-			panic("unreachable")
-		}
-
 		return &ir.StatusResponse{
 			Wrapped:   true,
 			NoContent: g.wrapStatusCode(noc),
