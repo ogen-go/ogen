@@ -79,8 +79,9 @@ var redocFixtures = []Schema{
 
 var autoRestLinks = []Schema{
 	{
-		File: "autorest/ApiManagementClient-openapi.json",
-		Link: "https://raw.githubusercontent.com/Azure/autorest/main/packages/libs/oai2-to-oai3/test/resources/conversion/oai3/ApiManagementClient-openapi.json",
+		File:       "autorest/ApiManagementClient-openapi.json",
+		Link:       "https://raw.githubusercontent.com/Azure/autorest/main/packages/libs/oai2-to-oai3/test/resources/conversion/oai3/ApiManagementClient-openapi.json",
+		SkipReason: "unsupported schema: name collision",
 	},
 	{
 		File: "autorest/additionalProperties.json",
@@ -95,8 +96,9 @@ var autoRestLinks = []Schema{
 		Link: "https://raw.githubusercontent.com/Azure/autorest/main/packages/libs/oai2-to-oai3/test/resources/conversion/oai3/default-response.json",
 	},
 	{
-		File: "autorest/exec-service.json",
-		Link: "https://raw.githubusercontent.com/Azure/autorest/main/packages/libs/oai2-to-oai3/test/resources/conversion/oai3/exec-service.json",
+		File:       "autorest/exec-service.json",
+		Link:       "https://raw.githubusercontent.com/Azure/autorest/main/packages/libs/oai2-to-oai3/test/resources/conversion/oai3/exec-service.json",
+		SkipReason: "invalid schema: unexpected schema type: \"file\"",
 	},
 	{
 		File: "autorest/extensible-enums-swagger.json",
@@ -123,12 +125,14 @@ var autoRestLinks = []Schema{
 		Link: "https://raw.githubusercontent.com/Azure/autorest/main/packages/libs/oai2-to-oai3/test/resources/conversion/oai3/url-multi-collectionFormat.json",
 	},
 	{
-		File: "autorest/url.json",
-		Link: "https://raw.githubusercontent.com/Azure/autorest/main/packages/libs/oai2-to-oai3/test/resources/conversion/oai3/url.json",
+		File:       "autorest/url.json",
+		Link:       "https://raw.githubusercontent.com/Azure/autorest/main/packages/libs/oai2-to-oai3/test/resources/conversion/oai3/url.json",
+		SkipReason: "unsupported schema: unexpected style: spaceDelimited",
 	},
 	{
-		File: "autorest/validation.json",
-		Link: "https://raw.githubusercontent.com/Azure/autorest/main/packages/libs/oai2-to-oai3/test/resources/conversion/oai3/validation.json",
+		File:       "autorest/validation.json",
+		Link:       "https://raw.githubusercontent.com/Azure/autorest/main/packages/libs/oai2-to-oai3/test/resources/conversion/oai3/validation.json",
+		SkipReason: "invalid schema: path parameter not specified: \"apiVersion\"",
 	},
 	{
 		File: "autorest/xml-service.json",

@@ -37,6 +37,29 @@ func (s Schema) GoGenerate(w io.Writer) {
 	fmt.Fprintln(w, ` --infer-types --debug.noerr --clean`)
 }
 
+type skipBOMReader struct {
+	met bool
+	r   io.Reader
+}
+
+var bomPrefix = []byte{0xEF, 0xBB, 0xBF}
+
+func (s *skipBOMReader) Read(p []byte) (n int, err error) {
+	if s.met {
+		return s.r.Read(p)
+	}
+
+	n, err = s.r.Read(p)
+	if n == 0 {
+		return
+	}
+	cut := bytes.TrimPrefix(p, bomPrefix)
+	n = copy(p, cut)
+
+	s.met = true
+	return
+}
+
 func get(ctx context.Context, s Schema) error {
 	dir := filepath.Dir(s.File)
 	if err := os.MkdirAll(dir, 0o666); err != nil {
@@ -64,7 +87,10 @@ func get(ctx context.Context, s Schema) error {
 		_ = f.Close()
 	}()
 
-	if _, err := io.Copy(f, resp.Body); err != nil {
+	r := skipBOMReader{
+		r: resp.Body,
+	}
+	if _, err := io.Copy(f, &r); err != nil {
 		return errors.Wrap(err, "copy")
 	}
 
