@@ -171,10 +171,6 @@ func (g *Generator) wrapResponseStatusCode(resp *ir.StatusResponse) (ret *ir.Sta
 }
 
 func (g *Generator) wrapStatusCode(t *ir.Type) (ret *ir.Type) {
-	if !t.Is(ir.KindStruct, ir.KindAlias) {
-		panic("unreachable")
-	}
-
 	if schema := t.Schema; schema != nil && schema.Ref != "" {
 		if t, ok := g.wrapped.types[schema.Ref]; ok {
 			return t
