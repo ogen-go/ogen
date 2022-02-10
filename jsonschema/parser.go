@@ -81,12 +81,14 @@ func (p *Parser) parseSchema(schema *RawSchema, hook func(*Schema) *Schema) (*Sc
 			}
 			schema.Type = typ
 		}
-		if err := validateTypeFormat(schema.Type, schema.Format); err != nil {
-			return nil, errors.Wrap(err, "validate format")
+
+		t, err := parseType(schema.Type)
+		if err != nil {
+			return nil, errors.Wrap(err, "type")
 		}
 
 		return hook(&Schema{
-			Type:   SchemaType(schema.Type),
+			Type:   t,
 			Format: schema.Format,
 		}), nil
 	case len(schema.OneOf) > 0:
@@ -230,10 +232,6 @@ func (p *Parser) parseSchema(schema *RawSchema, hook func(*Schema) *Schema) (*Sc
 		return array, nil
 
 	case "number", "integer":
-		if err := validateTypeFormat(schema.Type, schema.Format); err != nil {
-			return nil, errors.Wrap(err, "validate format")
-		}
-
 		return hook(&Schema{
 			Type:             SchemaType(schema.Type),
 			Format:           schema.Format,
@@ -245,20 +243,12 @@ func (p *Parser) parseSchema(schema *RawSchema, hook func(*Schema) *Schema) (*Sc
 		}), nil
 
 	case "boolean":
-		if err := validateTypeFormat(schema.Type, schema.Format); err != nil {
-			return nil, errors.Wrap(err, "validate format")
-		}
-
 		return hook(&Schema{
 			Type:   Boolean,
 			Format: schema.Format,
 		}), nil
 
 	case "string":
-		if err := validateTypeFormat(schema.Type, schema.Format); err != nil {
-			return nil, errors.Wrap(err, "validate format")
-		}
-
 		return hook(&Schema{
 			Type:      String,
 			Format:    schema.Format,
@@ -323,51 +313,20 @@ func (p *Parser) extendInfo(schema *RawSchema, s *Schema) *Schema {
 	return s
 }
 
-func validateTypeFormat(typ, format string) error {
-	formats := map[string]map[string]struct{}{
-		"object":  {},
-		"array":   {},
-		"boolean": {},
-		"integer": {
-			"int32": {},
-			"int64": {},
-		},
-		"number": {
-			"float":  {},
-			"double": {},
-			"int32":  {},
-			"int64":  {},
-		},
-		"string": {
-			"byte":      {},
-			"date-time": {},
-			"date":      {},
-			"time":      {},
-			"duration":  {},
-			"uuid":      {},
-			"ipv4":      {},
-			"ipv6":      {},
-			"ip":        {},
-			"uri":       {},
-			"password":  {},
-		},
+func parseType(typ string) (SchemaType, error) {
+	mapping := map[string]SchemaType{
+		"object":  Object,
+		"array":   Array,
+		"boolean": Boolean,
+		"integer": Integer,
+		"number":  Number,
+		"string":  String,
 	}
 
-	if _, ok := formats[typ]; !ok {
-		return errors.Errorf("unexpected type: %q", typ)
+	t, ok := mapping[typ]
+	if !ok {
+		return SchemaType(""), errors.Errorf("unexpected type: %q", typ)
 	}
 
-	if format == "" {
-		return nil
-	}
-
-	if _, ok := formats[typ][format]; !ok {
-		if typ == "string" {
-			return nil // Ignore unknown string formats.
-		}
-
-		return errors.Errorf("unexpected %s format: %q", typ, format)
-	}
-
-	return nil
+	return t, nil
 }
