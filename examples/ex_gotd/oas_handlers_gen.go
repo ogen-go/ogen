@@ -325,6 +325,73 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 	span.SetStatus(codes.Ok, "Ok")
 }
 
+// HandleBanChatSenderChatRequest handles banChatSenderChat operation.
+//
+// POST /banChatSenderChat
+func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "BanChatSenderChat",
+		trace.WithAttributes(otelogen.OperationID("banChatSenderChat")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeBanChatSenderChatRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.BanChatSenderChat(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
+		return
+	}
+
+	if err := encodeBanChatSenderChatResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleCloseRequest handles close operation.
+//
+// POST /close
+func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "Close",
+		trace.WithAttributes(otelogen.OperationID("close")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	response, err := s.h.Close(ctx)
+	if err != nil {
+		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
+		return
+	}
+
+	if err := encodeCloseResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
 // HandleCopyMessageRequest handles copyMessage operation.
 //
 // POST /copyMessage
@@ -1391,6 +1458,36 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 	span.SetStatus(codes.Ok, "Ok")
 }
 
+// HandleGetWebhookInfoRequest handles getWebhookInfo operation.
+//
+// POST /getWebhookInfo
+func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetWebhookInfo",
+		trace.WithAttributes(otelogen.OperationID("getWebhookInfo")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	response, err := s.h.GetWebhookInfo(ctx)
+	if err != nil {
+		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
+		return
+	}
+
+	if err := encodeGetWebhookInfoResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
 // HandleLeaveChatRequest handles leaveChat operation.
 //
 // POST /leaveChat
@@ -1421,6 +1518,36 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 	}
 
 	if err := encodeLeaveChatResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleLogOutRequest handles logOut operation.
+//
+// POST /logOut
+func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "LogOut",
+		trace.WithAttributes(otelogen.OperationID("logOut")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	response, err := s.h.LogOut(ctx)
+	if err != nil {
+		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
+		return
+	}
+
+	if err := encodeLogOutResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		return
@@ -2790,6 +2917,43 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 	}
 
 	if err := encodeUnbanChatMemberResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleUnbanChatSenderChatRequest handles unbanChatSenderChat operation.
+//
+// POST /unbanChatSenderChat
+func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "UnbanChatSenderChat",
+		trace.WithAttributes(otelogen.OperationID("unbanChatSenderChat")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeUnbanChatSenderChatRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.UnbanChatSenderChat(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
+		return
+	}
+
+	if err := encodeUnbanChatSenderChatResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		return

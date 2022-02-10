@@ -74,7 +74,7 @@ func (s *ErrorStatusCode) Error() string {
 // Ref: #/components/schemas/addStickerToSet
 type AddStickerToSet struct {
 	// User identifier of sticker set owner.
-	UserID int `json:"user_id"`
+	UserID int64 `json:"user_id"`
 	// Sticker set name.
 	Name string `json:"name"`
 	// PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px,
@@ -83,8 +83,11 @@ type AddStickerToSet struct {
 	// from the Internet, or upload a new one using multipart/form-data. More info on Sending Files ».
 	PNGSticker OptString `json:"png_sticker"`
 	// TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.
-	// org/animated_stickers#technical-requirements for technical requirements.
+	// org/stickers#animated-sticker-requirements for technical requirements.
 	TgsSticker OptString `json:"tgs_sticker"`
+	// WEBM video with the sticker, uploaded using multipart/form-data. See https://core.telegram.
+	// org/stickers#video-sticker-requirements for technical requirements.
+	WebmSticker OptString `json:"webm_sticker"`
 	// One or more emoji corresponding to the sticker.
 	Emojis       string          `json:"emojis"`
 	MaskPosition OptMaskPosition `json:"mask_position"`
@@ -127,7 +130,7 @@ type AnswerCallbackQuery struct {
 	// conditions via @Botfather, specify the URL that opens your game — note that this will only work
 	// if the query comes from a callback_game button.Otherwise, you may use links like t.
 	// me/your_bot?start=XXXX that open your bot with a parameter.
-	URL OptURL `json:"url"`
+	URL OptString `json:"url"`
 	// The maximum amount of time in seconds that the result of the callback query may be cached
 	// client-side. Telegram apps will support caching starting in version 3.14. Defaults to 0.
 	CacheTime OptInt `json:"cache_time"`
@@ -200,7 +203,7 @@ type AnswerShippingQuery struct {
 type ApproveChatJoinRequest struct {
 	ChatID ID `json:"chat_id"`
 	// Unique identifier of the target user.
-	UserID int `json:"user_id"`
+	UserID int64 `json:"user_id"`
 }
 
 // This object represents an audio file to be treated as music by the Telegram clients.
@@ -231,7 +234,7 @@ type Audio struct {
 type BanChatMember struct {
 	ChatID ID `json:"chat_id"`
 	// Unique identifier of the target user.
-	UserID int `json:"user_id"`
+	UserID int64 `json:"user_id"`
 	// Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less
 	// than 30 seconds from the current time they are considered to be banned forever. Applied for
 	// supergroups and channels only.
@@ -242,13 +245,21 @@ type BanChatMember struct {
 	RevokeMessages OptBool `json:"revoke_messages"`
 }
 
+// Input for banChatSenderChat.
+// Ref: #/components/schemas/banChatSenderChat
+type BanChatSenderChat struct {
+	ChatID ID `json:"chat_id"`
+	// Unique identifier of the target sender chat.
+	SenderChatID int64 `json:"sender_chat_id"`
+}
+
 // This object represents a bot command.
 // Ref: #/components/schemas/BotCommand
 type BotCommand struct {
-	// Text of the command, 1-32 characters. Can contain only lowercase English letters, digits and
+	// Text of the command; 1-32 characters. Can contain only lowercase English letters, digits and
 	// underscores.
 	Command string `json:"command"`
-	// Description of the command, 3-256 characters.
+	// Description of the command; 1-256 characters.
 	Description string `json:"description"`
 }
 
@@ -507,7 +518,7 @@ type BotCommandScopeChatMember struct {
 	Type   string `json:"type"`
 	ChatID ID     `json:"chat_id"`
 	// Unique identifier of the target user.
-	UserID int `json:"user_id"`
+	UserID int64 `json:"user_id"`
 }
 
 // Represents the default scope of bot commands. Default commands are used if no commands with a
@@ -522,6 +533,29 @@ type BotCommandScopeDefault struct {
 // Ref: #/components/schemas/CallbackGame
 type CallbackGame struct{}
 
+// This object represents an incoming callback query from a callback button in an inline keyboard. If
+// the button that originated the query was attached to a message sent by the bot, the field message
+// will be present. If the button was attached to a message sent via the bot (in inline mode), the
+// field inline_message_id will be present. Exactly one of the fields data or game_short_name will be
+// present.
+// Ref: #/components/schemas/CallbackQuery
+type CallbackQuery struct {
+	// Unique identifier for this query.
+	ID      string     `json:"id"`
+	From    User       `json:"from"`
+	Message OptMessage `json:"message"`
+	// Identifier of the message sent via the bot in inline mode, that originated the query.
+	InlineMessageID OptString `json:"inline_message_id"`
+	// Global identifier, uniquely corresponding to the chat to which the message with the callback
+	// button was sent. Useful for high scores in games.
+	ChatInstance string `json:"chat_instance"`
+	// Data associated with the callback button. Be aware that a bad client can send arbitrary data in
+	// this field.
+	Data OptString `json:"data"`
+	// Short name of a Game to be returned, serves as the unique identifier for the game.
+	GameShortName OptString `json:"game_short_name"`
+}
+
 // This object represents a chat.
 // Ref: #/components/schemas/Chat
 type Chat struct {
@@ -529,9 +563,9 @@ type Chat struct {
 	// programming languages may have difficulty/silent defects in interpreting it. But it has at most 52
 	// significant bits, so a signed 64-bit integer or double-precision float type are safe for storing
 	// this identifier.
-	ID int `json:"id"`
+	ID int64 `json:"id"`
 	// Type of chat, can be either “private”, “group”, “supergroup” or “channel”.
-	Type string `json:"type"`
+	Type ChatType `json:"type"`
 	// Title, for supergroups, channels and group chats.
 	Title OptString `json:"title"`
 	// Username, for private chats, supergroups and channels if available.
@@ -543,6 +577,9 @@ type Chat struct {
 	Photo    OptChatPhoto `json:"photo"`
 	// Bio of the other party in a private chat. Returned only in getChat.
 	Bio OptString `json:"bio"`
+	// True, if privacy settings of the other party in the private chat allows to use
+	// tg://user?id=<user_id> links only in chats with the user. Returned only in getChat.
+	HasPrivateForwards OptBool `json:"has_private_forwards"`
 	// Description, for groups, supergroups and channel chats. Returned only in getChat.
 	Description OptString `json:"description"`
 	// Primary invite link, for groups, supergroups and channel chats. Returned only in getChat.
@@ -555,6 +592,8 @@ type Chat struct {
 	// The time after which all messages sent to the chat will be automatically deleted; in seconds.
 	// Returned only in getChat.
 	MessageAutoDeleteTime OptInt `json:"message_auto_delete_time"`
+	// True, if messages from the chat can't be forwarded to other chats. Returned only in getChat.
+	HasProtectedContent OptBool `json:"has_protected_content"`
 	// For supergroups, name of group sticker set. Returned only in getChat.
 	StickerSetName OptString `json:"sticker_set_name"`
 	// True, if the bot can change the group sticker set. Returned only in getChat.
@@ -564,8 +603,45 @@ type Chat struct {
 	// programming languages may have difficulty/silent defects in interpreting it. But it is smaller
 	// than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this
 	// identifier. Returned only in getChat.
-	LinkedChatID OptInt          `json:"linked_chat_id"`
-	Location     OptChatLocation `json:"location"`
+	LinkedChatID                OptInt64        `json:"linked_chat_id"`
+	Location                    OptChatLocation `json:"location"`
+	AllMembersAreAdministrators OptBool         `json:"all_members_are_administrators"`
+}
+
+// Represents an invite link for a chat.
+// Ref: #/components/schemas/ChatInviteLink
+type ChatInviteLink struct {
+	// The invite link. If the link was created by another chat administrator, then the second part of
+	// the link will be replaced with “…”.
+	InviteLink string `json:"invite_link"`
+	Creator    User   `json:"creator"`
+	// True, if users joining the chat via the link need to be approved by chat administrators.
+	CreatesJoinRequest bool `json:"creates_join_request"`
+	// True, if the link is primary.
+	IsPrimary bool `json:"is_primary"`
+	// True, if the link is revoked.
+	IsRevoked bool `json:"is_revoked"`
+	// Invite link name.
+	Name OptString `json:"name"`
+	// Point in time (Unix timestamp) when the link will expire or has been expired.
+	ExpireDate OptInt `json:"expire_date"`
+	// Maximum number of users that can be members of the chat simultaneously after joining the chat via
+	// this invite link; 1-99999.
+	MemberLimit OptInt `json:"member_limit"`
+	// Number of pending join requests created using this link.
+	PendingJoinRequestCount OptInt `json:"pending_join_request_count"`
+}
+
+// Represents a join request sent to a chat.
+// Ref: #/components/schemas/ChatJoinRequest
+type ChatJoinRequest struct {
+	Chat Chat `json:"chat"`
+	From User `json:"from"`
+	// Date the request was sent in Unix time.
+	Date int `json:"date"`
+	// Bio of the user.
+	Bio        OptString         `json:"bio"`
+	InviteLink OptChatInviteLink `json:"invite_link"`
 }
 
 // Represents a location to which a chat is connected.
@@ -574,6 +650,298 @@ type ChatLocation struct {
 	Location Location `json:"location"`
 	// Location address; 1-64 characters, as defined by the chat owner.
 	Address string `json:"address"`
+}
+
+// This object contains information about one member of a chat.  6 types of chat members are
+// supported:.
+// Ref: #/components/schemas/ChatMember
+// ChatMember represents sum type.
+type ChatMember struct {
+	Type                    ChatMemberType // switch on this field
+	ChatMemberOwner         ChatMemberOwner
+	ChatMemberAdministrator ChatMemberAdministrator
+	ChatMemberMember        ChatMemberMember
+	ChatMemberRestricted    ChatMemberRestricted
+	ChatMemberLeft          ChatMemberLeft
+	ChatMemberBanned        ChatMemberBanned
+}
+
+// ChatMemberType is oneOf type of ChatMember.
+type ChatMemberType string
+
+// Possible values for ChatMemberType.
+const (
+	ChatMemberOwnerChatMember         ChatMemberType = "ChatMemberOwner"
+	ChatMemberAdministratorChatMember ChatMemberType = "ChatMemberAdministrator"
+	ChatMemberMemberChatMember        ChatMemberType = "ChatMemberMember"
+	ChatMemberRestrictedChatMember    ChatMemberType = "ChatMemberRestricted"
+	ChatMemberLeftChatMember          ChatMemberType = "ChatMemberLeft"
+	ChatMemberBannedChatMember        ChatMemberType = "ChatMemberBanned"
+)
+
+// IsChatMemberOwner reports whether ChatMember is ChatMemberOwner.
+func (s ChatMember) IsChatMemberOwner() bool { return s.Type == ChatMemberOwnerChatMember }
+
+// IsChatMemberAdministrator reports whether ChatMember is ChatMemberAdministrator.
+func (s ChatMember) IsChatMemberAdministrator() bool {
+	return s.Type == ChatMemberAdministratorChatMember
+}
+
+// IsChatMemberMember reports whether ChatMember is ChatMemberMember.
+func (s ChatMember) IsChatMemberMember() bool { return s.Type == ChatMemberMemberChatMember }
+
+// IsChatMemberRestricted reports whether ChatMember is ChatMemberRestricted.
+func (s ChatMember) IsChatMemberRestricted() bool { return s.Type == ChatMemberRestrictedChatMember }
+
+// IsChatMemberLeft reports whether ChatMember is ChatMemberLeft.
+func (s ChatMember) IsChatMemberLeft() bool { return s.Type == ChatMemberLeftChatMember }
+
+// IsChatMemberBanned reports whether ChatMember is ChatMemberBanned.
+func (s ChatMember) IsChatMemberBanned() bool { return s.Type == ChatMemberBannedChatMember }
+
+// SetChatMemberOwner sets ChatMember to ChatMemberOwner.
+func (s *ChatMember) SetChatMemberOwner(v ChatMemberOwner) {
+	s.Type = ChatMemberOwnerChatMember
+	s.ChatMemberOwner = v
+}
+
+// GetChatMemberOwner returns ChatMemberOwner and true boolean if ChatMember is ChatMemberOwner.
+func (s ChatMember) GetChatMemberOwner() (v ChatMemberOwner, ok bool) {
+	if !s.IsChatMemberOwner() {
+		return v, false
+	}
+	return s.ChatMemberOwner, true
+}
+
+// NewChatMemberOwnerChatMember returns new ChatMember from ChatMemberOwner.
+func NewChatMemberOwnerChatMember(v ChatMemberOwner) ChatMember {
+	var s ChatMember
+	s.SetChatMemberOwner(v)
+	return s
+}
+
+// SetChatMemberAdministrator sets ChatMember to ChatMemberAdministrator.
+func (s *ChatMember) SetChatMemberAdministrator(v ChatMemberAdministrator) {
+	s.Type = ChatMemberAdministratorChatMember
+	s.ChatMemberAdministrator = v
+}
+
+// GetChatMemberAdministrator returns ChatMemberAdministrator and true boolean if ChatMember is ChatMemberAdministrator.
+func (s ChatMember) GetChatMemberAdministrator() (v ChatMemberAdministrator, ok bool) {
+	if !s.IsChatMemberAdministrator() {
+		return v, false
+	}
+	return s.ChatMemberAdministrator, true
+}
+
+// NewChatMemberAdministratorChatMember returns new ChatMember from ChatMemberAdministrator.
+func NewChatMemberAdministratorChatMember(v ChatMemberAdministrator) ChatMember {
+	var s ChatMember
+	s.SetChatMemberAdministrator(v)
+	return s
+}
+
+// SetChatMemberMember sets ChatMember to ChatMemberMember.
+func (s *ChatMember) SetChatMemberMember(v ChatMemberMember) {
+	s.Type = ChatMemberMemberChatMember
+	s.ChatMemberMember = v
+}
+
+// GetChatMemberMember returns ChatMemberMember and true boolean if ChatMember is ChatMemberMember.
+func (s ChatMember) GetChatMemberMember() (v ChatMemberMember, ok bool) {
+	if !s.IsChatMemberMember() {
+		return v, false
+	}
+	return s.ChatMemberMember, true
+}
+
+// NewChatMemberMemberChatMember returns new ChatMember from ChatMemberMember.
+func NewChatMemberMemberChatMember(v ChatMemberMember) ChatMember {
+	var s ChatMember
+	s.SetChatMemberMember(v)
+	return s
+}
+
+// SetChatMemberRestricted sets ChatMember to ChatMemberRestricted.
+func (s *ChatMember) SetChatMemberRestricted(v ChatMemberRestricted) {
+	s.Type = ChatMemberRestrictedChatMember
+	s.ChatMemberRestricted = v
+}
+
+// GetChatMemberRestricted returns ChatMemberRestricted and true boolean if ChatMember is ChatMemberRestricted.
+func (s ChatMember) GetChatMemberRestricted() (v ChatMemberRestricted, ok bool) {
+	if !s.IsChatMemberRestricted() {
+		return v, false
+	}
+	return s.ChatMemberRestricted, true
+}
+
+// NewChatMemberRestrictedChatMember returns new ChatMember from ChatMemberRestricted.
+func NewChatMemberRestrictedChatMember(v ChatMemberRestricted) ChatMember {
+	var s ChatMember
+	s.SetChatMemberRestricted(v)
+	return s
+}
+
+// SetChatMemberLeft sets ChatMember to ChatMemberLeft.
+func (s *ChatMember) SetChatMemberLeft(v ChatMemberLeft) {
+	s.Type = ChatMemberLeftChatMember
+	s.ChatMemberLeft = v
+}
+
+// GetChatMemberLeft returns ChatMemberLeft and true boolean if ChatMember is ChatMemberLeft.
+func (s ChatMember) GetChatMemberLeft() (v ChatMemberLeft, ok bool) {
+	if !s.IsChatMemberLeft() {
+		return v, false
+	}
+	return s.ChatMemberLeft, true
+}
+
+// NewChatMemberLeftChatMember returns new ChatMember from ChatMemberLeft.
+func NewChatMemberLeftChatMember(v ChatMemberLeft) ChatMember {
+	var s ChatMember
+	s.SetChatMemberLeft(v)
+	return s
+}
+
+// SetChatMemberBanned sets ChatMember to ChatMemberBanned.
+func (s *ChatMember) SetChatMemberBanned(v ChatMemberBanned) {
+	s.Type = ChatMemberBannedChatMember
+	s.ChatMemberBanned = v
+}
+
+// GetChatMemberBanned returns ChatMemberBanned and true boolean if ChatMember is ChatMemberBanned.
+func (s ChatMember) GetChatMemberBanned() (v ChatMemberBanned, ok bool) {
+	if !s.IsChatMemberBanned() {
+		return v, false
+	}
+	return s.ChatMemberBanned, true
+}
+
+// NewChatMemberBannedChatMember returns new ChatMember from ChatMemberBanned.
+func NewChatMemberBannedChatMember(v ChatMemberBanned) ChatMember {
+	var s ChatMember
+	s.SetChatMemberBanned(v)
+	return s
+}
+
+// Represents a chat member that has some additional privileges.
+// Ref: #/components/schemas/ChatMemberAdministrator
+type ChatMemberAdministrator struct {
+	// The member's status in the chat, always “administrator”.
+	Status string `json:"status"`
+	User   User   `json:"user"`
+	// True, if the bot is allowed to edit administrator privileges of that user.
+	CanBeEdited bool `json:"can_be_edited"`
+	// True, if the user's presence in the chat is hidden.
+	IsAnonymous bool `json:"is_anonymous"`
+	// True, if the administrator can access the chat event log, chat statistics, message statistics in
+	// channels, see channel members, see anonymous administrators in supergroups and ignore slow mode.
+	// Implied by any other administrator privilege.
+	CanManageChat bool `json:"can_manage_chat"`
+	// True, if the administrator can delete messages of other users.
+	CanDeleteMessages bool `json:"can_delete_messages"`
+	// True, if the administrator can manage voice chats.
+	CanManageVoiceChats bool `json:"can_manage_voice_chats"`
+	// True, if the administrator can restrict, ban or unban chat members.
+	CanRestrictMembers bool `json:"can_restrict_members"`
+	// True, if the administrator can add new administrators with a subset of their own privileges or
+	// demote administrators that he has promoted, directly or indirectly (promoted by administrators
+	// that were appointed by the user).
+	CanPromoteMembers bool `json:"can_promote_members"`
+	// True, if the user is allowed to change the chat title, photo and other settings.
+	CanChangeInfo bool `json:"can_change_info"`
+	// True, if the user is allowed to invite new users to the chat.
+	CanInviteUsers bool `json:"can_invite_users"`
+	// True, if the administrator can post in the channel; channels only.
+	CanPostMessages OptBool `json:"can_post_messages"`
+	// True, if the administrator can edit messages of other users and can pin messages; channels only.
+	CanEditMessages OptBool `json:"can_edit_messages"`
+	// True, if the user is allowed to pin messages; groups and supergroups only.
+	CanPinMessages OptBool `json:"can_pin_messages"`
+	// Custom title for this user.
+	CustomTitle OptString `json:"custom_title"`
+}
+
+// Represents a chat member that was banned in the chat and can't return to the chat or view chat
+// messages.
+// Ref: #/components/schemas/ChatMemberBanned
+type ChatMemberBanned struct {
+	// The member's status in the chat, always “kicked”.
+	Status string `json:"status"`
+	User   User   `json:"user"`
+	// Date when restrictions will be lifted for this user; unix time. If 0, then the user is banned
+	// forever.
+	UntilDate int `json:"until_date"`
+}
+
+// Represents a chat member that isn't currently a member of the chat, but may join it themselves.
+// Ref: #/components/schemas/ChatMemberLeft
+type ChatMemberLeft struct {
+	// The member's status in the chat, always “left”.
+	Status string `json:"status"`
+	User   User   `json:"user"`
+}
+
+// Represents a chat member that has no additional privileges or restrictions.
+// Ref: #/components/schemas/ChatMemberMember
+type ChatMemberMember struct {
+	// The member's status in the chat, always “member”.
+	Status string `json:"status"`
+	User   User   `json:"user"`
+}
+
+// Represents a chat member that owns the chat and has all administrator privileges.
+// Ref: #/components/schemas/ChatMemberOwner
+type ChatMemberOwner struct {
+	// The member's status in the chat, always “creator”.
+	Status string `json:"status"`
+	User   User   `json:"user"`
+	// True, if the user's presence in the chat is hidden.
+	IsAnonymous bool `json:"is_anonymous"`
+	// Custom title for this user.
+	CustomTitle OptString `json:"custom_title"`
+}
+
+// Represents a chat member that is under certain restrictions in the chat. Supergroups only.
+// Ref: #/components/schemas/ChatMemberRestricted
+type ChatMemberRestricted struct {
+	// The member's status in the chat, always “restricted”.
+	Status string `json:"status"`
+	User   User   `json:"user"`
+	// True, if the user is a member of the chat at the moment of the request.
+	IsMember bool `json:"is_member"`
+	// True, if the user is allowed to change the chat title, photo and other settings.
+	CanChangeInfo bool `json:"can_change_info"`
+	// True, if the user is allowed to invite new users to the chat.
+	CanInviteUsers bool `json:"can_invite_users"`
+	// True, if the user is allowed to pin messages.
+	CanPinMessages bool `json:"can_pin_messages"`
+	// True, if the user is allowed to send text messages, contacts, locations and venues.
+	CanSendMessages bool `json:"can_send_messages"`
+	// True, if the user is allowed to send audios, documents, photos, videos, video notes and voice notes.
+	CanSendMediaMessages bool `json:"can_send_media_messages"`
+	// True, if the user is allowed to send polls.
+	CanSendPolls bool `json:"can_send_polls"`
+	// True, if the user is allowed to send animations, games, stickers and use inline bots.
+	CanSendOtherMessages bool `json:"can_send_other_messages"`
+	// True, if the user is allowed to add web page previews to their messages.
+	CanAddWebPagePreviews bool `json:"can_add_web_page_previews"`
+	// Date when restrictions will be lifted for this user; unix time. If 0, then the user is restricted
+	// forever.
+	UntilDate int `json:"until_date"`
+}
+
+// This object represents changes in the status of a chat member.
+// Ref: #/components/schemas/ChatMemberUpdated
+type ChatMemberUpdated struct {
+	Chat Chat `json:"chat"`
+	From User `json:"from"`
+	// Date the change was done in Unix time.
+	Date          int               `json:"date"`
+	OldChatMember ChatMember        `json:"old_chat_member"`
+	NewChatMember ChatMember        `json:"new_chat_member"`
+	InviteLink    OptChatInviteLink `json:"invite_link"`
 }
 
 // Describes actions that a non-administrator user is allowed to take in a chat.
@@ -618,6 +986,30 @@ type ChatPhoto struct {
 	BigFileUniqueID string `json:"big_file_unique_id"`
 }
 
+// Type of chat, can be either “private”, “group”, “supergroup” or “channel”.
+type ChatType string
+
+const (
+	ChatTypePrivate    ChatType = "private"
+	ChatTypeGroup      ChatType = "group"
+	ChatTypeSupergroup ChatType = "supergroup"
+	ChatTypeChannel    ChatType = "channel"
+)
+
+// Represents a result of an inline query that was chosen by the user and sent to their chat partner.
+// Ref: #/components/schemas/ChosenInlineResult
+type ChosenInlineResult struct {
+	// The unique identifier for the result that was chosen.
+	ResultID string      `json:"result_id"`
+	From     User        `json:"from"`
+	Location OptLocation `json:"location"`
+	// Identifier of the sent inline message. Available only if there is an inline keyboard attached to
+	// the message. Will be also received in callback queries and can be used to edit the message.
+	InlineMessageID OptString `json:"inline_message_id"`
+	// The query that was used to obtain the result.
+	Query string `json:"query"`
+}
+
 // This object represents a phone contact.
 // Ref: #/components/schemas/Contact
 type Contact struct {
@@ -631,7 +1023,7 @@ type Contact struct {
 	// programming languages may have difficulty/silent defects in interpreting it. But it has at most 52
 	// significant bits, so a 64-bit integer or double-precision float type are safe for storing this
 	// identifier.
-	UserID OptInt `json:"user_id"`
+	UserID OptInt64 `json:"user_id"`
 	// Additional data about the contact in the form of a vCard.
 	Vcard OptString `json:"vcard"`
 }
@@ -653,139 +1045,13 @@ type CopyMessage struct {
 	CaptionEntities []MessageEntity `json:"caption_entities"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the sent message from forwarding and saving.
+	ProtectContent OptBool `json:"protect_content"`
 	// If the message is a reply, ID of the original message.
 	ReplyToMessageID OptInt `json:"reply_to_message_id"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-	// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-	ReplyMarkup OptCopyMessageReplyMarkup `json:"reply_markup"`
-}
-
-// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-// CopyMessageReplyMarkup represents sum type.
-type CopyMessageReplyMarkup struct {
-	Type                 CopyMessageReplyMarkupType // switch on this field
-	InlineKeyboardMarkup InlineKeyboardMarkup
-	ReplyKeyboardMarkup  ReplyKeyboardMarkup
-	ReplyKeyboardRemove  ReplyKeyboardRemove
-	ForceReply           ForceReply
-}
-
-// CopyMessageReplyMarkupType is oneOf type of CopyMessageReplyMarkup.
-type CopyMessageReplyMarkupType string
-
-// Possible values for CopyMessageReplyMarkupType.
-const (
-	InlineKeyboardMarkupCopyMessageReplyMarkup CopyMessageReplyMarkupType = "InlineKeyboardMarkup"
-	ReplyKeyboardMarkupCopyMessageReplyMarkup  CopyMessageReplyMarkupType = "ReplyKeyboardMarkup"
-	ReplyKeyboardRemoveCopyMessageReplyMarkup  CopyMessageReplyMarkupType = "ReplyKeyboardRemove"
-	ForceReplyCopyMessageReplyMarkup           CopyMessageReplyMarkupType = "ForceReply"
-)
-
-// IsInlineKeyboardMarkup reports whether CopyMessageReplyMarkup is InlineKeyboardMarkup.
-func (s CopyMessageReplyMarkup) IsInlineKeyboardMarkup() bool {
-	return s.Type == InlineKeyboardMarkupCopyMessageReplyMarkup
-}
-
-// IsReplyKeyboardMarkup reports whether CopyMessageReplyMarkup is ReplyKeyboardMarkup.
-func (s CopyMessageReplyMarkup) IsReplyKeyboardMarkup() bool {
-	return s.Type == ReplyKeyboardMarkupCopyMessageReplyMarkup
-}
-
-// IsReplyKeyboardRemove reports whether CopyMessageReplyMarkup is ReplyKeyboardRemove.
-func (s CopyMessageReplyMarkup) IsReplyKeyboardRemove() bool {
-	return s.Type == ReplyKeyboardRemoveCopyMessageReplyMarkup
-}
-
-// IsForceReply reports whether CopyMessageReplyMarkup is ForceReply.
-func (s CopyMessageReplyMarkup) IsForceReply() bool {
-	return s.Type == ForceReplyCopyMessageReplyMarkup
-}
-
-// SetInlineKeyboardMarkup sets CopyMessageReplyMarkup to InlineKeyboardMarkup.
-func (s *CopyMessageReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
-	s.Type = InlineKeyboardMarkupCopyMessageReplyMarkup
-	s.InlineKeyboardMarkup = v
-}
-
-// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if CopyMessageReplyMarkup is InlineKeyboardMarkup.
-func (s CopyMessageReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
-	if !s.IsInlineKeyboardMarkup() {
-		return v, false
-	}
-	return s.InlineKeyboardMarkup, true
-}
-
-// NewInlineKeyboardMarkupCopyMessageReplyMarkup returns new CopyMessageReplyMarkup from InlineKeyboardMarkup.
-func NewInlineKeyboardMarkupCopyMessageReplyMarkup(v InlineKeyboardMarkup) CopyMessageReplyMarkup {
-	var s CopyMessageReplyMarkup
-	s.SetInlineKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardMarkup sets CopyMessageReplyMarkup to ReplyKeyboardMarkup.
-func (s *CopyMessageReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
-	s.Type = ReplyKeyboardMarkupCopyMessageReplyMarkup
-	s.ReplyKeyboardMarkup = v
-}
-
-// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if CopyMessageReplyMarkup is ReplyKeyboardMarkup.
-func (s CopyMessageReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
-	if !s.IsReplyKeyboardMarkup() {
-		return v, false
-	}
-	return s.ReplyKeyboardMarkup, true
-}
-
-// NewReplyKeyboardMarkupCopyMessageReplyMarkup returns new CopyMessageReplyMarkup from ReplyKeyboardMarkup.
-func NewReplyKeyboardMarkupCopyMessageReplyMarkup(v ReplyKeyboardMarkup) CopyMessageReplyMarkup {
-	var s CopyMessageReplyMarkup
-	s.SetReplyKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardRemove sets CopyMessageReplyMarkup to ReplyKeyboardRemove.
-func (s *CopyMessageReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
-	s.Type = ReplyKeyboardRemoveCopyMessageReplyMarkup
-	s.ReplyKeyboardRemove = v
-}
-
-// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if CopyMessageReplyMarkup is ReplyKeyboardRemove.
-func (s CopyMessageReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
-	if !s.IsReplyKeyboardRemove() {
-		return v, false
-	}
-	return s.ReplyKeyboardRemove, true
-}
-
-// NewReplyKeyboardRemoveCopyMessageReplyMarkup returns new CopyMessageReplyMarkup from ReplyKeyboardRemove.
-func NewReplyKeyboardRemoveCopyMessageReplyMarkup(v ReplyKeyboardRemove) CopyMessageReplyMarkup {
-	var s CopyMessageReplyMarkup
-	s.SetReplyKeyboardRemove(v)
-	return s
-}
-
-// SetForceReply sets CopyMessageReplyMarkup to ForceReply.
-func (s *CopyMessageReplyMarkup) SetForceReply(v ForceReply) {
-	s.Type = ForceReplyCopyMessageReplyMarkup
-	s.ForceReply = v
-}
-
-// GetForceReply returns ForceReply and true boolean if CopyMessageReplyMarkup is ForceReply.
-func (s CopyMessageReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
-	if !s.IsForceReply() {
-		return v, false
-	}
-	return s.ForceReply, true
-}
-
-// NewForceReplyCopyMessageReplyMarkup returns new CopyMessageReplyMarkup from ForceReply.
-func NewForceReplyCopyMessageReplyMarkup(v ForceReply) CopyMessageReplyMarkup {
-	var s CopyMessageReplyMarkup
-	s.SetForceReply(v)
-	return s
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
 }
 
 // Input for createChatInviteLink.
@@ -808,7 +1074,7 @@ type CreateChatInviteLink struct {
 // Ref: #/components/schemas/createNewStickerSet
 type CreateNewStickerSet struct {
 	// User identifier of created sticker set owner.
-	UserID int `json:"user_id"`
+	UserID int64 `json:"user_id"`
 	// Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only
 	// english letters, digits and underscores. Must begin with a letter, can't contain consecutive
 	// underscores and must end in “_by_<bot username>”. <bot_username> is case insensitive. 1-64
@@ -822,8 +1088,11 @@ type CreateNewStickerSet struct {
 	// from the Internet, or upload a new one using multipart/form-data. More info on Sending Files ».
 	PNGSticker OptString `json:"png_sticker"`
 	// TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.
-	// org/animated_stickers#technical-requirements for technical requirements.
+	// org/stickers#animated-sticker-requirements for technical requirements.
 	TgsSticker OptString `json:"tgs_sticker"`
+	// WEBM video with the sticker, uploaded using multipart/form-data. See https://core.telegram.
+	// org/stickers#video-sticker-requirements for technical requirements.
+	WebmSticker OptString `json:"webm_sticker"`
 	// One or more emoji corresponding to the sticker.
 	Emojis string `json:"emojis"`
 	// Pass True, if a set of mask stickers should be created.
@@ -836,7 +1105,7 @@ type CreateNewStickerSet struct {
 type DeclineChatJoinRequest struct {
 	ChatID ID `json:"chat_id"`
 	// Unique identifier of the target user.
-	UserID int `json:"user_id"`
+	UserID int64 `json:"user_id"`
 }
 
 // Input for deleteChatPhoto.
@@ -1032,7 +1301,7 @@ type EncryptedPassportElement struct {
 	// “identity_card”, “internal_passport”, “address”, “utility_bill”,
 	// “bank_statement”, “rental_agreement”, “passport_registration”,
 	// “temporary_registration”, “phone_number”, “email”.
-	Type string `json:"type"`
+	Type EncryptedPassportElementType `json:"type"`
 	// Base64-encoded encrypted Telegram Passport element data provided by the user, available for
 	// “personal_details”, “passport”, “driver_license”, “identity_card”,
 	// “internal_passport” and “address” types. Can be decrypted and verified using the
@@ -1060,6 +1329,28 @@ type EncryptedPassportElement struct {
 	Hash string `json:"hash"`
 }
 
+// Element type. One of “personal_details”, “passport”, “driver_license”,
+// “identity_card”, “internal_passport”, “address”, “utility_bill”,
+// “bank_statement”, “rental_agreement”, “passport_registration”,
+// “temporary_registration”, “phone_number”, “email”.
+type EncryptedPassportElementType string
+
+const (
+	EncryptedPassportElementTypePersonalDetails       EncryptedPassportElementType = "personal_details"
+	EncryptedPassportElementTypePassport              EncryptedPassportElementType = "passport"
+	EncryptedPassportElementTypeDriverLicense         EncryptedPassportElementType = "driver_license"
+	EncryptedPassportElementTypeIdentityCard          EncryptedPassportElementType = "identity_card"
+	EncryptedPassportElementTypeInternalPassport      EncryptedPassportElementType = "internal_passport"
+	EncryptedPassportElementTypeAddress               EncryptedPassportElementType = "address"
+	EncryptedPassportElementTypeUtilityBill           EncryptedPassportElementType = "utility_bill"
+	EncryptedPassportElementTypeBankStatement         EncryptedPassportElementType = "bank_statement"
+	EncryptedPassportElementTypeRentalAgreement       EncryptedPassportElementType = "rental_agreement"
+	EncryptedPassportElementTypePassportRegistration  EncryptedPassportElementType = "passport_registration"
+	EncryptedPassportElementTypeTemporaryRegistration EncryptedPassportElementType = "temporary_registration"
+	EncryptedPassportElementTypePhoneNumber           EncryptedPassportElementType = "phone_number"
+	EncryptedPassportElementTypeEmail                 EncryptedPassportElementType = "email"
+)
+
 // Ref: #/components/schemas/Error
 type Error struct {
 	Ok          bool        `json:"ok"`
@@ -1078,6 +1369,22 @@ type ErrorStatusCode struct {
 // Ref: #/components/schemas/exportChatInviteLink
 type ExportChatInviteLink struct {
 	ChatID ID `json:"chat_id"`
+}
+
+// This object represents a file ready to be downloaded. The file can be downloaded via the link
+// https://api.telegram.org/file/bot<token>/<file_path>. It is guaranteed that the link will be valid
+// for at least 1 hour. When the link expires, a new one can be requested by calling getFile.
+// Ref: #/components/schemas/File
+type File struct {
+	// Identifier for this file, which can be used to download or reuse the file.
+	FileID string `json:"file_id"`
+	// Unique identifier for this file, which is supposed to be the same over time and for different bots.
+	//  Can't be used to download or reuse the file.
+	FileUniqueID string `json:"file_unique_id"`
+	// File size in bytes, if known.
+	FileSize OptInt `json:"file_size"`
+	// File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.
+	FilePath OptString `json:"file_path"`
 }
 
 // Upon receiving a message with this object, Telegram clients will display a reply interface to the
@@ -1104,6 +1411,8 @@ type ForwardMessage struct {
 	FromChatID ID `json:"from_chat_id"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the forwarded message from forwarding and saving.
+	ProtectContent OptBool `json:"protect_content"`
 	// Message identifier in the chat specified in from_chat_id.
 	MessageID int `json:"message_id"`
 }
@@ -1127,6 +1436,16 @@ type Game struct {
 	Animation    OptAnimation    `json:"animation"`
 }
 
+// This object represents one row of the high scores table for a game.
+// Ref: #/components/schemas/GameHighScore
+type GameHighScore struct {
+	// Position in high score table for the game.
+	Position int  `json:"position"`
+	User     User `json:"user"`
+	// Score.
+	Score int `json:"score"`
+}
+
 // Input for getChat.
 // Ref: #/components/schemas/getChat
 type GetChat struct {
@@ -1144,7 +1463,7 @@ type GetChatAdministrators struct {
 type GetChatMember struct {
 	ChatID ID `json:"chat_id"`
 	// Unique identifier of the target user.
-	UserID int `json:"user_id"`
+	UserID int64 `json:"user_id"`
 }
 
 // Input for getChatMemberCount.
@@ -1164,9 +1483,9 @@ type GetFile struct {
 // Ref: #/components/schemas/getGameHighScores
 type GetGameHighScores struct {
 	// Target user id.
-	UserID int `json:"user_id"`
+	UserID int64 `json:"user_id"`
 	// Required if inline_message_id is not specified. Unique identifier for the target chat.
-	ChatID OptInt `json:"chat_id"`
+	ChatID OptInt64 `json:"chat_id"`
 	// Required if inline_message_id is not specified. Identifier of the sent message.
 	MessageID OptInt `json:"message_id"`
 	// Required if chat_id and message_id are not specified. Identifier of the inline message.
@@ -1215,7 +1534,7 @@ type GetUpdates struct {
 // Ref: #/components/schemas/getUserProfilePhotos
 type GetUserProfilePhotos struct {
 	// Unique identifier of the target user.
-	UserID int `json:"user_id"`
+	UserID int64 `json:"user_id"`
 	// Sequential number of the first photo to be returned. By default, all photos are returned.
 	Offset OptInt `json:"offset"`
 	// Limits the number of photos to be retrieved. Values between 1-100 are accepted. Defaults to 100.
@@ -1227,7 +1546,7 @@ type GetUserProfilePhotos struct {
 type ID struct {
 	Type   IDType // switch on this field
 	String string
-	Int    int
+	Int64  int64
 }
 
 // IDType is oneOf type of ID.
@@ -1236,14 +1555,14 @@ type IDType string
 // Possible values for IDType.
 const (
 	StringID IDType = "string"
-	IntID    IDType = "int"
+	Int64ID  IDType = "int64"
 )
 
 // IsString reports whether ID is string.
 func (s ID) IsString() bool { return s.Type == StringID }
 
-// IsInt reports whether ID is int.
-func (s ID) IsInt() bool { return s.Type == IntID }
+// IsInt64 reports whether ID is int64.
+func (s ID) IsInt64() bool { return s.Type == Int64ID }
 
 // SetString sets ID to string.
 func (s *ID) SetString(v string) {
@@ -1266,24 +1585,24 @@ func NewStringID(v string) ID {
 	return s
 }
 
-// SetInt sets ID to int.
-func (s *ID) SetInt(v int) {
-	s.Type = IntID
-	s.Int = v
+// SetInt64 sets ID to int64.
+func (s *ID) SetInt64(v int64) {
+	s.Type = Int64ID
+	s.Int64 = v
 }
 
-// GetInt returns int and true boolean if ID is int.
-func (s ID) GetInt() (v int, ok bool) {
-	if !s.IsInt() {
+// GetInt64 returns int64 and true boolean if ID is int64.
+func (s ID) GetInt64() (v int64, ok bool) {
+	if !s.IsInt64() {
 		return v, false
 	}
-	return s.Int, true
+	return s.Int64, true
 }
 
-// NewIntID returns new ID from int.
-func NewIntID(v int) ID {
+// NewInt64ID returns new ID from int64.
+func NewInt64ID(v int64) ID {
 	var s ID
-	s.SetInt(v)
+	s.SetInt64(v)
 	return s
 }
 
@@ -1293,8 +1612,10 @@ func NewIntID(v int) ID {
 type InlineKeyboardButton struct {
 	// Label text on the button.
 	Text string `json:"text"`
-	// HTTP or tg:// url to be opened when button is pressed.
-	URL      OptURL      `json:"url"`
+	// HTTP or tg:// url to be opened when the button is pressed. Links tg://user?id=<user_id> can be
+	// used to mention a user by their ID without using a username, if this is allowed by their privacy
+	// settings.
+	URL      OptString   `json:"url"`
 	LoginURL OptLoginUrl `json:"login_url"`
 	// Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes.
 	CallbackData OptString `json:"callback_data"`
@@ -1312,7 +1633,7 @@ type InlineKeyboardButton struct {
 	SwitchInlineQueryCurrentChat OptString     `json:"switch_inline_query_current_chat"`
 	CallbackGame                 *CallbackGame `json:"callback_game"`
 	// Specify True, to send a Pay button.NOTE: This type of button must always be the first button in
-	// the first row.
+	// the first row and can only be used in invoice messages.
 	Pay OptBool `json:"pay"`
 }
 
@@ -1323,7 +1644,1232 @@ type InlineKeyboardMarkup struct {
 	InlineKeyboard [][]InlineKeyboardButton `json:"inline_keyboard"`
 }
 
-type InlineQueryResult string
+// This object represents an incoming inline query. When the user sends an empty query, your bot
+// could return some default or trending results.
+// Ref: #/components/schemas/InlineQuery
+type InlineQuery struct {
+	// Unique identifier for this query.
+	ID   string `json:"id"`
+	From User   `json:"from"`
+	// Text of the query (up to 256 characters).
+	Query string `json:"query"`
+	// Offset of the results to be returned, can be controlled by the bot.
+	Offset string `json:"offset"`
+	// Type of the chat, from which the inline query was sent. Can be either “sender” for a private
+	// chat with the inline query sender, “private”, “group”, “supergroup”, or “channel”.
+	// The chat type should be always known for requests sent from official clients and most third-party
+	// clients, unless the request was sent from a secret chat.
+	ChatType OptInlineQueryChatType `json:"chat_type"`
+	Location OptLocation            `json:"location"`
+}
+
+// Type of the chat, from which the inline query was sent. Can be either “sender” for a private
+// chat with the inline query sender, “private”, “group”, “supergroup”, or “channel”.
+// The chat type should be always known for requests sent from official clients and most third-party
+// clients, unless the request was sent from a secret chat.
+type InlineQueryChatType string
+
+const (
+	InlineQueryChatTypeSender     InlineQueryChatType = "sender"
+	InlineQueryChatTypePrivate    InlineQueryChatType = "private"
+	InlineQueryChatTypeGroup      InlineQueryChatType = "group"
+	InlineQueryChatTypeSupergroup InlineQueryChatType = "supergroup"
+	InlineQueryChatTypeChannel    InlineQueryChatType = "channel"
+)
+
+// An inline query. Telegram clients currently support results of the following 20 types:.
+// Ref: #/components/schemas/InlineQueryResult
+// InlineQueryResult represents sum type.
+type InlineQueryResult struct {
+	Type                            InlineQueryResultType // switch on this field
+	InlineQueryResultCachedAudio    InlineQueryResultCachedAudio
+	InlineQueryResultCachedDocument InlineQueryResultCachedDocument
+	InlineQueryResultCachedGif      InlineQueryResultCachedGif
+	InlineQueryResultCachedMpeg4Gif InlineQueryResultCachedMpeg4Gif
+	InlineQueryResultCachedPhoto    InlineQueryResultCachedPhoto
+	InlineQueryResultCachedSticker  InlineQueryResultCachedSticker
+	InlineQueryResultCachedVideo    InlineQueryResultCachedVideo
+	InlineQueryResultCachedVoice    InlineQueryResultCachedVoice
+	InlineQueryResultArticle        InlineQueryResultArticle
+	InlineQueryResultAudio          InlineQueryResultAudio
+	InlineQueryResultContact        InlineQueryResultContact
+	InlineQueryResultGame           InlineQueryResultGame
+	InlineQueryResultDocument       InlineQueryResultDocument
+	InlineQueryResultGif            InlineQueryResultGif
+	InlineQueryResultLocation       InlineQueryResultLocation
+	InlineQueryResultMpeg4Gif       InlineQueryResultMpeg4Gif
+	InlineQueryResultPhoto          InlineQueryResultPhoto
+	InlineQueryResultVenue          InlineQueryResultVenue
+	InlineQueryResultVideo          InlineQueryResultVideo
+	InlineQueryResultVoice          InlineQueryResultVoice
+}
+
+// InlineQueryResultType is oneOf type of InlineQueryResult.
+type InlineQueryResultType string
+
+// Possible values for InlineQueryResultType.
+const (
+	InlineQueryResultCachedAudioInlineQueryResult    InlineQueryResultType = "InlineQueryResultCachedAudio"
+	InlineQueryResultCachedDocumentInlineQueryResult InlineQueryResultType = "InlineQueryResultCachedDocument"
+	InlineQueryResultCachedGifInlineQueryResult      InlineQueryResultType = "InlineQueryResultCachedGif"
+	InlineQueryResultCachedMpeg4GifInlineQueryResult InlineQueryResultType = "InlineQueryResultCachedMpeg4Gif"
+	InlineQueryResultCachedPhotoInlineQueryResult    InlineQueryResultType = "InlineQueryResultCachedPhoto"
+	InlineQueryResultCachedStickerInlineQueryResult  InlineQueryResultType = "InlineQueryResultCachedSticker"
+	InlineQueryResultCachedVideoInlineQueryResult    InlineQueryResultType = "InlineQueryResultCachedVideo"
+	InlineQueryResultCachedVoiceInlineQueryResult    InlineQueryResultType = "InlineQueryResultCachedVoice"
+	InlineQueryResultArticleInlineQueryResult        InlineQueryResultType = "InlineQueryResultArticle"
+	InlineQueryResultAudioInlineQueryResult          InlineQueryResultType = "InlineQueryResultAudio"
+	InlineQueryResultContactInlineQueryResult        InlineQueryResultType = "InlineQueryResultContact"
+	InlineQueryResultGameInlineQueryResult           InlineQueryResultType = "InlineQueryResultGame"
+	InlineQueryResultDocumentInlineQueryResult       InlineQueryResultType = "InlineQueryResultDocument"
+	InlineQueryResultGifInlineQueryResult            InlineQueryResultType = "InlineQueryResultGif"
+	InlineQueryResultLocationInlineQueryResult       InlineQueryResultType = "InlineQueryResultLocation"
+	InlineQueryResultMpeg4GifInlineQueryResult       InlineQueryResultType = "InlineQueryResultMpeg4Gif"
+	InlineQueryResultPhotoInlineQueryResult          InlineQueryResultType = "InlineQueryResultPhoto"
+	InlineQueryResultVenueInlineQueryResult          InlineQueryResultType = "InlineQueryResultVenue"
+	InlineQueryResultVideoInlineQueryResult          InlineQueryResultType = "InlineQueryResultVideo"
+	InlineQueryResultVoiceInlineQueryResult          InlineQueryResultType = "InlineQueryResultVoice"
+)
+
+// IsInlineQueryResultCachedAudio reports whether InlineQueryResult is InlineQueryResultCachedAudio.
+func (s InlineQueryResult) IsInlineQueryResultCachedAudio() bool {
+	return s.Type == InlineQueryResultCachedAudioInlineQueryResult
+}
+
+// IsInlineQueryResultCachedDocument reports whether InlineQueryResult is InlineQueryResultCachedDocument.
+func (s InlineQueryResult) IsInlineQueryResultCachedDocument() bool {
+	return s.Type == InlineQueryResultCachedDocumentInlineQueryResult
+}
+
+// IsInlineQueryResultCachedGif reports whether InlineQueryResult is InlineQueryResultCachedGif.
+func (s InlineQueryResult) IsInlineQueryResultCachedGif() bool {
+	return s.Type == InlineQueryResultCachedGifInlineQueryResult
+}
+
+// IsInlineQueryResultCachedMpeg4Gif reports whether InlineQueryResult is InlineQueryResultCachedMpeg4Gif.
+func (s InlineQueryResult) IsInlineQueryResultCachedMpeg4Gif() bool {
+	return s.Type == InlineQueryResultCachedMpeg4GifInlineQueryResult
+}
+
+// IsInlineQueryResultCachedPhoto reports whether InlineQueryResult is InlineQueryResultCachedPhoto.
+func (s InlineQueryResult) IsInlineQueryResultCachedPhoto() bool {
+	return s.Type == InlineQueryResultCachedPhotoInlineQueryResult
+}
+
+// IsInlineQueryResultCachedSticker reports whether InlineQueryResult is InlineQueryResultCachedSticker.
+func (s InlineQueryResult) IsInlineQueryResultCachedSticker() bool {
+	return s.Type == InlineQueryResultCachedStickerInlineQueryResult
+}
+
+// IsInlineQueryResultCachedVideo reports whether InlineQueryResult is InlineQueryResultCachedVideo.
+func (s InlineQueryResult) IsInlineQueryResultCachedVideo() bool {
+	return s.Type == InlineQueryResultCachedVideoInlineQueryResult
+}
+
+// IsInlineQueryResultCachedVoice reports whether InlineQueryResult is InlineQueryResultCachedVoice.
+func (s InlineQueryResult) IsInlineQueryResultCachedVoice() bool {
+	return s.Type == InlineQueryResultCachedVoiceInlineQueryResult
+}
+
+// IsInlineQueryResultArticle reports whether InlineQueryResult is InlineQueryResultArticle.
+func (s InlineQueryResult) IsInlineQueryResultArticle() bool {
+	return s.Type == InlineQueryResultArticleInlineQueryResult
+}
+
+// IsInlineQueryResultAudio reports whether InlineQueryResult is InlineQueryResultAudio.
+func (s InlineQueryResult) IsInlineQueryResultAudio() bool {
+	return s.Type == InlineQueryResultAudioInlineQueryResult
+}
+
+// IsInlineQueryResultContact reports whether InlineQueryResult is InlineQueryResultContact.
+func (s InlineQueryResult) IsInlineQueryResultContact() bool {
+	return s.Type == InlineQueryResultContactInlineQueryResult
+}
+
+// IsInlineQueryResultGame reports whether InlineQueryResult is InlineQueryResultGame.
+func (s InlineQueryResult) IsInlineQueryResultGame() bool {
+	return s.Type == InlineQueryResultGameInlineQueryResult
+}
+
+// IsInlineQueryResultDocument reports whether InlineQueryResult is InlineQueryResultDocument.
+func (s InlineQueryResult) IsInlineQueryResultDocument() bool {
+	return s.Type == InlineQueryResultDocumentInlineQueryResult
+}
+
+// IsInlineQueryResultGif reports whether InlineQueryResult is InlineQueryResultGif.
+func (s InlineQueryResult) IsInlineQueryResultGif() bool {
+	return s.Type == InlineQueryResultGifInlineQueryResult
+}
+
+// IsInlineQueryResultLocation reports whether InlineQueryResult is InlineQueryResultLocation.
+func (s InlineQueryResult) IsInlineQueryResultLocation() bool {
+	return s.Type == InlineQueryResultLocationInlineQueryResult
+}
+
+// IsInlineQueryResultMpeg4Gif reports whether InlineQueryResult is InlineQueryResultMpeg4Gif.
+func (s InlineQueryResult) IsInlineQueryResultMpeg4Gif() bool {
+	return s.Type == InlineQueryResultMpeg4GifInlineQueryResult
+}
+
+// IsInlineQueryResultPhoto reports whether InlineQueryResult is InlineQueryResultPhoto.
+func (s InlineQueryResult) IsInlineQueryResultPhoto() bool {
+	return s.Type == InlineQueryResultPhotoInlineQueryResult
+}
+
+// IsInlineQueryResultVenue reports whether InlineQueryResult is InlineQueryResultVenue.
+func (s InlineQueryResult) IsInlineQueryResultVenue() bool {
+	return s.Type == InlineQueryResultVenueInlineQueryResult
+}
+
+// IsInlineQueryResultVideo reports whether InlineQueryResult is InlineQueryResultVideo.
+func (s InlineQueryResult) IsInlineQueryResultVideo() bool {
+	return s.Type == InlineQueryResultVideoInlineQueryResult
+}
+
+// IsInlineQueryResultVoice reports whether InlineQueryResult is InlineQueryResultVoice.
+func (s InlineQueryResult) IsInlineQueryResultVoice() bool {
+	return s.Type == InlineQueryResultVoiceInlineQueryResult
+}
+
+// SetInlineQueryResultCachedAudio sets InlineQueryResult to InlineQueryResultCachedAudio.
+func (s *InlineQueryResult) SetInlineQueryResultCachedAudio(v InlineQueryResultCachedAudio) {
+	s.Type = InlineQueryResultCachedAudioInlineQueryResult
+	s.InlineQueryResultCachedAudio = v
+}
+
+// GetInlineQueryResultCachedAudio returns InlineQueryResultCachedAudio and true boolean if InlineQueryResult is InlineQueryResultCachedAudio.
+func (s InlineQueryResult) GetInlineQueryResultCachedAudio() (v InlineQueryResultCachedAudio, ok bool) {
+	if !s.IsInlineQueryResultCachedAudio() {
+		return v, false
+	}
+	return s.InlineQueryResultCachedAudio, true
+}
+
+// NewInlineQueryResultCachedAudioInlineQueryResult returns new InlineQueryResult from InlineQueryResultCachedAudio.
+func NewInlineQueryResultCachedAudioInlineQueryResult(v InlineQueryResultCachedAudio) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultCachedAudio(v)
+	return s
+}
+
+// SetInlineQueryResultCachedDocument sets InlineQueryResult to InlineQueryResultCachedDocument.
+func (s *InlineQueryResult) SetInlineQueryResultCachedDocument(v InlineQueryResultCachedDocument) {
+	s.Type = InlineQueryResultCachedDocumentInlineQueryResult
+	s.InlineQueryResultCachedDocument = v
+}
+
+// GetInlineQueryResultCachedDocument returns InlineQueryResultCachedDocument and true boolean if InlineQueryResult is InlineQueryResultCachedDocument.
+func (s InlineQueryResult) GetInlineQueryResultCachedDocument() (v InlineQueryResultCachedDocument, ok bool) {
+	if !s.IsInlineQueryResultCachedDocument() {
+		return v, false
+	}
+	return s.InlineQueryResultCachedDocument, true
+}
+
+// NewInlineQueryResultCachedDocumentInlineQueryResult returns new InlineQueryResult from InlineQueryResultCachedDocument.
+func NewInlineQueryResultCachedDocumentInlineQueryResult(v InlineQueryResultCachedDocument) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultCachedDocument(v)
+	return s
+}
+
+// SetInlineQueryResultCachedGif sets InlineQueryResult to InlineQueryResultCachedGif.
+func (s *InlineQueryResult) SetInlineQueryResultCachedGif(v InlineQueryResultCachedGif) {
+	s.Type = InlineQueryResultCachedGifInlineQueryResult
+	s.InlineQueryResultCachedGif = v
+}
+
+// GetInlineQueryResultCachedGif returns InlineQueryResultCachedGif and true boolean if InlineQueryResult is InlineQueryResultCachedGif.
+func (s InlineQueryResult) GetInlineQueryResultCachedGif() (v InlineQueryResultCachedGif, ok bool) {
+	if !s.IsInlineQueryResultCachedGif() {
+		return v, false
+	}
+	return s.InlineQueryResultCachedGif, true
+}
+
+// NewInlineQueryResultCachedGifInlineQueryResult returns new InlineQueryResult from InlineQueryResultCachedGif.
+func NewInlineQueryResultCachedGifInlineQueryResult(v InlineQueryResultCachedGif) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultCachedGif(v)
+	return s
+}
+
+// SetInlineQueryResultCachedMpeg4Gif sets InlineQueryResult to InlineQueryResultCachedMpeg4Gif.
+func (s *InlineQueryResult) SetInlineQueryResultCachedMpeg4Gif(v InlineQueryResultCachedMpeg4Gif) {
+	s.Type = InlineQueryResultCachedMpeg4GifInlineQueryResult
+	s.InlineQueryResultCachedMpeg4Gif = v
+}
+
+// GetInlineQueryResultCachedMpeg4Gif returns InlineQueryResultCachedMpeg4Gif and true boolean if InlineQueryResult is InlineQueryResultCachedMpeg4Gif.
+func (s InlineQueryResult) GetInlineQueryResultCachedMpeg4Gif() (v InlineQueryResultCachedMpeg4Gif, ok bool) {
+	if !s.IsInlineQueryResultCachedMpeg4Gif() {
+		return v, false
+	}
+	return s.InlineQueryResultCachedMpeg4Gif, true
+}
+
+// NewInlineQueryResultCachedMpeg4GifInlineQueryResult returns new InlineQueryResult from InlineQueryResultCachedMpeg4Gif.
+func NewInlineQueryResultCachedMpeg4GifInlineQueryResult(v InlineQueryResultCachedMpeg4Gif) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultCachedMpeg4Gif(v)
+	return s
+}
+
+// SetInlineQueryResultCachedPhoto sets InlineQueryResult to InlineQueryResultCachedPhoto.
+func (s *InlineQueryResult) SetInlineQueryResultCachedPhoto(v InlineQueryResultCachedPhoto) {
+	s.Type = InlineQueryResultCachedPhotoInlineQueryResult
+	s.InlineQueryResultCachedPhoto = v
+}
+
+// GetInlineQueryResultCachedPhoto returns InlineQueryResultCachedPhoto and true boolean if InlineQueryResult is InlineQueryResultCachedPhoto.
+func (s InlineQueryResult) GetInlineQueryResultCachedPhoto() (v InlineQueryResultCachedPhoto, ok bool) {
+	if !s.IsInlineQueryResultCachedPhoto() {
+		return v, false
+	}
+	return s.InlineQueryResultCachedPhoto, true
+}
+
+// NewInlineQueryResultCachedPhotoInlineQueryResult returns new InlineQueryResult from InlineQueryResultCachedPhoto.
+func NewInlineQueryResultCachedPhotoInlineQueryResult(v InlineQueryResultCachedPhoto) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultCachedPhoto(v)
+	return s
+}
+
+// SetInlineQueryResultCachedSticker sets InlineQueryResult to InlineQueryResultCachedSticker.
+func (s *InlineQueryResult) SetInlineQueryResultCachedSticker(v InlineQueryResultCachedSticker) {
+	s.Type = InlineQueryResultCachedStickerInlineQueryResult
+	s.InlineQueryResultCachedSticker = v
+}
+
+// GetInlineQueryResultCachedSticker returns InlineQueryResultCachedSticker and true boolean if InlineQueryResult is InlineQueryResultCachedSticker.
+func (s InlineQueryResult) GetInlineQueryResultCachedSticker() (v InlineQueryResultCachedSticker, ok bool) {
+	if !s.IsInlineQueryResultCachedSticker() {
+		return v, false
+	}
+	return s.InlineQueryResultCachedSticker, true
+}
+
+// NewInlineQueryResultCachedStickerInlineQueryResult returns new InlineQueryResult from InlineQueryResultCachedSticker.
+func NewInlineQueryResultCachedStickerInlineQueryResult(v InlineQueryResultCachedSticker) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultCachedSticker(v)
+	return s
+}
+
+// SetInlineQueryResultCachedVideo sets InlineQueryResult to InlineQueryResultCachedVideo.
+func (s *InlineQueryResult) SetInlineQueryResultCachedVideo(v InlineQueryResultCachedVideo) {
+	s.Type = InlineQueryResultCachedVideoInlineQueryResult
+	s.InlineQueryResultCachedVideo = v
+}
+
+// GetInlineQueryResultCachedVideo returns InlineQueryResultCachedVideo and true boolean if InlineQueryResult is InlineQueryResultCachedVideo.
+func (s InlineQueryResult) GetInlineQueryResultCachedVideo() (v InlineQueryResultCachedVideo, ok bool) {
+	if !s.IsInlineQueryResultCachedVideo() {
+		return v, false
+	}
+	return s.InlineQueryResultCachedVideo, true
+}
+
+// NewInlineQueryResultCachedVideoInlineQueryResult returns new InlineQueryResult from InlineQueryResultCachedVideo.
+func NewInlineQueryResultCachedVideoInlineQueryResult(v InlineQueryResultCachedVideo) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultCachedVideo(v)
+	return s
+}
+
+// SetInlineQueryResultCachedVoice sets InlineQueryResult to InlineQueryResultCachedVoice.
+func (s *InlineQueryResult) SetInlineQueryResultCachedVoice(v InlineQueryResultCachedVoice) {
+	s.Type = InlineQueryResultCachedVoiceInlineQueryResult
+	s.InlineQueryResultCachedVoice = v
+}
+
+// GetInlineQueryResultCachedVoice returns InlineQueryResultCachedVoice and true boolean if InlineQueryResult is InlineQueryResultCachedVoice.
+func (s InlineQueryResult) GetInlineQueryResultCachedVoice() (v InlineQueryResultCachedVoice, ok bool) {
+	if !s.IsInlineQueryResultCachedVoice() {
+		return v, false
+	}
+	return s.InlineQueryResultCachedVoice, true
+}
+
+// NewInlineQueryResultCachedVoiceInlineQueryResult returns new InlineQueryResult from InlineQueryResultCachedVoice.
+func NewInlineQueryResultCachedVoiceInlineQueryResult(v InlineQueryResultCachedVoice) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultCachedVoice(v)
+	return s
+}
+
+// SetInlineQueryResultArticle sets InlineQueryResult to InlineQueryResultArticle.
+func (s *InlineQueryResult) SetInlineQueryResultArticle(v InlineQueryResultArticle) {
+	s.Type = InlineQueryResultArticleInlineQueryResult
+	s.InlineQueryResultArticle = v
+}
+
+// GetInlineQueryResultArticle returns InlineQueryResultArticle and true boolean if InlineQueryResult is InlineQueryResultArticle.
+func (s InlineQueryResult) GetInlineQueryResultArticle() (v InlineQueryResultArticle, ok bool) {
+	if !s.IsInlineQueryResultArticle() {
+		return v, false
+	}
+	return s.InlineQueryResultArticle, true
+}
+
+// NewInlineQueryResultArticleInlineQueryResult returns new InlineQueryResult from InlineQueryResultArticle.
+func NewInlineQueryResultArticleInlineQueryResult(v InlineQueryResultArticle) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultArticle(v)
+	return s
+}
+
+// SetInlineQueryResultAudio sets InlineQueryResult to InlineQueryResultAudio.
+func (s *InlineQueryResult) SetInlineQueryResultAudio(v InlineQueryResultAudio) {
+	s.Type = InlineQueryResultAudioInlineQueryResult
+	s.InlineQueryResultAudio = v
+}
+
+// GetInlineQueryResultAudio returns InlineQueryResultAudio and true boolean if InlineQueryResult is InlineQueryResultAudio.
+func (s InlineQueryResult) GetInlineQueryResultAudio() (v InlineQueryResultAudio, ok bool) {
+	if !s.IsInlineQueryResultAudio() {
+		return v, false
+	}
+	return s.InlineQueryResultAudio, true
+}
+
+// NewInlineQueryResultAudioInlineQueryResult returns new InlineQueryResult from InlineQueryResultAudio.
+func NewInlineQueryResultAudioInlineQueryResult(v InlineQueryResultAudio) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultAudio(v)
+	return s
+}
+
+// SetInlineQueryResultContact sets InlineQueryResult to InlineQueryResultContact.
+func (s *InlineQueryResult) SetInlineQueryResultContact(v InlineQueryResultContact) {
+	s.Type = InlineQueryResultContactInlineQueryResult
+	s.InlineQueryResultContact = v
+}
+
+// GetInlineQueryResultContact returns InlineQueryResultContact and true boolean if InlineQueryResult is InlineQueryResultContact.
+func (s InlineQueryResult) GetInlineQueryResultContact() (v InlineQueryResultContact, ok bool) {
+	if !s.IsInlineQueryResultContact() {
+		return v, false
+	}
+	return s.InlineQueryResultContact, true
+}
+
+// NewInlineQueryResultContactInlineQueryResult returns new InlineQueryResult from InlineQueryResultContact.
+func NewInlineQueryResultContactInlineQueryResult(v InlineQueryResultContact) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultContact(v)
+	return s
+}
+
+// SetInlineQueryResultGame sets InlineQueryResult to InlineQueryResultGame.
+func (s *InlineQueryResult) SetInlineQueryResultGame(v InlineQueryResultGame) {
+	s.Type = InlineQueryResultGameInlineQueryResult
+	s.InlineQueryResultGame = v
+}
+
+// GetInlineQueryResultGame returns InlineQueryResultGame and true boolean if InlineQueryResult is InlineQueryResultGame.
+func (s InlineQueryResult) GetInlineQueryResultGame() (v InlineQueryResultGame, ok bool) {
+	if !s.IsInlineQueryResultGame() {
+		return v, false
+	}
+	return s.InlineQueryResultGame, true
+}
+
+// NewInlineQueryResultGameInlineQueryResult returns new InlineQueryResult from InlineQueryResultGame.
+func NewInlineQueryResultGameInlineQueryResult(v InlineQueryResultGame) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultGame(v)
+	return s
+}
+
+// SetInlineQueryResultDocument sets InlineQueryResult to InlineQueryResultDocument.
+func (s *InlineQueryResult) SetInlineQueryResultDocument(v InlineQueryResultDocument) {
+	s.Type = InlineQueryResultDocumentInlineQueryResult
+	s.InlineQueryResultDocument = v
+}
+
+// GetInlineQueryResultDocument returns InlineQueryResultDocument and true boolean if InlineQueryResult is InlineQueryResultDocument.
+func (s InlineQueryResult) GetInlineQueryResultDocument() (v InlineQueryResultDocument, ok bool) {
+	if !s.IsInlineQueryResultDocument() {
+		return v, false
+	}
+	return s.InlineQueryResultDocument, true
+}
+
+// NewInlineQueryResultDocumentInlineQueryResult returns new InlineQueryResult from InlineQueryResultDocument.
+func NewInlineQueryResultDocumentInlineQueryResult(v InlineQueryResultDocument) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultDocument(v)
+	return s
+}
+
+// SetInlineQueryResultGif sets InlineQueryResult to InlineQueryResultGif.
+func (s *InlineQueryResult) SetInlineQueryResultGif(v InlineQueryResultGif) {
+	s.Type = InlineQueryResultGifInlineQueryResult
+	s.InlineQueryResultGif = v
+}
+
+// GetInlineQueryResultGif returns InlineQueryResultGif and true boolean if InlineQueryResult is InlineQueryResultGif.
+func (s InlineQueryResult) GetInlineQueryResultGif() (v InlineQueryResultGif, ok bool) {
+	if !s.IsInlineQueryResultGif() {
+		return v, false
+	}
+	return s.InlineQueryResultGif, true
+}
+
+// NewInlineQueryResultGifInlineQueryResult returns new InlineQueryResult from InlineQueryResultGif.
+func NewInlineQueryResultGifInlineQueryResult(v InlineQueryResultGif) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultGif(v)
+	return s
+}
+
+// SetInlineQueryResultLocation sets InlineQueryResult to InlineQueryResultLocation.
+func (s *InlineQueryResult) SetInlineQueryResultLocation(v InlineQueryResultLocation) {
+	s.Type = InlineQueryResultLocationInlineQueryResult
+	s.InlineQueryResultLocation = v
+}
+
+// GetInlineQueryResultLocation returns InlineQueryResultLocation and true boolean if InlineQueryResult is InlineQueryResultLocation.
+func (s InlineQueryResult) GetInlineQueryResultLocation() (v InlineQueryResultLocation, ok bool) {
+	if !s.IsInlineQueryResultLocation() {
+		return v, false
+	}
+	return s.InlineQueryResultLocation, true
+}
+
+// NewInlineQueryResultLocationInlineQueryResult returns new InlineQueryResult from InlineQueryResultLocation.
+func NewInlineQueryResultLocationInlineQueryResult(v InlineQueryResultLocation) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultLocation(v)
+	return s
+}
+
+// SetInlineQueryResultMpeg4Gif sets InlineQueryResult to InlineQueryResultMpeg4Gif.
+func (s *InlineQueryResult) SetInlineQueryResultMpeg4Gif(v InlineQueryResultMpeg4Gif) {
+	s.Type = InlineQueryResultMpeg4GifInlineQueryResult
+	s.InlineQueryResultMpeg4Gif = v
+}
+
+// GetInlineQueryResultMpeg4Gif returns InlineQueryResultMpeg4Gif and true boolean if InlineQueryResult is InlineQueryResultMpeg4Gif.
+func (s InlineQueryResult) GetInlineQueryResultMpeg4Gif() (v InlineQueryResultMpeg4Gif, ok bool) {
+	if !s.IsInlineQueryResultMpeg4Gif() {
+		return v, false
+	}
+	return s.InlineQueryResultMpeg4Gif, true
+}
+
+// NewInlineQueryResultMpeg4GifInlineQueryResult returns new InlineQueryResult from InlineQueryResultMpeg4Gif.
+func NewInlineQueryResultMpeg4GifInlineQueryResult(v InlineQueryResultMpeg4Gif) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultMpeg4Gif(v)
+	return s
+}
+
+// SetInlineQueryResultPhoto sets InlineQueryResult to InlineQueryResultPhoto.
+func (s *InlineQueryResult) SetInlineQueryResultPhoto(v InlineQueryResultPhoto) {
+	s.Type = InlineQueryResultPhotoInlineQueryResult
+	s.InlineQueryResultPhoto = v
+}
+
+// GetInlineQueryResultPhoto returns InlineQueryResultPhoto and true boolean if InlineQueryResult is InlineQueryResultPhoto.
+func (s InlineQueryResult) GetInlineQueryResultPhoto() (v InlineQueryResultPhoto, ok bool) {
+	if !s.IsInlineQueryResultPhoto() {
+		return v, false
+	}
+	return s.InlineQueryResultPhoto, true
+}
+
+// NewInlineQueryResultPhotoInlineQueryResult returns new InlineQueryResult from InlineQueryResultPhoto.
+func NewInlineQueryResultPhotoInlineQueryResult(v InlineQueryResultPhoto) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultPhoto(v)
+	return s
+}
+
+// SetInlineQueryResultVenue sets InlineQueryResult to InlineQueryResultVenue.
+func (s *InlineQueryResult) SetInlineQueryResultVenue(v InlineQueryResultVenue) {
+	s.Type = InlineQueryResultVenueInlineQueryResult
+	s.InlineQueryResultVenue = v
+}
+
+// GetInlineQueryResultVenue returns InlineQueryResultVenue and true boolean if InlineQueryResult is InlineQueryResultVenue.
+func (s InlineQueryResult) GetInlineQueryResultVenue() (v InlineQueryResultVenue, ok bool) {
+	if !s.IsInlineQueryResultVenue() {
+		return v, false
+	}
+	return s.InlineQueryResultVenue, true
+}
+
+// NewInlineQueryResultVenueInlineQueryResult returns new InlineQueryResult from InlineQueryResultVenue.
+func NewInlineQueryResultVenueInlineQueryResult(v InlineQueryResultVenue) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultVenue(v)
+	return s
+}
+
+// SetInlineQueryResultVideo sets InlineQueryResult to InlineQueryResultVideo.
+func (s *InlineQueryResult) SetInlineQueryResultVideo(v InlineQueryResultVideo) {
+	s.Type = InlineQueryResultVideoInlineQueryResult
+	s.InlineQueryResultVideo = v
+}
+
+// GetInlineQueryResultVideo returns InlineQueryResultVideo and true boolean if InlineQueryResult is InlineQueryResultVideo.
+func (s InlineQueryResult) GetInlineQueryResultVideo() (v InlineQueryResultVideo, ok bool) {
+	if !s.IsInlineQueryResultVideo() {
+		return v, false
+	}
+	return s.InlineQueryResultVideo, true
+}
+
+// NewInlineQueryResultVideoInlineQueryResult returns new InlineQueryResult from InlineQueryResultVideo.
+func NewInlineQueryResultVideoInlineQueryResult(v InlineQueryResultVideo) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultVideo(v)
+	return s
+}
+
+// SetInlineQueryResultVoice sets InlineQueryResult to InlineQueryResultVoice.
+func (s *InlineQueryResult) SetInlineQueryResultVoice(v InlineQueryResultVoice) {
+	s.Type = InlineQueryResultVoiceInlineQueryResult
+	s.InlineQueryResultVoice = v
+}
+
+// GetInlineQueryResultVoice returns InlineQueryResultVoice and true boolean if InlineQueryResult is InlineQueryResultVoice.
+func (s InlineQueryResult) GetInlineQueryResultVoice() (v InlineQueryResultVoice, ok bool) {
+	if !s.IsInlineQueryResultVoice() {
+		return v, false
+	}
+	return s.InlineQueryResultVoice, true
+}
+
+// NewInlineQueryResultVoiceInlineQueryResult returns new InlineQueryResult from InlineQueryResultVoice.
+func NewInlineQueryResultVoiceInlineQueryResult(v InlineQueryResultVoice) InlineQueryResult {
+	var s InlineQueryResult
+	s.SetInlineQueryResultVoice(v)
+	return s
+}
+
+// Represents a link to an article or web page.
+// Ref: #/components/schemas/InlineQueryResultArticle
+type InlineQueryResultArticle struct {
+	// Type of the result, must be article.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 Bytes.
+	ID string `json:"id"`
+	// Title of the result.
+	Title               string                  `json:"title"`
+	InputMessageContent InputMessageContent     `json:"input_message_content"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	// URL of the result.
+	URL OptString `json:"url"`
+	// Pass True, if you don't want the URL to be shown in the message.
+	HideURL OptBool `json:"hide_url"`
+	// Short description of the result.
+	Description OptString `json:"description"`
+	// URL of the thumbnail for the result.
+	ThumbURL OptString `json:"thumb_url"`
+	// Thumbnail width.
+	ThumbWidth OptInt `json:"thumb_width"`
+	// Thumbnail height.
+	ThumbHeight OptInt `json:"thumb_height"`
+}
+
+// Represents a link to an MP3 audio file. By default, this audio file will be sent by the user.
+// Alternatively, you can use input_message_content to send a message with the specified content
+// instead of the audio.
+// Ref: #/components/schemas/InlineQueryResultAudio
+type InlineQueryResultAudio struct {
+	// Type of the result, must be audio.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 bytes.
+	ID string `json:"id"`
+	// A valid URL for the audio file.
+	AudioURL string `json:"audio_url"`
+	// Title.
+	Title string `json:"title"`
+	// Caption, 0-1024 characters after entities parsing.
+	Caption OptString `json:"caption"`
+	// Mode for parsing entities in the audio caption. See formatting options for more details.
+	ParseMode OptString `json:"parse_mode"`
+	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
+	CaptionEntities []MessageEntity `json:"caption_entities"`
+	// Performer.
+	Performer OptString `json:"performer"`
+	// Audio duration in seconds.
+	AudioDuration       OptInt                  `json:"audio_duration"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// Represents a link to an MP3 audio file stored on the Telegram servers. By default, this audio file
+// will be sent by the user. Alternatively, you can use input_message_content to send a message with
+// the specified content instead of the audio.
+// Ref: #/components/schemas/InlineQueryResultCachedAudio
+type InlineQueryResultCachedAudio struct {
+	// Type of the result, must be audio.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 bytes.
+	ID string `json:"id"`
+	// A valid file identifier for the audio file.
+	AudioFileID string `json:"audio_file_id"`
+	// Caption, 0-1024 characters after entities parsing.
+	Caption OptString `json:"caption"`
+	// Mode for parsing entities in the audio caption. See formatting options for more details.
+	ParseMode OptString `json:"parse_mode"`
+	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// Represents a link to a file stored on the Telegram servers. By default, this file will be sent by
+// the user with an optional caption. Alternatively, you can use input_message_content to send a
+// message with the specified content instead of the file.
+// Ref: #/components/schemas/InlineQueryResultCachedDocument
+type InlineQueryResultCachedDocument struct {
+	// Type of the result, must be document.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 bytes.
+	ID string `json:"id"`
+	// Title for the result.
+	Title string `json:"title"`
+	// A valid file identifier for the file.
+	DocumentFileID string `json:"document_file_id"`
+	// Short description of the result.
+	Description OptString `json:"description"`
+	// Caption of the document to be sent, 0-1024 characters after entities parsing.
+	Caption OptString `json:"caption"`
+	// Mode for parsing entities in the document caption. See formatting options for more details.
+	ParseMode OptString `json:"parse_mode"`
+	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// Represents a link to an animated GIF file stored on the Telegram servers. By default, this
+// animated GIF file will be sent by the user with an optional caption. Alternatively, you can use
+// input_message_content to send a message with specified content instead of the animation.
+// Ref: #/components/schemas/InlineQueryResultCachedGif
+type InlineQueryResultCachedGif struct {
+	// Type of the result, must be gif.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 bytes.
+	ID string `json:"id"`
+	// A valid file identifier for the GIF file.
+	GIFFileID string `json:"gif_file_id"`
+	// Title for the result.
+	Title OptString `json:"title"`
+	// Caption of the GIF file to be sent, 0-1024 characters after entities parsing.
+	Caption OptString `json:"caption"`
+	// Mode for parsing entities in the caption. See formatting options for more details.
+	ParseMode OptString `json:"parse_mode"`
+	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// Represents a link to a video animation (H.264/MPEG-4 AVC video without sound) stored on the
+// Telegram servers. By default, this animated MPEG-4 file will be sent by the user with an optional
+// caption. Alternatively, you can use input_message_content to send a message with the specified
+// content instead of the animation.
+// Ref: #/components/schemas/InlineQueryResultCachedMpeg4Gif
+type InlineQueryResultCachedMpeg4Gif struct {
+	// Type of the result, must be mpeg4_gif.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 bytes.
+	ID string `json:"id"`
+	// A valid file identifier for the MP4 file.
+	Mpeg4FileID string `json:"mpeg4_file_id"`
+	// Title for the result.
+	Title OptString `json:"title"`
+	// Caption of the MPEG-4 file to be sent, 0-1024 characters after entities parsing.
+	Caption OptString `json:"caption"`
+	// Mode for parsing entities in the caption. See formatting options for more details.
+	ParseMode OptString `json:"parse_mode"`
+	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// Represents a link to a photo stored on the Telegram servers. By default, this photo will be sent
+// by the user with an optional caption. Alternatively, you can use input_message_content to send a
+// message with the specified content instead of the photo.
+// Ref: #/components/schemas/InlineQueryResultCachedPhoto
+type InlineQueryResultCachedPhoto struct {
+	// Type of the result, must be photo.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 bytes.
+	ID string `json:"id"`
+	// A valid file identifier of the photo.
+	PhotoFileID string `json:"photo_file_id"`
+	// Title for the result.
+	Title OptString `json:"title"`
+	// Short description of the result.
+	Description OptString `json:"description"`
+	// Caption of the photo to be sent, 0-1024 characters after entities parsing.
+	Caption OptString `json:"caption"`
+	// Mode for parsing entities in the photo caption. See formatting options for more details.
+	ParseMode OptString `json:"parse_mode"`
+	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// Represents a link to a sticker stored on the Telegram servers. By default, this sticker will be
+// sent by the user. Alternatively, you can use input_message_content to send a message with the
+// specified content instead of the sticker.
+// Ref: #/components/schemas/InlineQueryResultCachedSticker
+type InlineQueryResultCachedSticker struct {
+	// Type of the result, must be sticker.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 bytes.
+	ID string `json:"id"`
+	// A valid file identifier of the sticker.
+	StickerFileID       string                  `json:"sticker_file_id"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// Represents a link to a video file stored on the Telegram servers. By default, this video file will
+// be sent by the user with an optional caption. Alternatively, you can use input_message_content to
+// send a message with the specified content instead of the video.
+// Ref: #/components/schemas/InlineQueryResultCachedVideo
+type InlineQueryResultCachedVideo struct {
+	// Type of the result, must be video.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 bytes.
+	ID string `json:"id"`
+	// A valid file identifier for the video file.
+	VideoFileID string `json:"video_file_id"`
+	// Title for the result.
+	Title string `json:"title"`
+	// Short description of the result.
+	Description OptString `json:"description"`
+	// Caption of the video to be sent, 0-1024 characters after entities parsing.
+	Caption OptString `json:"caption"`
+	// Mode for parsing entities in the video caption. See formatting options for more details.
+	ParseMode OptString `json:"parse_mode"`
+	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// Represents a link to a voice message stored on the Telegram servers. By default, this voice
+// message will be sent by the user. Alternatively, you can use input_message_content to send a
+// message with the specified content instead of the voice message.
+// Ref: #/components/schemas/InlineQueryResultCachedVoice
+type InlineQueryResultCachedVoice struct {
+	// Type of the result, must be voice.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 bytes.
+	ID string `json:"id"`
+	// A valid file identifier for the voice message.
+	VoiceFileID string `json:"voice_file_id"`
+	// Voice message title.
+	Title string `json:"title"`
+	// Caption, 0-1024 characters after entities parsing.
+	Caption OptString `json:"caption"`
+	// Mode for parsing entities in the voice message caption. See formatting options for more details.
+	ParseMode OptString `json:"parse_mode"`
+	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// Represents a contact with a phone number. By default, this contact will be sent by the user.
+// Alternatively, you can use input_message_content to send a message with the specified content
+// instead of the contact.
+// Ref: #/components/schemas/InlineQueryResultContact
+type InlineQueryResultContact struct {
+	// Type of the result, must be contact.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 Bytes.
+	ID string `json:"id"`
+	// Contact's phone number.
+	PhoneNumber string `json:"phone_number"`
+	// Contact's first name.
+	FirstName string `json:"first_name"`
+	// Contact's last name.
+	LastName OptString `json:"last_name"`
+	// Additional data about the contact in the form of a vCard, 0-2048 bytes.
+	Vcard               OptString               `json:"vcard"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	// URL of the thumbnail for the result.
+	ThumbURL OptString `json:"thumb_url"`
+	// Thumbnail width.
+	ThumbWidth OptInt `json:"thumb_width"`
+	// Thumbnail height.
+	ThumbHeight OptInt `json:"thumb_height"`
+}
+
+// Represents a link to a file. By default, this file will be sent by the user with an optional
+// caption. Alternatively, you can use input_message_content to send a message with the specified
+// content instead of the file. Currently, only .PDF and .ZIP files can be sent using this method.
+// Ref: #/components/schemas/InlineQueryResultDocument
+type InlineQueryResultDocument struct {
+	// Type of the result, must be document.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 bytes.
+	ID string `json:"id"`
+	// Title for the result.
+	Title string `json:"title"`
+	// Caption of the document to be sent, 0-1024 characters after entities parsing.
+	Caption OptString `json:"caption"`
+	// Mode for parsing entities in the document caption. See formatting options for more details.
+	ParseMode OptString `json:"parse_mode"`
+	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
+	CaptionEntities []MessageEntity `json:"caption_entities"`
+	// A valid URL for the file.
+	DocumentURL string `json:"document_url"`
+	// Mime type of the content of the file, either “application/pdf” or “application/zip”.
+	MimeType string `json:"mime_type"`
+	// Short description of the result.
+	Description         OptString               `json:"description"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	// URL of the thumbnail (JPEG only) for the file.
+	ThumbURL OptString `json:"thumb_url"`
+	// Thumbnail width.
+	ThumbWidth OptInt `json:"thumb_width"`
+	// Thumbnail height.
+	ThumbHeight OptInt `json:"thumb_height"`
+}
+
+// Represents a Game.
+// Ref: #/components/schemas/InlineQueryResultGame
+type InlineQueryResultGame struct {
+	// Type of the result, must be game.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 bytes.
+	ID string `json:"id"`
+	// Short name of the game.
+	GameShortName string                  `json:"game_short_name"`
+	ReplyMarkup   OptInlineKeyboardMarkup `json:"reply_markup"`
+}
+
+// Represents a link to an animated GIF file. By default, this animated GIF file will be sent by the
+// user with optional caption. Alternatively, you can use input_message_content to send a message
+// with the specified content instead of the animation.
+// Ref: #/components/schemas/InlineQueryResultGif
+type InlineQueryResultGif struct {
+	// Type of the result, must be gif.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 bytes.
+	ID string `json:"id"`
+	// A valid URL for the GIF file. File size must not exceed 1MB.
+	GIFURL string `json:"gif_url"`
+	// Width of the GIF.
+	GIFWidth OptInt `json:"gif_width"`
+	// Height of the GIF.
+	GIFHeight OptInt `json:"gif_height"`
+	// Duration of the GIF in seconds.
+	GIFDuration OptInt `json:"gif_duration"`
+	// URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result.
+	ThumbURL string `json:"thumb_url"`
+	// MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”.
+	// Defaults to “image/jpeg”.
+	ThumbMimeType OptString `json:"thumb_mime_type"`
+	// Title for the result.
+	Title OptString `json:"title"`
+	// Caption of the GIF file to be sent, 0-1024 characters after entities parsing.
+	Caption OptString `json:"caption"`
+	// Mode for parsing entities in the caption. See formatting options for more details.
+	ParseMode OptString `json:"parse_mode"`
+	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// Represents a location on a map. By default, the location will be sent by the user. Alternatively,
+// you can use input_message_content to send a message with the specified content instead of the
+// location.
+// Ref: #/components/schemas/InlineQueryResultLocation
+type InlineQueryResultLocation struct {
+	// Type of the result, must be location.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 Bytes.
+	ID string `json:"id"`
+	// Location latitude in degrees.
+	Latitude float64 `json:"latitude"`
+	// Location longitude in degrees.
+	Longitude float64 `json:"longitude"`
+	// Location title.
+	Title string `json:"title"`
+	// The radius of uncertainty for the location, measured in meters; 0-1500.
+	HorizontalAccuracy OptFloat64 `json:"horizontal_accuracy"`
+	// Period in seconds for which the location can be updated, should be between 60 and 86400.
+	LivePeriod OptInt `json:"live_period"`
+	// For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360
+	// if specified.
+	Heading OptInt `json:"heading"`
+	// For live locations, a maximum distance for proximity alerts about approaching another chat member,
+	// in meters. Must be between 1 and 100000 if specified.
+	ProximityAlertRadius OptInt                  `json:"proximity_alert_radius"`
+	ReplyMarkup          OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent  OptInputMessageContent  `json:"input_message_content"`
+	// URL of the thumbnail for the result.
+	ThumbURL OptString `json:"thumb_url"`
+	// Thumbnail width.
+	ThumbWidth OptInt `json:"thumb_width"`
+	// Thumbnail height.
+	ThumbHeight OptInt `json:"thumb_height"`
+}
+
+// Represents a link to a video animation (H.264/MPEG-4 AVC video without sound). By default, this
+// animated MPEG-4 file will be sent by the user with optional caption. Alternatively, you can use
+// input_message_content to send a message with the specified content instead of the animation.
+// Ref: #/components/schemas/InlineQueryResultMpeg4Gif
+type InlineQueryResultMpeg4Gif struct {
+	// Type of the result, must be mpeg4_gif.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 bytes.
+	ID string `json:"id"`
+	// A valid URL for the MP4 file. File size must not exceed 1MB.
+	Mpeg4URL string `json:"mpeg4_url"`
+	// Video width.
+	Mpeg4Width OptInt `json:"mpeg4_width"`
+	// Video height.
+	Mpeg4Height OptInt `json:"mpeg4_height"`
+	// Video duration in seconds.
+	Mpeg4Duration OptInt `json:"mpeg4_duration"`
+	// URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result.
+	ThumbURL string `json:"thumb_url"`
+	// MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”.
+	// Defaults to “image/jpeg”.
+	ThumbMimeType OptString `json:"thumb_mime_type"`
+	// Title for the result.
+	Title OptString `json:"title"`
+	// Caption of the MPEG-4 file to be sent, 0-1024 characters after entities parsing.
+	Caption OptString `json:"caption"`
+	// Mode for parsing entities in the caption. See formatting options for more details.
+	ParseMode OptString `json:"parse_mode"`
+	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// Represents a link to a photo. By default, this photo will be sent by the user with optional
+// caption. Alternatively, you can use input_message_content to send a message with the specified
+// content instead of the photo.
+// Ref: #/components/schemas/InlineQueryResultPhoto
+type InlineQueryResultPhoto struct {
+	// Type of the result, must be photo.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 bytes.
+	ID string `json:"id"`
+	// A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB.
+	PhotoURL string `json:"photo_url"`
+	// URL of the thumbnail for the photo.
+	ThumbURL string `json:"thumb_url"`
+	// Width of the photo.
+	PhotoWidth OptInt `json:"photo_width"`
+	// Height of the photo.
+	PhotoHeight OptInt `json:"photo_height"`
+	// Title for the result.
+	Title OptString `json:"title"`
+	// Short description of the result.
+	Description OptString `json:"description"`
+	// Caption of the photo to be sent, 0-1024 characters after entities parsing.
+	Caption OptString `json:"caption"`
+	// Mode for parsing entities in the photo caption. See formatting options for more details.
+	ParseMode OptString `json:"parse_mode"`
+	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
+	CaptionEntities     []MessageEntity         `json:"caption_entities"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// Represents a venue. By default, the venue will be sent by the user. Alternatively, you can use
+// input_message_content to send a message with the specified content instead of the venue.
+// Ref: #/components/schemas/InlineQueryResultVenue
+type InlineQueryResultVenue struct {
+	// Type of the result, must be venue.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 Bytes.
+	ID string `json:"id"`
+	// Latitude of the venue location in degrees.
+	Latitude float64 `json:"latitude"`
+	// Longitude of the venue location in degrees.
+	Longitude float64 `json:"longitude"`
+	// Title of the venue.
+	Title string `json:"title"`
+	// Address of the venue.
+	Address string `json:"address"`
+	// Foursquare identifier of the venue if known.
+	FoursquareID OptString `json:"foursquare_id"`
+	// Foursquare type of the venue, if known. (For example, “arts_entertainment/default”,
+	// “arts_entertainment/aquarium” or “food/icecream”.).
+	FoursquareType OptString `json:"foursquare_type"`
+	// Google Places identifier of the venue.
+	GooglePlaceID OptString `json:"google_place_id"`
+	// Google Places type of the venue. (See supported types.).
+	GooglePlaceType     OptString               `json:"google_place_type"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	// URL of the thumbnail for the result.
+	ThumbURL OptString `json:"thumb_url"`
+	// Thumbnail width.
+	ThumbWidth OptInt `json:"thumb_width"`
+	// Thumbnail height.
+	ThumbHeight OptInt `json:"thumb_height"`
+}
+
+// Represents a link to a page containing an embedded video player or a video file. By default, this
+// video file will be sent by the user with an optional caption. Alternatively, you can use
+// input_message_content to send a message with the specified content instead of the video.
+// Ref: #/components/schemas/InlineQueryResultVideo
+type InlineQueryResultVideo struct {
+	// Type of the result, must be video.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 bytes.
+	ID string `json:"id"`
+	// A valid URL for the embedded video player or video file.
+	VideoURL string `json:"video_url"`
+	// Mime type of the content of video url, “text/html” or “video/mp4”.
+	MimeType string `json:"mime_type"`
+	// URL of the thumbnail (JPEG only) for the video.
+	ThumbURL string `json:"thumb_url"`
+	// Title for the result.
+	Title string `json:"title"`
+	// Caption of the video to be sent, 0-1024 characters after entities parsing.
+	Caption OptString `json:"caption"`
+	// Mode for parsing entities in the video caption. See formatting options for more details.
+	ParseMode OptString `json:"parse_mode"`
+	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
+	CaptionEntities []MessageEntity `json:"caption_entities"`
+	// Video width.
+	VideoWidth OptInt `json:"video_width"`
+	// Video height.
+	VideoHeight OptInt `json:"video_height"`
+	// Video duration in seconds.
+	VideoDuration OptInt `json:"video_duration"`
+	// Short description of the result.
+	Description         OptString               `json:"description"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// Represents a link to a voice recording in an .OGG container encoded with OPUS. By default, this
+// voice recording will be sent by the user. Alternatively, you can use input_message_content to send
+// a message with the specified content instead of the the voice message.
+// Ref: #/components/schemas/InlineQueryResultVoice
+type InlineQueryResultVoice struct {
+	// Type of the result, must be voice.
+	Type string `json:"type"`
+	// Unique identifier for this result, 1-64 bytes.
+	ID string `json:"id"`
+	// A valid URL for the voice recording.
+	VoiceURL string `json:"voice_url"`
+	// Recording title.
+	Title string `json:"title"`
+	// Caption, 0-1024 characters after entities parsing.
+	Caption OptString `json:"caption"`
+	// Mode for parsing entities in the voice message caption. See formatting options for more details.
+	ParseMode OptString `json:"parse_mode"`
+	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
+	CaptionEntities []MessageEntity `json:"caption_entities"`
+	// Recording duration in seconds.
+	VoiceDuration       OptInt                  `json:"voice_duration"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// Represents the content of a contact message to be sent as the result of an inline query.
+// Ref: #/components/schemas/InputContactMessageContent
+type InputContactMessageContent struct {
+	// Contact's phone number.
+	PhoneNumber string `json:"phone_number"`
+	// Contact's first name.
+	FirstName string `json:"first_name"`
+	// Contact's last name.
+	LastName OptString `json:"last_name"`
+	// Additional data about the contact in the form of a vCard, 0-2048 bytes.
+	Vcard OptString `json:"vcard"`
+}
+
+// Represents the content of an invoice message to be sent as the result of an inline query.
+// Ref: #/components/schemas/InputInvoiceMessageContent
+type InputInvoiceMessageContent struct {
+	// Product name, 1-32 characters.
+	Title string `json:"title"`
+	// Product description, 1-255 characters.
+	Description string `json:"description"`
+	// Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your
+	// internal processes.
+	Payload string `json:"payload"`
+	// Payment provider token, obtained via Botfather.
+	ProviderToken string `json:"provider_token"`
+	// Three-letter ISO 4217 currency code, see more on currencies.
+	Currency string `json:"currency"`
+	// Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery
+	// cost, delivery tax, bonus, etc.).
+	Prices []LabeledPrice `json:"prices"`
+	// The maximum accepted amount for tips in the smallest units of the currency (integer, not
+	// float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp
+	// parameter in currencies.json, it shows the number of digits past the decimal point for each
+	// currency (2 for the majority of currencies). Defaults to 0.
+	MaxTipAmount OptInt `json:"max_tip_amount"`
+	// A JSON-serialized array of suggested amounts of tip in the smallest units of the currency (integer,
+	//  not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts
+	// must be positive, passed in a strictly increased order and must not exceed max_tip_amount.
+	SuggestedTipAmounts []int64 `json:"suggested_tip_amounts"`
+	// A JSON-serialized object for data about the invoice, which will be shared with the payment
+	// provider. A detailed description of the required fields should be provided by the payment provider.
+	ProviderData OptString `json:"provider_data"`
+	// URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a
+	// service. People like it better when they see what they are paying for.
+	PhotoURL OptString `json:"photo_url"`
+	// Photo size.
+	PhotoSize OptInt `json:"photo_size"`
+	// Photo width.
+	PhotoWidth OptInt `json:"photo_width"`
+	// Photo height.
+	PhotoHeight OptInt `json:"photo_height"`
+	// Pass True, if you require the user's full name to complete the order.
+	NeedName OptBool `json:"need_name"`
+	// Pass True, if you require the user's phone number to complete the order.
+	NeedPhoneNumber OptBool `json:"need_phone_number"`
+	// Pass True, if you require the user's email address to complete the order.
+	NeedEmail OptBool `json:"need_email"`
+	// Pass True, if you require the user's shipping address to complete the order.
+	NeedShippingAddress OptBool `json:"need_shipping_address"`
+	// Pass True, if user's phone number should be sent to provider.
+	SendPhoneNumberToProvider OptBool `json:"send_phone_number_to_provider"`
+	// Pass True, if user's email address should be sent to provider.
+	SendEmailToProvider OptBool `json:"send_email_to_provider"`
+	// Pass True, if the final price depends on the shipping method.
+	IsFlexible OptBool `json:"is_flexible"`
+}
+
+// Represents the content of a location message to be sent as the result of an inline query.
+// Ref: #/components/schemas/InputLocationMessageContent
+type InputLocationMessageContent struct {
+	// Latitude of the location in degrees.
+	Latitude float64 `json:"latitude"`
+	// Longitude of the location in degrees.
+	Longitude float64 `json:"longitude"`
+	// The radius of uncertainty for the location, measured in meters; 0-1500.
+	HorizontalAccuracy OptFloat64 `json:"horizontal_accuracy"`
+	// Period in seconds for which the location can be updated, should be between 60 and 86400.
+	LivePeriod OptInt `json:"live_period"`
+	// For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360
+	// if specified.
+	Heading OptInt `json:"heading"`
+	// For live locations, a maximum distance for proximity alerts about approaching another chat member,
+	// in meters. Must be between 1 and 100000 if specified.
+	ProximityAlertRadius OptInt `json:"proximity_alert_radius"`
+}
 
 // This object represents the content of a media message to be sent.
 // Ref: #/components/schemas/InputMedia
@@ -1610,6 +3156,196 @@ type InputMediaVideo struct {
 	SupportsStreaming OptBool `json:"supports_streaming"`
 }
 
+// This object represents the content of a message to be sent as a result of an inline query.  5
+// types:.
+// Ref: #/components/schemas/InputMessageContent
+// InputMessageContent represents sum type.
+type InputMessageContent struct {
+	Type                        InputMessageContentType // switch on this field
+	InputTextMessageContent     InputTextMessageContent
+	InputLocationMessageContent InputLocationMessageContent
+	InputVenueMessageContent    InputVenueMessageContent
+	InputContactMessageContent  InputContactMessageContent
+	InputInvoiceMessageContent  InputInvoiceMessageContent
+}
+
+// InputMessageContentType is oneOf type of InputMessageContent.
+type InputMessageContentType string
+
+// Possible values for InputMessageContentType.
+const (
+	InputTextMessageContentInputMessageContent     InputMessageContentType = "InputTextMessageContent"
+	InputLocationMessageContentInputMessageContent InputMessageContentType = "InputLocationMessageContent"
+	InputVenueMessageContentInputMessageContent    InputMessageContentType = "InputVenueMessageContent"
+	InputContactMessageContentInputMessageContent  InputMessageContentType = "InputContactMessageContent"
+	InputInvoiceMessageContentInputMessageContent  InputMessageContentType = "InputInvoiceMessageContent"
+)
+
+// IsInputTextMessageContent reports whether InputMessageContent is InputTextMessageContent.
+func (s InputMessageContent) IsInputTextMessageContent() bool {
+	return s.Type == InputTextMessageContentInputMessageContent
+}
+
+// IsInputLocationMessageContent reports whether InputMessageContent is InputLocationMessageContent.
+func (s InputMessageContent) IsInputLocationMessageContent() bool {
+	return s.Type == InputLocationMessageContentInputMessageContent
+}
+
+// IsInputVenueMessageContent reports whether InputMessageContent is InputVenueMessageContent.
+func (s InputMessageContent) IsInputVenueMessageContent() bool {
+	return s.Type == InputVenueMessageContentInputMessageContent
+}
+
+// IsInputContactMessageContent reports whether InputMessageContent is InputContactMessageContent.
+func (s InputMessageContent) IsInputContactMessageContent() bool {
+	return s.Type == InputContactMessageContentInputMessageContent
+}
+
+// IsInputInvoiceMessageContent reports whether InputMessageContent is InputInvoiceMessageContent.
+func (s InputMessageContent) IsInputInvoiceMessageContent() bool {
+	return s.Type == InputInvoiceMessageContentInputMessageContent
+}
+
+// SetInputTextMessageContent sets InputMessageContent to InputTextMessageContent.
+func (s *InputMessageContent) SetInputTextMessageContent(v InputTextMessageContent) {
+	s.Type = InputTextMessageContentInputMessageContent
+	s.InputTextMessageContent = v
+}
+
+// GetInputTextMessageContent returns InputTextMessageContent and true boolean if InputMessageContent is InputTextMessageContent.
+func (s InputMessageContent) GetInputTextMessageContent() (v InputTextMessageContent, ok bool) {
+	if !s.IsInputTextMessageContent() {
+		return v, false
+	}
+	return s.InputTextMessageContent, true
+}
+
+// NewInputTextMessageContentInputMessageContent returns new InputMessageContent from InputTextMessageContent.
+func NewInputTextMessageContentInputMessageContent(v InputTextMessageContent) InputMessageContent {
+	var s InputMessageContent
+	s.SetInputTextMessageContent(v)
+	return s
+}
+
+// SetInputLocationMessageContent sets InputMessageContent to InputLocationMessageContent.
+func (s *InputMessageContent) SetInputLocationMessageContent(v InputLocationMessageContent) {
+	s.Type = InputLocationMessageContentInputMessageContent
+	s.InputLocationMessageContent = v
+}
+
+// GetInputLocationMessageContent returns InputLocationMessageContent and true boolean if InputMessageContent is InputLocationMessageContent.
+func (s InputMessageContent) GetInputLocationMessageContent() (v InputLocationMessageContent, ok bool) {
+	if !s.IsInputLocationMessageContent() {
+		return v, false
+	}
+	return s.InputLocationMessageContent, true
+}
+
+// NewInputLocationMessageContentInputMessageContent returns new InputMessageContent from InputLocationMessageContent.
+func NewInputLocationMessageContentInputMessageContent(v InputLocationMessageContent) InputMessageContent {
+	var s InputMessageContent
+	s.SetInputLocationMessageContent(v)
+	return s
+}
+
+// SetInputVenueMessageContent sets InputMessageContent to InputVenueMessageContent.
+func (s *InputMessageContent) SetInputVenueMessageContent(v InputVenueMessageContent) {
+	s.Type = InputVenueMessageContentInputMessageContent
+	s.InputVenueMessageContent = v
+}
+
+// GetInputVenueMessageContent returns InputVenueMessageContent and true boolean if InputMessageContent is InputVenueMessageContent.
+func (s InputMessageContent) GetInputVenueMessageContent() (v InputVenueMessageContent, ok bool) {
+	if !s.IsInputVenueMessageContent() {
+		return v, false
+	}
+	return s.InputVenueMessageContent, true
+}
+
+// NewInputVenueMessageContentInputMessageContent returns new InputMessageContent from InputVenueMessageContent.
+func NewInputVenueMessageContentInputMessageContent(v InputVenueMessageContent) InputMessageContent {
+	var s InputMessageContent
+	s.SetInputVenueMessageContent(v)
+	return s
+}
+
+// SetInputContactMessageContent sets InputMessageContent to InputContactMessageContent.
+func (s *InputMessageContent) SetInputContactMessageContent(v InputContactMessageContent) {
+	s.Type = InputContactMessageContentInputMessageContent
+	s.InputContactMessageContent = v
+}
+
+// GetInputContactMessageContent returns InputContactMessageContent and true boolean if InputMessageContent is InputContactMessageContent.
+func (s InputMessageContent) GetInputContactMessageContent() (v InputContactMessageContent, ok bool) {
+	if !s.IsInputContactMessageContent() {
+		return v, false
+	}
+	return s.InputContactMessageContent, true
+}
+
+// NewInputContactMessageContentInputMessageContent returns new InputMessageContent from InputContactMessageContent.
+func NewInputContactMessageContentInputMessageContent(v InputContactMessageContent) InputMessageContent {
+	var s InputMessageContent
+	s.SetInputContactMessageContent(v)
+	return s
+}
+
+// SetInputInvoiceMessageContent sets InputMessageContent to InputInvoiceMessageContent.
+func (s *InputMessageContent) SetInputInvoiceMessageContent(v InputInvoiceMessageContent) {
+	s.Type = InputInvoiceMessageContentInputMessageContent
+	s.InputInvoiceMessageContent = v
+}
+
+// GetInputInvoiceMessageContent returns InputInvoiceMessageContent and true boolean if InputMessageContent is InputInvoiceMessageContent.
+func (s InputMessageContent) GetInputInvoiceMessageContent() (v InputInvoiceMessageContent, ok bool) {
+	if !s.IsInputInvoiceMessageContent() {
+		return v, false
+	}
+	return s.InputInvoiceMessageContent, true
+}
+
+// NewInputInvoiceMessageContentInputMessageContent returns new InputMessageContent from InputInvoiceMessageContent.
+func NewInputInvoiceMessageContentInputMessageContent(v InputInvoiceMessageContent) InputMessageContent {
+	var s InputMessageContent
+	s.SetInputInvoiceMessageContent(v)
+	return s
+}
+
+// Represents the content of a text message to be sent as the result of an inline query.
+// Ref: #/components/schemas/InputTextMessageContent
+type InputTextMessageContent struct {
+	// Text of the message to be sent, 1-4096 characters.
+	MessageText string `json:"message_text"`
+	// Mode for parsing entities in the message text. See formatting options for more details.
+	ParseMode OptString `json:"parse_mode"`
+	// List of special entities that appear in message text, which can be specified instead of parse_mode.
+	Entities []MessageEntity `json:"entities"`
+	// Disables link previews for links in the sent message.
+	DisableWebPagePreview OptBool `json:"disable_web_page_preview"`
+}
+
+// Represents the content of a venue message to be sent as the result of an inline query.
+// Ref: #/components/schemas/InputVenueMessageContent
+type InputVenueMessageContent struct {
+	// Latitude of the venue in degrees.
+	Latitude float64 `json:"latitude"`
+	// Longitude of the venue in degrees.
+	Longitude float64 `json:"longitude"`
+	// Name of the venue.
+	Title string `json:"title"`
+	// Address of the venue.
+	Address string `json:"address"`
+	// Foursquare identifier of the venue, if known.
+	FoursquareID OptString `json:"foursquare_id"`
+	// Foursquare type of the venue, if known. (For example, “arts_entertainment/default”,
+	// “arts_entertainment/aquarium” or “food/icecream”.).
+	FoursquareType OptString `json:"foursquare_type"`
+	// Google Places identifier of the venue.
+	GooglePlaceID OptString `json:"google_place_id"`
+	// Google Places type of the venue. (See supported types.).
+	GooglePlaceType OptString `json:"google_place_type"`
+}
+
 // This object contains basic information about an invoice.
 // Ref: #/components/schemas/Invoice
 type Invoice struct {
@@ -1631,7 +3367,77 @@ type Invoice struct {
 // used instead of this object to specify text of the button. Optional fields request_contact,
 // request_location, and request_poll are mutually exclusive.
 // Ref: #/components/schemas/KeyboardButton
+// KeyboardButton represents sum type.
 type KeyboardButton struct {
+	Type                 KeyboardButtonType // switch on this field
+	String               string
+	KeyboardButtonObject KeyboardButtonObject
+}
+
+// KeyboardButtonType is oneOf type of KeyboardButton.
+type KeyboardButtonType string
+
+// Possible values for KeyboardButtonType.
+const (
+	StringKeyboardButton               KeyboardButtonType = "string"
+	KeyboardButtonObjectKeyboardButton KeyboardButtonType = "KeyboardButtonObject"
+)
+
+// IsString reports whether KeyboardButton is string.
+func (s KeyboardButton) IsString() bool { return s.Type == StringKeyboardButton }
+
+// IsKeyboardButtonObject reports whether KeyboardButton is KeyboardButtonObject.
+func (s KeyboardButton) IsKeyboardButtonObject() bool {
+	return s.Type == KeyboardButtonObjectKeyboardButton
+}
+
+// SetString sets KeyboardButton to string.
+func (s *KeyboardButton) SetString(v string) {
+	s.Type = StringKeyboardButton
+	s.String = v
+}
+
+// GetString returns string and true boolean if KeyboardButton is string.
+func (s KeyboardButton) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringKeyboardButton returns new KeyboardButton from string.
+func NewStringKeyboardButton(v string) KeyboardButton {
+	var s KeyboardButton
+	s.SetString(v)
+	return s
+}
+
+// SetKeyboardButtonObject sets KeyboardButton to KeyboardButtonObject.
+func (s *KeyboardButton) SetKeyboardButtonObject(v KeyboardButtonObject) {
+	s.Type = KeyboardButtonObjectKeyboardButton
+	s.KeyboardButtonObject = v
+}
+
+// GetKeyboardButtonObject returns KeyboardButtonObject and true boolean if KeyboardButton is KeyboardButtonObject.
+func (s KeyboardButton) GetKeyboardButtonObject() (v KeyboardButtonObject, ok bool) {
+	if !s.IsKeyboardButtonObject() {
+		return v, false
+	}
+	return s.KeyboardButtonObject, true
+}
+
+// NewKeyboardButtonObjectKeyboardButton returns new KeyboardButton from KeyboardButtonObject.
+func NewKeyboardButtonObjectKeyboardButton(v KeyboardButtonObject) KeyboardButton {
+	var s KeyboardButton
+	s.SetKeyboardButtonObject(v)
+	return s
+}
+
+// This object represents one button of the reply keyboard. For simple text buttons String can be
+// used instead of this object to specify text of the button. Optional fields request_contact,
+// request_location, and request_poll are mutually exclusive.
+// Ref: #/components/schemas/KeyboardButtonObject
+type KeyboardButtonObject struct {
 	// Text of the button. If none of the optional fields are used, it will be sent as a message when the
 	// button is pressed.
 	Text string `json:"text"`
@@ -1699,7 +3505,7 @@ type LoginUrl struct {
 	// about the user will be opened. The data added is the same as described in Receiving authorization
 	// data.NOTE: You must always check the hash of the received data to verify the authentication and
 	// the integrity of the data as described in Checking authorization.
-	URL url.URL `json:"url"`
+	URL string `json:"url"`
 	// New text of the button in forwarded messages.
 	ForwardText OptString `json:"forward_text"`
 	// Username of a bot, which will be used for user authorization. See Setting up a bot for more
@@ -1740,17 +3546,23 @@ type Message struct {
 	ForwardFromChat OptChat `json:"forward_from_chat"`
 	// For messages forwarded from channels, identifier of the original message in the channel.
 	ForwardFromMessageID OptInt `json:"forward_from_message_id"`
-	// For messages forwarded from channels, signature of the post author if present.
+	// For forwarded messages that were originally sent in channels or by an anonymous chat administrator,
+	//  signature of the message sender if present.
 	ForwardSignature OptString `json:"forward_signature"`
 	// Sender's name for messages forwarded from users who disallow adding a link to their account in
 	// forwarded messages.
 	ForwardSenderName OptString `json:"forward_sender_name"`
 	// For forwarded messages, date the original message was sent in Unix time.
-	ForwardDate    OptInt   `json:"forward_date"`
-	ReplyToMessage *Message `json:"reply_to_message"`
-	ViaBot         OptUser  `json:"via_bot"`
+	ForwardDate OptInt `json:"forward_date"`
+	// True, if the message is a channel post that was automatically forwarded to the connected
+	// discussion group.
+	IsAutomaticForward OptBool  `json:"is_automatic_forward"`
+	ReplyToMessage     *Message `json:"reply_to_message"`
+	ViaBot             OptUser  `json:"via_bot"`
 	// Date the message was last edited in Unix time.
 	EditDate OptInt `json:"edit_date"`
+	// True, if the message can't be forwarded.
+	HasProtectedContent OptBool `json:"has_protected_content"`
 	// The unique identifier of a media message group this message belongs to.
 	MediaGroupID OptString `json:"media_group_id"`
 	// Signature of the post author for messages in channels, or the custom title of an anonymous group
@@ -1807,12 +3619,12 @@ type Message struct {
 	// more than 32 significant bits and some programming languages may have difficulty/silent defects in
 	// interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or
 	// double-precision float type are safe for storing this identifier.
-	MigrateToChatID OptInt `json:"migrate_to_chat_id"`
+	MigrateToChatID OptInt64 `json:"migrate_to_chat_id"`
 	// The supergroup has been migrated from a group with the specified identifier. This number may have
 	// more than 32 significant bits and some programming languages may have difficulty/silent defects in
 	// interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or
 	// double-precision float type are safe for storing this identifier.
-	MigrateFromChatID OptInt               `json:"migrate_from_chat_id"`
+	MigrateFromChatID OptInt64             `json:"migrate_from_chat_id"`
 	PinnedMessage     *Message             `json:"pinned_message"`
 	Invoice           OptInvoice           `json:"invoice"`
 	SuccessfulPayment OptSuccessfulPayment `json:"successful_payment"`
@@ -1825,6 +3637,9 @@ type Message struct {
 	VoiceChatEnded               OptVoiceChatEnded               `json:"voice_chat_ended"`
 	VoiceChatParticipantsInvited OptVoiceChatParticipantsInvited `json:"voice_chat_participants_invited"`
 	ReplyMarkup                  OptInlineKeyboardMarkup         `json:"reply_markup"`
+	NewChatMember                OptUser                         `json:"new_chat_member"`
+	NewChatParticipant           OptUser                         `json:"new_chat_participant"`
+	LeftChatParticipant          OptUser                         `json:"left_chat_participant"`
 }
 
 // This object represents a service message about a change in auto-delete timer settings.
@@ -1838,22 +3653,58 @@ type MessageAutoDeleteTimerChanged struct {
 // URLs, etc.
 // Ref: #/components/schemas/MessageEntity
 type MessageEntity struct {
-	// Type of the entity. Can be “mention” (@username), “hashtag” (#hashtag), “cashtag”
-	// ($USD), “bot_command” (/start@jobs_bot), “url” (https://telegram.org), “email”
-	// (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text),
-	// “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough
-	// text), “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable
-	// text URLs), “text_mention” (for users without usernames).
-	Type string `json:"type"`
+	// Type of the entity. Currently, can be “mention” (@username), “hashtag” (#hashtag),
+	// “cashtag” ($USD), “bot_command” (/start@jobs_bot), “url” (https://telegram.org),
+	// “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold
+	// text), “italic” (italic text), “underline” (underlined text), “strikethrough”
+	// (strikethrough text), “spoiler” (spoiler message), “code” (monowidth string), “pre”
+	// (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users
+	// without usernames).
+	Type MessageEntityType `json:"type"`
 	// Offset in UTF-16 code units to the start of the entity.
 	Offset int `json:"offset"`
 	// Length of the entity in UTF-16 code units.
 	Length int `json:"length"`
 	// For “text_link” only, url that will be opened after user taps on the text.
-	URL  OptURL  `json:"url"`
-	User OptUser `json:"user"`
+	URL  OptString `json:"url"`
+	User OptUser   `json:"user"`
 	// For “pre” only, the programming language of the entity text.
 	Language OptString `json:"language"`
+}
+
+// Type of the entity. Currently, can be “mention” (@username), “hashtag” (#hashtag),
+// “cashtag” ($USD), “bot_command” (/start@jobs_bot), “url” (https://telegram.org),
+// “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold
+// text), “italic” (italic text), “underline” (underlined text), “strikethrough”
+// (strikethrough text), “spoiler” (spoiler message), “code” (monowidth string), “pre”
+// (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users
+// without usernames).
+type MessageEntityType string
+
+const (
+	MessageEntityTypeMention       MessageEntityType = "mention"
+	MessageEntityTypeHashtag       MessageEntityType = "hashtag"
+	MessageEntityTypeCashtag       MessageEntityType = "cashtag"
+	MessageEntityTypeBotCommand    MessageEntityType = "bot_command"
+	MessageEntityTypeURL           MessageEntityType = "url"
+	MessageEntityTypeEmail         MessageEntityType = "email"
+	MessageEntityTypePhoneNumber   MessageEntityType = "phone_number"
+	MessageEntityTypeBold          MessageEntityType = "bold"
+	MessageEntityTypeItalic        MessageEntityType = "italic"
+	MessageEntityTypeUnderline     MessageEntityType = "underline"
+	MessageEntityTypeStrikethrough MessageEntityType = "strikethrough"
+	MessageEntityTypeSpoiler       MessageEntityType = "spoiler"
+	MessageEntityTypeCode          MessageEntityType = "code"
+	MessageEntityTypePre           MessageEntityType = "pre"
+	MessageEntityTypeTextLink      MessageEntityType = "text_link"
+	MessageEntityTypeTextMention   MessageEntityType = "text_mention"
+)
+
+// This object represents a unique message identifier.
+// Ref: #/components/schemas/MessageId
+type MessageId struct {
+	// Unique message identifier.
+	MessageID int `json:"message_id"`
 }
 
 // NewOptAnimation returns new OptAnimation with value set to v.
@@ -2040,6 +3891,52 @@ func (o OptBotCommandScope) Or(d BotCommandScope) BotCommandScope {
 	return d
 }
 
+// NewOptCallbackQuery returns new OptCallbackQuery with value set to v.
+func NewOptCallbackQuery(v CallbackQuery) OptCallbackQuery {
+	return OptCallbackQuery{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptCallbackQuery is optional CallbackQuery.
+type OptCallbackQuery struct {
+	Value CallbackQuery
+	Set   bool
+}
+
+// IsSet returns true if OptCallbackQuery was set.
+func (o OptCallbackQuery) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptCallbackQuery) Reset() {
+	var v CallbackQuery
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptCallbackQuery) SetTo(v CallbackQuery) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptCallbackQuery) Get() (v CallbackQuery, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptCallbackQuery) Or(d CallbackQuery) CallbackQuery {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptChat returns new OptChat with value set to v.
 func NewOptChat(v Chat) OptChat {
 	return OptChat{
@@ -2086,6 +3983,98 @@ func (o OptChat) Or(d Chat) Chat {
 	return d
 }
 
+// NewOptChatInviteLink returns new OptChatInviteLink with value set to v.
+func NewOptChatInviteLink(v ChatInviteLink) OptChatInviteLink {
+	return OptChatInviteLink{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChatInviteLink is optional ChatInviteLink.
+type OptChatInviteLink struct {
+	Value ChatInviteLink
+	Set   bool
+}
+
+// IsSet returns true if OptChatInviteLink was set.
+func (o OptChatInviteLink) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChatInviteLink) Reset() {
+	var v ChatInviteLink
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChatInviteLink) SetTo(v ChatInviteLink) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChatInviteLink) Get() (v ChatInviteLink, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptChatInviteLink) Or(d ChatInviteLink) ChatInviteLink {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptChatJoinRequest returns new OptChatJoinRequest with value set to v.
+func NewOptChatJoinRequest(v ChatJoinRequest) OptChatJoinRequest {
+	return OptChatJoinRequest{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChatJoinRequest is optional ChatJoinRequest.
+type OptChatJoinRequest struct {
+	Value ChatJoinRequest
+	Set   bool
+}
+
+// IsSet returns true if OptChatJoinRequest was set.
+func (o OptChatJoinRequest) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChatJoinRequest) Reset() {
+	var v ChatJoinRequest
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChatJoinRequest) SetTo(v ChatJoinRequest) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChatJoinRequest) Get() (v ChatJoinRequest, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptChatJoinRequest) Or(d ChatJoinRequest) ChatJoinRequest {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptChatLocation returns new OptChatLocation with value set to v.
 func NewOptChatLocation(v ChatLocation) OptChatLocation {
 	return OptChatLocation{
@@ -2126,6 +4115,98 @@ func (o OptChatLocation) Get() (v ChatLocation, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptChatLocation) Or(d ChatLocation) ChatLocation {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptChatMember returns new OptChatMember with value set to v.
+func NewOptChatMember(v ChatMember) OptChatMember {
+	return OptChatMember{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChatMember is optional ChatMember.
+type OptChatMember struct {
+	Value ChatMember
+	Set   bool
+}
+
+// IsSet returns true if OptChatMember was set.
+func (o OptChatMember) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChatMember) Reset() {
+	var v ChatMember
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChatMember) SetTo(v ChatMember) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChatMember) Get() (v ChatMember, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptChatMember) Or(d ChatMember) ChatMember {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptChatMemberUpdated returns new OptChatMemberUpdated with value set to v.
+func NewOptChatMemberUpdated(v ChatMemberUpdated) OptChatMemberUpdated {
+	return OptChatMemberUpdated{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChatMemberUpdated is optional ChatMemberUpdated.
+type OptChatMemberUpdated struct {
+	Value ChatMemberUpdated
+	Set   bool
+}
+
+// IsSet returns true if OptChatMemberUpdated was set.
+func (o OptChatMemberUpdated) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChatMemberUpdated) Reset() {
+	var v ChatMemberUpdated
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChatMemberUpdated) SetTo(v ChatMemberUpdated) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChatMemberUpdated) Get() (v ChatMemberUpdated, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptChatMemberUpdated) Or(d ChatMemberUpdated) ChatMemberUpdated {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -2224,6 +4305,52 @@ func (o OptChatPhoto) Or(d ChatPhoto) ChatPhoto {
 	return d
 }
 
+// NewOptChosenInlineResult returns new OptChosenInlineResult with value set to v.
+func NewOptChosenInlineResult(v ChosenInlineResult) OptChosenInlineResult {
+	return OptChosenInlineResult{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChosenInlineResult is optional ChosenInlineResult.
+type OptChosenInlineResult struct {
+	Value ChosenInlineResult
+	Set   bool
+}
+
+// IsSet returns true if OptChosenInlineResult was set.
+func (o OptChosenInlineResult) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChosenInlineResult) Reset() {
+	var v ChosenInlineResult
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChosenInlineResult) SetTo(v ChosenInlineResult) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChosenInlineResult) Get() (v ChosenInlineResult, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptChosenInlineResult) Or(d ChosenInlineResult) ChosenInlineResult {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptContact returns new OptContact with value set to v.
 func NewOptContact(v Contact) OptContact {
 	return OptContact{
@@ -2270,38 +4397,38 @@ func (o OptContact) Or(d Contact) Contact {
 	return d
 }
 
-// NewOptCopyMessageReplyMarkup returns new OptCopyMessageReplyMarkup with value set to v.
-func NewOptCopyMessageReplyMarkup(v CopyMessageReplyMarkup) OptCopyMessageReplyMarkup {
-	return OptCopyMessageReplyMarkup{
+// NewOptDeleteMyCommands returns new OptDeleteMyCommands with value set to v.
+func NewOptDeleteMyCommands(v DeleteMyCommands) OptDeleteMyCommands {
+	return OptDeleteMyCommands{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptCopyMessageReplyMarkup is optional CopyMessageReplyMarkup.
-type OptCopyMessageReplyMarkup struct {
-	Value CopyMessageReplyMarkup
+// OptDeleteMyCommands is optional DeleteMyCommands.
+type OptDeleteMyCommands struct {
+	Value DeleteMyCommands
 	Set   bool
 }
 
-// IsSet returns true if OptCopyMessageReplyMarkup was set.
-func (o OptCopyMessageReplyMarkup) IsSet() bool { return o.Set }
+// IsSet returns true if OptDeleteMyCommands was set.
+func (o OptDeleteMyCommands) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptCopyMessageReplyMarkup) Reset() {
-	var v CopyMessageReplyMarkup
+func (o *OptDeleteMyCommands) Reset() {
+	var v DeleteMyCommands
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptCopyMessageReplyMarkup) SetTo(v CopyMessageReplyMarkup) {
+func (o *OptDeleteMyCommands) SetTo(v DeleteMyCommands) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptCopyMessageReplyMarkup) Get() (v CopyMessageReplyMarkup, ok bool) {
+func (o OptDeleteMyCommands) Get() (v DeleteMyCommands, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2309,7 +4436,53 @@ func (o OptCopyMessageReplyMarkup) Get() (v CopyMessageReplyMarkup, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptCopyMessageReplyMarkup) Or(d CopyMessageReplyMarkup) CopyMessageReplyMarkup {
+func (o OptDeleteMyCommands) Or(d DeleteMyCommands) DeleteMyCommands {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptDeleteWebhook returns new OptDeleteWebhook with value set to v.
+func NewOptDeleteWebhook(v DeleteWebhook) OptDeleteWebhook {
+	return OptDeleteWebhook{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDeleteWebhook is optional DeleteWebhook.
+type OptDeleteWebhook struct {
+	Value DeleteWebhook
+	Set   bool
+}
+
+// IsSet returns true if OptDeleteWebhook was set.
+func (o OptDeleteWebhook) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDeleteWebhook) Reset() {
+	var v DeleteWebhook
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDeleteWebhook) SetTo(v DeleteWebhook) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDeleteWebhook) Get() (v DeleteWebhook, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDeleteWebhook) Or(d DeleteWebhook) DeleteWebhook {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -2408,6 +4581,52 @@ func (o OptDocument) Or(d Document) Document {
 	return d
 }
 
+// NewOptFile returns new OptFile with value set to v.
+func NewOptFile(v File) OptFile {
+	return OptFile{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptFile is optional File.
+type OptFile struct {
+	Value File
+	Set   bool
+}
+
+// IsSet returns true if OptFile was set.
+func (o OptFile) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptFile) Reset() {
+	var v File
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptFile) SetTo(v File) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptFile) Get() (v File, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptFile) Or(d File) File {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptFloat64 returns new OptFloat64 with value set to v.
 func NewOptFloat64(v float64) OptFloat64 {
 	return OptFloat64{
@@ -2500,6 +4719,98 @@ func (o OptGame) Or(d Game) Game {
 	return d
 }
 
+// NewOptGetMyCommands returns new OptGetMyCommands with value set to v.
+func NewOptGetMyCommands(v GetMyCommands) OptGetMyCommands {
+	return OptGetMyCommands{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptGetMyCommands is optional GetMyCommands.
+type OptGetMyCommands struct {
+	Value GetMyCommands
+	Set   bool
+}
+
+// IsSet returns true if OptGetMyCommands was set.
+func (o OptGetMyCommands) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptGetMyCommands) Reset() {
+	var v GetMyCommands
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptGetMyCommands) SetTo(v GetMyCommands) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptGetMyCommands) Get() (v GetMyCommands, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptGetMyCommands) Or(d GetMyCommands) GetMyCommands {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptGetUpdates returns new OptGetUpdates with value set to v.
+func NewOptGetUpdates(v GetUpdates) OptGetUpdates {
+	return OptGetUpdates{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptGetUpdates is optional GetUpdates.
+type OptGetUpdates struct {
+	Value GetUpdates
+	Set   bool
+}
+
+// IsSet returns true if OptGetUpdates was set.
+func (o OptGetUpdates) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptGetUpdates) Reset() {
+	var v GetUpdates
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptGetUpdates) SetTo(v GetUpdates) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptGetUpdates) Get() (v GetUpdates, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptGetUpdates) Or(d GetUpdates) GetUpdates {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptID returns new OptID with value set to v.
 func NewOptID(v ID) OptID {
 	return OptID{
@@ -2586,6 +4897,144 @@ func (o OptInlineKeyboardMarkup) Get() (v InlineKeyboardMarkup, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptInlineKeyboardMarkup) Or(d InlineKeyboardMarkup) InlineKeyboardMarkup {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptInlineQuery returns new OptInlineQuery with value set to v.
+func NewOptInlineQuery(v InlineQuery) OptInlineQuery {
+	return OptInlineQuery{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInlineQuery is optional InlineQuery.
+type OptInlineQuery struct {
+	Value InlineQuery
+	Set   bool
+}
+
+// IsSet returns true if OptInlineQuery was set.
+func (o OptInlineQuery) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInlineQuery) Reset() {
+	var v InlineQuery
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInlineQuery) SetTo(v InlineQuery) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInlineQuery) Get() (v InlineQuery, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInlineQuery) Or(d InlineQuery) InlineQuery {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptInlineQueryChatType returns new OptInlineQueryChatType with value set to v.
+func NewOptInlineQueryChatType(v InlineQueryChatType) OptInlineQueryChatType {
+	return OptInlineQueryChatType{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInlineQueryChatType is optional InlineQueryChatType.
+type OptInlineQueryChatType struct {
+	Value InlineQueryChatType
+	Set   bool
+}
+
+// IsSet returns true if OptInlineQueryChatType was set.
+func (o OptInlineQueryChatType) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInlineQueryChatType) Reset() {
+	var v InlineQueryChatType
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInlineQueryChatType) SetTo(v InlineQueryChatType) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInlineQueryChatType) Get() (v InlineQueryChatType, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInlineQueryChatType) Or(d InlineQueryChatType) InlineQueryChatType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptInputMessageContent returns new OptInputMessageContent with value set to v.
+func NewOptInputMessageContent(v InputMessageContent) OptInputMessageContent {
+	return OptInputMessageContent{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInputMessageContent is optional InputMessageContent.
+type OptInputMessageContent struct {
+	Value InputMessageContent
+	Set   bool
+}
+
+// IsSet returns true if OptInputMessageContent was set.
+func (o OptInputMessageContent) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInputMessageContent) Reset() {
+	var v InputMessageContent
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInputMessageContent) SetTo(v InputMessageContent) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInputMessageContent) Get() (v InputMessageContent, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInputMessageContent) Or(d InputMessageContent) InputMessageContent {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -3006,6 +5455,52 @@ func (o OptMessageAutoDeleteTimerChanged) Or(d MessageAutoDeleteTimerChanged) Me
 	return d
 }
 
+// NewOptMessageId returns new OptMessageId with value set to v.
+func NewOptMessageId(v MessageId) OptMessageId {
+	return OptMessageId{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMessageId is optional MessageId.
+type OptMessageId struct {
+	Value MessageId
+	Set   bool
+}
+
+// IsSet returns true if OptMessageId was set.
+func (o OptMessageId) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMessageId) Reset() {
+	var v MessageId
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMessageId) SetTo(v MessageId) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMessageId) Get() (v MessageId, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMessageId) Or(d MessageId) MessageId {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptOrderInfo returns new OptOrderInfo with value set to v.
 func NewOptOrderInfo(v OrderInfo) OptOrderInfo {
 	return OptOrderInfo{
@@ -3236,6 +5731,98 @@ func (o OptPoll) Or(d Poll) Poll {
 	return d
 }
 
+// NewOptPollAnswer returns new OptPollAnswer with value set to v.
+func NewOptPollAnswer(v PollAnswer) OptPollAnswer {
+	return OptPollAnswer{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPollAnswer is optional PollAnswer.
+type OptPollAnswer struct {
+	Value PollAnswer
+	Set   bool
+}
+
+// IsSet returns true if OptPollAnswer was set.
+func (o OptPollAnswer) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPollAnswer) Reset() {
+	var v PollAnswer
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPollAnswer) SetTo(v PollAnswer) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPollAnswer) Get() (v PollAnswer, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPollAnswer) Or(d PollAnswer) PollAnswer {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptPreCheckoutQuery returns new OptPreCheckoutQuery with value set to v.
+func NewOptPreCheckoutQuery(v PreCheckoutQuery) OptPreCheckoutQuery {
+	return OptPreCheckoutQuery{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPreCheckoutQuery is optional PreCheckoutQuery.
+type OptPreCheckoutQuery struct {
+	Value PreCheckoutQuery
+	Set   bool
+}
+
+// IsSet returns true if OptPreCheckoutQuery was set.
+func (o OptPreCheckoutQuery) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPreCheckoutQuery) Reset() {
+	var v PreCheckoutQuery
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPreCheckoutQuery) SetTo(v PreCheckoutQuery) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPreCheckoutQuery) Get() (v PreCheckoutQuery, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPreCheckoutQuery) Or(d PreCheckoutQuery) PreCheckoutQuery {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptProximityAlertTriggered returns new OptProximityAlertTriggered with value set to v.
 func NewOptProximityAlertTriggered(v ProximityAlertTriggered) OptProximityAlertTriggered {
 	return OptProximityAlertTriggered{
@@ -3328,38 +5915,38 @@ func (o OptResponse) Or(d Response) Response {
 	return d
 }
 
-// NewOptSendAnimationReplyMarkup returns new OptSendAnimationReplyMarkup with value set to v.
-func NewOptSendAnimationReplyMarkup(v SendAnimationReplyMarkup) OptSendAnimationReplyMarkup {
-	return OptSendAnimationReplyMarkup{
+// NewOptResultMessageOrBooleanResult returns new OptResultMessageOrBooleanResult with value set to v.
+func NewOptResultMessageOrBooleanResult(v ResultMessageOrBooleanResult) OptResultMessageOrBooleanResult {
+	return OptResultMessageOrBooleanResult{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptSendAnimationReplyMarkup is optional SendAnimationReplyMarkup.
-type OptSendAnimationReplyMarkup struct {
-	Value SendAnimationReplyMarkup
+// OptResultMessageOrBooleanResult is optional ResultMessageOrBooleanResult.
+type OptResultMessageOrBooleanResult struct {
+	Value ResultMessageOrBooleanResult
 	Set   bool
 }
 
-// IsSet returns true if OptSendAnimationReplyMarkup was set.
-func (o OptSendAnimationReplyMarkup) IsSet() bool { return o.Set }
+// IsSet returns true if OptResultMessageOrBooleanResult was set.
+func (o OptResultMessageOrBooleanResult) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptSendAnimationReplyMarkup) Reset() {
-	var v SendAnimationReplyMarkup
+func (o *OptResultMessageOrBooleanResult) Reset() {
+	var v ResultMessageOrBooleanResult
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptSendAnimationReplyMarkup) SetTo(v SendAnimationReplyMarkup) {
+func (o *OptResultMessageOrBooleanResult) SetTo(v ResultMessageOrBooleanResult) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptSendAnimationReplyMarkup) Get() (v SendAnimationReplyMarkup, ok bool) {
+func (o OptResultMessageOrBooleanResult) Get() (v ResultMessageOrBooleanResult, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -3367,45 +5954,45 @@ func (o OptSendAnimationReplyMarkup) Get() (v SendAnimationReplyMarkup, ok bool)
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptSendAnimationReplyMarkup) Or(d SendAnimationReplyMarkup) SendAnimationReplyMarkup {
+func (o OptResultMessageOrBooleanResult) Or(d ResultMessageOrBooleanResult) ResultMessageOrBooleanResult {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptSendAudioReplyMarkup returns new OptSendAudioReplyMarkup with value set to v.
-func NewOptSendAudioReplyMarkup(v SendAudioReplyMarkup) OptSendAudioReplyMarkup {
-	return OptSendAudioReplyMarkup{
+// NewOptSendReplyMarkup returns new OptSendReplyMarkup with value set to v.
+func NewOptSendReplyMarkup(v SendReplyMarkup) OptSendReplyMarkup {
+	return OptSendReplyMarkup{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptSendAudioReplyMarkup is optional SendAudioReplyMarkup.
-type OptSendAudioReplyMarkup struct {
-	Value SendAudioReplyMarkup
+// OptSendReplyMarkup is optional SendReplyMarkup.
+type OptSendReplyMarkup struct {
+	Value SendReplyMarkup
 	Set   bool
 }
 
-// IsSet returns true if OptSendAudioReplyMarkup was set.
-func (o OptSendAudioReplyMarkup) IsSet() bool { return o.Set }
+// IsSet returns true if OptSendReplyMarkup was set.
+func (o OptSendReplyMarkup) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptSendAudioReplyMarkup) Reset() {
-	var v SendAudioReplyMarkup
+func (o *OptSendReplyMarkup) Reset() {
+	var v SendReplyMarkup
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptSendAudioReplyMarkup) SetTo(v SendAudioReplyMarkup) {
+func (o *OptSendReplyMarkup) SetTo(v SendReplyMarkup) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptSendAudioReplyMarkup) Get() (v SendAudioReplyMarkup, ok bool) {
+func (o OptSendReplyMarkup) Get() (v SendReplyMarkup, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -3413,559 +6000,7 @@ func (o OptSendAudioReplyMarkup) Get() (v SendAudioReplyMarkup, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptSendAudioReplyMarkup) Or(d SendAudioReplyMarkup) SendAudioReplyMarkup {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptSendContactReplyMarkup returns new OptSendContactReplyMarkup with value set to v.
-func NewOptSendContactReplyMarkup(v SendContactReplyMarkup) OptSendContactReplyMarkup {
-	return OptSendContactReplyMarkup{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSendContactReplyMarkup is optional SendContactReplyMarkup.
-type OptSendContactReplyMarkup struct {
-	Value SendContactReplyMarkup
-	Set   bool
-}
-
-// IsSet returns true if OptSendContactReplyMarkup was set.
-func (o OptSendContactReplyMarkup) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSendContactReplyMarkup) Reset() {
-	var v SendContactReplyMarkup
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSendContactReplyMarkup) SetTo(v SendContactReplyMarkup) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSendContactReplyMarkup) Get() (v SendContactReplyMarkup, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSendContactReplyMarkup) Or(d SendContactReplyMarkup) SendContactReplyMarkup {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptSendDiceReplyMarkup returns new OptSendDiceReplyMarkup with value set to v.
-func NewOptSendDiceReplyMarkup(v SendDiceReplyMarkup) OptSendDiceReplyMarkup {
-	return OptSendDiceReplyMarkup{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSendDiceReplyMarkup is optional SendDiceReplyMarkup.
-type OptSendDiceReplyMarkup struct {
-	Value SendDiceReplyMarkup
-	Set   bool
-}
-
-// IsSet returns true if OptSendDiceReplyMarkup was set.
-func (o OptSendDiceReplyMarkup) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSendDiceReplyMarkup) Reset() {
-	var v SendDiceReplyMarkup
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSendDiceReplyMarkup) SetTo(v SendDiceReplyMarkup) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSendDiceReplyMarkup) Get() (v SendDiceReplyMarkup, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSendDiceReplyMarkup) Or(d SendDiceReplyMarkup) SendDiceReplyMarkup {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptSendDocumentReplyMarkup returns new OptSendDocumentReplyMarkup with value set to v.
-func NewOptSendDocumentReplyMarkup(v SendDocumentReplyMarkup) OptSendDocumentReplyMarkup {
-	return OptSendDocumentReplyMarkup{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSendDocumentReplyMarkup is optional SendDocumentReplyMarkup.
-type OptSendDocumentReplyMarkup struct {
-	Value SendDocumentReplyMarkup
-	Set   bool
-}
-
-// IsSet returns true if OptSendDocumentReplyMarkup was set.
-func (o OptSendDocumentReplyMarkup) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSendDocumentReplyMarkup) Reset() {
-	var v SendDocumentReplyMarkup
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSendDocumentReplyMarkup) SetTo(v SendDocumentReplyMarkup) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSendDocumentReplyMarkup) Get() (v SendDocumentReplyMarkup, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSendDocumentReplyMarkup) Or(d SendDocumentReplyMarkup) SendDocumentReplyMarkup {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptSendLocationReplyMarkup returns new OptSendLocationReplyMarkup with value set to v.
-func NewOptSendLocationReplyMarkup(v SendLocationReplyMarkup) OptSendLocationReplyMarkup {
-	return OptSendLocationReplyMarkup{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSendLocationReplyMarkup is optional SendLocationReplyMarkup.
-type OptSendLocationReplyMarkup struct {
-	Value SendLocationReplyMarkup
-	Set   bool
-}
-
-// IsSet returns true if OptSendLocationReplyMarkup was set.
-func (o OptSendLocationReplyMarkup) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSendLocationReplyMarkup) Reset() {
-	var v SendLocationReplyMarkup
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSendLocationReplyMarkup) SetTo(v SendLocationReplyMarkup) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSendLocationReplyMarkup) Get() (v SendLocationReplyMarkup, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSendLocationReplyMarkup) Or(d SendLocationReplyMarkup) SendLocationReplyMarkup {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptSendMessageReplyMarkup returns new OptSendMessageReplyMarkup with value set to v.
-func NewOptSendMessageReplyMarkup(v SendMessageReplyMarkup) OptSendMessageReplyMarkup {
-	return OptSendMessageReplyMarkup{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSendMessageReplyMarkup is optional SendMessageReplyMarkup.
-type OptSendMessageReplyMarkup struct {
-	Value SendMessageReplyMarkup
-	Set   bool
-}
-
-// IsSet returns true if OptSendMessageReplyMarkup was set.
-func (o OptSendMessageReplyMarkup) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSendMessageReplyMarkup) Reset() {
-	var v SendMessageReplyMarkup
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSendMessageReplyMarkup) SetTo(v SendMessageReplyMarkup) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSendMessageReplyMarkup) Get() (v SendMessageReplyMarkup, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSendMessageReplyMarkup) Or(d SendMessageReplyMarkup) SendMessageReplyMarkup {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptSendPhotoReplyMarkup returns new OptSendPhotoReplyMarkup with value set to v.
-func NewOptSendPhotoReplyMarkup(v SendPhotoReplyMarkup) OptSendPhotoReplyMarkup {
-	return OptSendPhotoReplyMarkup{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSendPhotoReplyMarkup is optional SendPhotoReplyMarkup.
-type OptSendPhotoReplyMarkup struct {
-	Value SendPhotoReplyMarkup
-	Set   bool
-}
-
-// IsSet returns true if OptSendPhotoReplyMarkup was set.
-func (o OptSendPhotoReplyMarkup) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSendPhotoReplyMarkup) Reset() {
-	var v SendPhotoReplyMarkup
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSendPhotoReplyMarkup) SetTo(v SendPhotoReplyMarkup) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSendPhotoReplyMarkup) Get() (v SendPhotoReplyMarkup, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSendPhotoReplyMarkup) Or(d SendPhotoReplyMarkup) SendPhotoReplyMarkup {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptSendPollReplyMarkup returns new OptSendPollReplyMarkup with value set to v.
-func NewOptSendPollReplyMarkup(v SendPollReplyMarkup) OptSendPollReplyMarkup {
-	return OptSendPollReplyMarkup{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSendPollReplyMarkup is optional SendPollReplyMarkup.
-type OptSendPollReplyMarkup struct {
-	Value SendPollReplyMarkup
-	Set   bool
-}
-
-// IsSet returns true if OptSendPollReplyMarkup was set.
-func (o OptSendPollReplyMarkup) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSendPollReplyMarkup) Reset() {
-	var v SendPollReplyMarkup
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSendPollReplyMarkup) SetTo(v SendPollReplyMarkup) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSendPollReplyMarkup) Get() (v SendPollReplyMarkup, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSendPollReplyMarkup) Or(d SendPollReplyMarkup) SendPollReplyMarkup {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptSendStickerReplyMarkup returns new OptSendStickerReplyMarkup with value set to v.
-func NewOptSendStickerReplyMarkup(v SendStickerReplyMarkup) OptSendStickerReplyMarkup {
-	return OptSendStickerReplyMarkup{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSendStickerReplyMarkup is optional SendStickerReplyMarkup.
-type OptSendStickerReplyMarkup struct {
-	Value SendStickerReplyMarkup
-	Set   bool
-}
-
-// IsSet returns true if OptSendStickerReplyMarkup was set.
-func (o OptSendStickerReplyMarkup) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSendStickerReplyMarkup) Reset() {
-	var v SendStickerReplyMarkup
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSendStickerReplyMarkup) SetTo(v SendStickerReplyMarkup) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSendStickerReplyMarkup) Get() (v SendStickerReplyMarkup, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSendStickerReplyMarkup) Or(d SendStickerReplyMarkup) SendStickerReplyMarkup {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptSendVenueReplyMarkup returns new OptSendVenueReplyMarkup with value set to v.
-func NewOptSendVenueReplyMarkup(v SendVenueReplyMarkup) OptSendVenueReplyMarkup {
-	return OptSendVenueReplyMarkup{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSendVenueReplyMarkup is optional SendVenueReplyMarkup.
-type OptSendVenueReplyMarkup struct {
-	Value SendVenueReplyMarkup
-	Set   bool
-}
-
-// IsSet returns true if OptSendVenueReplyMarkup was set.
-func (o OptSendVenueReplyMarkup) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSendVenueReplyMarkup) Reset() {
-	var v SendVenueReplyMarkup
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSendVenueReplyMarkup) SetTo(v SendVenueReplyMarkup) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSendVenueReplyMarkup) Get() (v SendVenueReplyMarkup, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSendVenueReplyMarkup) Or(d SendVenueReplyMarkup) SendVenueReplyMarkup {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptSendVideoNoteReplyMarkup returns new OptSendVideoNoteReplyMarkup with value set to v.
-func NewOptSendVideoNoteReplyMarkup(v SendVideoNoteReplyMarkup) OptSendVideoNoteReplyMarkup {
-	return OptSendVideoNoteReplyMarkup{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSendVideoNoteReplyMarkup is optional SendVideoNoteReplyMarkup.
-type OptSendVideoNoteReplyMarkup struct {
-	Value SendVideoNoteReplyMarkup
-	Set   bool
-}
-
-// IsSet returns true if OptSendVideoNoteReplyMarkup was set.
-func (o OptSendVideoNoteReplyMarkup) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSendVideoNoteReplyMarkup) Reset() {
-	var v SendVideoNoteReplyMarkup
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSendVideoNoteReplyMarkup) SetTo(v SendVideoNoteReplyMarkup) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSendVideoNoteReplyMarkup) Get() (v SendVideoNoteReplyMarkup, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSendVideoNoteReplyMarkup) Or(d SendVideoNoteReplyMarkup) SendVideoNoteReplyMarkup {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptSendVideoReplyMarkup returns new OptSendVideoReplyMarkup with value set to v.
-func NewOptSendVideoReplyMarkup(v SendVideoReplyMarkup) OptSendVideoReplyMarkup {
-	return OptSendVideoReplyMarkup{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSendVideoReplyMarkup is optional SendVideoReplyMarkup.
-type OptSendVideoReplyMarkup struct {
-	Value SendVideoReplyMarkup
-	Set   bool
-}
-
-// IsSet returns true if OptSendVideoReplyMarkup was set.
-func (o OptSendVideoReplyMarkup) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSendVideoReplyMarkup) Reset() {
-	var v SendVideoReplyMarkup
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSendVideoReplyMarkup) SetTo(v SendVideoReplyMarkup) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSendVideoReplyMarkup) Get() (v SendVideoReplyMarkup, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSendVideoReplyMarkup) Or(d SendVideoReplyMarkup) SendVideoReplyMarkup {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptSendVoiceReplyMarkup returns new OptSendVoiceReplyMarkup with value set to v.
-func NewOptSendVoiceReplyMarkup(v SendVoiceReplyMarkup) OptSendVoiceReplyMarkup {
-	return OptSendVoiceReplyMarkup{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSendVoiceReplyMarkup is optional SendVoiceReplyMarkup.
-type OptSendVoiceReplyMarkup struct {
-	Value SendVoiceReplyMarkup
-	Set   bool
-}
-
-// IsSet returns true if OptSendVoiceReplyMarkup was set.
-func (o OptSendVoiceReplyMarkup) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSendVoiceReplyMarkup) Reset() {
-	var v SendVoiceReplyMarkup
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSendVoiceReplyMarkup) SetTo(v SendVoiceReplyMarkup) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSendVoiceReplyMarkup) Get() (v SendVoiceReplyMarkup, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSendVoiceReplyMarkup) Or(d SendVoiceReplyMarkup) SendVoiceReplyMarkup {
+func (o OptSendReplyMarkup) Or(d SendReplyMarkup) SendReplyMarkup {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -4018,6 +6053,52 @@ func (o OptShippingAddress) Or(d ShippingAddress) ShippingAddress {
 	return d
 }
 
+// NewOptShippingQuery returns new OptShippingQuery with value set to v.
+func NewOptShippingQuery(v ShippingQuery) OptShippingQuery {
+	return OptShippingQuery{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptShippingQuery is optional ShippingQuery.
+type OptShippingQuery struct {
+	Value ShippingQuery
+	Set   bool
+}
+
+// IsSet returns true if OptShippingQuery was set.
+func (o OptShippingQuery) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptShippingQuery) Reset() {
+	var v ShippingQuery
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptShippingQuery) SetTo(v ShippingQuery) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptShippingQuery) Get() (v ShippingQuery, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptShippingQuery) Or(d ShippingQuery) ShippingQuery {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptSticker returns new OptSticker with value set to v.
 func NewOptSticker(v Sticker) OptSticker {
 	return OptSticker{
@@ -4058,6 +6139,52 @@ func (o OptSticker) Get() (v Sticker, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptSticker) Or(d Sticker) Sticker {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStickerSet returns new OptStickerSet with value set to v.
+func NewOptStickerSet(v StickerSet) OptStickerSet {
+	return OptStickerSet{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStickerSet is optional StickerSet.
+type OptStickerSet struct {
+	Value StickerSet
+	Set   bool
+}
+
+// IsSet returns true if OptStickerSet was set.
+func (o OptStickerSet) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStickerSet) Reset() {
+	var v StickerSet
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStickerSet) SetTo(v StickerSet) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStickerSet) Get() (v StickerSet, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStickerSet) Or(d StickerSet) StickerSet {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -4156,52 +6283,6 @@ func (o OptSuccessfulPayment) Or(d SuccessfulPayment) SuccessfulPayment {
 	return d
 }
 
-// NewOptURL returns new OptURL with value set to v.
-func NewOptURL(v url.URL) OptURL {
-	return OptURL{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptURL is optional url.URL.
-type OptURL struct {
-	Value url.URL
-	Set   bool
-}
-
-// IsSet returns true if OptURL was set.
-func (o OptURL) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptURL) Reset() {
-	var v url.URL
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptURL) SetTo(v url.URL) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptURL) Get() (v url.URL, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptURL) Or(d url.URL) url.URL {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptUser returns new OptUser with value set to v.
 func NewOptUser(v User) OptUser {
 	return OptUser{
@@ -4242,6 +6323,52 @@ func (o OptUser) Get() (v User, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptUser) Or(d User) User {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptUserProfilePhotos returns new OptUserProfilePhotos with value set to v.
+func NewOptUserProfilePhotos(v UserProfilePhotos) OptUserProfilePhotos {
+	return OptUserProfilePhotos{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptUserProfilePhotos is optional UserProfilePhotos.
+type OptUserProfilePhotos struct {
+	Value UserProfilePhotos
+	Set   bool
+}
+
+// IsSet returns true if OptUserProfilePhotos was set.
+func (o OptUserProfilePhotos) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptUserProfilePhotos) Reset() {
+	var v UserProfilePhotos
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptUserProfilePhotos) SetTo(v UserProfilePhotos) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptUserProfilePhotos) Get() (v UserProfilePhotos, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptUserProfilePhotos) Or(d UserProfilePhotos) UserProfilePhotos {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -4570,6 +6697,52 @@ func (o OptVoiceChatScheduled) Or(d VoiceChatScheduled) VoiceChatScheduled {
 	return d
 }
 
+// NewOptWebhookInfo returns new OptWebhookInfo with value set to v.
+func NewOptWebhookInfo(v WebhookInfo) OptWebhookInfo {
+	return OptWebhookInfo{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptWebhookInfo is optional WebhookInfo.
+type OptWebhookInfo struct {
+	Value WebhookInfo
+	Set   bool
+}
+
+// IsSet returns true if OptWebhookInfo was set.
+func (o OptWebhookInfo) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptWebhookInfo) Reset() {
+	var v WebhookInfo
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptWebhookInfo) SetTo(v WebhookInfo) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptWebhookInfo) Get() (v WebhookInfo, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptWebhookInfo) Or(d WebhookInfo) WebhookInfo {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // This object represents information about an order.
 // Ref: #/components/schemas/OrderInfo
 type OrderInfo struct {
@@ -4866,7 +7039,7 @@ type PassportElementErrorDataField struct {
 	Source string `json:"source"`
 	// The section of the user's Telegram Passport which has the error, one of “personal_details”,
 	// “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”.
-	Type string `json:"type"`
+	Type PassportElementErrorDataFieldType `json:"type"`
 	// Name of the data field which has the error.
 	FieldName string `json:"field_name"`
 	// Base64-encoded data hash.
@@ -4874,6 +7047,19 @@ type PassportElementErrorDataField struct {
 	// Error message.
 	Message string `json:"message"`
 }
+
+// The section of the user's Telegram Passport which has the error, one of “personal_details”,
+// “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”.
+type PassportElementErrorDataFieldType string
+
+const (
+	PassportElementErrorDataFieldTypePersonalDetails  PassportElementErrorDataFieldType = "personal_details"
+	PassportElementErrorDataFieldTypePassport         PassportElementErrorDataFieldType = "passport"
+	PassportElementErrorDataFieldTypeDriverLicense    PassportElementErrorDataFieldType = "driver_license"
+	PassportElementErrorDataFieldTypeIdentityCard     PassportElementErrorDataFieldType = "identity_card"
+	PassportElementErrorDataFieldTypeInternalPassport PassportElementErrorDataFieldType = "internal_passport"
+	PassportElementErrorDataFieldTypeAddress          PassportElementErrorDataFieldType = "address"
+)
 
 // Represents an issue with a document scan. The error is considered resolved when the file with the
 // document scan changes.
@@ -4884,12 +7070,25 @@ type PassportElementErrorFile struct {
 	// The section of the user's Telegram Passport which has the issue, one of “utility_bill”,
 	// “bank_statement”, “rental_agreement”, “passport_registration”,
 	// “temporary_registration”.
-	Type string `json:"type"`
+	Type PassportElementErrorFileType `json:"type"`
 	// Base64-encoded file hash.
 	FileHash string `json:"file_hash"`
 	// Error message.
 	Message string `json:"message"`
 }
+
+// The section of the user's Telegram Passport which has the issue, one of “utility_bill”,
+// “bank_statement”, “rental_agreement”, “passport_registration”,
+// “temporary_registration”.
+type PassportElementErrorFileType string
+
+const (
+	PassportElementErrorFileTypeUtilityBill           PassportElementErrorFileType = "utility_bill"
+	PassportElementErrorFileTypeBankStatement         PassportElementErrorFileType = "bank_statement"
+	PassportElementErrorFileTypeRentalAgreement       PassportElementErrorFileType = "rental_agreement"
+	PassportElementErrorFileTypePassportRegistration  PassportElementErrorFileType = "passport_registration"
+	PassportElementErrorFileTypeTemporaryRegistration PassportElementErrorFileType = "temporary_registration"
+)
 
 // Represents an issue with a list of scans. The error is considered resolved when the list of files
 // containing the scans changes.
@@ -4900,12 +7099,25 @@ type PassportElementErrorFiles struct {
 	// The section of the user's Telegram Passport which has the issue, one of “utility_bill”,
 	// “bank_statement”, “rental_agreement”, “passport_registration”,
 	// “temporary_registration”.
-	Type string `json:"type"`
+	Type PassportElementErrorFilesType `json:"type"`
 	// List of base64-encoded file hashes.
 	FileHashes []string `json:"file_hashes"`
 	// Error message.
 	Message string `json:"message"`
 }
+
+// The section of the user's Telegram Passport which has the issue, one of “utility_bill”,
+// “bank_statement”, “rental_agreement”, “passport_registration”,
+// “temporary_registration”.
+type PassportElementErrorFilesType string
+
+const (
+	PassportElementErrorFilesTypeUtilityBill           PassportElementErrorFilesType = "utility_bill"
+	PassportElementErrorFilesTypeBankStatement         PassportElementErrorFilesType = "bank_statement"
+	PassportElementErrorFilesTypeRentalAgreement       PassportElementErrorFilesType = "rental_agreement"
+	PassportElementErrorFilesTypePassportRegistration  PassportElementErrorFilesType = "passport_registration"
+	PassportElementErrorFilesTypeTemporaryRegistration PassportElementErrorFilesType = "temporary_registration"
+)
 
 // Represents an issue with the front side of a document. The error is considered resolved when the
 // file with the front side of the document changes.
@@ -4915,12 +7127,23 @@ type PassportElementErrorFrontSide struct {
 	Source string `json:"source"`
 	// The section of the user's Telegram Passport which has the issue, one of “passport”,
 	// “driver_license”, “identity_card”, “internal_passport”.
-	Type string `json:"type"`
+	Type PassportElementErrorFrontSideType `json:"type"`
 	// Base64-encoded hash of the file with the front side of the document.
 	FileHash string `json:"file_hash"`
 	// Error message.
 	Message string `json:"message"`
 }
+
+// The section of the user's Telegram Passport which has the issue, one of “passport”,
+// “driver_license”, “identity_card”, “internal_passport”.
+type PassportElementErrorFrontSideType string
+
+const (
+	PassportElementErrorFrontSideTypePassport         PassportElementErrorFrontSideType = "passport"
+	PassportElementErrorFrontSideTypeDriverLicense    PassportElementErrorFrontSideType = "driver_license"
+	PassportElementErrorFrontSideTypeIdentityCard     PassportElementErrorFrontSideType = "identity_card"
+	PassportElementErrorFrontSideTypeInternalPassport PassportElementErrorFrontSideType = "internal_passport"
+)
 
 // Represents an issue with the reverse side of a document. The error is considered resolved when the
 // file with reverse side of the document changes.
@@ -4930,12 +7153,21 @@ type PassportElementErrorReverseSide struct {
 	Source string `json:"source"`
 	// The section of the user's Telegram Passport which has the issue, one of “driver_license”,
 	// “identity_card”.
-	Type string `json:"type"`
+	Type PassportElementErrorReverseSideType `json:"type"`
 	// Base64-encoded hash of the file with the reverse side of the document.
 	FileHash string `json:"file_hash"`
 	// Error message.
 	Message string `json:"message"`
 }
+
+// The section of the user's Telegram Passport which has the issue, one of “driver_license”,
+// “identity_card”.
+type PassportElementErrorReverseSideType string
+
+const (
+	PassportElementErrorReverseSideTypeDriverLicense PassportElementErrorReverseSideType = "driver_license"
+	PassportElementErrorReverseSideTypeIdentityCard  PassportElementErrorReverseSideType = "identity_card"
+)
 
 // Represents an issue with the selfie with a document. The error is considered resolved when the
 // file with the selfie changes.
@@ -4945,12 +7177,23 @@ type PassportElementErrorSelfie struct {
 	Source string `json:"source"`
 	// The section of the user's Telegram Passport which has the issue, one of “passport”,
 	// “driver_license”, “identity_card”, “internal_passport”.
-	Type string `json:"type"`
+	Type PassportElementErrorSelfieType `json:"type"`
 	// Base64-encoded hash of the file with the selfie.
 	FileHash string `json:"file_hash"`
 	// Error message.
 	Message string `json:"message"`
 }
+
+// The section of the user's Telegram Passport which has the issue, one of “passport”,
+// “driver_license”, “identity_card”, “internal_passport”.
+type PassportElementErrorSelfieType string
+
+const (
+	PassportElementErrorSelfieTypePassport         PassportElementErrorSelfieType = "passport"
+	PassportElementErrorSelfieTypeDriverLicense    PassportElementErrorSelfieType = "driver_license"
+	PassportElementErrorSelfieTypeIdentityCard     PassportElementErrorSelfieType = "identity_card"
+	PassportElementErrorSelfieTypeInternalPassport PassportElementErrorSelfieType = "internal_passport"
+)
 
 // Represents an issue with one of the files that constitute the translation of a document. The error
 // is considered resolved when the file changes.
@@ -4962,12 +7205,30 @@ type PassportElementErrorTranslationFile struct {
 	// “driver_license”, “identity_card”, “internal_passport”, “utility_bill”,
 	// “bank_statement”, “rental_agreement”, “passport_registration”,
 	// “temporary_registration”.
-	Type string `json:"type"`
+	Type PassportElementErrorTranslationFileType `json:"type"`
 	// Base64-encoded file hash.
 	FileHash string `json:"file_hash"`
 	// Error message.
 	Message string `json:"message"`
 }
+
+// Type of element of the user's Telegram Passport which has the issue, one of “passport”,
+// “driver_license”, “identity_card”, “internal_passport”, “utility_bill”,
+// “bank_statement”, “rental_agreement”, “passport_registration”,
+// “temporary_registration”.
+type PassportElementErrorTranslationFileType string
+
+const (
+	PassportElementErrorTranslationFileTypePassport              PassportElementErrorTranslationFileType = "passport"
+	PassportElementErrorTranslationFileTypeDriverLicense         PassportElementErrorTranslationFileType = "driver_license"
+	PassportElementErrorTranslationFileTypeIdentityCard          PassportElementErrorTranslationFileType = "identity_card"
+	PassportElementErrorTranslationFileTypeInternalPassport      PassportElementErrorTranslationFileType = "internal_passport"
+	PassportElementErrorTranslationFileTypeUtilityBill           PassportElementErrorTranslationFileType = "utility_bill"
+	PassportElementErrorTranslationFileTypeBankStatement         PassportElementErrorTranslationFileType = "bank_statement"
+	PassportElementErrorTranslationFileTypeRentalAgreement       PassportElementErrorTranslationFileType = "rental_agreement"
+	PassportElementErrorTranslationFileTypePassportRegistration  PassportElementErrorTranslationFileType = "passport_registration"
+	PassportElementErrorTranslationFileTypeTemporaryRegistration PassportElementErrorTranslationFileType = "temporary_registration"
+)
 
 // Represents an issue with the translated version of a document. The error is considered resolved
 // when a file with the document translation change.
@@ -4979,12 +7240,30 @@ type PassportElementErrorTranslationFiles struct {
 	// “driver_license”, “identity_card”, “internal_passport”, “utility_bill”,
 	// “bank_statement”, “rental_agreement”, “passport_registration”,
 	// “temporary_registration”.
-	Type string `json:"type"`
+	Type PassportElementErrorTranslationFilesType `json:"type"`
 	// List of base64-encoded file hashes.
 	FileHashes []string `json:"file_hashes"`
 	// Error message.
 	Message string `json:"message"`
 }
+
+// Type of element of the user's Telegram Passport which has the issue, one of “passport”,
+// “driver_license”, “identity_card”, “internal_passport”, “utility_bill”,
+// “bank_statement”, “rental_agreement”, “passport_registration”,
+// “temporary_registration”.
+type PassportElementErrorTranslationFilesType string
+
+const (
+	PassportElementErrorTranslationFilesTypePassport              PassportElementErrorTranslationFilesType = "passport"
+	PassportElementErrorTranslationFilesTypeDriverLicense         PassportElementErrorTranslationFilesType = "driver_license"
+	PassportElementErrorTranslationFilesTypeIdentityCard          PassportElementErrorTranslationFilesType = "identity_card"
+	PassportElementErrorTranslationFilesTypeInternalPassport      PassportElementErrorTranslationFilesType = "internal_passport"
+	PassportElementErrorTranslationFilesTypeUtilityBill           PassportElementErrorTranslationFilesType = "utility_bill"
+	PassportElementErrorTranslationFilesTypeBankStatement         PassportElementErrorTranslationFilesType = "bank_statement"
+	PassportElementErrorTranslationFilesTypeRentalAgreement       PassportElementErrorTranslationFilesType = "rental_agreement"
+	PassportElementErrorTranslationFilesTypePassportRegistration  PassportElementErrorTranslationFilesType = "passport_registration"
+	PassportElementErrorTranslationFilesTypeTemporaryRegistration PassportElementErrorTranslationFilesType = "temporary_registration"
+)
 
 // Represents an issue in an unspecified place. The error is considered resolved when new data is
 // added.
@@ -5058,7 +7337,7 @@ type Poll struct {
 	// True, if the poll is anonymous.
 	IsAnonymous bool `json:"is_anonymous"`
 	// Poll type, currently can be “regular” or “quiz”.
-	Type string `json:"type"`
+	Type PollType `json:"type"`
 	// True, if the poll allows multiple answers.
 	AllowsMultipleAnswers bool `json:"allows_multiple_answers"`
 	// 0-based identifier of the correct answer option. Available only for polls in the quiz mode, which
@@ -5075,6 +7354,17 @@ type Poll struct {
 	CloseDate OptInt `json:"close_date"`
 }
 
+// This object represents an answer of a user in a non-anonymous poll.
+// Ref: #/components/schemas/PollAnswer
+type PollAnswer struct {
+	// Unique poll identifier.
+	PollID string `json:"poll_id"`
+	User   User   `json:"user"`
+	// 0-based identifiers of answer options, chosen by the user. May be empty if the user retracted
+	// their vote.
+	OptionIds []int `json:"option_ids"`
+}
+
 // This object contains information about one answer option in a poll.
 // Ref: #/components/schemas/PollOption
 type PollOption struct {
@@ -5084,12 +7374,39 @@ type PollOption struct {
 	VoterCount int `json:"voter_count"`
 }
 
+// Poll type, currently can be “regular” or “quiz”.
+type PollType string
+
+const (
+	PollTypeRegular PollType = "regular"
+	PollTypeQuiz    PollType = "quiz"
+)
+
+// This object contains information about an incoming pre-checkout query.
+// Ref: #/components/schemas/PreCheckoutQuery
+type PreCheckoutQuery struct {
+	// Unique query identifier.
+	ID   string `json:"id"`
+	From User   `json:"from"`
+	// Three-letter ISO 4217 currency code.
+	Currency string `json:"currency"`
+	// Total price in the smallest units of the currency (integer, not float/double). For example, for a
+	// price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number
+	// of digits past the decimal point for each currency (2 for the majority of currencies).
+	TotalAmount int `json:"total_amount"`
+	// Bot specified invoice payload.
+	InvoicePayload string `json:"invoice_payload"`
+	// Identifier of the shipping option chosen by the user.
+	ShippingOptionID OptString    `json:"shipping_option_id"`
+	OrderInfo        OptOrderInfo `json:"order_info"`
+}
+
 // Input for promoteChatMember.
 // Ref: #/components/schemas/promoteChatMember
 type PromoteChatMember struct {
 	ChatID ID `json:"chat_id"`
 	// Unique identifier of the target user.
-	UserID int `json:"user_id"`
+	UserID int64 `json:"user_id"`
 	// Pass True, if the administrator's presence in the chat is hidden.
 	IsAnonymous OptBool `json:"is_anonymous"`
 	// Pass True, if the administrator can access the chat event log, chat statistics, message statistics
@@ -5190,7 +7507,7 @@ type Response struct {
 type RestrictChatMember struct {
 	ChatID ID `json:"chat_id"`
 	// Unique identifier of the target user.
-	UserID      int             `json:"user_id"`
+	UserID      int64           `json:"user_id"`
 	Permissions ChatPermissions `json:"permissions"`
 	// Date when restrictions will be lifted for the user, unix time. If user is restricted for more than
 	// 366 days or less than 30 seconds from the current time, they are considered to be restricted
@@ -5204,16 +7521,186 @@ type Result struct {
 	Ok     bool    `json:"ok"`
 }
 
-// Ref: #/components/schemas/ResultMsg
-type ResultMsg struct {
+// Ref: #/components/schemas/ResultArrayOfBotCommand
+type ResultArrayOfBotCommand struct {
+	Result []BotCommand `json:"result"`
+	Ok     bool         `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultArrayOfChatMember
+type ResultArrayOfChatMember struct {
+	Result []ChatMember `json:"result"`
+	Ok     bool         `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultArrayOfGameHighScore
+type ResultArrayOfGameHighScore struct {
+	Result []GameHighScore `json:"result"`
+	Ok     bool            `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultArrayOfMessage
+type ResultArrayOfMessage struct {
+	Result []Message `json:"result"`
+	Ok     bool      `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultArrayOfUpdate
+type ResultArrayOfUpdate struct {
+	Result []Update `json:"result"`
+	Ok     bool     `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultChat
+type ResultChat struct {
+	Result OptChat `json:"result"`
+	Ok     bool    `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultChatInviteLink
+type ResultChatInviteLink struct {
+	Result OptChatInviteLink `json:"result"`
+	Ok     bool              `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultChatMember
+type ResultChatMember struct {
+	Result OptChatMember `json:"result"`
+	Ok     bool          `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultFile
+type ResultFile struct {
+	Result OptFile `json:"result"`
+	Ok     bool    `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultInt
+type ResultInt struct {
+	Result OptInt `json:"result"`
+	Ok     bool   `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultMessage
+type ResultMessage struct {
 	Result OptMessage `json:"result"`
 	Ok     bool       `json:"ok"`
 }
 
-// Ref: #/components/schemas/ResultUsr
-type ResultUsr struct {
+// Ref: #/components/schemas/ResultMessageId
+type ResultMessageId struct {
+	Result OptMessageId `json:"result"`
+	Ok     bool         `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultMessageOrBoolean
+type ResultMessageOrBoolean struct {
+	Result OptResultMessageOrBooleanResult `json:"result"`
+	Ok     bool                            `json:"ok"`
+}
+
+// ResultMessageOrBooleanResult represents sum type.
+type ResultMessageOrBooleanResult struct {
+	Type    ResultMessageOrBooleanResultType // switch on this field
+	Message Message
+	Bool    bool
+}
+
+// ResultMessageOrBooleanResultType is oneOf type of ResultMessageOrBooleanResult.
+type ResultMessageOrBooleanResultType string
+
+// Possible values for ResultMessageOrBooleanResultType.
+const (
+	MessageResultMessageOrBooleanResult ResultMessageOrBooleanResultType = "Message"
+	BoolResultMessageOrBooleanResult    ResultMessageOrBooleanResultType = "bool"
+)
+
+// IsMessage reports whether ResultMessageOrBooleanResult is Message.
+func (s ResultMessageOrBooleanResult) IsMessage() bool {
+	return s.Type == MessageResultMessageOrBooleanResult
+}
+
+// IsBool reports whether ResultMessageOrBooleanResult is bool.
+func (s ResultMessageOrBooleanResult) IsBool() bool {
+	return s.Type == BoolResultMessageOrBooleanResult
+}
+
+// SetMessage sets ResultMessageOrBooleanResult to Message.
+func (s *ResultMessageOrBooleanResult) SetMessage(v Message) {
+	s.Type = MessageResultMessageOrBooleanResult
+	s.Message = v
+}
+
+// GetMessage returns Message and true boolean if ResultMessageOrBooleanResult is Message.
+func (s ResultMessageOrBooleanResult) GetMessage() (v Message, ok bool) {
+	if !s.IsMessage() {
+		return v, false
+	}
+	return s.Message, true
+}
+
+// NewMessageResultMessageOrBooleanResult returns new ResultMessageOrBooleanResult from Message.
+func NewMessageResultMessageOrBooleanResult(v Message) ResultMessageOrBooleanResult {
+	var s ResultMessageOrBooleanResult
+	s.SetMessage(v)
+	return s
+}
+
+// SetBool sets ResultMessageOrBooleanResult to bool.
+func (s *ResultMessageOrBooleanResult) SetBool(v bool) {
+	s.Type = BoolResultMessageOrBooleanResult
+	s.Bool = v
+}
+
+// GetBool returns bool and true boolean if ResultMessageOrBooleanResult is bool.
+func (s ResultMessageOrBooleanResult) GetBool() (v bool, ok bool) {
+	if !s.IsBool() {
+		return v, false
+	}
+	return s.Bool, true
+}
+
+// NewBoolResultMessageOrBooleanResult returns new ResultMessageOrBooleanResult from bool.
+func NewBoolResultMessageOrBooleanResult(v bool) ResultMessageOrBooleanResult {
+	var s ResultMessageOrBooleanResult
+	s.SetBool(v)
+	return s
+}
+
+// Ref: #/components/schemas/ResultPoll
+type ResultPoll struct {
+	Result OptPoll `json:"result"`
+	Ok     bool    `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultStickerSet
+type ResultStickerSet struct {
+	Result OptStickerSet `json:"result"`
+	Ok     bool          `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultString
+type ResultString struct {
+	Result OptString `json:"result"`
+	Ok     bool      `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultUser
+type ResultUser struct {
 	Result OptUser `json:"result"`
 	Ok     bool    `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultUserProfilePhotos
+type ResultUserProfilePhotos struct {
+	Result OptUserProfilePhotos `json:"result"`
+	Ok     bool                 `json:"ok"`
+}
+
+// Ref: #/components/schemas/ResultWebhookInfo
+type ResultWebhookInfo struct {
+	Result OptWebhookInfo `json:"result"`
+	Ok     bool           `json:"ok"`
 }
 
 // Input for revokeChatInviteLink.
@@ -5255,139 +7742,13 @@ type SendAnimation struct {
 	CaptionEntities []MessageEntity `json:"caption_entities"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the sent message from forwarding and saving.
+	ProtectContent OptBool `json:"protect_content"`
 	// If the message is a reply, ID of the original message.
 	ReplyToMessageID OptInt `json:"reply_to_message_id"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-	// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-	ReplyMarkup OptSendAnimationReplyMarkup `json:"reply_markup"`
-}
-
-// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-// SendAnimationReplyMarkup represents sum type.
-type SendAnimationReplyMarkup struct {
-	Type                 SendAnimationReplyMarkupType // switch on this field
-	InlineKeyboardMarkup InlineKeyboardMarkup
-	ReplyKeyboardMarkup  ReplyKeyboardMarkup
-	ReplyKeyboardRemove  ReplyKeyboardRemove
-	ForceReply           ForceReply
-}
-
-// SendAnimationReplyMarkupType is oneOf type of SendAnimationReplyMarkup.
-type SendAnimationReplyMarkupType string
-
-// Possible values for SendAnimationReplyMarkupType.
-const (
-	InlineKeyboardMarkupSendAnimationReplyMarkup SendAnimationReplyMarkupType = "InlineKeyboardMarkup"
-	ReplyKeyboardMarkupSendAnimationReplyMarkup  SendAnimationReplyMarkupType = "ReplyKeyboardMarkup"
-	ReplyKeyboardRemoveSendAnimationReplyMarkup  SendAnimationReplyMarkupType = "ReplyKeyboardRemove"
-	ForceReplySendAnimationReplyMarkup           SendAnimationReplyMarkupType = "ForceReply"
-)
-
-// IsInlineKeyboardMarkup reports whether SendAnimationReplyMarkup is InlineKeyboardMarkup.
-func (s SendAnimationReplyMarkup) IsInlineKeyboardMarkup() bool {
-	return s.Type == InlineKeyboardMarkupSendAnimationReplyMarkup
-}
-
-// IsReplyKeyboardMarkup reports whether SendAnimationReplyMarkup is ReplyKeyboardMarkup.
-func (s SendAnimationReplyMarkup) IsReplyKeyboardMarkup() bool {
-	return s.Type == ReplyKeyboardMarkupSendAnimationReplyMarkup
-}
-
-// IsReplyKeyboardRemove reports whether SendAnimationReplyMarkup is ReplyKeyboardRemove.
-func (s SendAnimationReplyMarkup) IsReplyKeyboardRemove() bool {
-	return s.Type == ReplyKeyboardRemoveSendAnimationReplyMarkup
-}
-
-// IsForceReply reports whether SendAnimationReplyMarkup is ForceReply.
-func (s SendAnimationReplyMarkup) IsForceReply() bool {
-	return s.Type == ForceReplySendAnimationReplyMarkup
-}
-
-// SetInlineKeyboardMarkup sets SendAnimationReplyMarkup to InlineKeyboardMarkup.
-func (s *SendAnimationReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
-	s.Type = InlineKeyboardMarkupSendAnimationReplyMarkup
-	s.InlineKeyboardMarkup = v
-}
-
-// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendAnimationReplyMarkup is InlineKeyboardMarkup.
-func (s SendAnimationReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
-	if !s.IsInlineKeyboardMarkup() {
-		return v, false
-	}
-	return s.InlineKeyboardMarkup, true
-}
-
-// NewInlineKeyboardMarkupSendAnimationReplyMarkup returns new SendAnimationReplyMarkup from InlineKeyboardMarkup.
-func NewInlineKeyboardMarkupSendAnimationReplyMarkup(v InlineKeyboardMarkup) SendAnimationReplyMarkup {
-	var s SendAnimationReplyMarkup
-	s.SetInlineKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardMarkup sets SendAnimationReplyMarkup to ReplyKeyboardMarkup.
-func (s *SendAnimationReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
-	s.Type = ReplyKeyboardMarkupSendAnimationReplyMarkup
-	s.ReplyKeyboardMarkup = v
-}
-
-// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendAnimationReplyMarkup is ReplyKeyboardMarkup.
-func (s SendAnimationReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
-	if !s.IsReplyKeyboardMarkup() {
-		return v, false
-	}
-	return s.ReplyKeyboardMarkup, true
-}
-
-// NewReplyKeyboardMarkupSendAnimationReplyMarkup returns new SendAnimationReplyMarkup from ReplyKeyboardMarkup.
-func NewReplyKeyboardMarkupSendAnimationReplyMarkup(v ReplyKeyboardMarkup) SendAnimationReplyMarkup {
-	var s SendAnimationReplyMarkup
-	s.SetReplyKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardRemove sets SendAnimationReplyMarkup to ReplyKeyboardRemove.
-func (s *SendAnimationReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
-	s.Type = ReplyKeyboardRemoveSendAnimationReplyMarkup
-	s.ReplyKeyboardRemove = v
-}
-
-// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendAnimationReplyMarkup is ReplyKeyboardRemove.
-func (s SendAnimationReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
-	if !s.IsReplyKeyboardRemove() {
-		return v, false
-	}
-	return s.ReplyKeyboardRemove, true
-}
-
-// NewReplyKeyboardRemoveSendAnimationReplyMarkup returns new SendAnimationReplyMarkup from ReplyKeyboardRemove.
-func NewReplyKeyboardRemoveSendAnimationReplyMarkup(v ReplyKeyboardRemove) SendAnimationReplyMarkup {
-	var s SendAnimationReplyMarkup
-	s.SetReplyKeyboardRemove(v)
-	return s
-}
-
-// SetForceReply sets SendAnimationReplyMarkup to ForceReply.
-func (s *SendAnimationReplyMarkup) SetForceReply(v ForceReply) {
-	s.Type = ForceReplySendAnimationReplyMarkup
-	s.ForceReply = v
-}
-
-// GetForceReply returns ForceReply and true boolean if SendAnimationReplyMarkup is ForceReply.
-func (s SendAnimationReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
-	if !s.IsForceReply() {
-		return v, false
-	}
-	return s.ForceReply, true
-}
-
-// NewForceReplySendAnimationReplyMarkup returns new SendAnimationReplyMarkup from ForceReply.
-func NewForceReplySendAnimationReplyMarkup(v ForceReply) SendAnimationReplyMarkup {
-	var s SendAnimationReplyMarkup
-	s.SetForceReply(v)
-	return s
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
 }
 
 // Input for sendAudio.
@@ -5420,137 +7781,13 @@ type SendAudio struct {
 	Thumb OptString `json:"thumb"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the sent message from forwarding and saving.
+	ProtectContent OptBool `json:"protect_content"`
 	// If the message is a reply, ID of the original message.
 	ReplyToMessageID OptInt `json:"reply_to_message_id"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-	// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-	ReplyMarkup OptSendAudioReplyMarkup `json:"reply_markup"`
-}
-
-// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-// SendAudioReplyMarkup represents sum type.
-type SendAudioReplyMarkup struct {
-	Type                 SendAudioReplyMarkupType // switch on this field
-	InlineKeyboardMarkup InlineKeyboardMarkup
-	ReplyKeyboardMarkup  ReplyKeyboardMarkup
-	ReplyKeyboardRemove  ReplyKeyboardRemove
-	ForceReply           ForceReply
-}
-
-// SendAudioReplyMarkupType is oneOf type of SendAudioReplyMarkup.
-type SendAudioReplyMarkupType string
-
-// Possible values for SendAudioReplyMarkupType.
-const (
-	InlineKeyboardMarkupSendAudioReplyMarkup SendAudioReplyMarkupType = "InlineKeyboardMarkup"
-	ReplyKeyboardMarkupSendAudioReplyMarkup  SendAudioReplyMarkupType = "ReplyKeyboardMarkup"
-	ReplyKeyboardRemoveSendAudioReplyMarkup  SendAudioReplyMarkupType = "ReplyKeyboardRemove"
-	ForceReplySendAudioReplyMarkup           SendAudioReplyMarkupType = "ForceReply"
-)
-
-// IsInlineKeyboardMarkup reports whether SendAudioReplyMarkup is InlineKeyboardMarkup.
-func (s SendAudioReplyMarkup) IsInlineKeyboardMarkup() bool {
-	return s.Type == InlineKeyboardMarkupSendAudioReplyMarkup
-}
-
-// IsReplyKeyboardMarkup reports whether SendAudioReplyMarkup is ReplyKeyboardMarkup.
-func (s SendAudioReplyMarkup) IsReplyKeyboardMarkup() bool {
-	return s.Type == ReplyKeyboardMarkupSendAudioReplyMarkup
-}
-
-// IsReplyKeyboardRemove reports whether SendAudioReplyMarkup is ReplyKeyboardRemove.
-func (s SendAudioReplyMarkup) IsReplyKeyboardRemove() bool {
-	return s.Type == ReplyKeyboardRemoveSendAudioReplyMarkup
-}
-
-// IsForceReply reports whether SendAudioReplyMarkup is ForceReply.
-func (s SendAudioReplyMarkup) IsForceReply() bool { return s.Type == ForceReplySendAudioReplyMarkup }
-
-// SetInlineKeyboardMarkup sets SendAudioReplyMarkup to InlineKeyboardMarkup.
-func (s *SendAudioReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
-	s.Type = InlineKeyboardMarkupSendAudioReplyMarkup
-	s.InlineKeyboardMarkup = v
-}
-
-// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendAudioReplyMarkup is InlineKeyboardMarkup.
-func (s SendAudioReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
-	if !s.IsInlineKeyboardMarkup() {
-		return v, false
-	}
-	return s.InlineKeyboardMarkup, true
-}
-
-// NewInlineKeyboardMarkupSendAudioReplyMarkup returns new SendAudioReplyMarkup from InlineKeyboardMarkup.
-func NewInlineKeyboardMarkupSendAudioReplyMarkup(v InlineKeyboardMarkup) SendAudioReplyMarkup {
-	var s SendAudioReplyMarkup
-	s.SetInlineKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardMarkup sets SendAudioReplyMarkup to ReplyKeyboardMarkup.
-func (s *SendAudioReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
-	s.Type = ReplyKeyboardMarkupSendAudioReplyMarkup
-	s.ReplyKeyboardMarkup = v
-}
-
-// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendAudioReplyMarkup is ReplyKeyboardMarkup.
-func (s SendAudioReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
-	if !s.IsReplyKeyboardMarkup() {
-		return v, false
-	}
-	return s.ReplyKeyboardMarkup, true
-}
-
-// NewReplyKeyboardMarkupSendAudioReplyMarkup returns new SendAudioReplyMarkup from ReplyKeyboardMarkup.
-func NewReplyKeyboardMarkupSendAudioReplyMarkup(v ReplyKeyboardMarkup) SendAudioReplyMarkup {
-	var s SendAudioReplyMarkup
-	s.SetReplyKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardRemove sets SendAudioReplyMarkup to ReplyKeyboardRemove.
-func (s *SendAudioReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
-	s.Type = ReplyKeyboardRemoveSendAudioReplyMarkup
-	s.ReplyKeyboardRemove = v
-}
-
-// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendAudioReplyMarkup is ReplyKeyboardRemove.
-func (s SendAudioReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
-	if !s.IsReplyKeyboardRemove() {
-		return v, false
-	}
-	return s.ReplyKeyboardRemove, true
-}
-
-// NewReplyKeyboardRemoveSendAudioReplyMarkup returns new SendAudioReplyMarkup from ReplyKeyboardRemove.
-func NewReplyKeyboardRemoveSendAudioReplyMarkup(v ReplyKeyboardRemove) SendAudioReplyMarkup {
-	var s SendAudioReplyMarkup
-	s.SetReplyKeyboardRemove(v)
-	return s
-}
-
-// SetForceReply sets SendAudioReplyMarkup to ForceReply.
-func (s *SendAudioReplyMarkup) SetForceReply(v ForceReply) {
-	s.Type = ForceReplySendAudioReplyMarkup
-	s.ForceReply = v
-}
-
-// GetForceReply returns ForceReply and true boolean if SendAudioReplyMarkup is ForceReply.
-func (s SendAudioReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
-	if !s.IsForceReply() {
-		return v, false
-	}
-	return s.ForceReply, true
-}
-
-// NewForceReplySendAudioReplyMarkup returns new SendAudioReplyMarkup from ForceReply.
-func NewForceReplySendAudioReplyMarkup(v ForceReply) SendAudioReplyMarkup {
-	var s SendAudioReplyMarkup
-	s.SetForceReply(v)
-	return s
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
 }
 
 // Input for sendChatAction.
@@ -5578,139 +7815,13 @@ type SendContact struct {
 	Vcard OptString `json:"vcard"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the sent message from forwarding and saving.
+	ProtectContent OptBool `json:"protect_content"`
 	// If the message is a reply, ID of the original message.
 	ReplyToMessageID OptInt `json:"reply_to_message_id"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-	// keyboard, instructions to remove keyboard or to force a reply from the user.
-	ReplyMarkup OptSendContactReplyMarkup `json:"reply_markup"`
-}
-
-// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-// keyboard, instructions to remove keyboard or to force a reply from the user.
-// SendContactReplyMarkup represents sum type.
-type SendContactReplyMarkup struct {
-	Type                 SendContactReplyMarkupType // switch on this field
-	InlineKeyboardMarkup InlineKeyboardMarkup
-	ReplyKeyboardMarkup  ReplyKeyboardMarkup
-	ReplyKeyboardRemove  ReplyKeyboardRemove
-	ForceReply           ForceReply
-}
-
-// SendContactReplyMarkupType is oneOf type of SendContactReplyMarkup.
-type SendContactReplyMarkupType string
-
-// Possible values for SendContactReplyMarkupType.
-const (
-	InlineKeyboardMarkupSendContactReplyMarkup SendContactReplyMarkupType = "InlineKeyboardMarkup"
-	ReplyKeyboardMarkupSendContactReplyMarkup  SendContactReplyMarkupType = "ReplyKeyboardMarkup"
-	ReplyKeyboardRemoveSendContactReplyMarkup  SendContactReplyMarkupType = "ReplyKeyboardRemove"
-	ForceReplySendContactReplyMarkup           SendContactReplyMarkupType = "ForceReply"
-)
-
-// IsInlineKeyboardMarkup reports whether SendContactReplyMarkup is InlineKeyboardMarkup.
-func (s SendContactReplyMarkup) IsInlineKeyboardMarkup() bool {
-	return s.Type == InlineKeyboardMarkupSendContactReplyMarkup
-}
-
-// IsReplyKeyboardMarkup reports whether SendContactReplyMarkup is ReplyKeyboardMarkup.
-func (s SendContactReplyMarkup) IsReplyKeyboardMarkup() bool {
-	return s.Type == ReplyKeyboardMarkupSendContactReplyMarkup
-}
-
-// IsReplyKeyboardRemove reports whether SendContactReplyMarkup is ReplyKeyboardRemove.
-func (s SendContactReplyMarkup) IsReplyKeyboardRemove() bool {
-	return s.Type == ReplyKeyboardRemoveSendContactReplyMarkup
-}
-
-// IsForceReply reports whether SendContactReplyMarkup is ForceReply.
-func (s SendContactReplyMarkup) IsForceReply() bool {
-	return s.Type == ForceReplySendContactReplyMarkup
-}
-
-// SetInlineKeyboardMarkup sets SendContactReplyMarkup to InlineKeyboardMarkup.
-func (s *SendContactReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
-	s.Type = InlineKeyboardMarkupSendContactReplyMarkup
-	s.InlineKeyboardMarkup = v
-}
-
-// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendContactReplyMarkup is InlineKeyboardMarkup.
-func (s SendContactReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
-	if !s.IsInlineKeyboardMarkup() {
-		return v, false
-	}
-	return s.InlineKeyboardMarkup, true
-}
-
-// NewInlineKeyboardMarkupSendContactReplyMarkup returns new SendContactReplyMarkup from InlineKeyboardMarkup.
-func NewInlineKeyboardMarkupSendContactReplyMarkup(v InlineKeyboardMarkup) SendContactReplyMarkup {
-	var s SendContactReplyMarkup
-	s.SetInlineKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardMarkup sets SendContactReplyMarkup to ReplyKeyboardMarkup.
-func (s *SendContactReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
-	s.Type = ReplyKeyboardMarkupSendContactReplyMarkup
-	s.ReplyKeyboardMarkup = v
-}
-
-// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendContactReplyMarkup is ReplyKeyboardMarkup.
-func (s SendContactReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
-	if !s.IsReplyKeyboardMarkup() {
-		return v, false
-	}
-	return s.ReplyKeyboardMarkup, true
-}
-
-// NewReplyKeyboardMarkupSendContactReplyMarkup returns new SendContactReplyMarkup from ReplyKeyboardMarkup.
-func NewReplyKeyboardMarkupSendContactReplyMarkup(v ReplyKeyboardMarkup) SendContactReplyMarkup {
-	var s SendContactReplyMarkup
-	s.SetReplyKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardRemove sets SendContactReplyMarkup to ReplyKeyboardRemove.
-func (s *SendContactReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
-	s.Type = ReplyKeyboardRemoveSendContactReplyMarkup
-	s.ReplyKeyboardRemove = v
-}
-
-// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendContactReplyMarkup is ReplyKeyboardRemove.
-func (s SendContactReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
-	if !s.IsReplyKeyboardRemove() {
-		return v, false
-	}
-	return s.ReplyKeyboardRemove, true
-}
-
-// NewReplyKeyboardRemoveSendContactReplyMarkup returns new SendContactReplyMarkup from ReplyKeyboardRemove.
-func NewReplyKeyboardRemoveSendContactReplyMarkup(v ReplyKeyboardRemove) SendContactReplyMarkup {
-	var s SendContactReplyMarkup
-	s.SetReplyKeyboardRemove(v)
-	return s
-}
-
-// SetForceReply sets SendContactReplyMarkup to ForceReply.
-func (s *SendContactReplyMarkup) SetForceReply(v ForceReply) {
-	s.Type = ForceReplySendContactReplyMarkup
-	s.ForceReply = v
-}
-
-// GetForceReply returns ForceReply and true boolean if SendContactReplyMarkup is ForceReply.
-func (s SendContactReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
-	if !s.IsForceReply() {
-		return v, false
-	}
-	return s.ForceReply, true
-}
-
-// NewForceReplySendContactReplyMarkup returns new SendContactReplyMarkup from ForceReply.
-func NewForceReplySendContactReplyMarkup(v ForceReply) SendContactReplyMarkup {
-	var s SendContactReplyMarkup
-	s.SetForceReply(v)
-	return s
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
 }
 
 // Input for sendDice.
@@ -5723,137 +7834,13 @@ type SendDice struct {
 	Emoji OptString `json:"emoji"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the sent message from forwarding.
+	ProtectContent OptBool `json:"protect_content"`
 	// If the message is a reply, ID of the original message.
 	ReplyToMessageID OptInt `json:"reply_to_message_id"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-	// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-	ReplyMarkup OptSendDiceReplyMarkup `json:"reply_markup"`
-}
-
-// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-// SendDiceReplyMarkup represents sum type.
-type SendDiceReplyMarkup struct {
-	Type                 SendDiceReplyMarkupType // switch on this field
-	InlineKeyboardMarkup InlineKeyboardMarkup
-	ReplyKeyboardMarkup  ReplyKeyboardMarkup
-	ReplyKeyboardRemove  ReplyKeyboardRemove
-	ForceReply           ForceReply
-}
-
-// SendDiceReplyMarkupType is oneOf type of SendDiceReplyMarkup.
-type SendDiceReplyMarkupType string
-
-// Possible values for SendDiceReplyMarkupType.
-const (
-	InlineKeyboardMarkupSendDiceReplyMarkup SendDiceReplyMarkupType = "InlineKeyboardMarkup"
-	ReplyKeyboardMarkupSendDiceReplyMarkup  SendDiceReplyMarkupType = "ReplyKeyboardMarkup"
-	ReplyKeyboardRemoveSendDiceReplyMarkup  SendDiceReplyMarkupType = "ReplyKeyboardRemove"
-	ForceReplySendDiceReplyMarkup           SendDiceReplyMarkupType = "ForceReply"
-)
-
-// IsInlineKeyboardMarkup reports whether SendDiceReplyMarkup is InlineKeyboardMarkup.
-func (s SendDiceReplyMarkup) IsInlineKeyboardMarkup() bool {
-	return s.Type == InlineKeyboardMarkupSendDiceReplyMarkup
-}
-
-// IsReplyKeyboardMarkup reports whether SendDiceReplyMarkup is ReplyKeyboardMarkup.
-func (s SendDiceReplyMarkup) IsReplyKeyboardMarkup() bool {
-	return s.Type == ReplyKeyboardMarkupSendDiceReplyMarkup
-}
-
-// IsReplyKeyboardRemove reports whether SendDiceReplyMarkup is ReplyKeyboardRemove.
-func (s SendDiceReplyMarkup) IsReplyKeyboardRemove() bool {
-	return s.Type == ReplyKeyboardRemoveSendDiceReplyMarkup
-}
-
-// IsForceReply reports whether SendDiceReplyMarkup is ForceReply.
-func (s SendDiceReplyMarkup) IsForceReply() bool { return s.Type == ForceReplySendDiceReplyMarkup }
-
-// SetInlineKeyboardMarkup sets SendDiceReplyMarkup to InlineKeyboardMarkup.
-func (s *SendDiceReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
-	s.Type = InlineKeyboardMarkupSendDiceReplyMarkup
-	s.InlineKeyboardMarkup = v
-}
-
-// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendDiceReplyMarkup is InlineKeyboardMarkup.
-func (s SendDiceReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
-	if !s.IsInlineKeyboardMarkup() {
-		return v, false
-	}
-	return s.InlineKeyboardMarkup, true
-}
-
-// NewInlineKeyboardMarkupSendDiceReplyMarkup returns new SendDiceReplyMarkup from InlineKeyboardMarkup.
-func NewInlineKeyboardMarkupSendDiceReplyMarkup(v InlineKeyboardMarkup) SendDiceReplyMarkup {
-	var s SendDiceReplyMarkup
-	s.SetInlineKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardMarkup sets SendDiceReplyMarkup to ReplyKeyboardMarkup.
-func (s *SendDiceReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
-	s.Type = ReplyKeyboardMarkupSendDiceReplyMarkup
-	s.ReplyKeyboardMarkup = v
-}
-
-// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendDiceReplyMarkup is ReplyKeyboardMarkup.
-func (s SendDiceReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
-	if !s.IsReplyKeyboardMarkup() {
-		return v, false
-	}
-	return s.ReplyKeyboardMarkup, true
-}
-
-// NewReplyKeyboardMarkupSendDiceReplyMarkup returns new SendDiceReplyMarkup from ReplyKeyboardMarkup.
-func NewReplyKeyboardMarkupSendDiceReplyMarkup(v ReplyKeyboardMarkup) SendDiceReplyMarkup {
-	var s SendDiceReplyMarkup
-	s.SetReplyKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardRemove sets SendDiceReplyMarkup to ReplyKeyboardRemove.
-func (s *SendDiceReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
-	s.Type = ReplyKeyboardRemoveSendDiceReplyMarkup
-	s.ReplyKeyboardRemove = v
-}
-
-// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendDiceReplyMarkup is ReplyKeyboardRemove.
-func (s SendDiceReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
-	if !s.IsReplyKeyboardRemove() {
-		return v, false
-	}
-	return s.ReplyKeyboardRemove, true
-}
-
-// NewReplyKeyboardRemoveSendDiceReplyMarkup returns new SendDiceReplyMarkup from ReplyKeyboardRemove.
-func NewReplyKeyboardRemoveSendDiceReplyMarkup(v ReplyKeyboardRemove) SendDiceReplyMarkup {
-	var s SendDiceReplyMarkup
-	s.SetReplyKeyboardRemove(v)
-	return s
-}
-
-// SetForceReply sets SendDiceReplyMarkup to ForceReply.
-func (s *SendDiceReplyMarkup) SetForceReply(v ForceReply) {
-	s.Type = ForceReplySendDiceReplyMarkup
-	s.ForceReply = v
-}
-
-// GetForceReply returns ForceReply and true boolean if SendDiceReplyMarkup is ForceReply.
-func (s SendDiceReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
-	if !s.IsForceReply() {
-		return v, false
-	}
-	return s.ForceReply, true
-}
-
-// NewForceReplySendDiceReplyMarkup returns new SendDiceReplyMarkup from ForceReply.
-func NewForceReplySendDiceReplyMarkup(v ForceReply) SendDiceReplyMarkup {
-	var s SendDiceReplyMarkup
-	s.SetForceReply(v)
-	return s
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
 }
 
 // Input for sendDocument.
@@ -5883,151 +7870,27 @@ type SendDocument struct {
 	DisableContentTypeDetection OptBool `json:"disable_content_type_detection"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the sent message from forwarding and saving.
+	ProtectContent OptBool `json:"protect_content"`
 	// If the message is a reply, ID of the original message.
 	ReplyToMessageID OptInt `json:"reply_to_message_id"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-	// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-	ReplyMarkup OptSendDocumentReplyMarkup `json:"reply_markup"`
-}
-
-// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-// SendDocumentReplyMarkup represents sum type.
-type SendDocumentReplyMarkup struct {
-	Type                 SendDocumentReplyMarkupType // switch on this field
-	InlineKeyboardMarkup InlineKeyboardMarkup
-	ReplyKeyboardMarkup  ReplyKeyboardMarkup
-	ReplyKeyboardRemove  ReplyKeyboardRemove
-	ForceReply           ForceReply
-}
-
-// SendDocumentReplyMarkupType is oneOf type of SendDocumentReplyMarkup.
-type SendDocumentReplyMarkupType string
-
-// Possible values for SendDocumentReplyMarkupType.
-const (
-	InlineKeyboardMarkupSendDocumentReplyMarkup SendDocumentReplyMarkupType = "InlineKeyboardMarkup"
-	ReplyKeyboardMarkupSendDocumentReplyMarkup  SendDocumentReplyMarkupType = "ReplyKeyboardMarkup"
-	ReplyKeyboardRemoveSendDocumentReplyMarkup  SendDocumentReplyMarkupType = "ReplyKeyboardRemove"
-	ForceReplySendDocumentReplyMarkup           SendDocumentReplyMarkupType = "ForceReply"
-)
-
-// IsInlineKeyboardMarkup reports whether SendDocumentReplyMarkup is InlineKeyboardMarkup.
-func (s SendDocumentReplyMarkup) IsInlineKeyboardMarkup() bool {
-	return s.Type == InlineKeyboardMarkupSendDocumentReplyMarkup
-}
-
-// IsReplyKeyboardMarkup reports whether SendDocumentReplyMarkup is ReplyKeyboardMarkup.
-func (s SendDocumentReplyMarkup) IsReplyKeyboardMarkup() bool {
-	return s.Type == ReplyKeyboardMarkupSendDocumentReplyMarkup
-}
-
-// IsReplyKeyboardRemove reports whether SendDocumentReplyMarkup is ReplyKeyboardRemove.
-func (s SendDocumentReplyMarkup) IsReplyKeyboardRemove() bool {
-	return s.Type == ReplyKeyboardRemoveSendDocumentReplyMarkup
-}
-
-// IsForceReply reports whether SendDocumentReplyMarkup is ForceReply.
-func (s SendDocumentReplyMarkup) IsForceReply() bool {
-	return s.Type == ForceReplySendDocumentReplyMarkup
-}
-
-// SetInlineKeyboardMarkup sets SendDocumentReplyMarkup to InlineKeyboardMarkup.
-func (s *SendDocumentReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
-	s.Type = InlineKeyboardMarkupSendDocumentReplyMarkup
-	s.InlineKeyboardMarkup = v
-}
-
-// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendDocumentReplyMarkup is InlineKeyboardMarkup.
-func (s SendDocumentReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
-	if !s.IsInlineKeyboardMarkup() {
-		return v, false
-	}
-	return s.InlineKeyboardMarkup, true
-}
-
-// NewInlineKeyboardMarkupSendDocumentReplyMarkup returns new SendDocumentReplyMarkup from InlineKeyboardMarkup.
-func NewInlineKeyboardMarkupSendDocumentReplyMarkup(v InlineKeyboardMarkup) SendDocumentReplyMarkup {
-	var s SendDocumentReplyMarkup
-	s.SetInlineKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardMarkup sets SendDocumentReplyMarkup to ReplyKeyboardMarkup.
-func (s *SendDocumentReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
-	s.Type = ReplyKeyboardMarkupSendDocumentReplyMarkup
-	s.ReplyKeyboardMarkup = v
-}
-
-// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendDocumentReplyMarkup is ReplyKeyboardMarkup.
-func (s SendDocumentReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
-	if !s.IsReplyKeyboardMarkup() {
-		return v, false
-	}
-	return s.ReplyKeyboardMarkup, true
-}
-
-// NewReplyKeyboardMarkupSendDocumentReplyMarkup returns new SendDocumentReplyMarkup from ReplyKeyboardMarkup.
-func NewReplyKeyboardMarkupSendDocumentReplyMarkup(v ReplyKeyboardMarkup) SendDocumentReplyMarkup {
-	var s SendDocumentReplyMarkup
-	s.SetReplyKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardRemove sets SendDocumentReplyMarkup to ReplyKeyboardRemove.
-func (s *SendDocumentReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
-	s.Type = ReplyKeyboardRemoveSendDocumentReplyMarkup
-	s.ReplyKeyboardRemove = v
-}
-
-// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendDocumentReplyMarkup is ReplyKeyboardRemove.
-func (s SendDocumentReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
-	if !s.IsReplyKeyboardRemove() {
-		return v, false
-	}
-	return s.ReplyKeyboardRemove, true
-}
-
-// NewReplyKeyboardRemoveSendDocumentReplyMarkup returns new SendDocumentReplyMarkup from ReplyKeyboardRemove.
-func NewReplyKeyboardRemoveSendDocumentReplyMarkup(v ReplyKeyboardRemove) SendDocumentReplyMarkup {
-	var s SendDocumentReplyMarkup
-	s.SetReplyKeyboardRemove(v)
-	return s
-}
-
-// SetForceReply sets SendDocumentReplyMarkup to ForceReply.
-func (s *SendDocumentReplyMarkup) SetForceReply(v ForceReply) {
-	s.Type = ForceReplySendDocumentReplyMarkup
-	s.ForceReply = v
-}
-
-// GetForceReply returns ForceReply and true boolean if SendDocumentReplyMarkup is ForceReply.
-func (s SendDocumentReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
-	if !s.IsForceReply() {
-		return v, false
-	}
-	return s.ForceReply, true
-}
-
-// NewForceReplySendDocumentReplyMarkup returns new SendDocumentReplyMarkup from ForceReply.
-func NewForceReplySendDocumentReplyMarkup(v ForceReply) SendDocumentReplyMarkup {
-	var s SendDocumentReplyMarkup
-	s.SetForceReply(v)
-	return s
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
 }
 
 // Input for sendGame.
 // Ref: #/components/schemas/sendGame
 type SendGame struct {
 	// Unique identifier for the target chat.
-	ChatID int `json:"chat_id"`
+	ChatID int64 `json:"chat_id"`
 	// Short name of the game, serves as the unique identifier for the game. Set up your games via
 	// Botfather.
 	GameShortName string `json:"game_short_name"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the sent message from forwarding and saving.
+	ProtectContent OptBool `json:"protect_content"`
 	// If the message is a reply, ID of the original message.
 	ReplyToMessageID OptInt `json:"reply_to_message_id"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
@@ -6061,7 +7924,7 @@ type SendInvoice struct {
 	// A JSON-serialized array of suggested amounts of tips in the smallest units of the currency
 	// (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip
 	// amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount.
-	SuggestedTipAmounts []int `json:"suggested_tip_amounts"`
+	SuggestedTipAmounts []int64 `json:"suggested_tip_amounts"`
 	// Unique deep-linking parameter. If left empty, forwarded copies of the sent message will have a Pay
 	// button, allowing multiple users to pay directly from the forwarded message, using the same invoice.
 	//  If non-empty, forwarded copies of the sent message will have a URL button with a deep link to the
@@ -6072,7 +7935,7 @@ type SendInvoice struct {
 	ProviderData OptString `json:"provider_data"`
 	// URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a
 	// service. People like it better when they see what they are paying for.
-	PhotoURL OptURL `json:"photo_url"`
+	PhotoURL OptString `json:"photo_url"`
 	// Photo size.
 	PhotoSize OptInt `json:"photo_size"`
 	// Photo width.
@@ -6095,6 +7958,8 @@ type SendInvoice struct {
 	IsFlexible OptBool `json:"is_flexible"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the sent message from forwarding and saving.
+	ProtectContent OptBool `json:"protect_content"`
 	// If the message is a reply, ID of the original message.
 	ReplyToMessageID OptInt `json:"reply_to_message_id"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
@@ -6123,139 +7988,13 @@ type SendLocation struct {
 	ProximityAlertRadius OptInt `json:"proximity_alert_radius"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the sent message from forwarding and saving.
+	ProtectContent OptBool `json:"protect_content"`
 	// If the message is a reply, ID of the original message.
 	ReplyToMessageID OptInt `json:"reply_to_message_id"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-	// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-	ReplyMarkup OptSendLocationReplyMarkup `json:"reply_markup"`
-}
-
-// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-// SendLocationReplyMarkup represents sum type.
-type SendLocationReplyMarkup struct {
-	Type                 SendLocationReplyMarkupType // switch on this field
-	InlineKeyboardMarkup InlineKeyboardMarkup
-	ReplyKeyboardMarkup  ReplyKeyboardMarkup
-	ReplyKeyboardRemove  ReplyKeyboardRemove
-	ForceReply           ForceReply
-}
-
-// SendLocationReplyMarkupType is oneOf type of SendLocationReplyMarkup.
-type SendLocationReplyMarkupType string
-
-// Possible values for SendLocationReplyMarkupType.
-const (
-	InlineKeyboardMarkupSendLocationReplyMarkup SendLocationReplyMarkupType = "InlineKeyboardMarkup"
-	ReplyKeyboardMarkupSendLocationReplyMarkup  SendLocationReplyMarkupType = "ReplyKeyboardMarkup"
-	ReplyKeyboardRemoveSendLocationReplyMarkup  SendLocationReplyMarkupType = "ReplyKeyboardRemove"
-	ForceReplySendLocationReplyMarkup           SendLocationReplyMarkupType = "ForceReply"
-)
-
-// IsInlineKeyboardMarkup reports whether SendLocationReplyMarkup is InlineKeyboardMarkup.
-func (s SendLocationReplyMarkup) IsInlineKeyboardMarkup() bool {
-	return s.Type == InlineKeyboardMarkupSendLocationReplyMarkup
-}
-
-// IsReplyKeyboardMarkup reports whether SendLocationReplyMarkup is ReplyKeyboardMarkup.
-func (s SendLocationReplyMarkup) IsReplyKeyboardMarkup() bool {
-	return s.Type == ReplyKeyboardMarkupSendLocationReplyMarkup
-}
-
-// IsReplyKeyboardRemove reports whether SendLocationReplyMarkup is ReplyKeyboardRemove.
-func (s SendLocationReplyMarkup) IsReplyKeyboardRemove() bool {
-	return s.Type == ReplyKeyboardRemoveSendLocationReplyMarkup
-}
-
-// IsForceReply reports whether SendLocationReplyMarkup is ForceReply.
-func (s SendLocationReplyMarkup) IsForceReply() bool {
-	return s.Type == ForceReplySendLocationReplyMarkup
-}
-
-// SetInlineKeyboardMarkup sets SendLocationReplyMarkup to InlineKeyboardMarkup.
-func (s *SendLocationReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
-	s.Type = InlineKeyboardMarkupSendLocationReplyMarkup
-	s.InlineKeyboardMarkup = v
-}
-
-// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendLocationReplyMarkup is InlineKeyboardMarkup.
-func (s SendLocationReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
-	if !s.IsInlineKeyboardMarkup() {
-		return v, false
-	}
-	return s.InlineKeyboardMarkup, true
-}
-
-// NewInlineKeyboardMarkupSendLocationReplyMarkup returns new SendLocationReplyMarkup from InlineKeyboardMarkup.
-func NewInlineKeyboardMarkupSendLocationReplyMarkup(v InlineKeyboardMarkup) SendLocationReplyMarkup {
-	var s SendLocationReplyMarkup
-	s.SetInlineKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardMarkup sets SendLocationReplyMarkup to ReplyKeyboardMarkup.
-func (s *SendLocationReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
-	s.Type = ReplyKeyboardMarkupSendLocationReplyMarkup
-	s.ReplyKeyboardMarkup = v
-}
-
-// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendLocationReplyMarkup is ReplyKeyboardMarkup.
-func (s SendLocationReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
-	if !s.IsReplyKeyboardMarkup() {
-		return v, false
-	}
-	return s.ReplyKeyboardMarkup, true
-}
-
-// NewReplyKeyboardMarkupSendLocationReplyMarkup returns new SendLocationReplyMarkup from ReplyKeyboardMarkup.
-func NewReplyKeyboardMarkupSendLocationReplyMarkup(v ReplyKeyboardMarkup) SendLocationReplyMarkup {
-	var s SendLocationReplyMarkup
-	s.SetReplyKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardRemove sets SendLocationReplyMarkup to ReplyKeyboardRemove.
-func (s *SendLocationReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
-	s.Type = ReplyKeyboardRemoveSendLocationReplyMarkup
-	s.ReplyKeyboardRemove = v
-}
-
-// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendLocationReplyMarkup is ReplyKeyboardRemove.
-func (s SendLocationReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
-	if !s.IsReplyKeyboardRemove() {
-		return v, false
-	}
-	return s.ReplyKeyboardRemove, true
-}
-
-// NewReplyKeyboardRemoveSendLocationReplyMarkup returns new SendLocationReplyMarkup from ReplyKeyboardRemove.
-func NewReplyKeyboardRemoveSendLocationReplyMarkup(v ReplyKeyboardRemove) SendLocationReplyMarkup {
-	var s SendLocationReplyMarkup
-	s.SetReplyKeyboardRemove(v)
-	return s
-}
-
-// SetForceReply sets SendLocationReplyMarkup to ForceReply.
-func (s *SendLocationReplyMarkup) SetForceReply(v ForceReply) {
-	s.Type = ForceReplySendLocationReplyMarkup
-	s.ForceReply = v
-}
-
-// GetForceReply returns ForceReply and true boolean if SendLocationReplyMarkup is ForceReply.
-func (s SendLocationReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
-	if !s.IsForceReply() {
-		return v, false
-	}
-	return s.ForceReply, true
-}
-
-// NewForceReplySendLocationReplyMarkup returns new SendLocationReplyMarkup from ForceReply.
-func NewForceReplySendLocationReplyMarkup(v ForceReply) SendLocationReplyMarkup {
-	var s SendLocationReplyMarkup
-	s.SetForceReply(v)
-	return s
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
 }
 
 // Input for sendMediaGroup.
@@ -6266,6 +8005,8 @@ type SendMediaGroup struct {
 	Media []SendMediaGroupMediaItem `json:"media"`
 	// Sends messages silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the sent messages from forwarding and saving.
+	ProtectContent OptBool `json:"protect_content"`
 	// If the messages are a reply, ID of the original message.
 	ReplyToMessageID OptInt `json:"reply_to_message_id"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
@@ -6411,139 +8152,13 @@ type SendMessage struct {
 	DisableWebPagePreview OptBool `json:"disable_web_page_preview"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the sent message from forwarding and saving.
+	ProtectContent OptBool `json:"protect_content"`
 	// If the message is a reply, ID of the original message.
 	ReplyToMessageID OptInt `json:"reply_to_message_id"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-	// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-	ReplyMarkup OptSendMessageReplyMarkup `json:"reply_markup"`
-}
-
-// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-// SendMessageReplyMarkup represents sum type.
-type SendMessageReplyMarkup struct {
-	Type                 SendMessageReplyMarkupType // switch on this field
-	InlineKeyboardMarkup InlineKeyboardMarkup
-	ReplyKeyboardMarkup  ReplyKeyboardMarkup
-	ReplyKeyboardRemove  ReplyKeyboardRemove
-	ForceReply           ForceReply
-}
-
-// SendMessageReplyMarkupType is oneOf type of SendMessageReplyMarkup.
-type SendMessageReplyMarkupType string
-
-// Possible values for SendMessageReplyMarkupType.
-const (
-	InlineKeyboardMarkupSendMessageReplyMarkup SendMessageReplyMarkupType = "InlineKeyboardMarkup"
-	ReplyKeyboardMarkupSendMessageReplyMarkup  SendMessageReplyMarkupType = "ReplyKeyboardMarkup"
-	ReplyKeyboardRemoveSendMessageReplyMarkup  SendMessageReplyMarkupType = "ReplyKeyboardRemove"
-	ForceReplySendMessageReplyMarkup           SendMessageReplyMarkupType = "ForceReply"
-)
-
-// IsInlineKeyboardMarkup reports whether SendMessageReplyMarkup is InlineKeyboardMarkup.
-func (s SendMessageReplyMarkup) IsInlineKeyboardMarkup() bool {
-	return s.Type == InlineKeyboardMarkupSendMessageReplyMarkup
-}
-
-// IsReplyKeyboardMarkup reports whether SendMessageReplyMarkup is ReplyKeyboardMarkup.
-func (s SendMessageReplyMarkup) IsReplyKeyboardMarkup() bool {
-	return s.Type == ReplyKeyboardMarkupSendMessageReplyMarkup
-}
-
-// IsReplyKeyboardRemove reports whether SendMessageReplyMarkup is ReplyKeyboardRemove.
-func (s SendMessageReplyMarkup) IsReplyKeyboardRemove() bool {
-	return s.Type == ReplyKeyboardRemoveSendMessageReplyMarkup
-}
-
-// IsForceReply reports whether SendMessageReplyMarkup is ForceReply.
-func (s SendMessageReplyMarkup) IsForceReply() bool {
-	return s.Type == ForceReplySendMessageReplyMarkup
-}
-
-// SetInlineKeyboardMarkup sets SendMessageReplyMarkup to InlineKeyboardMarkup.
-func (s *SendMessageReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
-	s.Type = InlineKeyboardMarkupSendMessageReplyMarkup
-	s.InlineKeyboardMarkup = v
-}
-
-// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendMessageReplyMarkup is InlineKeyboardMarkup.
-func (s SendMessageReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
-	if !s.IsInlineKeyboardMarkup() {
-		return v, false
-	}
-	return s.InlineKeyboardMarkup, true
-}
-
-// NewInlineKeyboardMarkupSendMessageReplyMarkup returns new SendMessageReplyMarkup from InlineKeyboardMarkup.
-func NewInlineKeyboardMarkupSendMessageReplyMarkup(v InlineKeyboardMarkup) SendMessageReplyMarkup {
-	var s SendMessageReplyMarkup
-	s.SetInlineKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardMarkup sets SendMessageReplyMarkup to ReplyKeyboardMarkup.
-func (s *SendMessageReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
-	s.Type = ReplyKeyboardMarkupSendMessageReplyMarkup
-	s.ReplyKeyboardMarkup = v
-}
-
-// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendMessageReplyMarkup is ReplyKeyboardMarkup.
-func (s SendMessageReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
-	if !s.IsReplyKeyboardMarkup() {
-		return v, false
-	}
-	return s.ReplyKeyboardMarkup, true
-}
-
-// NewReplyKeyboardMarkupSendMessageReplyMarkup returns new SendMessageReplyMarkup from ReplyKeyboardMarkup.
-func NewReplyKeyboardMarkupSendMessageReplyMarkup(v ReplyKeyboardMarkup) SendMessageReplyMarkup {
-	var s SendMessageReplyMarkup
-	s.SetReplyKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardRemove sets SendMessageReplyMarkup to ReplyKeyboardRemove.
-func (s *SendMessageReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
-	s.Type = ReplyKeyboardRemoveSendMessageReplyMarkup
-	s.ReplyKeyboardRemove = v
-}
-
-// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendMessageReplyMarkup is ReplyKeyboardRemove.
-func (s SendMessageReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
-	if !s.IsReplyKeyboardRemove() {
-		return v, false
-	}
-	return s.ReplyKeyboardRemove, true
-}
-
-// NewReplyKeyboardRemoveSendMessageReplyMarkup returns new SendMessageReplyMarkup from ReplyKeyboardRemove.
-func NewReplyKeyboardRemoveSendMessageReplyMarkup(v ReplyKeyboardRemove) SendMessageReplyMarkup {
-	var s SendMessageReplyMarkup
-	s.SetReplyKeyboardRemove(v)
-	return s
-}
-
-// SetForceReply sets SendMessageReplyMarkup to ForceReply.
-func (s *SendMessageReplyMarkup) SetForceReply(v ForceReply) {
-	s.Type = ForceReplySendMessageReplyMarkup
-	s.ForceReply = v
-}
-
-// GetForceReply returns ForceReply and true boolean if SendMessageReplyMarkup is ForceReply.
-func (s SendMessageReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
-	if !s.IsForceReply() {
-		return v, false
-	}
-	return s.ForceReply, true
-}
-
-// NewForceReplySendMessageReplyMarkup returns new SendMessageReplyMarkup from ForceReply.
-func NewForceReplySendMessageReplyMarkup(v ForceReply) SendMessageReplyMarkup {
-	var s SendMessageReplyMarkup
-	s.SetForceReply(v)
-	return s
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
 }
 
 // Input for sendPhoto.
@@ -6566,137 +8181,13 @@ type SendPhoto struct {
 	CaptionEntities []MessageEntity `json:"caption_entities"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the sent message from forwarding and saving.
+	ProtectContent OptBool `json:"protect_content"`
 	// If the message is a reply, ID of the original message.
 	ReplyToMessageID OptInt `json:"reply_to_message_id"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-	// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-	ReplyMarkup OptSendPhotoReplyMarkup `json:"reply_markup"`
-}
-
-// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-// SendPhotoReplyMarkup represents sum type.
-type SendPhotoReplyMarkup struct {
-	Type                 SendPhotoReplyMarkupType // switch on this field
-	InlineKeyboardMarkup InlineKeyboardMarkup
-	ReplyKeyboardMarkup  ReplyKeyboardMarkup
-	ReplyKeyboardRemove  ReplyKeyboardRemove
-	ForceReply           ForceReply
-}
-
-// SendPhotoReplyMarkupType is oneOf type of SendPhotoReplyMarkup.
-type SendPhotoReplyMarkupType string
-
-// Possible values for SendPhotoReplyMarkupType.
-const (
-	InlineKeyboardMarkupSendPhotoReplyMarkup SendPhotoReplyMarkupType = "InlineKeyboardMarkup"
-	ReplyKeyboardMarkupSendPhotoReplyMarkup  SendPhotoReplyMarkupType = "ReplyKeyboardMarkup"
-	ReplyKeyboardRemoveSendPhotoReplyMarkup  SendPhotoReplyMarkupType = "ReplyKeyboardRemove"
-	ForceReplySendPhotoReplyMarkup           SendPhotoReplyMarkupType = "ForceReply"
-)
-
-// IsInlineKeyboardMarkup reports whether SendPhotoReplyMarkup is InlineKeyboardMarkup.
-func (s SendPhotoReplyMarkup) IsInlineKeyboardMarkup() bool {
-	return s.Type == InlineKeyboardMarkupSendPhotoReplyMarkup
-}
-
-// IsReplyKeyboardMarkup reports whether SendPhotoReplyMarkup is ReplyKeyboardMarkup.
-func (s SendPhotoReplyMarkup) IsReplyKeyboardMarkup() bool {
-	return s.Type == ReplyKeyboardMarkupSendPhotoReplyMarkup
-}
-
-// IsReplyKeyboardRemove reports whether SendPhotoReplyMarkup is ReplyKeyboardRemove.
-func (s SendPhotoReplyMarkup) IsReplyKeyboardRemove() bool {
-	return s.Type == ReplyKeyboardRemoveSendPhotoReplyMarkup
-}
-
-// IsForceReply reports whether SendPhotoReplyMarkup is ForceReply.
-func (s SendPhotoReplyMarkup) IsForceReply() bool { return s.Type == ForceReplySendPhotoReplyMarkup }
-
-// SetInlineKeyboardMarkup sets SendPhotoReplyMarkup to InlineKeyboardMarkup.
-func (s *SendPhotoReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
-	s.Type = InlineKeyboardMarkupSendPhotoReplyMarkup
-	s.InlineKeyboardMarkup = v
-}
-
-// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendPhotoReplyMarkup is InlineKeyboardMarkup.
-func (s SendPhotoReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
-	if !s.IsInlineKeyboardMarkup() {
-		return v, false
-	}
-	return s.InlineKeyboardMarkup, true
-}
-
-// NewInlineKeyboardMarkupSendPhotoReplyMarkup returns new SendPhotoReplyMarkup from InlineKeyboardMarkup.
-func NewInlineKeyboardMarkupSendPhotoReplyMarkup(v InlineKeyboardMarkup) SendPhotoReplyMarkup {
-	var s SendPhotoReplyMarkup
-	s.SetInlineKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardMarkup sets SendPhotoReplyMarkup to ReplyKeyboardMarkup.
-func (s *SendPhotoReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
-	s.Type = ReplyKeyboardMarkupSendPhotoReplyMarkup
-	s.ReplyKeyboardMarkup = v
-}
-
-// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendPhotoReplyMarkup is ReplyKeyboardMarkup.
-func (s SendPhotoReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
-	if !s.IsReplyKeyboardMarkup() {
-		return v, false
-	}
-	return s.ReplyKeyboardMarkup, true
-}
-
-// NewReplyKeyboardMarkupSendPhotoReplyMarkup returns new SendPhotoReplyMarkup from ReplyKeyboardMarkup.
-func NewReplyKeyboardMarkupSendPhotoReplyMarkup(v ReplyKeyboardMarkup) SendPhotoReplyMarkup {
-	var s SendPhotoReplyMarkup
-	s.SetReplyKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardRemove sets SendPhotoReplyMarkup to ReplyKeyboardRemove.
-func (s *SendPhotoReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
-	s.Type = ReplyKeyboardRemoveSendPhotoReplyMarkup
-	s.ReplyKeyboardRemove = v
-}
-
-// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendPhotoReplyMarkup is ReplyKeyboardRemove.
-func (s SendPhotoReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
-	if !s.IsReplyKeyboardRemove() {
-		return v, false
-	}
-	return s.ReplyKeyboardRemove, true
-}
-
-// NewReplyKeyboardRemoveSendPhotoReplyMarkup returns new SendPhotoReplyMarkup from ReplyKeyboardRemove.
-func NewReplyKeyboardRemoveSendPhotoReplyMarkup(v ReplyKeyboardRemove) SendPhotoReplyMarkup {
-	var s SendPhotoReplyMarkup
-	s.SetReplyKeyboardRemove(v)
-	return s
-}
-
-// SetForceReply sets SendPhotoReplyMarkup to ForceReply.
-func (s *SendPhotoReplyMarkup) SetForceReply(v ForceReply) {
-	s.Type = ForceReplySendPhotoReplyMarkup
-	s.ForceReply = v
-}
-
-// GetForceReply returns ForceReply and true boolean if SendPhotoReplyMarkup is ForceReply.
-func (s SendPhotoReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
-	if !s.IsForceReply() {
-		return v, false
-	}
-	return s.ForceReply, true
-}
-
-// NewForceReplySendPhotoReplyMarkup returns new SendPhotoReplyMarkup from ForceReply.
-func NewForceReplySendPhotoReplyMarkup(v ForceReply) SendPhotoReplyMarkup {
-	var s SendPhotoReplyMarkup
-	s.SetForceReply(v)
-	return s
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
 }
 
 // Input for sendPoll.
@@ -6733,135 +8224,134 @@ type SendPoll struct {
 	IsClosed OptBool `json:"is_closed"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the sent message from forwarding and saving.
+	ProtectContent OptBool `json:"protect_content"`
 	// If the message is a reply, ID of the original message.
 	ReplyToMessageID OptInt `json:"reply_to_message_id"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-	// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-	ReplyMarkup OptSendPollReplyMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
 }
 
-// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-// SendPollReplyMarkup represents sum type.
-type SendPollReplyMarkup struct {
-	Type                 SendPollReplyMarkupType // switch on this field
+// Ref: #/components/schemas/SendReplyMarkup
+// SendReplyMarkup represents sum type.
+type SendReplyMarkup struct {
+	Type                 SendReplyMarkupType // switch on this field
 	InlineKeyboardMarkup InlineKeyboardMarkup
 	ReplyKeyboardMarkup  ReplyKeyboardMarkup
 	ReplyKeyboardRemove  ReplyKeyboardRemove
 	ForceReply           ForceReply
 }
 
-// SendPollReplyMarkupType is oneOf type of SendPollReplyMarkup.
-type SendPollReplyMarkupType string
+// SendReplyMarkupType is oneOf type of SendReplyMarkup.
+type SendReplyMarkupType string
 
-// Possible values for SendPollReplyMarkupType.
+// Possible values for SendReplyMarkupType.
 const (
-	InlineKeyboardMarkupSendPollReplyMarkup SendPollReplyMarkupType = "InlineKeyboardMarkup"
-	ReplyKeyboardMarkupSendPollReplyMarkup  SendPollReplyMarkupType = "ReplyKeyboardMarkup"
-	ReplyKeyboardRemoveSendPollReplyMarkup  SendPollReplyMarkupType = "ReplyKeyboardRemove"
-	ForceReplySendPollReplyMarkup           SendPollReplyMarkupType = "ForceReply"
+	InlineKeyboardMarkupSendReplyMarkup SendReplyMarkupType = "InlineKeyboardMarkup"
+	ReplyKeyboardMarkupSendReplyMarkup  SendReplyMarkupType = "ReplyKeyboardMarkup"
+	ReplyKeyboardRemoveSendReplyMarkup  SendReplyMarkupType = "ReplyKeyboardRemove"
+	ForceReplySendReplyMarkup           SendReplyMarkupType = "ForceReply"
 )
 
-// IsInlineKeyboardMarkup reports whether SendPollReplyMarkup is InlineKeyboardMarkup.
-func (s SendPollReplyMarkup) IsInlineKeyboardMarkup() bool {
-	return s.Type == InlineKeyboardMarkupSendPollReplyMarkup
+// IsInlineKeyboardMarkup reports whether SendReplyMarkup is InlineKeyboardMarkup.
+func (s SendReplyMarkup) IsInlineKeyboardMarkup() bool {
+	return s.Type == InlineKeyboardMarkupSendReplyMarkup
 }
 
-// IsReplyKeyboardMarkup reports whether SendPollReplyMarkup is ReplyKeyboardMarkup.
-func (s SendPollReplyMarkup) IsReplyKeyboardMarkup() bool {
-	return s.Type == ReplyKeyboardMarkupSendPollReplyMarkup
+// IsReplyKeyboardMarkup reports whether SendReplyMarkup is ReplyKeyboardMarkup.
+func (s SendReplyMarkup) IsReplyKeyboardMarkup() bool {
+	return s.Type == ReplyKeyboardMarkupSendReplyMarkup
 }
 
-// IsReplyKeyboardRemove reports whether SendPollReplyMarkup is ReplyKeyboardRemove.
-func (s SendPollReplyMarkup) IsReplyKeyboardRemove() bool {
-	return s.Type == ReplyKeyboardRemoveSendPollReplyMarkup
+// IsReplyKeyboardRemove reports whether SendReplyMarkup is ReplyKeyboardRemove.
+func (s SendReplyMarkup) IsReplyKeyboardRemove() bool {
+	return s.Type == ReplyKeyboardRemoveSendReplyMarkup
 }
 
-// IsForceReply reports whether SendPollReplyMarkup is ForceReply.
-func (s SendPollReplyMarkup) IsForceReply() bool { return s.Type == ForceReplySendPollReplyMarkup }
+// IsForceReply reports whether SendReplyMarkup is ForceReply.
+func (s SendReplyMarkup) IsForceReply() bool { return s.Type == ForceReplySendReplyMarkup }
 
-// SetInlineKeyboardMarkup sets SendPollReplyMarkup to InlineKeyboardMarkup.
-func (s *SendPollReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
-	s.Type = InlineKeyboardMarkupSendPollReplyMarkup
+// SetInlineKeyboardMarkup sets SendReplyMarkup to InlineKeyboardMarkup.
+func (s *SendReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
+	s.Type = InlineKeyboardMarkupSendReplyMarkup
 	s.InlineKeyboardMarkup = v
 }
 
-// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendPollReplyMarkup is InlineKeyboardMarkup.
-func (s SendPollReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
+// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendReplyMarkup is InlineKeyboardMarkup.
+func (s SendReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
 	if !s.IsInlineKeyboardMarkup() {
 		return v, false
 	}
 	return s.InlineKeyboardMarkup, true
 }
 
-// NewInlineKeyboardMarkupSendPollReplyMarkup returns new SendPollReplyMarkup from InlineKeyboardMarkup.
-func NewInlineKeyboardMarkupSendPollReplyMarkup(v InlineKeyboardMarkup) SendPollReplyMarkup {
-	var s SendPollReplyMarkup
+// NewInlineKeyboardMarkupSendReplyMarkup returns new SendReplyMarkup from InlineKeyboardMarkup.
+func NewInlineKeyboardMarkupSendReplyMarkup(v InlineKeyboardMarkup) SendReplyMarkup {
+	var s SendReplyMarkup
 	s.SetInlineKeyboardMarkup(v)
 	return s
 }
 
-// SetReplyKeyboardMarkup sets SendPollReplyMarkup to ReplyKeyboardMarkup.
-func (s *SendPollReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
-	s.Type = ReplyKeyboardMarkupSendPollReplyMarkup
+// SetReplyKeyboardMarkup sets SendReplyMarkup to ReplyKeyboardMarkup.
+func (s *SendReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
+	s.Type = ReplyKeyboardMarkupSendReplyMarkup
 	s.ReplyKeyboardMarkup = v
 }
 
-// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendPollReplyMarkup is ReplyKeyboardMarkup.
-func (s SendPollReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
+// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendReplyMarkup is ReplyKeyboardMarkup.
+func (s SendReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
 	if !s.IsReplyKeyboardMarkup() {
 		return v, false
 	}
 	return s.ReplyKeyboardMarkup, true
 }
 
-// NewReplyKeyboardMarkupSendPollReplyMarkup returns new SendPollReplyMarkup from ReplyKeyboardMarkup.
-func NewReplyKeyboardMarkupSendPollReplyMarkup(v ReplyKeyboardMarkup) SendPollReplyMarkup {
-	var s SendPollReplyMarkup
+// NewReplyKeyboardMarkupSendReplyMarkup returns new SendReplyMarkup from ReplyKeyboardMarkup.
+func NewReplyKeyboardMarkupSendReplyMarkup(v ReplyKeyboardMarkup) SendReplyMarkup {
+	var s SendReplyMarkup
 	s.SetReplyKeyboardMarkup(v)
 	return s
 }
 
-// SetReplyKeyboardRemove sets SendPollReplyMarkup to ReplyKeyboardRemove.
-func (s *SendPollReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
-	s.Type = ReplyKeyboardRemoveSendPollReplyMarkup
+// SetReplyKeyboardRemove sets SendReplyMarkup to ReplyKeyboardRemove.
+func (s *SendReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
+	s.Type = ReplyKeyboardRemoveSendReplyMarkup
 	s.ReplyKeyboardRemove = v
 }
 
-// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendPollReplyMarkup is ReplyKeyboardRemove.
-func (s SendPollReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
+// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendReplyMarkup is ReplyKeyboardRemove.
+func (s SendReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
 	if !s.IsReplyKeyboardRemove() {
 		return v, false
 	}
 	return s.ReplyKeyboardRemove, true
 }
 
-// NewReplyKeyboardRemoveSendPollReplyMarkup returns new SendPollReplyMarkup from ReplyKeyboardRemove.
-func NewReplyKeyboardRemoveSendPollReplyMarkup(v ReplyKeyboardRemove) SendPollReplyMarkup {
-	var s SendPollReplyMarkup
+// NewReplyKeyboardRemoveSendReplyMarkup returns new SendReplyMarkup from ReplyKeyboardRemove.
+func NewReplyKeyboardRemoveSendReplyMarkup(v ReplyKeyboardRemove) SendReplyMarkup {
+	var s SendReplyMarkup
 	s.SetReplyKeyboardRemove(v)
 	return s
 }
 
-// SetForceReply sets SendPollReplyMarkup to ForceReply.
-func (s *SendPollReplyMarkup) SetForceReply(v ForceReply) {
-	s.Type = ForceReplySendPollReplyMarkup
+// SetForceReply sets SendReplyMarkup to ForceReply.
+func (s *SendReplyMarkup) SetForceReply(v ForceReply) {
+	s.Type = ForceReplySendReplyMarkup
 	s.ForceReply = v
 }
 
-// GetForceReply returns ForceReply and true boolean if SendPollReplyMarkup is ForceReply.
-func (s SendPollReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
+// GetForceReply returns ForceReply and true boolean if SendReplyMarkup is ForceReply.
+func (s SendReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
 	if !s.IsForceReply() {
 		return v, false
 	}
 	return s.ForceReply, true
 }
 
-// NewForceReplySendPollReplyMarkup returns new SendPollReplyMarkup from ForceReply.
-func NewForceReplySendPollReplyMarkup(v ForceReply) SendPollReplyMarkup {
-	var s SendPollReplyMarkup
+// NewForceReplySendReplyMarkup returns new SendReplyMarkup from ForceReply.
+func NewForceReplySendReplyMarkup(v ForceReply) SendReplyMarkup {
+	var s SendReplyMarkup
 	s.SetForceReply(v)
 	return s
 }
@@ -6876,139 +8366,13 @@ type SendSticker struct {
 	Sticker string `json:"sticker"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the sent message from forwarding and saving.
+	ProtectContent OptBool `json:"protect_content"`
 	// If the message is a reply, ID of the original message.
 	ReplyToMessageID OptInt `json:"reply_to_message_id"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-	// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-	ReplyMarkup OptSendStickerReplyMarkup `json:"reply_markup"`
-}
-
-// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-// SendStickerReplyMarkup represents sum type.
-type SendStickerReplyMarkup struct {
-	Type                 SendStickerReplyMarkupType // switch on this field
-	InlineKeyboardMarkup InlineKeyboardMarkup
-	ReplyKeyboardMarkup  ReplyKeyboardMarkup
-	ReplyKeyboardRemove  ReplyKeyboardRemove
-	ForceReply           ForceReply
-}
-
-// SendStickerReplyMarkupType is oneOf type of SendStickerReplyMarkup.
-type SendStickerReplyMarkupType string
-
-// Possible values for SendStickerReplyMarkupType.
-const (
-	InlineKeyboardMarkupSendStickerReplyMarkup SendStickerReplyMarkupType = "InlineKeyboardMarkup"
-	ReplyKeyboardMarkupSendStickerReplyMarkup  SendStickerReplyMarkupType = "ReplyKeyboardMarkup"
-	ReplyKeyboardRemoveSendStickerReplyMarkup  SendStickerReplyMarkupType = "ReplyKeyboardRemove"
-	ForceReplySendStickerReplyMarkup           SendStickerReplyMarkupType = "ForceReply"
-)
-
-// IsInlineKeyboardMarkup reports whether SendStickerReplyMarkup is InlineKeyboardMarkup.
-func (s SendStickerReplyMarkup) IsInlineKeyboardMarkup() bool {
-	return s.Type == InlineKeyboardMarkupSendStickerReplyMarkup
-}
-
-// IsReplyKeyboardMarkup reports whether SendStickerReplyMarkup is ReplyKeyboardMarkup.
-func (s SendStickerReplyMarkup) IsReplyKeyboardMarkup() bool {
-	return s.Type == ReplyKeyboardMarkupSendStickerReplyMarkup
-}
-
-// IsReplyKeyboardRemove reports whether SendStickerReplyMarkup is ReplyKeyboardRemove.
-func (s SendStickerReplyMarkup) IsReplyKeyboardRemove() bool {
-	return s.Type == ReplyKeyboardRemoveSendStickerReplyMarkup
-}
-
-// IsForceReply reports whether SendStickerReplyMarkup is ForceReply.
-func (s SendStickerReplyMarkup) IsForceReply() bool {
-	return s.Type == ForceReplySendStickerReplyMarkup
-}
-
-// SetInlineKeyboardMarkup sets SendStickerReplyMarkup to InlineKeyboardMarkup.
-func (s *SendStickerReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
-	s.Type = InlineKeyboardMarkupSendStickerReplyMarkup
-	s.InlineKeyboardMarkup = v
-}
-
-// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendStickerReplyMarkup is InlineKeyboardMarkup.
-func (s SendStickerReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
-	if !s.IsInlineKeyboardMarkup() {
-		return v, false
-	}
-	return s.InlineKeyboardMarkup, true
-}
-
-// NewInlineKeyboardMarkupSendStickerReplyMarkup returns new SendStickerReplyMarkup from InlineKeyboardMarkup.
-func NewInlineKeyboardMarkupSendStickerReplyMarkup(v InlineKeyboardMarkup) SendStickerReplyMarkup {
-	var s SendStickerReplyMarkup
-	s.SetInlineKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardMarkup sets SendStickerReplyMarkup to ReplyKeyboardMarkup.
-func (s *SendStickerReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
-	s.Type = ReplyKeyboardMarkupSendStickerReplyMarkup
-	s.ReplyKeyboardMarkup = v
-}
-
-// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendStickerReplyMarkup is ReplyKeyboardMarkup.
-func (s SendStickerReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
-	if !s.IsReplyKeyboardMarkup() {
-		return v, false
-	}
-	return s.ReplyKeyboardMarkup, true
-}
-
-// NewReplyKeyboardMarkupSendStickerReplyMarkup returns new SendStickerReplyMarkup from ReplyKeyboardMarkup.
-func NewReplyKeyboardMarkupSendStickerReplyMarkup(v ReplyKeyboardMarkup) SendStickerReplyMarkup {
-	var s SendStickerReplyMarkup
-	s.SetReplyKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardRemove sets SendStickerReplyMarkup to ReplyKeyboardRemove.
-func (s *SendStickerReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
-	s.Type = ReplyKeyboardRemoveSendStickerReplyMarkup
-	s.ReplyKeyboardRemove = v
-}
-
-// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendStickerReplyMarkup is ReplyKeyboardRemove.
-func (s SendStickerReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
-	if !s.IsReplyKeyboardRemove() {
-		return v, false
-	}
-	return s.ReplyKeyboardRemove, true
-}
-
-// NewReplyKeyboardRemoveSendStickerReplyMarkup returns new SendStickerReplyMarkup from ReplyKeyboardRemove.
-func NewReplyKeyboardRemoveSendStickerReplyMarkup(v ReplyKeyboardRemove) SendStickerReplyMarkup {
-	var s SendStickerReplyMarkup
-	s.SetReplyKeyboardRemove(v)
-	return s
-}
-
-// SetForceReply sets SendStickerReplyMarkup to ForceReply.
-func (s *SendStickerReplyMarkup) SetForceReply(v ForceReply) {
-	s.Type = ForceReplySendStickerReplyMarkup
-	s.ForceReply = v
-}
-
-// GetForceReply returns ForceReply and true boolean if SendStickerReplyMarkup is ForceReply.
-func (s SendStickerReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
-	if !s.IsForceReply() {
-		return v, false
-	}
-	return s.ForceReply, true
-}
-
-// NewForceReplySendStickerReplyMarkup returns new SendStickerReplyMarkup from ForceReply.
-func NewForceReplySendStickerReplyMarkup(v ForceReply) SendStickerReplyMarkup {
-	var s SendStickerReplyMarkup
-	s.SetForceReply(v)
-	return s
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
 }
 
 // Input for sendVenue.
@@ -7034,137 +8398,13 @@ type SendVenue struct {
 	GooglePlaceType OptString `json:"google_place_type"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the sent message from forwarding and saving.
+	ProtectContent OptBool `json:"protect_content"`
 	// If the message is a reply, ID of the original message.
 	ReplyToMessageID OptInt `json:"reply_to_message_id"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-	// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-	ReplyMarkup OptSendVenueReplyMarkup `json:"reply_markup"`
-}
-
-// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-// SendVenueReplyMarkup represents sum type.
-type SendVenueReplyMarkup struct {
-	Type                 SendVenueReplyMarkupType // switch on this field
-	InlineKeyboardMarkup InlineKeyboardMarkup
-	ReplyKeyboardMarkup  ReplyKeyboardMarkup
-	ReplyKeyboardRemove  ReplyKeyboardRemove
-	ForceReply           ForceReply
-}
-
-// SendVenueReplyMarkupType is oneOf type of SendVenueReplyMarkup.
-type SendVenueReplyMarkupType string
-
-// Possible values for SendVenueReplyMarkupType.
-const (
-	InlineKeyboardMarkupSendVenueReplyMarkup SendVenueReplyMarkupType = "InlineKeyboardMarkup"
-	ReplyKeyboardMarkupSendVenueReplyMarkup  SendVenueReplyMarkupType = "ReplyKeyboardMarkup"
-	ReplyKeyboardRemoveSendVenueReplyMarkup  SendVenueReplyMarkupType = "ReplyKeyboardRemove"
-	ForceReplySendVenueReplyMarkup           SendVenueReplyMarkupType = "ForceReply"
-)
-
-// IsInlineKeyboardMarkup reports whether SendVenueReplyMarkup is InlineKeyboardMarkup.
-func (s SendVenueReplyMarkup) IsInlineKeyboardMarkup() bool {
-	return s.Type == InlineKeyboardMarkupSendVenueReplyMarkup
-}
-
-// IsReplyKeyboardMarkup reports whether SendVenueReplyMarkup is ReplyKeyboardMarkup.
-func (s SendVenueReplyMarkup) IsReplyKeyboardMarkup() bool {
-	return s.Type == ReplyKeyboardMarkupSendVenueReplyMarkup
-}
-
-// IsReplyKeyboardRemove reports whether SendVenueReplyMarkup is ReplyKeyboardRemove.
-func (s SendVenueReplyMarkup) IsReplyKeyboardRemove() bool {
-	return s.Type == ReplyKeyboardRemoveSendVenueReplyMarkup
-}
-
-// IsForceReply reports whether SendVenueReplyMarkup is ForceReply.
-func (s SendVenueReplyMarkup) IsForceReply() bool { return s.Type == ForceReplySendVenueReplyMarkup }
-
-// SetInlineKeyboardMarkup sets SendVenueReplyMarkup to InlineKeyboardMarkup.
-func (s *SendVenueReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
-	s.Type = InlineKeyboardMarkupSendVenueReplyMarkup
-	s.InlineKeyboardMarkup = v
-}
-
-// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendVenueReplyMarkup is InlineKeyboardMarkup.
-func (s SendVenueReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
-	if !s.IsInlineKeyboardMarkup() {
-		return v, false
-	}
-	return s.InlineKeyboardMarkup, true
-}
-
-// NewInlineKeyboardMarkupSendVenueReplyMarkup returns new SendVenueReplyMarkup from InlineKeyboardMarkup.
-func NewInlineKeyboardMarkupSendVenueReplyMarkup(v InlineKeyboardMarkup) SendVenueReplyMarkup {
-	var s SendVenueReplyMarkup
-	s.SetInlineKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardMarkup sets SendVenueReplyMarkup to ReplyKeyboardMarkup.
-func (s *SendVenueReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
-	s.Type = ReplyKeyboardMarkupSendVenueReplyMarkup
-	s.ReplyKeyboardMarkup = v
-}
-
-// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendVenueReplyMarkup is ReplyKeyboardMarkup.
-func (s SendVenueReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
-	if !s.IsReplyKeyboardMarkup() {
-		return v, false
-	}
-	return s.ReplyKeyboardMarkup, true
-}
-
-// NewReplyKeyboardMarkupSendVenueReplyMarkup returns new SendVenueReplyMarkup from ReplyKeyboardMarkup.
-func NewReplyKeyboardMarkupSendVenueReplyMarkup(v ReplyKeyboardMarkup) SendVenueReplyMarkup {
-	var s SendVenueReplyMarkup
-	s.SetReplyKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardRemove sets SendVenueReplyMarkup to ReplyKeyboardRemove.
-func (s *SendVenueReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
-	s.Type = ReplyKeyboardRemoveSendVenueReplyMarkup
-	s.ReplyKeyboardRemove = v
-}
-
-// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendVenueReplyMarkup is ReplyKeyboardRemove.
-func (s SendVenueReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
-	if !s.IsReplyKeyboardRemove() {
-		return v, false
-	}
-	return s.ReplyKeyboardRemove, true
-}
-
-// NewReplyKeyboardRemoveSendVenueReplyMarkup returns new SendVenueReplyMarkup from ReplyKeyboardRemove.
-func NewReplyKeyboardRemoveSendVenueReplyMarkup(v ReplyKeyboardRemove) SendVenueReplyMarkup {
-	var s SendVenueReplyMarkup
-	s.SetReplyKeyboardRemove(v)
-	return s
-}
-
-// SetForceReply sets SendVenueReplyMarkup to ForceReply.
-func (s *SendVenueReplyMarkup) SetForceReply(v ForceReply) {
-	s.Type = ForceReplySendVenueReplyMarkup
-	s.ForceReply = v
-}
-
-// GetForceReply returns ForceReply and true boolean if SendVenueReplyMarkup is ForceReply.
-func (s SendVenueReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
-	if !s.IsForceReply() {
-		return v, false
-	}
-	return s.ForceReply, true
-}
-
-// NewForceReplySendVenueReplyMarkup returns new SendVenueReplyMarkup from ForceReply.
-func NewForceReplySendVenueReplyMarkup(v ForceReply) SendVenueReplyMarkup {
-	var s SendVenueReplyMarkup
-	s.SetForceReply(v)
-	return s
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
 }
 
 // Input for sendVideo.
@@ -7200,13 +8440,13 @@ type SendVideo struct {
 	SupportsStreaming OptBool `json:"supports_streaming"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the sent message from forwarding and saving.
+	ProtectContent OptBool `json:"protect_content"`
 	// If the message is a reply, ID of the original message.
 	ReplyToMessageID OptInt `json:"reply_to_message_id"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-	// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-	ReplyMarkup OptSendVideoReplyMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
 }
 
 // Input for sendVideoNote.
@@ -7230,263 +8470,13 @@ type SendVideoNote struct {
 	Thumb OptString `json:"thumb"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the sent message from forwarding and saving.
+	ProtectContent OptBool `json:"protect_content"`
 	// If the message is a reply, ID of the original message.
 	ReplyToMessageID OptInt `json:"reply_to_message_id"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-	// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-	ReplyMarkup OptSendVideoNoteReplyMarkup `json:"reply_markup"`
-}
-
-// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-// SendVideoNoteReplyMarkup represents sum type.
-type SendVideoNoteReplyMarkup struct {
-	Type                 SendVideoNoteReplyMarkupType // switch on this field
-	InlineKeyboardMarkup InlineKeyboardMarkup
-	ReplyKeyboardMarkup  ReplyKeyboardMarkup
-	ReplyKeyboardRemove  ReplyKeyboardRemove
-	ForceReply           ForceReply
-}
-
-// SendVideoNoteReplyMarkupType is oneOf type of SendVideoNoteReplyMarkup.
-type SendVideoNoteReplyMarkupType string
-
-// Possible values for SendVideoNoteReplyMarkupType.
-const (
-	InlineKeyboardMarkupSendVideoNoteReplyMarkup SendVideoNoteReplyMarkupType = "InlineKeyboardMarkup"
-	ReplyKeyboardMarkupSendVideoNoteReplyMarkup  SendVideoNoteReplyMarkupType = "ReplyKeyboardMarkup"
-	ReplyKeyboardRemoveSendVideoNoteReplyMarkup  SendVideoNoteReplyMarkupType = "ReplyKeyboardRemove"
-	ForceReplySendVideoNoteReplyMarkup           SendVideoNoteReplyMarkupType = "ForceReply"
-)
-
-// IsInlineKeyboardMarkup reports whether SendVideoNoteReplyMarkup is InlineKeyboardMarkup.
-func (s SendVideoNoteReplyMarkup) IsInlineKeyboardMarkup() bool {
-	return s.Type == InlineKeyboardMarkupSendVideoNoteReplyMarkup
-}
-
-// IsReplyKeyboardMarkup reports whether SendVideoNoteReplyMarkup is ReplyKeyboardMarkup.
-func (s SendVideoNoteReplyMarkup) IsReplyKeyboardMarkup() bool {
-	return s.Type == ReplyKeyboardMarkupSendVideoNoteReplyMarkup
-}
-
-// IsReplyKeyboardRemove reports whether SendVideoNoteReplyMarkup is ReplyKeyboardRemove.
-func (s SendVideoNoteReplyMarkup) IsReplyKeyboardRemove() bool {
-	return s.Type == ReplyKeyboardRemoveSendVideoNoteReplyMarkup
-}
-
-// IsForceReply reports whether SendVideoNoteReplyMarkup is ForceReply.
-func (s SendVideoNoteReplyMarkup) IsForceReply() bool {
-	return s.Type == ForceReplySendVideoNoteReplyMarkup
-}
-
-// SetInlineKeyboardMarkup sets SendVideoNoteReplyMarkup to InlineKeyboardMarkup.
-func (s *SendVideoNoteReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
-	s.Type = InlineKeyboardMarkupSendVideoNoteReplyMarkup
-	s.InlineKeyboardMarkup = v
-}
-
-// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendVideoNoteReplyMarkup is InlineKeyboardMarkup.
-func (s SendVideoNoteReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
-	if !s.IsInlineKeyboardMarkup() {
-		return v, false
-	}
-	return s.InlineKeyboardMarkup, true
-}
-
-// NewInlineKeyboardMarkupSendVideoNoteReplyMarkup returns new SendVideoNoteReplyMarkup from InlineKeyboardMarkup.
-func NewInlineKeyboardMarkupSendVideoNoteReplyMarkup(v InlineKeyboardMarkup) SendVideoNoteReplyMarkup {
-	var s SendVideoNoteReplyMarkup
-	s.SetInlineKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardMarkup sets SendVideoNoteReplyMarkup to ReplyKeyboardMarkup.
-func (s *SendVideoNoteReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
-	s.Type = ReplyKeyboardMarkupSendVideoNoteReplyMarkup
-	s.ReplyKeyboardMarkup = v
-}
-
-// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendVideoNoteReplyMarkup is ReplyKeyboardMarkup.
-func (s SendVideoNoteReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
-	if !s.IsReplyKeyboardMarkup() {
-		return v, false
-	}
-	return s.ReplyKeyboardMarkup, true
-}
-
-// NewReplyKeyboardMarkupSendVideoNoteReplyMarkup returns new SendVideoNoteReplyMarkup from ReplyKeyboardMarkup.
-func NewReplyKeyboardMarkupSendVideoNoteReplyMarkup(v ReplyKeyboardMarkup) SendVideoNoteReplyMarkup {
-	var s SendVideoNoteReplyMarkup
-	s.SetReplyKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardRemove sets SendVideoNoteReplyMarkup to ReplyKeyboardRemove.
-func (s *SendVideoNoteReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
-	s.Type = ReplyKeyboardRemoveSendVideoNoteReplyMarkup
-	s.ReplyKeyboardRemove = v
-}
-
-// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendVideoNoteReplyMarkup is ReplyKeyboardRemove.
-func (s SendVideoNoteReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
-	if !s.IsReplyKeyboardRemove() {
-		return v, false
-	}
-	return s.ReplyKeyboardRemove, true
-}
-
-// NewReplyKeyboardRemoveSendVideoNoteReplyMarkup returns new SendVideoNoteReplyMarkup from ReplyKeyboardRemove.
-func NewReplyKeyboardRemoveSendVideoNoteReplyMarkup(v ReplyKeyboardRemove) SendVideoNoteReplyMarkup {
-	var s SendVideoNoteReplyMarkup
-	s.SetReplyKeyboardRemove(v)
-	return s
-}
-
-// SetForceReply sets SendVideoNoteReplyMarkup to ForceReply.
-func (s *SendVideoNoteReplyMarkup) SetForceReply(v ForceReply) {
-	s.Type = ForceReplySendVideoNoteReplyMarkup
-	s.ForceReply = v
-}
-
-// GetForceReply returns ForceReply and true boolean if SendVideoNoteReplyMarkup is ForceReply.
-func (s SendVideoNoteReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
-	if !s.IsForceReply() {
-		return v, false
-	}
-	return s.ForceReply, true
-}
-
-// NewForceReplySendVideoNoteReplyMarkup returns new SendVideoNoteReplyMarkup from ForceReply.
-func NewForceReplySendVideoNoteReplyMarkup(v ForceReply) SendVideoNoteReplyMarkup {
-	var s SendVideoNoteReplyMarkup
-	s.SetForceReply(v)
-	return s
-}
-
-// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-// SendVideoReplyMarkup represents sum type.
-type SendVideoReplyMarkup struct {
-	Type                 SendVideoReplyMarkupType // switch on this field
-	InlineKeyboardMarkup InlineKeyboardMarkup
-	ReplyKeyboardMarkup  ReplyKeyboardMarkup
-	ReplyKeyboardRemove  ReplyKeyboardRemove
-	ForceReply           ForceReply
-}
-
-// SendVideoReplyMarkupType is oneOf type of SendVideoReplyMarkup.
-type SendVideoReplyMarkupType string
-
-// Possible values for SendVideoReplyMarkupType.
-const (
-	InlineKeyboardMarkupSendVideoReplyMarkup SendVideoReplyMarkupType = "InlineKeyboardMarkup"
-	ReplyKeyboardMarkupSendVideoReplyMarkup  SendVideoReplyMarkupType = "ReplyKeyboardMarkup"
-	ReplyKeyboardRemoveSendVideoReplyMarkup  SendVideoReplyMarkupType = "ReplyKeyboardRemove"
-	ForceReplySendVideoReplyMarkup           SendVideoReplyMarkupType = "ForceReply"
-)
-
-// IsInlineKeyboardMarkup reports whether SendVideoReplyMarkup is InlineKeyboardMarkup.
-func (s SendVideoReplyMarkup) IsInlineKeyboardMarkup() bool {
-	return s.Type == InlineKeyboardMarkupSendVideoReplyMarkup
-}
-
-// IsReplyKeyboardMarkup reports whether SendVideoReplyMarkup is ReplyKeyboardMarkup.
-func (s SendVideoReplyMarkup) IsReplyKeyboardMarkup() bool {
-	return s.Type == ReplyKeyboardMarkupSendVideoReplyMarkup
-}
-
-// IsReplyKeyboardRemove reports whether SendVideoReplyMarkup is ReplyKeyboardRemove.
-func (s SendVideoReplyMarkup) IsReplyKeyboardRemove() bool {
-	return s.Type == ReplyKeyboardRemoveSendVideoReplyMarkup
-}
-
-// IsForceReply reports whether SendVideoReplyMarkup is ForceReply.
-func (s SendVideoReplyMarkup) IsForceReply() bool { return s.Type == ForceReplySendVideoReplyMarkup }
-
-// SetInlineKeyboardMarkup sets SendVideoReplyMarkup to InlineKeyboardMarkup.
-func (s *SendVideoReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
-	s.Type = InlineKeyboardMarkupSendVideoReplyMarkup
-	s.InlineKeyboardMarkup = v
-}
-
-// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendVideoReplyMarkup is InlineKeyboardMarkup.
-func (s SendVideoReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
-	if !s.IsInlineKeyboardMarkup() {
-		return v, false
-	}
-	return s.InlineKeyboardMarkup, true
-}
-
-// NewInlineKeyboardMarkupSendVideoReplyMarkup returns new SendVideoReplyMarkup from InlineKeyboardMarkup.
-func NewInlineKeyboardMarkupSendVideoReplyMarkup(v InlineKeyboardMarkup) SendVideoReplyMarkup {
-	var s SendVideoReplyMarkup
-	s.SetInlineKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardMarkup sets SendVideoReplyMarkup to ReplyKeyboardMarkup.
-func (s *SendVideoReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
-	s.Type = ReplyKeyboardMarkupSendVideoReplyMarkup
-	s.ReplyKeyboardMarkup = v
-}
-
-// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendVideoReplyMarkup is ReplyKeyboardMarkup.
-func (s SendVideoReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
-	if !s.IsReplyKeyboardMarkup() {
-		return v, false
-	}
-	return s.ReplyKeyboardMarkup, true
-}
-
-// NewReplyKeyboardMarkupSendVideoReplyMarkup returns new SendVideoReplyMarkup from ReplyKeyboardMarkup.
-func NewReplyKeyboardMarkupSendVideoReplyMarkup(v ReplyKeyboardMarkup) SendVideoReplyMarkup {
-	var s SendVideoReplyMarkup
-	s.SetReplyKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardRemove sets SendVideoReplyMarkup to ReplyKeyboardRemove.
-func (s *SendVideoReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
-	s.Type = ReplyKeyboardRemoveSendVideoReplyMarkup
-	s.ReplyKeyboardRemove = v
-}
-
-// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendVideoReplyMarkup is ReplyKeyboardRemove.
-func (s SendVideoReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
-	if !s.IsReplyKeyboardRemove() {
-		return v, false
-	}
-	return s.ReplyKeyboardRemove, true
-}
-
-// NewReplyKeyboardRemoveSendVideoReplyMarkup returns new SendVideoReplyMarkup from ReplyKeyboardRemove.
-func NewReplyKeyboardRemoveSendVideoReplyMarkup(v ReplyKeyboardRemove) SendVideoReplyMarkup {
-	var s SendVideoReplyMarkup
-	s.SetReplyKeyboardRemove(v)
-	return s
-}
-
-// SetForceReply sets SendVideoReplyMarkup to ForceReply.
-func (s *SendVideoReplyMarkup) SetForceReply(v ForceReply) {
-	s.Type = ForceReplySendVideoReplyMarkup
-	s.ForceReply = v
-}
-
-// GetForceReply returns ForceReply and true boolean if SendVideoReplyMarkup is ForceReply.
-func (s SendVideoReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
-	if !s.IsForceReply() {
-		return v, false
-	}
-	return s.ForceReply, true
-}
-
-// NewForceReplySendVideoReplyMarkup returns new SendVideoReplyMarkup from ForceReply.
-func NewForceReplySendVideoReplyMarkup(v ForceReply) SendVideoReplyMarkup {
-	var s SendVideoReplyMarkup
-	s.SetForceReply(v)
-	return s
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
 }
 
 // Input for sendVoice.
@@ -7508,137 +8498,13 @@ type SendVoice struct {
 	Duration OptInt `json:"duration"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
+	// Protects the contents of the sent message from forwarding and saving.
+	ProtectContent OptBool `json:"protect_content"`
 	// If the message is a reply, ID of the original message.
 	ReplyToMessageID OptInt `json:"reply_to_message_id"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
-	// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-	// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-	ReplyMarkup OptSendVoiceReplyMarkup `json:"reply_markup"`
-}
-
-// Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-// keyboard, instructions to remove reply keyboard or to force a reply from the user.
-// SendVoiceReplyMarkup represents sum type.
-type SendVoiceReplyMarkup struct {
-	Type                 SendVoiceReplyMarkupType // switch on this field
-	InlineKeyboardMarkup InlineKeyboardMarkup
-	ReplyKeyboardMarkup  ReplyKeyboardMarkup
-	ReplyKeyboardRemove  ReplyKeyboardRemove
-	ForceReply           ForceReply
-}
-
-// SendVoiceReplyMarkupType is oneOf type of SendVoiceReplyMarkup.
-type SendVoiceReplyMarkupType string
-
-// Possible values for SendVoiceReplyMarkupType.
-const (
-	InlineKeyboardMarkupSendVoiceReplyMarkup SendVoiceReplyMarkupType = "InlineKeyboardMarkup"
-	ReplyKeyboardMarkupSendVoiceReplyMarkup  SendVoiceReplyMarkupType = "ReplyKeyboardMarkup"
-	ReplyKeyboardRemoveSendVoiceReplyMarkup  SendVoiceReplyMarkupType = "ReplyKeyboardRemove"
-	ForceReplySendVoiceReplyMarkup           SendVoiceReplyMarkupType = "ForceReply"
-)
-
-// IsInlineKeyboardMarkup reports whether SendVoiceReplyMarkup is InlineKeyboardMarkup.
-func (s SendVoiceReplyMarkup) IsInlineKeyboardMarkup() bool {
-	return s.Type == InlineKeyboardMarkupSendVoiceReplyMarkup
-}
-
-// IsReplyKeyboardMarkup reports whether SendVoiceReplyMarkup is ReplyKeyboardMarkup.
-func (s SendVoiceReplyMarkup) IsReplyKeyboardMarkup() bool {
-	return s.Type == ReplyKeyboardMarkupSendVoiceReplyMarkup
-}
-
-// IsReplyKeyboardRemove reports whether SendVoiceReplyMarkup is ReplyKeyboardRemove.
-func (s SendVoiceReplyMarkup) IsReplyKeyboardRemove() bool {
-	return s.Type == ReplyKeyboardRemoveSendVoiceReplyMarkup
-}
-
-// IsForceReply reports whether SendVoiceReplyMarkup is ForceReply.
-func (s SendVoiceReplyMarkup) IsForceReply() bool { return s.Type == ForceReplySendVoiceReplyMarkup }
-
-// SetInlineKeyboardMarkup sets SendVoiceReplyMarkup to InlineKeyboardMarkup.
-func (s *SendVoiceReplyMarkup) SetInlineKeyboardMarkup(v InlineKeyboardMarkup) {
-	s.Type = InlineKeyboardMarkupSendVoiceReplyMarkup
-	s.InlineKeyboardMarkup = v
-}
-
-// GetInlineKeyboardMarkup returns InlineKeyboardMarkup and true boolean if SendVoiceReplyMarkup is InlineKeyboardMarkup.
-func (s SendVoiceReplyMarkup) GetInlineKeyboardMarkup() (v InlineKeyboardMarkup, ok bool) {
-	if !s.IsInlineKeyboardMarkup() {
-		return v, false
-	}
-	return s.InlineKeyboardMarkup, true
-}
-
-// NewInlineKeyboardMarkupSendVoiceReplyMarkup returns new SendVoiceReplyMarkup from InlineKeyboardMarkup.
-func NewInlineKeyboardMarkupSendVoiceReplyMarkup(v InlineKeyboardMarkup) SendVoiceReplyMarkup {
-	var s SendVoiceReplyMarkup
-	s.SetInlineKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardMarkup sets SendVoiceReplyMarkup to ReplyKeyboardMarkup.
-func (s *SendVoiceReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
-	s.Type = ReplyKeyboardMarkupSendVoiceReplyMarkup
-	s.ReplyKeyboardMarkup = v
-}
-
-// GetReplyKeyboardMarkup returns ReplyKeyboardMarkup and true boolean if SendVoiceReplyMarkup is ReplyKeyboardMarkup.
-func (s SendVoiceReplyMarkup) GetReplyKeyboardMarkup() (v ReplyKeyboardMarkup, ok bool) {
-	if !s.IsReplyKeyboardMarkup() {
-		return v, false
-	}
-	return s.ReplyKeyboardMarkup, true
-}
-
-// NewReplyKeyboardMarkupSendVoiceReplyMarkup returns new SendVoiceReplyMarkup from ReplyKeyboardMarkup.
-func NewReplyKeyboardMarkupSendVoiceReplyMarkup(v ReplyKeyboardMarkup) SendVoiceReplyMarkup {
-	var s SendVoiceReplyMarkup
-	s.SetReplyKeyboardMarkup(v)
-	return s
-}
-
-// SetReplyKeyboardRemove sets SendVoiceReplyMarkup to ReplyKeyboardRemove.
-func (s *SendVoiceReplyMarkup) SetReplyKeyboardRemove(v ReplyKeyboardRemove) {
-	s.Type = ReplyKeyboardRemoveSendVoiceReplyMarkup
-	s.ReplyKeyboardRemove = v
-}
-
-// GetReplyKeyboardRemove returns ReplyKeyboardRemove and true boolean if SendVoiceReplyMarkup is ReplyKeyboardRemove.
-func (s SendVoiceReplyMarkup) GetReplyKeyboardRemove() (v ReplyKeyboardRemove, ok bool) {
-	if !s.IsReplyKeyboardRemove() {
-		return v, false
-	}
-	return s.ReplyKeyboardRemove, true
-}
-
-// NewReplyKeyboardRemoveSendVoiceReplyMarkup returns new SendVoiceReplyMarkup from ReplyKeyboardRemove.
-func NewReplyKeyboardRemoveSendVoiceReplyMarkup(v ReplyKeyboardRemove) SendVoiceReplyMarkup {
-	var s SendVoiceReplyMarkup
-	s.SetReplyKeyboardRemove(v)
-	return s
-}
-
-// SetForceReply sets SendVoiceReplyMarkup to ForceReply.
-func (s *SendVoiceReplyMarkup) SetForceReply(v ForceReply) {
-	s.Type = ForceReplySendVoiceReplyMarkup
-	s.ForceReply = v
-}
-
-// GetForceReply returns ForceReply and true boolean if SendVoiceReplyMarkup is ForceReply.
-func (s SendVoiceReplyMarkup) GetForceReply() (v ForceReply, ok bool) {
-	if !s.IsForceReply() {
-		return v, false
-	}
-	return s.ForceReply, true
-}
-
-// NewForceReplySendVoiceReplyMarkup returns new SendVoiceReplyMarkup from ForceReply.
-func NewForceReplySendVoiceReplyMarkup(v ForceReply) SendVoiceReplyMarkup {
-	var s SendVoiceReplyMarkup
-	s.SetForceReply(v)
-	return s
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
 }
 
 // Input for setChatAdministratorCustomTitle.
@@ -7646,7 +8512,7 @@ func NewForceReplySendVoiceReplyMarkup(v ForceReply) SendVoiceReplyMarkup {
 type SetChatAdministratorCustomTitle struct {
 	ChatID ID `json:"chat_id"`
 	// Unique identifier of the target user.
-	UserID int `json:"user_id"`
+	UserID int64 `json:"user_id"`
 	// New custom title for the administrator; 0-16 characters, emoji are not allowed.
 	CustomTitle string `json:"custom_title"`
 }
@@ -7694,7 +8560,7 @@ type SetChatTitle struct {
 // Ref: #/components/schemas/setGameScore
 type SetGameScore struct {
 	// User identifier.
-	UserID int `json:"user_id"`
+	UserID int64 `json:"user_id"`
 	// New score, must be non-negative.
 	Score int `json:"score"`
 	// Pass True, if the high score is allowed to decrease. This can be useful when fixing mistakes or
@@ -7703,7 +8569,7 @@ type SetGameScore struct {
 	// Pass True, if the game message should not be automatically edited to include the current scoreboard.
 	DisableEditMessage OptBool `json:"disable_edit_message"`
 	// Required if inline_message_id is not specified. Unique identifier for the target chat.
-	ChatID OptInt `json:"chat_id"`
+	ChatID OptInt64 `json:"chat_id"`
 	// Required if inline_message_id is not specified. Identifier of the sent message.
 	MessageID OptInt `json:"message_id"`
 	// Required if chat_id and message_id are not specified. Identifier of the inline message.
@@ -7726,7 +8592,7 @@ type SetMyCommands struct {
 // Ref: #/components/schemas/setPassportDataErrors
 type SetPassportDataErrors struct {
 	// User identifier.
-	UserID int `json:"user_id"`
+	UserID int64 `json:"user_id"`
 	// A JSON-serialized array describing the errors.
 	Errors []PassportElementError `json:"errors"`
 }
@@ -7746,14 +8612,15 @@ type SetStickerSetThumb struct {
 	// Sticker set name.
 	Name string `json:"name"`
 	// User identifier of the sticker set owner.
-	UserID int `json:"user_id"`
+	UserID int64 `json:"user_id"`
 	// A PNG image with the thumbnail, must be up to 128 kilobytes in size and have width and height
 	// exactly 100px, or a TGS animation with the thumbnail up to 32 kilobytes in size; see https://core.
-	// telegram.org/animated_stickers#technical-requirements for animated sticker technical requirements.
-	// Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an
-	// HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using
-	// multipart/form-data. More info on Sending Files ». Animated sticker set thumbnail can't be
-	// uploaded via HTTP URL.
+	// telegram.org/stickers#animated-sticker-requirements for animated sticker technical requirements,
+	// or a WEBM video with the thumbnail up to 32 kilobytes in size; see https://core.telegram.
+	// org/stickers#video-sticker-requirements for video sticker technical requirements. Pass a file_id
+	// as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a
+	// String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.
+	//  More info on Sending Files ». Animated sticker set thumbnails can't be uploaded via HTTP URL.
 	Thumb OptString `json:"thumb"`
 }
 
@@ -7761,7 +8628,7 @@ type SetStickerSetThumb struct {
 // Ref: #/components/schemas/setWebhook
 type SetWebhook struct {
 	// HTTPS url to send updates to. Use an empty string to remove webhook integration.
-	URL url.URL `json:"url"`
+	URL string `json:"url"`
 	// Upload your public key certificate so that the root certificate in use can be checked. See our
 	// self-signed guide for details.
 	Certificate OptString `json:"certificate"`
@@ -7811,6 +8678,17 @@ type ShippingOption struct {
 	Prices []LabeledPrice `json:"prices"`
 }
 
+// This object contains information about an incoming shipping query.
+// Ref: #/components/schemas/ShippingQuery
+type ShippingQuery struct {
+	// Unique query identifier.
+	ID   string `json:"id"`
+	From User   `json:"from"`
+	// Bot specified invoice payload.
+	InvoicePayload  string          `json:"invoice_payload"`
+	ShippingAddress ShippingAddress `json:"shipping_address"`
+}
+
 // This object represents a sticker.
 // Ref: #/components/schemas/Sticker
 type Sticker struct {
@@ -7824,8 +8702,10 @@ type Sticker struct {
 	// Sticker height.
 	Height int `json:"height"`
 	// True, if the sticker is animated.
-	IsAnimated bool         `json:"is_animated"`
-	Thumb      OptPhotoSize `json:"thumb"`
+	IsAnimated bool `json:"is_animated"`
+	// True, if the sticker is a video sticker.
+	IsVideo bool         `json:"is_video"`
+	Thumb   OptPhotoSize `json:"thumb"`
 	// Emoji associated with the sticker.
 	Emoji OptString `json:"emoji"`
 	// Name of the sticker set to which the sticker belongs.
@@ -7833,6 +8713,24 @@ type Sticker struct {
 	MaskPosition OptMaskPosition `json:"mask_position"`
 	// File size in bytes.
 	FileSize OptInt `json:"file_size"`
+}
+
+// This object represents a sticker set.
+// Ref: #/components/schemas/StickerSet
+type StickerSet struct {
+	// Sticker set name.
+	Name string `json:"name"`
+	// Sticker set title.
+	Title string `json:"title"`
+	// True, if the sticker set contains animated stickers.
+	IsAnimated bool `json:"is_animated"`
+	// True, if the sticker set contains video stickers.
+	IsVideo bool `json:"is_video"`
+	// True, if the sticker set contains masks.
+	ContainsMasks bool `json:"contains_masks"`
+	// List of all set stickers.
+	Stickers []Sticker    `json:"stickers"`
+	Thumb    OptPhotoSize `json:"thumb"`
 }
 
 // Input for stopMessageLiveLocation.
@@ -7881,9 +8779,17 @@ type SuccessfulPayment struct {
 type UnbanChatMember struct {
 	ChatID ID `json:"chat_id"`
 	// Unique identifier of the target user.
-	UserID int `json:"user_id"`
+	UserID int64 `json:"user_id"`
 	// Do nothing if the user is not banned.
 	OnlyIfBanned OptBool `json:"only_if_banned"`
+}
+
+// Input for unbanChatSenderChat.
+// Ref: #/components/schemas/unbanChatSenderChat
+type UnbanChatSenderChat struct {
+	ChatID ID `json:"chat_id"`
+	// Unique identifier of the target sender chat.
+	SenderChatID int64 `json:"sender_chat_id"`
 }
 
 // Input for unpinAllChatMessages.
@@ -7901,11 +8807,37 @@ type UnpinChatMessage struct {
 	MessageID OptInt `json:"message_id"`
 }
 
+// This object represents an incoming update.At most one of the optional parameters can be present in
+// any given update.
+// Ref: #/components/schemas/Update
+type Update struct {
+	// The update's unique identifier. Update identifiers start from a certain positive number and
+	// increase sequentially. This ID becomes especially handy if you're using Webhooks, since it allows
+	// you to ignore repeated updates or to restore the correct update sequence, should they get out of
+	// order. If there are no new updates for at least a week, then identifier of the next update will be
+	// chosen randomly instead of sequentially.
+	UpdateID           int                   `json:"update_id"`
+	Message            OptMessage            `json:"message"`
+	EditedMessage      OptMessage            `json:"edited_message"`
+	ChannelPost        OptMessage            `json:"channel_post"`
+	EditedChannelPost  OptMessage            `json:"edited_channel_post"`
+	InlineQuery        OptInlineQuery        `json:"inline_query"`
+	ChosenInlineResult OptChosenInlineResult `json:"chosen_inline_result"`
+	CallbackQuery      OptCallbackQuery      `json:"callback_query"`
+	ShippingQuery      OptShippingQuery      `json:"shipping_query"`
+	PreCheckoutQuery   OptPreCheckoutQuery   `json:"pre_checkout_query"`
+	Poll               OptPoll               `json:"poll"`
+	PollAnswer         OptPollAnswer         `json:"poll_answer"`
+	MyChatMember       OptChatMemberUpdated  `json:"my_chat_member"`
+	ChatMember         OptChatMemberUpdated  `json:"chat_member"`
+	ChatJoinRequest    OptChatJoinRequest    `json:"chat_join_request"`
+}
+
 // Input for uploadStickerFile.
 // Ref: #/components/schemas/uploadStickerFile
 type UploadStickerFile struct {
 	// User identifier of sticker file owner.
-	UserID int `json:"user_id"`
+	UserID int64 `json:"user_id"`
 	// PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px,
 	// and either width or height must be exactly 512px. More info on Sending Files ».
 	PNGSticker string `json:"png_sticker"`
@@ -7918,7 +8850,7 @@ type User struct {
 	// some programming languages may have difficulty/silent defects in interpreting it. But it has at
 	// most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing
 	// this identifier.
-	ID int `json:"id"`
+	ID int64 `json:"id"`
 	// True, if this user is a bot.
 	IsBot bool `json:"is_bot"`
 	// User's or bot's first name.
@@ -7935,6 +8867,15 @@ type User struct {
 	CanReadAllGroupMessages OptBool `json:"can_read_all_group_messages"`
 	// True, if the bot supports inline queries. Returned only in getMe.
 	SupportsInlineQueries OptBool `json:"supports_inline_queries"`
+}
+
+// This object represent a user's profile pictures.
+// Ref: #/components/schemas/UserProfilePhotos
+type UserProfilePhotos struct {
+	// Total number of profile pictures the target user has.
+	TotalCount int `json:"total_count"`
+	// Requested profile pictures (in up to 4 sizes each).
+	Photos [][]PhotoSize `json:"photos"`
 }
 
 // This object represents a venue.
@@ -8038,3 +8979,25 @@ type VoiceChatScheduled struct {
 // no information.
 // Ref: #/components/schemas/VoiceChatStarted
 type VoiceChatStarted struct{}
+
+// Contains information about the current status of a webhook.
+// Ref: #/components/schemas/WebhookInfo
+type WebhookInfo struct {
+	// Webhook URL, may be empty if webhook is not set up.
+	URL string `json:"url"`
+	// True, if a custom certificate was provided for webhook certificate checks.
+	HasCustomCertificate bool `json:"has_custom_certificate"`
+	// Number of updates awaiting delivery.
+	PendingUpdateCount int `json:"pending_update_count"`
+	// Currently used webhook IP address.
+	IPAddress OptString `json:"ip_address"`
+	// Unix time for the most recent error that happened when trying to deliver an update via webhook.
+	LastErrorDate OptInt `json:"last_error_date"`
+	// Error message in human-readable format for the most recent error that happened when trying to
+	// deliver an update via webhook.
+	LastErrorMessage OptString `json:"last_error_message"`
+	// Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery.
+	MaxConnections OptInt `json:"max_connections"`
+	// A list of update types the bot is subscribed to. Defaults to all update types except chat_member.
+	AllowedUpdates []string `json:"allowed_updates"`
+}

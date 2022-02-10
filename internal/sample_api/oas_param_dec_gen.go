@@ -250,7 +250,7 @@ func decodeDefaultTestParams(args [0]string, r *http.Request) (DefaultTestParams
 			})
 
 			if err := func() error {
-				var paramsDefaultVal int32
+				var paramsDotDefaultVal int32
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -262,12 +262,12 @@ func decodeDefaultTestParams(args [0]string, r *http.Request) (DefaultTestParams
 						return err
 					}
 
-					paramsDefaultVal = c
+					paramsDotDefaultVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Default.SetTo(paramsDefaultVal)
+				params.Default.SetTo(paramsDotDefaultVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: default: parse")
@@ -478,7 +478,7 @@ func decodePetGetParams(args [0]string, r *http.Request) (PetGetParams, error) {
 			})
 			if err := func() error {
 				return d.DecodeArray(func(d uri.Decoder) error {
-					var paramsXTagsVal uuid.UUID
+					var paramsDotXTagsVal uuid.UUID
 					if err := func() error {
 						s, err := d.DecodeValue()
 						if err != nil {
@@ -490,12 +490,12 @@ func decodePetGetParams(args [0]string, r *http.Request) (PetGetParams, error) {
 							return err
 						}
 
-						paramsXTagsVal = c
+						paramsDotXTagsVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					params.XTags = append(params.XTags, paramsXTagsVal)
+					params.XTags = append(params.XTags, paramsDotXTagsVal)
 					return nil
 				})
 			}(); err != nil {
@@ -515,7 +515,7 @@ func decodePetGetParams(args [0]string, r *http.Request) (PetGetParams, error) {
 			})
 			if err := func() error {
 				return d.DecodeArray(func(d uri.Decoder) error {
-					var paramsXScopeVal string
+					var paramsDotXScopeVal string
 					if err := func() error {
 						s, err := d.DecodeValue()
 						if err != nil {
@@ -527,12 +527,12 @@ func decodePetGetParams(args [0]string, r *http.Request) (PetGetParams, error) {
 							return err
 						}
 
-						paramsXScopeVal = c
+						paramsDotXScopeVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					params.XScope = append(params.XScope, paramsXScopeVal)
+					params.XScope = append(params.XScope, paramsDotXScopeVal)
 					return nil
 				})
 			}(); err != nil {
@@ -781,13 +781,13 @@ func decodeTestObjectQueryParameterParams(args [0]string, r *http.Request) (Test
 			})
 
 			if err := func() error {
-				var paramsFormObjectVal TestObjectQueryParameterFormObject
+				var paramsDotFormObjectVal TestObjectQueryParameterFormObject
 				if err := func() error {
-					return paramsFormObjectVal.decodeURI(d)
+					return paramsDotFormObjectVal.decodeURI(d)
 				}(); err != nil {
 					return err
 				}
-				params.FormObject.SetTo(paramsFormObjectVal)
+				params.FormObject.SetTo(paramsDotFormObjectVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: formObject: parse")
@@ -805,13 +805,13 @@ func decodeTestObjectQueryParameterParams(args [0]string, r *http.Request) (Test
 			})
 
 			if err := func() error {
-				var paramsDeepObjectVal TestObjectQueryParameterDeepObject
+				var paramsDotDeepObjectVal TestObjectQueryParameterDeepObject
 				if err := func() error {
-					return paramsDeepObjectVal.decodeURI(d)
+					return paramsDotDeepObjectVal.decodeURI(d)
 				}(); err != nil {
 					return err
 				}
-				params.DeepObject.SetTo(paramsDeepObjectVal)
+				params.DeepObject.SetTo(paramsDotDeepObjectVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: deepObject: parse")

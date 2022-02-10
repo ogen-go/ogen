@@ -3844,7 +3844,7 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (A
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -3856,12 +3856,12 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (A
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -3885,7 +3885,7 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (A
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -3897,12 +3897,12 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (A
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -3996,7 +3996,7 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -4008,12 +4008,12 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) 
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -4037,7 +4037,7 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -4049,12 +4049,12 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) 
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -4179,7 +4179,7 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsFilterVal ActionsListJobsForWorkflowRunFilter
+				var paramsDotFilterVal ActionsListJobsForWorkflowRunFilter
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -4191,12 +4191,12 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 						return err
 					}
 
-					paramsFilterVal = ActionsListJobsForWorkflowRunFilter(c)
+					paramsDotFilterVal = ActionsListJobsForWorkflowRunFilter(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Filter.SetTo(paramsFilterVal)
+				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
@@ -4236,7 +4236,7 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -4248,12 +4248,12 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -4277,7 +4277,7 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -4289,12 +4289,12 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -4357,7 +4357,7 @@ func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (Actions
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -4369,12 +4369,12 @@ func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (Actions
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -4398,7 +4398,7 @@ func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (Actions
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -4410,12 +4410,12 @@ func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (Actions
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -4509,7 +4509,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -4521,12 +4521,12 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -4550,7 +4550,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -4562,12 +4562,12 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -4661,7 +4661,7 @@ func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (Action
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -4673,12 +4673,12 @@ func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (Action
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -4702,7 +4702,7 @@ func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (Action
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -4714,12 +4714,12 @@ func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (Action
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -4813,7 +4813,7 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (Acti
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -4825,12 +4825,12 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (Acti
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -4854,7 +4854,7 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (Acti
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -4866,12 +4866,12 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (Acti
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -5072,7 +5072,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -5084,12 +5084,12 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -5113,7 +5113,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -5125,12 +5125,12 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -5193,7 +5193,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -5205,12 +5205,12 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -5234,7 +5234,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -5246,12 +5246,12 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -5314,7 +5314,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -5326,12 +5326,12 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -5355,7 +5355,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -5367,12 +5367,12 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -5435,7 +5435,7 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Requ
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -5447,12 +5447,12 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Requ
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -5476,7 +5476,7 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Requ
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -5488,12 +5488,12 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Requ
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -5587,7 +5587,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Req
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -5599,12 +5599,12 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Req
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -5628,7 +5628,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Req
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -5640,12 +5640,12 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Req
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -5739,7 +5739,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *ht
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -5751,12 +5751,12 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *ht
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -5780,7 +5780,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *ht
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -5792,12 +5792,12 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *ht
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -5922,7 +5922,7 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -5934,12 +5934,12 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -5963,7 +5963,7 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -5975,12 +5975,12 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -6068,7 +6068,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsActorVal string
+				var paramsDotActorVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -6080,12 +6080,12 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 						return err
 					}
 
-					paramsActorVal = c
+					paramsDotActorVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Actor.SetTo(paramsActorVal)
+				params.Actor.SetTo(paramsDotActorVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: actor: parse")
@@ -6103,7 +6103,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsBranchVal string
+				var paramsDotBranchVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -6115,12 +6115,12 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 						return err
 					}
 
-					paramsBranchVal = c
+					paramsDotBranchVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Branch.SetTo(paramsBranchVal)
+				params.Branch.SetTo(paramsDotBranchVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: branch: parse")
@@ -6138,7 +6138,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsEventVal string
+				var paramsDotEventVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -6150,12 +6150,12 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 						return err
 					}
 
-					paramsEventVal = c
+					paramsDotEventVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Event.SetTo(paramsEventVal)
+				params.Event.SetTo(paramsDotEventVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: event: parse")
@@ -6173,7 +6173,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsStatusVal ActionsListWorkflowRunsForRepoStatus
+				var paramsDotStatusVal ActionsListWorkflowRunsForRepoStatus
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -6185,12 +6185,12 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 						return err
 					}
 
-					paramsStatusVal = ActionsListWorkflowRunsForRepoStatus(c)
+					paramsDotStatusVal = ActionsListWorkflowRunsForRepoStatus(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Status.SetTo(paramsStatusVal)
+				params.Status.SetTo(paramsDotStatusVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: status: parse")
@@ -6230,7 +6230,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -6242,12 +6242,12 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -6271,7 +6271,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -6283,12 +6283,12 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -6306,7 +6306,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsCreatedVal time.Time
+				var paramsDotCreatedVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -6318,12 +6318,12 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 						return err
 					}
 
-					paramsCreatedVal = c
+					paramsDotCreatedVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Created.SetTo(paramsCreatedVal)
+				params.Created.SetTo(paramsDotCreatedVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: created: parse")
@@ -7835,7 +7835,7 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -7847,12 +7847,12 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -7876,7 +7876,7 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -7888,12 +7888,12 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -7925,7 +7925,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 			})
 
 			if err := func() error {
-				var paramsAllVal bool
+				var paramsDotAllVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -7937,12 +7937,12 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 						return err
 					}
 
-					paramsAllVal = c
+					paramsDotAllVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.All.SetTo(paramsAllVal)
+				params.All.SetTo(paramsDotAllVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: all: parse")
@@ -7966,7 +7966,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 			})
 
 			if err := func() error {
-				var paramsParticipatingVal bool
+				var paramsDotParticipatingVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -7978,12 +7978,12 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 						return err
 					}
 
-					paramsParticipatingVal = c
+					paramsDotParticipatingVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Participating.SetTo(paramsParticipatingVal)
+				params.Participating.SetTo(paramsDotParticipatingVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: participating: parse")
@@ -8001,7 +8001,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 			})
 
 			if err := func() error {
-				var paramsSinceVal time.Time
+				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -8013,12 +8013,12 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -8036,7 +8036,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 			})
 
 			if err := func() error {
-				var paramsBeforeVal time.Time
+				var paramsDotBeforeVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -8048,12 +8048,12 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 						return err
 					}
 
-					paramsBeforeVal = c
+					paramsDotBeforeVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Before.SetTo(paramsBeforeVal)
+				params.Before.SetTo(paramsDotBeforeVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: before: parse")
@@ -8077,7 +8077,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -8089,12 +8089,12 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -8118,7 +8118,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -8130,12 +8130,12 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -8229,7 +8229,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -8241,12 +8241,12 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -8270,7 +8270,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -8282,12 +8282,12 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -8319,7 +8319,7 @@ func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (Acti
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -8331,12 +8331,12 @@ func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (Acti
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -8360,7 +8360,7 @@ func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (Acti
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -8372,12 +8372,12 @@ func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (Acti
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -8471,7 +8471,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -8483,12 +8483,12 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -8512,7 +8512,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -8524,12 +8524,12 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -8592,7 +8592,7 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -8604,12 +8604,12 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -8633,7 +8633,7 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -8645,12 +8645,12 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -8713,7 +8713,7 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (A
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -8725,12 +8725,12 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (A
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -8754,7 +8754,7 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (A
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -8766,12 +8766,12 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (A
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -8834,7 +8834,7 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Reque
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -8846,12 +8846,12 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Reque
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -8875,7 +8875,7 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Reque
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -8887,12 +8887,12 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Reque
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -8955,7 +8955,7 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -8967,12 +8967,12 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -8996,7 +8996,7 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -9008,12 +9008,12 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -9107,7 +9107,7 @@ func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (Activi
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -9119,12 +9119,12 @@ func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (Activi
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -9148,7 +9148,7 @@ func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (Activi
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -9160,12 +9160,12 @@ func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (Activi
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -9259,7 +9259,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 			})
 
 			if err := func() error {
-				var paramsAllVal bool
+				var paramsDotAllVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -9271,12 +9271,12 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 						return err
 					}
 
-					paramsAllVal = c
+					paramsDotAllVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.All.SetTo(paramsAllVal)
+				params.All.SetTo(paramsDotAllVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: all: parse")
@@ -9300,7 +9300,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 			})
 
 			if err := func() error {
-				var paramsParticipatingVal bool
+				var paramsDotParticipatingVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -9312,12 +9312,12 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 						return err
 					}
 
-					paramsParticipatingVal = c
+					paramsDotParticipatingVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Participating.SetTo(paramsParticipatingVal)
+				params.Participating.SetTo(paramsDotParticipatingVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: participating: parse")
@@ -9335,7 +9335,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 			})
 
 			if err := func() error {
-				var paramsSinceVal time.Time
+				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -9347,12 +9347,12 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -9370,7 +9370,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 			})
 
 			if err := func() error {
-				var paramsBeforeVal time.Time
+				var paramsDotBeforeVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -9382,12 +9382,12 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 						return err
 					}
 
-					paramsBeforeVal = c
+					paramsDotBeforeVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Before.SetTo(paramsBeforeVal)
+				params.Before.SetTo(paramsDotBeforeVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: before: parse")
@@ -9411,7 +9411,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -9423,12 +9423,12 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -9452,7 +9452,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -9464,12 +9464,12 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -9501,7 +9501,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 			})
 
 			if err := func() error {
-				var paramsSortVal ActivityListReposStarredByAuthenticatedUserSort
+				var paramsDotSortVal ActivityListReposStarredByAuthenticatedUserSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -9513,12 +9513,12 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 						return err
 					}
 
-					paramsSortVal = ActivityListReposStarredByAuthenticatedUserSort(c)
+					paramsDotSortVal = ActivityListReposStarredByAuthenticatedUserSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -9558,7 +9558,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 			})
 
 			if err := func() error {
-				var paramsDirectionVal ActivityListReposStarredByAuthenticatedUserDirection
+				var paramsDotDirectionVal ActivityListReposStarredByAuthenticatedUserDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -9570,12 +9570,12 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 						return err
 					}
 
-					paramsDirectionVal = ActivityListReposStarredByAuthenticatedUserDirection(c)
+					paramsDotDirectionVal = ActivityListReposStarredByAuthenticatedUserDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -9615,7 +9615,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -9627,12 +9627,12 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -9656,7 +9656,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -9668,12 +9668,12 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -9736,7 +9736,7 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -9748,12 +9748,12 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request)
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -9777,7 +9777,7 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -9789,12 +9789,12 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request)
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -9826,7 +9826,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r 
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -9838,12 +9838,12 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r 
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -9867,7 +9867,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r 
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -9879,12 +9879,12 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r 
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -9978,7 +9978,7 @@ func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (A
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -9990,12 +9990,12 @@ func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (A
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -10019,7 +10019,7 @@ func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (A
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -10031,12 +10031,12 @@ func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (A
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -10962,7 +10962,7 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 			})
 
 			if err := func() error {
-				var paramsSortVal AppsListAccountsForPlanSort
+				var paramsDotSortVal AppsListAccountsForPlanSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -10974,12 +10974,12 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 						return err
 					}
 
-					paramsSortVal = AppsListAccountsForPlanSort(c)
+					paramsDotSortVal = AppsListAccountsForPlanSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -11013,7 +11013,7 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 			})
 
 			if err := func() error {
-				var paramsDirectionVal AppsListAccountsForPlanDirection
+				var paramsDotDirectionVal AppsListAccountsForPlanDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11025,12 +11025,12 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 						return err
 					}
 
-					paramsDirectionVal = AppsListAccountsForPlanDirection(c)
+					paramsDotDirectionVal = AppsListAccountsForPlanDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -11070,7 +11070,7 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11082,12 +11082,12 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -11111,7 +11111,7 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11123,12 +11123,12 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -11191,7 +11191,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsSortVal AppsListAccountsForPlanStubbedSort
+				var paramsDotSortVal AppsListAccountsForPlanStubbedSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11203,12 +11203,12 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 						return err
 					}
 
-					paramsSortVal = AppsListAccountsForPlanStubbedSort(c)
+					paramsDotSortVal = AppsListAccountsForPlanStubbedSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -11242,7 +11242,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsDirectionVal AppsListAccountsForPlanStubbedDirection
+				var paramsDotDirectionVal AppsListAccountsForPlanStubbedDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11254,12 +11254,12 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 						return err
 					}
 
-					paramsDirectionVal = AppsListAccountsForPlanStubbedDirection(c)
+					paramsDotDirectionVal = AppsListAccountsForPlanStubbedDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -11299,7 +11299,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11311,12 +11311,12 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -11340,7 +11340,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11352,12 +11352,12 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -11420,7 +11420,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11432,12 +11432,12 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -11461,7 +11461,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11473,12 +11473,12 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -11510,7 +11510,7 @@ func decodeAppsListPlansParams(args [0]string, r *http.Request) (AppsListPlansPa
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11522,12 +11522,12 @@ func decodeAppsListPlansParams(args [0]string, r *http.Request) (AppsListPlansPa
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -11551,7 +11551,7 @@ func decodeAppsListPlansParams(args [0]string, r *http.Request) (AppsListPlansPa
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11563,12 +11563,12 @@ func decodeAppsListPlansParams(args [0]string, r *http.Request) (AppsListPlansPa
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -11600,7 +11600,7 @@ func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (AppsList
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11612,12 +11612,12 @@ func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (AppsList
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -11641,7 +11641,7 @@ func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (AppsList
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11653,12 +11653,12 @@ func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (AppsList
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -11690,7 +11690,7 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.R
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11702,12 +11702,12 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.R
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -11731,7 +11731,7 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.R
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11743,12 +11743,12 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.R
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -11780,7 +11780,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *ht
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11792,12 +11792,12 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *ht
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -11821,7 +11821,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *ht
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11833,12 +11833,12 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *ht
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -11870,7 +11870,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11882,12 +11882,12 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -11911,7 +11911,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11923,12 +11923,12 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -11960,7 +11960,7 @@ func decodeAppsListWebhookDeliveriesParams(args [0]string, r *http.Request) (App
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -11972,12 +11972,12 @@ func decodeAppsListWebhookDeliveriesParams(args [0]string, r *http.Request) (App
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -11995,7 +11995,7 @@ func decodeAppsListWebhookDeliveriesParams(args [0]string, r *http.Request) (App
 			})
 
 			if err := func() error {
-				var paramsCursorVal string
+				var paramsDotCursorVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -12007,12 +12007,12 @@ func decodeAppsListWebhookDeliveriesParams(args [0]string, r *http.Request) (App
 						return err
 					}
 
-					paramsCursorVal = c
+					paramsDotCursorVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Cursor.SetTo(paramsCursorVal)
+				params.Cursor.SetTo(paramsDotCursorVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: cursor: parse")
@@ -13007,7 +13007,7 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (ChecksL
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -13019,12 +13019,12 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (ChecksL
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -13048,7 +13048,7 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (ChecksL
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -13060,12 +13060,12 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (ChecksL
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -13184,7 +13184,7 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 			})
 
 			if err := func() error {
-				var paramsCheckNameVal string
+				var paramsDotCheckNameVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -13196,12 +13196,12 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 						return err
 					}
 
-					paramsCheckNameVal = c
+					paramsDotCheckNameVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.CheckName.SetTo(paramsCheckNameVal)
+				params.CheckName.SetTo(paramsDotCheckNameVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: check_name: parse")
@@ -13219,7 +13219,7 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 			})
 
 			if err := func() error {
-				var paramsStatusVal ChecksListForRefStatus
+				var paramsDotStatusVal ChecksListForRefStatus
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -13231,12 +13231,12 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 						return err
 					}
 
-					paramsStatusVal = ChecksListForRefStatus(c)
+					paramsDotStatusVal = ChecksListForRefStatus(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Status.SetTo(paramsStatusVal)
+				params.Status.SetTo(paramsDotStatusVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: status: parse")
@@ -13276,7 +13276,7 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 			})
 
 			if err := func() error {
-				var paramsFilterVal ChecksListForRefFilter
+				var paramsDotFilterVal ChecksListForRefFilter
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -13288,12 +13288,12 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 						return err
 					}
 
-					paramsFilterVal = ChecksListForRefFilter(c)
+					paramsDotFilterVal = ChecksListForRefFilter(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Filter.SetTo(paramsFilterVal)
+				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
@@ -13333,7 +13333,7 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -13345,12 +13345,12 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -13374,7 +13374,7 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -13386,12 +13386,12 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -13409,7 +13409,7 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 			})
 
 			if err := func() error {
-				var paramsAppIDVal int
+				var paramsDotAppIDVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -13421,12 +13421,12 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 						return err
 					}
 
-					paramsAppIDVal = c
+					paramsDotAppIDVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.AppID.SetTo(paramsAppIDVal)
+				params.AppID.SetTo(paramsDotAppIDVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: app_id: parse")
@@ -13545,7 +13545,7 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 			})
 
 			if err := func() error {
-				var paramsCheckNameVal string
+				var paramsDotCheckNameVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -13557,12 +13557,12 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 						return err
 					}
 
-					paramsCheckNameVal = c
+					paramsDotCheckNameVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.CheckName.SetTo(paramsCheckNameVal)
+				params.CheckName.SetTo(paramsDotCheckNameVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: check_name: parse")
@@ -13580,7 +13580,7 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 			})
 
 			if err := func() error {
-				var paramsStatusVal ChecksListForSuiteStatus
+				var paramsDotStatusVal ChecksListForSuiteStatus
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -13592,12 +13592,12 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 						return err
 					}
 
-					paramsStatusVal = ChecksListForSuiteStatus(c)
+					paramsDotStatusVal = ChecksListForSuiteStatus(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Status.SetTo(paramsStatusVal)
+				params.Status.SetTo(paramsDotStatusVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: status: parse")
@@ -13637,7 +13637,7 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 			})
 
 			if err := func() error {
-				var paramsFilterVal ChecksListForSuiteFilter
+				var paramsDotFilterVal ChecksListForSuiteFilter
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -13649,12 +13649,12 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 						return err
 					}
 
-					paramsFilterVal = ChecksListForSuiteFilter(c)
+					paramsDotFilterVal = ChecksListForSuiteFilter(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Filter.SetTo(paramsFilterVal)
+				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
@@ -13694,7 +13694,7 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -13706,12 +13706,12 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -13735,7 +13735,7 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -13747,12 +13747,12 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -13871,7 +13871,7 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 			})
 
 			if err := func() error {
-				var paramsAppIDVal int
+				var paramsDotAppIDVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -13883,12 +13883,12 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 						return err
 					}
 
-					paramsAppIDVal = c
+					paramsDotAppIDVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.AppID.SetTo(paramsAppIDVal)
+				params.AppID.SetTo(paramsDotAppIDVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: app_id: parse")
@@ -13906,7 +13906,7 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 			})
 
 			if err := func() error {
-				var paramsCheckNameVal string
+				var paramsDotCheckNameVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -13918,12 +13918,12 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 						return err
 					}
 
-					paramsCheckNameVal = c
+					paramsDotCheckNameVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.CheckName.SetTo(paramsCheckNameVal)
+				params.CheckName.SetTo(paramsDotCheckNameVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: check_name: parse")
@@ -13947,7 +13947,7 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -13959,12 +13959,12 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -13988,7 +13988,7 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -14000,12 +14000,12 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -14293,7 +14293,7 @@ func decodeCodeScanningDeleteAnalysisParams(args [3]string, r *http.Request) (Co
 			})
 
 			if err := func() error {
-				var paramsConfirmDeleteVal string
+				var paramsDotConfirmDeleteVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -14305,12 +14305,12 @@ func decodeCodeScanningDeleteAnalysisParams(args [3]string, r *http.Request) (Co
 						return err
 					}
 
-					paramsConfirmDeleteVal = c
+					paramsDotConfirmDeleteVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.ConfirmDelete.SetTo(paramsConfirmDeleteVal)
+				params.ConfirmDelete.SetTo(paramsDotConfirmDeleteVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: confirm_delete: parse")
@@ -14398,7 +14398,7 @@ func decodeCodeScanningGetAlertParams(args [3]string, r *http.Request) (CodeScan
 			})
 
 			if err := func() error {
-				var paramsAlertNumberVal int
+				var paramsDotAlertNumberVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -14410,12 +14410,12 @@ func decodeCodeScanningGetAlertParams(args [3]string, r *http.Request) (CodeScan
 						return err
 					}
 
-					paramsAlertNumberVal = c
+					paramsDotAlertNumberVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.AlertNumber = AlertNumber(paramsAlertNumberVal)
+				params.AlertNumber = AlertNumber(paramsDotAlertNumberVal)
 				return nil
 			}(); err != nil {
 				return params, err
@@ -14706,7 +14706,7 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsAlertNumberVal int
+				var paramsDotAlertNumberVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -14718,12 +14718,12 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 						return err
 					}
 
-					paramsAlertNumberVal = c
+					paramsDotAlertNumberVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.AlertNumber = AlertNumber(paramsAlertNumberVal)
+				params.AlertNumber = AlertNumber(paramsDotAlertNumberVal)
 				return nil
 			}(); err != nil {
 				return params, err
@@ -14749,7 +14749,7 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -14761,12 +14761,12 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -14790,7 +14790,7 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -14802,12 +14802,12 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -14825,9 +14825,9 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsRefVal CodeScanningRef
+				var paramsDotRefVal CodeScanningRef
 				if err := func() error {
-					var paramsRefValVal string
+					var paramsDotRefValVal string
 					if err := func() error {
 						s, err := d.DecodeValue()
 						if err != nil {
@@ -14839,17 +14839,17 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 							return err
 						}
 
-						paramsRefValVal = c
+						paramsDotRefValVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					paramsRefVal = CodeScanningRef(paramsRefValVal)
+					paramsDotRefVal = CodeScanningRef(paramsDotRefValVal)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Ref.SetTo(paramsRefVal)
+				params.Ref.SetTo(paramsDotRefVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: ref: parse")
@@ -14937,9 +14937,9 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsToolNameVal CodeScanningAnalysisToolName
+				var paramsDotToolNameVal CodeScanningAnalysisToolName
 				if err := func() error {
-					var paramsToolNameValVal string
+					var paramsDotToolNameValVal string
 					if err := func() error {
 						s, err := d.DecodeValue()
 						if err != nil {
@@ -14951,17 +14951,17 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 							return err
 						}
 
-						paramsToolNameValVal = c
+						paramsDotToolNameValVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					paramsToolNameVal = CodeScanningAnalysisToolName(paramsToolNameValVal)
+					paramsDotToolNameVal = CodeScanningAnalysisToolName(paramsDotToolNameValVal)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.ToolName.SetTo(paramsToolNameVal)
+				params.ToolName.SetTo(paramsDotToolNameVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: tool_name: parse")
@@ -14979,9 +14979,9 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsToolGUIDVal CodeScanningAnalysisToolGUID
+				var paramsDotToolGUIDVal CodeScanningAnalysisToolGUID
 				if err := func() error {
-					var paramsToolGUIDValVal string
+					var paramsDotToolGUIDValVal string
 					if err := func() error {
 						s, err := d.DecodeValue()
 						if err != nil {
@@ -14993,17 +14993,17 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 							return err
 						}
 
-						paramsToolGUIDValVal = c
+						paramsDotToolGUIDValVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					paramsToolGUIDVal = CodeScanningAnalysisToolGUID(paramsToolGUIDValVal)
+					paramsDotToolGUIDVal = CodeScanningAnalysisToolGUID(paramsDotToolGUIDValVal)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.ToolGUID.SetTo(paramsToolGUIDVal)
+				params.ToolGUID.SetTo(paramsDotToolGUIDVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: tool_guid: parse")
@@ -15027,7 +15027,7 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -15039,12 +15039,12 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -15068,7 +15068,7 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -15080,12 +15080,12 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -15103,9 +15103,9 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsRefVal CodeScanningRef
+				var paramsDotRefVal CodeScanningRef
 				if err := func() error {
-					var paramsRefValVal string
+					var paramsDotRefValVal string
 					if err := func() error {
 						s, err := d.DecodeValue()
 						if err != nil {
@@ -15117,17 +15117,17 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 							return err
 						}
 
-						paramsRefValVal = c
+						paramsDotRefValVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					paramsRefVal = CodeScanningRef(paramsRefValVal)
+					paramsDotRefVal = CodeScanningRef(paramsDotRefValVal)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Ref.SetTo(paramsRefVal)
+				params.Ref.SetTo(paramsDotRefVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: ref: parse")
@@ -15145,7 +15145,7 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsStateVal CodeScanningAlertState
+				var paramsDotStateVal CodeScanningAlertState
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -15157,12 +15157,12 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 						return err
 					}
 
-					paramsStateVal = CodeScanningAlertState(c)
+					paramsDotStateVal = CodeScanningAlertState(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.State.SetTo(paramsStateVal)
+				params.State.SetTo(paramsDotStateVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
@@ -15266,9 +15266,9 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsToolNameVal CodeScanningAnalysisToolName
+				var paramsDotToolNameVal CodeScanningAnalysisToolName
 				if err := func() error {
-					var paramsToolNameValVal string
+					var paramsDotToolNameValVal string
 					if err := func() error {
 						s, err := d.DecodeValue()
 						if err != nil {
@@ -15280,17 +15280,17 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 							return err
 						}
 
-						paramsToolNameValVal = c
+						paramsDotToolNameValVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					paramsToolNameVal = CodeScanningAnalysisToolName(paramsToolNameValVal)
+					paramsDotToolNameVal = CodeScanningAnalysisToolName(paramsDotToolNameValVal)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.ToolName.SetTo(paramsToolNameVal)
+				params.ToolName.SetTo(paramsDotToolNameVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: tool_name: parse")
@@ -15308,9 +15308,9 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsToolGUIDVal CodeScanningAnalysisToolGUID
+				var paramsDotToolGUIDVal CodeScanningAnalysisToolGUID
 				if err := func() error {
-					var paramsToolGUIDValVal string
+					var paramsDotToolGUIDValVal string
 					if err := func() error {
 						s, err := d.DecodeValue()
 						if err != nil {
@@ -15322,17 +15322,17 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 							return err
 						}
 
-						paramsToolGUIDValVal = c
+						paramsDotToolGUIDValVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					paramsToolGUIDVal = CodeScanningAnalysisToolGUID(paramsToolGUIDValVal)
+					paramsDotToolGUIDVal = CodeScanningAnalysisToolGUID(paramsDotToolGUIDValVal)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.ToolGUID.SetTo(paramsToolGUIDVal)
+				params.ToolGUID.SetTo(paramsDotToolGUIDVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: tool_guid: parse")
@@ -15356,7 +15356,7 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -15368,12 +15368,12 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -15397,7 +15397,7 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -15409,12 +15409,12 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -15432,9 +15432,9 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsRefVal CodeScanningRef
+				var paramsDotRefVal CodeScanningRef
 				if err := func() error {
-					var paramsRefValVal string
+					var paramsDotRefValVal string
 					if err := func() error {
 						s, err := d.DecodeValue()
 						if err != nil {
@@ -15446,17 +15446,17 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 							return err
 						}
 
-						paramsRefValVal = c
+						paramsDotRefValVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					paramsRefVal = CodeScanningRef(paramsRefValVal)
+					paramsDotRefVal = CodeScanningRef(paramsDotRefValVal)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Ref.SetTo(paramsRefVal)
+				params.Ref.SetTo(paramsDotRefVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: ref: parse")
@@ -15474,9 +15474,9 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsSarifIDVal CodeScanningAnalysisSarifID
+				var paramsDotSarifIDVal CodeScanningAnalysisSarifID
 				if err := func() error {
-					var paramsSarifIDValVal string
+					var paramsDotSarifIDValVal string
 					if err := func() error {
 						s, err := d.DecodeValue()
 						if err != nil {
@@ -15488,17 +15488,17 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 							return err
 						}
 
-						paramsSarifIDValVal = c
+						paramsDotSarifIDValVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					paramsSarifIDVal = CodeScanningAnalysisSarifID(paramsSarifIDValVal)
+					paramsDotSarifIDVal = CodeScanningAnalysisSarifID(paramsDotSarifIDValVal)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.SarifID.SetTo(paramsSarifIDVal)
+				params.SarifID.SetTo(paramsDotSarifIDVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sarif_id: parse")
@@ -15586,7 +15586,7 @@ func decodeCodeScanningUpdateAlertParams(args [3]string, r *http.Request) (CodeS
 			})
 
 			if err := func() error {
-				var paramsAlertNumberVal int
+				var paramsDotAlertNumberVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -15598,12 +15598,12 @@ func decodeCodeScanningUpdateAlertParams(args [3]string, r *http.Request) (CodeS
 						return err
 					}
 
-					paramsAlertNumberVal = c
+					paramsDotAlertNumberVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.AlertNumber = AlertNumber(paramsAlertNumberVal)
+				params.AlertNumber = AlertNumber(paramsDotAlertNumberVal)
 				return nil
 			}(); err != nil {
 				return params, err
@@ -16535,7 +16535,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 			})
 
 			if err := func() error {
-				var paramsPhraseVal string
+				var paramsDotPhraseVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -16547,12 +16547,12 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 						return err
 					}
 
-					paramsPhraseVal = c
+					paramsDotPhraseVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Phrase.SetTo(paramsPhraseVal)
+				params.Phrase.SetTo(paramsDotPhraseVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: phrase: parse")
@@ -16570,7 +16570,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 			})
 
 			if err := func() error {
-				var paramsIncludeVal EnterpriseAdminGetAuditLogInclude
+				var paramsDotIncludeVal EnterpriseAdminGetAuditLogInclude
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -16582,12 +16582,12 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 						return err
 					}
 
-					paramsIncludeVal = EnterpriseAdminGetAuditLogInclude(c)
+					paramsDotIncludeVal = EnterpriseAdminGetAuditLogInclude(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Include.SetTo(paramsIncludeVal)
+				params.Include.SetTo(paramsDotIncludeVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: include: parse")
@@ -16621,7 +16621,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 			})
 
 			if err := func() error {
-				var paramsAfterVal string
+				var paramsDotAfterVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -16633,12 +16633,12 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 						return err
 					}
 
-					paramsAfterVal = c
+					paramsDotAfterVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.After.SetTo(paramsAfterVal)
+				params.After.SetTo(paramsDotAfterVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: after: parse")
@@ -16656,7 +16656,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 			})
 
 			if err := func() error {
-				var paramsBeforeVal string
+				var paramsDotBeforeVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -16668,12 +16668,12 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 						return err
 					}
 
-					paramsBeforeVal = c
+					paramsDotBeforeVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Before.SetTo(paramsBeforeVal)
+				params.Before.SetTo(paramsDotBeforeVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: before: parse")
@@ -16691,7 +16691,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 			})
 
 			if err := func() error {
-				var paramsOrderVal EnterpriseAdminGetAuditLogOrder
+				var paramsDotOrderVal EnterpriseAdminGetAuditLogOrder
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -16703,12 +16703,12 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 						return err
 					}
 
-					paramsOrderVal = EnterpriseAdminGetAuditLogOrder(c)
+					paramsDotOrderVal = EnterpriseAdminGetAuditLogOrder(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Order.SetTo(paramsOrderVal)
+				params.Order.SetTo(paramsDotOrderVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: order: parse")
@@ -16748,7 +16748,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -16760,12 +16760,12 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -16789,7 +16789,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -16801,12 +16801,12 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -16932,7 +16932,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(arg
 			})
 
 			if err := func() error {
-				var paramsExcludedAttributesVal string
+				var paramsDotExcludedAttributesVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -16944,12 +16944,12 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(arg
 						return err
 					}
 
-					paramsExcludedAttributesVal = c
+					paramsDotExcludedAttributesVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.ExcludedAttributes.SetTo(paramsExcludedAttributesVal)
+				params.ExcludedAttributes.SetTo(paramsDotExcludedAttributesVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: excludedAttributes: parse")
@@ -17250,7 +17250,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -17262,12 +17262,12 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -17291,7 +17291,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -17303,12 +17303,12 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -17365,7 +17365,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 			})
 
 			if err := func() error {
-				var paramsStartIndexVal int
+				var paramsDotStartIndexVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -17377,12 +17377,12 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 						return err
 					}
 
-					paramsStartIndexVal = c
+					paramsDotStartIndexVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.StartIndex.SetTo(paramsStartIndexVal)
+				params.StartIndex.SetTo(paramsDotStartIndexVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: startIndex: parse")
@@ -17400,7 +17400,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 			})
 
 			if err := func() error {
-				var paramsCountVal int
+				var paramsDotCountVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -17412,12 +17412,12 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 						return err
 					}
 
-					paramsCountVal = c
+					paramsDotCountVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Count.SetTo(paramsCountVal)
+				params.Count.SetTo(paramsDotCountVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: count: parse")
@@ -17435,7 +17435,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 			})
 
 			if err := func() error {
-				var paramsFilterVal string
+				var paramsDotFilterVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -17447,12 +17447,12 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 						return err
 					}
 
-					paramsFilterVal = c
+					paramsDotFilterVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Filter.SetTo(paramsFilterVal)
+				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
@@ -17470,7 +17470,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 			})
 
 			if err := func() error {
-				var paramsExcludedAttributesVal string
+				var paramsDotExcludedAttributesVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -17482,12 +17482,12 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 						return err
 					}
 
-					paramsExcludedAttributesVal = c
+					paramsDotExcludedAttributesVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.ExcludedAttributes.SetTo(paramsExcludedAttributesVal)
+				params.ExcludedAttributes.SetTo(paramsDotExcludedAttributesVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: excludedAttributes: parse")
@@ -17544,7 +17544,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 			})
 
 			if err := func() error {
-				var paramsStartIndexVal int
+				var paramsDotStartIndexVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -17556,12 +17556,12 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 						return err
 					}
 
-					paramsStartIndexVal = c
+					paramsDotStartIndexVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.StartIndex.SetTo(paramsStartIndexVal)
+				params.StartIndex.SetTo(paramsDotStartIndexVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: startIndex: parse")
@@ -17579,7 +17579,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 			})
 
 			if err := func() error {
-				var paramsCountVal int
+				var paramsDotCountVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -17591,12 +17591,12 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 						return err
 					}
 
-					paramsCountVal = c
+					paramsDotCountVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Count.SetTo(paramsCountVal)
+				params.Count.SetTo(paramsDotCountVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: count: parse")
@@ -17614,7 +17614,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 			})
 
 			if err := func() error {
-				var paramsFilterVal string
+				var paramsDotFilterVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -17626,12 +17626,12 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 						return err
 					}
 
-					paramsFilterVal = c
+					paramsDotFilterVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Filter.SetTo(paramsFilterVal)
+				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
@@ -17732,7 +17732,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -17744,12 +17744,12 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -17773,7 +17773,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -17785,12 +17785,12 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -17853,7 +17853,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -17865,12 +17865,12 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -17894,7 +17894,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -17906,12 +17906,12 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -17974,7 +17974,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -17986,12 +17986,12 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -18015,7 +18015,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -18027,12 +18027,12 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -18126,7 +18126,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -18138,12 +18138,12 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -18167,7 +18167,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -18179,12 +18179,12 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -19480,7 +19480,7 @@ func decodeGistsListParams(args [0]string, r *http.Request) (GistsListParams, er
 			})
 
 			if err := func() error {
-				var paramsSinceVal time.Time
+				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -19492,12 +19492,12 @@ func decodeGistsListParams(args [0]string, r *http.Request) (GistsListParams, er
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -19521,7 +19521,7 @@ func decodeGistsListParams(args [0]string, r *http.Request) (GistsListParams, er
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -19533,12 +19533,12 @@ func decodeGistsListParams(args [0]string, r *http.Request) (GistsListParams, er
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -19562,7 +19562,7 @@ func decodeGistsListParams(args [0]string, r *http.Request) (GistsListParams, er
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -19574,12 +19574,12 @@ func decodeGistsListParams(args [0]string, r *http.Request) (GistsListParams, er
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -19642,7 +19642,7 @@ func decodeGistsListCommentsParams(args [1]string, r *http.Request) (GistsListCo
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -19654,12 +19654,12 @@ func decodeGistsListCommentsParams(args [1]string, r *http.Request) (GistsListCo
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -19683,7 +19683,7 @@ func decodeGistsListCommentsParams(args [1]string, r *http.Request) (GistsListCo
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -19695,12 +19695,12 @@ func decodeGistsListCommentsParams(args [1]string, r *http.Request) (GistsListCo
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -19763,7 +19763,7 @@ func decodeGistsListCommitsParams(args [1]string, r *http.Request) (GistsListCom
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -19775,12 +19775,12 @@ func decodeGistsListCommitsParams(args [1]string, r *http.Request) (GistsListCom
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -19804,7 +19804,7 @@ func decodeGistsListCommitsParams(args [1]string, r *http.Request) (GistsListCom
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -19816,12 +19816,12 @@ func decodeGistsListCommitsParams(args [1]string, r *http.Request) (GistsListCom
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -19878,7 +19878,7 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (GistsListFor
 			})
 
 			if err := func() error {
-				var paramsSinceVal time.Time
+				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -19890,12 +19890,12 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (GistsListFor
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -19919,7 +19919,7 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (GistsListFor
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -19931,12 +19931,12 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (GistsListFor
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -19960,7 +19960,7 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (GistsListFor
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -19972,12 +19972,12 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (GistsListFor
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -20040,7 +20040,7 @@ func decodeGistsListForksParams(args [1]string, r *http.Request) (GistsListForks
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -20052,12 +20052,12 @@ func decodeGistsListForksParams(args [1]string, r *http.Request) (GistsListForks
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -20081,7 +20081,7 @@ func decodeGistsListForksParams(args [1]string, r *http.Request) (GistsListForks
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -20093,12 +20093,12 @@ func decodeGistsListForksParams(args [1]string, r *http.Request) (GistsListForks
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -20124,7 +20124,7 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (GistsListPubl
 			})
 
 			if err := func() error {
-				var paramsSinceVal time.Time
+				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -20136,12 +20136,12 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (GistsListPubl
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -20165,7 +20165,7 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (GistsListPubl
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -20177,12 +20177,12 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (GistsListPubl
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -20206,7 +20206,7 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (GistsListPubl
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -20218,12 +20218,12 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (GistsListPubl
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -20249,7 +20249,7 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (GistsListSta
 			})
 
 			if err := func() error {
-				var paramsSinceVal time.Time
+				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -20261,12 +20261,12 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (GistsListSta
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -20290,7 +20290,7 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (GistsListSta
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -20302,12 +20302,12 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (GistsListSta
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -20331,7 +20331,7 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (GistsListSta
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -20343,12 +20343,12 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (GistsListSta
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -21457,7 +21457,7 @@ func decodeGitGetTreeParams(args [3]string, r *http.Request) (GitGetTreeParams, 
 			})
 
 			if err := func() error {
-				var paramsRecursiveVal string
+				var paramsDotRecursiveVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -21469,12 +21469,12 @@ func decodeGitGetTreeParams(args [3]string, r *http.Request) (GitGetTreeParams, 
 						return err
 					}
 
-					paramsRecursiveVal = c
+					paramsDotRecursiveVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Recursive.SetTo(paramsRecursiveVal)
+				params.Recursive.SetTo(paramsDotRecursiveVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: recursive: parse")
@@ -21599,7 +21599,7 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (GitListMa
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -21611,12 +21611,12 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (GitListMa
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -21640,7 +21640,7 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (GitListMa
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -21652,12 +21652,12 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (GitListMa
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -23348,7 +23348,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 			})
 
 			if err := func() error {
-				var paramsFilterVal IssuesListFilter
+				var paramsDotFilterVal IssuesListFilter
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -23360,12 +23360,12 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 						return err
 					}
 
-					paramsFilterVal = IssuesListFilter(c)
+					paramsDotFilterVal = IssuesListFilter(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Filter.SetTo(paramsFilterVal)
+				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
@@ -23405,7 +23405,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 			})
 
 			if err := func() error {
-				var paramsStateVal IssuesListState
+				var paramsDotStateVal IssuesListState
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -23417,12 +23417,12 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 						return err
 					}
 
-					paramsStateVal = IssuesListState(c)
+					paramsDotStateVal = IssuesListState(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.State.SetTo(paramsStateVal)
+				params.State.SetTo(paramsDotStateVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
@@ -23456,7 +23456,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 			})
 
 			if err := func() error {
-				var paramsLabelsVal string
+				var paramsDotLabelsVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -23468,12 +23468,12 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 						return err
 					}
 
-					paramsLabelsVal = c
+					paramsDotLabelsVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Labels.SetTo(paramsLabelsVal)
+				params.Labels.SetTo(paramsDotLabelsVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: labels: parse")
@@ -23497,7 +23497,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 			})
 
 			if err := func() error {
-				var paramsSortVal IssuesListSort
+				var paramsDotSortVal IssuesListSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -23509,12 +23509,12 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 						return err
 					}
 
-					paramsSortVal = IssuesListSort(c)
+					paramsDotSortVal = IssuesListSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -23554,7 +23554,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 			})
 
 			if err := func() error {
-				var paramsDirectionVal IssuesListDirection
+				var paramsDotDirectionVal IssuesListDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -23566,12 +23566,12 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 						return err
 					}
 
-					paramsDirectionVal = IssuesListDirection(c)
+					paramsDotDirectionVal = IssuesListDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -23605,7 +23605,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 			})
 
 			if err := func() error {
-				var paramsSinceVal time.Time
+				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -23617,12 +23617,12 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -23640,7 +23640,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 			})
 
 			if err := func() error {
-				var paramsCollabVal bool
+				var paramsDotCollabVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -23652,12 +23652,12 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 						return err
 					}
 
-					paramsCollabVal = c
+					paramsDotCollabVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Collab.SetTo(paramsCollabVal)
+				params.Collab.SetTo(paramsDotCollabVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: collab: parse")
@@ -23675,7 +23675,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 			})
 
 			if err := func() error {
-				var paramsOrgsVal bool
+				var paramsDotOrgsVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -23687,12 +23687,12 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 						return err
 					}
 
-					paramsOrgsVal = c
+					paramsDotOrgsVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Orgs.SetTo(paramsOrgsVal)
+				params.Orgs.SetTo(paramsDotOrgsVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: orgs: parse")
@@ -23710,7 +23710,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 			})
 
 			if err := func() error {
-				var paramsOwnedVal bool
+				var paramsDotOwnedVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -23722,12 +23722,12 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 						return err
 					}
 
-					paramsOwnedVal = c
+					paramsDotOwnedVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Owned.SetTo(paramsOwnedVal)
+				params.Owned.SetTo(paramsDotOwnedVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: owned: parse")
@@ -23745,7 +23745,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 			})
 
 			if err := func() error {
-				var paramsPullsVal bool
+				var paramsDotPullsVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -23757,12 +23757,12 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 						return err
 					}
 
-					paramsPullsVal = c
+					paramsDotPullsVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Pulls.SetTo(paramsPullsVal)
+				params.Pulls.SetTo(paramsDotPullsVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: pulls: parse")
@@ -23786,7 +23786,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -23798,12 +23798,12 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -23827,7 +23827,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -23839,12 +23839,12 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -23938,7 +23938,7 @@ func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (IssuesLis
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -23950,12 +23950,12 @@ func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (IssuesLis
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -23979,7 +23979,7 @@ func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (IssuesLis
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -23991,12 +23991,12 @@ func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (IssuesLis
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -24115,7 +24115,7 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (IssuesList
 			})
 
 			if err := func() error {
-				var paramsSinceVal time.Time
+				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -24127,12 +24127,12 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (IssuesList
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -24156,7 +24156,7 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (IssuesList
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -24168,12 +24168,12 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (IssuesList
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -24197,7 +24197,7 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (IssuesList
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -24209,12 +24209,12 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (IssuesList
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -24308,7 +24308,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 			})
 
 			if err := func() error {
-				var paramsSortVal IssuesListCommentsForRepoSort
+				var paramsDotSortVal IssuesListCommentsForRepoSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -24320,12 +24320,12 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 						return err
 					}
 
-					paramsSortVal = IssuesListCommentsForRepoSort(c)
+					paramsDotSortVal = IssuesListCommentsForRepoSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -24359,7 +24359,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 			})
 
 			if err := func() error {
-				var paramsDirectionVal IssuesListCommentsForRepoDirection
+				var paramsDotDirectionVal IssuesListCommentsForRepoDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -24371,12 +24371,12 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 						return err
 					}
 
-					paramsDirectionVal = IssuesListCommentsForRepoDirection(c)
+					paramsDotDirectionVal = IssuesListCommentsForRepoDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -24410,7 +24410,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 			})
 
 			if err := func() error {
-				var paramsSinceVal time.Time
+				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -24422,12 +24422,12 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -24451,7 +24451,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -24463,12 +24463,12 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -24492,7 +24492,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -24504,12 +24504,12 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -24603,7 +24603,7 @@ func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (Issue
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -24615,12 +24615,12 @@ func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (Issue
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -24644,7 +24644,7 @@ func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (Issue
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -24656,12 +24656,12 @@ func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (Issue
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -24693,7 +24693,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsFilterVal IssuesListForAuthenticatedUserFilter
+				var paramsDotFilterVal IssuesListForAuthenticatedUserFilter
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -24705,12 +24705,12 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 						return err
 					}
 
-					paramsFilterVal = IssuesListForAuthenticatedUserFilter(c)
+					paramsDotFilterVal = IssuesListForAuthenticatedUserFilter(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Filter.SetTo(paramsFilterVal)
+				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
@@ -24750,7 +24750,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsStateVal IssuesListForAuthenticatedUserState
+				var paramsDotStateVal IssuesListForAuthenticatedUserState
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -24762,12 +24762,12 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 						return err
 					}
 
-					paramsStateVal = IssuesListForAuthenticatedUserState(c)
+					paramsDotStateVal = IssuesListForAuthenticatedUserState(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.State.SetTo(paramsStateVal)
+				params.State.SetTo(paramsDotStateVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
@@ -24801,7 +24801,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsLabelsVal string
+				var paramsDotLabelsVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -24813,12 +24813,12 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 						return err
 					}
 
-					paramsLabelsVal = c
+					paramsDotLabelsVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Labels.SetTo(paramsLabelsVal)
+				params.Labels.SetTo(paramsDotLabelsVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: labels: parse")
@@ -24842,7 +24842,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsSortVal IssuesListForAuthenticatedUserSort
+				var paramsDotSortVal IssuesListForAuthenticatedUserSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -24854,12 +24854,12 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 						return err
 					}
 
-					paramsSortVal = IssuesListForAuthenticatedUserSort(c)
+					paramsDotSortVal = IssuesListForAuthenticatedUserSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -24899,7 +24899,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsDirectionVal IssuesListForAuthenticatedUserDirection
+				var paramsDotDirectionVal IssuesListForAuthenticatedUserDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -24911,12 +24911,12 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 						return err
 					}
 
-					paramsDirectionVal = IssuesListForAuthenticatedUserDirection(c)
+					paramsDotDirectionVal = IssuesListForAuthenticatedUserDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -24950,7 +24950,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsSinceVal time.Time
+				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -24962,12 +24962,12 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -24991,7 +24991,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25003,12 +25003,12 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -25032,7 +25032,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25044,12 +25044,12 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -25112,7 +25112,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 			})
 
 			if err := func() error {
-				var paramsFilterVal IssuesListForOrgFilter
+				var paramsDotFilterVal IssuesListForOrgFilter
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25124,12 +25124,12 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 						return err
 					}
 
-					paramsFilterVal = IssuesListForOrgFilter(c)
+					paramsDotFilterVal = IssuesListForOrgFilter(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Filter.SetTo(paramsFilterVal)
+				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
@@ -25169,7 +25169,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 			})
 
 			if err := func() error {
-				var paramsStateVal IssuesListForOrgState
+				var paramsDotStateVal IssuesListForOrgState
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25181,12 +25181,12 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 						return err
 					}
 
-					paramsStateVal = IssuesListForOrgState(c)
+					paramsDotStateVal = IssuesListForOrgState(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.State.SetTo(paramsStateVal)
+				params.State.SetTo(paramsDotStateVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
@@ -25220,7 +25220,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 			})
 
 			if err := func() error {
-				var paramsLabelsVal string
+				var paramsDotLabelsVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25232,12 +25232,12 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 						return err
 					}
 
-					paramsLabelsVal = c
+					paramsDotLabelsVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Labels.SetTo(paramsLabelsVal)
+				params.Labels.SetTo(paramsDotLabelsVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: labels: parse")
@@ -25261,7 +25261,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 			})
 
 			if err := func() error {
-				var paramsSortVal IssuesListForOrgSort
+				var paramsDotSortVal IssuesListForOrgSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25273,12 +25273,12 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 						return err
 					}
 
-					paramsSortVal = IssuesListForOrgSort(c)
+					paramsDotSortVal = IssuesListForOrgSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -25318,7 +25318,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 			})
 
 			if err := func() error {
-				var paramsDirectionVal IssuesListForOrgDirection
+				var paramsDotDirectionVal IssuesListForOrgDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25330,12 +25330,12 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 						return err
 					}
 
-					paramsDirectionVal = IssuesListForOrgDirection(c)
+					paramsDotDirectionVal = IssuesListForOrgDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -25369,7 +25369,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 			})
 
 			if err := func() error {
-				var paramsSinceVal time.Time
+				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25381,12 +25381,12 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -25410,7 +25410,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25422,12 +25422,12 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -25451,7 +25451,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25463,12 +25463,12 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -25556,7 +25556,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 			})
 
 			if err := func() error {
-				var paramsMilestoneVal string
+				var paramsDotMilestoneVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25568,12 +25568,12 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 						return err
 					}
 
-					paramsMilestoneVal = c
+					paramsDotMilestoneVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Milestone.SetTo(paramsMilestoneVal)
+				params.Milestone.SetTo(paramsDotMilestoneVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: milestone: parse")
@@ -25597,7 +25597,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 			})
 
 			if err := func() error {
-				var paramsStateVal IssuesListForRepoState
+				var paramsDotStateVal IssuesListForRepoState
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25609,12 +25609,12 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 						return err
 					}
 
-					paramsStateVal = IssuesListForRepoState(c)
+					paramsDotStateVal = IssuesListForRepoState(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.State.SetTo(paramsStateVal)
+				params.State.SetTo(paramsDotStateVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
@@ -25648,7 +25648,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 			})
 
 			if err := func() error {
-				var paramsAssigneeVal string
+				var paramsDotAssigneeVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25660,12 +25660,12 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 						return err
 					}
 
-					paramsAssigneeVal = c
+					paramsDotAssigneeVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Assignee.SetTo(paramsAssigneeVal)
+				params.Assignee.SetTo(paramsDotAssigneeVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: assignee: parse")
@@ -25683,7 +25683,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 			})
 
 			if err := func() error {
-				var paramsCreatorVal string
+				var paramsDotCreatorVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25695,12 +25695,12 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 						return err
 					}
 
-					paramsCreatorVal = c
+					paramsDotCreatorVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Creator.SetTo(paramsCreatorVal)
+				params.Creator.SetTo(paramsDotCreatorVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: creator: parse")
@@ -25718,7 +25718,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 			})
 
 			if err := func() error {
-				var paramsMentionedVal string
+				var paramsDotMentionedVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25730,12 +25730,12 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 						return err
 					}
 
-					paramsMentionedVal = c
+					paramsDotMentionedVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Mentioned.SetTo(paramsMentionedVal)
+				params.Mentioned.SetTo(paramsDotMentionedVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: mentioned: parse")
@@ -25753,7 +25753,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 			})
 
 			if err := func() error {
-				var paramsLabelsVal string
+				var paramsDotLabelsVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25765,12 +25765,12 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 						return err
 					}
 
-					paramsLabelsVal = c
+					paramsDotLabelsVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Labels.SetTo(paramsLabelsVal)
+				params.Labels.SetTo(paramsDotLabelsVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: labels: parse")
@@ -25794,7 +25794,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 			})
 
 			if err := func() error {
-				var paramsSortVal IssuesListForRepoSort
+				var paramsDotSortVal IssuesListForRepoSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25806,12 +25806,12 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 						return err
 					}
 
-					paramsSortVal = IssuesListForRepoSort(c)
+					paramsDotSortVal = IssuesListForRepoSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -25851,7 +25851,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 			})
 
 			if err := func() error {
-				var paramsDirectionVal IssuesListForRepoDirection
+				var paramsDotDirectionVal IssuesListForRepoDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25863,12 +25863,12 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 						return err
 					}
 
-					paramsDirectionVal = IssuesListForRepoDirection(c)
+					paramsDotDirectionVal = IssuesListForRepoDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -25902,7 +25902,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 			})
 
 			if err := func() error {
-				var paramsSinceVal time.Time
+				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25914,12 +25914,12 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -25943,7 +25943,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25955,12 +25955,12 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -25984,7 +25984,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -25996,12 +25996,12 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -26126,7 +26126,7 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -26138,12 +26138,12 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -26167,7 +26167,7 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -26179,12 +26179,12 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -26278,7 +26278,7 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (Issue
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -26290,12 +26290,12 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (Issue
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -26319,7 +26319,7 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (Issue
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -26331,12 +26331,12 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (Issue
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -26461,7 +26461,7 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (Issue
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -26473,12 +26473,12 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (Issue
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -26502,7 +26502,7 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (Issue
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -26514,12 +26514,12 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (Issue
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -26613,7 +26613,7 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 			})
 
 			if err := func() error {
-				var paramsStateVal IssuesListMilestonesState
+				var paramsDotStateVal IssuesListMilestonesState
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -26625,12 +26625,12 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 						return err
 					}
 
-					paramsStateVal = IssuesListMilestonesState(c)
+					paramsDotStateVal = IssuesListMilestonesState(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.State.SetTo(paramsStateVal)
+				params.State.SetTo(paramsDotStateVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
@@ -26670,7 +26670,7 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 			})
 
 			if err := func() error {
-				var paramsSortVal IssuesListMilestonesSort
+				var paramsDotSortVal IssuesListMilestonesSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -26682,12 +26682,12 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 						return err
 					}
 
-					paramsSortVal = IssuesListMilestonesSort(c)
+					paramsDotSortVal = IssuesListMilestonesSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -26727,7 +26727,7 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 			})
 
 			if err := func() error {
-				var paramsDirectionVal IssuesListMilestonesDirection
+				var paramsDotDirectionVal IssuesListMilestonesDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -26739,12 +26739,12 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 						return err
 					}
 
-					paramsDirectionVal = IssuesListMilestonesDirection(c)
+					paramsDotDirectionVal = IssuesListMilestonesDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -26784,7 +26784,7 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -26796,12 +26796,12 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -26825,7 +26825,7 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -26837,12 +26837,12 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -27837,7 +27837,7 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (Li
 			})
 
 			if err := func() error {
-				var paramsFeaturedVal bool
+				var paramsDotFeaturedVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -27849,12 +27849,12 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (Li
 						return err
 					}
 
-					paramsFeaturedVal = c
+					paramsDotFeaturedVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Featured.SetTo(paramsFeaturedVal)
+				params.Featured.SetTo(paramsDotFeaturedVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: featured: parse")
@@ -27878,7 +27878,7 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (Li
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -27890,12 +27890,12 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (Li
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -27919,7 +27919,7 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (Li
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -27931,12 +27931,12 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (Li
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -28376,7 +28376,7 @@ func decodeMigrationsGetCommitAuthorsParams(args [2]string, r *http.Request) (Mi
 			})
 
 			if err := func() error {
-				var paramsSinceVal int
+				var paramsDotSinceVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -28388,12 +28388,12 @@ func decodeMigrationsGetCommitAuthorsParams(args [2]string, r *http.Request) (Mi
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -28589,7 +28589,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(args [1]string, r *http
 
 			if err := func() error {
 				return d.DecodeArray(func(d uri.Decoder) error {
-					var paramsExcludeVal string
+					var paramsDotExcludeVal string
 					if err := func() error {
 						s, err := d.DecodeValue()
 						if err != nil {
@@ -28601,12 +28601,12 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(args [1]string, r *http
 							return err
 						}
 
-						paramsExcludeVal = c
+						paramsDotExcludeVal = c
 						return nil
 					}(); err != nil {
 						return err
 					}
-					params.Exclude = append(params.Exclude, paramsExcludeVal)
+					params.Exclude = append(params.Exclude, paramsDotExcludeVal)
 					return nil
 				})
 			}(); err != nil {
@@ -28696,7 +28696,7 @@ func decodeMigrationsGetStatusForOrgParams(args [2]string, r *http.Request) (Mig
 
 			if err := func() error {
 				return d.DecodeArray(func(d uri.Decoder) error {
-					var paramsExcludeVal MigrationsGetStatusForOrgExcludeItem
+					var paramsDotExcludeVal MigrationsGetStatusForOrgExcludeItem
 					if err := func() error {
 						s, err := d.DecodeValue()
 						if err != nil {
@@ -28708,12 +28708,12 @@ func decodeMigrationsGetStatusForOrgParams(args [2]string, r *http.Request) (Mig
 							return err
 						}
 
-						paramsExcludeVal = MigrationsGetStatusForOrgExcludeItem(c)
+						paramsDotExcludeVal = MigrationsGetStatusForOrgExcludeItem(c)
 						return nil
 					}(); err != nil {
 						return err
 					}
-					params.Exclude = append(params.Exclude, paramsExcludeVal)
+					params.Exclude = append(params.Exclude, paramsDotExcludeVal)
 					return nil
 				})
 			}(); err != nil {
@@ -28768,7 +28768,7 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Requ
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -28780,12 +28780,12 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Requ
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -28809,7 +28809,7 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Requ
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -28821,12 +28821,12 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Requ
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -28889,7 +28889,7 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (Migratio
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -28901,12 +28901,12 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (Migratio
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -28930,7 +28930,7 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (Migratio
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -28942,12 +28942,12 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (Migratio
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -28966,7 +28966,7 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (Migratio
 
 			if err := func() error {
 				return d.DecodeArray(func(d uri.Decoder) error {
-					var paramsExcludeVal MigrationsListForOrgExcludeItem
+					var paramsDotExcludeVal MigrationsListForOrgExcludeItem
 					if err := func() error {
 						s, err := d.DecodeValue()
 						if err != nil {
@@ -28978,12 +28978,12 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (Migratio
 							return err
 						}
 
-						paramsExcludeVal = MigrationsListForOrgExcludeItem(c)
+						paramsDotExcludeVal = MigrationsListForOrgExcludeItem(c)
 						return nil
 					}(); err != nil {
 						return err
 					}
-					params.Exclude = append(params.Exclude, paramsExcludeVal)
+					params.Exclude = append(params.Exclude, paramsDotExcludeVal)
 					return nil
 				})
 			}(); err != nil {
@@ -29100,7 +29100,7 @@ func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (Mig
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -29112,12 +29112,12 @@ func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (Mig
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -29141,7 +29141,7 @@ func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (Mig
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -29153,12 +29153,12 @@ func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (Mig
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -29221,7 +29221,7 @@ func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (Mi
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -29233,12 +29233,12 @@ func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (Mi
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -29262,7 +29262,7 @@ func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (Mi
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -29274,12 +29274,12 @@ func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (Mi
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -30084,7 +30084,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -30096,12 +30096,12 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -30125,7 +30125,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -30137,12 +30137,12 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -30160,7 +30160,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 			})
 
 			if err := func() error {
-				var paramsClientIDVal string
+				var paramsDotClientIDVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -30172,12 +30172,12 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 						return err
 					}
 
-					paramsClientIDVal = c
+					paramsDotClientIDVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.ClientID.SetTo(paramsClientIDVal)
+				params.ClientID.SetTo(paramsDotClientIDVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: client_id: parse")
@@ -30209,7 +30209,7 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -30221,12 +30221,12 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -30250,7 +30250,7 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -30262,12 +30262,12 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -30285,7 +30285,7 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsClientIDVal string
+				var paramsDotClientIDVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -30297,12 +30297,12 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 						return err
 					}
 
-					paramsClientIDVal = c
+					paramsDotClientIDVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.ClientID.SetTo(paramsClientIDVal)
+				params.ClientID.SetTo(paramsDotClientIDVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: client_id: parse")
@@ -30994,7 +30994,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 			})
 
 			if err := func() error {
-				var paramsPhraseVal string
+				var paramsDotPhraseVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -31006,12 +31006,12 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 						return err
 					}
 
-					paramsPhraseVal = c
+					paramsDotPhraseVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Phrase.SetTo(paramsPhraseVal)
+				params.Phrase.SetTo(paramsDotPhraseVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: phrase: parse")
@@ -31029,7 +31029,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 			})
 
 			if err := func() error {
-				var paramsIncludeVal OrgsGetAuditLogInclude
+				var paramsDotIncludeVal OrgsGetAuditLogInclude
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -31041,12 +31041,12 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 						return err
 					}
 
-					paramsIncludeVal = OrgsGetAuditLogInclude(c)
+					paramsDotIncludeVal = OrgsGetAuditLogInclude(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Include.SetTo(paramsIncludeVal)
+				params.Include.SetTo(paramsDotIncludeVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: include: parse")
@@ -31080,7 +31080,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 			})
 
 			if err := func() error {
-				var paramsAfterVal string
+				var paramsDotAfterVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -31092,12 +31092,12 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 						return err
 					}
 
-					paramsAfterVal = c
+					paramsDotAfterVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.After.SetTo(paramsAfterVal)
+				params.After.SetTo(paramsDotAfterVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: after: parse")
@@ -31115,7 +31115,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 			})
 
 			if err := func() error {
-				var paramsBeforeVal string
+				var paramsDotBeforeVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -31127,12 +31127,12 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 						return err
 					}
 
-					paramsBeforeVal = c
+					paramsDotBeforeVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Before.SetTo(paramsBeforeVal)
+				params.Before.SetTo(paramsDotBeforeVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: before: parse")
@@ -31150,7 +31150,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 			})
 
 			if err := func() error {
-				var paramsOrderVal OrgsGetAuditLogOrder
+				var paramsDotOrderVal OrgsGetAuditLogOrder
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -31162,12 +31162,12 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 						return err
 					}
 
-					paramsOrderVal = OrgsGetAuditLogOrder(c)
+					paramsDotOrderVal = OrgsGetAuditLogOrder(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Order.SetTo(paramsOrderVal)
+				params.Order.SetTo(paramsDotOrderVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: order: parse")
@@ -31207,7 +31207,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -31219,12 +31219,12 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -31248,7 +31248,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -31260,12 +31260,12 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -31636,7 +31636,7 @@ func decodeOrgsListParams(args [0]string, r *http.Request) (OrgsListParams, erro
 			})
 
 			if err := func() error {
-				var paramsSinceVal int
+				var paramsDotSinceVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -31648,12 +31648,12 @@ func decodeOrgsListParams(args [0]string, r *http.Request) (OrgsListParams, erro
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -31677,7 +31677,7 @@ func decodeOrgsListParams(args [0]string, r *http.Request) (OrgsListParams, erro
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -31689,12 +31689,12 @@ func decodeOrgsListParams(args [0]string, r *http.Request) (OrgsListParams, erro
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -31795,7 +31795,7 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (Org
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -31807,12 +31807,12 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (Org
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -31836,7 +31836,7 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (Org
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -31848,12 +31848,12 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (Org
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -31885,7 +31885,7 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -31897,12 +31897,12 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -31926,7 +31926,7 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -31938,12 +31938,12 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -32006,7 +32006,7 @@ func decodeOrgsListForUserParams(args [1]string, r *http.Request) (OrgsListForUs
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -32018,12 +32018,12 @@ func decodeOrgsListForUserParams(args [1]string, r *http.Request) (OrgsListForUs
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -32047,7 +32047,7 @@ func decodeOrgsListForUserParams(args [1]string, r *http.Request) (OrgsListForUs
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -32059,12 +32059,12 @@ func decodeOrgsListForUserParams(args [1]string, r *http.Request) (OrgsListForUs
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -32158,7 +32158,7 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (OrgsL
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -32170,12 +32170,12 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (OrgsL
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -32199,7 +32199,7 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (OrgsL
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -32211,12 +32211,12 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (OrgsL
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -32279,7 +32279,7 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 			})
 
 			if err := func() error {
-				var paramsFilterVal OrgsListMembersFilter
+				var paramsDotFilterVal OrgsListMembersFilter
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -32291,12 +32291,12 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 						return err
 					}
 
-					paramsFilterVal = OrgsListMembersFilter(c)
+					paramsDotFilterVal = OrgsListMembersFilter(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Filter.SetTo(paramsFilterVal)
+				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
@@ -32336,7 +32336,7 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 			})
 
 			if err := func() error {
-				var paramsRoleVal OrgsListMembersRole
+				var paramsDotRoleVal OrgsListMembersRole
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -32348,12 +32348,12 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 						return err
 					}
 
-					paramsRoleVal = OrgsListMembersRole(c)
+					paramsDotRoleVal = OrgsListMembersRole(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Role.SetTo(paramsRoleVal)
+				params.Role.SetTo(paramsDotRoleVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: role: parse")
@@ -32393,7 +32393,7 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -32405,12 +32405,12 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -32434,7 +32434,7 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -32446,12 +32446,12 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -32477,7 +32477,7 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 			})
 
 			if err := func() error {
-				var paramsStateVal OrgsListMembershipsForAuthenticatedUserState
+				var paramsDotStateVal OrgsListMembershipsForAuthenticatedUserState
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -32489,12 +32489,12 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 						return err
 					}
 
-					paramsStateVal = OrgsListMembershipsForAuthenticatedUserState(c)
+					paramsDotStateVal = OrgsListMembershipsForAuthenticatedUserState(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.State.SetTo(paramsStateVal)
+				params.State.SetTo(paramsDotStateVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
@@ -32534,7 +32534,7 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -32546,12 +32546,12 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -32575,7 +32575,7 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -32587,12 +32587,12 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -32655,7 +32655,7 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 			})
 
 			if err := func() error {
-				var paramsFilterVal OrgsListOutsideCollaboratorsFilter
+				var paramsDotFilterVal OrgsListOutsideCollaboratorsFilter
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -32667,12 +32667,12 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 						return err
 					}
 
-					paramsFilterVal = OrgsListOutsideCollaboratorsFilter(c)
+					paramsDotFilterVal = OrgsListOutsideCollaboratorsFilter(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Filter.SetTo(paramsFilterVal)
+				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
@@ -32712,7 +32712,7 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -32724,12 +32724,12 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -32753,7 +32753,7 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -32765,12 +32765,12 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -32833,7 +32833,7 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (Or
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -32845,12 +32845,12 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (Or
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -32874,7 +32874,7 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (Or
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -32886,12 +32886,12 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (Or
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -32954,7 +32954,7 @@ func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (OrgsLis
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -32966,12 +32966,12 @@ func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (OrgsLis
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -32995,7 +32995,7 @@ func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (OrgsLis
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -33007,12 +33007,12 @@ func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (OrgsLis
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -33144,7 +33144,7 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (Org
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -33156,12 +33156,12 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (Org
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -33179,7 +33179,7 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (Org
 			})
 
 			if err := func() error {
-				var paramsCursorVal string
+				var paramsDotCursorVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -33191,12 +33191,12 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (Org
 						return err
 					}
 
-					paramsCursorVal = c
+					paramsDotCursorVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Cursor.SetTo(paramsCursorVal)
+				params.Cursor.SetTo(paramsDotCursorVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: cursor: parse")
@@ -33259,7 +33259,7 @@ func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (OrgsListWebh
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -33271,12 +33271,12 @@ func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (OrgsListWebh
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -33300,7 +33300,7 @@ func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (OrgsListWebh
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -33312,12 +33312,12 @@ func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (OrgsListWebh
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -34939,7 +34939,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -34951,12 +34951,12 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -34980,7 +34980,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -34992,12 +34992,12 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -35021,7 +35021,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 			})
 
 			if err := func() error {
-				var paramsStateVal PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
+				var paramsDotStateVal PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -35033,12 +35033,12 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 						return err
 					}
 
-					paramsStateVal = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState(c)
+					paramsDotStateVal = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.State.SetTo(paramsStateVal)
+				params.State.SetTo(paramsDotStateVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
@@ -35179,7 +35179,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -35191,12 +35191,12 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -35220,7 +35220,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -35232,12 +35232,12 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -35261,7 +35261,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 			})
 
 			if err := func() error {
-				var paramsStateVal PackagesGetAllPackageVersionsForPackageOwnedByOrgState
+				var paramsDotStateVal PackagesGetAllPackageVersionsForPackageOwnedByOrgState
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -35273,12 +35273,12 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 						return err
 					}
 
-					paramsStateVal = PackagesGetAllPackageVersionsForPackageOwnedByOrgState(c)
+					paramsDotStateVal = PackagesGetAllPackageVersionsForPackageOwnedByOrgState(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.State.SetTo(paramsStateVal)
+				params.State.SetTo(paramsDotStateVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
@@ -36089,7 +36089,7 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, r *htt
 			})
 
 			if err := func() error {
-				var paramsVisibilityVal PackagesListPackagesForAuthenticatedUserVisibility
+				var paramsDotVisibilityVal PackagesListPackagesForAuthenticatedUserVisibility
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -36101,12 +36101,12 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, r *htt
 						return err
 					}
 
-					paramsVisibilityVal = PackagesListPackagesForAuthenticatedUserVisibility(c)
+					paramsDotVisibilityVal = PackagesListPackagesForAuthenticatedUserVisibility(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Visibility.SetTo(paramsVisibilityVal)
+				params.Visibility.SetTo(paramsDotVisibilityVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: visibility: parse")
@@ -36217,7 +36217,7 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, r *http.Req
 			})
 
 			if err := func() error {
-				var paramsVisibilityVal PackagesListPackagesForOrganizationVisibility
+				var paramsDotVisibilityVal PackagesListPackagesForOrganizationVisibility
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -36229,12 +36229,12 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, r *http.Req
 						return err
 					}
 
-					paramsVisibilityVal = PackagesListPackagesForOrganizationVisibility(c)
+					paramsDotVisibilityVal = PackagesListPackagesForOrganizationVisibility(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Visibility.SetTo(paramsVisibilityVal)
+				params.Visibility.SetTo(paramsDotVisibilityVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: visibility: parse")
@@ -36314,7 +36314,7 @@ func decodePackagesListPackagesForUserParams(args [1]string, r *http.Request) (P
 			})
 
 			if err := func() error {
-				var paramsVisibilityVal PackagesListPackagesForUserVisibility
+				var paramsDotVisibilityVal PackagesListPackagesForUserVisibility
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -36326,12 +36326,12 @@ func decodePackagesListPackagesForUserParams(args [1]string, r *http.Request) (P
 						return err
 					}
 
-					paramsVisibilityVal = PackagesListPackagesForUserVisibility(c)
+					paramsDotVisibilityVal = PackagesListPackagesForUserVisibility(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Visibility.SetTo(paramsVisibilityVal)
+				params.Visibility.SetTo(paramsDotVisibilityVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: visibility: parse")
@@ -36466,7 +36466,7 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, r *h
 			})
 
 			if err := func() error {
-				var paramsTokenVal string
+				var paramsDotTokenVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -36478,12 +36478,12 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, r *h
 						return err
 					}
 
-					paramsTokenVal = c
+					paramsDotTokenVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Token.SetTo(paramsTokenVal)
+				params.Token.SetTo(paramsDotTokenVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: token: parse")
@@ -36602,7 +36602,7 @@ func decodePackagesRestorePackageForOrgParams(args [3]string, r *http.Request) (
 			})
 
 			if err := func() error {
-				var paramsTokenVal string
+				var paramsDotTokenVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -36614,12 +36614,12 @@ func decodePackagesRestorePackageForOrgParams(args [3]string, r *http.Request) (
 						return err
 					}
 
-					paramsTokenVal = c
+					paramsDotTokenVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Token.SetTo(paramsTokenVal)
+				params.Token.SetTo(paramsDotTokenVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: token: parse")
@@ -36738,7 +36738,7 @@ func decodePackagesRestorePackageForUserParams(args [3]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsTokenVal string
+				var paramsDotTokenVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -36750,12 +36750,12 @@ func decodePackagesRestorePackageForUserParams(args [3]string, r *http.Request) 
 						return err
 					}
 
-					paramsTokenVal = c
+					paramsDotTokenVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Token.SetTo(paramsTokenVal)
+				params.Token.SetTo(paramsDotTokenVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: token: parse")
@@ -37691,7 +37691,7 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (ProjectsLis
 			})
 
 			if err := func() error {
-				var paramsArchivedStateVal ProjectsListCardsArchivedState
+				var paramsDotArchivedStateVal ProjectsListCardsArchivedState
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -37703,12 +37703,12 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (ProjectsLis
 						return err
 					}
 
-					paramsArchivedStateVal = ProjectsListCardsArchivedState(c)
+					paramsDotArchivedStateVal = ProjectsListCardsArchivedState(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.ArchivedState.SetTo(paramsArchivedStateVal)
+				params.ArchivedState.SetTo(paramsDotArchivedStateVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: archived_state: parse")
@@ -37748,7 +37748,7 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (ProjectsLis
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -37760,12 +37760,12 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (ProjectsLis
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -37789,7 +37789,7 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (ProjectsLis
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -37801,12 +37801,12 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (ProjectsLis
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -37869,7 +37869,7 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (Pro
 			})
 
 			if err := func() error {
-				var paramsAffiliationVal ProjectsListCollaboratorsAffiliation
+				var paramsDotAffiliationVal ProjectsListCollaboratorsAffiliation
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -37881,12 +37881,12 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (Pro
 						return err
 					}
 
-					paramsAffiliationVal = ProjectsListCollaboratorsAffiliation(c)
+					paramsDotAffiliationVal = ProjectsListCollaboratorsAffiliation(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Affiliation.SetTo(paramsAffiliationVal)
+				params.Affiliation.SetTo(paramsDotAffiliationVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: affiliation: parse")
@@ -37926,7 +37926,7 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (Pro
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -37938,12 +37938,12 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (Pro
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -37967,7 +37967,7 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (Pro
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -37979,12 +37979,12 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (Pro
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -38047,7 +38047,7 @@ func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (ProjectsL
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -38059,12 +38059,12 @@ func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (ProjectsL
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -38088,7 +38088,7 @@ func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (ProjectsL
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -38100,12 +38100,12 @@ func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (ProjectsL
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -38168,7 +38168,7 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (ProjectsLi
 			})
 
 			if err := func() error {
-				var paramsStateVal ProjectsListForOrgState
+				var paramsDotStateVal ProjectsListForOrgState
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -38180,12 +38180,12 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (ProjectsLi
 						return err
 					}
 
-					paramsStateVal = ProjectsListForOrgState(c)
+					paramsDotStateVal = ProjectsListForOrgState(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.State.SetTo(paramsStateVal)
+				params.State.SetTo(paramsDotStateVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
@@ -38225,7 +38225,7 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (ProjectsLi
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -38237,12 +38237,12 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (ProjectsLi
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -38266,7 +38266,7 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (ProjectsLi
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -38278,12 +38278,12 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (ProjectsLi
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -38377,7 +38377,7 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (ProjectsL
 			})
 
 			if err := func() error {
-				var paramsStateVal ProjectsListForRepoState
+				var paramsDotStateVal ProjectsListForRepoState
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -38389,12 +38389,12 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (ProjectsL
 						return err
 					}
 
-					paramsStateVal = ProjectsListForRepoState(c)
+					paramsDotStateVal = ProjectsListForRepoState(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.State.SetTo(paramsStateVal)
+				params.State.SetTo(paramsDotStateVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
@@ -38434,7 +38434,7 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (ProjectsL
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -38446,12 +38446,12 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (ProjectsL
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -38475,7 +38475,7 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (ProjectsL
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -38487,12 +38487,12 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (ProjectsL
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -38555,7 +38555,7 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (ProjectsL
 			})
 
 			if err := func() error {
-				var paramsStateVal ProjectsListForUserState
+				var paramsDotStateVal ProjectsListForUserState
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -38567,12 +38567,12 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (ProjectsL
 						return err
 					}
 
-					paramsStateVal = ProjectsListForUserState(c)
+					paramsDotStateVal = ProjectsListForUserState(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.State.SetTo(paramsStateVal)
+				params.State.SetTo(paramsDotStateVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
@@ -38612,7 +38612,7 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (ProjectsL
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -38624,12 +38624,12 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (ProjectsL
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -38653,7 +38653,7 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (ProjectsL
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -38665,12 +38665,12 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (ProjectsL
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -40216,7 +40216,7 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 			})
 
 			if err := func() error {
-				var paramsStateVal PullsListState
+				var paramsDotStateVal PullsListState
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -40228,12 +40228,12 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 						return err
 					}
 
-					paramsStateVal = PullsListState(c)
+					paramsDotStateVal = PullsListState(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.State.SetTo(paramsStateVal)
+				params.State.SetTo(paramsDotStateVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
@@ -40267,7 +40267,7 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 			})
 
 			if err := func() error {
-				var paramsHeadVal string
+				var paramsDotHeadVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -40279,12 +40279,12 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 						return err
 					}
 
-					paramsHeadVal = c
+					paramsDotHeadVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Head.SetTo(paramsHeadVal)
+				params.Head.SetTo(paramsDotHeadVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: head: parse")
@@ -40302,7 +40302,7 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 			})
 
 			if err := func() error {
-				var paramsBaseVal string
+				var paramsDotBaseVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -40314,12 +40314,12 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 						return err
 					}
 
-					paramsBaseVal = c
+					paramsDotBaseVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Base.SetTo(paramsBaseVal)
+				params.Base.SetTo(paramsDotBaseVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: base: parse")
@@ -40343,7 +40343,7 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 			})
 
 			if err := func() error {
-				var paramsSortVal PullsListSort
+				var paramsDotSortVal PullsListSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -40355,12 +40355,12 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 						return err
 					}
 
-					paramsSortVal = PullsListSort(c)
+					paramsDotSortVal = PullsListSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -40394,7 +40394,7 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 			})
 
 			if err := func() error {
-				var paramsDirectionVal PullsListDirection
+				var paramsDotDirectionVal PullsListDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -40406,12 +40406,12 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 						return err
 					}
 
-					paramsDirectionVal = PullsListDirection(c)
+					paramsDotDirectionVal = PullsListDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -40451,7 +40451,7 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -40463,12 +40463,12 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -40492,7 +40492,7 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -40504,12 +40504,12 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -40665,7 +40665,7 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (Pu
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -40677,12 +40677,12 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (Pu
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -40706,7 +40706,7 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (Pu
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -40718,12 +40718,12 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (Pu
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -40848,7 +40848,7 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (PullsListCom
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -40860,12 +40860,12 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (PullsListCom
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -40889,7 +40889,7 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (PullsListCom
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -40901,12 +40901,12 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (PullsListCom
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -41031,7 +41031,7 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (PullsListFiles
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -41043,12 +41043,12 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (PullsListFiles
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -41072,7 +41072,7 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (PullsListFiles
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -41084,12 +41084,12 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (PullsListFiles
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -41214,7 +41214,7 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (P
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -41226,12 +41226,12 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (P
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -41255,7 +41255,7 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (P
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -41267,12 +41267,12 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (P
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -41397,7 +41397,7 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 			})
 
 			if err := func() error {
-				var paramsSortVal PullsListReviewCommentsSort
+				var paramsDotSortVal PullsListReviewCommentsSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -41409,12 +41409,12 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 						return err
 					}
 
-					paramsSortVal = PullsListReviewCommentsSort(c)
+					paramsDotSortVal = PullsListReviewCommentsSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -41448,7 +41448,7 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 			})
 
 			if err := func() error {
-				var paramsDirectionVal PullsListReviewCommentsDirection
+				var paramsDotDirectionVal PullsListReviewCommentsDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -41460,12 +41460,12 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 						return err
 					}
 
-					paramsDirectionVal = PullsListReviewCommentsDirection(c)
+					paramsDotDirectionVal = PullsListReviewCommentsDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -41499,7 +41499,7 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 			})
 
 			if err := func() error {
-				var paramsSinceVal time.Time
+				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -41511,12 +41511,12 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -41540,7 +41540,7 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -41552,12 +41552,12 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -41581,7 +41581,7 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -41593,12 +41593,12 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -41686,7 +41686,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsSortVal PullsListReviewCommentsForRepoSort
+				var paramsDotSortVal PullsListReviewCommentsForRepoSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -41698,12 +41698,12 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 						return err
 					}
 
-					paramsSortVal = PullsListReviewCommentsForRepoSort(c)
+					paramsDotSortVal = PullsListReviewCommentsForRepoSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -41737,7 +41737,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsDirectionVal PullsListReviewCommentsForRepoDirection
+				var paramsDotDirectionVal PullsListReviewCommentsForRepoDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -41749,12 +41749,12 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 						return err
 					}
 
-					paramsDirectionVal = PullsListReviewCommentsForRepoDirection(c)
+					paramsDotDirectionVal = PullsListReviewCommentsForRepoDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -41788,7 +41788,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsSinceVal time.Time
+				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -41800,12 +41800,12 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -41829,7 +41829,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -41841,12 +41841,12 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -41870,7 +41870,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -41882,12 +41882,12 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -42012,7 +42012,7 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (PullsListRev
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -42024,12 +42024,12 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (PullsListRev
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -42053,7 +42053,7 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (PullsListRev
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -42065,12 +42065,12 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (PullsListRev
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -44706,7 +44706,7 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsContentVal ReactionsListForCommitCommentContent
+				var paramsDotContentVal ReactionsListForCommitCommentContent
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -44718,12 +44718,12 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 						return err
 					}
 
-					paramsContentVal = ReactionsListForCommitCommentContent(c)
+					paramsDotContentVal = ReactionsListForCommitCommentContent(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Content.SetTo(paramsContentVal)
+				params.Content.SetTo(paramsDotContentVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: content: parse")
@@ -44763,7 +44763,7 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -44775,12 +44775,12 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -44804,7 +44804,7 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -44816,12 +44816,12 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -44940,7 +44940,7 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (Reactio
 			})
 
 			if err := func() error {
-				var paramsContentVal ReactionsListForIssueContent
+				var paramsDotContentVal ReactionsListForIssueContent
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -44952,12 +44952,12 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (Reactio
 						return err
 					}
 
-					paramsContentVal = ReactionsListForIssueContent(c)
+					paramsDotContentVal = ReactionsListForIssueContent(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Content.SetTo(paramsContentVal)
+				params.Content.SetTo(paramsDotContentVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: content: parse")
@@ -44997,7 +44997,7 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (Reactio
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -45009,12 +45009,12 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (Reactio
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -45038,7 +45038,7 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (Reactio
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -45050,12 +45050,12 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (Reactio
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -45174,7 +45174,7 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 			})
 
 			if err := func() error {
-				var paramsContentVal ReactionsListForIssueCommentContent
+				var paramsDotContentVal ReactionsListForIssueCommentContent
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -45186,12 +45186,12 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 						return err
 					}
 
-					paramsContentVal = ReactionsListForIssueCommentContent(c)
+					paramsDotContentVal = ReactionsListForIssueCommentContent(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Content.SetTo(paramsContentVal)
+				params.Content.SetTo(paramsDotContentVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: content: parse")
@@ -45231,7 +45231,7 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -45243,12 +45243,12 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -45272,7 +45272,7 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -45284,12 +45284,12 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -45408,7 +45408,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 			})
 
 			if err := func() error {
-				var paramsContentVal ReactionsListForPullRequestReviewCommentContent
+				var paramsDotContentVal ReactionsListForPullRequestReviewCommentContent
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -45420,12 +45420,12 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 						return err
 					}
 
-					paramsContentVal = ReactionsListForPullRequestReviewCommentContent(c)
+					paramsDotContentVal = ReactionsListForPullRequestReviewCommentContent(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Content.SetTo(paramsContentVal)
+				params.Content.SetTo(paramsDotContentVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: content: parse")
@@ -45465,7 +45465,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -45477,12 +45477,12 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -45506,7 +45506,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -45518,12 +45518,12 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -45673,7 +45673,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 			})
 
 			if err := func() error {
-				var paramsContentVal ReactionsListForTeamDiscussionCommentInOrgContent
+				var paramsDotContentVal ReactionsListForTeamDiscussionCommentInOrgContent
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -45685,12 +45685,12 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 						return err
 					}
 
-					paramsContentVal = ReactionsListForTeamDiscussionCommentInOrgContent(c)
+					paramsDotContentVal = ReactionsListForTeamDiscussionCommentInOrgContent(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Content.SetTo(paramsContentVal)
+				params.Content.SetTo(paramsDotContentVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: content: parse")
@@ -45730,7 +45730,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -45742,12 +45742,12 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -45771,7 +45771,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -45783,12 +45783,12 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -45907,7 +45907,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 			})
 
 			if err := func() error {
-				var paramsContentVal ReactionsListForTeamDiscussionCommentLegacyContent
+				var paramsDotContentVal ReactionsListForTeamDiscussionCommentLegacyContent
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -45919,12 +45919,12 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 						return err
 					}
 
-					paramsContentVal = ReactionsListForTeamDiscussionCommentLegacyContent(c)
+					paramsDotContentVal = ReactionsListForTeamDiscussionCommentLegacyContent(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Content.SetTo(paramsContentVal)
+				params.Content.SetTo(paramsDotContentVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: content: parse")
@@ -45964,7 +45964,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -45976,12 +45976,12 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -46005,7 +46005,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -46017,12 +46017,12 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -46141,7 +46141,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 			})
 
 			if err := func() error {
-				var paramsContentVal ReactionsListForTeamDiscussionInOrgContent
+				var paramsDotContentVal ReactionsListForTeamDiscussionInOrgContent
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -46153,12 +46153,12 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 						return err
 					}
 
-					paramsContentVal = ReactionsListForTeamDiscussionInOrgContent(c)
+					paramsDotContentVal = ReactionsListForTeamDiscussionInOrgContent(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Content.SetTo(paramsContentVal)
+				params.Content.SetTo(paramsDotContentVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: content: parse")
@@ -46198,7 +46198,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -46210,12 +46210,12 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -46239,7 +46239,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -46251,12 +46251,12 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -46344,7 +46344,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 			})
 
 			if err := func() error {
-				var paramsContentVal ReactionsListForTeamDiscussionLegacyContent
+				var paramsDotContentVal ReactionsListForTeamDiscussionLegacyContent
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -46356,12 +46356,12 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 						return err
 					}
 
-					paramsContentVal = ReactionsListForTeamDiscussionLegacyContent(c)
+					paramsDotContentVal = ReactionsListForTeamDiscussionLegacyContent(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Content.SetTo(paramsContentVal)
+				params.Content.SetTo(paramsDotContentVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: content: parse")
@@ -46401,7 +46401,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -46413,12 +46413,12 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -46442,7 +46442,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -46454,12 +46454,12 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -47260,7 +47260,7 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (ReposComp
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -47272,12 +47272,12 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (ReposComp
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -47301,7 +47301,7 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (ReposComp
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -47313,12 +47313,12 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (ReposComp
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -51261,7 +51261,7 @@ func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (ReposGetAll
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -51273,12 +51273,12 @@ func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (ReposGetAll
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -51302,7 +51302,7 @@ func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (ReposGetAll
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -51314,12 +51314,12 @@ func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (ReposGetAll
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -51813,7 +51813,7 @@ func decodeReposGetClonesParams(args [2]string, r *http.Request) (ReposGetClones
 			})
 
 			if err := func() error {
-				var paramsPerVal ReposGetClonesPer
+				var paramsDotPerVal ReposGetClonesPer
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -51825,12 +51825,12 @@ func decodeReposGetClonesParams(args [2]string, r *http.Request) (ReposGetClones
 						return err
 					}
 
-					paramsPerVal = ReposGetClonesPer(c)
+					paramsDotPerVal = ReposGetClonesPer(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Per.SetTo(paramsPerVal)
+				params.Per.SetTo(paramsDotPerVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per: parse")
@@ -52140,7 +52140,7 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -52152,12 +52152,12 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -52181,7 +52181,7 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -52193,12 +52193,12 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -52292,7 +52292,7 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (ReposGetCommit
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -52304,12 +52304,12 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (ReposGetCommit
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -52333,7 +52333,7 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (ReposGetCommit
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -52345,12 +52345,12 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (ReposGetCommit
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -53821,7 +53821,7 @@ func decodeReposGetReadmeParams(args [2]string, r *http.Request) (ReposGetReadme
 			})
 
 			if err := func() error {
-				var paramsRefVal string
+				var paramsDotRefVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -53833,12 +53833,12 @@ func decodeReposGetReadmeParams(args [2]string, r *http.Request) (ReposGetReadme
 						return err
 					}
 
-					paramsRefVal = c
+					paramsDotRefVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Ref.SetTo(paramsRefVal)
+				params.Ref.SetTo(paramsDotRefVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: ref: parse")
@@ -53957,7 +53957,7 @@ func decodeReposGetReadmeInDirectoryParams(args [3]string, r *http.Request) (Rep
 			})
 
 			if err := func() error {
-				var paramsRefVal string
+				var paramsDotRefVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -53969,12 +53969,12 @@ func decodeReposGetReadmeInDirectoryParams(args [3]string, r *http.Request) (Rep
 						return err
 					}
 
-					paramsRefVal = c
+					paramsDotRefVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Ref.SetTo(paramsRefVal)
+				params.Ref.SetTo(paramsDotRefVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: ref: parse")
@@ -54806,7 +54806,7 @@ func decodeReposGetViewsParams(args [2]string, r *http.Request) (ReposGetViewsPa
 			})
 
 			if err := func() error {
-				var paramsPerVal ReposGetViewsPer
+				var paramsDotPerVal ReposGetViewsPer
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -54818,12 +54818,12 @@ func decodeReposGetViewsParams(args [2]string, r *http.Request) (ReposGetViewsPa
 						return err
 					}
 
-					paramsPerVal = ReposGetViewsPer(c)
+					paramsDotPerVal = ReposGetViewsPer(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Per.SetTo(paramsPerVal)
+				params.Per.SetTo(paramsDotPerVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per: parse")
@@ -55264,7 +55264,7 @@ func decodeReposListAutolinksParams(args [2]string, r *http.Request) (ReposListA
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -55276,12 +55276,12 @@ func decodeReposListAutolinksParams(args [2]string, r *http.Request) (ReposListA
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -55369,7 +55369,7 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (ReposListBr
 			})
 
 			if err := func() error {
-				var paramsProtectedVal bool
+				var paramsDotProtectedVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -55381,12 +55381,12 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (ReposListBr
 						return err
 					}
 
-					paramsProtectedVal = c
+					paramsDotProtectedVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Protected.SetTo(paramsProtectedVal)
+				params.Protected.SetTo(paramsDotProtectedVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: protected: parse")
@@ -55410,7 +55410,7 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (ReposListBr
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -55422,12 +55422,12 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (ReposListBr
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -55451,7 +55451,7 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (ReposListBr
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -55463,12 +55463,12 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (ReposListBr
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -55662,7 +55662,7 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (ReposL
 			})
 
 			if err := func() error {
-				var paramsAffiliationVal ReposListCollaboratorsAffiliation
+				var paramsDotAffiliationVal ReposListCollaboratorsAffiliation
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -55674,12 +55674,12 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (ReposL
 						return err
 					}
 
-					paramsAffiliationVal = ReposListCollaboratorsAffiliation(c)
+					paramsDotAffiliationVal = ReposListCollaboratorsAffiliation(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Affiliation.SetTo(paramsAffiliationVal)
+				params.Affiliation.SetTo(paramsDotAffiliationVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: affiliation: parse")
@@ -55719,7 +55719,7 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (ReposL
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -55731,12 +55731,12 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (ReposL
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -55760,7 +55760,7 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (ReposL
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -55772,12 +55772,12 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (ReposL
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -55902,7 +55902,7 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (Re
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -55914,12 +55914,12 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (Re
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -55943,7 +55943,7 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (Re
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -55955,12 +55955,12 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (Re
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -56054,7 +56054,7 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -56066,12 +56066,12 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request)
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -56095,7 +56095,7 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -56107,12 +56107,12 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request)
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -56237,7 +56237,7 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -56249,12 +56249,12 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -56278,7 +56278,7 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -56290,12 +56290,12 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -56383,7 +56383,7 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 			})
 
 			if err := func() error {
-				var paramsShaVal string
+				var paramsDotShaVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -56395,12 +56395,12 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 						return err
 					}
 
-					paramsShaVal = c
+					paramsDotShaVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sha.SetTo(paramsShaVal)
+				params.Sha.SetTo(paramsDotShaVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sha: parse")
@@ -56418,7 +56418,7 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 			})
 
 			if err := func() error {
-				var paramsPathVal string
+				var paramsDotPathVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -56430,12 +56430,12 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 						return err
 					}
 
-					paramsPathVal = c
+					paramsDotPathVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Path.SetTo(paramsPathVal)
+				params.Path.SetTo(paramsDotPathVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: path: parse")
@@ -56453,7 +56453,7 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 			})
 
 			if err := func() error {
-				var paramsAuthorVal string
+				var paramsDotAuthorVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -56465,12 +56465,12 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 						return err
 					}
 
-					paramsAuthorVal = c
+					paramsDotAuthorVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Author.SetTo(paramsAuthorVal)
+				params.Author.SetTo(paramsDotAuthorVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: author: parse")
@@ -56488,7 +56488,7 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 			})
 
 			if err := func() error {
-				var paramsSinceVal time.Time
+				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -56500,12 +56500,12 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -56523,7 +56523,7 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 			})
 
 			if err := func() error {
-				var paramsUntilVal time.Time
+				var paramsDotUntilVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -56535,12 +56535,12 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 						return err
 					}
 
-					paramsUntilVal = c
+					paramsDotUntilVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Until.SetTo(paramsUntilVal)
+				params.Until.SetTo(paramsDotUntilVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: until: parse")
@@ -56564,7 +56564,7 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -56576,12 +56576,12 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -56605,7 +56605,7 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -56617,12 +56617,12 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -56710,7 +56710,7 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (ReposLi
 			})
 
 			if err := func() error {
-				var paramsAnonVal string
+				var paramsDotAnonVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -56722,12 +56722,12 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (ReposLi
 						return err
 					}
 
-					paramsAnonVal = c
+					paramsDotAnonVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Anon.SetTo(paramsAnonVal)
+				params.Anon.SetTo(paramsDotAnonVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: anon: parse")
@@ -56751,7 +56751,7 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (ReposLi
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -56763,12 +56763,12 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (ReposLi
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -56792,7 +56792,7 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (ReposLi
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -56804,12 +56804,12 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (ReposLi
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -56903,7 +56903,7 @@ func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (ReposList
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -56915,12 +56915,12 @@ func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (ReposList
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -56944,7 +56944,7 @@ func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (ReposList
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -56956,12 +56956,12 @@ func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (ReposList
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -57086,7 +57086,7 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (R
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -57098,12 +57098,12 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (R
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -57127,7 +57127,7 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (R
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -57139,12 +57139,12 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (R
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -57238,7 +57238,7 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 			})
 
 			if err := func() error {
-				var paramsShaVal string
+				var paramsDotShaVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -57250,12 +57250,12 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 						return err
 					}
 
-					paramsShaVal = c
+					paramsDotShaVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sha.SetTo(paramsShaVal)
+				params.Sha.SetTo(paramsDotShaVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sha: parse")
@@ -57279,7 +57279,7 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 			})
 
 			if err := func() error {
-				var paramsRefVal string
+				var paramsDotRefVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -57291,12 +57291,12 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 						return err
 					}
 
-					paramsRefVal = c
+					paramsDotRefVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Ref.SetTo(paramsRefVal)
+				params.Ref.SetTo(paramsDotRefVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: ref: parse")
@@ -57320,7 +57320,7 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 			})
 
 			if err := func() error {
-				var paramsTaskVal string
+				var paramsDotTaskVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -57332,12 +57332,12 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 						return err
 					}
 
-					paramsTaskVal = c
+					paramsDotTaskVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Task.SetTo(paramsTaskVal)
+				params.Task.SetTo(paramsDotTaskVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: task: parse")
@@ -57361,7 +57361,7 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 			})
 
 			if err := func() error {
-				var paramsEnvironmentVal string
+				var paramsDotEnvironmentVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -57373,12 +57373,12 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 						return err
 					}
 
-					paramsEnvironmentVal = c
+					paramsDotEnvironmentVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Environment.SetTo(paramsEnvironmentVal)
+				params.Environment.SetTo(paramsDotEnvironmentVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: environment: parse")
@@ -57402,7 +57402,7 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -57414,12 +57414,12 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -57443,7 +57443,7 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -57455,12 +57455,12 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -57492,7 +57492,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsVisibilityVal ReposListForAuthenticatedUserVisibility
+				var paramsDotVisibilityVal ReposListForAuthenticatedUserVisibility
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -57504,12 +57504,12 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 						return err
 					}
 
-					paramsVisibilityVal = ReposListForAuthenticatedUserVisibility(c)
+					paramsDotVisibilityVal = ReposListForAuthenticatedUserVisibility(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Visibility.SetTo(paramsVisibilityVal)
+				params.Visibility.SetTo(paramsDotVisibilityVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: visibility: parse")
@@ -57549,7 +57549,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsAffiliationVal string
+				var paramsDotAffiliationVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -57561,12 +57561,12 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 						return err
 					}
 
-					paramsAffiliationVal = c
+					paramsDotAffiliationVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Affiliation.SetTo(paramsAffiliationVal)
+				params.Affiliation.SetTo(paramsDotAffiliationVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: affiliation: parse")
@@ -57590,7 +57590,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsTypeVal ReposListForAuthenticatedUserType
+				var paramsDotTypeVal ReposListForAuthenticatedUserType
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -57602,12 +57602,12 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 						return err
 					}
 
-					paramsTypeVal = ReposListForAuthenticatedUserType(c)
+					paramsDotTypeVal = ReposListForAuthenticatedUserType(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Type.SetTo(paramsTypeVal)
+				params.Type.SetTo(paramsDotTypeVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: type: parse")
@@ -57647,7 +57647,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsSortVal ReposListForAuthenticatedUserSort
+				var paramsDotSortVal ReposListForAuthenticatedUserSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -57659,12 +57659,12 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 						return err
 					}
 
-					paramsSortVal = ReposListForAuthenticatedUserSort(c)
+					paramsDotSortVal = ReposListForAuthenticatedUserSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -57698,7 +57698,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsDirectionVal ReposListForAuthenticatedUserDirection
+				var paramsDotDirectionVal ReposListForAuthenticatedUserDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -57710,12 +57710,12 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 						return err
 					}
 
-					paramsDirectionVal = ReposListForAuthenticatedUserDirection(c)
+					paramsDotDirectionVal = ReposListForAuthenticatedUserDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -57755,7 +57755,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -57767,12 +57767,12 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -57796,7 +57796,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -57808,12 +57808,12 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -57831,7 +57831,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsSinceVal time.Time
+				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -57843,12 +57843,12 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -57866,7 +57866,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsBeforeVal time.Time
+				var paramsDotBeforeVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -57878,12 +57878,12 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 						return err
 					}
 
-					paramsBeforeVal = c
+					paramsDotBeforeVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Before.SetTo(paramsBeforeVal)
+				params.Before.SetTo(paramsDotBeforeVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: before: parse")
@@ -57940,7 +57940,7 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 			})
 
 			if err := func() error {
-				var paramsTypeVal ReposListForOrgType
+				var paramsDotTypeVal ReposListForOrgType
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -57952,12 +57952,12 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 						return err
 					}
 
-					paramsTypeVal = ReposListForOrgType(c)
+					paramsDotTypeVal = ReposListForOrgType(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Type.SetTo(paramsTypeVal)
+				params.Type.SetTo(paramsDotTypeVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: type: parse")
@@ -57997,7 +57997,7 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 			})
 
 			if err := func() error {
-				var paramsSortVal ReposListForOrgSort
+				var paramsDotSortVal ReposListForOrgSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -58009,12 +58009,12 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 						return err
 					}
 
-					paramsSortVal = ReposListForOrgSort(c)
+					paramsDotSortVal = ReposListForOrgSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -58048,7 +58048,7 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 			})
 
 			if err := func() error {
-				var paramsDirectionVal ReposListForOrgDirection
+				var paramsDotDirectionVal ReposListForOrgDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -58060,12 +58060,12 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 						return err
 					}
 
-					paramsDirectionVal = ReposListForOrgDirection(c)
+					paramsDotDirectionVal = ReposListForOrgDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -58105,7 +58105,7 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -58117,12 +58117,12 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -58146,7 +58146,7 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -58158,12 +58158,12 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -58226,7 +58226,7 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 			})
 
 			if err := func() error {
-				var paramsTypeVal ReposListForUserType
+				var paramsDotTypeVal ReposListForUserType
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -58238,12 +58238,12 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 						return err
 					}
 
-					paramsTypeVal = ReposListForUserType(c)
+					paramsDotTypeVal = ReposListForUserType(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Type.SetTo(paramsTypeVal)
+				params.Type.SetTo(paramsDotTypeVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: type: parse")
@@ -58283,7 +58283,7 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 			})
 
 			if err := func() error {
-				var paramsSortVal ReposListForUserSort
+				var paramsDotSortVal ReposListForUserSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -58295,12 +58295,12 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 						return err
 					}
 
-					paramsSortVal = ReposListForUserSort(c)
+					paramsDotSortVal = ReposListForUserSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -58334,7 +58334,7 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 			})
 
 			if err := func() error {
-				var paramsDirectionVal ReposListForUserDirection
+				var paramsDotDirectionVal ReposListForUserDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -58346,12 +58346,12 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 						return err
 					}
 
-					paramsDirectionVal = ReposListForUserDirection(c)
+					paramsDotDirectionVal = ReposListForUserDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -58391,7 +58391,7 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -58403,12 +58403,12 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -58432,7 +58432,7 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -58444,12 +58444,12 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -58543,7 +58543,7 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (ReposListForks
 			})
 
 			if err := func() error {
-				var paramsSortVal ReposListForksSort
+				var paramsDotSortVal ReposListForksSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -58555,12 +58555,12 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (ReposListForks
 						return err
 					}
 
-					paramsSortVal = ReposListForksSort(c)
+					paramsDotSortVal = ReposListForksSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -58600,7 +58600,7 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (ReposListForks
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -58612,12 +58612,12 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (ReposListForks
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -58641,7 +58641,7 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (ReposListForks
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -58653,12 +58653,12 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (ReposListForks
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -58752,7 +58752,7 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (ReposLis
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -58764,12 +58764,12 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (ReposLis
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -58793,7 +58793,7 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (ReposLis
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -58805,12 +58805,12 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (ReposLis
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -58842,7 +58842,7 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *htt
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -58854,12 +58854,12 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *htt
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -58883,7 +58883,7 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *htt
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -58895,12 +58895,12 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *htt
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -59063,7 +59063,7 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (ReposLis
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -59075,12 +59075,12 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (ReposLis
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -59104,7 +59104,7 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (ReposLis
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -59116,12 +59116,12 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (ReposLis
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -59147,7 +59147,7 @@ func decodeReposListPublicParams(args [0]string, r *http.Request) (ReposListPubl
 			})
 
 			if err := func() error {
-				var paramsSinceVal int
+				var paramsDotSinceVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -59159,12 +59159,12 @@ func decodeReposListPublicParams(args [0]string, r *http.Request) (ReposListPubl
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -59289,7 +59289,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -59301,12 +59301,12 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -59330,7 +59330,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -59342,12 +59342,12 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -59472,7 +59472,7 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (ReposL
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -59484,12 +59484,12 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (ReposL
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -59513,7 +59513,7 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (ReposL
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -59525,12 +59525,12 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (ReposL
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -59624,7 +59624,7 @@ func decodeReposListReleasesParams(args [2]string, r *http.Request) (ReposListRe
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -59636,12 +59636,12 @@ func decodeReposListReleasesParams(args [2]string, r *http.Request) (ReposListRe
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -59665,7 +59665,7 @@ func decodeReposListReleasesParams(args [2]string, r *http.Request) (ReposListRe
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -59677,12 +59677,12 @@ func decodeReposListReleasesParams(args [2]string, r *http.Request) (ReposListRe
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -59776,7 +59776,7 @@ func decodeReposListTagsParams(args [2]string, r *http.Request) (ReposListTagsPa
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -59788,12 +59788,12 @@ func decodeReposListTagsParams(args [2]string, r *http.Request) (ReposListTagsPa
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -59817,7 +59817,7 @@ func decodeReposListTagsParams(args [2]string, r *http.Request) (ReposListTagsPa
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -59829,12 +59829,12 @@ func decodeReposListTagsParams(args [2]string, r *http.Request) (ReposListTagsPa
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -59928,7 +59928,7 @@ func decodeReposListTeamsParams(args [2]string, r *http.Request) (ReposListTeams
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -59940,12 +59940,12 @@ func decodeReposListTeamsParams(args [2]string, r *http.Request) (ReposListTeams
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -59969,7 +59969,7 @@ func decodeReposListTeamsParams(args [2]string, r *http.Request) (ReposListTeams
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -59981,12 +59981,12 @@ func decodeReposListTeamsParams(args [2]string, r *http.Request) (ReposListTeams
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -60111,7 +60111,7 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (Re
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -60123,12 +60123,12 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (Re
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -60146,7 +60146,7 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (Re
 			})
 
 			if err := func() error {
-				var paramsCursorVal string
+				var paramsDotCursorVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -60158,12 +60158,12 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (Re
 						return err
 					}
 
-					paramsCursorVal = c
+					paramsDotCursorVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Cursor.SetTo(paramsCursorVal)
+				params.Cursor.SetTo(paramsDotCursorVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: cursor: parse")
@@ -60257,7 +60257,7 @@ func decodeReposListWebhooksParams(args [2]string, r *http.Request) (ReposListWe
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -60269,12 +60269,12 @@ func decodeReposListWebhooksParams(args [2]string, r *http.Request) (ReposListWe
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -60298,7 +60298,7 @@ func decodeReposListWebhooksParams(args [2]string, r *http.Request) (ReposListWe
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -60310,12 +60310,12 @@ func decodeReposListWebhooksParams(args [2]string, r *http.Request) (ReposListWe
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -63285,7 +63285,7 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 			})
 
 			if err := func() error {
-				var paramsSortVal SearchCodeSort
+				var paramsDotSortVal SearchCodeSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -63297,12 +63297,12 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 						return err
 					}
 
-					paramsSortVal = SearchCodeSort(c)
+					paramsDotSortVal = SearchCodeSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -63342,7 +63342,7 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 			})
 
 			if err := func() error {
-				var paramsOrderVal SearchCodeOrder
+				var paramsDotOrderVal SearchCodeOrder
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -63354,12 +63354,12 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 						return err
 					}
 
-					paramsOrderVal = SearchCodeOrder(c)
+					paramsDotOrderVal = SearchCodeOrder(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Order.SetTo(paramsOrderVal)
+				params.Order.SetTo(paramsDotOrderVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: order: parse")
@@ -63399,7 +63399,7 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -63411,12 +63411,12 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -63440,7 +63440,7 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -63452,12 +63452,12 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -63513,7 +63513,7 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 			})
 
 			if err := func() error {
-				var paramsSortVal SearchCommitsSort
+				var paramsDotSortVal SearchCommitsSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -63525,12 +63525,12 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 						return err
 					}
 
-					paramsSortVal = SearchCommitsSort(c)
+					paramsDotSortVal = SearchCommitsSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -63570,7 +63570,7 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 			})
 
 			if err := func() error {
-				var paramsOrderVal SearchCommitsOrder
+				var paramsDotOrderVal SearchCommitsOrder
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -63582,12 +63582,12 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 						return err
 					}
 
-					paramsOrderVal = SearchCommitsOrder(c)
+					paramsDotOrderVal = SearchCommitsOrder(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Order.SetTo(paramsOrderVal)
+				params.Order.SetTo(paramsDotOrderVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: order: parse")
@@ -63627,7 +63627,7 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -63639,12 +63639,12 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -63668,7 +63668,7 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -63680,12 +63680,12 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -63741,7 +63741,7 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 			})
 
 			if err := func() error {
-				var paramsSortVal SearchIssuesAndPullRequestsSort
+				var paramsDotSortVal SearchIssuesAndPullRequestsSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -63753,12 +63753,12 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 						return err
 					}
 
-					paramsSortVal = SearchIssuesAndPullRequestsSort(c)
+					paramsDotSortVal = SearchIssuesAndPullRequestsSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -63798,7 +63798,7 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 			})
 
 			if err := func() error {
-				var paramsOrderVal SearchIssuesAndPullRequestsOrder
+				var paramsDotOrderVal SearchIssuesAndPullRequestsOrder
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -63810,12 +63810,12 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 						return err
 					}
 
-					paramsOrderVal = SearchIssuesAndPullRequestsOrder(c)
+					paramsDotOrderVal = SearchIssuesAndPullRequestsOrder(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Order.SetTo(paramsOrderVal)
+				params.Order.SetTo(paramsDotOrderVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: order: parse")
@@ -63855,7 +63855,7 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -63867,12 +63867,12 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -63896,7 +63896,7 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -63908,12 +63908,12 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -63999,7 +63999,7 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 			})
 
 			if err := func() error {
-				var paramsSortVal SearchLabelsSort
+				var paramsDotSortVal SearchLabelsSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -64011,12 +64011,12 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 						return err
 					}
 
-					paramsSortVal = SearchLabelsSort(c)
+					paramsDotSortVal = SearchLabelsSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -64056,7 +64056,7 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 			})
 
 			if err := func() error {
-				var paramsOrderVal SearchLabelsOrder
+				var paramsDotOrderVal SearchLabelsOrder
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -64068,12 +64068,12 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 						return err
 					}
 
-					paramsOrderVal = SearchLabelsOrder(c)
+					paramsDotOrderVal = SearchLabelsOrder(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Order.SetTo(paramsOrderVal)
+				params.Order.SetTo(paramsDotOrderVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: order: parse")
@@ -64113,7 +64113,7 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -64125,12 +64125,12 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -64154,7 +64154,7 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -64166,12 +64166,12 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -64227,7 +64227,7 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 			})
 
 			if err := func() error {
-				var paramsSortVal SearchReposSort
+				var paramsDotSortVal SearchReposSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -64239,12 +64239,12 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 						return err
 					}
 
-					paramsSortVal = SearchReposSort(c)
+					paramsDotSortVal = SearchReposSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -64284,7 +64284,7 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 			})
 
 			if err := func() error {
-				var paramsOrderVal SearchReposOrder
+				var paramsDotOrderVal SearchReposOrder
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -64296,12 +64296,12 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 						return err
 					}
 
-					paramsOrderVal = SearchReposOrder(c)
+					paramsDotOrderVal = SearchReposOrder(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Order.SetTo(paramsOrderVal)
+				params.Order.SetTo(paramsDotOrderVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: order: parse")
@@ -64341,7 +64341,7 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -64353,12 +64353,12 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -64382,7 +64382,7 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -64394,12 +64394,12 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -64461,7 +64461,7 @@ func decodeSearchTopicsParams(args [0]string, r *http.Request) (SearchTopicsPara
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -64473,12 +64473,12 @@ func decodeSearchTopicsParams(args [0]string, r *http.Request) (SearchTopicsPara
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -64502,7 +64502,7 @@ func decodeSearchTopicsParams(args [0]string, r *http.Request) (SearchTopicsPara
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -64514,12 +64514,12 @@ func decodeSearchTopicsParams(args [0]string, r *http.Request) (SearchTopicsPara
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -64575,7 +64575,7 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 			})
 
 			if err := func() error {
-				var paramsSortVal SearchUsersSort
+				var paramsDotSortVal SearchUsersSort
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -64587,12 +64587,12 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 						return err
 					}
 
-					paramsSortVal = SearchUsersSort(c)
+					paramsDotSortVal = SearchUsersSort(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Sort.SetTo(paramsSortVal)
+				params.Sort.SetTo(paramsDotSortVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
@@ -64632,7 +64632,7 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 			})
 
 			if err := func() error {
-				var paramsOrderVal SearchUsersOrder
+				var paramsDotOrderVal SearchUsersOrder
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -64644,12 +64644,12 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 						return err
 					}
 
-					paramsOrderVal = SearchUsersOrder(c)
+					paramsDotOrderVal = SearchUsersOrder(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Order.SetTo(paramsOrderVal)
+				params.Order.SetTo(paramsDotOrderVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: order: parse")
@@ -64689,7 +64689,7 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -64701,12 +64701,12 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -64730,7 +64730,7 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -64742,12 +64742,12 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -64835,7 +64835,7 @@ func decodeSecretScanningGetAlertParams(args [3]string, r *http.Request) (Secret
 			})
 
 			if err := func() error {
-				var paramsAlertNumberVal int
+				var paramsDotAlertNumberVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -64847,12 +64847,12 @@ func decodeSecretScanningGetAlertParams(args [3]string, r *http.Request) (Secret
 						return err
 					}
 
-					paramsAlertNumberVal = c
+					paramsDotAlertNumberVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.AlertNumber = AlertNumber(paramsAlertNumberVal)
+				params.AlertNumber = AlertNumber(paramsDotAlertNumberVal)
 				return nil
 			}(); err != nil {
 				return params, err
@@ -64911,7 +64911,7 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsStateVal SecretScanningListAlertsForOrgState
+				var paramsDotStateVal SecretScanningListAlertsForOrgState
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -64923,12 +64923,12 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 						return err
 					}
 
-					paramsStateVal = SecretScanningListAlertsForOrgState(c)
+					paramsDotStateVal = SecretScanningListAlertsForOrgState(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.State.SetTo(paramsStateVal)
+				params.State.SetTo(paramsDotStateVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
@@ -64962,7 +64962,7 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsSecretTypeVal string
+				var paramsDotSecretTypeVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -64974,12 +64974,12 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 						return err
 					}
 
-					paramsSecretTypeVal = c
+					paramsDotSecretTypeVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.SecretType.SetTo(paramsSecretTypeVal)
+				params.SecretType.SetTo(paramsDotSecretTypeVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: secret_type: parse")
@@ -65003,7 +65003,7 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -65015,12 +65015,12 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -65044,7 +65044,7 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -65056,12 +65056,12 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -65149,7 +65149,7 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 			})
 
 			if err := func() error {
-				var paramsStateVal SecretScanningListAlertsForRepoState
+				var paramsDotStateVal SecretScanningListAlertsForRepoState
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -65161,12 +65161,12 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 						return err
 					}
 
-					paramsStateVal = SecretScanningListAlertsForRepoState(c)
+					paramsDotStateVal = SecretScanningListAlertsForRepoState(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.State.SetTo(paramsStateVal)
+				params.State.SetTo(paramsDotStateVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
@@ -65200,7 +65200,7 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 			})
 
 			if err := func() error {
-				var paramsSecretTypeVal string
+				var paramsDotSecretTypeVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -65212,12 +65212,12 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 						return err
 					}
 
-					paramsSecretTypeVal = c
+					paramsDotSecretTypeVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.SecretType.SetTo(paramsSecretTypeVal)
+				params.SecretType.SetTo(paramsDotSecretTypeVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: secret_type: parse")
@@ -65241,7 +65241,7 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -65253,12 +65253,12 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -65282,7 +65282,7 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -65294,12 +65294,12 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -65387,7 +65387,7 @@ func decodeSecretScanningUpdateAlertParams(args [3]string, r *http.Request) (Sec
 			})
 
 			if err := func() error {
-				var paramsAlertNumberVal int
+				var paramsDotAlertNumberVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -65399,12 +65399,12 @@ func decodeSecretScanningUpdateAlertParams(args [3]string, r *http.Request) (Sec
 						return err
 					}
 
-					paramsAlertNumberVal = c
+					paramsDotAlertNumberVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.AlertNumber = AlertNumber(paramsAlertNumberVal)
+				params.AlertNumber = AlertNumber(paramsDotAlertNumberVal)
 				return nil
 			}(); err != nil {
 				return params, err
@@ -68180,7 +68180,7 @@ func decodeTeamsListParams(args [1]string, r *http.Request) (TeamsListParams, er
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -68192,12 +68192,12 @@ func decodeTeamsListParams(args [1]string, r *http.Request) (TeamsListParams, er
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -68221,7 +68221,7 @@ func decodeTeamsListParams(args [1]string, r *http.Request) (TeamsListParams, er
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -68233,12 +68233,12 @@ func decodeTeamsListParams(args [1]string, r *http.Request) (TeamsListParams, er
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -68332,7 +68332,7 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (TeamsList
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -68344,12 +68344,12 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (TeamsList
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -68373,7 +68373,7 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (TeamsList
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -68385,12 +68385,12 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (TeamsList
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -68453,7 +68453,7 @@ func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (TeamsLis
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -68465,12 +68465,12 @@ func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (TeamsLis
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -68494,7 +68494,7 @@ func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (TeamsLis
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -68506,12 +68506,12 @@ func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (TeamsLis
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -68636,7 +68636,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 			})
 
 			if err := func() error {
-				var paramsDirectionVal TeamsListDiscussionCommentsInOrgDirection
+				var paramsDotDirectionVal TeamsListDiscussionCommentsInOrgDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -68648,12 +68648,12 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 						return err
 					}
 
-					paramsDirectionVal = TeamsListDiscussionCommentsInOrgDirection(c)
+					paramsDotDirectionVal = TeamsListDiscussionCommentsInOrgDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -68693,7 +68693,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -68705,12 +68705,12 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -68734,7 +68734,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -68746,12 +68746,12 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -68845,7 +68845,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 			})
 
 			if err := func() error {
-				var paramsDirectionVal TeamsListDiscussionCommentsLegacyDirection
+				var paramsDotDirectionVal TeamsListDiscussionCommentsLegacyDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -68857,12 +68857,12 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 						return err
 					}
 
-					paramsDirectionVal = TeamsListDiscussionCommentsLegacyDirection(c)
+					paramsDotDirectionVal = TeamsListDiscussionCommentsLegacyDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -68902,7 +68902,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -68914,12 +68914,12 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -68943,7 +68943,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -68955,12 +68955,12 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -69054,7 +69054,7 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 			})
 
 			if err := func() error {
-				var paramsDirectionVal TeamsListDiscussionsInOrgDirection
+				var paramsDotDirectionVal TeamsListDiscussionsInOrgDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -69066,12 +69066,12 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 						return err
 					}
 
-					paramsDirectionVal = TeamsListDiscussionsInOrgDirection(c)
+					paramsDotDirectionVal = TeamsListDiscussionsInOrgDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -69111,7 +69111,7 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -69123,12 +69123,12 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -69152,7 +69152,7 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -69164,12 +69164,12 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -69187,7 +69187,7 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 			})
 
 			if err := func() error {
-				var paramsPinnedVal string
+				var paramsDotPinnedVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -69199,12 +69199,12 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 						return err
 					}
 
-					paramsPinnedVal = c
+					paramsDotPinnedVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Pinned.SetTo(paramsPinnedVal)
+				params.Pinned.SetTo(paramsDotPinnedVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: pinned: parse")
@@ -69267,7 +69267,7 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (Te
 			})
 
 			if err := func() error {
-				var paramsDirectionVal TeamsListDiscussionsLegacyDirection
+				var paramsDotDirectionVal TeamsListDiscussionsLegacyDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -69279,12 +69279,12 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (Te
 						return err
 					}
 
-					paramsDirectionVal = TeamsListDiscussionsLegacyDirection(c)
+					paramsDotDirectionVal = TeamsListDiscussionsLegacyDirection(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Direction.SetTo(paramsDirectionVal)
+				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
@@ -69324,7 +69324,7 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (Te
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -69336,12 +69336,12 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (Te
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -69365,7 +69365,7 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (Te
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -69377,12 +69377,12 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (Te
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -69414,7 +69414,7 @@ func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -69426,12 +69426,12 @@ func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -69455,7 +69455,7 @@ func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -69467,12 +69467,12 @@ func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -69573,7 +69573,7 @@ func decodeTeamsListIdpGroupsForOrgParams(args [1]string, r *http.Request) (Team
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -69585,12 +69585,12 @@ func decodeTeamsListIdpGroupsForOrgParams(args [1]string, r *http.Request) (Team
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -69608,7 +69608,7 @@ func decodeTeamsListIdpGroupsForOrgParams(args [1]string, r *http.Request) (Team
 			})
 
 			if err := func() error {
-				var paramsPageVal string
+				var paramsDotPageVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -69620,12 +69620,12 @@ func decodeTeamsListIdpGroupsForOrgParams(args [1]string, r *http.Request) (Team
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -69788,7 +69788,7 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (TeamsLi
 			})
 
 			if err := func() error {
-				var paramsRoleVal TeamsListMembersInOrgRole
+				var paramsDotRoleVal TeamsListMembersInOrgRole
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -69800,12 +69800,12 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (TeamsLi
 						return err
 					}
 
-					paramsRoleVal = TeamsListMembersInOrgRole(c)
+					paramsDotRoleVal = TeamsListMembersInOrgRole(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Role.SetTo(paramsRoleVal)
+				params.Role.SetTo(paramsDotRoleVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: role: parse")
@@ -69845,7 +69845,7 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (TeamsLi
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -69857,12 +69857,12 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (TeamsLi
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -69886,7 +69886,7 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (TeamsLi
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -69898,12 +69898,12 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (TeamsLi
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -69966,7 +69966,7 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (TeamsL
 			})
 
 			if err := func() error {
-				var paramsRoleVal TeamsListMembersLegacyRole
+				var paramsDotRoleVal TeamsListMembersLegacyRole
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -69978,12 +69978,12 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (TeamsL
 						return err
 					}
 
-					paramsRoleVal = TeamsListMembersLegacyRole(c)
+					paramsDotRoleVal = TeamsListMembersLegacyRole(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Role.SetTo(paramsRoleVal)
+				params.Role.SetTo(paramsDotRoleVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: role: parse")
@@ -70023,7 +70023,7 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (TeamsL
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -70035,12 +70035,12 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (TeamsL
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -70064,7 +70064,7 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (TeamsL
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -70076,12 +70076,12 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (TeamsL
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -70175,7 +70175,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -70187,12 +70187,12 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -70216,7 +70216,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -70228,12 +70228,12 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -70296,7 +70296,7 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Reque
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -70308,12 +70308,12 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Reque
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -70337,7 +70337,7 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Reque
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -70349,12 +70349,12 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Reque
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -70448,7 +70448,7 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (TeamsL
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -70460,12 +70460,12 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (TeamsL
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -70489,7 +70489,7 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (TeamsL
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -70501,12 +70501,12 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (TeamsL
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -70569,7 +70569,7 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (Teams
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -70581,12 +70581,12 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (Teams
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -70610,7 +70610,7 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (Teams
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -70622,12 +70622,12 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (Teams
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -70721,7 +70721,7 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (TeamsList
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -70733,12 +70733,12 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (TeamsList
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -70762,7 +70762,7 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (TeamsList
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -70774,12 +70774,12 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (TeamsList
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -70842,7 +70842,7 @@ func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (TeamsLis
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -70854,12 +70854,12 @@ func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (TeamsLis
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -70883,7 +70883,7 @@ func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (TeamsLis
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -70895,12 +70895,12 @@ func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (TeamsLis
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -72437,7 +72437,7 @@ func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (UsersG
 			})
 
 			if err := func() error {
-				var paramsSubjectTypeVal UsersGetContextForUserSubjectType
+				var paramsDotSubjectTypeVal UsersGetContextForUserSubjectType
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -72449,12 +72449,12 @@ func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (UsersG
 						return err
 					}
 
-					paramsSubjectTypeVal = UsersGetContextForUserSubjectType(c)
+					paramsDotSubjectTypeVal = UsersGetContextForUserSubjectType(c)
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.SubjectType.SetTo(paramsSubjectTypeVal)
+				params.SubjectType.SetTo(paramsDotSubjectTypeVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: subject_type: parse")
@@ -72488,7 +72488,7 @@ func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (UsersG
 			})
 
 			if err := func() error {
-				var paramsSubjectIDVal string
+				var paramsDotSubjectIDVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -72500,12 +72500,12 @@ func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (UsersG
 						return err
 					}
 
-					paramsSubjectIDVal = c
+					paramsDotSubjectIDVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.SubjectID.SetTo(paramsSubjectIDVal)
+				params.SubjectID.SetTo(paramsDotSubjectIDVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: subject_id: parse")
@@ -72607,7 +72607,7 @@ func decodeUsersListParams(args [0]string, r *http.Request) (UsersListParams, er
 			})
 
 			if err := func() error {
-				var paramsSinceVal int
+				var paramsDotSinceVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -72619,12 +72619,12 @@ func decodeUsersListParams(args [0]string, r *http.Request) (UsersListParams, er
 						return err
 					}
 
-					paramsSinceVal = c
+					paramsDotSinceVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Since.SetTo(paramsSinceVal)
+				params.Since.SetTo(paramsDotSinceVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
@@ -72648,7 +72648,7 @@ func decodeUsersListParams(args [0]string, r *http.Request) (UsersListParams, er
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -72660,12 +72660,12 @@ func decodeUsersListParams(args [0]string, r *http.Request) (UsersListParams, er
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -72697,7 +72697,7 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -72709,12 +72709,12 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -72738,7 +72738,7 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -72750,12 +72750,12 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -72787,7 +72787,7 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Reques
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -72799,12 +72799,12 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Reques
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -72828,7 +72828,7 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Reques
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -72840,12 +72840,12 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Reques
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -72877,7 +72877,7 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -72889,12 +72889,12 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -72918,7 +72918,7 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -72930,12 +72930,12 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -72998,7 +72998,7 @@ func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (Use
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -73010,12 +73010,12 @@ func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (Use
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -73039,7 +73039,7 @@ func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (Use
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -73051,12 +73051,12 @@ func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (Use
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -73119,7 +73119,7 @@ func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (Use
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -73131,12 +73131,12 @@ func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (Use
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -73160,7 +73160,7 @@ func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (Use
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -73172,12 +73172,12 @@ func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (Use
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -73209,7 +73209,7 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Reques
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -73221,12 +73221,12 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Reques
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -73250,7 +73250,7 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Reques
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -73262,12 +73262,12 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Reques
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -73330,7 +73330,7 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (Users
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -73342,12 +73342,12 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (Users
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -73371,7 +73371,7 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (Users
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -73383,12 +73383,12 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (Users
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -73420,7 +73420,7 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.R
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -73432,12 +73432,12 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.R
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -73461,7 +73461,7 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.R
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -73473,12 +73473,12 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.R
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -73541,7 +73541,7 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (Us
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -73553,12 +73553,12 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (Us
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -73582,7 +73582,7 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (Us
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -73594,12 +73594,12 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (Us
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -73631,7 +73631,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.
 			})
 
 			if err := func() error {
-				var paramsPerPageVal int
+				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -73643,12 +73643,12 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.
 						return err
 					}
 
-					paramsPerPageVal = c
+					paramsDotPerPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.PerPage.SetTo(paramsPerPageVal)
+				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
@@ -73672,7 +73672,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -73684,12 +73684,12 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")

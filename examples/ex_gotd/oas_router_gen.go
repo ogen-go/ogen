@@ -204,18 +204,45 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
-			case 'b': // Prefix: "banChatMember"
-				if l := len("banChatMember"); len(elem) >= l && elem[0:l] == "banChatMember" {
+			case 'b': // Prefix: "banChat"
+				if l := len("banChat"); len(elem) >= l && elem[0:l] == "banChat" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					// Leaf: BanChatMember
-					s.handleBanChatMemberRequest([0]string{}, w, r)
+					s.handleBanChatSenderChatRequest([0]string{}, w, r)
 
 					return
+				}
+				switch elem[0] {
+				case 'M': // Prefix: "Member"
+					if l := len("Member"); len(elem) >= l && elem[0:l] == "Member" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: BanChatMember
+						s.handleBanChatMemberRequest([0]string{}, w, r)
+
+						return
+					}
+				case 'S': // Prefix: "SenderChat"
+					if l := len("SenderChat"); len(elem) >= l && elem[0:l] == "SenderChat" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: BanChatSenderChat
+						s.handleBanChatSenderChatRequest([0]string{}, w, r)
+
+						return
+					}
 				}
 			case 'c': // Prefix: "c"
 				if l := len("c"); len(elem) >= l && elem[0:l] == "c" {
@@ -225,11 +252,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleCreateChatInviteLinkRequest([0]string{}, w, r)
+					s.handleCopyMessageRequest([0]string{}, w, r)
 
 					return
 				}
 				switch elem[0] {
+				case 'l': // Prefix: "lose"
+					if l := len("lose"); len(elem) >= l && elem[0:l] == "lose" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: Close
+						s.handleCloseRequest([0]string{}, w, r)
+
+						return
+					}
 				case 'o': // Prefix: "opyMessage"
 					if l := len("opyMessage"); len(elem) >= l && elem[0:l] == "opyMessage" {
 						elem = elem[l:]
@@ -763,19 +803,59 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 					}
+				case 'W': // Prefix: "WebhookInfo"
+					if l := len("WebhookInfo"); len(elem) >= l && elem[0:l] == "WebhookInfo" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: GetWebhookInfo
+						s.handleGetWebhookInfoRequest([0]string{}, w, r)
+
+						return
+					}
 				}
-			case 'l': // Prefix: "leaveChat"
-				if l := len("leaveChat"); len(elem) >= l && elem[0:l] == "leaveChat" {
+			case 'l': // Prefix: "l"
+				if l := len("l"); len(elem) >= l && elem[0:l] == "l" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					// Leaf: LeaveChat
-					s.handleLeaveChatRequest([0]string{}, w, r)
+					s.handleLogOutRequest([0]string{}, w, r)
 
 					return
+				}
+				switch elem[0] {
+				case 'e': // Prefix: "eaveChat"
+					if l := len("eaveChat"); len(elem) >= l && elem[0:l] == "eaveChat" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: LeaveChat
+						s.handleLeaveChatRequest([0]string{}, w, r)
+
+						return
+					}
+				case 'o': // Prefix: "ogOut"
+					if l := len("ogOut"); len(elem) >= l && elem[0:l] == "ogOut" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: LogOut
+						s.handleLogOutRequest([0]string{}, w, r)
+
+						return
+					}
 				}
 			case 'p': // Prefix: "p"
 				if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
@@ -1496,18 +1576,45 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 					switch elem[0] {
-					case 'b': // Prefix: "banChatMember"
-						if l := len("banChatMember"); len(elem) >= l && elem[0:l] == "banChatMember" {
+					case 'b': // Prefix: "banChat"
+						if l := len("banChat"); len(elem) >= l && elem[0:l] == "banChat" {
 							elem = elem[l:]
 						} else {
 							break
 						}
 
 						if len(elem) == 0 {
-							// Leaf: UnbanChatMember
-							s.handleUnbanChatMemberRequest([0]string{}, w, r)
+							s.handleUnbanChatSenderChatRequest([0]string{}, w, r)
 
 							return
+						}
+						switch elem[0] {
+						case 'M': // Prefix: "Member"
+							if l := len("Member"); len(elem) >= l && elem[0:l] == "Member" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								// Leaf: UnbanChatMember
+								s.handleUnbanChatMemberRequest([0]string{}, w, r)
+
+								return
+							}
+						case 'S': // Prefix: "SenderChat"
+							if l := len("SenderChat"); len(elem) >= l && elem[0:l] == "SenderChat" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								// Leaf: UnbanChatSenderChat
+								s.handleUnbanChatSenderChatRequest([0]string{}, w, r)
+
+								return
+							}
 						}
 					case 'p': // Prefix: "pin"
 						if l := len("pin"); len(elem) >= l && elem[0:l] == "pin" {
@@ -1730,19 +1837,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						return r, true
 					}
 				}
-			case 'b': // Prefix: "banChatMember"
-				if l := len("banChatMember"); len(elem) >= l && elem[0:l] == "banChatMember" {
+			case 'b': // Prefix: "banChat"
+				if l := len("banChat"); len(elem) >= l && elem[0:l] == "banChat" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					// Leaf: BanChatMember
-					r.name = "BanChatMember"
+					r.name = "BanChatSenderChat"
 					r.args = args
 					r.count = 0
 					return r, true
+				}
+				switch elem[0] {
+				case 'M': // Prefix: "Member"
+					if l := len("Member"); len(elem) >= l && elem[0:l] == "Member" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: BanChatMember
+						r.name = "BanChatMember"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
+				case 'S': // Prefix: "SenderChat"
+					if l := len("SenderChat"); len(elem) >= l && elem[0:l] == "SenderChat" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: BanChatSenderChat
+						r.name = "BanChatSenderChat"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
 				}
 			case 'c': // Prefix: "c"
 				if l := len("c"); len(elem) >= l && elem[0:l] == "c" {
@@ -1752,12 +1888,26 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "CreateChatInviteLink"
+					r.name = "CopyMessage"
 					r.args = args
 					r.count = 0
 					return r, true
 				}
 				switch elem[0] {
+				case 'l': // Prefix: "lose"
+					if l := len("lose"); len(elem) >= l && elem[0:l] == "lose" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: Close
+						r.name = "Close"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
 				case 'o': // Prefix: "opyMessage"
 					if l := len("opyMessage"); len(elem) >= l && elem[0:l] == "opyMessage" {
 						elem = elem[l:]
@@ -2331,20 +2481,63 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							return r, true
 						}
 					}
+				case 'W': // Prefix: "WebhookInfo"
+					if l := len("WebhookInfo"); len(elem) >= l && elem[0:l] == "WebhookInfo" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: GetWebhookInfo
+						r.name = "GetWebhookInfo"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
 				}
-			case 'l': // Prefix: "leaveChat"
-				if l := len("leaveChat"); len(elem) >= l && elem[0:l] == "leaveChat" {
+			case 'l': // Prefix: "l"
+				if l := len("l"); len(elem) >= l && elem[0:l] == "l" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					// Leaf: LeaveChat
-					r.name = "LeaveChat"
+					r.name = "LogOut"
 					r.args = args
 					r.count = 0
 					return r, true
+				}
+				switch elem[0] {
+				case 'e': // Prefix: "eaveChat"
+					if l := len("eaveChat"); len(elem) >= l && elem[0:l] == "eaveChat" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: LeaveChat
+						r.name = "LeaveChat"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
+				case 'o': // Prefix: "ogOut"
+					if l := len("ogOut"); len(elem) >= l && elem[0:l] == "ogOut" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: LogOut
+						r.name = "LogOut"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
 				}
 			case 'p': // Prefix: "p"
 				if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
@@ -3119,19 +3312,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						return r, true
 					}
 					switch elem[0] {
-					case 'b': // Prefix: "banChatMember"
-						if l := len("banChatMember"); len(elem) >= l && elem[0:l] == "banChatMember" {
+					case 'b': // Prefix: "banChat"
+						if l := len("banChat"); len(elem) >= l && elem[0:l] == "banChat" {
 							elem = elem[l:]
 						} else {
 							break
 						}
 
 						if len(elem) == 0 {
-							// Leaf: UnbanChatMember
-							r.name = "UnbanChatMember"
+							r.name = "UnbanChatSenderChat"
 							r.args = args
 							r.count = 0
 							return r, true
+						}
+						switch elem[0] {
+						case 'M': // Prefix: "Member"
+							if l := len("Member"); len(elem) >= l && elem[0:l] == "Member" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								// Leaf: UnbanChatMember
+								r.name = "UnbanChatMember"
+								r.args = args
+								r.count = 0
+								return r, true
+							}
+						case 'S': // Prefix: "SenderChat"
+							if l := len("SenderChat"); len(elem) >= l && elem[0:l] == "SenderChat" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								// Leaf: UnbanChatSenderChat
+								r.name = "UnbanChatSenderChat"
+								r.args = args
+								r.count = 0
+								return r, true
+							}
 						}
 					case 'p': // Prefix: "pin"
 						if l := len("pin"); len(elem) >= l && elem[0:l] == "pin" {

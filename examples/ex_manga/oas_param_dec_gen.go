@@ -150,7 +150,7 @@ func decodeSearchParams(args [0]string, r *http.Request) (SearchParams, error) {
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -162,12 +162,12 @@ func decodeSearchParams(args [0]string, r *http.Request) (SearchParams, error) {
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
@@ -223,7 +223,7 @@ func decodeSearchByTagIDParams(args [0]string, r *http.Request) (SearchByTagIDPa
 			})
 
 			if err := func() error {
-				var paramsPageVal int
+				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
 					if err != nil {
@@ -235,12 +235,12 @@ func decodeSearchByTagIDParams(args [0]string, r *http.Request) (SearchByTagIDPa
 						return err
 					}
 
-					paramsPageVal = c
+					paramsDotPageVal = c
 					return nil
 				}(); err != nil {
 					return err
 				}
-				params.Page.SetTo(paramsPageVal)
+				params.Page.SetTo(paramsDotPageVal)
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
