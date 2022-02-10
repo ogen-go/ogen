@@ -5,7 +5,6 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"go/format"
 	"io"
 	"net/http"
 	"os"
@@ -122,46 +121,12 @@ func downloadSchemas(ctx context.Context) error {
 	return g.Wait()
 }
 
-func writeGoGenerateFile() error {
-	b := bytes.Buffer{}
-
-	b.WriteString(`
-package examples
-
-import (
-	_ "github.com/go-faster/errors"
-
-	_ "github.com/ogen-go/ogen"
-)
-`)
-
-	for _, links := range linkSets {
-		for _, s := range links {
-			if s.SkipReason != "" {
-				fmt.Printf("skipping %s: %s\n", s.File, s.SkipReason)
-				continue
-			}
-			s.GoGenerate(&b)
-		}
-	}
-
-	formatted, err := format.Source(b.Bytes())
-	if err != nil {
-		return errors.Wrap(err, "format")
-	}
-
-	if err := os.WriteFile("./examples/generate.gen.go", formatted, 0o666); err != nil {
-		return errors.Wrap(err, "write")
-	}
-	return nil
-}
-
 func run(ctx context.Context) error {
 	if err := downloadSchemas(ctx); err != nil {
 		return errors.Wrap(err, "download schemas")
 	}
 
-	return writeGoGenerateFile()
+	return nil
 }
 
 func main() {
