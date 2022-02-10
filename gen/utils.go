@@ -8,10 +8,9 @@ func isBinary(s *jsonschema.Schema) bool {
 	}
 
 	switch s.Type {
-	case "", jsonschema.String:
+	case jsonschema.Empty, jsonschema.String:
+		return s.Format == "binary"
 	default:
 		return false
 	}
-
-	return s.Format == "binary"
 }

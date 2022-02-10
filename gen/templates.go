@@ -110,16 +110,16 @@ func templateFunctions() template.FuncMap {
 		"res_elem": func(i *ir.ResponseInfo) Elem {
 			v := "response"
 			if i.Default {
-				v = v + ".Response"
+				// Each default response must have 'StatusCode' and 'Response' fields.
+				// Example:
+				//
+				// type FooBarStatusCode struct {
+				//   StatusCode int
+				//   Response   [T]
+				// }
 				return Elem{
-					// Each default response must have 'StatusCode' and 'Response' fields.
-					//
-					// type FooBarStatusCode struct {
-					//   StatusCode int
-					//   Response   [T]
-					// }
 					Type: i.Type.MustField("Response").Type,
-					Var:  v,
+					Var:  v + ".Response",
 				}
 			}
 			return Elem{
