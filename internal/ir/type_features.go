@@ -42,6 +42,10 @@ func (t *Type) AddFeature(feature string) {
 }
 
 func (t *Type) CloneFeatures() []string {
+	if t == nil {
+		return nil
+	}
+
 	out := make([]string, len(t.Features))
 	_ = copy(out, t.Features)
 	return out

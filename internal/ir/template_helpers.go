@@ -122,3 +122,18 @@ func (t *Type) MustField(name string) *Field {
 
 	panic(fmt.Sprintf("field with name %q not found", name))
 }
+
+func (t *Type) SetFieldType(name string, newT *Type) {
+	if !t.Is(KindStruct) {
+		panic(unreachable(t))
+	}
+
+	for _, f := range t.Fields {
+		if f.Name == name {
+			f.Type = newT
+			return
+		}
+	}
+
+	panic(fmt.Sprintf("field with name %q not found", name))
+}

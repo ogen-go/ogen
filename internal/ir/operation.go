@@ -87,6 +87,8 @@ const (
 	ContentTypeOctetStream ContentType = "application/octet-stream"
 )
 
+func (t ContentType) String() string { return string(t) }
+
 func (t ContentType) JSON() bool { return t == ContentTypeJSON }
 
 func (t ContentType) OctetStream() bool { return t == ContentTypeOctetStream }

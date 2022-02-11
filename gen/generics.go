@@ -14,30 +14,6 @@ func (g *Generator) wrapGenerics() {
 		}
 	}
 
-	wrapType := func(optional bool, typ *ir.Type) *ir.Type {
-		if typ == nil {
-			return nil
-		}
-		if typ.Is(ir.KindStream) {
-			// Do not wrap io.Reader requests.
-			return typ
-		}
-
-		v := ir.GenericVariant{
-			Nullable: typ.Schema != nil && typ.Schema.Nullable,
-			Optional: optional,
-		}
-		if v.Any() {
-			return g.boxType(v, typ)
-		}
-		return typ
-	}
-	wrapContents := func(optional bool, contents map[ir.ContentType]*ir.Type) {
-		for contentType, typ := range contents {
-			contents[contentType] = wrapType(optional, typ)
-		}
-	}
-
 	for _, op := range g.operations {
 		for _, param := range op.Params {
 			v := ir.GenericVariant{
@@ -50,30 +26,19 @@ func (g *Generator) wrapGenerics() {
 			}
 		}
 
-		if req := op.Request; req != nil {
-			optional := req.Spec != nil && !req.Spec.Required
-			if !req.Type.IsInterface() {
-				req.Type = wrapType(optional, req.Type)
-			}
-			wrapContents(optional, req.Contents)
-		}
+		patchRequestTypes(op.Request, func(name string, t *ir.Type) *ir.Type {
+			return g.boxType(ir.GenericVariant{
+				Optional: op.Request.Spec != nil && !op.Request.Spec.Required,
+				Nullable: t.Schema != nil && t.Schema.Nullable,
+			}, t)
+		})
 
-		wrapStatusResponse := func(r *ir.StatusResponse) {
-			if r == nil {
-				return
-			}
-			r.NoContent = wrapType(false, r.NoContent)
-			wrapContents(false, r.Contents)
-		}
-		if resp := op.Response; resp != nil {
-			if !resp.Type.IsInterface() {
-				resp.Type = wrapType(false, resp.Type)
-			}
-			wrapStatusResponse(resp.Default)
-			for _, r := range resp.StatusCode {
-				wrapStatusResponse(r)
-			}
-		}
+		patchResponseTypes(op.Response, func(name string, t *ir.Type) *ir.Type {
+			return g.boxType(ir.GenericVariant{
+				Optional: false, // Root response schemas cannot be optional.
+				Nullable: t.Schema != nil && t.Schema.Nullable,
+			}, t)
+		})
 	}
 }
 
@@ -113,10 +78,14 @@ func (g *Generator) boxStructFields(s *ir.Type) {
 }
 
 func (g *Generator) boxType(v ir.GenericVariant, t *ir.Type) *ir.Type {
-	if t.IsAny() {
-		// Do not wrap Any.
+	// Do not wrap if
+	//  * type is Any
+	//  * type is Stream
+	//  * type is not nullable and not optional
+	if t.IsAny() || t.IsStream() || !v.Any() {
 		return t
 	}
+
 	if t.IsArray() || t.Primitive == ir.ByteSlice {
 		// Using special case for array nil value if possible.
 		switch {
