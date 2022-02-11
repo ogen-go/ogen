@@ -227,6 +227,13 @@ func (s sampleAPIServer) DefaultTest(ctx context.Context, req api.DefaultTest, p
 	return params.Default.Value, nil
 }
 
+func (s sampleAPIServer) NullableDefaultResponse(ctx context.Context) (api.NullableDefaultResponseDefStatusCode, error) {
+	return api.NullableDefaultResponseDefStatusCode{
+		StatusCode: 200,
+		Response:   api.NewNilInt(1337),
+	}, nil
+}
+
 var _ api.Handler = (*sampleAPIServer)(nil)
 
 //go:embed _testdata/payloads/pet.json
