@@ -16,14 +16,10 @@ func (g *Generator) wrapGenerics() {
 
 	for _, op := range g.operations {
 		for _, param := range op.Params {
-			v := ir.GenericVariant{
+			param.Type = g.boxType(ir.GenericVariant{
 				Nullable: param.Spec.Schema.Nullable,
 				Optional: !param.Spec.Required,
-			}
-
-			if v.Any() {
-				param.Type = g.boxType(v, param.Type)
-			}
+			}, param.Type)
 		}
 
 		patchRequestTypes(op.Request, func(name string, t *ir.Type) *ir.Type {
