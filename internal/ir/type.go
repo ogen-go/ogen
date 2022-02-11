@@ -186,7 +186,28 @@ func (t *Type) Go() string {
 func (t *Type) NamePostfix() string {
 	switch t.Kind {
 	case KindPrimitive:
-		return t.Primitive.String()
+		switch t.Schema.Format {
+		case "uuid":
+			return "UUID"
+		case "date":
+			return "Date"
+		case "time":
+			return "Time"
+		case "date-time":
+			return "DateTime"
+		case "duration":
+			return "Duration"
+		case "ip":
+			return "IP"
+		case "ipv4":
+			return "IPv4"
+		case "ipv6":
+			return "IPv6"
+		case "uri":
+			return "URI"
+		default:
+			return t.Primitive.String()
+		}
 	case KindArray:
 		return t.Item.NamePostfix() + "Array"
 	case KindPointer:
