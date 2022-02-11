@@ -529,6 +529,44 @@ type MaxPropertiesTest struct {
 	OptionalC OptInt `json:"optional_c"`
 }
 
+// NewNilInt returns new NilInt with value set to v.
+func NewNilInt(v int) NilInt {
+	return NilInt{
+		Value: v,
+	}
+}
+
+// NilInt is nullable int.
+type NilInt struct {
+	Value int
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilInt) SetTo(v int) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilInt) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilInt) Get() (v int, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilInt) Or(d int) int {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilNullableEnumsBoth returns new NilNullableEnumsBoth with value set to v.
 func NewNilNullableEnumsBoth(v NullableEnumsBoth) NilNullableEnumsBoth {
 	return NilNullableEnumsBoth{
@@ -693,7 +731,7 @@ func (*NotFound) petUploadAvatarByIDRes() {}
 // NullableDefaultResponseDefStatusCode wraps  with StatusCode.
 type NullableDefaultResponseDefStatusCode struct {
 	StatusCode int
-	Response   int
+	Response   NilInt
 }
 
 // Ref: #/components/schemas/NullableEnums

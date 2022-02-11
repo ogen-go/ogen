@@ -2721,6 +2721,42 @@ func (s *MaxPropertiesTest) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// Encode encodes int as json.
+func (o NilInt) Encode(e *jx.Writer) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	e.Int(int(o.Value))
+}
+
+// Decode decodes int from json.
+func (o *NilInt) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode NilInt to nil")
+	}
+	switch d.Next() {
+	case jx.Number:
+		o.Null = false
+		v, err := d.Int()
+		if err != nil {
+			return err
+		}
+		o.Value = int(v)
+		return nil
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		var v int
+		o.Value = v
+		o.Null = true
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading NilInt", d.Next())
+	}
+}
+
 // Encode encodes NullableEnumsBoth as json.
 func (o NilNullableEnumsBoth) Encode(e *jx.Writer) {
 	if o.Null {

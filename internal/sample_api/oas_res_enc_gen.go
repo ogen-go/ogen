@@ -189,7 +189,7 @@ func encodeNullableDefaultResponseResponse(response NullableDefaultResponseDefSt
 	e := jx.GetWriter()
 	defer jx.PutWriter(e)
 
-	e.Int(response.Response)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}

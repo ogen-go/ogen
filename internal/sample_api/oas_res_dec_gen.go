@@ -331,11 +331,9 @@ func decodeNullableDefaultResponseResponse(resp *http.Response, span trace.Span)
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response int
+			var response NilInt
 			if err := func() error {
-				v, err := d.Int()
-				response = int(v)
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
