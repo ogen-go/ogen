@@ -14,9 +14,9 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		{{- if $t.IsStream }}
 		return {{ $op.Request.Type.Go }}{Data: r.Body}, nil
 		{{- /* Decode json */ -}}
-		{{- else if $contentType.JSON }}
+		{{- else if $contentType.JSON }}{{ $reqBodyOptional := not $op.Request.Spec.Required }}
 		if r.ContentLength == 0 {
-		{{- if $t.GenericVariant.Optional }}
+		{{- if $reqBodyOptional }}
 			return req, nil
 		{{- else }}
 			return req, validate.ErrBodyRequired
@@ -32,7 +32,7 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		}
 
 		if written == 0 {
-		{{- if $t.GenericVariant.Optional }}
+		{{- if $reqBodyOptional }}
 			return req, nil
 		{{- else }}
 			return req, validate.ErrBodyRequired

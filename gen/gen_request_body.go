@@ -22,7 +22,7 @@ func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.R
 		// instead of wrapping each content type.
 		for contentType, typ := range contents {
 			// TODO: Support optional streams?
-			if typ.Is(ir.KindStream) {
+			if typ.Is(ir.KindStream, ir.KindAny) {
 				continue
 			}
 
