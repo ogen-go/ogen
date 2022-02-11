@@ -371,10 +371,10 @@ func BenchmarkJSON(b *testing.B) {
 				TestInteger1: api.NewOptInt(10),
 				TestFloat1:   api.NewOptFloat64(1.0),
 				TestArray1:   nil,
-				TestDate:     api.NewOptTime(conv.Date(date)),
+				TestDate:     api.NewOptDate(conv.Date(date)),
 				TestDuration: api.NewOptDuration(time.Minute),
 				TestTime:     api.NewOptTime(conv.Time(date)),
-				TestDateTime: api.NewOptTime(conv.DateTime(date)),
+				TestDateTime: api.NewOptDateTime(conv.DateTime(date)),
 			}
 			data := json.Encode(pet)
 			dataBytes := int64(len(data))

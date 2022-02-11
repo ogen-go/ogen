@@ -40,15 +40,15 @@ func TestDefault(t *testing.T) {
 				Value: net.IPv4(1, 1, 1, 1),
 				Set:   true,
 			},
-			IPV4: api.OptIP{
+			IPV4: api.OptIPv4{
 				Value: net.IPv4(1, 1, 1, 1),
 				Set:   true,
 			},
-			IPV6: api.OptIP{
+			IPV6: api.OptIPv6{
 				Value: net.ParseIP("2001:db8:85a3::8a2e:370:7334"),
 				Set:   true,
 			},
-			URI: api.OptURL{
+			URI: api.OptURI{
 				Value: url.URL{
 					Scheme: "s3",
 					Host:   "foo",
@@ -56,7 +56,7 @@ func TestDefault(t *testing.T) {
 				},
 				Set: true,
 			},
-			Birthday: api.OptTime{
+			Birthday: api.OptDate{
 				Value: time.Date(2011, time.October, 10, 0, 0, 0, 0, time.UTC),
 				Set:   true,
 			},
