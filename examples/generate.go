@@ -6,7 +6,13 @@ import (
 	_ "github.com/ogen-go/ogen"
 )
 
+// Generate schemas:
+
+//go:generate go run github.com/ogen-go/ogen/tools/mkformattest --output ../_testdata/test_format.json
+
 // Fully supported:
+
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/test_format.json --target ex_test_format --clean
 
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/petstore.yaml --target ex_petstore --clean
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/firecracker.json --target ex_firecracker --clean

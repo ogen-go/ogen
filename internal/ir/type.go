@@ -164,6 +164,7 @@ func (t *Type) Is(vs ...Kind) bool {
 	return false
 }
 
+// Go returns valid Go type for this Type.
 func (t *Type) Go() string {
 	switch t.Kind {
 	case KindPrimitive:
@@ -177,6 +178,44 @@ func (t *Type) Go() string {
 	case KindStruct, KindMap, KindAlias, KindInterface, KindGeneric, KindEnum, KindSum, KindStream:
 		return t.Name
 	default:
+		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
+	}
+}
+
+// NamePostfix returns name postfix for optional wrapper.
+func (t *Type) NamePostfix() string {
+	switch t.Kind {
+	case KindPrimitive:
+		switch t.Schema.Format {
+		case "uuid":
+			return "UUID"
+		case "date":
+			return "Date"
+		case "time":
+			return "Time"
+		case "date-time":
+			return "DateTime"
+		case "duration":
+			return "Duration"
+		case "ip":
+			return "IP"
+		case "ipv4":
+			return "IPv4"
+		case "ipv6":
+			return "IPv6"
+		case "uri":
+			return "URI"
+		default:
+			return t.Primitive.String()
+		}
+	case KindArray:
+		return t.Item.NamePostfix() + "Array"
+	case KindPointer:
+		return t.PointerTo.NamePostfix() + "Pointer"
+	case KindStruct, KindMap, KindAlias, KindInterface, KindGeneric, KindEnum, KindSum, KindStream:
+		return t.Name
+	default:
+		// KindAny and KindPointer must not be wrapped.
 		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
 	}
 }

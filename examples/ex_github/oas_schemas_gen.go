@@ -1135,7 +1135,7 @@ func (*ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) activityMarkN
 
 type ActivityMarkNotificationsAsReadReq struct {
 	// Describes the last point that notifications were checked.
-	LastReadAt OptTime `json:"last_read_at"`
+	LastReadAt OptDateTime `json:"last_read_at"`
 	// Whether the notification has been read.
 	Read OptBool `json:"read"`
 }
@@ -1157,7 +1157,7 @@ type ActivityMarkRepoNotificationsAsReadReq struct {
 	// not be marked as read. If you omit this parameter, all notifications are marked as read. This is a
 	// timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
 	// Default: The current timestamp.
-	LastReadAt OptTime `json:"last_read_at"`
+	LastReadAt OptDateTime `json:"last_read_at"`
 }
 
 // ActivityMarkRepoNotificationsAsReadResetContent is response for ActivityMarkRepoNotificationsAsRead operation.
@@ -1970,10 +1970,10 @@ type Artifact struct {
 	URL                string `json:"url"`
 	ArchiveDownloadURL string `json:"archive_download_url"`
 	// Whether or not the artifact has expired.
-	Expired   bool    `json:"expired"`
-	CreatedAt NilTime `json:"created_at"`
-	ExpiresAt NilTime `json:"expires_at"`
-	UpdatedAt NilTime `json:"updated_at"`
+	Expired   bool        `json:"expired"`
+	CreatedAt NilDateTime `json:"created_at"`
+	ExpiresAt NilDateTime `json:"expires_at"`
+	UpdatedAt NilDateTime `json:"updated_at"`
 }
 
 // Ref: #/components/schemas/audit-log-event
@@ -2093,13 +2093,13 @@ type Authorization struct {
 	HashedToken    NilString                        `json:"hashed_token"`
 	App            AuthorizationApp                 `json:"app"`
 	Note           NilString                        `json:"note"`
-	NoteURL        NilURL                           `json:"note_url"`
+	NoteURL        NilURI                           `json:"note_url"`
 	UpdatedAt      time.Time                        `json:"updated_at"`
 	CreatedAt      time.Time                        `json:"created_at"`
 	Fingerprint    NilString                        `json:"fingerprint"`
 	User           OptNilNullableSimpleUser         `json:"user"`
 	Installation   OptNilNullableScopedInstallation `json:"installation"`
-	ExpiresAt      NilTime                          `json:"expires_at"`
+	ExpiresAt      NilDateTime                      `json:"expires_at"`
 }
 
 func (*Authorization) appsCheckTokenRes()                         {}
@@ -2598,8 +2598,8 @@ type CheckRun struct {
 	// The phase of the lifecycle that the check is currently in.
 	Status      CheckRunStatus        `json:"status"`
 	Conclusion  NilCheckRunConclusion `json:"conclusion"`
-	StartedAt   NilTime               `json:"started_at"`
-	CompletedAt NilTime               `json:"completed_at"`
+	StartedAt   NilDateTime           `json:"started_at"`
+	CompletedAt NilDateTime           `json:"completed_at"`
 	Output      CheckRunOutput        `json:"output"`
 	// The name of the check.
 	Name         string                 `json:"name"`
@@ -2658,8 +2658,8 @@ type CheckSuite struct {
 	PullRequests         []PullRequestMinimal    `json:"pull_requests"`
 	App                  NilNullableIntegration  `json:"app"`
 	Repository           MinimalRepository       `json:"repository"`
-	CreatedAt            NilTime                 `json:"created_at"`
-	UpdatedAt            NilTime                 `json:"updated_at"`
+	CreatedAt            NilDateTime             `json:"created_at"`
+	UpdatedAt            NilDateTime             `json:"updated_at"`
 	HeadCommit           SimpleCommit            `json:"head_commit"`
 	LatestCheckRunsCount int                     `json:"latest_check_runs_count"`
 	CheckRunsURL         string                  `json:"check_runs_url"`
@@ -2795,7 +2795,7 @@ type CodeOfConduct struct {
 	Name    string    `json:"name"`
 	URL     url.URL   `json:"url"`
 	Body    OptString `json:"body"`
-	HTMLURL NilURL    `json:"html_url"`
+	HTMLURL NilURI    `json:"html_url"`
 }
 
 func (*CodeOfConduct) codesOfConductGetConductCodeRes() {}
@@ -2806,7 +2806,7 @@ type CodeOfConductSimple struct {
 	URL     url.URL `json:"url"`
 	Key     string  `json:"key"`
 	Name    string  `json:"name"`
-	HTMLURL NilURL  `json:"html_url"`
+	HTMLURL NilURI  `json:"html_url"`
 }
 
 // Ref: #/components/schemas/code-scanning-alert
@@ -3022,9 +3022,9 @@ type CodeScanningAnalysisCreatedAt time.Time
 // Ref: #/components/schemas/code-scanning-analysis-deletion
 type CodeScanningAnalysisDeletion struct {
 	// Next deletable analysis in chain, without last analysis deletion confirmation.
-	NextAnalysisURL NilURL `json:"next_analysis_url"`
+	NextAnalysisURL NilURI `json:"next_analysis_url"`
 	// Next deletable analysis in chain, with last analysis deletion confirmation.
-	ConfirmDeleteURL NilURL `json:"confirm_delete_url"`
+	ConfirmDeleteURL NilURI `json:"confirm_delete_url"`
 }
 
 func (*CodeScanningAnalysisDeletion) codeScanningDeleteAnalysisRes() {}
@@ -3125,7 +3125,7 @@ type CodeScanningRef string
 type CodeScanningSarifsReceipt struct {
 	ID OptCodeScanningAnalysisSarifID `json:"id"`
 	// The REST API URL for checking the status of the upload.
-	URL OptURL `json:"url"`
+	URL OptURI `json:"url"`
 }
 
 func (*CodeScanningSarifsReceipt) codeScanningUploadSarifRes() {}
@@ -3136,7 +3136,7 @@ type CodeScanningSarifsStatus struct {
 	// been stored.
 	ProcessingStatus OptCodeScanningSarifsStatusProcessingStatus `json:"processing_status"`
 	// The REST API URL for getting the analyses associated with the upload.
-	AnalysesURL OptNilURL `json:"analyses_url"`
+	AnalysesURL OptNilURI `json:"analyses_url"`
 }
 
 func (*CodeScanningSarifsStatus) codeScanningGetSarifRes() {}
@@ -3183,10 +3183,10 @@ type CodeScanningUploadSarifReq struct {
 	// The base directory used in the analysis, as it appears in the SARIF file.
 	// This property is used to convert file paths from absolute to relative, so that alerts can be
 	// mapped to their correct location in the repository.
-	CheckoutURI OptURL `json:"checkout_uri"`
+	CheckoutURI OptURI `json:"checkout_uri"`
 	// The time that the analysis run began. This is a timestamp in [ISO 8601](https://en.wikipedia.
 	// org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	StartedAt OptTime `json:"started_at"`
+	StartedAt OptDateTime `json:"started_at"`
 	// The name of the tool used to generate the code scanning analysis. If this parameter is not used,
 	// the tool name defaults to "API". If the uploaded SARIF contains a tool GUID, this will be
 	// available for filtering using the `tool_guid` parameter of operations such as `GET
@@ -3212,7 +3212,7 @@ type CodeSearchResultItem struct {
 	Score          float64                  `json:"score"`
 	FileSize       OptInt                   `json:"file_size"`
 	Language       OptNilString             `json:"language"`
-	LastModifiedAt OptTime                  `json:"last_modified_at"`
+	LastModifiedAt OptDateTime              `json:"last_modified_at"`
 	LineNumbers    []string                 `json:"line_numbers"`
 	TextMatches    *SearchResultTextMatches `json:"text_matches"`
 }
@@ -3390,7 +3390,7 @@ type CommitFilesItem struct {
 type CommitParentsItem struct {
 	Sha     string  `json:"sha"`
 	URL     url.URL `json:"url"`
-	HTMLURL OptURL  `json:"html_url"`
+	HTMLURL OptURI  `json:"html_url"`
 }
 
 // Commit Search Result Item.
@@ -3450,7 +3450,7 @@ type CommunityProfile struct {
 	Description           NilString             `json:"description"`
 	Documentation         NilString             `json:"documentation"`
 	Files                 CommunityProfileFiles `json:"files"`
-	UpdatedAt             NilTime               `json:"updated_at"`
+	UpdatedAt             NilDateTime           `json:"updated_at"`
 	ContentReportsEnabled OptBool               `json:"content_reports_enabled"`
 }
 
@@ -3475,9 +3475,9 @@ type ContentFile struct {
 	Content         string           `json:"content"`
 	Sha             string           `json:"sha"`
 	URL             url.URL          `json:"url"`
-	GitURL          NilURL           `json:"git_url"`
-	HTMLURL         NilURL           `json:"html_url"`
-	DownloadURL     NilURL           `json:"download_url"`
+	GitURL          NilURI           `json:"git_url"`
+	HTMLURL         NilURI           `json:"html_url"`
+	DownloadURL     NilURI           `json:"download_url"`
 	Links           ContentFileLinks `json:"_links"`
 	Target          OptString        `json:"target"`
 	SubmoduleGitURL OptString        `json:"submodule_git_url"`
@@ -3487,8 +3487,8 @@ func (*ContentFile) reposGetReadmeInDirectoryRes() {}
 func (*ContentFile) reposGetReadmeRes()            {}
 
 type ContentFileLinks struct {
-	Git  NilURL  `json:"git"`
-	HTML NilURL  `json:"html"`
+	Git  NilURI  `json:"git"`
+	HTML NilURI  `json:"html"`
 	Self url.URL `json:"self"`
 }
 
@@ -3522,19 +3522,19 @@ type Contributor struct {
 	Login             OptString    `json:"login"`
 	ID                OptInt       `json:"id"`
 	NodeID            OptString    `json:"node_id"`
-	AvatarURL         OptURL       `json:"avatar_url"`
+	AvatarURL         OptURI       `json:"avatar_url"`
 	GravatarID        OptNilString `json:"gravatar_id"`
-	URL               OptURL       `json:"url"`
-	HTMLURL           OptURL       `json:"html_url"`
-	FollowersURL      OptURL       `json:"followers_url"`
+	URL               OptURI       `json:"url"`
+	HTMLURL           OptURI       `json:"html_url"`
+	FollowersURL      OptURI       `json:"followers_url"`
 	FollowingURL      OptString    `json:"following_url"`
 	GistsURL          OptString    `json:"gists_url"`
 	StarredURL        OptString    `json:"starred_url"`
-	SubscriptionsURL  OptURL       `json:"subscriptions_url"`
-	OrganizationsURL  OptURL       `json:"organizations_url"`
-	ReposURL          OptURL       `json:"repos_url"`
+	SubscriptionsURL  OptURI       `json:"subscriptions_url"`
+	OrganizationsURL  OptURI       `json:"organizations_url"`
+	ReposURL          OptURI       `json:"repos_url"`
 	EventsURL         OptString    `json:"events_url"`
-	ReceivedEventsURL OptURL       `json:"received_events_url"`
+	ReceivedEventsURL OptURI       `json:"received_events_url"`
 	Type              string       `json:"type"`
 	SiteAdmin         OptBool      `json:"site_admin"`
 	Contributions     int          `json:"contributions"`
@@ -3577,8 +3577,8 @@ type CredentialAuthorization struct {
 	// SSH Key.
 	Fingerprint OptString `json:"fingerprint"`
 	// Date when the credential was last accessed. May be null if it was never accessed.
-	CredentialAccessedAt   OptNilTime `json:"credential_accessed_at"`
-	AuthorizedCredentialID OptNilInt  `json:"authorized_credential_id"`
+	CredentialAccessedAt   OptNilDateTime `json:"credential_accessed_at"`
+	AuthorizedCredentialID OptNilInt      `json:"authorized_credential_id"`
 	// The title given to the ssh key. This will only be present when the credential is an ssh key.
 	AuthorizedCredentialTitle OptNilString `json:"authorized_credential_title"`
 	// The note given to the token. This will only be present when the credential is a token.
@@ -3770,9 +3770,9 @@ type DeploymentStatus struct {
 	DeploymentURL url.URL   `json:"deployment_url"`
 	RepositoryURL url.URL   `json:"repository_url"`
 	// The URL for accessing your environment.
-	EnvironmentURL OptURL `json:"environment_url"`
+	EnvironmentURL OptURI `json:"environment_url"`
 	// The URL to associate with this status.
-	LogURL                OptURL                    `json:"log_url"`
+	LogURL                OptURI                    `json:"log_url"`
 	PerformedViaGithubApp OptNilNullableIntegration `json:"performed_via_github_app"`
 }
 
@@ -4249,9 +4249,9 @@ type EnvironmentApprovalsEnvironmentsItem struct {
 	URL     OptString `json:"url"`
 	HTMLURL OptString `json:"html_url"`
 	// The time that the environment was created, in ISO 8601 format.
-	CreatedAt OptTime `json:"created_at"`
+	CreatedAt OptDateTime `json:"created_at"`
 	// The time that the environment was last updated, in ISO 8601 format.
-	UpdatedAt OptTime `json:"updated_at"`
+	UpdatedAt OptDateTime `json:"updated_at"`
 }
 
 // Whether deployment to the environment(s) was approved or rejected.
@@ -4272,7 +4272,7 @@ type Event struct {
 	Org       OptActor     `json:"org"`
 	Payload   EventPayload `json:"payload"`
 	Public    bool         `json:"public"`
-	CreatedAt NilTime      `json:"created_at"`
+	CreatedAt NilDateTime  `json:"created_at"`
 }
 
 type EventPayload struct {
@@ -4464,10 +4464,10 @@ type FullRepository struct {
 	TeamsURL         url.URL    `json:"teams_url"`
 	TreesURL         string     `json:"trees_url"`
 	CloneURL         string     `json:"clone_url"`
-	MirrorURL        NilURL     `json:"mirror_url"`
+	MirrorURL        NilURI     `json:"mirror_url"`
 	HooksURL         url.URL    `json:"hooks_url"`
 	SvnURL           url.URL    `json:"svn_url"`
-	Homepage         NilURL     `json:"homepage"`
+	Homepage         NilURI     `json:"homepage"`
 	Language         NilString  `json:"language"`
 	ForksCount       int        `json:"forks_count"`
 	StargazersCount  int        `json:"stargazers_count"`
@@ -4593,9 +4593,9 @@ type GistCommitChangeStatus struct {
 type GistHistory struct {
 	User         OptNilNullableSimpleUser   `json:"user"`
 	Version      OptString                  `json:"version"`
-	CommittedAt  OptTime                    `json:"committed_at"`
+	CommittedAt  OptDateTime                `json:"committed_at"`
 	ChangeStatus OptGistHistoryChangeStatus `json:"change_status"`
-	URL          OptURL                     `json:"url"`
+	URL          OptURI                     `json:"url"`
 }
 
 type GistHistoryChangeStatus struct {
@@ -4683,10 +4683,10 @@ type GistSimpleForkOfFilesItem struct {
 
 type GistSimpleForksItem struct {
 	ID        OptString     `json:"id"`
-	URL       OptURL        `json:"url"`
+	URL       OptURI        `json:"url"`
 	User      OptPublicUser `json:"user"`
-	CreatedAt OptTime       `json:"created_at"`
-	UpdatedAt OptTime       `json:"updated_at"`
+	CreatedAt OptDateTime   `json:"created_at"`
+	UpdatedAt OptDateTime   `json:"updated_at"`
 }
 
 // GistsCheckIsStarredNoContent is response for GistsCheckIsStarred operation.
@@ -5056,7 +5056,7 @@ type GitCreateCommitReqAuthor struct {
 	Email string `json:"email"`
 	// Indicates when this commit was authored (or committed). This is a timestamp in [ISO
 	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Date OptTime `json:"date"`
+	Date OptDateTime `json:"date"`
 }
 
 // Information about the person who is making the commit. By default, `committer` will use the
@@ -5068,7 +5068,7 @@ type GitCreateCommitReqCommitter struct {
 	Email OptString `json:"email"`
 	// Indicates when this commit was authored (or committed). This is a timestamp in [ISO
 	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Date OptTime `json:"date"`
+	Date OptDateTime `json:"date"`
 }
 
 type GitCreateRefReq struct {
@@ -5102,7 +5102,7 @@ type GitCreateTagReqTagger struct {
 	Email string `json:"email"`
 	// When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.
 	// org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Date OptTime `json:"date"`
+	Date OptDateTime `json:"date"`
 }
 
 // The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a
@@ -5303,7 +5303,7 @@ type GpgKey struct {
 	CanEncryptStorage bool                `json:"can_encrypt_storage"`
 	CanCertify        bool                `json:"can_certify"`
 	CreatedAt         time.Time           `json:"created_at"`
-	ExpiresAt         NilTime             `json:"expires_at"`
+	ExpiresAt         NilDateTime         `json:"expires_at"`
 	RawKey            NilString           `json:"raw_key"`
 }
 
@@ -5372,7 +5372,7 @@ type Hook struct {
 	URL           url.URL      `json:"url"`
 	TestURL       url.URL      `json:"test_url"`
 	PingURL       url.URL      `json:"ping_url"`
-	DeliveriesURL OptURL       `json:"deliveries_url"`
+	DeliveriesURL OptURI       `json:"deliveries_url"`
 	LastResponse  HookResponse `json:"last_response"`
 }
 
@@ -5721,13 +5721,13 @@ type Issue struct {
 	ActiveLockReason      OptNilString              `json:"active_lock_reason"`
 	Comments              int                       `json:"comments"`
 	PullRequest           OptIssuePullRequest       `json:"pull_request"`
-	ClosedAt              NilTime                   `json:"closed_at"`
+	ClosedAt              NilDateTime               `json:"closed_at"`
 	CreatedAt             time.Time                 `json:"created_at"`
 	UpdatedAt             time.Time                 `json:"updated_at"`
 	ClosedBy              OptNilNullableSimpleUser  `json:"closed_by"`
 	BodyHTML              OptString                 `json:"body_html"`
 	BodyText              OptString                 `json:"body_text"`
-	TimelineURL           OptURL                    `json:"timeline_url"`
+	TimelineURL           OptURI                    `json:"timeline_url"`
 	Repository            OptRepository             `json:"repository"`
 	PerformedViaGithubApp OptNilNullableIntegration `json:"performed_via_github_app"`
 	AuthorAssociation     AuthorAssociation         `json:"author_association"`
@@ -5899,7 +5899,7 @@ func NewIssueLabelsItem1IssueLabelsItem(v IssueLabelsItem1) IssueLabelsItem {
 type IssueLabelsItem1 struct {
 	ID          OptInt64     `json:"id"`
 	NodeID      OptString    `json:"node_id"`
-	URL         OptURL       `json:"url"`
+	URL         OptURI       `json:"url"`
 	Name        OptString    `json:"name"`
 	Description OptNilString `json:"description"`
 	Color       OptNilString `json:"color"`
@@ -5907,11 +5907,11 @@ type IssueLabelsItem1 struct {
 }
 
 type IssuePullRequest struct {
-	MergedAt OptNilTime `json:"merged_at"`
-	DiffURL  NilURL     `json:"diff_url"`
-	HTMLURL  NilURL     `json:"html_url"`
-	PatchURL NilURL     `json:"patch_url"`
-	URL      NilURL     `json:"url"`
+	MergedAt OptNilDateTime `json:"merged_at"`
+	DiffURL  NilURI         `json:"diff_url"`
+	HTMLURL  NilURI         `json:"html_url"`
+	PatchURL NilURI         `json:"patch_url"`
+	URL      NilURI         `json:"url"`
 }
 
 // Issue Search Result Item.
@@ -5938,7 +5938,7 @@ type IssueSearchResultItem struct {
 	Comments              int                                 `json:"comments"`
 	CreatedAt             time.Time                           `json:"created_at"`
 	UpdatedAt             time.Time                           `json:"updated_at"`
-	ClosedAt              NilTime                             `json:"closed_at"`
+	ClosedAt              NilDateTime                         `json:"closed_at"`
 	TextMatches           *SearchResultTextMatches            `json:"text_matches"`
 	PullRequest           OptIssueSearchResultItemPullRequest `json:"pull_request"`
 	Body                  OptString                           `json:"body"`
@@ -5948,7 +5948,7 @@ type IssueSearchResultItem struct {
 	Repository            OptRepository                       `json:"repository"`
 	BodyHTML              OptString                           `json:"body_html"`
 	BodyText              OptString                           `json:"body_text"`
-	TimelineURL           OptURL                              `json:"timeline_url"`
+	TimelineURL           OptURI                              `json:"timeline_url"`
 	PerformedViaGithubApp OptNilNullableIntegration           `json:"performed_via_github_app"`
 }
 
@@ -5963,11 +5963,11 @@ type IssueSearchResultItemLabelsItem struct {
 }
 
 type IssueSearchResultItemPullRequest struct {
-	MergedAt OptNilTime `json:"merged_at"`
-	DiffURL  NilURL     `json:"diff_url"`
-	HTMLURL  NilURL     `json:"html_url"`
-	PatchURL NilURL     `json:"patch_url"`
-	URL      NilURL     `json:"url"`
+	MergedAt OptNilDateTime `json:"merged_at"`
+	DiffURL  NilURI         `json:"diff_url"`
+	HTMLURL  NilURI         `json:"html_url"`
+	PatchURL NilURI         `json:"patch_url"`
+	URL      NilURI         `json:"url"`
 }
 
 // Issue Simple.
@@ -5994,23 +5994,23 @@ type IssueSimple struct {
 	ActiveLockReason      OptNilString              `json:"active_lock_reason"`
 	Comments              int                       `json:"comments"`
 	PullRequest           OptIssueSimplePullRequest `json:"pull_request"`
-	ClosedAt              NilTime                   `json:"closed_at"`
+	ClosedAt              NilDateTime               `json:"closed_at"`
 	CreatedAt             time.Time                 `json:"created_at"`
 	UpdatedAt             time.Time                 `json:"updated_at"`
 	AuthorAssociation     AuthorAssociation         `json:"author_association"`
 	BodyHTML              OptString                 `json:"body_html"`
 	BodyText              OptString                 `json:"body_text"`
-	TimelineURL           OptURL                    `json:"timeline_url"`
+	TimelineURL           OptURI                    `json:"timeline_url"`
 	Repository            OptRepository             `json:"repository"`
 	PerformedViaGithubApp OptNilNullableIntegration `json:"performed_via_github_app"`
 }
 
 type IssueSimplePullRequest struct {
-	MergedAt OptNilTime `json:"merged_at"`
-	DiffURL  NilURL     `json:"diff_url"`
-	HTMLURL  NilURL     `json:"html_url"`
-	PatchURL NilURL     `json:"patch_url"`
-	URL      NilURL     `json:"url"`
+	MergedAt OptNilDateTime `json:"merged_at"`
+	DiffURL  NilURI         `json:"diff_url"`
+	HTMLURL  NilURI         `json:"html_url"`
+	PatchURL NilURI         `json:"patch_url"`
+	URL      NilURI         `json:"url"`
 }
 
 type IssuesAddAssigneesReq struct {
@@ -6075,7 +6075,7 @@ type IssuesCreateMilestoneReq struct {
 	Description OptString `json:"description"`
 	// The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
 	// format: `YYYY-MM-DDTHH:MM:SSZ`.
-	DueOn OptTime `json:"due_on"`
+	DueOn OptDateTime `json:"due_on"`
 }
 
 // The state of the milestone. Either `open` or `closed`.
@@ -6683,7 +6683,7 @@ type IssuesUpdateMilestoneReq struct {
 	Description OptString `json:"description"`
 	// The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
 	// format: `YYYY-MM-DDTHH:MM:SSZ`.
-	DueOn OptTime `json:"due_on"`
+	DueOn OptDateTime `json:"due_on"`
 }
 
 // The state of the milestone. Either `open` or `closed`.
@@ -6945,7 +6945,7 @@ type Job struct {
 	// The time that the job started, in ISO 8601 format.
 	StartedAt time.Time `json:"started_at"`
 	// The time that the job finished, in ISO 8601 format.
-	CompletedAt NilTime `json:"completed_at"`
+	CompletedAt NilDateTime `json:"completed_at"`
 	// The name of the job.
 	Name string `json:"name"`
 	// Steps in this job.
@@ -6971,9 +6971,9 @@ type JobStepsItem struct {
 	Name   string `json:"name"`
 	Number int    `json:"number"`
 	// The time that the step started, in ISO 8601 format.
-	StartedAt OptNilTime `json:"started_at"`
+	StartedAt OptNilDateTime `json:"started_at"`
 	// The time that the job finished, in ISO 8601 format.
-	CompletedAt OptNilTime `json:"completed_at"`
+	CompletedAt OptNilDateTime `json:"completed_at"`
 }
 
 // The phase of the lifecycle that the job is currently in.
@@ -7049,7 +7049,7 @@ type License struct {
 	Key            string    `json:"key"`
 	Name           string    `json:"name"`
 	SpdxID         NilString `json:"spdx_id"`
-	URL            NilURL    `json:"url"`
+	URL            NilURI    `json:"url"`
 	NodeID         string    `json:"node_id"`
 	HTMLURL        url.URL   `json:"html_url"`
 	Description    string    `json:"description"`
@@ -7071,9 +7071,9 @@ type LicenseContent struct {
 	Sha         string                   `json:"sha"`
 	Size        int                      `json:"size"`
 	URL         url.URL                  `json:"url"`
-	HTMLURL     NilURL                   `json:"html_url"`
-	GitURL      NilURL                   `json:"git_url"`
-	DownloadURL NilURL                   `json:"download_url"`
+	HTMLURL     NilURI                   `json:"html_url"`
+	GitURL      NilURI                   `json:"git_url"`
+	DownloadURL NilURI                   `json:"download_url"`
 	Type        string                   `json:"type"`
 	Content     string                   `json:"content"`
 	Encoding    string                   `json:"encoding"`
@@ -7082,8 +7082,8 @@ type LicenseContent struct {
 }
 
 type LicenseContentLinks struct {
-	Git  NilURL  `json:"git"`
-	HTML NilURL  `json:"html"`
+	Git  NilURI  `json:"git"`
+	HTML NilURI  `json:"html"`
 	Self url.URL `json:"self"`
 }
 
@@ -7092,10 +7092,10 @@ type LicenseContentLinks struct {
 type LicenseSimple struct {
 	Key     string    `json:"key"`
 	Name    string    `json:"name"`
-	URL     NilURL    `json:"url"`
+	URL     NilURI    `json:"url"`
 	SpdxID  NilString `json:"spdx_id"`
 	NodeID  string    `json:"node_id"`
-	HTMLURL OptURL    `json:"html_url"`
+	HTMLURL OptURI    `json:"html_url"`
 }
 
 type LicensesGetAllCommonlyUsedOKApplicationJSON []LicenseSimple
@@ -7276,7 +7276,7 @@ type Migration struct {
 	CreatedAt            time.Time             `json:"created_at"`
 	UpdatedAt            time.Time             `json:"updated_at"`
 	NodeID               string                `json:"node_id"`
-	ArchiveURL           OptURL                `json:"archive_url"`
+	ArchiveURL           OptURI                `json:"archive_url"`
 	Exclude              []jx.Raw              `json:"exclude"`
 }
 
@@ -7546,8 +7546,8 @@ type Milestone struct {
 	ClosedIssues int                   `json:"closed_issues"`
 	CreatedAt    time.Time             `json:"created_at"`
 	UpdatedAt    time.Time             `json:"updated_at"`
-	ClosedAt     NilTime               `json:"closed_at"`
-	DueOn        NilTime               `json:"due_on"`
+	ClosedAt     NilDateTime           `json:"closed_at"`
+	DueOn        NilDateTime           `json:"due_on"`
 }
 
 func (*Milestone) issuesCreateMilestoneRes() {}
@@ -7633,9 +7633,9 @@ type MinimalRepository struct {
 	Archived            OptBool                         `json:"archived"`
 	Disabled            OptBool                         `json:"disabled"`
 	Visibility          OptString                       `json:"visibility"`
-	PushedAt            OptNilTime                      `json:"pushed_at"`
-	CreatedAt           OptNilTime                      `json:"created_at"`
-	UpdatedAt           OptNilTime                      `json:"updated_at"`
+	PushedAt            OptNilDateTime                  `json:"pushed_at"`
+	CreatedAt           OptNilDateTime                  `json:"created_at"`
+	UpdatedAt           OptNilDateTime                  `json:"updated_at"`
 	Permissions         OptMinimalRepositoryPermissions `json:"permissions"`
 	TemplateRepository  OptNilNullableRepository        `json:"template_repository"`
 	TempCloneToken      OptString                       `json:"temp_clone_token"`
@@ -7964,6 +7964,44 @@ func (o NilCodeScanningAlertDismissedReason) Get() (v CodeScanningAlertDismissed
 
 // Or returns value if set, or given parameter if does not.
 func (o NilCodeScanningAlertDismissedReason) Or(d CodeScanningAlertDismissedReason) CodeScanningAlertDismissedReason {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilDateTime returns new NilDateTime with value set to v.
+func NewNilDateTime(v time.Time) NilDateTime {
+	return NilDateTime{
+		Value: v,
+	}
+}
+
+// NilDateTime is nullable time.Time.
+type NilDateTime struct {
+	Value time.Time
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilDateTime) SetTo(v time.Time) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilDateTime) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilDateTime) Get() (v time.Time, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilDateTime) Or(d time.Time) time.Time {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -8920,68 +8958,30 @@ func (o NilString) Or(d string) string {
 	return d
 }
 
-// NewNilTime returns new NilTime with value set to v.
-func NewNilTime(v time.Time) NilTime {
-	return NilTime{
+// NewNilURI returns new NilURI with value set to v.
+func NewNilURI(v url.URL) NilURI {
+	return NilURI{
 		Value: v,
 	}
 }
 
-// NilTime is nullable time.Time.
-type NilTime struct {
-	Value time.Time
-	Null  bool
-}
-
-// SetTo sets value to v.
-func (o *NilTime) SetTo(v time.Time) {
-	o.Null = false
-	o.Value = v
-}
-
-// IsSet returns true if value is Null.
-func (o NilTime) IsNull() bool { return o.Null }
-
-// Get returns value and boolean that denotes whether value was set.
-func (o NilTime) Get() (v time.Time, ok bool) {
-	if o.Null {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o NilTime) Or(d time.Time) time.Time {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewNilURL returns new NilURL with value set to v.
-func NewNilURL(v url.URL) NilURL {
-	return NilURL{
-		Value: v,
-	}
-}
-
-// NilURL is nullable url.URL.
-type NilURL struct {
+// NilURI is nullable url.URL.
+type NilURI struct {
 	Value url.URL
 	Null  bool
 }
 
 // SetTo sets value to v.
-func (o *NilURL) SetTo(v url.URL) {
+func (o *NilURI) SetTo(v url.URL) {
 	o.Null = false
 	o.Value = v
 }
 
 // IsSet returns true if value is Null.
-func (o NilURL) IsNull() bool { return o.Null }
+func (o NilURI) IsNull() bool { return o.Null }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o NilURL) Get() (v url.URL, ok bool) {
+func (o NilURI) Get() (v url.URL, ok bool) {
 	if o.Null {
 		return v, false
 	}
@@ -8989,7 +8989,7 @@ func (o NilURL) Get() (v url.URL, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o NilURL) Or(d url.URL) url.URL {
+func (o NilURI) Or(d url.URL) url.URL {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -9142,7 +9142,7 @@ type NullableCodeOfConductSimple struct {
 	URL     url.URL `json:"url"`
 	Key     string  `json:"key"`
 	Name    string  `json:"name"`
-	HTMLURL NilURL  `json:"html_url"`
+	HTMLURL NilURI  `json:"html_url"`
 }
 
 // Ref: #/components/schemas/nullable-community-health-file
@@ -9204,10 +9204,10 @@ type NullableIntegrationPermissions struct {
 type NullableLicenseSimple struct {
 	Key     string    `json:"key"`
 	Name    string    `json:"name"`
-	URL     NilURL    `json:"url"`
+	URL     NilURI    `json:"url"`
 	SpdxID  NilString `json:"spdx_id"`
 	NodeID  string    `json:"node_id"`
-	HTMLURL OptURL    `json:"html_url"`
+	HTMLURL OptURI    `json:"html_url"`
 }
 
 // A collection of related issues and pull requests.
@@ -9230,8 +9230,8 @@ type NullableMilestone struct {
 	ClosedIssues int                   `json:"closed_issues"`
 	CreatedAt    time.Time             `json:"created_at"`
 	UpdatedAt    time.Time             `json:"updated_at"`
-	ClosedAt     NilTime               `json:"closed_at"`
-	DueOn        NilTime               `json:"due_on"`
+	ClosedAt     NilDateTime           `json:"closed_at"`
+	DueOn        NilDateTime           `json:"due_on"`
 }
 
 // The state of the milestone.
@@ -9314,9 +9314,9 @@ type NullableMinimalRepository struct {
 	Archived            OptBool                                 `json:"archived"`
 	Disabled            OptBool                                 `json:"disabled"`
 	Visibility          OptString                               `json:"visibility"`
-	PushedAt            OptNilTime                              `json:"pushed_at"`
-	CreatedAt           OptNilTime                              `json:"created_at"`
-	UpdatedAt           OptNilTime                              `json:"updated_at"`
+	PushedAt            OptNilDateTime                          `json:"pushed_at"`
+	CreatedAt           OptNilDateTime                          `json:"created_at"`
+	UpdatedAt           OptNilDateTime                          `json:"updated_at"`
 	Permissions         OptNullableMinimalRepositoryPermissions `json:"permissions"`
 	TemplateRepository  OptNilNullableRepository                `json:"template_repository"`
 	TempCloneToken      OptString                               `json:"temp_clone_token"`
@@ -9405,10 +9405,10 @@ type NullableRepository struct {
 	TeamsURL         url.URL   `json:"teams_url"`
 	TreesURL         string    `json:"trees_url"`
 	CloneURL         string    `json:"clone_url"`
-	MirrorURL        NilURL    `json:"mirror_url"`
+	MirrorURL        NilURI    `json:"mirror_url"`
 	HooksURL         url.URL   `json:"hooks_url"`
 	SvnURL           url.URL   `json:"svn_url"`
-	Homepage         NilURL    `json:"homepage"`
+	Homepage         NilURI    `json:"homepage"`
 	Language         NilString `json:"language"`
 	ForksCount       int       `json:"forks_count"`
 	StargazersCount  int       `json:"stargazers_count"`
@@ -9434,10 +9434,10 @@ type NullableRepository struct {
 	// Returns whether or not this repository disabled.
 	Disabled bool `json:"disabled"`
 	// The repository visibility: public, private, or internal.
-	Visibility OptString `json:"visibility"`
-	PushedAt   NilTime   `json:"pushed_at"`
-	CreatedAt  NilTime   `json:"created_at"`
-	UpdatedAt  NilTime   `json:"updated_at"`
+	Visibility OptString   `json:"visibility"`
+	PushedAt   NilDateTime `json:"pushed_at"`
+	CreatedAt  NilDateTime `json:"created_at"`
+	UpdatedAt  NilDateTime `json:"updated_at"`
 	// Whether to allow rebase merges for pull requests.
 	AllowRebaseMerge   OptBool                                    `json:"allow_rebase_merge"`
 	TemplateRepository OptNilNullableRepositoryTemplateRepository `json:"template_repository"`
@@ -13951,6 +13951,98 @@ func (o OptCommitStats) Or(d CommitStats) CommitStats {
 	return d
 }
 
+// NewOptDate returns new OptDate with value set to v.
+func NewOptDate(v time.Time) OptDate {
+	return OptDate{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDate is optional time.Time.
+type OptDate struct {
+	Value time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptDate was set.
+func (o OptDate) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDate) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDate) SetTo(v time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDate) Get() (v time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDate) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptDateTime returns new OptDateTime with value set to v.
+func NewOptDateTime(v time.Time) OptDateTime {
+	return OptDateTime{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDateTime is optional time.Time.
+type OptDateTime struct {
+	Value time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptDateTime was set.
+func (o OptDateTime) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDateTime) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDateTime) SetTo(v time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDateTime) Get() (v time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDateTime) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptDeploymentReviewerType returns new OptDeploymentReviewerType with value set to v.
 func NewOptDeploymentReviewerType(v DeploymentReviewerType) OptDeploymentReviewerType {
 	return OptDeploymentReviewerType{
@@ -18068,6 +18160,61 @@ func (o OptNilCodeScanningAnalysisToolVersion) Or(d CodeScanningAnalysisToolVers
 	return d
 }
 
+// NewOptNilDateTime returns new OptNilDateTime with value set to v.
+func NewOptNilDateTime(v time.Time) OptNilDateTime {
+	return OptNilDateTime{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilDateTime is optional nullable time.Time.
+type OptNilDateTime struct {
+	Value time.Time
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilDateTime was set.
+func (o OptNilDateTime) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilDateTime) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilDateTime) SetTo(v time.Time) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilDateTime) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilDateTime) Get() (v time.Time, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilDateTime) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilDeploymentBranchPolicy returns new OptNilDeploymentBranchPolicy with value set to v.
 func NewOptNilDeploymentBranchPolicy(v DeploymentBranchPolicy) OptNilDeploymentBranchPolicy {
 	return OptNilDeploymentBranchPolicy{
@@ -19828,61 +19975,6 @@ func (o OptNilTeamSimpleArray) Or(d []TeamSimple) []TeamSimple {
 	return d
 }
 
-// NewOptNilTime returns new OptNilTime with value set to v.
-func NewOptNilTime(v time.Time) OptNilTime {
-	return OptNilTime{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptNilTime is optional nullable time.Time.
-type OptNilTime struct {
-	Value time.Time
-	Set   bool
-	Null  bool
-}
-
-// IsSet returns true if OptNilTime was set.
-func (o OptNilTime) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptNilTime) Reset() {
-	var v time.Time
-	o.Value = v
-	o.Set = false
-	o.Null = false
-}
-
-// SetTo sets value to v.
-func (o *OptNilTime) SetTo(v time.Time) {
-	o.Set = true
-	o.Null = false
-	o.Value = v
-}
-
-// IsSet returns true if value is Null.
-func (o OptNilTime) IsNull() bool { return o.Null }
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptNilTime) Get() (v time.Time, ok bool) {
-	if o.Null {
-		return v, false
-	}
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptNilTime) Or(d time.Time) time.Time {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptNilTopicSearchResultItemAliasesItemArray returns new OptNilTopicSearchResultItemAliasesItemArray with value set to v.
 func NewOptNilTopicSearchResultItemAliasesItemArray(v []TopicSearchResultItemAliasesItem) OptNilTopicSearchResultItemAliasesItemArray {
 	return OptNilTopicSearchResultItemAliasesItemArray{
@@ -19993,26 +20085,26 @@ func (o OptNilTopicSearchResultItemRelatedItemArray) Or(d []TopicSearchResultIte
 	return d
 }
 
-// NewOptNilURL returns new OptNilURL with value set to v.
-func NewOptNilURL(v url.URL) OptNilURL {
-	return OptNilURL{
+// NewOptNilURI returns new OptNilURI with value set to v.
+func NewOptNilURI(v url.URL) OptNilURI {
+	return OptNilURI{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptNilURL is optional nullable url.URL.
-type OptNilURL struct {
+// OptNilURI is optional nullable url.URL.
+type OptNilURI struct {
 	Value url.URL
 	Set   bool
 	Null  bool
 }
 
-// IsSet returns true if OptNilURL was set.
-func (o OptNilURL) IsSet() bool { return o.Set }
+// IsSet returns true if OptNilURI was set.
+func (o OptNilURI) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptNilURL) Reset() {
+func (o *OptNilURI) Reset() {
 	var v url.URL
 	o.Value = v
 	o.Set = false
@@ -20020,17 +20112,17 @@ func (o *OptNilURL) Reset() {
 }
 
 // SetTo sets value to v.
-func (o *OptNilURL) SetTo(v url.URL) {
+func (o *OptNilURI) SetTo(v url.URL) {
 	o.Set = true
 	o.Null = false
 	o.Value = v
 }
 
 // IsSet returns true if value is Null.
-func (o OptNilURL) IsNull() bool { return o.Null }
+func (o OptNilURI) IsNull() bool { return o.Null }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptNilURL) Get() (v url.URL, ok bool) {
+func (o OptNilURI) Get() (v url.URL, ok bool) {
 	if o.Null {
 		return v, false
 	}
@@ -20041,7 +20133,7 @@ func (o OptNilURL) Get() (v url.URL, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptNilURL) Or(d url.URL) url.URL {
+func (o OptNilURI) Or(d url.URL) url.URL {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -29758,52 +29850,6 @@ func (o OptTeamsUpdateLegacyReqPrivacy) Or(d TeamsUpdateLegacyReqPrivacy) TeamsU
 	return d
 }
 
-// NewOptTime returns new OptTime with value set to v.
-func NewOptTime(v time.Time) OptTime {
-	return OptTime{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptTime is optional time.Time.
-type OptTime struct {
-	Value time.Time
-	Set   bool
-}
-
-// IsSet returns true if OptTime was set.
-func (o OptTime) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptTime) Reset() {
-	var v time.Time
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptTime) SetTo(v time.Time) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptTime) Get() (v time.Time, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptTime) Or(d time.Time) time.Time {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptTopicSearchResultItemAliasesItemTopicRelation returns new OptTopicSearchResultItemAliasesItemTopicRelation with value set to v.
 func NewOptTopicSearchResultItemAliasesItemTopicRelation(v TopicSearchResultItemAliasesItemTopicRelation) OptTopicSearchResultItemAliasesItemTopicRelation {
 	return OptTopicSearchResultItemAliasesItemTopicRelation{
@@ -29896,38 +29942,38 @@ func (o OptTopicSearchResultItemRelatedItemTopicRelation) Or(d TopicSearchResult
 	return d
 }
 
-// NewOptURL returns new OptURL with value set to v.
-func NewOptURL(v url.URL) OptURL {
-	return OptURL{
+// NewOptURI returns new OptURI with value set to v.
+func NewOptURI(v url.URL) OptURI {
+	return OptURI{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptURL is optional url.URL.
-type OptURL struct {
+// OptURI is optional url.URL.
+type OptURI struct {
 	Value url.URL
 	Set   bool
 }
 
-// IsSet returns true if OptURL was set.
-func (o OptURL) IsSet() bool { return o.Set }
+// IsSet returns true if OptURI was set.
+func (o OptURI) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptURL) Reset() {
+func (o *OptURI) Reset() {
 	var v url.URL
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptURL) SetTo(v url.URL) {
+func (o *OptURI) SetTo(v url.URL) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptURL) Get() (v url.URL, ok bool) {
+func (o OptURI) Get() (v url.URL, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -29935,7 +29981,7 @@ func (o OptURL) Get() (v url.URL, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptURL) Or(d url.URL) url.URL {
+func (o OptURI) Or(d url.URL) url.URL {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -30592,7 +30638,7 @@ type OrgHook struct {
 	ID            int           `json:"id"`
 	URL           url.URL       `json:"url"`
 	PingURL       url.URL       `json:"ping_url"`
-	DeliveriesURL OptURL        `json:"deliveries_url"`
+	DeliveriesURL OptURI        `json:"deliveries_url"`
 	Name          string        `json:"name"`
 	Events        []string      `json:"events"`
 	Active        bool          `json:"active"`
@@ -30664,7 +30710,7 @@ type OrganizationActionsSecret struct {
 	UpdatedAt time.Time `json:"updated_at"`
 	// Visibility of a secret.
 	Visibility              OrganizationActionsSecretVisibility `json:"visibility"`
-	SelectedRepositoriesURL OptURL                              `json:"selected_repositories_url"`
+	SelectedRepositoriesURL OptURI                              `json:"selected_repositories_url"`
 }
 
 // Visibility of a secret.
@@ -30693,7 +30739,7 @@ type OrganizationFull struct {
 	Description                          NilString               `json:"description"`
 	Name                                 OptString               `json:"name"`
 	Company                              OptString               `json:"company"`
-	Blog                                 OptURL                  `json:"blog"`
+	Blog                                 OptURI                  `json:"blog"`
 	Location                             OptString               `json:"location"`
 	Email                                OptString               `json:"email"`
 	TwitterUsername                      OptNilString            `json:"twitter_username"`
@@ -30762,11 +30808,11 @@ type OrganizationSecretScanningAlert struct {
 	URL       OptAlertURL       `json:"url"`
 	HTMLURL   OptAlertHTMLURL   `json:"html_url"`
 	// The REST API URL of the code locations for this alert.
-	LocationsURL OptURL                              `json:"locations_url"`
+	LocationsURL OptURI                              `json:"locations_url"`
 	State        OptSecretScanningAlertState         `json:"state"`
 	Resolution   OptNilSecretScanningAlertResolution `json:"resolution"`
 	// The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-	ResolvedAt OptNilTime               `json:"resolved_at"`
+	ResolvedAt OptNilDateTime           `json:"resolved_at"`
 	ResolvedBy OptNilNullableSimpleUser `json:"resolved_by"`
 	// The type of secret that secret scanning detected.
 	SecretType OptString `json:"secret_type"`
@@ -31318,7 +31364,7 @@ type PackageVersion struct {
 	Description    OptString                 `json:"description"`
 	CreatedAt      time.Time                 `json:"created_at"`
 	UpdatedAt      time.Time                 `json:"updated_at"`
-	DeletedAt      OptTime                   `json:"deleted_at"`
+	DeletedAt      OptDateTime               `json:"deleted_at"`
 	Metadata       OptPackageVersionMetadata `json:"metadata"`
 }
 
@@ -31997,11 +32043,11 @@ type Page struct {
 	// The state if the domain is protected.
 	ProtectedDomainState OptNilPageProtectedDomainState `json:"protected_domain_state"`
 	// The timestamp when a pending domain becomes unverified.
-	PendingDomainUnverifiedAt OptNilTime `json:"pending_domain_unverified_at"`
+	PendingDomainUnverifiedAt OptNilDateTime `json:"pending_domain_unverified_at"`
 	// Whether the Page has a custom 404 page.
 	Custom404 bool `json:"custom_404"`
 	// The web address the Page can be accessed from.
-	HTMLURL OptURL             `json:"html_url"`
+	HTMLURL OptURI             `json:"html_url"`
 	Source  OptPagesSourceHash `json:"source"`
 	// Whether the GitHub Pages site is publicly visible. If set to `true`, the site is accessible to
 	// anyone on the internet. If set to `false`, the site will only be accessible to users who have at
@@ -32063,7 +32109,7 @@ type PagesHTTPSCertificate struct {
 	Description string                     `json:"description"`
 	// Array of the domain set and its alternate name (if it is configured).
 	Domains   []jx.Raw `json:"domains"`
-	ExpiresAt OptTime  `json:"expires_at"`
+	ExpiresAt OptDate  `json:"expires_at"`
 }
 
 type PagesHTTPSCertificateState string
@@ -32265,7 +32311,7 @@ type PrivateUser struct {
 	Collaborators           int                `json:"collaborators"`
 	TwoFactorAuthentication bool               `json:"two_factor_authentication"`
 	Plan                    OptPrivateUserPlan `json:"plan"`
-	SuspendedAt             OptNilTime         `json:"suspended_at"`
+	SuspendedAt             OptNilDateTime     `json:"suspended_at"`
 	BusinessPlus            OptBool            `json:"business_plus"`
 	LdapDn                  OptString          `json:"ldap_dn"`
 }
@@ -32327,7 +32373,7 @@ type ProjectCard struct {
 	ColumnName OptString `json:"column_name"`
 	ProjectID  OptString `json:"project_id"`
 	ColumnURL  url.URL   `json:"column_url"`
-	ContentURL OptURL    `json:"content_url"`
+	ContentURL OptURI    `json:"content_url"`
 	ProjectURL url.URL   `json:"project_url"`
 }
 
@@ -32960,7 +33006,7 @@ type ProtectedBranchEnforceAdmins struct {
 // Protected Branch Pull Request Review.
 // Ref: #/components/schemas/protected-branch-pull-request-review
 type ProtectedBranchPullRequestReview struct {
-	URL                          OptURL                                                   `json:"url"`
+	URL                          OptURI                                                   `json:"url"`
 	DismissalRestrictions        OptProtectedBranchPullRequestReviewDismissalRestrictions `json:"dismissal_restrictions"`
 	DismissStaleReviews          bool                                                     `json:"dismiss_stale_reviews"`
 	RequireCodeOwnerReviews      bool                                                     `json:"require_code_owner_reviews"`
@@ -33046,7 +33092,7 @@ type PublicUser struct {
 	CreatedAt         time.Time         `json:"created_at"`
 	UpdatedAt         time.Time         `json:"updated_at"`
 	Plan              OptPublicUserPlan `json:"plan"`
-	SuspendedAt       OptNilTime        `json:"suspended_at"`
+	SuspendedAt       OptNilDateTime    `json:"suspended_at"`
 	PrivateGists      OptInt            `json:"private_gists"`
 	TotalPrivateRepos OptInt            `json:"total_private_repos"`
 	OwnedPrivateRepos OptInt            `json:"owned_private_repos"`
@@ -33093,8 +33139,8 @@ type PullRequest struct {
 	ActiveLockReason   OptNilString            `json:"active_lock_reason"`
 	CreatedAt          time.Time               `json:"created_at"`
 	UpdatedAt          time.Time               `json:"updated_at"`
-	ClosedAt           NilTime                 `json:"closed_at"`
-	MergedAt           NilTime                 `json:"merged_at"`
+	ClosedAt           NilDateTime             `json:"closed_at"`
+	MergedAt           NilDateTime             `json:"merged_at"`
 	MergeCommitSha     NilString               `json:"merge_commit_sha"`
 	Assignee           NilNullableSimpleUser   `json:"assignee"`
 	Assignees          OptNilSimpleUserArray   `json:"assignees"`
@@ -33191,12 +33237,12 @@ type PullRequestBaseRepo struct {
 	HasProjects      bool                              `json:"has_projects"`
 	HasWiki          bool                              `json:"has_wiki"`
 	HasPages         bool                              `json:"has_pages"`
-	Homepage         NilURL                            `json:"homepage"`
+	Homepage         NilURI                            `json:"homepage"`
 	Language         NilString                         `json:"language"`
 	MasterBranch     OptString                         `json:"master_branch"`
 	Archived         bool                              `json:"archived"`
 	Disabled         bool                              `json:"disabled"`
-	MirrorURL        NilURL                            `json:"mirror_url"`
+	MirrorURL        NilURI                            `json:"mirror_url"`
 	OpenIssues       int                               `json:"open_issues"`
 	OpenIssuesCount  int                               `json:"open_issues_count"`
 	Permissions      OptPullRequestBaseRepoPermissions `json:"permissions"`
@@ -33333,12 +33379,12 @@ type PullRequestHeadRepo struct {
 	HasProjects      bool                              `json:"has_projects"`
 	HasWiki          bool                              `json:"has_wiki"`
 	HasPages         bool                              `json:"has_pages"`
-	Homepage         NilURL                            `json:"homepage"`
+	Homepage         NilURI                            `json:"homepage"`
 	Language         NilString                         `json:"language"`
 	MasterBranch     OptString                         `json:"master_branch"`
 	Archived         bool                              `json:"archived"`
 	Disabled         bool                              `json:"disabled"`
-	MirrorURL        NilURL                            `json:"mirror_url"`
+	MirrorURL        NilURI                            `json:"mirror_url"`
 	OpenIssues       int                               `json:"open_issues"`
 	OpenIssuesCount  int                               `json:"open_issues_count"`
 	Permissions      OptPullRequestHeadRepoPermissions `json:"permissions"`
@@ -33363,7 +33409,7 @@ type PullRequestHeadRepo struct {
 type PullRequestHeadRepoLicense struct {
 	Key    string    `json:"key"`
 	Name   string    `json:"name"`
-	URL    NilURL    `json:"url"`
+	URL    NilURI    `json:"url"`
 	SpdxID NilString `json:"spdx_id"`
 	NodeID string    `json:"node_id"`
 }
@@ -33495,7 +33541,7 @@ type PullRequestReview struct {
 	HTMLURL        url.URL                `json:"html_url"`
 	PullRequestURL url.URL                `json:"pull_request_url"`
 	Links          PullRequestReviewLinks `json:"_links"`
-	SubmittedAt    OptTime                `json:"submitted_at"`
+	SubmittedAt    OptDateTime            `json:"submitted_at"`
 	// A commit SHA for the review.
 	CommitID          string            `json:"commit_id"`
 	BodyHTML          OptString         `json:"body_html"`
@@ -33651,8 +33697,8 @@ type PullRequestSimple struct {
 	ActiveLockReason   OptNilString                  `json:"active_lock_reason"`
 	CreatedAt          time.Time                     `json:"created_at"`
 	UpdatedAt          time.Time                     `json:"updated_at"`
-	ClosedAt           NilTime                       `json:"closed_at"`
-	MergedAt           NilTime                       `json:"merged_at"`
+	ClosedAt           NilDateTime                   `json:"closed_at"`
+	MergedAt           NilDateTime                   `json:"merged_at"`
 	MergeCommitSha     NilString                     `json:"merge_commit_sha"`
 	Assignee           NilNullableSimpleUser         `json:"assignee"`
 	Assignees          OptNilSimpleUserArray         `json:"assignees"`
@@ -34572,8 +34618,8 @@ type Release struct {
 	HTMLURL    url.URL `json:"html_url"`
 	AssetsURL  url.URL `json:"assets_url"`
 	UploadURL  string  `json:"upload_url"`
-	TarballURL NilURL  `json:"tarball_url"`
-	ZipballURL NilURL  `json:"zipball_url"`
+	TarballURL NilURI  `json:"tarball_url"`
+	ZipballURL NilURI  `json:"zipball_url"`
 	ID         int     `json:"id"`
 	NodeID     string  `json:"node_id"`
 	// The name of the tag.
@@ -34587,14 +34633,14 @@ type Release struct {
 	// Whether to identify the release as a prerelease or a full release.
 	Prerelease    bool           `json:"prerelease"`
 	CreatedAt     time.Time      `json:"created_at"`
-	PublishedAt   NilTime        `json:"published_at"`
+	PublishedAt   NilDateTime    `json:"published_at"`
 	Author        SimpleUser     `json:"author"`
 	Assets        []ReleaseAsset `json:"assets"`
 	BodyHTML      OptString      `json:"body_html"`
 	BodyText      OptString      `json:"body_text"`
 	MentionsCount OptInt         `json:"mentions_count"`
 	// The URL of the release discussion.
-	DiscussionURL OptURL            `json:"discussion_url"`
+	DiscussionURL OptURI            `json:"discussion_url"`
 	Reactions     OptReactionRollup `json:"reactions"`
 }
 
@@ -34649,7 +34695,7 @@ type RepoSearchResultItem struct {
 	CreatedAt        time.Time             `json:"created_at"`
 	UpdatedAt        time.Time             `json:"updated_at"`
 	PushedAt         time.Time             `json:"pushed_at"`
-	Homepage         NilURL                `json:"homepage"`
+	Homepage         NilURI                `json:"homepage"`
 	Size             int                   `json:"size"`
 	StargazersCount  int                   `json:"stargazers_count"`
 	WatchersCount    int                   `json:"watchers_count"`
@@ -34703,7 +34749,7 @@ type RepoSearchResultItem struct {
 	OpenIssues       int                   `json:"open_issues"`
 	Watchers         int                   `json:"watchers"`
 	Topics           []string              `json:"topics"`
-	MirrorURL        NilURL                `json:"mirror_url"`
+	MirrorURL        NilURI                `json:"mirror_url"`
 	HasIssues        bool                  `json:"has_issues"`
 	HasProjects      bool                  `json:"has_projects"`
 	HasPages         bool                  `json:"has_pages"`
@@ -37250,10 +37296,10 @@ type Repository struct {
 	TeamsURL         url.URL   `json:"teams_url"`
 	TreesURL         string    `json:"trees_url"`
 	CloneURL         string    `json:"clone_url"`
-	MirrorURL        NilURL    `json:"mirror_url"`
+	MirrorURL        NilURI    `json:"mirror_url"`
 	HooksURL         url.URL   `json:"hooks_url"`
 	SvnURL           url.URL   `json:"svn_url"`
-	Homepage         NilURL    `json:"homepage"`
+	Homepage         NilURI    `json:"homepage"`
 	Language         NilString `json:"language"`
 	ForksCount       int       `json:"forks_count"`
 	StargazersCount  int       `json:"stargazers_count"`
@@ -37279,10 +37325,10 @@ type Repository struct {
 	// Returns whether or not this repository disabled.
 	Disabled bool `json:"disabled"`
 	// The repository visibility: public, private, or internal.
-	Visibility OptString `json:"visibility"`
-	PushedAt   NilTime   `json:"pushed_at"`
-	CreatedAt  NilTime   `json:"created_at"`
-	UpdatedAt  NilTime   `json:"updated_at"`
+	Visibility OptString   `json:"visibility"`
+	PushedAt   NilDateTime `json:"pushed_at"`
+	CreatedAt  NilDateTime `json:"created_at"`
+	UpdatedAt  NilDateTime `json:"updated_at"`
 	// Whether to allow rebase merges for pull requests.
 	AllowRebaseMerge   OptBool                            `json:"allow_rebase_merge"`
 	TemplateRepository OptNilRepositoryTemplateRepository `json:"template_repository"`
@@ -38137,11 +38183,11 @@ type SecretScanningAlert struct {
 	URL       OptAlertURL       `json:"url"`
 	HTMLURL   OptAlertHTMLURL   `json:"html_url"`
 	// The REST API URL of the code locations for this alert.
-	LocationsURL OptURL                              `json:"locations_url"`
+	LocationsURL OptURI                              `json:"locations_url"`
 	State        OptSecretScanningAlertState         `json:"state"`
 	Resolution   OptNilSecretScanningAlertResolution `json:"resolution"`
 	// The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-	ResolvedAt OptNilTime               `json:"resolved_at"`
+	ResolvedAt OptNilDateTime           `json:"resolved_at"`
 	ResolvedBy OptNilNullableSimpleUser `json:"resolved_by"`
 	// The type of secret that secret scanning detected.
 	SecretType OptString `json:"secret_type"`
@@ -38280,7 +38326,7 @@ type ShortBranch struct {
 	Commit        ShortBranchCommit   `json:"commit"`
 	Protected     bool                `json:"protected"`
 	Protection    OptBranchProtection `json:"protection"`
-	ProtectionURL OptURL              `json:"protection_url"`
+	ProtectionURL OptURI              `json:"protection_url"`
 }
 
 type ShortBranchCommit struct {
@@ -38318,7 +38364,7 @@ type SimpleCommitStatus struct {
 	Context     string     `json:"context"`
 	TargetURL   url.URL    `json:"target_url"`
 	Required    OptNilBool `json:"required"`
-	AvatarURL   NilURL     `json:"avatar_url"`
+	AvatarURL   NilURI     `json:"avatar_url"`
 	URL         url.URL    `json:"url"`
 	CreatedAt   time.Time  `json:"created_at"`
 	UpdatedAt   time.Time  `json:"updated_at"`
@@ -38420,13 +38466,13 @@ type TeamDiscussion struct {
 	BodyHTML string `json:"body_html"`
 	// The current version of the body content. If provided, this update operation will be rejected if
 	// the given version does not match the latest version on the server.
-	BodyVersion   string    `json:"body_version"`
-	CommentsCount int       `json:"comments_count"`
-	CommentsURL   url.URL   `json:"comments_url"`
-	CreatedAt     time.Time `json:"created_at"`
-	LastEditedAt  NilTime   `json:"last_edited_at"`
-	HTMLURL       url.URL   `json:"html_url"`
-	NodeID        string    `json:"node_id"`
+	BodyVersion   string      `json:"body_version"`
+	CommentsCount int         `json:"comments_count"`
+	CommentsURL   url.URL     `json:"comments_url"`
+	CreatedAt     time.Time   `json:"created_at"`
+	LastEditedAt  NilDateTime `json:"last_edited_at"`
+	HTMLURL       url.URL     `json:"html_url"`
+	NodeID        string      `json:"node_id"`
 	// The unique sequence number of a team discussion.
 	Number int `json:"number"`
 	// Whether or not this discussion should be pinned for easy retrieval.
@@ -38451,12 +38497,12 @@ type TeamDiscussionComment struct {
 	BodyHTML string `json:"body_html"`
 	// The current version of the body content. If provided, this update operation will be rejected if
 	// the given version does not match the latest version on the server.
-	BodyVersion   string    `json:"body_version"`
-	CreatedAt     time.Time `json:"created_at"`
-	LastEditedAt  NilTime   `json:"last_edited_at"`
-	DiscussionURL url.URL   `json:"discussion_url"`
-	HTMLURL       url.URL   `json:"html_url"`
-	NodeID        string    `json:"node_id"`
+	BodyVersion   string      `json:"body_version"`
+	CreatedAt     time.Time   `json:"created_at"`
+	LastEditedAt  NilDateTime `json:"last_edited_at"`
+	DiscussionURL url.URL     `json:"discussion_url"`
+	HTMLURL       url.URL     `json:"html_url"`
+	NodeID        string      `json:"node_id"`
 	// The unique sequence number of a team discussion comment.
 	Number    int               `json:"number"`
 	UpdatedAt time.Time         `json:"updated_at"`
@@ -38633,10 +38679,10 @@ type TeamRepository struct {
 	TeamsURL         url.URL   `json:"teams_url"`
 	TreesURL         string    `json:"trees_url"`
 	CloneURL         string    `json:"clone_url"`
-	MirrorURL        NilURL    `json:"mirror_url"`
+	MirrorURL        NilURI    `json:"mirror_url"`
 	HooksURL         url.URL   `json:"hooks_url"`
 	SvnURL           url.URL   `json:"svn_url"`
-	Homepage         NilURL    `json:"homepage"`
+	Homepage         NilURI    `json:"homepage"`
 	Language         NilString `json:"language"`
 	ForksCount       int       `json:"forks_count"`
 	StargazersCount  int       `json:"stargazers_count"`
@@ -38662,10 +38708,10 @@ type TeamRepository struct {
 	// Returns whether or not this repository disabled.
 	Disabled bool `json:"disabled"`
 	// The repository visibility: public, private, or internal.
-	Visibility OptString `json:"visibility"`
-	PushedAt   NilTime   `json:"pushed_at"`
-	CreatedAt  NilTime   `json:"created_at"`
-	UpdatedAt  NilTime   `json:"updated_at"`
+	Visibility OptString   `json:"visibility"`
+	PushedAt   NilDateTime `json:"pushed_at"`
+	CreatedAt  NilDateTime `json:"created_at"`
+	UpdatedAt  NilDateTime `json:"updated_at"`
 	// Whether to allow rebase merges for pull requests.
 	AllowRebaseMerge   OptBool                  `json:"allow_rebase_merge"`
 	TemplateRepository OptNilNullableRepository `json:"template_repository"`
@@ -39438,13 +39484,13 @@ type ThreadSubject struct {
 // Thread Subscription.
 // Ref: #/components/schemas/thread-subscription
 type ThreadSubscription struct {
-	Subscribed    bool      `json:"subscribed"`
-	Ignored       bool      `json:"ignored"`
-	Reason        NilString `json:"reason"`
-	CreatedAt     NilTime   `json:"created_at"`
-	URL           url.URL   `json:"url"`
-	ThreadURL     OptURL    `json:"thread_url"`
-	RepositoryURL OptURL    `json:"repository_url"`
+	Subscribed    bool        `json:"subscribed"`
+	Ignored       bool        `json:"ignored"`
+	Reason        NilString   `json:"reason"`
+	CreatedAt     NilDateTime `json:"created_at"`
+	URL           url.URL     `json:"url"`
+	ThreadURL     OptURI      `json:"thread_url"`
+	RepositoryURL OptURI      `json:"repository_url"`
 }
 
 func (*ThreadSubscription) activityGetThreadSubscriptionForAuthenticatedUserRes() {}
@@ -39474,7 +39520,7 @@ type TopicSearchResultItem struct {
 	Curated          bool                                        `json:"curated"`
 	Score            float64                                     `json:"score"`
 	RepositoryCount  OptNilInt                                   `json:"repository_count"`
-	LogoURL          OptNilURL                                   `json:"logo_url"`
+	LogoURL          OptNilURI                                   `json:"logo_url"`
 	TextMatches      *SearchResultTextMatches                    `json:"text_matches"`
 	Related          OptNilTopicSearchResultItemRelatedItemArray `json:"related"`
 	Aliases          OptNilTopicSearchResultItemAliasesItemArray `json:"aliases"`
@@ -39513,11 +39559,11 @@ type Traffic struct {
 // Ref: #/components/schemas/user-marketplace-purchase
 type UserMarketplacePurchase struct {
 	BillingCycle    string                 `json:"billing_cycle"`
-	NextBillingDate NilTime                `json:"next_billing_date"`
+	NextBillingDate NilDateTime            `json:"next_billing_date"`
 	UnitCount       NilInt                 `json:"unit_count"`
 	OnFreeTrial     bool                   `json:"on_free_trial"`
-	FreeTrialEndsOn NilTime                `json:"free_trial_ends_on"`
-	UpdatedAt       NilTime                `json:"updated_at"`
+	FreeTrialEndsOn NilDateTime            `json:"free_trial_ends_on"`
+	UpdatedAt       NilDateTime            `json:"updated_at"`
 	Account         MarketplaceAccount     `json:"account"`
 	Plan            MarketplaceListingPlan `json:"plan"`
 }
@@ -39547,8 +39593,8 @@ type UserSearchResultItem struct {
 	PublicGists       OptInt                   `json:"public_gists"`
 	Followers         OptInt                   `json:"followers"`
 	Following         OptInt                   `json:"following"`
-	CreatedAt         OptTime                  `json:"created_at"`
-	UpdatedAt         OptTime                  `json:"updated_at"`
+	CreatedAt         OptDateTime              `json:"created_at"`
+	UpdatedAt         OptDateTime              `json:"updated_at"`
 	Name              OptNilString             `json:"name"`
 	Bio               OptNilString             `json:"bio"`
 	Email             OptNilString             `json:"email"`
@@ -39558,7 +39604,7 @@ type UserSearchResultItem struct {
 	TextMatches       *SearchResultTextMatches `json:"text_matches"`
 	Blog              OptNilString             `json:"blog"`
 	Company           OptNilString             `json:"company"`
-	SuspendedAt       OptNilTime               `json:"suspended_at"`
+	SuspendedAt       OptNilDateTime           `json:"suspended_at"`
 }
 
 type UsersAddEmailForAuthenticatedApplicationJSONForbidden BasicError
@@ -40773,7 +40819,7 @@ type Workflow struct {
 	URL       string        `json:"url"`
 	HTMLURL   string        `json:"html_url"`
 	BadgeURL  string        `json:"badge_url"`
-	DeletedAt OptTime       `json:"deleted_at"`
+	DeletedAt OptDateTime   `json:"deleted_at"`
 }
 
 // An invocation of a workflow.

@@ -127,7 +127,7 @@ type AnswerCallbackQuery struct {
 	// conditions via @Botfather, specify the URL that opens your game — note that this will only work
 	// if the query comes from a callback_game button.Otherwise, you may use links like t.
 	// me/your_bot?start=XXXX that open your bot with a parameter.
-	URL OptURL `json:"url"`
+	URL OptURI `json:"url"`
 	// The maximum amount of time in seconds that the result of the callback query may be cached
 	// client-side. Telegram apps will support caching starting in version 3.14. Defaults to 0.
 	CacheTime OptInt `json:"cache_time"`
@@ -1732,7 +1732,7 @@ type InlineKeyboardButton struct {
 	// HTTP or tg:// url to be opened when the button is pressed. Links tg://user?id=<user_id> can be
 	// used to mention a user by their ID without using a username, if this is allowed by their privacy
 	// settings.
-	URL      OptURL      `json:"url"`
+	URL      OptURI      `json:"url"`
 	LoginURL OptLoginUrl `json:"login_url"`
 	// Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes.
 	CallbackData OptString `json:"callback_data"`
@@ -2380,13 +2380,13 @@ type InlineQueryResultArticle struct {
 	InputMessageContent InputMessageContent     `json:"input_message_content"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
 	// URL of the result.
-	URL OptURL `json:"url"`
+	URL OptURI `json:"url"`
 	// Pass True, if you don't want the URL to be shown in the message.
 	HideURL OptBool `json:"hide_url"`
 	// Short description of the result.
 	Description OptString `json:"description"`
 	// URL of the thumbnail for the result.
-	ThumbURL OptURL `json:"thumb_url"`
+	ThumbURL OptURI `json:"thumb_url"`
 	// Thumbnail width.
 	ThumbWidth OptInt `json:"thumb_width"`
 	// Thumbnail height.
@@ -2621,7 +2621,7 @@ type InlineQueryResultContact struct {
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
 	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 	// URL of the thumbnail for the result.
-	ThumbURL OptURL `json:"thumb_url"`
+	ThumbURL OptURI `json:"thumb_url"`
 	// Thumbnail width.
 	ThumbWidth OptInt `json:"thumb_width"`
 	// Thumbnail height.
@@ -2654,7 +2654,7 @@ type InlineQueryResultDocument struct {
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
 	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 	// URL of the thumbnail (JPEG only) for the file.
-	ThumbURL OptURL `json:"thumb_url"`
+	ThumbURL OptURI `json:"thumb_url"`
 	// Thumbnail width.
 	ThumbWidth OptInt `json:"thumb_width"`
 	// Thumbnail height.
@@ -2735,7 +2735,7 @@ type InlineQueryResultLocation struct {
 	ReplyMarkup          OptInlineKeyboardMarkup `json:"reply_markup"`
 	InputMessageContent  OptInputMessageContent  `json:"input_message_content"`
 	// URL of the thumbnail for the result.
-	ThumbURL OptURL `json:"thumb_url"`
+	ThumbURL OptURI `json:"thumb_url"`
 	// Thumbnail width.
 	ThumbWidth OptInt `json:"thumb_width"`
 	// Thumbnail height.
@@ -2835,7 +2835,7 @@ type InlineQueryResultVenue struct {
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
 	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
 	// URL of the thumbnail for the result.
-	ThumbURL OptURL `json:"thumb_url"`
+	ThumbURL OptURI `json:"thumb_url"`
 	// Thumbnail width.
 	ThumbWidth OptInt `json:"thumb_width"`
 	// Thumbnail height.
@@ -2946,7 +2946,7 @@ type InputInvoiceMessageContent struct {
 	ProviderData OptString `json:"provider_data"`
 	// URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a
 	// service. People like it better when they see what they are paying for.
-	PhotoURL OptURL `json:"photo_url"`
+	PhotoURL OptURI `json:"photo_url"`
 	// Photo size.
 	PhotoSize OptInt `json:"photo_size"`
 	// Photo width.
@@ -3778,7 +3778,7 @@ type MessageEntity struct {
 	// Length of the entity in UTF-16 code units.
 	Length int `json:"length"`
 	// For “text_link” only, url that will be opened after user taps on the text.
-	URL  OptURL  `json:"url"`
+	URL  OptURI  `json:"url"`
 	User OptUser `json:"user"`
 	// For “pre” only, the programming language of the entity text.
 	Language OptString `json:"language"`
@@ -6945,38 +6945,38 @@ func (o OptSuccessfulPayment) Or(d SuccessfulPayment) SuccessfulPayment {
 	return d
 }
 
-// NewOptURL returns new OptURL with value set to v.
-func NewOptURL(v url.URL) OptURL {
-	return OptURL{
+// NewOptURI returns new OptURI with value set to v.
+func NewOptURI(v url.URL) OptURI {
+	return OptURI{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptURL is optional url.URL.
-type OptURL struct {
+// OptURI is optional url.URL.
+type OptURI struct {
 	Value url.URL
 	Set   bool
 }
 
-// IsSet returns true if OptURL was set.
-func (o OptURL) IsSet() bool { return o.Set }
+// IsSet returns true if OptURI was set.
+func (o OptURI) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptURL) Reset() {
+func (o *OptURI) Reset() {
 	var v url.URL
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptURL) SetTo(v url.URL) {
+func (o *OptURI) SetTo(v url.URL) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptURL) Get() (v url.URL, ok bool) {
+func (o OptURI) Get() (v url.URL, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -6984,7 +6984,7 @@ func (o OptURL) Get() (v url.URL, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptURL) Or(d url.URL) url.URL {
+func (o OptURI) Or(d url.URL) url.URL {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -9187,7 +9187,7 @@ type SendInvoice struct {
 	ProviderData OptString `json:"provider_data"`
 	// URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a
 	// service. People like it better when they see what they are paying for.
-	PhotoURL OptURL `json:"photo_url"`
+	PhotoURL OptURI `json:"photo_url"`
 	// Photo size.
 	PhotoSize OptInt `json:"photo_size"`
 	// Photo width.

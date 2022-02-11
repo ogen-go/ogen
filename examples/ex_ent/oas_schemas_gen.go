@@ -72,12 +72,12 @@ type CreatePetCategoriesReq struct {
 }
 
 type CreatePetFriendsReq struct {
-	Name       string  `json:"name"`
-	Weight     OptInt  `json:"weight"`
-	Birthday   OptTime `json:"birthday"`
-	Categories []int   `json:"categories"`
-	Owner      int     `json:"owner"`
-	Friends    []int   `json:"friends"`
+	Name       string      `json:"name"`
+	Weight     OptInt      `json:"weight"`
+	Birthday   OptDateTime `json:"birthday"`
+	Categories []int       `json:"categories"`
+	Owner      int         `json:"owner"`
+	Friends    []int       `json:"friends"`
 }
 
 type CreatePetOwnerReq struct {
@@ -87,12 +87,12 @@ type CreatePetOwnerReq struct {
 }
 
 type CreatePetReq struct {
-	Name       string  `json:"name"`
-	Weight     OptInt  `json:"weight"`
-	Birthday   OptTime `json:"birthday"`
-	Categories []int   `json:"categories"`
-	Owner      int     `json:"owner"`
-	Friends    []int   `json:"friends"`
+	Name       string      `json:"name"`
+	Weight     OptInt      `json:"weight"`
+	Birthday   OptDateTime `json:"birthday"`
+	Categories []int       `json:"categories"`
+	Owner      int         `json:"owner"`
+	Friends    []int       `json:"friends"`
 }
 
 // DeletePetNoContent is response for DeletePet operation.
@@ -116,6 +116,52 @@ func (ListPetFriendsOKApplicationJSON) listPetFriendsRes() {}
 type ListPetOKApplicationJSON []PetList
 
 func (ListPetOKApplicationJSON) listPetRes() {}
+
+// NewOptDateTime returns new OptDateTime with value set to v.
+func NewOptDateTime(v time.Time) OptDateTime {
+	return OptDateTime{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDateTime is optional time.Time.
+type OptDateTime struct {
+	Value time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptDateTime was set.
+func (o OptDateTime) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDateTime) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDateTime) SetTo(v time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDateTime) Get() (v time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDateTime) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
 
 // NewOptInt returns new OptInt with value set to v.
 func NewOptInt(v int) OptInt {
@@ -209,52 +255,6 @@ func (o OptInt32) Or(d int32) int32 {
 	return d
 }
 
-// NewOptTime returns new OptTime with value set to v.
-func NewOptTime(v time.Time) OptTime {
-	return OptTime{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptTime is optional time.Time.
-type OptTime struct {
-	Value time.Time
-	Set   bool
-}
-
-// IsSet returns true if OptTime was set.
-func (o OptTime) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptTime) Reset() {
-	var v time.Time
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptTime) SetTo(v time.Time) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptTime) Get() (v time.Time, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptTime) Or(d time.Time) time.Time {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // Ref: #/components/schemas/Pet_CategoriesCreate
 type PetCategoriesCreate struct {
 	ID   int    `json:"id"`
@@ -274,7 +274,7 @@ type PetCreate struct {
 	ID         int                   `json:"id"`
 	Name       string                `json:"name"`
 	Weight     OptInt                `json:"weight"`
-	Birthday   OptTime               `json:"birthday"`
+	Birthday   OptDateTime           `json:"birthday"`
 	Categories []PetCreateCategories `json:"categories"`
 	Owner      PetCreateOwner        `json:"owner"`
 }
@@ -296,28 +296,28 @@ type PetCreateOwner struct {
 
 // Ref: #/components/schemas/Pet_FriendsCreate
 type PetFriendsCreate struct {
-	ID       int     `json:"id"`
-	Name     string  `json:"name"`
-	Weight   OptInt  `json:"weight"`
-	Birthday OptTime `json:"birthday"`
+	ID       int         `json:"id"`
+	Name     string      `json:"name"`
+	Weight   OptInt      `json:"weight"`
+	Birthday OptDateTime `json:"birthday"`
 }
 
 func (*PetFriendsCreate) createPetFriendsRes() {}
 
 // Ref: #/components/schemas/Pet_FriendsList
 type PetFriendsList struct {
-	ID       int     `json:"id"`
-	Name     string  `json:"name"`
-	Weight   OptInt  `json:"weight"`
-	Birthday OptTime `json:"birthday"`
+	ID       int         `json:"id"`
+	Name     string      `json:"name"`
+	Weight   OptInt      `json:"weight"`
+	Birthday OptDateTime `json:"birthday"`
 }
 
 // Ref: #/components/schemas/PetList
 type PetList struct {
-	ID       int     `json:"id"`
-	Name     string  `json:"name"`
-	Weight   OptInt  `json:"weight"`
-	Birthday OptTime `json:"birthday"`
+	ID       int         `json:"id"`
+	Name     string      `json:"name"`
+	Weight   OptInt      `json:"weight"`
+	Birthday OptDateTime `json:"birthday"`
 }
 
 // Ref: #/components/schemas/Pet_OwnerCreate
@@ -340,20 +340,20 @@ func (*PetOwnerRead) readPetOwnerRes() {}
 
 // Ref: #/components/schemas/PetRead
 type PetRead struct {
-	ID       int     `json:"id"`
-	Name     string  `json:"name"`
-	Weight   OptInt  `json:"weight"`
-	Birthday OptTime `json:"birthday"`
+	ID       int         `json:"id"`
+	Name     string      `json:"name"`
+	Weight   OptInt      `json:"weight"`
+	Birthday OptDateTime `json:"birthday"`
 }
 
 func (*PetRead) readPetRes() {}
 
 // Ref: #/components/schemas/PetUpdate
 type PetUpdate struct {
-	ID       int     `json:"id"`
-	Name     string  `json:"name"`
-	Weight   OptInt  `json:"weight"`
-	Birthday OptTime `json:"birthday"`
+	ID       int         `json:"id"`
+	Name     string      `json:"name"`
+	Weight   OptInt      `json:"weight"`
+	Birthday OptDateTime `json:"birthday"`
 }
 
 func (*PetUpdate) updatePetRes() {}
@@ -419,10 +419,10 @@ func (*R500) readPetRes()             {}
 func (*R500) updatePetRes()           {}
 
 type UpdatePetReq struct {
-	Name       string  `json:"name"`
-	Weight     OptInt  `json:"weight"`
-	Birthday   OptTime `json:"birthday"`
-	Categories []int   `json:"categories"`
-	Owner      int     `json:"owner"`
-	Friends    []int   `json:"friends"`
+	Name       string      `json:"name"`
+	Weight     OptInt      `json:"weight"`
+	Birthday   OptDateTime `json:"birthday"`
+	Categories []int       `json:"categories"`
+	Owner      int         `json:"owner"`
+	Friends    []int       `json:"friends"`
 }

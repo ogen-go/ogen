@@ -929,6 +929,33 @@ func (s *ListPetOKApplicationJSON) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// Encode encodes time.Time as json.
+func (o OptDateTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+	if !o.Set {
+		return
+	}
+	format(e, o.Value)
+}
+
+// Decode decodes time.Time from json.
+func (o *OptDateTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, error)) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptDateTime to nil")
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		v, err := format(d)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptDateTime", d.Next())
+	}
+}
+
 // Encode encodes int as json.
 func (o OptInt) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -953,33 +980,6 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf("unexpected type %q while reading OptInt", d.Next())
-	}
-}
-
-// Encode encodes time.Time as json.
-func (o OptTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
-	if !o.Set {
-		return
-	}
-	format(e, o.Value)
-}
-
-// Decode decodes time.Time from json.
-func (o *OptTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, error)) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptTime to nil")
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTime", d.Next())
 	}
 }
 

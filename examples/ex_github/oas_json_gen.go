@@ -71335,6 +71335,42 @@ func (o *NilCodeScanningAlertDismissedReason) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes time.Time as json.
+func (o NilDateTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	format(e, o.Value)
+}
+
+// Decode decodes time.Time from json.
+func (o *NilDateTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, error)) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode NilDateTime to nil")
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Null = false
+		v, err := format(d)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return nil
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		var v time.Time
+		o.Value = v
+		o.Null = true
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading NilDateTime", d.Next())
+	}
+}
+
 // Encode encodes FileCommitContent as json.
 func (o NilFileCommitContent) Encode(e *jx.Writer) {
 	if o.Null {
@@ -72192,44 +72228,8 @@ func (o *NilString) Decode(d *jx.Decoder) error {
 	}
 }
 
-// Encode encodes time.Time as json.
-func (o NilTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
-	if o.Null {
-		e.Null()
-		return
-	}
-	format(e, o.Value)
-}
-
-// Decode decodes time.Time from json.
-func (o *NilTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, error)) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode NilTime to nil")
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v time.Time
-		o.Value = v
-		o.Null = true
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilTime", d.Next())
-	}
-}
-
 // Encode encodes url.URL as json.
-func (o NilURL) Encode(e *jx.Writer) {
+func (o NilURI) Encode(e *jx.Writer) {
 	if o.Null {
 		e.Null()
 		return
@@ -72238,9 +72238,9 @@ func (o NilURL) Encode(e *jx.Writer) {
 }
 
 // Decode decodes url.URL from json.
-func (o *NilURL) Decode(d *jx.Decoder) error {
+func (o *NilURI) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New("invalid: unable to decode NilURL to nil")
+		return errors.New("invalid: unable to decode NilURI to nil")
 	}
 	switch d.Next() {
 	case jx.String:
@@ -72260,7 +72260,7 @@ func (o *NilURL) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return errors.Errorf("unexpected type %q while reading NilURL", d.Next())
+		return errors.Errorf("unexpected type %q while reading NilURI", d.Next())
 	}
 }
 
@@ -84949,6 +84949,60 @@ func (o *OptCommitStats) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes time.Time as json.
+func (o OptDate) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+	if !o.Set {
+		return
+	}
+	format(e, o.Value)
+}
+
+// Decode decodes time.Time from json.
+func (o *OptDate) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, error)) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptDate to nil")
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		v, err := format(d)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptDate", d.Next())
+	}
+}
+
+// Encode encodes time.Time as json.
+func (o OptDateTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+	if !o.Set {
+		return
+	}
+	format(e, o.Value)
+}
+
+// Decode decodes time.Time from json.
+func (o *OptDateTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, error)) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptDateTime to nil")
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		v, err := format(d)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptDateTime", d.Next())
+	}
+}
+
 // Encode encodes DeploymentReviewerType as json.
 func (o OptDeploymentReviewerType) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -86706,6 +86760,47 @@ func (o *OptNilCodeScanningAnalysisToolVersion) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes time.Time as json.
+func (o OptNilDateTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	format(e, o.Value)
+}
+
+// Decode decodes time.Time from json.
+func (o *OptNilDateTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, error)) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptNilDateTime to nil")
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		o.Null = false
+		v, err := format(d)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return nil
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		var v time.Time
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptNilDateTime", d.Next())
+	}
+}
+
 // Encode encodes DeploymentBranchPolicy as json.
 func (o OptNilDeploymentBranchPolicy) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -88093,47 +88188,6 @@ func (o *OptNilTeamSimpleArray) Decode(d *jx.Decoder) error {
 	}
 }
 
-// Encode encodes time.Time as json.
-func (o OptNilTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
-	if !o.Set {
-		return
-	}
-	if o.Null {
-		e.Null()
-		return
-	}
-	format(e, o.Value)
-}
-
-// Decode decodes time.Time from json.
-func (o *OptNilTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, error)) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptNilTime to nil")
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v time.Time
-		o.Value = v
-		o.Set = true
-		o.Null = true
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilTime", d.Next())
-	}
-}
-
 // Encode encodes []TopicSearchResultItemAliasesItem as json.
 func (o OptNilTopicSearchResultItemAliasesItemArray) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -88251,7 +88305,7 @@ func (o *OptNilTopicSearchResultItemRelatedItemArray) Decode(d *jx.Decoder) erro
 }
 
 // Encode encodes url.URL as json.
-func (o OptNilURL) Encode(e *jx.Writer) {
+func (o OptNilURI) Encode(e *jx.Writer) {
 	if !o.Set {
 		return
 	}
@@ -88263,9 +88317,9 @@ func (o OptNilURL) Encode(e *jx.Writer) {
 }
 
 // Decode decodes url.URL from json.
-func (o *OptNilURL) Decode(d *jx.Decoder) error {
+func (o *OptNilURI) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New("invalid: unable to decode OptNilURL to nil")
+		return errors.New("invalid: unable to decode OptNilURI to nil")
 	}
 	switch d.Next() {
 	case jx.String:
@@ -88287,7 +88341,7 @@ func (o *OptNilURL) Decode(d *jx.Decoder) error {
 		o.Null = true
 		return nil
 	default:
-		return errors.Errorf("unexpected type %q while reading OptNilURL", d.Next())
+		return errors.Errorf("unexpected type %q while reading OptNilURI", d.Next())
 	}
 }
 
@@ -91944,33 +91998,6 @@ func (o *OptTeamsUpdateLegacyReqPrivacy) Decode(d *jx.Decoder) error {
 	}
 }
 
-// Encode encodes time.Time as json.
-func (o OptTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
-	if !o.Set {
-		return
-	}
-	format(e, o.Value)
-}
-
-// Decode decodes time.Time from json.
-func (o *OptTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, error)) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptTime to nil")
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTime", d.Next())
-	}
-}
-
 // Encode encodes TopicSearchResultItemAliasesItemTopicRelation as json.
 func (o OptTopicSearchResultItemAliasesItemTopicRelation) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -92022,7 +92049,7 @@ func (o *OptTopicSearchResultItemRelatedItemTopicRelation) Decode(d *jx.Decoder)
 }
 
 // Encode encodes url.URL as json.
-func (o OptURL) Encode(e *jx.Writer) {
+func (o OptURI) Encode(e *jx.Writer) {
 	if !o.Set {
 		return
 	}
@@ -92030,9 +92057,9 @@ func (o OptURL) Encode(e *jx.Writer) {
 }
 
 // Decode decodes url.URL from json.
-func (o *OptURL) Decode(d *jx.Decoder) error {
+func (o *OptURI) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New("invalid: unable to decode OptURL to nil")
+		return errors.New("invalid: unable to decode OptURI to nil")
 	}
 	switch d.Next() {
 	case jx.String:
@@ -92044,7 +92071,7 @@ func (o *OptURL) Decode(d *jx.Decoder) error {
 		o.Value = v
 		return nil
 	default:
-		return errors.Errorf("unexpected type %q while reading OptURL", d.Next())
+		return errors.Errorf("unexpected type %q while reading OptURI", d.Next())
 	}
 }
 

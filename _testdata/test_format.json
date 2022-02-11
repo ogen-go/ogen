@@ -1,0 +1,8025 @@
+{
+	"openapi": "3.1.0",
+	"info": {
+		"title": "Format test",
+		"description": "Auto-generated testing schema for checking format and primitive encoding and decoding",
+		"version": "0.1.0"
+	},
+	"paths": {
+		"/test_request_Any": {
+			"post": {
+				"operationId": "test_request_Any",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_FormatTest": {
+			"post": {
+				"operationId": "test_request_FormatTest",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"required_any": {},
+									"required_array_any": {
+										"type": "array",
+										"items": {}
+									},
+									"required_array_boolean": {
+										"type": "array",
+										"items": {
+											"type": "boolean"
+										}
+									},
+									"required_array_integer": {
+										"type": "array",
+										"items": {
+											"type": "integer"
+										}
+									},
+									"required_array_integer_int32": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "int32"
+										}
+									},
+									"required_array_integer_int64": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "int64"
+										}
+									},
+									"required_array_number": {
+										"type": "array",
+										"items": {
+											"type": "number"
+										}
+									},
+									"required_array_number_double": {
+										"type": "array",
+										"items": {
+											"type": "number",
+											"format": "double"
+										}
+									},
+									"required_array_number_float": {
+										"type": "array",
+										"items": {
+											"type": "number",
+											"format": "float"
+										}
+									},
+									"required_array_number_int32": {
+										"type": "array",
+										"items": {
+											"type": "number",
+											"format": "int32"
+										}
+									},
+									"required_array_number_int64": {
+										"type": "array",
+										"items": {
+											"type": "number",
+											"format": "int64"
+										}
+									},
+									"required_array_string": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									},
+									"required_array_string_byte": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "byte"
+										}
+									},
+									"required_array_string_date": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "date"
+										}
+									},
+									"required_array_string_date-time": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "date-time"
+										}
+									},
+									"required_array_string_duration": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "duration"
+										}
+									},
+									"required_array_string_ip": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "ip"
+										}
+									},
+									"required_array_string_ipv4": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "ipv4"
+										}
+									},
+									"required_array_string_ipv6": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "ipv6"
+										}
+									},
+									"required_array_string_password": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "password"
+										}
+									},
+									"required_array_string_time": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "time"
+										}
+									},
+									"required_array_string_uri": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "uri"
+										}
+									},
+									"required_array_string_uuid": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "uuid"
+										}
+									},
+									"required_boolean": {
+										"type": "boolean"
+									},
+									"required_double_array_any": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {}
+										}
+									},
+									"required_double_array_boolean": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "boolean"
+											}
+										}
+									},
+									"required_double_array_integer": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer"
+											}
+										}
+									},
+									"required_double_array_integer_int32": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "int32"
+											}
+										}
+									},
+									"required_double_array_integer_int64": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "int64"
+											}
+										}
+									},
+									"required_double_array_number": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "number"
+											}
+										}
+									},
+									"required_double_array_number_double": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "number",
+												"format": "double"
+											}
+										}
+									},
+									"required_double_array_number_float": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "number",
+												"format": "float"
+											}
+										}
+									},
+									"required_double_array_number_int32": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "number",
+												"format": "int32"
+											}
+										}
+									},
+									"required_double_array_number_int64": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "number",
+												"format": "int64"
+											}
+										}
+									},
+									"required_double_array_string": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										}
+									},
+									"required_double_array_string_byte": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "byte"
+											}
+										}
+									},
+									"required_double_array_string_date": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "date"
+											}
+										}
+									},
+									"required_double_array_string_date-time": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "date-time"
+											}
+										}
+									},
+									"required_double_array_string_duration": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "duration"
+											}
+										}
+									},
+									"required_double_array_string_ip": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "ip"
+											}
+										}
+									},
+									"required_double_array_string_ipv4": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "ipv4"
+											}
+										}
+									},
+									"required_double_array_string_ipv6": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "ipv6"
+											}
+										}
+									},
+									"required_double_array_string_password": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "password"
+											}
+										}
+									},
+									"required_double_array_string_time": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "time"
+											}
+										}
+									},
+									"required_double_array_string_uri": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "uri"
+											}
+										}
+									},
+									"required_double_array_string_uuid": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "uuid"
+											}
+										}
+									},
+									"required_integer": {
+										"type": "integer"
+									},
+									"required_integer_int32": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"required_integer_int64": {
+										"type": "integer",
+										"format": "int64"
+									},
+									"required_number": {
+										"type": "number"
+									},
+									"required_number_double": {
+										"type": "number",
+										"format": "double"
+									},
+									"required_number_float": {
+										"type": "number",
+										"format": "float"
+									},
+									"required_number_int32": {
+										"type": "number",
+										"format": "int32"
+									},
+									"required_number_int64": {
+										"type": "number",
+										"format": "int64"
+									},
+									"required_string": {
+										"type": "string"
+									},
+									"required_string_byte": {
+										"type": "string",
+										"format": "byte"
+									},
+									"required_string_date": {
+										"type": "string",
+										"format": "date"
+									},
+									"required_string_date-time": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"required_string_duration": {
+										"type": "string",
+										"format": "duration"
+									},
+									"required_string_ip": {
+										"type": "string",
+										"format": "ip"
+									},
+									"required_string_ipv4": {
+										"type": "string",
+										"format": "ipv4"
+									},
+									"required_string_ipv6": {
+										"type": "string",
+										"format": "ipv6"
+									},
+									"required_string_password": {
+										"type": "string",
+										"format": "password"
+									},
+									"required_string_time": {
+										"type": "string",
+										"format": "time"
+									},
+									"required_string_uri": {
+										"type": "string",
+										"format": "uri"
+									},
+									"required_string_uuid": {
+										"type": "string",
+										"format": "uuid"
+									},
+									"optional_any": {},
+									"optional_array_any": {
+										"type": "array",
+										"items": {}
+									},
+									"optional_array_boolean": {
+										"type": "array",
+										"items": {
+											"type": "boolean"
+										}
+									},
+									"optional_array_integer": {
+										"type": "array",
+										"items": {
+											"type": "integer"
+										}
+									},
+									"optional_array_integer_int32": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "int32"
+										}
+									},
+									"optional_array_integer_int64": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "int64"
+										}
+									},
+									"optional_array_number": {
+										"type": "array",
+										"items": {
+											"type": "number"
+										}
+									},
+									"optional_array_number_double": {
+										"type": "array",
+										"items": {
+											"type": "number",
+											"format": "double"
+										}
+									},
+									"optional_array_number_float": {
+										"type": "array",
+										"items": {
+											"type": "number",
+											"format": "float"
+										}
+									},
+									"optional_array_number_int32": {
+										"type": "array",
+										"items": {
+											"type": "number",
+											"format": "int32"
+										}
+									},
+									"optional_array_number_int64": {
+										"type": "array",
+										"items": {
+											"type": "number",
+											"format": "int64"
+										}
+									},
+									"optional_array_string": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									},
+									"optional_array_string_byte": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "byte"
+										}
+									},
+									"optional_array_string_date": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "date"
+										}
+									},
+									"optional_array_string_date-time": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "date-time"
+										}
+									},
+									"optional_array_string_duration": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "duration"
+										}
+									},
+									"optional_array_string_ip": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "ip"
+										}
+									},
+									"optional_array_string_ipv4": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "ipv4"
+										}
+									},
+									"optional_array_string_ipv6": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "ipv6"
+										}
+									},
+									"optional_array_string_password": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "password"
+										}
+									},
+									"optional_array_string_time": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "time"
+										}
+									},
+									"optional_array_string_uri": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "uri"
+										}
+									},
+									"optional_array_string_uuid": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "uuid"
+										}
+									},
+									"optional_boolean": {
+										"type": "boolean"
+									},
+									"optional_double_array_any": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {}
+										}
+									},
+									"optional_double_array_boolean": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "boolean"
+											}
+										}
+									},
+									"optional_double_array_integer": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer"
+											}
+										}
+									},
+									"optional_double_array_integer_int32": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "int32"
+											}
+										}
+									},
+									"optional_double_array_integer_int64": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "int64"
+											}
+										}
+									},
+									"optional_double_array_number": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "number"
+											}
+										}
+									},
+									"optional_double_array_number_double": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "number",
+												"format": "double"
+											}
+										}
+									},
+									"optional_double_array_number_float": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "number",
+												"format": "float"
+											}
+										}
+									},
+									"optional_double_array_number_int32": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "number",
+												"format": "int32"
+											}
+										}
+									},
+									"optional_double_array_number_int64": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "number",
+												"format": "int64"
+											}
+										}
+									},
+									"optional_double_array_string": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										}
+									},
+									"optional_double_array_string_byte": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "byte"
+											}
+										}
+									},
+									"optional_double_array_string_date": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "date"
+											}
+										}
+									},
+									"optional_double_array_string_date-time": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "date-time"
+											}
+										}
+									},
+									"optional_double_array_string_duration": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "duration"
+											}
+										}
+									},
+									"optional_double_array_string_ip": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "ip"
+											}
+										}
+									},
+									"optional_double_array_string_ipv4": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "ipv4"
+											}
+										}
+									},
+									"optional_double_array_string_ipv6": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "ipv6"
+											}
+										}
+									},
+									"optional_double_array_string_password": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "password"
+											}
+										}
+									},
+									"optional_double_array_string_time": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "time"
+											}
+										}
+									},
+									"optional_double_array_string_uri": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "uri"
+											}
+										}
+									},
+									"optional_double_array_string_uuid": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "uuid"
+											}
+										}
+									},
+									"optional_integer": {
+										"type": "integer"
+									},
+									"optional_integer_int32": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"optional_integer_int64": {
+										"type": "integer",
+										"format": "int64"
+									},
+									"optional_number": {
+										"type": "number"
+									},
+									"optional_number_double": {
+										"type": "number",
+										"format": "double"
+									},
+									"optional_number_float": {
+										"type": "number",
+										"format": "float"
+									},
+									"optional_number_int32": {
+										"type": "number",
+										"format": "int32"
+									},
+									"optional_number_int64": {
+										"type": "number",
+										"format": "int64"
+									},
+									"optional_string": {
+										"type": "string"
+									},
+									"optional_string_byte": {
+										"type": "string",
+										"format": "byte"
+									},
+									"optional_string_date": {
+										"type": "string",
+										"format": "date"
+									},
+									"optional_string_date-time": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"optional_string_duration": {
+										"type": "string",
+										"format": "duration"
+									},
+									"optional_string_ip": {
+										"type": "string",
+										"format": "ip"
+									},
+									"optional_string_ipv4": {
+										"type": "string",
+										"format": "ipv4"
+									},
+									"optional_string_ipv6": {
+										"type": "string",
+										"format": "ipv6"
+									},
+									"optional_string_password": {
+										"type": "string",
+										"format": "password"
+									},
+									"optional_string_time": {
+										"type": "string",
+										"format": "time"
+									},
+									"optional_string_uri": {
+										"type": "string",
+										"format": "uri"
+									},
+									"optional_string_uuid": {
+										"type": "string",
+										"format": "uuid"
+									}
+								},
+								"required": [
+									"required_any",
+									"required_array_any",
+									"required_array_boolean",
+									"required_array_integer",
+									"required_array_integer_int32",
+									"required_array_integer_int64",
+									"required_array_number",
+									"required_array_number_double",
+									"required_array_number_float",
+									"required_array_number_int32",
+									"required_array_number_int64",
+									"required_array_string",
+									"required_array_string_byte",
+									"required_array_string_date",
+									"required_array_string_date-time",
+									"required_array_string_duration",
+									"required_array_string_ip",
+									"required_array_string_ipv4",
+									"required_array_string_ipv6",
+									"required_array_string_password",
+									"required_array_string_time",
+									"required_array_string_uri",
+									"required_array_string_uuid",
+									"required_boolean",
+									"required_double_array_any",
+									"required_double_array_boolean",
+									"required_double_array_integer",
+									"required_double_array_integer_int32",
+									"required_double_array_integer_int64",
+									"required_double_array_number",
+									"required_double_array_number_double",
+									"required_double_array_number_float",
+									"required_double_array_number_int32",
+									"required_double_array_number_int64",
+									"required_double_array_string",
+									"required_double_array_string_byte",
+									"required_double_array_string_date",
+									"required_double_array_string_date-time",
+									"required_double_array_string_duration",
+									"required_double_array_string_ip",
+									"required_double_array_string_ipv4",
+									"required_double_array_string_ipv6",
+									"required_double_array_string_password",
+									"required_double_array_string_time",
+									"required_double_array_string_uri",
+									"required_double_array_string_uuid",
+									"required_integer",
+									"required_integer_int32",
+									"required_integer_int64",
+									"required_number",
+									"required_number_double",
+									"required_number_float",
+									"required_number_int32",
+									"required_number_int64",
+									"required_string",
+									"required_string_byte",
+									"required_string_date",
+									"required_string_date-time",
+									"required_string_duration",
+									"required_string_ip",
+									"required_string_ipv4",
+									"required_string_ipv6",
+									"required_string_password",
+									"required_string_time",
+									"required_string_uri",
+									"required_string_uuid"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_boolean": {
+			"post": {
+				"operationId": "test_request_boolean",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "boolean"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_boolean_array": {
+			"post": {
+				"operationId": "test_request_boolean_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_boolean_array_array": {
+			"post": {
+				"operationId": "test_request_boolean_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "boolean"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_boolean_nullable": {
+			"post": {
+				"operationId": "test_request_boolean_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "boolean",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_boolean_nullable_array": {
+			"post": {
+				"operationId": "test_request_boolean_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "boolean",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_boolean_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_boolean_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "boolean",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_integer": {
+			"post": {
+				"operationId": "test_request_integer",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_integer_array": {
+			"post": {
+				"operationId": "test_request_integer_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_integer_array_array": {
+			"post": {
+				"operationId": "test_request_integer_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_integer_int32": {
+			"post": {
+				"operationId": "test_request_integer_int32",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "int32"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_integer_int32_array": {
+			"post": {
+				"operationId": "test_request_integer_int32_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "int32"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_integer_int32_array_array": {
+			"post": {
+				"operationId": "test_request_integer_int32_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "int32"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_integer_int32_nullable": {
+			"post": {
+				"operationId": "test_request_integer_int32_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "int32",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_integer_int32_nullable_array": {
+			"post": {
+				"operationId": "test_request_integer_int32_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "int32",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_integer_int32_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_integer_int32_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "int32",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_integer_int64": {
+			"post": {
+				"operationId": "test_request_integer_int64",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "int64"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_integer_int64_array": {
+			"post": {
+				"operationId": "test_request_integer_int64_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "int64"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_integer_int64_array_array": {
+			"post": {
+				"operationId": "test_request_integer_int64_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "int64"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_integer_int64_nullable": {
+			"post": {
+				"operationId": "test_request_integer_int64_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "int64",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_integer_int64_nullable_array": {
+			"post": {
+				"operationId": "test_request_integer_int64_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "int64",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_integer_int64_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_integer_int64_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "int64",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_integer_nullable": {
+			"post": {
+				"operationId": "test_request_integer_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_integer_nullable_array": {
+			"post": {
+				"operationId": "test_request_integer_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_integer_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_integer_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number": {
+			"post": {
+				"operationId": "test_request_number",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "number"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_array": {
+			"post": {
+				"operationId": "test_request_number_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "number"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_array_array": {
+			"post": {
+				"operationId": "test_request_number_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "number"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_double": {
+			"post": {
+				"operationId": "test_request_number_double",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "number",
+								"format": "double"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_double_array": {
+			"post": {
+				"operationId": "test_request_number_double_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "number",
+									"format": "double"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_double_array_array": {
+			"post": {
+				"operationId": "test_request_number_double_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "number",
+										"format": "double"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_double_nullable": {
+			"post": {
+				"operationId": "test_request_number_double_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "number",
+								"format": "double",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_double_nullable_array": {
+			"post": {
+				"operationId": "test_request_number_double_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "number",
+									"format": "double",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_double_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_number_double_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "number",
+										"format": "double",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_float": {
+			"post": {
+				"operationId": "test_request_number_float",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "number",
+								"format": "float"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_float_array": {
+			"post": {
+				"operationId": "test_request_number_float_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "number",
+									"format": "float"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_float_array_array": {
+			"post": {
+				"operationId": "test_request_number_float_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "number",
+										"format": "float"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_float_nullable": {
+			"post": {
+				"operationId": "test_request_number_float_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "number",
+								"format": "float",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_float_nullable_array": {
+			"post": {
+				"operationId": "test_request_number_float_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "number",
+									"format": "float",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_float_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_number_float_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "number",
+										"format": "float",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_int32": {
+			"post": {
+				"operationId": "test_request_number_int32",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "number",
+								"format": "int32"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_int32_array": {
+			"post": {
+				"operationId": "test_request_number_int32_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "number",
+									"format": "int32"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_int32_array_array": {
+			"post": {
+				"operationId": "test_request_number_int32_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "number",
+										"format": "int32"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_int32_nullable": {
+			"post": {
+				"operationId": "test_request_number_int32_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "number",
+								"format": "int32",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_int32_nullable_array": {
+			"post": {
+				"operationId": "test_request_number_int32_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "number",
+									"format": "int32",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_int32_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_number_int32_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "number",
+										"format": "int32",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_int64": {
+			"post": {
+				"operationId": "test_request_number_int64",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "number",
+								"format": "int64"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_int64_array": {
+			"post": {
+				"operationId": "test_request_number_int64_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "number",
+									"format": "int64"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_int64_array_array": {
+			"post": {
+				"operationId": "test_request_number_int64_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "number",
+										"format": "int64"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_int64_nullable": {
+			"post": {
+				"operationId": "test_request_number_int64_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "number",
+								"format": "int64",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_int64_nullable_array": {
+			"post": {
+				"operationId": "test_request_number_int64_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "number",
+									"format": "int64",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_int64_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_number_int64_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "number",
+										"format": "int64",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_nullable": {
+			"post": {
+				"operationId": "test_request_number_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "number",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_nullable_array": {
+			"post": {
+				"operationId": "test_request_number_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "number",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_number_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_number_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "number",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string": {
+			"post": {
+				"operationId": "test_request_string",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_array": {
+			"post": {
+				"operationId": "test_request_string_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_array_array": {
+			"post": {
+				"operationId": "test_request_string_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_byte": {
+			"post": {
+				"operationId": "test_request_string_byte",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "byte"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_byte_array": {
+			"post": {
+				"operationId": "test_request_string_byte_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "byte"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_byte_array_array": {
+			"post": {
+				"operationId": "test_request_string_byte_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "byte"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_byte_nullable": {
+			"post": {
+				"operationId": "test_request_string_byte_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "byte",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_byte_nullable_array": {
+			"post": {
+				"operationId": "test_request_string_byte_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "byte",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_byte_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_string_byte_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "byte",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_date": {
+			"post": {
+				"operationId": "test_request_string_date",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "date"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_date-time": {
+			"post": {
+				"operationId": "test_request_string_date-time",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "date-time"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_date-time_array": {
+			"post": {
+				"operationId": "test_request_string_date-time_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "date-time"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_date-time_array_array": {
+			"post": {
+				"operationId": "test_request_string_date-time_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "date-time"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_date-time_nullable": {
+			"post": {
+				"operationId": "test_request_string_date-time_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "date-time",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_date-time_nullable_array": {
+			"post": {
+				"operationId": "test_request_string_date-time_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "date-time",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_date-time_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_string_date-time_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "date-time",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_date_array": {
+			"post": {
+				"operationId": "test_request_string_date_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "date"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_date_array_array": {
+			"post": {
+				"operationId": "test_request_string_date_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "date"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_date_nullable": {
+			"post": {
+				"operationId": "test_request_string_date_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "date",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_date_nullable_array": {
+			"post": {
+				"operationId": "test_request_string_date_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "date",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_date_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_string_date_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "date",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_duration": {
+			"post": {
+				"operationId": "test_request_string_duration",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "duration"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_duration_array": {
+			"post": {
+				"operationId": "test_request_string_duration_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "duration"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_duration_array_array": {
+			"post": {
+				"operationId": "test_request_string_duration_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "duration"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_duration_nullable": {
+			"post": {
+				"operationId": "test_request_string_duration_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "duration",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_duration_nullable_array": {
+			"post": {
+				"operationId": "test_request_string_duration_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "duration",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_duration_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_string_duration_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "duration",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_ip": {
+			"post": {
+				"operationId": "test_request_string_ip",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "ip"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_ip_array": {
+			"post": {
+				"operationId": "test_request_string_ip_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "ip"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_ip_array_array": {
+			"post": {
+				"operationId": "test_request_string_ip_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "ip"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_ip_nullable": {
+			"post": {
+				"operationId": "test_request_string_ip_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "ip",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_ip_nullable_array": {
+			"post": {
+				"operationId": "test_request_string_ip_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "ip",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_ip_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_string_ip_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "ip",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_ipv4": {
+			"post": {
+				"operationId": "test_request_string_ipv4",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "ipv4"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_ipv4_array": {
+			"post": {
+				"operationId": "test_request_string_ipv4_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "ipv4"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_ipv4_array_array": {
+			"post": {
+				"operationId": "test_request_string_ipv4_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "ipv4"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_ipv4_nullable": {
+			"post": {
+				"operationId": "test_request_string_ipv4_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "ipv4",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_ipv4_nullable_array": {
+			"post": {
+				"operationId": "test_request_string_ipv4_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "ipv4",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_ipv4_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_string_ipv4_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "ipv4",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_ipv6": {
+			"post": {
+				"operationId": "test_request_string_ipv6",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "ipv6"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_ipv6_array": {
+			"post": {
+				"operationId": "test_request_string_ipv6_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "ipv6"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_ipv6_array_array": {
+			"post": {
+				"operationId": "test_request_string_ipv6_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "ipv6"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_ipv6_nullable": {
+			"post": {
+				"operationId": "test_request_string_ipv6_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "ipv6",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_ipv6_nullable_array": {
+			"post": {
+				"operationId": "test_request_string_ipv6_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "ipv6",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_ipv6_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_string_ipv6_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "ipv6",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_nullable": {
+			"post": {
+				"operationId": "test_request_string_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_nullable_array": {
+			"post": {
+				"operationId": "test_request_string_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_string_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_password": {
+			"post": {
+				"operationId": "test_request_string_password",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "password"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_password_array": {
+			"post": {
+				"operationId": "test_request_string_password_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "password"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_password_array_array": {
+			"post": {
+				"operationId": "test_request_string_password_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "password"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_password_nullable": {
+			"post": {
+				"operationId": "test_request_string_password_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "password",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_password_nullable_array": {
+			"post": {
+				"operationId": "test_request_string_password_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "password",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_password_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_string_password_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "password",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_time": {
+			"post": {
+				"operationId": "test_request_string_time",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "time"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_time_array": {
+			"post": {
+				"operationId": "test_request_string_time_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "time"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_time_array_array": {
+			"post": {
+				"operationId": "test_request_string_time_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "time"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_time_nullable": {
+			"post": {
+				"operationId": "test_request_string_time_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "time",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_time_nullable_array": {
+			"post": {
+				"operationId": "test_request_string_time_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "time",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_time_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_string_time_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "time",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_uri": {
+			"post": {
+				"operationId": "test_request_string_uri",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "uri"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_uri_array": {
+			"post": {
+				"operationId": "test_request_string_uri_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "uri"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_uri_array_array": {
+			"post": {
+				"operationId": "test_request_string_uri_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "uri"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_uri_nullable": {
+			"post": {
+				"operationId": "test_request_string_uri_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "uri",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_uri_nullable_array": {
+			"post": {
+				"operationId": "test_request_string_uri_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "uri",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_uri_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_string_uri_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "uri",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_uuid": {
+			"post": {
+				"operationId": "test_request_string_uuid",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "uuid"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_uuid_array": {
+			"post": {
+				"operationId": "test_request_string_uuid_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "uuid"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_uuid_array_array": {
+			"post": {
+				"operationId": "test_request_string_uuid_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "uuid"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_uuid_nullable": {
+			"post": {
+				"operationId": "test_request_string_uuid_nullable",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "uuid",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_uuid_nullable_array": {
+			"post": {
+				"operationId": "test_request_string_uuid_nullable_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "uuid",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_request_string_uuid_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_string_uuid_nullable_array_array",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "uuid",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error",
+						"description": "description"
+					}
+				}
+			}
+		},
+		"/test_response_Any": {
+			"post": {
+				"operationId": "test_response_Any",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_FormatTest": {
+			"post": {
+				"operationId": "test_response_FormatTest",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"required_any": {},
+										"required_array_any": {
+											"type": "array",
+											"items": {}
+										},
+										"required_array_boolean": {
+											"type": "array",
+											"items": {
+												"type": "boolean"
+											}
+										},
+										"required_array_integer": {
+											"type": "array",
+											"items": {
+												"type": "integer"
+											}
+										},
+										"required_array_integer_int32": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "int32"
+											}
+										},
+										"required_array_integer_int64": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "int64"
+											}
+										},
+										"required_array_number": {
+											"type": "array",
+											"items": {
+												"type": "number"
+											}
+										},
+										"required_array_number_double": {
+											"type": "array",
+											"items": {
+												"type": "number",
+												"format": "double"
+											}
+										},
+										"required_array_number_float": {
+											"type": "array",
+											"items": {
+												"type": "number",
+												"format": "float"
+											}
+										},
+										"required_array_number_int32": {
+											"type": "array",
+											"items": {
+												"type": "number",
+												"format": "int32"
+											}
+										},
+										"required_array_number_int64": {
+											"type": "array",
+											"items": {
+												"type": "number",
+												"format": "int64"
+											}
+										},
+										"required_array_string": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"required_array_string_byte": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "byte"
+											}
+										},
+										"required_array_string_date": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "date"
+											}
+										},
+										"required_array_string_date-time": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "date-time"
+											}
+										},
+										"required_array_string_duration": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "duration"
+											}
+										},
+										"required_array_string_ip": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "ip"
+											}
+										},
+										"required_array_string_ipv4": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "ipv4"
+											}
+										},
+										"required_array_string_ipv6": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "ipv6"
+											}
+										},
+										"required_array_string_password": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "password"
+											}
+										},
+										"required_array_string_time": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "time"
+											}
+										},
+										"required_array_string_uri": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "uri"
+											}
+										},
+										"required_array_string_uuid": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "uuid"
+											}
+										},
+										"required_boolean": {
+											"type": "boolean"
+										},
+										"required_double_array_any": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {}
+											}
+										},
+										"required_double_array_boolean": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "boolean"
+												}
+											}
+										},
+										"required_double_array_integer": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "integer"
+												}
+											}
+										},
+										"required_double_array_integer_int32": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "integer",
+													"format": "int32"
+												}
+											}
+										},
+										"required_double_array_integer_int64": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "integer",
+													"format": "int64"
+												}
+											}
+										},
+										"required_double_array_number": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "number"
+												}
+											}
+										},
+										"required_double_array_number_double": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "number",
+													"format": "double"
+												}
+											}
+										},
+										"required_double_array_number_float": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "number",
+													"format": "float"
+												}
+											}
+										},
+										"required_double_array_number_int32": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "number",
+													"format": "int32"
+												}
+											}
+										},
+										"required_double_array_number_int64": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "number",
+													"format": "int64"
+												}
+											}
+										},
+										"required_double_array_string": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required_double_array_string_byte": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "byte"
+												}
+											}
+										},
+										"required_double_array_string_date": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "date"
+												}
+											}
+										},
+										"required_double_array_string_date-time": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "date-time"
+												}
+											}
+										},
+										"required_double_array_string_duration": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "duration"
+												}
+											}
+										},
+										"required_double_array_string_ip": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "ip"
+												}
+											}
+										},
+										"required_double_array_string_ipv4": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "ipv4"
+												}
+											}
+										},
+										"required_double_array_string_ipv6": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "ipv6"
+												}
+											}
+										},
+										"required_double_array_string_password": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "password"
+												}
+											}
+										},
+										"required_double_array_string_time": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "time"
+												}
+											}
+										},
+										"required_double_array_string_uri": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "uri"
+												}
+											}
+										},
+										"required_double_array_string_uuid": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "uuid"
+												}
+											}
+										},
+										"required_integer": {
+											"type": "integer"
+										},
+										"required_integer_int32": {
+											"type": "integer",
+											"format": "int32"
+										},
+										"required_integer_int64": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"required_number": {
+											"type": "number"
+										},
+										"required_number_double": {
+											"type": "number",
+											"format": "double"
+										},
+										"required_number_float": {
+											"type": "number",
+											"format": "float"
+										},
+										"required_number_int32": {
+											"type": "number",
+											"format": "int32"
+										},
+										"required_number_int64": {
+											"type": "number",
+											"format": "int64"
+										},
+										"required_string": {
+											"type": "string"
+										},
+										"required_string_byte": {
+											"type": "string",
+											"format": "byte"
+										},
+										"required_string_date": {
+											"type": "string",
+											"format": "date"
+										},
+										"required_string_date-time": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"required_string_duration": {
+											"type": "string",
+											"format": "duration"
+										},
+										"required_string_ip": {
+											"type": "string",
+											"format": "ip"
+										},
+										"required_string_ipv4": {
+											"type": "string",
+											"format": "ipv4"
+										},
+										"required_string_ipv6": {
+											"type": "string",
+											"format": "ipv6"
+										},
+										"required_string_password": {
+											"type": "string",
+											"format": "password"
+										},
+										"required_string_time": {
+											"type": "string",
+											"format": "time"
+										},
+										"required_string_uri": {
+											"type": "string",
+											"format": "uri"
+										},
+										"required_string_uuid": {
+											"type": "string",
+											"format": "uuid"
+										},
+										"optional_any": {},
+										"optional_array_any": {
+											"type": "array",
+											"items": {}
+										},
+										"optional_array_boolean": {
+											"type": "array",
+											"items": {
+												"type": "boolean"
+											}
+										},
+										"optional_array_integer": {
+											"type": "array",
+											"items": {
+												"type": "integer"
+											}
+										},
+										"optional_array_integer_int32": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "int32"
+											}
+										},
+										"optional_array_integer_int64": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "int64"
+											}
+										},
+										"optional_array_number": {
+											"type": "array",
+											"items": {
+												"type": "number"
+											}
+										},
+										"optional_array_number_double": {
+											"type": "array",
+											"items": {
+												"type": "number",
+												"format": "double"
+											}
+										},
+										"optional_array_number_float": {
+											"type": "array",
+											"items": {
+												"type": "number",
+												"format": "float"
+											}
+										},
+										"optional_array_number_int32": {
+											"type": "array",
+											"items": {
+												"type": "number",
+												"format": "int32"
+											}
+										},
+										"optional_array_number_int64": {
+											"type": "array",
+											"items": {
+												"type": "number",
+												"format": "int64"
+											}
+										},
+										"optional_array_string": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"optional_array_string_byte": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "byte"
+											}
+										},
+										"optional_array_string_date": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "date"
+											}
+										},
+										"optional_array_string_date-time": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "date-time"
+											}
+										},
+										"optional_array_string_duration": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "duration"
+											}
+										},
+										"optional_array_string_ip": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "ip"
+											}
+										},
+										"optional_array_string_ipv4": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "ipv4"
+											}
+										},
+										"optional_array_string_ipv6": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "ipv6"
+											}
+										},
+										"optional_array_string_password": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "password"
+											}
+										},
+										"optional_array_string_time": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "time"
+											}
+										},
+										"optional_array_string_uri": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "uri"
+											}
+										},
+										"optional_array_string_uuid": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "uuid"
+											}
+										},
+										"optional_boolean": {
+											"type": "boolean"
+										},
+										"optional_double_array_any": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {}
+											}
+										},
+										"optional_double_array_boolean": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "boolean"
+												}
+											}
+										},
+										"optional_double_array_integer": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "integer"
+												}
+											}
+										},
+										"optional_double_array_integer_int32": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "integer",
+													"format": "int32"
+												}
+											}
+										},
+										"optional_double_array_integer_int64": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "integer",
+													"format": "int64"
+												}
+											}
+										},
+										"optional_double_array_number": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "number"
+												}
+											}
+										},
+										"optional_double_array_number_double": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "number",
+													"format": "double"
+												}
+											}
+										},
+										"optional_double_array_number_float": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "number",
+													"format": "float"
+												}
+											}
+										},
+										"optional_double_array_number_int32": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "number",
+													"format": "int32"
+												}
+											}
+										},
+										"optional_double_array_number_int64": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "number",
+													"format": "int64"
+												}
+											}
+										},
+										"optional_double_array_string": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"optional_double_array_string_byte": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "byte"
+												}
+											}
+										},
+										"optional_double_array_string_date": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "date"
+												}
+											}
+										},
+										"optional_double_array_string_date-time": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "date-time"
+												}
+											}
+										},
+										"optional_double_array_string_duration": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "duration"
+												}
+											}
+										},
+										"optional_double_array_string_ip": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "ip"
+												}
+											}
+										},
+										"optional_double_array_string_ipv4": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "ipv4"
+												}
+											}
+										},
+										"optional_double_array_string_ipv6": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "ipv6"
+												}
+											}
+										},
+										"optional_double_array_string_password": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "password"
+												}
+											}
+										},
+										"optional_double_array_string_time": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "time"
+												}
+											}
+										},
+										"optional_double_array_string_uri": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "uri"
+												}
+											}
+										},
+										"optional_double_array_string_uuid": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "uuid"
+												}
+											}
+										},
+										"optional_integer": {
+											"type": "integer"
+										},
+										"optional_integer_int32": {
+											"type": "integer",
+											"format": "int32"
+										},
+										"optional_integer_int64": {
+											"type": "integer",
+											"format": "int64"
+										},
+										"optional_number": {
+											"type": "number"
+										},
+										"optional_number_double": {
+											"type": "number",
+											"format": "double"
+										},
+										"optional_number_float": {
+											"type": "number",
+											"format": "float"
+										},
+										"optional_number_int32": {
+											"type": "number",
+											"format": "int32"
+										},
+										"optional_number_int64": {
+											"type": "number",
+											"format": "int64"
+										},
+										"optional_string": {
+											"type": "string"
+										},
+										"optional_string_byte": {
+											"type": "string",
+											"format": "byte"
+										},
+										"optional_string_date": {
+											"type": "string",
+											"format": "date"
+										},
+										"optional_string_date-time": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"optional_string_duration": {
+											"type": "string",
+											"format": "duration"
+										},
+										"optional_string_ip": {
+											"type": "string",
+											"format": "ip"
+										},
+										"optional_string_ipv4": {
+											"type": "string",
+											"format": "ipv4"
+										},
+										"optional_string_ipv6": {
+											"type": "string",
+											"format": "ipv6"
+										},
+										"optional_string_password": {
+											"type": "string",
+											"format": "password"
+										},
+										"optional_string_time": {
+											"type": "string",
+											"format": "time"
+										},
+										"optional_string_uri": {
+											"type": "string",
+											"format": "uri"
+										},
+										"optional_string_uuid": {
+											"type": "string",
+											"format": "uuid"
+										}
+									},
+									"required": [
+										"required_any",
+										"required_array_any",
+										"required_array_boolean",
+										"required_array_integer",
+										"required_array_integer_int32",
+										"required_array_integer_int64",
+										"required_array_number",
+										"required_array_number_double",
+										"required_array_number_float",
+										"required_array_number_int32",
+										"required_array_number_int64",
+										"required_array_string",
+										"required_array_string_byte",
+										"required_array_string_date",
+										"required_array_string_date-time",
+										"required_array_string_duration",
+										"required_array_string_ip",
+										"required_array_string_ipv4",
+										"required_array_string_ipv6",
+										"required_array_string_password",
+										"required_array_string_time",
+										"required_array_string_uri",
+										"required_array_string_uuid",
+										"required_boolean",
+										"required_double_array_any",
+										"required_double_array_boolean",
+										"required_double_array_integer",
+										"required_double_array_integer_int32",
+										"required_double_array_integer_int64",
+										"required_double_array_number",
+										"required_double_array_number_double",
+										"required_double_array_number_float",
+										"required_double_array_number_int32",
+										"required_double_array_number_int64",
+										"required_double_array_string",
+										"required_double_array_string_byte",
+										"required_double_array_string_date",
+										"required_double_array_string_date-time",
+										"required_double_array_string_duration",
+										"required_double_array_string_ip",
+										"required_double_array_string_ipv4",
+										"required_double_array_string_ipv6",
+										"required_double_array_string_password",
+										"required_double_array_string_time",
+										"required_double_array_string_uri",
+										"required_double_array_string_uuid",
+										"required_integer",
+										"required_integer_int32",
+										"required_integer_int64",
+										"required_number",
+										"required_number_double",
+										"required_number_float",
+										"required_number_int32",
+										"required_number_int64",
+										"required_string",
+										"required_string_byte",
+										"required_string_date",
+										"required_string_date-time",
+										"required_string_duration",
+										"required_string_ip",
+										"required_string_ipv4",
+										"required_string_ipv6",
+										"required_string_password",
+										"required_string_time",
+										"required_string_uri",
+										"required_string_uuid"
+									]
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_boolean": {
+			"post": {
+				"operationId": "test_response_boolean",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_boolean_array": {
+			"post": {
+				"operationId": "test_response_boolean_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "boolean"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_boolean_array_array": {
+			"post": {
+				"operationId": "test_response_boolean_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "boolean"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_boolean_nullable": {
+			"post": {
+				"operationId": "test_response_boolean_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "boolean",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_boolean_nullable_array": {
+			"post": {
+				"operationId": "test_response_boolean_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "boolean",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_boolean_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_boolean_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "boolean",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer": {
+			"post": {
+				"operationId": "test_response_integer",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "integer"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_array": {
+			"post": {
+				"operationId": "test_response_integer_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "integer"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_array_array": {
+			"post": {
+				"operationId": "test_response_integer_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "integer"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_int32": {
+			"post": {
+				"operationId": "test_response_integer_int32",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "integer",
+									"format": "int32"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_int32_array": {
+			"post": {
+				"operationId": "test_response_integer_int32_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "int32"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_int32_array_array": {
+			"post": {
+				"operationId": "test_response_integer_int32_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "int32"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_int32_nullable": {
+			"post": {
+				"operationId": "test_response_integer_int32_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "integer",
+									"format": "int32",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_int32_nullable_array": {
+			"post": {
+				"operationId": "test_response_integer_int32_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "int32",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_int32_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_integer_int32_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "int32",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_int64": {
+			"post": {
+				"operationId": "test_response_integer_int64",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "integer",
+									"format": "int64"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_int64_array": {
+			"post": {
+				"operationId": "test_response_integer_int64_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "int64"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_int64_array_array": {
+			"post": {
+				"operationId": "test_response_integer_int64_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "int64"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_int64_nullable": {
+			"post": {
+				"operationId": "test_response_integer_int64_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "integer",
+									"format": "int64",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_int64_nullable_array": {
+			"post": {
+				"operationId": "test_response_integer_int64_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "int64",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_int64_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_integer_int64_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "int64",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_nullable": {
+			"post": {
+				"operationId": "test_response_integer_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "integer",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_nullable_array": {
+			"post": {
+				"operationId": "test_response_integer_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_integer_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number": {
+			"post": {
+				"operationId": "test_response_number",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "number"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_array": {
+			"post": {
+				"operationId": "test_response_number_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "number"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_array_array": {
+			"post": {
+				"operationId": "test_response_number_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "number"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_double": {
+			"post": {
+				"operationId": "test_response_number_double",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "number",
+									"format": "double"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_double_array": {
+			"post": {
+				"operationId": "test_response_number_double_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "number",
+										"format": "double"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_double_array_array": {
+			"post": {
+				"operationId": "test_response_number_double_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "number",
+											"format": "double"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_double_nullable": {
+			"post": {
+				"operationId": "test_response_number_double_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "number",
+									"format": "double",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_double_nullable_array": {
+			"post": {
+				"operationId": "test_response_number_double_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "number",
+										"format": "double",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_double_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_number_double_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "number",
+											"format": "double",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_float": {
+			"post": {
+				"operationId": "test_response_number_float",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "number",
+									"format": "float"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_float_array": {
+			"post": {
+				"operationId": "test_response_number_float_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "number",
+										"format": "float"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_float_array_array": {
+			"post": {
+				"operationId": "test_response_number_float_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "number",
+											"format": "float"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_float_nullable": {
+			"post": {
+				"operationId": "test_response_number_float_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "number",
+									"format": "float",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_float_nullable_array": {
+			"post": {
+				"operationId": "test_response_number_float_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "number",
+										"format": "float",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_float_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_number_float_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "number",
+											"format": "float",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_int32": {
+			"post": {
+				"operationId": "test_response_number_int32",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "number",
+									"format": "int32"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_int32_array": {
+			"post": {
+				"operationId": "test_response_number_int32_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "number",
+										"format": "int32"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_int32_array_array": {
+			"post": {
+				"operationId": "test_response_number_int32_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "number",
+											"format": "int32"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_int32_nullable": {
+			"post": {
+				"operationId": "test_response_number_int32_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "number",
+									"format": "int32",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_int32_nullable_array": {
+			"post": {
+				"operationId": "test_response_number_int32_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "number",
+										"format": "int32",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_int32_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_number_int32_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "number",
+											"format": "int32",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_int64": {
+			"post": {
+				"operationId": "test_response_number_int64",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "number",
+									"format": "int64"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_int64_array": {
+			"post": {
+				"operationId": "test_response_number_int64_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "number",
+										"format": "int64"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_int64_array_array": {
+			"post": {
+				"operationId": "test_response_number_int64_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "number",
+											"format": "int64"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_int64_nullable": {
+			"post": {
+				"operationId": "test_response_number_int64_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "number",
+									"format": "int64",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_int64_nullable_array": {
+			"post": {
+				"operationId": "test_response_number_int64_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "number",
+										"format": "int64",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_int64_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_number_int64_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "number",
+											"format": "int64",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_nullable": {
+			"post": {
+				"operationId": "test_response_number_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "number",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_nullable_array": {
+			"post": {
+				"operationId": "test_response_number_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "number",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_number_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_number_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "number",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string": {
+			"post": {
+				"operationId": "test_response_string",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_array": {
+			"post": {
+				"operationId": "test_response_string_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_array_array": {
+			"post": {
+				"operationId": "test_response_string_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_byte": {
+			"post": {
+				"operationId": "test_response_string_byte",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "byte"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_byte_array": {
+			"post": {
+				"operationId": "test_response_string_byte_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "byte"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_byte_array_array": {
+			"post": {
+				"operationId": "test_response_string_byte_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "byte"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_byte_nullable": {
+			"post": {
+				"operationId": "test_response_string_byte_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "byte",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_byte_nullable_array": {
+			"post": {
+				"operationId": "test_response_string_byte_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "byte",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_byte_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_string_byte_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "byte",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_date": {
+			"post": {
+				"operationId": "test_response_string_date",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "date"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_date-time": {
+			"post": {
+				"operationId": "test_response_string_date-time",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "date-time"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_date-time_array": {
+			"post": {
+				"operationId": "test_response_string_date-time_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "date-time"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_date-time_array_array": {
+			"post": {
+				"operationId": "test_response_string_date-time_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "date-time"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_date-time_nullable": {
+			"post": {
+				"operationId": "test_response_string_date-time_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "date-time",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_date-time_nullable_array": {
+			"post": {
+				"operationId": "test_response_string_date-time_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "date-time",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_date-time_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_string_date-time_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "date-time",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_date_array": {
+			"post": {
+				"operationId": "test_response_string_date_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "date"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_date_array_array": {
+			"post": {
+				"operationId": "test_response_string_date_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "date"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_date_nullable": {
+			"post": {
+				"operationId": "test_response_string_date_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "date",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_date_nullable_array": {
+			"post": {
+				"operationId": "test_response_string_date_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "date",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_date_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_string_date_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "date",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_duration": {
+			"post": {
+				"operationId": "test_response_string_duration",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "duration"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_duration_array": {
+			"post": {
+				"operationId": "test_response_string_duration_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "duration"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_duration_array_array": {
+			"post": {
+				"operationId": "test_response_string_duration_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "duration"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_duration_nullable": {
+			"post": {
+				"operationId": "test_response_string_duration_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "duration",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_duration_nullable_array": {
+			"post": {
+				"operationId": "test_response_string_duration_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "duration",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_duration_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_string_duration_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "duration",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_ip": {
+			"post": {
+				"operationId": "test_response_string_ip",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "ip"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_ip_array": {
+			"post": {
+				"operationId": "test_response_string_ip_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "ip"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_ip_array_array": {
+			"post": {
+				"operationId": "test_response_string_ip_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "ip"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_ip_nullable": {
+			"post": {
+				"operationId": "test_response_string_ip_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "ip",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_ip_nullable_array": {
+			"post": {
+				"operationId": "test_response_string_ip_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "ip",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_ip_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_string_ip_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "ip",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_ipv4": {
+			"post": {
+				"operationId": "test_response_string_ipv4",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "ipv4"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_ipv4_array": {
+			"post": {
+				"operationId": "test_response_string_ipv4_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "ipv4"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_ipv4_array_array": {
+			"post": {
+				"operationId": "test_response_string_ipv4_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "ipv4"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_ipv4_nullable": {
+			"post": {
+				"operationId": "test_response_string_ipv4_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "ipv4",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_ipv4_nullable_array": {
+			"post": {
+				"operationId": "test_response_string_ipv4_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "ipv4",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_ipv4_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_string_ipv4_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "ipv4",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_ipv6": {
+			"post": {
+				"operationId": "test_response_string_ipv6",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "ipv6"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_ipv6_array": {
+			"post": {
+				"operationId": "test_response_string_ipv6_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "ipv6"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_ipv6_array_array": {
+			"post": {
+				"operationId": "test_response_string_ipv6_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "ipv6"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_ipv6_nullable": {
+			"post": {
+				"operationId": "test_response_string_ipv6_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "ipv6",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_ipv6_nullable_array": {
+			"post": {
+				"operationId": "test_response_string_ipv6_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "ipv6",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_ipv6_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_string_ipv6_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "ipv6",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_nullable": {
+			"post": {
+				"operationId": "test_response_string_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_nullable_array": {
+			"post": {
+				"operationId": "test_response_string_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_string_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_password": {
+			"post": {
+				"operationId": "test_response_string_password",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "password"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_password_array": {
+			"post": {
+				"operationId": "test_response_string_password_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "password"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_password_array_array": {
+			"post": {
+				"operationId": "test_response_string_password_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "password"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_password_nullable": {
+			"post": {
+				"operationId": "test_response_string_password_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "password",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_password_nullable_array": {
+			"post": {
+				"operationId": "test_response_string_password_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "password",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_password_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_string_password_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "password",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_time": {
+			"post": {
+				"operationId": "test_response_string_time",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "time"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_time_array": {
+			"post": {
+				"operationId": "test_response_string_time_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "time"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_time_array_array": {
+			"post": {
+				"operationId": "test_response_string_time_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "time"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_time_nullable": {
+			"post": {
+				"operationId": "test_response_string_time_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "time",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_time_nullable_array": {
+			"post": {
+				"operationId": "test_response_string_time_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "time",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_time_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_string_time_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "time",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_uri": {
+			"post": {
+				"operationId": "test_response_string_uri",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "uri"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_uri_array": {
+			"post": {
+				"operationId": "test_response_string_uri_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "uri"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_uri_array_array": {
+			"post": {
+				"operationId": "test_response_string_uri_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "uri"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_uri_nullable": {
+			"post": {
+				"operationId": "test_response_string_uri_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "uri",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_uri_nullable_array": {
+			"post": {
+				"operationId": "test_response_string_uri_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "uri",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_uri_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_string_uri_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "uri",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_uuid": {
+			"post": {
+				"operationId": "test_response_string_uuid",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "uuid"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_uuid_array": {
+			"post": {
+				"operationId": "test_response_string_uuid_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "uuid"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_uuid_array_array": {
+			"post": {
+				"operationId": "test_response_string_uuid_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "uuid"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_uuid_nullable": {
+			"post": {
+				"operationId": "test_response_string_uuid_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "uuid",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_uuid_nullable_array": {
+			"post": {
+				"operationId": "test_response_string_uuid_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "uuid",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_uuid_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_string_uuid_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "uuid",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"responses": {
+			"error": {
+				"description": "An Error Response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Error Response Schema",
+							"type": "object",
+							"properties": {
+								"code": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"status": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"requestBodies": {
+			"defaultBody": {
+				"description": "Referenced RequestBody",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"required": true
+			}
+		}
+	}
+}

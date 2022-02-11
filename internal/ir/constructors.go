@@ -50,9 +50,6 @@ func Pointer(to *Type, sem NilSemantic) *Type {
 
 func Generic(name string, of *Type, v GenericVariant) *Type {
 	name = v.Name() + name
-	if of.Is(KindArray) {
-		name = name + "Array"
-	}
 	return &Type{
 		Name:           name,
 		Kind:           KindGeneric,

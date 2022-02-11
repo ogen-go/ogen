@@ -25329,7 +25329,7 @@ func (o *OptSuccessfulPayment) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes url.URL as json.
-func (o OptURL) Encode(e *jx.Writer) {
+func (o OptURI) Encode(e *jx.Writer) {
 	if !o.Set {
 		return
 	}
@@ -25337,9 +25337,9 @@ func (o OptURL) Encode(e *jx.Writer) {
 }
 
 // Decode decodes url.URL from json.
-func (o *OptURL) Decode(d *jx.Decoder) error {
+func (o *OptURI) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New("invalid: unable to decode OptURL to nil")
+		return errors.New("invalid: unable to decode OptURI to nil")
 	}
 	switch d.Next() {
 	case jx.String:
@@ -25351,7 +25351,7 @@ func (o *OptURL) Decode(d *jx.Decoder) error {
 		o.Value = v
 		return nil
 	default:
-		return errors.Errorf("unexpected type %q while reading OptURL", d.Next())
+		return errors.Errorf("unexpected type %q while reading OptURI", d.Next())
 	}
 }
 
