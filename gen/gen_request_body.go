@@ -26,7 +26,7 @@ func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.R
 				continue
 			}
 
-			optionalTyp := ir.Generic(genericPostfix(typ.Go()), typ, ir.GenericVariant{
+			optionalTyp := ir.Generic(genericPostfix(typ), typ, ir.GenericVariant{
 				Optional: true,
 			})
 

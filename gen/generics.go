@@ -76,7 +76,7 @@ func (g *Generator) boxType(v ir.GenericVariant, t *ir.Type) *ir.Type {
 		case v.OnlyNullable():
 			t.NilSemantic = ir.NilNull
 		default:
-			t = ir.Generic(genericPostfix(t.Go()),
+			t = ir.Generic(genericPostfix(t),
 				t, v,
 			)
 			g.saveType(t)
@@ -86,7 +86,7 @@ func (g *Generator) boxType(v ir.GenericVariant, t *ir.Type) *ir.Type {
 	}
 
 	if t.CanGeneric() {
-		t = ir.Generic(genericPostfix(t.Go()), t, v)
+		t = ir.Generic(genericPostfix(t), t, v)
 		g.saveType(t)
 		return t
 	}
@@ -97,7 +97,7 @@ func (g *Generator) boxType(v ir.GenericVariant, t *ir.Type) *ir.Type {
 	case v.OnlyNullable():
 		return t.Pointer(ir.NilNull)
 	default:
-		t = ir.Generic(genericPostfix(t.Go()),
+		t = ir.Generic(genericPostfix(t),
 			t.Pointer(ir.NilNull), ir.GenericVariant{Optional: true},
 		)
 		g.saveType(t)
@@ -105,7 +105,8 @@ func (g *Generator) boxType(v ir.GenericVariant, t *ir.Type) *ir.Type {
 	}
 }
 
-func genericPostfix(name string) string {
+func genericPostfix(t *ir.Type) string {
+	name := t.NamePostfix()
 	if idx := strings.Index(name, "."); idx > 0 {
 		name = name[idx+1:]
 	}
