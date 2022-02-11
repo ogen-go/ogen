@@ -768,6 +768,22 @@ const (
 	NullableEnumsOnlyNullableDesc NullableEnumsOnlyNullable = "desc"
 )
 
+type OctetStreamBinaryStringSchemaOK struct {
+	Data io.Reader
+}
+
+func (s OctetStreamBinaryStringSchemaOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+type OctetStreamEmptySchemaOK struct {
+	Data io.Reader
+}
+
+func (s OctetStreamEmptySchemaOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
 // Ref: #/components/schemas/OneOfBugs
 type OneOfBugs struct {
 	Issue143              Issue143                    `json:"issue143"`

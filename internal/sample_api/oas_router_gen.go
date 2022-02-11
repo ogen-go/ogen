@@ -260,6 +260,46 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
+			case 'o': // Prefix: "octetStream"
+				if l := len("octetStream"); len(elem) >= l && elem[0:l] == "octetStream" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleOctetStreamEmptySchemaRequest([0]string{}, w, r)
+
+					return
+				}
+				switch elem[0] {
+				case 'B': // Prefix: "BinaryStringSchema"
+					if l := len("BinaryStringSchema"); len(elem) >= l && elem[0:l] == "BinaryStringSchema" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: OctetStreamBinaryStringSchema
+						s.handleOctetStreamBinaryStringSchemaRequest([0]string{}, w, r)
+
+						return
+					}
+				case 'E': // Prefix: "EmptySchema"
+					if l := len("EmptySchema"); len(elem) >= l && elem[0:l] == "EmptySchema" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: OctetStreamEmptySchema
+						s.handleOctetStreamEmptySchemaRequest([0]string{}, w, r)
+
+						return
+					}
+				}
 			case 'p': // Prefix: "pet"
 				if l := len("pet"); len(elem) >= l && elem[0:l] == "pet" {
 					elem = elem[l:]
@@ -780,6 +820,49 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					if len(elem) == 0 {
 						// Leaf: NullableDefaultResponse
 						r.name = "NullableDefaultResponse"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
+				}
+			case 'o': // Prefix: "octetStream"
+				if l := len("octetStream"); len(elem) >= l && elem[0:l] == "octetStream" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					r.name = "OctetStreamEmptySchema"
+					r.args = args
+					r.count = 0
+					return r, true
+				}
+				switch elem[0] {
+				case 'B': // Prefix: "BinaryStringSchema"
+					if l := len("BinaryStringSchema"); len(elem) >= l && elem[0:l] == "BinaryStringSchema" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: OctetStreamBinaryStringSchema
+						r.name = "OctetStreamBinaryStringSchema"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
+				case 'E': // Prefix: "EmptySchema"
+					if l := len("EmptySchema"); len(elem) >= l && elem[0:l] == "EmptySchema" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: OctetStreamEmptySchema
+						r.name = "OctetStreamEmptySchema"
 						r.args = args
 						r.count = 0
 						return r, true

@@ -197,6 +197,26 @@ func encodeNullableDefaultResponseResponse(response NullableDefaultResponseDefSt
 	return nil
 }
 
+func encodeOctetStreamBinaryStringSchemaResponse(response OctetStreamBinaryStringSchemaOK, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/octet-stream")
+	w.WriteHeader(200)
+	if _, err := io.Copy(w, response); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeOctetStreamEmptySchemaResponse(response OctetStreamEmptySchemaOK, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/octet-stream")
+	w.WriteHeader(200)
+	if _, err := io.Copy(w, response); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
 func encodeOneofBugResponse(response OneofBugOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	return nil

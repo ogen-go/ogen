@@ -315,6 +315,58 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 	span.SetStatus(codes.Ok, "Ok")
 }
 
+// HandleOctetStreamBinaryStringSchemaRequest handles octetStreamBinaryStringSchema operation.
+//
+// GET /octetStreamBinaryStringSchema
+func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "OctetStreamBinaryStringSchema",
+		trace.WithAttributes(otelogen.OperationID("octetStreamBinaryStringSchema")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	response, err := s.h.OctetStreamBinaryStringSchema(ctx)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOctetStreamBinaryStringSchemaResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleOctetStreamEmptySchemaRequest handles octetStreamEmptySchema operation.
+//
+// GET /octetStreamEmptySchema
+func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "OctetStreamEmptySchema",
+		trace.WithAttributes(otelogen.OperationID("octetStreamEmptySchema")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	response, err := s.h.OctetStreamEmptySchema(ctx)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeOctetStreamEmptySchemaResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
 // HandleOneofBugRequest handles oneofBug operation.
 //
 // POST /oneofBug

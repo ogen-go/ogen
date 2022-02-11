@@ -110,6 +110,14 @@ type Handler interface {
 	//
 	// GET /nullableDefaultResponse
 	NullableDefaultResponse(ctx context.Context) (NullableDefaultResponseDefStatusCode, error)
+	// OctetStreamBinaryStringSchema implements octetStreamBinaryStringSchema operation.
+	//
+	// GET /octetStreamBinaryStringSchema
+	OctetStreamBinaryStringSchema(ctx context.Context) (OctetStreamBinaryStringSchemaOK, error)
+	// OctetStreamEmptySchema implements octetStreamEmptySchema operation.
+	//
+	// GET /octetStreamEmptySchema
+	OctetStreamEmptySchema(ctx context.Context) (OctetStreamEmptySchemaOK, error)
 	// OneofBug implements oneofBug operation.
 	//
 	// POST /oneofBug

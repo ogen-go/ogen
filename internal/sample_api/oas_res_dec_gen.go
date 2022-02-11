@@ -351,6 +351,46 @@ func decodeNullableDefaultResponseResponse(resp *http.Response, span trace.Span)
 	}
 }
 
+func decodeOctetStreamBinaryStringSchemaResponse(resp *http.Response, span trace.Span) (res OctetStreamBinaryStringSchemaOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/octet-stream":
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return res, err
+			}
+			return OctetStreamBinaryStringSchemaOK{
+				Data: bytes.NewReader(b),
+			}, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeOctetStreamEmptySchemaResponse(resp *http.Response, span trace.Span) (res OctetStreamEmptySchemaOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/octet-stream":
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return res, err
+			}
+			return OctetStreamEmptySchemaOK{
+				Data: bytes.NewReader(b),
+			}, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
 func decodeOneofBugResponse(resp *http.Response, span trace.Span) (res OneofBugOK, err error) {
 	switch resp.StatusCode {
 	case 200:
