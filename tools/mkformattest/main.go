@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"flag"
 	"os"
+	"sort"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
@@ -47,6 +48,9 @@ func generateSpec() *ogen.Spec {
 		})
 
 		add("any", ogen.NewSchema())
+		sort.SliceStable(r, func(i, j int) bool {
+			return r[i].Name < r[j].Name
+		})
 		return r
 	}
 
@@ -78,6 +82,9 @@ func generateSpec() *ogen.Spec {
 		do(ogen.NewSchema().
 			SetType(typ).
 			SetFormat(format).SetNullable(true))
+	})
+	sort.SliceStable(testSchemas, func(i, j int) bool {
+		return testSchemas[i].Name < testSchemas[j].Name
 	})
 
 	spec := &ogen.Spec{
