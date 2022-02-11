@@ -137,7 +137,8 @@ func generateSpec() *ogen.Spec {
 						Schema: schema.Schema,
 					},
 				},
-				Required: false,
+				Description: "Optional request body",
+				Required:    false,
 			})
 		}},
 		{"request_required", func(op *ogen.Operation, schema *ogen.NamedSchema) {
@@ -147,7 +148,8 @@ func generateSpec() *ogen.Spec {
 						Schema: schema.Schema,
 					},
 				},
-				Required: true,
+				Description: "Required request body",
+				Required:    true,
 			})
 		}},
 		{"response", func(op *ogen.Operation, schema *ogen.NamedSchema) {
@@ -158,6 +160,7 @@ func generateSpec() *ogen.Spec {
 							Schema: schema.Schema,
 						},
 					},
+					Description: "Response",
 				},
 			})
 		}},
@@ -175,8 +178,7 @@ func generateSpec() *ogen.Spec {
 			if len(op.Responses) == 0 {
 				op.Responses = map[string]*ogen.Response{
 					"200": {
-						Ref:         "#/components/responses/error",
-						Description: "description",
+						Ref: "#/components/responses/error",
 					},
 				}
 			}
