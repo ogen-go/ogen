@@ -66,14 +66,14 @@ var (
 	_ = codes.Unset
 )
 
-func decodeTestRequestAnyRequest(r *http.Request, span trace.Span) (req OptRaw, err error) {
+func decodeTestRequestAnyRequest(r *http.Request, span trace.Span) (req jx.Raw, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptRaw
+		var request jx.Raw
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -89,8 +89,9 @@ func decodeTestRequestAnyRequest(r *http.Request, span trace.Span) (req OptRaw, 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			v, err := d.Raw()
+			request = jx.Raw(v)
+			if err != nil {
 				return err
 			}
 			return nil
@@ -193,14 +194,14 @@ func decodeTestRequestBooleanArrayRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestRequestBooleanArrayArrayRequest(r *http.Request, span trace.Span) (req OptBoolArray, err error) {
+func decodeTestRequestBooleanArrayArrayRequest(r *http.Request, span trace.Span) (req OptBoolArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptBoolArray
+		var request OptBoolArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -353,14 +354,14 @@ func decodeTestRequestBooleanNullableArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptBoolArray, err error) {
+func decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptBoolArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptBoolArray
+		var request OptBoolArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -566,14 +567,14 @@ func decodeTestRequestIntegerArrayRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestRequestIntegerArrayArrayRequest(r *http.Request, span trace.Span) (req OptIntArray, err error) {
+func decodeTestRequestIntegerArrayArrayRequest(r *http.Request, span trace.Span) (req OptIntArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIntArray
+		var request OptIntArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -726,14 +727,14 @@ func decodeTestRequestIntegerInt32ArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt32Array, err error) {
+func decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt32ArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt32Array
+		var request OptInt32ArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -886,14 +887,14 @@ func decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt32Array, err error) {
+func decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt32ArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt32Array
+		var request OptInt32ArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1046,14 +1047,14 @@ func decodeTestRequestIntegerInt64ArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt64Array, err error) {
+func decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt64ArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt64Array
+		var request OptInt64ArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1206,14 +1207,14 @@ func decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt64Array, err error) {
+func decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt64ArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt64Array
+		var request OptInt64ArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1366,14 +1367,14 @@ func decodeTestRequestIntegerNullableArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptIntArray, err error) {
+func decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptIntArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIntArray
+		var request OptIntArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1559,14 +1560,14 @@ func decodeTestRequestNumberArrayRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestRequestNumberArrayArrayRequest(r *http.Request, span trace.Span) (req OptFloat64Array, err error) {
+func decodeTestRequestNumberArrayArrayRequest(r *http.Request, span trace.Span) (req OptFloat64ArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptFloat64Array
+		var request OptFloat64ArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1769,14 +1770,14 @@ func decodeTestRequestNumberDoubleArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request, span trace.Span) (req OptFloat64Array, err error) {
+func decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request, span trace.Span) (req OptFloat64ArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptFloat64Array
+		var request OptFloat64ArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1979,14 +1980,14 @@ func decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptFloat64Array, err error) {
+func decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptFloat64ArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptFloat64Array
+		var request OptFloat64ArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -2189,14 +2190,14 @@ func decodeTestRequestNumberFloatArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request, span trace.Span) (req OptFloat32Array, err error) {
+func decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request, span trace.Span) (req OptFloat32ArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptFloat32Array
+		var request OptFloat32ArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -2399,14 +2400,14 @@ func decodeTestRequestNumberFloatNullableArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptFloat32Array, err error) {
+func decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptFloat32ArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptFloat32Array
+		var request OptFloat32ArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -2576,14 +2577,14 @@ func decodeTestRequestNumberInt32ArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt32Array, err error) {
+func decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt32ArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt32Array
+		var request OptInt32ArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -2736,14 +2737,14 @@ func decodeTestRequestNumberInt32NullableArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt32Array, err error) {
+func decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt32ArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt32Array
+		var request OptInt32ArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -2896,14 +2897,14 @@ func decodeTestRequestNumberInt64ArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt64Array, err error) {
+func decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt64ArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt64Array
+		var request OptInt64ArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3056,14 +3057,14 @@ func decodeTestRequestNumberInt64NullableArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt64Array, err error) {
+func decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt64ArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt64Array
+		var request OptInt64ArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3249,14 +3250,14 @@ func decodeTestRequestNumberNullableArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestNumberNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptFloat64Array, err error) {
+func decodeTestRequestNumberNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptFloat64ArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptFloat64Array
+		var request OptFloat64ArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3426,14 +3427,14 @@ func decodeTestRequestStringArrayRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestRequestStringArrayArrayRequest(r *http.Request, span trace.Span) (req OptStringArray, err error) {
+func decodeTestRequestStringArrayArrayRequest(r *http.Request, span trace.Span) (req OptStringArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptStringArray
+		var request OptStringArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3586,14 +3587,14 @@ func decodeTestRequestStringByteArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringByteArrayArrayRequest(r *http.Request, span trace.Span) (req OptByteArray, err error) {
+func decodeTestRequestStringByteArrayArrayRequest(r *http.Request, span trace.Span) (req OptByteArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptByteArray
+		var request OptByteArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3746,14 +3747,14 @@ func decodeTestRequestStringByteNullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptByteArray, err error) {
+func decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptByteArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptByteArray
+		var request OptByteArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3816,14 +3817,14 @@ func decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestStringDateRequest(r *http.Request, span trace.Span) (req OptTime, err error) {
+func decodeTestRequestStringDateRequest(r *http.Request, span trace.Span) (req OptDate, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTime
+		var request OptDate
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3853,14 +3854,14 @@ func decodeTestRequestStringDateRequest(r *http.Request, span trace.Span) (req O
 	}
 }
 
-func decodeTestRequestStringDateArrayRequest(r *http.Request, span trace.Span) (req OptTimeArray, err error) {
+func decodeTestRequestStringDateArrayRequest(r *http.Request, span trace.Span) (req OptDateArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTimeArray
+		var request OptDateArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3906,14 +3907,14 @@ func decodeTestRequestStringDateArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringDateArrayArrayRequest(r *http.Request, span trace.Span) (req OptTimeArray, err error) {
+func decodeTestRequestStringDateArrayArrayRequest(r *http.Request, span trace.Span) (req OptDateArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTimeArray
+		var request OptDateArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3976,14 +3977,14 @@ func decodeTestRequestStringDateArrayArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringDateNullableRequest(r *http.Request, span trace.Span) (req OptTime, err error) {
+func decodeTestRequestStringDateNullableRequest(r *http.Request, span trace.Span) (req OptDate, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTime
+		var request OptDate
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4013,14 +4014,14 @@ func decodeTestRequestStringDateNullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringDateNullableArrayRequest(r *http.Request, span trace.Span) (req OptTimeArray, err error) {
+func decodeTestRequestStringDateNullableArrayRequest(r *http.Request, span trace.Span) (req OptDateArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTimeArray
+		var request OptDateArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4066,14 +4067,14 @@ func decodeTestRequestStringDateNullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptTimeArray, err error) {
+func decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptDateArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTimeArray
+		var request OptDateArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4136,14 +4137,14 @@ func decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestStringDateTimeRequest(r *http.Request, span trace.Span) (req OptTime, err error) {
+func decodeTestRequestStringDateTimeRequest(r *http.Request, span trace.Span) (req OptDateTime, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTime
+		var request OptDateTime
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4173,14 +4174,14 @@ func decodeTestRequestStringDateTimeRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestStringDateTimeArrayRequest(r *http.Request, span trace.Span) (req OptTimeArray, err error) {
+func decodeTestRequestStringDateTimeArrayRequest(r *http.Request, span trace.Span) (req OptDateTimeArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTimeArray
+		var request OptDateTimeArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4226,14 +4227,14 @@ func decodeTestRequestStringDateTimeArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Request, span trace.Span) (req OptTimeArray, err error) {
+func decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Request, span trace.Span) (req OptDateTimeArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTimeArray
+		var request OptDateTimeArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4296,14 +4297,14 @@ func decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestStringDateTimeNullableRequest(r *http.Request, span trace.Span) (req OptTime, err error) {
+func decodeTestRequestStringDateTimeNullableRequest(r *http.Request, span trace.Span) (req OptDateTime, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTime
+		var request OptDateTime
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4333,14 +4334,14 @@ func decodeTestRequestStringDateTimeNullableRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Request, span trace.Span) (req OptTimeArray, err error) {
+func decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Request, span trace.Span) (req OptDateTimeArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTimeArray
+		var request OptDateTimeArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4386,14 +4387,14 @@ func decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptTimeArray, err error) {
+func decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptDateTimeArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTimeArray
+		var request OptDateTimeArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4546,14 +4547,14 @@ func decodeTestRequestStringDurationArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringDurationArrayArrayRequest(r *http.Request, span trace.Span) (req OptDurationArray, err error) {
+func decodeTestRequestStringDurationArrayArrayRequest(r *http.Request, span trace.Span) (req OptDurationArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptDurationArray
+		var request OptDurationArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4706,14 +4707,14 @@ func decodeTestRequestStringDurationNullableArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestStringDurationNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptDurationArray, err error) {
+func decodeTestRequestStringDurationNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptDurationArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptDurationArray
+		var request OptDurationArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4866,14 +4867,14 @@ func decodeTestRequestStringIPArrayRequest(r *http.Request, span trace.Span) (re
 	}
 }
 
-func decodeTestRequestStringIPArrayArrayRequest(r *http.Request, span trace.Span) (req OptIPArray, err error) {
+func decodeTestRequestStringIPArrayArrayRequest(r *http.Request, span trace.Span) (req OptIPArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPArray
+		var request OptIPArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5026,14 +5027,14 @@ func decodeTestRequestStringIPNullableArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptIPArray, err error) {
+func decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptIPArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPArray
+		var request OptIPArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5096,14 +5097,14 @@ func decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestRequestStringIpv4Request(r *http.Request, span trace.Span) (req OptIP, err error) {
+func decodeTestRequestStringIpv4Request(r *http.Request, span trace.Span) (req OptIPv4, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIP
+		var request OptIPv4
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5133,14 +5134,14 @@ func decodeTestRequestStringIpv4Request(r *http.Request, span trace.Span) (req O
 	}
 }
 
-func decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span trace.Span) (req OptIPArray, err error) {
+func decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span trace.Span) (req OptIPv4Array, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPArray
+		var request OptIPv4Array
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5186,14 +5187,14 @@ func decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Span) (req OptIPArray, err error) {
+func decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Span) (req OptIPv4ArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPArray
+		var request OptIPv4ArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5256,14 +5257,14 @@ func decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringIpv4NullableRequest(r *http.Request, span trace.Span) (req OptIP, err error) {
+func decodeTestRequestStringIpv4NullableRequest(r *http.Request, span trace.Span) (req OptIPv4, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIP
+		var request OptIPv4
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5293,14 +5294,14 @@ func decodeTestRequestStringIpv4NullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (req OptIPArray, err error) {
+func decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (req OptIPv4Array, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPArray
+		var request OptIPv4Array
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5346,14 +5347,14 @@ func decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptIPArray, err error) {
+func decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptIPv4ArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPArray
+		var request OptIPv4ArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5416,14 +5417,14 @@ func decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestStringIpv6Request(r *http.Request, span trace.Span) (req OptIP, err error) {
+func decodeTestRequestStringIpv6Request(r *http.Request, span trace.Span) (req OptIPv6, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIP
+		var request OptIPv6
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5453,14 +5454,14 @@ func decodeTestRequestStringIpv6Request(r *http.Request, span trace.Span) (req O
 	}
 }
 
-func decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span trace.Span) (req OptIPArray, err error) {
+func decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span trace.Span) (req OptIPv6Array, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPArray
+		var request OptIPv6Array
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5506,14 +5507,14 @@ func decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Span) (req OptIPArray, err error) {
+func decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Span) (req OptIPv6ArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPArray
+		var request OptIPv6ArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5576,14 +5577,14 @@ func decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringIpv6NullableRequest(r *http.Request, span trace.Span) (req OptIP, err error) {
+func decodeTestRequestStringIpv6NullableRequest(r *http.Request, span trace.Span) (req OptIPv6, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIP
+		var request OptIPv6
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5613,14 +5614,14 @@ func decodeTestRequestStringIpv6NullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (req OptIPArray, err error) {
+func decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (req OptIPv6Array, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPArray
+		var request OptIPv6Array
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5666,14 +5667,14 @@ func decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptIPArray, err error) {
+func decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptIPv6ArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPArray
+		var request OptIPv6ArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5826,14 +5827,14 @@ func decodeTestRequestStringNullableArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptStringArray, err error) {
+func decodeTestRequestStringNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptStringArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptStringArray
+		var request OptStringArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5986,14 +5987,14 @@ func decodeTestRequestStringPasswordArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringPasswordArrayArrayRequest(r *http.Request, span trace.Span) (req OptStringArray, err error) {
+func decodeTestRequestStringPasswordArrayArrayRequest(r *http.Request, span trace.Span) (req OptStringArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptStringArray
+		var request OptStringArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6146,14 +6147,14 @@ func decodeTestRequestStringPasswordNullableArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestStringPasswordNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptStringArray, err error) {
+func decodeTestRequestStringPasswordNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptStringArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptStringArray
+		var request OptStringArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6306,14 +6307,14 @@ func decodeTestRequestStringTimeArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringTimeArrayArrayRequest(r *http.Request, span trace.Span) (req OptTimeArray, err error) {
+func decodeTestRequestStringTimeArrayArrayRequest(r *http.Request, span trace.Span) (req OptTimeArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTimeArray
+		var request OptTimeArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6466,14 +6467,14 @@ func decodeTestRequestStringTimeNullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptTimeArray, err error) {
+func decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptTimeArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTimeArray
+		var request OptTimeArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6536,14 +6537,14 @@ func decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestStringURIRequest(r *http.Request, span trace.Span) (req OptURL, err error) {
+func decodeTestRequestStringURIRequest(r *http.Request, span trace.Span) (req OptURI, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptURL
+		var request OptURI
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6573,14 +6574,14 @@ func decodeTestRequestStringURIRequest(r *http.Request, span trace.Span) (req Op
 	}
 }
 
-func decodeTestRequestStringURIArrayRequest(r *http.Request, span trace.Span) (req OptURLArray, err error) {
+func decodeTestRequestStringURIArrayRequest(r *http.Request, span trace.Span) (req OptURIArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptURLArray
+		var request OptURIArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6626,14 +6627,14 @@ func decodeTestRequestStringURIArrayRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestStringURIArrayArrayRequest(r *http.Request, span trace.Span) (req OptURLArray, err error) {
+func decodeTestRequestStringURIArrayArrayRequest(r *http.Request, span trace.Span) (req OptURIArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptURLArray
+		var request OptURIArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6696,14 +6697,14 @@ func decodeTestRequestStringURIArrayArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringURINullableRequest(r *http.Request, span trace.Span) (req OptURL, err error) {
+func decodeTestRequestStringURINullableRequest(r *http.Request, span trace.Span) (req OptURI, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptURL
+		var request OptURI
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6733,14 +6734,14 @@ func decodeTestRequestStringURINullableRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestStringURINullableArrayRequest(r *http.Request, span trace.Span) (req OptURLArray, err error) {
+func decodeTestRequestStringURINullableArrayRequest(r *http.Request, span trace.Span) (req OptURIArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptURLArray
+		var request OptURIArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6786,14 +6787,14 @@ func decodeTestRequestStringURINullableArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestStringURINullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptURLArray, err error) {
+func decodeTestRequestStringURINullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptURIArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptURLArray
+		var request OptURIArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6946,14 +6947,14 @@ func decodeTestRequestStringUUIDArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request, span trace.Span) (req OptUUIDArray, err error) {
+func decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request, span trace.Span) (req OptUUIDArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptUUIDArray
+		var request OptUUIDArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -7106,14 +7107,14 @@ func decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptUUIDArray, err error) {
+func decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptUUIDArrayArray, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptUUIDArray
+		var request OptUUIDArrayArray
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)

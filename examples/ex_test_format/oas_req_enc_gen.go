@@ -66,10 +66,11 @@ var (
 	_ = codes.Unset
 )
 
-func encodeTestRequestAnyRequestJSON(req OptRaw, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestAnyRequestJSON(req jx.Raw, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+
+	if len(req) != 0 {
+		e.Raw(req)
 	}
 
 	return e, nil
@@ -93,7 +94,7 @@ func encodeTestRequestBooleanArrayRequestJSON(req OptBoolArray, span trace.Span)
 	return e, nil
 }
 
-func encodeTestRequestBooleanArrayArrayRequestJSON(req OptBoolArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestBooleanArrayArrayRequestJSON(req OptBoolArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -120,7 +121,7 @@ func encodeTestRequestBooleanNullableArrayRequestJSON(req OptBoolArray, span tra
 	return e, nil
 }
 
-func encodeTestRequestBooleanNullableArrayArrayRequestJSON(req OptBoolArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestBooleanNullableArrayArrayRequestJSON(req OptBoolArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -156,7 +157,7 @@ func encodeTestRequestIntegerArrayRequestJSON(req OptIntArray, span trace.Span) 
 	return e, nil
 }
 
-func encodeTestRequestIntegerArrayArrayRequestJSON(req OptIntArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestIntegerArrayArrayRequestJSON(req OptIntArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -183,7 +184,7 @@ func encodeTestRequestIntegerInt32ArrayRequestJSON(req OptInt32Array, span trace
 	return e, nil
 }
 
-func encodeTestRequestIntegerInt32ArrayArrayRequestJSON(req OptInt32Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestIntegerInt32ArrayArrayRequestJSON(req OptInt32ArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -210,7 +211,7 @@ func encodeTestRequestIntegerInt32NullableArrayRequestJSON(req OptInt32Array, sp
 	return e, nil
 }
 
-func encodeTestRequestIntegerInt32NullableArrayArrayRequestJSON(req OptInt32Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestIntegerInt32NullableArrayArrayRequestJSON(req OptInt32ArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -237,7 +238,7 @@ func encodeTestRequestIntegerInt64ArrayRequestJSON(req OptInt64Array, span trace
 	return e, nil
 }
 
-func encodeTestRequestIntegerInt64ArrayArrayRequestJSON(req OptInt64Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestIntegerInt64ArrayArrayRequestJSON(req OptInt64ArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -264,7 +265,7 @@ func encodeTestRequestIntegerInt64NullableArrayRequestJSON(req OptInt64Array, sp
 	return e, nil
 }
 
-func encodeTestRequestIntegerInt64NullableArrayArrayRequestJSON(req OptInt64Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestIntegerInt64NullableArrayArrayRequestJSON(req OptInt64ArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -291,7 +292,7 @@ func encodeTestRequestIntegerNullableArrayRequestJSON(req OptIntArray, span trac
 	return e, nil
 }
 
-func encodeTestRequestIntegerNullableArrayArrayRequestJSON(req OptIntArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestIntegerNullableArrayArrayRequestJSON(req OptIntArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -318,7 +319,7 @@ func encodeTestRequestNumberArrayRequestJSON(req OptFloat64Array, span trace.Spa
 	return e, nil
 }
 
-func encodeTestRequestNumberArrayArrayRequestJSON(req OptFloat64Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberArrayArrayRequestJSON(req OptFloat64ArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -345,7 +346,7 @@ func encodeTestRequestNumberDoubleArrayRequestJSON(req OptFloat64Array, span tra
 	return e, nil
 }
 
-func encodeTestRequestNumberDoubleArrayArrayRequestJSON(req OptFloat64Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberDoubleArrayArrayRequestJSON(req OptFloat64ArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -372,7 +373,7 @@ func encodeTestRequestNumberDoubleNullableArrayRequestJSON(req OptFloat64Array, 
 	return e, nil
 }
 
-func encodeTestRequestNumberDoubleNullableArrayArrayRequestJSON(req OptFloat64Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberDoubleNullableArrayArrayRequestJSON(req OptFloat64ArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -399,7 +400,7 @@ func encodeTestRequestNumberFloatArrayRequestJSON(req OptFloat32Array, span trac
 	return e, nil
 }
 
-func encodeTestRequestNumberFloatArrayArrayRequestJSON(req OptFloat32Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberFloatArrayArrayRequestJSON(req OptFloat32ArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -426,7 +427,7 @@ func encodeTestRequestNumberFloatNullableArrayRequestJSON(req OptFloat32Array, s
 	return e, nil
 }
 
-func encodeTestRequestNumberFloatNullableArrayArrayRequestJSON(req OptFloat32Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberFloatNullableArrayArrayRequestJSON(req OptFloat32ArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -453,7 +454,7 @@ func encodeTestRequestNumberInt32ArrayRequestJSON(req OptInt32Array, span trace.
 	return e, nil
 }
 
-func encodeTestRequestNumberInt32ArrayArrayRequestJSON(req OptInt32Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberInt32ArrayArrayRequestJSON(req OptInt32ArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -480,7 +481,7 @@ func encodeTestRequestNumberInt32NullableArrayRequestJSON(req OptInt32Array, spa
 	return e, nil
 }
 
-func encodeTestRequestNumberInt32NullableArrayArrayRequestJSON(req OptInt32Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberInt32NullableArrayArrayRequestJSON(req OptInt32ArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -507,7 +508,7 @@ func encodeTestRequestNumberInt64ArrayRequestJSON(req OptInt64Array, span trace.
 	return e, nil
 }
 
-func encodeTestRequestNumberInt64ArrayArrayRequestJSON(req OptInt64Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberInt64ArrayArrayRequestJSON(req OptInt64ArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -534,7 +535,7 @@ func encodeTestRequestNumberInt64NullableArrayRequestJSON(req OptInt64Array, spa
 	return e, nil
 }
 
-func encodeTestRequestNumberInt64NullableArrayArrayRequestJSON(req OptInt64Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberInt64NullableArrayArrayRequestJSON(req OptInt64ArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -561,7 +562,7 @@ func encodeTestRequestNumberNullableArrayRequestJSON(req OptFloat64Array, span t
 	return e, nil
 }
 
-func encodeTestRequestNumberNullableArrayArrayRequestJSON(req OptFloat64Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberNullableArrayArrayRequestJSON(req OptFloat64ArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -588,7 +589,7 @@ func encodeTestRequestStringArrayRequestJSON(req OptStringArray, span trace.Span
 	return e, nil
 }
 
-func encodeTestRequestStringArrayArrayRequestJSON(req OptStringArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringArrayArrayRequestJSON(req OptStringArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -615,7 +616,7 @@ func encodeTestRequestStringByteArrayRequestJSON(req OptByteArray, span trace.Sp
 	return e, nil
 }
 
-func encodeTestRequestStringByteArrayArrayRequestJSON(req OptByteArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringByteArrayArrayRequestJSON(req OptByteArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -642,7 +643,7 @@ func encodeTestRequestStringByteNullableArrayRequestJSON(req OptByteArray, span 
 	return e, nil
 }
 
-func encodeTestRequestStringByteNullableArrayArrayRequestJSON(req OptByteArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringByteNullableArrayArrayRequestJSON(req OptByteArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -651,7 +652,7 @@ func encodeTestRequestStringByteNullableArrayArrayRequestJSON(req OptByteArray, 
 	return e, nil
 }
 
-func encodeTestRequestStringDateRequestJSON(req OptTime, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateRequestJSON(req OptDate, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e, json.EncodeDate)
@@ -660,7 +661,7 @@ func encodeTestRequestStringDateRequestJSON(req OptTime, span trace.Span) (data 
 	return e, nil
 }
 
-func encodeTestRequestStringDateArrayRequestJSON(req OptTimeArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateArrayRequestJSON(req OptDateArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -669,7 +670,7 @@ func encodeTestRequestStringDateArrayRequestJSON(req OptTimeArray, span trace.Sp
 	return e, nil
 }
 
-func encodeTestRequestStringDateArrayArrayRequestJSON(req OptTimeArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateArrayArrayRequestJSON(req OptDateArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -678,7 +679,7 @@ func encodeTestRequestStringDateArrayArrayRequestJSON(req OptTimeArray, span tra
 	return e, nil
 }
 
-func encodeTestRequestStringDateNullableRequestJSON(req OptTime, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateNullableRequestJSON(req OptDate, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e, json.EncodeDate)
@@ -687,7 +688,7 @@ func encodeTestRequestStringDateNullableRequestJSON(req OptTime, span trace.Span
 	return e, nil
 }
 
-func encodeTestRequestStringDateNullableArrayRequestJSON(req OptTimeArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateNullableArrayRequestJSON(req OptDateArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -696,7 +697,7 @@ func encodeTestRequestStringDateNullableArrayRequestJSON(req OptTimeArray, span 
 	return e, nil
 }
 
-func encodeTestRequestStringDateNullableArrayArrayRequestJSON(req OptTimeArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateNullableArrayArrayRequestJSON(req OptDateArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -705,7 +706,7 @@ func encodeTestRequestStringDateNullableArrayArrayRequestJSON(req OptTimeArray, 
 	return e, nil
 }
 
-func encodeTestRequestStringDateTimeRequestJSON(req OptTime, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateTimeRequestJSON(req OptDateTime, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e, json.EncodeDateTime)
@@ -714,7 +715,7 @@ func encodeTestRequestStringDateTimeRequestJSON(req OptTime, span trace.Span) (d
 	return e, nil
 }
 
-func encodeTestRequestStringDateTimeArrayRequestJSON(req OptTimeArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateTimeArrayRequestJSON(req OptDateTimeArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -723,7 +724,7 @@ func encodeTestRequestStringDateTimeArrayRequestJSON(req OptTimeArray, span trac
 	return e, nil
 }
 
-func encodeTestRequestStringDateTimeArrayArrayRequestJSON(req OptTimeArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateTimeArrayArrayRequestJSON(req OptDateTimeArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -732,7 +733,7 @@ func encodeTestRequestStringDateTimeArrayArrayRequestJSON(req OptTimeArray, span
 	return e, nil
 }
 
-func encodeTestRequestStringDateTimeNullableRequestJSON(req OptTime, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateTimeNullableRequestJSON(req OptDateTime, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e, json.EncodeDateTime)
@@ -741,7 +742,7 @@ func encodeTestRequestStringDateTimeNullableRequestJSON(req OptTime, span trace.
 	return e, nil
 }
 
-func encodeTestRequestStringDateTimeNullableArrayRequestJSON(req OptTimeArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateTimeNullableArrayRequestJSON(req OptDateTimeArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -750,7 +751,7 @@ func encodeTestRequestStringDateTimeNullableArrayRequestJSON(req OptTimeArray, s
 	return e, nil
 }
 
-func encodeTestRequestStringDateTimeNullableArrayArrayRequestJSON(req OptTimeArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateTimeNullableArrayArrayRequestJSON(req OptDateTimeArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -777,7 +778,7 @@ func encodeTestRequestStringDurationArrayRequestJSON(req OptDurationArray, span 
 	return e, nil
 }
 
-func encodeTestRequestStringDurationArrayArrayRequestJSON(req OptDurationArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDurationArrayArrayRequestJSON(req OptDurationArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -804,7 +805,7 @@ func encodeTestRequestStringDurationNullableArrayRequestJSON(req OptDurationArra
 	return e, nil
 }
 
-func encodeTestRequestStringDurationNullableArrayArrayRequestJSON(req OptDurationArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDurationNullableArrayArrayRequestJSON(req OptDurationArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -831,7 +832,7 @@ func encodeTestRequestStringIPArrayRequestJSON(req OptIPArray, span trace.Span) 
 	return e, nil
 }
 
-func encodeTestRequestStringIPArrayArrayRequestJSON(req OptIPArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIPArrayArrayRequestJSON(req OptIPArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -858,7 +859,7 @@ func encodeTestRequestStringIPNullableArrayRequestJSON(req OptIPArray, span trac
 	return e, nil
 }
 
-func encodeTestRequestStringIPNullableArrayArrayRequestJSON(req OptIPArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIPNullableArrayArrayRequestJSON(req OptIPArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -867,7 +868,7 @@ func encodeTestRequestStringIPNullableArrayArrayRequestJSON(req OptIPArray, span
 	return e, nil
 }
 
-func encodeTestRequestStringIpv4RequestJSON(req OptIP, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIpv4RequestJSON(req OptIPv4, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -876,7 +877,7 @@ func encodeTestRequestStringIpv4RequestJSON(req OptIP, span trace.Span) (data *j
 	return e, nil
 }
 
-func encodeTestRequestStringIpv4ArrayRequestJSON(req OptIPArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIpv4ArrayRequestJSON(req OptIPv4Array, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -885,7 +886,7 @@ func encodeTestRequestStringIpv4ArrayRequestJSON(req OptIPArray, span trace.Span
 	return e, nil
 }
 
-func encodeTestRequestStringIpv4ArrayArrayRequestJSON(req OptIPArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIpv4ArrayArrayRequestJSON(req OptIPv4ArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -894,7 +895,7 @@ func encodeTestRequestStringIpv4ArrayArrayRequestJSON(req OptIPArray, span trace
 	return e, nil
 }
 
-func encodeTestRequestStringIpv4NullableRequestJSON(req OptIP, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIpv4NullableRequestJSON(req OptIPv4, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -903,7 +904,7 @@ func encodeTestRequestStringIpv4NullableRequestJSON(req OptIP, span trace.Span) 
 	return e, nil
 }
 
-func encodeTestRequestStringIpv4NullableArrayRequestJSON(req OptIPArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIpv4NullableArrayRequestJSON(req OptIPv4Array, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -912,7 +913,7 @@ func encodeTestRequestStringIpv4NullableArrayRequestJSON(req OptIPArray, span tr
 	return e, nil
 }
 
-func encodeTestRequestStringIpv4NullableArrayArrayRequestJSON(req OptIPArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIpv4NullableArrayArrayRequestJSON(req OptIPv4ArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -921,7 +922,7 @@ func encodeTestRequestStringIpv4NullableArrayArrayRequestJSON(req OptIPArray, sp
 	return e, nil
 }
 
-func encodeTestRequestStringIpv6RequestJSON(req OptIP, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIpv6RequestJSON(req OptIPv6, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -930,7 +931,7 @@ func encodeTestRequestStringIpv6RequestJSON(req OptIP, span trace.Span) (data *j
 	return e, nil
 }
 
-func encodeTestRequestStringIpv6ArrayRequestJSON(req OptIPArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIpv6ArrayRequestJSON(req OptIPv6Array, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -939,7 +940,7 @@ func encodeTestRequestStringIpv6ArrayRequestJSON(req OptIPArray, span trace.Span
 	return e, nil
 }
 
-func encodeTestRequestStringIpv6ArrayArrayRequestJSON(req OptIPArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIpv6ArrayArrayRequestJSON(req OptIPv6ArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -948,7 +949,7 @@ func encodeTestRequestStringIpv6ArrayArrayRequestJSON(req OptIPArray, span trace
 	return e, nil
 }
 
-func encodeTestRequestStringIpv6NullableRequestJSON(req OptIP, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIpv6NullableRequestJSON(req OptIPv6, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -957,7 +958,7 @@ func encodeTestRequestStringIpv6NullableRequestJSON(req OptIP, span trace.Span) 
 	return e, nil
 }
 
-func encodeTestRequestStringIpv6NullableArrayRequestJSON(req OptIPArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIpv6NullableArrayRequestJSON(req OptIPv6Array, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -966,7 +967,7 @@ func encodeTestRequestStringIpv6NullableArrayRequestJSON(req OptIPArray, span tr
 	return e, nil
 }
 
-func encodeTestRequestStringIpv6NullableArrayArrayRequestJSON(req OptIPArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIpv6NullableArrayArrayRequestJSON(req OptIPv6ArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -993,7 +994,7 @@ func encodeTestRequestStringNullableArrayRequestJSON(req OptStringArray, span tr
 	return e, nil
 }
 
-func encodeTestRequestStringNullableArrayArrayRequestJSON(req OptStringArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringNullableArrayArrayRequestJSON(req OptStringArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -1020,7 +1021,7 @@ func encodeTestRequestStringPasswordArrayRequestJSON(req OptStringArray, span tr
 	return e, nil
 }
 
-func encodeTestRequestStringPasswordArrayArrayRequestJSON(req OptStringArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringPasswordArrayArrayRequestJSON(req OptStringArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -1047,7 +1048,7 @@ func encodeTestRequestStringPasswordNullableArrayRequestJSON(req OptStringArray,
 	return e, nil
 }
 
-func encodeTestRequestStringPasswordNullableArrayArrayRequestJSON(req OptStringArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringPasswordNullableArrayArrayRequestJSON(req OptStringArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -1074,7 +1075,7 @@ func encodeTestRequestStringTimeArrayRequestJSON(req OptTimeArray, span trace.Sp
 	return e, nil
 }
 
-func encodeTestRequestStringTimeArrayArrayRequestJSON(req OptTimeArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringTimeArrayArrayRequestJSON(req OptTimeArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -1101,7 +1102,7 @@ func encodeTestRequestStringTimeNullableArrayRequestJSON(req OptTimeArray, span 
 	return e, nil
 }
 
-func encodeTestRequestStringTimeNullableArrayArrayRequestJSON(req OptTimeArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringTimeNullableArrayArrayRequestJSON(req OptTimeArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -1110,7 +1111,7 @@ func encodeTestRequestStringTimeNullableArrayArrayRequestJSON(req OptTimeArray, 
 	return e, nil
 }
 
-func encodeTestRequestStringURIRequestJSON(req OptURL, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringURIRequestJSON(req OptURI, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -1119,7 +1120,7 @@ func encodeTestRequestStringURIRequestJSON(req OptURL, span trace.Span) (data *j
 	return e, nil
 }
 
-func encodeTestRequestStringURIArrayRequestJSON(req OptURLArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringURIArrayRequestJSON(req OptURIArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -1128,7 +1129,7 @@ func encodeTestRequestStringURIArrayRequestJSON(req OptURLArray, span trace.Span
 	return e, nil
 }
 
-func encodeTestRequestStringURIArrayArrayRequestJSON(req OptURLArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringURIArrayArrayRequestJSON(req OptURIArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -1137,7 +1138,7 @@ func encodeTestRequestStringURIArrayArrayRequestJSON(req OptURLArray, span trace
 	return e, nil
 }
 
-func encodeTestRequestStringURINullableRequestJSON(req OptURL, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringURINullableRequestJSON(req OptURI, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -1146,7 +1147,7 @@ func encodeTestRequestStringURINullableRequestJSON(req OptURL, span trace.Span) 
 	return e, nil
 }
 
-func encodeTestRequestStringURINullableArrayRequestJSON(req OptURLArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringURINullableArrayRequestJSON(req OptURIArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -1155,7 +1156,7 @@ func encodeTestRequestStringURINullableArrayRequestJSON(req OptURLArray, span tr
 	return e, nil
 }
 
-func encodeTestRequestStringURINullableArrayArrayRequestJSON(req OptURLArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringURINullableArrayArrayRequestJSON(req OptURIArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -1182,7 +1183,7 @@ func encodeTestRequestStringUUIDArrayRequestJSON(req OptUUIDArray, span trace.Sp
 	return e, nil
 }
 
-func encodeTestRequestStringUUIDArrayArrayRequestJSON(req OptUUIDArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringUUIDArrayArrayRequestJSON(req OptUUIDArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -1209,7 +1210,7 @@ func encodeTestRequestStringUUIDNullableArrayRequestJSON(req OptUUIDArray, span 
 	return e, nil
 }
 
-func encodeTestRequestStringUUIDNullableArrayArrayRequestJSON(req OptUUIDArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringUUIDNullableArrayArrayRequestJSON(req OptUUIDArrayArray, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)

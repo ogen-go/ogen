@@ -242,10 +242,10 @@ type DefaultTest struct {
 	Enum     OptDefaultTestEnum `json:"enum"`
 	UUID     OptUUID            `json:"uuid"`
 	IP       OptIP              `json:"ip"`
-	IPV4     OptIP              `json:"ip_v4"`
-	IPV6     OptIP              `json:"ip_v6"`
-	URI      OptURL             `json:"uri"`
-	Birthday OptTime            `json:"birthday"`
+	IPV4     OptIPv4            `json:"ip_v4"`
+	IPV6     OptIPv6            `json:"ip_v6"`
+	URI      OptURI             `json:"uri"`
+	Birthday OptDate            `json:"birthday"`
 	Rate     OptDuration        `json:"rate"`
 	Email    OptString          `json:"email"`
 	Hostname OptString          `json:"hostname"`
@@ -1045,6 +1045,98 @@ func (o OptData) Or(d Data) Data {
 	return d
 }
 
+// NewOptDate returns new OptDate with value set to v.
+func NewOptDate(v time.Time) OptDate {
+	return OptDate{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDate is optional time.Time.
+type OptDate struct {
+	Value time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptDate was set.
+func (o OptDate) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDate) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDate) SetTo(v time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDate) Get() (v time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDate) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptDateTime returns new OptDateTime with value set to v.
+func NewOptDateTime(v time.Time) OptDateTime {
+	return OptDateTime{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDateTime is optional time.Time.
+type OptDateTime struct {
+	Value time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptDateTime was set.
+func (o OptDateTime) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDateTime) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDateTime) SetTo(v time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDateTime) Get() (v time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDateTime) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptDefaultTestEnum returns new OptDefaultTestEnum with value set to v.
 func NewOptDefaultTestEnum(v DefaultTestEnum) OptDefaultTestEnum {
 	return OptDefaultTestEnum{
@@ -1269,6 +1361,98 @@ func (o OptIP) Get() (v net.IP, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIP) Or(d net.IP) net.IP {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIPv4 returns new OptIPv4 with value set to v.
+func NewOptIPv4(v net.IP) OptIPv4 {
+	return OptIPv4{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIPv4 is optional net.IP.
+type OptIPv4 struct {
+	Value net.IP
+	Set   bool
+}
+
+// IsSet returns true if OptIPv4 was set.
+func (o OptIPv4) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIPv4) Reset() {
+	var v net.IP
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIPv4) SetTo(v net.IP) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIPv4) Get() (v net.IP, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIPv4) Or(d net.IP) net.IP {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIPv6 returns new OptIPv6 with value set to v.
+func NewOptIPv6(v net.IP) OptIPv6 {
+	return OptIPv6{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIPv6 is optional net.IP.
+type OptIPv6 struct {
+	Value net.IP
+	Set   bool
+}
+
+// IsSet returns true if OptIPv6 was set.
+func (o OptIPv6) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIPv6) Reset() {
+	var v net.IP
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIPv6) SetTo(v net.IP) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIPv6) Get() (v net.IP, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIPv6) Or(d net.IP) net.IP {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -2075,38 +2259,38 @@ func (o OptTime) Or(d time.Time) time.Time {
 	return d
 }
 
-// NewOptURL returns new OptURL with value set to v.
-func NewOptURL(v url.URL) OptURL {
-	return OptURL{
+// NewOptURI returns new OptURI with value set to v.
+func NewOptURI(v url.URL) OptURI {
+	return OptURI{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptURL is optional url.URL.
-type OptURL struct {
+// OptURI is optional url.URL.
+type OptURI struct {
 	Value url.URL
 	Set   bool
 }
 
-// IsSet returns true if OptURL was set.
-func (o OptURL) IsSet() bool { return o.Set }
+// IsSet returns true if OptURI was set.
+func (o OptURI) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptURL) Reset() {
+func (o *OptURI) Reset() {
 	var v url.URL
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptURL) SetTo(v url.URL) {
+func (o *OptURI) SetTo(v url.URL) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptURL) Get() (v url.URL, ok bool) {
+func (o OptURI) Get() (v url.URL, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2114,7 +2298,7 @@ func (o OptURL) Get() (v url.URL, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptURL) Or(d url.URL) url.URL {
+func (o OptURI) Or(d url.URL) url.URL {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -2242,10 +2426,10 @@ type Pet struct {
 	TestAny           OptAnyTest           `json:"testAny"`
 	TestAnyOf         OptAnyOfTest         `json:"testAnyOf"`
 	TestMaxProperties OptMaxPropertiesTest `json:"testMaxProperties"`
-	TestDate          OptTime              `json:"testDate"`
+	TestDate          OptDate              `json:"testDate"`
 	TestDuration      OptDuration          `json:"testDuration"`
 	TestTime          OptTime              `json:"testTime"`
-	TestDateTime      OptTime              `json:"testDateTime"`
+	TestDateTime      OptDateTime          `json:"testDateTime"`
 }
 
 func (*Pet) foobarGetRes()  {}

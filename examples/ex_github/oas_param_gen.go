@@ -510,7 +510,7 @@ type ActionsListWorkflowRunsForRepoParams struct {
 	PerPage OptInt
 	// Page number of the results to fetch.
 	Page    OptInt
-	Created OptTime
+	Created OptDateTime
 }
 
 type ActionsReRunWorkflowParams struct {
@@ -647,10 +647,10 @@ type ActivityListNotificationsForAuthenticatedUserParams struct {
 	Participating OptBool
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptTime
+	Since OptDateTime
 	// Only show notifications updated before the given time. This is a timestamp in [ISO
 	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Before OptTime
+	Before OptDateTime
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -732,10 +732,10 @@ type ActivityListRepoNotificationsForAuthenticatedUserParams struct {
 	Participating OptBool
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptTime
+	Since OptDateTime
 	// Only show notifications updated before the given time. This is a timestamp in [ISO
 	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Before OptTime
+	Before OptDateTime
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -1591,7 +1591,7 @@ type GistsGetRevisionParams struct {
 type GistsListParams struct {
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptTime
+	Since OptDateTime
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -1620,7 +1620,7 @@ type GistsListForUserParams struct {
 	Username string
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptTime
+	Since OptDateTime
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -1639,7 +1639,7 @@ type GistsListForksParams struct {
 type GistsListPublicParams struct {
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptTime
+	Since OptDateTime
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -1649,7 +1649,7 @@ type GistsListPublicParams struct {
 type GistsListStarredParams struct {
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptTime
+	Since OptDateTime
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -1889,7 +1889,7 @@ type IssuesListParams struct {
 	Direction OptIssuesListDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since  OptTime
+	Since  OptDateTime
 	Collab OptBool
 	Orgs   OptBool
 	Owned  OptBool
@@ -1916,7 +1916,7 @@ type IssuesListCommentsParams struct {
 	IssueNumber int
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptTime
+	Since OptDateTime
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -1932,7 +1932,7 @@ type IssuesListCommentsForRepoParams struct {
 	Direction OptIssuesListCommentsForRepoDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptTime
+	Since OptDateTime
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -1967,7 +1967,7 @@ type IssuesListForAuthenticatedUserParams struct {
 	Direction OptIssuesListForAuthenticatedUserDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptTime
+	Since OptDateTime
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -1994,7 +1994,7 @@ type IssuesListForOrgParams struct {
 	Direction OptIssuesListForOrgDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptTime
+	Since OptDateTime
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -2025,7 +2025,7 @@ type IssuesListForRepoParams struct {
 	Direction OptIssuesListForRepoDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptTime
+	Since OptDateTime
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -3256,7 +3256,7 @@ type PullsListReviewCommentsParams struct {
 	Direction OptPullsListReviewCommentsDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptTime
+	Since OptDateTime
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -3271,7 +3271,7 @@ type PullsListReviewCommentsForRepoParams struct {
 	Direction OptPullsListReviewCommentsForRepoDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptTime
+	Since OptDateTime
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -4239,10 +4239,10 @@ type ReposListCommitsParams struct {
 	Author OptString
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptTime
+	Since OptDateTime
 	// Only commits before this date will be returned. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Until OptTime
+	Until OptDateTime
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -4322,10 +4322,10 @@ type ReposListForAuthenticatedUserParams struct {
 	Page OptInt
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptTime
+	Since OptDateTime
 	// Only show notifications updated before the given time. This is a timestamp in [ISO
 	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Before OptTime
+	Before OptDateTime
 }
 
 type ReposListForOrgParams struct {

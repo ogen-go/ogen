@@ -119,16 +119,16 @@ func (o OptBool) Or(d bool) bool {
 }
 
 // NewOptBoolArray returns new OptBoolArray with value set to v.
-func NewOptBoolArray(v [][]bool) OptBoolArray {
+func NewOptBoolArray(v []bool) OptBoolArray {
 	return OptBoolArray{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptBoolArray is optional [][]bool.
+// OptBoolArray is optional []bool.
 type OptBoolArray struct {
-	Value [][]bool
+	Value []bool
 	Set   bool
 }
 
@@ -137,19 +137,19 @@ func (o OptBoolArray) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptBoolArray) Reset() {
-	var v [][]bool
+	var v []bool
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptBoolArray) SetTo(v [][]bool) {
+func (o *OptBoolArray) SetTo(v []bool) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptBoolArray) Get() (v [][]bool, ok bool) {
+func (o OptBoolArray) Get() (v []bool, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -157,7 +157,53 @@ func (o OptBoolArray) Get() (v [][]bool, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptBoolArray) Or(d [][]bool) [][]bool {
+func (o OptBoolArray) Or(d []bool) []bool {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptBoolArrayArray returns new OptBoolArrayArray with value set to v.
+func NewOptBoolArrayArray(v [][]bool) OptBoolArrayArray {
+	return OptBoolArrayArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptBoolArrayArray is optional [][]bool.
+type OptBoolArrayArray struct {
+	Value [][]bool
+	Set   bool
+}
+
+// IsSet returns true if OptBoolArrayArray was set.
+func (o OptBoolArrayArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptBoolArrayArray) Reset() {
+	var v [][]bool
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptBoolArrayArray) SetTo(v [][]bool) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptBoolArrayArray) Get() (v [][]bool, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptBoolArrayArray) Or(d [][]bool) [][]bool {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -256,6 +302,328 @@ func (o OptByteArray) Or(d [][]byte) [][]byte {
 	return d
 }
 
+// NewOptByteArrayArray returns new OptByteArrayArray with value set to v.
+func NewOptByteArrayArray(v [][][]byte) OptByteArrayArray {
+	return OptByteArrayArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptByteArrayArray is optional [][][]byte.
+type OptByteArrayArray struct {
+	Value [][][]byte
+	Set   bool
+}
+
+// IsSet returns true if OptByteArrayArray was set.
+func (o OptByteArrayArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptByteArrayArray) Reset() {
+	var v [][][]byte
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptByteArrayArray) SetTo(v [][][]byte) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptByteArrayArray) Get() (v [][][]byte, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptByteArrayArray) Or(d [][][]byte) [][][]byte {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptDate returns new OptDate with value set to v.
+func NewOptDate(v time.Time) OptDate {
+	return OptDate{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDate is optional time.Time.
+type OptDate struct {
+	Value time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptDate was set.
+func (o OptDate) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDate) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDate) SetTo(v time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDate) Get() (v time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDate) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptDateArray returns new OptDateArray with value set to v.
+func NewOptDateArray(v []time.Time) OptDateArray {
+	return OptDateArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDateArray is optional []time.Time.
+type OptDateArray struct {
+	Value []time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptDateArray was set.
+func (o OptDateArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDateArray) Reset() {
+	var v []time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDateArray) SetTo(v []time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDateArray) Get() (v []time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDateArray) Or(d []time.Time) []time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptDateArrayArray returns new OptDateArrayArray with value set to v.
+func NewOptDateArrayArray(v [][]time.Time) OptDateArrayArray {
+	return OptDateArrayArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDateArrayArray is optional [][]time.Time.
+type OptDateArrayArray struct {
+	Value [][]time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptDateArrayArray was set.
+func (o OptDateArrayArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDateArrayArray) Reset() {
+	var v [][]time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDateArrayArray) SetTo(v [][]time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDateArrayArray) Get() (v [][]time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDateArrayArray) Or(d [][]time.Time) [][]time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptDateTime returns new OptDateTime with value set to v.
+func NewOptDateTime(v time.Time) OptDateTime {
+	return OptDateTime{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDateTime is optional time.Time.
+type OptDateTime struct {
+	Value time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptDateTime was set.
+func (o OptDateTime) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDateTime) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDateTime) SetTo(v time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDateTime) Get() (v time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDateTime) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptDateTimeArray returns new OptDateTimeArray with value set to v.
+func NewOptDateTimeArray(v []time.Time) OptDateTimeArray {
+	return OptDateTimeArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDateTimeArray is optional []time.Time.
+type OptDateTimeArray struct {
+	Value []time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptDateTimeArray was set.
+func (o OptDateTimeArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDateTimeArray) Reset() {
+	var v []time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDateTimeArray) SetTo(v []time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDateTimeArray) Get() (v []time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDateTimeArray) Or(d []time.Time) []time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptDateTimeArrayArray returns new OptDateTimeArrayArray with value set to v.
+func NewOptDateTimeArrayArray(v [][]time.Time) OptDateTimeArrayArray {
+	return OptDateTimeArrayArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDateTimeArrayArray is optional [][]time.Time.
+type OptDateTimeArrayArray struct {
+	Value [][]time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptDateTimeArrayArray was set.
+func (o OptDateTimeArrayArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDateTimeArrayArray) Reset() {
+	var v [][]time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDateTimeArrayArray) SetTo(v [][]time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDateTimeArrayArray) Get() (v [][]time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDateTimeArrayArray) Or(d [][]time.Time) [][]time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptDuration returns new OptDuration with value set to v.
 func NewOptDuration(v time.Duration) OptDuration {
 	return OptDuration{
@@ -303,16 +671,16 @@ func (o OptDuration) Or(d time.Duration) time.Duration {
 }
 
 // NewOptDurationArray returns new OptDurationArray with value set to v.
-func NewOptDurationArray(v [][]time.Duration) OptDurationArray {
+func NewOptDurationArray(v []time.Duration) OptDurationArray {
 	return OptDurationArray{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDurationArray is optional [][]time.Duration.
+// OptDurationArray is optional []time.Duration.
 type OptDurationArray struct {
-	Value [][]time.Duration
+	Value []time.Duration
 	Set   bool
 }
 
@@ -321,19 +689,19 @@ func (o OptDurationArray) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptDurationArray) Reset() {
-	var v [][]time.Duration
+	var v []time.Duration
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDurationArray) SetTo(v [][]time.Duration) {
+func (o *OptDurationArray) SetTo(v []time.Duration) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDurationArray) Get() (v [][]time.Duration, ok bool) {
+func (o OptDurationArray) Get() (v []time.Duration, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -341,7 +709,53 @@ func (o OptDurationArray) Get() (v [][]time.Duration, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDurationArray) Or(d [][]time.Duration) [][]time.Duration {
+func (o OptDurationArray) Or(d []time.Duration) []time.Duration {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptDurationArrayArray returns new OptDurationArrayArray with value set to v.
+func NewOptDurationArrayArray(v [][]time.Duration) OptDurationArrayArray {
+	return OptDurationArrayArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDurationArrayArray is optional [][]time.Duration.
+type OptDurationArrayArray struct {
+	Value [][]time.Duration
+	Set   bool
+}
+
+// IsSet returns true if OptDurationArrayArray was set.
+func (o OptDurationArrayArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDurationArrayArray) Reset() {
+	var v [][]time.Duration
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDurationArrayArray) SetTo(v [][]time.Duration) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDurationArrayArray) Get() (v [][]time.Duration, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDurationArrayArray) Or(d [][]time.Duration) [][]time.Duration {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -440,6 +854,52 @@ func (o OptFloat32Array) Or(d []float32) []float32 {
 	return d
 }
 
+// NewOptFloat32ArrayArray returns new OptFloat32ArrayArray with value set to v.
+func NewOptFloat32ArrayArray(v [][]float32) OptFloat32ArrayArray {
+	return OptFloat32ArrayArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptFloat32ArrayArray is optional [][]float32.
+type OptFloat32ArrayArray struct {
+	Value [][]float32
+	Set   bool
+}
+
+// IsSet returns true if OptFloat32ArrayArray was set.
+func (o OptFloat32ArrayArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptFloat32ArrayArray) Reset() {
+	var v [][]float32
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptFloat32ArrayArray) SetTo(v [][]float32) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptFloat32ArrayArray) Get() (v [][]float32, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptFloat32ArrayArray) Or(d [][]float32) [][]float32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptFloat64 returns new OptFloat64 with value set to v.
 func NewOptFloat64(v float64) OptFloat64 {
 	return OptFloat64{
@@ -487,16 +947,16 @@ func (o OptFloat64) Or(d float64) float64 {
 }
 
 // NewOptFloat64Array returns new OptFloat64Array with value set to v.
-func NewOptFloat64Array(v [][]float64) OptFloat64Array {
+func NewOptFloat64Array(v []float64) OptFloat64Array {
 	return OptFloat64Array{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptFloat64Array is optional [][]float64.
+// OptFloat64Array is optional []float64.
 type OptFloat64Array struct {
-	Value [][]float64
+	Value []float64
 	Set   bool
 }
 
@@ -505,19 +965,19 @@ func (o OptFloat64Array) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptFloat64Array) Reset() {
-	var v [][]float64
+	var v []float64
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptFloat64Array) SetTo(v [][]float64) {
+func (o *OptFloat64Array) SetTo(v []float64) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptFloat64Array) Get() (v [][]float64, ok bool) {
+func (o OptFloat64Array) Get() (v []float64, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -525,7 +985,53 @@ func (o OptFloat64Array) Get() (v [][]float64, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptFloat64Array) Or(d [][]float64) [][]float64 {
+func (o OptFloat64Array) Or(d []float64) []float64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptFloat64ArrayArray returns new OptFloat64ArrayArray with value set to v.
+func NewOptFloat64ArrayArray(v [][]float64) OptFloat64ArrayArray {
+	return OptFloat64ArrayArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptFloat64ArrayArray is optional [][]float64.
+type OptFloat64ArrayArray struct {
+	Value [][]float64
+	Set   bool
+}
+
+// IsSet returns true if OptFloat64ArrayArray was set.
+func (o OptFloat64ArrayArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptFloat64ArrayArray) Reset() {
+	var v [][]float64
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptFloat64ArrayArray) SetTo(v [][]float64) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptFloat64ArrayArray) Get() (v [][]float64, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptFloat64ArrayArray) Or(d [][]float64) [][]float64 {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -579,16 +1085,16 @@ func (o OptIP) Or(d net.IP) net.IP {
 }
 
 // NewOptIPArray returns new OptIPArray with value set to v.
-func NewOptIPArray(v [][]net.IP) OptIPArray {
+func NewOptIPArray(v []net.IP) OptIPArray {
 	return OptIPArray{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptIPArray is optional [][]net.IP.
+// OptIPArray is optional []net.IP.
 type OptIPArray struct {
-	Value [][]net.IP
+	Value []net.IP
 	Set   bool
 }
 
@@ -597,19 +1103,19 @@ func (o OptIPArray) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptIPArray) Reset() {
-	var v [][]net.IP
+	var v []net.IP
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptIPArray) SetTo(v [][]net.IP) {
+func (o *OptIPArray) SetTo(v []net.IP) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptIPArray) Get() (v [][]net.IP, ok bool) {
+func (o OptIPArray) Get() (v []net.IP, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -617,7 +1123,329 @@ func (o OptIPArray) Get() (v [][]net.IP, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptIPArray) Or(d [][]net.IP) [][]net.IP {
+func (o OptIPArray) Or(d []net.IP) []net.IP {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIPArrayArray returns new OptIPArrayArray with value set to v.
+func NewOptIPArrayArray(v [][]net.IP) OptIPArrayArray {
+	return OptIPArrayArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIPArrayArray is optional [][]net.IP.
+type OptIPArrayArray struct {
+	Value [][]net.IP
+	Set   bool
+}
+
+// IsSet returns true if OptIPArrayArray was set.
+func (o OptIPArrayArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIPArrayArray) Reset() {
+	var v [][]net.IP
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIPArrayArray) SetTo(v [][]net.IP) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIPArrayArray) Get() (v [][]net.IP, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIPArrayArray) Or(d [][]net.IP) [][]net.IP {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIPv4 returns new OptIPv4 with value set to v.
+func NewOptIPv4(v net.IP) OptIPv4 {
+	return OptIPv4{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIPv4 is optional net.IP.
+type OptIPv4 struct {
+	Value net.IP
+	Set   bool
+}
+
+// IsSet returns true if OptIPv4 was set.
+func (o OptIPv4) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIPv4) Reset() {
+	var v net.IP
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIPv4) SetTo(v net.IP) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIPv4) Get() (v net.IP, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIPv4) Or(d net.IP) net.IP {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIPv4Array returns new OptIPv4Array with value set to v.
+func NewOptIPv4Array(v []net.IP) OptIPv4Array {
+	return OptIPv4Array{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIPv4Array is optional []net.IP.
+type OptIPv4Array struct {
+	Value []net.IP
+	Set   bool
+}
+
+// IsSet returns true if OptIPv4Array was set.
+func (o OptIPv4Array) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIPv4Array) Reset() {
+	var v []net.IP
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIPv4Array) SetTo(v []net.IP) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIPv4Array) Get() (v []net.IP, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIPv4Array) Or(d []net.IP) []net.IP {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIPv4ArrayArray returns new OptIPv4ArrayArray with value set to v.
+func NewOptIPv4ArrayArray(v [][]net.IP) OptIPv4ArrayArray {
+	return OptIPv4ArrayArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIPv4ArrayArray is optional [][]net.IP.
+type OptIPv4ArrayArray struct {
+	Value [][]net.IP
+	Set   bool
+}
+
+// IsSet returns true if OptIPv4ArrayArray was set.
+func (o OptIPv4ArrayArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIPv4ArrayArray) Reset() {
+	var v [][]net.IP
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIPv4ArrayArray) SetTo(v [][]net.IP) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIPv4ArrayArray) Get() (v [][]net.IP, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIPv4ArrayArray) Or(d [][]net.IP) [][]net.IP {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIPv6 returns new OptIPv6 with value set to v.
+func NewOptIPv6(v net.IP) OptIPv6 {
+	return OptIPv6{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIPv6 is optional net.IP.
+type OptIPv6 struct {
+	Value net.IP
+	Set   bool
+}
+
+// IsSet returns true if OptIPv6 was set.
+func (o OptIPv6) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIPv6) Reset() {
+	var v net.IP
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIPv6) SetTo(v net.IP) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIPv6) Get() (v net.IP, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIPv6) Or(d net.IP) net.IP {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIPv6Array returns new OptIPv6Array with value set to v.
+func NewOptIPv6Array(v []net.IP) OptIPv6Array {
+	return OptIPv6Array{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIPv6Array is optional []net.IP.
+type OptIPv6Array struct {
+	Value []net.IP
+	Set   bool
+}
+
+// IsSet returns true if OptIPv6Array was set.
+func (o OptIPv6Array) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIPv6Array) Reset() {
+	var v []net.IP
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIPv6Array) SetTo(v []net.IP) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIPv6Array) Get() (v []net.IP, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIPv6Array) Or(d []net.IP) []net.IP {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIPv6ArrayArray returns new OptIPv6ArrayArray with value set to v.
+func NewOptIPv6ArrayArray(v [][]net.IP) OptIPv6ArrayArray {
+	return OptIPv6ArrayArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIPv6ArrayArray is optional [][]net.IP.
+type OptIPv6ArrayArray struct {
+	Value [][]net.IP
+	Set   bool
+}
+
+// IsSet returns true if OptIPv6ArrayArray was set.
+func (o OptIPv6ArrayArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIPv6ArrayArray) Reset() {
+	var v [][]net.IP
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIPv6ArrayArray) SetTo(v [][]net.IP) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIPv6ArrayArray) Get() (v [][]net.IP, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIPv6ArrayArray) Or(d [][]net.IP) [][]net.IP {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -717,16 +1545,16 @@ func (o OptInt32) Or(d int32) int32 {
 }
 
 // NewOptInt32Array returns new OptInt32Array with value set to v.
-func NewOptInt32Array(v [][]int32) OptInt32Array {
+func NewOptInt32Array(v []int32) OptInt32Array {
 	return OptInt32Array{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptInt32Array is optional [][]int32.
+// OptInt32Array is optional []int32.
 type OptInt32Array struct {
-	Value [][]int32
+	Value []int32
 	Set   bool
 }
 
@@ -735,19 +1563,19 @@ func (o OptInt32Array) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptInt32Array) Reset() {
-	var v [][]int32
+	var v []int32
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptInt32Array) SetTo(v [][]int32) {
+func (o *OptInt32Array) SetTo(v []int32) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptInt32Array) Get() (v [][]int32, ok bool) {
+func (o OptInt32Array) Get() (v []int32, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -755,7 +1583,53 @@ func (o OptInt32Array) Get() (v [][]int32, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptInt32Array) Or(d [][]int32) [][]int32 {
+func (o OptInt32Array) Or(d []int32) []int32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptInt32ArrayArray returns new OptInt32ArrayArray with value set to v.
+func NewOptInt32ArrayArray(v [][]int32) OptInt32ArrayArray {
+	return OptInt32ArrayArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInt32ArrayArray is optional [][]int32.
+type OptInt32ArrayArray struct {
+	Value [][]int32
+	Set   bool
+}
+
+// IsSet returns true if OptInt32ArrayArray was set.
+func (o OptInt32ArrayArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInt32ArrayArray) Reset() {
+	var v [][]int32
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInt32ArrayArray) SetTo(v [][]int32) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInt32ArrayArray) Get() (v [][]int32, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInt32ArrayArray) Or(d [][]int32) [][]int32 {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -809,16 +1683,16 @@ func (o OptInt64) Or(d int64) int64 {
 }
 
 // NewOptInt64Array returns new OptInt64Array with value set to v.
-func NewOptInt64Array(v [][]int64) OptInt64Array {
+func NewOptInt64Array(v []int64) OptInt64Array {
 	return OptInt64Array{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptInt64Array is optional [][]int64.
+// OptInt64Array is optional []int64.
 type OptInt64Array struct {
-	Value [][]int64
+	Value []int64
 	Set   bool
 }
 
@@ -827,19 +1701,19 @@ func (o OptInt64Array) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptInt64Array) Reset() {
-	var v [][]int64
+	var v []int64
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptInt64Array) SetTo(v [][]int64) {
+func (o *OptInt64Array) SetTo(v []int64) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptInt64Array) Get() (v [][]int64, ok bool) {
+func (o OptInt64Array) Get() (v []int64, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -847,7 +1721,53 @@ func (o OptInt64Array) Get() (v [][]int64, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptInt64Array) Or(d [][]int64) [][]int64 {
+func (o OptInt64Array) Or(d []int64) []int64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptInt64ArrayArray returns new OptInt64ArrayArray with value set to v.
+func NewOptInt64ArrayArray(v [][]int64) OptInt64ArrayArray {
+	return OptInt64ArrayArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInt64ArrayArray is optional [][]int64.
+type OptInt64ArrayArray struct {
+	Value [][]int64
+	Set   bool
+}
+
+// IsSet returns true if OptInt64ArrayArray was set.
+func (o OptInt64ArrayArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInt64ArrayArray) Reset() {
+	var v [][]int64
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInt64ArrayArray) SetTo(v [][]int64) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInt64ArrayArray) Get() (v [][]int64, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInt64ArrayArray) Or(d [][]int64) [][]int64 {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -855,16 +1775,16 @@ func (o OptInt64Array) Or(d [][]int64) [][]int64 {
 }
 
 // NewOptIntArray returns new OptIntArray with value set to v.
-func NewOptIntArray(v [][]int) OptIntArray {
+func NewOptIntArray(v []int) OptIntArray {
 	return OptIntArray{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptIntArray is optional [][]int.
+// OptIntArray is optional []int.
 type OptIntArray struct {
-	Value [][]int
+	Value []int
 	Set   bool
 }
 
@@ -873,19 +1793,19 @@ func (o OptIntArray) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptIntArray) Reset() {
-	var v [][]int
+	var v []int
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptIntArray) SetTo(v [][]int) {
+func (o *OptIntArray) SetTo(v []int) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptIntArray) Get() (v [][]int, ok bool) {
+func (o OptIntArray) Get() (v []int, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -893,45 +1813,45 @@ func (o OptIntArray) Get() (v [][]int, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptIntArray) Or(d [][]int) [][]int {
+func (o OptIntArray) Or(d []int) []int {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptRaw returns new OptRaw with value set to v.
-func NewOptRaw(v jx.Raw) OptRaw {
-	return OptRaw{
+// NewOptIntArrayArray returns new OptIntArrayArray with value set to v.
+func NewOptIntArrayArray(v [][]int) OptIntArrayArray {
+	return OptIntArrayArray{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptRaw is optional jx.Raw.
-type OptRaw struct {
-	Value jx.Raw
+// OptIntArrayArray is optional [][]int.
+type OptIntArrayArray struct {
+	Value [][]int
 	Set   bool
 }
 
-// IsSet returns true if OptRaw was set.
-func (o OptRaw) IsSet() bool { return o.Set }
+// IsSet returns true if OptIntArrayArray was set.
+func (o OptIntArrayArray) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptRaw) Reset() {
-	var v jx.Raw
+func (o *OptIntArrayArray) Reset() {
+	var v [][]int
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptRaw) SetTo(v jx.Raw) {
+func (o *OptIntArrayArray) SetTo(v [][]int) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptRaw) Get() (v jx.Raw, ok bool) {
+func (o OptIntArrayArray) Get() (v [][]int, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -939,7 +1859,7 @@ func (o OptRaw) Get() (v jx.Raw, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptRaw) Or(d jx.Raw) jx.Raw {
+func (o OptIntArrayArray) Or(d [][]int) [][]int {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -1032,6 +1952,52 @@ func (o OptStringArray) Get() (v []string, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptStringArray) Or(d []string) []string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStringArrayArray returns new OptStringArrayArray with value set to v.
+func NewOptStringArrayArray(v [][]string) OptStringArrayArray {
+	return OptStringArrayArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringArrayArray is optional [][]string.
+type OptStringArrayArray struct {
+	Value [][]string
+	Set   bool
+}
+
+// IsSet returns true if OptStringArrayArray was set.
+func (o OptStringArrayArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringArrayArray) Reset() {
+	var v [][]string
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringArrayArray) SetTo(v [][]string) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringArrayArray) Get() (v [][]string, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringArrayArray) Or(d [][]string) [][]string {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -1131,16 +2097,16 @@ func (o OptTime) Or(d time.Time) time.Time {
 }
 
 // NewOptTimeArray returns new OptTimeArray with value set to v.
-func NewOptTimeArray(v [][]time.Time) OptTimeArray {
+func NewOptTimeArray(v []time.Time) OptTimeArray {
 	return OptTimeArray{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptTimeArray is optional [][]time.Time.
+// OptTimeArray is optional []time.Time.
 type OptTimeArray struct {
-	Value [][]time.Time
+	Value []time.Time
 	Set   bool
 }
 
@@ -1149,19 +2115,65 @@ func (o OptTimeArray) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptTimeArray) Reset() {
+	var v []time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTimeArray) SetTo(v []time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTimeArray) Get() (v []time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTimeArray) Or(d []time.Time) []time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptTimeArrayArray returns new OptTimeArrayArray with value set to v.
+func NewOptTimeArrayArray(v [][]time.Time) OptTimeArrayArray {
+	return OptTimeArrayArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTimeArrayArray is optional [][]time.Time.
+type OptTimeArrayArray struct {
+	Value [][]time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptTimeArrayArray was set.
+func (o OptTimeArrayArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTimeArrayArray) Reset() {
 	var v [][]time.Time
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptTimeArray) SetTo(v [][]time.Time) {
+func (o *OptTimeArrayArray) SetTo(v [][]time.Time) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptTimeArray) Get() (v [][]time.Time, ok bool) {
+func (o OptTimeArrayArray) Get() (v [][]time.Time, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -1169,45 +2181,45 @@ func (o OptTimeArray) Get() (v [][]time.Time, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptTimeArray) Or(d [][]time.Time) [][]time.Time {
+func (o OptTimeArrayArray) Or(d [][]time.Time) [][]time.Time {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptURL returns new OptURL with value set to v.
-func NewOptURL(v url.URL) OptURL {
-	return OptURL{
+// NewOptURI returns new OptURI with value set to v.
+func NewOptURI(v url.URL) OptURI {
+	return OptURI{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptURL is optional url.URL.
-type OptURL struct {
+// OptURI is optional url.URL.
+type OptURI struct {
 	Value url.URL
 	Set   bool
 }
 
-// IsSet returns true if OptURL was set.
-func (o OptURL) IsSet() bool { return o.Set }
+// IsSet returns true if OptURI was set.
+func (o OptURI) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptURL) Reset() {
+func (o *OptURI) Reset() {
 	var v url.URL
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptURL) SetTo(v url.URL) {
+func (o *OptURI) SetTo(v url.URL) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptURL) Get() (v url.URL, ok bool) {
+func (o OptURI) Get() (v url.URL, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -1215,45 +2227,45 @@ func (o OptURL) Get() (v url.URL, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptURL) Or(d url.URL) url.URL {
+func (o OptURI) Or(d url.URL) url.URL {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptURLArray returns new OptURLArray with value set to v.
-func NewOptURLArray(v [][]url.URL) OptURLArray {
-	return OptURLArray{
+// NewOptURIArray returns new OptURIArray with value set to v.
+func NewOptURIArray(v []url.URL) OptURIArray {
+	return OptURIArray{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptURLArray is optional [][]url.URL.
-type OptURLArray struct {
-	Value [][]url.URL
+// OptURIArray is optional []url.URL.
+type OptURIArray struct {
+	Value []url.URL
 	Set   bool
 }
 
-// IsSet returns true if OptURLArray was set.
-func (o OptURLArray) IsSet() bool { return o.Set }
+// IsSet returns true if OptURIArray was set.
+func (o OptURIArray) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptURLArray) Reset() {
-	var v [][]url.URL
+func (o *OptURIArray) Reset() {
+	var v []url.URL
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptURLArray) SetTo(v [][]url.URL) {
+func (o *OptURIArray) SetTo(v []url.URL) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptURLArray) Get() (v [][]url.URL, ok bool) {
+func (o OptURIArray) Get() (v []url.URL, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -1261,7 +2273,53 @@ func (o OptURLArray) Get() (v [][]url.URL, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptURLArray) Or(d [][]url.URL) [][]url.URL {
+func (o OptURIArray) Or(d []url.URL) []url.URL {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptURIArrayArray returns new OptURIArrayArray with value set to v.
+func NewOptURIArrayArray(v [][]url.URL) OptURIArrayArray {
+	return OptURIArrayArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptURIArrayArray is optional [][]url.URL.
+type OptURIArrayArray struct {
+	Value [][]url.URL
+	Set   bool
+}
+
+// IsSet returns true if OptURIArrayArray was set.
+func (o OptURIArrayArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptURIArrayArray) Reset() {
+	var v [][]url.URL
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptURIArrayArray) SetTo(v [][]url.URL) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptURIArrayArray) Get() (v [][]url.URL, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptURIArrayArray) Or(d [][]url.URL) [][]url.URL {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -1315,16 +2373,16 @@ func (o OptUUID) Or(d uuid.UUID) uuid.UUID {
 }
 
 // NewOptUUIDArray returns new OptUUIDArray with value set to v.
-func NewOptUUIDArray(v [][]uuid.UUID) OptUUIDArray {
+func NewOptUUIDArray(v []uuid.UUID) OptUUIDArray {
 	return OptUUIDArray{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptUUIDArray is optional [][]uuid.UUID.
+// OptUUIDArray is optional []uuid.UUID.
 type OptUUIDArray struct {
-	Value [][]uuid.UUID
+	Value []uuid.UUID
 	Set   bool
 }
 
@@ -1333,19 +2391,19 @@ func (o OptUUIDArray) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptUUIDArray) Reset() {
-	var v [][]uuid.UUID
+	var v []uuid.UUID
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptUUIDArray) SetTo(v [][]uuid.UUID) {
+func (o *OptUUIDArray) SetTo(v []uuid.UUID) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptUUIDArray) Get() (v [][]uuid.UUID, ok bool) {
+func (o OptUUIDArray) Get() (v []uuid.UUID, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -1353,7 +2411,53 @@ func (o OptUUIDArray) Get() (v [][]uuid.UUID, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptUUIDArray) Or(d [][]uuid.UUID) [][]uuid.UUID {
+func (o OptUUIDArray) Or(d []uuid.UUID) []uuid.UUID {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptUUIDArrayArray returns new OptUUIDArrayArray with value set to v.
+func NewOptUUIDArrayArray(v [][]uuid.UUID) OptUUIDArrayArray {
+	return OptUUIDArrayArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptUUIDArrayArray is optional [][]uuid.UUID.
+type OptUUIDArrayArray struct {
+	Value [][]uuid.UUID
+	Set   bool
+}
+
+// IsSet returns true if OptUUIDArrayArray was set.
+func (o OptUUIDArrayArray) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptUUIDArrayArray) Reset() {
+	var v [][]uuid.UUID
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptUUIDArrayArray) SetTo(v [][]uuid.UUID) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptUUIDArrayArray) Get() (v [][]uuid.UUID, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptUUIDArrayArray) Or(d [][]uuid.UUID) [][]uuid.UUID {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -1361,271 +2465,271 @@ func (o OptUUIDArray) Or(d [][]uuid.UUID) [][]uuid.UUID {
 }
 
 type TestRequestFormatTestReq struct {
-	RequiredInteger                        int               `json:"required_integer"`
-	RequiredArrayInteger                   []int             `json:"required_array_integer"`
-	RequiredDoubleArrayInteger             [][]int           `json:"required_double_array_integer"`
-	RequiredIntegerInt32                   int32             `json:"required_integer_int32"`
-	RequiredArrayIntegerInt32              []int32           `json:"required_array_integer_int32"`
-	RequiredDoubleArrayIntegerInt32        [][]int32         `json:"required_double_array_integer_int32"`
-	RequiredIntegerInt64                   int64             `json:"required_integer_int64"`
-	RequiredArrayIntegerInt64              []int64           `json:"required_array_integer_int64"`
-	RequiredDoubleArrayIntegerInt64        [][]int64         `json:"required_double_array_integer_int64"`
-	RequiredNumberInt64                    int64             `json:"required_number_int64"`
-	RequiredArrayNumberInt64               []int64           `json:"required_array_number_int64"`
-	RequiredDoubleArrayNumberInt64         [][]int64         `json:"required_double_array_number_int64"`
-	RequiredNumber                         float64           `json:"required_number"`
-	RequiredArrayNumber                    []float64         `json:"required_array_number"`
-	RequiredDoubleArrayNumber              [][]float64       `json:"required_double_array_number"`
-	RequiredNumberFloat                    float32           `json:"required_number_float"`
-	RequiredArrayNumberFloat               []float32         `json:"required_array_number_float"`
-	RequiredDoubleArrayNumberFloat         [][]float32       `json:"required_double_array_number_float"`
-	RequiredNumberDouble                   float64           `json:"required_number_double"`
-	RequiredArrayNumberDouble              []float64         `json:"required_array_number_double"`
-	RequiredDoubleArrayNumberDouble        [][]float64       `json:"required_double_array_number_double"`
-	RequiredNumberInt32                    int32             `json:"required_number_int32"`
-	RequiredArrayNumberInt32               []int32           `json:"required_array_number_int32"`
-	RequiredDoubleArrayNumberInt32         [][]int32         `json:"required_double_array_number_int32"`
-	RequiredStringByte                     []byte            `json:"required_string_byte"`
-	RequiredArrayStringByte                [][]byte          `json:"required_array_string_byte"`
-	RequiredDoubleArrayStringByte          [][][]byte        `json:"required_double_array_string_byte"`
-	RequiredStringIpv4                     net.IP            `json:"required_string_ipv4"`
-	RequiredArrayStringIpv4                []net.IP          `json:"required_array_string_ipv4"`
-	RequiredDoubleArrayStringIpv4          [][]net.IP        `json:"required_double_array_string_ipv4"`
-	RequiredStringURI                      url.URL           `json:"required_string_uri"`
-	RequiredArrayStringURI                 []url.URL         `json:"required_array_string_uri"`
-	RequiredDoubleArrayStringURI           [][]url.URL       `json:"required_double_array_string_uri"`
-	RequiredStringPassword                 string            `json:"required_string_password"`
-	RequiredArrayStringPassword            []string          `json:"required_array_string_password"`
-	RequiredDoubleArrayStringPassword      [][]string        `json:"required_double_array_string_password"`
-	RequiredStringDateMinusTime            time.Time         `json:"required_string_date-time"`
-	RequiredArrayStringDateMinusTime       []time.Time       `json:"required_array_string_date-time"`
-	RequiredDoubleArrayStringDateMinusTime [][]time.Time     `json:"required_double_array_string_date-time"`
-	RequiredStringDate                     time.Time         `json:"required_string_date"`
-	RequiredArrayStringDate                []time.Time       `json:"required_array_string_date"`
-	RequiredDoubleArrayStringDate          [][]time.Time     `json:"required_double_array_string_date"`
-	RequiredStringTime                     time.Time         `json:"required_string_time"`
-	RequiredArrayStringTime                []time.Time       `json:"required_array_string_time"`
-	RequiredDoubleArrayStringTime          [][]time.Time     `json:"required_double_array_string_time"`
-	RequiredStringDuration                 time.Duration     `json:"required_string_duration"`
-	RequiredArrayStringDuration            []time.Duration   `json:"required_array_string_duration"`
-	RequiredDoubleArrayStringDuration      [][]time.Duration `json:"required_double_array_string_duration"`
-	RequiredStringUUID                     uuid.UUID         `json:"required_string_uuid"`
-	RequiredArrayStringUUID                []uuid.UUID       `json:"required_array_string_uuid"`
-	RequiredDoubleArrayStringUUID          [][]uuid.UUID     `json:"required_double_array_string_uuid"`
-	RequiredStringIP                       net.IP            `json:"required_string_ip"`
-	RequiredArrayStringIP                  []net.IP          `json:"required_array_string_ip"`
-	RequiredDoubleArrayStringIP            [][]net.IP        `json:"required_double_array_string_ip"`
-	RequiredStringIpv6                     net.IP            `json:"required_string_ipv6"`
-	RequiredArrayStringIpv6                []net.IP          `json:"required_array_string_ipv6"`
-	RequiredDoubleArrayStringIpv6          [][]net.IP        `json:"required_double_array_string_ipv6"`
-	RequiredString                         string            `json:"required_string"`
-	RequiredArrayString                    []string          `json:"required_array_string"`
-	RequiredDoubleArrayString              [][]string        `json:"required_double_array_string"`
-	RequiredBoolean                        bool              `json:"required_boolean"`
-	RequiredArrayBoolean                   []bool            `json:"required_array_boolean"`
-	RequiredDoubleArrayBoolean             [][]bool          `json:"required_double_array_boolean"`
 	RequiredAny                            jx.Raw            `json:"required_any"`
 	RequiredArrayAny                       []jx.Raw          `json:"required_array_any"`
+	RequiredArrayBoolean                   []bool            `json:"required_array_boolean"`
+	RequiredArrayInteger                   []int             `json:"required_array_integer"`
+	RequiredArrayIntegerInt32              []int32           `json:"required_array_integer_int32"`
+	RequiredArrayIntegerInt64              []int64           `json:"required_array_integer_int64"`
+	RequiredArrayNumber                    []float64         `json:"required_array_number"`
+	RequiredArrayNumberDouble              []float64         `json:"required_array_number_double"`
+	RequiredArrayNumberFloat               []float32         `json:"required_array_number_float"`
+	RequiredArrayNumberInt32               []int32           `json:"required_array_number_int32"`
+	RequiredArrayNumberInt64               []int64           `json:"required_array_number_int64"`
+	RequiredArrayString                    []string          `json:"required_array_string"`
+	RequiredArrayStringByte                [][]byte          `json:"required_array_string_byte"`
+	RequiredArrayStringDate                []time.Time       `json:"required_array_string_date"`
+	RequiredArrayStringDateMinusTime       []time.Time       `json:"required_array_string_date-time"`
+	RequiredArrayStringDuration            []time.Duration   `json:"required_array_string_duration"`
+	RequiredArrayStringIP                  []net.IP          `json:"required_array_string_ip"`
+	RequiredArrayStringIpv4                []net.IP          `json:"required_array_string_ipv4"`
+	RequiredArrayStringIpv6                []net.IP          `json:"required_array_string_ipv6"`
+	RequiredArrayStringPassword            []string          `json:"required_array_string_password"`
+	RequiredArrayStringTime                []time.Time       `json:"required_array_string_time"`
+	RequiredArrayStringURI                 []url.URL         `json:"required_array_string_uri"`
+	RequiredArrayStringUUID                []uuid.UUID       `json:"required_array_string_uuid"`
+	RequiredBoolean                        bool              `json:"required_boolean"`
 	RequiredDoubleArrayAny                 [][]jx.Raw        `json:"required_double_array_any"`
-	OptionalNumberFloat                    OptFloat32        `json:"optional_number_float"`
-	OptionalArrayNumberFloat               []float32         `json:"optional_array_number_float"`
-	OptionalDoubleArrayNumberFloat         [][]float32       `json:"optional_double_array_number_float"`
-	OptionalNumberDouble                   OptFloat64        `json:"optional_number_double"`
-	OptionalArrayNumberDouble              []float64         `json:"optional_array_number_double"`
-	OptionalDoubleArrayNumberDouble        [][]float64       `json:"optional_double_array_number_double"`
-	OptionalNumberInt32                    OptInt32          `json:"optional_number_int32"`
-	OptionalArrayNumberInt32               []int32           `json:"optional_array_number_int32"`
-	OptionalDoubleArrayNumberInt32         [][]int32         `json:"optional_double_array_number_int32"`
-	OptionalNumberInt64                    OptInt64          `json:"optional_number_int64"`
-	OptionalArrayNumberInt64               []int64           `json:"optional_array_number_int64"`
-	OptionalDoubleArrayNumberInt64         [][]int64         `json:"optional_double_array_number_int64"`
-	OptionalNumber                         OptFloat64        `json:"optional_number"`
-	OptionalArrayNumber                    []float64         `json:"optional_array_number"`
-	OptionalDoubleArrayNumber              [][]float64       `json:"optional_double_array_number"`
-	OptionalStringByte                     []byte            `json:"optional_string_byte"`
-	OptionalArrayStringByte                [][]byte          `json:"optional_array_string_byte"`
-	OptionalDoubleArrayStringByte          [][][]byte        `json:"optional_double_array_string_byte"`
-	OptionalStringIpv4                     OptIP             `json:"optional_string_ipv4"`
-	OptionalArrayStringIpv4                []net.IP          `json:"optional_array_string_ipv4"`
-	OptionalDoubleArrayStringIpv4          [][]net.IP        `json:"optional_double_array_string_ipv4"`
-	OptionalStringURI                      OptURL            `json:"optional_string_uri"`
-	OptionalArrayStringURI                 []url.URL         `json:"optional_array_string_uri"`
-	OptionalDoubleArrayStringURI           [][]url.URL       `json:"optional_double_array_string_uri"`
-	OptionalStringPassword                 OptString         `json:"optional_string_password"`
-	OptionalArrayStringPassword            []string          `json:"optional_array_string_password"`
-	OptionalDoubleArrayStringPassword      [][]string        `json:"optional_double_array_string_password"`
-	OptionalStringIpv6                     OptIP             `json:"optional_string_ipv6"`
-	OptionalArrayStringIpv6                []net.IP          `json:"optional_array_string_ipv6"`
-	OptionalDoubleArrayStringIpv6          [][]net.IP        `json:"optional_double_array_string_ipv6"`
-	OptionalString                         OptString         `json:"optional_string"`
-	OptionalArrayString                    []string          `json:"optional_array_string"`
-	OptionalDoubleArrayString              [][]string        `json:"optional_double_array_string"`
-	OptionalStringDateMinusTime            OptTime           `json:"optional_string_date-time"`
-	OptionalArrayStringDateMinusTime       []time.Time       `json:"optional_array_string_date-time"`
-	OptionalDoubleArrayStringDateMinusTime [][]time.Time     `json:"optional_double_array_string_date-time"`
-	OptionalStringDate                     OptTime           `json:"optional_string_date"`
-	OptionalArrayStringDate                []time.Time       `json:"optional_array_string_date"`
-	OptionalDoubleArrayStringDate          [][]time.Time     `json:"optional_double_array_string_date"`
-	OptionalStringTime                     OptTime           `json:"optional_string_time"`
-	OptionalArrayStringTime                []time.Time       `json:"optional_array_string_time"`
-	OptionalDoubleArrayStringTime          [][]time.Time     `json:"optional_double_array_string_time"`
-	OptionalStringDuration                 OptDuration       `json:"optional_string_duration"`
-	OptionalArrayStringDuration            []time.Duration   `json:"optional_array_string_duration"`
-	OptionalDoubleArrayStringDuration      [][]time.Duration `json:"optional_double_array_string_duration"`
-	OptionalStringUUID                     OptUUID           `json:"optional_string_uuid"`
-	OptionalArrayStringUUID                []uuid.UUID       `json:"optional_array_string_uuid"`
-	OptionalDoubleArrayStringUUID          [][]uuid.UUID     `json:"optional_double_array_string_uuid"`
-	OptionalStringIP                       OptIP             `json:"optional_string_ip"`
-	OptionalArrayStringIP                  []net.IP          `json:"optional_array_string_ip"`
-	OptionalDoubleArrayStringIP            [][]net.IP        `json:"optional_double_array_string_ip"`
-	OptionalBoolean                        OptBool           `json:"optional_boolean"`
-	OptionalArrayBoolean                   []bool            `json:"optional_array_boolean"`
-	OptionalDoubleArrayBoolean             [][]bool          `json:"optional_double_array_boolean"`
-	OptionalIntegerInt32                   OptInt32          `json:"optional_integer_int32"`
-	OptionalArrayIntegerInt32              []int32           `json:"optional_array_integer_int32"`
-	OptionalDoubleArrayIntegerInt32        [][]int32         `json:"optional_double_array_integer_int32"`
-	OptionalIntegerInt64                   OptInt64          `json:"optional_integer_int64"`
-	OptionalArrayIntegerInt64              []int64           `json:"optional_array_integer_int64"`
-	OptionalDoubleArrayIntegerInt64        [][]int64         `json:"optional_double_array_integer_int64"`
-	OptionalInteger                        OptInt            `json:"optional_integer"`
-	OptionalArrayInteger                   []int             `json:"optional_array_integer"`
-	OptionalDoubleArrayInteger             [][]int           `json:"optional_double_array_integer"`
+	RequiredDoubleArrayBoolean             [][]bool          `json:"required_double_array_boolean"`
+	RequiredDoubleArrayInteger             [][]int           `json:"required_double_array_integer"`
+	RequiredDoubleArrayIntegerInt32        [][]int32         `json:"required_double_array_integer_int32"`
+	RequiredDoubleArrayIntegerInt64        [][]int64         `json:"required_double_array_integer_int64"`
+	RequiredDoubleArrayNumber              [][]float64       `json:"required_double_array_number"`
+	RequiredDoubleArrayNumberDouble        [][]float64       `json:"required_double_array_number_double"`
+	RequiredDoubleArrayNumberFloat         [][]float32       `json:"required_double_array_number_float"`
+	RequiredDoubleArrayNumberInt32         [][]int32         `json:"required_double_array_number_int32"`
+	RequiredDoubleArrayNumberInt64         [][]int64         `json:"required_double_array_number_int64"`
+	RequiredDoubleArrayString              [][]string        `json:"required_double_array_string"`
+	RequiredDoubleArrayStringByte          [][][]byte        `json:"required_double_array_string_byte"`
+	RequiredDoubleArrayStringDate          [][]time.Time     `json:"required_double_array_string_date"`
+	RequiredDoubleArrayStringDateMinusTime [][]time.Time     `json:"required_double_array_string_date-time"`
+	RequiredDoubleArrayStringDuration      [][]time.Duration `json:"required_double_array_string_duration"`
+	RequiredDoubleArrayStringIP            [][]net.IP        `json:"required_double_array_string_ip"`
+	RequiredDoubleArrayStringIpv4          [][]net.IP        `json:"required_double_array_string_ipv4"`
+	RequiredDoubleArrayStringIpv6          [][]net.IP        `json:"required_double_array_string_ipv6"`
+	RequiredDoubleArrayStringPassword      [][]string        `json:"required_double_array_string_password"`
+	RequiredDoubleArrayStringTime          [][]time.Time     `json:"required_double_array_string_time"`
+	RequiredDoubleArrayStringURI           [][]url.URL       `json:"required_double_array_string_uri"`
+	RequiredDoubleArrayStringUUID          [][]uuid.UUID     `json:"required_double_array_string_uuid"`
+	RequiredInteger                        int               `json:"required_integer"`
+	RequiredIntegerInt32                   int32             `json:"required_integer_int32"`
+	RequiredIntegerInt64                   int64             `json:"required_integer_int64"`
+	RequiredNumber                         float64           `json:"required_number"`
+	RequiredNumberDouble                   float64           `json:"required_number_double"`
+	RequiredNumberFloat                    float32           `json:"required_number_float"`
+	RequiredNumberInt32                    int32             `json:"required_number_int32"`
+	RequiredNumberInt64                    int64             `json:"required_number_int64"`
+	RequiredString                         string            `json:"required_string"`
+	RequiredStringByte                     []byte            `json:"required_string_byte"`
+	RequiredStringDate                     time.Time         `json:"required_string_date"`
+	RequiredStringDateMinusTime            time.Time         `json:"required_string_date-time"`
+	RequiredStringDuration                 time.Duration     `json:"required_string_duration"`
+	RequiredStringIP                       net.IP            `json:"required_string_ip"`
+	RequiredStringIpv4                     net.IP            `json:"required_string_ipv4"`
+	RequiredStringIpv6                     net.IP            `json:"required_string_ipv6"`
+	RequiredStringPassword                 string            `json:"required_string_password"`
+	RequiredStringTime                     time.Time         `json:"required_string_time"`
+	RequiredStringURI                      url.URL           `json:"required_string_uri"`
+	RequiredStringUUID                     uuid.UUID         `json:"required_string_uuid"`
 	OptionalAny                            jx.Raw            `json:"optional_any"`
 	OptionalArrayAny                       []jx.Raw          `json:"optional_array_any"`
+	OptionalArrayBoolean                   []bool            `json:"optional_array_boolean"`
+	OptionalArrayInteger                   []int             `json:"optional_array_integer"`
+	OptionalArrayIntegerInt32              []int32           `json:"optional_array_integer_int32"`
+	OptionalArrayIntegerInt64              []int64           `json:"optional_array_integer_int64"`
+	OptionalArrayNumber                    []float64         `json:"optional_array_number"`
+	OptionalArrayNumberDouble              []float64         `json:"optional_array_number_double"`
+	OptionalArrayNumberFloat               []float32         `json:"optional_array_number_float"`
+	OptionalArrayNumberInt32               []int32           `json:"optional_array_number_int32"`
+	OptionalArrayNumberInt64               []int64           `json:"optional_array_number_int64"`
+	OptionalArrayString                    []string          `json:"optional_array_string"`
+	OptionalArrayStringByte                [][]byte          `json:"optional_array_string_byte"`
+	OptionalArrayStringDate                []time.Time       `json:"optional_array_string_date"`
+	OptionalArrayStringDateMinusTime       []time.Time       `json:"optional_array_string_date-time"`
+	OptionalArrayStringDuration            []time.Duration   `json:"optional_array_string_duration"`
+	OptionalArrayStringIP                  []net.IP          `json:"optional_array_string_ip"`
+	OptionalArrayStringIpv4                []net.IP          `json:"optional_array_string_ipv4"`
+	OptionalArrayStringIpv6                []net.IP          `json:"optional_array_string_ipv6"`
+	OptionalArrayStringPassword            []string          `json:"optional_array_string_password"`
+	OptionalArrayStringTime                []time.Time       `json:"optional_array_string_time"`
+	OptionalArrayStringURI                 []url.URL         `json:"optional_array_string_uri"`
+	OptionalArrayStringUUID                []uuid.UUID       `json:"optional_array_string_uuid"`
+	OptionalBoolean                        OptBool           `json:"optional_boolean"`
 	OptionalDoubleArrayAny                 [][]jx.Raw        `json:"optional_double_array_any"`
+	OptionalDoubleArrayBoolean             [][]bool          `json:"optional_double_array_boolean"`
+	OptionalDoubleArrayInteger             [][]int           `json:"optional_double_array_integer"`
+	OptionalDoubleArrayIntegerInt32        [][]int32         `json:"optional_double_array_integer_int32"`
+	OptionalDoubleArrayIntegerInt64        [][]int64         `json:"optional_double_array_integer_int64"`
+	OptionalDoubleArrayNumber              [][]float64       `json:"optional_double_array_number"`
+	OptionalDoubleArrayNumberDouble        [][]float64       `json:"optional_double_array_number_double"`
+	OptionalDoubleArrayNumberFloat         [][]float32       `json:"optional_double_array_number_float"`
+	OptionalDoubleArrayNumberInt32         [][]int32         `json:"optional_double_array_number_int32"`
+	OptionalDoubleArrayNumberInt64         [][]int64         `json:"optional_double_array_number_int64"`
+	OptionalDoubleArrayString              [][]string        `json:"optional_double_array_string"`
+	OptionalDoubleArrayStringByte          [][][]byte        `json:"optional_double_array_string_byte"`
+	OptionalDoubleArrayStringDate          [][]time.Time     `json:"optional_double_array_string_date"`
+	OptionalDoubleArrayStringDateMinusTime [][]time.Time     `json:"optional_double_array_string_date-time"`
+	OptionalDoubleArrayStringDuration      [][]time.Duration `json:"optional_double_array_string_duration"`
+	OptionalDoubleArrayStringIP            [][]net.IP        `json:"optional_double_array_string_ip"`
+	OptionalDoubleArrayStringIpv4          [][]net.IP        `json:"optional_double_array_string_ipv4"`
+	OptionalDoubleArrayStringIpv6          [][]net.IP        `json:"optional_double_array_string_ipv6"`
+	OptionalDoubleArrayStringPassword      [][]string        `json:"optional_double_array_string_password"`
+	OptionalDoubleArrayStringTime          [][]time.Time     `json:"optional_double_array_string_time"`
+	OptionalDoubleArrayStringURI           [][]url.URL       `json:"optional_double_array_string_uri"`
+	OptionalDoubleArrayStringUUID          [][]uuid.UUID     `json:"optional_double_array_string_uuid"`
+	OptionalInteger                        OptInt            `json:"optional_integer"`
+	OptionalIntegerInt32                   OptInt32          `json:"optional_integer_int32"`
+	OptionalIntegerInt64                   OptInt64          `json:"optional_integer_int64"`
+	OptionalNumber                         OptFloat64        `json:"optional_number"`
+	OptionalNumberDouble                   OptFloat64        `json:"optional_number_double"`
+	OptionalNumberFloat                    OptFloat32        `json:"optional_number_float"`
+	OptionalNumberInt32                    OptInt32          `json:"optional_number_int32"`
+	OptionalNumberInt64                    OptInt64          `json:"optional_number_int64"`
+	OptionalString                         OptString         `json:"optional_string"`
+	OptionalStringByte                     []byte            `json:"optional_string_byte"`
+	OptionalStringDate                     OptDate           `json:"optional_string_date"`
+	OptionalStringDateMinusTime            OptDateTime       `json:"optional_string_date-time"`
+	OptionalStringDuration                 OptDuration       `json:"optional_string_duration"`
+	OptionalStringIP                       OptIP             `json:"optional_string_ip"`
+	OptionalStringIpv4                     OptIPv4           `json:"optional_string_ipv4"`
+	OptionalStringIpv6                     OptIPv6           `json:"optional_string_ipv6"`
+	OptionalStringPassword                 OptString         `json:"optional_string_password"`
+	OptionalStringTime                     OptTime           `json:"optional_string_time"`
+	OptionalStringURI                      OptURI            `json:"optional_string_uri"`
+	OptionalStringUUID                     OptUUID           `json:"optional_string_uuid"`
 }
 
 type TestResponseFormatTestOK struct {
-	RequiredInteger                        int               `json:"required_integer"`
-	RequiredArrayInteger                   []int             `json:"required_array_integer"`
-	RequiredDoubleArrayInteger             [][]int           `json:"required_double_array_integer"`
-	RequiredIntegerInt32                   int32             `json:"required_integer_int32"`
-	RequiredArrayIntegerInt32              []int32           `json:"required_array_integer_int32"`
-	RequiredDoubleArrayIntegerInt32        [][]int32         `json:"required_double_array_integer_int32"`
-	RequiredIntegerInt64                   int64             `json:"required_integer_int64"`
-	RequiredArrayIntegerInt64              []int64           `json:"required_array_integer_int64"`
-	RequiredDoubleArrayIntegerInt64        [][]int64         `json:"required_double_array_integer_int64"`
-	RequiredNumberInt64                    int64             `json:"required_number_int64"`
-	RequiredArrayNumberInt64               []int64           `json:"required_array_number_int64"`
-	RequiredDoubleArrayNumberInt64         [][]int64         `json:"required_double_array_number_int64"`
-	RequiredNumber                         float64           `json:"required_number"`
-	RequiredArrayNumber                    []float64         `json:"required_array_number"`
-	RequiredDoubleArrayNumber              [][]float64       `json:"required_double_array_number"`
-	RequiredNumberFloat                    float32           `json:"required_number_float"`
-	RequiredArrayNumberFloat               []float32         `json:"required_array_number_float"`
-	RequiredDoubleArrayNumberFloat         [][]float32       `json:"required_double_array_number_float"`
-	RequiredNumberDouble                   float64           `json:"required_number_double"`
-	RequiredArrayNumberDouble              []float64         `json:"required_array_number_double"`
-	RequiredDoubleArrayNumberDouble        [][]float64       `json:"required_double_array_number_double"`
-	RequiredNumberInt32                    int32             `json:"required_number_int32"`
-	RequiredArrayNumberInt32               []int32           `json:"required_array_number_int32"`
-	RequiredDoubleArrayNumberInt32         [][]int32         `json:"required_double_array_number_int32"`
-	RequiredStringByte                     []byte            `json:"required_string_byte"`
-	RequiredArrayStringByte                [][]byte          `json:"required_array_string_byte"`
-	RequiredDoubleArrayStringByte          [][][]byte        `json:"required_double_array_string_byte"`
-	RequiredStringIpv4                     net.IP            `json:"required_string_ipv4"`
-	RequiredArrayStringIpv4                []net.IP          `json:"required_array_string_ipv4"`
-	RequiredDoubleArrayStringIpv4          [][]net.IP        `json:"required_double_array_string_ipv4"`
-	RequiredStringURI                      url.URL           `json:"required_string_uri"`
-	RequiredArrayStringURI                 []url.URL         `json:"required_array_string_uri"`
-	RequiredDoubleArrayStringURI           [][]url.URL       `json:"required_double_array_string_uri"`
-	RequiredStringPassword                 string            `json:"required_string_password"`
-	RequiredArrayStringPassword            []string          `json:"required_array_string_password"`
-	RequiredDoubleArrayStringPassword      [][]string        `json:"required_double_array_string_password"`
-	RequiredStringDateMinusTime            time.Time         `json:"required_string_date-time"`
-	RequiredArrayStringDateMinusTime       []time.Time       `json:"required_array_string_date-time"`
-	RequiredDoubleArrayStringDateMinusTime [][]time.Time     `json:"required_double_array_string_date-time"`
-	RequiredStringDate                     time.Time         `json:"required_string_date"`
-	RequiredArrayStringDate                []time.Time       `json:"required_array_string_date"`
-	RequiredDoubleArrayStringDate          [][]time.Time     `json:"required_double_array_string_date"`
-	RequiredStringTime                     time.Time         `json:"required_string_time"`
-	RequiredArrayStringTime                []time.Time       `json:"required_array_string_time"`
-	RequiredDoubleArrayStringTime          [][]time.Time     `json:"required_double_array_string_time"`
-	RequiredStringDuration                 time.Duration     `json:"required_string_duration"`
-	RequiredArrayStringDuration            []time.Duration   `json:"required_array_string_duration"`
-	RequiredDoubleArrayStringDuration      [][]time.Duration `json:"required_double_array_string_duration"`
-	RequiredStringUUID                     uuid.UUID         `json:"required_string_uuid"`
-	RequiredArrayStringUUID                []uuid.UUID       `json:"required_array_string_uuid"`
-	RequiredDoubleArrayStringUUID          [][]uuid.UUID     `json:"required_double_array_string_uuid"`
-	RequiredStringIP                       net.IP            `json:"required_string_ip"`
-	RequiredArrayStringIP                  []net.IP          `json:"required_array_string_ip"`
-	RequiredDoubleArrayStringIP            [][]net.IP        `json:"required_double_array_string_ip"`
-	RequiredStringIpv6                     net.IP            `json:"required_string_ipv6"`
-	RequiredArrayStringIpv6                []net.IP          `json:"required_array_string_ipv6"`
-	RequiredDoubleArrayStringIpv6          [][]net.IP        `json:"required_double_array_string_ipv6"`
-	RequiredString                         string            `json:"required_string"`
-	RequiredArrayString                    []string          `json:"required_array_string"`
-	RequiredDoubleArrayString              [][]string        `json:"required_double_array_string"`
-	RequiredBoolean                        bool              `json:"required_boolean"`
-	RequiredArrayBoolean                   []bool            `json:"required_array_boolean"`
-	RequiredDoubleArrayBoolean             [][]bool          `json:"required_double_array_boolean"`
 	RequiredAny                            jx.Raw            `json:"required_any"`
 	RequiredArrayAny                       []jx.Raw          `json:"required_array_any"`
+	RequiredArrayBoolean                   []bool            `json:"required_array_boolean"`
+	RequiredArrayInteger                   []int             `json:"required_array_integer"`
+	RequiredArrayIntegerInt32              []int32           `json:"required_array_integer_int32"`
+	RequiredArrayIntegerInt64              []int64           `json:"required_array_integer_int64"`
+	RequiredArrayNumber                    []float64         `json:"required_array_number"`
+	RequiredArrayNumberDouble              []float64         `json:"required_array_number_double"`
+	RequiredArrayNumberFloat               []float32         `json:"required_array_number_float"`
+	RequiredArrayNumberInt32               []int32           `json:"required_array_number_int32"`
+	RequiredArrayNumberInt64               []int64           `json:"required_array_number_int64"`
+	RequiredArrayString                    []string          `json:"required_array_string"`
+	RequiredArrayStringByte                [][]byte          `json:"required_array_string_byte"`
+	RequiredArrayStringDate                []time.Time       `json:"required_array_string_date"`
+	RequiredArrayStringDateMinusTime       []time.Time       `json:"required_array_string_date-time"`
+	RequiredArrayStringDuration            []time.Duration   `json:"required_array_string_duration"`
+	RequiredArrayStringIP                  []net.IP          `json:"required_array_string_ip"`
+	RequiredArrayStringIpv4                []net.IP          `json:"required_array_string_ipv4"`
+	RequiredArrayStringIpv6                []net.IP          `json:"required_array_string_ipv6"`
+	RequiredArrayStringPassword            []string          `json:"required_array_string_password"`
+	RequiredArrayStringTime                []time.Time       `json:"required_array_string_time"`
+	RequiredArrayStringURI                 []url.URL         `json:"required_array_string_uri"`
+	RequiredArrayStringUUID                []uuid.UUID       `json:"required_array_string_uuid"`
+	RequiredBoolean                        bool              `json:"required_boolean"`
 	RequiredDoubleArrayAny                 [][]jx.Raw        `json:"required_double_array_any"`
-	OptionalNumberFloat                    OptFloat32        `json:"optional_number_float"`
-	OptionalArrayNumberFloat               []float32         `json:"optional_array_number_float"`
-	OptionalDoubleArrayNumberFloat         [][]float32       `json:"optional_double_array_number_float"`
-	OptionalNumberDouble                   OptFloat64        `json:"optional_number_double"`
-	OptionalArrayNumberDouble              []float64         `json:"optional_array_number_double"`
-	OptionalDoubleArrayNumberDouble        [][]float64       `json:"optional_double_array_number_double"`
-	OptionalNumberInt32                    OptInt32          `json:"optional_number_int32"`
-	OptionalArrayNumberInt32               []int32           `json:"optional_array_number_int32"`
-	OptionalDoubleArrayNumberInt32         [][]int32         `json:"optional_double_array_number_int32"`
-	OptionalNumberInt64                    OptInt64          `json:"optional_number_int64"`
-	OptionalArrayNumberInt64               []int64           `json:"optional_array_number_int64"`
-	OptionalDoubleArrayNumberInt64         [][]int64         `json:"optional_double_array_number_int64"`
-	OptionalNumber                         OptFloat64        `json:"optional_number"`
-	OptionalArrayNumber                    []float64         `json:"optional_array_number"`
-	OptionalDoubleArrayNumber              [][]float64       `json:"optional_double_array_number"`
-	OptionalStringByte                     []byte            `json:"optional_string_byte"`
-	OptionalArrayStringByte                [][]byte          `json:"optional_array_string_byte"`
-	OptionalDoubleArrayStringByte          [][][]byte        `json:"optional_double_array_string_byte"`
-	OptionalStringIpv4                     OptIP             `json:"optional_string_ipv4"`
-	OptionalArrayStringIpv4                []net.IP          `json:"optional_array_string_ipv4"`
-	OptionalDoubleArrayStringIpv4          [][]net.IP        `json:"optional_double_array_string_ipv4"`
-	OptionalStringURI                      OptURL            `json:"optional_string_uri"`
-	OptionalArrayStringURI                 []url.URL         `json:"optional_array_string_uri"`
-	OptionalDoubleArrayStringURI           [][]url.URL       `json:"optional_double_array_string_uri"`
-	OptionalStringPassword                 OptString         `json:"optional_string_password"`
-	OptionalArrayStringPassword            []string          `json:"optional_array_string_password"`
-	OptionalDoubleArrayStringPassword      [][]string        `json:"optional_double_array_string_password"`
-	OptionalStringIpv6                     OptIP             `json:"optional_string_ipv6"`
-	OptionalArrayStringIpv6                []net.IP          `json:"optional_array_string_ipv6"`
-	OptionalDoubleArrayStringIpv6          [][]net.IP        `json:"optional_double_array_string_ipv6"`
-	OptionalString                         OptString         `json:"optional_string"`
-	OptionalArrayString                    []string          `json:"optional_array_string"`
-	OptionalDoubleArrayString              [][]string        `json:"optional_double_array_string"`
-	OptionalStringDateMinusTime            OptTime           `json:"optional_string_date-time"`
-	OptionalArrayStringDateMinusTime       []time.Time       `json:"optional_array_string_date-time"`
-	OptionalDoubleArrayStringDateMinusTime [][]time.Time     `json:"optional_double_array_string_date-time"`
-	OptionalStringDate                     OptTime           `json:"optional_string_date"`
-	OptionalArrayStringDate                []time.Time       `json:"optional_array_string_date"`
-	OptionalDoubleArrayStringDate          [][]time.Time     `json:"optional_double_array_string_date"`
-	OptionalStringTime                     OptTime           `json:"optional_string_time"`
-	OptionalArrayStringTime                []time.Time       `json:"optional_array_string_time"`
-	OptionalDoubleArrayStringTime          [][]time.Time     `json:"optional_double_array_string_time"`
-	OptionalStringDuration                 OptDuration       `json:"optional_string_duration"`
-	OptionalArrayStringDuration            []time.Duration   `json:"optional_array_string_duration"`
-	OptionalDoubleArrayStringDuration      [][]time.Duration `json:"optional_double_array_string_duration"`
-	OptionalStringUUID                     OptUUID           `json:"optional_string_uuid"`
-	OptionalArrayStringUUID                []uuid.UUID       `json:"optional_array_string_uuid"`
-	OptionalDoubleArrayStringUUID          [][]uuid.UUID     `json:"optional_double_array_string_uuid"`
-	OptionalStringIP                       OptIP             `json:"optional_string_ip"`
-	OptionalArrayStringIP                  []net.IP          `json:"optional_array_string_ip"`
-	OptionalDoubleArrayStringIP            [][]net.IP        `json:"optional_double_array_string_ip"`
-	OptionalBoolean                        OptBool           `json:"optional_boolean"`
-	OptionalArrayBoolean                   []bool            `json:"optional_array_boolean"`
-	OptionalDoubleArrayBoolean             [][]bool          `json:"optional_double_array_boolean"`
-	OptionalIntegerInt32                   OptInt32          `json:"optional_integer_int32"`
-	OptionalArrayIntegerInt32              []int32           `json:"optional_array_integer_int32"`
-	OptionalDoubleArrayIntegerInt32        [][]int32         `json:"optional_double_array_integer_int32"`
-	OptionalIntegerInt64                   OptInt64          `json:"optional_integer_int64"`
-	OptionalArrayIntegerInt64              []int64           `json:"optional_array_integer_int64"`
-	OptionalDoubleArrayIntegerInt64        [][]int64         `json:"optional_double_array_integer_int64"`
-	OptionalInteger                        OptInt            `json:"optional_integer"`
-	OptionalArrayInteger                   []int             `json:"optional_array_integer"`
-	OptionalDoubleArrayInteger             [][]int           `json:"optional_double_array_integer"`
+	RequiredDoubleArrayBoolean             [][]bool          `json:"required_double_array_boolean"`
+	RequiredDoubleArrayInteger             [][]int           `json:"required_double_array_integer"`
+	RequiredDoubleArrayIntegerInt32        [][]int32         `json:"required_double_array_integer_int32"`
+	RequiredDoubleArrayIntegerInt64        [][]int64         `json:"required_double_array_integer_int64"`
+	RequiredDoubleArrayNumber              [][]float64       `json:"required_double_array_number"`
+	RequiredDoubleArrayNumberDouble        [][]float64       `json:"required_double_array_number_double"`
+	RequiredDoubleArrayNumberFloat         [][]float32       `json:"required_double_array_number_float"`
+	RequiredDoubleArrayNumberInt32         [][]int32         `json:"required_double_array_number_int32"`
+	RequiredDoubleArrayNumberInt64         [][]int64         `json:"required_double_array_number_int64"`
+	RequiredDoubleArrayString              [][]string        `json:"required_double_array_string"`
+	RequiredDoubleArrayStringByte          [][][]byte        `json:"required_double_array_string_byte"`
+	RequiredDoubleArrayStringDate          [][]time.Time     `json:"required_double_array_string_date"`
+	RequiredDoubleArrayStringDateMinusTime [][]time.Time     `json:"required_double_array_string_date-time"`
+	RequiredDoubleArrayStringDuration      [][]time.Duration `json:"required_double_array_string_duration"`
+	RequiredDoubleArrayStringIP            [][]net.IP        `json:"required_double_array_string_ip"`
+	RequiredDoubleArrayStringIpv4          [][]net.IP        `json:"required_double_array_string_ipv4"`
+	RequiredDoubleArrayStringIpv6          [][]net.IP        `json:"required_double_array_string_ipv6"`
+	RequiredDoubleArrayStringPassword      [][]string        `json:"required_double_array_string_password"`
+	RequiredDoubleArrayStringTime          [][]time.Time     `json:"required_double_array_string_time"`
+	RequiredDoubleArrayStringURI           [][]url.URL       `json:"required_double_array_string_uri"`
+	RequiredDoubleArrayStringUUID          [][]uuid.UUID     `json:"required_double_array_string_uuid"`
+	RequiredInteger                        int               `json:"required_integer"`
+	RequiredIntegerInt32                   int32             `json:"required_integer_int32"`
+	RequiredIntegerInt64                   int64             `json:"required_integer_int64"`
+	RequiredNumber                         float64           `json:"required_number"`
+	RequiredNumberDouble                   float64           `json:"required_number_double"`
+	RequiredNumberFloat                    float32           `json:"required_number_float"`
+	RequiredNumberInt32                    int32             `json:"required_number_int32"`
+	RequiredNumberInt64                    int64             `json:"required_number_int64"`
+	RequiredString                         string            `json:"required_string"`
+	RequiredStringByte                     []byte            `json:"required_string_byte"`
+	RequiredStringDate                     time.Time         `json:"required_string_date"`
+	RequiredStringDateMinusTime            time.Time         `json:"required_string_date-time"`
+	RequiredStringDuration                 time.Duration     `json:"required_string_duration"`
+	RequiredStringIP                       net.IP            `json:"required_string_ip"`
+	RequiredStringIpv4                     net.IP            `json:"required_string_ipv4"`
+	RequiredStringIpv6                     net.IP            `json:"required_string_ipv6"`
+	RequiredStringPassword                 string            `json:"required_string_password"`
+	RequiredStringTime                     time.Time         `json:"required_string_time"`
+	RequiredStringURI                      url.URL           `json:"required_string_uri"`
+	RequiredStringUUID                     uuid.UUID         `json:"required_string_uuid"`
 	OptionalAny                            jx.Raw            `json:"optional_any"`
 	OptionalArrayAny                       []jx.Raw          `json:"optional_array_any"`
+	OptionalArrayBoolean                   []bool            `json:"optional_array_boolean"`
+	OptionalArrayInteger                   []int             `json:"optional_array_integer"`
+	OptionalArrayIntegerInt32              []int32           `json:"optional_array_integer_int32"`
+	OptionalArrayIntegerInt64              []int64           `json:"optional_array_integer_int64"`
+	OptionalArrayNumber                    []float64         `json:"optional_array_number"`
+	OptionalArrayNumberDouble              []float64         `json:"optional_array_number_double"`
+	OptionalArrayNumberFloat               []float32         `json:"optional_array_number_float"`
+	OptionalArrayNumberInt32               []int32           `json:"optional_array_number_int32"`
+	OptionalArrayNumberInt64               []int64           `json:"optional_array_number_int64"`
+	OptionalArrayString                    []string          `json:"optional_array_string"`
+	OptionalArrayStringByte                [][]byte          `json:"optional_array_string_byte"`
+	OptionalArrayStringDate                []time.Time       `json:"optional_array_string_date"`
+	OptionalArrayStringDateMinusTime       []time.Time       `json:"optional_array_string_date-time"`
+	OptionalArrayStringDuration            []time.Duration   `json:"optional_array_string_duration"`
+	OptionalArrayStringIP                  []net.IP          `json:"optional_array_string_ip"`
+	OptionalArrayStringIpv4                []net.IP          `json:"optional_array_string_ipv4"`
+	OptionalArrayStringIpv6                []net.IP          `json:"optional_array_string_ipv6"`
+	OptionalArrayStringPassword            []string          `json:"optional_array_string_password"`
+	OptionalArrayStringTime                []time.Time       `json:"optional_array_string_time"`
+	OptionalArrayStringURI                 []url.URL         `json:"optional_array_string_uri"`
+	OptionalArrayStringUUID                []uuid.UUID       `json:"optional_array_string_uuid"`
+	OptionalBoolean                        OptBool           `json:"optional_boolean"`
 	OptionalDoubleArrayAny                 [][]jx.Raw        `json:"optional_double_array_any"`
+	OptionalDoubleArrayBoolean             [][]bool          `json:"optional_double_array_boolean"`
+	OptionalDoubleArrayInteger             [][]int           `json:"optional_double_array_integer"`
+	OptionalDoubleArrayIntegerInt32        [][]int32         `json:"optional_double_array_integer_int32"`
+	OptionalDoubleArrayIntegerInt64        [][]int64         `json:"optional_double_array_integer_int64"`
+	OptionalDoubleArrayNumber              [][]float64       `json:"optional_double_array_number"`
+	OptionalDoubleArrayNumberDouble        [][]float64       `json:"optional_double_array_number_double"`
+	OptionalDoubleArrayNumberFloat         [][]float32       `json:"optional_double_array_number_float"`
+	OptionalDoubleArrayNumberInt32         [][]int32         `json:"optional_double_array_number_int32"`
+	OptionalDoubleArrayNumberInt64         [][]int64         `json:"optional_double_array_number_int64"`
+	OptionalDoubleArrayString              [][]string        `json:"optional_double_array_string"`
+	OptionalDoubleArrayStringByte          [][][]byte        `json:"optional_double_array_string_byte"`
+	OptionalDoubleArrayStringDate          [][]time.Time     `json:"optional_double_array_string_date"`
+	OptionalDoubleArrayStringDateMinusTime [][]time.Time     `json:"optional_double_array_string_date-time"`
+	OptionalDoubleArrayStringDuration      [][]time.Duration `json:"optional_double_array_string_duration"`
+	OptionalDoubleArrayStringIP            [][]net.IP        `json:"optional_double_array_string_ip"`
+	OptionalDoubleArrayStringIpv4          [][]net.IP        `json:"optional_double_array_string_ipv4"`
+	OptionalDoubleArrayStringIpv6          [][]net.IP        `json:"optional_double_array_string_ipv6"`
+	OptionalDoubleArrayStringPassword      [][]string        `json:"optional_double_array_string_password"`
+	OptionalDoubleArrayStringTime          [][]time.Time     `json:"optional_double_array_string_time"`
+	OptionalDoubleArrayStringURI           [][]url.URL       `json:"optional_double_array_string_uri"`
+	OptionalDoubleArrayStringUUID          [][]uuid.UUID     `json:"optional_double_array_string_uuid"`
+	OptionalInteger                        OptInt            `json:"optional_integer"`
+	OptionalIntegerInt32                   OptInt32          `json:"optional_integer_int32"`
+	OptionalIntegerInt64                   OptInt64          `json:"optional_integer_int64"`
+	OptionalNumber                         OptFloat64        `json:"optional_number"`
+	OptionalNumberDouble                   OptFloat64        `json:"optional_number_double"`
+	OptionalNumberFloat                    OptFloat32        `json:"optional_number_float"`
+	OptionalNumberInt32                    OptInt32          `json:"optional_number_int32"`
+	OptionalNumberInt64                    OptInt64          `json:"optional_number_int64"`
+	OptionalString                         OptString         `json:"optional_string"`
+	OptionalStringByte                     []byte            `json:"optional_string_byte"`
+	OptionalStringDate                     OptDate           `json:"optional_string_date"`
+	OptionalStringDateMinusTime            OptDateTime       `json:"optional_string_date-time"`
+	OptionalStringDuration                 OptDuration       `json:"optional_string_duration"`
+	OptionalStringIP                       OptIP             `json:"optional_string_ip"`
+	OptionalStringIpv4                     OptIPv4           `json:"optional_string_ipv4"`
+	OptionalStringIpv6                     OptIPv6           `json:"optional_string_ipv6"`
+	OptionalStringPassword                 OptString         `json:"optional_string_password"`
+	OptionalStringTime                     OptTime           `json:"optional_string_time"`
+	OptionalStringURI                      OptURI            `json:"optional_string_uri"`
+	OptionalStringUUID                     OptUUID           `json:"optional_string_uuid"`
 }

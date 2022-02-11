@@ -100,7 +100,7 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // TestRequestAny invokes test_request_Any operation.
 //
 // POST /test_request_Any
-func (c *Client) TestRequestAny(ctx context.Context, request OptRaw) (res Error, err error) {
+func (c *Client) TestRequestAny(ctx context.Context, request jx.Raw) (res Error, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestAny",
 		trace.WithAttributes(otelogen.OperationID("test_request_Any")),
@@ -278,7 +278,7 @@ func (c *Client) TestRequestBooleanArray(ctx context.Context, request OptBoolArr
 // TestRequestBooleanArrayArray invokes test_request_boolean_array_array operation.
 //
 // POST /test_request_boolean_array_array
-func (c *Client) TestRequestBooleanArrayArray(ctx context.Context, request OptBoolArray) (res Error, err error) {
+func (c *Client) TestRequestBooleanArrayArray(ctx context.Context, request OptBoolArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -489,7 +489,7 @@ func (c *Client) TestRequestBooleanNullableArray(ctx context.Context, request Op
 // TestRequestBooleanNullableArrayArray invokes test_request_boolean_nullable_array_array operation.
 //
 // POST /test_request_boolean_nullable_array_array
-func (c *Client) TestRequestBooleanNullableArrayArray(ctx context.Context, request OptBoolArray) (res Error, err error) {
+func (c *Client) TestRequestBooleanNullableArrayArray(ctx context.Context, request OptBoolArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -770,7 +770,7 @@ func (c *Client) TestRequestIntegerArray(ctx context.Context, request OptIntArra
 // TestRequestIntegerArrayArray invokes test_request_integer_array_array operation.
 //
 // POST /test_request_integer_array_array
-func (c *Client) TestRequestIntegerArrayArray(ctx context.Context, request OptIntArray) (res Error, err error) {
+func (c *Client) TestRequestIntegerArrayArray(ctx context.Context, request OptIntArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -981,7 +981,7 @@ func (c *Client) TestRequestIntegerInt32Array(ctx context.Context, request OptIn
 // TestRequestIntegerInt32ArrayArray invokes test_request_integer_int32_array_array operation.
 //
 // POST /test_request_integer_int32_array_array
-func (c *Client) TestRequestIntegerInt32ArrayArray(ctx context.Context, request OptInt32Array) (res Error, err error) {
+func (c *Client) TestRequestIntegerInt32ArrayArray(ctx context.Context, request OptInt32ArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -1192,7 +1192,7 @@ func (c *Client) TestRequestIntegerInt32NullableArray(ctx context.Context, reque
 // TestRequestIntegerInt32NullableArrayArray invokes test_request_integer_int32_nullable_array_array operation.
 //
 // POST /test_request_integer_int32_nullable_array_array
-func (c *Client) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, request OptInt32Array) (res Error, err error) {
+func (c *Client) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, request OptInt32ArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -1403,7 +1403,7 @@ func (c *Client) TestRequestIntegerInt64Array(ctx context.Context, request OptIn
 // TestRequestIntegerInt64ArrayArray invokes test_request_integer_int64_array_array operation.
 //
 // POST /test_request_integer_int64_array_array
-func (c *Client) TestRequestIntegerInt64ArrayArray(ctx context.Context, request OptInt64Array) (res Error, err error) {
+func (c *Client) TestRequestIntegerInt64ArrayArray(ctx context.Context, request OptInt64ArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -1614,7 +1614,7 @@ func (c *Client) TestRequestIntegerInt64NullableArray(ctx context.Context, reque
 // TestRequestIntegerInt64NullableArrayArray invokes test_request_integer_int64_nullable_array_array operation.
 //
 // POST /test_request_integer_int64_nullable_array_array
-func (c *Client) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, request OptInt64Array) (res Error, err error) {
+func (c *Client) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, request OptInt64ArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -1825,7 +1825,7 @@ func (c *Client) TestRequestIntegerNullableArray(ctx context.Context, request Op
 // TestRequestIntegerNullableArrayArray invokes test_request_integer_nullable_array_array operation.
 //
 // POST /test_request_integer_nullable_array_array
-func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, request OptIntArray) (res Error, err error) {
+func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, request OptIntArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -2069,7 +2069,7 @@ func (c *Client) TestRequestNumberArray(ctx context.Context, request OptFloat64A
 // TestRequestNumberArrayArray invokes test_request_number_array_array operation.
 //
 // POST /test_request_number_array_array
-func (c *Client) TestRequestNumberArrayArray(ctx context.Context, request OptFloat64Array) (res Error, err error) {
+func (c *Client) TestRequestNumberArrayArray(ctx context.Context, request OptFloat64ArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -2330,7 +2330,7 @@ func (c *Client) TestRequestNumberDoubleArray(ctx context.Context, request OptFl
 // TestRequestNumberDoubleArrayArray invokes test_request_number_double_array_array operation.
 //
 // POST /test_request_number_double_array_array
-func (c *Client) TestRequestNumberDoubleArrayArray(ctx context.Context, request OptFloat64Array) (res Error, err error) {
+func (c *Client) TestRequestNumberDoubleArrayArray(ctx context.Context, request OptFloat64ArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -2591,7 +2591,7 @@ func (c *Client) TestRequestNumberDoubleNullableArray(ctx context.Context, reque
 // TestRequestNumberDoubleNullableArrayArray invokes test_request_number_double_nullable_array_array operation.
 //
 // POST /test_request_number_double_nullable_array_array
-func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, request OptFloat64Array) (res Error, err error) {
+func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, request OptFloat64ArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -2852,7 +2852,7 @@ func (c *Client) TestRequestNumberFloatArray(ctx context.Context, request OptFlo
 // TestRequestNumberFloatArrayArray invokes test_request_number_float_array_array operation.
 //
 // POST /test_request_number_float_array_array
-func (c *Client) TestRequestNumberFloatArrayArray(ctx context.Context, request OptFloat32Array) (res Error, err error) {
+func (c *Client) TestRequestNumberFloatArrayArray(ctx context.Context, request OptFloat32ArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -3113,7 +3113,7 @@ func (c *Client) TestRequestNumberFloatNullableArray(ctx context.Context, reques
 // TestRequestNumberFloatNullableArrayArray invokes test_request_number_float_nullable_array_array operation.
 //
 // POST /test_request_number_float_nullable_array_array
-func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, request OptFloat32Array) (res Error, err error) {
+func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, request OptFloat32ArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -3341,7 +3341,7 @@ func (c *Client) TestRequestNumberInt32Array(ctx context.Context, request OptInt
 // TestRequestNumberInt32ArrayArray invokes test_request_number_int32_array_array operation.
 //
 // POST /test_request_number_int32_array_array
-func (c *Client) TestRequestNumberInt32ArrayArray(ctx context.Context, request OptInt32Array) (res Error, err error) {
+func (c *Client) TestRequestNumberInt32ArrayArray(ctx context.Context, request OptInt32ArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -3552,7 +3552,7 @@ func (c *Client) TestRequestNumberInt32NullableArray(ctx context.Context, reques
 // TestRequestNumberInt32NullableArrayArray invokes test_request_number_int32_nullable_array_array operation.
 //
 // POST /test_request_number_int32_nullable_array_array
-func (c *Client) TestRequestNumberInt32NullableArrayArray(ctx context.Context, request OptInt32Array) (res Error, err error) {
+func (c *Client) TestRequestNumberInt32NullableArrayArray(ctx context.Context, request OptInt32ArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -3763,7 +3763,7 @@ func (c *Client) TestRequestNumberInt64Array(ctx context.Context, request OptInt
 // TestRequestNumberInt64ArrayArray invokes test_request_number_int64_array_array operation.
 //
 // POST /test_request_number_int64_array_array
-func (c *Client) TestRequestNumberInt64ArrayArray(ctx context.Context, request OptInt64Array) (res Error, err error) {
+func (c *Client) TestRequestNumberInt64ArrayArray(ctx context.Context, request OptInt64ArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -3974,7 +3974,7 @@ func (c *Client) TestRequestNumberInt64NullableArray(ctx context.Context, reques
 // TestRequestNumberInt64NullableArrayArray invokes test_request_number_int64_nullable_array_array operation.
 //
 // POST /test_request_number_int64_nullable_array_array
-func (c *Client) TestRequestNumberInt64NullableArrayArray(ctx context.Context, request OptInt64Array) (res Error, err error) {
+func (c *Client) TestRequestNumberInt64NullableArrayArray(ctx context.Context, request OptInt64ArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -4218,7 +4218,7 @@ func (c *Client) TestRequestNumberNullableArray(ctx context.Context, request Opt
 // TestRequestNumberNullableArrayArray invokes test_request_number_nullable_array_array operation.
 //
 // POST /test_request_number_nullable_array_array
-func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, request OptFloat64Array) (res Error, err error) {
+func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, request OptFloat64ArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -4446,7 +4446,7 @@ func (c *Client) TestRequestStringArray(ctx context.Context, request OptStringAr
 // TestRequestStringArrayArray invokes test_request_string_array_array operation.
 //
 // POST /test_request_string_array_array
-func (c *Client) TestRequestStringArrayArray(ctx context.Context, request OptStringArray) (res Error, err error) {
+func (c *Client) TestRequestStringArrayArray(ctx context.Context, request OptStringArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -4657,7 +4657,7 @@ func (c *Client) TestRequestStringByteArray(ctx context.Context, request OptByte
 // TestRequestStringByteArrayArray invokes test_request_string_byte_array_array operation.
 //
 // POST /test_request_string_byte_array_array
-func (c *Client) TestRequestStringByteArrayArray(ctx context.Context, request OptByteArray) (res Error, err error) {
+func (c *Client) TestRequestStringByteArrayArray(ctx context.Context, request OptByteArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -4868,7 +4868,7 @@ func (c *Client) TestRequestStringByteNullableArray(ctx context.Context, request
 // TestRequestStringByteNullableArrayArray invokes test_request_string_byte_nullable_array_array operation.
 //
 // POST /test_request_string_byte_nullable_array_array
-func (c *Client) TestRequestStringByteNullableArrayArray(ctx context.Context, request OptByteArray) (res Error, err error) {
+func (c *Client) TestRequestStringByteNullableArrayArray(ctx context.Context, request OptByteArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -4955,7 +4955,7 @@ func (c *Client) TestRequestStringByteNullableArrayArray(ctx context.Context, re
 // TestRequestStringDate invokes test_request_string_date operation.
 //
 // POST /test_request_string_date
-func (c *Client) TestRequestStringDate(ctx context.Context, request OptTime) (res Error, err error) {
+func (c *Client) TestRequestStringDate(ctx context.Context, request OptDate) (res Error, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDate",
 		trace.WithAttributes(otelogen.OperationID("test_request_string_date")),
@@ -5009,7 +5009,7 @@ func (c *Client) TestRequestStringDate(ctx context.Context, request OptTime) (re
 // TestRequestStringDateArray invokes test_request_string_date_array operation.
 //
 // POST /test_request_string_date_array
-func (c *Client) TestRequestStringDateArray(ctx context.Context, request OptTimeArray) (res Error, err error) {
+func (c *Client) TestRequestStringDateArray(ctx context.Context, request OptDateArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -5079,7 +5079,7 @@ func (c *Client) TestRequestStringDateArray(ctx context.Context, request OptTime
 // TestRequestStringDateArrayArray invokes test_request_string_date_array_array operation.
 //
 // POST /test_request_string_date_array_array
-func (c *Client) TestRequestStringDateArrayArray(ctx context.Context, request OptTimeArray) (res Error, err error) {
+func (c *Client) TestRequestStringDateArrayArray(ctx context.Context, request OptDateArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -5166,7 +5166,7 @@ func (c *Client) TestRequestStringDateArrayArray(ctx context.Context, request Op
 // TestRequestStringDateNullable invokes test_request_string_date_nullable operation.
 //
 // POST /test_request_string_date_nullable
-func (c *Client) TestRequestStringDateNullable(ctx context.Context, request OptTime) (res Error, err error) {
+func (c *Client) TestRequestStringDateNullable(ctx context.Context, request OptDate) (res Error, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateNullable",
 		trace.WithAttributes(otelogen.OperationID("test_request_string_date_nullable")),
@@ -5220,7 +5220,7 @@ func (c *Client) TestRequestStringDateNullable(ctx context.Context, request OptT
 // TestRequestStringDateNullableArray invokes test_request_string_date_nullable_array operation.
 //
 // POST /test_request_string_date_nullable_array
-func (c *Client) TestRequestStringDateNullableArray(ctx context.Context, request OptTimeArray) (res Error, err error) {
+func (c *Client) TestRequestStringDateNullableArray(ctx context.Context, request OptDateArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -5290,7 +5290,7 @@ func (c *Client) TestRequestStringDateNullableArray(ctx context.Context, request
 // TestRequestStringDateNullableArrayArray invokes test_request_string_date_nullable_array_array operation.
 //
 // POST /test_request_string_date_nullable_array_array
-func (c *Client) TestRequestStringDateNullableArrayArray(ctx context.Context, request OptTimeArray) (res Error, err error) {
+func (c *Client) TestRequestStringDateNullableArrayArray(ctx context.Context, request OptDateArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -5377,7 +5377,7 @@ func (c *Client) TestRequestStringDateNullableArrayArray(ctx context.Context, re
 // TestRequestStringDateTime invokes test_request_string_date-time operation.
 //
 // POST /test_request_string_date-time
-func (c *Client) TestRequestStringDateTime(ctx context.Context, request OptTime) (res Error, err error) {
+func (c *Client) TestRequestStringDateTime(ctx context.Context, request OptDateTime) (res Error, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTime",
 		trace.WithAttributes(otelogen.OperationID("test_request_string_date-time")),
@@ -5431,7 +5431,7 @@ func (c *Client) TestRequestStringDateTime(ctx context.Context, request OptTime)
 // TestRequestStringDateTimeArray invokes test_request_string_date-time_array operation.
 //
 // POST /test_request_string_date-time_array
-func (c *Client) TestRequestStringDateTimeArray(ctx context.Context, request OptTimeArray) (res Error, err error) {
+func (c *Client) TestRequestStringDateTimeArray(ctx context.Context, request OptDateTimeArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -5501,7 +5501,7 @@ func (c *Client) TestRequestStringDateTimeArray(ctx context.Context, request Opt
 // TestRequestStringDateTimeArrayArray invokes test_request_string_date-time_array_array operation.
 //
 // POST /test_request_string_date-time_array_array
-func (c *Client) TestRequestStringDateTimeArrayArray(ctx context.Context, request OptTimeArray) (res Error, err error) {
+func (c *Client) TestRequestStringDateTimeArrayArray(ctx context.Context, request OptDateTimeArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -5588,7 +5588,7 @@ func (c *Client) TestRequestStringDateTimeArrayArray(ctx context.Context, reques
 // TestRequestStringDateTimeNullable invokes test_request_string_date-time_nullable operation.
 //
 // POST /test_request_string_date-time_nullable
-func (c *Client) TestRequestStringDateTimeNullable(ctx context.Context, request OptTime) (res Error, err error) {
+func (c *Client) TestRequestStringDateTimeNullable(ctx context.Context, request OptDateTime) (res Error, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeNullable",
 		trace.WithAttributes(otelogen.OperationID("test_request_string_date-time_nullable")),
@@ -5642,7 +5642,7 @@ func (c *Client) TestRequestStringDateTimeNullable(ctx context.Context, request 
 // TestRequestStringDateTimeNullableArray invokes test_request_string_date-time_nullable_array operation.
 //
 // POST /test_request_string_date-time_nullable_array
-func (c *Client) TestRequestStringDateTimeNullableArray(ctx context.Context, request OptTimeArray) (res Error, err error) {
+func (c *Client) TestRequestStringDateTimeNullableArray(ctx context.Context, request OptDateTimeArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -5712,7 +5712,7 @@ func (c *Client) TestRequestStringDateTimeNullableArray(ctx context.Context, req
 // TestRequestStringDateTimeNullableArrayArray invokes test_request_string_date-time_nullable_array_array operation.
 //
 // POST /test_request_string_date-time_nullable_array_array
-func (c *Client) TestRequestStringDateTimeNullableArrayArray(ctx context.Context, request OptTimeArray) (res Error, err error) {
+func (c *Client) TestRequestStringDateTimeNullableArrayArray(ctx context.Context, request OptDateTimeArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -5923,7 +5923,7 @@ func (c *Client) TestRequestStringDurationArray(ctx context.Context, request Opt
 // TestRequestStringDurationArrayArray invokes test_request_string_duration_array_array operation.
 //
 // POST /test_request_string_duration_array_array
-func (c *Client) TestRequestStringDurationArrayArray(ctx context.Context, request OptDurationArray) (res Error, err error) {
+func (c *Client) TestRequestStringDurationArrayArray(ctx context.Context, request OptDurationArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -6134,7 +6134,7 @@ func (c *Client) TestRequestStringDurationNullableArray(ctx context.Context, req
 // TestRequestStringDurationNullableArrayArray invokes test_request_string_duration_nullable_array_array operation.
 //
 // POST /test_request_string_duration_nullable_array_array
-func (c *Client) TestRequestStringDurationNullableArrayArray(ctx context.Context, request OptDurationArray) (res Error, err error) {
+func (c *Client) TestRequestStringDurationNullableArrayArray(ctx context.Context, request OptDurationArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -6345,7 +6345,7 @@ func (c *Client) TestRequestStringIPArray(ctx context.Context, request OptIPArra
 // TestRequestStringIPArrayArray invokes test_request_string_ip_array_array operation.
 //
 // POST /test_request_string_ip_array_array
-func (c *Client) TestRequestStringIPArrayArray(ctx context.Context, request OptIPArray) (res Error, err error) {
+func (c *Client) TestRequestStringIPArrayArray(ctx context.Context, request OptIPArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -6556,7 +6556,7 @@ func (c *Client) TestRequestStringIPNullableArray(ctx context.Context, request O
 // TestRequestStringIPNullableArrayArray invokes test_request_string_ip_nullable_array_array operation.
 //
 // POST /test_request_string_ip_nullable_array_array
-func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, request OptIPArray) (res Error, err error) {
+func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, request OptIPArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -6643,7 +6643,7 @@ func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, requ
 // TestRequestStringIpv4 invokes test_request_string_ipv4 operation.
 //
 // POST /test_request_string_ipv4
-func (c *Client) TestRequestStringIpv4(ctx context.Context, request OptIP) (res Error, err error) {
+func (c *Client) TestRequestStringIpv4(ctx context.Context, request OptIPv4) (res Error, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4",
 		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv4")),
@@ -6697,7 +6697,7 @@ func (c *Client) TestRequestStringIpv4(ctx context.Context, request OptIP) (res 
 // TestRequestStringIpv4Array invokes test_request_string_ipv4_array operation.
 //
 // POST /test_request_string_ipv4_array
-func (c *Client) TestRequestStringIpv4Array(ctx context.Context, request OptIPArray) (res Error, err error) {
+func (c *Client) TestRequestStringIpv4Array(ctx context.Context, request OptIPv4Array) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -6767,7 +6767,7 @@ func (c *Client) TestRequestStringIpv4Array(ctx context.Context, request OptIPAr
 // TestRequestStringIpv4ArrayArray invokes test_request_string_ipv4_array_array operation.
 //
 // POST /test_request_string_ipv4_array_array
-func (c *Client) TestRequestStringIpv4ArrayArray(ctx context.Context, request OptIPArray) (res Error, err error) {
+func (c *Client) TestRequestStringIpv4ArrayArray(ctx context.Context, request OptIPv4ArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -6854,7 +6854,7 @@ func (c *Client) TestRequestStringIpv4ArrayArray(ctx context.Context, request Op
 // TestRequestStringIpv4Nullable invokes test_request_string_ipv4_nullable operation.
 //
 // POST /test_request_string_ipv4_nullable
-func (c *Client) TestRequestStringIpv4Nullable(ctx context.Context, request OptIP) (res Error, err error) {
+func (c *Client) TestRequestStringIpv4Nullable(ctx context.Context, request OptIPv4) (res Error, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4Nullable",
 		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv4_nullable")),
@@ -6908,7 +6908,7 @@ func (c *Client) TestRequestStringIpv4Nullable(ctx context.Context, request OptI
 // TestRequestStringIpv4NullableArray invokes test_request_string_ipv4_nullable_array operation.
 //
 // POST /test_request_string_ipv4_nullable_array
-func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request OptIPArray) (res Error, err error) {
+func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request OptIPv4Array) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -6978,7 +6978,7 @@ func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request
 // TestRequestStringIpv4NullableArrayArray invokes test_request_string_ipv4_nullable_array_array operation.
 //
 // POST /test_request_string_ipv4_nullable_array_array
-func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, request OptIPArray) (res Error, err error) {
+func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, request OptIPv4ArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -7065,7 +7065,7 @@ func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, re
 // TestRequestStringIpv6 invokes test_request_string_ipv6 operation.
 //
 // POST /test_request_string_ipv6
-func (c *Client) TestRequestStringIpv6(ctx context.Context, request OptIP) (res Error, err error) {
+func (c *Client) TestRequestStringIpv6(ctx context.Context, request OptIPv6) (res Error, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6",
 		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv6")),
@@ -7119,7 +7119,7 @@ func (c *Client) TestRequestStringIpv6(ctx context.Context, request OptIP) (res 
 // TestRequestStringIpv6Array invokes test_request_string_ipv6_array operation.
 //
 // POST /test_request_string_ipv6_array
-func (c *Client) TestRequestStringIpv6Array(ctx context.Context, request OptIPArray) (res Error, err error) {
+func (c *Client) TestRequestStringIpv6Array(ctx context.Context, request OptIPv6Array) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -7189,7 +7189,7 @@ func (c *Client) TestRequestStringIpv6Array(ctx context.Context, request OptIPAr
 // TestRequestStringIpv6ArrayArray invokes test_request_string_ipv6_array_array operation.
 //
 // POST /test_request_string_ipv6_array_array
-func (c *Client) TestRequestStringIpv6ArrayArray(ctx context.Context, request OptIPArray) (res Error, err error) {
+func (c *Client) TestRequestStringIpv6ArrayArray(ctx context.Context, request OptIPv6ArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -7276,7 +7276,7 @@ func (c *Client) TestRequestStringIpv6ArrayArray(ctx context.Context, request Op
 // TestRequestStringIpv6Nullable invokes test_request_string_ipv6_nullable operation.
 //
 // POST /test_request_string_ipv6_nullable
-func (c *Client) TestRequestStringIpv6Nullable(ctx context.Context, request OptIP) (res Error, err error) {
+func (c *Client) TestRequestStringIpv6Nullable(ctx context.Context, request OptIPv6) (res Error, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6Nullable",
 		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv6_nullable")),
@@ -7330,7 +7330,7 @@ func (c *Client) TestRequestStringIpv6Nullable(ctx context.Context, request OptI
 // TestRequestStringIpv6NullableArray invokes test_request_string_ipv6_nullable_array operation.
 //
 // POST /test_request_string_ipv6_nullable_array
-func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request OptIPArray) (res Error, err error) {
+func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request OptIPv6Array) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -7400,7 +7400,7 @@ func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request
 // TestRequestStringIpv6NullableArrayArray invokes test_request_string_ipv6_nullable_array_array operation.
 //
 // POST /test_request_string_ipv6_nullable_array_array
-func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, request OptIPArray) (res Error, err error) {
+func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, request OptIPv6ArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -7611,7 +7611,7 @@ func (c *Client) TestRequestStringNullableArray(ctx context.Context, request Opt
 // TestRequestStringNullableArrayArray invokes test_request_string_nullable_array_array operation.
 //
 // POST /test_request_string_nullable_array_array
-func (c *Client) TestRequestStringNullableArrayArray(ctx context.Context, request OptStringArray) (res Error, err error) {
+func (c *Client) TestRequestStringNullableArrayArray(ctx context.Context, request OptStringArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -7822,7 +7822,7 @@ func (c *Client) TestRequestStringPasswordArray(ctx context.Context, request Opt
 // TestRequestStringPasswordArrayArray invokes test_request_string_password_array_array operation.
 //
 // POST /test_request_string_password_array_array
-func (c *Client) TestRequestStringPasswordArrayArray(ctx context.Context, request OptStringArray) (res Error, err error) {
+func (c *Client) TestRequestStringPasswordArrayArray(ctx context.Context, request OptStringArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -8033,7 +8033,7 @@ func (c *Client) TestRequestStringPasswordNullableArray(ctx context.Context, req
 // TestRequestStringPasswordNullableArrayArray invokes test_request_string_password_nullable_array_array operation.
 //
 // POST /test_request_string_password_nullable_array_array
-func (c *Client) TestRequestStringPasswordNullableArrayArray(ctx context.Context, request OptStringArray) (res Error, err error) {
+func (c *Client) TestRequestStringPasswordNullableArrayArray(ctx context.Context, request OptStringArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -8244,7 +8244,7 @@ func (c *Client) TestRequestStringTimeArray(ctx context.Context, request OptTime
 // TestRequestStringTimeArrayArray invokes test_request_string_time_array_array operation.
 //
 // POST /test_request_string_time_array_array
-func (c *Client) TestRequestStringTimeArrayArray(ctx context.Context, request OptTimeArray) (res Error, err error) {
+func (c *Client) TestRequestStringTimeArrayArray(ctx context.Context, request OptTimeArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -8455,7 +8455,7 @@ func (c *Client) TestRequestStringTimeNullableArray(ctx context.Context, request
 // TestRequestStringTimeNullableArrayArray invokes test_request_string_time_nullable_array_array operation.
 //
 // POST /test_request_string_time_nullable_array_array
-func (c *Client) TestRequestStringTimeNullableArrayArray(ctx context.Context, request OptTimeArray) (res Error, err error) {
+func (c *Client) TestRequestStringTimeNullableArrayArray(ctx context.Context, request OptTimeArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -8542,7 +8542,7 @@ func (c *Client) TestRequestStringTimeNullableArrayArray(ctx context.Context, re
 // TestRequestStringURI invokes test_request_string_uri operation.
 //
 // POST /test_request_string_uri
-func (c *Client) TestRequestStringURI(ctx context.Context, request OptURL) (res Error, err error) {
+func (c *Client) TestRequestStringURI(ctx context.Context, request OptURI) (res Error, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURI",
 		trace.WithAttributes(otelogen.OperationID("test_request_string_uri")),
@@ -8596,7 +8596,7 @@ func (c *Client) TestRequestStringURI(ctx context.Context, request OptURL) (res 
 // TestRequestStringURIArray invokes test_request_string_uri_array operation.
 //
 // POST /test_request_string_uri_array
-func (c *Client) TestRequestStringURIArray(ctx context.Context, request OptURLArray) (res Error, err error) {
+func (c *Client) TestRequestStringURIArray(ctx context.Context, request OptURIArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -8666,7 +8666,7 @@ func (c *Client) TestRequestStringURIArray(ctx context.Context, request OptURLAr
 // TestRequestStringURIArrayArray invokes test_request_string_uri_array_array operation.
 //
 // POST /test_request_string_uri_array_array
-func (c *Client) TestRequestStringURIArrayArray(ctx context.Context, request OptURLArray) (res Error, err error) {
+func (c *Client) TestRequestStringURIArrayArray(ctx context.Context, request OptURIArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -8753,7 +8753,7 @@ func (c *Client) TestRequestStringURIArrayArray(ctx context.Context, request Opt
 // TestRequestStringURINullable invokes test_request_string_uri_nullable operation.
 //
 // POST /test_request_string_uri_nullable
-func (c *Client) TestRequestStringURINullable(ctx context.Context, request OptURL) (res Error, err error) {
+func (c *Client) TestRequestStringURINullable(ctx context.Context, request OptURI) (res Error, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURINullable",
 		trace.WithAttributes(otelogen.OperationID("test_request_string_uri_nullable")),
@@ -8807,7 +8807,7 @@ func (c *Client) TestRequestStringURINullable(ctx context.Context, request OptUR
 // TestRequestStringURINullableArray invokes test_request_string_uri_nullable_array operation.
 //
 // POST /test_request_string_uri_nullable_array
-func (c *Client) TestRequestStringURINullableArray(ctx context.Context, request OptURLArray) (res Error, err error) {
+func (c *Client) TestRequestStringURINullableArray(ctx context.Context, request OptURIArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -8877,7 +8877,7 @@ func (c *Client) TestRequestStringURINullableArray(ctx context.Context, request 
 // TestRequestStringURINullableArrayArray invokes test_request_string_uri_nullable_array_array operation.
 //
 // POST /test_request_string_uri_nullable_array_array
-func (c *Client) TestRequestStringURINullableArrayArray(ctx context.Context, request OptURLArray) (res Error, err error) {
+func (c *Client) TestRequestStringURINullableArrayArray(ctx context.Context, request OptURIArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -9088,7 +9088,7 @@ func (c *Client) TestRequestStringUUIDArray(ctx context.Context, request OptUUID
 // TestRequestStringUUIDArrayArray invokes test_request_string_uuid_array_array operation.
 //
 // POST /test_request_string_uuid_array_array
-func (c *Client) TestRequestStringUUIDArrayArray(ctx context.Context, request OptUUIDArray) (res Error, err error) {
+func (c *Client) TestRequestStringUUIDArrayArray(ctx context.Context, request OptUUIDArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -9299,7 +9299,7 @@ func (c *Client) TestRequestStringUUIDNullableArray(ctx context.Context, request
 // TestRequestStringUUIDNullableArrayArray invokes test_request_string_uuid_nullable_array_array operation.
 //
 // POST /test_request_string_uuid_nullable_array_array
-func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, request OptUUIDArray) (res Error, err error) {
+func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, request OptUUIDArrayArray) (res Error, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {

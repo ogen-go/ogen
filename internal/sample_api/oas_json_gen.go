@@ -3613,6 +3613,60 @@ func (o *OptData) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes time.Time as json.
+func (o OptDate) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+	if !o.Set {
+		return
+	}
+	format(e, o.Value)
+}
+
+// Decode decodes time.Time from json.
+func (o *OptDate) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, error)) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptDate to nil")
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		v, err := format(d)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptDate", d.Next())
+	}
+}
+
+// Encode encodes time.Time as json.
+func (o OptDateTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+	if !o.Set {
+		return
+	}
+	format(e, o.Value)
+}
+
+// Decode decodes time.Time from json.
+func (o *OptDateTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, error)) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptDateTime to nil")
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		v, err := format(d)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptDateTime", d.Next())
+	}
+}
+
 // Encode encodes DefaultTestEnum as json.
 func (o OptDefaultTestEnum) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -3741,6 +3795,60 @@ func (o *OptIP) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf("unexpected type %q while reading OptIP", d.Next())
+	}
+}
+
+// Encode encodes net.IP as json.
+func (o OptIPv4) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	json.EncodeIP(e, o.Value)
+}
+
+// Decode decodes net.IP from json.
+func (o *OptIPv4) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptIPv4 to nil")
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		v, err := json.DecodeIP(d)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptIPv4", d.Next())
+	}
+}
+
+// Encode encodes net.IP as json.
+func (o OptIPv6) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	json.EncodeIP(e, o.Value)
+}
+
+// Decode decodes net.IP from json.
+func (o *OptIPv6) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptIPv6 to nil")
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		v, err := json.DecodeIP(d)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptIPv6", d.Next())
 	}
 }
 
@@ -4155,7 +4263,7 @@ func (o *OptTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 }
 
 // Encode encodes url.URL as json.
-func (o OptURL) Encode(e *jx.Writer) {
+func (o OptURI) Encode(e *jx.Writer) {
 	if !o.Set {
 		return
 	}
@@ -4163,9 +4271,9 @@ func (o OptURL) Encode(e *jx.Writer) {
 }
 
 // Decode decodes url.URL from json.
-func (o *OptURL) Decode(d *jx.Decoder) error {
+func (o *OptURI) Decode(d *jx.Decoder) error {
 	if o == nil {
-		return errors.New("invalid: unable to decode OptURL to nil")
+		return errors.New("invalid: unable to decode OptURI to nil")
 	}
 	switch d.Next() {
 	case jx.String:
@@ -4177,7 +4285,7 @@ func (o *OptURL) Decode(d *jx.Decoder) error {
 		o.Value = v
 		return nil
 	default:
-		return errors.Errorf("unexpected type %q while reading OptURL", d.Next())
+		return errors.Errorf("unexpected type %q while reading OptURI", d.Next())
 	}
 }
 
