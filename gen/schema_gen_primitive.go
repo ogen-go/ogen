@@ -105,6 +105,9 @@ func TypeFormatMapping() map[jsonschema.SchemaType]map[string]ir.PrimitiveType {
 			"ipv6":      ir.IP,
 			"uri":       ir.URL,
 			"password":  ir.String,
+			"email":     ir.String,
+			"binary":    ir.String,
+			"hostname":  ir.String,
 			"":          ir.String,
 		},
 		jsonschema.Boolean: {

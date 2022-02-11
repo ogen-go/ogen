@@ -140,6 +140,16 @@ func generateSpec() *ogen.Spec {
 				Required: false,
 			})
 		}},
+		{"request_required", func(op *ogen.Operation, schema *ogen.NamedSchema) {
+			op.SetRequestBody(&ogen.RequestBody{
+				Content: map[string]ogen.Media{
+					string(ir.ContentTypeJSON): {
+						Schema: schema.Schema,
+					},
+				},
+				Required: true,
+			})
+		}},
 		{"response", func(op *ogen.Operation, schema *ogen.NamedSchema) {
 			op.SetResponses(ogen.Responses{
 				"200": {
