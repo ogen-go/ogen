@@ -25101,7 +25101,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 // com/rest/overview/resources-in-the-rest-api#http-verbs).".
 //
 // PUT /repos/{owner}/{repo}/issues/{issue_number}/lock
-func (c *Client) IssuesLock(ctx context.Context, request OptIssuesLockReq, params IssuesLockParams) (res IssuesLockRes, err error) {
+func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, params IssuesLockParams) (res IssuesLockRes, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -28158,7 +28158,7 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 // request. If no parameters are provided, the import will be restarted.
 //
 // PATCH /repos/{owner}/{repo}/import
-func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptMigrationsUpdateImportReq, params MigrationsUpdateImportParams) (res Import, err error) {
+func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigrationsUpdateImportReq, params MigrationsUpdateImportParams) (res Import, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsUpdateImport",
 		trace.WithAttributes(otelogen.OperationID("migrations/update-import")),
@@ -35119,7 +35119,7 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 // organization owner or a project `admin` to add a collaborator.
 //
 // PUT /projects/{project_id}/collaborators/{username}
-func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptProjectsAddCollaboratorReq, params ProjectsAddCollaboratorParams) (res ProjectsAddCollaboratorRes, err error) {
+func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProjectsAddCollaboratorReq, params ProjectsAddCollaboratorParams) (res ProjectsAddCollaboratorRes, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -39337,7 +39337,7 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 // com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
-func (c *Client) PullsMerge(ctx context.Context, request OptPullsMergeReq, params PullsMergeParams) (res PullsMergeRes, err error) {
+func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, params PullsMergeParams) (res PullsMergeRes, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -39807,7 +39807,7 @@ func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, par
 // branch into the pull request branch.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/update-branch
-func (c *Client) PullsUpdateBranch(ctx context.Context, request OptPullsUpdateBranchReq, params PullsUpdateBranchParams) (res PullsUpdateBranchRes, err error) {
+func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdateBranchReq, params PullsUpdateBranchParams) (res PullsUpdateBranchRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsUpdateBranch",
 		trace.WithAttributes(otelogen.OperationID("pulls/update-branch")),
@@ -44952,7 +44952,7 @@ func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request Re
 // [GitHub Support](https://support.github.com/contact?tags=dotcom-rest-api).
 //
 // POST /repos/{owner}/{repo}/forks
-func (c *Client) ReposCreateFork(ctx context.Context, request OptReposCreateForkReq, params ReposCreateForkParams) (res ReposCreateForkRes, err error) {
+func (c *Client) ReposCreateFork(ctx context.Context, request OptNilReposCreateForkReq, params ReposCreateForkParams) (res ReposCreateForkRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateFork",
 		trace.WithAttributes(otelogen.OperationID("repos/create-fork")),
@@ -45225,11 +45225,12 @@ func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request Re
 // Pages](/github/working-with-github-pages/about-github-pages).".
 //
 // POST /repos/{owner}/{repo}/pages
-func (c *Client) ReposCreatePagesSite(ctx context.Context, request ReposCreatePagesSiteReq, params ReposCreatePagesSiteParams) (res ReposCreatePagesSiteRes, err error) {
+func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreatePagesSiteReq, params ReposCreatePagesSiteParams) (res ReposCreatePagesSiteRes, err error) {
 	if err := func() error {
-		if err := request.Validate(); err != nil {
+		if err := request.Value.Validate(); err != nil {
 			return err
 		}
+		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -45511,7 +45512,7 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 // share the same `config` as long as those webhooks do not have any `events` that overlap.
 //
 // POST /repos/{owner}/{repo}/hooks
-func (c *Client) ReposCreateWebhook(ctx context.Context, request OptReposCreateWebhookReq, params ReposCreateWebhookParams) (res ReposCreateWebhookRes, err error) {
+func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCreateWebhookReq, params ReposCreateWebhookParams) (res ReposCreateWebhookRes, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateWebhook",
 		trace.WithAttributes(otelogen.OperationID("repos/create-webhook")),
@@ -60038,7 +60039,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 // /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
 //
 // PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
-func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, request OptTeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (res TeamsAddOrUpdateProjectPermissionsInOrgRes, err error) {
+func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, request OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (res TeamsAddOrUpdateProjectPermissionsInOrgRes, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {

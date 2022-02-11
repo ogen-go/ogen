@@ -2572,14 +2572,14 @@ func decodeIssuesCreateMilestoneRequest(r *http.Request, span trace.Span) (req I
 	}
 }
 
-func decodeIssuesLockRequest(r *http.Request, span trace.Span) (req OptIssuesLockReq, err error) {
+func decodeIssuesLockRequest(r *http.Request, span trace.Span) (req OptNilIssuesLockReq, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIssuesLockReq
+		var request OptNilIssuesLockReq
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3054,14 +3054,14 @@ func decodeMigrationsStartImportRequest(r *http.Request, span trace.Span) (req M
 	}
 }
 
-func decodeMigrationsUpdateImportRequest(r *http.Request, span trace.Span) (req OptMigrationsUpdateImportReq, err error) {
+func decodeMigrationsUpdateImportRequest(r *http.Request, span trace.Span) (req OptNilMigrationsUpdateImportReq, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptMigrationsUpdateImportReq
+		var request OptNilMigrationsUpdateImportReq
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3569,14 +3569,14 @@ func decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeProjectsAddCollaboratorRequest(r *http.Request, span trace.Span) (req OptProjectsAddCollaboratorReq, err error) {
+func decodeProjectsAddCollaboratorRequest(r *http.Request, span trace.Span) (req OptNilProjectsAddCollaboratorReq, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptProjectsAddCollaboratorReq
+		var request OptNilProjectsAddCollaboratorReq
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4185,14 +4185,14 @@ func decodePullsDismissReviewRequest(r *http.Request, span trace.Span) (req Pull
 	}
 }
 
-func decodePullsMergeRequest(r *http.Request, span trace.Span) (req OptPullsMergeReq, err error) {
+func decodePullsMergeRequest(r *http.Request, span trace.Span) (req OptNilPullsMergeReq, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptPullsMergeReq
+		var request OptNilPullsMergeReq
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4379,14 +4379,14 @@ func decodePullsUpdateRequest(r *http.Request, span trace.Span) (req OptPullsUpd
 	}
 }
 
-func decodePullsUpdateBranchRequest(r *http.Request, span trace.Span) (req OptPullsUpdateBranchReq, err error) {
+func decodePullsUpdateBranchRequest(r *http.Request, span trace.Span) (req OptNilPullsUpdateBranchReq, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptPullsUpdateBranchReq
+		var request OptNilPullsUpdateBranchReq
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5461,14 +5461,14 @@ func decodeReposCreateForAuthenticatedUserRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeReposCreateForkRequest(r *http.Request, span trace.Span) (req OptReposCreateForkReq, err error) {
+func decodeReposCreateForkRequest(r *http.Request, span trace.Span) (req OptNilReposCreateForkReq, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptReposCreateForkReq
+		var request OptNilReposCreateForkReq
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5578,14 +5578,14 @@ func decodeReposCreateOrUpdateFileContentsRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeReposCreatePagesSiteRequest(r *http.Request, span trace.Span) (req ReposCreatePagesSiteReq, err error) {
+func decodeReposCreatePagesSiteRequest(r *http.Request, span trace.Span) (req NilReposCreatePagesSiteReq, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
 		}
 
-		var request ReposCreatePagesSiteReq
+		var request NilReposCreatePagesSiteReq
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5609,9 +5609,10 @@ func decodeReposCreatePagesSiteRequest(r *http.Request, span trace.Span) (req Re
 			return req, errors.Wrap(err, "decode ReposCreatePagesSite:application/json request")
 		}
 		if err := func() error {
-			if err := request.Validate(); err != nil {
+			if err := request.Value.Validate(); err != nil {
 				return err
 			}
+			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposCreatePagesSite request")
@@ -5694,14 +5695,14 @@ func decodeReposCreateUsingTemplateRequest(r *http.Request, span trace.Span) (re
 	}
 }
 
-func decodeReposCreateWebhookRequest(r *http.Request, span trace.Span) (req OptReposCreateWebhookReq, err error) {
+func decodeReposCreateWebhookRequest(r *http.Request, span trace.Span) (req OptNilReposCreateWebhookReq, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptReposCreateWebhookReq
+		var request OptNilReposCreateWebhookReq
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6954,14 +6955,14 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Request, span 
 	}
 }
 
-func decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request, span trace.Span) (req OptTeamsAddOrUpdateProjectPermissionsInOrgReq, err error) {
+func decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request, span trace.Span) (req OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTeamsAddOrUpdateProjectPermissionsInOrgReq
+		var request OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)

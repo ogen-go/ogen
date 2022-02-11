@@ -2752,56 +2752,6 @@ func (o *OptMmdsConfig) Decode(d *jx.Decoder) error {
 	}
 }
 
-// Encode encodes MmdsPatchReq as json.
-func (o OptMmdsPatchReq) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes MmdsPatchReq from json.
-func (o *OptMmdsPatchReq) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptMmdsPatchReq to nil")
-	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptMmdsPatchReq", d.Next())
-	}
-}
-
-// Encode encodes MmdsPutReq as json.
-func (o OptMmdsPutReq) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes MmdsPutReq from json.
-func (o *OptMmdsPutReq) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptMmdsPutReq to nil")
-	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptMmdsPutReq", d.Next())
-	}
-}
-
 // Encode encodes RateLimiter as json.
 func (o OptRateLimiter) Encode(e *jx.Writer) {
 	if !o.Set {

@@ -226,14 +226,14 @@ func decodeMmdsConfigPutRequest(r *http.Request, span trace.Span) (req MmdsConfi
 	}
 }
 
-func decodeMmdsPatchRequest(r *http.Request, span trace.Span) (req OptMmdsPatchReq, err error) {
+func decodeMmdsPatchRequest(r *http.Request, span trace.Span) (req *MmdsPatchReq, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptMmdsPatchReq
+		var request *MmdsPatchReq
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -249,10 +249,12 @@ func decodeMmdsPatchRequest(r *http.Request, span trace.Span) (req OptMmdsPatchR
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			var elem MmdsPatchReq
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
+			request = &elem
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode MmdsPatch:application/json request")
@@ -263,14 +265,14 @@ func decodeMmdsPatchRequest(r *http.Request, span trace.Span) (req OptMmdsPatchR
 	}
 }
 
-func decodeMmdsPutRequest(r *http.Request, span trace.Span) (req OptMmdsPutReq, err error) {
+func decodeMmdsPutRequest(r *http.Request, span trace.Span) (req *MmdsPutReq, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptMmdsPutReq
+		var request *MmdsPutReq
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -286,10 +288,12 @@ func decodeMmdsPutRequest(r *http.Request, span trace.Span) (req OptMmdsPutReq, 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			var elem MmdsPutReq
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
+			request = &elem
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode MmdsPut:application/json request")

@@ -98,18 +98,18 @@ func encodeMmdsConfigPutRequestJSON(req MmdsConfig, span trace.Span) (data *jx.W
 	return e, nil
 }
 
-func encodeMmdsPatchRequestJSON(req OptMmdsPatchReq, span trace.Span) (data *jx.Writer, err error) {
+func encodeMmdsPatchRequestJSON(req *MmdsPatchReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
+	if req != nil {
 		req.Encode(e)
 	}
 
 	return e, nil
 }
 
-func encodeMmdsPutRequestJSON(req OptMmdsPutReq, span trace.Span) (data *jx.Writer, err error) {
+func encodeMmdsPutRequestJSON(req *MmdsPutReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
+	if req != nil {
 		req.Encode(e)
 	}
 

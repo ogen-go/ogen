@@ -304,6 +304,40 @@ func decodeTestRequestBooleanNullableArrayArrayResponse(resp *http.Response, spa
 	}
 }
 
+func decodeTestRequestEmptyStructResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
 func decodeTestRequestFormatTestResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -1970,6 +2004,5004 @@ func decodeTestRequestNumberNullableArrayArrayResponse(resp *http.Response, span
 	}
 }
 
+func decodeTestRequestRequiredAnyResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredBooleanResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredBooleanArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredBooleanArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredBooleanNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredBooleanNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredBooleanNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredEmptyStructResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredFormatTestResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredIntegerResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredIntegerArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredIntegerArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt32Response(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt32ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt32NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt64Response(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt64ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt64NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredIntegerNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredIntegerNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredIntegerNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberDoubleResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberDoubleArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberDoubleArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberDoubleNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberDoubleNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberDoubleNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberFloatResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberFloatArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberFloatArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberFloatNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberFloatNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberFloatNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt32Response(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt32ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt32NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt64Response(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt64ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt64NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredNumberNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringBinaryResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringBinaryArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringBinaryArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringBinaryNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringBinaryNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringBinaryNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringByteResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringByteArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringByteArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringByteNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringByteNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringByteNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringDateResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringDateArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringDateArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringDateNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringDateNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringDateNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringDateTimeResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringDateTimeArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringDateTimeArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringDateTimeNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringDateTimeNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringDateTimeNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringDurationResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringDurationArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringDurationArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringDurationNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringDurationNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringDurationNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringEmailResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringEmailArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringEmailArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringEmailNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringEmailNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringEmailNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringHostnameResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringHostnameArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringHostnameArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringHostnameNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringHostnameNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringHostnameNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringIPResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringIPArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringIPArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringIPNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringIPNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringIPNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv4Response(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv4ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv4ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv4NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv4NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv4NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv6Response(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv6ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv6ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv6NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv6NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv6NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringPasswordResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringPasswordArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringPasswordArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringPasswordNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringPasswordNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringPasswordNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringTimeResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringTimeArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringTimeArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringTimeNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringTimeNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringTimeNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringURIResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringURIArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringURIArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringURINullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringURINullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringURINullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringUUIDResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringUUIDArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringUUIDArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringUUIDNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringUUIDNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestRequiredStringUUIDNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
 func decodeTestRequestStringResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -2039,6 +7071,210 @@ func decodeTestRequestStringArrayResponse(resp *http.Response, span trace.Span) 
 }
 
 func decodeTestRequestStringArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestStringBinaryResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestStringBinaryArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestStringBinaryArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestStringBinaryNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestStringBinaryNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestStringBinaryNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -2855,6 +8091,414 @@ func decodeTestRequestStringDurationNullableArrayResponse(resp *http.Response, s
 }
 
 func decodeTestRequestStringDurationNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestStringEmailResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestStringEmailArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestStringEmailArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestStringEmailNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestStringEmailNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestStringEmailNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestStringHostnameResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestStringHostnameArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestStringHostnameArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestStringHostnameNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestStringHostnameNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response Error
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestRequestStringHostnameNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -4586,7 +10230,7 @@ func decodeTestResponseBooleanArrayArrayResponse(resp *http.Response, span trace
 	}
 }
 
-func decodeTestResponseBooleanNullableResponse(resp *http.Response, span trace.Span) (res bool, err error) {
+func decodeTestResponseBooleanNullableResponse(resp *http.Response, span trace.Span) (res NilBool, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -4601,11 +10245,9 @@ func decodeTestResponseBooleanNullableResponse(resp *http.Response, span trace.S
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response bool
+			var response NilBool
 			if err := func() error {
-				v, err := d.Bool()
-				response = bool(v)
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -4702,6 +10344,40 @@ func decodeTestResponseBooleanNullableArrayArrayResponse(resp *http.Response, sp
 					response = append(response, elem)
 					return nil
 				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseEmptyStructResponse(resp *http.Response, span trace.Span) (res TestResponseEmptyStructOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response TestResponseEmptyStructOK
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -5016,7 +10692,7 @@ func decodeTestResponseIntegerInt32ArrayArrayResponse(resp *http.Response, span 
 	}
 }
 
-func decodeTestResponseIntegerInt32NullableResponse(resp *http.Response, span trace.Span) (res int32, err error) {
+func decodeTestResponseIntegerInt32NullableResponse(resp *http.Response, span trace.Span) (res NilInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -5031,11 +10707,9 @@ func decodeTestResponseIntegerInt32NullableResponse(resp *http.Response, span tr
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response int32
+			var response NilInt32
 			if err := func() error {
-				v, err := d.Int32()
-				response = int32(v)
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -5280,7 +10954,7 @@ func decodeTestResponseIntegerInt64ArrayArrayResponse(resp *http.Response, span 
 	}
 }
 
-func decodeTestResponseIntegerInt64NullableResponse(resp *http.Response, span trace.Span) (res int64, err error) {
+func decodeTestResponseIntegerInt64NullableResponse(resp *http.Response, span trace.Span) (res NilInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -5295,11 +10969,9 @@ func decodeTestResponseIntegerInt64NullableResponse(resp *http.Response, span tr
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response int64
+			var response NilInt64
 			if err := func() error {
-				v, err := d.Int64()
-				response = int64(v)
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -5412,7 +11084,7 @@ func decodeTestResponseIntegerInt64NullableArrayArrayResponse(resp *http.Respons
 	}
 }
 
-func decodeTestResponseIntegerNullableResponse(resp *http.Response, span trace.Span) (res int, err error) {
+func decodeTestResponseIntegerNullableResponse(resp *http.Response, span trace.Span) (res NilInt, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -5427,11 +11099,9 @@ func decodeTestResponseIntegerNullableResponse(resp *http.Response, span trace.S
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response int
+			var response NilInt
 			if err := func() error {
-				v, err := d.Int()
-				response = int(v)
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -5808,7 +11478,7 @@ func decodeTestResponseNumberDoubleArrayArrayResponse(resp *http.Response, span 
 	}
 }
 
-func decodeTestResponseNumberDoubleNullableResponse(resp *http.Response, span trace.Span) (res float64, err error) {
+func decodeTestResponseNumberDoubleNullableResponse(resp *http.Response, span trace.Span) (res NilFloat64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -5823,11 +11493,9 @@ func decodeTestResponseNumberDoubleNullableResponse(resp *http.Response, span tr
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response float64
+			var response NilFloat64
 			if err := func() error {
-				v, err := d.Float64()
-				response = float64(v)
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -6072,7 +11740,7 @@ func decodeTestResponseNumberFloatArrayArrayResponse(resp *http.Response, span t
 	}
 }
 
-func decodeTestResponseNumberFloatNullableResponse(resp *http.Response, span trace.Span) (res float32, err error) {
+func decodeTestResponseNumberFloatNullableResponse(resp *http.Response, span trace.Span) (res NilFloat32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -6087,11 +11755,9 @@ func decodeTestResponseNumberFloatNullableResponse(resp *http.Response, span tra
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response float32
+			var response NilFloat32
 			if err := func() error {
-				v, err := d.Float32()
-				response = float32(v)
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -6336,7 +12002,7 @@ func decodeTestResponseNumberInt32ArrayArrayResponse(resp *http.Response, span t
 	}
 }
 
-func decodeTestResponseNumberInt32NullableResponse(resp *http.Response, span trace.Span) (res int32, err error) {
+func decodeTestResponseNumberInt32NullableResponse(resp *http.Response, span trace.Span) (res NilInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -6351,11 +12017,9 @@ func decodeTestResponseNumberInt32NullableResponse(resp *http.Response, span tra
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response int32
+			var response NilInt32
 			if err := func() error {
-				v, err := d.Int32()
-				response = int32(v)
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -6600,7 +12264,7 @@ func decodeTestResponseNumberInt64ArrayArrayResponse(resp *http.Response, span t
 	}
 }
 
-func decodeTestResponseNumberInt64NullableResponse(resp *http.Response, span trace.Span) (res int64, err error) {
+func decodeTestResponseNumberInt64NullableResponse(resp *http.Response, span trace.Span) (res NilInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -6615,11 +12279,9 @@ func decodeTestResponseNumberInt64NullableResponse(resp *http.Response, span tra
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response int64
+			var response NilInt64
 			if err := func() error {
-				v, err := d.Int64()
-				response = int64(v)
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -6732,7 +12394,7 @@ func decodeTestResponseNumberInt64NullableArrayArrayResponse(resp *http.Response
 	}
 }
 
-func decodeTestResponseNumberNullableResponse(resp *http.Response, span trace.Span) (res float64, err error) {
+func decodeTestResponseNumberNullableResponse(resp *http.Response, span trace.Span) (res NilFloat64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -6747,11 +12409,9 @@ func decodeTestResponseNumberNullableResponse(resp *http.Response, span trace.Sp
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response float64
+			var response NilFloat64
 			if err := func() error {
-				v, err := d.Float64()
-				response = float64(v)
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -6945,6 +12605,268 @@ func decodeTestResponseStringArrayResponse(resp *http.Response, span trace.Span)
 }
 
 func decodeTestResponseStringArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response [][]string
+			if err := func() error {
+				response = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = append(response, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseStringBinaryResponse(resp *http.Response, span trace.Span) (res string, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response string
+			if err := func() error {
+				v, err := d.Str()
+				response = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseStringBinaryArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response []string
+			if err := func() error {
+				response = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					response = append(response, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseStringBinaryArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response [][]string
+			if err := func() error {
+				response = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = append(response, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseStringBinaryNullableResponse(resp *http.Response, span trace.Span) (res NilString, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response NilString
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseStringBinaryNullableArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response []string
+			if err := func() error {
+				response = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					response = append(response, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseStringBinaryNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -7392,7 +13314,7 @@ func decodeTestResponseStringDateArrayArrayResponse(resp *http.Response, span tr
 	}
 }
 
-func decodeTestResponseStringDateNullableResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
+func decodeTestResponseStringDateNullableResponse(resp *http.Response, span trace.Span) (res NilDate, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -7407,11 +13329,9 @@ func decodeTestResponseStringDateNullableResponse(resp *http.Response, span trac
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response time.Time
+			var response NilDate
 			if err := func() error {
-				v, err := json.DecodeDate(d)
-				response = v
-				if err != nil {
+				if err := response.Decode(d, json.DecodeDate); err != nil {
 					return err
 				}
 				return nil
@@ -7656,7 +13576,7 @@ func decodeTestResponseStringDateTimeArrayArrayResponse(resp *http.Response, spa
 	}
 }
 
-func decodeTestResponseStringDateTimeNullableResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
+func decodeTestResponseStringDateTimeNullableResponse(resp *http.Response, span trace.Span) (res NilDateTime, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -7671,11 +13591,9 @@ func decodeTestResponseStringDateTimeNullableResponse(resp *http.Response, span 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response time.Time
+			var response NilDateTime
 			if err := func() error {
-				v, err := json.DecodeDateTime(d)
-				response = v
-				if err != nil {
+				if err := response.Decode(d, json.DecodeDateTime); err != nil {
 					return err
 				}
 				return nil
@@ -7920,7 +13838,7 @@ func decodeTestResponseStringDurationArrayArrayResponse(resp *http.Response, spa
 	}
 }
 
-func decodeTestResponseStringDurationNullableResponse(resp *http.Response, span trace.Span) (res time.Duration, err error) {
+func decodeTestResponseStringDurationNullableResponse(resp *http.Response, span trace.Span) (res NilDuration, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -7935,11 +13853,9 @@ func decodeTestResponseStringDurationNullableResponse(resp *http.Response, span 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response time.Duration
+			var response NilDuration
 			if err := func() error {
-				v, err := json.DecodeDuration(d)
-				response = v
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -8025,6 +13941,530 @@ func decodeTestResponseStringDurationNullableArrayArrayResponse(resp *http.Respo
 						var elemElem time.Duration
 						v, err := json.DecodeDuration(d)
 						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = append(response, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseStringEmailResponse(resp *http.Response, span trace.Span) (res string, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response string
+			if err := func() error {
+				v, err := d.Str()
+				response = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseStringEmailArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response []string
+			if err := func() error {
+				response = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					response = append(response, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseStringEmailArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response [][]string
+			if err := func() error {
+				response = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = append(response, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseStringEmailNullableResponse(resp *http.Response, span trace.Span) (res NilString, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response NilString
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseStringEmailNullableArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response []string
+			if err := func() error {
+				response = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					response = append(response, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseStringEmailNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response [][]string
+			if err := func() error {
+				response = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = append(response, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseStringHostnameResponse(resp *http.Response, span trace.Span) (res string, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response string
+			if err := func() error {
+				v, err := d.Str()
+				response = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseStringHostnameArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response []string
+			if err := func() error {
+				response = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					response = append(response, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseStringHostnameArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response [][]string
+			if err := func() error {
+				response = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					response = append(response, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseStringHostnameNullableResponse(resp *http.Response, span trace.Span) (res NilString, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response NilString
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseStringHostnameNullableArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response []string
+			if err := func() error {
+				response = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem string
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					response = append(response, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestResponseStringHostnameNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response [][]string
+			if err := func() error {
+				response = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []string
+					elem = nil
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem string
+						v, err := d.Str()
+						elemElem = string(v)
 						if err != nil {
 							return err
 						}
@@ -8184,7 +14624,7 @@ func decodeTestResponseStringIPArrayArrayResponse(resp *http.Response, span trac
 	}
 }
 
-func decodeTestResponseStringIPNullableResponse(resp *http.Response, span trace.Span) (res net.IP, err error) {
+func decodeTestResponseStringIPNullableResponse(resp *http.Response, span trace.Span) (res NilIP, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -8199,11 +14639,9 @@ func decodeTestResponseStringIPNullableResponse(resp *http.Response, span trace.
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response net.IP
+			var response NilIP
 			if err := func() error {
-				v, err := json.DecodeIP(d)
-				response = v
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -8448,7 +14886,7 @@ func decodeTestResponseStringIpv4ArrayArrayResponse(resp *http.Response, span tr
 	}
 }
 
-func decodeTestResponseStringIpv4NullableResponse(resp *http.Response, span trace.Span) (res net.IP, err error) {
+func decodeTestResponseStringIpv4NullableResponse(resp *http.Response, span trace.Span) (res NilIPv4, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -8463,11 +14901,9 @@ func decodeTestResponseStringIpv4NullableResponse(resp *http.Response, span trac
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response net.IP
+			var response NilIPv4
 			if err := func() error {
-				v, err := json.DecodeIP(d)
-				response = v
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -8712,7 +15148,7 @@ func decodeTestResponseStringIpv6ArrayArrayResponse(resp *http.Response, span tr
 	}
 }
 
-func decodeTestResponseStringIpv6NullableResponse(resp *http.Response, span trace.Span) (res net.IP, err error) {
+func decodeTestResponseStringIpv6NullableResponse(resp *http.Response, span trace.Span) (res NilIPv6, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -8727,11 +15163,9 @@ func decodeTestResponseStringIpv6NullableResponse(resp *http.Response, span trac
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response net.IP
+			var response NilIPv6
 			if err := func() error {
-				v, err := json.DecodeIP(d)
-				response = v
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -8844,7 +15278,7 @@ func decodeTestResponseStringIpv6NullableArrayArrayResponse(resp *http.Response,
 	}
 }
 
-func decodeTestResponseStringNullableResponse(resp *http.Response, span trace.Span) (res string, err error) {
+func decodeTestResponseStringNullableResponse(resp *http.Response, span trace.Span) (res NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -8859,11 +15293,9 @@ func decodeTestResponseStringNullableResponse(resp *http.Response, span trace.Sp
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response string
+			var response NilString
 			if err := func() error {
-				v, err := d.Str()
-				response = string(v)
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -9108,7 +15540,7 @@ func decodeTestResponseStringPasswordArrayArrayResponse(resp *http.Response, spa
 	}
 }
 
-func decodeTestResponseStringPasswordNullableResponse(resp *http.Response, span trace.Span) (res string, err error) {
+func decodeTestResponseStringPasswordNullableResponse(resp *http.Response, span trace.Span) (res NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -9123,11 +15555,9 @@ func decodeTestResponseStringPasswordNullableResponse(resp *http.Response, span 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response string
+			var response NilString
 			if err := func() error {
-				v, err := d.Str()
-				response = string(v)
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -9372,7 +15802,7 @@ func decodeTestResponseStringTimeArrayArrayResponse(resp *http.Response, span tr
 	}
 }
 
-func decodeTestResponseStringTimeNullableResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
+func decodeTestResponseStringTimeNullableResponse(resp *http.Response, span trace.Span) (res NilTime, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -9387,11 +15817,9 @@ func decodeTestResponseStringTimeNullableResponse(resp *http.Response, span trac
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response time.Time
+			var response NilTime
 			if err := func() error {
-				v, err := json.DecodeTime(d)
-				response = v
-				if err != nil {
+				if err := response.Decode(d, json.DecodeTime); err != nil {
 					return err
 				}
 				return nil
@@ -9636,7 +16064,7 @@ func decodeTestResponseStringURIArrayArrayResponse(resp *http.Response, span tra
 	}
 }
 
-func decodeTestResponseStringURINullableResponse(resp *http.Response, span trace.Span) (res url.URL, err error) {
+func decodeTestResponseStringURINullableResponse(resp *http.Response, span trace.Span) (res NilURI, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -9651,11 +16079,9 @@ func decodeTestResponseStringURINullableResponse(resp *http.Response, span trace
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response url.URL
+			var response NilURI
 			if err := func() error {
-				v, err := json.DecodeURI(d)
-				response = v
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil
@@ -9900,7 +16326,7 @@ func decodeTestResponseStringUUIDArrayArrayResponse(resp *http.Response, span tr
 	}
 }
 
-func decodeTestResponseStringUUIDNullableResponse(resp *http.Response, span trace.Span) (res uuid.UUID, err error) {
+func decodeTestResponseStringUUIDNullableResponse(resp *http.Response, span trace.Span) (res NilUUID, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -9915,11 +16341,9 @@ func decodeTestResponseStringUUIDNullableResponse(resp *http.Response, span trac
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response uuid.UUID
+			var response NilUUID
 			if err := func() error {
-				v, err := json.DecodeUUID(d)
-				response = v
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil

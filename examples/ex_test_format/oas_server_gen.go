@@ -79,23 +79,27 @@ type Handler interface {
 	// TestRequestBooleanArray implements test_request_boolean_array operation.
 	//
 	// POST /test_request_boolean_array
-	TestRequestBooleanArray(ctx context.Context, req OptBoolArray) (Error, error)
+	TestRequestBooleanArray(ctx context.Context, req []bool) (Error, error)
 	// TestRequestBooleanArrayArray implements test_request_boolean_array_array operation.
 	//
 	// POST /test_request_boolean_array_array
-	TestRequestBooleanArrayArray(ctx context.Context, req OptBoolArrayArray) (Error, error)
+	TestRequestBooleanArrayArray(ctx context.Context, req [][]bool) (Error, error)
 	// TestRequestBooleanNullable implements test_request_boolean_nullable operation.
 	//
 	// POST /test_request_boolean_nullable
-	TestRequestBooleanNullable(ctx context.Context, req OptBool) (Error, error)
+	TestRequestBooleanNullable(ctx context.Context, req OptNilBool) (Error, error)
 	// TestRequestBooleanNullableArray implements test_request_boolean_nullable_array operation.
 	//
 	// POST /test_request_boolean_nullable_array
-	TestRequestBooleanNullableArray(ctx context.Context, req OptBoolArray) (Error, error)
+	TestRequestBooleanNullableArray(ctx context.Context, req []bool) (Error, error)
 	// TestRequestBooleanNullableArrayArray implements test_request_boolean_nullable_array_array operation.
 	//
 	// POST /test_request_boolean_nullable_array_array
-	TestRequestBooleanNullableArrayArray(ctx context.Context, req OptBoolArrayArray) (Error, error)
+	TestRequestBooleanNullableArrayArray(ctx context.Context, req [][]bool) (Error, error)
+	// TestRequestEmptyStruct implements test_request_EmptyStruct operation.
+	//
+	// POST /test_request_EmptyStruct
+	TestRequestEmptyStruct(ctx context.Context, req *TestRequestEmptyStructReq) (Error, error)
 	// TestRequestFormatTest implements test_request_FormatTest operation.
 	//
 	// POST /test_request_FormatTest
@@ -107,11 +111,11 @@ type Handler interface {
 	// TestRequestIntegerArray implements test_request_integer_array operation.
 	//
 	// POST /test_request_integer_array
-	TestRequestIntegerArray(ctx context.Context, req OptIntArray) (Error, error)
+	TestRequestIntegerArray(ctx context.Context, req []int) (Error, error)
 	// TestRequestIntegerArrayArray implements test_request_integer_array_array operation.
 	//
 	// POST /test_request_integer_array_array
-	TestRequestIntegerArrayArray(ctx context.Context, req OptIntArrayArray) (Error, error)
+	TestRequestIntegerArrayArray(ctx context.Context, req [][]int) (Error, error)
 	// TestRequestIntegerInt32 implements test_request_integer_int32 operation.
 	//
 	// POST /test_request_integer_int32
@@ -119,23 +123,23 @@ type Handler interface {
 	// TestRequestIntegerInt32Array implements test_request_integer_int32_array operation.
 	//
 	// POST /test_request_integer_int32_array
-	TestRequestIntegerInt32Array(ctx context.Context, req OptInt32Array) (Error, error)
+	TestRequestIntegerInt32Array(ctx context.Context, req []int32) (Error, error)
 	// TestRequestIntegerInt32ArrayArray implements test_request_integer_int32_array_array operation.
 	//
 	// POST /test_request_integer_int32_array_array
-	TestRequestIntegerInt32ArrayArray(ctx context.Context, req OptInt32ArrayArray) (Error, error)
+	TestRequestIntegerInt32ArrayArray(ctx context.Context, req [][]int32) (Error, error)
 	// TestRequestIntegerInt32Nullable implements test_request_integer_int32_nullable operation.
 	//
 	// POST /test_request_integer_int32_nullable
-	TestRequestIntegerInt32Nullable(ctx context.Context, req OptInt32) (Error, error)
+	TestRequestIntegerInt32Nullable(ctx context.Context, req OptNilInt32) (Error, error)
 	// TestRequestIntegerInt32NullableArray implements test_request_integer_int32_nullable_array operation.
 	//
 	// POST /test_request_integer_int32_nullable_array
-	TestRequestIntegerInt32NullableArray(ctx context.Context, req OptInt32Array) (Error, error)
+	TestRequestIntegerInt32NullableArray(ctx context.Context, req []int32) (Error, error)
 	// TestRequestIntegerInt32NullableArrayArray implements test_request_integer_int32_nullable_array_array operation.
 	//
 	// POST /test_request_integer_int32_nullable_array_array
-	TestRequestIntegerInt32NullableArrayArray(ctx context.Context, req OptInt32ArrayArray) (Error, error)
+	TestRequestIntegerInt32NullableArrayArray(ctx context.Context, req [][]int32) (Error, error)
 	// TestRequestIntegerInt64 implements test_request_integer_int64 operation.
 	//
 	// POST /test_request_integer_int64
@@ -143,35 +147,35 @@ type Handler interface {
 	// TestRequestIntegerInt64Array implements test_request_integer_int64_array operation.
 	//
 	// POST /test_request_integer_int64_array
-	TestRequestIntegerInt64Array(ctx context.Context, req OptInt64Array) (Error, error)
+	TestRequestIntegerInt64Array(ctx context.Context, req []int64) (Error, error)
 	// TestRequestIntegerInt64ArrayArray implements test_request_integer_int64_array_array operation.
 	//
 	// POST /test_request_integer_int64_array_array
-	TestRequestIntegerInt64ArrayArray(ctx context.Context, req OptInt64ArrayArray) (Error, error)
+	TestRequestIntegerInt64ArrayArray(ctx context.Context, req [][]int64) (Error, error)
 	// TestRequestIntegerInt64Nullable implements test_request_integer_int64_nullable operation.
 	//
 	// POST /test_request_integer_int64_nullable
-	TestRequestIntegerInt64Nullable(ctx context.Context, req OptInt64) (Error, error)
+	TestRequestIntegerInt64Nullable(ctx context.Context, req OptNilInt64) (Error, error)
 	// TestRequestIntegerInt64NullableArray implements test_request_integer_int64_nullable_array operation.
 	//
 	// POST /test_request_integer_int64_nullable_array
-	TestRequestIntegerInt64NullableArray(ctx context.Context, req OptInt64Array) (Error, error)
+	TestRequestIntegerInt64NullableArray(ctx context.Context, req []int64) (Error, error)
 	// TestRequestIntegerInt64NullableArrayArray implements test_request_integer_int64_nullable_array_array operation.
 	//
 	// POST /test_request_integer_int64_nullable_array_array
-	TestRequestIntegerInt64NullableArrayArray(ctx context.Context, req OptInt64ArrayArray) (Error, error)
+	TestRequestIntegerInt64NullableArrayArray(ctx context.Context, req [][]int64) (Error, error)
 	// TestRequestIntegerNullable implements test_request_integer_nullable operation.
 	//
 	// POST /test_request_integer_nullable
-	TestRequestIntegerNullable(ctx context.Context, req OptInt) (Error, error)
+	TestRequestIntegerNullable(ctx context.Context, req OptNilInt) (Error, error)
 	// TestRequestIntegerNullableArray implements test_request_integer_nullable_array operation.
 	//
 	// POST /test_request_integer_nullable_array
-	TestRequestIntegerNullableArray(ctx context.Context, req OptIntArray) (Error, error)
+	TestRequestIntegerNullableArray(ctx context.Context, req []int) (Error, error)
 	// TestRequestIntegerNullableArrayArray implements test_request_integer_nullable_array_array operation.
 	//
 	// POST /test_request_integer_nullable_array_array
-	TestRequestIntegerNullableArrayArray(ctx context.Context, req OptIntArrayArray) (Error, error)
+	TestRequestIntegerNullableArrayArray(ctx context.Context, req [][]int) (Error, error)
 	// TestRequestNumber implements test_request_number operation.
 	//
 	// POST /test_request_number
@@ -179,11 +183,11 @@ type Handler interface {
 	// TestRequestNumberArray implements test_request_number_array operation.
 	//
 	// POST /test_request_number_array
-	TestRequestNumberArray(ctx context.Context, req OptFloat64Array) (Error, error)
+	TestRequestNumberArray(ctx context.Context, req []float64) (Error, error)
 	// TestRequestNumberArrayArray implements test_request_number_array_array operation.
 	//
 	// POST /test_request_number_array_array
-	TestRequestNumberArrayArray(ctx context.Context, req OptFloat64ArrayArray) (Error, error)
+	TestRequestNumberArrayArray(ctx context.Context, req [][]float64) (Error, error)
 	// TestRequestNumberDouble implements test_request_number_double operation.
 	//
 	// POST /test_request_number_double
@@ -191,23 +195,23 @@ type Handler interface {
 	// TestRequestNumberDoubleArray implements test_request_number_double_array operation.
 	//
 	// POST /test_request_number_double_array
-	TestRequestNumberDoubleArray(ctx context.Context, req OptFloat64Array) (Error, error)
+	TestRequestNumberDoubleArray(ctx context.Context, req []float64) (Error, error)
 	// TestRequestNumberDoubleArrayArray implements test_request_number_double_array_array operation.
 	//
 	// POST /test_request_number_double_array_array
-	TestRequestNumberDoubleArrayArray(ctx context.Context, req OptFloat64ArrayArray) (Error, error)
+	TestRequestNumberDoubleArrayArray(ctx context.Context, req [][]float64) (Error, error)
 	// TestRequestNumberDoubleNullable implements test_request_number_double_nullable operation.
 	//
 	// POST /test_request_number_double_nullable
-	TestRequestNumberDoubleNullable(ctx context.Context, req OptFloat64) (Error, error)
+	TestRequestNumberDoubleNullable(ctx context.Context, req OptNilFloat64) (Error, error)
 	// TestRequestNumberDoubleNullableArray implements test_request_number_double_nullable_array operation.
 	//
 	// POST /test_request_number_double_nullable_array
-	TestRequestNumberDoubleNullableArray(ctx context.Context, req OptFloat64Array) (Error, error)
+	TestRequestNumberDoubleNullableArray(ctx context.Context, req []float64) (Error, error)
 	// TestRequestNumberDoubleNullableArrayArray implements test_request_number_double_nullable_array_array operation.
 	//
 	// POST /test_request_number_double_nullable_array_array
-	TestRequestNumberDoubleNullableArrayArray(ctx context.Context, req OptFloat64ArrayArray) (Error, error)
+	TestRequestNumberDoubleNullableArrayArray(ctx context.Context, req [][]float64) (Error, error)
 	// TestRequestNumberFloat implements test_request_number_float operation.
 	//
 	// POST /test_request_number_float
@@ -215,23 +219,23 @@ type Handler interface {
 	// TestRequestNumberFloatArray implements test_request_number_float_array operation.
 	//
 	// POST /test_request_number_float_array
-	TestRequestNumberFloatArray(ctx context.Context, req OptFloat32Array) (Error, error)
+	TestRequestNumberFloatArray(ctx context.Context, req []float32) (Error, error)
 	// TestRequestNumberFloatArrayArray implements test_request_number_float_array_array operation.
 	//
 	// POST /test_request_number_float_array_array
-	TestRequestNumberFloatArrayArray(ctx context.Context, req OptFloat32ArrayArray) (Error, error)
+	TestRequestNumberFloatArrayArray(ctx context.Context, req [][]float32) (Error, error)
 	// TestRequestNumberFloatNullable implements test_request_number_float_nullable operation.
 	//
 	// POST /test_request_number_float_nullable
-	TestRequestNumberFloatNullable(ctx context.Context, req OptFloat32) (Error, error)
+	TestRequestNumberFloatNullable(ctx context.Context, req OptNilFloat32) (Error, error)
 	// TestRequestNumberFloatNullableArray implements test_request_number_float_nullable_array operation.
 	//
 	// POST /test_request_number_float_nullable_array
-	TestRequestNumberFloatNullableArray(ctx context.Context, req OptFloat32Array) (Error, error)
+	TestRequestNumberFloatNullableArray(ctx context.Context, req []float32) (Error, error)
 	// TestRequestNumberFloatNullableArrayArray implements test_request_number_float_nullable_array_array operation.
 	//
 	// POST /test_request_number_float_nullable_array_array
-	TestRequestNumberFloatNullableArrayArray(ctx context.Context, req OptFloat32ArrayArray) (Error, error)
+	TestRequestNumberFloatNullableArrayArray(ctx context.Context, req [][]float32) (Error, error)
 	// TestRequestNumberInt32 implements test_request_number_int32 operation.
 	//
 	// POST /test_request_number_int32
@@ -239,23 +243,23 @@ type Handler interface {
 	// TestRequestNumberInt32Array implements test_request_number_int32_array operation.
 	//
 	// POST /test_request_number_int32_array
-	TestRequestNumberInt32Array(ctx context.Context, req OptInt32Array) (Error, error)
+	TestRequestNumberInt32Array(ctx context.Context, req []int32) (Error, error)
 	// TestRequestNumberInt32ArrayArray implements test_request_number_int32_array_array operation.
 	//
 	// POST /test_request_number_int32_array_array
-	TestRequestNumberInt32ArrayArray(ctx context.Context, req OptInt32ArrayArray) (Error, error)
+	TestRequestNumberInt32ArrayArray(ctx context.Context, req [][]int32) (Error, error)
 	// TestRequestNumberInt32Nullable implements test_request_number_int32_nullable operation.
 	//
 	// POST /test_request_number_int32_nullable
-	TestRequestNumberInt32Nullable(ctx context.Context, req OptInt32) (Error, error)
+	TestRequestNumberInt32Nullable(ctx context.Context, req OptNilInt32) (Error, error)
 	// TestRequestNumberInt32NullableArray implements test_request_number_int32_nullable_array operation.
 	//
 	// POST /test_request_number_int32_nullable_array
-	TestRequestNumberInt32NullableArray(ctx context.Context, req OptInt32Array) (Error, error)
+	TestRequestNumberInt32NullableArray(ctx context.Context, req []int32) (Error, error)
 	// TestRequestNumberInt32NullableArrayArray implements test_request_number_int32_nullable_array_array operation.
 	//
 	// POST /test_request_number_int32_nullable_array_array
-	TestRequestNumberInt32NullableArrayArray(ctx context.Context, req OptInt32ArrayArray) (Error, error)
+	TestRequestNumberInt32NullableArrayArray(ctx context.Context, req [][]int32) (Error, error)
 	// TestRequestNumberInt64 implements test_request_number_int64 operation.
 	//
 	// POST /test_request_number_int64
@@ -263,35 +267,623 @@ type Handler interface {
 	// TestRequestNumberInt64Array implements test_request_number_int64_array operation.
 	//
 	// POST /test_request_number_int64_array
-	TestRequestNumberInt64Array(ctx context.Context, req OptInt64Array) (Error, error)
+	TestRequestNumberInt64Array(ctx context.Context, req []int64) (Error, error)
 	// TestRequestNumberInt64ArrayArray implements test_request_number_int64_array_array operation.
 	//
 	// POST /test_request_number_int64_array_array
-	TestRequestNumberInt64ArrayArray(ctx context.Context, req OptInt64ArrayArray) (Error, error)
+	TestRequestNumberInt64ArrayArray(ctx context.Context, req [][]int64) (Error, error)
 	// TestRequestNumberInt64Nullable implements test_request_number_int64_nullable operation.
 	//
 	// POST /test_request_number_int64_nullable
-	TestRequestNumberInt64Nullable(ctx context.Context, req OptInt64) (Error, error)
+	TestRequestNumberInt64Nullable(ctx context.Context, req OptNilInt64) (Error, error)
 	// TestRequestNumberInt64NullableArray implements test_request_number_int64_nullable_array operation.
 	//
 	// POST /test_request_number_int64_nullable_array
-	TestRequestNumberInt64NullableArray(ctx context.Context, req OptInt64Array) (Error, error)
+	TestRequestNumberInt64NullableArray(ctx context.Context, req []int64) (Error, error)
 	// TestRequestNumberInt64NullableArrayArray implements test_request_number_int64_nullable_array_array operation.
 	//
 	// POST /test_request_number_int64_nullable_array_array
-	TestRequestNumberInt64NullableArrayArray(ctx context.Context, req OptInt64ArrayArray) (Error, error)
+	TestRequestNumberInt64NullableArrayArray(ctx context.Context, req [][]int64) (Error, error)
 	// TestRequestNumberNullable implements test_request_number_nullable operation.
 	//
 	// POST /test_request_number_nullable
-	TestRequestNumberNullable(ctx context.Context, req OptFloat64) (Error, error)
+	TestRequestNumberNullable(ctx context.Context, req OptNilFloat64) (Error, error)
 	// TestRequestNumberNullableArray implements test_request_number_nullable_array operation.
 	//
 	// POST /test_request_number_nullable_array
-	TestRequestNumberNullableArray(ctx context.Context, req OptFloat64Array) (Error, error)
+	TestRequestNumberNullableArray(ctx context.Context, req []float64) (Error, error)
 	// TestRequestNumberNullableArrayArray implements test_request_number_nullable_array_array operation.
 	//
 	// POST /test_request_number_nullable_array_array
-	TestRequestNumberNullableArrayArray(ctx context.Context, req OptFloat64ArrayArray) (Error, error)
+	TestRequestNumberNullableArrayArray(ctx context.Context, req [][]float64) (Error, error)
+	// TestRequestRequiredAny implements test_request_required_Any operation.
+	//
+	// POST /test_request_required_Any
+	TestRequestRequiredAny(ctx context.Context, req jx.Raw) (Error, error)
+	// TestRequestRequiredBoolean implements test_request_required_boolean operation.
+	//
+	// POST /test_request_required_boolean
+	TestRequestRequiredBoolean(ctx context.Context, req bool) (Error, error)
+	// TestRequestRequiredBooleanArray implements test_request_required_boolean_array operation.
+	//
+	// POST /test_request_required_boolean_array
+	TestRequestRequiredBooleanArray(ctx context.Context, req []bool) (Error, error)
+	// TestRequestRequiredBooleanArrayArray implements test_request_required_boolean_array_array operation.
+	//
+	// POST /test_request_required_boolean_array_array
+	TestRequestRequiredBooleanArrayArray(ctx context.Context, req [][]bool) (Error, error)
+	// TestRequestRequiredBooleanNullable implements test_request_required_boolean_nullable operation.
+	//
+	// POST /test_request_required_boolean_nullable
+	TestRequestRequiredBooleanNullable(ctx context.Context, req NilBool) (Error, error)
+	// TestRequestRequiredBooleanNullableArray implements test_request_required_boolean_nullable_array operation.
+	//
+	// POST /test_request_required_boolean_nullable_array
+	TestRequestRequiredBooleanNullableArray(ctx context.Context, req []bool) (Error, error)
+	// TestRequestRequiredBooleanNullableArrayArray implements test_request_required_boolean_nullable_array_array operation.
+	//
+	// POST /test_request_required_boolean_nullable_array_array
+	TestRequestRequiredBooleanNullableArrayArray(ctx context.Context, req [][]bool) (Error, error)
+	// TestRequestRequiredEmptyStruct implements test_request_required_EmptyStruct operation.
+	//
+	// POST /test_request_required_EmptyStruct
+	TestRequestRequiredEmptyStruct(ctx context.Context, req TestRequestRequiredEmptyStructReq) (Error, error)
+	// TestRequestRequiredFormatTest implements test_request_required_FormatTest operation.
+	//
+	// POST /test_request_required_FormatTest
+	TestRequestRequiredFormatTest(ctx context.Context, req TestRequestRequiredFormatTestReq) (Error, error)
+	// TestRequestRequiredInteger implements test_request_required_integer operation.
+	//
+	// POST /test_request_required_integer
+	TestRequestRequiredInteger(ctx context.Context, req int) (Error, error)
+	// TestRequestRequiredIntegerArray implements test_request_required_integer_array operation.
+	//
+	// POST /test_request_required_integer_array
+	TestRequestRequiredIntegerArray(ctx context.Context, req []int) (Error, error)
+	// TestRequestRequiredIntegerArrayArray implements test_request_required_integer_array_array operation.
+	//
+	// POST /test_request_required_integer_array_array
+	TestRequestRequiredIntegerArrayArray(ctx context.Context, req [][]int) (Error, error)
+	// TestRequestRequiredIntegerInt32 implements test_request_required_integer_int32 operation.
+	//
+	// POST /test_request_required_integer_int32
+	TestRequestRequiredIntegerInt32(ctx context.Context, req int32) (Error, error)
+	// TestRequestRequiredIntegerInt32Array implements test_request_required_integer_int32_array operation.
+	//
+	// POST /test_request_required_integer_int32_array
+	TestRequestRequiredIntegerInt32Array(ctx context.Context, req []int32) (Error, error)
+	// TestRequestRequiredIntegerInt32ArrayArray implements test_request_required_integer_int32_array_array operation.
+	//
+	// POST /test_request_required_integer_int32_array_array
+	TestRequestRequiredIntegerInt32ArrayArray(ctx context.Context, req [][]int32) (Error, error)
+	// TestRequestRequiredIntegerInt32Nullable implements test_request_required_integer_int32_nullable operation.
+	//
+	// POST /test_request_required_integer_int32_nullable
+	TestRequestRequiredIntegerInt32Nullable(ctx context.Context, req NilInt32) (Error, error)
+	// TestRequestRequiredIntegerInt32NullableArray implements test_request_required_integer_int32_nullable_array operation.
+	//
+	// POST /test_request_required_integer_int32_nullable_array
+	TestRequestRequiredIntegerInt32NullableArray(ctx context.Context, req []int32) (Error, error)
+	// TestRequestRequiredIntegerInt32NullableArrayArray implements test_request_required_integer_int32_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_int32_nullable_array_array
+	TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.Context, req [][]int32) (Error, error)
+	// TestRequestRequiredIntegerInt64 implements test_request_required_integer_int64 operation.
+	//
+	// POST /test_request_required_integer_int64
+	TestRequestRequiredIntegerInt64(ctx context.Context, req int64) (Error, error)
+	// TestRequestRequiredIntegerInt64Array implements test_request_required_integer_int64_array operation.
+	//
+	// POST /test_request_required_integer_int64_array
+	TestRequestRequiredIntegerInt64Array(ctx context.Context, req []int64) (Error, error)
+	// TestRequestRequiredIntegerInt64ArrayArray implements test_request_required_integer_int64_array_array operation.
+	//
+	// POST /test_request_required_integer_int64_array_array
+	TestRequestRequiredIntegerInt64ArrayArray(ctx context.Context, req [][]int64) (Error, error)
+	// TestRequestRequiredIntegerInt64Nullable implements test_request_required_integer_int64_nullable operation.
+	//
+	// POST /test_request_required_integer_int64_nullable
+	TestRequestRequiredIntegerInt64Nullable(ctx context.Context, req NilInt64) (Error, error)
+	// TestRequestRequiredIntegerInt64NullableArray implements test_request_required_integer_int64_nullable_array operation.
+	//
+	// POST /test_request_required_integer_int64_nullable_array
+	TestRequestRequiredIntegerInt64NullableArray(ctx context.Context, req []int64) (Error, error)
+	// TestRequestRequiredIntegerInt64NullableArrayArray implements test_request_required_integer_int64_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_int64_nullable_array_array
+	TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.Context, req [][]int64) (Error, error)
+	// TestRequestRequiredIntegerNullable implements test_request_required_integer_nullable operation.
+	//
+	// POST /test_request_required_integer_nullable
+	TestRequestRequiredIntegerNullable(ctx context.Context, req NilInt) (Error, error)
+	// TestRequestRequiredIntegerNullableArray implements test_request_required_integer_nullable_array operation.
+	//
+	// POST /test_request_required_integer_nullable_array
+	TestRequestRequiredIntegerNullableArray(ctx context.Context, req []int) (Error, error)
+	// TestRequestRequiredIntegerNullableArrayArray implements test_request_required_integer_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_nullable_array_array
+	TestRequestRequiredIntegerNullableArrayArray(ctx context.Context, req [][]int) (Error, error)
+	// TestRequestRequiredNumber implements test_request_required_number operation.
+	//
+	// POST /test_request_required_number
+	TestRequestRequiredNumber(ctx context.Context, req float64) (Error, error)
+	// TestRequestRequiredNumberArray implements test_request_required_number_array operation.
+	//
+	// POST /test_request_required_number_array
+	TestRequestRequiredNumberArray(ctx context.Context, req []float64) (Error, error)
+	// TestRequestRequiredNumberArrayArray implements test_request_required_number_array_array operation.
+	//
+	// POST /test_request_required_number_array_array
+	TestRequestRequiredNumberArrayArray(ctx context.Context, req [][]float64) (Error, error)
+	// TestRequestRequiredNumberDouble implements test_request_required_number_double operation.
+	//
+	// POST /test_request_required_number_double
+	TestRequestRequiredNumberDouble(ctx context.Context, req float64) (Error, error)
+	// TestRequestRequiredNumberDoubleArray implements test_request_required_number_double_array operation.
+	//
+	// POST /test_request_required_number_double_array
+	TestRequestRequiredNumberDoubleArray(ctx context.Context, req []float64) (Error, error)
+	// TestRequestRequiredNumberDoubleArrayArray implements test_request_required_number_double_array_array operation.
+	//
+	// POST /test_request_required_number_double_array_array
+	TestRequestRequiredNumberDoubleArrayArray(ctx context.Context, req [][]float64) (Error, error)
+	// TestRequestRequiredNumberDoubleNullable implements test_request_required_number_double_nullable operation.
+	//
+	// POST /test_request_required_number_double_nullable
+	TestRequestRequiredNumberDoubleNullable(ctx context.Context, req NilFloat64) (Error, error)
+	// TestRequestRequiredNumberDoubleNullableArray implements test_request_required_number_double_nullable_array operation.
+	//
+	// POST /test_request_required_number_double_nullable_array
+	TestRequestRequiredNumberDoubleNullableArray(ctx context.Context, req []float64) (Error, error)
+	// TestRequestRequiredNumberDoubleNullableArrayArray implements test_request_required_number_double_nullable_array_array operation.
+	//
+	// POST /test_request_required_number_double_nullable_array_array
+	TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.Context, req [][]float64) (Error, error)
+	// TestRequestRequiredNumberFloat implements test_request_required_number_float operation.
+	//
+	// POST /test_request_required_number_float
+	TestRequestRequiredNumberFloat(ctx context.Context, req float32) (Error, error)
+	// TestRequestRequiredNumberFloatArray implements test_request_required_number_float_array operation.
+	//
+	// POST /test_request_required_number_float_array
+	TestRequestRequiredNumberFloatArray(ctx context.Context, req []float32) (Error, error)
+	// TestRequestRequiredNumberFloatArrayArray implements test_request_required_number_float_array_array operation.
+	//
+	// POST /test_request_required_number_float_array_array
+	TestRequestRequiredNumberFloatArrayArray(ctx context.Context, req [][]float32) (Error, error)
+	// TestRequestRequiredNumberFloatNullable implements test_request_required_number_float_nullable operation.
+	//
+	// POST /test_request_required_number_float_nullable
+	TestRequestRequiredNumberFloatNullable(ctx context.Context, req NilFloat32) (Error, error)
+	// TestRequestRequiredNumberFloatNullableArray implements test_request_required_number_float_nullable_array operation.
+	//
+	// POST /test_request_required_number_float_nullable_array
+	TestRequestRequiredNumberFloatNullableArray(ctx context.Context, req []float32) (Error, error)
+	// TestRequestRequiredNumberFloatNullableArrayArray implements test_request_required_number_float_nullable_array_array operation.
+	//
+	// POST /test_request_required_number_float_nullable_array_array
+	TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Context, req [][]float32) (Error, error)
+	// TestRequestRequiredNumberInt32 implements test_request_required_number_int32 operation.
+	//
+	// POST /test_request_required_number_int32
+	TestRequestRequiredNumberInt32(ctx context.Context, req int32) (Error, error)
+	// TestRequestRequiredNumberInt32Array implements test_request_required_number_int32_array operation.
+	//
+	// POST /test_request_required_number_int32_array
+	TestRequestRequiredNumberInt32Array(ctx context.Context, req []int32) (Error, error)
+	// TestRequestRequiredNumberInt32ArrayArray implements test_request_required_number_int32_array_array operation.
+	//
+	// POST /test_request_required_number_int32_array_array
+	TestRequestRequiredNumberInt32ArrayArray(ctx context.Context, req [][]int32) (Error, error)
+	// TestRequestRequiredNumberInt32Nullable implements test_request_required_number_int32_nullable operation.
+	//
+	// POST /test_request_required_number_int32_nullable
+	TestRequestRequiredNumberInt32Nullable(ctx context.Context, req NilInt32) (Error, error)
+	// TestRequestRequiredNumberInt32NullableArray implements test_request_required_number_int32_nullable_array operation.
+	//
+	// POST /test_request_required_number_int32_nullable_array
+	TestRequestRequiredNumberInt32NullableArray(ctx context.Context, req []int32) (Error, error)
+	// TestRequestRequiredNumberInt32NullableArrayArray implements test_request_required_number_int32_nullable_array_array operation.
+	//
+	// POST /test_request_required_number_int32_nullable_array_array
+	TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Context, req [][]int32) (Error, error)
+	// TestRequestRequiredNumberInt64 implements test_request_required_number_int64 operation.
+	//
+	// POST /test_request_required_number_int64
+	TestRequestRequiredNumberInt64(ctx context.Context, req int64) (Error, error)
+	// TestRequestRequiredNumberInt64Array implements test_request_required_number_int64_array operation.
+	//
+	// POST /test_request_required_number_int64_array
+	TestRequestRequiredNumberInt64Array(ctx context.Context, req []int64) (Error, error)
+	// TestRequestRequiredNumberInt64ArrayArray implements test_request_required_number_int64_array_array operation.
+	//
+	// POST /test_request_required_number_int64_array_array
+	TestRequestRequiredNumberInt64ArrayArray(ctx context.Context, req [][]int64) (Error, error)
+	// TestRequestRequiredNumberInt64Nullable implements test_request_required_number_int64_nullable operation.
+	//
+	// POST /test_request_required_number_int64_nullable
+	TestRequestRequiredNumberInt64Nullable(ctx context.Context, req NilInt64) (Error, error)
+	// TestRequestRequiredNumberInt64NullableArray implements test_request_required_number_int64_nullable_array operation.
+	//
+	// POST /test_request_required_number_int64_nullable_array
+	TestRequestRequiredNumberInt64NullableArray(ctx context.Context, req []int64) (Error, error)
+	// TestRequestRequiredNumberInt64NullableArrayArray implements test_request_required_number_int64_nullable_array_array operation.
+	//
+	// POST /test_request_required_number_int64_nullable_array_array
+	TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Context, req [][]int64) (Error, error)
+	// TestRequestRequiredNumberNullable implements test_request_required_number_nullable operation.
+	//
+	// POST /test_request_required_number_nullable
+	TestRequestRequiredNumberNullable(ctx context.Context, req NilFloat64) (Error, error)
+	// TestRequestRequiredNumberNullableArray implements test_request_required_number_nullable_array operation.
+	//
+	// POST /test_request_required_number_nullable_array
+	TestRequestRequiredNumberNullableArray(ctx context.Context, req []float64) (Error, error)
+	// TestRequestRequiredNumberNullableArrayArray implements test_request_required_number_nullable_array_array operation.
+	//
+	// POST /test_request_required_number_nullable_array_array
+	TestRequestRequiredNumberNullableArrayArray(ctx context.Context, req [][]float64) (Error, error)
+	// TestRequestRequiredString implements test_request_required_string operation.
+	//
+	// POST /test_request_required_string
+	TestRequestRequiredString(ctx context.Context, req string) (Error, error)
+	// TestRequestRequiredStringArray implements test_request_required_string_array operation.
+	//
+	// POST /test_request_required_string_array
+	TestRequestRequiredStringArray(ctx context.Context, req []string) (Error, error)
+	// TestRequestRequiredStringArrayArray implements test_request_required_string_array_array operation.
+	//
+	// POST /test_request_required_string_array_array
+	TestRequestRequiredStringArrayArray(ctx context.Context, req [][]string) (Error, error)
+	// TestRequestRequiredStringBinary implements test_request_required_string_binary operation.
+	//
+	// POST /test_request_required_string_binary
+	TestRequestRequiredStringBinary(ctx context.Context, req string) (Error, error)
+	// TestRequestRequiredStringBinaryArray implements test_request_required_string_binary_array operation.
+	//
+	// POST /test_request_required_string_binary_array
+	TestRequestRequiredStringBinaryArray(ctx context.Context, req []string) (Error, error)
+	// TestRequestRequiredStringBinaryArrayArray implements test_request_required_string_binary_array_array operation.
+	//
+	// POST /test_request_required_string_binary_array_array
+	TestRequestRequiredStringBinaryArrayArray(ctx context.Context, req [][]string) (Error, error)
+	// TestRequestRequiredStringBinaryNullable implements test_request_required_string_binary_nullable operation.
+	//
+	// POST /test_request_required_string_binary_nullable
+	TestRequestRequiredStringBinaryNullable(ctx context.Context, req NilString) (Error, error)
+	// TestRequestRequiredStringBinaryNullableArray implements test_request_required_string_binary_nullable_array operation.
+	//
+	// POST /test_request_required_string_binary_nullable_array
+	TestRequestRequiredStringBinaryNullableArray(ctx context.Context, req []string) (Error, error)
+	// TestRequestRequiredStringBinaryNullableArrayArray implements test_request_required_string_binary_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_binary_nullable_array_array
+	TestRequestRequiredStringBinaryNullableArrayArray(ctx context.Context, req [][]string) (Error, error)
+	// TestRequestRequiredStringByte implements test_request_required_string_byte operation.
+	//
+	// POST /test_request_required_string_byte
+	TestRequestRequiredStringByte(ctx context.Context, req []byte) (Error, error)
+	// TestRequestRequiredStringByteArray implements test_request_required_string_byte_array operation.
+	//
+	// POST /test_request_required_string_byte_array
+	TestRequestRequiredStringByteArray(ctx context.Context, req [][]byte) (Error, error)
+	// TestRequestRequiredStringByteArrayArray implements test_request_required_string_byte_array_array operation.
+	//
+	// POST /test_request_required_string_byte_array_array
+	TestRequestRequiredStringByteArrayArray(ctx context.Context, req [][][]byte) (Error, error)
+	// TestRequestRequiredStringByteNullable implements test_request_required_string_byte_nullable operation.
+	//
+	// POST /test_request_required_string_byte_nullable
+	TestRequestRequiredStringByteNullable(ctx context.Context, req []byte) (Error, error)
+	// TestRequestRequiredStringByteNullableArray implements test_request_required_string_byte_nullable_array operation.
+	//
+	// POST /test_request_required_string_byte_nullable_array
+	TestRequestRequiredStringByteNullableArray(ctx context.Context, req [][]byte) (Error, error)
+	// TestRequestRequiredStringByteNullableArrayArray implements test_request_required_string_byte_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_byte_nullable_array_array
+	TestRequestRequiredStringByteNullableArrayArray(ctx context.Context, req [][][]byte) (Error, error)
+	// TestRequestRequiredStringDate implements test_request_required_string_date operation.
+	//
+	// POST /test_request_required_string_date
+	TestRequestRequiredStringDate(ctx context.Context, req time.Time) (Error, error)
+	// TestRequestRequiredStringDateArray implements test_request_required_string_date_array operation.
+	//
+	// POST /test_request_required_string_date_array
+	TestRequestRequiredStringDateArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredStringDateArrayArray implements test_request_required_string_date_array_array operation.
+	//
+	// POST /test_request_required_string_date_array_array
+	TestRequestRequiredStringDateArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredStringDateNullable implements test_request_required_string_date_nullable operation.
+	//
+	// POST /test_request_required_string_date_nullable
+	TestRequestRequiredStringDateNullable(ctx context.Context, req NilDate) (Error, error)
+	// TestRequestRequiredStringDateNullableArray implements test_request_required_string_date_nullable_array operation.
+	//
+	// POST /test_request_required_string_date_nullable_array
+	TestRequestRequiredStringDateNullableArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredStringDateNullableArrayArray implements test_request_required_string_date_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_date_nullable_array_array
+	TestRequestRequiredStringDateNullableArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredStringDateTime implements test_request_required_string_date-time operation.
+	//
+	// POST /test_request_required_string_date-time
+	TestRequestRequiredStringDateTime(ctx context.Context, req time.Time) (Error, error)
+	// TestRequestRequiredStringDateTimeArray implements test_request_required_string_date-time_array operation.
+	//
+	// POST /test_request_required_string_date-time_array
+	TestRequestRequiredStringDateTimeArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredStringDateTimeArrayArray implements test_request_required_string_date-time_array_array operation.
+	//
+	// POST /test_request_required_string_date-time_array_array
+	TestRequestRequiredStringDateTimeArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredStringDateTimeNullable implements test_request_required_string_date-time_nullable operation.
+	//
+	// POST /test_request_required_string_date-time_nullable
+	TestRequestRequiredStringDateTimeNullable(ctx context.Context, req NilDateTime) (Error, error)
+	// TestRequestRequiredStringDateTimeNullableArray implements test_request_required_string_date-time_nullable_array operation.
+	//
+	// POST /test_request_required_string_date-time_nullable_array
+	TestRequestRequiredStringDateTimeNullableArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredStringDateTimeNullableArrayArray implements test_request_required_string_date-time_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_date-time_nullable_array_array
+	TestRequestRequiredStringDateTimeNullableArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredStringDuration implements test_request_required_string_duration operation.
+	//
+	// POST /test_request_required_string_duration
+	TestRequestRequiredStringDuration(ctx context.Context, req time.Duration) (Error, error)
+	// TestRequestRequiredStringDurationArray implements test_request_required_string_duration_array operation.
+	//
+	// POST /test_request_required_string_duration_array
+	TestRequestRequiredStringDurationArray(ctx context.Context, req []time.Duration) (Error, error)
+	// TestRequestRequiredStringDurationArrayArray implements test_request_required_string_duration_array_array operation.
+	//
+	// POST /test_request_required_string_duration_array_array
+	TestRequestRequiredStringDurationArrayArray(ctx context.Context, req [][]time.Duration) (Error, error)
+	// TestRequestRequiredStringDurationNullable implements test_request_required_string_duration_nullable operation.
+	//
+	// POST /test_request_required_string_duration_nullable
+	TestRequestRequiredStringDurationNullable(ctx context.Context, req NilDuration) (Error, error)
+	// TestRequestRequiredStringDurationNullableArray implements test_request_required_string_duration_nullable_array operation.
+	//
+	// POST /test_request_required_string_duration_nullable_array
+	TestRequestRequiredStringDurationNullableArray(ctx context.Context, req []time.Duration) (Error, error)
+	// TestRequestRequiredStringDurationNullableArrayArray implements test_request_required_string_duration_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_duration_nullable_array_array
+	TestRequestRequiredStringDurationNullableArrayArray(ctx context.Context, req [][]time.Duration) (Error, error)
+	// TestRequestRequiredStringEmail implements test_request_required_string_email operation.
+	//
+	// POST /test_request_required_string_email
+	TestRequestRequiredStringEmail(ctx context.Context, req string) (Error, error)
+	// TestRequestRequiredStringEmailArray implements test_request_required_string_email_array operation.
+	//
+	// POST /test_request_required_string_email_array
+	TestRequestRequiredStringEmailArray(ctx context.Context, req []string) (Error, error)
+	// TestRequestRequiredStringEmailArrayArray implements test_request_required_string_email_array_array operation.
+	//
+	// POST /test_request_required_string_email_array_array
+	TestRequestRequiredStringEmailArrayArray(ctx context.Context, req [][]string) (Error, error)
+	// TestRequestRequiredStringEmailNullable implements test_request_required_string_email_nullable operation.
+	//
+	// POST /test_request_required_string_email_nullable
+	TestRequestRequiredStringEmailNullable(ctx context.Context, req NilString) (Error, error)
+	// TestRequestRequiredStringEmailNullableArray implements test_request_required_string_email_nullable_array operation.
+	//
+	// POST /test_request_required_string_email_nullable_array
+	TestRequestRequiredStringEmailNullableArray(ctx context.Context, req []string) (Error, error)
+	// TestRequestRequiredStringEmailNullableArrayArray implements test_request_required_string_email_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_email_nullable_array_array
+	TestRequestRequiredStringEmailNullableArrayArray(ctx context.Context, req [][]string) (Error, error)
+	// TestRequestRequiredStringHostname implements test_request_required_string_hostname operation.
+	//
+	// POST /test_request_required_string_hostname
+	TestRequestRequiredStringHostname(ctx context.Context, req string) (Error, error)
+	// TestRequestRequiredStringHostnameArray implements test_request_required_string_hostname_array operation.
+	//
+	// POST /test_request_required_string_hostname_array
+	TestRequestRequiredStringHostnameArray(ctx context.Context, req []string) (Error, error)
+	// TestRequestRequiredStringHostnameArrayArray implements test_request_required_string_hostname_array_array operation.
+	//
+	// POST /test_request_required_string_hostname_array_array
+	TestRequestRequiredStringHostnameArrayArray(ctx context.Context, req [][]string) (Error, error)
+	// TestRequestRequiredStringHostnameNullable implements test_request_required_string_hostname_nullable operation.
+	//
+	// POST /test_request_required_string_hostname_nullable
+	TestRequestRequiredStringHostnameNullable(ctx context.Context, req NilString) (Error, error)
+	// TestRequestRequiredStringHostnameNullableArray implements test_request_required_string_hostname_nullable_array operation.
+	//
+	// POST /test_request_required_string_hostname_nullable_array
+	TestRequestRequiredStringHostnameNullableArray(ctx context.Context, req []string) (Error, error)
+	// TestRequestRequiredStringHostnameNullableArrayArray implements test_request_required_string_hostname_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_hostname_nullable_array_array
+	TestRequestRequiredStringHostnameNullableArrayArray(ctx context.Context, req [][]string) (Error, error)
+	// TestRequestRequiredStringIP implements test_request_required_string_ip operation.
+	//
+	// POST /test_request_required_string_ip
+	TestRequestRequiredStringIP(ctx context.Context, req net.IP) (Error, error)
+	// TestRequestRequiredStringIPArray implements test_request_required_string_ip_array operation.
+	//
+	// POST /test_request_required_string_ip_array
+	TestRequestRequiredStringIPArray(ctx context.Context, req []net.IP) (Error, error)
+	// TestRequestRequiredStringIPArrayArray implements test_request_required_string_ip_array_array operation.
+	//
+	// POST /test_request_required_string_ip_array_array
+	TestRequestRequiredStringIPArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
+	// TestRequestRequiredStringIPNullable implements test_request_required_string_ip_nullable operation.
+	//
+	// POST /test_request_required_string_ip_nullable
+	TestRequestRequiredStringIPNullable(ctx context.Context, req NilIP) (Error, error)
+	// TestRequestRequiredStringIPNullableArray implements test_request_required_string_ip_nullable_array operation.
+	//
+	// POST /test_request_required_string_ip_nullable_array
+	TestRequestRequiredStringIPNullableArray(ctx context.Context, req []net.IP) (Error, error)
+	// TestRequestRequiredStringIPNullableArrayArray implements test_request_required_string_ip_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_ip_nullable_array_array
+	TestRequestRequiredStringIPNullableArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
+	// TestRequestRequiredStringIpv4 implements test_request_required_string_ipv4 operation.
+	//
+	// POST /test_request_required_string_ipv4
+	TestRequestRequiredStringIpv4(ctx context.Context, req net.IP) (Error, error)
+	// TestRequestRequiredStringIpv4Array implements test_request_required_string_ipv4_array operation.
+	//
+	// POST /test_request_required_string_ipv4_array
+	TestRequestRequiredStringIpv4Array(ctx context.Context, req []net.IP) (Error, error)
+	// TestRequestRequiredStringIpv4ArrayArray implements test_request_required_string_ipv4_array_array operation.
+	//
+	// POST /test_request_required_string_ipv4_array_array
+	TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
+	// TestRequestRequiredStringIpv4Nullable implements test_request_required_string_ipv4_nullable operation.
+	//
+	// POST /test_request_required_string_ipv4_nullable
+	TestRequestRequiredStringIpv4Nullable(ctx context.Context, req NilIPv4) (Error, error)
+	// TestRequestRequiredStringIpv4NullableArray implements test_request_required_string_ipv4_nullable_array operation.
+	//
+	// POST /test_request_required_string_ipv4_nullable_array
+	TestRequestRequiredStringIpv4NullableArray(ctx context.Context, req []net.IP) (Error, error)
+	// TestRequestRequiredStringIpv4NullableArrayArray implements test_request_required_string_ipv4_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_ipv4_nullable_array_array
+	TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
+	// TestRequestRequiredStringIpv6 implements test_request_required_string_ipv6 operation.
+	//
+	// POST /test_request_required_string_ipv6
+	TestRequestRequiredStringIpv6(ctx context.Context, req net.IP) (Error, error)
+	// TestRequestRequiredStringIpv6Array implements test_request_required_string_ipv6_array operation.
+	//
+	// POST /test_request_required_string_ipv6_array
+	TestRequestRequiredStringIpv6Array(ctx context.Context, req []net.IP) (Error, error)
+	// TestRequestRequiredStringIpv6ArrayArray implements test_request_required_string_ipv6_array_array operation.
+	//
+	// POST /test_request_required_string_ipv6_array_array
+	TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
+	// TestRequestRequiredStringIpv6Nullable implements test_request_required_string_ipv6_nullable operation.
+	//
+	// POST /test_request_required_string_ipv6_nullable
+	TestRequestRequiredStringIpv6Nullable(ctx context.Context, req NilIPv6) (Error, error)
+	// TestRequestRequiredStringIpv6NullableArray implements test_request_required_string_ipv6_nullable_array operation.
+	//
+	// POST /test_request_required_string_ipv6_nullable_array
+	TestRequestRequiredStringIpv6NullableArray(ctx context.Context, req []net.IP) (Error, error)
+	// TestRequestRequiredStringIpv6NullableArrayArray implements test_request_required_string_ipv6_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_ipv6_nullable_array_array
+	TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
+	// TestRequestRequiredStringNullable implements test_request_required_string_nullable operation.
+	//
+	// POST /test_request_required_string_nullable
+	TestRequestRequiredStringNullable(ctx context.Context, req NilString) (Error, error)
+	// TestRequestRequiredStringNullableArray implements test_request_required_string_nullable_array operation.
+	//
+	// POST /test_request_required_string_nullable_array
+	TestRequestRequiredStringNullableArray(ctx context.Context, req []string) (Error, error)
+	// TestRequestRequiredStringNullableArrayArray implements test_request_required_string_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_nullable_array_array
+	TestRequestRequiredStringNullableArrayArray(ctx context.Context, req [][]string) (Error, error)
+	// TestRequestRequiredStringPassword implements test_request_required_string_password operation.
+	//
+	// POST /test_request_required_string_password
+	TestRequestRequiredStringPassword(ctx context.Context, req string) (Error, error)
+	// TestRequestRequiredStringPasswordArray implements test_request_required_string_password_array operation.
+	//
+	// POST /test_request_required_string_password_array
+	TestRequestRequiredStringPasswordArray(ctx context.Context, req []string) (Error, error)
+	// TestRequestRequiredStringPasswordArrayArray implements test_request_required_string_password_array_array operation.
+	//
+	// POST /test_request_required_string_password_array_array
+	TestRequestRequiredStringPasswordArrayArray(ctx context.Context, req [][]string) (Error, error)
+	// TestRequestRequiredStringPasswordNullable implements test_request_required_string_password_nullable operation.
+	//
+	// POST /test_request_required_string_password_nullable
+	TestRequestRequiredStringPasswordNullable(ctx context.Context, req NilString) (Error, error)
+	// TestRequestRequiredStringPasswordNullableArray implements test_request_required_string_password_nullable_array operation.
+	//
+	// POST /test_request_required_string_password_nullable_array
+	TestRequestRequiredStringPasswordNullableArray(ctx context.Context, req []string) (Error, error)
+	// TestRequestRequiredStringPasswordNullableArrayArray implements test_request_required_string_password_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_password_nullable_array_array
+	TestRequestRequiredStringPasswordNullableArrayArray(ctx context.Context, req [][]string) (Error, error)
+	// TestRequestRequiredStringTime implements test_request_required_string_time operation.
+	//
+	// POST /test_request_required_string_time
+	TestRequestRequiredStringTime(ctx context.Context, req time.Time) (Error, error)
+	// TestRequestRequiredStringTimeArray implements test_request_required_string_time_array operation.
+	//
+	// POST /test_request_required_string_time_array
+	TestRequestRequiredStringTimeArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredStringTimeArrayArray implements test_request_required_string_time_array_array operation.
+	//
+	// POST /test_request_required_string_time_array_array
+	TestRequestRequiredStringTimeArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredStringTimeNullable implements test_request_required_string_time_nullable operation.
+	//
+	// POST /test_request_required_string_time_nullable
+	TestRequestRequiredStringTimeNullable(ctx context.Context, req NilTime) (Error, error)
+	// TestRequestRequiredStringTimeNullableArray implements test_request_required_string_time_nullable_array operation.
+	//
+	// POST /test_request_required_string_time_nullable_array
+	TestRequestRequiredStringTimeNullableArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredStringTimeNullableArrayArray implements test_request_required_string_time_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_time_nullable_array_array
+	TestRequestRequiredStringTimeNullableArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredStringURI implements test_request_required_string_uri operation.
+	//
+	// POST /test_request_required_string_uri
+	TestRequestRequiredStringURI(ctx context.Context, req url.URL) (Error, error)
+	// TestRequestRequiredStringURIArray implements test_request_required_string_uri_array operation.
+	//
+	// POST /test_request_required_string_uri_array
+	TestRequestRequiredStringURIArray(ctx context.Context, req []url.URL) (Error, error)
+	// TestRequestRequiredStringURIArrayArray implements test_request_required_string_uri_array_array operation.
+	//
+	// POST /test_request_required_string_uri_array_array
+	TestRequestRequiredStringURIArrayArray(ctx context.Context, req [][]url.URL) (Error, error)
+	// TestRequestRequiredStringURINullable implements test_request_required_string_uri_nullable operation.
+	//
+	// POST /test_request_required_string_uri_nullable
+	TestRequestRequiredStringURINullable(ctx context.Context, req NilURI) (Error, error)
+	// TestRequestRequiredStringURINullableArray implements test_request_required_string_uri_nullable_array operation.
+	//
+	// POST /test_request_required_string_uri_nullable_array
+	TestRequestRequiredStringURINullableArray(ctx context.Context, req []url.URL) (Error, error)
+	// TestRequestRequiredStringURINullableArrayArray implements test_request_required_string_uri_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_uri_nullable_array_array
+	TestRequestRequiredStringURINullableArrayArray(ctx context.Context, req [][]url.URL) (Error, error)
+	// TestRequestRequiredStringUUID implements test_request_required_string_uuid operation.
+	//
+	// POST /test_request_required_string_uuid
+	TestRequestRequiredStringUUID(ctx context.Context, req uuid.UUID) (Error, error)
+	// TestRequestRequiredStringUUIDArray implements test_request_required_string_uuid_array operation.
+	//
+	// POST /test_request_required_string_uuid_array
+	TestRequestRequiredStringUUIDArray(ctx context.Context, req []uuid.UUID) (Error, error)
+	// TestRequestRequiredStringUUIDArrayArray implements test_request_required_string_uuid_array_array operation.
+	//
+	// POST /test_request_required_string_uuid_array_array
+	TestRequestRequiredStringUUIDArrayArray(ctx context.Context, req [][]uuid.UUID) (Error, error)
+	// TestRequestRequiredStringUUIDNullable implements test_request_required_string_uuid_nullable operation.
+	//
+	// POST /test_request_required_string_uuid_nullable
+	TestRequestRequiredStringUUIDNullable(ctx context.Context, req NilUUID) (Error, error)
+	// TestRequestRequiredStringUUIDNullableArray implements test_request_required_string_uuid_nullable_array operation.
+	//
+	// POST /test_request_required_string_uuid_nullable_array
+	TestRequestRequiredStringUUIDNullableArray(ctx context.Context, req []uuid.UUID) (Error, error)
+	// TestRequestRequiredStringUUIDNullableArrayArray implements test_request_required_string_uuid_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_uuid_nullable_array_array
+	TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Context, req [][]uuid.UUID) (Error, error)
 	// TestRequestString implements test_request_string operation.
 	//
 	// POST /test_request_string
@@ -299,35 +891,59 @@ type Handler interface {
 	// TestRequestStringArray implements test_request_string_array operation.
 	//
 	// POST /test_request_string_array
-	TestRequestStringArray(ctx context.Context, req OptStringArray) (Error, error)
+	TestRequestStringArray(ctx context.Context, req []string) (Error, error)
 	// TestRequestStringArrayArray implements test_request_string_array_array operation.
 	//
 	// POST /test_request_string_array_array
-	TestRequestStringArrayArray(ctx context.Context, req OptStringArrayArray) (Error, error)
+	TestRequestStringArrayArray(ctx context.Context, req [][]string) (Error, error)
+	// TestRequestStringBinary implements test_request_string_binary operation.
+	//
+	// POST /test_request_string_binary
+	TestRequestStringBinary(ctx context.Context, req OptString) (Error, error)
+	// TestRequestStringBinaryArray implements test_request_string_binary_array operation.
+	//
+	// POST /test_request_string_binary_array
+	TestRequestStringBinaryArray(ctx context.Context, req []string) (Error, error)
+	// TestRequestStringBinaryArrayArray implements test_request_string_binary_array_array operation.
+	//
+	// POST /test_request_string_binary_array_array
+	TestRequestStringBinaryArrayArray(ctx context.Context, req [][]string) (Error, error)
+	// TestRequestStringBinaryNullable implements test_request_string_binary_nullable operation.
+	//
+	// POST /test_request_string_binary_nullable
+	TestRequestStringBinaryNullable(ctx context.Context, req OptNilString) (Error, error)
+	// TestRequestStringBinaryNullableArray implements test_request_string_binary_nullable_array operation.
+	//
+	// POST /test_request_string_binary_nullable_array
+	TestRequestStringBinaryNullableArray(ctx context.Context, req []string) (Error, error)
+	// TestRequestStringBinaryNullableArrayArray implements test_request_string_binary_nullable_array_array operation.
+	//
+	// POST /test_request_string_binary_nullable_array_array
+	TestRequestStringBinaryNullableArrayArray(ctx context.Context, req [][]string) (Error, error)
 	// TestRequestStringByte implements test_request_string_byte operation.
 	//
 	// POST /test_request_string_byte
-	TestRequestStringByte(ctx context.Context, req OptByte) (Error, error)
+	TestRequestStringByte(ctx context.Context, req []byte) (Error, error)
 	// TestRequestStringByteArray implements test_request_string_byte_array operation.
 	//
 	// POST /test_request_string_byte_array
-	TestRequestStringByteArray(ctx context.Context, req OptByteArray) (Error, error)
+	TestRequestStringByteArray(ctx context.Context, req [][]byte) (Error, error)
 	// TestRequestStringByteArrayArray implements test_request_string_byte_array_array operation.
 	//
 	// POST /test_request_string_byte_array_array
-	TestRequestStringByteArrayArray(ctx context.Context, req OptByteArrayArray) (Error, error)
+	TestRequestStringByteArrayArray(ctx context.Context, req [][][]byte) (Error, error)
 	// TestRequestStringByteNullable implements test_request_string_byte_nullable operation.
 	//
 	// POST /test_request_string_byte_nullable
-	TestRequestStringByteNullable(ctx context.Context, req OptByte) (Error, error)
+	TestRequestStringByteNullable(ctx context.Context, req OptNilByte) (Error, error)
 	// TestRequestStringByteNullableArray implements test_request_string_byte_nullable_array operation.
 	//
 	// POST /test_request_string_byte_nullable_array
-	TestRequestStringByteNullableArray(ctx context.Context, req OptByteArray) (Error, error)
+	TestRequestStringByteNullableArray(ctx context.Context, req [][]byte) (Error, error)
 	// TestRequestStringByteNullableArrayArray implements test_request_string_byte_nullable_array_array operation.
 	//
 	// POST /test_request_string_byte_nullable_array_array
-	TestRequestStringByteNullableArrayArray(ctx context.Context, req OptByteArrayArray) (Error, error)
+	TestRequestStringByteNullableArrayArray(ctx context.Context, req [][][]byte) (Error, error)
 	// TestRequestStringDate implements test_request_string_date operation.
 	//
 	// POST /test_request_string_date
@@ -335,23 +951,23 @@ type Handler interface {
 	// TestRequestStringDateArray implements test_request_string_date_array operation.
 	//
 	// POST /test_request_string_date_array
-	TestRequestStringDateArray(ctx context.Context, req OptDateArray) (Error, error)
+	TestRequestStringDateArray(ctx context.Context, req []time.Time) (Error, error)
 	// TestRequestStringDateArrayArray implements test_request_string_date_array_array operation.
 	//
 	// POST /test_request_string_date_array_array
-	TestRequestStringDateArrayArray(ctx context.Context, req OptDateArrayArray) (Error, error)
+	TestRequestStringDateArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
 	// TestRequestStringDateNullable implements test_request_string_date_nullable operation.
 	//
 	// POST /test_request_string_date_nullable
-	TestRequestStringDateNullable(ctx context.Context, req OptDate) (Error, error)
+	TestRequestStringDateNullable(ctx context.Context, req OptNilDate) (Error, error)
 	// TestRequestStringDateNullableArray implements test_request_string_date_nullable_array operation.
 	//
 	// POST /test_request_string_date_nullable_array
-	TestRequestStringDateNullableArray(ctx context.Context, req OptDateArray) (Error, error)
+	TestRequestStringDateNullableArray(ctx context.Context, req []time.Time) (Error, error)
 	// TestRequestStringDateNullableArrayArray implements test_request_string_date_nullable_array_array operation.
 	//
 	// POST /test_request_string_date_nullable_array_array
-	TestRequestStringDateNullableArrayArray(ctx context.Context, req OptDateArrayArray) (Error, error)
+	TestRequestStringDateNullableArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
 	// TestRequestStringDateTime implements test_request_string_date-time operation.
 	//
 	// POST /test_request_string_date-time
@@ -359,23 +975,23 @@ type Handler interface {
 	// TestRequestStringDateTimeArray implements test_request_string_date-time_array operation.
 	//
 	// POST /test_request_string_date-time_array
-	TestRequestStringDateTimeArray(ctx context.Context, req OptDateTimeArray) (Error, error)
+	TestRequestStringDateTimeArray(ctx context.Context, req []time.Time) (Error, error)
 	// TestRequestStringDateTimeArrayArray implements test_request_string_date-time_array_array operation.
 	//
 	// POST /test_request_string_date-time_array_array
-	TestRequestStringDateTimeArrayArray(ctx context.Context, req OptDateTimeArrayArray) (Error, error)
+	TestRequestStringDateTimeArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
 	// TestRequestStringDateTimeNullable implements test_request_string_date-time_nullable operation.
 	//
 	// POST /test_request_string_date-time_nullable
-	TestRequestStringDateTimeNullable(ctx context.Context, req OptDateTime) (Error, error)
+	TestRequestStringDateTimeNullable(ctx context.Context, req OptNilDateTime) (Error, error)
 	// TestRequestStringDateTimeNullableArray implements test_request_string_date-time_nullable_array operation.
 	//
 	// POST /test_request_string_date-time_nullable_array
-	TestRequestStringDateTimeNullableArray(ctx context.Context, req OptDateTimeArray) (Error, error)
+	TestRequestStringDateTimeNullableArray(ctx context.Context, req []time.Time) (Error, error)
 	// TestRequestStringDateTimeNullableArrayArray implements test_request_string_date-time_nullable_array_array operation.
 	//
 	// POST /test_request_string_date-time_nullable_array_array
-	TestRequestStringDateTimeNullableArrayArray(ctx context.Context, req OptDateTimeArrayArray) (Error, error)
+	TestRequestStringDateTimeNullableArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
 	// TestRequestStringDuration implements test_request_string_duration operation.
 	//
 	// POST /test_request_string_duration
@@ -383,23 +999,71 @@ type Handler interface {
 	// TestRequestStringDurationArray implements test_request_string_duration_array operation.
 	//
 	// POST /test_request_string_duration_array
-	TestRequestStringDurationArray(ctx context.Context, req OptDurationArray) (Error, error)
+	TestRequestStringDurationArray(ctx context.Context, req []time.Duration) (Error, error)
 	// TestRequestStringDurationArrayArray implements test_request_string_duration_array_array operation.
 	//
 	// POST /test_request_string_duration_array_array
-	TestRequestStringDurationArrayArray(ctx context.Context, req OptDurationArrayArray) (Error, error)
+	TestRequestStringDurationArrayArray(ctx context.Context, req [][]time.Duration) (Error, error)
 	// TestRequestStringDurationNullable implements test_request_string_duration_nullable operation.
 	//
 	// POST /test_request_string_duration_nullable
-	TestRequestStringDurationNullable(ctx context.Context, req OptDuration) (Error, error)
+	TestRequestStringDurationNullable(ctx context.Context, req OptNilDuration) (Error, error)
 	// TestRequestStringDurationNullableArray implements test_request_string_duration_nullable_array operation.
 	//
 	// POST /test_request_string_duration_nullable_array
-	TestRequestStringDurationNullableArray(ctx context.Context, req OptDurationArray) (Error, error)
+	TestRequestStringDurationNullableArray(ctx context.Context, req []time.Duration) (Error, error)
 	// TestRequestStringDurationNullableArrayArray implements test_request_string_duration_nullable_array_array operation.
 	//
 	// POST /test_request_string_duration_nullable_array_array
-	TestRequestStringDurationNullableArrayArray(ctx context.Context, req OptDurationArrayArray) (Error, error)
+	TestRequestStringDurationNullableArrayArray(ctx context.Context, req [][]time.Duration) (Error, error)
+	// TestRequestStringEmail implements test_request_string_email operation.
+	//
+	// POST /test_request_string_email
+	TestRequestStringEmail(ctx context.Context, req OptString) (Error, error)
+	// TestRequestStringEmailArray implements test_request_string_email_array operation.
+	//
+	// POST /test_request_string_email_array
+	TestRequestStringEmailArray(ctx context.Context, req []string) (Error, error)
+	// TestRequestStringEmailArrayArray implements test_request_string_email_array_array operation.
+	//
+	// POST /test_request_string_email_array_array
+	TestRequestStringEmailArrayArray(ctx context.Context, req [][]string) (Error, error)
+	// TestRequestStringEmailNullable implements test_request_string_email_nullable operation.
+	//
+	// POST /test_request_string_email_nullable
+	TestRequestStringEmailNullable(ctx context.Context, req OptNilString) (Error, error)
+	// TestRequestStringEmailNullableArray implements test_request_string_email_nullable_array operation.
+	//
+	// POST /test_request_string_email_nullable_array
+	TestRequestStringEmailNullableArray(ctx context.Context, req []string) (Error, error)
+	// TestRequestStringEmailNullableArrayArray implements test_request_string_email_nullable_array_array operation.
+	//
+	// POST /test_request_string_email_nullable_array_array
+	TestRequestStringEmailNullableArrayArray(ctx context.Context, req [][]string) (Error, error)
+	// TestRequestStringHostname implements test_request_string_hostname operation.
+	//
+	// POST /test_request_string_hostname
+	TestRequestStringHostname(ctx context.Context, req OptString) (Error, error)
+	// TestRequestStringHostnameArray implements test_request_string_hostname_array operation.
+	//
+	// POST /test_request_string_hostname_array
+	TestRequestStringHostnameArray(ctx context.Context, req []string) (Error, error)
+	// TestRequestStringHostnameArrayArray implements test_request_string_hostname_array_array operation.
+	//
+	// POST /test_request_string_hostname_array_array
+	TestRequestStringHostnameArrayArray(ctx context.Context, req [][]string) (Error, error)
+	// TestRequestStringHostnameNullable implements test_request_string_hostname_nullable operation.
+	//
+	// POST /test_request_string_hostname_nullable
+	TestRequestStringHostnameNullable(ctx context.Context, req OptNilString) (Error, error)
+	// TestRequestStringHostnameNullableArray implements test_request_string_hostname_nullable_array operation.
+	//
+	// POST /test_request_string_hostname_nullable_array
+	TestRequestStringHostnameNullableArray(ctx context.Context, req []string) (Error, error)
+	// TestRequestStringHostnameNullableArrayArray implements test_request_string_hostname_nullable_array_array operation.
+	//
+	// POST /test_request_string_hostname_nullable_array_array
+	TestRequestStringHostnameNullableArrayArray(ctx context.Context, req [][]string) (Error, error)
 	// TestRequestStringIP implements test_request_string_ip operation.
 	//
 	// POST /test_request_string_ip
@@ -407,23 +1071,23 @@ type Handler interface {
 	// TestRequestStringIPArray implements test_request_string_ip_array operation.
 	//
 	// POST /test_request_string_ip_array
-	TestRequestStringIPArray(ctx context.Context, req OptIPArray) (Error, error)
+	TestRequestStringIPArray(ctx context.Context, req []net.IP) (Error, error)
 	// TestRequestStringIPArrayArray implements test_request_string_ip_array_array operation.
 	//
 	// POST /test_request_string_ip_array_array
-	TestRequestStringIPArrayArray(ctx context.Context, req OptIPArrayArray) (Error, error)
+	TestRequestStringIPArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
 	// TestRequestStringIPNullable implements test_request_string_ip_nullable operation.
 	//
 	// POST /test_request_string_ip_nullable
-	TestRequestStringIPNullable(ctx context.Context, req OptIP) (Error, error)
+	TestRequestStringIPNullable(ctx context.Context, req OptNilIP) (Error, error)
 	// TestRequestStringIPNullableArray implements test_request_string_ip_nullable_array operation.
 	//
 	// POST /test_request_string_ip_nullable_array
-	TestRequestStringIPNullableArray(ctx context.Context, req OptIPArray) (Error, error)
+	TestRequestStringIPNullableArray(ctx context.Context, req []net.IP) (Error, error)
 	// TestRequestStringIPNullableArrayArray implements test_request_string_ip_nullable_array_array operation.
 	//
 	// POST /test_request_string_ip_nullable_array_array
-	TestRequestStringIPNullableArrayArray(ctx context.Context, req OptIPArrayArray) (Error, error)
+	TestRequestStringIPNullableArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
 	// TestRequestStringIpv4 implements test_request_string_ipv4 operation.
 	//
 	// POST /test_request_string_ipv4
@@ -431,23 +1095,23 @@ type Handler interface {
 	// TestRequestStringIpv4Array implements test_request_string_ipv4_array operation.
 	//
 	// POST /test_request_string_ipv4_array
-	TestRequestStringIpv4Array(ctx context.Context, req OptIPv4Array) (Error, error)
+	TestRequestStringIpv4Array(ctx context.Context, req []net.IP) (Error, error)
 	// TestRequestStringIpv4ArrayArray implements test_request_string_ipv4_array_array operation.
 	//
 	// POST /test_request_string_ipv4_array_array
-	TestRequestStringIpv4ArrayArray(ctx context.Context, req OptIPv4ArrayArray) (Error, error)
+	TestRequestStringIpv4ArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
 	// TestRequestStringIpv4Nullable implements test_request_string_ipv4_nullable operation.
 	//
 	// POST /test_request_string_ipv4_nullable
-	TestRequestStringIpv4Nullable(ctx context.Context, req OptIPv4) (Error, error)
+	TestRequestStringIpv4Nullable(ctx context.Context, req OptNilIPv4) (Error, error)
 	// TestRequestStringIpv4NullableArray implements test_request_string_ipv4_nullable_array operation.
 	//
 	// POST /test_request_string_ipv4_nullable_array
-	TestRequestStringIpv4NullableArray(ctx context.Context, req OptIPv4Array) (Error, error)
+	TestRequestStringIpv4NullableArray(ctx context.Context, req []net.IP) (Error, error)
 	// TestRequestStringIpv4NullableArrayArray implements test_request_string_ipv4_nullable_array_array operation.
 	//
 	// POST /test_request_string_ipv4_nullable_array_array
-	TestRequestStringIpv4NullableArrayArray(ctx context.Context, req OptIPv4ArrayArray) (Error, error)
+	TestRequestStringIpv4NullableArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
 	// TestRequestStringIpv6 implements test_request_string_ipv6 operation.
 	//
 	// POST /test_request_string_ipv6
@@ -455,35 +1119,35 @@ type Handler interface {
 	// TestRequestStringIpv6Array implements test_request_string_ipv6_array operation.
 	//
 	// POST /test_request_string_ipv6_array
-	TestRequestStringIpv6Array(ctx context.Context, req OptIPv6Array) (Error, error)
+	TestRequestStringIpv6Array(ctx context.Context, req []net.IP) (Error, error)
 	// TestRequestStringIpv6ArrayArray implements test_request_string_ipv6_array_array operation.
 	//
 	// POST /test_request_string_ipv6_array_array
-	TestRequestStringIpv6ArrayArray(ctx context.Context, req OptIPv6ArrayArray) (Error, error)
+	TestRequestStringIpv6ArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
 	// TestRequestStringIpv6Nullable implements test_request_string_ipv6_nullable operation.
 	//
 	// POST /test_request_string_ipv6_nullable
-	TestRequestStringIpv6Nullable(ctx context.Context, req OptIPv6) (Error, error)
+	TestRequestStringIpv6Nullable(ctx context.Context, req OptNilIPv6) (Error, error)
 	// TestRequestStringIpv6NullableArray implements test_request_string_ipv6_nullable_array operation.
 	//
 	// POST /test_request_string_ipv6_nullable_array
-	TestRequestStringIpv6NullableArray(ctx context.Context, req OptIPv6Array) (Error, error)
+	TestRequestStringIpv6NullableArray(ctx context.Context, req []net.IP) (Error, error)
 	// TestRequestStringIpv6NullableArrayArray implements test_request_string_ipv6_nullable_array_array operation.
 	//
 	// POST /test_request_string_ipv6_nullable_array_array
-	TestRequestStringIpv6NullableArrayArray(ctx context.Context, req OptIPv6ArrayArray) (Error, error)
+	TestRequestStringIpv6NullableArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
 	// TestRequestStringNullable implements test_request_string_nullable operation.
 	//
 	// POST /test_request_string_nullable
-	TestRequestStringNullable(ctx context.Context, req OptString) (Error, error)
+	TestRequestStringNullable(ctx context.Context, req OptNilString) (Error, error)
 	// TestRequestStringNullableArray implements test_request_string_nullable_array operation.
 	//
 	// POST /test_request_string_nullable_array
-	TestRequestStringNullableArray(ctx context.Context, req OptStringArray) (Error, error)
+	TestRequestStringNullableArray(ctx context.Context, req []string) (Error, error)
 	// TestRequestStringNullableArrayArray implements test_request_string_nullable_array_array operation.
 	//
 	// POST /test_request_string_nullable_array_array
-	TestRequestStringNullableArrayArray(ctx context.Context, req OptStringArrayArray) (Error, error)
+	TestRequestStringNullableArrayArray(ctx context.Context, req [][]string) (Error, error)
 	// TestRequestStringPassword implements test_request_string_password operation.
 	//
 	// POST /test_request_string_password
@@ -491,23 +1155,23 @@ type Handler interface {
 	// TestRequestStringPasswordArray implements test_request_string_password_array operation.
 	//
 	// POST /test_request_string_password_array
-	TestRequestStringPasswordArray(ctx context.Context, req OptStringArray) (Error, error)
+	TestRequestStringPasswordArray(ctx context.Context, req []string) (Error, error)
 	// TestRequestStringPasswordArrayArray implements test_request_string_password_array_array operation.
 	//
 	// POST /test_request_string_password_array_array
-	TestRequestStringPasswordArrayArray(ctx context.Context, req OptStringArrayArray) (Error, error)
+	TestRequestStringPasswordArrayArray(ctx context.Context, req [][]string) (Error, error)
 	// TestRequestStringPasswordNullable implements test_request_string_password_nullable operation.
 	//
 	// POST /test_request_string_password_nullable
-	TestRequestStringPasswordNullable(ctx context.Context, req OptString) (Error, error)
+	TestRequestStringPasswordNullable(ctx context.Context, req OptNilString) (Error, error)
 	// TestRequestStringPasswordNullableArray implements test_request_string_password_nullable_array operation.
 	//
 	// POST /test_request_string_password_nullable_array
-	TestRequestStringPasswordNullableArray(ctx context.Context, req OptStringArray) (Error, error)
+	TestRequestStringPasswordNullableArray(ctx context.Context, req []string) (Error, error)
 	// TestRequestStringPasswordNullableArrayArray implements test_request_string_password_nullable_array_array operation.
 	//
 	// POST /test_request_string_password_nullable_array_array
-	TestRequestStringPasswordNullableArrayArray(ctx context.Context, req OptStringArrayArray) (Error, error)
+	TestRequestStringPasswordNullableArrayArray(ctx context.Context, req [][]string) (Error, error)
 	// TestRequestStringTime implements test_request_string_time operation.
 	//
 	// POST /test_request_string_time
@@ -515,23 +1179,23 @@ type Handler interface {
 	// TestRequestStringTimeArray implements test_request_string_time_array operation.
 	//
 	// POST /test_request_string_time_array
-	TestRequestStringTimeArray(ctx context.Context, req OptTimeArray) (Error, error)
+	TestRequestStringTimeArray(ctx context.Context, req []time.Time) (Error, error)
 	// TestRequestStringTimeArrayArray implements test_request_string_time_array_array operation.
 	//
 	// POST /test_request_string_time_array_array
-	TestRequestStringTimeArrayArray(ctx context.Context, req OptTimeArrayArray) (Error, error)
+	TestRequestStringTimeArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
 	// TestRequestStringTimeNullable implements test_request_string_time_nullable operation.
 	//
 	// POST /test_request_string_time_nullable
-	TestRequestStringTimeNullable(ctx context.Context, req OptTime) (Error, error)
+	TestRequestStringTimeNullable(ctx context.Context, req OptNilTime) (Error, error)
 	// TestRequestStringTimeNullableArray implements test_request_string_time_nullable_array operation.
 	//
 	// POST /test_request_string_time_nullable_array
-	TestRequestStringTimeNullableArray(ctx context.Context, req OptTimeArray) (Error, error)
+	TestRequestStringTimeNullableArray(ctx context.Context, req []time.Time) (Error, error)
 	// TestRequestStringTimeNullableArrayArray implements test_request_string_time_nullable_array_array operation.
 	//
 	// POST /test_request_string_time_nullable_array_array
-	TestRequestStringTimeNullableArrayArray(ctx context.Context, req OptTimeArrayArray) (Error, error)
+	TestRequestStringTimeNullableArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
 	// TestRequestStringURI implements test_request_string_uri operation.
 	//
 	// POST /test_request_string_uri
@@ -539,23 +1203,23 @@ type Handler interface {
 	// TestRequestStringURIArray implements test_request_string_uri_array operation.
 	//
 	// POST /test_request_string_uri_array
-	TestRequestStringURIArray(ctx context.Context, req OptURIArray) (Error, error)
+	TestRequestStringURIArray(ctx context.Context, req []url.URL) (Error, error)
 	// TestRequestStringURIArrayArray implements test_request_string_uri_array_array operation.
 	//
 	// POST /test_request_string_uri_array_array
-	TestRequestStringURIArrayArray(ctx context.Context, req OptURIArrayArray) (Error, error)
+	TestRequestStringURIArrayArray(ctx context.Context, req [][]url.URL) (Error, error)
 	// TestRequestStringURINullable implements test_request_string_uri_nullable operation.
 	//
 	// POST /test_request_string_uri_nullable
-	TestRequestStringURINullable(ctx context.Context, req OptURI) (Error, error)
+	TestRequestStringURINullable(ctx context.Context, req OptNilURI) (Error, error)
 	// TestRequestStringURINullableArray implements test_request_string_uri_nullable_array operation.
 	//
 	// POST /test_request_string_uri_nullable_array
-	TestRequestStringURINullableArray(ctx context.Context, req OptURIArray) (Error, error)
+	TestRequestStringURINullableArray(ctx context.Context, req []url.URL) (Error, error)
 	// TestRequestStringURINullableArrayArray implements test_request_string_uri_nullable_array_array operation.
 	//
 	// POST /test_request_string_uri_nullable_array_array
-	TestRequestStringURINullableArrayArray(ctx context.Context, req OptURIArrayArray) (Error, error)
+	TestRequestStringURINullableArrayArray(ctx context.Context, req [][]url.URL) (Error, error)
 	// TestRequestStringUUID implements test_request_string_uuid operation.
 	//
 	// POST /test_request_string_uuid
@@ -563,23 +1227,23 @@ type Handler interface {
 	// TestRequestStringUUIDArray implements test_request_string_uuid_array operation.
 	//
 	// POST /test_request_string_uuid_array
-	TestRequestStringUUIDArray(ctx context.Context, req OptUUIDArray) (Error, error)
+	TestRequestStringUUIDArray(ctx context.Context, req []uuid.UUID) (Error, error)
 	// TestRequestStringUUIDArrayArray implements test_request_string_uuid_array_array operation.
 	//
 	// POST /test_request_string_uuid_array_array
-	TestRequestStringUUIDArrayArray(ctx context.Context, req OptUUIDArrayArray) (Error, error)
+	TestRequestStringUUIDArrayArray(ctx context.Context, req [][]uuid.UUID) (Error, error)
 	// TestRequestStringUUIDNullable implements test_request_string_uuid_nullable operation.
 	//
 	// POST /test_request_string_uuid_nullable
-	TestRequestStringUUIDNullable(ctx context.Context, req OptUUID) (Error, error)
+	TestRequestStringUUIDNullable(ctx context.Context, req OptNilUUID) (Error, error)
 	// TestRequestStringUUIDNullableArray implements test_request_string_uuid_nullable_array operation.
 	//
 	// POST /test_request_string_uuid_nullable_array
-	TestRequestStringUUIDNullableArray(ctx context.Context, req OptUUIDArray) (Error, error)
+	TestRequestStringUUIDNullableArray(ctx context.Context, req []uuid.UUID) (Error, error)
 	// TestRequestStringUUIDNullableArrayArray implements test_request_string_uuid_nullable_array_array operation.
 	//
 	// POST /test_request_string_uuid_nullable_array_array
-	TestRequestStringUUIDNullableArrayArray(ctx context.Context, req OptUUIDArrayArray) (Error, error)
+	TestRequestStringUUIDNullableArrayArray(ctx context.Context, req [][]uuid.UUID) (Error, error)
 	// TestResponseAny implements test_response_Any operation.
 	//
 	// POST /test_response_Any
@@ -599,7 +1263,7 @@ type Handler interface {
 	// TestResponseBooleanNullable implements test_response_boolean_nullable operation.
 	//
 	// POST /test_response_boolean_nullable
-	TestResponseBooleanNullable(ctx context.Context, req string) (bool, error)
+	TestResponseBooleanNullable(ctx context.Context, req string) (NilBool, error)
 	// TestResponseBooleanNullableArray implements test_response_boolean_nullable_array operation.
 	//
 	// POST /test_response_boolean_nullable_array
@@ -608,6 +1272,10 @@ type Handler interface {
 	//
 	// POST /test_response_boolean_nullable_array_array
 	TestResponseBooleanNullableArrayArray(ctx context.Context, req string) ([][]bool, error)
+	// TestResponseEmptyStruct implements test_response_EmptyStruct operation.
+	//
+	// POST /test_response_EmptyStruct
+	TestResponseEmptyStruct(ctx context.Context, req string) (TestResponseEmptyStructOK, error)
 	// TestResponseFormatTest implements test_response_FormatTest operation.
 	//
 	// POST /test_response_FormatTest
@@ -639,7 +1307,7 @@ type Handler interface {
 	// TestResponseIntegerInt32Nullable implements test_response_integer_int32_nullable operation.
 	//
 	// POST /test_response_integer_int32_nullable
-	TestResponseIntegerInt32Nullable(ctx context.Context, req string) (int32, error)
+	TestResponseIntegerInt32Nullable(ctx context.Context, req string) (NilInt32, error)
 	// TestResponseIntegerInt32NullableArray implements test_response_integer_int32_nullable_array operation.
 	//
 	// POST /test_response_integer_int32_nullable_array
@@ -663,7 +1331,7 @@ type Handler interface {
 	// TestResponseIntegerInt64Nullable implements test_response_integer_int64_nullable operation.
 	//
 	// POST /test_response_integer_int64_nullable
-	TestResponseIntegerInt64Nullable(ctx context.Context, req string) (int64, error)
+	TestResponseIntegerInt64Nullable(ctx context.Context, req string) (NilInt64, error)
 	// TestResponseIntegerInt64NullableArray implements test_response_integer_int64_nullable_array operation.
 	//
 	// POST /test_response_integer_int64_nullable_array
@@ -675,7 +1343,7 @@ type Handler interface {
 	// TestResponseIntegerNullable implements test_response_integer_nullable operation.
 	//
 	// POST /test_response_integer_nullable
-	TestResponseIntegerNullable(ctx context.Context, req string) (int, error)
+	TestResponseIntegerNullable(ctx context.Context, req string) (NilInt, error)
 	// TestResponseIntegerNullableArray implements test_response_integer_nullable_array operation.
 	//
 	// POST /test_response_integer_nullable_array
@@ -711,7 +1379,7 @@ type Handler interface {
 	// TestResponseNumberDoubleNullable implements test_response_number_double_nullable operation.
 	//
 	// POST /test_response_number_double_nullable
-	TestResponseNumberDoubleNullable(ctx context.Context, req string) (float64, error)
+	TestResponseNumberDoubleNullable(ctx context.Context, req string) (NilFloat64, error)
 	// TestResponseNumberDoubleNullableArray implements test_response_number_double_nullable_array operation.
 	//
 	// POST /test_response_number_double_nullable_array
@@ -735,7 +1403,7 @@ type Handler interface {
 	// TestResponseNumberFloatNullable implements test_response_number_float_nullable operation.
 	//
 	// POST /test_response_number_float_nullable
-	TestResponseNumberFloatNullable(ctx context.Context, req string) (float32, error)
+	TestResponseNumberFloatNullable(ctx context.Context, req string) (NilFloat32, error)
 	// TestResponseNumberFloatNullableArray implements test_response_number_float_nullable_array operation.
 	//
 	// POST /test_response_number_float_nullable_array
@@ -759,7 +1427,7 @@ type Handler interface {
 	// TestResponseNumberInt32Nullable implements test_response_number_int32_nullable operation.
 	//
 	// POST /test_response_number_int32_nullable
-	TestResponseNumberInt32Nullable(ctx context.Context, req string) (int32, error)
+	TestResponseNumberInt32Nullable(ctx context.Context, req string) (NilInt32, error)
 	// TestResponseNumberInt32NullableArray implements test_response_number_int32_nullable_array operation.
 	//
 	// POST /test_response_number_int32_nullable_array
@@ -783,7 +1451,7 @@ type Handler interface {
 	// TestResponseNumberInt64Nullable implements test_response_number_int64_nullable operation.
 	//
 	// POST /test_response_number_int64_nullable
-	TestResponseNumberInt64Nullable(ctx context.Context, req string) (int64, error)
+	TestResponseNumberInt64Nullable(ctx context.Context, req string) (NilInt64, error)
 	// TestResponseNumberInt64NullableArray implements test_response_number_int64_nullable_array operation.
 	//
 	// POST /test_response_number_int64_nullable_array
@@ -795,7 +1463,7 @@ type Handler interface {
 	// TestResponseNumberNullable implements test_response_number_nullable operation.
 	//
 	// POST /test_response_number_nullable
-	TestResponseNumberNullable(ctx context.Context, req string) (float64, error)
+	TestResponseNumberNullable(ctx context.Context, req string) (NilFloat64, error)
 	// TestResponseNumberNullableArray implements test_response_number_nullable_array operation.
 	//
 	// POST /test_response_number_nullable_array
@@ -816,6 +1484,30 @@ type Handler interface {
 	//
 	// POST /test_response_string_array_array
 	TestResponseStringArrayArray(ctx context.Context, req string) ([][]string, error)
+	// TestResponseStringBinary implements test_response_string_binary operation.
+	//
+	// POST /test_response_string_binary
+	TestResponseStringBinary(ctx context.Context, req string) (string, error)
+	// TestResponseStringBinaryArray implements test_response_string_binary_array operation.
+	//
+	// POST /test_response_string_binary_array
+	TestResponseStringBinaryArray(ctx context.Context, req string) ([]string, error)
+	// TestResponseStringBinaryArrayArray implements test_response_string_binary_array_array operation.
+	//
+	// POST /test_response_string_binary_array_array
+	TestResponseStringBinaryArrayArray(ctx context.Context, req string) ([][]string, error)
+	// TestResponseStringBinaryNullable implements test_response_string_binary_nullable operation.
+	//
+	// POST /test_response_string_binary_nullable
+	TestResponseStringBinaryNullable(ctx context.Context, req string) (NilString, error)
+	// TestResponseStringBinaryNullableArray implements test_response_string_binary_nullable_array operation.
+	//
+	// POST /test_response_string_binary_nullable_array
+	TestResponseStringBinaryNullableArray(ctx context.Context, req string) ([]string, error)
+	// TestResponseStringBinaryNullableArrayArray implements test_response_string_binary_nullable_array_array operation.
+	//
+	// POST /test_response_string_binary_nullable_array_array
+	TestResponseStringBinaryNullableArrayArray(ctx context.Context, req string) ([][]string, error)
 	// TestResponseStringByte implements test_response_string_byte operation.
 	//
 	// POST /test_response_string_byte
@@ -855,7 +1547,7 @@ type Handler interface {
 	// TestResponseStringDateNullable implements test_response_string_date_nullable operation.
 	//
 	// POST /test_response_string_date_nullable
-	TestResponseStringDateNullable(ctx context.Context, req string) (time.Time, error)
+	TestResponseStringDateNullable(ctx context.Context, req string) (NilDate, error)
 	// TestResponseStringDateNullableArray implements test_response_string_date_nullable_array operation.
 	//
 	// POST /test_response_string_date_nullable_array
@@ -879,7 +1571,7 @@ type Handler interface {
 	// TestResponseStringDateTimeNullable implements test_response_string_date-time_nullable operation.
 	//
 	// POST /test_response_string_date-time_nullable
-	TestResponseStringDateTimeNullable(ctx context.Context, req string) (time.Time, error)
+	TestResponseStringDateTimeNullable(ctx context.Context, req string) (NilDateTime, error)
 	// TestResponseStringDateTimeNullableArray implements test_response_string_date-time_nullable_array operation.
 	//
 	// POST /test_response_string_date-time_nullable_array
@@ -903,7 +1595,7 @@ type Handler interface {
 	// TestResponseStringDurationNullable implements test_response_string_duration_nullable operation.
 	//
 	// POST /test_response_string_duration_nullable
-	TestResponseStringDurationNullable(ctx context.Context, req string) (time.Duration, error)
+	TestResponseStringDurationNullable(ctx context.Context, req string) (NilDuration, error)
 	// TestResponseStringDurationNullableArray implements test_response_string_duration_nullable_array operation.
 	//
 	// POST /test_response_string_duration_nullable_array
@@ -912,6 +1604,54 @@ type Handler interface {
 	//
 	// POST /test_response_string_duration_nullable_array_array
 	TestResponseStringDurationNullableArrayArray(ctx context.Context, req string) ([][]time.Duration, error)
+	// TestResponseStringEmail implements test_response_string_email operation.
+	//
+	// POST /test_response_string_email
+	TestResponseStringEmail(ctx context.Context, req string) (string, error)
+	// TestResponseStringEmailArray implements test_response_string_email_array operation.
+	//
+	// POST /test_response_string_email_array
+	TestResponseStringEmailArray(ctx context.Context, req string) ([]string, error)
+	// TestResponseStringEmailArrayArray implements test_response_string_email_array_array operation.
+	//
+	// POST /test_response_string_email_array_array
+	TestResponseStringEmailArrayArray(ctx context.Context, req string) ([][]string, error)
+	// TestResponseStringEmailNullable implements test_response_string_email_nullable operation.
+	//
+	// POST /test_response_string_email_nullable
+	TestResponseStringEmailNullable(ctx context.Context, req string) (NilString, error)
+	// TestResponseStringEmailNullableArray implements test_response_string_email_nullable_array operation.
+	//
+	// POST /test_response_string_email_nullable_array
+	TestResponseStringEmailNullableArray(ctx context.Context, req string) ([]string, error)
+	// TestResponseStringEmailNullableArrayArray implements test_response_string_email_nullable_array_array operation.
+	//
+	// POST /test_response_string_email_nullable_array_array
+	TestResponseStringEmailNullableArrayArray(ctx context.Context, req string) ([][]string, error)
+	// TestResponseStringHostname implements test_response_string_hostname operation.
+	//
+	// POST /test_response_string_hostname
+	TestResponseStringHostname(ctx context.Context, req string) (string, error)
+	// TestResponseStringHostnameArray implements test_response_string_hostname_array operation.
+	//
+	// POST /test_response_string_hostname_array
+	TestResponseStringHostnameArray(ctx context.Context, req string) ([]string, error)
+	// TestResponseStringHostnameArrayArray implements test_response_string_hostname_array_array operation.
+	//
+	// POST /test_response_string_hostname_array_array
+	TestResponseStringHostnameArrayArray(ctx context.Context, req string) ([][]string, error)
+	// TestResponseStringHostnameNullable implements test_response_string_hostname_nullable operation.
+	//
+	// POST /test_response_string_hostname_nullable
+	TestResponseStringHostnameNullable(ctx context.Context, req string) (NilString, error)
+	// TestResponseStringHostnameNullableArray implements test_response_string_hostname_nullable_array operation.
+	//
+	// POST /test_response_string_hostname_nullable_array
+	TestResponseStringHostnameNullableArray(ctx context.Context, req string) ([]string, error)
+	// TestResponseStringHostnameNullableArrayArray implements test_response_string_hostname_nullable_array_array operation.
+	//
+	// POST /test_response_string_hostname_nullable_array_array
+	TestResponseStringHostnameNullableArrayArray(ctx context.Context, req string) ([][]string, error)
 	// TestResponseStringIP implements test_response_string_ip operation.
 	//
 	// POST /test_response_string_ip
@@ -927,7 +1667,7 @@ type Handler interface {
 	// TestResponseStringIPNullable implements test_response_string_ip_nullable operation.
 	//
 	// POST /test_response_string_ip_nullable
-	TestResponseStringIPNullable(ctx context.Context, req string) (net.IP, error)
+	TestResponseStringIPNullable(ctx context.Context, req string) (NilIP, error)
 	// TestResponseStringIPNullableArray implements test_response_string_ip_nullable_array operation.
 	//
 	// POST /test_response_string_ip_nullable_array
@@ -951,7 +1691,7 @@ type Handler interface {
 	// TestResponseStringIpv4Nullable implements test_response_string_ipv4_nullable operation.
 	//
 	// POST /test_response_string_ipv4_nullable
-	TestResponseStringIpv4Nullable(ctx context.Context, req string) (net.IP, error)
+	TestResponseStringIpv4Nullable(ctx context.Context, req string) (NilIPv4, error)
 	// TestResponseStringIpv4NullableArray implements test_response_string_ipv4_nullable_array operation.
 	//
 	// POST /test_response_string_ipv4_nullable_array
@@ -975,7 +1715,7 @@ type Handler interface {
 	// TestResponseStringIpv6Nullable implements test_response_string_ipv6_nullable operation.
 	//
 	// POST /test_response_string_ipv6_nullable
-	TestResponseStringIpv6Nullable(ctx context.Context, req string) (net.IP, error)
+	TestResponseStringIpv6Nullable(ctx context.Context, req string) (NilIPv6, error)
 	// TestResponseStringIpv6NullableArray implements test_response_string_ipv6_nullable_array operation.
 	//
 	// POST /test_response_string_ipv6_nullable_array
@@ -987,7 +1727,7 @@ type Handler interface {
 	// TestResponseStringNullable implements test_response_string_nullable operation.
 	//
 	// POST /test_response_string_nullable
-	TestResponseStringNullable(ctx context.Context, req string) (string, error)
+	TestResponseStringNullable(ctx context.Context, req string) (NilString, error)
 	// TestResponseStringNullableArray implements test_response_string_nullable_array operation.
 	//
 	// POST /test_response_string_nullable_array
@@ -1011,7 +1751,7 @@ type Handler interface {
 	// TestResponseStringPasswordNullable implements test_response_string_password_nullable operation.
 	//
 	// POST /test_response_string_password_nullable
-	TestResponseStringPasswordNullable(ctx context.Context, req string) (string, error)
+	TestResponseStringPasswordNullable(ctx context.Context, req string) (NilString, error)
 	// TestResponseStringPasswordNullableArray implements test_response_string_password_nullable_array operation.
 	//
 	// POST /test_response_string_password_nullable_array
@@ -1035,7 +1775,7 @@ type Handler interface {
 	// TestResponseStringTimeNullable implements test_response_string_time_nullable operation.
 	//
 	// POST /test_response_string_time_nullable
-	TestResponseStringTimeNullable(ctx context.Context, req string) (time.Time, error)
+	TestResponseStringTimeNullable(ctx context.Context, req string) (NilTime, error)
 	// TestResponseStringTimeNullableArray implements test_response_string_time_nullable_array operation.
 	//
 	// POST /test_response_string_time_nullable_array
@@ -1059,7 +1799,7 @@ type Handler interface {
 	// TestResponseStringURINullable implements test_response_string_uri_nullable operation.
 	//
 	// POST /test_response_string_uri_nullable
-	TestResponseStringURINullable(ctx context.Context, req string) (url.URL, error)
+	TestResponseStringURINullable(ctx context.Context, req string) (NilURI, error)
 	// TestResponseStringURINullableArray implements test_response_string_uri_nullable_array operation.
 	//
 	// POST /test_response_string_uri_nullable_array
@@ -1083,7 +1823,7 @@ type Handler interface {
 	// TestResponseStringUUIDNullable implements test_response_string_uuid_nullable operation.
 	//
 	// POST /test_response_string_uuid_nullable
-	TestResponseStringUUIDNullable(ctx context.Context, req string) (uuid.UUID, error)
+	TestResponseStringUUIDNullable(ctx context.Context, req string) (NilUUID, error)
 	// TestResponseStringUUIDNullableArray implements test_response_string_uuid_nullable_array operation.
 	//
 	// POST /test_response_string_uuid_nullable_array

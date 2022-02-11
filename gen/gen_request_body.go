@@ -15,26 +15,6 @@ func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.R
 		return nil, errors.Wrap(err, "contents")
 	}
 
-	if !body.Required {
-		// NOTE:
-		// In case where requestBody has multiple content types
-		// we can try to wrap sum-type interface with Optional[T]
-		// instead of wrapping each content type.
-		for contentType, typ := range contents {
-			// TODO: Support optional streams?
-			if typ.Is(ir.KindStream, ir.KindAny) {
-				continue
-			}
-
-			optionalTyp := ir.Generic(genericPostfix(typ), typ, ir.GenericVariant{
-				Optional: true,
-			})
-
-			g.saveType(optionalTyp)
-			contents[contentType] = optionalTyp
-		}
-	}
-
 	if len(contents) == 1 {
 		for _, t := range contents {
 			return &ir.Request{

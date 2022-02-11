@@ -14,6 +14,30 @@ func (g *Generator) wrapGenerics() {
 		}
 	}
 
+	wrapType := func(optional bool, typ *ir.Type) *ir.Type {
+		if typ == nil {
+			return nil
+		}
+		if typ.Is(ir.KindStream) {
+			// Do not wrap io.Reader requests.
+			return typ
+		}
+
+		v := ir.GenericVariant{
+			Nullable: typ.Schema != nil && typ.Schema.Nullable,
+			Optional: optional,
+		}
+		if v.Any() {
+			return g.boxType(v, typ)
+		}
+		return typ
+	}
+	wrapContents := func(optional bool, contents map[ir.ContentType]*ir.Type) {
+		for contentType, typ := range contents {
+			contents[contentType] = wrapType(optional, typ)
+		}
+	}
+
 	for _, op := range g.operations {
 		for _, param := range op.Params {
 			v := ir.GenericVariant{
@@ -23,6 +47,31 @@ func (g *Generator) wrapGenerics() {
 
 			if v.Any() {
 				param.Type = g.boxType(v, param.Type)
+			}
+		}
+
+		if req := op.Request; req != nil {
+			optional := req.Spec != nil && !req.Spec.Required
+			if !req.Type.IsInterface() {
+				req.Type = wrapType(optional, req.Type)
+			}
+			wrapContents(optional, req.Contents)
+		}
+
+		wrapStatusResponse := func(r *ir.StatusResponse) {
+			if r == nil {
+				return
+			}
+			r.NoContent = wrapType(false, r.NoContent)
+			wrapContents(false, r.Contents)
+		}
+		if resp := op.Response; resp != nil {
+			if !resp.Type.IsInterface() {
+				resp.Type = wrapType(false, resp.Type)
+			}
+			wrapStatusResponse(resp.Default)
+			for _, r := range resp.StatusCode {
+				wrapStatusResponse(r)
 			}
 		}
 	}

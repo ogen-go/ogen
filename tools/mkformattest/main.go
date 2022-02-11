@@ -62,8 +62,10 @@ func generateSpec() *ogen.Spec {
 			AddOptionalProperties(
 				properties("optional")...,
 			)),
-		// Empty
+		// Any
 		ogen.NewNamedSchema("Any", ogen.NewSchema()),
+		// Empty struct
+		ogen.NewNamedSchema("EmptyStruct", ogen.NewSchema().SetType("object")),
 	}
 
 	eachMapping(func(name, format, typ string) {
@@ -137,7 +139,19 @@ func generateSpec() *ogen.Spec {
 						Schema: schema.Schema,
 					},
 				},
-				Required: false,
+				Description: "Optional request body",
+				Required:    false,
+			})
+		}},
+		{"request_required", func(op *ogen.Operation, schema *ogen.NamedSchema) {
+			op.SetRequestBody(&ogen.RequestBody{
+				Content: map[string]ogen.Media{
+					string(ir.ContentTypeJSON): {
+						Schema: schema.Schema,
+					},
+				},
+				Description: "Required request body",
+				Required:    true,
 			})
 		}},
 		{"response", func(op *ogen.Operation, schema *ogen.NamedSchema) {
@@ -148,6 +162,7 @@ func generateSpec() *ogen.Spec {
 							Schema: schema.Schema,
 						},
 					},
+					Description: "Response",
 				},
 			})
 		}},
@@ -165,8 +180,7 @@ func generateSpec() *ogen.Spec {
 			if len(op.Responses) == 0 {
 				op.Responses = map[string]*ogen.Response{
 					"200": {
-						Ref:         "#/components/responses/error",
-						Description: "description",
+						Ref: "#/components/responses/error",
 					},
 				}
 			}

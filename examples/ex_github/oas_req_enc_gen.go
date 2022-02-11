@@ -556,7 +556,7 @@ func encodeIssuesCreateMilestoneRequestJSON(req IssuesCreateMilestoneReq, span t
 	return e, nil
 }
 
-func encodeIssuesLockRequestJSON(req OptIssuesLockReq, span trace.Span) (data *jx.Writer, err error) {
+func encodeIssuesLockRequestJSON(req OptNilIssuesLockReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -650,7 +650,7 @@ func encodeMigrationsStartImportRequestJSON(req MigrationsStartImportReq, span t
 	return e, nil
 }
 
-func encodeMigrationsUpdateImportRequestJSON(req OptMigrationsUpdateImportReq, span trace.Span) (data *jx.Writer, err error) {
+func encodeMigrationsUpdateImportRequestJSON(req OptNilMigrationsUpdateImportReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -745,7 +745,7 @@ func encodeOrgsUpdateWebhookConfigForOrgRequestJSON(req OptOrgsUpdateWebhookConf
 	return e, nil
 }
 
-func encodeProjectsAddCollaboratorRequestJSON(req OptProjectsAddCollaboratorReq, span trace.Span) (data *jx.Writer, err error) {
+func encodeProjectsAddCollaboratorRequestJSON(req OptNilProjectsAddCollaboratorReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -869,7 +869,7 @@ func encodePullsDismissReviewRequestJSON(req PullsDismissReviewReq, span trace.S
 	return e, nil
 }
 
-func encodePullsMergeRequestJSON(req OptPullsMergeReq, span trace.Span) (data *jx.Writer, err error) {
+func encodePullsMergeRequestJSON(req OptNilPullsMergeReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -903,7 +903,7 @@ func encodePullsUpdateRequestJSON(req OptPullsUpdateReq, span trace.Span) (data 
 	return e, nil
 }
 
-func encodePullsUpdateBranchRequestJSON(req OptPullsUpdateBranchReq, span trace.Span) (data *jx.Writer, err error) {
+func encodePullsUpdateBranchRequestJSON(req OptNilPullsUpdateBranchReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -1109,7 +1109,7 @@ func encodeReposCreateForAuthenticatedUserRequestJSON(req ReposCreateForAuthenti
 	return e, nil
 }
 
-func encodeReposCreateForkRequestJSON(req OptReposCreateForkReq, span trace.Span) (data *jx.Writer, err error) {
+func encodeReposCreateForkRequestJSON(req OptNilReposCreateForkReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -1134,7 +1134,7 @@ func encodeReposCreateOrUpdateFileContentsRequestJSON(req ReposCreateOrUpdateFil
 	return e, nil
 }
 
-func encodeReposCreatePagesSiteRequestJSON(req ReposCreatePagesSiteReq, span trace.Span) (data *jx.Writer, err error) {
+func encodeReposCreatePagesSiteRequestJSON(req NilReposCreatePagesSiteReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 
 	req.Encode(e)
@@ -1158,7 +1158,7 @@ func encodeReposCreateUsingTemplateRequestJSON(req ReposCreateUsingTemplateReq, 
 	return e, nil
 }
 
-func encodeReposCreateWebhookRequestJSON(req OptReposCreateWebhookReq, span trace.Span) (data *jx.Writer, err error) {
+func encodeReposCreateWebhookRequestJSON(req OptNilReposCreateWebhookReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -1402,7 +1402,7 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyRequestJSON(req OptTeamsAddOrU
 	return e, nil
 }
 
-func encodeTeamsAddOrUpdateProjectPermissionsInOrgRequestJSON(req OptTeamsAddOrUpdateProjectPermissionsInOrgReq, span trace.Span) (data *jx.Writer, err error) {
+func encodeTeamsAddOrUpdateProjectPermissionsInOrgRequestJSON(req OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
