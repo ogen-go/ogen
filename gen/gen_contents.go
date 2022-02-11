@@ -30,7 +30,7 @@ func (g *Generator) generateContents(name string, contents map[string]*jsonschem
 			result[ir.ContentTypeJSON] = t
 
 		case "application/octet-stream":
-			if schema != nil {
+			if schema != nil && !isBinary(schema) {
 				return nil, errors.Errorf("octet stream with schema not supported")
 			}
 
