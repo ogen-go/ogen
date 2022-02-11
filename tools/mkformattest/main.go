@@ -187,7 +187,9 @@ func run() error {
 		_ = f.Close()
 	}()
 
-	return json.NewEncoder(f).Encode(spec)
+	e := json.NewEncoder(f)
+	e.SetIndent("", "\t")
+	return e.Encode(spec)
 }
 
 func main() {
