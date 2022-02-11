@@ -68,7 +68,19 @@ func (g *schemaGen) primitive(name string, schema *jsonschema.Schema) (*ir.Type,
 }
 
 func parseSimple(schema *jsonschema.Schema) *ir.Type {
-	mapping := map[jsonschema.SchemaType]map[string]ir.PrimitiveType{
+	mapping := TypeFormatMapping()
+
+	t, found := mapping[schema.Type][schema.Format]
+	if !found {
+		// Fallback to default.
+		t = mapping[schema.Type][""]
+	}
+
+	return ir.Primitive(t, schema)
+}
+
+func TypeFormatMapping() map[jsonschema.SchemaType]map[string]ir.PrimitiveType {
+	return map[jsonschema.SchemaType]map[string]ir.PrimitiveType{
 		jsonschema.Integer: {
 			"int32": ir.Int32,
 			"int64": ir.Int64,
@@ -99,12 +111,4 @@ func parseSimple(schema *jsonschema.Schema) *ir.Type {
 			"": ir.Bool,
 		},
 	}
-
-	t, found := mapping[schema.Type][schema.Format]
-	if !found {
-		// Fallback to default.
-		t = mapping[schema.Type][""]
-	}
-
-	return ir.Primitive(t, schema)
 }
