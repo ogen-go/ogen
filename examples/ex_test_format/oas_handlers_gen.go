@@ -297,6 +297,39 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 	span.SetStatus(codes.Ok, "Ok")
 }
 
+// HandleTestRequestEmptyStructRequest handles test_request_EmptyStruct operation.
+//
+// POST /test_request_EmptyStruct
+func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestEmptyStruct",
+		trace.WithAttributes(otelogen.OperationID("test_request_EmptyStruct")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestEmptyStructRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestEmptyStruct(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestEmptyStructResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
 // HandleTestRequestFormatTestRequest handles test_request_FormatTest operation.
 //
 // POST /test_request_FormatTest
@@ -1914,6 +1947,4857 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 	span.SetStatus(codes.Ok, "Ok")
 }
 
+// HandleTestRequestRequiredAnyRequest handles test_request_required_Any operation.
+//
+// POST /test_request_required_Any
+func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredAny",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_Any")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredAnyRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredAny(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredAnyResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredBooleanRequest handles test_request_required_boolean operation.
+//
+// POST /test_request_required_boolean
+func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredBoolean",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_boolean")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredBooleanRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredBoolean(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredBooleanResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredBooleanArrayRequest handles test_request_required_boolean_array operation.
+//
+// POST /test_request_required_boolean_array
+func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredBooleanArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_boolean_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredBooleanArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredBooleanArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredBooleanArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredBooleanArrayArrayRequest handles test_request_required_boolean_array_array operation.
+//
+// POST /test_request_required_boolean_array_array
+func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredBooleanArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_boolean_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredBooleanArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredBooleanArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredBooleanArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredBooleanNullableRequest handles test_request_required_boolean_nullable operation.
+//
+// POST /test_request_required_boolean_nullable
+func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredBooleanNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_boolean_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredBooleanNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredBooleanNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredBooleanNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredBooleanNullableArrayRequest handles test_request_required_boolean_nullable_array operation.
+//
+// POST /test_request_required_boolean_nullable_array
+func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredBooleanNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_boolean_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredBooleanNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredBooleanNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredBooleanNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredBooleanNullableArrayArrayRequest handles test_request_required_boolean_nullable_array_array operation.
+//
+// POST /test_request_required_boolean_nullable_array_array
+func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredBooleanNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_boolean_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredBooleanNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredBooleanNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredEmptyStructRequest handles test_request_required_EmptyStruct operation.
+//
+// POST /test_request_required_EmptyStruct
+func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredEmptyStruct",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_EmptyStruct")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredEmptyStructRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredEmptyStruct(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredEmptyStructResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredFormatTestRequest handles test_request_required_FormatTest operation.
+//
+// POST /test_request_required_FormatTest
+func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredFormatTest",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_FormatTest")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredFormatTestRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredFormatTest(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredFormatTestResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredIntegerRequest handles test_request_required_integer operation.
+//
+// POST /test_request_required_integer
+func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredInteger",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_integer")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredIntegerRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredInteger(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredIntegerArrayRequest handles test_request_required_integer_array operation.
+//
+// POST /test_request_required_integer_array
+func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredIntegerArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredIntegerArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredIntegerArrayArrayRequest handles test_request_required_integer_array_array operation.
+//
+// POST /test_request_required_integer_array_array
+func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredIntegerArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredIntegerArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredIntegerInt32Request handles test_request_required_integer_int32 operation.
+//
+// POST /test_request_required_integer_int32
+func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt32",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int32")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredIntegerInt32Request(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredIntegerInt32(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerInt32Response(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredIntegerInt32ArrayRequest handles test_request_required_integer_int32_array operation.
+//
+// POST /test_request_required_integer_int32_array
+func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt32Array",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int32_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredIntegerInt32ArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredIntegerInt32Array(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerInt32ArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredIntegerInt32ArrayArrayRequest handles test_request_required_integer_int32_array_array operation.
+//
+// POST /test_request_required_integer_int32_array_array
+func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt32ArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int32_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredIntegerInt32ArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerInt32ArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredIntegerInt32NullableRequest handles test_request_required_integer_int32_nullable operation.
+//
+// POST /test_request_required_integer_int32_nullable
+func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt32Nullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int32_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredIntegerInt32NullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredIntegerInt32Nullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerInt32NullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredIntegerInt32NullableArrayRequest handles test_request_required_integer_int32_nullable_array operation.
+//
+// POST /test_request_required_integer_int32_nullable_array
+func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt32NullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int32_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredIntegerInt32NullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerInt32NullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredIntegerInt32NullableArrayArrayRequest handles test_request_required_integer_int32_nullable_array_array operation.
+//
+// POST /test_request_required_integer_int32_nullable_array_array
+func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt32NullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int32_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredIntegerInt32NullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerInt32NullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredIntegerInt64Request handles test_request_required_integer_int64 operation.
+//
+// POST /test_request_required_integer_int64
+func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt64",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int64")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredIntegerInt64Request(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredIntegerInt64(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerInt64Response(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredIntegerInt64ArrayRequest handles test_request_required_integer_int64_array operation.
+//
+// POST /test_request_required_integer_int64_array
+func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt64Array",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int64_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredIntegerInt64ArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredIntegerInt64Array(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerInt64ArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredIntegerInt64ArrayArrayRequest handles test_request_required_integer_int64_array_array operation.
+//
+// POST /test_request_required_integer_int64_array_array
+func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt64ArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int64_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredIntegerInt64ArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerInt64ArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredIntegerInt64NullableRequest handles test_request_required_integer_int64_nullable operation.
+//
+// POST /test_request_required_integer_int64_nullable
+func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt64Nullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int64_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredIntegerInt64NullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredIntegerInt64Nullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerInt64NullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredIntegerInt64NullableArrayRequest handles test_request_required_integer_int64_nullable_array operation.
+//
+// POST /test_request_required_integer_int64_nullable_array
+func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt64NullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int64_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredIntegerInt64NullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerInt64NullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredIntegerInt64NullableArrayArrayRequest handles test_request_required_integer_int64_nullable_array_array operation.
+//
+// POST /test_request_required_integer_int64_nullable_array_array
+func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt64NullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int64_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredIntegerInt64NullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerInt64NullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredIntegerNullableRequest handles test_request_required_integer_nullable operation.
+//
+// POST /test_request_required_integer_nullable
+func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredIntegerNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredIntegerNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredIntegerNullableArrayRequest handles test_request_required_integer_nullable_array operation.
+//
+// POST /test_request_required_integer_nullable_array
+func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredIntegerNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredIntegerNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredIntegerNullableArrayArrayRequest handles test_request_required_integer_nullable_array_array operation.
+//
+// POST /test_request_required_integer_nullable_array_array
+func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredIntegerNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberRequest handles test_request_required_number operation.
+//
+// POST /test_request_required_number
+func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumber",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumber(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberArrayRequest handles test_request_required_number_array operation.
+//
+// POST /test_request_required_number_array
+func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberArrayArrayRequest handles test_request_required_number_array_array operation.
+//
+// POST /test_request_required_number_array_array
+func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberDoubleRequest handles test_request_required_number_double operation.
+//
+// POST /test_request_required_number_double
+func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberDouble",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_double")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberDoubleRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberDouble(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberDoubleResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberDoubleArrayRequest handles test_request_required_number_double_array operation.
+//
+// POST /test_request_required_number_double_array
+func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberDoubleArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_double_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberDoubleArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberDoubleArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberDoubleArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberDoubleArrayArrayRequest handles test_request_required_number_double_array_array operation.
+//
+// POST /test_request_required_number_double_array_array
+func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberDoubleArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_double_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberDoubleArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberDoubleArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberDoubleNullableRequest handles test_request_required_number_double_nullable operation.
+//
+// POST /test_request_required_number_double_nullable
+func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberDoubleNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_double_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberDoubleNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberDoubleNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberDoubleNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberDoubleNullableArrayRequest handles test_request_required_number_double_nullable_array operation.
+//
+// POST /test_request_required_number_double_nullable_array
+func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberDoubleNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_double_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberDoubleNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberDoubleNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberDoubleNullableArrayArrayRequest handles test_request_required_number_double_nullable_array_array operation.
+//
+// POST /test_request_required_number_double_nullable_array_array
+func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberDoubleNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_double_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberDoubleNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberDoubleNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberFloatRequest handles test_request_required_number_float operation.
+//
+// POST /test_request_required_number_float
+func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberFloat",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_float")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberFloatRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberFloat(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberFloatResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberFloatArrayRequest handles test_request_required_number_float_array operation.
+//
+// POST /test_request_required_number_float_array
+func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberFloatArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_float_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberFloatArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberFloatArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberFloatArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberFloatArrayArrayRequest handles test_request_required_number_float_array_array operation.
+//
+// POST /test_request_required_number_float_array_array
+func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberFloatArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_float_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberFloatArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberFloatArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberFloatArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberFloatNullableRequest handles test_request_required_number_float_nullable operation.
+//
+// POST /test_request_required_number_float_nullable
+func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberFloatNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_float_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberFloatNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberFloatNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberFloatNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberFloatNullableArrayRequest handles test_request_required_number_float_nullable_array operation.
+//
+// POST /test_request_required_number_float_nullable_array
+func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberFloatNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_float_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberFloatNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberFloatNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberFloatNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberFloatNullableArrayArrayRequest handles test_request_required_number_float_nullable_array_array operation.
+//
+// POST /test_request_required_number_float_nullable_array_array
+func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberFloatNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_float_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberFloatNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberFloatNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberInt32Request handles test_request_required_number_int32 operation.
+//
+// POST /test_request_required_number_int32
+func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt32",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int32")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberInt32Request(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberInt32(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberInt32Response(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberInt32ArrayRequest handles test_request_required_number_int32_array operation.
+//
+// POST /test_request_required_number_int32_array
+func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt32Array",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int32_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberInt32ArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberInt32Array(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberInt32ArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberInt32ArrayArrayRequest handles test_request_required_number_int32_array_array operation.
+//
+// POST /test_request_required_number_int32_array_array
+func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt32ArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int32_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberInt32ArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberInt32ArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberInt32NullableRequest handles test_request_required_number_int32_nullable operation.
+//
+// POST /test_request_required_number_int32_nullable
+func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt32Nullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int32_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberInt32NullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberInt32Nullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberInt32NullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberInt32NullableArrayRequest handles test_request_required_number_int32_nullable_array operation.
+//
+// POST /test_request_required_number_int32_nullable_array
+func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt32NullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int32_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberInt32NullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberInt32NullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberInt32NullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberInt32NullableArrayArrayRequest handles test_request_required_number_int32_nullable_array_array operation.
+//
+// POST /test_request_required_number_int32_nullable_array_array
+func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt32NullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int32_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberInt32NullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberInt32NullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberInt64Request handles test_request_required_number_int64 operation.
+//
+// POST /test_request_required_number_int64
+func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt64",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int64")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberInt64Request(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberInt64(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberInt64Response(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberInt64ArrayRequest handles test_request_required_number_int64_array operation.
+//
+// POST /test_request_required_number_int64_array
+func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt64Array",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int64_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberInt64ArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberInt64Array(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberInt64ArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberInt64ArrayArrayRequest handles test_request_required_number_int64_array_array operation.
+//
+// POST /test_request_required_number_int64_array_array
+func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt64ArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int64_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberInt64ArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberInt64ArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberInt64NullableRequest handles test_request_required_number_int64_nullable operation.
+//
+// POST /test_request_required_number_int64_nullable
+func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt64Nullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int64_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberInt64NullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberInt64Nullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberInt64NullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberInt64NullableArrayRequest handles test_request_required_number_int64_nullable_array operation.
+//
+// POST /test_request_required_number_int64_nullable_array
+func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt64NullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int64_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberInt64NullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberInt64NullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberInt64NullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberInt64NullableArrayArrayRequest handles test_request_required_number_int64_nullable_array_array operation.
+//
+// POST /test_request_required_number_int64_nullable_array_array
+func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt64NullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int64_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberInt64NullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberInt64NullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberNullableRequest handles test_request_required_number_nullable operation.
+//
+// POST /test_request_required_number_nullable
+func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberNullableArrayRequest handles test_request_required_number_nullable_array operation.
+//
+// POST /test_request_required_number_nullable_array
+func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredNumberNullableArrayArrayRequest handles test_request_required_number_nullable_array_array operation.
+//
+// POST /test_request_required_number_nullable_array_array
+func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_number_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredNumberNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNumberNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNumberNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringRequest handles test_request_required_string operation.
+//
+// POST /test_request_required_string
+func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredString",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredString(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringArrayRequest handles test_request_required_string_array operation.
+//
+// POST /test_request_required_string_array
+func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringArrayArrayRequest handles test_request_required_string_array_array operation.
+//
+// POST /test_request_required_string_array_array
+func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringBinaryRequest handles test_request_required_string_binary operation.
+//
+// POST /test_request_required_string_binary
+func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringBinary",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_binary")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringBinaryRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringBinary(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringBinaryResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringBinaryArrayRequest handles test_request_required_string_binary_array operation.
+//
+// POST /test_request_required_string_binary_array
+func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringBinaryArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_binary_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringBinaryArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringBinaryArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringBinaryArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringBinaryArrayArrayRequest handles test_request_required_string_binary_array_array operation.
+//
+// POST /test_request_required_string_binary_array_array
+func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringBinaryArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_binary_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringBinaryArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringBinaryArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringBinaryArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringBinaryNullableRequest handles test_request_required_string_binary_nullable operation.
+//
+// POST /test_request_required_string_binary_nullable
+func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringBinaryNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_binary_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringBinaryNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringBinaryNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringBinaryNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringBinaryNullableArrayRequest handles test_request_required_string_binary_nullable_array operation.
+//
+// POST /test_request_required_string_binary_nullable_array
+func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringBinaryNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_binary_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringBinaryNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringBinaryNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringBinaryNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringBinaryNullableArrayArrayRequest handles test_request_required_string_binary_nullable_array_array operation.
+//
+// POST /test_request_required_string_binary_nullable_array_array
+func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringBinaryNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_binary_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringBinaryNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringBinaryNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringByteRequest handles test_request_required_string_byte operation.
+//
+// POST /test_request_required_string_byte
+func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringByte",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_byte")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringByteRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringByte(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringByteResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringByteArrayRequest handles test_request_required_string_byte_array operation.
+//
+// POST /test_request_required_string_byte_array
+func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringByteArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_byte_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringByteArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringByteArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringByteArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringByteArrayArrayRequest handles test_request_required_string_byte_array_array operation.
+//
+// POST /test_request_required_string_byte_array_array
+func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringByteArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_byte_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringByteArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringByteArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringByteArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringByteNullableRequest handles test_request_required_string_byte_nullable operation.
+//
+// POST /test_request_required_string_byte_nullable
+func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringByteNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_byte_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringByteNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringByteNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringByteNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringByteNullableArrayRequest handles test_request_required_string_byte_nullable_array operation.
+//
+// POST /test_request_required_string_byte_nullable_array
+func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringByteNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_byte_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringByteNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringByteNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringByteNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringByteNullableArrayArrayRequest handles test_request_required_string_byte_nullable_array_array operation.
+//
+// POST /test_request_required_string_byte_nullable_array_array
+func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringByteNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_byte_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringByteNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringByteNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringDateRequest handles test_request_required_string_date operation.
+//
+// POST /test_request_required_string_date
+func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDate",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringDateRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringDate(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringDateResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringDateArrayRequest handles test_request_required_string_date_array operation.
+//
+// POST /test_request_required_string_date_array
+func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringDateArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringDateArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringDateArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringDateArrayArrayRequest handles test_request_required_string_date_array_array operation.
+//
+// POST /test_request_required_string_date_array_array
+func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringDateArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringDateArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringDateArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringDateNullableRequest handles test_request_required_string_date_nullable operation.
+//
+// POST /test_request_required_string_date_nullable
+func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringDateNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringDateNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringDateNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringDateNullableArrayRequest handles test_request_required_string_date_nullable_array operation.
+//
+// POST /test_request_required_string_date_nullable_array
+func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringDateNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringDateNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringDateNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringDateNullableArrayArrayRequest handles test_request_required_string_date_nullable_array_array operation.
+//
+// POST /test_request_required_string_date_nullable_array_array
+func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringDateNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringDateNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringDateTimeRequest handles test_request_required_string_date-time operation.
+//
+// POST /test_request_required_string_date-time
+func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateTime",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date-time")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringDateTimeRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringDateTime(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringDateTimeResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringDateTimeArrayRequest handles test_request_required_string_date-time_array operation.
+//
+// POST /test_request_required_string_date-time_array
+func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateTimeArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date-time_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringDateTimeArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringDateTimeArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringDateTimeArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringDateTimeArrayArrayRequest handles test_request_required_string_date-time_array_array operation.
+//
+// POST /test_request_required_string_date-time_array_array
+func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateTimeArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date-time_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringDateTimeArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringDateTimeArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringDateTimeNullableRequest handles test_request_required_string_date-time_nullable operation.
+//
+// POST /test_request_required_string_date-time_nullable
+func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateTimeNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date-time_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringDateTimeNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringDateTimeNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringDateTimeNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringDateTimeNullableArrayRequest handles test_request_required_string_date-time_nullable_array operation.
+//
+// POST /test_request_required_string_date-time_nullable_array
+func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateTimeNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date-time_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringDateTimeNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringDateTimeNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringDateTimeNullableArrayArrayRequest handles test_request_required_string_date-time_nullable_array_array operation.
+//
+// POST /test_request_required_string_date-time_nullable_array_array
+func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateTimeNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date-time_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringDateTimeNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringDateTimeNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringDurationRequest handles test_request_required_string_duration operation.
+//
+// POST /test_request_required_string_duration
+func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDuration",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_duration")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringDurationRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringDuration(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringDurationResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringDurationArrayRequest handles test_request_required_string_duration_array operation.
+//
+// POST /test_request_required_string_duration_array
+func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDurationArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_duration_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringDurationArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringDurationArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringDurationArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringDurationArrayArrayRequest handles test_request_required_string_duration_array_array operation.
+//
+// POST /test_request_required_string_duration_array_array
+func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDurationArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_duration_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringDurationArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringDurationArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringDurationArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringDurationNullableRequest handles test_request_required_string_duration_nullable operation.
+//
+// POST /test_request_required_string_duration_nullable
+func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDurationNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_duration_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringDurationNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringDurationNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringDurationNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringDurationNullableArrayRequest handles test_request_required_string_duration_nullable_array operation.
+//
+// POST /test_request_required_string_duration_nullable_array
+func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDurationNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_duration_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringDurationNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringDurationNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringDurationNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringDurationNullableArrayArrayRequest handles test_request_required_string_duration_nullable_array_array operation.
+//
+// POST /test_request_required_string_duration_nullable_array_array
+func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDurationNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_duration_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringDurationNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringDurationNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringEmailRequest handles test_request_required_string_email operation.
+//
+// POST /test_request_required_string_email
+func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringEmail",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_email")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringEmailRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringEmail(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringEmailResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringEmailArrayRequest handles test_request_required_string_email_array operation.
+//
+// POST /test_request_required_string_email_array
+func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringEmailArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_email_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringEmailArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringEmailArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringEmailArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringEmailArrayArrayRequest handles test_request_required_string_email_array_array operation.
+//
+// POST /test_request_required_string_email_array_array
+func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringEmailArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_email_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringEmailArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringEmailArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringEmailArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringEmailNullableRequest handles test_request_required_string_email_nullable operation.
+//
+// POST /test_request_required_string_email_nullable
+func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringEmailNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_email_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringEmailNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringEmailNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringEmailNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringEmailNullableArrayRequest handles test_request_required_string_email_nullable_array operation.
+//
+// POST /test_request_required_string_email_nullable_array
+func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringEmailNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_email_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringEmailNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringEmailNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringEmailNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringEmailNullableArrayArrayRequest handles test_request_required_string_email_nullable_array_array operation.
+//
+// POST /test_request_required_string_email_nullable_array_array
+func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringEmailNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_email_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringEmailNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringEmailNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringHostnameRequest handles test_request_required_string_hostname operation.
+//
+// POST /test_request_required_string_hostname
+func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringHostname",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_hostname")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringHostnameRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringHostname(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringHostnameResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringHostnameArrayRequest handles test_request_required_string_hostname_array operation.
+//
+// POST /test_request_required_string_hostname_array
+func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringHostnameArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_hostname_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringHostnameArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringHostnameArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringHostnameArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringHostnameArrayArrayRequest handles test_request_required_string_hostname_array_array operation.
+//
+// POST /test_request_required_string_hostname_array_array
+func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringHostnameArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_hostname_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringHostnameArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringHostnameArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringHostnameArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringHostnameNullableRequest handles test_request_required_string_hostname_nullable operation.
+//
+// POST /test_request_required_string_hostname_nullable
+func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringHostnameNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_hostname_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringHostnameNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringHostnameNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringHostnameNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringHostnameNullableArrayRequest handles test_request_required_string_hostname_nullable_array operation.
+//
+// POST /test_request_required_string_hostname_nullable_array
+func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringHostnameNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_hostname_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringHostnameNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringHostnameNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringHostnameNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringHostnameNullableArrayArrayRequest handles test_request_required_string_hostname_nullable_array_array operation.
+//
+// POST /test_request_required_string_hostname_nullable_array_array
+func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringHostnameNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_hostname_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringHostnameNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringHostnameNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringIPRequest handles test_request_required_string_ip operation.
+//
+// POST /test_request_required_string_ip
+func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIP",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ip")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringIPRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringIP(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringIPResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringIPArrayRequest handles test_request_required_string_ip_array operation.
+//
+// POST /test_request_required_string_ip_array
+func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIPArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ip_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringIPArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringIPArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringIPArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringIPArrayArrayRequest handles test_request_required_string_ip_array_array operation.
+//
+// POST /test_request_required_string_ip_array_array
+func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIPArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ip_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringIPArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringIPArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringIPArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringIPNullableRequest handles test_request_required_string_ip_nullable operation.
+//
+// POST /test_request_required_string_ip_nullable
+func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIPNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ip_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringIPNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringIPNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringIPNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringIPNullableArrayRequest handles test_request_required_string_ip_nullable_array operation.
+//
+// POST /test_request_required_string_ip_nullable_array
+func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIPNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ip_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringIPNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringIPNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringIPNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringIPNullableArrayArrayRequest handles test_request_required_string_ip_nullable_array_array operation.
+//
+// POST /test_request_required_string_ip_nullable_array_array
+func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIPNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ip_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringIPNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringIPNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringIpv4Request handles test_request_required_string_ipv4 operation.
+//
+// POST /test_request_required_string_ipv4
+func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv4",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv4")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringIpv4Request(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringIpv4(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringIpv4Response(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringIpv4ArrayRequest handles test_request_required_string_ipv4_array operation.
+//
+// POST /test_request_required_string_ipv4_array
+func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv4Array",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv4_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringIpv4ArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringIpv4Array(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringIpv4ArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringIpv4ArrayArrayRequest handles test_request_required_string_ipv4_array_array operation.
+//
+// POST /test_request_required_string_ipv4_array_array
+func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv4ArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv4_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringIpv4ArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringIpv4ArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringIpv4NullableRequest handles test_request_required_string_ipv4_nullable operation.
+//
+// POST /test_request_required_string_ipv4_nullable
+func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv4Nullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv4_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringIpv4NullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringIpv4Nullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringIpv4NullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringIpv4NullableArrayRequest handles test_request_required_string_ipv4_nullable_array operation.
+//
+// POST /test_request_required_string_ipv4_nullable_array
+func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv4NullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv4_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringIpv4NullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringIpv4NullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringIpv4NullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringIpv4NullableArrayArrayRequest handles test_request_required_string_ipv4_nullable_array_array operation.
+//
+// POST /test_request_required_string_ipv4_nullable_array_array
+func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv4NullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv4_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringIpv4NullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringIpv4NullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringIpv6Request handles test_request_required_string_ipv6 operation.
+//
+// POST /test_request_required_string_ipv6
+func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv6",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv6")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringIpv6Request(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringIpv6(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringIpv6Response(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringIpv6ArrayRequest handles test_request_required_string_ipv6_array operation.
+//
+// POST /test_request_required_string_ipv6_array
+func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv6Array",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv6_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringIpv6ArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringIpv6Array(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringIpv6ArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringIpv6ArrayArrayRequest handles test_request_required_string_ipv6_array_array operation.
+//
+// POST /test_request_required_string_ipv6_array_array
+func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv6ArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv6_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringIpv6ArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringIpv6ArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringIpv6NullableRequest handles test_request_required_string_ipv6_nullable operation.
+//
+// POST /test_request_required_string_ipv6_nullable
+func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv6Nullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv6_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringIpv6NullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringIpv6Nullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringIpv6NullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringIpv6NullableArrayRequest handles test_request_required_string_ipv6_nullable_array operation.
+//
+// POST /test_request_required_string_ipv6_nullable_array
+func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv6NullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv6_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringIpv6NullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringIpv6NullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringIpv6NullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringIpv6NullableArrayArrayRequest handles test_request_required_string_ipv6_nullable_array_array operation.
+//
+// POST /test_request_required_string_ipv6_nullable_array_array
+func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv6NullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv6_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringIpv6NullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringIpv6NullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringNullableRequest handles test_request_required_string_nullable operation.
+//
+// POST /test_request_required_string_nullable
+func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringNullableArrayRequest handles test_request_required_string_nullable_array operation.
+//
+// POST /test_request_required_string_nullable_array
+func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringNullableArrayArrayRequest handles test_request_required_string_nullable_array_array operation.
+//
+// POST /test_request_required_string_nullable_array_array
+func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringPasswordRequest handles test_request_required_string_password operation.
+//
+// POST /test_request_required_string_password
+func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringPassword",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_password")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringPasswordRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringPassword(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringPasswordResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringPasswordArrayRequest handles test_request_required_string_password_array operation.
+//
+// POST /test_request_required_string_password_array
+func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringPasswordArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_password_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringPasswordArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringPasswordArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringPasswordArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringPasswordArrayArrayRequest handles test_request_required_string_password_array_array operation.
+//
+// POST /test_request_required_string_password_array_array
+func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringPasswordArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_password_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringPasswordArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringPasswordArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringPasswordArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringPasswordNullableRequest handles test_request_required_string_password_nullable operation.
+//
+// POST /test_request_required_string_password_nullable
+func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringPasswordNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_password_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringPasswordNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringPasswordNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringPasswordNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringPasswordNullableArrayRequest handles test_request_required_string_password_nullable_array operation.
+//
+// POST /test_request_required_string_password_nullable_array
+func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringPasswordNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_password_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringPasswordNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringPasswordNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringPasswordNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringPasswordNullableArrayArrayRequest handles test_request_required_string_password_nullable_array_array operation.
+//
+// POST /test_request_required_string_password_nullable_array_array
+func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringPasswordNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_password_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringPasswordNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringPasswordNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringTimeRequest handles test_request_required_string_time operation.
+//
+// POST /test_request_required_string_time
+func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringTime",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_time")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringTimeRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringTime(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringTimeResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringTimeArrayRequest handles test_request_required_string_time_array operation.
+//
+// POST /test_request_required_string_time_array
+func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringTimeArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_time_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringTimeArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringTimeArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringTimeArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringTimeArrayArrayRequest handles test_request_required_string_time_array_array operation.
+//
+// POST /test_request_required_string_time_array_array
+func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringTimeArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_time_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringTimeArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringTimeArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringTimeArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringTimeNullableRequest handles test_request_required_string_time_nullable operation.
+//
+// POST /test_request_required_string_time_nullable
+func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringTimeNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_time_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringTimeNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringTimeNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringTimeNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringTimeNullableArrayRequest handles test_request_required_string_time_nullable_array operation.
+//
+// POST /test_request_required_string_time_nullable_array
+func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringTimeNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_time_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringTimeNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringTimeNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringTimeNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringTimeNullableArrayArrayRequest handles test_request_required_string_time_nullable_array_array operation.
+//
+// POST /test_request_required_string_time_nullable_array_array
+func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringTimeNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_time_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringTimeNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringTimeNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringURIRequest handles test_request_required_string_uri operation.
+//
+// POST /test_request_required_string_uri
+func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringURI",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uri")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringURIRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringURI(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringURIResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringURIArrayRequest handles test_request_required_string_uri_array operation.
+//
+// POST /test_request_required_string_uri_array
+func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringURIArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uri_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringURIArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringURIArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringURIArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringURIArrayArrayRequest handles test_request_required_string_uri_array_array operation.
+//
+// POST /test_request_required_string_uri_array_array
+func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringURIArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uri_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringURIArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringURIArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringURIArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringURINullableRequest handles test_request_required_string_uri_nullable operation.
+//
+// POST /test_request_required_string_uri_nullable
+func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringURINullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uri_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringURINullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringURINullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringURINullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringURINullableArrayRequest handles test_request_required_string_uri_nullable_array operation.
+//
+// POST /test_request_required_string_uri_nullable_array
+func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringURINullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uri_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringURINullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringURINullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringURINullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringURINullableArrayArrayRequest handles test_request_required_string_uri_nullable_array_array operation.
+//
+// POST /test_request_required_string_uri_nullable_array_array
+func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringURINullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uri_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringURINullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringURINullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringURINullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringUUIDRequest handles test_request_required_string_uuid operation.
+//
+// POST /test_request_required_string_uuid
+func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUUID",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uuid")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringUUIDRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringUUID(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringUUIDResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringUUIDArrayRequest handles test_request_required_string_uuid_array operation.
+//
+// POST /test_request_required_string_uuid_array
+func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUUIDArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uuid_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringUUIDArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringUUIDArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringUUIDArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringUUIDArrayArrayRequest handles test_request_required_string_uuid_array_array operation.
+//
+// POST /test_request_required_string_uuid_array_array
+func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUUIDArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uuid_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringUUIDArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringUUIDArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringUUIDArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringUUIDNullableRequest handles test_request_required_string_uuid_nullable operation.
+//
+// POST /test_request_required_string_uuid_nullable
+func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUUIDNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uuid_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringUUIDNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringUUIDNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringUUIDNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringUUIDNullableArrayRequest handles test_request_required_string_uuid_nullable_array operation.
+//
+// POST /test_request_required_string_uuid_nullable_array
+func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUUIDNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uuid_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringUUIDNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringUUIDNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringUUIDNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestRequiredStringUUIDNullableArrayArrayRequest handles test_request_required_string_uuid_nullable_array_array operation.
+//
+// POST /test_request_required_string_uuid_nullable_array_array
+func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUUIDNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uuid_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredStringUUIDNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredStringUUIDNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
 // HandleTestRequestStringRequest handles test_request_string operation.
 //
 // POST /test_request_string
@@ -2006,6 +6890,204 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 	}
 
 	if err := encodeTestRequestStringArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestStringBinaryRequest handles test_request_string_binary operation.
+//
+// POST /test_request_string_binary
+func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringBinary",
+		trace.WithAttributes(otelogen.OperationID("test_request_string_binary")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestStringBinaryRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestStringBinary(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestStringBinaryResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestStringBinaryArrayRequest handles test_request_string_binary_array operation.
+//
+// POST /test_request_string_binary_array
+func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringBinaryArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_string_binary_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestStringBinaryArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestStringBinaryArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestStringBinaryArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestStringBinaryArrayArrayRequest handles test_request_string_binary_array_array operation.
+//
+// POST /test_request_string_binary_array_array
+func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringBinaryArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_string_binary_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestStringBinaryArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestStringBinaryArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestStringBinaryArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestStringBinaryNullableRequest handles test_request_string_binary_nullable operation.
+//
+// POST /test_request_string_binary_nullable
+func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringBinaryNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_string_binary_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestStringBinaryNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestStringBinaryNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestStringBinaryNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestStringBinaryNullableArrayRequest handles test_request_string_binary_nullable_array operation.
+//
+// POST /test_request_string_binary_nullable_array
+func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringBinaryNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_string_binary_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestStringBinaryNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestStringBinaryNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestStringBinaryNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestStringBinaryNullableArrayArrayRequest handles test_request_string_binary_nullable_array_array operation.
+//
+// POST /test_request_string_binary_nullable_array_array
+func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringBinaryNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_string_binary_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestStringBinaryNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestStringBinaryNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestStringBinaryNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		return
@@ -2798,6 +7880,402 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 	}
 
 	if err := encodeTestRequestStringDurationNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestStringEmailRequest handles test_request_string_email operation.
+//
+// POST /test_request_string_email
+func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringEmail",
+		trace.WithAttributes(otelogen.OperationID("test_request_string_email")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestStringEmailRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestStringEmail(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestStringEmailResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestStringEmailArrayRequest handles test_request_string_email_array operation.
+//
+// POST /test_request_string_email_array
+func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringEmailArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_string_email_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestStringEmailArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestStringEmailArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestStringEmailArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestStringEmailArrayArrayRequest handles test_request_string_email_array_array operation.
+//
+// POST /test_request_string_email_array_array
+func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringEmailArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_string_email_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestStringEmailArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestStringEmailArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestStringEmailArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestStringEmailNullableRequest handles test_request_string_email_nullable operation.
+//
+// POST /test_request_string_email_nullable
+func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringEmailNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_string_email_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestStringEmailNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestStringEmailNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestStringEmailNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestStringEmailNullableArrayRequest handles test_request_string_email_nullable_array operation.
+//
+// POST /test_request_string_email_nullable_array
+func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringEmailNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_string_email_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestStringEmailNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestStringEmailNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestStringEmailNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestStringEmailNullableArrayArrayRequest handles test_request_string_email_nullable_array_array operation.
+//
+// POST /test_request_string_email_nullable_array_array
+func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringEmailNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_string_email_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestStringEmailNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestStringEmailNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestStringEmailNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestStringHostnameRequest handles test_request_string_hostname operation.
+//
+// POST /test_request_string_hostname
+func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringHostname",
+		trace.WithAttributes(otelogen.OperationID("test_request_string_hostname")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestStringHostnameRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestStringHostname(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestStringHostnameResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestStringHostnameArrayRequest handles test_request_string_hostname_array operation.
+//
+// POST /test_request_string_hostname_array
+func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringHostnameArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_string_hostname_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestStringHostnameArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestStringHostnameArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestStringHostnameArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestStringHostnameArrayArrayRequest handles test_request_string_hostname_array_array operation.
+//
+// POST /test_request_string_hostname_array_array
+func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringHostnameArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_string_hostname_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestStringHostnameArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestStringHostnameArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestStringHostnameArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestStringHostnameNullableRequest handles test_request_string_hostname_nullable operation.
+//
+// POST /test_request_string_hostname_nullable
+func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringHostnameNullable",
+		trace.WithAttributes(otelogen.OperationID("test_request_string_hostname_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestStringHostnameNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestStringHostnameNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestStringHostnameNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestStringHostnameNullableArrayRequest handles test_request_string_hostname_nullable_array operation.
+//
+// POST /test_request_string_hostname_nullable_array
+func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringHostnameNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_string_hostname_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestStringHostnameNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestStringHostnameNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestStringHostnameNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestRequestStringHostnameNullableArrayArrayRequest handles test_request_string_hostname_nullable_array_array operation.
+//
+// POST /test_request_string_hostname_nullable_array_array
+func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringHostnameNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_request_string_hostname_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestRequestStringHostnameNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestRequestStringHostnameNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestRequestStringHostnameNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		return
@@ -4521,6 +9999,39 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 	span.SetStatus(codes.Ok, "Ok")
 }
 
+// HandleTestResponseEmptyStructRequest handles test_response_EmptyStruct operation.
+//
+// POST /test_response_EmptyStruct
+func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseEmptyStruct",
+		trace.WithAttributes(otelogen.OperationID("test_response_EmptyStruct")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseEmptyStructRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseEmptyStruct(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseEmptyStructResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
 // HandleTestResponseFormatTestRequest handles test_response_FormatTest operation.
 //
 // POST /test_response_FormatTest
@@ -6237,6 +11748,204 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w htt
 	span.SetStatus(codes.Ok, "Ok")
 }
 
+// HandleTestResponseStringBinaryRequest handles test_response_string_binary operation.
+//
+// POST /test_response_string_binary
+func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringBinary",
+		trace.WithAttributes(otelogen.OperationID("test_response_string_binary")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseStringBinaryRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseStringBinary(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseStringBinaryResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestResponseStringBinaryArrayRequest handles test_response_string_binary_array operation.
+//
+// POST /test_response_string_binary_array
+func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringBinaryArray",
+		trace.WithAttributes(otelogen.OperationID("test_response_string_binary_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseStringBinaryArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseStringBinaryArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseStringBinaryArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestResponseStringBinaryArrayArrayRequest handles test_response_string_binary_array_array operation.
+//
+// POST /test_response_string_binary_array_array
+func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringBinaryArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_response_string_binary_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseStringBinaryArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseStringBinaryArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseStringBinaryArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestResponseStringBinaryNullableRequest handles test_response_string_binary_nullable operation.
+//
+// POST /test_response_string_binary_nullable
+func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringBinaryNullable",
+		trace.WithAttributes(otelogen.OperationID("test_response_string_binary_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseStringBinaryNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseStringBinaryNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseStringBinaryNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestResponseStringBinaryNullableArrayRequest handles test_response_string_binary_nullable_array operation.
+//
+// POST /test_response_string_binary_nullable_array
+func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringBinaryNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_response_string_binary_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseStringBinaryNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseStringBinaryNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseStringBinaryNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestResponseStringBinaryNullableArrayArrayRequest handles test_response_string_binary_nullable_array_array operation.
+//
+// POST /test_response_string_binary_nullable_array_array
+func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringBinaryNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_response_string_binary_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseStringBinaryNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseStringBinaryNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseStringBinaryNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
 // HandleTestResponseStringByteRequest handles test_response_string_byte operation.
 //
 // POST /test_response_string_byte
@@ -7022,6 +12731,402 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 	}
 
 	if err := encodeTestResponseStringDurationNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestResponseStringEmailRequest handles test_response_string_email operation.
+//
+// POST /test_response_string_email
+func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringEmail",
+		trace.WithAttributes(otelogen.OperationID("test_response_string_email")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseStringEmailRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseStringEmail(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseStringEmailResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestResponseStringEmailArrayRequest handles test_response_string_email_array operation.
+//
+// POST /test_response_string_email_array
+func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringEmailArray",
+		trace.WithAttributes(otelogen.OperationID("test_response_string_email_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseStringEmailArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseStringEmailArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseStringEmailArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestResponseStringEmailArrayArrayRequest handles test_response_string_email_array_array operation.
+//
+// POST /test_response_string_email_array_array
+func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringEmailArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_response_string_email_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseStringEmailArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseStringEmailArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseStringEmailArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestResponseStringEmailNullableRequest handles test_response_string_email_nullable operation.
+//
+// POST /test_response_string_email_nullable
+func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringEmailNullable",
+		trace.WithAttributes(otelogen.OperationID("test_response_string_email_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseStringEmailNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseStringEmailNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseStringEmailNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestResponseStringEmailNullableArrayRequest handles test_response_string_email_nullable_array operation.
+//
+// POST /test_response_string_email_nullable_array
+func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringEmailNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_response_string_email_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseStringEmailNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseStringEmailNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseStringEmailNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestResponseStringEmailNullableArrayArrayRequest handles test_response_string_email_nullable_array_array operation.
+//
+// POST /test_response_string_email_nullable_array_array
+func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringEmailNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_response_string_email_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseStringEmailNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseStringEmailNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseStringEmailNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestResponseStringHostnameRequest handles test_response_string_hostname operation.
+//
+// POST /test_response_string_hostname
+func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringHostname",
+		trace.WithAttributes(otelogen.OperationID("test_response_string_hostname")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseStringHostnameRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseStringHostname(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseStringHostnameResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestResponseStringHostnameArrayRequest handles test_response_string_hostname_array operation.
+//
+// POST /test_response_string_hostname_array
+func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringHostnameArray",
+		trace.WithAttributes(otelogen.OperationID("test_response_string_hostname_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseStringHostnameArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseStringHostnameArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseStringHostnameArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestResponseStringHostnameArrayArrayRequest handles test_response_string_hostname_array_array operation.
+//
+// POST /test_response_string_hostname_array_array
+func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringHostnameArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_response_string_hostname_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseStringHostnameArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseStringHostnameArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseStringHostnameArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestResponseStringHostnameNullableRequest handles test_response_string_hostname_nullable operation.
+//
+// POST /test_response_string_hostname_nullable
+func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringHostnameNullable",
+		trace.WithAttributes(otelogen.OperationID("test_response_string_hostname_nullable")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseStringHostnameNullableRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseStringHostnameNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseStringHostnameNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestResponseStringHostnameNullableArrayRequest handles test_response_string_hostname_nullable_array operation.
+//
+// POST /test_response_string_hostname_nullable_array
+func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringHostnameNullableArray",
+		trace.WithAttributes(otelogen.OperationID("test_response_string_hostname_nullable_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseStringHostnameNullableArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseStringHostnameNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseStringHostnameNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestResponseStringHostnameNullableArrayArrayRequest handles test_response_string_hostname_nullable_array_array operation.
+//
+// POST /test_response_string_hostname_nullable_array_array
+func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringHostnameNullableArrayArray",
+		trace.WithAttributes(otelogen.OperationID("test_response_string_hostname_nullable_array_array")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestResponseStringHostnameNullableArrayArrayRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestResponseStringHostnameNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestResponseStringHostnameNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		return

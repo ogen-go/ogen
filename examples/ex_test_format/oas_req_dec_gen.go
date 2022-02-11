@@ -141,14 +141,14 @@ func decodeTestRequestBooleanRequest(r *http.Request, span trace.Span) (req OptB
 	}
 }
 
-func decodeTestRequestBooleanArrayRequest(r *http.Request, span trace.Span) (req OptBoolArray, err error) {
+func decodeTestRequestBooleanArrayRequest(r *http.Request, span trace.Span) (req []bool, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptBoolArray
+		var request []bool
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -164,29 +164,22 @@ func decodeTestRequestBooleanArrayRequest(r *http.Request, span trace.Span) (req
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem bool
+				v, err := d.Bool()
+				elem = bool(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestBooleanArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestBooleanArray request")
 		}
 		return request, nil
 	default:
@@ -194,14 +187,14 @@ func decodeTestRequestBooleanArrayRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestRequestBooleanArrayArrayRequest(r *http.Request, span trace.Span) (req OptBoolArrayArray, err error) {
+func decodeTestRequestBooleanArrayArrayRequest(r *http.Request, span trace.Span) (req [][]bool, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptBoolArrayArray
+		var request [][]bool
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -217,8 +210,25 @@ func decodeTestRequestBooleanArrayArrayRequest(r *http.Request, span trace.Span)
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []bool
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem bool
+					v, err := d.Bool()
+					elemElem = bool(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -226,34 +236,23 @@ func decodeTestRequestBooleanArrayArrayRequest(r *http.Request, span trace.Span)
 			return req, errors.Wrap(err, "decode TestRequestBooleanArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestBooleanArrayArray request")
@@ -264,14 +263,14 @@ func decodeTestRequestBooleanArrayArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestBooleanNullableRequest(r *http.Request, span trace.Span) (req OptBool, err error) {
+func decodeTestRequestBooleanNullableRequest(r *http.Request, span trace.Span) (req OptNilBool, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptBool
+		var request OptNilBool
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -301,14 +300,14 @@ func decodeTestRequestBooleanNullableRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestBooleanNullableArrayRequest(r *http.Request, span trace.Span) (req OptBoolArray, err error) {
+func decodeTestRequestBooleanNullableArrayRequest(r *http.Request, span trace.Span) (req []bool, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptBoolArray
+		var request []bool
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -324,29 +323,22 @@ func decodeTestRequestBooleanNullableArrayRequest(r *http.Request, span trace.Sp
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem bool
+				v, err := d.Bool()
+				elem = bool(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestBooleanNullableArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestBooleanNullableArray request")
 		}
 		return request, nil
 	default:
@@ -354,14 +346,14 @@ func decodeTestRequestBooleanNullableArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptBoolArrayArray, err error) {
+func decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]bool, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptBoolArrayArray
+		var request [][]bool
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -377,8 +369,25 @@ func decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Request, span tra
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []bool
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem bool
+					v, err := d.Bool()
+					elemElem = bool(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -386,37 +395,65 @@ func decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Request, span tra
 			return req, errors.Wrap(err, "decode TestRequestBooleanNullableArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestBooleanNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestEmptyStructRequest(r *http.Request, span trace.Span) (req *TestRequestEmptyStructReq, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request *TestRequestEmptyStructReq
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			var elem TestRequestEmptyStructReq
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			request = &elem
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestEmptyStruct:application/json request")
 		}
 		return request, nil
 	default:
@@ -514,14 +551,14 @@ func decodeTestRequestIntegerRequest(r *http.Request, span trace.Span) (req OptI
 	}
 }
 
-func decodeTestRequestIntegerArrayRequest(r *http.Request, span trace.Span) (req OptIntArray, err error) {
+func decodeTestRequestIntegerArrayRequest(r *http.Request, span trace.Span) (req []int, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIntArray
+		var request []int
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -537,29 +574,22 @@ func decodeTestRequestIntegerArrayRequest(r *http.Request, span trace.Span) (req
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int
+				v, err := d.Int()
+				elem = int(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestIntegerArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestIntegerArray request")
 		}
 		return request, nil
 	default:
@@ -567,14 +597,14 @@ func decodeTestRequestIntegerArrayRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestRequestIntegerArrayArrayRequest(r *http.Request, span trace.Span) (req OptIntArrayArray, err error) {
+func decodeTestRequestIntegerArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIntArrayArray
+		var request [][]int
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -590,8 +620,25 @@ func decodeTestRequestIntegerArrayArrayRequest(r *http.Request, span trace.Span)
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int
+					v, err := d.Int()
+					elemElem = int(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -599,34 +646,23 @@ func decodeTestRequestIntegerArrayArrayRequest(r *http.Request, span trace.Span)
 			return req, errors.Wrap(err, "decode TestRequestIntegerArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestIntegerArrayArray request")
@@ -674,14 +710,14 @@ func decodeTestRequestIntegerInt32Request(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestRequestIntegerInt32ArrayRequest(r *http.Request, span trace.Span) (req OptInt32Array, err error) {
+func decodeTestRequestIntegerInt32ArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt32Array
+		var request []int32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -697,29 +733,22 @@ func decodeTestRequestIntegerInt32ArrayRequest(r *http.Request, span trace.Span)
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int32
+				v, err := d.Int32()
+				elem = int32(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestIntegerInt32Array:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestIntegerInt32Array request")
 		}
 		return request, nil
 	default:
@@ -727,14 +756,14 @@ func decodeTestRequestIntegerInt32ArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt32ArrayArray, err error) {
+func decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt32ArrayArray
+		var request [][]int32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -750,8 +779,25 @@ func decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request, span trace.
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int32
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int32
+					v, err := d.Int32()
+					elemElem = int32(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -759,34 +805,23 @@ func decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request, span trace.
 			return req, errors.Wrap(err, "decode TestRequestIntegerInt32ArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestIntegerInt32ArrayArray request")
@@ -797,14 +832,14 @@ func decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestIntegerInt32NullableRequest(r *http.Request, span trace.Span) (req OptInt32, err error) {
+func decodeTestRequestIntegerInt32NullableRequest(r *http.Request, span trace.Span) (req OptNilInt32, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt32
+		var request OptNilInt32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -834,14 +869,14 @@ func decodeTestRequestIntegerInt32NullableRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Request, span trace.Span) (req OptInt32Array, err error) {
+func decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt32Array
+		var request []int32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -857,29 +892,22 @@ func decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Request, span tra
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int32
+				v, err := d.Int32()
+				elem = int32(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestIntegerInt32NullableArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestIntegerInt32NullableArray request")
 		}
 		return request, nil
 	default:
@@ -887,14 +915,14 @@ func decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt32ArrayArray, err error) {
+func decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt32ArrayArray
+		var request [][]int32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -910,8 +938,25 @@ func decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.Request, spa
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int32
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int32
+					v, err := d.Int32()
+					elemElem = int32(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -919,34 +964,23 @@ func decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.Request, spa
 			return req, errors.Wrap(err, "decode TestRequestIntegerInt32NullableArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestIntegerInt32NullableArrayArray request")
@@ -994,14 +1028,14 @@ func decodeTestRequestIntegerInt64Request(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestRequestIntegerInt64ArrayRequest(r *http.Request, span trace.Span) (req OptInt64Array, err error) {
+func decodeTestRequestIntegerInt64ArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt64Array
+		var request []int64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1017,29 +1051,22 @@ func decodeTestRequestIntegerInt64ArrayRequest(r *http.Request, span trace.Span)
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int64
+				v, err := d.Int64()
+				elem = int64(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestIntegerInt64Array:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestIntegerInt64Array request")
 		}
 		return request, nil
 	default:
@@ -1047,14 +1074,14 @@ func decodeTestRequestIntegerInt64ArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt64ArrayArray, err error) {
+func decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt64ArrayArray
+		var request [][]int64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1070,8 +1097,25 @@ func decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request, span trace.
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int64
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int64
+					v, err := d.Int64()
+					elemElem = int64(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -1079,34 +1123,23 @@ func decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request, span trace.
 			return req, errors.Wrap(err, "decode TestRequestIntegerInt64ArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestIntegerInt64ArrayArray request")
@@ -1117,14 +1150,14 @@ func decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestIntegerInt64NullableRequest(r *http.Request, span trace.Span) (req OptInt64, err error) {
+func decodeTestRequestIntegerInt64NullableRequest(r *http.Request, span trace.Span) (req OptNilInt64, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt64
+		var request OptNilInt64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1154,14 +1187,14 @@ func decodeTestRequestIntegerInt64NullableRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Request, span trace.Span) (req OptInt64Array, err error) {
+func decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt64Array
+		var request []int64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1177,29 +1210,22 @@ func decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Request, span tra
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int64
+				v, err := d.Int64()
+				elem = int64(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestIntegerInt64NullableArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestIntegerInt64NullableArray request")
 		}
 		return request, nil
 	default:
@@ -1207,14 +1233,14 @@ func decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt64ArrayArray, err error) {
+func decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt64ArrayArray
+		var request [][]int64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1230,8 +1256,25 @@ func decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.Request, spa
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int64
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int64
+					v, err := d.Int64()
+					elemElem = int64(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -1239,34 +1282,23 @@ func decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.Request, spa
 			return req, errors.Wrap(err, "decode TestRequestIntegerInt64NullableArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestIntegerInt64NullableArrayArray request")
@@ -1277,14 +1309,14 @@ func decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestRequestIntegerNullableRequest(r *http.Request, span trace.Span) (req OptInt, err error) {
+func decodeTestRequestIntegerNullableRequest(r *http.Request, span trace.Span) (req OptNilInt, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt
+		var request OptNilInt
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1314,14 +1346,14 @@ func decodeTestRequestIntegerNullableRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestIntegerNullableArrayRequest(r *http.Request, span trace.Span) (req OptIntArray, err error) {
+func decodeTestRequestIntegerNullableArrayRequest(r *http.Request, span trace.Span) (req []int, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIntArray
+		var request []int
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1337,29 +1369,22 @@ func decodeTestRequestIntegerNullableArrayRequest(r *http.Request, span trace.Sp
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int
+				v, err := d.Int()
+				elem = int(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestIntegerNullableArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestIntegerNullableArray request")
 		}
 		return request, nil
 	default:
@@ -1367,14 +1392,14 @@ func decodeTestRequestIntegerNullableArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptIntArrayArray, err error) {
+func decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIntArrayArray
+		var request [][]int
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1390,8 +1415,25 @@ func decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Request, span tra
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int
+					v, err := d.Int()
+					elemElem = int(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -1399,34 +1441,23 @@ func decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Request, span tra
 			return req, errors.Wrap(err, "decode TestRequestIntegerNullableArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestIntegerNullableArrayArray request")
@@ -1490,14 +1521,14 @@ func decodeTestRequestNumberRequest(r *http.Request, span trace.Span) (req OptFl
 	}
 }
 
-func decodeTestRequestNumberArrayRequest(r *http.Request, span trace.Span) (req OptFloat64Array, err error) {
+func decodeTestRequestNumberArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptFloat64Array
+		var request []float64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1513,8 +1544,17 @@ func decodeTestRequestNumberArrayRequest(r *http.Request, span trace.Span) (req 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem float64
+				v, err := d.Float64()
+				elem = float64(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -1522,13 +1562,90 @@ func decodeTestRequestNumberArrayRequest(r *http.Request, span trace.Span) (req 
 			return req, errors.Wrap(err, "decode TestRequestNumberArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
+						return errors.Errorf("%f float value is invalid", f)
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestNumberArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestNumberArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request [][]float64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []float64
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem float64
+					v, err := d.Float64()
+					elemElem = float64(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestNumberArrayArray:application/json request")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
 					var failures []validate.FieldError
-					for i, elem := range request.Value {
+					for i, elem := range elem {
 						if err := func() error {
 							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
 								return errors.Errorf("%f float value is invalid", f)
@@ -1546,97 +1663,15 @@ func decodeTestRequestNumberArrayRequest(r *http.Request, span trace.Span) (req 
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberArray request")
-		}
-		return request, nil
-	default:
-		return req, validate.InvalidContentType(ct)
-	}
-}
-
-func decodeTestRequestNumberArrayArrayRequest(r *http.Request, span trace.Span) (req OptFloat64ArrayArray, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
-	case "application/json":
-		if r.ContentLength == 0 {
-			return req, nil
-		}
-
-		var request OptFloat64ArrayArray
-		buf := getBuf()
-		defer putBuf(buf)
-		written, err := io.Copy(buf, r.Body)
-		if err != nil {
-			return req, err
-		}
-
-		if written == 0 {
-			return req, nil
-		}
-
-		d := jx.GetDecoder()
-		defer jx.PutDecoder(d)
-		d.ResetBytes(buf.Bytes())
-		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
-				return err
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
 			}
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberArrayArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							var failures []validate.FieldError
-							for i, elem := range elem {
-								if err := func() error {
-									if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-										return errors.Errorf("%f float value is invalid", f)
-									}
-									return nil
-								}(); err != nil {
-									failures = append(failures, validate.FieldError{
-										Name:  fmt.Sprintf("[%d]", i),
-										Error: err,
-									})
-								}
-							}
-							if len(failures) > 0 {
-								return &validate.Error{Fields: failures}
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberArrayArray request")
@@ -1700,14 +1735,14 @@ func decodeTestRequestNumberDoubleRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestRequestNumberDoubleArrayRequest(r *http.Request, span trace.Span) (req OptFloat64Array, err error) {
+func decodeTestRequestNumberDoubleArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptFloat64Array
+		var request []float64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1723,8 +1758,17 @@ func decodeTestRequestNumberDoubleArrayRequest(r *http.Request, span trace.Span)
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem float64
+				v, err := d.Float64()
+				elem = float64(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -1732,13 +1776,90 @@ func decodeTestRequestNumberDoubleArrayRequest(r *http.Request, span trace.Span)
 			return req, errors.Wrap(err, "decode TestRequestNumberDoubleArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
+						return errors.Errorf("%f float value is invalid", f)
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestNumberDoubleArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request [][]float64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []float64
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem float64
+					v, err := d.Float64()
+					elemElem = float64(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestNumberDoubleArrayArray:application/json request")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
 					var failures []validate.FieldError
-					for i, elem := range request.Value {
+					for i, elem := range elem {
 						if err := func() error {
 							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
 								return errors.Errorf("%f float value is invalid", f)
@@ -1756,97 +1877,15 @@ func decodeTestRequestNumberDoubleArrayRequest(r *http.Request, span trace.Span)
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberDoubleArray request")
-		}
-		return request, nil
-	default:
-		return req, validate.InvalidContentType(ct)
-	}
-}
-
-func decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request, span trace.Span) (req OptFloat64ArrayArray, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
-	case "application/json":
-		if r.ContentLength == 0 {
-			return req, nil
-		}
-
-		var request OptFloat64ArrayArray
-		buf := getBuf()
-		defer putBuf(buf)
-		written, err := io.Copy(buf, r.Body)
-		if err != nil {
-			return req, err
-		}
-
-		if written == 0 {
-			return req, nil
-		}
-
-		d := jx.GetDecoder()
-		defer jx.PutDecoder(d)
-		d.ResetBytes(buf.Bytes())
-		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
-				return err
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
 			}
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberDoubleArrayArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							var failures []validate.FieldError
-							for i, elem := range elem {
-								if err := func() error {
-									if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-										return errors.Errorf("%f float value is invalid", f)
-									}
-									return nil
-								}(); err != nil {
-									failures = append(failures, validate.FieldError{
-										Name:  fmt.Sprintf("[%d]", i),
-										Error: err,
-									})
-								}
-							}
-							if len(failures) > 0 {
-								return &validate.Error{Fields: failures}
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberDoubleArrayArray request")
@@ -1857,14 +1896,14 @@ func decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestNumberDoubleNullableRequest(r *http.Request, span trace.Span) (req OptFloat64, err error) {
+func decodeTestRequestNumberDoubleNullableRequest(r *http.Request, span trace.Span) (req OptNilFloat64, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptFloat64
+		var request OptNilFloat64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1910,14 +1949,14 @@ func decodeTestRequestNumberDoubleNullableRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Request, span trace.Span) (req OptFloat64Array, err error) {
+func decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptFloat64Array
+		var request []float64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1933,8 +1972,17 @@ func decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Request, span tra
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem float64
+				v, err := d.Float64()
+				elem = float64(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -1942,13 +1990,90 @@ func decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Request, span tra
 			return req, errors.Wrap(err, "decode TestRequestNumberDoubleNullableArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
+						return errors.Errorf("%f float value is invalid", f)
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestNumberDoubleNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request [][]float64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []float64
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem float64
+					v, err := d.Float64()
+					elemElem = float64(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestNumberDoubleNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
 					var failures []validate.FieldError
-					for i, elem := range request.Value {
+					for i, elem := range elem {
 						if err := func() error {
 							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
 								return errors.Errorf("%f float value is invalid", f)
@@ -1966,97 +2091,15 @@ func decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Request, span tra
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberDoubleNullableArray request")
-		}
-		return request, nil
-	default:
-		return req, validate.InvalidContentType(ct)
-	}
-}
-
-func decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptFloat64ArrayArray, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
-	case "application/json":
-		if r.ContentLength == 0 {
-			return req, nil
-		}
-
-		var request OptFloat64ArrayArray
-		buf := getBuf()
-		defer putBuf(buf)
-		written, err := io.Copy(buf, r.Body)
-		if err != nil {
-			return req, err
-		}
-
-		if written == 0 {
-			return req, nil
-		}
-
-		d := jx.GetDecoder()
-		defer jx.PutDecoder(d)
-		d.ResetBytes(buf.Bytes())
-		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
-				return err
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
 			}
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberDoubleNullableArrayArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							var failures []validate.FieldError
-							for i, elem := range elem {
-								if err := func() error {
-									if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-										return errors.Errorf("%f float value is invalid", f)
-									}
-									return nil
-								}(); err != nil {
-									failures = append(failures, validate.FieldError{
-										Name:  fmt.Sprintf("[%d]", i),
-										Error: err,
-									})
-								}
-							}
-							if len(failures) > 0 {
-								return &validate.Error{Fields: failures}
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberDoubleNullableArrayArray request")
@@ -2120,14 +2163,14 @@ func decodeTestRequestNumberFloatRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestRequestNumberFloatArrayRequest(r *http.Request, span trace.Span) (req OptFloat32Array, err error) {
+func decodeTestRequestNumberFloatArrayRequest(r *http.Request, span trace.Span) (req []float32, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptFloat32Array
+		var request []float32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -2143,8 +2186,17 @@ func decodeTestRequestNumberFloatArrayRequest(r *http.Request, span trace.Span) 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem float32
+				v, err := d.Float32()
+				elem = float32(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -2152,13 +2204,90 @@ func decodeTestRequestNumberFloatArrayRequest(r *http.Request, span trace.Span) 
 			return req, errors.Wrap(err, "decode TestRequestNumberFloatArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
+						return errors.Errorf("%f float value is invalid", f)
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestNumberFloatArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request [][]float32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []float32
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem float32
+					v, err := d.Float32()
+					elemElem = float32(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestNumberFloatArrayArray:application/json request")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
 					var failures []validate.FieldError
-					for i, elem := range request.Value {
+					for i, elem := range elem {
 						if err := func() error {
 							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
 								return errors.Errorf("%f float value is invalid", f)
@@ -2176,97 +2305,15 @@ func decodeTestRequestNumberFloatArrayRequest(r *http.Request, span trace.Span) 
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberFloatArray request")
-		}
-		return request, nil
-	default:
-		return req, validate.InvalidContentType(ct)
-	}
-}
-
-func decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request, span trace.Span) (req OptFloat32ArrayArray, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
-	case "application/json":
-		if r.ContentLength == 0 {
-			return req, nil
-		}
-
-		var request OptFloat32ArrayArray
-		buf := getBuf()
-		defer putBuf(buf)
-		written, err := io.Copy(buf, r.Body)
-		if err != nil {
-			return req, err
-		}
-
-		if written == 0 {
-			return req, nil
-		}
-
-		d := jx.GetDecoder()
-		defer jx.PutDecoder(d)
-		d.ResetBytes(buf.Bytes())
-		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
-				return err
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
 			}
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberFloatArrayArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							var failures []validate.FieldError
-							for i, elem := range elem {
-								if err := func() error {
-									if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-										return errors.Errorf("%f float value is invalid", f)
-									}
-									return nil
-								}(); err != nil {
-									failures = append(failures, validate.FieldError{
-										Name:  fmt.Sprintf("[%d]", i),
-										Error: err,
-									})
-								}
-							}
-							if len(failures) > 0 {
-								return &validate.Error{Fields: failures}
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberFloatArrayArray request")
@@ -2277,14 +2324,14 @@ func decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestRequestNumberFloatNullableRequest(r *http.Request, span trace.Span) (req OptFloat32, err error) {
+func decodeTestRequestNumberFloatNullableRequest(r *http.Request, span trace.Span) (req OptNilFloat32, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptFloat32
+		var request OptNilFloat32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -2330,14 +2377,14 @@ func decodeTestRequestNumberFloatNullableRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestNumberFloatNullableArrayRequest(r *http.Request, span trace.Span) (req OptFloat32Array, err error) {
+func decodeTestRequestNumberFloatNullableArrayRequest(r *http.Request, span trace.Span) (req []float32, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptFloat32Array
+		var request []float32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -2353,8 +2400,17 @@ func decodeTestRequestNumberFloatNullableArrayRequest(r *http.Request, span trac
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem float32
+				v, err := d.Float32()
+				elem = float32(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -2362,13 +2418,90 @@ func decodeTestRequestNumberFloatNullableArrayRequest(r *http.Request, span trac
 			return req, errors.Wrap(err, "decode TestRequestNumberFloatNullableArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
+						return errors.Errorf("%f float value is invalid", f)
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestNumberFloatNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request [][]float32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []float32
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem float32
+					v, err := d.Float32()
+					elemElem = float32(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestNumberFloatNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
 					var failures []validate.FieldError
-					for i, elem := range request.Value {
+					for i, elem := range elem {
 						if err := func() error {
 							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
 								return errors.Errorf("%f float value is invalid", f)
@@ -2386,97 +2519,15 @@ func decodeTestRequestNumberFloatNullableArrayRequest(r *http.Request, span trac
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberFloatNullableArray request")
-		}
-		return request, nil
-	default:
-		return req, validate.InvalidContentType(ct)
-	}
-}
-
-func decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptFloat32ArrayArray, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
-	case "application/json":
-		if r.ContentLength == 0 {
-			return req, nil
-		}
-
-		var request OptFloat32ArrayArray
-		buf := getBuf()
-		defer putBuf(buf)
-		written, err := io.Copy(buf, r.Body)
-		if err != nil {
-			return req, err
-		}
-
-		if written == 0 {
-			return req, nil
-		}
-
-		d := jx.GetDecoder()
-		defer jx.PutDecoder(d)
-		d.ResetBytes(buf.Bytes())
-		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
-				return err
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
 			}
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberFloatNullableArrayArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							var failures []validate.FieldError
-							for i, elem := range elem {
-								if err := func() error {
-									if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-										return errors.Errorf("%f float value is invalid", f)
-									}
-									return nil
-								}(); err != nil {
-									failures = append(failures, validate.FieldError{
-										Name:  fmt.Sprintf("[%d]", i),
-										Error: err,
-									})
-								}
-							}
-							if len(failures) > 0 {
-								return &validate.Error{Fields: failures}
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberFloatNullableArrayArray request")
@@ -2524,14 +2575,14 @@ func decodeTestRequestNumberInt32Request(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestRequestNumberInt32ArrayRequest(r *http.Request, span trace.Span) (req OptInt32Array, err error) {
+func decodeTestRequestNumberInt32ArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt32Array
+		var request []int32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -2547,29 +2598,22 @@ func decodeTestRequestNumberInt32ArrayRequest(r *http.Request, span trace.Span) 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int32
+				v, err := d.Int32()
+				elem = int32(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestNumberInt32Array:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberInt32Array request")
 		}
 		return request, nil
 	default:
@@ -2577,14 +2621,14 @@ func decodeTestRequestNumberInt32ArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt32ArrayArray, err error) {
+func decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt32ArrayArray
+		var request [][]int32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -2600,8 +2644,25 @@ func decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request, span trace.S
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int32
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int32
+					v, err := d.Int32()
+					elemElem = int32(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -2609,34 +2670,23 @@ func decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request, span trace.S
 			return req, errors.Wrap(err, "decode TestRequestNumberInt32ArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberInt32ArrayArray request")
@@ -2647,14 +2697,14 @@ func decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestRequestNumberInt32NullableRequest(r *http.Request, span trace.Span) (req OptInt32, err error) {
+func decodeTestRequestNumberInt32NullableRequest(r *http.Request, span trace.Span) (req OptNilInt32, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt32
+		var request OptNilInt32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -2684,14 +2734,14 @@ func decodeTestRequestNumberInt32NullableRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestNumberInt32NullableArrayRequest(r *http.Request, span trace.Span) (req OptInt32Array, err error) {
+func decodeTestRequestNumberInt32NullableArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt32Array
+		var request []int32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -2707,29 +2757,22 @@ func decodeTestRequestNumberInt32NullableArrayRequest(r *http.Request, span trac
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int32
+				v, err := d.Int32()
+				elem = int32(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestNumberInt32NullableArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberInt32NullableArray request")
 		}
 		return request, nil
 	default:
@@ -2737,14 +2780,14 @@ func decodeTestRequestNumberInt32NullableArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt32ArrayArray, err error) {
+func decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt32ArrayArray
+		var request [][]int32
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -2760,8 +2803,25 @@ func decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.Request, span
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int32
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int32
+					v, err := d.Int32()
+					elemElem = int32(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -2769,34 +2829,23 @@ func decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.Request, span
 			return req, errors.Wrap(err, "decode TestRequestNumberInt32NullableArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberInt32NullableArrayArray request")
@@ -2844,14 +2893,14 @@ func decodeTestRequestNumberInt64Request(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestRequestNumberInt64ArrayRequest(r *http.Request, span trace.Span) (req OptInt64Array, err error) {
+func decodeTestRequestNumberInt64ArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt64Array
+		var request []int64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -2867,29 +2916,22 @@ func decodeTestRequestNumberInt64ArrayRequest(r *http.Request, span trace.Span) 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int64
+				v, err := d.Int64()
+				elem = int64(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestNumberInt64Array:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberInt64Array request")
 		}
 		return request, nil
 	default:
@@ -2897,14 +2939,14 @@ func decodeTestRequestNumberInt64ArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt64ArrayArray, err error) {
+func decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt64ArrayArray
+		var request [][]int64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -2920,8 +2962,25 @@ func decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request, span trace.S
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int64
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int64
+					v, err := d.Int64()
+					elemElem = int64(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -2929,34 +2988,23 @@ func decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request, span trace.S
 			return req, errors.Wrap(err, "decode TestRequestNumberInt64ArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberInt64ArrayArray request")
@@ -2967,14 +3015,14 @@ func decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestRequestNumberInt64NullableRequest(r *http.Request, span trace.Span) (req OptInt64, err error) {
+func decodeTestRequestNumberInt64NullableRequest(r *http.Request, span trace.Span) (req OptNilInt64, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt64
+		var request OptNilInt64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3004,14 +3052,14 @@ func decodeTestRequestNumberInt64NullableRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestNumberInt64NullableArrayRequest(r *http.Request, span trace.Span) (req OptInt64Array, err error) {
+func decodeTestRequestNumberInt64NullableArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt64Array
+		var request []int64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3027,29 +3075,22 @@ func decodeTestRequestNumberInt64NullableArrayRequest(r *http.Request, span trac
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int64
+				v, err := d.Int64()
+				elem = int64(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestNumberInt64NullableArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberInt64NullableArray request")
 		}
 		return request, nil
 	default:
@@ -3057,14 +3098,14 @@ func decodeTestRequestNumberInt64NullableArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptInt64ArrayArray, err error) {
+func decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptInt64ArrayArray
+		var request [][]int64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3080,8 +3121,25 @@ func decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.Request, span
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int64
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int64
+					v, err := d.Int64()
+					elemElem = int64(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -3089,34 +3147,23 @@ func decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.Request, span
 			return req, errors.Wrap(err, "decode TestRequestNumberInt64NullableArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberInt64NullableArrayArray request")
@@ -3127,14 +3174,14 @@ func decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestRequestNumberNullableRequest(r *http.Request, span trace.Span) (req OptFloat64, err error) {
+func decodeTestRequestNumberNullableRequest(r *http.Request, span trace.Span) (req OptNilFloat64, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptFloat64
+		var request OptNilFloat64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3180,14 +3227,14 @@ func decodeTestRequestNumberNullableRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestNumberNullableArrayRequest(r *http.Request, span trace.Span) (req OptFloat64Array, err error) {
+func decodeTestRequestNumberNullableArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptFloat64Array
+		var request []float64
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3203,8 +3250,17 @@ func decodeTestRequestNumberNullableArrayRequest(r *http.Request, span trace.Spa
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem float64
+				v, err := d.Float64()
+				elem = float64(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -3212,13 +3268,90 @@ func decodeTestRequestNumberNullableArrayRequest(r *http.Request, span trace.Spa
 			return req, errors.Wrap(err, "decode TestRequestNumberNullableArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
+						return errors.Errorf("%f float value is invalid", f)
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestNumberNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestNumberNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request [][]float64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []float64
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem float64
+					v, err := d.Float64()
+					elemElem = float64(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestNumberNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
 					var failures []validate.FieldError
-					for i, elem := range request.Value {
+					for i, elem := range elem {
 						if err := func() error {
 							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
 								return errors.Errorf("%f float value is invalid", f)
@@ -3236,13 +3369,18 @@ func decodeTestRequestNumberNullableArrayRequest(r *http.Request, span trace.Spa
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberNullableArray request")
+			return req, errors.Wrap(err, "validate TestRequestNumberNullableArrayArray request")
 		}
 		return request, nil
 	default:
@@ -3250,14 +3388,14 @@ func decodeTestRequestNumberNullableArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestNumberNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptFloat64ArrayArray, err error) {
+func decodeTestRequestRequiredAnyRequest(r *http.Request, span trace.Span) (req jx.Raw, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
 
-		var request OptFloat64ArrayArray
+		var request jx.Raw
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3266,49 +3404,1648 @@ func decodeTestRequestNumberNullableArrayArrayRequest(r *http.Request, span trac
 		}
 
 		if written == 0 {
-			return req, nil
+			return req, validate.ErrBodyRequired
 		}
 
 		d := jx.GetDecoder()
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
+			v, err := d.Raw()
+			request = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredAny:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredBooleanRequest(r *http.Request, span trace.Span) (req bool, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request bool
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Bool()
+			request = bool(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredBoolean:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredBooleanArrayRequest(r *http.Request, span trace.Span) (req []bool, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []bool
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem bool
+				v, err := d.Bool()
+				elem = bool(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredBooleanArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredBooleanArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredBooleanArrayArrayRequest(r *http.Request, span trace.Span) (req [][]bool, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]bool
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []bool
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem bool
+					v, err := d.Bool()
+					elemElem = bool(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredBooleanArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredBooleanArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredBooleanNullableRequest(r *http.Request, span trace.Span) (req NilBool, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilBool
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
 			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode TestRequestRequiredBooleanNullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Request, span trace.Span) (req []bool, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []bool
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem bool
+				v, err := d.Bool()
+				elem = bool(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredBooleanNullableArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredBooleanNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]bool, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]bool
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []bool
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem bool
+					v, err := d.Bool()
+					elemElem = bool(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredBooleanNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredBooleanNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredEmptyStructRequest(r *http.Request, span trace.Span) (req TestRequestRequiredEmptyStructReq, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request TestRequestRequiredEmptyStructReq
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredEmptyStruct:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredFormatTestRequest(r *http.Request, span trace.Span) (req TestRequestRequiredFormatTestReq, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request TestRequestRequiredFormatTestReq
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredFormatTest:application/json request")
+		}
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredFormatTest request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredIntegerRequest(r *http.Request, span trace.Span) (req int, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request int
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Int()
+			request = int(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredInteger:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredIntegerArrayRequest(r *http.Request, span trace.Span) (req []int, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []int
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int
+				v, err := d.Int()
+				elem = int(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredIntegerArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]int
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int
+					v, err := d.Int()
+					elemElem = int(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt32Request(r *http.Request, span trace.Span) (req int32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request int32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Int32()
+			request = int32(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt32:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt32ArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []int32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int32
+				v, err := d.Int32()
+				elem = int32(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt32Array:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt32Array request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]int32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int32
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int32
+					v, err := d.Int32()
+					elemElem = int32(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt32ArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt32ArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt32NullableRequest(r *http.Request, span trace.Span) (req NilInt32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilInt32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt32Nullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []int32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int32
+				v, err := d.Int32()
+				elem = int32(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt32NullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt32NullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]int32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int32
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int32
+					v, err := d.Int32()
+					elemElem = int32(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt32NullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt32NullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt64Request(r *http.Request, span trace.Span) (req int64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request int64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Int64()
+			request = int64(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt64:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt64ArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []int64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int64
+				v, err := d.Int64()
+				elem = int64(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt64Array:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt64Array request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]int64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int64
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int64
+					v, err := d.Int64()
+					elemElem = int64(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt64ArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt64ArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt64NullableRequest(r *http.Request, span trace.Span) (req NilInt64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilInt64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt64Nullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []int64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int64
+				v, err := d.Int64()
+				elem = int64(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt64NullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt64NullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]int64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int64
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int64
+					v, err := d.Int64()
+					elemElem = int64(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt64NullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt64NullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredIntegerNullableRequest(r *http.Request, span trace.Span) (req NilInt, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilInt
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerNullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Request, span trace.Span) (req []int, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []int
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int
+				v, err := d.Int()
+				elem = int(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerNullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]int
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int
+					v, err := d.Int()
+					elemElem = int(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberRequest(r *http.Request, span trace.Span) (req float64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request float64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Float64()
+			request = float64(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumber:application/json request")
+		}
+		if err := func() error {
+			if f := float64(request); math.IsInf(f, 0) || math.IsNaN(f) {
+				return errors.Errorf("%f float value is invalid", f)
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumber request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []float64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem float64
+				v, err := d.Float64()
+				elem = float64(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
+						return errors.Errorf("%f float value is invalid", f)
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]float64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []float64
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem float64
+					v, err := d.Float64()
+					elemElem = float64(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
 					var failures []validate.FieldError
-					for i, elem := range request.Value {
+					for i, elem := range elem {
 						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							var failures []validate.FieldError
-							for i, elem := range elem {
-								if err := func() error {
-									if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-										return errors.Errorf("%f float value is invalid", f)
-									}
-									return nil
-								}(); err != nil {
-									failures = append(failures, validate.FieldError{
-										Name:  fmt.Sprintf("[%d]", i),
-										Error: err,
-									})
-								}
-							}
-							if len(failures) > 0 {
-								return &validate.Error{Fields: failures}
+							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
+								return errors.Errorf("%f float value is invalid", f)
 							}
 							return nil
 						}(); err != nil {
@@ -3323,13 +5060,7128 @@ func decodeTestRequestNumberNullableArrayArrayRequest(r *http.Request, span trac
 					}
 					return nil
 				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberDoubleRequest(r *http.Request, span trace.Span) (req float64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request float64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Float64()
+			request = float64(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberDouble:application/json request")
+		}
+		if err := func() error {
+			if f := float64(request); math.IsInf(f, 0) || math.IsNaN(f) {
+				return errors.Errorf("%f float value is invalid", f)
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDouble request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberDoubleArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []float64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem float64
+				v, err := d.Float64()
+				elem = float64(v)
+				if err != nil {
 					return err
 				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberDoubleArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
+						return errors.Errorf("%f float value is invalid", f)
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDoubleArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]float64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []float64
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem float64
+					v, err := d.Float64()
+					elemElem = float64(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberDoubleArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					var failures []validate.FieldError
+					for i, elem := range elem {
+						if err := func() error {
+							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
+								return errors.Errorf("%f float value is invalid", f)
+							}
+							return nil
+						}(); err != nil {
+							failures = append(failures, validate.FieldError{
+								Name:  fmt.Sprintf("[%d]", i),
+								Error: err,
+							})
+						}
+					}
+					if len(failures) > 0 {
+						return &validate.Error{Fields: failures}
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDoubleArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Request, span trace.Span) (req NilFloat64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilFloat64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberDoubleNullable:application/json request")
+		}
+		if err := func() error {
+			if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
+				return errors.Errorf("%f float value is invalid", f)
 			}
 			return nil
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberNullableArrayArray request")
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDoubleNullable request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []float64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem float64
+				v, err := d.Float64()
+				elem = float64(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberDoubleNullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
+						return errors.Errorf("%f float value is invalid", f)
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDoubleNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]float64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []float64
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem float64
+					v, err := d.Float64()
+					elemElem = float64(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberDoubleNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					var failures []validate.FieldError
+					for i, elem := range elem {
+						if err := func() error {
+							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
+								return errors.Errorf("%f float value is invalid", f)
+							}
+							return nil
+						}(); err != nil {
+							failures = append(failures, validate.FieldError{
+								Name:  fmt.Sprintf("[%d]", i),
+								Error: err,
+							})
+						}
+					}
+					if len(failures) > 0 {
+						return &validate.Error{Fields: failures}
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDoubleNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberFloatRequest(r *http.Request, span trace.Span) (req float32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request float32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Float32()
+			request = float32(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberFloat:application/json request")
+		}
+		if err := func() error {
+			if f := float64(request); math.IsInf(f, 0) || math.IsNaN(f) {
+				return errors.Errorf("%f float value is invalid", f)
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloat request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberFloatArrayRequest(r *http.Request, span trace.Span) (req []float32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []float32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem float32
+				v, err := d.Float32()
+				elem = float32(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberFloatArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
+						return errors.Errorf("%f float value is invalid", f)
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloatArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]float32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []float32
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem float32
+					v, err := d.Float32()
+					elemElem = float32(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberFloatArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					var failures []validate.FieldError
+					for i, elem := range elem {
+						if err := func() error {
+							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
+								return errors.Errorf("%f float value is invalid", f)
+							}
+							return nil
+						}(); err != nil {
+							failures = append(failures, validate.FieldError{
+								Name:  fmt.Sprintf("[%d]", i),
+								Error: err,
+							})
+						}
+					}
+					if len(failures) > 0 {
+						return &validate.Error{Fields: failures}
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloatArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Request, span trace.Span) (req NilFloat32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilFloat32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberFloatNullable:application/json request")
+		}
+		if err := func() error {
+			if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
+				return errors.Errorf("%f float value is invalid", f)
+			}
+			return nil
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloatNullable request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *http.Request, span trace.Span) (req []float32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []float32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem float32
+				v, err := d.Float32()
+				elem = float32(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberFloatNullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
+						return errors.Errorf("%f float value is invalid", f)
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloatNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]float32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []float32
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem float32
+					v, err := d.Float32()
+					elemElem = float32(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberFloatNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					var failures []validate.FieldError
+					for i, elem := range elem {
+						if err := func() error {
+							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
+								return errors.Errorf("%f float value is invalid", f)
+							}
+							return nil
+						}(); err != nil {
+							failures = append(failures, validate.FieldError{
+								Name:  fmt.Sprintf("[%d]", i),
+								Error: err,
+							})
+						}
+					}
+					if len(failures) > 0 {
+						return &validate.Error{Fields: failures}
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloatNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt32Request(r *http.Request, span trace.Span) (req int32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request int32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Int32()
+			request = int32(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt32:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt32ArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []int32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int32
+				v, err := d.Int32()
+				elem = int32(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt32Array:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt32Array request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]int32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int32
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int32
+					v, err := d.Int32()
+					elemElem = int32(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt32ArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt32ArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt32NullableRequest(r *http.Request, span trace.Span) (req NilInt32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilInt32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt32Nullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []int32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int32
+				v, err := d.Int32()
+				elem = int32(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt32NullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt32NullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]int32
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int32
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int32
+					v, err := d.Int32()
+					elemElem = int32(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt32NullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt32NullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt64Request(r *http.Request, span trace.Span) (req int64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request int64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Int64()
+			request = int64(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt64:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt64ArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []int64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int64
+				v, err := d.Int64()
+				elem = int64(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt64Array:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt64Array request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]int64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int64
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int64
+					v, err := d.Int64()
+					elemElem = int64(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt64ArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt64ArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt64NullableRequest(r *http.Request, span trace.Span) (req NilInt64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilInt64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt64Nullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []int64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem int64
+				v, err := d.Int64()
+				elem = int64(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt64NullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt64NullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]int64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []int64
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem int64
+					v, err := d.Int64()
+					elemElem = int64(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt64NullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt64NullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberNullableRequest(r *http.Request, span trace.Span) (req NilFloat64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilFloat64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberNullable:application/json request")
+		}
+		if err := func() error {
+			if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
+				return errors.Errorf("%f float value is invalid", f)
+			}
+			return nil
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberNullable request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []float64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem float64
+				v, err := d.Float64()
+				elem = float64(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberNullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
+						return errors.Errorf("%f float value is invalid", f)
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]float64
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []float64
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem float64
+					v, err := d.Float64()
+					elemElem = float64(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredNumberNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					var failures []validate.FieldError
+					for i, elem := range elem {
+						if err := func() error {
+							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
+								return errors.Errorf("%f float value is invalid", f)
+							}
+							return nil
+						}(); err != nil {
+							failures = append(failures, validate.FieldError{
+								Name:  fmt.Sprintf("[%d]", i),
+								Error: err,
+							})
+						}
+					}
+					if len(failures) > 0 {
+						return &validate.Error{Fields: failures}
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredNumberNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredString:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringBinaryRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringBinary:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringBinaryArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringBinaryArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringBinaryArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringBinaryArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringBinaryArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringBinaryArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringBinaryNullableRequest(r *http.Request, span trace.Span) (req NilString, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilString
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringBinaryNullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringBinaryNullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringBinaryNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringBinaryNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringBinaryNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringByteRequest(r *http.Request, span trace.Span) (req []byte, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []byte
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Base64()
+			request = []byte(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringByte:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringByteArrayRequest(r *http.Request, span trace.Span) (req [][]byte, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]byte
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []byte
+				v, err := d.Base64()
+				elem = []byte(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringByteArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringByteArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringByteArrayArrayRequest(r *http.Request, span trace.Span) (req [][][]byte, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][][]byte
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem [][]byte
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem []byte
+					v, err := d.Base64()
+					elemElem = []byte(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringByteArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringByteArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringByteNullableRequest(r *http.Request, span trace.Span) (req []byte, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []byte
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Base64()
+			request = []byte(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringByteNullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringByteNullableArrayRequest(r *http.Request, span trace.Span) (req [][]byte, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]byte
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []byte
+				v, err := d.Base64()
+				elem = []byte(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringByteNullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringByteNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][][]byte, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][][]byte
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem [][]byte
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem []byte
+					v, err := d.Base64()
+					elemElem = []byte(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringByteNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringByteNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringDateRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request time.Time
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := json.DecodeDate(d)
+			request = v
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringDate:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringDateArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []time.Time
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeDate(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringDateArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]time.Time
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeDate(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringDateNullableRequest(r *http.Request, span trace.Span) (req NilDate, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilDate
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d, json.DecodeDate); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateNullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringDateNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []time.Time
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeDate(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateNullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]time.Time
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeDate(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringDateTimeRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request time.Time
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := json.DecodeDateTime(d)
+			request = v
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateTime:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringDateTimeArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []time.Time
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeDateTime(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateTimeArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateTimeArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]time.Time
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeDateTime(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateTimeArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateTimeArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringDateTimeNullableRequest(r *http.Request, span trace.Span) (req NilDateTime, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilDateTime
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d, json.DecodeDateTime); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateTimeNullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []time.Time
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeDateTime(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateTimeNullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateTimeNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]time.Time
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeDateTime(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateTimeNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateTimeNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringDurationRequest(r *http.Request, span trace.Span) (req time.Duration, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request time.Duration
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := json.DecodeDuration(d)
+			request = v
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringDuration:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringDurationArrayRequest(r *http.Request, span trace.Span) (req []time.Duration, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []time.Duration
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Duration
+				v, err := json.DecodeDuration(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringDurationArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringDurationArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringDurationArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Duration, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]time.Duration
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Duration
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Duration
+					v, err := json.DecodeDuration(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringDurationArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringDurationArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringDurationNullableRequest(r *http.Request, span trace.Span) (req NilDuration, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilDuration
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringDurationNullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringDurationNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Duration, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []time.Duration
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Duration
+				v, err := json.DecodeDuration(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringDurationNullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringDurationNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Duration, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]time.Duration
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Duration
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Duration
+					v, err := json.DecodeDuration(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringDurationNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringDurationNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringEmailRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringEmail:application/json request")
+		}
+		if err := func() error {
+			if err := (validate.String{
+				MinLength:    0,
+				MinLengthSet: false,
+				MaxLength:    0,
+				MaxLengthSet: false,
+				Email:        true,
+				Hostname:     false,
+				Regex:        nil,
+			}).Validate(string(request)); err != nil {
+				return errors.Wrap(err, "string")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmail request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringEmailArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringEmailArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if err := (validate.String{
+						MinLength:    0,
+						MinLengthSet: false,
+						MaxLength:    0,
+						MaxLengthSet: false,
+						Email:        true,
+						Hostname:     false,
+						Regex:        nil,
+					}).Validate(string(elem)); err != nil {
+						return errors.Wrap(err, "string")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmailArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringEmailArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					var failures []validate.FieldError
+					for i, elem := range elem {
+						if err := func() error {
+							if err := (validate.String{
+								MinLength:    0,
+								MinLengthSet: false,
+								MaxLength:    0,
+								MaxLengthSet: false,
+								Email:        true,
+								Hostname:     false,
+								Regex:        nil,
+							}).Validate(string(elem)); err != nil {
+								return errors.Wrap(err, "string")
+							}
+							return nil
+						}(); err != nil {
+							failures = append(failures, validate.FieldError{
+								Name:  fmt.Sprintf("[%d]", i),
+								Error: err,
+							})
+						}
+					}
+					if len(failures) > 0 {
+						return &validate.Error{Fields: failures}
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmailArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringEmailNullableRequest(r *http.Request, span trace.Span) (req NilString, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilString
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringEmailNullable:application/json request")
+		}
+		if err := func() error {
+			if err := (validate.String{
+				MinLength:    0,
+				MinLengthSet: false,
+				MaxLength:    0,
+				MaxLengthSet: false,
+				Email:        true,
+				Hostname:     false,
+				Regex:        nil,
+			}).Validate(string(request.Value)); err != nil {
+				return errors.Wrap(err, "string")
+			}
+			return nil
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmailNullable request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringEmailNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringEmailNullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if err := (validate.String{
+						MinLength:    0,
+						MinLengthSet: false,
+						MaxLength:    0,
+						MaxLengthSet: false,
+						Email:        true,
+						Hostname:     false,
+						Regex:        nil,
+					}).Validate(string(elem)); err != nil {
+						return errors.Wrap(err, "string")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmailNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringEmailNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					var failures []validate.FieldError
+					for i, elem := range elem {
+						if err := func() error {
+							if err := (validate.String{
+								MinLength:    0,
+								MinLengthSet: false,
+								MaxLength:    0,
+								MaxLengthSet: false,
+								Email:        true,
+								Hostname:     false,
+								Regex:        nil,
+							}).Validate(string(elem)); err != nil {
+								return errors.Wrap(err, "string")
+							}
+							return nil
+						}(); err != nil {
+							failures = append(failures, validate.FieldError{
+								Name:  fmt.Sprintf("[%d]", i),
+								Error: err,
+							})
+						}
+					}
+					if len(failures) > 0 {
+						return &validate.Error{Fields: failures}
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmailNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringHostnameRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringHostname:application/json request")
+		}
+		if err := func() error {
+			if err := (validate.String{
+				MinLength:    0,
+				MinLengthSet: false,
+				MaxLength:    0,
+				MaxLengthSet: false,
+				Email:        false,
+				Hostname:     true,
+				Regex:        nil,
+			}).Validate(string(request)); err != nil {
+				return errors.Wrap(err, "string")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostname request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringHostnameArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringHostnameArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if err := (validate.String{
+						MinLength:    0,
+						MinLengthSet: false,
+						MaxLength:    0,
+						MaxLengthSet: false,
+						Email:        false,
+						Hostname:     true,
+						Regex:        nil,
+					}).Validate(string(elem)); err != nil {
+						return errors.Wrap(err, "string")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostnameArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringHostnameArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					var failures []validate.FieldError
+					for i, elem := range elem {
+						if err := func() error {
+							if err := (validate.String{
+								MinLength:    0,
+								MinLengthSet: false,
+								MaxLength:    0,
+								MaxLengthSet: false,
+								Email:        false,
+								Hostname:     true,
+								Regex:        nil,
+							}).Validate(string(elem)); err != nil {
+								return errors.Wrap(err, "string")
+							}
+							return nil
+						}(); err != nil {
+							failures = append(failures, validate.FieldError{
+								Name:  fmt.Sprintf("[%d]", i),
+								Error: err,
+							})
+						}
+					}
+					if len(failures) > 0 {
+						return &validate.Error{Fields: failures}
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostnameArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringHostnameNullableRequest(r *http.Request, span trace.Span) (req NilString, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilString
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringHostnameNullable:application/json request")
+		}
+		if err := func() error {
+			if err := (validate.String{
+				MinLength:    0,
+				MinLengthSet: false,
+				MaxLength:    0,
+				MaxLengthSet: false,
+				Email:        false,
+				Hostname:     true,
+				Regex:        nil,
+			}).Validate(string(request.Value)); err != nil {
+				return errors.Wrap(err, "string")
+			}
+			return nil
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostnameNullable request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringHostnameNullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if err := (validate.String{
+						MinLength:    0,
+						MinLengthSet: false,
+						MaxLength:    0,
+						MaxLengthSet: false,
+						Email:        false,
+						Hostname:     true,
+						Regex:        nil,
+					}).Validate(string(elem)); err != nil {
+						return errors.Wrap(err, "string")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostnameNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringHostnameNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					var failures []validate.FieldError
+					for i, elem := range elem {
+						if err := func() error {
+							if err := (validate.String{
+								MinLength:    0,
+								MinLengthSet: false,
+								MaxLength:    0,
+								MaxLengthSet: false,
+								Email:        false,
+								Hostname:     true,
+								Regex:        nil,
+							}).Validate(string(elem)); err != nil {
+								return errors.Wrap(err, "string")
+							}
+							return nil
+						}(); err != nil {
+							failures = append(failures, validate.FieldError{
+								Name:  fmt.Sprintf("[%d]", i),
+								Error: err,
+							})
+						}
+					}
+					if len(failures) > 0 {
+						return &validate.Error{Fields: failures}
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostnameNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringIPRequest(r *http.Request, span trace.Span) (req net.IP, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request net.IP
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := json.DecodeIP(d)
+			request = v
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringIP:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringIPArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []net.IP
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem net.IP
+				v, err := json.DecodeIP(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringIPArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringIPArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]net.IP
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []net.IP
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem net.IP
+					v, err := json.DecodeIP(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringIPArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringIPArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringIPNullableRequest(r *http.Request, span trace.Span) (req NilIP, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilIP
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringIPNullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []net.IP
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem net.IP
+				v, err := json.DecodeIP(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringIPNullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringIPNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]net.IP
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []net.IP
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem net.IP
+					v, err := json.DecodeIP(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringIPNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringIPNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv4Request(r *http.Request, span trace.Span) (req net.IP, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request net.IP
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := json.DecodeIP(d)
+			request = v
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv4:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []net.IP
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem net.IP
+				v, err := json.DecodeIP(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv4Array:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv4Array request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]net.IP
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []net.IP
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem net.IP
+					v, err := json.DecodeIP(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv4ArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv4ArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv4NullableRequest(r *http.Request, span trace.Span) (req NilIPv4, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilIPv4
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv4Nullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []net.IP
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem net.IP
+				v, err := json.DecodeIP(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv4NullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv4NullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]net.IP
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []net.IP
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem net.IP
+					v, err := json.DecodeIP(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv4NullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv4NullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv6Request(r *http.Request, span trace.Span) (req net.IP, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request net.IP
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := json.DecodeIP(d)
+			request = v
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv6:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []net.IP
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem net.IP
+				v, err := json.DecodeIP(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv6Array:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv6Array request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]net.IP
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []net.IP
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem net.IP
+					v, err := json.DecodeIP(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv6ArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv6ArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv6NullableRequest(r *http.Request, span trace.Span) (req NilIPv6, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilIPv6
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv6Nullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []net.IP
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem net.IP
+				v, err := json.DecodeIP(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv6NullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv6NullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]net.IP
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []net.IP
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem net.IP
+					v, err := json.DecodeIP(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv6NullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv6NullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringNullableRequest(r *http.Request, span trace.Span) (req NilString, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilString
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringNullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringNullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringPasswordRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringPassword:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringPasswordArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringPasswordArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringPasswordArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringPasswordArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringPasswordArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringPasswordArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringPasswordNullableRequest(r *http.Request, span trace.Span) (req NilString, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilString
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringPasswordNullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringPasswordNullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringPasswordNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringPasswordNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringPasswordNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringTimeRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request time.Time
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := json.DecodeTime(d)
+			request = v
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringTime:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringTimeArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []time.Time
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeTime(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringTimeArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringTimeArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringTimeArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]time.Time
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeTime(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringTimeArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringTimeArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringTimeNullableRequest(r *http.Request, span trace.Span) (req NilTime, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilTime
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d, json.DecodeTime); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringTimeNullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []time.Time
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeTime(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringTimeNullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringTimeNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]time.Time
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeTime(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringTimeNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringTimeNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringURIRequest(r *http.Request, span trace.Span) (req url.URL, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request url.URL
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := json.DecodeURI(d)
+			request = v
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringURI:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringURIArrayRequest(r *http.Request, span trace.Span) (req []url.URL, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []url.URL
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem url.URL
+				v, err := json.DecodeURI(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringURIArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringURIArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringURIArrayArrayRequest(r *http.Request, span trace.Span) (req [][]url.URL, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]url.URL
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []url.URL
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem url.URL
+					v, err := json.DecodeURI(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringURIArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringURIArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringURINullableRequest(r *http.Request, span trace.Span) (req NilURI, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilURI
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringURINullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringURINullableArrayRequest(r *http.Request, span trace.Span) (req []url.URL, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []url.URL
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem url.URL
+				v, err := json.DecodeURI(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringURINullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringURINullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]url.URL, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]url.URL
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []url.URL
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem url.URL
+					v, err := json.DecodeURI(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringURINullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringURINullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringUUIDRequest(r *http.Request, span trace.Span) (req uuid.UUID, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request uuid.UUID
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := json.DecodeUUID(d)
+			request = v
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringUUID:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringUUIDArrayRequest(r *http.Request, span trace.Span) (req []uuid.UUID, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []uuid.UUID
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem uuid.UUID
+				v, err := json.DecodeUUID(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringUUIDArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringUUIDArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringUUIDArrayArrayRequest(r *http.Request, span trace.Span) (req [][]uuid.UUID, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]uuid.UUID
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []uuid.UUID
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem uuid.UUID
+					v, err := json.DecodeUUID(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringUUIDArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringUUIDArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringUUIDNullableRequest(r *http.Request, span trace.Span) (req NilUUID, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request NilUUID
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringUUIDNullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http.Request, span trace.Span) (req []uuid.UUID, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request []uuid.UUID
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem uuid.UUID
+				v, err := json.DecodeUUID(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringUUIDNullableArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringUUIDNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]uuid.UUID, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request [][]uuid.UUID
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []uuid.UUID
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem uuid.UUID
+					v, err := json.DecodeUUID(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestRequiredStringUUIDNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestRequiredStringUUIDNullableArrayArray request")
 		}
 		return request, nil
 	default:
@@ -3374,14 +12226,14 @@ func decodeTestRequestStringRequest(r *http.Request, span trace.Span) (req OptSt
 	}
 }
 
-func decodeTestRequestStringArrayRequest(r *http.Request, span trace.Span) (req OptStringArray, err error) {
+func decodeTestRequestStringArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptStringArray
+		var request []string
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3397,29 +12249,22 @@ func decodeTestRequestStringArrayRequest(r *http.Request, span trace.Span) (req 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringArray request")
 		}
 		return request, nil
 	default:
@@ -3427,14 +12272,14 @@ func decodeTestRequestStringArrayRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestRequestStringArrayArrayRequest(r *http.Request, span trace.Span) (req OptStringArrayArray, err error) {
+func decodeTestRequestStringArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptStringArrayArray
+		var request [][]string
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3450,8 +12295,25 @@ func decodeTestRequestStringArrayArrayRequest(r *http.Request, span trace.Span) 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -3459,34 +12321,23 @@ func decodeTestRequestStringArrayArrayRequest(r *http.Request, span trace.Span) 
 			return req, errors.Wrap(err, "decode TestRequestStringArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringArrayArray request")
@@ -3497,14 +12348,14 @@ func decodeTestRequestStringArrayArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestStringByteRequest(r *http.Request, span trace.Span) (req OptByte, err error) {
+func decodeTestRequestStringBinaryRequest(r *http.Request, span trace.Span) (req OptString, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptByte
+		var request OptString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3522,6 +12373,325 @@ func decodeTestRequestStringByteRequest(r *http.Request, span trace.Span) (req O
 		if err := func() error {
 			request.Reset()
 			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestStringBinary:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestStringBinaryArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request []string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestStringBinaryArray:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestStringBinaryArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request [][]string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestStringBinaryArrayArray:application/json request")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestStringBinaryArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestStringBinaryNullableRequest(r *http.Request, span trace.Span) (req OptNilString, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request OptNilString
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request.Reset()
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestStringBinaryNullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestStringBinaryNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request []string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestStringBinaryNullableArray:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request [][]string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestStringBinaryNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestStringBinaryNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestStringByteRequest(r *http.Request, span trace.Span) (req []byte, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request []byte
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Base64()
+			request = []byte(v)
+			if err != nil {
 				return err
 			}
 			return nil
@@ -3534,14 +12704,14 @@ func decodeTestRequestStringByteRequest(r *http.Request, span trace.Span) (req O
 	}
 }
 
-func decodeTestRequestStringByteArrayRequest(r *http.Request, span trace.Span) (req OptByteArray, err error) {
+func decodeTestRequestStringByteArrayRequest(r *http.Request, span trace.Span) (req [][]byte, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptByteArray
+		var request [][]byte
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3557,29 +12727,22 @@ func decodeTestRequestStringByteArrayRequest(r *http.Request, span trace.Span) (
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []byte
+				v, err := d.Base64()
+				elem = []byte(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringByteArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringByteArray request")
 		}
 		return request, nil
 	default:
@@ -3587,14 +12750,14 @@ func decodeTestRequestStringByteArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringByteArrayArrayRequest(r *http.Request, span trace.Span) (req OptByteArrayArray, err error) {
+func decodeTestRequestStringByteArrayArrayRequest(r *http.Request, span trace.Span) (req [][][]byte, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptByteArrayArray
+		var request [][][]byte
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3610,8 +12773,25 @@ func decodeTestRequestStringByteArrayArrayRequest(r *http.Request, span trace.Sp
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem [][]byte
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem []byte
+					v, err := d.Base64()
+					elemElem = []byte(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -3619,34 +12799,23 @@ func decodeTestRequestStringByteArrayArrayRequest(r *http.Request, span trace.Sp
 			return req, errors.Wrap(err, "decode TestRequestStringByteArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringByteArrayArray request")
@@ -3657,14 +12826,14 @@ func decodeTestRequestStringByteArrayArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringByteNullableRequest(r *http.Request, span trace.Span) (req OptByte, err error) {
+func decodeTestRequestStringByteNullableRequest(r *http.Request, span trace.Span) (req OptNilByte, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptByte
+		var request OptNilByte
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3694,14 +12863,14 @@ func decodeTestRequestStringByteNullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringByteNullableArrayRequest(r *http.Request, span trace.Span) (req OptByteArray, err error) {
+func decodeTestRequestStringByteNullableArrayRequest(r *http.Request, span trace.Span) (req [][]byte, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptByteArray
+		var request [][]byte
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3717,29 +12886,22 @@ func decodeTestRequestStringByteNullableArrayRequest(r *http.Request, span trace
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []byte
+				v, err := d.Base64()
+				elem = []byte(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringByteNullableArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringByteNullableArray request")
 		}
 		return request, nil
 	default:
@@ -3747,14 +12909,14 @@ func decodeTestRequestStringByteNullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptByteArrayArray, err error) {
+func decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][][]byte, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptByteArrayArray
+		var request [][][]byte
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3770,8 +12932,25 @@ func decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Request, span 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem [][]byte
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem []byte
+					v, err := d.Base64()
+					elemElem = []byte(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -3779,34 +12958,23 @@ func decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Request, span 
 			return req, errors.Wrap(err, "decode TestRequestStringByteNullableArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringByteNullableArrayArray request")
@@ -3854,14 +13022,14 @@ func decodeTestRequestStringDateRequest(r *http.Request, span trace.Span) (req O
 	}
 }
 
-func decodeTestRequestStringDateArrayRequest(r *http.Request, span trace.Span) (req OptDateArray, err error) {
+func decodeTestRequestStringDateArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptDateArray
+		var request []time.Time
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3877,29 +13045,22 @@ func decodeTestRequestStringDateArrayRequest(r *http.Request, span trace.Span) (
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeDate(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringDateArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringDateArray request")
 		}
 		return request, nil
 	default:
@@ -3907,14 +13068,14 @@ func decodeTestRequestStringDateArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringDateArrayArrayRequest(r *http.Request, span trace.Span) (req OptDateArrayArray, err error) {
+func decodeTestRequestStringDateArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptDateArrayArray
+		var request [][]time.Time
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -3930,8 +13091,25 @@ func decodeTestRequestStringDateArrayArrayRequest(r *http.Request, span trace.Sp
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeDate(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -3939,34 +13117,23 @@ func decodeTestRequestStringDateArrayArrayRequest(r *http.Request, span trace.Sp
 			return req, errors.Wrap(err, "decode TestRequestStringDateArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringDateArrayArray request")
@@ -3977,14 +13144,14 @@ func decodeTestRequestStringDateArrayArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringDateNullableRequest(r *http.Request, span trace.Span) (req OptDate, err error) {
+func decodeTestRequestStringDateNullableRequest(r *http.Request, span trace.Span) (req OptNilDate, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptDate
+		var request OptNilDate
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4014,14 +13181,14 @@ func decodeTestRequestStringDateNullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringDateNullableArrayRequest(r *http.Request, span trace.Span) (req OptDateArray, err error) {
+func decodeTestRequestStringDateNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptDateArray
+		var request []time.Time
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4037,29 +13204,22 @@ func decodeTestRequestStringDateNullableArrayRequest(r *http.Request, span trace
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeDate(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringDateNullableArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringDateNullableArray request")
 		}
 		return request, nil
 	default:
@@ -4067,14 +13227,14 @@ func decodeTestRequestStringDateNullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptDateArrayArray, err error) {
+func decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptDateArrayArray
+		var request [][]time.Time
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4090,8 +13250,25 @@ func decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Request, span 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeDate(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -4099,34 +13276,23 @@ func decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Request, span 
 			return req, errors.Wrap(err, "decode TestRequestStringDateNullableArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringDateNullableArrayArray request")
@@ -4174,14 +13340,14 @@ func decodeTestRequestStringDateTimeRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestStringDateTimeArrayRequest(r *http.Request, span trace.Span) (req OptDateTimeArray, err error) {
+func decodeTestRequestStringDateTimeArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptDateTimeArray
+		var request []time.Time
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4197,29 +13363,22 @@ func decodeTestRequestStringDateTimeArrayRequest(r *http.Request, span trace.Spa
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeDateTime(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringDateTimeArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringDateTimeArray request")
 		}
 		return request, nil
 	default:
@@ -4227,14 +13386,14 @@ func decodeTestRequestStringDateTimeArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Request, span trace.Span) (req OptDateTimeArrayArray, err error) {
+func decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptDateTimeArrayArray
+		var request [][]time.Time
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4250,8 +13409,25 @@ func decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Request, span trac
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeDateTime(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -4259,34 +13435,23 @@ func decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Request, span trac
 			return req, errors.Wrap(err, "decode TestRequestStringDateTimeArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringDateTimeArrayArray request")
@@ -4297,14 +13462,14 @@ func decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestStringDateTimeNullableRequest(r *http.Request, span trace.Span) (req OptDateTime, err error) {
+func decodeTestRequestStringDateTimeNullableRequest(r *http.Request, span trace.Span) (req OptNilDateTime, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptDateTime
+		var request OptNilDateTime
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4334,14 +13499,14 @@ func decodeTestRequestStringDateTimeNullableRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Request, span trace.Span) (req OptDateTimeArray, err error) {
+func decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptDateTimeArray
+		var request []time.Time
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4357,29 +13522,22 @@ func decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Request, span t
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeDateTime(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringDateTimeNullableArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringDateTimeNullableArray request")
 		}
 		return request, nil
 	default:
@@ -4387,14 +13545,14 @@ func decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptDateTimeArrayArray, err error) {
+func decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptDateTimeArrayArray
+		var request [][]time.Time
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4410,8 +13568,25 @@ func decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *http.Request, s
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeDateTime(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -4419,34 +13594,23 @@ func decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *http.Request, s
 			return req, errors.Wrap(err, "decode TestRequestStringDateTimeNullableArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringDateTimeNullableArrayArray request")
@@ -4494,14 +13658,14 @@ func decodeTestRequestStringDurationRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestStringDurationArrayRequest(r *http.Request, span trace.Span) (req OptDurationArray, err error) {
+func decodeTestRequestStringDurationArrayRequest(r *http.Request, span trace.Span) (req []time.Duration, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptDurationArray
+		var request []time.Duration
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4517,29 +13681,22 @@ func decodeTestRequestStringDurationArrayRequest(r *http.Request, span trace.Spa
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Duration
+				v, err := json.DecodeDuration(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringDurationArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringDurationArray request")
 		}
 		return request, nil
 	default:
@@ -4547,14 +13704,14 @@ func decodeTestRequestStringDurationArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringDurationArrayArrayRequest(r *http.Request, span trace.Span) (req OptDurationArrayArray, err error) {
+func decodeTestRequestStringDurationArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Duration, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptDurationArrayArray
+		var request [][]time.Duration
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4570,8 +13727,25 @@ func decodeTestRequestStringDurationArrayArrayRequest(r *http.Request, span trac
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Duration
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Duration
+					v, err := json.DecodeDuration(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -4579,34 +13753,23 @@ func decodeTestRequestStringDurationArrayArrayRequest(r *http.Request, span trac
 			return req, errors.Wrap(err, "decode TestRequestStringDurationArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringDurationArrayArray request")
@@ -4617,14 +13780,14 @@ func decodeTestRequestStringDurationArrayArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestStringDurationNullableRequest(r *http.Request, span trace.Span) (req OptDuration, err error) {
+func decodeTestRequestStringDurationNullableRequest(r *http.Request, span trace.Span) (req OptNilDuration, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptDuration
+		var request OptNilDuration
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4654,14 +13817,136 @@ func decodeTestRequestStringDurationNullableRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestStringDurationNullableArrayRequest(r *http.Request, span trace.Span) (req OptDurationArray, err error) {
+func decodeTestRequestStringDurationNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Duration, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptDurationArray
+		var request []time.Duration
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Duration
+				v, err := json.DecodeDuration(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestStringDurationNullableArray:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestStringDurationNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Duration, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request [][]time.Duration
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Duration
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Duration
+					v, err := json.DecodeDuration(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestStringDurationNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestStringDurationNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestStringEmailRequest(r *http.Request, span trace.Span) (req OptString, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request OptString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4683,13 +13968,21 @@ func decodeTestRequestStringDurationNullableArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDurationNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode TestRequestStringEmail:application/json request")
 		}
 		if err := func() error {
 			if request.Set {
 				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
+					if err := (validate.String{
+						MinLength:    0,
+						MinLengthSet: false,
+						MaxLength:    0,
+						MaxLengthSet: false,
+						Email:        true,
+						Hostname:     false,
+						Regex:        nil,
+					}).Validate(string(request.Value)); err != nil {
+						return errors.Wrap(err, "string")
 					}
 					return nil
 				}(); err != nil {
@@ -4699,7 +13992,7 @@ func decodeTestRequestStringDurationNullableArrayRequest(r *http.Request, span t
 			return nil
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringDurationNullableArray request")
+			return req, errors.Wrap(err, "validate TestRequestStringEmail request")
 		}
 		return request, nil
 	default:
@@ -4707,14 +14000,14 @@ func decodeTestRequestStringDurationNullableArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestStringDurationNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptDurationArrayArray, err error) {
+func decodeTestRequestStringEmailArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptDurationArrayArray
+		var request []string
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4730,25 +14023,127 @@ func decodeTestRequestStringDurationNullableArrayArrayRequest(r *http.Request, s
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDurationNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode TestRequestStringEmailArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if err := (validate.String{
+						MinLength:    0,
+						MinLengthSet: false,
+						MaxLength:    0,
+						MaxLengthSet: false,
+						Email:        true,
+						Hostname:     false,
+						Regex:        nil,
+					}).Validate(string(elem)); err != nil {
+						return errors.Wrap(err, "string")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestStringEmailArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestStringEmailArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request [][]string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestStringEmailArrayArray:application/json request")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
 					var failures []validate.FieldError
-					for i, elem := range request.Value {
+					for i, elem := range elem {
 						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
+							if err := (validate.String{
+								MinLength:    0,
+								MinLengthSet: false,
+								MaxLength:    0,
+								MaxLengthSet: false,
+								Email:        true,
+								Hostname:     false,
+								Regex:        nil,
+							}).Validate(string(elem)); err != nil {
+								return errors.Wrap(err, "string")
 							}
 							return nil
 						}(); err != nil {
@@ -4763,13 +14158,732 @@ func decodeTestRequestStringDurationNullableArrayArrayRequest(r *http.Request, s
 					}
 					return nil
 				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestStringEmailArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestStringEmailNullableRequest(r *http.Request, span trace.Span) (req OptNilString, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request OptNilString
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request.Reset()
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestStringEmailNullable:application/json request")
+		}
+		if err := func() error {
+			if request.Set {
+				if err := func() error {
+					if err := (validate.String{
+						MinLength:    0,
+						MinLengthSet: false,
+						MaxLength:    0,
+						MaxLengthSet: false,
+						Email:        true,
+						Hostname:     false,
+						Regex:        nil,
+					}).Validate(string(request.Value)); err != nil {
+						return errors.Wrap(err, "string")
+					}
+					return nil
+				}(); err != nil {
 					return err
 				}
 			}
 			return nil
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringDurationNullableArrayArray request")
+			return req, errors.Wrap(err, "validate TestRequestStringEmailNullable request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestStringEmailNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request []string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestStringEmailNullableArray:application/json request")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if err := (validate.String{
+						MinLength:    0,
+						MinLengthSet: false,
+						MaxLength:    0,
+						MaxLengthSet: false,
+						Email:        true,
+						Hostname:     false,
+						Regex:        nil,
+					}).Validate(string(elem)); err != nil {
+						return errors.Wrap(err, "string")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestStringEmailNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request [][]string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestStringEmailNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					var failures []validate.FieldError
+					for i, elem := range elem {
+						if err := func() error {
+							if err := (validate.String{
+								MinLength:    0,
+								MinLengthSet: false,
+								MaxLength:    0,
+								MaxLengthSet: false,
+								Email:        true,
+								Hostname:     false,
+								Regex:        nil,
+							}).Validate(string(elem)); err != nil {
+								return errors.Wrap(err, "string")
+							}
+							return nil
+						}(); err != nil {
+							failures = append(failures, validate.FieldError{
+								Name:  fmt.Sprintf("[%d]", i),
+								Error: err,
+							})
+						}
+					}
+					if len(failures) > 0 {
+						return &validate.Error{Fields: failures}
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestStringEmailNullableArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestStringHostnameRequest(r *http.Request, span trace.Span) (req OptString, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request OptString
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request.Reset()
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestStringHostname:application/json request")
+		}
+		if err := func() error {
+			if request.Set {
+				if err := func() error {
+					if err := (validate.String{
+						MinLength:    0,
+						MinLengthSet: false,
+						MaxLength:    0,
+						MaxLengthSet: false,
+						Email:        false,
+						Hostname:     true,
+						Regex:        nil,
+					}).Validate(string(request.Value)); err != nil {
+						return errors.Wrap(err, "string")
+					}
+					return nil
+				}(); err != nil {
+					return err
+				}
+			}
+			return nil
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestStringHostname request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestStringHostnameArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request []string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestStringHostnameArray:application/json request")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if err := (validate.String{
+						MinLength:    0,
+						MinLengthSet: false,
+						MaxLength:    0,
+						MaxLengthSet: false,
+						Email:        false,
+						Hostname:     true,
+						Regex:        nil,
+					}).Validate(string(elem)); err != nil {
+						return errors.Wrap(err, "string")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestStringHostnameArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestStringHostnameArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request [][]string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestStringHostnameArrayArray:application/json request")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					var failures []validate.FieldError
+					for i, elem := range elem {
+						if err := func() error {
+							if err := (validate.String{
+								MinLength:    0,
+								MinLengthSet: false,
+								MaxLength:    0,
+								MaxLengthSet: false,
+								Email:        false,
+								Hostname:     true,
+								Regex:        nil,
+							}).Validate(string(elem)); err != nil {
+								return errors.Wrap(err, "string")
+							}
+							return nil
+						}(); err != nil {
+							failures = append(failures, validate.FieldError{
+								Name:  fmt.Sprintf("[%d]", i),
+								Error: err,
+							})
+						}
+					}
+					if len(failures) > 0 {
+						return &validate.Error{Fields: failures}
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestStringHostnameArrayArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestStringHostnameNullableRequest(r *http.Request, span trace.Span) (req OptNilString, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request OptNilString
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request.Reset()
+			if err := request.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestStringHostnameNullable:application/json request")
+		}
+		if err := func() error {
+			if request.Set {
+				if err := func() error {
+					if err := (validate.String{
+						MinLength:    0,
+						MinLengthSet: false,
+						MaxLength:    0,
+						MaxLengthSet: false,
+						Email:        false,
+						Hostname:     true,
+						Regex:        nil,
+					}).Validate(string(request.Value)); err != nil {
+						return errors.Wrap(err, "string")
+					}
+					return nil
+				}(); err != nil {
+					return err
+				}
+			}
+			return nil
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestStringHostnameNullable request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestStringHostnameNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request []string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestStringHostnameNullableArray:application/json request")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if err := (validate.String{
+						MinLength:    0,
+						MinLengthSet: false,
+						MaxLength:    0,
+						MaxLengthSet: false,
+						Email:        false,
+						Hostname:     true,
+						Regex:        nil,
+					}).Validate(string(elem)); err != nil {
+						return errors.Wrap(err, "string")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestStringHostnameNullableArray request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestRequestStringHostnameNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, nil
+		}
+
+		var request [][]string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, nil
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestRequestStringHostnameNullableArrayArray:application/json request")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					var failures []validate.FieldError
+					for i, elem := range elem {
+						if err := func() error {
+							if err := (validate.String{
+								MinLength:    0,
+								MinLengthSet: false,
+								MaxLength:    0,
+								MaxLengthSet: false,
+								Email:        false,
+								Hostname:     true,
+								Regex:        nil,
+							}).Validate(string(elem)); err != nil {
+								return errors.Wrap(err, "string")
+							}
+							return nil
+						}(); err != nil {
+							failures = append(failures, validate.FieldError{
+								Name:  fmt.Sprintf("[%d]", i),
+								Error: err,
+							})
+						}
+					}
+					if len(failures) > 0 {
+						return &validate.Error{Fields: failures}
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate TestRequestStringHostnameNullableArrayArray request")
 		}
 		return request, nil
 	default:
@@ -4814,14 +14928,14 @@ func decodeTestRequestStringIPRequest(r *http.Request, span trace.Span) (req Opt
 	}
 }
 
-func decodeTestRequestStringIPArrayRequest(r *http.Request, span trace.Span) (req OptIPArray, err error) {
+func decodeTestRequestStringIPArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPArray
+		var request []net.IP
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4837,29 +14951,22 @@ func decodeTestRequestStringIPArrayRequest(r *http.Request, span trace.Span) (re
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem net.IP
+				v, err := json.DecodeIP(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringIPArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringIPArray request")
 		}
 		return request, nil
 	default:
@@ -4867,14 +14974,14 @@ func decodeTestRequestStringIPArrayRequest(r *http.Request, span trace.Span) (re
 	}
 }
 
-func decodeTestRequestStringIPArrayArrayRequest(r *http.Request, span trace.Span) (req OptIPArrayArray, err error) {
+func decodeTestRequestStringIPArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPArrayArray
+		var request [][]net.IP
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4890,8 +14997,25 @@ func decodeTestRequestStringIPArrayArrayRequest(r *http.Request, span trace.Span
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []net.IP
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem net.IP
+					v, err := json.DecodeIP(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -4899,34 +15023,23 @@ func decodeTestRequestStringIPArrayArrayRequest(r *http.Request, span trace.Span
 			return req, errors.Wrap(err, "decode TestRequestStringIPArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringIPArrayArray request")
@@ -4937,14 +15050,14 @@ func decodeTestRequestStringIPArrayArrayRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringIPNullableRequest(r *http.Request, span trace.Span) (req OptIP, err error) {
+func decodeTestRequestStringIPNullableRequest(r *http.Request, span trace.Span) (req OptNilIP, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIP
+		var request OptNilIP
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4974,14 +15087,14 @@ func decodeTestRequestStringIPNullableRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestStringIPNullableArrayRequest(r *http.Request, span trace.Span) (req OptIPArray, err error) {
+func decodeTestRequestStringIPNullableArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPArray
+		var request []net.IP
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -4997,29 +15110,22 @@ func decodeTestRequestStringIPNullableArrayRequest(r *http.Request, span trace.S
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem net.IP
+				v, err := json.DecodeIP(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringIPNullableArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringIPNullableArray request")
 		}
 		return request, nil
 	default:
@@ -5027,14 +15133,14 @@ func decodeTestRequestStringIPNullableArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptIPArrayArray, err error) {
+func decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPArrayArray
+		var request [][]net.IP
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5050,8 +15156,25 @@ func decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span tr
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []net.IP
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem net.IP
+					v, err := json.DecodeIP(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -5059,34 +15182,23 @@ func decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span tr
 			return req, errors.Wrap(err, "decode TestRequestStringIPNullableArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringIPNullableArrayArray request")
@@ -5134,14 +15246,14 @@ func decodeTestRequestStringIpv4Request(r *http.Request, span trace.Span) (req O
 	}
 }
 
-func decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span trace.Span) (req OptIPv4Array, err error) {
+func decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPv4Array
+		var request []net.IP
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5157,29 +15269,22 @@ func decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span trace.Span) (
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem net.IP
+				v, err := json.DecodeIP(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringIpv4Array:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringIpv4Array request")
 		}
 		return request, nil
 	default:
@@ -5187,14 +15292,14 @@ func decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Span) (req OptIPv4ArrayArray, err error) {
+func decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPv4ArrayArray
+		var request [][]net.IP
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5210,8 +15315,25 @@ func decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Sp
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []net.IP
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem net.IP
+					v, err := json.DecodeIP(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -5219,34 +15341,23 @@ func decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Sp
 			return req, errors.Wrap(err, "decode TestRequestStringIpv4ArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringIpv4ArrayArray request")
@@ -5257,14 +15368,14 @@ func decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringIpv4NullableRequest(r *http.Request, span trace.Span) (req OptIPv4, err error) {
+func decodeTestRequestStringIpv4NullableRequest(r *http.Request, span trace.Span) (req OptNilIPv4, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPv4
+		var request OptNilIPv4
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5294,14 +15405,14 @@ func decodeTestRequestStringIpv4NullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (req OptIPv4Array, err error) {
+func decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPv4Array
+		var request []net.IP
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5317,29 +15428,22 @@ func decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request, span trace
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem net.IP
+				v, err := json.DecodeIP(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringIpv4NullableArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringIpv4NullableArray request")
 		}
 		return request, nil
 	default:
@@ -5347,14 +15451,14 @@ func decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptIPv4ArrayArray, err error) {
+func decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPv4ArrayArray
+		var request [][]net.IP
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5370,8 +15474,25 @@ func decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []net.IP
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem net.IP
+					v, err := json.DecodeIP(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -5379,34 +15500,23 @@ func decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span 
 			return req, errors.Wrap(err, "decode TestRequestStringIpv4NullableArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringIpv4NullableArrayArray request")
@@ -5454,14 +15564,14 @@ func decodeTestRequestStringIpv6Request(r *http.Request, span trace.Span) (req O
 	}
 }
 
-func decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span trace.Span) (req OptIPv6Array, err error) {
+func decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPv6Array
+		var request []net.IP
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5477,29 +15587,22 @@ func decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span trace.Span) (
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem net.IP
+				v, err := json.DecodeIP(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringIpv6Array:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringIpv6Array request")
 		}
 		return request, nil
 	default:
@@ -5507,14 +15610,14 @@ func decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Span) (req OptIPv6ArrayArray, err error) {
+func decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPv6ArrayArray
+		var request [][]net.IP
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5530,8 +15633,25 @@ func decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Sp
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []net.IP
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem net.IP
+					v, err := json.DecodeIP(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -5539,34 +15659,23 @@ func decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Sp
 			return req, errors.Wrap(err, "decode TestRequestStringIpv6ArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringIpv6ArrayArray request")
@@ -5577,14 +15686,14 @@ func decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringIpv6NullableRequest(r *http.Request, span trace.Span) (req OptIPv6, err error) {
+func decodeTestRequestStringIpv6NullableRequest(r *http.Request, span trace.Span) (req OptNilIPv6, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPv6
+		var request OptNilIPv6
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5614,14 +15723,14 @@ func decodeTestRequestStringIpv6NullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (req OptIPv6Array, err error) {
+func decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPv6Array
+		var request []net.IP
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5637,29 +15746,22 @@ func decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request, span trace
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem net.IP
+				v, err := json.DecodeIP(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringIpv6NullableArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringIpv6NullableArray request")
 		}
 		return request, nil
 	default:
@@ -5667,14 +15769,14 @@ func decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptIPv6ArrayArray, err error) {
+func decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptIPv6ArrayArray
+		var request [][]net.IP
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5690,8 +15792,25 @@ func decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []net.IP
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem net.IP
+					v, err := json.DecodeIP(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -5699,34 +15818,23 @@ func decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span 
 			return req, errors.Wrap(err, "decode TestRequestStringIpv6NullableArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringIpv6NullableArrayArray request")
@@ -5737,14 +15845,14 @@ func decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestStringNullableRequest(r *http.Request, span trace.Span) (req OptString, err error) {
+func decodeTestRequestStringNullableRequest(r *http.Request, span trace.Span) (req OptNilString, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptString
+		var request OptNilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5774,14 +15882,14 @@ func decodeTestRequestStringNullableRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestStringNullableArrayRequest(r *http.Request, span trace.Span) (req OptStringArray, err error) {
+func decodeTestRequestStringNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptStringArray
+		var request []string
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5797,29 +15905,22 @@ func decodeTestRequestStringNullableArrayRequest(r *http.Request, span trace.Spa
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringNullableArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringNullableArray request")
 		}
 		return request, nil
 	default:
@@ -5827,14 +15928,14 @@ func decodeTestRequestStringNullableArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptStringArrayArray, err error) {
+func decodeTestRequestStringNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptStringArrayArray
+		var request [][]string
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5850,8 +15951,25 @@ func decodeTestRequestStringNullableArrayArrayRequest(r *http.Request, span trac
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -5859,34 +15977,23 @@ func decodeTestRequestStringNullableArrayArrayRequest(r *http.Request, span trac
 			return req, errors.Wrap(err, "decode TestRequestStringNullableArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringNullableArrayArray request")
@@ -5934,14 +16041,14 @@ func decodeTestRequestStringPasswordRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestStringPasswordArrayRequest(r *http.Request, span trace.Span) (req OptStringArray, err error) {
+func decodeTestRequestStringPasswordArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptStringArray
+		var request []string
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -5957,29 +16064,22 @@ func decodeTestRequestStringPasswordArrayRequest(r *http.Request, span trace.Spa
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringPasswordArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringPasswordArray request")
 		}
 		return request, nil
 	default:
@@ -5987,14 +16087,14 @@ func decodeTestRequestStringPasswordArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringPasswordArrayArrayRequest(r *http.Request, span trace.Span) (req OptStringArrayArray, err error) {
+func decodeTestRequestStringPasswordArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptStringArrayArray
+		var request [][]string
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6010,8 +16110,25 @@ func decodeTestRequestStringPasswordArrayArrayRequest(r *http.Request, span trac
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -6019,34 +16136,23 @@ func decodeTestRequestStringPasswordArrayArrayRequest(r *http.Request, span trac
 			return req, errors.Wrap(err, "decode TestRequestStringPasswordArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringPasswordArrayArray request")
@@ -6057,14 +16163,14 @@ func decodeTestRequestStringPasswordArrayArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestStringPasswordNullableRequest(r *http.Request, span trace.Span) (req OptString, err error) {
+func decodeTestRequestStringPasswordNullableRequest(r *http.Request, span trace.Span) (req OptNilString, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptString
+		var request OptNilString
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6094,14 +16200,14 @@ func decodeTestRequestStringPasswordNullableRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestStringPasswordNullableArrayRequest(r *http.Request, span trace.Span) (req OptStringArray, err error) {
+func decodeTestRequestStringPasswordNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptStringArray
+		var request []string
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6117,29 +16223,22 @@ func decodeTestRequestStringPasswordNullableArrayRequest(r *http.Request, span t
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem string
+				v, err := d.Str()
+				elem = string(v)
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringPasswordNullableArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringPasswordNullableArray request")
 		}
 		return request, nil
 	default:
@@ -6147,14 +16246,14 @@ func decodeTestRequestStringPasswordNullableArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestStringPasswordNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptStringArrayArray, err error) {
+func decodeTestRequestStringPasswordNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptStringArrayArray
+		var request [][]string
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6170,8 +16269,25 @@ func decodeTestRequestStringPasswordNullableArrayArrayRequest(r *http.Request, s
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []string
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem string
+					v, err := d.Str()
+					elemElem = string(v)
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -6179,34 +16295,23 @@ func decodeTestRequestStringPasswordNullableArrayArrayRequest(r *http.Request, s
 			return req, errors.Wrap(err, "decode TestRequestStringPasswordNullableArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringPasswordNullableArrayArray request")
@@ -6254,14 +16359,14 @@ func decodeTestRequestStringTimeRequest(r *http.Request, span trace.Span) (req O
 	}
 }
 
-func decodeTestRequestStringTimeArrayRequest(r *http.Request, span trace.Span) (req OptTimeArray, err error) {
+func decodeTestRequestStringTimeArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTimeArray
+		var request []time.Time
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6277,29 +16382,22 @@ func decodeTestRequestStringTimeArrayRequest(r *http.Request, span trace.Span) (
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeTime(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringTimeArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringTimeArray request")
 		}
 		return request, nil
 	default:
@@ -6307,14 +16405,14 @@ func decodeTestRequestStringTimeArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringTimeArrayArrayRequest(r *http.Request, span trace.Span) (req OptTimeArrayArray, err error) {
+func decodeTestRequestStringTimeArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTimeArrayArray
+		var request [][]time.Time
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6330,8 +16428,25 @@ func decodeTestRequestStringTimeArrayArrayRequest(r *http.Request, span trace.Sp
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeTime(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -6339,34 +16454,23 @@ func decodeTestRequestStringTimeArrayArrayRequest(r *http.Request, span trace.Sp
 			return req, errors.Wrap(err, "decode TestRequestStringTimeArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringTimeArrayArray request")
@@ -6377,14 +16481,14 @@ func decodeTestRequestStringTimeArrayArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringTimeNullableRequest(r *http.Request, span trace.Span) (req OptTime, err error) {
+func decodeTestRequestStringTimeNullableRequest(r *http.Request, span trace.Span) (req OptNilTime, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTime
+		var request OptNilTime
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6414,14 +16518,14 @@ func decodeTestRequestStringTimeNullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringTimeNullableArrayRequest(r *http.Request, span trace.Span) (req OptTimeArray, err error) {
+func decodeTestRequestStringTimeNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTimeArray
+		var request []time.Time
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6437,29 +16541,22 @@ func decodeTestRequestStringTimeNullableArrayRequest(r *http.Request, span trace
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeTime(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringTimeNullableArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringTimeNullableArray request")
 		}
 		return request, nil
 	default:
@@ -6467,14 +16564,14 @@ func decodeTestRequestStringTimeNullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptTimeArrayArray, err error) {
+func decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptTimeArrayArray
+		var request [][]time.Time
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6490,8 +16587,25 @@ func decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Request, span 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeTime(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -6499,34 +16613,23 @@ func decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Request, span 
 			return req, errors.Wrap(err, "decode TestRequestStringTimeNullableArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringTimeNullableArrayArray request")
@@ -6574,14 +16677,14 @@ func decodeTestRequestStringURIRequest(r *http.Request, span trace.Span) (req Op
 	}
 }
 
-func decodeTestRequestStringURIArrayRequest(r *http.Request, span trace.Span) (req OptURIArray, err error) {
+func decodeTestRequestStringURIArrayRequest(r *http.Request, span trace.Span) (req []url.URL, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptURIArray
+		var request []url.URL
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6597,29 +16700,22 @@ func decodeTestRequestStringURIArrayRequest(r *http.Request, span trace.Span) (r
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem url.URL
+				v, err := json.DecodeURI(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringURIArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringURIArray request")
 		}
 		return request, nil
 	default:
@@ -6627,14 +16723,14 @@ func decodeTestRequestStringURIArrayRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestStringURIArrayArrayRequest(r *http.Request, span trace.Span) (req OptURIArrayArray, err error) {
+func decodeTestRequestStringURIArrayArrayRequest(r *http.Request, span trace.Span) (req [][]url.URL, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptURIArrayArray
+		var request [][]url.URL
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6650,8 +16746,25 @@ func decodeTestRequestStringURIArrayArrayRequest(r *http.Request, span trace.Spa
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []url.URL
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem url.URL
+					v, err := json.DecodeURI(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -6659,34 +16772,23 @@ func decodeTestRequestStringURIArrayArrayRequest(r *http.Request, span trace.Spa
 			return req, errors.Wrap(err, "decode TestRequestStringURIArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringURIArrayArray request")
@@ -6697,14 +16799,14 @@ func decodeTestRequestStringURIArrayArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringURINullableRequest(r *http.Request, span trace.Span) (req OptURI, err error) {
+func decodeTestRequestStringURINullableRequest(r *http.Request, span trace.Span) (req OptNilURI, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptURI
+		var request OptNilURI
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6734,14 +16836,14 @@ func decodeTestRequestStringURINullableRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestStringURINullableArrayRequest(r *http.Request, span trace.Span) (req OptURIArray, err error) {
+func decodeTestRequestStringURINullableArrayRequest(r *http.Request, span trace.Span) (req []url.URL, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptURIArray
+		var request []url.URL
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6757,29 +16859,22 @@ func decodeTestRequestStringURINullableArrayRequest(r *http.Request, span trace.
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem url.URL
+				v, err := json.DecodeURI(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringURINullableArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringURINullableArray request")
 		}
 		return request, nil
 	default:
@@ -6787,14 +16882,14 @@ func decodeTestRequestStringURINullableArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestStringURINullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptURIArrayArray, err error) {
+func decodeTestRequestStringURINullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]url.URL, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptURIArrayArray
+		var request [][]url.URL
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6810,8 +16905,25 @@ func decodeTestRequestStringURINullableArrayArrayRequest(r *http.Request, span t
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []url.URL
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem url.URL
+					v, err := json.DecodeURI(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -6819,34 +16931,23 @@ func decodeTestRequestStringURINullableArrayArrayRequest(r *http.Request, span t
 			return req, errors.Wrap(err, "decode TestRequestStringURINullableArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringURINullableArrayArray request")
@@ -6894,14 +16995,14 @@ func decodeTestRequestStringUUIDRequest(r *http.Request, span trace.Span) (req O
 	}
 }
 
-func decodeTestRequestStringUUIDArrayRequest(r *http.Request, span trace.Span) (req OptUUIDArray, err error) {
+func decodeTestRequestStringUUIDArrayRequest(r *http.Request, span trace.Span) (req []uuid.UUID, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptUUIDArray
+		var request []uuid.UUID
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6917,29 +17018,22 @@ func decodeTestRequestStringUUIDArrayRequest(r *http.Request, span trace.Span) (
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem uuid.UUID
+				v, err := json.DecodeUUID(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringUUIDArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringUUIDArray request")
 		}
 		return request, nil
 	default:
@@ -6947,14 +17041,14 @@ func decodeTestRequestStringUUIDArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request, span trace.Span) (req OptUUIDArrayArray, err error) {
+func decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request, span trace.Span) (req [][]uuid.UUID, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptUUIDArrayArray
+		var request [][]uuid.UUID
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -6970,8 +17064,25 @@ func decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request, span trace.Sp
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []uuid.UUID
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem uuid.UUID
+					v, err := json.DecodeUUID(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -6979,34 +17090,23 @@ func decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request, span trace.Sp
 			return req, errors.Wrap(err, "decode TestRequestStringUUIDArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringUUIDArrayArray request")
@@ -7017,14 +17117,14 @@ func decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringUUIDNullableRequest(r *http.Request, span trace.Span) (req OptUUID, err error) {
+func decodeTestRequestStringUUIDNullableRequest(r *http.Request, span trace.Span) (req OptNilUUID, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptUUID
+		var request OptNilUUID
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -7054,14 +17154,14 @@ func decodeTestRequestStringUUIDNullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request, span trace.Span) (req OptUUIDArray, err error) {
+func decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request, span trace.Span) (req []uuid.UUID, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptUUIDArray
+		var request []uuid.UUID
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -7077,29 +17177,22 @@ func decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request, span trace
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem uuid.UUID
+				v, err := json.DecodeUUID(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestRequestStringUUIDNullableArray:application/json request")
-		}
-		if err := func() error {
-			if request.Set {
-				if err := func() error {
-					if request.Value == nil {
-						return errors.New("nil is invalid value")
-					}
-					return nil
-				}(); err != nil {
-					return err
-				}
-			}
-			return nil
-			return nil
-		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringUUIDNullableArray request")
 		}
 		return request, nil
 	default:
@@ -7107,14 +17200,14 @@ func decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Request, span trace.Span) (req OptUUIDArrayArray, err error) {
+func decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]uuid.UUID, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptUUIDArrayArray
+		var request [][]uuid.UUID
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -7130,8 +17223,25 @@ func decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Request, span 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []uuid.UUID
+				elem = nil
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem uuid.UUID
+					v, err := json.DecodeUUID(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
 				return err
 			}
 			return nil
@@ -7139,34 +17249,23 @@ func decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Request, span 
 			return req, errors.Wrap(err, "decode TestRequestStringUUIDNullableArrayArray:application/json request")
 		}
 		if err := func() error {
-			if request.Set {
+			var failures []validate.FieldError
+			for i, elem := range request {
 				if err := func() error {
-					if request.Value == nil {
+					if elem == nil {
 						return errors.New("nil is invalid value")
-					}
-					var failures []validate.FieldError
-					for i, elem := range request.Value {
-						if err := func() error {
-							if elem == nil {
-								return errors.New("nil is invalid value")
-							}
-							return nil
-						}(); err != nil {
-							failures = append(failures, validate.FieldError{
-								Name:  fmt.Sprintf("[%d]", i),
-								Error: err,
-							})
-						}
-					}
-					if len(failures) > 0 {
-						return &validate.Error{Fields: failures}
 					}
 					return nil
 				}(); err != nil {
-					return err
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
 				}
 			}
-			return nil
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringUUIDNullableArrayArray request")
@@ -7436,6 +17535,44 @@ func decodeTestResponseBooleanNullableArrayArrayRequest(r *http.Request, span tr
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestResponseBooleanNullableArrayArray:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestResponseEmptyStructRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseEmptyStruct:application/json request")
 		}
 		return request, nil
 	default:
@@ -9419,6 +19556,234 @@ func decodeTestResponseStringArrayArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
+func decodeTestResponseStringBinaryRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseStringBinary:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestResponseStringBinaryArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseStringBinaryArray:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestResponseStringBinaryArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseStringBinaryArrayArray:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestResponseStringBinaryNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseStringBinaryNullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestResponseStringBinaryNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseStringBinaryNullableArray:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestResponseStringBinaryNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseStringBinaryNullableArrayArray:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
 func decodeTestResponseStringByteRequest(r *http.Request, span trace.Span) (req string, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
@@ -10324,6 +20689,462 @@ func decodeTestResponseStringDurationNullableArrayArrayRequest(r *http.Request, 
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode TestResponseStringDurationNullableArrayArray:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestResponseStringEmailRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseStringEmail:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestResponseStringEmailArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseStringEmailArray:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestResponseStringEmailArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseStringEmailArrayArray:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestResponseStringEmailNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseStringEmailNullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestResponseStringEmailNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseStringEmailNullableArray:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestResponseStringEmailNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseStringEmailNullableArrayArray:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestResponseStringHostnameRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseStringHostname:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestResponseStringHostnameArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseStringHostnameArray:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestResponseStringHostnameArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseStringHostnameArrayArray:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestResponseStringHostnameNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseStringHostnameNullable:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestResponseStringHostnameNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseStringHostnameNullableArray:application/json request")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestResponseStringHostnameNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "decode TestResponseStringHostnameNullableArrayArray:application/json request")
 		}
 		return request, nil
 	default:

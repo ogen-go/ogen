@@ -2925,7 +2925,7 @@ type Handler interface {
 	// com/rest/overview/resources-in-the-rest-api#http-verbs).".
 	//
 	// PUT /repos/{owner}/{repo}/issues/{issue_number}/lock
-	IssuesLock(ctx context.Context, req OptIssuesLockReq, params IssuesLockParams) (IssuesLockRes, error)
+	IssuesLock(ctx context.Context, req OptNilIssuesLockReq, params IssuesLockParams) (IssuesLockRes, error)
 	// IssuesRemoveAllLabels implements issues/remove-all-labels operation.
 	//
 	// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels
@@ -3240,7 +3240,7 @@ type Handler interface {
 	// request. If no parameters are provided, the import will be restarted.
 	//
 	// PATCH /repos/{owner}/{repo}/import
-	MigrationsUpdateImport(ctx context.Context, req OptMigrationsUpdateImportReq, params MigrationsUpdateImportParams) (Import, error)
+	MigrationsUpdateImport(ctx context.Context, req OptNilMigrationsUpdateImportReq, params MigrationsUpdateImportParams) (Import, error)
 	// OAuthAuthorizationsCreateAuthorization implements oauth-authorizations/create-authorization operation.
 	//
 	// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.
@@ -4052,7 +4052,7 @@ type Handler interface {
 	// organization owner or a project `admin` to add a collaborator.
 	//
 	// PUT /projects/{project_id}/collaborators/{username}
-	ProjectsAddCollaborator(ctx context.Context, req OptProjectsAddCollaboratorReq, params ProjectsAddCollaboratorParams) (ProjectsAddCollaboratorRes, error)
+	ProjectsAddCollaborator(ctx context.Context, req OptNilProjectsAddCollaboratorReq, params ProjectsAddCollaboratorParams) (ProjectsAddCollaboratorRes, error)
 	// ProjectsCreateColumn implements projects/create-column operation.
 	//
 	// POST /projects/{project_id}/columns
@@ -4405,7 +4405,7 @@ type Handler interface {
 	// com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
 	//
 	// PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
-	PullsMerge(ctx context.Context, req OptPullsMergeReq, params PullsMergeParams) (PullsMergeRes, error)
+	PullsMerge(ctx context.Context, req OptNilPullsMergeReq, params PullsMergeParams) (PullsMergeRes, error)
 	// PullsRemoveRequestedReviewers implements pulls/remove-requested-reviewers operation.
 	//
 	// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
@@ -4433,7 +4433,7 @@ type Handler interface {
 	// branch into the pull request branch.
 	//
 	// PUT /repos/{owner}/{repo}/pulls/{pull_number}/update-branch
-	PullsUpdateBranch(ctx context.Context, req OptPullsUpdateBranchReq, params PullsUpdateBranchParams) (PullsUpdateBranchRes, error)
+	PullsUpdateBranch(ctx context.Context, req OptNilPullsUpdateBranchReq, params PullsUpdateBranchParams) (PullsUpdateBranchRes, error)
 	// PullsUpdateReview implements pulls/update-review operation.
 	//
 	// Update the review summary comment with new text.
@@ -5002,7 +5002,7 @@ type Handler interface {
 	// [GitHub Support](https://support.github.com/contact?tags=dotcom-rest-api).
 	//
 	// POST /repos/{owner}/{repo}/forks
-	ReposCreateFork(ctx context.Context, req OptReposCreateForkReq, params ReposCreateForkParams) (ReposCreateForkRes, error)
+	ReposCreateFork(ctx context.Context, req OptNilReposCreateForkReq, params ReposCreateForkParams) (ReposCreateForkRes, error)
 	// ReposCreateInOrg implements repos/create-in-org operation.
 	//
 	// Creates a new repository in the specified organization. The authenticated user must be a member of
@@ -5028,7 +5028,7 @@ type Handler interface {
 	// Pages](/github/working-with-github-pages/about-github-pages).".
 	//
 	// POST /repos/{owner}/{repo}/pages
-	ReposCreatePagesSite(ctx context.Context, req ReposCreatePagesSiteReq, params ReposCreatePagesSiteParams) (ReposCreatePagesSiteRes, error)
+	ReposCreatePagesSite(ctx context.Context, req NilReposCreatePagesSiteReq, params ReposCreatePagesSiteParams) (ReposCreatePagesSiteRes, error)
 	// ReposCreateRelease implements repos/create-release operation.
 	//
 	// Users with push access to the repository can create a release.
@@ -5066,7 +5066,7 @@ type Handler interface {
 	// share the same `config` as long as those webhooks do not have any `events` that overlap.
 	//
 	// POST /repos/{owner}/{repo}/hooks
-	ReposCreateWebhook(ctx context.Context, req OptReposCreateWebhookReq, params ReposCreateWebhookParams) (ReposCreateWebhookRes, error)
+	ReposCreateWebhook(ctx context.Context, req OptNilReposCreateWebhookReq, params ReposCreateWebhookParams) (ReposCreateWebhookRes, error)
 	// ReposDeclineInvitation implements repos/decline-invitation operation.
 	//
 	// DELETE /user/repository_invitations/{invitation_id}
@@ -6496,7 +6496,7 @@ type Handler interface {
 	// /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
 	//
 	// PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
-	TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, req OptTeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (TeamsAddOrUpdateProjectPermissionsInOrgRes, error)
+	TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, req OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq, params TeamsAddOrUpdateProjectPermissionsInOrgParams) (TeamsAddOrUpdateProjectPermissionsInOrgRes, error)
 	// TeamsAddOrUpdateProjectPermissionsLegacy implements teams/add-or-update-project-permissions-legacy operation.
 	//
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.

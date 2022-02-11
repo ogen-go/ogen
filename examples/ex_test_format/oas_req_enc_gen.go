@@ -85,7 +85,73 @@ func encodeTestRequestBooleanRequestJSON(req OptBool, span trace.Span) (data *jx
 	return e, nil
 }
 
-func encodeTestRequestBooleanArrayRequestJSON(req OptBoolArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestBooleanArrayRequestJSON(req []bool, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Bool(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Bool(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestBooleanArrayArrayRequestJSON(req [][]bool, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Bool(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Bool(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Bool(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Bool(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestBooleanNullableRequestJSON(req OptNilBool, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -94,36 +160,75 @@ func encodeTestRequestBooleanArrayRequestJSON(req OptBoolArray, span trace.Span)
 	return e, nil
 }
 
-func encodeTestRequestBooleanArrayArrayRequestJSON(req OptBoolArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestBooleanNullableArrayRequestJSON(req []bool, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Bool(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Bool(elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestBooleanNullableRequestJSON(req OptBool, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestBooleanNullableArrayArrayRequestJSON(req [][]bool, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Bool(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Bool(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Bool(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Bool(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestBooleanNullableArrayRequestJSON(req OptBoolArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestEmptyStructRequestJSON(req *TestRequestEmptyStructReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestBooleanNullableArrayArrayRequestJSON(req OptBoolArrayArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
+	if req != nil {
 		req.Encode(e)
 	}
 
@@ -148,19 +253,67 @@ func encodeTestRequestIntegerRequestJSON(req OptInt, span trace.Span) (data *jx.
 	return e, nil
 }
 
-func encodeTestRequestIntegerArrayRequestJSON(req OptIntArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestIntegerArrayRequestJSON(req []int, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Int(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Int(elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestIntegerArrayArrayRequestJSON(req OptIntArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestIntegerArrayArrayRequestJSON(req [][]int, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
@@ -175,7 +328,73 @@ func encodeTestRequestIntegerInt32RequestJSON(req OptInt32, span trace.Span) (da
 	return e, nil
 }
 
-func encodeTestRequestIntegerInt32ArrayRequestJSON(req OptInt32Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestIntegerInt32ArrayRequestJSON(req []int32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Int32(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Int32(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestIntegerInt32ArrayArrayRequestJSON(req [][]int32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int32(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int32(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int32(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int32(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestIntegerInt32NullableRequestJSON(req OptNilInt32, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -184,37 +403,67 @@ func encodeTestRequestIntegerInt32ArrayRequestJSON(req OptInt32Array, span trace
 	return e, nil
 }
 
-func encodeTestRequestIntegerInt32ArrayArrayRequestJSON(req OptInt32ArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestIntegerInt32NullableArrayRequestJSON(req []int32, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Int32(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Int32(elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestIntegerInt32NullableRequestJSON(req OptInt32, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestIntegerInt32NullableArrayArrayRequestJSON(req [][]int32, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestIntegerInt32NullableArrayRequestJSON(req OptInt32Array, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestIntegerInt32NullableArrayArrayRequestJSON(req OptInt32ArrayArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int32(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int32(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int32(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int32(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
@@ -229,7 +478,73 @@ func encodeTestRequestIntegerInt64RequestJSON(req OptInt64, span trace.Span) (da
 	return e, nil
 }
 
-func encodeTestRequestIntegerInt64ArrayRequestJSON(req OptInt64Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestIntegerInt64ArrayRequestJSON(req []int64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Int64(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Int64(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestIntegerInt64ArrayArrayRequestJSON(req [][]int64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestIntegerInt64NullableRequestJSON(req OptNilInt64, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -238,7 +553,73 @@ func encodeTestRequestIntegerInt64ArrayRequestJSON(req OptInt64Array, span trace
 	return e, nil
 }
 
-func encodeTestRequestIntegerInt64ArrayArrayRequestJSON(req OptInt64ArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestIntegerInt64NullableArrayRequestJSON(req []int64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Int64(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Int64(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestIntegerInt64NullableArrayArrayRequestJSON(req [][]int64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestIntegerNullableRequestJSON(req OptNilInt, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -247,55 +628,67 @@ func encodeTestRequestIntegerInt64ArrayArrayRequestJSON(req OptInt64ArrayArray, 
 	return e, nil
 }
 
-func encodeTestRequestIntegerInt64NullableRequestJSON(req OptInt64, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestIntegerNullableArrayRequestJSON(req []int, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Int(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Int(elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestIntegerInt64NullableArrayRequestJSON(req OptInt64Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestIntegerNullableArrayArrayRequestJSON(req [][]int, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestIntegerInt64NullableArrayArrayRequestJSON(req OptInt64ArrayArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestIntegerNullableRequestJSON(req OptInt, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestIntegerNullableArrayRequestJSON(req OptIntArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestIntegerNullableArrayArrayRequestJSON(req OptIntArrayArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
@@ -310,19 +703,67 @@ func encodeTestRequestNumberRequestJSON(req OptFloat64, span trace.Span) (data *
 	return e, nil
 }
 
-func encodeTestRequestNumberArrayRequestJSON(req OptFloat64Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberArrayRequestJSON(req []float64, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Float64(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Float64(elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestNumberArrayArrayRequestJSON(req OptFloat64ArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberArrayArrayRequestJSON(req [][]float64, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Float64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Float64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Float64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Float64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
@@ -337,7 +778,73 @@ func encodeTestRequestNumberDoubleRequestJSON(req OptFloat64, span trace.Span) (
 	return e, nil
 }
 
-func encodeTestRequestNumberDoubleArrayRequestJSON(req OptFloat64Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberDoubleArrayRequestJSON(req []float64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Float64(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Float64(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestNumberDoubleArrayArrayRequestJSON(req [][]float64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Float64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Float64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Float64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Float64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestNumberDoubleNullableRequestJSON(req OptNilFloat64, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -346,37 +853,67 @@ func encodeTestRequestNumberDoubleArrayRequestJSON(req OptFloat64Array, span tra
 	return e, nil
 }
 
-func encodeTestRequestNumberDoubleArrayArrayRequestJSON(req OptFloat64ArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberDoubleNullableArrayRequestJSON(req []float64, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Float64(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Float64(elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestNumberDoubleNullableRequestJSON(req OptFloat64, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberDoubleNullableArrayArrayRequestJSON(req [][]float64, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestNumberDoubleNullableArrayRequestJSON(req OptFloat64Array, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestNumberDoubleNullableArrayArrayRequestJSON(req OptFloat64ArrayArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Float64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Float64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Float64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Float64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
@@ -391,7 +928,73 @@ func encodeTestRequestNumberFloatRequestJSON(req OptFloat32, span trace.Span) (d
 	return e, nil
 }
 
-func encodeTestRequestNumberFloatArrayRequestJSON(req OptFloat32Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberFloatArrayRequestJSON(req []float32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Float32(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Float32(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestNumberFloatArrayArrayRequestJSON(req [][]float32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Float32(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Float32(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Float32(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Float32(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestNumberFloatNullableRequestJSON(req OptNilFloat32, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -400,37 +1003,67 @@ func encodeTestRequestNumberFloatArrayRequestJSON(req OptFloat32Array, span trac
 	return e, nil
 }
 
-func encodeTestRequestNumberFloatArrayArrayRequestJSON(req OptFloat32ArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberFloatNullableArrayRequestJSON(req []float32, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Float32(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Float32(elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestNumberFloatNullableRequestJSON(req OptFloat32, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberFloatNullableArrayArrayRequestJSON(req [][]float32, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestNumberFloatNullableArrayRequestJSON(req OptFloat32Array, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestNumberFloatNullableArrayArrayRequestJSON(req OptFloat32ArrayArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Float32(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Float32(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Float32(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Float32(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
@@ -445,7 +1078,73 @@ func encodeTestRequestNumberInt32RequestJSON(req OptInt32, span trace.Span) (dat
 	return e, nil
 }
 
-func encodeTestRequestNumberInt32ArrayRequestJSON(req OptInt32Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberInt32ArrayRequestJSON(req []int32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Int32(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Int32(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestNumberInt32ArrayArrayRequestJSON(req [][]int32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int32(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int32(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int32(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int32(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestNumberInt32NullableRequestJSON(req OptNilInt32, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -454,37 +1153,67 @@ func encodeTestRequestNumberInt32ArrayRequestJSON(req OptInt32Array, span trace.
 	return e, nil
 }
 
-func encodeTestRequestNumberInt32ArrayArrayRequestJSON(req OptInt32ArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberInt32NullableArrayRequestJSON(req []int32, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Int32(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Int32(elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestNumberInt32NullableRequestJSON(req OptInt32, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberInt32NullableArrayArrayRequestJSON(req [][]int32, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestNumberInt32NullableArrayRequestJSON(req OptInt32Array, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestNumberInt32NullableArrayArrayRequestJSON(req OptInt32ArrayArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int32(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int32(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int32(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int32(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
@@ -499,7 +1228,73 @@ func encodeTestRequestNumberInt64RequestJSON(req OptInt64, span trace.Span) (dat
 	return e, nil
 }
 
-func encodeTestRequestNumberInt64ArrayRequestJSON(req OptInt64Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberInt64ArrayRequestJSON(req []int64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Int64(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Int64(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestNumberInt64ArrayArrayRequestJSON(req [][]int64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestNumberInt64NullableRequestJSON(req OptNilInt64, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -508,7 +1303,73 @@ func encodeTestRequestNumberInt64ArrayRequestJSON(req OptInt64Array, span trace.
 	return e, nil
 }
 
-func encodeTestRequestNumberInt64ArrayArrayRequestJSON(req OptInt64ArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberInt64NullableArrayRequestJSON(req []int64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Int64(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Int64(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestNumberInt64NullableArrayArrayRequestJSON(req [][]int64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Int64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Int64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestNumberNullableRequestJSON(req OptNilFloat64, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -517,56 +1378,3550 @@ func encodeTestRequestNumberInt64ArrayArrayRequestJSON(req OptInt64ArrayArray, s
 	return e, nil
 }
 
-func encodeTestRequestNumberInt64NullableRequestJSON(req OptInt64, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberNullableArrayRequestJSON(req []float64, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Float64(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Float64(elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestNumberInt64NullableArrayRequestJSON(req OptInt64Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestNumberNullableArrayArrayRequestJSON(req [][]float64, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Float64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Float64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Float64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Float64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestNumberInt64NullableArrayArrayRequestJSON(req OptInt64ArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestRequiredAnyRequestJSON(req jx.Raw, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+
+	if len(req) != 0 {
+		e.Raw(req)
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestNumberNullableRequestJSON(req OptFloat64, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestRequiredBooleanRequestJSON(req bool, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
+
+	e.Bool(req)
 
 	return e, nil
 }
 
-func encodeTestRequestNumberNullableArrayRequestJSON(req OptFloat64Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestRequiredBooleanArrayRequestJSON(req []bool, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Bool(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Bool(elem)
+		}
 	}
+	e.ArrEnd()
 
 	return e, nil
 }
 
-func encodeTestRequestNumberNullableArrayArrayRequestJSON(req OptFloat64ArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestRequiredBooleanArrayArrayRequestJSON(req [][]bool, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Bool(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Bool(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Bool(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Bool(elem)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredBooleanNullableRequestJSON(req NilBool, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredBooleanNullableArrayRequestJSON(req []bool, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Bool(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Bool(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredBooleanNullableArrayArrayRequestJSON(req [][]bool, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Bool(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Bool(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Bool(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Bool(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredEmptyStructRequestJSON(req TestRequestRequiredEmptyStructReq, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredFormatTestRequestJSON(req TestRequestRequiredFormatTestReq, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredIntegerRequestJSON(req int, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Int(req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredIntegerArrayRequestJSON(req []int, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Int(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Int(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredIntegerArrayArrayRequestJSON(req [][]int, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredIntegerInt32RequestJSON(req int32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Int32(req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredIntegerInt32ArrayRequestJSON(req []int32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Int32(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Int32(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredIntegerInt32ArrayArrayRequestJSON(req [][]int32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int32(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int32(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int32(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int32(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredIntegerInt32NullableRequestJSON(req NilInt32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredIntegerInt32NullableArrayRequestJSON(req []int32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Int32(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Int32(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredIntegerInt32NullableArrayArrayRequestJSON(req [][]int32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int32(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int32(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int32(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int32(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredIntegerInt64RequestJSON(req int64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Int64(req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredIntegerInt64ArrayRequestJSON(req []int64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Int64(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Int64(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredIntegerInt64ArrayArrayRequestJSON(req [][]int64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredIntegerInt64NullableRequestJSON(req NilInt64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredIntegerInt64NullableArrayRequestJSON(req []int64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Int64(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Int64(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredIntegerInt64NullableArrayArrayRequestJSON(req [][]int64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredIntegerNullableRequestJSON(req NilInt, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredIntegerNullableArrayRequestJSON(req []int, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Int(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Int(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredIntegerNullableArrayArrayRequestJSON(req [][]int, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberRequestJSON(req float64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Float64(req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberArrayRequestJSON(req []float64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Float64(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Float64(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberArrayArrayRequestJSON(req [][]float64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Float64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Float64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Float64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Float64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberDoubleRequestJSON(req float64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Float64(req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberDoubleArrayRequestJSON(req []float64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Float64(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Float64(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberDoubleArrayArrayRequestJSON(req [][]float64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Float64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Float64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Float64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Float64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberDoubleNullableRequestJSON(req NilFloat64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberDoubleNullableArrayRequestJSON(req []float64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Float64(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Float64(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberDoubleNullableArrayArrayRequestJSON(req [][]float64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Float64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Float64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Float64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Float64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberFloatRequestJSON(req float32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Float32(req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberFloatArrayRequestJSON(req []float32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Float32(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Float32(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberFloatArrayArrayRequestJSON(req [][]float32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Float32(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Float32(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Float32(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Float32(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberFloatNullableRequestJSON(req NilFloat32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberFloatNullableArrayRequestJSON(req []float32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Float32(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Float32(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberFloatNullableArrayArrayRequestJSON(req [][]float32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Float32(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Float32(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Float32(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Float32(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberInt32RequestJSON(req int32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Int32(req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberInt32ArrayRequestJSON(req []int32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Int32(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Int32(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberInt32ArrayArrayRequestJSON(req [][]int32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int32(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int32(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int32(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int32(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberInt32NullableRequestJSON(req NilInt32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberInt32NullableArrayRequestJSON(req []int32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Int32(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Int32(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberInt32NullableArrayArrayRequestJSON(req [][]int32, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int32(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int32(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int32(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int32(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberInt64RequestJSON(req int64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Int64(req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberInt64ArrayRequestJSON(req []int64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Int64(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Int64(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberInt64ArrayArrayRequestJSON(req [][]int64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberInt64NullableRequestJSON(req NilInt64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberInt64NullableArrayRequestJSON(req []int64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Int64(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Int64(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberInt64NullableArrayArrayRequestJSON(req [][]int64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Int64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Int64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberNullableRequestJSON(req NilFloat64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberNullableArrayRequestJSON(req []float64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Float64(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Float64(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredNumberNullableArrayArrayRequestJSON(req [][]float64, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Float64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Float64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Float64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Float64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Str(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Str(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringBinaryRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringBinaryArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Str(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Str(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringBinaryArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringBinaryNullableRequestJSON(req NilString, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringBinaryNullableArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Str(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Str(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringBinaryNullableArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringByteRequestJSON(req []byte, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Base64(req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringByteArrayRequestJSON(req [][]byte, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Base64(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Base64(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringByteArrayArrayRequestJSON(req [][][]byte, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Base64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Base64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Base64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Base64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringByteNullableRequestJSON(req []byte, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Base64(req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringByteNullableArrayRequestJSON(req [][]byte, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Base64(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Base64(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringByteNullableArrayArrayRequestJSON(req [][][]byte, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Base64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Base64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Base64(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Base64(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringDateRequestJSON(req time.Time, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	json.EncodeDate(e, req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringDateArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			json.EncodeDate(e, elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			json.EncodeDate(e, elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringDateArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeDate(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeDate(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeDate(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeDate(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringDateNullableRequestJSON(req NilDate, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e, json.EncodeDate)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringDateNullableArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			json.EncodeDate(e, elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			json.EncodeDate(e, elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringDateNullableArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeDate(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeDate(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeDate(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeDate(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringDateTimeRequestJSON(req time.Time, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	json.EncodeDateTime(e, req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringDateTimeArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			json.EncodeDateTime(e, elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			json.EncodeDateTime(e, elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringDateTimeArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeDateTime(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeDateTime(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeDateTime(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeDateTime(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringDateTimeNullableRequestJSON(req NilDateTime, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e, json.EncodeDateTime)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringDateTimeNullableArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			json.EncodeDateTime(e, elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			json.EncodeDateTime(e, elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringDateTimeNullableArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeDateTime(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeDateTime(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeDateTime(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeDateTime(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringDurationRequestJSON(req time.Duration, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	json.EncodeDuration(e, req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringDurationArrayRequestJSON(req []time.Duration, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			json.EncodeDuration(e, elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			json.EncodeDuration(e, elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringDurationArrayArrayRequestJSON(req [][]time.Duration, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeDuration(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeDuration(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeDuration(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeDuration(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringDurationNullableRequestJSON(req NilDuration, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringDurationNullableArrayRequestJSON(req []time.Duration, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			json.EncodeDuration(e, elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			json.EncodeDuration(e, elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringDurationNullableArrayArrayRequestJSON(req [][]time.Duration, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeDuration(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeDuration(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeDuration(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeDuration(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringEmailRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringEmailArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Str(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Str(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringEmailArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringEmailNullableRequestJSON(req NilString, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringEmailNullableArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Str(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Str(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringEmailNullableArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringHostnameRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringHostnameArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Str(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Str(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringHostnameArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringHostnameNullableRequestJSON(req NilString, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringHostnameNullableArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Str(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Str(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringHostnameNullableArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringIPRequestJSON(req net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	json.EncodeIP(e, req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringIPArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			json.EncodeIP(e, elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			json.EncodeIP(e, elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringIPArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeIP(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeIP(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeIP(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeIP(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringIPNullableRequestJSON(req NilIP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringIPNullableArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			json.EncodeIP(e, elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			json.EncodeIP(e, elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringIPNullableArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeIP(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeIP(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeIP(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeIP(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringIpv4RequestJSON(req net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	json.EncodeIP(e, req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringIpv4ArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			json.EncodeIP(e, elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			json.EncodeIP(e, elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringIpv4ArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeIP(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeIP(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeIP(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeIP(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringIpv4NullableRequestJSON(req NilIPv4, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringIpv4NullableArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			json.EncodeIP(e, elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			json.EncodeIP(e, elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringIpv4NullableArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeIP(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeIP(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeIP(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeIP(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringIpv6RequestJSON(req net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	json.EncodeIP(e, req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringIpv6ArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			json.EncodeIP(e, elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			json.EncodeIP(e, elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringIpv6ArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeIP(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeIP(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeIP(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeIP(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringIpv6NullableRequestJSON(req NilIPv6, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringIpv6NullableArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			json.EncodeIP(e, elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			json.EncodeIP(e, elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringIpv6NullableArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeIP(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeIP(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeIP(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeIP(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringNullableRequestJSON(req NilString, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringNullableArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Str(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Str(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringNullableArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringPasswordRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringPasswordArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Str(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Str(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringPasswordArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringPasswordNullableRequestJSON(req NilString, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringPasswordNullableArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.Str(elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.Str(elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringPasswordNullableArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					e.Str(elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringTimeRequestJSON(req time.Time, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	json.EncodeTime(e, req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringTimeArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			json.EncodeTime(e, elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			json.EncodeTime(e, elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringTimeArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeTime(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeTime(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeTime(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeTime(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringTimeNullableRequestJSON(req NilTime, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e, json.EncodeTime)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringTimeNullableArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			json.EncodeTime(e, elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			json.EncodeTime(e, elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringTimeNullableArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeTime(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeTime(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeTime(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeTime(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringURIRequestJSON(req url.URL, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	json.EncodeURI(e, req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringURIArrayRequestJSON(req []url.URL, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			json.EncodeURI(e, elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			json.EncodeURI(e, elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringURIArrayArrayRequestJSON(req [][]url.URL, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeURI(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeURI(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeURI(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeURI(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringURINullableRequestJSON(req NilURI, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringURINullableArrayRequestJSON(req []url.URL, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			json.EncodeURI(e, elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			json.EncodeURI(e, elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringURINullableArrayArrayRequestJSON(req [][]url.URL, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeURI(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeURI(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeURI(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeURI(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUUIDRequestJSON(req uuid.UUID, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	json.EncodeUUID(e, req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUUIDArrayRequestJSON(req []uuid.UUID, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			json.EncodeUUID(e, elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			json.EncodeUUID(e, elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUUIDArrayArrayRequestJSON(req [][]uuid.UUID, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeUUID(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeUUID(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeUUID(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeUUID(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUUIDNullableRequestJSON(req NilUUID, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUUIDNullableArrayRequestJSON(req []uuid.UUID, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			json.EncodeUUID(e, elem)
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			json.EncodeUUID(e, elem)
+		}
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUUIDNullableArrayArrayRequestJSON(req [][]uuid.UUID, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.ArrStart()
+	if len(req) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := req[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeUUID(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeUUID(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+		for _, elem := range req[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					json.EncodeUUID(e, elem)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					json.EncodeUUID(e, elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	e.ArrEnd()
 
 	return e, nil
 }
@@ -580,7 +4935,73 @@ func encodeTestRequestStringRequestJSON(req OptString, span trace.Span) (data *j
 	return e, nil
 }
 
-func encodeTestRequestStringArrayRequestJSON(req OptStringArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Str(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Str(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringBinaryRequestJSON(req OptString, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -589,7 +5010,73 @@ func encodeTestRequestStringArrayRequestJSON(req OptStringArray, span trace.Span
 	return e, nil
 }
 
-func encodeTestRequestStringArrayArrayRequestJSON(req OptStringArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringBinaryArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Str(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Str(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringBinaryArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringBinaryNullableRequestJSON(req OptNilString, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -598,7 +5085,147 @@ func encodeTestRequestStringArrayArrayRequestJSON(req OptStringArrayArray, span 
 	return e, nil
 }
 
-func encodeTestRequestStringByteRequestJSON(req OptByte, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringBinaryNullableArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Str(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Str(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringBinaryNullableArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringByteRequestJSON(req []byte, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Base64(req)
+
+	return e, nil
+}
+
+func encodeTestRequestStringByteArrayRequestJSON(req [][]byte, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Base64(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Base64(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringByteArrayArrayRequestJSON(req [][][]byte, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Base64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Base64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Base64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Base64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringByteNullableRequestJSON(req OptNilByte, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -607,46 +5234,67 @@ func encodeTestRequestStringByteRequestJSON(req OptByte, span trace.Span) (data 
 	return e, nil
 }
 
-func encodeTestRequestStringByteArrayRequestJSON(req OptByteArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringByteNullableArrayRequestJSON(req [][]byte, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Base64(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Base64(elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestStringByteArrayArrayRequestJSON(req OptByteArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringByteNullableArrayArrayRequestJSON(req [][][]byte, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestStringByteNullableRequestJSON(req OptByte, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestStringByteNullableArrayRequestJSON(req OptByteArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestStringByteNullableArrayArrayRequestJSON(req OptByteArrayArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Base64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Base64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Base64(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Base64(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
@@ -661,25 +5309,73 @@ func encodeTestRequestStringDateRequestJSON(req OptDate, span trace.Span) (data 
 	return e, nil
 }
 
-func encodeTestRequestStringDateArrayRequestJSON(req OptDateArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				json.EncodeDate(e, elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				json.EncodeDate(e, elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestStringDateArrayArrayRequestJSON(req OptDateArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeDate(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeDate(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeDate(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeDate(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestStringDateNullableRequestJSON(req OptDate, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateNullableRequestJSON(req OptNilDate, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e, json.EncodeDate)
@@ -688,19 +5384,67 @@ func encodeTestRequestStringDateNullableRequestJSON(req OptDate, span trace.Span
 	return e, nil
 }
 
-func encodeTestRequestStringDateNullableArrayRequestJSON(req OptDateArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateNullableArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				json.EncodeDate(e, elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				json.EncodeDate(e, elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestStringDateNullableArrayArrayRequestJSON(req OptDateArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateNullableArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeDate(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeDate(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeDate(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeDate(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
@@ -715,25 +5459,73 @@ func encodeTestRequestStringDateTimeRequestJSON(req OptDateTime, span trace.Span
 	return e, nil
 }
 
-func encodeTestRequestStringDateTimeArrayRequestJSON(req OptDateTimeArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateTimeArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				json.EncodeDateTime(e, elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				json.EncodeDateTime(e, elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestStringDateTimeArrayArrayRequestJSON(req OptDateTimeArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateTimeArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeDateTime(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeDateTime(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeDateTime(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeDateTime(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestStringDateTimeNullableRequestJSON(req OptDateTime, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateTimeNullableRequestJSON(req OptNilDateTime, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e, json.EncodeDateTime)
@@ -742,19 +5534,67 @@ func encodeTestRequestStringDateTimeNullableRequestJSON(req OptDateTime, span tr
 	return e, nil
 }
 
-func encodeTestRequestStringDateTimeNullableArrayRequestJSON(req OptDateTimeArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateTimeNullableArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				json.EncodeDateTime(e, elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				json.EncodeDateTime(e, elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestStringDateTimeNullableArrayArrayRequestJSON(req OptDateTimeArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDateTimeNullableArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeDateTime(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeDateTime(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeDateTime(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeDateTime(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
@@ -769,7 +5609,73 @@ func encodeTestRequestStringDurationRequestJSON(req OptDuration, span trace.Span
 	return e, nil
 }
 
-func encodeTestRequestStringDurationArrayRequestJSON(req OptDurationArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDurationArrayRequestJSON(req []time.Duration, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				json.EncodeDuration(e, elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				json.EncodeDuration(e, elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringDurationArrayArrayRequestJSON(req [][]time.Duration, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeDuration(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeDuration(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeDuration(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeDuration(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringDurationNullableRequestJSON(req OptNilDuration, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -778,7 +5684,73 @@ func encodeTestRequestStringDurationArrayRequestJSON(req OptDurationArray, span 
 	return e, nil
 }
 
-func encodeTestRequestStringDurationArrayArrayRequestJSON(req OptDurationArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringDurationNullableArrayRequestJSON(req []time.Duration, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				json.EncodeDuration(e, elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				json.EncodeDuration(e, elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringDurationNullableArrayArrayRequestJSON(req [][]time.Duration, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeDuration(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeDuration(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeDuration(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeDuration(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringEmailRequestJSON(req OptString, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -787,7 +5759,73 @@ func encodeTestRequestStringDurationArrayArrayRequestJSON(req OptDurationArrayAr
 	return e, nil
 }
 
-func encodeTestRequestStringDurationNullableRequestJSON(req OptDuration, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringEmailArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Str(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Str(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringEmailArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringEmailNullableRequestJSON(req OptNilString, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -796,7 +5834,73 @@ func encodeTestRequestStringDurationNullableRequestJSON(req OptDuration, span tr
 	return e, nil
 }
 
-func encodeTestRequestStringDurationNullableArrayRequestJSON(req OptDurationArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringEmailNullableArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Str(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Str(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringEmailNullableArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringHostnameRequestJSON(req OptString, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -805,10 +5909,142 @@ func encodeTestRequestStringDurationNullableArrayRequestJSON(req OptDurationArra
 	return e, nil
 }
 
-func encodeTestRequestStringDurationNullableArrayArrayRequestJSON(req OptDurationArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringHostnameArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Str(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Str(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringHostnameArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringHostnameNullableRequestJSON(req OptNilString, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringHostnameNullableArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Str(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Str(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringHostnameNullableArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
@@ -823,7 +6059,73 @@ func encodeTestRequestStringIPRequestJSON(req OptIP, span trace.Span) (data *jx.
 	return e, nil
 }
 
-func encodeTestRequestStringIPArrayRequestJSON(req OptIPArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIPArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				json.EncodeIP(e, elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				json.EncodeIP(e, elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringIPArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeIP(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeIP(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeIP(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeIP(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringIPNullableRequestJSON(req OptNilIP, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -832,37 +6134,67 @@ func encodeTestRequestStringIPArrayRequestJSON(req OptIPArray, span trace.Span) 
 	return e, nil
 }
 
-func encodeTestRequestStringIPArrayArrayRequestJSON(req OptIPArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIPNullableArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				json.EncodeIP(e, elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				json.EncodeIP(e, elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestStringIPNullableRequestJSON(req OptIP, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIPNullableArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestStringIPNullableArrayRequestJSON(req OptIPArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestStringIPNullableArrayArrayRequestJSON(req OptIPArrayArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeIP(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeIP(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeIP(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeIP(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
@@ -877,7 +6209,73 @@ func encodeTestRequestStringIpv4RequestJSON(req OptIPv4, span trace.Span) (data 
 	return e, nil
 }
 
-func encodeTestRequestStringIpv4ArrayRequestJSON(req OptIPv4Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIpv4ArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				json.EncodeIP(e, elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				json.EncodeIP(e, elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringIpv4ArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeIP(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeIP(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeIP(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeIP(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringIpv4NullableRequestJSON(req OptNilIPv4, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -886,37 +6284,67 @@ func encodeTestRequestStringIpv4ArrayRequestJSON(req OptIPv4Array, span trace.Sp
 	return e, nil
 }
 
-func encodeTestRequestStringIpv4ArrayArrayRequestJSON(req OptIPv4ArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIpv4NullableArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				json.EncodeIP(e, elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				json.EncodeIP(e, elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestStringIpv4NullableRequestJSON(req OptIPv4, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIpv4NullableArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestStringIpv4NullableArrayRequestJSON(req OptIPv4Array, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestStringIpv4NullableArrayArrayRequestJSON(req OptIPv4ArrayArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeIP(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeIP(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeIP(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeIP(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
@@ -931,7 +6359,73 @@ func encodeTestRequestStringIpv6RequestJSON(req OptIPv6, span trace.Span) (data 
 	return e, nil
 }
 
-func encodeTestRequestStringIpv6ArrayRequestJSON(req OptIPv6Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIpv6ArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				json.EncodeIP(e, elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				json.EncodeIP(e, elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringIpv6ArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeIP(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeIP(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeIP(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeIP(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringIpv6NullableRequestJSON(req OptNilIPv6, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -940,7 +6434,73 @@ func encodeTestRequestStringIpv6ArrayRequestJSON(req OptIPv6Array, span trace.Sp
 	return e, nil
 }
 
-func encodeTestRequestStringIpv6ArrayArrayRequestJSON(req OptIPv6ArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringIpv6NullableArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				json.EncodeIP(e, elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				json.EncodeIP(e, elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringIpv6NullableArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeIP(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeIP(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeIP(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeIP(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringNullableRequestJSON(req OptNilString, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -949,55 +6509,67 @@ func encodeTestRequestStringIpv6ArrayArrayRequestJSON(req OptIPv6ArrayArray, spa
 	return e, nil
 }
 
-func encodeTestRequestStringIpv6NullableRequestJSON(req OptIPv6, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringNullableArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Str(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Str(elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestStringIpv6NullableArrayRequestJSON(req OptIPv6Array, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringNullableArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestStringIpv6NullableArrayArrayRequestJSON(req OptIPv6ArrayArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestStringNullableRequestJSON(req OptString, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestStringNullableArrayRequestJSON(req OptStringArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestStringNullableArrayArrayRequestJSON(req OptStringArrayArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
@@ -1012,7 +6584,73 @@ func encodeTestRequestStringPasswordRequestJSON(req OptString, span trace.Span) 
 	return e, nil
 }
 
-func encodeTestRequestStringPasswordArrayRequestJSON(req OptStringArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringPasswordArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Str(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Str(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringPasswordArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringPasswordNullableRequestJSON(req OptNilString, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -1021,37 +6659,67 @@ func encodeTestRequestStringPasswordArrayRequestJSON(req OptStringArray, span tr
 	return e, nil
 }
 
-func encodeTestRequestStringPasswordArrayArrayRequestJSON(req OptStringArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringPasswordNullableArrayRequestJSON(req []string, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.Str(elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.Str(elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestStringPasswordNullableRequestJSON(req OptString, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringPasswordNullableArrayArrayRequestJSON(req [][]string, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestStringPasswordNullableArrayRequestJSON(req OptStringArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestStringPasswordNullableArrayArrayRequestJSON(req OptStringArrayArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						e.Str(elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						e.Str(elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
@@ -1066,25 +6734,73 @@ func encodeTestRequestStringTimeRequestJSON(req OptTime, span trace.Span) (data 
 	return e, nil
 }
 
-func encodeTestRequestStringTimeArrayRequestJSON(req OptTimeArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringTimeArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				json.EncodeTime(e, elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				json.EncodeTime(e, elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestStringTimeArrayArrayRequestJSON(req OptTimeArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringTimeArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeTime(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeTime(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeTime(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeTime(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestStringTimeNullableRequestJSON(req OptTime, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringTimeNullableRequestJSON(req OptNilTime, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e, json.EncodeTime)
@@ -1093,19 +6809,67 @@ func encodeTestRequestStringTimeNullableRequestJSON(req OptTime, span trace.Span
 	return e, nil
 }
 
-func encodeTestRequestStringTimeNullableArrayRequestJSON(req OptTimeArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringTimeNullableArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				json.EncodeTime(e, elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				json.EncodeTime(e, elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestStringTimeNullableArrayArrayRequestJSON(req OptTimeArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringTimeNullableArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeTime(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeTime(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeTime(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeTime(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
@@ -1120,7 +6884,73 @@ func encodeTestRequestStringURIRequestJSON(req OptURI, span trace.Span) (data *j
 	return e, nil
 }
 
-func encodeTestRequestStringURIArrayRequestJSON(req OptURIArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringURIArrayRequestJSON(req []url.URL, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				json.EncodeURI(e, elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				json.EncodeURI(e, elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringURIArrayArrayRequestJSON(req [][]url.URL, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeURI(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeURI(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeURI(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeURI(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringURINullableRequestJSON(req OptNilURI, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -1129,37 +6959,67 @@ func encodeTestRequestStringURIArrayRequestJSON(req OptURIArray, span trace.Span
 	return e, nil
 }
 
-func encodeTestRequestStringURIArrayArrayRequestJSON(req OptURIArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringURINullableArrayRequestJSON(req []url.URL, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				json.EncodeURI(e, elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				json.EncodeURI(e, elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestStringURINullableRequestJSON(req OptURI, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringURINullableArrayArrayRequestJSON(req [][]url.URL, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestStringURINullableArrayRequestJSON(req OptURIArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestStringURINullableArrayArrayRequestJSON(req OptURIArrayArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeURI(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeURI(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeURI(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeURI(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
@@ -1174,7 +7034,73 @@ func encodeTestRequestStringUUIDRequestJSON(req OptUUID, span trace.Span) (data 
 	return e, nil
 }
 
-func encodeTestRequestStringUUIDArrayRequestJSON(req OptUUIDArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringUUIDArrayRequestJSON(req []uuid.UUID, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				json.EncodeUUID(e, elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				json.EncodeUUID(e, elem)
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUUIDArrayArrayRequestJSON(req [][]uuid.UUID, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeUUID(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeUUID(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeUUID(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeUUID(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUUIDNullableRequestJSON(req OptNilUUID, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 	if req.Set {
 		req.Encode(e)
@@ -1183,37 +7109,67 @@ func encodeTestRequestStringUUIDArrayRequestJSON(req OptUUIDArray, span trace.Sp
 	return e, nil
 }
 
-func encodeTestRequestStringUUIDArrayArrayRequestJSON(req OptUUIDArrayArray, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringUUIDNullableArrayRequestJSON(req []uuid.UUID, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				json.EncodeUUID(e, elem)
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				json.EncodeUUID(e, elem)
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
 }
 
-func encodeTestRequestStringUUIDNullableRequestJSON(req OptUUID, span trace.Span) (data *jx.Writer, err error) {
+func encodeTestRequestStringUUIDNullableArrayArrayRequestJSON(req [][]uuid.UUID, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestStringUUIDNullableArrayRequestJSON(req OptUUIDArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
-	}
-
-	return e, nil
-}
-
-func encodeTestRequestStringUUIDNullableArrayArrayRequestJSON(req OptUUIDArrayArray, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
-	if req.Set {
-		req.Encode(e)
+	if req != nil {
+		e.ArrStart()
+		if len(req) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := req[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeUUID(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeUUID(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range req[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						json.EncodeUUID(e, elem)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						json.EncodeUUID(e, elem)
+					}
+				}
+				e.ArrEnd()
+			}
+		}
+		e.ArrEnd()
 	}
 
 	return e, nil
@@ -1268,6 +7224,14 @@ func encodeTestResponseBooleanNullableArrayRequestJSON(req string, span trace.Sp
 }
 
 func encodeTestResponseBooleanNullableArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseEmptyStructRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 
 	e.Str(req)
@@ -1691,6 +7655,54 @@ func encodeTestResponseStringArrayArrayRequestJSON(req string, span trace.Span) 
 	return e, nil
 }
 
+func encodeTestResponseStringBinaryRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringBinaryArrayRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringBinaryArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringBinaryNullableRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringBinaryNullableArrayRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringBinaryNullableArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
 func encodeTestResponseStringByteRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 
@@ -1876,6 +7888,102 @@ func encodeTestResponseStringDurationNullableArrayRequestJSON(req string, span t
 }
 
 func encodeTestResponseStringDurationNullableArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringEmailRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringEmailArrayRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringEmailArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringEmailNullableRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringEmailNullableArrayRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringEmailNullableArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringHostnameRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringHostnameArrayRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringHostnameArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringHostnameNullableRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringHostnameNullableArrayRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringHostnameNullableArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
 
 	e.Str(req)
