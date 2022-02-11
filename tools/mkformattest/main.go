@@ -62,8 +62,10 @@ func generateSpec() *ogen.Spec {
 			AddOptionalProperties(
 				properties("optional")...,
 			)),
-		// Empty
+		// Any
 		ogen.NewNamedSchema("Any", ogen.NewSchema()),
+		// Empty struct
+		ogen.NewNamedSchema("EmptyStruct", ogen.NewSchema().SetType("object")),
 	}
 
 	eachMapping(func(name, format, typ string) {
