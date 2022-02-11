@@ -666,6 +666,24 @@
           }
         }
       }
+    },
+    "/nullableDefaultResponse": {
+      "get": {
+        "operationId": "nullableDefaultResponse",
+        "responses": {
+          "default": {
+            "description": "nullable integer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
