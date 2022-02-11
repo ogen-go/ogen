@@ -234,6 +234,14 @@ func (s sampleAPIServer) NullableDefaultResponse(ctx context.Context) (api.Nulla
 	}, nil
 }
 
+func (s sampleAPIServer) OctetStreamBinaryStringSchema(ctx context.Context) (api.OctetStreamBinaryStringSchemaOK, error) {
+	return api.OctetStreamBinaryStringSchemaOK{}, nil
+}
+
+func (s sampleAPIServer) OctetStreamEmptySchema(ctx context.Context) (api.OctetStreamEmptySchemaOK, error) {
+	return api.OctetStreamEmptySchemaOK{}, nil
+}
+
 var _ api.Handler = (*sampleAPIServer)(nil)
 
 //go:embed _testdata/payloads/pet.json
