@@ -684,6 +684,37 @@
           }
         }
       }
+    },
+    "/octetStreamBinaryStringSchema": {
+      "get": {
+        "operationId": "octetStreamBinaryStringSchema",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/octetStreamEmptySchema": {
+      "get": {
+        "operationId": "octetStreamEmptySchema",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/octet-stream": {}
+            }
+          }
+        }
+      }
     }
   },
   "components": {
