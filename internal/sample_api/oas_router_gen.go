@@ -125,112 +125,139 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					return
 				}
-			case 'n': // Prefix: "name/"
-				if l := len("name/"); len(elem) >= l && elem[0:l] == "name/" {
+			case 'n': // Prefix: "n"
+				if l := len("n"); len(elem) >= l && elem[0:l] == "n" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Param: "id"
-				// Match until "/"
-				idx := strings.IndexByte(elem, '/')
-				if idx < 0 {
-					idx = len(elem)
-				}
-				args[0] = elem[:idx]
-				elem = elem[idx:]
-
 				if len(elem) == 0 {
-					break
+					s.handleNullableDefaultResponseRequest([0]string{}, w, r)
+
+					return
 				}
 				switch elem[0] {
-				case '/': // Prefix: "/"
-					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				case 'a': // Prefix: "ame/"
+					if l := len("ame/"); len(elem) >= l && elem[0:l] == "ame/" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Param: "foo"
-					// Match until "1"
-					idx := strings.IndexByte(elem, '1')
+					// Param: "id"
+					// Match until "/"
+					idx := strings.IndexByte(elem, '/')
 					if idx < 0 {
 						idx = len(elem)
 					}
-					args[1] = elem[:idx]
+					args[0] = elem[:idx]
 					elem = elem[idx:]
 
 					if len(elem) == 0 {
 						break
 					}
 					switch elem[0] {
-					case '1': // Prefix: "1234"
-						if l := len("1234"); len(elem) >= l && elem[0:l] == "1234" {
+					case '/': // Prefix: "/"
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Param: "bar"
-						// Match until "-"
-						idx := strings.IndexByte(elem, '-')
+						// Param: "foo"
+						// Match until "1"
+						idx := strings.IndexByte(elem, '1')
 						if idx < 0 {
 							idx = len(elem)
 						}
-						args[2] = elem[:idx]
+						args[1] = elem[:idx]
 						elem = elem[idx:]
 
 						if len(elem) == 0 {
 							break
 						}
 						switch elem[0] {
-						case '-': // Prefix: "-"
-							if l := len("-"); len(elem) >= l && elem[0:l] == "-" {
+						case '1': // Prefix: "1234"
+							if l := len("1234"); len(elem) >= l && elem[0:l] == "1234" {
 								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Param: "baz"
-							// Match until "!"
-							idx := strings.IndexByte(elem, '!')
+							// Param: "bar"
+							// Match until "-"
+							idx := strings.IndexByte(elem, '-')
 							if idx < 0 {
 								idx = len(elem)
 							}
-							args[3] = elem[:idx]
+							args[2] = elem[:idx]
 							elem = elem[idx:]
 
 							if len(elem) == 0 {
 								break
 							}
 							switch elem[0] {
-							case '!': // Prefix: "!"
-								if l := len("!"); len(elem) >= l && elem[0:l] == "!" {
+							case '-': // Prefix: "-"
+								if l := len("-"); len(elem) >= l && elem[0:l] == "-" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Param: "kek"
-								// Leaf parameter
-								args[4] = elem
-								elem = ""
+								// Param: "baz"
+								// Match until "!"
+								idx := strings.IndexByte(elem, '!')
+								if idx < 0 {
+									idx = len(elem)
+								}
+								args[3] = elem[:idx]
+								elem = elem[idx:]
 
 								if len(elem) == 0 {
-									// Leaf: DataGetFormat
-									s.handleDataGetFormatRequest([5]string{
-										args[0],
-										args[1],
-										args[2],
-										args[3],
-										args[4],
-									}, w, r)
+									break
+								}
+								switch elem[0] {
+								case '!': // Prefix: "!"
+									if l := len("!"); len(elem) >= l && elem[0:l] == "!" {
+										elem = elem[l:]
+									} else {
+										break
+									}
 
-									return
+									// Param: "kek"
+									// Leaf parameter
+									args[4] = elem
+									elem = ""
+
+									if len(elem) == 0 {
+										// Leaf: DataGetFormat
+										s.handleDataGetFormatRequest([5]string{
+											args[0],
+											args[1],
+											args[2],
+											args[3],
+											args[4],
+										}, w, r)
+
+										return
+									}
 								}
 							}
 						}
+					}
+				case 'u': // Prefix: "ullableDefaultResponse"
+					if l := len("ullableDefaultResponse"); len(elem) >= l && elem[0:l] == "ullableDefaultResponse" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: NullableDefaultResponse
+						s.handleNullableDefaultResponseRequest([0]string{}, w, r)
+
+						return
 					}
 				}
 			case 'p': // Prefix: "pet"
@@ -626,107 +653,136 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					r.count = 0
 					return r, true
 				}
-			case 'n': // Prefix: "name/"
-				if l := len("name/"); len(elem) >= l && elem[0:l] == "name/" {
+			case 'n': // Prefix: "n"
+				if l := len("n"); len(elem) >= l && elem[0:l] == "n" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Param: "id"
-				// Match until "/"
-				idx := strings.IndexByte(elem, '/')
-				if idx < 0 {
-					idx = len(elem)
-				}
-				args[0] = elem[:idx]
-				elem = elem[idx:]
-
 				if len(elem) == 0 {
-					break
+					r.name = "NullableDefaultResponse"
+					r.args = args
+					r.count = 0
+					return r, true
 				}
 				switch elem[0] {
-				case '/': // Prefix: "/"
-					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				case 'a': // Prefix: "ame/"
+					if l := len("ame/"); len(elem) >= l && elem[0:l] == "ame/" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Param: "foo"
-					// Match until "1"
-					idx := strings.IndexByte(elem, '1')
+					// Param: "id"
+					// Match until "/"
+					idx := strings.IndexByte(elem, '/')
 					if idx < 0 {
 						idx = len(elem)
 					}
-					args[1] = elem[:idx]
+					args[0] = elem[:idx]
 					elem = elem[idx:]
 
 					if len(elem) == 0 {
 						break
 					}
 					switch elem[0] {
-					case '1': // Prefix: "1234"
-						if l := len("1234"); len(elem) >= l && elem[0:l] == "1234" {
+					case '/': // Prefix: "/"
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Param: "bar"
-						// Match until "-"
-						idx := strings.IndexByte(elem, '-')
+						// Param: "foo"
+						// Match until "1"
+						idx := strings.IndexByte(elem, '1')
 						if idx < 0 {
 							idx = len(elem)
 						}
-						args[2] = elem[:idx]
+						args[1] = elem[:idx]
 						elem = elem[idx:]
 
 						if len(elem) == 0 {
 							break
 						}
 						switch elem[0] {
-						case '-': // Prefix: "-"
-							if l := len("-"); len(elem) >= l && elem[0:l] == "-" {
+						case '1': // Prefix: "1234"
+							if l := len("1234"); len(elem) >= l && elem[0:l] == "1234" {
 								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Param: "baz"
-							// Match until "!"
-							idx := strings.IndexByte(elem, '!')
+							// Param: "bar"
+							// Match until "-"
+							idx := strings.IndexByte(elem, '-')
 							if idx < 0 {
 								idx = len(elem)
 							}
-							args[3] = elem[:idx]
+							args[2] = elem[:idx]
 							elem = elem[idx:]
 
 							if len(elem) == 0 {
 								break
 							}
 							switch elem[0] {
-							case '!': // Prefix: "!"
-								if l := len("!"); len(elem) >= l && elem[0:l] == "!" {
+							case '-': // Prefix: "-"
+								if l := len("-"); len(elem) >= l && elem[0:l] == "-" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Param: "kek"
-								// Leaf parameter
-								args[4] = elem
-								elem = ""
+								// Param: "baz"
+								// Match until "!"
+								idx := strings.IndexByte(elem, '!')
+								if idx < 0 {
+									idx = len(elem)
+								}
+								args[3] = elem[:idx]
+								elem = elem[idx:]
 
 								if len(elem) == 0 {
-									// Leaf: DataGetFormat
-									r.name = "DataGetFormat"
-									r.args = args
-									r.count = 5
-									return r, true
+									break
+								}
+								switch elem[0] {
+								case '!': // Prefix: "!"
+									if l := len("!"); len(elem) >= l && elem[0:l] == "!" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									// Param: "kek"
+									// Leaf parameter
+									args[4] = elem
+									elem = ""
+
+									if len(elem) == 0 {
+										// Leaf: DataGetFormat
+										r.name = "DataGetFormat"
+										r.args = args
+										r.count = 5
+										return r, true
+									}
 								}
 							}
 						}
+					}
+				case 'u': // Prefix: "ullableDefaultResponse"
+					if l := len("ullableDefaultResponse"); len(elem) >= l && elem[0:l] == "ullableDefaultResponse" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: NullableDefaultResponse
+						r.name = "NullableDefaultResponse"
+						r.args = args
+						r.count = 0
+						return r, true
 					}
 				}
 			case 'p': // Prefix: "pet"

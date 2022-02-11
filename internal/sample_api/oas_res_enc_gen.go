@@ -183,6 +183,20 @@ func encodeGetHeaderResponse(response Hash, w http.ResponseWriter, span trace.Sp
 	return nil
 }
 
+func encodeNullableDefaultResponseResponse(response NullableDefaultResponseDefStatusCode, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(response.StatusCode)
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
+
+	e.Int(response.Response)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
 func encodeOneofBugResponse(response OneofBugOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	return nil

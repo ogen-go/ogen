@@ -106,6 +106,10 @@ type Handler interface {
 	//
 	// GET /test/header
 	GetHeader(ctx context.Context, params GetHeaderParams) (Hash, error)
+	// NullableDefaultResponse implements nullableDefaultResponse operation.
+	//
+	// GET /nullableDefaultResponse
+	NullableDefaultResponse(ctx context.Context) (NullableDefaultResponseDefStatusCode, error)
 	// OneofBug implements oneofBug operation.
 	//
 	// POST /oneofBug

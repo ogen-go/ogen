@@ -690,6 +690,12 @@ func (*NotFound) petGetAvatarByIDRes()    {}
 func (*NotFound) petGetAvatarByNameRes()  {}
 func (*NotFound) petUploadAvatarByIDRes() {}
 
+// NullableDefaultResponseDefStatusCode wraps  with StatusCode.
+type NullableDefaultResponseDefStatusCode struct {
+	StatusCode int
+	Response   int
+}
+
 // Ref: #/components/schemas/NullableEnums
 type NullableEnums struct {
 	// Must not be nullable.

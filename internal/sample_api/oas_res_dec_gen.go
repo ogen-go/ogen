@@ -316,6 +316,43 @@ func decodeGetHeaderResponse(resp *http.Response, span trace.Span) (res Hash, er
 	}
 }
 
+func decodeNullableDefaultResponseResponse(resp *http.Response, span trace.Span) (res NullableDefaultResponseDefStatusCode, err error) {
+	switch resp.StatusCode {
+	default:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response int
+			if err := func() error {
+				v, err := d.Int()
+				response = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return NullableDefaultResponseDefStatusCode{
+				StatusCode: resp.StatusCode,
+				Response:   response,
+			}, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	}
+}
+
 func decodeOneofBugResponse(resp *http.Response, span trace.Span) (res OneofBugOK, err error) {
 	switch resp.StatusCode {
 	case 200:

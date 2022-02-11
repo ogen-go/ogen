@@ -574,6 +574,46 @@ func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Has
 	return result, nil
 }
 
+// NullableDefaultResponse invokes nullableDefaultResponse operation.
+//
+// GET /nullableDefaultResponse
+func (c *Client) NullableDefaultResponse(ctx context.Context) (res NullableDefaultResponseDefStatusCode, err error) {
+	startTime := time.Now()
+	ctx, span := c.cfg.Tracer.Start(ctx, "NullableDefaultResponse",
+		trace.WithAttributes(otelogen.OperationID("nullableDefaultResponse")),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds())
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/nullableDefaultResponse"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeNullableDefaultResponseResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // OneofBug invokes oneofBug operation.
 //
 // POST /oneofBug
