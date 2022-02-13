@@ -286,7 +286,7 @@ func (s *AnyTest) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "empty":
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				s.Empty = jx.Raw(v)
 				if err != nil {
 					return err
@@ -310,7 +310,7 @@ func (s *AnyTest) Decode(d *jx.Decoder) error {
 				s.AnyArray = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -371,7 +371,7 @@ func (s AnyTestAnyMap) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err

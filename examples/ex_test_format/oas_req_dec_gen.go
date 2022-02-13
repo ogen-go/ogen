@@ -89,7 +89,7 @@ func decodeTestRequestAnyRequest(r *http.Request, span trace.Span) (req jx.Raw, 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			v, err := d.Raw()
+			v, err := d.RawAppend(nil)
 			request = jx.Raw(v)
 			if err != nil {
 				return err
@@ -3411,7 +3411,7 @@ func decodeTestRequestRequiredAnyRequest(r *http.Request, span trace.Span) (req 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			v, err := d.Raw()
+			v, err := d.RawAppend(nil)
 			request = jx.Raw(v)
 			if err != nil {
 				return err

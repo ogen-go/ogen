@@ -10079,7 +10079,7 @@ func decodeTestResponseAnyResponse(resp *http.Response, span trace.Span) (res jx
 
 			var response jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				response = jx.Raw(v)
 				if err != nil {
 					return err
