@@ -113,7 +113,7 @@ type Handler interface {
 	// NullableDefaultResponse implements nullableDefaultResponse operation.
 	//
 	// GET /nullableDefaultResponse
-	NullableDefaultResponse(ctx context.Context) (NullableDefaultResponseDefStatusCode, error)
+	NullableDefaultResponse(ctx context.Context) (NilIntStatusCode, error)
 	// OctetStreamBinaryStringSchema implements octetStreamBinaryStringSchema operation.
 	//
 	// GET /octetStreamBinaryStringSchema

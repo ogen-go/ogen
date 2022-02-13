@@ -185,7 +185,7 @@ func encodeGetHeaderResponse(response Hash, w http.ResponseWriter, span trace.Sp
 
 func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *MultipleGenericResponsesOKApplicationJSON:
+	case *NilInt:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		e := jx.GetWriter()
@@ -197,7 +197,7 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 		}
 
 		return nil
-	case *MultipleGenericResponsesNoContentApplicationJSON:
+	case *NilString:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(204)
 		e := jx.GetWriter()
@@ -214,7 +214,7 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 	}
 }
 
-func encodeNullableDefaultResponseResponse(response NullableDefaultResponseDefStatusCode, w http.ResponseWriter, span trace.Span) error {
+func encodeNullableDefaultResponseResponse(response NilIntStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(response.StatusCode)
 	e := jx.GetWriter()

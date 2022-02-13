@@ -10217,6 +10217,98 @@ func (o OptActivityListReposStarredByAuthenticatedUserSort) Or(d ActivityListRep
 	return d
 }
 
+// NewOptActivityListReposStarredByUserDirection returns new OptActivityListReposStarredByUserDirection with value set to v.
+func NewOptActivityListReposStarredByUserDirection(v ActivityListReposStarredByUserDirection) OptActivityListReposStarredByUserDirection {
+	return OptActivityListReposStarredByUserDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptActivityListReposStarredByUserDirection is optional ActivityListReposStarredByUserDirection.
+type OptActivityListReposStarredByUserDirection struct {
+	Value ActivityListReposStarredByUserDirection
+	Set   bool
+}
+
+// IsSet returns true if OptActivityListReposStarredByUserDirection was set.
+func (o OptActivityListReposStarredByUserDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptActivityListReposStarredByUserDirection) Reset() {
+	var v ActivityListReposStarredByUserDirection
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptActivityListReposStarredByUserDirection) SetTo(v ActivityListReposStarredByUserDirection) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptActivityListReposStarredByUserDirection) Get() (v ActivityListReposStarredByUserDirection, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptActivityListReposStarredByUserDirection) Or(d ActivityListReposStarredByUserDirection) ActivityListReposStarredByUserDirection {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptActivityListReposStarredByUserSort returns new OptActivityListReposStarredByUserSort with value set to v.
+func NewOptActivityListReposStarredByUserSort(v ActivityListReposStarredByUserSort) OptActivityListReposStarredByUserSort {
+	return OptActivityListReposStarredByUserSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptActivityListReposStarredByUserSort is optional ActivityListReposStarredByUserSort.
+type OptActivityListReposStarredByUserSort struct {
+	Value ActivityListReposStarredByUserSort
+	Set   bool
+}
+
+// IsSet returns true if OptActivityListReposStarredByUserSort was set.
+func (o OptActivityListReposStarredByUserSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptActivityListReposStarredByUserSort) Reset() {
+	var v ActivityListReposStarredByUserSort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptActivityListReposStarredByUserSort) SetTo(v ActivityListReposStarredByUserSort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptActivityListReposStarredByUserSort) Get() (v ActivityListReposStarredByUserSort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptActivityListReposStarredByUserSort) Or(d ActivityListReposStarredByUserSort) ActivityListReposStarredByUserSort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptActivityMarkNotificationsAsReadReq returns new OptActivityMarkNotificationsAsReadReq with value set to v.
 func NewOptActivityMarkNotificationsAsReadReq(v ActivityMarkNotificationsAsReadReq) OptActivityMarkNotificationsAsReadReq {
 	return OptActivityMarkNotificationsAsReadReq{
@@ -12143,6 +12235,52 @@ func (o OptAppPermissionsWorkflows) Get() (v AppPermissionsWorkflows, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptAppPermissionsWorkflows) Or(d AppPermissionsWorkflows) AppPermissionsWorkflows {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptAppsCreateFromManifestReq returns new OptAppsCreateFromManifestReq with value set to v.
+func NewOptAppsCreateFromManifestReq(v AppsCreateFromManifestReq) OptAppsCreateFromManifestReq {
+	return OptAppsCreateFromManifestReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptAppsCreateFromManifestReq is optional AppsCreateFromManifestReq.
+type OptAppsCreateFromManifestReq struct {
+	Value AppsCreateFromManifestReq
+	Set   bool
+}
+
+// IsSet returns true if OptAppsCreateFromManifestReq was set.
+func (o OptAppsCreateFromManifestReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptAppsCreateFromManifestReq) Reset() {
+	var v AppsCreateFromManifestReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptAppsCreateFromManifestReq) SetTo(v AppsCreateFromManifestReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptAppsCreateFromManifestReq) Get() (v AppsCreateFromManifestReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAppsCreateFromManifestReq) Or(d AppsCreateFromManifestReq) AppsCreateFromManifestReq {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -19655,6 +19793,61 @@ func (o OptNilReposCreateForkReq) Or(d ReposCreateForkReq) ReposCreateForkReq {
 	return d
 }
 
+// NewOptNilReposCreateOrUpdateEnvironmentReq returns new OptNilReposCreateOrUpdateEnvironmentReq with value set to v.
+func NewOptNilReposCreateOrUpdateEnvironmentReq(v ReposCreateOrUpdateEnvironmentReq) OptNilReposCreateOrUpdateEnvironmentReq {
+	return OptNilReposCreateOrUpdateEnvironmentReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilReposCreateOrUpdateEnvironmentReq is optional nullable ReposCreateOrUpdateEnvironmentReq.
+type OptNilReposCreateOrUpdateEnvironmentReq struct {
+	Value ReposCreateOrUpdateEnvironmentReq
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilReposCreateOrUpdateEnvironmentReq was set.
+func (o OptNilReposCreateOrUpdateEnvironmentReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilReposCreateOrUpdateEnvironmentReq) Reset() {
+	var v ReposCreateOrUpdateEnvironmentReq
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilReposCreateOrUpdateEnvironmentReq) SetTo(v ReposCreateOrUpdateEnvironmentReq) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilReposCreateOrUpdateEnvironmentReq) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilReposCreateOrUpdateEnvironmentReq) Get() (v ReposCreateOrUpdateEnvironmentReq, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilReposCreateOrUpdateEnvironmentReq) Or(d ReposCreateOrUpdateEnvironmentReq) ReposCreateOrUpdateEnvironmentReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray returns new OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray with value set to v.
 func NewOptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray(v []ReposCreateOrUpdateEnvironmentReqReviewersItem) OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray {
 	return OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray{
@@ -21302,6 +21495,52 @@ func (o OptOrgsSetMembershipForUserReqRole) Get() (v OrgsSetMembershipForUserReq
 
 // Or returns value if set, or given parameter if does not.
 func (o OptOrgsSetMembershipForUserReqRole) Or(d OrgsSetMembershipForUserReqRole) OrgsSetMembershipForUserReqRole {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptOrgsUpdateReq returns new OptOrgsUpdateReq with value set to v.
+func NewOptOrgsUpdateReq(v OrgsUpdateReq) OptOrgsUpdateReq {
+	return OptOrgsUpdateReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOrgsUpdateReq is optional OrgsUpdateReq.
+type OptOrgsUpdateReq struct {
+	Value OrgsUpdateReq
+	Set   bool
+}
+
+// IsSet returns true if OptOrgsUpdateReq was set.
+func (o OptOrgsUpdateReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOrgsUpdateReq) Reset() {
+	var v OrgsUpdateReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOrgsUpdateReq) SetTo(v OrgsUpdateReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOrgsUpdateReq) Get() (v OrgsUpdateReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOrgsUpdateReq) Or(d OrgsUpdateReq) OrgsUpdateReq {
 	if v, ok := o.Get(); ok {
 		return v
 	}

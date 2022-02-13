@@ -529,14 +529,6 @@ type MaxPropertiesTest struct {
 	OptionalC OptInt `json:"optional_c"`
 }
 
-type MultipleGenericResponsesNoContentApplicationJSON string
-
-func (*MultipleGenericResponsesNoContentApplicationJSON) multipleGenericResponsesRes() {}
-
-type MultipleGenericResponsesOKApplicationJSON int
-
-func (*MultipleGenericResponsesOKApplicationJSON) multipleGenericResponsesRes() {}
-
 // NewNilInt returns new NilInt with value set to v.
 func NewNilInt(v int) NilInt {
 	return NilInt{
@@ -573,6 +565,14 @@ func (o NilInt) Or(d int) int {
 		return v
 	}
 	return d
+}
+
+func (*NilInt) multipleGenericResponsesRes() {}
+
+// NilIntStatusCode wraps NilInt with StatusCode.
+type NilIntStatusCode struct {
+	StatusCode int
+	Response   NilInt
 }
 
 // NewNilNullableEnumsBoth returns new NilNullableEnumsBoth with value set to v.
@@ -727,6 +727,8 @@ func (o NilString) Or(d string) string {
 	return d
 }
 
+func (*NilString) multipleGenericResponsesRes() {}
+
 // Ref: #/components/responses/NotFound
 type NotFound struct{}
 
@@ -735,12 +737,6 @@ func (*NotFound) foobarPostRes()          {}
 func (*NotFound) petGetAvatarByIDRes()    {}
 func (*NotFound) petGetAvatarByNameRes()  {}
 func (*NotFound) petUploadAvatarByIDRes() {}
-
-// NullableDefaultResponseDefStatusCode wraps  with StatusCode.
-type NullableDefaultResponseDefStatusCode struct {
-	StatusCode int
-	Response   NilInt
-}
 
 // Ref: #/components/schemas/NullableEnums
 type NullableEnums struct {

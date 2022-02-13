@@ -617,7 +617,7 @@ func (c *Client) MultipleGenericResponses(ctx context.Context) (res MultipleGene
 // NullableDefaultResponse invokes nullableDefaultResponse operation.
 //
 // GET /nullableDefaultResponse
-func (c *Client) NullableDefaultResponse(ctx context.Context) (res NullableDefaultResponseDefStatusCode, err error) {
+func (c *Client) NullableDefaultResponse(ctx context.Context) (res NilIntStatusCode, err error) {
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, "NullableDefaultResponse",
 		trace.WithAttributes(otelogen.OperationID("nullableDefaultResponse")),

@@ -331,16 +331,10 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response, span trace.Span
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response MultipleGenericResponsesOKApplicationJSON
+			var response NilInt
 			if err := func() error {
-				{
-					var unwrapped int
-					v, err := d.Int()
-					unwrapped = int(v)
-					if err != nil {
-						return err
-					}
-					response = MultipleGenericResponsesOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -364,16 +358,10 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response, span trace.Span
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response MultipleGenericResponsesNoContentApplicationJSON
+			var response NilString
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					response = MultipleGenericResponsesNoContentApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -389,7 +377,7 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response, span trace.Span
 	}
 }
 
-func decodeNullableDefaultResponseResponse(resp *http.Response, span trace.Span) (res NullableDefaultResponseDefStatusCode, err error) {
+func decodeNullableDefaultResponseResponse(resp *http.Response, span trace.Span) (res NilIntStatusCode, err error) {
 	switch resp.StatusCode {
 	default:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -414,7 +402,7 @@ func decodeNullableDefaultResponseResponse(resp *http.Response, span trace.Span)
 				return res, err
 			}
 
-			return NullableDefaultResponseDefStatusCode{
+			return NilIntStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
 			}, nil

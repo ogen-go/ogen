@@ -84179,6 +84179,32 @@ func (o *OptAppPermissionsWorkflows) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes AppsCreateFromManifestReq as json.
+func (o OptAppsCreateFromManifestReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes AppsCreateFromManifestReq from json.
+func (o *OptAppsCreateFromManifestReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptAppsCreateFromManifestReq to nil")
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		o.Value = make(AppsCreateFromManifestReq)
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptAppsCreateFromManifestReq", d.Next())
+	}
+}
+
 // Encode encodes AppsCreateInstallationAccessTokenReq as json.
 func (o OptAppsCreateInstallationAccessTokenReq) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -87891,6 +87917,45 @@ func (o *OptNilReposCreateForkReq) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes ReposCreateOrUpdateEnvironmentReq as json.
+func (o OptNilReposCreateOrUpdateEnvironmentReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes ReposCreateOrUpdateEnvironmentReq from json.
+func (o *OptNilReposCreateOrUpdateEnvironmentReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptNilReposCreateOrUpdateEnvironmentReq to nil")
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		o.Null = false
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		var v ReposCreateOrUpdateEnvironmentReq
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptNilReposCreateOrUpdateEnvironmentReq", d.Next())
+	}
+}
+
 // Encode encodes []ReposCreateOrUpdateEnvironmentReqReviewersItem as json.
 func (o OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -88912,6 +88977,31 @@ func (o *OptOrgsSetMembershipForUserReqRole) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf("unexpected type %q while reading OptOrgsSetMembershipForUserReqRole", d.Next())
+	}
+}
+
+// Encode encodes OrgsUpdateReq as json.
+func (o OptOrgsUpdateReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes OrgsUpdateReq from json.
+func (o *OptOrgsUpdateReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptOrgsUpdateReq to nil")
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptOrgsUpdateReq", d.Next())
 	}
 }
 
