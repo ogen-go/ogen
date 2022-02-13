@@ -37,7 +37,8 @@ func main() {
 		targetDir      = flag.String("target", "api", "Path to target dir")
 		packageName    = flag.String("package", "api", "Target package name")
 		performFormat  = flag.Bool("format", true, "perform code formatting")
-		specificMethod = flag.String("specific-method", "", "Generate specific method by its path")
+		filterPath     = flag.String("filter-path", "", "Filter operations by path regex")
+		filterMethods  = flag.String("filter-methods", "", "Filter operations by HTTP methods (comma-separated)")
 		clean          = flag.Bool("clean", false, "Clean generated files before generation")
 		verbose        = flag.Bool("v", false, "verbose")
 		generateTests  = flag.Bool("generate-tests", false, "Generate tests based on schema examples")
@@ -93,12 +94,33 @@ func main() {
 		Format: *performFormat,
 	}
 
+	var filters gen.Filters
+	{
+		if filterPath != nil {
+			filters.PathRegex, err = regexp.Compile(*filterPath)
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "Invalid filter.path flag value: %s", err)
+				return
+			}
+		}
+
+		if filterMethods != nil {
+			for _, m := range strings.Split(*filterMethods, ",") {
+				m = strings.TrimSpace(m)
+				if m == "" {
+					continue
+				}
+				filters.Methods = append(filters.Methods, m)
+			}
+		}
+	}
+
 	opts := gen.Options{
 		VerboseRoute:         *verbose,
 		GenerateExampleTests: *generateTests,
 		SkipTestRegex:        nil,
 		InferSchemaType:      *inferTypes,
-		SpecificMethodPath:   *specificMethod,
+		Filters:              filters,
 		IgnoreNotImplemented: strings.Split(*debugIgnoreNotImplemented, ","),
 	}
 	if expr := *skipTestsRegex; expr != "" {

@@ -26,8 +26,30 @@ type Options struct {
 	GenerateExampleTests bool
 	SkipTestRegex        *regexp.Regexp
 	InferSchemaType      bool
-	SpecificMethodPath   string
+	Filters              Filters
 	IgnoreNotImplemented []string
+}
+
+type Filters struct {
+	PathRegex *regexp.Regexp
+	Methods   []string
+}
+
+func (f Filters) accept(op *oas.Operation) bool {
+	if f.PathRegex != nil && !f.PathRegex.MatchString(op.Path.String()) {
+		return false
+	}
+
+	if len(f.Methods) > 0 {
+		for _, m := range f.Methods {
+			if strings.EqualFold(m, op.HTTPMethod) {
+				return true
+			}
+		}
+		return false
+	}
+
+	return true
 }
 
 func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
@@ -58,10 +80,8 @@ func (g *Generator) makeIR(ops []*oas.Operation) error {
 	}
 
 	for _, spec := range ops {
-		if p := g.opt.SpecificMethodPath; p != "" {
-			if spec.Path.String() != p {
-				continue
-			}
+		if !g.opt.Filters.accept(spec) {
+			continue
 		}
 
 		ctx := &genctx{
