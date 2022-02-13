@@ -725,7 +725,7 @@ func decodeListPetResponse(resp *http.Response, span trace.Span) (res ListPetRes
 			if err := func() error {
 				{
 					var unwrapped []PetList
-					unwrapped = nil
+					unwrapped = make([]PetList, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem PetList
 						if err := elem.Decode(d); err != nil {
@@ -852,7 +852,7 @@ func decodeListPetCategoriesResponse(resp *http.Response, span trace.Span) (res 
 			if err := func() error {
 				{
 					var unwrapped []PetCategoriesList
-					unwrapped = nil
+					unwrapped = make([]PetCategoriesList, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem PetCategoriesList
 						if err := elem.Decode(d); err != nil {
@@ -979,7 +979,7 @@ func decodeListPetFriendsResponse(resp *http.Response, span trace.Span) (res Lis
 			if err := func() error {
 				{
 					var unwrapped []PetFriendsList
-					unwrapped = nil
+					unwrapped = make([]PetFriendsList, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem PetFriendsList
 						if err := elem.Decode(d); err != nil {

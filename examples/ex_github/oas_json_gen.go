@@ -330,7 +330,7 @@ func (s *APIOverview) Decode(d *jx.Decoder) error {
 			}
 		case "hooks":
 			if err := func() error {
-				s.Hooks = nil
+				s.Hooks = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -349,7 +349,7 @@ func (s *APIOverview) Decode(d *jx.Decoder) error {
 			}
 		case "web":
 			if err := func() error {
-				s.Web = nil
+				s.Web = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -368,7 +368,7 @@ func (s *APIOverview) Decode(d *jx.Decoder) error {
 			}
 		case "api":
 			if err := func() error {
-				s.API = nil
+				s.API = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -387,7 +387,7 @@ func (s *APIOverview) Decode(d *jx.Decoder) error {
 			}
 		case "git":
 			if err := func() error {
-				s.Git = nil
+				s.Git = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -406,7 +406,7 @@ func (s *APIOverview) Decode(d *jx.Decoder) error {
 			}
 		case "packages":
 			if err := func() error {
-				s.Packages = nil
+				s.Packages = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -425,7 +425,7 @@ func (s *APIOverview) Decode(d *jx.Decoder) error {
 			}
 		case "pages":
 			if err := func() error {
-				s.Pages = nil
+				s.Pages = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -444,7 +444,7 @@ func (s *APIOverview) Decode(d *jx.Decoder) error {
 			}
 		case "importer":
 			if err := func() error {
-				s.Importer = nil
+				s.Importer = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -463,7 +463,7 @@ func (s *APIOverview) Decode(d *jx.Decoder) error {
 			}
 		case "actions":
 			if err := func() error {
-				s.Actions = nil
+				s.Actions = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -482,7 +482,7 @@ func (s *APIOverview) Decode(d *jx.Decoder) error {
 			}
 		case "dependabot":
 			if err := func() error {
-				s.Dependabot = nil
+				s.Dependabot = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -1262,7 +1262,7 @@ func (s *ActionsCreateOrUpdateOrgSecretReq) Decode(d *jx.Decoder) error {
 			}
 		case "selected_repository_ids":
 			if err := func() error {
-				s.SelectedRepositoryIds = nil
+				s.SelectedRepositoryIds = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -1595,7 +1595,7 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) Decode(d *jx.Decoder) erro
 			}
 		case "selected_repository_ids":
 			if err := func() error {
-				s.SelectedRepositoryIds = nil
+				s.SelectedRepositoryIds = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -1614,7 +1614,7 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) Decode(d *jx.Decoder) erro
 			}
 		case "runners":
 			if err := func() error {
-				s.Runners = nil
+				s.Runners = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -1940,7 +1940,7 @@ func (s *ActionsListArtifactsForRepoOK) Decode(d *jx.Decoder) error {
 		case "artifacts":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Artifacts = nil
+				s.Artifacts = make([]Artifact, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Artifact
 					if err := elem.Decode(d); err != nil {
@@ -2064,7 +2064,7 @@ func (s *ActionsListEnvironmentSecretsOK) Decode(d *jx.Decoder) error {
 		case "secrets":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Secrets = nil
+				s.Secrets = make([]ActionsSecret, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ActionsSecret
 					if err := elem.Decode(d); err != nil {
@@ -2188,7 +2188,7 @@ func (s *ActionsListJobsForWorkflowRunOK) Decode(d *jx.Decoder) error {
 		case "jobs":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Jobs = nil
+				s.Jobs = make([]Job, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Job
 					if err := elem.Decode(d); err != nil {
@@ -2312,7 +2312,7 @@ func (s *ActionsListOrgSecretsOK) Decode(d *jx.Decoder) error {
 		case "secrets":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Secrets = nil
+				s.Secrets = make([]OrganizationActionsSecret, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem OrganizationActionsSecret
 					if err := elem.Decode(d); err != nil {
@@ -2436,7 +2436,7 @@ func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) Decode(d *jx.Decod
 		case "repositories":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Repositories = nil
+				s.Repositories = make([]MinimalRepository, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MinimalRepository
 					if err := elem.Decode(d); err != nil {
@@ -2560,7 +2560,7 @@ func (s *ActionsListRepoSecretsOK) Decode(d *jx.Decoder) error {
 		case "secrets":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Secrets = nil
+				s.Secrets = make([]ActionsSecret, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ActionsSecret
 					if err := elem.Decode(d); err != nil {
@@ -2684,7 +2684,7 @@ func (s *ActionsListRepoWorkflowsOK) Decode(d *jx.Decoder) error {
 		case "workflows":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Workflows = nil
+				s.Workflows = make([]Workflow, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Workflow
 					if err := elem.Decode(d); err != nil {
@@ -2808,7 +2808,7 @@ func (s *ActionsListSelectedReposForOrgSecretOK) Decode(d *jx.Decoder) error {
 		case "repositories":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Repositories = nil
+				s.Repositories = make([]MinimalRepository, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MinimalRepository
 					if err := elem.Decode(d); err != nil {
@@ -2932,7 +2932,7 @@ func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Deco
 		case "repositories":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Repositories = nil
+				s.Repositories = make([]Repository, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Repository
 					if err := elem.Decode(d); err != nil {
@@ -3056,7 +3056,7 @@ func (s *ActionsListSelfHostedRunnerGroupsForOrgOK) Decode(d *jx.Decoder) error 
 		case "runner_groups":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.RunnerGroups = nil
+				s.RunnerGroups = make([]RunnerGroupsOrg, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem RunnerGroupsOrg
 					if err := elem.Decode(d); err != nil {
@@ -3180,7 +3180,7 @@ func (s *ActionsListSelfHostedRunnersForOrgOK) Decode(d *jx.Decoder) error {
 		case "runners":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Runners = nil
+				s.Runners = make([]Runner, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Runner
 					if err := elem.Decode(d); err != nil {
@@ -3304,7 +3304,7 @@ func (s *ActionsListSelfHostedRunnersForRepoOK) Decode(d *jx.Decoder) error {
 		case "runners":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Runners = nil
+				s.Runners = make([]Runner, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Runner
 					if err := elem.Decode(d); err != nil {
@@ -3428,7 +3428,7 @@ func (s *ActionsListSelfHostedRunnersInGroupForOrgOK) Decode(d *jx.Decoder) erro
 		case "runners":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Runners = nil
+				s.Runners = make([]Runner, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Runner
 					if err := elem.Decode(d); err != nil {
@@ -3552,7 +3552,7 @@ func (s *ActionsListWorkflowRunArtifactsOK) Decode(d *jx.Decoder) error {
 		case "artifacts":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Artifacts = nil
+				s.Artifacts = make([]Artifact, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Artifact
 					if err := elem.Decode(d); err != nil {
@@ -3676,7 +3676,7 @@ func (s *ActionsListWorkflowRunsForRepoOK) Decode(d *jx.Decoder) error {
 		case "workflow_runs":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.WorkflowRuns = nil
+				s.WorkflowRuns = make([]WorkflowRun, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem WorkflowRun
 					if err := elem.Decode(d); err != nil {
@@ -4367,7 +4367,7 @@ func (s *ActionsReviewPendingDeploymentsForRunReq) Decode(d *jx.Decoder) error {
 		case "environment_ids":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.EnvironmentIds = nil
+				s.EnvironmentIds = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -4864,7 +4864,7 @@ func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) Decode(d *jx.Decod
 		case "selected_repository_ids":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.SelectedRepositoryIds = nil
+				s.SelectedRepositoryIds = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -4971,7 +4971,7 @@ func (s *ActionsSetSelectedReposForOrgSecretReq) Decode(d *jx.Decoder) error {
 		case "selected_repository_ids":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.SelectedRepositoryIds = nil
+				s.SelectedRepositoryIds = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -5078,7 +5078,7 @@ func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Deco
 		case "selected_repository_ids":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.SelectedRepositoryIds = nil
+				s.SelectedRepositoryIds = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -5185,7 +5185,7 @@ func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) Decode(d *jx.Decoder) erro
 		case "runners":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Runners = nil
+				s.Runners = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -5670,7 +5670,7 @@ func (s *ActivityListNotificationsForAuthenticatedUserOKApplicationJSON) Decode(
 	}
 	var unwrapped []Thread
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Thread, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Thread
 			if err := elem.Decode(d); err != nil {
@@ -5786,7 +5786,7 @@ func (s *ActivityListPublicEventsForRepoNetworkOKApplicationJSON) Decode(d *jx.D
 	}
 	var unwrapped []Event
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Event, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Event
 			if err := elem.Decode(d); err != nil {
@@ -5830,7 +5830,7 @@ func (s *ActivityListPublicEventsOKApplicationJSON) Decode(d *jx.Decoder) error 
 	}
 	var unwrapped []Event
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Event, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Event
 			if err := elem.Decode(d); err != nil {
@@ -5922,7 +5922,7 @@ func (s *ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) Decode(d 
 	}
 	var unwrapped []Repository
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Repository, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Repository
 			if err := elem.Decode(d); err != nil {
@@ -6014,7 +6014,7 @@ func (s *ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) Decode(d
 	}
 	var unwrapped []MinimalRepository
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]MinimalRepository, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem MinimalRepository
 			if err := elem.Decode(d); err != nil {
@@ -8742,7 +8742,7 @@ func (s *ApplicationGrant) Decode(d *jx.Decoder) error {
 		case "scopes":
 			requiredBitSet[0] |= 1 << 5
 			if err := func() error {
-				s.Scopes = nil
+				s.Scopes = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -9463,7 +9463,7 @@ func (s *AppsCreateInstallationAccessTokenReq) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "repositories":
 			if err := func() error {
-				s.Repositories = nil
+				s.Repositories = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -9482,7 +9482,7 @@ func (s *AppsCreateInstallationAccessTokenReq) Decode(d *jx.Decoder) error {
 			}
 		case "repository_ids":
 			if err := func() error {
-				s.RepositoryIds = nil
+				s.RepositoryIds = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -9863,7 +9863,7 @@ func (s *AppsListAccountsForPlanOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []MarketplacePurchase
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]MarketplacePurchase, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem MarketplacePurchase
 			if err := elem.Decode(d); err != nil {
@@ -9907,7 +9907,7 @@ func (s *AppsListAccountsForPlanStubbedOKApplicationJSON) Decode(d *jx.Decoder) 
 	}
 	var unwrapped []MarketplacePurchase
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]MarketplacePurchase, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem MarketplacePurchase
 			if err := elem.Decode(d); err != nil {
@@ -10060,7 +10060,7 @@ func (s *AppsListInstallationReposForAuthenticatedUserOK) Decode(d *jx.Decoder) 
 		case "repositories":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Repositories = nil
+				s.Repositories = make([]Repository, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Repository
 					if err := elem.Decode(d); err != nil {
@@ -10191,7 +10191,7 @@ func (s *AppsListPlansOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []MarketplaceListingPlan
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]MarketplaceListingPlan, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem MarketplaceListingPlan
 			if err := elem.Decode(d); err != nil {
@@ -10235,7 +10235,7 @@ func (s *AppsListPlansStubbedOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []MarketplaceListingPlan
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]MarketplaceListingPlan, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem MarketplaceListingPlan
 			if err := elem.Decode(d); err != nil {
@@ -10378,7 +10378,7 @@ func (s *AppsListReposAccessibleToInstallationOK) Decode(d *jx.Decoder) error {
 		case "repositories":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Repositories = nil
+				s.Repositories = make([]Repository, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Repository
 					if err := elem.Decode(d); err != nil {
@@ -10519,7 +10519,7 @@ func (s *AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) Decode(d *j
 	}
 	var unwrapped []UserMarketplacePurchase
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]UserMarketplacePurchase, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem UserMarketplacePurchase
 			if err := elem.Decode(d); err != nil {
@@ -10563,7 +10563,7 @@ func (s *AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON) Deco
 	}
 	var unwrapped []UserMarketplacePurchase
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]UserMarketplacePurchase, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem UserMarketplacePurchase
 			if err := elem.Decode(d); err != nil {
@@ -10607,7 +10607,7 @@ func (s *AppsListWebhookDeliveriesOKApplicationJSON) Decode(d *jx.Decoder) error
 	}
 	var unwrapped []HookDeliveryItem
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]HookDeliveryItem, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem HookDeliveryItem
 			if err := elem.Decode(d); err != nil {
@@ -10973,7 +10973,7 @@ func (s *AppsScopeTokenReq) Decode(d *jx.Decoder) error {
 			}
 		case "repositories":
 			if err := func() error {
-				s.Repositories = nil
+				s.Repositories = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -10992,7 +10992,7 @@ func (s *AppsScopeTokenReq) Decode(d *jx.Decoder) error {
 			}
 		case "repository_ids":
 			if err := func() error {
-				s.RepositoryIds = nil
+				s.RepositoryIds = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -12156,7 +12156,7 @@ func (s *AuditLogEvent) Decode(d *jx.Decoder) error {
 			}
 		case "config":
 			if err := func() error {
-				s.Config = nil
+				s.Config = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -12175,7 +12175,7 @@ func (s *AuditLogEvent) Decode(d *jx.Decoder) error {
 			}
 		case "config_was":
 			if err := func() error {
-				s.ConfigWas = nil
+				s.ConfigWas = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -12244,7 +12244,7 @@ func (s *AuditLogEvent) Decode(d *jx.Decoder) error {
 			}
 		case "events":
 			if err := func() error {
-				s.Events = nil
+				s.Events = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -12263,7 +12263,7 @@ func (s *AuditLogEvent) Decode(d *jx.Decoder) error {
 			}
 		case "events_were":
 			if err := func() error {
-				s.EventsWere = nil
+				s.EventsWere = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -12730,7 +12730,7 @@ func (s *AuthenticationToken) Decode(d *jx.Decoder) error {
 			}
 		case "repositories":
 			if err := func() error {
-				s.Repositories = nil
+				s.Repositories = make([]Repository, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Repository
 					if err := elem.Decode(d); err != nil {
@@ -13084,13 +13084,13 @@ func (s *Authorization) Decode(d *jx.Decoder) error {
 		case "scopes":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Scopes = nil
 				switch tt := d.Next(); tt {
 				case jx.Null:
 					if err := d.Skip(); err != nil {
 						return err
 					}
 				default:
+					s.Scopes = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem string
 						v, err := d.Str()
@@ -14115,7 +14115,7 @@ func (s *BaseGist) Decode(d *jx.Decoder) error {
 			}
 		case "forks":
 			if err := func() error {
-				s.Forks = nil
+				s.Forks = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -14134,7 +14134,7 @@ func (s *BaseGist) Decode(d *jx.Decoder) error {
 			}
 		case "history":
 			if err := func() error {
-				s.History = nil
+				s.History = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -15488,7 +15488,7 @@ func (s *BranchProtectionRequiredStatusChecks) Decode(d *jx.Decoder) error {
 		case "contexts":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Contexts = nil
+				s.Contexts = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -15729,7 +15729,7 @@ func (s *BranchRestrictionPolicy) Decode(d *jx.Decoder) error {
 		case "users":
 			requiredBitSet[0] |= 1 << 4
 			if err := func() error {
-				s.Users = nil
+				s.Users = make([]BranchRestrictionPolicyUsersItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem BranchRestrictionPolicyUsersItem
 					if err := elem.Decode(d); err != nil {
@@ -15747,7 +15747,7 @@ func (s *BranchRestrictionPolicy) Decode(d *jx.Decoder) error {
 		case "teams":
 			requiredBitSet[0] |= 1 << 5
 			if err := func() error {
-				s.Teams = nil
+				s.Teams = make([]BranchRestrictionPolicyTeamsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem BranchRestrictionPolicyTeamsItem
 					if err := elem.Decode(d); err != nil {
@@ -15765,7 +15765,7 @@ func (s *BranchRestrictionPolicy) Decode(d *jx.Decoder) error {
 		case "apps":
 			requiredBitSet[0] |= 1 << 6
 			if err := func() error {
-				s.Apps = nil
+				s.Apps = make([]BranchRestrictionPolicyAppsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem BranchRestrictionPolicyAppsItem
 					if err := elem.Decode(d); err != nil {
@@ -16124,7 +16124,7 @@ func (s *BranchRestrictionPolicyAppsItem) Decode(d *jx.Decoder) error {
 			}
 		case "events":
 			if err := func() error {
-				s.Events = nil
+				s.Events = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -18711,7 +18711,7 @@ func (s *CheckRun) Decode(d *jx.Decoder) error {
 		case "pull_requests":
 			requiredBitSet[1] |= 1 << 7
 			if err := func() error {
-				s.PullRequests = nil
+				s.PullRequests = make([]PullRequestMinimal, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PullRequestMinimal
 					if err := elem.Decode(d); err != nil {
@@ -19350,13 +19350,13 @@ func (s *CheckSuite) Decode(d *jx.Decoder) error {
 		case "pull_requests":
 			requiredBitSet[1] |= 1 << 1
 			if err := func() error {
-				s.PullRequests = nil
 				switch tt := d.Next(); tt {
 				case jx.Null:
 					if err := d.Skip(); err != nil {
 						return err
 					}
 				default:
+					s.PullRequests = make([]PullRequestMinimal, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem PullRequestMinimal
 						if err := elem.Decode(d); err != nil {
@@ -19678,7 +19678,7 @@ func (s *CheckSuitePreferencePreferences) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "auto_trigger_checks":
 			if err := func() error {
-				s.AutoTriggerChecks = nil
+				s.AutoTriggerChecks = make([]CheckSuitePreferencePreferencesAutoTriggerChecksItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem CheckSuitePreferencePreferencesAutoTriggerChecksItem
 					if err := elem.Decode(d); err != nil {
@@ -20040,7 +20040,7 @@ func (s *ChecksListForRefOK) Decode(d *jx.Decoder) error {
 		case "check_runs":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.CheckRuns = nil
+				s.CheckRuns = make([]CheckRun, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem CheckRun
 					if err := elem.Decode(d); err != nil {
@@ -20164,7 +20164,7 @@ func (s *ChecksListForSuiteOK) Decode(d *jx.Decoder) error {
 		case "check_runs":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.CheckRuns = nil
+				s.CheckRuns = make([]CheckRun, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem CheckRun
 					if err := elem.Decode(d); err != nil {
@@ -20288,7 +20288,7 @@ func (s *ChecksListSuitesForRefOK) Decode(d *jx.Decoder) error {
 		case "check_suites":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.CheckSuites = nil
+				s.CheckSuites = make([]CheckSuite, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem CheckSuite
 					if err := elem.Decode(d); err != nil {
@@ -20449,7 +20449,7 @@ func (s *ChecksSetSuitesPreferencesReq) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "auto_trigger_checks":
 			if err := func() error {
-				s.AutoTriggerChecks = nil
+				s.AutoTriggerChecks = make([]ChecksSetSuitesPreferencesReqAutoTriggerChecksItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ChecksSetSuitesPreferencesReqAutoTriggerChecksItem
 					if err := elem.Decode(d); err != nil {
@@ -20667,7 +20667,7 @@ func (s *CloneTraffic) Decode(d *jx.Decoder) error {
 		case "clones":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Clones = nil
+				s.Clones = make([]Traffic, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Traffic
 					if err := elem.Decode(d); err != nil {
@@ -20750,7 +20750,7 @@ func (s *CodeFrequencyStat) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []int
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]int, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem int
 			v, err := d.Int()
@@ -21767,7 +21767,7 @@ func (s *CodeScanningAlertInstance) Decode(d *jx.Decoder) error {
 			}
 		case "classifications":
 			if err := func() error {
-				s.Classifications = nil
+				s.Classifications = make([]CodeScanningAlertClassification, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem CodeScanningAlertClassification
 					if err := elem.Decode(d); err != nil {
@@ -23920,7 +23920,7 @@ func (s *CodeScanningListAlertInstancesOKApplicationJSON) Decode(d *jx.Decoder) 
 	}
 	var unwrapped []CodeScanningAlertInstance
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]CodeScanningAlertInstance, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem CodeScanningAlertInstance
 			if err := elem.Decode(d); err != nil {
@@ -24012,7 +24012,7 @@ func (s *CodeScanningListAlertsForRepoOKApplicationJSON) Decode(d *jx.Decoder) e
 	}
 	var unwrapped []CodeScanningAlertItems
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]CodeScanningAlertItems, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem CodeScanningAlertItems
 			if err := elem.Decode(d); err != nil {
@@ -24104,7 +24104,7 @@ func (s *CodeScanningListRecentAnalysesOKApplicationJSON) Decode(d *jx.Decoder) 
 	}
 	var unwrapped []CodeScanningAnalysis
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]CodeScanningAnalysis, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem CodeScanningAnalysis
 			if err := elem.Decode(d); err != nil {
@@ -24999,7 +24999,7 @@ func (s *CodeSearchResultItem) Decode(d *jx.Decoder) error {
 			}
 		case "line_numbers":
 			if err := func() error {
-				s.LineNumbers = nil
+				s.LineNumbers = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -25022,7 +25022,7 @@ func (s *CodeSearchResultItem) Decode(d *jx.Decoder) error {
 				var elem SearchResultTextMatches
 				{
 					var unwrapped []SearchResultTextMatchesItem
-					unwrapped = nil
+					unwrapped = make([]SearchResultTextMatchesItem, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SearchResultTextMatchesItem
 						if err := elem.Decode(d); err != nil {
@@ -25109,7 +25109,7 @@ func (s *CodesOfConductGetAllCodesOfConductOKApplicationJSON) Decode(d *jx.Decod
 	}
 	var unwrapped []CodeOfConduct
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]CodeOfConduct, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem CodeOfConduct
 			if err := elem.Decode(d); err != nil {
@@ -25989,7 +25989,7 @@ func (s *CombinedCommitStatus) Decode(d *jx.Decoder) error {
 		case "statuses":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Statuses = nil
+				s.Statuses = make([]SimpleCommitStatus, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem SimpleCommitStatus
 					if err := elem.Decode(d); err != nil {
@@ -26330,7 +26330,7 @@ func (s *Commit) Decode(d *jx.Decoder) error {
 		case "parents":
 			requiredBitSet[1] |= 1 << 0
 			if err := func() error {
-				s.Parents = nil
+				s.Parents = make([]CommitParentsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem CommitParentsItem
 					if err := elem.Decode(d); err != nil {
@@ -26357,7 +26357,7 @@ func (s *Commit) Decode(d *jx.Decoder) error {
 			}
 		case "files":
 			if err := func() error {
-				s.Files = nil
+				s.Files = make([]CommitFilesItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem CommitFilesItem
 					if err := elem.Decode(d); err != nil {
@@ -26477,7 +26477,7 @@ func (s *CommitActivity) Decode(d *jx.Decoder) error {
 		case "days":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Days = nil
+				s.Days = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -27461,7 +27461,7 @@ func (s *CommitComparison) Decode(d *jx.Decoder) error {
 		case "commits":
 			requiredBitSet[1] |= 1 << 3
 			if err := func() error {
-				s.Commits = nil
+				s.Commits = make([]Commit, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Commit
 					if err := elem.Decode(d); err != nil {
@@ -27478,7 +27478,7 @@ func (s *CommitComparison) Decode(d *jx.Decoder) error {
 			}
 		case "files":
 			if err := func() error {
-				s.Files = nil
+				s.Files = make([]DiffEntry, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem DiffEntry
 					if err := elem.Decode(d); err != nil {
@@ -28184,7 +28184,7 @@ func (s *CommitSearchResultItem) Decode(d *jx.Decoder) error {
 		case "parents":
 			requiredBitSet[0] |= 1 << 7
 			if err := func() error {
-				s.Parents = nil
+				s.Parents = make([]CommitSearchResultItemParentsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem CommitSearchResultItemParentsItem
 					if err := elem.Decode(d); err != nil {
@@ -28239,7 +28239,7 @@ func (s *CommitSearchResultItem) Decode(d *jx.Decoder) error {
 				var elem SearchResultTextMatches
 				{
 					var unwrapped []SearchResultTextMatchesItem
-					unwrapped = nil
+					unwrapped = make([]SearchResultTextMatchesItem, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SearchResultTextMatchesItem
 						if err := elem.Decode(d); err != nil {
@@ -30650,7 +30650,7 @@ func (s *ContributorActivity) Decode(d *jx.Decoder) error {
 		case "weeks":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Weeks = nil
+				s.Weeks = make([]ContributorActivityWeeksItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ContributorActivityWeeksItem
 					if err := elem.Decode(d); err != nil {
@@ -31027,7 +31027,7 @@ func (s *CredentialAuthorization) Decode(d *jx.Decoder) error {
 			}
 		case "scopes":
 			if err := func() error {
-				s.Scopes = nil
+				s.Scopes = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -33434,7 +33434,7 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) Decode(d *j
 			}
 		case "selected_organization_ids":
 			if err := func() error {
-				s.SelectedOrganizationIds = nil
+				s.SelectedOrganizationIds = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -33453,7 +33453,7 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) Decode(d *j
 			}
 		case "runners":
 			if err := func() error {
-				s.Runners = nil
+				s.Runners = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -33606,7 +33606,7 @@ func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Deco
 		case "organizations":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Organizations = nil
+				s.Organizations = make([]OrganizationSimple, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem OrganizationSimple
 					if err := elem.Decode(d); err != nil {
@@ -33730,7 +33730,7 @@ func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseO
 		case "organizations":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Organizations = nil
+				s.Organizations = make([]OrganizationSimple, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem OrganizationSimple
 					if err := elem.Decode(d); err != nil {
@@ -33854,7 +33854,7 @@ func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) Decode(d *jx.
 		case "runner_groups":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.RunnerGroups = nil
+				s.RunnerGroups = make([]RunnerGroupsEnterprise, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem RunnerGroupsEnterprise
 					if err := elem.Decode(d); err != nil {
@@ -33983,7 +33983,7 @@ func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) Decode(d *jx.Decod
 			}
 		case "runners":
 			if err := func() error {
-				s.Runners = nil
+				s.Runners = make([]Runner, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Runner
 					if err := elem.Decode(d); err != nil {
@@ -34075,7 +34075,7 @@ func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) Decode(d *j
 		case "runners":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Runners = nil
+				s.Runners = make([]Runner, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Runner
 					if err := elem.Decode(d); err != nil {
@@ -34209,7 +34209,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) Decode(d *jx.Decod
 		case "schemas":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Schemas = nil
+				s.Schemas = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -34240,7 +34240,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) Decode(d *jx.Decod
 			}
 		case "members":
 			if err := func() error {
-				s.Members = nil
+				s.Members = make([]EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem
 					if err := elem.Decode(d); err != nil {
@@ -34487,7 +34487,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Decode(d *jx.Decode
 		case "schemas":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Schemas = nil
+				s.Schemas = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -34529,7 +34529,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Decode(d *jx.Decode
 		case "emails":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				s.Emails = nil
+				s.Emails = make([]EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem
 					if err := elem.Decode(d); err != nil {
@@ -34546,7 +34546,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Decode(d *jx.Decode
 			}
 		case "groups":
 			if err := func() error {
-				s.Groups = nil
+				s.Groups = make([]EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem
 					if err := elem.Decode(d); err != nil {
@@ -35071,7 +35071,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Decode(d
 		case "schemas":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Schemas = nil
+				s.Schemas = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -35102,7 +35102,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Decode(d
 			}
 		case "members":
 			if err := func() error {
-				s.Members = nil
+				s.Members = make([]EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem
 					if err := elem.Decode(d); err != nil {
@@ -35349,7 +35349,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Decode(d 
 		case "schemas":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Schemas = nil
+				s.Schemas = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -35391,7 +35391,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Decode(d 
 		case "emails":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				s.Emails = nil
+				s.Emails = make([]EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem
 					if err := elem.Decode(d); err != nil {
@@ -35408,7 +35408,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Decode(d 
 			}
 		case "groups":
 			if err := func() error {
-				s.Groups = nil
+				s.Groups = make([]EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem
 					if err := elem.Decode(d); err != nil {
@@ -35799,7 +35799,7 @@ func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Deco
 		case "selected_organization_ids":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.SelectedOrganizationIds = nil
+				s.SelectedOrganizationIds = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -35906,7 +35906,7 @@ func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRe
 		case "selected_organization_ids":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.SelectedOrganizationIds = nil
+				s.SelectedOrganizationIds = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -36013,7 +36013,7 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) Decode(d *j
 		case "runners":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Runners = nil
+				s.Runners = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -36139,7 +36139,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) Decode(d *jx.Decod
 		case "schemas":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Schemas = nil
+				s.Schemas = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -36159,7 +36159,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) Decode(d *jx.Decod
 		case "Operations":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Operations = nil
+				s.Operations = make([]EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem
 					if err := elem.Decode(d); err != nil {
@@ -36425,7 +36425,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue)
 		}
 		s.Type = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
 	case jx.Array:
-		s.ArrayAny = nil
+		s.ArrayAny = make([]jx.Raw, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem jx.Raw
 			v, err := d.Raw()
@@ -36542,7 +36542,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Decode(d *jx.Decode
 		case "schemas":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Schemas = nil
+				s.Schemas = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -36562,7 +36562,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Decode(d *jx.Decode
 		case "Operations":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Operations = nil
+				s.Operations = make([]EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem
 					if err := elem.Decode(d); err != nil {
@@ -36825,7 +36825,7 @@ func (s *EnvironmentApprovals) Decode(d *jx.Decoder) error {
 		case "environments":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Environments = nil
+				s.Environments = make([]EnvironmentApprovalsEnvironmentsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem EnvironmentApprovalsEnvironmentsItem
 					if err := elem.Decode(d); err != nil {
@@ -37463,7 +37463,7 @@ func (s *EventPayload) Decode(d *jx.Decoder) error {
 			}
 		case "pages":
 			if err := func() error {
-				s.Pages = nil
+				s.Pages = make([]EventPayloadPagesItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem EventPayloadPagesItem
 					if err := elem.Decode(d); err != nil {
@@ -37968,7 +37968,7 @@ func (s *Feed) Decode(d *jx.Decoder) error {
 			}
 		case "current_user_organization_urls":
 			if err := func() error {
-				s.CurrentUserOrganizationUrls = nil
+				s.CurrentUserOrganizationUrls = make([]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem url.URL
 					v, err := json.DecodeURI(d)
@@ -38232,7 +38232,7 @@ func (s *FeedLinks) Decode(d *jx.Decoder) error {
 			}
 		case "current_user_organizations":
 			if err := func() error {
-				s.CurrentUserOrganizations = nil
+				s.CurrentUserOrganizations = make([]LinkWithType, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem LinkWithType
 					if err := elem.Decode(d); err != nil {
@@ -38637,7 +38637,7 @@ func (s *FileCommitCommit) Decode(d *jx.Decoder) error {
 			}
 		case "parents":
 			if err := func() error {
-				s.Parents = nil
+				s.Parents = make([]FileCommitCommitParentsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem FileCommitCommitParentsItem
 					if err := elem.Decode(d); err != nil {
@@ -41206,7 +41206,7 @@ func (s *FullRepository) Decode(d *jx.Decoder) error {
 			}
 		case "topics":
 			if err := func() error {
-				s.Topics = nil
+				s.Topics = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -43945,7 +43945,7 @@ func (s *GistSimpleForkOf) Decode(d *jx.Decoder) error {
 			}
 		case "forks":
 			if err := func() error {
-				s.Forks = nil
+				s.Forks = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -43964,7 +43964,7 @@ func (s *GistSimpleForkOf) Decode(d *jx.Decoder) error {
 			}
 		case "history":
 			if err := func() error {
-				s.History = nil
+				s.History = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -45203,7 +45203,7 @@ func (s *GistsListCommentsOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []GistComment
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]GistComment, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem GistComment
 			if err := elem.Decode(d); err != nil {
@@ -45295,7 +45295,7 @@ func (s *GistsListCommitsOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []GistCommit
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]GistCommit, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem GistCommit
 			if err := elem.Decode(d); err != nil {
@@ -45339,7 +45339,7 @@ func (s *GistsListForUserOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []BaseGist
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]BaseGist, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem BaseGist
 			if err := elem.Decode(d); err != nil {
@@ -45431,7 +45431,7 @@ func (s *GistsListForksOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []GistSimple
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]GistSimple, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem GistSimple
 			if err := elem.Decode(d); err != nil {
@@ -45475,7 +45475,7 @@ func (s *GistsListOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []BaseGist
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]BaseGist, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem BaseGist
 			if err := elem.Decode(d); err != nil {
@@ -45519,7 +45519,7 @@ func (s *GistsListPublicOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []BaseGist
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]BaseGist, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem BaseGist
 			if err := elem.Decode(d); err != nil {
@@ -45611,7 +45611,7 @@ func (s *GistsListStarredOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []BaseGist
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]BaseGist, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem BaseGist
 			if err := elem.Decode(d); err != nil {
@@ -46001,7 +46001,7 @@ func (s *GitCommit) Decode(d *jx.Decoder) error {
 		case "parents":
 			requiredBitSet[0] |= 1 << 7
 			if err := func() error {
-				s.Parents = nil
+				s.Parents = make([]GitCommitParentsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem GitCommitParentsItem
 					if err := elem.Decode(d); err != nil {
@@ -47000,7 +47000,7 @@ func (s *GitCreateCommitReq) Decode(d *jx.Decoder) error {
 			}
 		case "parents":
 			if err := func() error {
-				s.Parents = nil
+				s.Parents = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -47865,7 +47865,7 @@ func (s *GitCreateTreeReq) Decode(d *jx.Decoder) error {
 		case "tree":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Tree = nil
+				s.Tree = make([]GitCreateTreeReqTreeItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem GitCreateTreeReqTreeItem
 					if err := elem.Decode(d); err != nil {
@@ -49028,7 +49028,7 @@ func (s *GitTree) Decode(d *jx.Decoder) error {
 		case "tree":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				s.Tree = nil
+				s.Tree = make([]GitTreeTreeItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem GitTreeTreeItem
 					if err := elem.Decode(d); err != nil {
@@ -49388,7 +49388,7 @@ func (s *GitignoreGetAllTemplatesOKApplicationJSON) Decode(d *jx.Decoder) error 
 	}
 	var unwrapped []string
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -49704,7 +49704,7 @@ func (s *GpgKey) Decode(d *jx.Decoder) error {
 		case "emails":
 			requiredBitSet[0] |= 1 << 4
 			if err := func() error {
-				s.Emails = nil
+				s.Emails = make([]GpgKeyEmailsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem GpgKeyEmailsItem
 					if err := elem.Decode(d); err != nil {
@@ -49722,7 +49722,7 @@ func (s *GpgKey) Decode(d *jx.Decoder) error {
 		case "subkeys":
 			requiredBitSet[0] |= 1 << 5
 			if err := func() error {
-				s.Subkeys = nil
+				s.Subkeys = make([]GpgKeySubkeysItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem GpgKeySubkeysItem
 					if err := elem.Decode(d); err != nil {
@@ -50203,7 +50203,7 @@ func (s *GpgKeySubkeysItem) Decode(d *jx.Decoder) error {
 			}
 		case "emails":
 			if err := func() error {
-				s.Emails = nil
+				s.Emails = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -50222,7 +50222,7 @@ func (s *GpgKeySubkeysItem) Decode(d *jx.Decoder) error {
 			}
 		case "subkeys":
 			if err := func() error {
-				s.Subkeys = nil
+				s.Subkeys = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -50368,7 +50368,7 @@ func (s *GroupMapping) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "groups":
 			if err := func() error {
-				s.Groups = nil
+				s.Groups = make([]GroupMappingGroupsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem GroupMappingGroupsItem
 					if err := elem.Decode(d); err != nil {
@@ -50741,7 +50741,7 @@ func (s *Hook) Decode(d *jx.Decoder) error {
 		case "events":
 			requiredBitSet[0] |= 1 << 4
 			if err := func() error {
-				s.Events = nil
+				s.Events = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -52287,7 +52287,7 @@ func (s *Hovercard) Decode(d *jx.Decoder) error {
 		case "contexts":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Contexts = nil
+				s.Contexts = make([]HovercardContextsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem HovercardContextsItem
 					if err := elem.Decode(d); err != nil {
@@ -52851,7 +52851,7 @@ func (s *Import) Decode(d *jx.Decoder) error {
 			}
 		case "project_choices":
 			if err := func() error {
-				s.ProjectChoices = nil
+				s.ProjectChoices = make([]ImportProjectChoicesItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ImportProjectChoicesItem
 					if err := elem.Decode(d); err != nil {
@@ -53314,7 +53314,7 @@ func (s *InstallationToken) Decode(d *jx.Decoder) error {
 			}
 		case "repositories":
 			if err := func() error {
-				s.Repositories = nil
+				s.Repositories = make([]Repository, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Repository
 					if err := elem.Decode(d); err != nil {
@@ -53351,7 +53351,7 @@ func (s *InstallationToken) Decode(d *jx.Decoder) error {
 			}
 		case "single_file_paths":
 			if err := func() error {
-				s.SingleFilePaths = nil
+				s.SingleFilePaths = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -53739,7 +53739,7 @@ func (s *Integration) Decode(d *jx.Decoder) error {
 		case "events":
 			requiredBitSet[1] |= 1 << 3
 			if err := func() error {
-				s.Events = nil
+				s.Events = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -54765,7 +54765,7 @@ func (s *Issue) Decode(d *jx.Decoder) error {
 		case "labels":
 			requiredBitSet[1] |= 1 << 5
 			if err := func() error {
-				s.Labels = nil
+				s.Labels = make([]IssueLabelsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IssueLabelsItem
 					if err := elem.Decode(d); err != nil {
@@ -57320,7 +57320,7 @@ func (s *IssueSearchResultItem) Decode(d *jx.Decoder) error {
 		case "labels":
 			requiredBitSet[1] |= 1 << 6
 			if err := func() error {
-				s.Labels = nil
+				s.Labels = make([]IssueSearchResultItemLabelsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IssueSearchResultItemLabelsItem
 					if err := elem.Decode(d); err != nil {
@@ -57419,7 +57419,7 @@ func (s *IssueSearchResultItem) Decode(d *jx.Decoder) error {
 				var elem SearchResultTextMatches
 				{
 					var unwrapped []SearchResultTextMatchesItem
-					unwrapped = nil
+					unwrapped = make([]SearchResultTextMatchesItem, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SearchResultTextMatchesItem
 						if err := elem.Decode(d); err != nil {
@@ -58367,7 +58367,7 @@ func (s *IssueSimple) Decode(d *jx.Decoder) error {
 		case "labels":
 			requiredBitSet[1] |= 1 << 5
 			if err := func() error {
-				s.Labels = nil
+				s.Labels = make([]Label, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Label
 					if err := elem.Decode(d); err != nil {
@@ -58803,7 +58803,7 @@ func (s *IssuesAddAssigneesReq) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "assignees":
 			if err := func() error {
-				s.Assignees = nil
+				s.Assignees = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -59512,7 +59512,7 @@ func (s *IssuesCreateReq) Decode(d *jx.Decoder) error {
 			}
 		case "labels":
 			if err := func() error {
-				s.Labels = nil
+				s.Labels = make([]IssuesCreateReqLabelsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IssuesCreateReqLabelsItem
 					if err := elem.Decode(d); err != nil {
@@ -59529,7 +59529,7 @@ func (s *IssuesCreateReq) Decode(d *jx.Decoder) error {
 			}
 		case "assignees":
 			if err := func() error {
-				s.Assignees = nil
+				s.Assignees = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -59991,7 +59991,7 @@ func (s *IssuesListAssigneesOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []SimpleUser
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]SimpleUser, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem SimpleUser
 			if err := elem.Decode(d); err != nil {
@@ -60083,7 +60083,7 @@ func (s *IssuesListCommentsForRepoOKApplicationJSON) Decode(d *jx.Decoder) error
 	}
 	var unwrapped []IssueComment
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]IssueComment, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem IssueComment
 			if err := elem.Decode(d); err != nil {
@@ -60127,7 +60127,7 @@ func (s *IssuesListCommentsOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []IssueComment
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]IssueComment, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem IssueComment
 			if err := elem.Decode(d); err != nil {
@@ -60171,7 +60171,7 @@ func (s *IssuesListEventsForRepoOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []IssueEvent
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]IssueEvent, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem IssueEvent
 			if err := elem.Decode(d); err != nil {
@@ -60215,7 +60215,7 @@ func (s *IssuesListForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) 
 	}
 	var unwrapped []Issue
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Issue, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Issue
 			if err := elem.Decode(d); err != nil {
@@ -60259,7 +60259,7 @@ func (s *IssuesListForOrgOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Issue
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Issue, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Issue
 			if err := elem.Decode(d); err != nil {
@@ -60351,7 +60351,7 @@ func (s *IssuesListForRepoOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []IssueSimple
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]IssueSimple, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem IssueSimple
 			if err := elem.Decode(d); err != nil {
@@ -60395,7 +60395,7 @@ func (s *IssuesListLabelsForRepoOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Label
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Label, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Label
 			if err := elem.Decode(d); err != nil {
@@ -60439,7 +60439,7 @@ func (s *IssuesListLabelsOnIssueOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Label
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Label, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Label
 			if err := elem.Decode(d); err != nil {
@@ -60483,7 +60483,7 @@ func (s *IssuesListMilestonesOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Milestone
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Milestone, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Milestone
 			if err := elem.Decode(d); err != nil {
@@ -60527,7 +60527,7 @@ func (s *IssuesListOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Issue
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Issue, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Issue
 			if err := elem.Decode(d); err != nil {
@@ -60752,7 +60752,7 @@ func (s *IssuesRemoveAssigneesReq) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "assignees":
 			if err := func() error {
-				s.Assignees = nil
+				s.Assignees = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -60853,7 +60853,7 @@ func (s *IssuesRemoveLabelOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Label
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Label, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Label
 			if err := elem.Decode(d); err != nil {
@@ -61544,7 +61544,7 @@ func (s *IssuesUpdateReq) Decode(d *jx.Decoder) error {
 			}
 		case "labels":
 			if err := func() error {
-				s.Labels = nil
+				s.Labels = make([]IssuesUpdateReqLabelsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IssuesUpdateReqLabelsItem
 					if err := elem.Decode(d); err != nil {
@@ -61561,7 +61561,7 @@ func (s *IssuesUpdateReq) Decode(d *jx.Decoder) error {
 			}
 		case "assignees":
 			if err := func() error {
-				s.Assignees = nil
+				s.Assignees = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -62125,7 +62125,7 @@ func (s *Job) Decode(d *jx.Decoder) error {
 			}
 		case "steps":
 			if err := func() error {
-				s.Steps = nil
+				s.Steps = make([]JobStepsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem JobStepsItem
 					if err := elem.Decode(d); err != nil {
@@ -63131,7 +63131,7 @@ func (s *LabelSearchResultItem) Decode(d *jx.Decoder) error {
 				var elem SearchResultTextMatches
 				{
 					var unwrapped []SearchResultTextMatchesItem
-					unwrapped = nil
+					unwrapped = make([]SearchResultTextMatchesItem, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SearchResultTextMatchesItem
 						if err := elem.Decode(d); err != nil {
@@ -63493,7 +63493,7 @@ func (s *License) Decode(d *jx.Decoder) error {
 		case "permissions":
 			requiredBitSet[1] |= 1 << 0
 			if err := func() error {
-				s.Permissions = nil
+				s.Permissions = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -63513,7 +63513,7 @@ func (s *License) Decode(d *jx.Decoder) error {
 		case "conditions":
 			requiredBitSet[1] |= 1 << 1
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -63533,7 +63533,7 @@ func (s *License) Decode(d *jx.Decoder) error {
 		case "limitations":
 			requiredBitSet[1] |= 1 << 2
 			if err := func() error {
-				s.Limitations = nil
+				s.Limitations = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -64249,7 +64249,7 @@ func (s *LicensesGetAllCommonlyUsedOKApplicationJSON) Decode(d *jx.Decoder) erro
 	}
 	var unwrapped []LicenseSimple
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]LicenseSimple, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem LicenseSimple
 			if err := elem.Decode(d); err != nil {
@@ -65141,7 +65141,7 @@ func (s *MarketplaceListingPlan) Decode(d *jx.Decoder) error {
 		case "bullets":
 			requiredBitSet[1] |= 1 << 4
 			if err := func() error {
-				s.Bullets = nil
+				s.Bullets = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -66915,7 +66915,7 @@ func (s *Migration) Decode(d *jx.Decoder) error {
 		case "repositories":
 			requiredBitSet[1] |= 1 << 2
 			if err := func() error {
-				s.Repositories = nil
+				s.Repositories = make([]Repository, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Repository
 					if err := elem.Decode(d); err != nil {
@@ -66990,7 +66990,7 @@ func (s *Migration) Decode(d *jx.Decoder) error {
 			}
 		case "exclude":
 			if err := func() error {
-				s.Exclude = nil
+				s.Exclude = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -67197,7 +67197,7 @@ func (s *MigrationsGetCommitAuthorsOKApplicationJSON) Decode(d *jx.Decoder) erro
 	}
 	var unwrapped []PorterAuthor
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]PorterAuthor, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem PorterAuthor
 			if err := elem.Decode(d); err != nil {
@@ -67361,7 +67361,7 @@ func (s *MigrationsListForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decod
 	}
 	var unwrapped []Migration
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Migration, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Migration
 			if err := elem.Decode(d); err != nil {
@@ -67405,7 +67405,7 @@ func (s *MigrationsListReposForOrgOKApplicationJSON) Decode(d *jx.Decoder) error
 	}
 	var unwrapped []MinimalRepository
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]MinimalRepository, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem MinimalRepository
 			if err := elem.Decode(d); err != nil {
@@ -67449,7 +67449,7 @@ func (s *MigrationsListReposForUserOKApplicationJSON) Decode(d *jx.Decoder) erro
 	}
 	var unwrapped []MinimalRepository
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]MinimalRepository, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem MinimalRepository
 			if err := elem.Decode(d); err != nil {
@@ -67899,7 +67899,7 @@ func (s *MigrationsStartForAuthenticatedUserReq) Decode(d *jx.Decoder) error {
 			}
 		case "exclude":
 			if err := func() error {
-				s.Exclude = nil
+				s.Exclude = make([]MigrationsStartForAuthenticatedUserReqExcludeItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MigrationsStartForAuthenticatedUserReqExcludeItem
 					if err := elem.Decode(d); err != nil {
@@ -67917,7 +67917,7 @@ func (s *MigrationsStartForAuthenticatedUserReq) Decode(d *jx.Decoder) error {
 		case "repositories":
 			requiredBitSet[0] |= 1 << 5
 			if err := func() error {
-				s.Repositories = nil
+				s.Repositories = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -68111,7 +68111,7 @@ func (s *MigrationsStartForOrgReq) Decode(d *jx.Decoder) error {
 		case "repositories":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Repositories = nil
+				s.Repositories = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -68170,7 +68170,7 @@ func (s *MigrationsStartForOrgReq) Decode(d *jx.Decoder) error {
 			}
 		case "exclude":
 			if err := func() error {
-				s.Exclude = nil
+				s.Exclude = make([]MigrationsStartForOrgReqExcludeItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MigrationsStartForOrgReqExcludeItem
 					if err := elem.Decode(d); err != nil {
@@ -70467,7 +70467,7 @@ func (s *MinimalRepository) Decode(d *jx.Decoder) error {
 			}
 		case "topics":
 			if err := func() error {
-				s.Topics = nil
+				s.Topics = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -72948,7 +72948,7 @@ func (s *NullableIntegration) Decode(d *jx.Decoder) error {
 		case "events":
 			requiredBitSet[1] |= 1 << 3
 			if err := func() error {
-				s.Events = nil
+				s.Events = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -75234,7 +75234,7 @@ func (s *NullableMinimalRepository) Decode(d *jx.Decoder) error {
 			}
 		case "topics":
 			if err := func() error {
-				s.Topics = nil
+				s.Topics = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -77299,7 +77299,7 @@ func (s *NullableRepository) Decode(d *jx.Decoder) error {
 			}
 		case "topics":
 			if err := func() error {
-				s.Topics = nil
+				s.Topics = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -79491,7 +79491,7 @@ func (s *NullableRepositoryTemplateRepository) Decode(d *jx.Decoder) error {
 			}
 		case "topics":
 			if err := func() error {
-				s.Topics = nil
+				s.Topics = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -80446,7 +80446,7 @@ func (s *NullableScopedInstallation) Decode(d *jx.Decoder) error {
 			}
 		case "single_file_paths":
 			if err := func() error {
-				s.SingleFilePaths = nil
+				s.SingleFilePaths = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -82707,7 +82707,7 @@ func (s *OAuthAuthorizationsListAuthorizationsOKApplicationJSON) Decode(d *jx.De
 	}
 	var unwrapped []Authorization
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Authorization, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Authorization
 			if err := elem.Decode(d); err != nil {
@@ -82823,7 +82823,7 @@ func (s *OAuthAuthorizationsListGrantsOKApplicationJSON) Decode(d *jx.Decoder) e
 	}
 	var unwrapped []ApplicationGrant
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]ApplicationGrant, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem ApplicationGrant
 			if err := elem.Decode(d); err != nil {
@@ -82977,7 +82977,7 @@ func (s *OAuthAuthorizationsUpdateAuthorizationReq) Decode(d *jx.Decoder) error 
 			}
 		case "add_scopes":
 			if err := func() error {
-				s.AddScopes = nil
+				s.AddScopes = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -82996,7 +82996,7 @@ func (s *OAuthAuthorizationsUpdateAuthorizationReq) Decode(d *jx.Decoder) error 
 			}
 		case "remove_scopes":
 			if err := func() error {
-				s.RemoveScopes = nil
+				s.RemoveScopes = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -86896,6 +86896,7 @@ func (o *OptNilGistHistoryArray) Decode(d *jx.Decoder) error {
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		o.Value = make([]GistHistory, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem GistHistory
 			if err := elem.Decode(d); err != nil {
@@ -86993,6 +86994,7 @@ func (o *OptNilGistSimpleForksItemArray) Decode(d *jx.Decoder) error {
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		o.Value = make([]GistSimpleForksItem, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem GistSimpleForksItem
 			if err := elem.Decode(d); err != nil {
@@ -87989,6 +87991,7 @@ func (o *OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) Decode(d *jx
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		o.Value = make([]ReposCreateOrUpdateEnvironmentReqReviewersItem, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem ReposCreateOrUpdateEnvironmentReqReviewersItem
 			if err := elem.Decode(d); err != nil {
@@ -88242,6 +88245,7 @@ func (o *OptNilSimpleUserArray) Decode(d *jx.Decoder) error {
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		o.Value = make([]SimpleUser, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem SimpleUser
 			if err := elem.Decode(d); err != nil {
@@ -88341,6 +88345,7 @@ func (o *OptNilStringArray) Decode(d *jx.Decoder) error {
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		o.Value = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -88401,6 +88406,7 @@ func (o *OptNilTeamArray) Decode(d *jx.Decoder) error {
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		o.Value = make([]Team, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Team
 			if err := elem.Decode(d); err != nil {
@@ -88459,6 +88465,7 @@ func (o *OptNilTeamSimpleArray) Decode(d *jx.Decoder) error {
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		o.Value = make([]TeamSimple, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem TeamSimple
 			if err := elem.Decode(d); err != nil {
@@ -88556,6 +88563,7 @@ func (o *OptNilTopicSearchResultItemAliasesItemArray) Decode(d *jx.Decoder) erro
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		o.Value = make([]TopicSearchResultItemAliasesItem, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem TopicSearchResultItemAliasesItem
 			if err := elem.Decode(d); err != nil {
@@ -88614,6 +88622,7 @@ func (o *OptNilTopicSearchResultItemRelatedItemArray) Decode(d *jx.Decoder) erro
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		o.Value = make([]TopicSearchResultItemRelatedItem, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem TopicSearchResultItemRelatedItem
 			if err := elem.Decode(d); err != nil {
@@ -92738,7 +92747,7 @@ func (s *OrgHook) Decode(d *jx.Decoder) error {
 		case "events":
 			requiredBitSet[0] |= 1 << 5
 			if err := func() error {
-				s.Events = nil
+				s.Events = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -95693,7 +95702,7 @@ func (s *OrgsCreateInvitationReq) Decode(d *jx.Decoder) error {
 			}
 		case "team_ids":
 			if err := func() error {
-				s.TeamIds = nil
+				s.TeamIds = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -95846,7 +95855,7 @@ func (s *OrgsCreateWebhookReq) Decode(d *jx.Decoder) error {
 			}
 		case "events":
 			if err := func() error {
-				s.Events = nil
+				s.Events = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -96228,7 +96237,7 @@ func (s *OrgsListBlockedUsersOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []SimpleUser
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]SimpleUser, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem SimpleUser
 			if err := elem.Decode(d); err != nil {
@@ -96272,7 +96281,7 @@ func (s *OrgsListFailedInvitationsOKApplicationJSON) Decode(d *jx.Decoder) error
 	}
 	var unwrapped []OrganizationInvitation
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]OrganizationInvitation, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem OrganizationInvitation
 			if err := elem.Decode(d); err != nil {
@@ -96364,7 +96373,7 @@ func (s *OrgsListForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) er
 	}
 	var unwrapped []OrganizationSimple
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]OrganizationSimple, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem OrganizationSimple
 			if err := elem.Decode(d); err != nil {
@@ -96408,7 +96417,7 @@ func (s *OrgsListInvitationTeamsOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Team
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Team, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Team
 			if err := elem.Decode(d); err != nil {
@@ -96452,7 +96461,7 @@ func (s *OrgsListMembersOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []SimpleUser
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]SimpleUser, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem SimpleUser
 			if err := elem.Decode(d); err != nil {
@@ -96544,7 +96553,7 @@ func (s *OrgsListMembershipsForAuthenticatedUserOKApplicationJSON) Decode(d *jx.
 	}
 	var unwrapped []OrgMembership
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]OrgMembership, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem OrgMembership
 			if err := elem.Decode(d); err != nil {
@@ -96588,7 +96597,7 @@ func (s *OrgsListOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []OrganizationSimple
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]OrganizationSimple, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem OrganizationSimple
 			if err := elem.Decode(d); err != nil {
@@ -96632,7 +96641,7 @@ func (s *OrgsListPendingInvitationsOKApplicationJSON) Decode(d *jx.Decoder) erro
 	}
 	var unwrapped []OrganizationInvitation
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]OrganizationInvitation, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem OrganizationInvitation
 			if err := elem.Decode(d); err != nil {
@@ -96676,7 +96685,7 @@ func (s *OrgsListWebhookDeliveriesOKApplicationJSON) Decode(d *jx.Decoder) error
 	}
 	var unwrapped []HookDeliveryItem
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]HookDeliveryItem, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem HookDeliveryItem
 			if err := elem.Decode(d); err != nil {
@@ -96720,7 +96729,7 @@ func (s *OrgsListWebhooksOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []OrgHook
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]OrgHook, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem OrgHook
 			if err := elem.Decode(d); err != nil {
@@ -97888,7 +97897,7 @@ func (s *OrgsUpdateWebhookReq) Decode(d *jx.Decoder) error {
 			}
 		case "events":
 			if err := func() error {
-				s.Events = nil
+				s.Events = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -98857,7 +98866,7 @@ func (s *PackageVersionMetadataContainer) Decode(d *jx.Decoder) error {
 		case "tags":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Tags = nil
+				s.Tags = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -98969,7 +98978,7 @@ func (s *PackageVersionMetadataDocker) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "tag":
 			if err := func() error {
-				s.Tag = nil
+				s.Tag = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -99713,7 +99722,7 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplic
 	}
 	var unwrapped []PackageVersion
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]PackageVersion, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem PackageVersion
 			if err := elem.Decode(d); err != nil {
@@ -99829,7 +99838,7 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) Dec
 	}
 	var unwrapped []PackageVersion
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]PackageVersion, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem PackageVersion
 			if err := elem.Decode(d); err != nil {
@@ -99945,7 +99954,7 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) De
 	}
 	var unwrapped []PackageVersion
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]PackageVersion, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem PackageVersion
 			if err := elem.Decode(d); err != nil {
@@ -100037,7 +100046,7 @@ func (s *PackagesListPackagesForOrganizationOKApplicationJSON) Decode(d *jx.Deco
 	}
 	var unwrapped []Package
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Package, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Package
 			if err := elem.Decode(d); err != nil {
@@ -100129,7 +100138,7 @@ func (s *PackagesListPackagesForUserOKApplicationJSON) Decode(d *jx.Decoder) err
 	}
 	var unwrapped []Package
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Package, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Package
 			if err := elem.Decode(d); err != nil {
@@ -101422,7 +101431,7 @@ func (s *PagesHTTPSCertificate) Decode(d *jx.Decoder) error {
 		case "domains":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Domains = nil
+				s.Domains = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -103141,7 +103150,7 @@ func (s *ParticipationStats) Decode(d *jx.Decoder) error {
 		case "all":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.All = nil
+				s.All = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -103161,7 +103170,7 @@ func (s *ParticipationStats) Decode(d *jx.Decoder) error {
 		case "owner":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Owner = nil
+				s.Owner = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -106913,7 +106922,7 @@ func (s *ProjectsDeleteCardForbidden) Decode(d *jx.Decoder) error {
 			}
 		case "errors":
 			if err := func() error {
-				s.Errors = nil
+				s.Errors = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -107083,7 +107092,7 @@ func (s *ProjectsDeleteForbidden) Decode(d *jx.Decoder) error {
 			}
 		case "errors":
 			if err := func() error {
-				s.Errors = nil
+				s.Errors = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -107448,7 +107457,7 @@ func (s *ProjectsListCardsOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []ProjectCard
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]ProjectCard, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem ProjectCard
 			if err := elem.Decode(d); err != nil {
@@ -107564,7 +107573,7 @@ func (s *ProjectsListCollaboratorsOKApplicationJSON) Decode(d *jx.Decoder) error
 	}
 	var unwrapped []SimpleUser
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]SimpleUser, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem SimpleUser
 			if err := elem.Decode(d); err != nil {
@@ -107656,7 +107665,7 @@ func (s *ProjectsListColumnsOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []ProjectColumn
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]ProjectColumn, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem ProjectColumn
 			if err := elem.Decode(d); err != nil {
@@ -107700,7 +107709,7 @@ func (s *ProjectsListForOrgOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Project
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Project, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Project
 			if err := elem.Decode(d); err != nil {
@@ -107840,7 +107849,7 @@ func (s *ProjectsListForRepoOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Project
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Project, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Project
 			if err := elem.Decode(d); err != nil {
@@ -107884,7 +107893,7 @@ func (s *ProjectsListForUserOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Project
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Project, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Project
 			if err := elem.Decode(d); err != nil {
@@ -108052,7 +108061,7 @@ func (s *ProjectsMoveCardForbidden) Decode(d *jx.Decoder) error {
 			}
 		case "errors":
 			if err := func() error {
-				s.Errors = nil
+				s.Errors = make([]ProjectsMoveCardForbiddenErrorsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ProjectsMoveCardForbiddenErrorsItem
 					if err := elem.Decode(d); err != nil {
@@ -108426,7 +108435,7 @@ func (s *ProjectsMoveCardServiceUnavailable) Decode(d *jx.Decoder) error {
 			}
 		case "errors":
 			if err := func() error {
-				s.Errors = nil
+				s.Errors = make([]ProjectsMoveCardServiceUnavailableErrorsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ProjectsMoveCardServiceUnavailableErrorsItem
 					if err := elem.Decode(d); err != nil {
@@ -109219,7 +109228,7 @@ func (s *ProjectsUpdateForbidden) Decode(d *jx.Decoder) error {
 			}
 		case "errors":
 			if err := func() error {
-				s.Errors = nil
+				s.Errors = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -110453,7 +110462,7 @@ func (s *ProtectedBranchPullRequestReviewDismissalRestrictions) Decode(d *jx.Dec
 		switch string(k) {
 		case "users":
 			if err := func() error {
-				s.Users = nil
+				s.Users = make([]SimpleUser, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem SimpleUser
 					if err := elem.Decode(d); err != nil {
@@ -110470,7 +110479,7 @@ func (s *ProtectedBranchPullRequestReviewDismissalRestrictions) Decode(d *jx.Dec
 			}
 		case "teams":
 			if err := func() error {
-				s.Teams = nil
+				s.Teams = make([]Team, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Team
 					if err := elem.Decode(d); err != nil {
@@ -111018,7 +111027,7 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Decode(
 		case "users":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				s.Users = nil
+				s.Users = make([]SimpleUser, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem SimpleUser
 					if err := elem.Decode(d); err != nil {
@@ -111036,7 +111045,7 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Decode(
 		case "teams":
 			requiredBitSet[0] |= 1 << 4
 			if err := func() error {
-				s.Teams = nil
+				s.Teams = make([]Team, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Team
 					if err := elem.Decode(d); err != nil {
@@ -112783,7 +112792,7 @@ func (s *PullRequest) Decode(d *jx.Decoder) error {
 		case "labels":
 			requiredBitSet[2] |= 1 << 2
 			if err := func() error {
-				s.Labels = nil
+				s.Labels = make([]PullRequestLabelsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PullRequestLabelsItem
 					if err := elem.Decode(d); err != nil {
@@ -114823,7 +114832,7 @@ func (s *PullRequestBaseRepo) Decode(d *jx.Decoder) error {
 			}
 		case "topics":
 			if err := func() error {
-				s.Topics = nil
+				s.Topics = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -117601,7 +117610,7 @@ func (s *PullRequestHeadRepo) Decode(d *jx.Decoder) error {
 			}
 		case "topics":
 			if err := func() error {
-				s.Topics = nil
+				s.Topics = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -121745,7 +121754,7 @@ func (s *PullRequestReviewRequest) Decode(d *jx.Decoder) error {
 		case "users":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Users = nil
+				s.Users = make([]SimpleUser, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem SimpleUser
 					if err := elem.Decode(d); err != nil {
@@ -121763,7 +121772,7 @@ func (s *PullRequestReviewRequest) Decode(d *jx.Decoder) error {
 		case "teams":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Teams = nil
+				s.Teams = make([]Team, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Team
 					if err := elem.Decode(d); err != nil {
@@ -122340,7 +122349,7 @@ func (s *PullRequestSimple) Decode(d *jx.Decoder) error {
 		case "labels":
 			requiredBitSet[2] |= 1 << 2
 			if err := func() error {
-				s.Labels = nil
+				s.Labels = make([]PullRequestSimpleLabelsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PullRequestSimpleLabelsItem
 					if err := elem.Decode(d); err != nil {
@@ -124035,7 +124044,7 @@ func (s *PullsCreateReviewReq) Decode(d *jx.Decoder) error {
 			}
 		case "comments":
 			if err := func() error {
-				s.Comments = nil
+				s.Comments = make([]PullsCreateReviewReqCommentsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PullsCreateReviewReqCommentsItem
 					if err := elem.Decode(d); err != nil {
@@ -124476,7 +124485,7 @@ func (s *PullsListCommentsForReviewOKApplicationJSON) Decode(d *jx.Decoder) erro
 	}
 	var unwrapped []ReviewComment
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]ReviewComment, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem ReviewComment
 			if err := elem.Decode(d); err != nil {
@@ -124520,7 +124529,7 @@ func (s *PullsListFilesOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []DiffEntry
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]DiffEntry, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem DiffEntry
 			if err := elem.Decode(d); err != nil {
@@ -124564,7 +124573,7 @@ func (s *PullsListOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []PullRequestSimple
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]PullRequestSimple, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem PullRequestSimple
 			if err := elem.Decode(d); err != nil {
@@ -125009,7 +125018,7 @@ func (s *PullsRemoveRequestedReviewersReq) Decode(d *jx.Decoder) error {
 		case "reviewers":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Reviewers = nil
+				s.Reviewers = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -125028,7 +125037,7 @@ func (s *PullsRemoveRequestedReviewersReq) Decode(d *jx.Decoder) error {
 			}
 		case "team_reviewers":
 			if err := func() error {
-				s.TeamReviewers = nil
+				s.TeamReviewers = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -128204,7 +128213,7 @@ func (s *ReactionsListForCommitCommentOKApplicationJSON) Decode(d *jx.Decoder) e
 	}
 	var unwrapped []Reaction
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Reaction, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Reaction
 			if err := elem.Decode(d); err != nil {
@@ -128296,7 +128305,7 @@ func (s *ReactionsListForIssueCommentOKApplicationJSON) Decode(d *jx.Decoder) er
 	}
 	var unwrapped []Reaction
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Reaction, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Reaction
 			if err := elem.Decode(d); err != nil {
@@ -128340,7 +128349,7 @@ func (s *ReactionsListForIssueOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Reaction
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Reaction, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Reaction
 			if err := elem.Decode(d); err != nil {
@@ -128384,7 +128393,7 @@ func (s *ReactionsListForPullRequestReviewCommentOKApplicationJSON) Decode(d *jx
 	}
 	var unwrapped []Reaction
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Reaction, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Reaction
 			if err := elem.Decode(d); err != nil {
@@ -128939,7 +128948,7 @@ func (s *Release) Decode(d *jx.Decoder) error {
 		case "assets":
 			requiredBitSet[2] |= 1 << 1
 			if err := func() error {
-				s.Assets = nil
+				s.Assets = make([]ReleaseAsset, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ReleaseAsset
 					if err := elem.Decode(d); err != nil {
@@ -130835,7 +130844,7 @@ func (s *RepoSearchResultItem) Decode(d *jx.Decoder) error {
 			}
 		case "topics":
 			if err := func() error {
-				s.Topics = nil
+				s.Topics = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -130972,7 +130981,7 @@ func (s *RepoSearchResultItem) Decode(d *jx.Decoder) error {
 				var elem SearchResultTextMatches
 				{
 					var unwrapped []SearchResultTextMatchesItem
-					unwrapped = nil
+					unwrapped = make([]SearchResultTextMatchesItem, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SearchResultTextMatchesItem
 						if err := elem.Decode(d); err != nil {
@@ -131375,7 +131384,7 @@ func (s *ReposAddAppAccessRestrictionsOKApplicationJSON) Decode(d *jx.Decoder) e
 	}
 	var unwrapped []Integration
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Integration, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Integration
 			if err := elem.Decode(d); err != nil {
@@ -131429,7 +131438,7 @@ func (s *ReposAddAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposAddAppAccessRestrictionsReq0ReposAddAppAccessRestrictionsReq
 	case jx.Array:
-		s.ArrayString = nil
+		s.ArrayString = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -131496,7 +131505,7 @@ func (s *ReposAddAppAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 		case "apps":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Apps = nil
+				s.Apps = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -131741,7 +131750,7 @@ func (s *ReposAddStatusCheckContextsOKApplicationJSON) Decode(d *jx.Decoder) err
 	}
 	var unwrapped []string
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -131797,7 +131806,7 @@ func (s *ReposAddStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposAddStatusCheckContextsReq0ReposAddStatusCheckContextsReq
 	case jx.Array:
-		s.ArrayString = nil
+		s.ArrayString = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -131864,7 +131873,7 @@ func (s *ReposAddStatusCheckContextsReq0) Decode(d *jx.Decoder) error {
 		case "contexts":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Contexts = nil
+				s.Contexts = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -131949,7 +131958,7 @@ func (s *ReposAddTeamAccessRestrictionsOKApplicationJSON) Decode(d *jx.Decoder) 
 	}
 	var unwrapped []Team
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Team, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Team
 			if err := elem.Decode(d); err != nil {
@@ -132003,7 +132012,7 @@ func (s *ReposAddTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposAddTeamAccessRestrictionsReq0ReposAddTeamAccessRestrictionsReq
 	case jx.Array:
-		s.ArrayString = nil
+		s.ArrayString = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -132070,7 +132079,7 @@ func (s *ReposAddTeamAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 		case "teams":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Teams = nil
+				s.Teams = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -132155,7 +132164,7 @@ func (s *ReposAddUserAccessRestrictionsOKApplicationJSON) Decode(d *jx.Decoder) 
 	}
 	var unwrapped []SimpleUser
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]SimpleUser, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem SimpleUser
 			if err := elem.Decode(d); err != nil {
@@ -132209,7 +132218,7 @@ func (s *ReposAddUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposAddUserAccessRestrictionsReq0ReposAddUserAccessRestrictionsReq
 	case jx.Array:
-		s.ArrayString = nil
+		s.ArrayString = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -132276,7 +132285,7 @@ func (s *ReposAddUserAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 		case "users":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Users = nil
+				s.Users = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -133158,7 +133167,7 @@ func (s *ReposCreateDeploymentReq) Decode(d *jx.Decoder) error {
 			}
 		case "required_contexts":
 			if err := func() error {
-				s.RequiredContexts = nil
+				s.RequiredContexts = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -136433,7 +136442,7 @@ func (s *ReposCreateWebhookReq) Decode(d *jx.Decoder) error {
 			}
 		case "events":
 			if err := func() error {
-				s.Events = nil
+				s.Events = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -137245,7 +137254,7 @@ func (s *ReposGetAllStatusCheckContextsOKApplicationJSON) Decode(d *jx.Decoder) 
 	}
 	var unwrapped []string
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -137363,7 +137372,7 @@ func (s *ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON) Decode(d *jx.
 	}
 	var unwrapped []Integration
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Integration, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Integration
 			if err := elem.Decode(d); err != nil {
@@ -137455,12 +137464,12 @@ func (s *ReposGetCodeFrequencyStatsOKApplicationJSON) Decode(d *jx.Decoder) erro
 	}
 	var unwrapped []CodeFrequencyStat
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]CodeFrequencyStat, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem CodeFrequencyStat
 			{
 				var unwrapped []int
-				unwrapped = nil
+				unwrapped = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -137513,7 +137522,7 @@ func (s *ReposGetCommitActivityStatsOKApplicationJSON) Decode(d *jx.Decoder) err
 	}
 	var unwrapped []CommitActivity
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]CommitActivity, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem CommitActivity
 			if err := elem.Decode(d); err != nil {
@@ -137605,7 +137614,7 @@ func (s *ReposGetContributorsStatsOKApplicationJSON) Decode(d *jx.Decoder) error
 	}
 	var unwrapped []ContributorActivity
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]ContributorActivity, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem ContributorActivity
 			if err := elem.Decode(d); err != nil {
@@ -137649,12 +137658,12 @@ func (s *ReposGetPunchCardStatsOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []CodeFrequencyStat
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]CodeFrequencyStat, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem CodeFrequencyStat
 			{
 				var unwrapped []int
-				unwrapped = nil
+				unwrapped = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -137707,7 +137716,7 @@ func (s *ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON) Decode(d *jx
 	}
 	var unwrapped []Team
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Team, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Team
 			if err := elem.Decode(d); err != nil {
@@ -137751,7 +137760,7 @@ func (s *ReposGetTopPathsOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []ContentTraffic
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]ContentTraffic, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem ContentTraffic
 			if err := elem.Decode(d); err != nil {
@@ -137795,7 +137804,7 @@ func (s *ReposGetTopReferrersOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []ReferrerTraffic
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]ReferrerTraffic, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem ReferrerTraffic
 			if err := elem.Decode(d); err != nil {
@@ -137839,7 +137848,7 @@ func (s *ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) Decode(d *jx
 	}
 	var unwrapped []SimpleUser
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]SimpleUser, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem SimpleUser
 			if err := elem.Decode(d); err != nil {
@@ -137883,7 +137892,7 @@ func (s *ReposListBranchesForHeadCommitOKApplicationJSON) Decode(d *jx.Decoder) 
 	}
 	var unwrapped []BranchShort
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]BranchShort, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem BranchShort
 			if err := elem.Decode(d); err != nil {
@@ -137927,7 +137936,7 @@ func (s *ReposListBranchesOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []ShortBranch
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]ShortBranch, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem ShortBranch
 			if err := elem.Decode(d); err != nil {
@@ -137971,7 +137980,7 @@ func (s *ReposListCollaboratorsOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Collaborator
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Collaborator, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Collaborator
 			if err := elem.Decode(d); err != nil {
@@ -138015,7 +138024,7 @@ func (s *ReposListCommitStatusesForRefOKApplicationJSON) Decode(d *jx.Decoder) e
 	}
 	var unwrapped []Status
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Status, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Status
 			if err := elem.Decode(d); err != nil {
@@ -138155,7 +138164,7 @@ func (s *ReposListCommitsOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Commit
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Commit, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Commit
 			if err := elem.Decode(d); err != nil {
@@ -138247,7 +138256,7 @@ func (s *ReposListContributorsOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Contributor
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Contributor, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Contributor
 			if err := elem.Decode(d); err != nil {
@@ -138291,7 +138300,7 @@ func (s *ReposListDeploymentStatusesOKApplicationJSON) Decode(d *jx.Decoder) err
 	}
 	var unwrapped []DeploymentStatus
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]DeploymentStatus, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem DeploymentStatus
 			if err := elem.Decode(d); err != nil {
@@ -138383,7 +138392,7 @@ func (s *ReposListForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) e
 	}
 	var unwrapped []Repository
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Repository, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Repository
 			if err := elem.Decode(d); err != nil {
@@ -138427,7 +138436,7 @@ func (s *ReposListForksOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []MinimalRepository
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]MinimalRepository, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem MinimalRepository
 			if err := elem.Decode(d); err != nil {
@@ -138543,7 +138552,7 @@ func (s *ReposListInvitationsForAuthenticatedUserOKApplicationJSON) Decode(d *jx
 	}
 	var unwrapped []RepositoryInvitation
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]RepositoryInvitation, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem RepositoryInvitation
 			if err := elem.Decode(d); err != nil {
@@ -138587,7 +138596,7 @@ func (s *ReposListPublicOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []MinimalRepository
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]MinimalRepository, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem MinimalRepository
 			if err := elem.Decode(d); err != nil {
@@ -138631,7 +138640,7 @@ func (s *ReposListReleasesOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Release
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Release, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Release
 			if err := elem.Decode(d); err != nil {
@@ -138675,7 +138684,7 @@ func (s *ReposListWebhookDeliveriesOKApplicationJSON) Decode(d *jx.Decoder) erro
 	}
 	var unwrapped []HookDeliveryItem
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]HookDeliveryItem, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem HookDeliveryItem
 			if err := elem.Decode(d); err != nil {
@@ -138719,7 +138728,7 @@ func (s *ReposListWebhooksOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Hook
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Hook, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Hook
 			if err := elem.Decode(d); err != nil {
@@ -138976,7 +138985,7 @@ func (s *ReposRemoveAppAccessRestrictionsOKApplicationJSON) Decode(d *jx.Decoder
 	}
 	var unwrapped []Integration
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Integration, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Integration
 			if err := elem.Decode(d); err != nil {
@@ -139030,7 +139039,7 @@ func (s *ReposRemoveAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposRemoveAppAccessRestrictionsReq0ReposRemoveAppAccessRestrictionsReq
 	case jx.Array:
-		s.ArrayString = nil
+		s.ArrayString = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -139097,7 +139106,7 @@ func (s *ReposRemoveAppAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 		case "apps":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Apps = nil
+				s.Apps = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -139182,7 +139191,7 @@ func (s *ReposRemoveStatusCheckContextsOKApplicationJSON) Decode(d *jx.Decoder) 
 	}
 	var unwrapped []string
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -139238,7 +139247,7 @@ func (s *ReposRemoveStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposRemoveStatusCheckContextsReq0ReposRemoveStatusCheckContextsReq
 	case jx.Array:
-		s.ArrayString = nil
+		s.ArrayString = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -139305,7 +139314,7 @@ func (s *ReposRemoveStatusCheckContextsReq0) Decode(d *jx.Decoder) error {
 		case "contexts":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Contexts = nil
+				s.Contexts = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -139390,7 +139399,7 @@ func (s *ReposRemoveTeamAccessRestrictionsOKApplicationJSON) Decode(d *jx.Decode
 	}
 	var unwrapped []Team
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Team, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Team
 			if err := elem.Decode(d); err != nil {
@@ -139444,7 +139453,7 @@ func (s *ReposRemoveTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposRemoveTeamAccessRestrictionsReq0ReposRemoveTeamAccessRestrictionsReq
 	case jx.Array:
-		s.ArrayString = nil
+		s.ArrayString = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -139511,7 +139520,7 @@ func (s *ReposRemoveTeamAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 		case "teams":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Teams = nil
+				s.Teams = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -139596,7 +139605,7 @@ func (s *ReposRemoveUserAccessRestrictionsOKApplicationJSON) Decode(d *jx.Decode
 	}
 	var unwrapped []SimpleUser
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]SimpleUser, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem SimpleUser
 			if err := elem.Decode(d); err != nil {
@@ -139650,7 +139659,7 @@ func (s *ReposRemoveUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposRemoveUserAccessRestrictionsReq0ReposRemoveUserAccessRestrictionsReq
 	case jx.Array:
-		s.ArrayString = nil
+		s.ArrayString = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -139717,7 +139726,7 @@ func (s *ReposRemoveUserAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 		case "users":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Users = nil
+				s.Users = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -139959,7 +139968,7 @@ func (s *ReposReplaceAllTopicsReq) Decode(d *jx.Decoder) error {
 		case "names":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Names = nil
+				s.Names = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -140044,7 +140053,7 @@ func (s *ReposSetAppAccessRestrictionsOKApplicationJSON) Decode(d *jx.Decoder) e
 	}
 	var unwrapped []Integration
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Integration, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Integration
 			if err := elem.Decode(d); err != nil {
@@ -140098,7 +140107,7 @@ func (s *ReposSetAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposSetAppAccessRestrictionsReq0ReposSetAppAccessRestrictionsReq
 	case jx.Array:
-		s.ArrayString = nil
+		s.ArrayString = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -140165,7 +140174,7 @@ func (s *ReposSetAppAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 		case "apps":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Apps = nil
+				s.Apps = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -140250,7 +140259,7 @@ func (s *ReposSetStatusCheckContextsOKApplicationJSON) Decode(d *jx.Decoder) err
 	}
 	var unwrapped []string
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -140306,7 +140315,7 @@ func (s *ReposSetStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposSetStatusCheckContextsReq0ReposSetStatusCheckContextsReq
 	case jx.Array:
-		s.ArrayString = nil
+		s.ArrayString = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -140373,7 +140382,7 @@ func (s *ReposSetStatusCheckContextsReq0) Decode(d *jx.Decoder) error {
 		case "contexts":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Contexts = nil
+				s.Contexts = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -140458,7 +140467,7 @@ func (s *ReposSetTeamAccessRestrictionsOKApplicationJSON) Decode(d *jx.Decoder) 
 	}
 	var unwrapped []Team
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Team, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Team
 			if err := elem.Decode(d); err != nil {
@@ -140512,7 +140521,7 @@ func (s *ReposSetTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposSetTeamAccessRestrictionsReq0ReposSetTeamAccessRestrictionsReq
 	case jx.Array:
-		s.ArrayString = nil
+		s.ArrayString = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -140579,7 +140588,7 @@ func (s *ReposSetTeamAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 		case "teams":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Teams = nil
+				s.Teams = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -140664,7 +140673,7 @@ func (s *ReposSetUserAccessRestrictionsOKApplicationJSON) Decode(d *jx.Decoder) 
 	}
 	var unwrapped []SimpleUser
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]SimpleUser, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem SimpleUser
 			if err := elem.Decode(d); err != nil {
@@ -140718,7 +140727,7 @@ func (s *ReposSetUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = ReposSetUserAccessRestrictionsReq0ReposSetUserAccessRestrictionsReq
 	case jx.Array:
-		s.ArrayString = nil
+		s.ArrayString = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -140785,7 +140794,7 @@ func (s *ReposSetUserAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 		case "users":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Users = nil
+				s.Users = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -140913,7 +140922,7 @@ func (s *ReposTransferReq) Decode(d *jx.Decoder) error {
 			}
 		case "team_ids":
 			if err := func() error {
-				s.TeamIds = nil
+				s.TeamIds = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -141506,7 +141515,7 @@ func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestri
 		switch string(k) {
 		case "users":
 			if err := func() error {
-				s.Users = nil
+				s.Users = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -141525,7 +141534,7 @@ func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestri
 			}
 		case "teams":
 			if err := func() error {
-				s.Teams = nil
+				s.Teams = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -141619,7 +141628,7 @@ func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) Decode(d *jx.Decode
 		case "contexts":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Contexts = nil
+				s.Contexts = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -141767,7 +141776,7 @@ func (s *ReposUpdateBranchProtectionReqRestrictions) Decode(d *jx.Decoder) error
 		case "users":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Users = nil
+				s.Users = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -141787,7 +141796,7 @@ func (s *ReposUpdateBranchProtectionReqRestrictions) Decode(d *jx.Decoder) error
 		case "teams":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Teams = nil
+				s.Teams = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -141806,7 +141815,7 @@ func (s *ReposUpdateBranchProtectionReqRestrictions) Decode(d *jx.Decoder) error
 			}
 		case "apps":
 			if err := func() error {
-				s.Apps = nil
+				s.Apps = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -142238,7 +142247,7 @@ func (s *ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Decode(
 		switch string(k) {
 		case "users":
 			if err := func() error {
-				s.Users = nil
+				s.Users = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -142257,7 +142266,7 @@ func (s *ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Decode(
 			}
 		case "teams":
 			if err := func() error {
-				s.Teams = nil
+				s.Teams = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -143316,7 +143325,7 @@ func (s *ReposUpdateStatusCheckProtectionReq) Decode(d *jx.Decoder) error {
 			}
 		case "contexts":
 			if err := func() error {
-				s.Contexts = nil
+				s.Contexts = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -143633,7 +143642,7 @@ func (s *ReposUpdateWebhookReq) Decode(d *jx.Decoder) error {
 			}
 		case "events":
 			if err := func() error {
-				s.Events = nil
+				s.Events = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -143652,7 +143661,7 @@ func (s *ReposUpdateWebhookReq) Decode(d *jx.Decoder) error {
 			}
 		case "add_events":
 			if err := func() error {
-				s.AddEvents = nil
+				s.AddEvents = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -143671,7 +143680,7 @@ func (s *ReposUpdateWebhookReq) Decode(d *jx.Decoder) error {
 			}
 		case "remove_events":
 			if err := func() error {
-				s.RemoveEvents = nil
+				s.RemoveEvents = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -145371,7 +145380,7 @@ func (s *Repository) Decode(d *jx.Decoder) error {
 			}
 		case "topics":
 			if err := func() error {
-				s.Topics = nil
+				s.Topics = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -148132,7 +148141,7 @@ func (s *RepositoryTemplateRepository) Decode(d *jx.Decoder) error {
 			}
 		case "topics":
 			if err := func() error {
-				s.Topics = nil
+				s.Topics = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -149872,7 +149881,7 @@ func (s *Runner) Decode(d *jx.Decoder) error {
 		case "labels":
 			requiredBitSet[0] |= 1 << 5
 			if err := func() error {
-				s.Labels = nil
+				s.Labels = make([]RunnerLabelsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem RunnerLabelsItem
 					if err := elem.Decode(d); err != nil {
@@ -150840,7 +150849,7 @@ func (s *ScimEnterpriseGroup) Decode(d *jx.Decoder) error {
 		case "schemas":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Schemas = nil
+				s.Schemas = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -150891,7 +150900,7 @@ func (s *ScimEnterpriseGroup) Decode(d *jx.Decoder) error {
 			}
 		case "members":
 			if err := func() error {
-				s.Members = nil
+				s.Members = make([]ScimEnterpriseGroupMembersItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ScimEnterpriseGroupMembersItem
 					if err := elem.Decode(d); err != nil {
@@ -151332,7 +151341,7 @@ func (s *ScimEnterpriseUser) Decode(d *jx.Decoder) error {
 		case "schemas":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Schemas = nil
+				s.Schemas = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -151393,7 +151402,7 @@ func (s *ScimEnterpriseUser) Decode(d *jx.Decoder) error {
 			}
 		case "emails":
 			if err := func() error {
-				s.Emails = nil
+				s.Emails = make([]ScimEnterpriseUserEmailsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ScimEnterpriseUserEmailsItem
 					if err := elem.Decode(d); err != nil {
@@ -151410,7 +151419,7 @@ func (s *ScimEnterpriseUser) Decode(d *jx.Decoder) error {
 			}
 		case "groups":
 			if err := func() error {
-				s.Groups = nil
+				s.Groups = make([]ScimEnterpriseUserGroupsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ScimEnterpriseUserGroupsItem
 					if err := elem.Decode(d); err != nil {
@@ -152010,7 +152019,7 @@ func (s *ScimError) Decode(d *jx.Decoder) error {
 			}
 		case "schemas":
 			if err := func() error {
-				s.Schemas = nil
+				s.Schemas = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -152125,7 +152134,7 @@ func (s *ScimGroupListEnterprise) Decode(d *jx.Decoder) error {
 		case "schemas":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Schemas = nil
+				s.Schemas = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -152181,7 +152190,7 @@ func (s *ScimGroupListEnterprise) Decode(d *jx.Decoder) error {
 		case "Resources":
 			requiredBitSet[0] |= 1 << 4
 			if err := func() error {
-				s.Resources = nil
+				s.Resources = make([]ScimGroupListEnterpriseResourcesItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ScimGroupListEnterpriseResourcesItem
 					if err := elem.Decode(d); err != nil {
@@ -152345,7 +152354,7 @@ func (s *ScimGroupListEnterpriseResourcesItem) Decode(d *jx.Decoder) error {
 		case "schemas":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Schemas = nil
+				s.Schemas = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -152396,7 +152405,7 @@ func (s *ScimGroupListEnterpriseResourcesItem) Decode(d *jx.Decoder) error {
 			}
 		case "members":
 			if err := func() error {
-				s.Members = nil
+				s.Members = make([]ScimGroupListEnterpriseResourcesItemMembersItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ScimGroupListEnterpriseResourcesItemMembersItem
 					if err := elem.Decode(d); err != nil {
@@ -152856,7 +152865,7 @@ func (s *ScimProvisionAndInviteUserReq) Decode(d *jx.Decoder) error {
 		case "emails":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				s.Emails = nil
+				s.Emails = make([]ScimProvisionAndInviteUserReqEmailsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ScimProvisionAndInviteUserReqEmailsItem
 					if err := elem.Decode(d); err != nil {
@@ -152873,7 +152882,7 @@ func (s *ScimProvisionAndInviteUserReq) Decode(d *jx.Decoder) error {
 			}
 		case "schemas":
 			if err := func() error {
-				s.Schemas = nil
+				s.Schemas = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -152902,7 +152911,7 @@ func (s *ScimProvisionAndInviteUserReq) Decode(d *jx.Decoder) error {
 			}
 		case "groups":
 			if err := func() error {
-				s.Groups = nil
+				s.Groups = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -153374,7 +153383,7 @@ func (s *ScimSetInformationForProvisionedUserReq) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "schemas":
 			if err := func() error {
-				s.Schemas = nil
+				s.Schemas = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -153413,7 +153422,7 @@ func (s *ScimSetInformationForProvisionedUserReq) Decode(d *jx.Decoder) error {
 			}
 		case "groups":
 			if err := func() error {
-				s.Groups = nil
+				s.Groups = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -153465,7 +153474,7 @@ func (s *ScimSetInformationForProvisionedUserReq) Decode(d *jx.Decoder) error {
 		case "emails":
 			requiredBitSet[0] |= 1 << 7
 			if err := func() error {
-				s.Emails = nil
+				s.Emails = make([]ScimSetInformationForProvisionedUserReqEmailsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ScimSetInformationForProvisionedUserReqEmailsItem
 					if err := elem.Decode(d); err != nil {
@@ -153850,7 +153859,7 @@ func (s *ScimUpdateAttributeForUserReq) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "schemas":
 			if err := func() error {
-				s.Schemas = nil
+				s.Schemas = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -153870,7 +153879,7 @@ func (s *ScimUpdateAttributeForUserReq) Decode(d *jx.Decoder) error {
 		case "Operations":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Operations = nil
+				s.Operations = make([]ScimUpdateAttributeForUserReqOperationsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ScimUpdateAttributeForUserReqOperationsItem
 					if err := elem.Decode(d); err != nil {
@@ -154119,7 +154128,7 @@ func (s *ScimUpdateAttributeForUserReqOperationsItemValue) Decode(d *jx.Decoder)
 		}
 		s.Type = ScimUpdateAttributeForUserReqOperationsItemValue0ScimUpdateAttributeForUserReqOperationsItemValue
 	case jx.Array:
-		s.ArrayScimUpdateAttributeForUserReqOperationsItemValue1Item = nil
+		s.ArrayScimUpdateAttributeForUserReqOperationsItemValue1Item = make([]ScimUpdateAttributeForUserReqOperationsItemValue1Item, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem ScimUpdateAttributeForUserReqOperationsItemValue1Item
 			if err := elem.Decode(d); err != nil {
@@ -154456,7 +154465,7 @@ func (s *ScimUserListEnterprise) Decode(d *jx.Decoder) error {
 		case "schemas":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Schemas = nil
+				s.Schemas = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -154512,7 +154521,7 @@ func (s *ScimUserListEnterprise) Decode(d *jx.Decoder) error {
 		case "Resources":
 			requiredBitSet[0] |= 1 << 4
 			if err := func() error {
-				s.Resources = nil
+				s.Resources = make([]ScimUserListEnterpriseResourcesItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ScimUserListEnterpriseResourcesItem
 					if err := elem.Decode(d); err != nil {
@@ -154718,7 +154727,7 @@ func (s *ScimUserListEnterpriseResourcesItem) Decode(d *jx.Decoder) error {
 		case "schemas":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Schemas = nil
+				s.Schemas = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -154779,7 +154788,7 @@ func (s *ScimUserListEnterpriseResourcesItem) Decode(d *jx.Decoder) error {
 			}
 		case "emails":
 			if err := func() error {
-				s.Emails = nil
+				s.Emails = make([]ScimUserListEnterpriseResourcesItemEmailsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ScimUserListEnterpriseResourcesItemEmailsItem
 					if err := elem.Decode(d); err != nil {
@@ -154796,7 +154805,7 @@ func (s *ScimUserListEnterpriseResourcesItem) Decode(d *jx.Decoder) error {
 			}
 		case "groups":
 			if err := func() error {
-				s.Groups = nil
+				s.Groups = make([]ScimUserListEnterpriseResourcesItemGroupsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ScimUserListEnterpriseResourcesItemGroupsItem
 					if err := elem.Decode(d); err != nil {
@@ -155318,7 +155327,7 @@ func (s *SearchCodeOK) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]CodeSearchResultItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem CodeSearchResultItem
 					if err := elem.Decode(d); err != nil {
@@ -155461,7 +155470,7 @@ func (s *SearchCommitsOK) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]CommitSearchResultItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem CommitSearchResultItem
 					if err := elem.Decode(d); err != nil {
@@ -155604,7 +155613,7 @@ func (s *SearchIssuesAndPullRequestsOK) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IssueSearchResultItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IssueSearchResultItem
 					if err := elem.Decode(d); err != nil {
@@ -155795,7 +155804,7 @@ func (s *SearchLabelsOK) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]LabelSearchResultItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem LabelSearchResultItem
 					if err := elem.Decode(d); err != nil {
@@ -155938,7 +155947,7 @@ func (s *SearchReposOK) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]RepoSearchResultItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem RepoSearchResultItem
 					if err := elem.Decode(d); err != nil {
@@ -156021,7 +156030,7 @@ func (s *SearchResultTextMatches) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []SearchResultTextMatchesItem
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]SearchResultTextMatchesItem, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem SearchResultTextMatchesItem
 			if err := elem.Decode(d); err != nil {
@@ -156180,7 +156189,7 @@ func (s *SearchResultTextMatchesItem) Decode(d *jx.Decoder) error {
 			}
 		case "matches":
 			if err := func() error {
-				s.Matches = nil
+				s.Matches = make([]SearchResultTextMatchesItemMatchesItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem SearchResultTextMatchesItemMatchesItem
 					if err := elem.Decode(d); err != nil {
@@ -156277,7 +156286,7 @@ func (s *SearchResultTextMatchesItemMatchesItem) Decode(d *jx.Decoder) error {
 			}
 		case "indices":
 			if err := func() error {
-				s.Indices = nil
+				s.Indices = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -156390,7 +156399,7 @@ func (s *SearchTopicsOK) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]TopicSearchResultItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem TopicSearchResultItem
 					if err := elem.Decode(d); err != nil {
@@ -156533,7 +156542,7 @@ func (s *SearchUsersOK) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]UserSearchResultItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem UserSearchResultItem
 					if err := elem.Decode(d); err != nil {
@@ -156959,7 +156968,7 @@ func (s *SecretScanningListAlertsForOrgOKApplicationJSON) Decode(d *jx.Decoder) 
 	}
 	var unwrapped []OrganizationSecretScanningAlert
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]OrganizationSecretScanningAlert, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem OrganizationSecretScanningAlert
 			if err := elem.Decode(d); err != nil {
@@ -157003,7 +157012,7 @@ func (s *SecretScanningListAlertsForRepoOKApplicationJSON) Decode(d *jx.Decoder)
 	}
 	var unwrapped []SecretScanningAlert
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]SecretScanningAlert, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem SecretScanningAlert
 			if err := elem.Decode(d); err != nil {
@@ -157221,7 +157230,7 @@ func (s *SelectedActions) Decode(d *jx.Decoder) error {
 			}
 		case "patterns_allowed":
 			if err := func() error {
-				s.PatternsAllowed = nil
+				s.PatternsAllowed = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -159258,7 +159267,7 @@ func (s *StatusCheckPolicy) Decode(d *jx.Decoder) error {
 		case "contexts":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Contexts = nil
+				s.Contexts = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -163345,7 +163354,7 @@ func (s *TeamRepository) Decode(d *jx.Decoder) error {
 			}
 		case "topics":
 			if err := func() error {
-				s.Topics = nil
+				s.Topics = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -165290,7 +165299,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Decode(d *jx.Decoder) e
 		switch string(k) {
 		case "groups":
 			if err := func() error {
-				s.Groups = nil
+				s.Groups = make([]TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem
 					if err := elem.Decode(d); err != nil {
@@ -165509,7 +165518,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) Decode(d *jx.Decoder) 
 		case "groups":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Groups = nil
+				s.Groups = make([]TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem
 					if err := elem.Decode(d); err != nil {
@@ -165903,7 +165912,7 @@ func (s *TeamsCreateReq) Decode(d *jx.Decoder) error {
 			}
 		case "maintainers":
 			if err := func() error {
-				s.Maintainers = nil
+				s.Maintainers = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -165922,7 +165931,7 @@ func (s *TeamsCreateReq) Decode(d *jx.Decoder) error {
 			}
 		case "repo_names":
 			if err := func() error {
-				s.RepoNames = nil
+				s.RepoNames = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -166141,7 +166150,7 @@ func (s *TeamsListChildLegacyOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Team
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Team, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Team
 			if err := elem.Decode(d); err != nil {
@@ -166233,7 +166242,7 @@ func (s *TeamsListForAuthenticatedUserOKApplicationJSON) Decode(d *jx.Decoder) e
 	}
 	var unwrapped []TeamFull
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]TeamFull, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem TeamFull
 			if err := elem.Decode(d); err != nil {
@@ -166325,7 +166334,7 @@ func (s *TeamsListMembersLegacyOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []SimpleUser
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]SimpleUser, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem SimpleUser
 			if err := elem.Decode(d); err != nil {
@@ -166369,7 +166378,7 @@ func (s *TeamsListOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Team
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Team, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Team
 			if err := elem.Decode(d); err != nil {
@@ -166413,7 +166422,7 @@ func (s *TeamsListProjectsLegacyOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []TeamProject
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]TeamProject, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem TeamProject
 			if err := elem.Decode(d); err != nil {
@@ -166457,7 +166466,7 @@ func (s *TeamsListReposLegacyOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []MinimalRepository
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]MinimalRepository, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem MinimalRepository
 			if err := elem.Decode(d); err != nil {
@@ -167954,7 +167963,7 @@ func (s *Topic) Decode(d *jx.Decoder) error {
 		case "names":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Names = nil
+				s.Names = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -168314,7 +168323,7 @@ func (s *TopicSearchResultItem) Decode(d *jx.Decoder) error {
 				var elem SearchResultTextMatches
 				{
 					var unwrapped []SearchResultTextMatchesItem
-					unwrapped = nil
+					unwrapped = make([]SearchResultTextMatchesItem, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SearchResultTextMatchesItem
 						if err := elem.Decode(d); err != nil {
@@ -169737,7 +169746,7 @@ func (s *UserSearchResultItem) Decode(d *jx.Decoder) error {
 				var elem SearchResultTextMatches
 				{
 					var unwrapped []SearchResultTextMatchesItem
-					unwrapped = nil
+					unwrapped = make([]SearchResultTextMatchesItem, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SearchResultTextMatchesItem
 						if err := elem.Decode(d); err != nil {
@@ -169929,7 +169938,7 @@ func (s *UsersAddEmailForAuthenticatedCreatedApplicationJSON) Decode(d *jx.Decod
 	}
 	var unwrapped []Email
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Email, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Email
 			if err := elem.Decode(d); err != nil {
@@ -169985,7 +169994,7 @@ func (s *UsersAddEmailForAuthenticatedReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = UsersAddEmailForAuthenticatedReq0UsersAddEmailForAuthenticatedReq
 	case jx.Array:
-		s.ArrayString = nil
+		s.ArrayString = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -170059,7 +170068,7 @@ func (s *UsersAddEmailForAuthenticatedReq0) Decode(d *jx.Decoder) error {
 		case "emails":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Emails = nil
+				s.Emails = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -170785,7 +170794,7 @@ func (s *UsersDeleteEmailForAuthenticatedReq) Decode(d *jx.Decoder) error {
 		}
 		s.Type = UsersDeleteEmailForAuthenticatedReq0UsersDeleteEmailForAuthenticatedReq
 	case jx.Array:
-		s.ArrayString = nil
+		s.ArrayString = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -170859,7 +170868,7 @@ func (s *UsersDeleteEmailForAuthenticatedReq0) Decode(d *jx.Decoder) error {
 		case "emails":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Emails = nil
+				s.Emails = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -171544,7 +171553,7 @@ func (s *UsersListBlockedByAuthenticatedOKApplicationJSON) Decode(d *jx.Decoder)
 	}
 	var unwrapped []SimpleUser
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]SimpleUser, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem SimpleUser
 			if err := elem.Decode(d); err != nil {
@@ -171660,7 +171669,7 @@ func (s *UsersListEmailsForAuthenticatedOKApplicationJSON) Decode(d *jx.Decoder)
 	}
 	var unwrapped []Email
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Email, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Email
 			if err := elem.Decode(d); err != nil {
@@ -171752,7 +171761,7 @@ func (s *UsersListFollowedByAuthenticatedOKApplicationJSON) Decode(d *jx.Decoder
 	}
 	var unwrapped []SimpleUser
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]SimpleUser, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem SimpleUser
 			if err := elem.Decode(d); err != nil {
@@ -171844,7 +171853,7 @@ func (s *UsersListFollowersForAuthenticatedUserOKApplicationJSON) Decode(d *jx.D
 	}
 	var unwrapped []SimpleUser
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]SimpleUser, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem SimpleUser
 			if err := elem.Decode(d); err != nil {
@@ -171960,7 +171969,7 @@ func (s *UsersListGpgKeysForAuthenticatedOKApplicationJSON) Decode(d *jx.Decoder
 	}
 	var unwrapped []GpgKey
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]GpgKey, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem GpgKey
 			if err := elem.Decode(d); err != nil {
@@ -172004,7 +172013,7 @@ func (s *UsersListOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []SimpleUser
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]SimpleUser, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem SimpleUser
 			if err := elem.Decode(d); err != nil {
@@ -172120,7 +172129,7 @@ func (s *UsersListPublicEmailsForAuthenticatedOKApplicationJSON) Decode(d *jx.De
 	}
 	var unwrapped []Email
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Email, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Email
 			if err := elem.Decode(d); err != nil {
@@ -172236,7 +172245,7 @@ func (s *UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) Decode(d *jx.D
 	}
 	var unwrapped []Key
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Key, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Key
 			if err := elem.Decode(d); err != nil {
@@ -172352,7 +172361,7 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON) Decode
 	}
 	var unwrapped []Email
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Email, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Email
 			if err := elem.Decode(d); err != nil {
@@ -173002,7 +173011,7 @@ func (s *ValidationError) Decode(d *jx.Decoder) error {
 			}
 		case "errors":
 			if err := func() error {
-				s.Errors = nil
+				s.Errors = make([]ValidationErrorErrorsItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ValidationErrorErrorsItem
 					if err := elem.Decode(d); err != nil {
@@ -173302,7 +173311,7 @@ func (s *ValidationErrorErrorsItemValue) Decode(d *jx.Decoder) error {
 		}
 		s.Type = IntValidationErrorErrorsItemValue
 	case jx.Array:
-		s.ArrayString = nil
+		s.ArrayString = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -173409,7 +173418,7 @@ func (s *ValidationErrorSimple) Decode(d *jx.Decoder) error {
 			}
 		case "errors":
 			if err := func() error {
-				s.Errors = nil
+				s.Errors = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -173694,7 +173703,7 @@ func (s *ViewTraffic) Decode(d *jx.Decoder) error {
 		case "views":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Views = nil
+				s.Views = make([]Traffic, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Traffic
 					if err := elem.Decode(d); err != nil {
@@ -174732,13 +174741,13 @@ func (s *WorkflowRun) Decode(d *jx.Decoder) error {
 		case "pull_requests":
 			requiredBitSet[1] |= 1 << 7
 			if err := func() error {
-				s.PullRequests = nil
 				switch tt := d.Next(); tt {
 				case jx.Null:
 					if err := d.Skip(); err != nil {
 						return err
 					}
 				default:
+					s.PullRequests = make([]PullRequestMinimal, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem PullRequestMinimal
 						if err := elem.Decode(d); err != nil {

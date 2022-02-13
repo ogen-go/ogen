@@ -122,7 +122,7 @@ func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsR
 			if err := func() error {
 				{
 					var unwrapped []Pet
-					unwrapped = nil
+					unwrapped = make([]Pet, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Pet
 						if err := elem.Decode(d); err != nil {

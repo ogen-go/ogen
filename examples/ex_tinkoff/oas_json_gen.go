@@ -439,7 +439,7 @@ func (s *Candles) Decode(d *jx.Decoder) error {
 		case "candles":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Candles = nil
+				s.Candles = make([]Candle, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Candle
 					if err := elem.Decode(d); err != nil {
@@ -668,7 +668,7 @@ func (s *Currencies) Decode(d *jx.Decoder) error {
 		case "currencies":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Currencies = nil
+				s.Currencies = make([]CurrencyPosition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem CurrencyPosition
 					if err := elem.Decode(d); err != nil {
@@ -1834,7 +1834,7 @@ func (s *MarketInstrumentList) Decode(d *jx.Decoder) error {
 		case "instruments":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Instruments = nil
+				s.Instruments = make([]MarketInstrument, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MarketInstrument
 					if err := elem.Decode(d); err != nil {
@@ -2531,7 +2531,7 @@ func (s *Operation) Decode(d *jx.Decoder) error {
 			}
 		case "trades":
 			if err := func() error {
-				s.Trades = nil
+				s.Trades = make([]OperationTrade, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem OperationTrade
 					if err := elem.Decode(d); err != nil {
@@ -3018,7 +3018,7 @@ func (s *Operations) Decode(d *jx.Decoder) error {
 		case "operations":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Operations = nil
+				s.Operations = make([]Operation, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Operation
 					if err := elem.Decode(d); err != nil {
@@ -3987,7 +3987,7 @@ func (s *Orderbook) Decode(d *jx.Decoder) error {
 		case "bids":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Bids = nil
+				s.Bids = make([]OrderResponse, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem OrderResponse
 					if err := elem.Decode(d); err != nil {
@@ -4005,7 +4005,7 @@ func (s *Orderbook) Decode(d *jx.Decoder) error {
 		case "asks":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				s.Asks = nil
+				s.Asks = make([]OrderResponse, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem OrderResponse
 					if err := elem.Decode(d); err != nil {
@@ -4346,7 +4346,7 @@ func (s *OrdersResponse) Decode(d *jx.Decoder) error {
 		case "payload":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Payload = nil
+				s.Payload = make([]Order, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Order
 					if err := elem.Decode(d); err != nil {
@@ -4889,7 +4889,7 @@ func (s *Portfolio) Decode(d *jx.Decoder) error {
 		case "positions":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Positions = nil
+				s.Positions = make([]PortfolioPosition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PortfolioPosition
 					if err := elem.Decode(d); err != nil {
@@ -6538,7 +6538,7 @@ func (s *UserAccounts) Decode(d *jx.Decoder) error {
 		case "accounts":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Accounts = nil
+				s.Accounts = make([]UserAccount, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem UserAccount
 					if err := elem.Decode(d); err != nil {

@@ -307,7 +307,7 @@ func (s *AnyTest) Decode(d *jx.Decoder) error {
 			}
 		case "any_array":
 			if err := func() error {
-				s.AnyArray = nil
+				s.AnyArray = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -492,7 +492,7 @@ func (s *ArrayTest) Decode(d *jx.Decoder) error {
 		case "required":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Required = nil
+				s.Required = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -511,7 +511,7 @@ func (s *ArrayTest) Decode(d *jx.Decoder) error {
 			}
 		case "optional":
 			if err := func() error {
-				s.Optional = nil
+				s.Optional = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -531,13 +531,13 @@ func (s *ArrayTest) Decode(d *jx.Decoder) error {
 		case "nullable_required":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.NullableRequired = nil
 				switch tt := d.Next(); tt {
 				case jx.Null:
 					if err := d.Skip(); err != nil {
 						return err
 					}
 				default:
+					s.NullableRequired = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem string
 						v, err := d.Str()
@@ -4065,6 +4065,7 @@ func (o *OptNilStringArray) Decode(d *jx.Decoder) error {
 	case jx.Array:
 		o.Set = true
 		o.Null = false
+		o.Value = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem string
 			v, err := d.Str()
@@ -4893,7 +4894,7 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 			}
 		case "friends":
 			if err := func() error {
-				s.Friends = nil
+				s.Friends = make([]Pet, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Pet
 					if err := elem.Decode(d); err != nil {
@@ -4940,10 +4941,10 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 			}
 		case "testArray1":
 			if err := func() error {
-				s.TestArray1 = nil
+				s.TestArray1 = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()

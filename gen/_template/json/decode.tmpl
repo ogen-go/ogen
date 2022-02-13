@@ -9,6 +9,7 @@ var {{ $.NextVar }} {{ $.Type.PointerTo.Go }}
 
 {{- define "json/dec_array_elems" }}
 {{- $t := $.Type -}}
+{{ $.Var }} = make({{ $t.Go }}, 0)
 if err := d.Arr(func(d *jx.Decoder) error {
 	var {{ $.NextVar }} {{ $t.Item.Go }}
 	{{- template "json/dec" sub_array_elem $ $t.Item }}
@@ -21,8 +22,7 @@ if err := d.Arr(func(d *jx.Decoder) error {
 
 {{- define "json/dec_array" }}
 {{- $t := $.Type -}}
-{{ $.Var }} = nil
-{{- if $t.NilSemantic.Null }}
+{{- if $t.NilSemantic.Null -}}
 	switch tt := d.Next(); tt {
 	case jx.Null:
 		if err := d.Skip(); err != nil {
@@ -31,7 +31,7 @@ if err := d.Arr(func(d *jx.Decoder) error {
 	default:
 		{{- template "json/dec_array_elems" $ }}
 	}
-{{- else }}
+{{- else -}}
 	{{ template "json/dec_array_elems" $ }}
 {{- end }}
 

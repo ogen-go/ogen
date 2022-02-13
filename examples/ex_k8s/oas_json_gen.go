@@ -242,7 +242,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Decode(d *jx.Decoder) e
 		case "admissionReviewVersions":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.AdmissionReviewVersions = nil
+				s.AdmissionReviewVersions = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -333,7 +333,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Decode(d *jx.Decoder) e
 			}
 		case "rules":
 			if err := func() error {
-				s.Rules = nil
+				s.Rules = make([]IoK8sAPIAdmissionregistrationV1RuleWithOperations, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAdmissionregistrationV1RuleWithOperations
 					if err := elem.Decode(d); err != nil {
@@ -531,7 +531,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Decode(d *
 			}
 		case "webhooks":
 			if err := func() error {
-				s.Webhooks = nil
+				s.Webhooks = make([]IoK8sAPIAdmissionregistrationV1MutatingWebhook, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAdmissionregistrationV1MutatingWebhook
 					if err := elem.Decode(d); err != nil {
@@ -647,7 +647,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Decode
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration
 					if err := elem.Decode(d); err != nil {
@@ -861,7 +861,7 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) Decode(d *jx.Decoder
 		switch string(k) {
 		case "apiGroups":
 			if err := func() error {
-				s.ApiGroups = nil
+				s.ApiGroups = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -880,7 +880,7 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) Decode(d *jx.Decoder
 			}
 		case "apiVersions":
 			if err := func() error {
-				s.ApiVersions = nil
+				s.ApiVersions = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -899,7 +899,7 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) Decode(d *jx.Decoder
 			}
 		case "operations":
 			if err := func() error {
-				s.Operations = nil
+				s.Operations = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -918,7 +918,7 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) Decode(d *jx.Decoder
 			}
 		case "resources":
 			if err := func() error {
-				s.Resources = nil
+				s.Resources = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -1242,7 +1242,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Decode(d *jx.Decoder)
 		case "admissionReviewVersions":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.AdmissionReviewVersions = nil
+				s.AdmissionReviewVersions = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -1323,7 +1323,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Decode(d *jx.Decoder)
 			}
 		case "rules":
 			if err := func() error {
-				s.Rules = nil
+				s.Rules = make([]IoK8sAPIAdmissionregistrationV1RuleWithOperations, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAdmissionregistrationV1RuleWithOperations
 					if err := elem.Decode(d); err != nil {
@@ -1521,7 +1521,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Decode(d
 			}
 		case "webhooks":
 			if err := func() error {
-				s.Webhooks = nil
+				s.Webhooks = make([]IoK8sAPIAdmissionregistrationV1ValidatingWebhook, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAdmissionregistrationV1ValidatingWebhook
 					if err := elem.Decode(d); err != nil {
@@ -1637,7 +1637,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Deco
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration
 					if err := elem.Decode(d); err != nil {
@@ -1892,7 +1892,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) Decode(d *jx.Dec
 			}
 		case "decodableVersions":
 			if err := func() error {
-				s.DecodableVersions = nil
+				s.DecodableVersions = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -2385,7 +2385,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Decode(d *jx.Decod
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIApiserverinternalV1alpha1StorageVersion, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIApiserverinternalV1alpha1StorageVersion
 					if err := elem.Decode(d); err != nil {
@@ -2590,7 +2590,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) Decode(d *jx.Dec
 			}
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition
 					if err := elem.Decode(d); err != nil {
@@ -2607,7 +2607,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) Decode(d *jx.Dec
 			}
 		case "storageVersions":
 			if err := func() error {
-				s.StorageVersions = nil
+				s.StorageVersions = make([]IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion
 					if err := elem.Decode(d); err != nil {
@@ -2904,7 +2904,7 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIAppsV1ControllerRevision, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAppsV1ControllerRevision
 					if err := elem.Decode(d); err != nil {
@@ -3394,7 +3394,7 @@ func (s *IoK8sAPIAppsV1DaemonSetList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIAppsV1DaemonSet, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAppsV1DaemonSet
 					if err := elem.Decode(d); err != nil {
@@ -3783,7 +3783,7 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 			}
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPIAppsV1DaemonSetCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAppsV1DaemonSetCondition
 					if err := elem.Decode(d); err != nil {
@@ -4443,7 +4443,7 @@ func (s *IoK8sAPIAppsV1DeploymentList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIAppsV1Deployment, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAppsV1Deployment
 					if err := elem.Decode(d); err != nil {
@@ -4917,7 +4917,7 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) Decode(d *jx.Decoder) error {
 			}
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPIAppsV1DeploymentCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAppsV1DeploymentCondition
 					if err := elem.Decode(d); err != nil {
@@ -5483,7 +5483,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIAppsV1ReplicaSet, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAppsV1ReplicaSet
 					if err := elem.Decode(d); err != nil {
@@ -5833,7 +5833,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) Decode(d *jx.Decoder) error {
 			}
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPIAppsV1ReplicaSetCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAppsV1ReplicaSetCondition
 					if err := elem.Decode(d); err != nil {
@@ -6556,7 +6556,7 @@ func (s *IoK8sAPIAppsV1StatefulSetList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIAppsV1StatefulSet, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAppsV1StatefulSet
 					if err := elem.Decode(d); err != nil {
@@ -6848,7 +6848,7 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 			}
 		case "volumeClaimTemplates":
 			if err := func() error {
-				s.VolumeClaimTemplates = nil
+				s.VolumeClaimTemplates = make([]IoK8sAPICoreV1PersistentVolumeClaim, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1PersistentVolumeClaim
 					if err := elem.Decode(d); err != nil {
@@ -7062,7 +7062,7 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 			}
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPIAppsV1StatefulSetCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAppsV1StatefulSetCondition
 					if err := elem.Decode(d); err != nil {
@@ -7637,7 +7637,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Decode(d *jx.Decoder)
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIAutoscalingV1HorizontalPodAutoscaler, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAutoscalingV1HorizontalPodAutoscaler
 					if err := elem.Decode(d); err != nil {
@@ -9473,7 +9473,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Decode(d *jx.Dec
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler
 					if err := elem.Decode(d); err != nil {
@@ -9636,7 +9636,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 			}
 		case "metrics":
 			if err := func() error {
-				s.Metrics = nil
+				s.Metrics = make([]IoK8sAPIAutoscalingV2beta1MetricSpec, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAutoscalingV2beta1MetricSpec
 					if err := elem.Decode(d); err != nil {
@@ -9817,7 +9817,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Decode(d *jx.D
 		case "conditions":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition
 					if err := elem.Decode(d); err != nil {
@@ -9834,7 +9834,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Decode(d *jx.D
 			}
 		case "currentMetrics":
 			if err := func() error {
-				s.CurrentMetrics = nil
+				s.CurrentMetrics = make([]IoK8sAPIAutoscalingV2beta1MetricStatus, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAutoscalingV2beta1MetricStatus
 					if err := elem.Decode(d); err != nil {
@@ -11978,7 +11978,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) Decode(d *jx.Decoder) error 
 		switch string(k) {
 		case "policies":
 			if err := func() error {
-				s.Policies = nil
+				s.Policies = make([]IoK8sAPIAutoscalingV2beta2HPAScalingPolicy, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAutoscalingV2beta2HPAScalingPolicy
 					if err := elem.Decode(d); err != nil {
@@ -12514,7 +12514,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Decode(d *jx.Dec
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler
 					if err := elem.Decode(d); err != nil {
@@ -12700,7 +12700,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 			}
 		case "metrics":
 			if err := func() error {
-				s.Metrics = nil
+				s.Metrics = make([]IoK8sAPIAutoscalingV2beta2MetricSpec, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAutoscalingV2beta2MetricSpec
 					if err := elem.Decode(d); err != nil {
@@ -12881,7 +12881,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Decode(d *jx.D
 		case "conditions":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition
 					if err := elem.Decode(d); err != nil {
@@ -12898,7 +12898,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Decode(d *jx.D
 			}
 		case "currentMetrics":
 			if err := func() error {
-				s.CurrentMetrics = nil
+				s.CurrentMetrics = make([]IoK8sAPIAutoscalingV2beta2MetricStatus, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIAutoscalingV2beta2MetricStatus
 					if err := elem.Decode(d); err != nil {
@@ -14652,7 +14652,7 @@ func (s *IoK8sAPIBatchV1CronJobList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIBatchV1CronJob, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIBatchV1CronJob
 					if err := elem.Decode(d); err != nil {
@@ -15014,7 +15014,7 @@ func (s *IoK8sAPIBatchV1CronJobStatus) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "active":
 			if err := func() error {
-				s.Active = nil
+				s.Active = make([]IoK8sAPICoreV1ObjectReference, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1ObjectReference
 					if err := elem.Decode(d); err != nil {
@@ -15495,7 +15495,7 @@ func (s *IoK8sAPIBatchV1JobList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIBatchV1Job, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIBatchV1Job
 					if err := elem.Decode(d); err != nil {
@@ -16032,7 +16032,7 @@ func (s *IoK8sAPIBatchV1JobStatus) Decode(d *jx.Decoder) error {
 			}
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPIBatchV1JobCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIBatchV1JobCondition
 					if err := elem.Decode(d); err != nil {
@@ -16249,7 +16249,7 @@ func (s *IoK8sAPIBatchV1UncountedTerminatedPods) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "failed":
 			if err := func() error {
-				s.Failed = nil
+				s.Failed = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -16268,7 +16268,7 @@ func (s *IoK8sAPIBatchV1UncountedTerminatedPods) Decode(d *jx.Decoder) error {
 			}
 		case "succeeded":
 			if err := func() error {
-				s.Succeeded = nil
+				s.Succeeded = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -16533,7 +16533,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIBatchV1beta1CronJob, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIBatchV1beta1CronJob
 					if err := elem.Decode(d); err != nil {
@@ -16895,7 +16895,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobStatus) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "active":
 			if err := func() error {
-				s.Active = nil
+				s.Active = make([]IoK8sAPICoreV1ObjectReference, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1ObjectReference
 					if err := elem.Decode(d); err != nil {
@@ -17481,7 +17481,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) Decode(d *jx.Decod
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICertificatesV1CertificateSigningRequest, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICertificatesV1CertificateSigningRequest
 					if err := elem.Decode(d); err != nil {
@@ -17713,7 +17713,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Decode(d *jx.Decod
 			}
 		case "groups":
 			if err := func() error {
-				s.Groups = nil
+				s.Groups = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -17766,7 +17766,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Decode(d *jx.Decod
 			}
 		case "usages":
 			if err := func() error {
-				s.Usages = nil
+				s.Usages = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -17882,7 +17882,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Decode(d *jx.D
 		default:
 			var elem []string
 			if err := func() error {
-				elem = nil
+				elem = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elemElem string
 					v, err := d.Str()
@@ -17975,7 +17975,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) Decode(d *jx.Dec
 			}
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPICertificatesV1CertificateSigningRequestCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICertificatesV1CertificateSigningRequestCondition
 					if err := elem.Decode(d); err != nil {
@@ -18215,7 +18215,7 @@ func (s *IoK8sAPICoordinationV1LeaseList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoordinationV1Lease, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoordinationV1Lease
 					if err := elem.Decode(d); err != nil {
@@ -19869,7 +19869,7 @@ func (s *IoK8sAPICoreV1Capabilities) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "add":
 			if err := func() error {
-				s.Add = nil
+				s.Add = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -19888,7 +19888,7 @@ func (s *IoK8sAPICoreV1Capabilities) Decode(d *jx.Decoder) error {
 			}
 		case "drop":
 			if err := func() error {
-				s.Drop = nil
+				s.Drop = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -20013,7 +20013,7 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) Decode(d *jx.Decoder) error
 		case "monitors":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Monitors = nil
+				s.Monitors = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -20220,7 +20220,7 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) Decode(d *jx.Decoder) error {
 		case "monitors":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Monitors = nil
+				s.Monitors = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -20946,7 +20946,7 @@ func (s *IoK8sAPICoreV1ComponentStatus) Decode(d *jx.Decoder) error {
 			}
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPICoreV1ComponentCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1ComponentCondition
 					if err := elem.Decode(d); err != nil {
@@ -21082,7 +21082,7 @@ func (s *IoK8sAPICoreV1ComponentStatusList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1ComponentStatus, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1ComponentStatus
 					if err := elem.Decode(d); err != nil {
@@ -21731,7 +21731,7 @@ func (s *IoK8sAPICoreV1ConfigMapList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1ConfigMap, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1ConfigMap
 					if err := elem.Decode(d); err != nil {
@@ -22048,7 +22048,7 @@ func (s *IoK8sAPICoreV1ConfigMapProjection) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "items":
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1KeyToPath, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1KeyToPath
 					if err := elem.Decode(d); err != nil {
@@ -22191,7 +22191,7 @@ func (s *IoK8sAPICoreV1ConfigMapVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1KeyToPath, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1KeyToPath
 					if err := elem.Decode(d); err != nil {
@@ -22589,7 +22589,7 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "args":
 			if err := func() error {
-				s.Args = nil
+				s.Args = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -22608,7 +22608,7 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 			}
 		case "command":
 			if err := func() error {
-				s.Command = nil
+				s.Command = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -22627,7 +22627,7 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 			}
 		case "env":
 			if err := func() error {
-				s.Env = nil
+				s.Env = make([]IoK8sAPICoreV1EnvVar, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1EnvVar
 					if err := elem.Decode(d); err != nil {
@@ -22644,7 +22644,7 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 			}
 		case "envFrom":
 			if err := func() error {
-				s.EnvFrom = nil
+				s.EnvFrom = make([]IoK8sAPICoreV1EnvFromSource, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1EnvFromSource
 					if err := elem.Decode(d); err != nil {
@@ -22713,7 +22713,7 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 			}
 		case "ports":
 			if err := func() error {
-				s.Ports = nil
+				s.Ports = make([]IoK8sAPICoreV1ContainerPort, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1ContainerPort
 					if err := elem.Decode(d); err != nil {
@@ -22820,7 +22820,7 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 			}
 		case "volumeDevices":
 			if err := func() error {
-				s.VolumeDevices = nil
+				s.VolumeDevices = make([]IoK8sAPICoreV1VolumeDevice, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1VolumeDevice
 					if err := elem.Decode(d); err != nil {
@@ -22837,7 +22837,7 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 			}
 		case "volumeMounts":
 			if err := func() error {
-				s.VolumeMounts = nil
+				s.VolumeMounts = make([]IoK8sAPICoreV1VolumeMount, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1VolumeMount
 					if err := elem.Decode(d); err != nil {
@@ -22968,7 +22968,7 @@ func (s *IoK8sAPICoreV1ContainerImage) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "names":
 			if err := func() error {
-				s.Names = nil
+				s.Names = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -23999,7 +23999,7 @@ func (s *IoK8sAPICoreV1DownwardAPIProjection) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "items":
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1DownwardAPIVolumeFile, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1DownwardAPIVolumeFile
 					if err := elem.Decode(d); err != nil {
@@ -24249,7 +24249,7 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1DownwardAPIVolumeFile, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1DownwardAPIVolumeFile
 					if err := elem.Decode(d); err != nil {
@@ -24754,7 +24754,7 @@ func (s *IoK8sAPICoreV1EndpointSubset) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "addresses":
 			if err := func() error {
-				s.Addresses = nil
+				s.Addresses = make([]IoK8sAPICoreV1EndpointAddress, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1EndpointAddress
 					if err := elem.Decode(d); err != nil {
@@ -24771,7 +24771,7 @@ func (s *IoK8sAPICoreV1EndpointSubset) Decode(d *jx.Decoder) error {
 			}
 		case "notReadyAddresses":
 			if err := func() error {
-				s.NotReadyAddresses = nil
+				s.NotReadyAddresses = make([]IoK8sAPICoreV1EndpointAddress, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1EndpointAddress
 					if err := elem.Decode(d); err != nil {
@@ -24788,7 +24788,7 @@ func (s *IoK8sAPICoreV1EndpointSubset) Decode(d *jx.Decoder) error {
 			}
 		case "ports":
 			if err := func() error {
-				s.Ports = nil
+				s.Ports = make([]IoK8sAPICoreV1EndpointPort, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1EndpointPort
 					if err := elem.Decode(d); err != nil {
@@ -24931,7 +24931,7 @@ func (s *IoK8sAPICoreV1Endpoints) Decode(d *jx.Decoder) error {
 			}
 		case "subsets":
 			if err := func() error {
-				s.Subsets = nil
+				s.Subsets = make([]IoK8sAPICoreV1EndpointSubset, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1EndpointSubset
 					if err := elem.Decode(d); err != nil {
@@ -25047,7 +25047,7 @@ func (s *IoK8sAPICoreV1EndpointsList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1Endpoints, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1Endpoints
 					if err := elem.Decode(d); err != nil {
@@ -25839,7 +25839,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "args":
 			if err := func() error {
-				s.Args = nil
+				s.Args = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -25858,7 +25858,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 			}
 		case "command":
 			if err := func() error {
-				s.Command = nil
+				s.Command = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -25877,7 +25877,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 			}
 		case "env":
 			if err := func() error {
-				s.Env = nil
+				s.Env = make([]IoK8sAPICoreV1EnvVar, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1EnvVar
 					if err := elem.Decode(d); err != nil {
@@ -25894,7 +25894,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 			}
 		case "envFrom":
 			if err := func() error {
-				s.EnvFrom = nil
+				s.EnvFrom = make([]IoK8sAPICoreV1EnvFromSource, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1EnvFromSource
 					if err := elem.Decode(d); err != nil {
@@ -25963,7 +25963,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 			}
 		case "ports":
 			if err := func() error {
-				s.Ports = nil
+				s.Ports = make([]IoK8sAPICoreV1ContainerPort, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1ContainerPort
 					if err := elem.Decode(d); err != nil {
@@ -26080,7 +26080,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 			}
 		case "volumeDevices":
 			if err := func() error {
-				s.VolumeDevices = nil
+				s.VolumeDevices = make([]IoK8sAPICoreV1VolumeDevice, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1VolumeDevice
 					if err := elem.Decode(d); err != nil {
@@ -26097,7 +26097,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 			}
 		case "volumeMounts":
 			if err := func() error {
-				s.VolumeMounts = nil
+				s.VolumeMounts = make([]IoK8sAPICoreV1VolumeMount, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1VolumeMount
 					if err := elem.Decode(d); err != nil {
@@ -26731,7 +26731,7 @@ func (s *IoK8sAPICoreV1EventList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1Event, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1Event
 					if err := elem.Decode(d); err != nil {
@@ -27013,7 +27013,7 @@ func (s *IoK8sAPICoreV1ExecAction) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "command":
 			if err := func() error {
-				s.Command = nil
+				s.Command = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -27183,7 +27183,7 @@ func (s *IoK8sAPICoreV1FCVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "targetWWNs":
 			if err := func() error {
-				s.TargetWWNs = nil
+				s.TargetWWNs = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -27202,7 +27202,7 @@ func (s *IoK8sAPICoreV1FCVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "wwids":
 			if err := func() error {
-				s.Wwids = nil
+				s.Wwids = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -28408,7 +28408,7 @@ func (s *IoK8sAPICoreV1HTTPGetAction) Decode(d *jx.Decoder) error {
 			}
 		case "httpHeaders":
 			if err := func() error {
-				s.HttpHeaders = nil
+				s.HttpHeaders = make([]IoK8sAPICoreV1HTTPHeader, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1HTTPHeader
 					if err := elem.Decode(d); err != nil {
@@ -28770,7 +28770,7 @@ func (s *IoK8sAPICoreV1HostAlias) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "hostnames":
 			if err := func() error {
-				s.Hostnames = nil
+				s.Hostnames = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -29141,7 +29141,7 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) error 
 			}
 		case "portals":
 			if err := func() error {
-				s.Portals = nil
+				s.Portals = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -29460,7 +29460,7 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "portals":
 			if err := func() error {
-				s.Portals = nil
+				s.Portals = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -30458,7 +30458,7 @@ func (s *IoK8sAPICoreV1LimitRangeList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1LimitRange, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1LimitRange
 					if err := elem.Decode(d); err != nil {
@@ -30583,7 +30583,7 @@ func (s *IoK8sAPICoreV1LimitRangeSpec) Decode(d *jx.Decoder) error {
 		case "limits":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Limits = nil
+				s.Limits = make([]IoK8sAPICoreV1LimitRangeItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1LimitRangeItem
 					if err := elem.Decode(d); err != nil {
@@ -30735,7 +30735,7 @@ func (s *IoK8sAPICoreV1LoadBalancerIngress) Decode(d *jx.Decoder) error {
 			}
 		case "ports":
 			if err := func() error {
-				s.Ports = nil
+				s.Ports = make([]IoK8sAPICoreV1PortStatus, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1PortStatus
 					if err := elem.Decode(d); err != nil {
@@ -30809,7 +30809,7 @@ func (s *IoK8sAPICoreV1LoadBalancerStatus) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "ingress":
 			if err := func() error {
-				s.Ingress = nil
+				s.Ingress = make([]IoK8sAPICoreV1LoadBalancerIngress, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1LoadBalancerIngress
 					if err := elem.Decode(d); err != nil {
@@ -31538,7 +31538,7 @@ func (s *IoK8sAPICoreV1NamespaceList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1Namespace, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1Namespace
 					if err := elem.Decode(d); err != nil {
@@ -31664,7 +31664,7 @@ func (s *IoK8sAPICoreV1NamespaceSpec) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "finalizers":
 			if err := func() error {
-				s.Finalizers = nil
+				s.Finalizers = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -31753,7 +31753,7 @@ func (s *IoK8sAPICoreV1NamespaceStatus) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPICoreV1NamespaceCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1NamespaceCondition
 					if err := elem.Decode(d); err != nil {
@@ -32103,7 +32103,7 @@ func (s *IoK8sAPICoreV1NodeAffinity) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "preferredDuringSchedulingIgnoredDuringExecution":
 			if err := func() error {
-				s.PreferredDuringSchedulingIgnoredDuringExecution = nil
+				s.PreferredDuringSchedulingIgnoredDuringExecution = make([]IoK8sAPICoreV1PreferredSchedulingTerm, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1PreferredSchedulingTerm
 					if err := elem.Decode(d); err != nil {
@@ -32661,7 +32661,7 @@ func (s *IoK8sAPICoreV1NodeList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1Node, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1Node
 					if err := elem.Decode(d); err != nil {
@@ -32786,7 +32786,7 @@ func (s *IoK8sAPICoreV1NodeSelector) Decode(d *jx.Decoder) error {
 		case "nodeSelectorTerms":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.NodeSelectorTerms = nil
+				s.NodeSelectorTerms = make([]IoK8sAPICoreV1NodeSelectorTerm, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1NodeSelectorTerm
 					if err := elem.Decode(d); err != nil {
@@ -32931,7 +32931,7 @@ func (s *IoK8sAPICoreV1NodeSelectorRequirement) Decode(d *jx.Decoder) error {
 			}
 		case "values":
 			if err := func() error {
-				s.Values = nil
+				s.Values = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -33064,7 +33064,7 @@ func (s *IoK8sAPICoreV1NodeSelectorTerm) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "matchExpressions":
 			if err := func() error {
-				s.MatchExpressions = nil
+				s.MatchExpressions = make([]IoK8sAPICoreV1NodeSelectorRequirement, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1NodeSelectorRequirement
 					if err := elem.Decode(d); err != nil {
@@ -33081,7 +33081,7 @@ func (s *IoK8sAPICoreV1NodeSelectorTerm) Decode(d *jx.Decoder) error {
 			}
 		case "matchFields":
 			if err := func() error {
-				s.MatchFields = nil
+				s.MatchFields = make([]IoK8sAPICoreV1NodeSelectorRequirement, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1NodeSelectorRequirement
 					if err := elem.Decode(d); err != nil {
@@ -33275,7 +33275,7 @@ func (s *IoK8sAPICoreV1NodeSpec) Decode(d *jx.Decoder) error {
 			}
 		case "podCIDRs":
 			if err := func() error {
-				s.PodCIDRs = nil
+				s.PodCIDRs = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -33304,7 +33304,7 @@ func (s *IoK8sAPICoreV1NodeSpec) Decode(d *jx.Decoder) error {
 			}
 		case "taints":
 			if err := func() error {
-				s.Taints = nil
+				s.Taints = make([]IoK8sAPICoreV1Taint, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1Taint
 					if err := elem.Decode(d); err != nil {
@@ -33566,7 +33566,7 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "addresses":
 			if err := func() error {
-				s.Addresses = nil
+				s.Addresses = make([]IoK8sAPICoreV1NodeAddress, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1NodeAddress
 					if err := elem.Decode(d); err != nil {
@@ -33603,7 +33603,7 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 			}
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPICoreV1NodeCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1NodeCondition
 					if err := elem.Decode(d); err != nil {
@@ -33640,7 +33640,7 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 			}
 		case "images":
 			if err := func() error {
-				s.Images = nil
+				s.Images = make([]IoK8sAPICoreV1ContainerImage, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1ContainerImage
 					if err := elem.Decode(d); err != nil {
@@ -33677,7 +33677,7 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 			}
 		case "volumesAttached":
 			if err := func() error {
-				s.VolumesAttached = nil
+				s.VolumesAttached = make([]IoK8sAPICoreV1AttachedVolume, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1AttachedVolume
 					if err := elem.Decode(d); err != nil {
@@ -33694,7 +33694,7 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 			}
 		case "volumesInUse":
 			if err := func() error {
-				s.VolumesInUse = nil
+				s.VolumesInUse = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -34980,7 +34980,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1PersistentVolumeClaim, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1PersistentVolumeClaim
 					if err := elem.Decode(d); err != nil {
@@ -35197,7 +35197,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "accessModes":
 			if err := func() error {
-				s.AccessModes = nil
+				s.AccessModes = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -35394,7 +35394,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) Decode(d *jx.Decoder) error 
 		switch string(k) {
 		case "accessModes":
 			if err := func() error {
-				s.AccessModes = nil
+				s.AccessModes = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -35423,7 +35423,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) Decode(d *jx.Decoder) error 
 			}
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPICoreV1PersistentVolumeClaimCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1PersistentVolumeClaimCondition
 					if err := elem.Decode(d); err != nil {
@@ -35821,7 +35821,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1PersistentVolume, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1PersistentVolume
 					if err := elem.Decode(d); err != nil {
@@ -36336,7 +36336,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "accessModes":
 			if err := func() error {
-				s.AccessModes = nil
+				s.AccessModes = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -36515,7 +36515,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 			}
 		case "mountOptions":
 			if err := func() error {
-				s.MountOptions = nil
+				s.MountOptions = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -37151,7 +37151,7 @@ func (s *IoK8sAPICoreV1PodAffinity) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "preferredDuringSchedulingIgnoredDuringExecution":
 			if err := func() error {
-				s.PreferredDuringSchedulingIgnoredDuringExecution = nil
+				s.PreferredDuringSchedulingIgnoredDuringExecution = make([]IoK8sAPICoreV1WeightedPodAffinityTerm, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1WeightedPodAffinityTerm
 					if err := elem.Decode(d); err != nil {
@@ -37168,7 +37168,7 @@ func (s *IoK8sAPICoreV1PodAffinity) Decode(d *jx.Decoder) error {
 			}
 		case "requiredDuringSchedulingIgnoredDuringExecution":
 			if err := func() error {
-				s.RequiredDuringSchedulingIgnoredDuringExecution = nil
+				s.RequiredDuringSchedulingIgnoredDuringExecution = make([]IoK8sAPICoreV1PodAffinityTerm, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1PodAffinityTerm
 					if err := elem.Decode(d); err != nil {
@@ -37299,7 +37299,7 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) Decode(d *jx.Decoder) error {
 			}
 		case "namespaces":
 			if err := func() error {
-				s.Namespaces = nil
+				s.Namespaces = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -37444,7 +37444,7 @@ func (s *IoK8sAPICoreV1PodAntiAffinity) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "preferredDuringSchedulingIgnoredDuringExecution":
 			if err := func() error {
-				s.PreferredDuringSchedulingIgnoredDuringExecution = nil
+				s.PreferredDuringSchedulingIgnoredDuringExecution = make([]IoK8sAPICoreV1WeightedPodAffinityTerm, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1WeightedPodAffinityTerm
 					if err := elem.Decode(d); err != nil {
@@ -37461,7 +37461,7 @@ func (s *IoK8sAPICoreV1PodAntiAffinity) Decode(d *jx.Decoder) error {
 			}
 		case "requiredDuringSchedulingIgnoredDuringExecution":
 			if err := func() error {
-				s.RequiredDuringSchedulingIgnoredDuringExecution = nil
+				s.RequiredDuringSchedulingIgnoredDuringExecution = make([]IoK8sAPICoreV1PodAffinityTerm, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1PodAffinityTerm
 					if err := elem.Decode(d); err != nil {
@@ -37783,7 +37783,7 @@ func (s *IoK8sAPICoreV1PodDNSConfig) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "nameservers":
 			if err := func() error {
-				s.Nameservers = nil
+				s.Nameservers = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -37802,7 +37802,7 @@ func (s *IoK8sAPICoreV1PodDNSConfig) Decode(d *jx.Decoder) error {
 			}
 		case "options":
 			if err := func() error {
-				s.Options = nil
+				s.Options = make([]IoK8sAPICoreV1PodDNSConfigOption, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1PodDNSConfigOption
 					if err := elem.Decode(d); err != nil {
@@ -37819,7 +37819,7 @@ func (s *IoK8sAPICoreV1PodDNSConfig) Decode(d *jx.Decoder) error {
 			}
 		case "searches":
 			if err := func() error {
-				s.Searches = nil
+				s.Searches = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -38070,7 +38070,7 @@ func (s *IoK8sAPICoreV1PodList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1Pod, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1Pod
 					if err := elem.Decode(d); err != nil {
@@ -38482,7 +38482,7 @@ func (s *IoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 			}
 		case "supplementalGroups":
 			if err := func() error {
-				s.SupplementalGroups = nil
+				s.SupplementalGroups = make([]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int64
 					v, err := d.Int64()
@@ -38501,7 +38501,7 @@ func (s *IoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 			}
 		case "sysctls":
 			if err := func() error {
-				s.Sysctls = nil
+				s.Sysctls = make([]IoK8sAPICoreV1Sysctl, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1Sysctl
 					if err := elem.Decode(d); err != nil {
@@ -39059,7 +39059,7 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 		case "containers":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				s.Containers = nil
+				s.Containers = make([]IoK8sAPICoreV1Container, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1Container
 					if err := elem.Decode(d); err != nil {
@@ -39106,7 +39106,7 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 			}
 		case "ephemeralContainers":
 			if err := func() error {
-				s.EphemeralContainers = nil
+				s.EphemeralContainers = make([]IoK8sAPICoreV1EphemeralContainer, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1EphemeralContainer
 					if err := elem.Decode(d); err != nil {
@@ -39123,7 +39123,7 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 			}
 		case "hostAliases":
 			if err := func() error {
-				s.HostAliases = nil
+				s.HostAliases = make([]IoK8sAPICoreV1HostAlias, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1HostAlias
 					if err := elem.Decode(d); err != nil {
@@ -39180,7 +39180,7 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 			}
 		case "imagePullSecrets":
 			if err := func() error {
-				s.ImagePullSecrets = nil
+				s.ImagePullSecrets = make([]IoK8sAPICoreV1LocalObjectReference, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1LocalObjectReference
 					if err := elem.Decode(d); err != nil {
@@ -39197,7 +39197,7 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 			}
 		case "initContainers":
 			if err := func() error {
-				s.InitContainers = nil
+				s.InitContainers = make([]IoK8sAPICoreV1Container, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1Container
 					if err := elem.Decode(d); err != nil {
@@ -39274,7 +39274,7 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 			}
 		case "readinessGates":
 			if err := func() error {
-				s.ReadinessGates = nil
+				s.ReadinessGates = make([]IoK8sAPICoreV1PodReadinessGate, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1PodReadinessGate
 					if err := elem.Decode(d); err != nil {
@@ -39391,7 +39391,7 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 			}
 		case "tolerations":
 			if err := func() error {
-				s.Tolerations = nil
+				s.Tolerations = make([]IoK8sAPICoreV1Toleration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1Toleration
 					if err := elem.Decode(d); err != nil {
@@ -39408,7 +39408,7 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 			}
 		case "topologySpreadConstraints":
 			if err := func() error {
-				s.TopologySpreadConstraints = nil
+				s.TopologySpreadConstraints = make([]IoK8sAPICoreV1TopologySpreadConstraint, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1TopologySpreadConstraint
 					if err := elem.Decode(d); err != nil {
@@ -39425,7 +39425,7 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 			}
 		case "volumes":
 			if err := func() error {
-				s.Volumes = nil
+				s.Volumes = make([]IoK8sAPICoreV1Volume, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1Volume
 					if err := elem.Decode(d); err != nil {
@@ -39849,7 +39849,7 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPICoreV1PodCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1PodCondition
 					if err := elem.Decode(d); err != nil {
@@ -39866,7 +39866,7 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 			}
 		case "containerStatuses":
 			if err := func() error {
-				s.ContainerStatuses = nil
+				s.ContainerStatuses = make([]IoK8sAPICoreV1ContainerStatus, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1ContainerStatus
 					if err := elem.Decode(d); err != nil {
@@ -39883,7 +39883,7 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 			}
 		case "ephemeralContainerStatuses":
 			if err := func() error {
-				s.EphemeralContainerStatuses = nil
+				s.EphemeralContainerStatuses = make([]IoK8sAPICoreV1ContainerStatus, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1ContainerStatus
 					if err := elem.Decode(d); err != nil {
@@ -39910,7 +39910,7 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 			}
 		case "initContainerStatuses":
 			if err := func() error {
-				s.InitContainerStatuses = nil
+				s.InitContainerStatuses = make([]IoK8sAPICoreV1ContainerStatus, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1ContainerStatus
 					if err := elem.Decode(d); err != nil {
@@ -39967,7 +39967,7 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 			}
 		case "podIPs":
 			if err := func() error {
-				s.PodIPs = nil
+				s.PodIPs = make([]IoK8sAPICoreV1PodIP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1PodIP
 					if err := elem.Decode(d); err != nil {
@@ -40237,7 +40237,7 @@ func (s *IoK8sAPICoreV1PodTemplateList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1PodTemplate, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1PodTemplate
 					if err := elem.Decode(d); err != nil {
@@ -41069,7 +41069,7 @@ func (s *IoK8sAPICoreV1ProjectedVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "sources":
 			if err := func() error {
-				s.Sources = nil
+				s.Sources = make([]IoK8sAPICoreV1VolumeProjection, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1VolumeProjection
 					if err := elem.Decode(d); err != nil {
@@ -41436,7 +41436,7 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) Decode(d *jx.Decoder) error {
 		case "monitors":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				s.Monitors = nil
+				s.Monitors = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -41685,7 +41685,7 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) Decode(d *jx.Decoder) error {
 		case "monitors":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				s.Monitors = nil
+				s.Monitors = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -42197,7 +42197,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1ReplicationController, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1ReplicationController
 					if err := elem.Decode(d); err != nil {
@@ -42573,7 +42573,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) Decode(d *jx.Decoder) error 
 			}
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPICoreV1ReplicationControllerCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1ReplicationControllerCondition
 					if err := elem.Decode(d); err != nil {
@@ -43043,7 +43043,7 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1ResourceQuota, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1ResourceQuota
 					if err := elem.Decode(d); err != nil {
@@ -43215,7 +43215,7 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) Decode(d *jx.Decoder) error {
 			}
 		case "scopes":
 			if err := func() error {
-				s.Scopes = nil
+				s.Scopes = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -44390,7 +44390,7 @@ func (s *IoK8sAPICoreV1ScopeSelector) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "matchExpressions":
 			if err := func() error {
-				s.MatchExpressions = nil
+				s.MatchExpressions = make([]IoK8sAPICoreV1ScopedResourceSelectorRequirement, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1ScopedResourceSelectorRequirement
 					if err := elem.Decode(d); err != nil {
@@ -44503,7 +44503,7 @@ func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) Decode(d *jx.Decoder) 
 			}
 		case "values":
 			if err := func() error {
-				s.Values = nil
+				s.Values = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -45214,7 +45214,7 @@ func (s *IoK8sAPICoreV1SecretList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1Secret, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1Secret
 					if err := elem.Decode(d); err != nil {
@@ -45366,7 +45366,7 @@ func (s *IoK8sAPICoreV1SecretProjection) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "items":
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1KeyToPath, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1KeyToPath
 					if err := elem.Decode(d); err != nil {
@@ -45640,7 +45640,7 @@ func (s *IoK8sAPICoreV1SecretVolumeSource) Decode(d *jx.Decoder) error {
 			}
 		case "items":
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1KeyToPath, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1KeyToPath
 					if err := elem.Decode(d); err != nil {
@@ -46263,7 +46263,7 @@ func (s *IoK8sAPICoreV1ServiceAccount) Decode(d *jx.Decoder) error {
 			}
 		case "imagePullSecrets":
 			if err := func() error {
-				s.ImagePullSecrets = nil
+				s.ImagePullSecrets = make([]IoK8sAPICoreV1LocalObjectReference, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1LocalObjectReference
 					if err := elem.Decode(d); err != nil {
@@ -46300,7 +46300,7 @@ func (s *IoK8sAPICoreV1ServiceAccount) Decode(d *jx.Decoder) error {
 			}
 		case "secrets":
 			if err := func() error {
-				s.Secrets = nil
+				s.Secrets = make([]IoK8sAPICoreV1ObjectReference, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1ObjectReference
 					if err := elem.Decode(d); err != nil {
@@ -46416,7 +46416,7 @@ func (s *IoK8sAPICoreV1ServiceAccountList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1ServiceAccount, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1ServiceAccount
 					if err := elem.Decode(d); err != nil {
@@ -46717,7 +46717,7 @@ func (s *IoK8sAPICoreV1ServiceList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPICoreV1Service, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1Service
 					if err := elem.Decode(d); err != nil {
@@ -47341,7 +47341,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 			}
 		case "clusterIPs":
 			if err := func() error {
-				s.ClusterIPs = nil
+				s.ClusterIPs = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -47360,7 +47360,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 			}
 		case "externalIPs":
 			if err := func() error {
-				s.ExternalIPs = nil
+				s.ExternalIPs = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -47419,7 +47419,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 			}
 		case "ipFamilies":
 			if err := func() error {
-				s.IpFamilies = nil
+				s.IpFamilies = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -47468,7 +47468,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 			}
 		case "loadBalancerSourceRanges":
 			if err := func() error {
-				s.LoadBalancerSourceRanges = nil
+				s.LoadBalancerSourceRanges = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -47487,7 +47487,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 			}
 		case "ports":
 			if err := func() error {
-				s.Ports = nil
+				s.Ports = make([]IoK8sAPICoreV1ServicePort, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1ServicePort
 					if err := elem.Decode(d); err != nil {
@@ -47677,7 +47677,7 @@ func (s *IoK8sAPICoreV1ServiceStatus) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sApimachineryPkgApisMetaV1Condition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApimachineryPkgApisMetaV1Condition
 					if err := elem.Decode(d); err != nil {
@@ -48641,7 +48641,7 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) Decode(d *jx.Decoder) e
 		case "values":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Values = nil
+				s.Values = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -48749,7 +48749,7 @@ func (s *IoK8sAPICoreV1TopologySelectorTerm) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "matchLabelExpressions":
 			if err := func() error {
-				s.MatchLabelExpressions = nil
+				s.MatchLabelExpressions = make([]IoK8sAPICoreV1TopologySelectorLabelRequirement, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1TopologySelectorLabelRequirement
 					if err := elem.Decode(d); err != nil {
@@ -50748,7 +50748,7 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Decode(d *jx.Decoder) error {
 		case "addresses":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Addresses = nil
+				s.Addresses = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -51080,7 +51080,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointHints) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "forZones":
 			if err := func() error {
-				s.ForZones = nil
+				s.ForZones = make([]IoK8sAPIDiscoveryV1ForZone, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIDiscoveryV1ForZone
 					if err := elem.Decode(d); err != nil {
@@ -51358,7 +51358,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) Decode(d *jx.Decoder) error {
 		case "endpoints":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Endpoints = nil
+				s.Endpoints = make([]IoK8sAPIDiscoveryV1Endpoint, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIDiscoveryV1Endpoint
 					if err := elem.Decode(d); err != nil {
@@ -51395,7 +51395,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) Decode(d *jx.Decoder) error {
 			}
 		case "ports":
 			if err := func() error {
-				s.Ports = nil
+				s.Ports = make([]IoK8sAPIDiscoveryV1EndpointPort, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIDiscoveryV1EndpointPort
 					if err := elem.Decode(d); err != nil {
@@ -51543,7 +51543,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIDiscoveryV1EndpointSlice, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIDiscoveryV1EndpointSlice
 					if err := elem.Decode(d); err != nil {
@@ -51815,7 +51815,7 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Decode(d *jx.Decoder) error {
 		case "addresses":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Addresses = nil
+				s.Addresses = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -52084,7 +52084,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointHints) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "forZones":
 			if err := func() error {
-				s.ForZones = nil
+				s.ForZones = make([]IoK8sAPIDiscoveryV1beta1ForZone, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIDiscoveryV1beta1ForZone
 					if err := elem.Decode(d); err != nil {
@@ -52362,7 +52362,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) Decode(d *jx.Decoder) error {
 		case "endpoints":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Endpoints = nil
+				s.Endpoints = make([]IoK8sAPIDiscoveryV1beta1Endpoint, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIDiscoveryV1beta1Endpoint
 					if err := elem.Decode(d); err != nil {
@@ -52399,7 +52399,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) Decode(d *jx.Decoder) error {
 			}
 		case "ports":
 			if err := func() error {
-				s.Ports = nil
+				s.Ports = make([]IoK8sAPIDiscoveryV1beta1EndpointPort, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIDiscoveryV1beta1EndpointPort
 					if err := elem.Decode(d); err != nil {
@@ -52547,7 +52547,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) Decode(d *jx.Decoder) error 
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIDiscoveryV1beta1EndpointSlice, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIDiscoveryV1beta1EndpointSlice
 					if err := elem.Decode(d); err != nil {
@@ -53286,7 +53286,7 @@ func (s *IoK8sAPIEventsV1EventList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIEventsV1Event, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIEventsV1Event
 					if err := elem.Decode(d); err != nil {
@@ -53995,7 +53995,7 @@ func (s *IoK8sAPIEventsV1beta1EventList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIEventsV1beta1Event, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIEventsV1beta1Event
 					if err := elem.Decode(d); err != nil {
@@ -54654,7 +54654,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIFlowcontrolV1beta1FlowSchema, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIFlowcontrolV1beta1FlowSchema
 					if err := elem.Decode(d); err != nil {
@@ -54844,7 +54844,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Decode(d *jx.Decoder) error {
 			}
 		case "rules":
 			if err := func() error {
-				s.Rules = nil
+				s.Rules = make([]IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects
 					if err := elem.Decode(d); err != nil {
@@ -54950,7 +54950,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Decode(d *jx.Decoder) error
 		switch string(k) {
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition
 					if err := elem.Decode(d); err != nil {
@@ -55317,7 +55317,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Decode(d *jx.Decoder) 
 		case "nonResourceURLs":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.NonResourceURLs = nil
+				s.NonResourceURLs = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -55337,7 +55337,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Decode(d *jx.Decoder) 
 		case "verbs":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Verbs = nil
+				s.Verbs = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -55493,7 +55493,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Decode(d *jx.Decoder
 		switch string(k) {
 		case "nonResourceRules":
 			if err := func() error {
-				s.NonResourceRules = nil
+				s.NonResourceRules = make([]IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule
 					if err := elem.Decode(d); err != nil {
@@ -55510,7 +55510,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Decode(d *jx.Decoder
 			}
 		case "resourceRules":
 			if err := func() error {
-				s.ResourceRules = nil
+				s.ResourceRules = make([]IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule
 					if err := elem.Decode(d); err != nil {
@@ -55528,7 +55528,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Decode(d *jx.Decoder
 		case "subjects":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Subjects = nil
+				s.Subjects = make([]IoK8sAPIFlowcontrolV1beta1Subject, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIFlowcontrolV1beta1Subject
 					if err := elem.Decode(d); err != nil {
@@ -55970,7 +55970,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Decode(d *jx.
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
 					if err := elem.Decode(d); err != nil {
@@ -56293,7 +56293,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Decode(d *j
 		switch string(k) {
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition
 					if err := elem.Decode(d); err != nil {
@@ -56537,7 +56537,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Decode(d *jx.Decoder) err
 		case "apiGroups":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.ApiGroups = nil
+				s.ApiGroups = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -56566,7 +56566,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Decode(d *jx.Decoder) err
 			}
 		case "namespaces":
 			if err := func() error {
-				s.Namespaces = nil
+				s.Namespaces = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -56586,7 +56586,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Decode(d *jx.Decoder) err
 		case "resources":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				s.Resources = nil
+				s.Resources = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -56606,7 +56606,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Decode(d *jx.Decoder) err
 		case "verbs":
 			requiredBitSet[0] |= 1 << 4
 			if err := func() error {
-				s.Verbs = nil
+				s.Verbs = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -57480,7 +57480,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIFlowcontrolV1beta2FlowSchema, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIFlowcontrolV1beta2FlowSchema
 					if err := elem.Decode(d); err != nil {
@@ -57670,7 +57670,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Decode(d *jx.Decoder) error {
 			}
 		case "rules":
 			if err := func() error {
-				s.Rules = nil
+				s.Rules = make([]IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects
 					if err := elem.Decode(d); err != nil {
@@ -57776,7 +57776,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Decode(d *jx.Decoder) error
 		switch string(k) {
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition
 					if err := elem.Decode(d); err != nil {
@@ -58143,7 +58143,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Decode(d *jx.Decoder) 
 		case "nonResourceURLs":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.NonResourceURLs = nil
+				s.NonResourceURLs = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -58163,7 +58163,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Decode(d *jx.Decoder) 
 		case "verbs":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Verbs = nil
+				s.Verbs = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -58319,7 +58319,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Decode(d *jx.Decoder
 		switch string(k) {
 		case "nonResourceRules":
 			if err := func() error {
-				s.NonResourceRules = nil
+				s.NonResourceRules = make([]IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule
 					if err := elem.Decode(d); err != nil {
@@ -58336,7 +58336,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Decode(d *jx.Decoder
 			}
 		case "resourceRules":
 			if err := func() error {
-				s.ResourceRules = nil
+				s.ResourceRules = make([]IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule
 					if err := elem.Decode(d); err != nil {
@@ -58354,7 +58354,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Decode(d *jx.Decoder
 		case "subjects":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Subjects = nil
+				s.Subjects = make([]IoK8sAPIFlowcontrolV1beta2Subject, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIFlowcontrolV1beta2Subject
 					if err := elem.Decode(d); err != nil {
@@ -58796,7 +58796,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Decode(d *jx.
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
 					if err := elem.Decode(d); err != nil {
@@ -59119,7 +59119,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Decode(d *j
 		switch string(k) {
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition
 					if err := elem.Decode(d); err != nil {
@@ -59363,7 +59363,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Decode(d *jx.Decoder) err
 		case "apiGroups":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.ApiGroups = nil
+				s.ApiGroups = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -59392,7 +59392,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Decode(d *jx.Decoder) err
 			}
 		case "namespaces":
 			if err := func() error {
-				s.Namespaces = nil
+				s.Namespaces = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -59412,7 +59412,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Decode(d *jx.Decoder) err
 		case "resources":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				s.Resources = nil
+				s.Resources = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -59432,7 +59432,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Decode(d *jx.Decoder) err
 		case "verbs":
 			requiredBitSet[0] |= 1 << 4
 			if err := func() error {
-				s.Verbs = nil
+				s.Verbs = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -60006,7 +60006,7 @@ func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) Decode(d *jx.Decoder) error {
 		case "paths":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Paths = nil
+				s.Paths = make([]IoK8sAPINetworkingV1HTTPIngressPath, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPINetworkingV1HTTPIngressPath
 					if err := elem.Decode(d); err != nil {
@@ -60132,7 +60132,7 @@ func (s *IoK8sAPINetworkingV1IPBlock) Decode(d *jx.Decoder) error {
 			}
 		case "except":
 			if err := func() error {
-				s.Except = nil
+				s.Except = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -60631,7 +60631,7 @@ func (s *IoK8sAPINetworkingV1IngressClassList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPINetworkingV1IngressClass, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPINetworkingV1IngressClass
 					if err := elem.Decode(d); err != nil {
@@ -61046,7 +61046,7 @@ func (s *IoK8sAPINetworkingV1IngressList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPINetworkingV1Ingress, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPINetworkingV1Ingress
 					if err := elem.Decode(d); err != nil {
@@ -61428,7 +61428,7 @@ func (s *IoK8sAPINetworkingV1IngressSpec) Decode(d *jx.Decoder) error {
 			}
 		case "rules":
 			if err := func() error {
-				s.Rules = nil
+				s.Rules = make([]IoK8sAPINetworkingV1IngressRule, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPINetworkingV1IngressRule
 					if err := elem.Decode(d); err != nil {
@@ -61445,7 +61445,7 @@ func (s *IoK8sAPINetworkingV1IngressSpec) Decode(d *jx.Decoder) error {
 			}
 		case "tls":
 			if err := func() error {
-				s.TLS = nil
+				s.TLS = make([]IoK8sAPINetworkingV1IngressTLS, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPINetworkingV1IngressTLS
 					if err := elem.Decode(d); err != nil {
@@ -61587,7 +61587,7 @@ func (s *IoK8sAPINetworkingV1IngressTLS) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "hosts":
 			if err := func() error {
-				s.Hosts = nil
+				s.Hosts = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -61822,7 +61822,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) Decode(d *jx.Decoder) erro
 		switch string(k) {
 		case "ports":
 			if err := func() error {
-				s.Ports = nil
+				s.Ports = make([]IoK8sAPINetworkingV1NetworkPolicyPort, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPINetworkingV1NetworkPolicyPort
 					if err := elem.Decode(d); err != nil {
@@ -61839,7 +61839,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) Decode(d *jx.Decoder) erro
 			}
 		case "to":
 			if err := func() error {
-				s.To = nil
+				s.To = make([]IoK8sAPINetworkingV1NetworkPolicyPeer, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPINetworkingV1NetworkPolicyPeer
 					if err := elem.Decode(d); err != nil {
@@ -61938,7 +61938,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) Decode(d *jx.Decoder) err
 		switch string(k) {
 		case "from":
 			if err := func() error {
-				s.From = nil
+				s.From = make([]IoK8sAPINetworkingV1NetworkPolicyPeer, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPINetworkingV1NetworkPolicyPeer
 					if err := elem.Decode(d); err != nil {
@@ -61955,7 +61955,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) Decode(d *jx.Decoder) err
 			}
 		case "ports":
 			if err := func() error {
-				s.Ports = nil
+				s.Ports = make([]IoK8sAPINetworkingV1NetworkPolicyPort, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPINetworkingV1NetworkPolicyPort
 					if err := elem.Decode(d); err != nil {
@@ -62071,7 +62071,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPINetworkingV1NetworkPolicy, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPINetworkingV1NetworkPolicy
 					if err := elem.Decode(d); err != nil {
@@ -62457,7 +62457,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "egress":
 			if err := func() error {
-				s.Egress = nil
+				s.Egress = make([]IoK8sAPINetworkingV1NetworkPolicyEgressRule, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPINetworkingV1NetworkPolicyEgressRule
 					if err := elem.Decode(d); err != nil {
@@ -62474,7 +62474,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) Decode(d *jx.Decoder) error {
 			}
 		case "ingress":
 			if err := func() error {
-				s.Ingress = nil
+				s.Ingress = make([]IoK8sAPINetworkingV1NetworkPolicyIngressRule, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPINetworkingV1NetworkPolicyIngressRule
 					if err := elem.Decode(d); err != nil {
@@ -62501,7 +62501,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) Decode(d *jx.Decoder) error {
 			}
 		case "policyTypes":
 			if err := func() error {
-				s.PolicyTypes = nil
+				s.PolicyTypes = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -63031,7 +63031,7 @@ func (s *IoK8sAPINodeV1RuntimeClassList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPINodeV1RuntimeClass, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPINodeV1RuntimeClass
 					if err := elem.Decode(d); err != nil {
@@ -63180,7 +63180,7 @@ func (s *IoK8sAPINodeV1Scheduling) Decode(d *jx.Decoder) error {
 			}
 		case "tolerations":
 			if err := func() error {
-				s.Tolerations = nil
+				s.Tolerations = make([]IoK8sAPICoreV1Toleration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1Toleration
 					if err := elem.Decode(d); err != nil {
@@ -63615,7 +63615,7 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPINodeV1alpha1RuntimeClass, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPINodeV1alpha1RuntimeClass
 					if err := elem.Decode(d); err != nil {
@@ -63894,7 +63894,7 @@ func (s *IoK8sAPINodeV1alpha1Scheduling) Decode(d *jx.Decoder) error {
 			}
 		case "tolerations":
 			if err := func() error {
-				s.Tolerations = nil
+				s.Tolerations = make([]IoK8sAPICoreV1Toleration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1Toleration
 					if err := elem.Decode(d); err != nil {
@@ -64365,7 +64365,7 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPINodeV1beta1RuntimeClass, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPINodeV1beta1RuntimeClass
 					if err := elem.Decode(d); err != nil {
@@ -64514,7 +64514,7 @@ func (s *IoK8sAPINodeV1beta1Scheduling) Decode(d *jx.Decoder) error {
 			}
 		case "tolerations":
 			if err := func() error {
-				s.Tolerations = nil
+				s.Tolerations = make([]IoK8sAPICoreV1Toleration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1Toleration
 					if err := elem.Decode(d); err != nil {
@@ -64830,7 +64830,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIPolicyV1PodDisruptionBudget, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIPolicyV1PodDisruptionBudget
 					if err := elem.Decode(d); err != nil {
@@ -65109,7 +65109,7 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) error 
 		switch string(k) {
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sApimachineryPkgApisMetaV1Condition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApimachineryPkgApisMetaV1Condition
 					if err := elem.Decode(d); err != nil {
@@ -65605,7 +65605,7 @@ func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) Decode(d *jx.Decoder) erro
 		switch string(k) {
 		case "ranges":
 			if err := func() error {
-				s.Ranges = nil
+				s.Ranges = make([]IoK8sAPIPolicyV1beta1IDRange, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIPolicyV1beta1IDRange
 					if err := elem.Decode(d); err != nil {
@@ -66090,7 +66090,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Decode(d *jx.Decoder) err
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIPolicyV1beta1PodDisruptionBudget, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIPolicyV1beta1PodDisruptionBudget
 					if err := elem.Decode(d); err != nil {
@@ -66369,7 +66369,7 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) e
 		switch string(k) {
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sApimachineryPkgApisMetaV1Condition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApimachineryPkgApisMetaV1Condition
 					if err := elem.Decode(d); err != nil {
@@ -66766,7 +66766,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Decode(d *jx.Decoder) error
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIPolicyV1beta1PodSecurityPolicy, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIPolicyV1beta1PodSecurityPolicy
 					if err := elem.Decode(d); err != nil {
@@ -67271,7 +67271,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 			}
 		case "allowedCSIDrivers":
 			if err := func() error {
-				s.AllowedCSIDrivers = nil
+				s.AllowedCSIDrivers = make([]IoK8sAPIPolicyV1beta1AllowedCSIDriver, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIPolicyV1beta1AllowedCSIDriver
 					if err := elem.Decode(d); err != nil {
@@ -67288,7 +67288,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 			}
 		case "allowedCapabilities":
 			if err := func() error {
-				s.AllowedCapabilities = nil
+				s.AllowedCapabilities = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -67307,7 +67307,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 			}
 		case "allowedFlexVolumes":
 			if err := func() error {
-				s.AllowedFlexVolumes = nil
+				s.AllowedFlexVolumes = make([]IoK8sAPIPolicyV1beta1AllowedFlexVolume, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIPolicyV1beta1AllowedFlexVolume
 					if err := elem.Decode(d); err != nil {
@@ -67324,7 +67324,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 			}
 		case "allowedHostPaths":
 			if err := func() error {
-				s.AllowedHostPaths = nil
+				s.AllowedHostPaths = make([]IoK8sAPIPolicyV1beta1AllowedHostPath, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIPolicyV1beta1AllowedHostPath
 					if err := elem.Decode(d); err != nil {
@@ -67341,7 +67341,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 			}
 		case "allowedProcMountTypes":
 			if err := func() error {
-				s.AllowedProcMountTypes = nil
+				s.AllowedProcMountTypes = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -67360,7 +67360,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 			}
 		case "allowedUnsafeSysctls":
 			if err := func() error {
-				s.AllowedUnsafeSysctls = nil
+				s.AllowedUnsafeSysctls = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -67379,7 +67379,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 			}
 		case "defaultAddCapabilities":
 			if err := func() error {
-				s.DefaultAddCapabilities = nil
+				s.DefaultAddCapabilities = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -67408,7 +67408,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 			}
 		case "forbiddenSysctls":
 			if err := func() error {
-				s.ForbiddenSysctls = nil
+				s.ForbiddenSysctls = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -67467,7 +67467,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 			}
 		case "hostPorts":
 			if err := func() error {
-				s.HostPorts = nil
+				s.HostPorts = make([]IoK8sAPIPolicyV1beta1HostPortRange, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIPolicyV1beta1HostPortRange
 					if err := elem.Decode(d); err != nil {
@@ -67504,7 +67504,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 			}
 		case "requiredDropCapabilities":
 			if err := func() error {
-				s.RequiredDropCapabilities = nil
+				s.RequiredDropCapabilities = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -67573,7 +67573,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 			}
 		case "volumes":
 			if err := func() error {
-				s.Volumes = nil
+				s.Volumes = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -67694,7 +67694,7 @@ func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Decode(d *jx.Decoder) e
 		switch string(k) {
 		case "ranges":
 			if err := func() error {
-				s.Ranges = nil
+				s.Ranges = make([]IoK8sAPIPolicyV1beta1IDRange, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIPolicyV1beta1IDRange
 					if err := elem.Decode(d); err != nil {
@@ -67823,7 +67823,7 @@ func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) Decode(d *jx.Decoder) er
 		switch string(k) {
 		case "ranges":
 			if err := func() error {
-				s.Ranges = nil
+				s.Ranges = make([]IoK8sAPIPolicyV1beta1IDRange, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIPolicyV1beta1IDRange
 					if err := elem.Decode(d); err != nil {
@@ -67950,7 +67950,7 @@ func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Decode(d *jx.Decoder)
 		case "allowedRuntimeClassNames":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.AllowedRuntimeClassNames = nil
+				s.AllowedRuntimeClassNames = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -68188,7 +68188,7 @@ func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) Decode(d *jx.De
 		switch string(k) {
 		case "ranges":
 			if err := func() error {
-				s.Ranges = nil
+				s.Ranges = make([]IoK8sAPIPolicyV1beta1IDRange, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIPolicyV1beta1IDRange
 					if err := elem.Decode(d); err != nil {
@@ -68272,7 +68272,7 @@ func (s *IoK8sAPIRbacV1AggregationRule) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "clusterRoleSelectors":
 			if err := func() error {
-				s.ClusterRoleSelectors = nil
+				s.ClusterRoleSelectors = make([]IoK8sApimachineryPkgApisMetaV1LabelSelector, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApimachineryPkgApisMetaV1LabelSelector
 					if err := elem.Decode(d); err != nil {
@@ -68438,7 +68438,7 @@ func (s *IoK8sAPIRbacV1ClusterRole) Decode(d *jx.Decoder) error {
 			}
 		case "rules":
 			if err := func() error {
-				s.Rules = nil
+				s.Rules = make([]IoK8sAPIRbacV1PolicyRule, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIRbacV1PolicyRule
 					if err := elem.Decode(d); err != nil {
@@ -68599,7 +68599,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) Decode(d *jx.Decoder) error {
 			}
 		case "subjects":
 			if err := func() error {
-				s.Subjects = nil
+				s.Subjects = make([]IoK8sAPIRbacV1Subject, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIRbacV1Subject
 					if err := elem.Decode(d); err != nil {
@@ -68747,7 +68747,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIRbacV1ClusterRoleBinding, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIRbacV1ClusterRoleBinding
 					if err := elem.Decode(d); err != nil {
@@ -68915,7 +68915,7 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIRbacV1ClusterRole, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIRbacV1ClusterRole
 					if err := elem.Decode(d); err != nil {
@@ -69139,7 +69139,7 @@ func (s *IoK8sAPIRbacV1PolicyRule) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "apiGroups":
 			if err := func() error {
-				s.ApiGroups = nil
+				s.ApiGroups = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -69158,7 +69158,7 @@ func (s *IoK8sAPIRbacV1PolicyRule) Decode(d *jx.Decoder) error {
 			}
 		case "nonResourceURLs":
 			if err := func() error {
-				s.NonResourceURLs = nil
+				s.NonResourceURLs = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -69177,7 +69177,7 @@ func (s *IoK8sAPIRbacV1PolicyRule) Decode(d *jx.Decoder) error {
 			}
 		case "resourceNames":
 			if err := func() error {
-				s.ResourceNames = nil
+				s.ResourceNames = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -69196,7 +69196,7 @@ func (s *IoK8sAPIRbacV1PolicyRule) Decode(d *jx.Decoder) error {
 			}
 		case "resources":
 			if err := func() error {
-				s.Resources = nil
+				s.Resources = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -69216,7 +69216,7 @@ func (s *IoK8sAPIRbacV1PolicyRule) Decode(d *jx.Decoder) error {
 		case "verbs":
 			requiredBitSet[0] |= 1 << 4
 			if err := func() error {
-				s.Verbs = nil
+				s.Verbs = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -69393,7 +69393,7 @@ func (s *IoK8sAPIRbacV1Role) Decode(d *jx.Decoder) error {
 			}
 		case "rules":
 			if err := func() error {
-				s.Rules = nil
+				s.Rules = make([]IoK8sAPIRbacV1PolicyRule, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIRbacV1PolicyRule
 					if err := elem.Decode(d); err != nil {
@@ -69554,7 +69554,7 @@ func (s *IoK8sAPIRbacV1RoleBinding) Decode(d *jx.Decoder) error {
 			}
 		case "subjects":
 			if err := func() error {
-				s.Subjects = nil
+				s.Subjects = make([]IoK8sAPIRbacV1Subject, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIRbacV1Subject
 					if err := elem.Decode(d); err != nil {
@@ -69702,7 +69702,7 @@ func (s *IoK8sAPIRbacV1RoleBindingList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIRbacV1RoleBinding, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIRbacV1RoleBinding
 					if err := elem.Decode(d); err != nil {
@@ -69870,7 +69870,7 @@ func (s *IoK8sAPIRbacV1RoleList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIRbacV1Role, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIRbacV1Role
 					if err := elem.Decode(d); err != nil {
@@ -70537,7 +70537,7 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPISchedulingV1PriorityClass, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPISchedulingV1PriorityClass
 					if err := elem.Decode(d); err != nil {
@@ -70859,7 +70859,7 @@ func (s *IoK8sAPIStorageV1CSIDriverList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIStorageV1CSIDriver, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIStorageV1CSIDriver
 					if err := elem.Decode(d); err != nil {
@@ -71125,7 +71125,7 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) Decode(d *jx.Decoder) error {
 			}
 		case "tokenRequests":
 			if err := func() error {
-				s.TokenRequests = nil
+				s.TokenRequests = make([]IoK8sAPIStorageV1TokenRequest, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIStorageV1TokenRequest
 					if err := elem.Decode(d); err != nil {
@@ -71142,7 +71142,7 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) Decode(d *jx.Decoder) error {
 			}
 		case "volumeLifecycleModes":
 			if err := func() error {
-				s.VolumeLifecycleModes = nil
+				s.VolumeLifecycleModes = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -71434,7 +71434,7 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) Decode(d *jx.Decoder) error {
 			}
 		case "topologyKeys":
 			if err := func() error {
-				s.TopologyKeys = nil
+				s.TopologyKeys = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -71584,7 +71584,7 @@ func (s *IoK8sAPIStorageV1CSINodeList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIStorageV1CSINode, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIStorageV1CSINode
 					if err := elem.Decode(d); err != nil {
@@ -71709,7 +71709,7 @@ func (s *IoK8sAPIStorageV1CSINodeSpec) Decode(d *jx.Decoder) error {
 		case "drivers":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Drivers = nil
+				s.Drivers = make([]IoK8sAPIStorageV1CSINodeDriver, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIStorageV1CSINodeDriver
 					if err := elem.Decode(d); err != nil {
@@ -71946,7 +71946,7 @@ func (s *IoK8sAPIStorageV1StorageClass) Decode(d *jx.Decoder) error {
 			}
 		case "allowedTopologies":
 			if err := func() error {
-				s.AllowedTopologies = nil
+				s.AllowedTopologies = make([]IoK8sAPICoreV1TopologySelectorTerm, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPICoreV1TopologySelectorTerm
 					if err := elem.Decode(d); err != nil {
@@ -71993,7 +71993,7 @@ func (s *IoK8sAPIStorageV1StorageClass) Decode(d *jx.Decoder) error {
 			}
 		case "mountOptions":
 			if err := func() error {
-				s.MountOptions = nil
+				s.MountOptions = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -72186,7 +72186,7 @@ func (s *IoK8sAPIStorageV1StorageClassList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIStorageV1StorageClass, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIStorageV1StorageClass
 					if err := elem.Decode(d); err != nil {
@@ -72688,7 +72688,7 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) Decode(d *jx.Decoder) error {
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIStorageV1VolumeAttachment, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIStorageV1VolumeAttachment
 					if err := elem.Decode(d); err != nil {
@@ -73618,7 +73618,7 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Decode(d *jx.Decoder) er
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIStorageV1alpha1CSIStorageCapacity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIStorageV1alpha1CSIStorageCapacity
 					if err := elem.Decode(d); err != nil {
@@ -74011,7 +74011,7 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) Decode(d *jx.Decoder) err
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sAPIStorageV1beta1CSIStorageCapacity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sAPIStorageV1beta1CSIStorageCapacity
 					if err := elem.Decode(d); err != nil {
@@ -74826,7 +74826,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
 					if err := elem.Decode(d); err != nil {
@@ -75012,7 +75012,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		switch string(k) {
 		case "categories":
 			if err := func() error {
-				s.Categories = nil
+				s.Categories = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -75065,7 +75065,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 		case "shortNames":
 			if err := func() error {
-				s.ShortNames = nil
+				s.ShortNames = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -75280,7 +75280,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		case "versions":
 			requiredBitSet[0] |= 1 << 5
 			if err := func() error {
-				s.Versions = nil
+				s.Versions = make([]IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion
 					if err := elem.Decode(d); err != nil {
@@ -75434,7 +75434,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition
 					if err := elem.Decode(d); err != nil {
@@ -75451,7 +75451,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 		case "storedVersions":
 			if err := func() error {
-				s.StoredVersions = nil
+				s.StoredVersions = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -75598,7 +75598,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		switch string(k) {
 		case "additionalPrinterColumns":
 			if err := func() error {
-				s.AdditionalPrinterColumns = nil
+				s.AdditionalPrinterColumns = make([]IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition
 					if err := elem.Decode(d); err != nil {
@@ -76834,7 +76834,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 			}
 		case "allOf":
 			if err := func() error {
-				s.AllOf = nil
+				s.AllOf = make([]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
 					if err := elem.Decode(d); err != nil {
@@ -76851,7 +76851,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 			}
 		case "anyOf":
 			if err := func() error {
-				s.AnyOf = nil
+				s.AnyOf = make([]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
 					if err := elem.Decode(d); err != nil {
@@ -76910,7 +76910,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 			}
 		case "enum":
 			if err := func() error {
-				s.Enum = nil
+				s.Enum = make([]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON
 					if err := elem.Decode(d); err != nil {
@@ -77113,7 +77113,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 			}
 		case "oneOf":
 			if err := func() error {
-				s.OneOf = nil
+				s.OneOf = make([]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
 					if err := elem.Decode(d); err != nil {
@@ -77160,7 +77160,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 			}
 		case "required":
 			if err := func() error {
-				s.Required = nil
+				s.Required = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -77229,7 +77229,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 			}
 		case "x-kubernetes-list-map-keys":
 			if err := func() error {
-				s.XMinusKubernetesMinusListMinusMapMinusKeys = nil
+				s.XMinusKubernetesMinusListMinusMapMinusKeys = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -77893,7 +77893,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Dec
 		case "conversionReviewVersions":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.ConversionReviewVersions = nil
+				s.ConversionReviewVersions = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -78132,7 +78132,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) Decode(d *jx.Decoder) error {
 			}
 		case "serverAddressByClientCIDRs":
 			if err := func() error {
-				s.ServerAddressByClientCIDRs = nil
+				s.ServerAddressByClientCIDRs = make([]IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR
 					if err := elem.Decode(d); err != nil {
@@ -78150,7 +78150,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) Decode(d *jx.Decoder) error {
 		case "versions":
 			requiredBitSet[0] |= 1 << 5
 			if err := func() error {
-				s.Versions = nil
+				s.Versions = make([]IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery
 					if err := elem.Decode(d); err != nil {
@@ -78288,7 +78288,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) Decode(d *jx.Decoder) error
 		case "groups":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Groups = nil
+				s.Groups = make([]IoK8sApimachineryPkgApisMetaV1APIGroup, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApimachineryPkgApisMetaV1APIGroup
 					if err := elem.Decode(d); err != nil {
@@ -78510,7 +78510,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Decode(d *jx.Decoder) error 
 		switch string(k) {
 		case "categories":
 			if err := func() error {
-				s.Categories = nil
+				s.Categories = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -78575,7 +78575,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Decode(d *jx.Decoder) error 
 			}
 		case "shortNames":
 			if err := func() error {
-				s.ShortNames = nil
+				s.ShortNames = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -78617,7 +78617,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Decode(d *jx.Decoder) error 
 		case "verbs":
 			requiredBitSet[1] |= 1 << 0
 			if err := func() error {
-				s.Verbs = nil
+				s.Verbs = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -78797,7 +78797,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) Decode(d *jx.Decoder) er
 		case "resources":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				s.Resources = nil
+				s.Resources = make([]IoK8sApimachineryPkgApisMetaV1APIResource, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApimachineryPkgApisMetaV1APIResource
 					if err := elem.Decode(d); err != nil {
@@ -78967,7 +78967,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Decode(d *jx.Decoder) error 
 		case "serverAddressByClientCIDRs":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.ServerAddressByClientCIDRs = nil
+				s.ServerAddressByClientCIDRs = make([]IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR
 					if err := elem.Decode(d); err != nil {
@@ -78985,7 +78985,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Decode(d *jx.Decoder) error 
 		case "versions":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				s.Versions = nil
+				s.Versions = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -79430,7 +79430,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) Decode(d *jx.Decoder) erro
 		switch string(k) {
 		case "matchExpressions":
 			if err := func() error {
-				s.MatchExpressions = nil
+				s.MatchExpressions = make([]IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement
 					if err := elem.Decode(d); err != nil {
@@ -79606,7 +79606,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) Decode(d *jx.De
 			}
 		case "values":
 			if err := func() error {
-				s.Values = nil
+				s.Values = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -80328,7 +80328,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 			}
 		case "finalizers":
 			if err := func() error {
-				s.Finalizers = nil
+				s.Finalizers = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -80377,7 +80377,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 			}
 		case "managedFields":
 			if err := func() error {
-				s.ManagedFields = nil
+				s.ManagedFields = make([]IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry
 					if err := elem.Decode(d); err != nil {
@@ -80414,7 +80414,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 			}
 		case "ownerReferences":
 			if err := func() error {
-				s.OwnerReferences = nil
+				s.OwnerReferences = make([]IoK8sApimachineryPkgApisMetaV1OwnerReference, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sApimachineryPkgApisMetaV1OwnerReference
 					if err := elem.Decode(d); err != nil {
@@ -81705,7 +81705,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Decode(d *jx
 		case "items":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Items = nil
+				s.Items = make([]IoK8sKubeAggregatorPkgApisApiregistrationV1APIService, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
 					if err := elem.Decode(d); err != nil {
@@ -82035,7 +82035,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Decode(d *
 		switch string(k) {
 		case "conditions":
 			if err := func() error {
-				s.Conditions = nil
+				s.Conditions = make([]IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition
 					if err := elem.Decode(d); err != nil {

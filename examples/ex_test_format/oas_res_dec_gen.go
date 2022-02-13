@@ -10151,7 +10151,7 @@ func decodeTestResponseBooleanArrayResponse(resp *http.Response, span trace.Span
 
 			var response []bool
 			if err := func() error {
-				response = nil
+				response = make([]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem bool
 					v, err := d.Bool()
@@ -10195,10 +10195,10 @@ func decodeTestResponseBooleanArrayArrayResponse(resp *http.Response, span trace
 
 			var response [][]bool
 			if err := func() error {
-				response = nil
+				response = make([][]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []bool
-					elem = nil
+					elem = make([]bool, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem bool
 						v, err := d.Bool()
@@ -10281,7 +10281,7 @@ func decodeTestResponseBooleanNullableArrayResponse(resp *http.Response, span tr
 
 			var response []bool
 			if err := func() error {
-				response = nil
+				response = make([]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem bool
 					v, err := d.Bool()
@@ -10325,10 +10325,10 @@ func decodeTestResponseBooleanNullableArrayArrayResponse(resp *http.Response, sp
 
 			var response [][]bool
 			if err := func() error {
-				response = nil
+				response = make([][]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []bool
-					elem = nil
+					elem = make([]bool, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem bool
 						v, err := d.Bool()
@@ -10481,7 +10481,7 @@ func decodeTestResponseIntegerArrayResponse(resp *http.Response, span trace.Span
 
 			var response []int
 			if err := func() error {
-				response = nil
+				response = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -10525,10 +10525,10 @@ func decodeTestResponseIntegerArrayArrayResponse(resp *http.Response, span trace
 
 			var response [][]int
 			if err := func() error {
-				response = nil
+				response = make([][]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int
-					elem = nil
+					elem = make([]int, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int
 						v, err := d.Int()
@@ -10613,7 +10613,7 @@ func decodeTestResponseIntegerInt32ArrayResponse(resp *http.Response, span trace
 
 			var response []int32
 			if err := func() error {
-				response = nil
+				response = make([]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int32
 					v, err := d.Int32()
@@ -10657,10 +10657,10 @@ func decodeTestResponseIntegerInt32ArrayArrayResponse(resp *http.Response, span 
 
 			var response [][]int32
 			if err := func() error {
-				response = nil
+				response = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int32
-					elem = nil
+					elem = make([]int32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int32
 						v, err := d.Int32()
@@ -10743,7 +10743,7 @@ func decodeTestResponseIntegerInt32NullableArrayResponse(resp *http.Response, sp
 
 			var response []int32
 			if err := func() error {
-				response = nil
+				response = make([]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int32
 					v, err := d.Int32()
@@ -10787,10 +10787,10 @@ func decodeTestResponseIntegerInt32NullableArrayArrayResponse(resp *http.Respons
 
 			var response [][]int32
 			if err := func() error {
-				response = nil
+				response = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int32
-					elem = nil
+					elem = make([]int32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int32
 						v, err := d.Int32()
@@ -10875,7 +10875,7 @@ func decodeTestResponseIntegerInt64ArrayResponse(resp *http.Response, span trace
 
 			var response []int64
 			if err := func() error {
-				response = nil
+				response = make([]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int64
 					v, err := d.Int64()
@@ -10919,10 +10919,10 @@ func decodeTestResponseIntegerInt64ArrayArrayResponse(resp *http.Response, span 
 
 			var response [][]int64
 			if err := func() error {
-				response = nil
+				response = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int64
-					elem = nil
+					elem = make([]int64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int64
 						v, err := d.Int64()
@@ -11005,7 +11005,7 @@ func decodeTestResponseIntegerInt64NullableArrayResponse(resp *http.Response, sp
 
 			var response []int64
 			if err := func() error {
-				response = nil
+				response = make([]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int64
 					v, err := d.Int64()
@@ -11049,10 +11049,10 @@ func decodeTestResponseIntegerInt64NullableArrayArrayResponse(resp *http.Respons
 
 			var response [][]int64
 			if err := func() error {
-				response = nil
+				response = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int64
-					elem = nil
+					elem = make([]int64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int64
 						v, err := d.Int64()
@@ -11135,7 +11135,7 @@ func decodeTestResponseIntegerNullableArrayResponse(resp *http.Response, span tr
 
 			var response []int
 			if err := func() error {
-				response = nil
+				response = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -11179,10 +11179,10 @@ func decodeTestResponseIntegerNullableArrayArrayResponse(resp *http.Response, sp
 
 			var response [][]int
 			if err := func() error {
-				response = nil
+				response = make([][]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int
-					elem = nil
+					elem = make([]int, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int
 						v, err := d.Int()
@@ -11267,7 +11267,7 @@ func decodeTestResponseNumberArrayResponse(resp *http.Response, span trace.Span)
 
 			var response []float64
 			if err := func() error {
-				response = nil
+				response = make([]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float64
 					v, err := d.Float64()
@@ -11311,10 +11311,10 @@ func decodeTestResponseNumberArrayArrayResponse(resp *http.Response, span trace.
 
 			var response [][]float64
 			if err := func() error {
-				response = nil
+				response = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float64
-					elem = nil
+					elem = make([]float64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float64
 						v, err := d.Float64()
@@ -11399,7 +11399,7 @@ func decodeTestResponseNumberDoubleArrayResponse(resp *http.Response, span trace
 
 			var response []float64
 			if err := func() error {
-				response = nil
+				response = make([]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float64
 					v, err := d.Float64()
@@ -11443,10 +11443,10 @@ func decodeTestResponseNumberDoubleArrayArrayResponse(resp *http.Response, span 
 
 			var response [][]float64
 			if err := func() error {
-				response = nil
+				response = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float64
-					elem = nil
+					elem = make([]float64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float64
 						v, err := d.Float64()
@@ -11529,7 +11529,7 @@ func decodeTestResponseNumberDoubleNullableArrayResponse(resp *http.Response, sp
 
 			var response []float64
 			if err := func() error {
-				response = nil
+				response = make([]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float64
 					v, err := d.Float64()
@@ -11573,10 +11573,10 @@ func decodeTestResponseNumberDoubleNullableArrayArrayResponse(resp *http.Respons
 
 			var response [][]float64
 			if err := func() error {
-				response = nil
+				response = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float64
-					elem = nil
+					elem = make([]float64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float64
 						v, err := d.Float64()
@@ -11661,7 +11661,7 @@ func decodeTestResponseNumberFloatArrayResponse(resp *http.Response, span trace.
 
 			var response []float32
 			if err := func() error {
-				response = nil
+				response = make([]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float32
 					v, err := d.Float32()
@@ -11705,10 +11705,10 @@ func decodeTestResponseNumberFloatArrayArrayResponse(resp *http.Response, span t
 
 			var response [][]float32
 			if err := func() error {
-				response = nil
+				response = make([][]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float32
-					elem = nil
+					elem = make([]float32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float32
 						v, err := d.Float32()
@@ -11791,7 +11791,7 @@ func decodeTestResponseNumberFloatNullableArrayResponse(resp *http.Response, spa
 
 			var response []float32
 			if err := func() error {
-				response = nil
+				response = make([]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float32
 					v, err := d.Float32()
@@ -11835,10 +11835,10 @@ func decodeTestResponseNumberFloatNullableArrayArrayResponse(resp *http.Response
 
 			var response [][]float32
 			if err := func() error {
-				response = nil
+				response = make([][]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float32
-					elem = nil
+					elem = make([]float32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float32
 						v, err := d.Float32()
@@ -11923,7 +11923,7 @@ func decodeTestResponseNumberInt32ArrayResponse(resp *http.Response, span trace.
 
 			var response []int32
 			if err := func() error {
-				response = nil
+				response = make([]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int32
 					v, err := d.Int32()
@@ -11967,10 +11967,10 @@ func decodeTestResponseNumberInt32ArrayArrayResponse(resp *http.Response, span t
 
 			var response [][]int32
 			if err := func() error {
-				response = nil
+				response = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int32
-					elem = nil
+					elem = make([]int32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int32
 						v, err := d.Int32()
@@ -12053,7 +12053,7 @@ func decodeTestResponseNumberInt32NullableArrayResponse(resp *http.Response, spa
 
 			var response []int32
 			if err := func() error {
-				response = nil
+				response = make([]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int32
 					v, err := d.Int32()
@@ -12097,10 +12097,10 @@ func decodeTestResponseNumberInt32NullableArrayArrayResponse(resp *http.Response
 
 			var response [][]int32
 			if err := func() error {
-				response = nil
+				response = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int32
-					elem = nil
+					elem = make([]int32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int32
 						v, err := d.Int32()
@@ -12185,7 +12185,7 @@ func decodeTestResponseNumberInt64ArrayResponse(resp *http.Response, span trace.
 
 			var response []int64
 			if err := func() error {
-				response = nil
+				response = make([]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int64
 					v, err := d.Int64()
@@ -12229,10 +12229,10 @@ func decodeTestResponseNumberInt64ArrayArrayResponse(resp *http.Response, span t
 
 			var response [][]int64
 			if err := func() error {
-				response = nil
+				response = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int64
-					elem = nil
+					elem = make([]int64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int64
 						v, err := d.Int64()
@@ -12315,7 +12315,7 @@ func decodeTestResponseNumberInt64NullableArrayResponse(resp *http.Response, spa
 
 			var response []int64
 			if err := func() error {
-				response = nil
+				response = make([]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int64
 					v, err := d.Int64()
@@ -12359,10 +12359,10 @@ func decodeTestResponseNumberInt64NullableArrayArrayResponse(resp *http.Response
 
 			var response [][]int64
 			if err := func() error {
-				response = nil
+				response = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int64
-					elem = nil
+					elem = make([]int64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int64
 						v, err := d.Int64()
@@ -12445,7 +12445,7 @@ func decodeTestResponseNumberNullableArrayResponse(resp *http.Response, span tra
 
 			var response []float64
 			if err := func() error {
-				response = nil
+				response = make([]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float64
 					v, err := d.Float64()
@@ -12489,10 +12489,10 @@ func decodeTestResponseNumberNullableArrayArrayResponse(resp *http.Response, spa
 
 			var response [][]float64
 			if err := func() error {
-				response = nil
+				response = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float64
-					elem = nil
+					elem = make([]float64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float64
 						v, err := d.Float64()
@@ -12577,7 +12577,7 @@ func decodeTestResponseStringArrayResponse(resp *http.Response, span trace.Span)
 
 			var response []string
 			if err := func() error {
-				response = nil
+				response = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -12621,10 +12621,10 @@ func decodeTestResponseStringArrayArrayResponse(resp *http.Response, span trace.
 
 			var response [][]string
 			if err := func() error {
-				response = nil
+				response = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -12709,7 +12709,7 @@ func decodeTestResponseStringBinaryArrayResponse(resp *http.Response, span trace
 
 			var response []string
 			if err := func() error {
-				response = nil
+				response = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -12753,10 +12753,10 @@ func decodeTestResponseStringBinaryArrayArrayResponse(resp *http.Response, span 
 
 			var response [][]string
 			if err := func() error {
-				response = nil
+				response = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -12839,7 +12839,7 @@ func decodeTestResponseStringBinaryNullableArrayResponse(resp *http.Response, sp
 
 			var response []string
 			if err := func() error {
-				response = nil
+				response = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -12883,10 +12883,10 @@ func decodeTestResponseStringBinaryNullableArrayArrayResponse(resp *http.Respons
 
 			var response [][]string
 			if err := func() error {
-				response = nil
+				response = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -12971,7 +12971,7 @@ func decodeTestResponseStringByteArrayResponse(resp *http.Response, span trace.S
 
 			var response [][]byte
 			if err := func() error {
-				response = nil
+				response = make([][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []byte
 					v, err := d.Base64()
@@ -13015,10 +13015,10 @@ func decodeTestResponseStringByteArrayArrayResponse(resp *http.Response, span tr
 
 			var response [][][]byte
 			if err := func() error {
-				response = nil
+				response = make([][][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem [][]byte
-					elem = nil
+					elem = make([][]byte, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem []byte
 						v, err := d.Base64()
@@ -13103,7 +13103,7 @@ func decodeTestResponseStringByteNullableArrayResponse(resp *http.Response, span
 
 			var response [][]byte
 			if err := func() error {
-				response = nil
+				response = make([][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []byte
 					v, err := d.Base64()
@@ -13147,10 +13147,10 @@ func decodeTestResponseStringByteNullableArrayArrayResponse(resp *http.Response,
 
 			var response [][][]byte
 			if err := func() error {
-				response = nil
+				response = make([][][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem [][]byte
-					elem = nil
+					elem = make([][]byte, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem []byte
 						v, err := d.Base64()
@@ -13235,7 +13235,7 @@ func decodeTestResponseStringDateArrayResponse(resp *http.Response, span trace.S
 
 			var response []time.Time
 			if err := func() error {
-				response = nil
+				response = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeDate(d)
@@ -13279,10 +13279,10 @@ func decodeTestResponseStringDateArrayArrayResponse(resp *http.Response, span tr
 
 			var response [][]time.Time
 			if err := func() error {
-				response = nil
+				response = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeDate(d)
@@ -13365,7 +13365,7 @@ func decodeTestResponseStringDateNullableArrayResponse(resp *http.Response, span
 
 			var response []time.Time
 			if err := func() error {
-				response = nil
+				response = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeDate(d)
@@ -13409,10 +13409,10 @@ func decodeTestResponseStringDateNullableArrayArrayResponse(resp *http.Response,
 
 			var response [][]time.Time
 			if err := func() error {
-				response = nil
+				response = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeDate(d)
@@ -13497,7 +13497,7 @@ func decodeTestResponseStringDateTimeArrayResponse(resp *http.Response, span tra
 
 			var response []time.Time
 			if err := func() error {
-				response = nil
+				response = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeDateTime(d)
@@ -13541,10 +13541,10 @@ func decodeTestResponseStringDateTimeArrayArrayResponse(resp *http.Response, spa
 
 			var response [][]time.Time
 			if err := func() error {
-				response = nil
+				response = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeDateTime(d)
@@ -13627,7 +13627,7 @@ func decodeTestResponseStringDateTimeNullableArrayResponse(resp *http.Response, 
 
 			var response []time.Time
 			if err := func() error {
-				response = nil
+				response = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeDateTime(d)
@@ -13671,10 +13671,10 @@ func decodeTestResponseStringDateTimeNullableArrayArrayResponse(resp *http.Respo
 
 			var response [][]time.Time
 			if err := func() error {
-				response = nil
+				response = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeDateTime(d)
@@ -13759,7 +13759,7 @@ func decodeTestResponseStringDurationArrayResponse(resp *http.Response, span tra
 
 			var response []time.Duration
 			if err := func() error {
-				response = nil
+				response = make([]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Duration
 					v, err := json.DecodeDuration(d)
@@ -13803,10 +13803,10 @@ func decodeTestResponseStringDurationArrayArrayResponse(resp *http.Response, spa
 
 			var response [][]time.Duration
 			if err := func() error {
-				response = nil
+				response = make([][]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Duration
-					elem = nil
+					elem = make([]time.Duration, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Duration
 						v, err := json.DecodeDuration(d)
@@ -13889,7 +13889,7 @@ func decodeTestResponseStringDurationNullableArrayResponse(resp *http.Response, 
 
 			var response []time.Duration
 			if err := func() error {
-				response = nil
+				response = make([]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Duration
 					v, err := json.DecodeDuration(d)
@@ -13933,10 +13933,10 @@ func decodeTestResponseStringDurationNullableArrayArrayResponse(resp *http.Respo
 
 			var response [][]time.Duration
 			if err := func() error {
-				response = nil
+				response = make([][]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Duration
-					elem = nil
+					elem = make([]time.Duration, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Duration
 						v, err := json.DecodeDuration(d)
@@ -14021,7 +14021,7 @@ func decodeTestResponseStringEmailArrayResponse(resp *http.Response, span trace.
 
 			var response []string
 			if err := func() error {
-				response = nil
+				response = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -14065,10 +14065,10 @@ func decodeTestResponseStringEmailArrayArrayResponse(resp *http.Response, span t
 
 			var response [][]string
 			if err := func() error {
-				response = nil
+				response = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -14151,7 +14151,7 @@ func decodeTestResponseStringEmailNullableArrayResponse(resp *http.Response, spa
 
 			var response []string
 			if err := func() error {
-				response = nil
+				response = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -14195,10 +14195,10 @@ func decodeTestResponseStringEmailNullableArrayArrayResponse(resp *http.Response
 
 			var response [][]string
 			if err := func() error {
-				response = nil
+				response = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -14283,7 +14283,7 @@ func decodeTestResponseStringHostnameArrayResponse(resp *http.Response, span tra
 
 			var response []string
 			if err := func() error {
-				response = nil
+				response = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -14327,10 +14327,10 @@ func decodeTestResponseStringHostnameArrayArrayResponse(resp *http.Response, spa
 
 			var response [][]string
 			if err := func() error {
-				response = nil
+				response = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -14413,7 +14413,7 @@ func decodeTestResponseStringHostnameNullableArrayResponse(resp *http.Response, 
 
 			var response []string
 			if err := func() error {
-				response = nil
+				response = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -14457,10 +14457,10 @@ func decodeTestResponseStringHostnameNullableArrayArrayResponse(resp *http.Respo
 
 			var response [][]string
 			if err := func() error {
-				response = nil
+				response = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -14545,7 +14545,7 @@ func decodeTestResponseStringIPArrayResponse(resp *http.Response, span trace.Spa
 
 			var response []net.IP
 			if err := func() error {
-				response = nil
+				response = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -14589,10 +14589,10 @@ func decodeTestResponseStringIPArrayArrayResponse(resp *http.Response, span trac
 
 			var response [][]net.IP
 			if err := func() error {
-				response = nil
+				response = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -14675,7 +14675,7 @@ func decodeTestResponseStringIPNullableArrayResponse(resp *http.Response, span t
 
 			var response []net.IP
 			if err := func() error {
-				response = nil
+				response = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -14719,10 +14719,10 @@ func decodeTestResponseStringIPNullableArrayArrayResponse(resp *http.Response, s
 
 			var response [][]net.IP
 			if err := func() error {
-				response = nil
+				response = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -14807,7 +14807,7 @@ func decodeTestResponseStringIpv4ArrayResponse(resp *http.Response, span trace.S
 
 			var response []net.IP
 			if err := func() error {
-				response = nil
+				response = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -14851,10 +14851,10 @@ func decodeTestResponseStringIpv4ArrayArrayResponse(resp *http.Response, span tr
 
 			var response [][]net.IP
 			if err := func() error {
-				response = nil
+				response = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -14937,7 +14937,7 @@ func decodeTestResponseStringIpv4NullableArrayResponse(resp *http.Response, span
 
 			var response []net.IP
 			if err := func() error {
-				response = nil
+				response = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -14981,10 +14981,10 @@ func decodeTestResponseStringIpv4NullableArrayArrayResponse(resp *http.Response,
 
 			var response [][]net.IP
 			if err := func() error {
-				response = nil
+				response = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -15069,7 +15069,7 @@ func decodeTestResponseStringIpv6ArrayResponse(resp *http.Response, span trace.S
 
 			var response []net.IP
 			if err := func() error {
-				response = nil
+				response = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -15113,10 +15113,10 @@ func decodeTestResponseStringIpv6ArrayArrayResponse(resp *http.Response, span tr
 
 			var response [][]net.IP
 			if err := func() error {
-				response = nil
+				response = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -15199,7 +15199,7 @@ func decodeTestResponseStringIpv6NullableArrayResponse(resp *http.Response, span
 
 			var response []net.IP
 			if err := func() error {
-				response = nil
+				response = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -15243,10 +15243,10 @@ func decodeTestResponseStringIpv6NullableArrayArrayResponse(resp *http.Response,
 
 			var response [][]net.IP
 			if err := func() error {
-				response = nil
+				response = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -15329,7 +15329,7 @@ func decodeTestResponseStringNullableArrayResponse(resp *http.Response, span tra
 
 			var response []string
 			if err := func() error {
-				response = nil
+				response = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -15373,10 +15373,10 @@ func decodeTestResponseStringNullableArrayArrayResponse(resp *http.Response, spa
 
 			var response [][]string
 			if err := func() error {
-				response = nil
+				response = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -15461,7 +15461,7 @@ func decodeTestResponseStringPasswordArrayResponse(resp *http.Response, span tra
 
 			var response []string
 			if err := func() error {
-				response = nil
+				response = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -15505,10 +15505,10 @@ func decodeTestResponseStringPasswordArrayArrayResponse(resp *http.Response, spa
 
 			var response [][]string
 			if err := func() error {
-				response = nil
+				response = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -15591,7 +15591,7 @@ func decodeTestResponseStringPasswordNullableArrayResponse(resp *http.Response, 
 
 			var response []string
 			if err := func() error {
-				response = nil
+				response = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -15635,10 +15635,10 @@ func decodeTestResponseStringPasswordNullableArrayArrayResponse(resp *http.Respo
 
 			var response [][]string
 			if err := func() error {
-				response = nil
+				response = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -15723,7 +15723,7 @@ func decodeTestResponseStringTimeArrayResponse(resp *http.Response, span trace.S
 
 			var response []time.Time
 			if err := func() error {
-				response = nil
+				response = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeTime(d)
@@ -15767,10 +15767,10 @@ func decodeTestResponseStringTimeArrayArrayResponse(resp *http.Response, span tr
 
 			var response [][]time.Time
 			if err := func() error {
-				response = nil
+				response = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeTime(d)
@@ -15853,7 +15853,7 @@ func decodeTestResponseStringTimeNullableArrayResponse(resp *http.Response, span
 
 			var response []time.Time
 			if err := func() error {
-				response = nil
+				response = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeTime(d)
@@ -15897,10 +15897,10 @@ func decodeTestResponseStringTimeNullableArrayArrayResponse(resp *http.Response,
 
 			var response [][]time.Time
 			if err := func() error {
-				response = nil
+				response = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeTime(d)
@@ -15985,7 +15985,7 @@ func decodeTestResponseStringURIArrayResponse(resp *http.Response, span trace.Sp
 
 			var response []url.URL
 			if err := func() error {
-				response = nil
+				response = make([]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem url.URL
 					v, err := json.DecodeURI(d)
@@ -16029,10 +16029,10 @@ func decodeTestResponseStringURIArrayArrayResponse(resp *http.Response, span tra
 
 			var response [][]url.URL
 			if err := func() error {
-				response = nil
+				response = make([][]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []url.URL
-					elem = nil
+					elem = make([]url.URL, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem url.URL
 						v, err := json.DecodeURI(d)
@@ -16115,7 +16115,7 @@ func decodeTestResponseStringURINullableArrayResponse(resp *http.Response, span 
 
 			var response []url.URL
 			if err := func() error {
-				response = nil
+				response = make([]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem url.URL
 					v, err := json.DecodeURI(d)
@@ -16159,10 +16159,10 @@ func decodeTestResponseStringURINullableArrayArrayResponse(resp *http.Response, 
 
 			var response [][]url.URL
 			if err := func() error {
-				response = nil
+				response = make([][]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []url.URL
-					elem = nil
+					elem = make([]url.URL, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem url.URL
 						v, err := json.DecodeURI(d)
@@ -16247,7 +16247,7 @@ func decodeTestResponseStringUUIDArrayResponse(resp *http.Response, span trace.S
 
 			var response []uuid.UUID
 			if err := func() error {
-				response = nil
+				response = make([]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem uuid.UUID
 					v, err := json.DecodeUUID(d)
@@ -16291,10 +16291,10 @@ func decodeTestResponseStringUUIDArrayArrayResponse(resp *http.Response, span tr
 
 			var response [][]uuid.UUID
 			if err := func() error {
-				response = nil
+				response = make([][]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []uuid.UUID
-					elem = nil
+					elem = make([]uuid.UUID, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem uuid.UUID
 						v, err := json.DecodeUUID(d)
@@ -16377,7 +16377,7 @@ func decodeTestResponseStringUUIDNullableArrayResponse(resp *http.Response, span
 
 			var response []uuid.UUID
 			if err := func() error {
-				response = nil
+				response = make([]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem uuid.UUID
 					v, err := json.DecodeUUID(d)
@@ -16421,10 +16421,10 @@ func decodeTestResponseStringUUIDNullableArrayArrayResponse(resp *http.Response,
 
 			var response [][]uuid.UUID
 			if err := func() error {
-				response = nil
+				response = make([][]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []uuid.UUID
-					elem = nil
+					elem = make([]uuid.UUID, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem uuid.UUID
 						v, err := json.DecodeUUID(d)

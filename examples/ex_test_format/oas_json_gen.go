@@ -5649,7 +5649,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_any":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.RequiredArrayAny = nil
+				s.RequiredArrayAny = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -5669,7 +5669,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_boolean":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.RequiredArrayBoolean = nil
+				s.RequiredArrayBoolean = make([]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem bool
 					v, err := d.Bool()
@@ -5689,7 +5689,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_integer":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				s.RequiredArrayInteger = nil
+				s.RequiredArrayInteger = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -5709,7 +5709,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_integer_int32":
 			requiredBitSet[0] |= 1 << 4
 			if err := func() error {
-				s.RequiredArrayIntegerInt32 = nil
+				s.RequiredArrayIntegerInt32 = make([]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int32
 					v, err := d.Int32()
@@ -5729,7 +5729,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_integer_int64":
 			requiredBitSet[0] |= 1 << 5
 			if err := func() error {
-				s.RequiredArrayIntegerInt64 = nil
+				s.RequiredArrayIntegerInt64 = make([]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int64
 					v, err := d.Int64()
@@ -5749,7 +5749,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_number":
 			requiredBitSet[0] |= 1 << 6
 			if err := func() error {
-				s.RequiredArrayNumber = nil
+				s.RequiredArrayNumber = make([]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float64
 					v, err := d.Float64()
@@ -5769,7 +5769,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_number_double":
 			requiredBitSet[0] |= 1 << 7
 			if err := func() error {
-				s.RequiredArrayNumberDouble = nil
+				s.RequiredArrayNumberDouble = make([]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float64
 					v, err := d.Float64()
@@ -5789,7 +5789,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_number_float":
 			requiredBitSet[1] |= 1 << 0
 			if err := func() error {
-				s.RequiredArrayNumberFloat = nil
+				s.RequiredArrayNumberFloat = make([]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float32
 					v, err := d.Float32()
@@ -5809,7 +5809,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_number_int32":
 			requiredBitSet[1] |= 1 << 1
 			if err := func() error {
-				s.RequiredArrayNumberInt32 = nil
+				s.RequiredArrayNumberInt32 = make([]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int32
 					v, err := d.Int32()
@@ -5829,7 +5829,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_number_int64":
 			requiredBitSet[1] |= 1 << 2
 			if err := func() error {
-				s.RequiredArrayNumberInt64 = nil
+				s.RequiredArrayNumberInt64 = make([]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int64
 					v, err := d.Int64()
@@ -5849,7 +5849,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string":
 			requiredBitSet[1] |= 1 << 3
 			if err := func() error {
-				s.RequiredArrayString = nil
+				s.RequiredArrayString = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -5869,7 +5869,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_binary":
 			requiredBitSet[1] |= 1 << 4
 			if err := func() error {
-				s.RequiredArrayStringBinary = nil
+				s.RequiredArrayStringBinary = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -5889,7 +5889,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_byte":
 			requiredBitSet[1] |= 1 << 5
 			if err := func() error {
-				s.RequiredArrayStringByte = nil
+				s.RequiredArrayStringByte = make([][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []byte
 					v, err := d.Base64()
@@ -5909,7 +5909,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_date":
 			requiredBitSet[1] |= 1 << 6
 			if err := func() error {
-				s.RequiredArrayStringDate = nil
+				s.RequiredArrayStringDate = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeDate(d)
@@ -5929,7 +5929,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_date-time":
 			requiredBitSet[1] |= 1 << 7
 			if err := func() error {
-				s.RequiredArrayStringDateMinusTime = nil
+				s.RequiredArrayStringDateMinusTime = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeDateTime(d)
@@ -5949,7 +5949,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_duration":
 			requiredBitSet[2] |= 1 << 0
 			if err := func() error {
-				s.RequiredArrayStringDuration = nil
+				s.RequiredArrayStringDuration = make([]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Duration
 					v, err := json.DecodeDuration(d)
@@ -5969,7 +5969,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_email":
 			requiredBitSet[2] |= 1 << 1
 			if err := func() error {
-				s.RequiredArrayStringEmail = nil
+				s.RequiredArrayStringEmail = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -5989,7 +5989,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_hostname":
 			requiredBitSet[2] |= 1 << 2
 			if err := func() error {
-				s.RequiredArrayStringHostname = nil
+				s.RequiredArrayStringHostname = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -6009,7 +6009,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_ip":
 			requiredBitSet[2] |= 1 << 3
 			if err := func() error {
-				s.RequiredArrayStringIP = nil
+				s.RequiredArrayStringIP = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -6029,7 +6029,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_ipv4":
 			requiredBitSet[2] |= 1 << 4
 			if err := func() error {
-				s.RequiredArrayStringIpv4 = nil
+				s.RequiredArrayStringIpv4 = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -6049,7 +6049,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_ipv6":
 			requiredBitSet[2] |= 1 << 5
 			if err := func() error {
-				s.RequiredArrayStringIpv6 = nil
+				s.RequiredArrayStringIpv6 = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -6069,7 +6069,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_password":
 			requiredBitSet[2] |= 1 << 6
 			if err := func() error {
-				s.RequiredArrayStringPassword = nil
+				s.RequiredArrayStringPassword = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -6089,7 +6089,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_time":
 			requiredBitSet[2] |= 1 << 7
 			if err := func() error {
-				s.RequiredArrayStringTime = nil
+				s.RequiredArrayStringTime = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeTime(d)
@@ -6109,7 +6109,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_uri":
 			requiredBitSet[3] |= 1 << 0
 			if err := func() error {
-				s.RequiredArrayStringURI = nil
+				s.RequiredArrayStringURI = make([]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem url.URL
 					v, err := json.DecodeURI(d)
@@ -6129,7 +6129,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_uuid":
 			requiredBitSet[3] |= 1 << 1
 			if err := func() error {
-				s.RequiredArrayStringUUID = nil
+				s.RequiredArrayStringUUID = make([]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem uuid.UUID
 					v, err := json.DecodeUUID(d)
@@ -6161,10 +6161,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_any":
 			requiredBitSet[3] |= 1 << 3
 			if err := func() error {
-				s.RequiredDoubleArrayAny = nil
+				s.RequiredDoubleArrayAny = make([][]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []jx.Raw
-					elem = nil
+					elem = make([]jx.Raw, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem jx.Raw
 						v, err := d.Raw()
@@ -6189,10 +6189,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_boolean":
 			requiredBitSet[3] |= 1 << 4
 			if err := func() error {
-				s.RequiredDoubleArrayBoolean = nil
+				s.RequiredDoubleArrayBoolean = make([][]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []bool
-					elem = nil
+					elem = make([]bool, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem bool
 						v, err := d.Bool()
@@ -6217,10 +6217,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_integer":
 			requiredBitSet[3] |= 1 << 5
 			if err := func() error {
-				s.RequiredDoubleArrayInteger = nil
+				s.RequiredDoubleArrayInteger = make([][]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int
-					elem = nil
+					elem = make([]int, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int
 						v, err := d.Int()
@@ -6245,10 +6245,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_integer_int32":
 			requiredBitSet[3] |= 1 << 6
 			if err := func() error {
-				s.RequiredDoubleArrayIntegerInt32 = nil
+				s.RequiredDoubleArrayIntegerInt32 = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int32
-					elem = nil
+					elem = make([]int32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int32
 						v, err := d.Int32()
@@ -6273,10 +6273,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_integer_int64":
 			requiredBitSet[3] |= 1 << 7
 			if err := func() error {
-				s.RequiredDoubleArrayIntegerInt64 = nil
+				s.RequiredDoubleArrayIntegerInt64 = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int64
-					elem = nil
+					elem = make([]int64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int64
 						v, err := d.Int64()
@@ -6301,10 +6301,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_number":
 			requiredBitSet[4] |= 1 << 0
 			if err := func() error {
-				s.RequiredDoubleArrayNumber = nil
+				s.RequiredDoubleArrayNumber = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float64
-					elem = nil
+					elem = make([]float64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float64
 						v, err := d.Float64()
@@ -6329,10 +6329,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_number_double":
 			requiredBitSet[4] |= 1 << 1
 			if err := func() error {
-				s.RequiredDoubleArrayNumberDouble = nil
+				s.RequiredDoubleArrayNumberDouble = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float64
-					elem = nil
+					elem = make([]float64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float64
 						v, err := d.Float64()
@@ -6357,10 +6357,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_number_float":
 			requiredBitSet[4] |= 1 << 2
 			if err := func() error {
-				s.RequiredDoubleArrayNumberFloat = nil
+				s.RequiredDoubleArrayNumberFloat = make([][]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float32
-					elem = nil
+					elem = make([]float32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float32
 						v, err := d.Float32()
@@ -6385,10 +6385,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_number_int32":
 			requiredBitSet[4] |= 1 << 3
 			if err := func() error {
-				s.RequiredDoubleArrayNumberInt32 = nil
+				s.RequiredDoubleArrayNumberInt32 = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int32
-					elem = nil
+					elem = make([]int32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int32
 						v, err := d.Int32()
@@ -6413,10 +6413,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_number_int64":
 			requiredBitSet[4] |= 1 << 4
 			if err := func() error {
-				s.RequiredDoubleArrayNumberInt64 = nil
+				s.RequiredDoubleArrayNumberInt64 = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int64
-					elem = nil
+					elem = make([]int64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int64
 						v, err := d.Int64()
@@ -6441,10 +6441,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string":
 			requiredBitSet[4] |= 1 << 5
 			if err := func() error {
-				s.RequiredDoubleArrayString = nil
+				s.RequiredDoubleArrayString = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -6469,10 +6469,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_binary":
 			requiredBitSet[4] |= 1 << 6
 			if err := func() error {
-				s.RequiredDoubleArrayStringBinary = nil
+				s.RequiredDoubleArrayStringBinary = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -6497,10 +6497,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_byte":
 			requiredBitSet[4] |= 1 << 7
 			if err := func() error {
-				s.RequiredDoubleArrayStringByte = nil
+				s.RequiredDoubleArrayStringByte = make([][][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem [][]byte
-					elem = nil
+					elem = make([][]byte, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem []byte
 						v, err := d.Base64()
@@ -6525,10 +6525,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_date":
 			requiredBitSet[5] |= 1 << 0
 			if err := func() error {
-				s.RequiredDoubleArrayStringDate = nil
+				s.RequiredDoubleArrayStringDate = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeDate(d)
@@ -6553,10 +6553,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_date-time":
 			requiredBitSet[5] |= 1 << 1
 			if err := func() error {
-				s.RequiredDoubleArrayStringDateMinusTime = nil
+				s.RequiredDoubleArrayStringDateMinusTime = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeDateTime(d)
@@ -6581,10 +6581,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_duration":
 			requiredBitSet[5] |= 1 << 2
 			if err := func() error {
-				s.RequiredDoubleArrayStringDuration = nil
+				s.RequiredDoubleArrayStringDuration = make([][]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Duration
-					elem = nil
+					elem = make([]time.Duration, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Duration
 						v, err := json.DecodeDuration(d)
@@ -6609,10 +6609,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_email":
 			requiredBitSet[5] |= 1 << 3
 			if err := func() error {
-				s.RequiredDoubleArrayStringEmail = nil
+				s.RequiredDoubleArrayStringEmail = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -6637,10 +6637,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_hostname":
 			requiredBitSet[5] |= 1 << 4
 			if err := func() error {
-				s.RequiredDoubleArrayStringHostname = nil
+				s.RequiredDoubleArrayStringHostname = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -6665,10 +6665,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_ip":
 			requiredBitSet[5] |= 1 << 5
 			if err := func() error {
-				s.RequiredDoubleArrayStringIP = nil
+				s.RequiredDoubleArrayStringIP = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -6693,10 +6693,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_ipv4":
 			requiredBitSet[5] |= 1 << 6
 			if err := func() error {
-				s.RequiredDoubleArrayStringIpv4 = nil
+				s.RequiredDoubleArrayStringIpv4 = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -6721,10 +6721,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_ipv6":
 			requiredBitSet[5] |= 1 << 7
 			if err := func() error {
-				s.RequiredDoubleArrayStringIpv6 = nil
+				s.RequiredDoubleArrayStringIpv6 = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -6749,10 +6749,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_password":
 			requiredBitSet[6] |= 1 << 0
 			if err := func() error {
-				s.RequiredDoubleArrayStringPassword = nil
+				s.RequiredDoubleArrayStringPassword = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -6777,10 +6777,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_time":
 			requiredBitSet[6] |= 1 << 1
 			if err := func() error {
-				s.RequiredDoubleArrayStringTime = nil
+				s.RequiredDoubleArrayStringTime = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeTime(d)
@@ -6805,10 +6805,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_uri":
 			requiredBitSet[6] |= 1 << 2
 			if err := func() error {
-				s.RequiredDoubleArrayStringURI = nil
+				s.RequiredDoubleArrayStringURI = make([][]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []url.URL
-					elem = nil
+					elem = make([]url.URL, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem url.URL
 						v, err := json.DecodeURI(d)
@@ -6833,10 +6833,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_uuid":
 			requiredBitSet[6] |= 1 << 3
 			if err := func() error {
-				s.RequiredDoubleArrayStringUUID = nil
+				s.RequiredDoubleArrayStringUUID = make([][]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []uuid.UUID
-					elem = nil
+					elem = make([]uuid.UUID, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem uuid.UUID
 						v, err := json.DecodeUUID(d)
@@ -7147,7 +7147,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_any":
 			if err := func() error {
-				s.OptionalArrayAny = nil
+				s.OptionalArrayAny = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -7166,7 +7166,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_boolean":
 			if err := func() error {
-				s.OptionalArrayBoolean = nil
+				s.OptionalArrayBoolean = make([]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem bool
 					v, err := d.Bool()
@@ -7185,7 +7185,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_integer":
 			if err := func() error {
-				s.OptionalArrayInteger = nil
+				s.OptionalArrayInteger = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -7204,7 +7204,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_integer_int32":
 			if err := func() error {
-				s.OptionalArrayIntegerInt32 = nil
+				s.OptionalArrayIntegerInt32 = make([]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int32
 					v, err := d.Int32()
@@ -7223,7 +7223,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_integer_int64":
 			if err := func() error {
-				s.OptionalArrayIntegerInt64 = nil
+				s.OptionalArrayIntegerInt64 = make([]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int64
 					v, err := d.Int64()
@@ -7242,7 +7242,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_number":
 			if err := func() error {
-				s.OptionalArrayNumber = nil
+				s.OptionalArrayNumber = make([]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float64
 					v, err := d.Float64()
@@ -7261,7 +7261,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_number_double":
 			if err := func() error {
-				s.OptionalArrayNumberDouble = nil
+				s.OptionalArrayNumberDouble = make([]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float64
 					v, err := d.Float64()
@@ -7280,7 +7280,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_number_float":
 			if err := func() error {
-				s.OptionalArrayNumberFloat = nil
+				s.OptionalArrayNumberFloat = make([]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float32
 					v, err := d.Float32()
@@ -7299,7 +7299,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_number_int32":
 			if err := func() error {
-				s.OptionalArrayNumberInt32 = nil
+				s.OptionalArrayNumberInt32 = make([]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int32
 					v, err := d.Int32()
@@ -7318,7 +7318,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_number_int64":
 			if err := func() error {
-				s.OptionalArrayNumberInt64 = nil
+				s.OptionalArrayNumberInt64 = make([]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int64
 					v, err := d.Int64()
@@ -7337,7 +7337,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string":
 			if err := func() error {
-				s.OptionalArrayString = nil
+				s.OptionalArrayString = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -7356,7 +7356,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_binary":
 			if err := func() error {
-				s.OptionalArrayStringBinary = nil
+				s.OptionalArrayStringBinary = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -7375,7 +7375,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_byte":
 			if err := func() error {
-				s.OptionalArrayStringByte = nil
+				s.OptionalArrayStringByte = make([][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []byte
 					v, err := d.Base64()
@@ -7394,7 +7394,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_date":
 			if err := func() error {
-				s.OptionalArrayStringDate = nil
+				s.OptionalArrayStringDate = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeDate(d)
@@ -7413,7 +7413,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_date-time":
 			if err := func() error {
-				s.OptionalArrayStringDateMinusTime = nil
+				s.OptionalArrayStringDateMinusTime = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeDateTime(d)
@@ -7432,7 +7432,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_duration":
 			if err := func() error {
-				s.OptionalArrayStringDuration = nil
+				s.OptionalArrayStringDuration = make([]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Duration
 					v, err := json.DecodeDuration(d)
@@ -7451,7 +7451,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_email":
 			if err := func() error {
-				s.OptionalArrayStringEmail = nil
+				s.OptionalArrayStringEmail = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -7470,7 +7470,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_hostname":
 			if err := func() error {
-				s.OptionalArrayStringHostname = nil
+				s.OptionalArrayStringHostname = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -7489,7 +7489,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_ip":
 			if err := func() error {
-				s.OptionalArrayStringIP = nil
+				s.OptionalArrayStringIP = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -7508,7 +7508,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_ipv4":
 			if err := func() error {
-				s.OptionalArrayStringIpv4 = nil
+				s.OptionalArrayStringIpv4 = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -7527,7 +7527,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_ipv6":
 			if err := func() error {
-				s.OptionalArrayStringIpv6 = nil
+				s.OptionalArrayStringIpv6 = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -7546,7 +7546,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_password":
 			if err := func() error {
-				s.OptionalArrayStringPassword = nil
+				s.OptionalArrayStringPassword = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -7565,7 +7565,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_time":
 			if err := func() error {
-				s.OptionalArrayStringTime = nil
+				s.OptionalArrayStringTime = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeTime(d)
@@ -7584,7 +7584,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_uri":
 			if err := func() error {
-				s.OptionalArrayStringURI = nil
+				s.OptionalArrayStringURI = make([]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem url.URL
 					v, err := json.DecodeURI(d)
@@ -7603,7 +7603,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_uuid":
 			if err := func() error {
-				s.OptionalArrayStringUUID = nil
+				s.OptionalArrayStringUUID = make([]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem uuid.UUID
 					v, err := json.DecodeUUID(d)
@@ -7632,10 +7632,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_any":
 			if err := func() error {
-				s.OptionalDoubleArrayAny = nil
+				s.OptionalDoubleArrayAny = make([][]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []jx.Raw
-					elem = nil
+					elem = make([]jx.Raw, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem jx.Raw
 						v, err := d.Raw()
@@ -7659,10 +7659,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_boolean":
 			if err := func() error {
-				s.OptionalDoubleArrayBoolean = nil
+				s.OptionalDoubleArrayBoolean = make([][]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []bool
-					elem = nil
+					elem = make([]bool, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem bool
 						v, err := d.Bool()
@@ -7686,10 +7686,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_integer":
 			if err := func() error {
-				s.OptionalDoubleArrayInteger = nil
+				s.OptionalDoubleArrayInteger = make([][]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int
-					elem = nil
+					elem = make([]int, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int
 						v, err := d.Int()
@@ -7713,10 +7713,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_integer_int32":
 			if err := func() error {
-				s.OptionalDoubleArrayIntegerInt32 = nil
+				s.OptionalDoubleArrayIntegerInt32 = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int32
-					elem = nil
+					elem = make([]int32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int32
 						v, err := d.Int32()
@@ -7740,10 +7740,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_integer_int64":
 			if err := func() error {
-				s.OptionalDoubleArrayIntegerInt64 = nil
+				s.OptionalDoubleArrayIntegerInt64 = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int64
-					elem = nil
+					elem = make([]int64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int64
 						v, err := d.Int64()
@@ -7767,10 +7767,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_number":
 			if err := func() error {
-				s.OptionalDoubleArrayNumber = nil
+				s.OptionalDoubleArrayNumber = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float64
-					elem = nil
+					elem = make([]float64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float64
 						v, err := d.Float64()
@@ -7794,10 +7794,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_number_double":
 			if err := func() error {
-				s.OptionalDoubleArrayNumberDouble = nil
+				s.OptionalDoubleArrayNumberDouble = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float64
-					elem = nil
+					elem = make([]float64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float64
 						v, err := d.Float64()
@@ -7821,10 +7821,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_number_float":
 			if err := func() error {
-				s.OptionalDoubleArrayNumberFloat = nil
+				s.OptionalDoubleArrayNumberFloat = make([][]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float32
-					elem = nil
+					elem = make([]float32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float32
 						v, err := d.Float32()
@@ -7848,10 +7848,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_number_int32":
 			if err := func() error {
-				s.OptionalDoubleArrayNumberInt32 = nil
+				s.OptionalDoubleArrayNumberInt32 = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int32
-					elem = nil
+					elem = make([]int32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int32
 						v, err := d.Int32()
@@ -7875,10 +7875,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_number_int64":
 			if err := func() error {
-				s.OptionalDoubleArrayNumberInt64 = nil
+				s.OptionalDoubleArrayNumberInt64 = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int64
-					elem = nil
+					elem = make([]int64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int64
 						v, err := d.Int64()
@@ -7902,10 +7902,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string":
 			if err := func() error {
-				s.OptionalDoubleArrayString = nil
+				s.OptionalDoubleArrayString = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -7929,10 +7929,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_binary":
 			if err := func() error {
-				s.OptionalDoubleArrayStringBinary = nil
+				s.OptionalDoubleArrayStringBinary = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -7956,10 +7956,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_byte":
 			if err := func() error {
-				s.OptionalDoubleArrayStringByte = nil
+				s.OptionalDoubleArrayStringByte = make([][][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem [][]byte
-					elem = nil
+					elem = make([][]byte, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem []byte
 						v, err := d.Base64()
@@ -7983,10 +7983,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_date":
 			if err := func() error {
-				s.OptionalDoubleArrayStringDate = nil
+				s.OptionalDoubleArrayStringDate = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeDate(d)
@@ -8010,10 +8010,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_date-time":
 			if err := func() error {
-				s.OptionalDoubleArrayStringDateMinusTime = nil
+				s.OptionalDoubleArrayStringDateMinusTime = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeDateTime(d)
@@ -8037,10 +8037,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_duration":
 			if err := func() error {
-				s.OptionalDoubleArrayStringDuration = nil
+				s.OptionalDoubleArrayStringDuration = make([][]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Duration
-					elem = nil
+					elem = make([]time.Duration, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Duration
 						v, err := json.DecodeDuration(d)
@@ -8064,10 +8064,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_email":
 			if err := func() error {
-				s.OptionalDoubleArrayStringEmail = nil
+				s.OptionalDoubleArrayStringEmail = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -8091,10 +8091,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_hostname":
 			if err := func() error {
-				s.OptionalDoubleArrayStringHostname = nil
+				s.OptionalDoubleArrayStringHostname = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -8118,10 +8118,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_ip":
 			if err := func() error {
-				s.OptionalDoubleArrayStringIP = nil
+				s.OptionalDoubleArrayStringIP = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -8145,10 +8145,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_ipv4":
 			if err := func() error {
-				s.OptionalDoubleArrayStringIpv4 = nil
+				s.OptionalDoubleArrayStringIpv4 = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -8172,10 +8172,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_ipv6":
 			if err := func() error {
-				s.OptionalDoubleArrayStringIpv6 = nil
+				s.OptionalDoubleArrayStringIpv6 = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -8199,10 +8199,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_password":
 			if err := func() error {
-				s.OptionalDoubleArrayStringPassword = nil
+				s.OptionalDoubleArrayStringPassword = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -8226,10 +8226,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_time":
 			if err := func() error {
-				s.OptionalDoubleArrayStringTime = nil
+				s.OptionalDoubleArrayStringTime = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeTime(d)
@@ -8253,10 +8253,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_uri":
 			if err := func() error {
-				s.OptionalDoubleArrayStringURI = nil
+				s.OptionalDoubleArrayStringURI = make([][]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []url.URL
-					elem = nil
+					elem = make([]url.URL, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem url.URL
 						v, err := json.DecodeURI(d)
@@ -8280,10 +8280,10 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_uuid":
 			if err := func() error {
-				s.OptionalDoubleArrayStringUUID = nil
+				s.OptionalDoubleArrayStringUUID = make([][]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []uuid.UUID
-					elem = nil
+					elem = make([]uuid.UUID, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem uuid.UUID
 						v, err := json.DecodeUUID(d)
@@ -12372,7 +12372,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_any":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.RequiredArrayAny = nil
+				s.RequiredArrayAny = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -12392,7 +12392,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_boolean":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.RequiredArrayBoolean = nil
+				s.RequiredArrayBoolean = make([]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem bool
 					v, err := d.Bool()
@@ -12412,7 +12412,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_integer":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				s.RequiredArrayInteger = nil
+				s.RequiredArrayInteger = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -12432,7 +12432,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_integer_int32":
 			requiredBitSet[0] |= 1 << 4
 			if err := func() error {
-				s.RequiredArrayIntegerInt32 = nil
+				s.RequiredArrayIntegerInt32 = make([]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int32
 					v, err := d.Int32()
@@ -12452,7 +12452,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_integer_int64":
 			requiredBitSet[0] |= 1 << 5
 			if err := func() error {
-				s.RequiredArrayIntegerInt64 = nil
+				s.RequiredArrayIntegerInt64 = make([]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int64
 					v, err := d.Int64()
@@ -12472,7 +12472,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_number":
 			requiredBitSet[0] |= 1 << 6
 			if err := func() error {
-				s.RequiredArrayNumber = nil
+				s.RequiredArrayNumber = make([]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float64
 					v, err := d.Float64()
@@ -12492,7 +12492,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_number_double":
 			requiredBitSet[0] |= 1 << 7
 			if err := func() error {
-				s.RequiredArrayNumberDouble = nil
+				s.RequiredArrayNumberDouble = make([]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float64
 					v, err := d.Float64()
@@ -12512,7 +12512,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_number_float":
 			requiredBitSet[1] |= 1 << 0
 			if err := func() error {
-				s.RequiredArrayNumberFloat = nil
+				s.RequiredArrayNumberFloat = make([]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float32
 					v, err := d.Float32()
@@ -12532,7 +12532,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_number_int32":
 			requiredBitSet[1] |= 1 << 1
 			if err := func() error {
-				s.RequiredArrayNumberInt32 = nil
+				s.RequiredArrayNumberInt32 = make([]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int32
 					v, err := d.Int32()
@@ -12552,7 +12552,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_number_int64":
 			requiredBitSet[1] |= 1 << 2
 			if err := func() error {
-				s.RequiredArrayNumberInt64 = nil
+				s.RequiredArrayNumberInt64 = make([]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int64
 					v, err := d.Int64()
@@ -12572,7 +12572,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string":
 			requiredBitSet[1] |= 1 << 3
 			if err := func() error {
-				s.RequiredArrayString = nil
+				s.RequiredArrayString = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -12592,7 +12592,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_binary":
 			requiredBitSet[1] |= 1 << 4
 			if err := func() error {
-				s.RequiredArrayStringBinary = nil
+				s.RequiredArrayStringBinary = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -12612,7 +12612,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_byte":
 			requiredBitSet[1] |= 1 << 5
 			if err := func() error {
-				s.RequiredArrayStringByte = nil
+				s.RequiredArrayStringByte = make([][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []byte
 					v, err := d.Base64()
@@ -12632,7 +12632,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_date":
 			requiredBitSet[1] |= 1 << 6
 			if err := func() error {
-				s.RequiredArrayStringDate = nil
+				s.RequiredArrayStringDate = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeDate(d)
@@ -12652,7 +12652,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_date-time":
 			requiredBitSet[1] |= 1 << 7
 			if err := func() error {
-				s.RequiredArrayStringDateMinusTime = nil
+				s.RequiredArrayStringDateMinusTime = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeDateTime(d)
@@ -12672,7 +12672,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_duration":
 			requiredBitSet[2] |= 1 << 0
 			if err := func() error {
-				s.RequiredArrayStringDuration = nil
+				s.RequiredArrayStringDuration = make([]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Duration
 					v, err := json.DecodeDuration(d)
@@ -12692,7 +12692,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_email":
 			requiredBitSet[2] |= 1 << 1
 			if err := func() error {
-				s.RequiredArrayStringEmail = nil
+				s.RequiredArrayStringEmail = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -12712,7 +12712,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_hostname":
 			requiredBitSet[2] |= 1 << 2
 			if err := func() error {
-				s.RequiredArrayStringHostname = nil
+				s.RequiredArrayStringHostname = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -12732,7 +12732,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_ip":
 			requiredBitSet[2] |= 1 << 3
 			if err := func() error {
-				s.RequiredArrayStringIP = nil
+				s.RequiredArrayStringIP = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -12752,7 +12752,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_ipv4":
 			requiredBitSet[2] |= 1 << 4
 			if err := func() error {
-				s.RequiredArrayStringIpv4 = nil
+				s.RequiredArrayStringIpv4 = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -12772,7 +12772,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_ipv6":
 			requiredBitSet[2] |= 1 << 5
 			if err := func() error {
-				s.RequiredArrayStringIpv6 = nil
+				s.RequiredArrayStringIpv6 = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -12792,7 +12792,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_password":
 			requiredBitSet[2] |= 1 << 6
 			if err := func() error {
-				s.RequiredArrayStringPassword = nil
+				s.RequiredArrayStringPassword = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -12812,7 +12812,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_time":
 			requiredBitSet[2] |= 1 << 7
 			if err := func() error {
-				s.RequiredArrayStringTime = nil
+				s.RequiredArrayStringTime = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeTime(d)
@@ -12832,7 +12832,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_uri":
 			requiredBitSet[3] |= 1 << 0
 			if err := func() error {
-				s.RequiredArrayStringURI = nil
+				s.RequiredArrayStringURI = make([]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem url.URL
 					v, err := json.DecodeURI(d)
@@ -12852,7 +12852,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_uuid":
 			requiredBitSet[3] |= 1 << 1
 			if err := func() error {
-				s.RequiredArrayStringUUID = nil
+				s.RequiredArrayStringUUID = make([]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem uuid.UUID
 					v, err := json.DecodeUUID(d)
@@ -12884,10 +12884,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_any":
 			requiredBitSet[3] |= 1 << 3
 			if err := func() error {
-				s.RequiredDoubleArrayAny = nil
+				s.RequiredDoubleArrayAny = make([][]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []jx.Raw
-					elem = nil
+					elem = make([]jx.Raw, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem jx.Raw
 						v, err := d.Raw()
@@ -12912,10 +12912,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_boolean":
 			requiredBitSet[3] |= 1 << 4
 			if err := func() error {
-				s.RequiredDoubleArrayBoolean = nil
+				s.RequiredDoubleArrayBoolean = make([][]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []bool
-					elem = nil
+					elem = make([]bool, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem bool
 						v, err := d.Bool()
@@ -12940,10 +12940,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_integer":
 			requiredBitSet[3] |= 1 << 5
 			if err := func() error {
-				s.RequiredDoubleArrayInteger = nil
+				s.RequiredDoubleArrayInteger = make([][]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int
-					elem = nil
+					elem = make([]int, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int
 						v, err := d.Int()
@@ -12968,10 +12968,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_integer_int32":
 			requiredBitSet[3] |= 1 << 6
 			if err := func() error {
-				s.RequiredDoubleArrayIntegerInt32 = nil
+				s.RequiredDoubleArrayIntegerInt32 = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int32
-					elem = nil
+					elem = make([]int32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int32
 						v, err := d.Int32()
@@ -12996,10 +12996,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_integer_int64":
 			requiredBitSet[3] |= 1 << 7
 			if err := func() error {
-				s.RequiredDoubleArrayIntegerInt64 = nil
+				s.RequiredDoubleArrayIntegerInt64 = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int64
-					elem = nil
+					elem = make([]int64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int64
 						v, err := d.Int64()
@@ -13024,10 +13024,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_number":
 			requiredBitSet[4] |= 1 << 0
 			if err := func() error {
-				s.RequiredDoubleArrayNumber = nil
+				s.RequiredDoubleArrayNumber = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float64
-					elem = nil
+					elem = make([]float64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float64
 						v, err := d.Float64()
@@ -13052,10 +13052,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_number_double":
 			requiredBitSet[4] |= 1 << 1
 			if err := func() error {
-				s.RequiredDoubleArrayNumberDouble = nil
+				s.RequiredDoubleArrayNumberDouble = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float64
-					elem = nil
+					elem = make([]float64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float64
 						v, err := d.Float64()
@@ -13080,10 +13080,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_number_float":
 			requiredBitSet[4] |= 1 << 2
 			if err := func() error {
-				s.RequiredDoubleArrayNumberFloat = nil
+				s.RequiredDoubleArrayNumberFloat = make([][]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float32
-					elem = nil
+					elem = make([]float32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float32
 						v, err := d.Float32()
@@ -13108,10 +13108,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_number_int32":
 			requiredBitSet[4] |= 1 << 3
 			if err := func() error {
-				s.RequiredDoubleArrayNumberInt32 = nil
+				s.RequiredDoubleArrayNumberInt32 = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int32
-					elem = nil
+					elem = make([]int32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int32
 						v, err := d.Int32()
@@ -13136,10 +13136,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_number_int64":
 			requiredBitSet[4] |= 1 << 4
 			if err := func() error {
-				s.RequiredDoubleArrayNumberInt64 = nil
+				s.RequiredDoubleArrayNumberInt64 = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int64
-					elem = nil
+					elem = make([]int64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int64
 						v, err := d.Int64()
@@ -13164,10 +13164,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string":
 			requiredBitSet[4] |= 1 << 5
 			if err := func() error {
-				s.RequiredDoubleArrayString = nil
+				s.RequiredDoubleArrayString = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -13192,10 +13192,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_binary":
 			requiredBitSet[4] |= 1 << 6
 			if err := func() error {
-				s.RequiredDoubleArrayStringBinary = nil
+				s.RequiredDoubleArrayStringBinary = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -13220,10 +13220,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_byte":
 			requiredBitSet[4] |= 1 << 7
 			if err := func() error {
-				s.RequiredDoubleArrayStringByte = nil
+				s.RequiredDoubleArrayStringByte = make([][][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem [][]byte
-					elem = nil
+					elem = make([][]byte, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem []byte
 						v, err := d.Base64()
@@ -13248,10 +13248,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_date":
 			requiredBitSet[5] |= 1 << 0
 			if err := func() error {
-				s.RequiredDoubleArrayStringDate = nil
+				s.RequiredDoubleArrayStringDate = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeDate(d)
@@ -13276,10 +13276,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_date-time":
 			requiredBitSet[5] |= 1 << 1
 			if err := func() error {
-				s.RequiredDoubleArrayStringDateMinusTime = nil
+				s.RequiredDoubleArrayStringDateMinusTime = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeDateTime(d)
@@ -13304,10 +13304,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_duration":
 			requiredBitSet[5] |= 1 << 2
 			if err := func() error {
-				s.RequiredDoubleArrayStringDuration = nil
+				s.RequiredDoubleArrayStringDuration = make([][]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Duration
-					elem = nil
+					elem = make([]time.Duration, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Duration
 						v, err := json.DecodeDuration(d)
@@ -13332,10 +13332,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_email":
 			requiredBitSet[5] |= 1 << 3
 			if err := func() error {
-				s.RequiredDoubleArrayStringEmail = nil
+				s.RequiredDoubleArrayStringEmail = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -13360,10 +13360,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_hostname":
 			requiredBitSet[5] |= 1 << 4
 			if err := func() error {
-				s.RequiredDoubleArrayStringHostname = nil
+				s.RequiredDoubleArrayStringHostname = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -13388,10 +13388,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_ip":
 			requiredBitSet[5] |= 1 << 5
 			if err := func() error {
-				s.RequiredDoubleArrayStringIP = nil
+				s.RequiredDoubleArrayStringIP = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -13416,10 +13416,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_ipv4":
 			requiredBitSet[5] |= 1 << 6
 			if err := func() error {
-				s.RequiredDoubleArrayStringIpv4 = nil
+				s.RequiredDoubleArrayStringIpv4 = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -13444,10 +13444,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_ipv6":
 			requiredBitSet[5] |= 1 << 7
 			if err := func() error {
-				s.RequiredDoubleArrayStringIpv6 = nil
+				s.RequiredDoubleArrayStringIpv6 = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -13472,10 +13472,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_password":
 			requiredBitSet[6] |= 1 << 0
 			if err := func() error {
-				s.RequiredDoubleArrayStringPassword = nil
+				s.RequiredDoubleArrayStringPassword = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -13500,10 +13500,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_time":
 			requiredBitSet[6] |= 1 << 1
 			if err := func() error {
-				s.RequiredDoubleArrayStringTime = nil
+				s.RequiredDoubleArrayStringTime = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeTime(d)
@@ -13528,10 +13528,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_uri":
 			requiredBitSet[6] |= 1 << 2
 			if err := func() error {
-				s.RequiredDoubleArrayStringURI = nil
+				s.RequiredDoubleArrayStringURI = make([][]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []url.URL
-					elem = nil
+					elem = make([]url.URL, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem url.URL
 						v, err := json.DecodeURI(d)
@@ -13556,10 +13556,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_uuid":
 			requiredBitSet[6] |= 1 << 3
 			if err := func() error {
-				s.RequiredDoubleArrayStringUUID = nil
+				s.RequiredDoubleArrayStringUUID = make([][]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []uuid.UUID
-					elem = nil
+					elem = make([]uuid.UUID, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem uuid.UUID
 						v, err := json.DecodeUUID(d)
@@ -13870,7 +13870,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_any":
 			if err := func() error {
-				s.OptionalArrayAny = nil
+				s.OptionalArrayAny = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -13889,7 +13889,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_boolean":
 			if err := func() error {
-				s.OptionalArrayBoolean = nil
+				s.OptionalArrayBoolean = make([]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem bool
 					v, err := d.Bool()
@@ -13908,7 +13908,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_integer":
 			if err := func() error {
-				s.OptionalArrayInteger = nil
+				s.OptionalArrayInteger = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -13927,7 +13927,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_integer_int32":
 			if err := func() error {
-				s.OptionalArrayIntegerInt32 = nil
+				s.OptionalArrayIntegerInt32 = make([]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int32
 					v, err := d.Int32()
@@ -13946,7 +13946,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_integer_int64":
 			if err := func() error {
-				s.OptionalArrayIntegerInt64 = nil
+				s.OptionalArrayIntegerInt64 = make([]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int64
 					v, err := d.Int64()
@@ -13965,7 +13965,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_number":
 			if err := func() error {
-				s.OptionalArrayNumber = nil
+				s.OptionalArrayNumber = make([]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float64
 					v, err := d.Float64()
@@ -13984,7 +13984,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_number_double":
 			if err := func() error {
-				s.OptionalArrayNumberDouble = nil
+				s.OptionalArrayNumberDouble = make([]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float64
 					v, err := d.Float64()
@@ -14003,7 +14003,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_number_float":
 			if err := func() error {
-				s.OptionalArrayNumberFloat = nil
+				s.OptionalArrayNumberFloat = make([]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float32
 					v, err := d.Float32()
@@ -14022,7 +14022,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_number_int32":
 			if err := func() error {
-				s.OptionalArrayNumberInt32 = nil
+				s.OptionalArrayNumberInt32 = make([]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int32
 					v, err := d.Int32()
@@ -14041,7 +14041,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_number_int64":
 			if err := func() error {
-				s.OptionalArrayNumberInt64 = nil
+				s.OptionalArrayNumberInt64 = make([]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int64
 					v, err := d.Int64()
@@ -14060,7 +14060,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string":
 			if err := func() error {
-				s.OptionalArrayString = nil
+				s.OptionalArrayString = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -14079,7 +14079,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_binary":
 			if err := func() error {
-				s.OptionalArrayStringBinary = nil
+				s.OptionalArrayStringBinary = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -14098,7 +14098,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_byte":
 			if err := func() error {
-				s.OptionalArrayStringByte = nil
+				s.OptionalArrayStringByte = make([][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []byte
 					v, err := d.Base64()
@@ -14117,7 +14117,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_date":
 			if err := func() error {
-				s.OptionalArrayStringDate = nil
+				s.OptionalArrayStringDate = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeDate(d)
@@ -14136,7 +14136,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_date-time":
 			if err := func() error {
-				s.OptionalArrayStringDateMinusTime = nil
+				s.OptionalArrayStringDateMinusTime = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeDateTime(d)
@@ -14155,7 +14155,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_duration":
 			if err := func() error {
-				s.OptionalArrayStringDuration = nil
+				s.OptionalArrayStringDuration = make([]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Duration
 					v, err := json.DecodeDuration(d)
@@ -14174,7 +14174,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_email":
 			if err := func() error {
-				s.OptionalArrayStringEmail = nil
+				s.OptionalArrayStringEmail = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -14193,7 +14193,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_hostname":
 			if err := func() error {
-				s.OptionalArrayStringHostname = nil
+				s.OptionalArrayStringHostname = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -14212,7 +14212,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_ip":
 			if err := func() error {
-				s.OptionalArrayStringIP = nil
+				s.OptionalArrayStringIP = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -14231,7 +14231,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_ipv4":
 			if err := func() error {
-				s.OptionalArrayStringIpv4 = nil
+				s.OptionalArrayStringIpv4 = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -14250,7 +14250,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_ipv6":
 			if err := func() error {
-				s.OptionalArrayStringIpv6 = nil
+				s.OptionalArrayStringIpv6 = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -14269,7 +14269,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_password":
 			if err := func() error {
-				s.OptionalArrayStringPassword = nil
+				s.OptionalArrayStringPassword = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -14288,7 +14288,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_time":
 			if err := func() error {
-				s.OptionalArrayStringTime = nil
+				s.OptionalArrayStringTime = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeTime(d)
@@ -14307,7 +14307,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_uri":
 			if err := func() error {
-				s.OptionalArrayStringURI = nil
+				s.OptionalArrayStringURI = make([]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem url.URL
 					v, err := json.DecodeURI(d)
@@ -14326,7 +14326,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_uuid":
 			if err := func() error {
-				s.OptionalArrayStringUUID = nil
+				s.OptionalArrayStringUUID = make([]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem uuid.UUID
 					v, err := json.DecodeUUID(d)
@@ -14355,10 +14355,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_any":
 			if err := func() error {
-				s.OptionalDoubleArrayAny = nil
+				s.OptionalDoubleArrayAny = make([][]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []jx.Raw
-					elem = nil
+					elem = make([]jx.Raw, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem jx.Raw
 						v, err := d.Raw()
@@ -14382,10 +14382,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_boolean":
 			if err := func() error {
-				s.OptionalDoubleArrayBoolean = nil
+				s.OptionalDoubleArrayBoolean = make([][]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []bool
-					elem = nil
+					elem = make([]bool, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem bool
 						v, err := d.Bool()
@@ -14409,10 +14409,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_integer":
 			if err := func() error {
-				s.OptionalDoubleArrayInteger = nil
+				s.OptionalDoubleArrayInteger = make([][]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int
-					elem = nil
+					elem = make([]int, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int
 						v, err := d.Int()
@@ -14436,10 +14436,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_integer_int32":
 			if err := func() error {
-				s.OptionalDoubleArrayIntegerInt32 = nil
+				s.OptionalDoubleArrayIntegerInt32 = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int32
-					elem = nil
+					elem = make([]int32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int32
 						v, err := d.Int32()
@@ -14463,10 +14463,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_integer_int64":
 			if err := func() error {
-				s.OptionalDoubleArrayIntegerInt64 = nil
+				s.OptionalDoubleArrayIntegerInt64 = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int64
-					elem = nil
+					elem = make([]int64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int64
 						v, err := d.Int64()
@@ -14490,10 +14490,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_number":
 			if err := func() error {
-				s.OptionalDoubleArrayNumber = nil
+				s.OptionalDoubleArrayNumber = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float64
-					elem = nil
+					elem = make([]float64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float64
 						v, err := d.Float64()
@@ -14517,10 +14517,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_number_double":
 			if err := func() error {
-				s.OptionalDoubleArrayNumberDouble = nil
+				s.OptionalDoubleArrayNumberDouble = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float64
-					elem = nil
+					elem = make([]float64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float64
 						v, err := d.Float64()
@@ -14544,10 +14544,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_number_float":
 			if err := func() error {
-				s.OptionalDoubleArrayNumberFloat = nil
+				s.OptionalDoubleArrayNumberFloat = make([][]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float32
-					elem = nil
+					elem = make([]float32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float32
 						v, err := d.Float32()
@@ -14571,10 +14571,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_number_int32":
 			if err := func() error {
-				s.OptionalDoubleArrayNumberInt32 = nil
+				s.OptionalDoubleArrayNumberInt32 = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int32
-					elem = nil
+					elem = make([]int32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int32
 						v, err := d.Int32()
@@ -14598,10 +14598,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_number_int64":
 			if err := func() error {
-				s.OptionalDoubleArrayNumberInt64 = nil
+				s.OptionalDoubleArrayNumberInt64 = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int64
-					elem = nil
+					elem = make([]int64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int64
 						v, err := d.Int64()
@@ -14625,10 +14625,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string":
 			if err := func() error {
-				s.OptionalDoubleArrayString = nil
+				s.OptionalDoubleArrayString = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -14652,10 +14652,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_binary":
 			if err := func() error {
-				s.OptionalDoubleArrayStringBinary = nil
+				s.OptionalDoubleArrayStringBinary = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -14679,10 +14679,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_byte":
 			if err := func() error {
-				s.OptionalDoubleArrayStringByte = nil
+				s.OptionalDoubleArrayStringByte = make([][][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem [][]byte
-					elem = nil
+					elem = make([][]byte, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem []byte
 						v, err := d.Base64()
@@ -14706,10 +14706,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_date":
 			if err := func() error {
-				s.OptionalDoubleArrayStringDate = nil
+				s.OptionalDoubleArrayStringDate = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeDate(d)
@@ -14733,10 +14733,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_date-time":
 			if err := func() error {
-				s.OptionalDoubleArrayStringDateMinusTime = nil
+				s.OptionalDoubleArrayStringDateMinusTime = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeDateTime(d)
@@ -14760,10 +14760,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_duration":
 			if err := func() error {
-				s.OptionalDoubleArrayStringDuration = nil
+				s.OptionalDoubleArrayStringDuration = make([][]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Duration
-					elem = nil
+					elem = make([]time.Duration, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Duration
 						v, err := json.DecodeDuration(d)
@@ -14787,10 +14787,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_email":
 			if err := func() error {
-				s.OptionalDoubleArrayStringEmail = nil
+				s.OptionalDoubleArrayStringEmail = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -14814,10 +14814,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_hostname":
 			if err := func() error {
-				s.OptionalDoubleArrayStringHostname = nil
+				s.OptionalDoubleArrayStringHostname = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -14841,10 +14841,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_ip":
 			if err := func() error {
-				s.OptionalDoubleArrayStringIP = nil
+				s.OptionalDoubleArrayStringIP = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -14868,10 +14868,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_ipv4":
 			if err := func() error {
-				s.OptionalDoubleArrayStringIpv4 = nil
+				s.OptionalDoubleArrayStringIpv4 = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -14895,10 +14895,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_ipv6":
 			if err := func() error {
-				s.OptionalDoubleArrayStringIpv6 = nil
+				s.OptionalDoubleArrayStringIpv6 = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -14922,10 +14922,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_password":
 			if err := func() error {
-				s.OptionalDoubleArrayStringPassword = nil
+				s.OptionalDoubleArrayStringPassword = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -14949,10 +14949,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_time":
 			if err := func() error {
-				s.OptionalDoubleArrayStringTime = nil
+				s.OptionalDoubleArrayStringTime = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeTime(d)
@@ -14976,10 +14976,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_uri":
 			if err := func() error {
-				s.OptionalDoubleArrayStringURI = nil
+				s.OptionalDoubleArrayStringURI = make([][]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []url.URL
-					elem = nil
+					elem = make([]url.URL, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem url.URL
 						v, err := json.DecodeURI(d)
@@ -15003,10 +15003,10 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_uuid":
 			if err := func() error {
-				s.OptionalDoubleArrayStringUUID = nil
+				s.OptionalDoubleArrayStringUUID = make([][]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []uuid.UUID
-					elem = nil
+					elem = make([]uuid.UUID, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem uuid.UUID
 						v, err := json.DecodeUUID(d)
@@ -19095,7 +19095,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_any":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.RequiredArrayAny = nil
+				s.RequiredArrayAny = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -19115,7 +19115,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_boolean":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.RequiredArrayBoolean = nil
+				s.RequiredArrayBoolean = make([]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem bool
 					v, err := d.Bool()
@@ -19135,7 +19135,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_integer":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				s.RequiredArrayInteger = nil
+				s.RequiredArrayInteger = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -19155,7 +19155,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_integer_int32":
 			requiredBitSet[0] |= 1 << 4
 			if err := func() error {
-				s.RequiredArrayIntegerInt32 = nil
+				s.RequiredArrayIntegerInt32 = make([]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int32
 					v, err := d.Int32()
@@ -19175,7 +19175,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_integer_int64":
 			requiredBitSet[0] |= 1 << 5
 			if err := func() error {
-				s.RequiredArrayIntegerInt64 = nil
+				s.RequiredArrayIntegerInt64 = make([]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int64
 					v, err := d.Int64()
@@ -19195,7 +19195,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_number":
 			requiredBitSet[0] |= 1 << 6
 			if err := func() error {
-				s.RequiredArrayNumber = nil
+				s.RequiredArrayNumber = make([]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float64
 					v, err := d.Float64()
@@ -19215,7 +19215,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_number_double":
 			requiredBitSet[0] |= 1 << 7
 			if err := func() error {
-				s.RequiredArrayNumberDouble = nil
+				s.RequiredArrayNumberDouble = make([]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float64
 					v, err := d.Float64()
@@ -19235,7 +19235,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_number_float":
 			requiredBitSet[1] |= 1 << 0
 			if err := func() error {
-				s.RequiredArrayNumberFloat = nil
+				s.RequiredArrayNumberFloat = make([]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float32
 					v, err := d.Float32()
@@ -19255,7 +19255,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_number_int32":
 			requiredBitSet[1] |= 1 << 1
 			if err := func() error {
-				s.RequiredArrayNumberInt32 = nil
+				s.RequiredArrayNumberInt32 = make([]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int32
 					v, err := d.Int32()
@@ -19275,7 +19275,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_number_int64":
 			requiredBitSet[1] |= 1 << 2
 			if err := func() error {
-				s.RequiredArrayNumberInt64 = nil
+				s.RequiredArrayNumberInt64 = make([]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int64
 					v, err := d.Int64()
@@ -19295,7 +19295,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_string":
 			requiredBitSet[1] |= 1 << 3
 			if err := func() error {
-				s.RequiredArrayString = nil
+				s.RequiredArrayString = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -19315,7 +19315,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_string_binary":
 			requiredBitSet[1] |= 1 << 4
 			if err := func() error {
-				s.RequiredArrayStringBinary = nil
+				s.RequiredArrayStringBinary = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -19335,7 +19335,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_string_byte":
 			requiredBitSet[1] |= 1 << 5
 			if err := func() error {
-				s.RequiredArrayStringByte = nil
+				s.RequiredArrayStringByte = make([][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []byte
 					v, err := d.Base64()
@@ -19355,7 +19355,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_string_date":
 			requiredBitSet[1] |= 1 << 6
 			if err := func() error {
-				s.RequiredArrayStringDate = nil
+				s.RequiredArrayStringDate = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeDate(d)
@@ -19375,7 +19375,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_string_date-time":
 			requiredBitSet[1] |= 1 << 7
 			if err := func() error {
-				s.RequiredArrayStringDateMinusTime = nil
+				s.RequiredArrayStringDateMinusTime = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeDateTime(d)
@@ -19395,7 +19395,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_string_duration":
 			requiredBitSet[2] |= 1 << 0
 			if err := func() error {
-				s.RequiredArrayStringDuration = nil
+				s.RequiredArrayStringDuration = make([]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Duration
 					v, err := json.DecodeDuration(d)
@@ -19415,7 +19415,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_string_email":
 			requiredBitSet[2] |= 1 << 1
 			if err := func() error {
-				s.RequiredArrayStringEmail = nil
+				s.RequiredArrayStringEmail = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -19435,7 +19435,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_string_hostname":
 			requiredBitSet[2] |= 1 << 2
 			if err := func() error {
-				s.RequiredArrayStringHostname = nil
+				s.RequiredArrayStringHostname = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -19455,7 +19455,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_string_ip":
 			requiredBitSet[2] |= 1 << 3
 			if err := func() error {
-				s.RequiredArrayStringIP = nil
+				s.RequiredArrayStringIP = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -19475,7 +19475,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_string_ipv4":
 			requiredBitSet[2] |= 1 << 4
 			if err := func() error {
-				s.RequiredArrayStringIpv4 = nil
+				s.RequiredArrayStringIpv4 = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -19495,7 +19495,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_string_ipv6":
 			requiredBitSet[2] |= 1 << 5
 			if err := func() error {
-				s.RequiredArrayStringIpv6 = nil
+				s.RequiredArrayStringIpv6 = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -19515,7 +19515,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_string_password":
 			requiredBitSet[2] |= 1 << 6
 			if err := func() error {
-				s.RequiredArrayStringPassword = nil
+				s.RequiredArrayStringPassword = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -19535,7 +19535,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_string_time":
 			requiredBitSet[2] |= 1 << 7
 			if err := func() error {
-				s.RequiredArrayStringTime = nil
+				s.RequiredArrayStringTime = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeTime(d)
@@ -19555,7 +19555,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_string_uri":
 			requiredBitSet[3] |= 1 << 0
 			if err := func() error {
-				s.RequiredArrayStringURI = nil
+				s.RequiredArrayStringURI = make([]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem url.URL
 					v, err := json.DecodeURI(d)
@@ -19575,7 +19575,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_string_uuid":
 			requiredBitSet[3] |= 1 << 1
 			if err := func() error {
-				s.RequiredArrayStringUUID = nil
+				s.RequiredArrayStringUUID = make([]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem uuid.UUID
 					v, err := json.DecodeUUID(d)
@@ -19607,10 +19607,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_any":
 			requiredBitSet[3] |= 1 << 3
 			if err := func() error {
-				s.RequiredDoubleArrayAny = nil
+				s.RequiredDoubleArrayAny = make([][]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []jx.Raw
-					elem = nil
+					elem = make([]jx.Raw, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem jx.Raw
 						v, err := d.Raw()
@@ -19635,10 +19635,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_boolean":
 			requiredBitSet[3] |= 1 << 4
 			if err := func() error {
-				s.RequiredDoubleArrayBoolean = nil
+				s.RequiredDoubleArrayBoolean = make([][]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []bool
-					elem = nil
+					elem = make([]bool, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem bool
 						v, err := d.Bool()
@@ -19663,10 +19663,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_integer":
 			requiredBitSet[3] |= 1 << 5
 			if err := func() error {
-				s.RequiredDoubleArrayInteger = nil
+				s.RequiredDoubleArrayInteger = make([][]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int
-					elem = nil
+					elem = make([]int, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int
 						v, err := d.Int()
@@ -19691,10 +19691,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_integer_int32":
 			requiredBitSet[3] |= 1 << 6
 			if err := func() error {
-				s.RequiredDoubleArrayIntegerInt32 = nil
+				s.RequiredDoubleArrayIntegerInt32 = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int32
-					elem = nil
+					elem = make([]int32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int32
 						v, err := d.Int32()
@@ -19719,10 +19719,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_integer_int64":
 			requiredBitSet[3] |= 1 << 7
 			if err := func() error {
-				s.RequiredDoubleArrayIntegerInt64 = nil
+				s.RequiredDoubleArrayIntegerInt64 = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int64
-					elem = nil
+					elem = make([]int64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int64
 						v, err := d.Int64()
@@ -19747,10 +19747,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_number":
 			requiredBitSet[4] |= 1 << 0
 			if err := func() error {
-				s.RequiredDoubleArrayNumber = nil
+				s.RequiredDoubleArrayNumber = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float64
-					elem = nil
+					elem = make([]float64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float64
 						v, err := d.Float64()
@@ -19775,10 +19775,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_number_double":
 			requiredBitSet[4] |= 1 << 1
 			if err := func() error {
-				s.RequiredDoubleArrayNumberDouble = nil
+				s.RequiredDoubleArrayNumberDouble = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float64
-					elem = nil
+					elem = make([]float64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float64
 						v, err := d.Float64()
@@ -19803,10 +19803,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_number_float":
 			requiredBitSet[4] |= 1 << 2
 			if err := func() error {
-				s.RequiredDoubleArrayNumberFloat = nil
+				s.RequiredDoubleArrayNumberFloat = make([][]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float32
-					elem = nil
+					elem = make([]float32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float32
 						v, err := d.Float32()
@@ -19831,10 +19831,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_number_int32":
 			requiredBitSet[4] |= 1 << 3
 			if err := func() error {
-				s.RequiredDoubleArrayNumberInt32 = nil
+				s.RequiredDoubleArrayNumberInt32 = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int32
-					elem = nil
+					elem = make([]int32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int32
 						v, err := d.Int32()
@@ -19859,10 +19859,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_number_int64":
 			requiredBitSet[4] |= 1 << 4
 			if err := func() error {
-				s.RequiredDoubleArrayNumberInt64 = nil
+				s.RequiredDoubleArrayNumberInt64 = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int64
-					elem = nil
+					elem = make([]int64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int64
 						v, err := d.Int64()
@@ -19887,10 +19887,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_string":
 			requiredBitSet[4] |= 1 << 5
 			if err := func() error {
-				s.RequiredDoubleArrayString = nil
+				s.RequiredDoubleArrayString = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -19915,10 +19915,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_binary":
 			requiredBitSet[4] |= 1 << 6
 			if err := func() error {
-				s.RequiredDoubleArrayStringBinary = nil
+				s.RequiredDoubleArrayStringBinary = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -19943,10 +19943,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_byte":
 			requiredBitSet[4] |= 1 << 7
 			if err := func() error {
-				s.RequiredDoubleArrayStringByte = nil
+				s.RequiredDoubleArrayStringByte = make([][][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem [][]byte
-					elem = nil
+					elem = make([][]byte, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem []byte
 						v, err := d.Base64()
@@ -19971,10 +19971,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_date":
 			requiredBitSet[5] |= 1 << 0
 			if err := func() error {
-				s.RequiredDoubleArrayStringDate = nil
+				s.RequiredDoubleArrayStringDate = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeDate(d)
@@ -19999,10 +19999,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_date-time":
 			requiredBitSet[5] |= 1 << 1
 			if err := func() error {
-				s.RequiredDoubleArrayStringDateMinusTime = nil
+				s.RequiredDoubleArrayStringDateMinusTime = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeDateTime(d)
@@ -20027,10 +20027,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_duration":
 			requiredBitSet[5] |= 1 << 2
 			if err := func() error {
-				s.RequiredDoubleArrayStringDuration = nil
+				s.RequiredDoubleArrayStringDuration = make([][]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Duration
-					elem = nil
+					elem = make([]time.Duration, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Duration
 						v, err := json.DecodeDuration(d)
@@ -20055,10 +20055,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_email":
 			requiredBitSet[5] |= 1 << 3
 			if err := func() error {
-				s.RequiredDoubleArrayStringEmail = nil
+				s.RequiredDoubleArrayStringEmail = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -20083,10 +20083,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_hostname":
 			requiredBitSet[5] |= 1 << 4
 			if err := func() error {
-				s.RequiredDoubleArrayStringHostname = nil
+				s.RequiredDoubleArrayStringHostname = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -20111,10 +20111,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_ip":
 			requiredBitSet[5] |= 1 << 5
 			if err := func() error {
-				s.RequiredDoubleArrayStringIP = nil
+				s.RequiredDoubleArrayStringIP = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -20139,10 +20139,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_ipv4":
 			requiredBitSet[5] |= 1 << 6
 			if err := func() error {
-				s.RequiredDoubleArrayStringIpv4 = nil
+				s.RequiredDoubleArrayStringIpv4 = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -20167,10 +20167,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_ipv6":
 			requiredBitSet[5] |= 1 << 7
 			if err := func() error {
-				s.RequiredDoubleArrayStringIpv6 = nil
+				s.RequiredDoubleArrayStringIpv6 = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -20195,10 +20195,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_password":
 			requiredBitSet[6] |= 1 << 0
 			if err := func() error {
-				s.RequiredDoubleArrayStringPassword = nil
+				s.RequiredDoubleArrayStringPassword = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -20223,10 +20223,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_time":
 			requiredBitSet[6] |= 1 << 1
 			if err := func() error {
-				s.RequiredDoubleArrayStringTime = nil
+				s.RequiredDoubleArrayStringTime = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeTime(d)
@@ -20251,10 +20251,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_uri":
 			requiredBitSet[6] |= 1 << 2
 			if err := func() error {
-				s.RequiredDoubleArrayStringURI = nil
+				s.RequiredDoubleArrayStringURI = make([][]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []url.URL
-					elem = nil
+					elem = make([]url.URL, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem url.URL
 						v, err := json.DecodeURI(d)
@@ -20279,10 +20279,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_uuid":
 			requiredBitSet[6] |= 1 << 3
 			if err := func() error {
-				s.RequiredDoubleArrayStringUUID = nil
+				s.RequiredDoubleArrayStringUUID = make([][]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []uuid.UUID
-					elem = nil
+					elem = make([]uuid.UUID, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem uuid.UUID
 						v, err := json.DecodeUUID(d)
@@ -20593,7 +20593,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_any":
 			if err := func() error {
-				s.OptionalArrayAny = nil
+				s.OptionalArrayAny = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
 					v, err := d.Raw()
@@ -20612,7 +20612,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_boolean":
 			if err := func() error {
-				s.OptionalArrayBoolean = nil
+				s.OptionalArrayBoolean = make([]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem bool
 					v, err := d.Bool()
@@ -20631,7 +20631,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_integer":
 			if err := func() error {
-				s.OptionalArrayInteger = nil
+				s.OptionalArrayInteger = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -20650,7 +20650,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_integer_int32":
 			if err := func() error {
-				s.OptionalArrayIntegerInt32 = nil
+				s.OptionalArrayIntegerInt32 = make([]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int32
 					v, err := d.Int32()
@@ -20669,7 +20669,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_integer_int64":
 			if err := func() error {
-				s.OptionalArrayIntegerInt64 = nil
+				s.OptionalArrayIntegerInt64 = make([]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int64
 					v, err := d.Int64()
@@ -20688,7 +20688,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_number":
 			if err := func() error {
-				s.OptionalArrayNumber = nil
+				s.OptionalArrayNumber = make([]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float64
 					v, err := d.Float64()
@@ -20707,7 +20707,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_number_double":
 			if err := func() error {
-				s.OptionalArrayNumberDouble = nil
+				s.OptionalArrayNumberDouble = make([]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float64
 					v, err := d.Float64()
@@ -20726,7 +20726,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_number_float":
 			if err := func() error {
-				s.OptionalArrayNumberFloat = nil
+				s.OptionalArrayNumberFloat = make([]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem float32
 					v, err := d.Float32()
@@ -20745,7 +20745,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_number_int32":
 			if err := func() error {
-				s.OptionalArrayNumberInt32 = nil
+				s.OptionalArrayNumberInt32 = make([]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int32
 					v, err := d.Int32()
@@ -20764,7 +20764,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_number_int64":
 			if err := func() error {
-				s.OptionalArrayNumberInt64 = nil
+				s.OptionalArrayNumberInt64 = make([]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int64
 					v, err := d.Int64()
@@ -20783,7 +20783,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string":
 			if err := func() error {
-				s.OptionalArrayString = nil
+				s.OptionalArrayString = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -20802,7 +20802,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_binary":
 			if err := func() error {
-				s.OptionalArrayStringBinary = nil
+				s.OptionalArrayStringBinary = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -20821,7 +20821,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_byte":
 			if err := func() error {
-				s.OptionalArrayStringByte = nil
+				s.OptionalArrayStringByte = make([][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []byte
 					v, err := d.Base64()
@@ -20840,7 +20840,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_date":
 			if err := func() error {
-				s.OptionalArrayStringDate = nil
+				s.OptionalArrayStringDate = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeDate(d)
@@ -20859,7 +20859,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_date-time":
 			if err := func() error {
-				s.OptionalArrayStringDateMinusTime = nil
+				s.OptionalArrayStringDateMinusTime = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeDateTime(d)
@@ -20878,7 +20878,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_duration":
 			if err := func() error {
-				s.OptionalArrayStringDuration = nil
+				s.OptionalArrayStringDuration = make([]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Duration
 					v, err := json.DecodeDuration(d)
@@ -20897,7 +20897,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_email":
 			if err := func() error {
-				s.OptionalArrayStringEmail = nil
+				s.OptionalArrayStringEmail = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -20916,7 +20916,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_hostname":
 			if err := func() error {
-				s.OptionalArrayStringHostname = nil
+				s.OptionalArrayStringHostname = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -20935,7 +20935,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_ip":
 			if err := func() error {
-				s.OptionalArrayStringIP = nil
+				s.OptionalArrayStringIP = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -20954,7 +20954,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_ipv4":
 			if err := func() error {
-				s.OptionalArrayStringIpv4 = nil
+				s.OptionalArrayStringIpv4 = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -20973,7 +20973,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_ipv6":
 			if err := func() error {
-				s.OptionalArrayStringIpv6 = nil
+				s.OptionalArrayStringIpv6 = make([]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem net.IP
 					v, err := json.DecodeIP(d)
@@ -20992,7 +20992,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_password":
 			if err := func() error {
-				s.OptionalArrayStringPassword = nil
+				s.OptionalArrayStringPassword = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -21011,7 +21011,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_time":
 			if err := func() error {
-				s.OptionalArrayStringTime = nil
+				s.OptionalArrayStringTime = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem time.Time
 					v, err := json.DecodeTime(d)
@@ -21030,7 +21030,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_uri":
 			if err := func() error {
-				s.OptionalArrayStringURI = nil
+				s.OptionalArrayStringURI = make([]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem url.URL
 					v, err := json.DecodeURI(d)
@@ -21049,7 +21049,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_uuid":
 			if err := func() error {
-				s.OptionalArrayStringUUID = nil
+				s.OptionalArrayStringUUID = make([]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem uuid.UUID
 					v, err := json.DecodeUUID(d)
@@ -21078,10 +21078,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_any":
 			if err := func() error {
-				s.OptionalDoubleArrayAny = nil
+				s.OptionalDoubleArrayAny = make([][]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []jx.Raw
-					elem = nil
+					elem = make([]jx.Raw, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem jx.Raw
 						v, err := d.Raw()
@@ -21105,10 +21105,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_boolean":
 			if err := func() error {
-				s.OptionalDoubleArrayBoolean = nil
+				s.OptionalDoubleArrayBoolean = make([][]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []bool
-					elem = nil
+					elem = make([]bool, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem bool
 						v, err := d.Bool()
@@ -21132,10 +21132,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_integer":
 			if err := func() error {
-				s.OptionalDoubleArrayInteger = nil
+				s.OptionalDoubleArrayInteger = make([][]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int
-					elem = nil
+					elem = make([]int, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int
 						v, err := d.Int()
@@ -21159,10 +21159,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_integer_int32":
 			if err := func() error {
-				s.OptionalDoubleArrayIntegerInt32 = nil
+				s.OptionalDoubleArrayIntegerInt32 = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int32
-					elem = nil
+					elem = make([]int32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int32
 						v, err := d.Int32()
@@ -21186,10 +21186,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_integer_int64":
 			if err := func() error {
-				s.OptionalDoubleArrayIntegerInt64 = nil
+				s.OptionalDoubleArrayIntegerInt64 = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int64
-					elem = nil
+					elem = make([]int64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int64
 						v, err := d.Int64()
@@ -21213,10 +21213,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_number":
 			if err := func() error {
-				s.OptionalDoubleArrayNumber = nil
+				s.OptionalDoubleArrayNumber = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float64
-					elem = nil
+					elem = make([]float64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float64
 						v, err := d.Float64()
@@ -21240,10 +21240,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_number_double":
 			if err := func() error {
-				s.OptionalDoubleArrayNumberDouble = nil
+				s.OptionalDoubleArrayNumberDouble = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float64
-					elem = nil
+					elem = make([]float64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float64
 						v, err := d.Float64()
@@ -21267,10 +21267,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_number_float":
 			if err := func() error {
-				s.OptionalDoubleArrayNumberFloat = nil
+				s.OptionalDoubleArrayNumberFloat = make([][]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []float32
-					elem = nil
+					elem = make([]float32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem float32
 						v, err := d.Float32()
@@ -21294,10 +21294,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_number_int32":
 			if err := func() error {
-				s.OptionalDoubleArrayNumberInt32 = nil
+				s.OptionalDoubleArrayNumberInt32 = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int32
-					elem = nil
+					elem = make([]int32, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int32
 						v, err := d.Int32()
@@ -21321,10 +21321,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_number_int64":
 			if err := func() error {
-				s.OptionalDoubleArrayNumberInt64 = nil
+				s.OptionalDoubleArrayNumberInt64 = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []int64
-					elem = nil
+					elem = make([]int64, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem int64
 						v, err := d.Int64()
@@ -21348,10 +21348,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string":
 			if err := func() error {
-				s.OptionalDoubleArrayString = nil
+				s.OptionalDoubleArrayString = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -21375,10 +21375,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_binary":
 			if err := func() error {
-				s.OptionalDoubleArrayStringBinary = nil
+				s.OptionalDoubleArrayStringBinary = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -21402,10 +21402,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_byte":
 			if err := func() error {
-				s.OptionalDoubleArrayStringByte = nil
+				s.OptionalDoubleArrayStringByte = make([][][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem [][]byte
-					elem = nil
+					elem = make([][]byte, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem []byte
 						v, err := d.Base64()
@@ -21429,10 +21429,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_date":
 			if err := func() error {
-				s.OptionalDoubleArrayStringDate = nil
+				s.OptionalDoubleArrayStringDate = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeDate(d)
@@ -21456,10 +21456,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_date-time":
 			if err := func() error {
-				s.OptionalDoubleArrayStringDateMinusTime = nil
+				s.OptionalDoubleArrayStringDateMinusTime = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeDateTime(d)
@@ -21483,10 +21483,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_duration":
 			if err := func() error {
-				s.OptionalDoubleArrayStringDuration = nil
+				s.OptionalDoubleArrayStringDuration = make([][]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Duration
-					elem = nil
+					elem = make([]time.Duration, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Duration
 						v, err := json.DecodeDuration(d)
@@ -21510,10 +21510,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_email":
 			if err := func() error {
-				s.OptionalDoubleArrayStringEmail = nil
+				s.OptionalDoubleArrayStringEmail = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -21537,10 +21537,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_hostname":
 			if err := func() error {
-				s.OptionalDoubleArrayStringHostname = nil
+				s.OptionalDoubleArrayStringHostname = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -21564,10 +21564,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_ip":
 			if err := func() error {
-				s.OptionalDoubleArrayStringIP = nil
+				s.OptionalDoubleArrayStringIP = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -21591,10 +21591,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_ipv4":
 			if err := func() error {
-				s.OptionalDoubleArrayStringIpv4 = nil
+				s.OptionalDoubleArrayStringIpv4 = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -21618,10 +21618,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_ipv6":
 			if err := func() error {
-				s.OptionalDoubleArrayStringIpv6 = nil
+				s.OptionalDoubleArrayStringIpv6 = make([][]net.IP, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []net.IP
-					elem = nil
+					elem = make([]net.IP, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem net.IP
 						v, err := json.DecodeIP(d)
@@ -21645,10 +21645,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_password":
 			if err := func() error {
-				s.OptionalDoubleArrayStringPassword = nil
+				s.OptionalDoubleArrayStringPassword = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []string
-					elem = nil
+					elem = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem string
 						v, err := d.Str()
@@ -21672,10 +21672,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_time":
 			if err := func() error {
-				s.OptionalDoubleArrayStringTime = nil
+				s.OptionalDoubleArrayStringTime = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []time.Time
-					elem = nil
+					elem = make([]time.Time, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem time.Time
 						v, err := json.DecodeTime(d)
@@ -21699,10 +21699,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_uri":
 			if err := func() error {
-				s.OptionalDoubleArrayStringURI = nil
+				s.OptionalDoubleArrayStringURI = make([][]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []url.URL
-					elem = nil
+					elem = make([]url.URL, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem url.URL
 						v, err := json.DecodeURI(d)
@@ -21726,10 +21726,10 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_uuid":
 			if err := func() error {
-				s.OptionalDoubleArrayStringUUID = nil
+				s.OptionalDoubleArrayStringUUID = make([][]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []uuid.UUID
-					elem = nil
+					elem = make([]uuid.UUID, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem uuid.UUID
 						v, err := json.DecodeUUID(d)

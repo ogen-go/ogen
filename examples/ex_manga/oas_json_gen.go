@@ -258,7 +258,7 @@ func (s *Book) Decode(d *jx.Decoder) error {
 			}
 		case "tags":
 			if err := func() error {
-				s.Tags = nil
+				s.Tags = make([]Tag, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Tag
 					if err := elem.Decode(d); err != nil {
@@ -499,7 +499,7 @@ func (s *Images) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "pages":
 			if err := func() error {
-				s.Pages = nil
+				s.Pages = make([]Image, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Image
 					if err := elem.Decode(d); err != nil {
@@ -724,7 +724,7 @@ func (s *SearchByTagIDOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []SearchResponse
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]SearchResponse, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem SearchResponse
 			if err := elem.Decode(d); err != nil {
@@ -768,7 +768,7 @@ func (s *SearchOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []SearchResponse
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]SearchResponse, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem SearchResponse
 			if err := elem.Decode(d); err != nil {
@@ -861,7 +861,7 @@ func (s *SearchResponse) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "result":
 			if err := func() error {
-				s.Result = nil
+				s.Result = make([]Book, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Book
 					if err := elem.Decode(d); err != nil {

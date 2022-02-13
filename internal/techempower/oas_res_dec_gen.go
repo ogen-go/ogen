@@ -85,7 +85,7 @@ func decodeCachingResponse(resp *http.Response, span trace.Span) (res WorldObjec
 			if err := func() error {
 				{
 					var unwrapped []WorldObject
-					unwrapped = nil
+					unwrapped = make([]WorldObject, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem WorldObject
 						if err := elem.Decode(d); err != nil {
@@ -199,7 +199,7 @@ func decodeQueriesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 			if err := func() error {
 				{
 					var unwrapped []WorldObject
-					unwrapped = nil
+					unwrapped = make([]WorldObject, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem WorldObject
 						if err := elem.Decode(d); err != nil {
@@ -245,7 +245,7 @@ func decodeUpdatesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 			if err := func() error {
 				{
 					var unwrapped []WorldObject
-					unwrapped = nil
+					unwrapped = make([]WorldObject, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem WorldObject
 						if err := elem.Decode(d); err != nil {

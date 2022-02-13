@@ -285,7 +285,7 @@ func (s *WorldObjects) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []WorldObject
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]WorldObject, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem WorldObject
 			if err := elem.Decode(d); err != nil {

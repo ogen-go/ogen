@@ -1059,7 +1059,7 @@ func decodeActionsGetReviewsForRunResponse(resp *http.Response, span trace.Span)
 
 			var response []EnvironmentApprovals
 			if err := func() error {
-				response = nil
+				response = make([]EnvironmentApprovals, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem EnvironmentApprovals
 					if err := elem.Decode(d); err != nil {
@@ -1509,7 +1509,7 @@ func decodeActionsListRunnerApplicationsForOrgResponse(resp *http.Response, span
 
 			var response []RunnerApplication
 			if err := func() error {
-				response = nil
+				response = make([]RunnerApplication, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem RunnerApplication
 					if err := elem.Decode(d); err != nil {
@@ -1551,7 +1551,7 @@ func decodeActionsListRunnerApplicationsForRepoResponse(resp *http.Response, spa
 
 			var response []RunnerApplication
 			if err := func() error {
-				response = nil
+				response = make([]RunnerApplication, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem RunnerApplication
 					if err := elem.Decode(d); err != nil {
@@ -1964,7 +1964,7 @@ func decodeActionsReviewPendingDeploymentsForRunResponse(resp *http.Response, sp
 
 			var response []Deployment
 			if err := func() error {
-				response = nil
+				response = make([]Deployment, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Deployment
 					if err := elem.Decode(d); err != nil {
@@ -2591,7 +2591,7 @@ func decodeActivityListEventsForAuthenticatedUserResponse(resp *http.Response, s
 
 			var response []Event
 			if err := func() error {
-				response = nil
+				response = make([]Event, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Event
 					if err := elem.Decode(d); err != nil {
@@ -2635,7 +2635,7 @@ func decodeActivityListNotificationsForAuthenticatedUserResponse(resp *http.Resp
 			if err := func() error {
 				{
 					var unwrapped []Thread
-					unwrapped = nil
+					unwrapped = make([]Thread, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Thread
 						if err := elem.Decode(d); err != nil {
@@ -2770,7 +2770,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserResponse(resp *http.Response
 
 			var response []Event
 			if err := func() error {
-				response = nil
+				response = make([]Event, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Event
 					if err := elem.Decode(d); err != nil {
@@ -2814,7 +2814,7 @@ func decodeActivityListPublicEventsResponse(resp *http.Response, span trace.Span
 			if err := func() error {
 				{
 					var unwrapped []Event
-					unwrapped = nil
+					unwrapped = make([]Event, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Event
 						if err := elem.Decode(d); err != nil {
@@ -2916,7 +2916,7 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 			if err := func() error {
 				{
 					var unwrapped []Event
-					unwrapped = nil
+					unwrapped = make([]Event, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Event
 						if err := elem.Decode(d); err != nil {
@@ -3055,7 +3055,7 @@ func decodeActivityListPublicEventsForUserResponse(resp *http.Response, span tra
 
 			var response []Event
 			if err := func() error {
-				response = nil
+				response = make([]Event, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Event
 					if err := elem.Decode(d); err != nil {
@@ -3097,7 +3097,7 @@ func decodeActivityListPublicOrgEventsResponse(resp *http.Response, span trace.S
 
 			var response []Event
 			if err := func() error {
-				response = nil
+				response = make([]Event, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Event
 					if err := elem.Decode(d); err != nil {
@@ -3139,7 +3139,7 @@ func decodeActivityListReceivedEventsForUserResponse(resp *http.Response, span t
 
 			var response []Event
 			if err := func() error {
-				response = nil
+				response = make([]Event, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Event
 					if err := elem.Decode(d); err != nil {
@@ -3181,7 +3181,7 @@ func decodeActivityListReceivedPublicEventsForUserResponse(resp *http.Response, 
 
 			var response []Event
 			if err := func() error {
-				response = nil
+				response = make([]Event, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Event
 					if err := elem.Decode(d); err != nil {
@@ -3223,7 +3223,7 @@ func decodeActivityListRepoEventsResponse(resp *http.Response, span trace.Span) 
 
 			var response []Event
 			if err := func() error {
-				response = nil
+				response = make([]Event, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Event
 					if err := elem.Decode(d); err != nil {
@@ -3265,7 +3265,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp *http.
 
 			var response []Thread
 			if err := func() error {
-				response = nil
+				response = make([]Thread, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Thread
 					if err := elem.Decode(d); err != nil {
@@ -3309,7 +3309,7 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 			if err := func() error {
 				{
 					var unwrapped []Repository
-					unwrapped = nil
+					unwrapped = make([]Repository, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Repository
 						if err := elem.Decode(d); err != nil {
@@ -3417,7 +3417,7 @@ func decodeActivityListReposWatchedByUserResponse(resp *http.Response, span trac
 
 			var response []MinimalRepository
 			if err := func() error {
-				response = nil
+				response = make([]MinimalRepository, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MinimalRepository
 					if err := elem.Decode(d); err != nil {
@@ -3461,7 +3461,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 			if err := func() error {
 				{
 					var unwrapped []MinimalRepository
-					unwrapped = nil
+					unwrapped = make([]MinimalRepository, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem MinimalRepository
 						if err := elem.Decode(d); err != nil {
@@ -3569,7 +3569,7 @@ func decodeActivityListWatchersForRepoResponse(resp *http.Response, span trace.S
 
 			var response []SimpleUser
 			if err := func() error {
-				response = nil
+				response = make([]SimpleUser, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem SimpleUser
 					if err := elem.Decode(d); err != nil {
@@ -5198,7 +5198,7 @@ func decodeAppsListAccountsForPlanResponse(resp *http.Response, span trace.Span)
 			if err := func() error {
 				{
 					var unwrapped []MarketplacePurchase
-					unwrapped = nil
+					unwrapped = make([]MarketplacePurchase, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem MarketplacePurchase
 						if err := elem.Decode(d); err != nil {
@@ -5333,7 +5333,7 @@ func decodeAppsListAccountsForPlanStubbedResponse(resp *http.Response, span trac
 			if err := func() error {
 				{
 					var unwrapped []MarketplacePurchase
-					unwrapped = nil
+					unwrapped = make([]MarketplacePurchase, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem MarketplacePurchase
 						if err := elem.Decode(d); err != nil {
@@ -5504,7 +5504,7 @@ func decodeAppsListPlansResponse(resp *http.Response, span trace.Span) (res Apps
 			if err := func() error {
 				{
 					var unwrapped []MarketplaceListingPlan
-					unwrapped = nil
+					unwrapped = make([]MarketplaceListingPlan, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem MarketplaceListingPlan
 						if err := elem.Decode(d); err != nil {
@@ -5612,7 +5612,7 @@ func decodeAppsListPlansStubbedResponse(resp *http.Response, span trace.Span) (r
 			if err := func() error {
 				{
 					var unwrapped []MarketplaceListingPlan
-					unwrapped = nil
+					unwrapped = make([]MarketplaceListingPlan, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem MarketplaceListingPlan
 						if err := elem.Decode(d); err != nil {
@@ -5783,7 +5783,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 			if err := func() error {
 				{
 					var unwrapped []UserMarketplacePurchase
-					unwrapped = nil
+					unwrapped = make([]UserMarketplacePurchase, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem UserMarketplacePurchase
 						if err := elem.Decode(d); err != nil {
@@ -5893,7 +5893,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 			if err := func() error {
 				{
 					var unwrapped []UserMarketplacePurchase
-					unwrapped = nil
+					unwrapped = make([]UserMarketplacePurchase, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem UserMarketplacePurchase
 						if err := elem.Decode(d); err != nil {
@@ -5968,7 +5968,7 @@ func decodeAppsListWebhookDeliveriesResponse(resp *http.Response, span trace.Spa
 			if err := func() error {
 				{
 					var unwrapped []HookDeliveryItem
-					unwrapped = nil
+					unwrapped = make([]HookDeliveryItem, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem HookDeliveryItem
 						if err := elem.Decode(d); err != nil {
@@ -7000,7 +7000,7 @@ func decodeChecksListAnnotationsResponse(resp *http.Response, span trace.Span) (
 
 			var response []CheckAnnotation
 			if err := func() error {
-				response = nil
+				response = make([]CheckAnnotation, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem CheckAnnotation
 					if err := elem.Decode(d); err != nil {
@@ -7705,7 +7705,7 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response, span trac
 			if err := func() error {
 				{
 					var unwrapped []CodeScanningAlertInstance
-					unwrapped = nil
+					unwrapped = make([]CodeScanningAlertInstance, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem CodeScanningAlertInstance
 						if err := elem.Decode(d); err != nil {
@@ -7840,7 +7840,7 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response, span trace
 			if err := func() error {
 				{
 					var unwrapped []CodeScanningAlertItems
-					unwrapped = nil
+					unwrapped = make([]CodeScanningAlertItems, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem CodeScanningAlertItems
 						if err := elem.Decode(d); err != nil {
@@ -7975,7 +7975,7 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response, span trac
 			if err := func() error {
 				{
 					var unwrapped []CodeScanningAnalysis
-					unwrapped = nil
+					unwrapped = make([]CodeScanningAnalysis, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem CodeScanningAnalysis
 						if err := elem.Decode(d); err != nil {
@@ -8360,7 +8360,7 @@ func decodeCodesOfConductGetAllCodesOfConductResponse(resp *http.Response, span 
 			if err := func() error {
 				{
 					var unwrapped []CodeOfConduct
-					unwrapped = nil
+					unwrapped = make([]CodeOfConduct, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem CodeOfConduct
 						if err := elem.Decode(d); err != nil {
@@ -8714,7 +8714,7 @@ func decodeEnterpriseAdminGetAuditLogResponse(resp *http.Response, span trace.Sp
 
 			var response []AuditLogEvent
 			if err := func() error {
-				response = nil
+				response = make([]AuditLogEvent, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem AuditLogEvent
 					if err := elem.Decode(d); err != nil {
@@ -9028,7 +9028,7 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(resp *http
 
 			var response []RunnerApplication
 			if err := func() error {
-				response = nil
+				response = make([]RunnerApplication, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem RunnerApplication
 					if err := elem.Decode(d); err != nil {
@@ -10372,7 +10372,7 @@ func decodeGistsListResponse(resp *http.Response, span trace.Span) (res GistsLis
 			if err := func() error {
 				{
 					var unwrapped []BaseGist
-					unwrapped = nil
+					unwrapped = make([]BaseGist, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem BaseGist
 						if err := elem.Decode(d); err != nil {
@@ -10447,7 +10447,7 @@ func decodeGistsListCommentsResponse(resp *http.Response, span trace.Span) (res 
 			if err := func() error {
 				{
 					var unwrapped []GistComment
-					unwrapped = nil
+					unwrapped = make([]GistComment, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem GistComment
 						if err := elem.Decode(d); err != nil {
@@ -10557,7 +10557,7 @@ func decodeGistsListCommitsResponse(resp *http.Response, span trace.Span) (res G
 			if err := func() error {
 				{
 					var unwrapped []GistCommit
-					unwrapped = nil
+					unwrapped = make([]GistCommit, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem GistCommit
 						if err := elem.Decode(d); err != nil {
@@ -10667,7 +10667,7 @@ func decodeGistsListForUserResponse(resp *http.Response, span trace.Span) (res G
 			if err := func() error {
 				{
 					var unwrapped []BaseGist
-					unwrapped = nil
+					unwrapped = make([]BaseGist, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem BaseGist
 						if err := elem.Decode(d); err != nil {
@@ -10740,7 +10740,7 @@ func decodeGistsListForksResponse(resp *http.Response, span trace.Span) (res Gis
 			if err := func() error {
 				{
 					var unwrapped []GistSimple
-					unwrapped = nil
+					unwrapped = make([]GistSimple, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem GistSimple
 						if err := elem.Decode(d); err != nil {
@@ -10850,7 +10850,7 @@ func decodeGistsListPublicResponse(resp *http.Response, span trace.Span) (res Gi
 			if err := func() error {
 				{
 					var unwrapped []BaseGist
-					unwrapped = nil
+					unwrapped = make([]BaseGist, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem BaseGist
 						if err := elem.Decode(d); err != nil {
@@ -10952,7 +10952,7 @@ func decodeGistsListStarredResponse(resp *http.Response, span trace.Span) (res G
 			if err := func() error {
 				{
 					var unwrapped []BaseGist
-					unwrapped = nil
+					unwrapped = make([]BaseGist, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem BaseGist
 						if err := elem.Decode(d); err != nil {
@@ -12184,7 +12184,7 @@ func decodeGitListMatchingRefsResponse(resp *http.Response, span trace.Span) (re
 
 			var response []GitRef
 			if err := func() error {
-				response = nil
+				response = make([]GitRef, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem GitRef
 					if err := elem.Decode(d); err != nil {
@@ -12289,7 +12289,7 @@ func decodeGitignoreGetAllTemplatesResponse(resp *http.Response, span trace.Span
 			if err := func() error {
 				{
 					var unwrapped []string
-					unwrapped = nil
+					unwrapped = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem string
 						v, err := d.Str()
@@ -13636,7 +13636,7 @@ func decodeIssuesListResponse(resp *http.Response, span trace.Span) (res IssuesL
 			if err := func() error {
 				{
 					var unwrapped []Issue
-					unwrapped = nil
+					unwrapped = make([]Issue, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Issue
 						if err := elem.Decode(d); err != nil {
@@ -13738,7 +13738,7 @@ func decodeIssuesListAssigneesResponse(resp *http.Response, span trace.Span) (re
 			if err := func() error {
 				{
 					var unwrapped []SimpleUser
-					unwrapped = nil
+					unwrapped = make([]SimpleUser, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SimpleUser
 						if err := elem.Decode(d); err != nil {
@@ -13811,7 +13811,7 @@ func decodeIssuesListCommentsResponse(resp *http.Response, span trace.Span) (res
 			if err := func() error {
 				{
 					var unwrapped []IssueComment
-					unwrapped = nil
+					unwrapped = make([]IssueComment, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem IssueComment
 						if err := elem.Decode(d); err != nil {
@@ -13919,7 +13919,7 @@ func decodeIssuesListCommentsForRepoResponse(resp *http.Response, span trace.Spa
 			if err := func() error {
 				{
 					var unwrapped []IssueComment
-					unwrapped = nil
+					unwrapped = make([]IssueComment, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem IssueComment
 						if err := elem.Decode(d); err != nil {
@@ -14019,7 +14019,7 @@ func decodeIssuesListEventsForRepoResponse(resp *http.Response, span trace.Span)
 			if err := func() error {
 				{
 					var unwrapped []IssueEvent
-					unwrapped = nil
+					unwrapped = make([]IssueEvent, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem IssueEvent
 						if err := elem.Decode(d); err != nil {
@@ -14092,7 +14092,7 @@ func decodeIssuesListForAuthenticatedUserResponse(resp *http.Response, span trac
 			if err := func() error {
 				{
 					var unwrapped []Issue
-					unwrapped = nil
+					unwrapped = make([]Issue, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Issue
 						if err := elem.Decode(d); err != nil {
@@ -14167,7 +14167,7 @@ func decodeIssuesListForOrgResponse(resp *http.Response, span trace.Span) (res I
 			if err := func() error {
 				{
 					var unwrapped []Issue
-					unwrapped = nil
+					unwrapped = make([]Issue, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Issue
 						if err := elem.Decode(d); err != nil {
@@ -14240,7 +14240,7 @@ func decodeIssuesListForRepoResponse(resp *http.Response, span trace.Span) (res 
 			if err := func() error {
 				{
 					var unwrapped []IssueSimple
-					unwrapped = nil
+					unwrapped = make([]IssueSimple, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem IssueSimple
 						if err := elem.Decode(d); err != nil {
@@ -14373,7 +14373,7 @@ func decodeIssuesListLabelsForMilestoneResponse(resp *http.Response, span trace.
 
 			var response []Label
 			if err := func() error {
-				response = nil
+				response = make([]Label, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Label
 					if err := elem.Decode(d); err != nil {
@@ -14417,7 +14417,7 @@ func decodeIssuesListLabelsForRepoResponse(resp *http.Response, span trace.Span)
 			if err := func() error {
 				{
 					var unwrapped []Label
-					unwrapped = nil
+					unwrapped = make([]Label, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Label
 						if err := elem.Decode(d); err != nil {
@@ -14490,7 +14490,7 @@ func decodeIssuesListLabelsOnIssueResponse(resp *http.Response, span trace.Span)
 			if err := func() error {
 				{
 					var unwrapped []Label
-					unwrapped = nil
+					unwrapped = make([]Label, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Label
 						if err := elem.Decode(d); err != nil {
@@ -14563,7 +14563,7 @@ func decodeIssuesListMilestonesResponse(resp *http.Response, span trace.Span) (r
 			if err := func() error {
 				{
 					var unwrapped []Milestone
-					unwrapped = nil
+					unwrapped = make([]Milestone, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Milestone
 						if err := elem.Decode(d); err != nil {
@@ -14835,7 +14835,7 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response, span trace.Span) (res 
 			if err := func() error {
 				{
 					var unwrapped []Label
-					unwrapped = nil
+					unwrapped = make([]Label, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Label
 						if err := elem.Decode(d); err != nil {
@@ -15453,7 +15453,7 @@ func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response, span trace.Sp
 			if err := func() error {
 				{
 					var unwrapped []LicenseSimple
-					unwrapped = nil
+					unwrapped = make([]LicenseSimple, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem LicenseSimple
 						if err := elem.Decode(d); err != nil {
@@ -15863,7 +15863,7 @@ func decodeMigrationsGetCommitAuthorsResponse(resp *http.Response, span trace.Sp
 			if err := func() error {
 				{
 					var unwrapped []PorterAuthor
-					unwrapped = nil
+					unwrapped = make([]PorterAuthor, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem PorterAuthor
 						if err := elem.Decode(d); err != nil {
@@ -15995,7 +15995,7 @@ func decodeMigrationsGetLargeFilesResponse(resp *http.Response, span trace.Span)
 
 			var response []PorterLargeFile
 			if err := func() error {
-				response = nil
+				response = make([]PorterLargeFile, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PorterLargeFile
 					if err := elem.Decode(d); err != nil {
@@ -16229,7 +16229,7 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response, span 
 			if err := func() error {
 				{
 					var unwrapped []Migration
-					unwrapped = nil
+					unwrapped = make([]Migration, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Migration
 						if err := elem.Decode(d); err != nil {
@@ -16337,7 +16337,7 @@ func decodeMigrationsListForOrgResponse(resp *http.Response, span trace.Span) (r
 
 			var response []Migration
 			if err := func() error {
-				response = nil
+				response = make([]Migration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Migration
 					if err := elem.Decode(d); err != nil {
@@ -16381,7 +16381,7 @@ func decodeMigrationsListReposForOrgResponse(resp *http.Response, span trace.Spa
 			if err := func() error {
 				{
 					var unwrapped []MinimalRepository
-					unwrapped = nil
+					unwrapped = make([]MinimalRepository, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem MinimalRepository
 						if err := elem.Decode(d); err != nil {
@@ -16454,7 +16454,7 @@ func decodeMigrationsListReposForUserResponse(resp *http.Response, span trace.Sp
 			if err := func() error {
 				{
 					var unwrapped []MinimalRepository
-					unwrapped = nil
+					unwrapped = make([]MinimalRepository, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem MinimalRepository
 						if err := elem.Decode(d); err != nil {
@@ -17905,7 +17905,7 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 			if err := func() error {
 				{
 					var unwrapped []Authorization
-					unwrapped = nil
+					unwrapped = make([]Authorization, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Authorization
 						if err := elem.Decode(d); err != nil {
@@ -18046,7 +18046,7 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 			if err := func() error {
 				{
 					var unwrapped []ApplicationGrant
-					unwrapped = nil
+					unwrapped = make([]ApplicationGrant, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem ApplicationGrant
 						if err := elem.Decode(d); err != nil {
@@ -18744,7 +18744,7 @@ func decodeOrgsGetAuditLogResponse(resp *http.Response, span trace.Span) (res []
 
 			var response []AuditLogEvent
 			if err := func() error {
-				response = nil
+				response = make([]AuditLogEvent, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem AuditLogEvent
 					if err := elem.Decode(d); err != nil {
@@ -19163,7 +19163,7 @@ func decodeOrgsListResponse(resp *http.Response, span trace.Span) (res OrgsListR
 			if err := func() error {
 				{
 					var unwrapped []OrganizationSimple
-					unwrapped = nil
+					unwrapped = make([]OrganizationSimple, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem OrganizationSimple
 						if err := elem.Decode(d); err != nil {
@@ -19211,7 +19211,7 @@ func decodeOrgsListBlockedUsersResponse(resp *http.Response, span trace.Span) (r
 			if err := func() error {
 				{
 					var unwrapped []SimpleUser
-					unwrapped = nil
+					unwrapped = make([]SimpleUser, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SimpleUser
 						if err := elem.Decode(d); err != nil {
@@ -19284,7 +19284,7 @@ func decodeOrgsListFailedInvitationsResponse(resp *http.Response, span trace.Spa
 			if err := func() error {
 				{
 					var unwrapped []OrganizationInvitation
-					unwrapped = nil
+					unwrapped = make([]OrganizationInvitation, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem OrganizationInvitation
 						if err := elem.Decode(d); err != nil {
@@ -19357,7 +19357,7 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response, span trace.
 			if err := func() error {
 				{
 					var unwrapped []OrganizationSimple
-					unwrapped = nil
+					unwrapped = make([]OrganizationSimple, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem OrganizationSimple
 						if err := elem.Decode(d); err != nil {
@@ -19465,7 +19465,7 @@ func decodeOrgsListForUserResponse(resp *http.Response, span trace.Span) (res []
 
 			var response []OrganizationSimple
 			if err := func() error {
-				response = nil
+				response = make([]OrganizationSimple, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem OrganizationSimple
 					if err := elem.Decode(d); err != nil {
@@ -19509,7 +19509,7 @@ func decodeOrgsListInvitationTeamsResponse(resp *http.Response, span trace.Span)
 			if err := func() error {
 				{
 					var unwrapped []Team
-					unwrapped = nil
+					unwrapped = make([]Team, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Team
 						if err := elem.Decode(d); err != nil {
@@ -19582,7 +19582,7 @@ func decodeOrgsListMembersResponse(resp *http.Response, span trace.Span) (res Or
 			if err := func() error {
 				{
 					var unwrapped []SimpleUser
-					unwrapped = nil
+					unwrapped = make([]SimpleUser, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SimpleUser
 						if err := elem.Decode(d); err != nil {
@@ -19657,7 +19657,7 @@ func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response, 
 			if err := func() error {
 				{
 					var unwrapped []OrgMembership
-					unwrapped = nil
+					unwrapped = make([]OrgMembership, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem OrgMembership
 						if err := elem.Decode(d); err != nil {
@@ -19792,7 +19792,7 @@ func decodeOrgsListOutsideCollaboratorsResponse(resp *http.Response, span trace.
 
 			var response []SimpleUser
 			if err := func() error {
-				response = nil
+				response = make([]SimpleUser, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem SimpleUser
 					if err := elem.Decode(d); err != nil {
@@ -19836,7 +19836,7 @@ func decodeOrgsListPendingInvitationsResponse(resp *http.Response, span trace.Sp
 			if err := func() error {
 				{
 					var unwrapped []OrganizationInvitation
-					unwrapped = nil
+					unwrapped = make([]OrganizationInvitation, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem OrganizationInvitation
 						if err := elem.Decode(d); err != nil {
@@ -19907,7 +19907,7 @@ func decodeOrgsListPublicMembersResponse(resp *http.Response, span trace.Span) (
 
 			var response []SimpleUser
 			if err := func() error {
-				response = nil
+				response = make([]SimpleUser, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem SimpleUser
 					if err := elem.Decode(d); err != nil {
@@ -19949,7 +19949,7 @@ func decodeOrgsListSamlSSOAuthorizationsResponse(resp *http.Response, span trace
 
 			var response []CredentialAuthorization
 			if err := func() error {
-				response = nil
+				response = make([]CredentialAuthorization, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem CredentialAuthorization
 					if err := elem.Decode(d); err != nil {
@@ -19993,7 +19993,7 @@ func decodeOrgsListWebhookDeliveriesResponse(resp *http.Response, span trace.Spa
 			if err := func() error {
 				{
 					var unwrapped []HookDeliveryItem
-					unwrapped = nil
+					unwrapped = make([]HookDeliveryItem, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem HookDeliveryItem
 						if err := elem.Decode(d); err != nil {
@@ -20093,7 +20093,7 @@ func decodeOrgsListWebhooksResponse(resp *http.Response, span trace.Span) (res O
 			if err := func() error {
 				{
 					var unwrapped []OrgHook
-					unwrapped = nil
+					unwrapped = make([]OrgHook, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem OrgHook
 						if err := elem.Decode(d); err != nil {
@@ -21468,7 +21468,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 			if err := func() error {
 				{
 					var unwrapped []PackageVersion
-					unwrapped = nil
+					unwrapped = make([]PackageVersion, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem PackageVersion
 						if err := elem.Decode(d); err != nil {
@@ -21607,7 +21607,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 			if err := func() error {
 				{
 					var unwrapped []PackageVersion
-					unwrapped = nil
+					unwrapped = make([]PackageVersion, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem PackageVersion
 						if err := elem.Decode(d); err != nil {
@@ -21746,7 +21746,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 			if err := func() error {
 				{
 					var unwrapped []PackageVersion
-					unwrapped = nil
+					unwrapped = make([]PackageVersion, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem PackageVersion
 						if err := elem.Decode(d); err != nil {
@@ -22087,7 +22087,7 @@ func decodePackagesListPackagesForAuthenticatedUserResponse(resp *http.Response,
 
 			var response []Package
 			if err := func() error {
-				response = nil
+				response = make([]Package, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Package
 					if err := elem.Decode(d); err != nil {
@@ -22131,7 +22131,7 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response, span
 			if err := func() error {
 				{
 					var unwrapped []Package
-					unwrapped = nil
+					unwrapped = make([]Package, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Package
 						if err := elem.Decode(d); err != nil {
@@ -22239,7 +22239,7 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response, span trace.S
 			if err := func() error {
 				{
 					var unwrapped []Package
-					unwrapped = nil
+					unwrapped = make([]Package, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Package
 						if err := elem.Decode(d); err != nil {
@@ -24553,7 +24553,7 @@ func decodeProjectsListCardsResponse(resp *http.Response, span trace.Span) (res 
 			if err := func() error {
 				{
 					var unwrapped []ProjectCard
-					unwrapped = nil
+					unwrapped = make([]ProjectCard, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem ProjectCard
 						if err := elem.Decode(d); err != nil {
@@ -24663,7 +24663,7 @@ func decodeProjectsListCollaboratorsResponse(resp *http.Response, span trace.Spa
 			if err := func() error {
 				{
 					var unwrapped []SimpleUser
-					unwrapped = nil
+					unwrapped = make([]SimpleUser, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SimpleUser
 						if err := elem.Decode(d); err != nil {
@@ -24831,7 +24831,7 @@ func decodeProjectsListColumnsResponse(resp *http.Response, span trace.Span) (re
 			if err := func() error {
 				{
 					var unwrapped []ProjectColumn
-					unwrapped = nil
+					unwrapped = make([]ProjectColumn, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem ProjectColumn
 						if err := elem.Decode(d); err != nil {
@@ -24941,7 +24941,7 @@ func decodeProjectsListForOrgResponse(resp *http.Response, span trace.Span) (res
 			if err := func() error {
 				{
 					var unwrapped []Project
-					unwrapped = nil
+					unwrapped = make([]Project, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Project
 						if err := elem.Decode(d); err != nil {
@@ -25014,7 +25014,7 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 			if err := func() error {
 				{
 					var unwrapped []Project
-					unwrapped = nil
+					unwrapped = make([]Project, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Project
 						if err := elem.Decode(d); err != nil {
@@ -25211,7 +25211,7 @@ func decodeProjectsListForUserResponse(resp *http.Response, span trace.Span) (re
 			if err := func() error {
 				{
 					var unwrapped []Project
-					unwrapped = nil
+					unwrapped = make([]Project, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Project
 						if err := elem.Decode(d); err != nil {
@@ -26862,7 +26862,7 @@ func decodePullsListResponse(resp *http.Response, span trace.Span) (res PullsLis
 			if err := func() error {
 				{
 					var unwrapped []PullRequestSimple
-					unwrapped = nil
+					unwrapped = make([]PullRequestSimple, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem PullRequestSimple
 						if err := elem.Decode(d); err != nil {
@@ -26937,7 +26937,7 @@ func decodePullsListCommentsForReviewResponse(resp *http.Response, span trace.Sp
 			if err := func() error {
 				{
 					var unwrapped []ReviewComment
-					unwrapped = nil
+					unwrapped = make([]ReviewComment, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem ReviewComment
 						if err := elem.Decode(d); err != nil {
@@ -27008,7 +27008,7 @@ func decodePullsListCommitsResponse(resp *http.Response, span trace.Span) (res [
 
 			var response []Commit
 			if err := func() error {
-				response = nil
+				response = make([]Commit, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Commit
 					if err := elem.Decode(d); err != nil {
@@ -27052,7 +27052,7 @@ func decodePullsListFilesResponse(resp *http.Response, span trace.Span) (res Pul
 			if err := func() error {
 				{
 					var unwrapped []DiffEntry
-					unwrapped = nil
+					unwrapped = make([]DiffEntry, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem DiffEntry
 						if err := elem.Decode(d); err != nil {
@@ -27184,7 +27184,7 @@ func decodePullsListReviewCommentsResponse(resp *http.Response, span trace.Span)
 
 			var response []PullRequestReviewComment
 			if err := func() error {
-				response = nil
+				response = make([]PullRequestReviewComment, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PullRequestReviewComment
 					if err := elem.Decode(d); err != nil {
@@ -27226,7 +27226,7 @@ func decodePullsListReviewCommentsForRepoResponse(resp *http.Response, span trac
 
 			var response []PullRequestReviewComment
 			if err := func() error {
-				response = nil
+				response = make([]PullRequestReviewComment, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PullRequestReviewComment
 					if err := elem.Decode(d); err != nil {
@@ -27268,7 +27268,7 @@ func decodePullsListReviewsResponse(resp *http.Response, span trace.Span) (res [
 
 			var response []PullRequestReview
 			if err := func() error {
-				response = nil
+				response = make([]PullRequestReview, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PullRequestReview
 					if err := elem.Decode(d); err != nil {
@@ -29013,7 +29013,7 @@ func decodeReactionsListForCommitCommentResponse(resp *http.Response, span trace
 			if err := func() error {
 				{
 					var unwrapped []Reaction
-					unwrapped = nil
+					unwrapped = make([]Reaction, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Reaction
 						if err := elem.Decode(d); err != nil {
@@ -29113,7 +29113,7 @@ func decodeReactionsListForIssueResponse(resp *http.Response, span trace.Span) (
 			if err := func() error {
 				{
 					var unwrapped []Reaction
-					unwrapped = nil
+					unwrapped = make([]Reaction, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Reaction
 						if err := elem.Decode(d); err != nil {
@@ -29248,7 +29248,7 @@ func decodeReactionsListForIssueCommentResponse(resp *http.Response, span trace.
 			if err := func() error {
 				{
 					var unwrapped []Reaction
-					unwrapped = nil
+					unwrapped = make([]Reaction, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Reaction
 						if err := elem.Decode(d); err != nil {
@@ -29348,7 +29348,7 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response,
 			if err := func() error {
 				{
 					var unwrapped []Reaction
-					unwrapped = nil
+					unwrapped = make([]Reaction, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Reaction
 						if err := elem.Decode(d); err != nil {
@@ -29446,7 +29446,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgResponse(resp *http.Respons
 
 			var response []Reaction
 			if err := func() error {
-				response = nil
+				response = make([]Reaction, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Reaction
 					if err := elem.Decode(d); err != nil {
@@ -29488,7 +29488,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyResponse(resp *http.Respon
 
 			var response []Reaction
 			if err := func() error {
-				response = nil
+				response = make([]Reaction, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Reaction
 					if err := elem.Decode(d); err != nil {
@@ -29530,7 +29530,7 @@ func decodeReactionsListForTeamDiscussionInOrgResponse(resp *http.Response, span
 
 			var response []Reaction
 			if err := func() error {
-				response = nil
+				response = make([]Reaction, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Reaction
 					if err := elem.Decode(d); err != nil {
@@ -29572,7 +29572,7 @@ func decodeReactionsListForTeamDiscussionLegacyResponse(resp *http.Response, spa
 
 			var response []Reaction
 			if err := func() error {
-				response = nil
+				response = make([]Reaction, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Reaction
 					if err := elem.Decode(d); err != nil {
@@ -29720,7 +29720,7 @@ func decodeReposAddAppAccessRestrictionsResponse(resp *http.Response, span trace
 			if err := func() error {
 				{
 					var unwrapped []Integration
-					unwrapped = nil
+					unwrapped = make([]Integration, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Integration
 						if err := elem.Decode(d); err != nil {
@@ -29883,7 +29883,7 @@ func decodeReposAddStatusCheckContextsResponse(resp *http.Response, span trace.S
 			if err := func() error {
 				{
 					var unwrapped []string
-					unwrapped = nil
+					unwrapped = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem string
 						v, err := d.Str()
@@ -30020,7 +30020,7 @@ func decodeReposAddTeamAccessRestrictionsResponse(resp *http.Response, span trac
 			if err := func() error {
 				{
 					var unwrapped []Team
-					unwrapped = nil
+					unwrapped = make([]Team, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Team
 						if err := elem.Decode(d); err != nil {
@@ -30093,7 +30093,7 @@ func decodeReposAddUserAccessRestrictionsResponse(resp *http.Response, span trac
 			if err := func() error {
 				{
 					var unwrapped []SimpleUser
-					unwrapped = nil
+					unwrapped = make([]SimpleUser, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SimpleUser
 						if err := elem.Decode(d); err != nil {
@@ -32855,7 +32855,7 @@ func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response, span trac
 			if err := func() error {
 				{
 					var unwrapped []string
-					unwrapped = nil
+					unwrapped = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem string
 						v, err := d.Str()
@@ -33018,7 +33018,7 @@ func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response, 
 			if err := func() error {
 				{
 					var unwrapped []Integration
-					unwrapped = nil
+					unwrapped = make([]Integration, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Integration
 						if err := elem.Decode(d); err != nil {
@@ -33397,12 +33397,12 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response, span trace.Sp
 			if err := func() error {
 				{
 					var unwrapped []CodeFrequencyStat
-					unwrapped = nil
+					unwrapped = make([]CodeFrequencyStat, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem CodeFrequencyStat
 						{
 							var unwrapped []int
-							unwrapped = nil
+							unwrapped = make([]int, 0)
 							if err := d.Arr(func(d *jx.Decoder) error {
 								var elem int
 								v, err := d.Int()
@@ -33731,7 +33731,7 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response, span trace.S
 			if err := func() error {
 				{
 					var unwrapped []CommitActivity
-					unwrapped = nil
+					unwrapped = make([]CommitActivity, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem CommitActivity
 						if err := elem.Decode(d); err != nil {
@@ -33962,7 +33962,7 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response, span trace.Spa
 			if err := func() error {
 				{
 					var unwrapped []ContributorActivity
-					unwrapped = nil
+					unwrapped = make([]ContributorActivity, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem ContributorActivity
 						if err := elem.Decode(d); err != nil {
@@ -34598,12 +34598,12 @@ func decodeReposGetPunchCardStatsResponse(resp *http.Response, span trace.Span) 
 			if err := func() error {
 				{
 					var unwrapped []CodeFrequencyStat
-					unwrapped = nil
+					unwrapped = make([]CodeFrequencyStat, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem CodeFrequencyStat
 						{
 							var unwrapped []int
-							unwrapped = nil
+							unwrapped = make([]int, 0)
 							if err := d.Arr(func(d *jx.Decoder) error {
 								var elem int
 								v, err := d.Int()
@@ -35109,7 +35109,7 @@ func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response,
 			if err := func() error {
 				{
 					var unwrapped []Team
-					unwrapped = nil
+					unwrapped = make([]Team, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Team
 						if err := elem.Decode(d); err != nil {
@@ -35182,7 +35182,7 @@ func decodeReposGetTopPathsResponse(resp *http.Response, span trace.Span) (res R
 			if err := func() error {
 				{
 					var unwrapped []ContentTraffic
-					unwrapped = nil
+					unwrapped = make([]ContentTraffic, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem ContentTraffic
 						if err := elem.Decode(d); err != nil {
@@ -35255,7 +35255,7 @@ func decodeReposGetTopReferrersResponse(resp *http.Response, span trace.Span) (r
 			if err := func() error {
 				{
 					var unwrapped []ReferrerTraffic
-					unwrapped = nil
+					unwrapped = make([]ReferrerTraffic, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem ReferrerTraffic
 						if err := elem.Decode(d); err != nil {
@@ -35328,7 +35328,7 @@ func decodeReposGetUsersWithAccessToProtectedBranchResponse(resp *http.Response,
 			if err := func() error {
 				{
 					var unwrapped []SimpleUser
-					unwrapped = nil
+					unwrapped = make([]SimpleUser, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SimpleUser
 						if err := elem.Decode(d); err != nil {
@@ -35643,7 +35643,7 @@ func decodeReposListAutolinksResponse(resp *http.Response, span trace.Span) (res
 
 			var response []Autolink
 			if err := func() error {
-				response = nil
+				response = make([]Autolink, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Autolink
 					if err := elem.Decode(d); err != nil {
@@ -35687,7 +35687,7 @@ func decodeReposListBranchesResponse(resp *http.Response, span trace.Span) (res 
 			if err := func() error {
 				{
 					var unwrapped []ShortBranch
-					unwrapped = nil
+					unwrapped = make([]ShortBranch, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem ShortBranch
 						if err := elem.Decode(d); err != nil {
@@ -35760,7 +35760,7 @@ func decodeReposListBranchesForHeadCommitResponse(resp *http.Response, span trac
 			if err := func() error {
 				{
 					var unwrapped []BranchShort
-					unwrapped = nil
+					unwrapped = make([]BranchShort, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem BranchShort
 						if err := elem.Decode(d); err != nil {
@@ -35833,7 +35833,7 @@ func decodeReposListCollaboratorsResponse(resp *http.Response, span trace.Span) 
 			if err := func() error {
 				{
 					var unwrapped []Collaborator
-					unwrapped = nil
+					unwrapped = make([]Collaborator, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Collaborator
 						if err := elem.Decode(d); err != nil {
@@ -35904,7 +35904,7 @@ func decodeReposListCommentsForCommitResponse(resp *http.Response, span trace.Sp
 
 			var response []CommitComment
 			if err := func() error {
-				response = nil
+				response = make([]CommitComment, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem CommitComment
 					if err := elem.Decode(d); err != nil {
@@ -35946,7 +35946,7 @@ func decodeReposListCommitCommentsForRepoResponse(resp *http.Response, span trac
 
 			var response []CommitComment
 			if err := func() error {
-				response = nil
+				response = make([]CommitComment, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem CommitComment
 					if err := elem.Decode(d); err != nil {
@@ -35990,7 +35990,7 @@ func decodeReposListCommitStatusesForRefResponse(resp *http.Response, span trace
 			if err := func() error {
 				{
 					var unwrapped []Status
-					unwrapped = nil
+					unwrapped = make([]Status, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Status
 						if err := elem.Decode(d); err != nil {
@@ -36063,7 +36063,7 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 			if err := func() error {
 				{
 					var unwrapped []Commit
-					unwrapped = nil
+					unwrapped = make([]Commit, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Commit
 						if err := elem.Decode(d); err != nil {
@@ -36233,7 +36233,7 @@ func decodeReposListContributorsResponse(resp *http.Response, span trace.Span) (
 			if err := func() error {
 				{
 					var unwrapped []Contributor
-					unwrapped = nil
+					unwrapped = make([]Contributor, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Contributor
 						if err := elem.Decode(d); err != nil {
@@ -36341,7 +36341,7 @@ func decodeReposListDeployKeysResponse(resp *http.Response, span trace.Span) (re
 
 			var response []DeployKey
 			if err := func() error {
-				response = nil
+				response = make([]DeployKey, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem DeployKey
 					if err := elem.Decode(d); err != nil {
@@ -36385,7 +36385,7 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response, span trace.S
 			if err := func() error {
 				{
 					var unwrapped []DeploymentStatus
-					unwrapped = nil
+					unwrapped = make([]DeploymentStatus, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem DeploymentStatus
 						if err := elem.Decode(d); err != nil {
@@ -36456,7 +36456,7 @@ func decodeReposListDeploymentsResponse(resp *http.Response, span trace.Span) (r
 
 			var response []Deployment
 			if err := func() error {
-				response = nil
+				response = make([]Deployment, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Deployment
 					if err := elem.Decode(d); err != nil {
@@ -36500,7 +36500,7 @@ func decodeReposListForAuthenticatedUserResponse(resp *http.Response, span trace
 			if err := func() error {
 				{
 					var unwrapped []Repository
-					unwrapped = nil
+					unwrapped = make([]Repository, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Repository
 						if err := elem.Decode(d); err != nil {
@@ -36635,7 +36635,7 @@ func decodeReposListForOrgResponse(resp *http.Response, span trace.Span) (res []
 
 			var response []MinimalRepository
 			if err := func() error {
-				response = nil
+				response = make([]MinimalRepository, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MinimalRepository
 					if err := elem.Decode(d); err != nil {
@@ -36677,7 +36677,7 @@ func decodeReposListForUserResponse(resp *http.Response, span trace.Span) (res [
 
 			var response []MinimalRepository
 			if err := func() error {
-				response = nil
+				response = make([]MinimalRepository, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MinimalRepository
 					if err := elem.Decode(d); err != nil {
@@ -36721,7 +36721,7 @@ func decodeReposListForksResponse(resp *http.Response, span trace.Span) (res Rep
 			if err := func() error {
 				{
 					var unwrapped []MinimalRepository
-					unwrapped = nil
+					unwrapped = make([]MinimalRepository, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem MinimalRepository
 						if err := elem.Decode(d); err != nil {
@@ -36792,7 +36792,7 @@ func decodeReposListInvitationsResponse(resp *http.Response, span trace.Span) (r
 
 			var response []RepositoryInvitation
 			if err := func() error {
-				response = nil
+				response = make([]RepositoryInvitation, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem RepositoryInvitation
 					if err := elem.Decode(d); err != nil {
@@ -36836,7 +36836,7 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 			if err := func() error {
 				{
 					var unwrapped []RepositoryInvitation
-					unwrapped = nil
+					unwrapped = make([]RepositoryInvitation, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem RepositoryInvitation
 						if err := elem.Decode(d); err != nil {
@@ -37010,7 +37010,7 @@ func decodeReposListPagesBuildsResponse(resp *http.Response, span trace.Span) (r
 
 			var response []PageBuild
 			if err := func() error {
-				response = nil
+				response = make([]PageBuild, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PageBuild
 					if err := elem.Decode(d); err != nil {
@@ -37054,7 +37054,7 @@ func decodeReposListPublicResponse(resp *http.Response, span trace.Span) (res Re
 			if err := func() error {
 				{
 					var unwrapped []MinimalRepository
-					unwrapped = nil
+					unwrapped = make([]MinimalRepository, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem MinimalRepository
 						if err := elem.Decode(d); err != nil {
@@ -37127,7 +37127,7 @@ func decodeReposListPullRequestsAssociatedWithCommitResponse(resp *http.Response
 
 			var response []PullRequestSimple
 			if err := func() error {
-				response = nil
+				response = make([]PullRequestSimple, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PullRequestSimple
 					if err := elem.Decode(d); err != nil {
@@ -37169,7 +37169,7 @@ func decodeReposListReleaseAssetsResponse(resp *http.Response, span trace.Span) 
 
 			var response []ReleaseAsset
 			if err := func() error {
-				response = nil
+				response = make([]ReleaseAsset, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ReleaseAsset
 					if err := elem.Decode(d); err != nil {
@@ -37213,7 +37213,7 @@ func decodeReposListReleasesResponse(resp *http.Response, span trace.Span) (res 
 			if err := func() error {
 				{
 					var unwrapped []Release
-					unwrapped = nil
+					unwrapped = make([]Release, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Release
 						if err := elem.Decode(d); err != nil {
@@ -37284,7 +37284,7 @@ func decodeReposListTagsResponse(resp *http.Response, span trace.Span) (res []Ta
 
 			var response []Tag
 			if err := func() error {
-				response = nil
+				response = make([]Tag, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Tag
 					if err := elem.Decode(d); err != nil {
@@ -37326,7 +37326,7 @@ func decodeReposListTeamsResponse(resp *http.Response, span trace.Span) (res []T
 
 			var response []Team
 			if err := func() error {
-				response = nil
+				response = make([]Team, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Team
 					if err := elem.Decode(d); err != nil {
@@ -37370,7 +37370,7 @@ func decodeReposListWebhookDeliveriesResponse(resp *http.Response, span trace.Sp
 			if err := func() error {
 				{
 					var unwrapped []HookDeliveryItem
-					unwrapped = nil
+					unwrapped = make([]HookDeliveryItem, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem HookDeliveryItem
 						if err := elem.Decode(d); err != nil {
@@ -37470,7 +37470,7 @@ func decodeReposListWebhooksResponse(resp *http.Response, span trace.Span) (res 
 			if err := func() error {
 				{
 					var unwrapped []Hook
-					unwrapped = nil
+					unwrapped = make([]Hook, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Hook
 						if err := elem.Decode(d); err != nil {
@@ -37799,7 +37799,7 @@ func decodeReposRemoveAppAccessRestrictionsResponse(resp *http.Response, span tr
 			if err := func() error {
 				{
 					var unwrapped []Integration
-					unwrapped = nil
+					unwrapped = make([]Integration, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Integration
 						if err := elem.Decode(d); err != nil {
@@ -37881,7 +37881,7 @@ func decodeReposRemoveStatusCheckContextsResponse(resp *http.Response, span trac
 			if err := func() error {
 				{
 					var unwrapped []string
-					unwrapped = nil
+					unwrapped = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem string
 						v, err := d.Str()
@@ -37992,7 +37992,7 @@ func decodeReposRemoveTeamAccessRestrictionsResponse(resp *http.Response, span t
 			if err := func() error {
 				{
 					var unwrapped []Team
-					unwrapped = nil
+					unwrapped = make([]Team, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Team
 						if err := elem.Decode(d); err != nil {
@@ -38065,7 +38065,7 @@ func decodeReposRemoveUserAccessRestrictionsResponse(resp *http.Response, span t
 			if err := func() error {
 				{
 					var unwrapped []SimpleUser
-					unwrapped = nil
+					unwrapped = make([]SimpleUser, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SimpleUser
 						if err := elem.Decode(d); err != nil {
@@ -38444,7 +38444,7 @@ func decodeReposSetAppAccessRestrictionsResponse(resp *http.Response, span trace
 			if err := func() error {
 				{
 					var unwrapped []Integration
-					unwrapped = nil
+					unwrapped = make([]Integration, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Integration
 						if err := elem.Decode(d); err != nil {
@@ -38517,7 +38517,7 @@ func decodeReposSetStatusCheckContextsResponse(resp *http.Response, span trace.S
 			if err := func() error {
 				{
 					var unwrapped []string
-					unwrapped = nil
+					unwrapped = make([]string, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem string
 						v, err := d.Str()
@@ -38619,7 +38619,7 @@ func decodeReposSetTeamAccessRestrictionsResponse(resp *http.Response, span trac
 			if err := func() error {
 				{
 					var unwrapped []Team
-					unwrapped = nil
+					unwrapped = make([]Team, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Team
 						if err := elem.Decode(d); err != nil {
@@ -38692,7 +38692,7 @@ func decodeReposSetUserAccessRestrictionsResponse(resp *http.Response, span trac
 			if err := func() error {
 				{
 					var unwrapped []SimpleUser
-					unwrapped = nil
+					unwrapped = make([]SimpleUser, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SimpleUser
 						if err := elem.Decode(d); err != nil {
@@ -40374,7 +40374,7 @@ func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response, span trac
 			if err := func() error {
 				{
 					var unwrapped []OrganizationSecretScanningAlert
-					unwrapped = nil
+					unwrapped = make([]OrganizationSecretScanningAlert, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem OrganizationSecretScanningAlert
 						if err := elem.Decode(d); err != nil {
@@ -40474,7 +40474,7 @@ func decodeSecretScanningListAlertsForRepoResponse(resp *http.Response, span tra
 			if err := func() error {
 				{
 					var unwrapped []SecretScanningAlert
-					unwrapped = nil
+					unwrapped = make([]SecretScanningAlert, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SecretScanningAlert
 						if err := elem.Decode(d); err != nil {
@@ -41923,7 +41923,7 @@ func decodeTeamsListResponse(resp *http.Response, span trace.Span) (res TeamsLis
 			if err := func() error {
 				{
 					var unwrapped []Team
-					unwrapped = nil
+					unwrapped = make([]Team, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Team
 						if err := elem.Decode(d); err != nil {
@@ -41994,7 +41994,7 @@ func decodeTeamsListChildInOrgResponse(resp *http.Response, span trace.Span) (re
 
 			var response []Team
 			if err := func() error {
-				response = nil
+				response = make([]Team, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Team
 					if err := elem.Decode(d); err != nil {
@@ -42038,7 +42038,7 @@ func decodeTeamsListChildLegacyResponse(resp *http.Response, span trace.Span) (r
 			if err := func() error {
 				{
 					var unwrapped []Team
-					unwrapped = nil
+					unwrapped = make([]Team, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Team
 						if err := elem.Decode(d); err != nil {
@@ -42171,7 +42171,7 @@ func decodeTeamsListDiscussionCommentsInOrgResponse(resp *http.Response, span tr
 
 			var response []TeamDiscussionComment
 			if err := func() error {
-				response = nil
+				response = make([]TeamDiscussionComment, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem TeamDiscussionComment
 					if err := elem.Decode(d); err != nil {
@@ -42213,7 +42213,7 @@ func decodeTeamsListDiscussionCommentsLegacyResponse(resp *http.Response, span t
 
 			var response []TeamDiscussionComment
 			if err := func() error {
-				response = nil
+				response = make([]TeamDiscussionComment, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem TeamDiscussionComment
 					if err := elem.Decode(d); err != nil {
@@ -42255,7 +42255,7 @@ func decodeTeamsListDiscussionsInOrgResponse(resp *http.Response, span trace.Spa
 
 			var response []TeamDiscussion
 			if err := func() error {
-				response = nil
+				response = make([]TeamDiscussion, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem TeamDiscussion
 					if err := elem.Decode(d); err != nil {
@@ -42297,7 +42297,7 @@ func decodeTeamsListDiscussionsLegacyResponse(resp *http.Response, span trace.Sp
 
 			var response []TeamDiscussion
 			if err := func() error {
-				response = nil
+				response = make([]TeamDiscussion, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem TeamDiscussion
 					if err := elem.Decode(d); err != nil {
@@ -42341,7 +42341,7 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response, span trace
 			if err := func() error {
 				{
 					var unwrapped []TeamFull
-					unwrapped = nil
+					unwrapped = make([]TeamFull, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem TeamFull
 						if err := elem.Decode(d); err != nil {
@@ -42613,7 +42613,7 @@ func decodeTeamsListMembersInOrgResponse(resp *http.Response, span trace.Span) (
 
 			var response []SimpleUser
 			if err := func() error {
-				response = nil
+				response = make([]SimpleUser, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem SimpleUser
 					if err := elem.Decode(d); err != nil {
@@ -42657,7 +42657,7 @@ func decodeTeamsListMembersLegacyResponse(resp *http.Response, span trace.Span) 
 			if err := func() error {
 				{
 					var unwrapped []SimpleUser
-					unwrapped = nil
+					unwrapped = make([]SimpleUser, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SimpleUser
 						if err := elem.Decode(d); err != nil {
@@ -42728,7 +42728,7 @@ func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response, span tr
 
 			var response []OrganizationInvitation
 			if err := func() error {
-				response = nil
+				response = make([]OrganizationInvitation, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem OrganizationInvitation
 					if err := elem.Decode(d); err != nil {
@@ -42770,7 +42770,7 @@ func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response, span t
 
 			var response []OrganizationInvitation
 			if err := func() error {
-				response = nil
+				response = make([]OrganizationInvitation, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem OrganizationInvitation
 					if err := elem.Decode(d); err != nil {
@@ -42812,7 +42812,7 @@ func decodeTeamsListProjectsInOrgResponse(resp *http.Response, span trace.Span) 
 
 			var response []TeamProject
 			if err := func() error {
-				response = nil
+				response = make([]TeamProject, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem TeamProject
 					if err := elem.Decode(d); err != nil {
@@ -42856,7 +42856,7 @@ func decodeTeamsListProjectsLegacyResponse(resp *http.Response, span trace.Span)
 			if err := func() error {
 				{
 					var unwrapped []TeamProject
-					unwrapped = nil
+					unwrapped = make([]TeamProject, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem TeamProject
 						if err := elem.Decode(d); err != nil {
@@ -42927,7 +42927,7 @@ func decodeTeamsListReposInOrgResponse(resp *http.Response, span trace.Span) (re
 
 			var response []MinimalRepository
 			if err := func() error {
-				response = nil
+				response = make([]MinimalRepository, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MinimalRepository
 					if err := elem.Decode(d); err != nil {
@@ -42971,7 +42971,7 @@ func decodeTeamsListReposLegacyResponse(resp *http.Response, span trace.Span) (r
 			if err := func() error {
 				{
 					var unwrapped []MinimalRepository
-					unwrapped = nil
+					unwrapped = make([]MinimalRepository, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem MinimalRepository
 						if err := elem.Decode(d); err != nil {
@@ -43522,7 +43522,7 @@ func decodeUsersAddEmailForAuthenticatedResponse(resp *http.Response, span trace
 			if err := func() error {
 				{
 					var unwrapped []Email
-					unwrapped = nil
+					unwrapped = make([]Email, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Email
 						if err := elem.Decode(d); err != nil {
@@ -45354,7 +45354,7 @@ func decodeUsersListResponse(resp *http.Response, span trace.Span) (res UsersLis
 			if err := func() error {
 				{
 					var unwrapped []SimpleUser
-					unwrapped = nil
+					unwrapped = make([]SimpleUser, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SimpleUser
 						if err := elem.Decode(d); err != nil {
@@ -45402,7 +45402,7 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 			if err := func() error {
 				{
 					var unwrapped []SimpleUser
-					unwrapped = nil
+					unwrapped = make([]SimpleUser, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SimpleUser
 						if err := elem.Decode(d); err != nil {
@@ -45570,7 +45570,7 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 			if err := func() error {
 				{
 					var unwrapped []Email
-					unwrapped = nil
+					unwrapped = make([]Email, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Email
 						if err := elem.Decode(d); err != nil {
@@ -45711,7 +45711,7 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response, span tr
 			if err := func() error {
 				{
 					var unwrapped []SimpleUser
-					unwrapped = nil
+					unwrapped = make([]SimpleUser, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SimpleUser
 						if err := elem.Decode(d); err != nil {
@@ -45821,7 +45821,7 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response, s
 			if err := func() error {
 				{
 					var unwrapped []SimpleUser
-					unwrapped = nil
+					unwrapped = make([]SimpleUser, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SimpleUser
 						if err := elem.Decode(d); err != nil {
@@ -45929,7 +45929,7 @@ func decodeUsersListFollowersForUserResponse(resp *http.Response, span trace.Spa
 
 			var response []SimpleUser
 			if err := func() error {
-				response = nil
+				response = make([]SimpleUser, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem SimpleUser
 					if err := elem.Decode(d); err != nil {
@@ -45971,7 +45971,7 @@ func decodeUsersListFollowingForUserResponse(resp *http.Response, span trace.Spa
 
 			var response []SimpleUser
 			if err := func() error {
-				response = nil
+				response = make([]SimpleUser, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem SimpleUser
 					if err := elem.Decode(d); err != nil {
@@ -46015,7 +46015,7 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 			if err := func() error {
 				{
 					var unwrapped []GpgKey
-					unwrapped = nil
+					unwrapped = make([]GpgKey, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem GpgKey
 						if err := elem.Decode(d); err != nil {
@@ -46154,7 +46154,7 @@ func decodeUsersListGpgKeysForUserResponse(resp *http.Response, span trace.Span)
 
 			var response []GpgKey
 			if err := func() error {
-				response = nil
+				response = make([]GpgKey, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem GpgKey
 					if err := elem.Decode(d); err != nil {
@@ -46198,7 +46198,7 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 			if err := func() error {
 				{
 					var unwrapped []Email
-					unwrapped = nil
+					unwrapped = make([]Email, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Email
 						if err := elem.Decode(d); err != nil {
@@ -46337,7 +46337,7 @@ func decodeUsersListPublicKeysForUserResponse(resp *http.Response, span trace.Sp
 
 			var response []KeySimple
 			if err := func() error {
-				response = nil
+				response = make([]KeySimple, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem KeySimple
 					if err := elem.Decode(d); err != nil {
@@ -46381,7 +46381,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 			if err := func() error {
 				{
 					var unwrapped []Key
-					unwrapped = nil
+					unwrapped = make([]Key, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Key
 						if err := elem.Decode(d); err != nil {
@@ -46522,7 +46522,7 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Res
 			if err := func() error {
 				{
 					var unwrapped []Email
-					unwrapped = nil
+					unwrapped = make([]Email, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem Email
 						if err := elem.Decode(d); err != nil {
