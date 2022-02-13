@@ -72,7 +72,7 @@ func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if $g.Format }}, format func(*jx.D
 	{{- else if $g.IsArray }}
 		{{ template "json/dec_array_elems" elem $g "o.Value" }}
 	{{- else if $g.JSON.Fn }}
-		v, err := d.{{ $g.JSON.Fn }}()
+		v, err := d.{{ $g.JSON.Decode }}
 		if err != nil {
 			return err
 		}

@@ -167,6 +167,15 @@ func (j JSON) raw() bool {
 	}
 }
 
+func (j JSON) Decode() string {
+	if j.t.IsAny() {
+		// Copy to prevent referencing internal buffer.
+		return "RawAppend(nil)"
+	}
+	// No arguments.
+	return j.Fn() + "()"
+}
+
 // Fn returns jx.Encoder or jx.Decoder method name.
 //
 // If blank, value cannot be encoded with single method call.

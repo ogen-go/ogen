@@ -82,7 +82,7 @@ if err := d.Arr(func(d *jx.Decoder) error {
 			return err
 		}
 	{{- else if $j.Fn }}
-		v, err := d.{{ $j.Fn }}()
+		v, err := d.{{ $j.Decode }}
 		{{ $.Var }} = {{ $t.Go }}(v)
 		if err != nil {
 			return err
