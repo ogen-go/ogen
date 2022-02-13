@@ -227,8 +227,8 @@ func (s sampleAPIServer) DefaultTest(ctx context.Context, req api.DefaultTest, p
 	return params.Default.Value, nil
 }
 
-func (s sampleAPIServer) NullableDefaultResponse(ctx context.Context) (api.NullableDefaultResponseDefStatusCode, error) {
-	return api.NullableDefaultResponseDefStatusCode{
+func (s sampleAPIServer) NullableDefaultResponse(ctx context.Context) (api.NilIntStatusCode, error) {
+	return api.NilIntStatusCode{
 		StatusCode: 200,
 		Response:   api.NewNilInt(1337),
 	}, nil
@@ -243,7 +243,7 @@ func (s sampleAPIServer) OctetStreamEmptySchema(ctx context.Context) (api.OctetS
 }
 
 func (s sampleAPIServer) MultipleGenericResponses(ctx context.Context) (api.MultipleGenericResponsesRes, error) {
-	panic("implement me")
+	return &api.NilString{Value: "ooaoaoaoao"}, nil
 }
 
 var _ api.Handler = (*sampleAPIServer)(nil)
