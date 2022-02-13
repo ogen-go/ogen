@@ -125,7 +125,7 @@ func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (ret *ir.
 		}, nil
 	}
 
-	contents, err := g.generateContents(name, resp.Contents)
+	contents, err := g.generateContents(name, false, resp.Contents)
 	if err != nil {
 		return nil, errors.Wrap(err, "contents")
 	}

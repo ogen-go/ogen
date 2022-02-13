@@ -7,7 +7,7 @@ import (
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
-func (g *Generator) generateContents(name string, contents map[string]*jsonschema.Schema) (map[ir.ContentType]*ir.Type, error) {
+func (g *Generator) generateContents(name string, optional bool, contents map[string]*jsonschema.Schema) (map[ir.ContentType]*ir.Type, error) {
 	var (
 		result      = make(map[ir.ContentType]*ir.Type, len(contents))
 		unsupported []string
@@ -19,35 +19,45 @@ func (g *Generator) generateContents(name string, contents map[string]*jsonschem
 			typeName = pascal(name, contentType)
 		}
 
-		switch contentType {
-		case "application/json":
-			t, err := g.generateSchema(typeName, schema)
-			if err != nil {
-				return nil, errors.Wrap(err, "schema")
-			}
+		if err := func() error {
+			switch contentType {
+			case "application/json":
+				t, err := g.generateSchema(typeName, schema)
+				if err != nil {
+					return errors.Wrap(err, "schema")
+				}
 
-			t.AddFeature("json")
-			result[ir.ContentTypeJSON] = t
+				t.AddFeature("json")
+				t = g.boxType(ir.GenericVariant{
+					Nullable: t.Schema != nil && t.Schema.Nullable,
+					Optional: optional,
+				}, t)
+				result[ir.ContentTypeJSON] = t
+				return nil
 
-		case "application/octet-stream":
-			if schema != nil && !isBinary(schema) {
-				return nil, errors.Errorf("octet stream with schema not supported")
-			}
+			case "application/octet-stream":
+				if schema != nil && !isBinary(schema) {
+					return errors.Errorf("octet stream with schema not supported")
+				}
 
-			t := ir.Stream(typeName)
-			result[ir.ContentTypeOctetStream] = t
-			g.saveType(t)
-			continue
-
-		default:
-			if isBinary(schema) {
 				t := ir.Stream(typeName)
-				result[ir.ContentType(contentType)] = t
+				result[ir.ContentTypeOctetStream] = t
 				g.saveType(t)
-				continue
-			}
+				return nil
 
-			unsupported = append(unsupported, contentType)
+			default:
+				if isBinary(schema) {
+					t := ir.Stream(typeName)
+					result[ir.ContentType(contentType)] = t
+					g.saveType(t)
+					return nil
+				}
+
+				unsupported = append(unsupported, contentType)
+				return nil
+			}
+		}(); err != nil {
+			return nil, errors.Wrap(err, contentType)
 		}
 	}
 

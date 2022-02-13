@@ -10,7 +10,7 @@ import (
 func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.Request, error) {
 	name := opName + "Req"
 
-	contents, err := g.generateContents(name, body.Contents)
+	contents, err := g.generateContents(name, !body.Required, body.Contents)
 	if err != nil {
 		return nil, errors.Wrap(err, "contents")
 	}

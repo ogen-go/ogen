@@ -32,6 +32,11 @@ func (g *Generator) generateParameters(opName string, params []*oas.Parameter) (
 			return nil, errors.Wrapf(err, "%q", p.Name)
 		}
 
+		t = g.boxType(ir.GenericVariant{
+			Nullable: p.Schema != nil && p.Schema.Nullable,
+			Optional: !p.Required,
+		}, t)
+
 		visited := map[*ir.Type]struct{}{}
 		if err := isParamAllowed(t, true, visited); err != nil {
 			return nil, err

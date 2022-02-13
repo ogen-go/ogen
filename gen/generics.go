@@ -13,29 +13,6 @@ func (g *Generator) wrapGenerics() {
 			g.boxStructFields(t)
 		}
 	}
-
-	for _, op := range g.operations {
-		for _, param := range op.Params {
-			param.Type = g.boxType(ir.GenericVariant{
-				Nullable: param.Spec.Schema.Nullable,
-				Optional: !param.Spec.Required,
-			}, param.Type)
-		}
-
-		patchRequestTypes(op.Request, func(name string, t *ir.Type) *ir.Type {
-			return g.boxType(ir.GenericVariant{
-				Optional: op.Request.Spec != nil && !op.Request.Spec.Required,
-				Nullable: t.Schema != nil && t.Schema.Nullable,
-			}, t)
-		})
-
-		patchResponseTypes(op.Response, func(name string, t *ir.Type) *ir.Type {
-			return g.boxType(ir.GenericVariant{
-				Optional: false, // Root response schemas cannot be optional.
-				Nullable: t.Schema != nil && t.Schema.Nullable,
-			}, t)
-		})
-	}
 }
 
 func (g *Generator) boxStructFields(s *ir.Type) {
