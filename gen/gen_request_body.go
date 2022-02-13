@@ -15,31 +15,34 @@ func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.R
 		return nil, errors.Wrap(err, "contents")
 	}
 
-	if len(contents) == 1 {
-		for _, t := range contents {
-			return &ir.Request{
-				Type:     t,
-				Contents: contents,
-				Spec:     body,
-			}, nil
-		}
+	var requestType *ir.Type
+	if len(contents) > 1 {
+		requestType = ir.Interface(name)
+		requestType.AddMethod(camel(name))
+		g.saveIface(requestType)
 	}
 
-	iface := ir.Interface(name)
-	iface.AddMethod(camel(name))
-	g.saveIface(iface)
 	for contentType, t := range contents {
-		if !t.CanHaveMethods() {
-			t = ir.Alias(pascal(name, string(contentType)), t)
-			contents[contentType] = t
-			g.saveType(t)
-		}
+		switch {
+		case len(contents) > 1:
+			if !t.CanHaveMethods() {
+				t = ir.Alias(pascal(name, string(contentType)), t)
+				contents[contentType] = t
+				g.saveType(t)
+			}
 
-		t.Implement(iface)
+			t.Implement(requestType)
+
+		case len(contents) == 1:
+			requestType = t
+
+		default:
+			panic("unreachable")
+		}
 	}
 
 	return &ir.Request{
-		Type:     iface,
+		Type:     requestType,
 		Contents: contents,
 		Spec:     body,
 	}, nil
