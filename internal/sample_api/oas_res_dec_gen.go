@@ -316,6 +316,79 @@ func decodeGetHeaderResponse(resp *http.Response, span trace.Span) (res Hash, er
 	}
 }
 
+func decodeMultipleGenericResponsesResponse(resp *http.Response, span trace.Span) (res MultipleGenericResponsesRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response MultipleGenericResponsesOKApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped int
+					v, err := d.Int()
+					unwrapped = int(v)
+					if err != nil {
+						return err
+					}
+					response = MultipleGenericResponsesOKApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	case 204:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response MultipleGenericResponsesNoContentApplicationJSON
+			if err := func() error {
+				{
+					var unwrapped string
+					v, err := d.Str()
+					unwrapped = string(v)
+					if err != nil {
+						return err
+					}
+					response = MultipleGenericResponsesNoContentApplicationJSON(unwrapped)
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return &response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
 func decodeNullableDefaultResponseResponse(resp *http.Response, span trace.Span) (res NullableDefaultResponseDefStatusCode, err error) {
 	switch resp.StatusCode {
 	default:

@@ -106,6 +106,10 @@ type Handler interface {
 	//
 	// GET /test/header
 	GetHeader(ctx context.Context, params GetHeaderParams) (Hash, error)
+	// MultipleGenericResponses implements multipleGenericResponses operation.
+	//
+	// GET /multipleGenericResponses
+	MultipleGenericResponses(ctx context.Context) (MultipleGenericResponsesRes, error)
 	// NullableDefaultResponse implements nullableDefaultResponse operation.
 	//
 	// GET /nullableDefaultResponse

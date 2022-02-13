@@ -183,6 +183,37 @@ func encodeGetHeaderResponse(response Hash, w http.ResponseWriter, span trace.Sp
 	return nil
 }
 
+func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes, w http.ResponseWriter, span trace.Span) error {
+	switch response := response.(type) {
+	case *MultipleGenericResponsesOKApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	case *MultipleGenericResponsesNoContentApplicationJSON:
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(204)
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
+
+		response.Encode(e)
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	default:
+		return errors.Errorf("/multipleGenericResponses"+`: unexpected response type: %T`, response)
+	}
+}
+
 func encodeNullableDefaultResponseResponse(response NullableDefaultResponseDefStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(response.StatusCode)

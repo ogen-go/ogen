@@ -2721,6 +2721,58 @@ func (s *MaxPropertiesTest) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// Encode encodes MultipleGenericResponsesNoContentApplicationJSON as json.
+func (s MultipleGenericResponsesNoContentApplicationJSON) Encode(e *jx.Writer) {
+	unwrapped := string(s)
+	e.Str(unwrapped)
+}
+
+// Decode decodes MultipleGenericResponsesNoContentApplicationJSON from json.
+func (s *MultipleGenericResponsesNoContentApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode MultipleGenericResponsesNoContentApplicationJSON to nil")
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MultipleGenericResponsesNoContentApplicationJSON(unwrapped)
+	return nil
+}
+
+// Encode encodes MultipleGenericResponsesOKApplicationJSON as json.
+func (s MultipleGenericResponsesOKApplicationJSON) Encode(e *jx.Writer) {
+	unwrapped := int(s)
+	e.Int(unwrapped)
+}
+
+// Decode decodes MultipleGenericResponsesOKApplicationJSON from json.
+func (s *MultipleGenericResponsesOKApplicationJSON) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode MultipleGenericResponsesOKApplicationJSON to nil")
+	}
+	var unwrapped int
+	if err := func() error {
+		v, err := d.Int()
+		unwrapped = int(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MultipleGenericResponsesOKApplicationJSON(unwrapped)
+	return nil
+}
+
 // Encode encodes int as json.
 func (o NilInt) Encode(e *jx.Writer) {
 	if o.Null {

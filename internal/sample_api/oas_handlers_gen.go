@@ -289,6 +289,32 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 	span.SetStatus(codes.Ok, "Ok")
 }
 
+// HandleMultipleGenericResponsesRequest handles multipleGenericResponses operation.
+//
+// GET /multipleGenericResponses
+func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "MultipleGenericResponses",
+		trace.WithAttributes(otelogen.OperationID("multipleGenericResponses")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	response, err := s.h.MultipleGenericResponses(ctx)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeMultipleGenericResponsesResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
 // HandleNullableDefaultResponseRequest handles nullableDefaultResponse operation.
 //
 // GET /nullableDefaultResponse

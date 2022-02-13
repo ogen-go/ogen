@@ -125,6 +125,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					return
 				}
+			case 'm': // Prefix: "multipleGenericResponses"
+				if l := len("multipleGenericResponses"); len(elem) >= l && elem[0:l] == "multipleGenericResponses" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: MultipleGenericResponses
+					s.handleMultipleGenericResponsesRequest([0]string{}, w, r)
+
+					return
+				}
 			case 'n': // Prefix: "n"
 				if l := len("n"); len(elem) >= l && elem[0:l] == "n" {
 					elem = elem[l:]
@@ -689,6 +702,20 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				if len(elem) == 0 {
 					// Leaf: FoobarGet
 					r.name = "FoobarGet"
+					r.args = args
+					r.count = 0
+					return r, true
+				}
+			case 'm': // Prefix: "multipleGenericResponses"
+				if l := len("multipleGenericResponses"); len(elem) >= l && elem[0:l] == "multipleGenericResponses" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: MultipleGenericResponses
+					r.name = "MultipleGenericResponses"
 					r.args = args
 					r.count = 0
 					return r, true

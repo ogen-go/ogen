@@ -529,6 +529,14 @@ type MaxPropertiesTest struct {
 	OptionalC OptInt `json:"optional_c"`
 }
 
+type MultipleGenericResponsesNoContentApplicationJSON string
+
+func (*MultipleGenericResponsesNoContentApplicationJSON) multipleGenericResponsesRes() {}
+
+type MultipleGenericResponsesOKApplicationJSON int
+
+func (*MultipleGenericResponsesOKApplicationJSON) multipleGenericResponsesRes() {}
+
 // NewNilInt returns new NilInt with value set to v.
 func NewNilInt(v int) NilInt {
 	return NilInt{
