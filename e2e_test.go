@@ -235,11 +235,15 @@ func (s sampleAPIServer) NullableDefaultResponse(ctx context.Context) (api.Nulla
 }
 
 func (s sampleAPIServer) OctetStreamBinaryStringSchema(ctx context.Context) (api.OctetStreamBinaryStringSchemaOK, error) {
-	return api.OctetStreamBinaryStringSchemaOK{}, nil
+	panic("implement me")
 }
 
 func (s sampleAPIServer) OctetStreamEmptySchema(ctx context.Context) (api.OctetStreamEmptySchemaOK, error) {
-	return api.OctetStreamEmptySchemaOK{}, nil
+	panic("implement me")
+}
+
+func (s sampleAPIServer) MultipleGenericResponses(ctx context.Context) (api.MultipleGenericResponsesRes, error) {
+	panic("implement me")
 }
 
 var _ api.Handler = (*sampleAPIServer)(nil)
