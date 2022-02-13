@@ -243,74 +243,6 @@ const (
 	ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilityPrivate  ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility = "private"
 )
 
-// ActionsCreateWorkflowDispatchWorkflowID represents sum type.
-type ActionsCreateWorkflowDispatchWorkflowID struct {
-	Type   ActionsCreateWorkflowDispatchWorkflowIDType // switch on this field
-	Int    int
-	String string
-}
-
-// ActionsCreateWorkflowDispatchWorkflowIDType is oneOf type of ActionsCreateWorkflowDispatchWorkflowID.
-type ActionsCreateWorkflowDispatchWorkflowIDType string
-
-// Possible values for ActionsCreateWorkflowDispatchWorkflowIDType.
-const (
-	IntActionsCreateWorkflowDispatchWorkflowID    ActionsCreateWorkflowDispatchWorkflowIDType = "int"
-	StringActionsCreateWorkflowDispatchWorkflowID ActionsCreateWorkflowDispatchWorkflowIDType = "string"
-)
-
-// IsInt reports whether ActionsCreateWorkflowDispatchWorkflowID is int.
-func (s ActionsCreateWorkflowDispatchWorkflowID) IsInt() bool {
-	return s.Type == IntActionsCreateWorkflowDispatchWorkflowID
-}
-
-// IsString reports whether ActionsCreateWorkflowDispatchWorkflowID is string.
-func (s ActionsCreateWorkflowDispatchWorkflowID) IsString() bool {
-	return s.Type == StringActionsCreateWorkflowDispatchWorkflowID
-}
-
-// SetInt sets ActionsCreateWorkflowDispatchWorkflowID to int.
-func (s *ActionsCreateWorkflowDispatchWorkflowID) SetInt(v int) {
-	s.Type = IntActionsCreateWorkflowDispatchWorkflowID
-	s.Int = v
-}
-
-// GetInt returns int and true boolean if ActionsCreateWorkflowDispatchWorkflowID is int.
-func (s ActionsCreateWorkflowDispatchWorkflowID) GetInt() (v int, ok bool) {
-	if !s.IsInt() {
-		return v, false
-	}
-	return s.Int, true
-}
-
-// NewIntActionsCreateWorkflowDispatchWorkflowID returns new ActionsCreateWorkflowDispatchWorkflowID from int.
-func NewIntActionsCreateWorkflowDispatchWorkflowID(v int) ActionsCreateWorkflowDispatchWorkflowID {
-	var s ActionsCreateWorkflowDispatchWorkflowID
-	s.SetInt(v)
-	return s
-}
-
-// SetString sets ActionsCreateWorkflowDispatchWorkflowID to string.
-func (s *ActionsCreateWorkflowDispatchWorkflowID) SetString(v string) {
-	s.Type = StringActionsCreateWorkflowDispatchWorkflowID
-	s.String = v
-}
-
-// GetString returns string and true boolean if ActionsCreateWorkflowDispatchWorkflowID is string.
-func (s ActionsCreateWorkflowDispatchWorkflowID) GetString() (v string, ok bool) {
-	if !s.IsString() {
-		return v, false
-	}
-	return s.String, true
-}
-
-// NewStringActionsCreateWorkflowDispatchWorkflowID returns new ActionsCreateWorkflowDispatchWorkflowID from string.
-func NewStringActionsCreateWorkflowDispatchWorkflowID(v string) ActionsCreateWorkflowDispatchWorkflowID {
-	var s ActionsCreateWorkflowDispatchWorkflowID
-	s.SetString(v)
-	return s
-}
-
 // ActionsDeleteArtifactNoContent is response for ActionsDeleteArtifact operation.
 type ActionsDeleteArtifactNoContent struct{}
 
@@ -341,74 +273,6 @@ type ActionsDeleteWorkflowRunNoContent struct{}
 // ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent is response for ActionsDisableSelectedRepositoryGithubActionsOrganization operation.
 type ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent struct{}
 
-// ActionsDisableWorkflowWorkflowID represents sum type.
-type ActionsDisableWorkflowWorkflowID struct {
-	Type   ActionsDisableWorkflowWorkflowIDType // switch on this field
-	Int    int
-	String string
-}
-
-// ActionsDisableWorkflowWorkflowIDType is oneOf type of ActionsDisableWorkflowWorkflowID.
-type ActionsDisableWorkflowWorkflowIDType string
-
-// Possible values for ActionsDisableWorkflowWorkflowIDType.
-const (
-	IntActionsDisableWorkflowWorkflowID    ActionsDisableWorkflowWorkflowIDType = "int"
-	StringActionsDisableWorkflowWorkflowID ActionsDisableWorkflowWorkflowIDType = "string"
-)
-
-// IsInt reports whether ActionsDisableWorkflowWorkflowID is int.
-func (s ActionsDisableWorkflowWorkflowID) IsInt() bool {
-	return s.Type == IntActionsDisableWorkflowWorkflowID
-}
-
-// IsString reports whether ActionsDisableWorkflowWorkflowID is string.
-func (s ActionsDisableWorkflowWorkflowID) IsString() bool {
-	return s.Type == StringActionsDisableWorkflowWorkflowID
-}
-
-// SetInt sets ActionsDisableWorkflowWorkflowID to int.
-func (s *ActionsDisableWorkflowWorkflowID) SetInt(v int) {
-	s.Type = IntActionsDisableWorkflowWorkflowID
-	s.Int = v
-}
-
-// GetInt returns int and true boolean if ActionsDisableWorkflowWorkflowID is int.
-func (s ActionsDisableWorkflowWorkflowID) GetInt() (v int, ok bool) {
-	if !s.IsInt() {
-		return v, false
-	}
-	return s.Int, true
-}
-
-// NewIntActionsDisableWorkflowWorkflowID returns new ActionsDisableWorkflowWorkflowID from int.
-func NewIntActionsDisableWorkflowWorkflowID(v int) ActionsDisableWorkflowWorkflowID {
-	var s ActionsDisableWorkflowWorkflowID
-	s.SetInt(v)
-	return s
-}
-
-// SetString sets ActionsDisableWorkflowWorkflowID to string.
-func (s *ActionsDisableWorkflowWorkflowID) SetString(v string) {
-	s.Type = StringActionsDisableWorkflowWorkflowID
-	s.String = v
-}
-
-// GetString returns string and true boolean if ActionsDisableWorkflowWorkflowID is string.
-func (s ActionsDisableWorkflowWorkflowID) GetString() (v string, ok bool) {
-	if !s.IsString() {
-		return v, false
-	}
-	return s.String, true
-}
-
-// NewStringActionsDisableWorkflowWorkflowID returns new ActionsDisableWorkflowWorkflowID from string.
-func NewStringActionsDisableWorkflowWorkflowID(v string) ActionsDisableWorkflowWorkflowID {
-	var s ActionsDisableWorkflowWorkflowID
-	s.SetString(v)
-	return s
-}
-
 // ActionsDownloadArtifactFound is response for ActionsDownloadArtifact operation.
 type ActionsDownloadArtifactFound struct{}
 
@@ -421,74 +285,6 @@ type ActionsDownloadWorkflowRunLogsFound struct{}
 // ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent is response for ActionsEnableSelectedRepositoryGithubActionsOrganization operation.
 type ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent struct{}
 
-// ActionsEnableWorkflowWorkflowID represents sum type.
-type ActionsEnableWorkflowWorkflowID struct {
-	Type   ActionsEnableWorkflowWorkflowIDType // switch on this field
-	Int    int
-	String string
-}
-
-// ActionsEnableWorkflowWorkflowIDType is oneOf type of ActionsEnableWorkflowWorkflowID.
-type ActionsEnableWorkflowWorkflowIDType string
-
-// Possible values for ActionsEnableWorkflowWorkflowIDType.
-const (
-	IntActionsEnableWorkflowWorkflowID    ActionsEnableWorkflowWorkflowIDType = "int"
-	StringActionsEnableWorkflowWorkflowID ActionsEnableWorkflowWorkflowIDType = "string"
-)
-
-// IsInt reports whether ActionsEnableWorkflowWorkflowID is int.
-func (s ActionsEnableWorkflowWorkflowID) IsInt() bool {
-	return s.Type == IntActionsEnableWorkflowWorkflowID
-}
-
-// IsString reports whether ActionsEnableWorkflowWorkflowID is string.
-func (s ActionsEnableWorkflowWorkflowID) IsString() bool {
-	return s.Type == StringActionsEnableWorkflowWorkflowID
-}
-
-// SetInt sets ActionsEnableWorkflowWorkflowID to int.
-func (s *ActionsEnableWorkflowWorkflowID) SetInt(v int) {
-	s.Type = IntActionsEnableWorkflowWorkflowID
-	s.Int = v
-}
-
-// GetInt returns int and true boolean if ActionsEnableWorkflowWorkflowID is int.
-func (s ActionsEnableWorkflowWorkflowID) GetInt() (v int, ok bool) {
-	if !s.IsInt() {
-		return v, false
-	}
-	return s.Int, true
-}
-
-// NewIntActionsEnableWorkflowWorkflowID returns new ActionsEnableWorkflowWorkflowID from int.
-func NewIntActionsEnableWorkflowWorkflowID(v int) ActionsEnableWorkflowWorkflowID {
-	var s ActionsEnableWorkflowWorkflowID
-	s.SetInt(v)
-	return s
-}
-
-// SetString sets ActionsEnableWorkflowWorkflowID to string.
-func (s *ActionsEnableWorkflowWorkflowID) SetString(v string) {
-	s.Type = StringActionsEnableWorkflowWorkflowID
-	s.String = v
-}
-
-// GetString returns string and true boolean if ActionsEnableWorkflowWorkflowID is string.
-func (s ActionsEnableWorkflowWorkflowID) GetString() (v string, ok bool) {
-	if !s.IsString() {
-		return v, false
-	}
-	return s.String, true
-}
-
-// NewStringActionsEnableWorkflowWorkflowID returns new ActionsEnableWorkflowWorkflowID from string.
-func NewStringActionsEnableWorkflowWorkflowID(v string) ActionsEnableWorkflowWorkflowID {
-	var s ActionsEnableWorkflowWorkflowID
-	s.SetString(v)
-	return s
-}
-
 type ActionsEnabled bool
 
 // Ref: #/components/schemas/actions-enterprise-permissions
@@ -499,140 +295,6 @@ type ActionsEnterprisePermissions struct {
 	SelectedOrganizationsURL OptString             `json:"selected_organizations_url"`
 	AllowedActions           OptAllowedActions     `json:"allowed_actions"`
 	SelectedActionsURL       OptSelectedActionsURL `json:"selected_actions_url"`
-}
-
-// ActionsGetWorkflowUsageWorkflowID represents sum type.
-type ActionsGetWorkflowUsageWorkflowID struct {
-	Type   ActionsGetWorkflowUsageWorkflowIDType // switch on this field
-	Int    int
-	String string
-}
-
-// ActionsGetWorkflowUsageWorkflowIDType is oneOf type of ActionsGetWorkflowUsageWorkflowID.
-type ActionsGetWorkflowUsageWorkflowIDType string
-
-// Possible values for ActionsGetWorkflowUsageWorkflowIDType.
-const (
-	IntActionsGetWorkflowUsageWorkflowID    ActionsGetWorkflowUsageWorkflowIDType = "int"
-	StringActionsGetWorkflowUsageWorkflowID ActionsGetWorkflowUsageWorkflowIDType = "string"
-)
-
-// IsInt reports whether ActionsGetWorkflowUsageWorkflowID is int.
-func (s ActionsGetWorkflowUsageWorkflowID) IsInt() bool {
-	return s.Type == IntActionsGetWorkflowUsageWorkflowID
-}
-
-// IsString reports whether ActionsGetWorkflowUsageWorkflowID is string.
-func (s ActionsGetWorkflowUsageWorkflowID) IsString() bool {
-	return s.Type == StringActionsGetWorkflowUsageWorkflowID
-}
-
-// SetInt sets ActionsGetWorkflowUsageWorkflowID to int.
-func (s *ActionsGetWorkflowUsageWorkflowID) SetInt(v int) {
-	s.Type = IntActionsGetWorkflowUsageWorkflowID
-	s.Int = v
-}
-
-// GetInt returns int and true boolean if ActionsGetWorkflowUsageWorkflowID is int.
-func (s ActionsGetWorkflowUsageWorkflowID) GetInt() (v int, ok bool) {
-	if !s.IsInt() {
-		return v, false
-	}
-	return s.Int, true
-}
-
-// NewIntActionsGetWorkflowUsageWorkflowID returns new ActionsGetWorkflowUsageWorkflowID from int.
-func NewIntActionsGetWorkflowUsageWorkflowID(v int) ActionsGetWorkflowUsageWorkflowID {
-	var s ActionsGetWorkflowUsageWorkflowID
-	s.SetInt(v)
-	return s
-}
-
-// SetString sets ActionsGetWorkflowUsageWorkflowID to string.
-func (s *ActionsGetWorkflowUsageWorkflowID) SetString(v string) {
-	s.Type = StringActionsGetWorkflowUsageWorkflowID
-	s.String = v
-}
-
-// GetString returns string and true boolean if ActionsGetWorkflowUsageWorkflowID is string.
-func (s ActionsGetWorkflowUsageWorkflowID) GetString() (v string, ok bool) {
-	if !s.IsString() {
-		return v, false
-	}
-	return s.String, true
-}
-
-// NewStringActionsGetWorkflowUsageWorkflowID returns new ActionsGetWorkflowUsageWorkflowID from string.
-func NewStringActionsGetWorkflowUsageWorkflowID(v string) ActionsGetWorkflowUsageWorkflowID {
-	var s ActionsGetWorkflowUsageWorkflowID
-	s.SetString(v)
-	return s
-}
-
-// ActionsGetWorkflowWorkflowID represents sum type.
-type ActionsGetWorkflowWorkflowID struct {
-	Type   ActionsGetWorkflowWorkflowIDType // switch on this field
-	Int    int
-	String string
-}
-
-// ActionsGetWorkflowWorkflowIDType is oneOf type of ActionsGetWorkflowWorkflowID.
-type ActionsGetWorkflowWorkflowIDType string
-
-// Possible values for ActionsGetWorkflowWorkflowIDType.
-const (
-	IntActionsGetWorkflowWorkflowID    ActionsGetWorkflowWorkflowIDType = "int"
-	StringActionsGetWorkflowWorkflowID ActionsGetWorkflowWorkflowIDType = "string"
-)
-
-// IsInt reports whether ActionsGetWorkflowWorkflowID is int.
-func (s ActionsGetWorkflowWorkflowID) IsInt() bool { return s.Type == IntActionsGetWorkflowWorkflowID }
-
-// IsString reports whether ActionsGetWorkflowWorkflowID is string.
-func (s ActionsGetWorkflowWorkflowID) IsString() bool {
-	return s.Type == StringActionsGetWorkflowWorkflowID
-}
-
-// SetInt sets ActionsGetWorkflowWorkflowID to int.
-func (s *ActionsGetWorkflowWorkflowID) SetInt(v int) {
-	s.Type = IntActionsGetWorkflowWorkflowID
-	s.Int = v
-}
-
-// GetInt returns int and true boolean if ActionsGetWorkflowWorkflowID is int.
-func (s ActionsGetWorkflowWorkflowID) GetInt() (v int, ok bool) {
-	if !s.IsInt() {
-		return v, false
-	}
-	return s.Int, true
-}
-
-// NewIntActionsGetWorkflowWorkflowID returns new ActionsGetWorkflowWorkflowID from int.
-func NewIntActionsGetWorkflowWorkflowID(v int) ActionsGetWorkflowWorkflowID {
-	var s ActionsGetWorkflowWorkflowID
-	s.SetInt(v)
-	return s
-}
-
-// SetString sets ActionsGetWorkflowWorkflowID to string.
-func (s *ActionsGetWorkflowWorkflowID) SetString(v string) {
-	s.Type = StringActionsGetWorkflowWorkflowID
-	s.String = v
-}
-
-// GetString returns string and true boolean if ActionsGetWorkflowWorkflowID is string.
-func (s ActionsGetWorkflowWorkflowID) GetString() (v string, ok bool) {
-	if !s.IsString() {
-		return v, false
-	}
-	return s.String, true
-}
-
-// NewStringActionsGetWorkflowWorkflowID returns new ActionsGetWorkflowWorkflowID from string.
-func NewStringActionsGetWorkflowWorkflowID(v string) ActionsGetWorkflowWorkflowID {
-	var s ActionsGetWorkflowWorkflowID
-	s.SetString(v)
-	return s
 }
 
 type ActionsListArtifactsForRepoOK struct {
@@ -734,74 +396,6 @@ const (
 	ActionsListWorkflowRunsForRepoStatusRequested      ActionsListWorkflowRunsForRepoStatus = "requested"
 	ActionsListWorkflowRunsForRepoStatusWaiting        ActionsListWorkflowRunsForRepoStatus = "waiting"
 )
-
-// ActionsListWorkflowRunsWorkflowID represents sum type.
-type ActionsListWorkflowRunsWorkflowID struct {
-	Type   ActionsListWorkflowRunsWorkflowIDType // switch on this field
-	Int    int
-	String string
-}
-
-// ActionsListWorkflowRunsWorkflowIDType is oneOf type of ActionsListWorkflowRunsWorkflowID.
-type ActionsListWorkflowRunsWorkflowIDType string
-
-// Possible values for ActionsListWorkflowRunsWorkflowIDType.
-const (
-	IntActionsListWorkflowRunsWorkflowID    ActionsListWorkflowRunsWorkflowIDType = "int"
-	StringActionsListWorkflowRunsWorkflowID ActionsListWorkflowRunsWorkflowIDType = "string"
-)
-
-// IsInt reports whether ActionsListWorkflowRunsWorkflowID is int.
-func (s ActionsListWorkflowRunsWorkflowID) IsInt() bool {
-	return s.Type == IntActionsListWorkflowRunsWorkflowID
-}
-
-// IsString reports whether ActionsListWorkflowRunsWorkflowID is string.
-func (s ActionsListWorkflowRunsWorkflowID) IsString() bool {
-	return s.Type == StringActionsListWorkflowRunsWorkflowID
-}
-
-// SetInt sets ActionsListWorkflowRunsWorkflowID to int.
-func (s *ActionsListWorkflowRunsWorkflowID) SetInt(v int) {
-	s.Type = IntActionsListWorkflowRunsWorkflowID
-	s.Int = v
-}
-
-// GetInt returns int and true boolean if ActionsListWorkflowRunsWorkflowID is int.
-func (s ActionsListWorkflowRunsWorkflowID) GetInt() (v int, ok bool) {
-	if !s.IsInt() {
-		return v, false
-	}
-	return s.Int, true
-}
-
-// NewIntActionsListWorkflowRunsWorkflowID returns new ActionsListWorkflowRunsWorkflowID from int.
-func NewIntActionsListWorkflowRunsWorkflowID(v int) ActionsListWorkflowRunsWorkflowID {
-	var s ActionsListWorkflowRunsWorkflowID
-	s.SetInt(v)
-	return s
-}
-
-// SetString sets ActionsListWorkflowRunsWorkflowID to string.
-func (s *ActionsListWorkflowRunsWorkflowID) SetString(v string) {
-	s.Type = StringActionsListWorkflowRunsWorkflowID
-	s.String = v
-}
-
-// GetString returns string and true boolean if ActionsListWorkflowRunsWorkflowID is string.
-func (s ActionsListWorkflowRunsWorkflowID) GetString() (v string, ok bool) {
-	if !s.IsString() {
-		return v, false
-	}
-	return s.String, true
-}
-
-// NewStringActionsListWorkflowRunsWorkflowID returns new ActionsListWorkflowRunsWorkflowID from string.
-func NewStringActionsListWorkflowRunsWorkflowID(v string) ActionsListWorkflowRunsWorkflowID {
-	var s ActionsListWorkflowRunsWorkflowID
-	s.SetString(v)
-	return s
-}
 
 // Ref: #/components/schemas/actions-organization-permissions
 type ActionsOrganizationPermissions struct {
@@ -1086,20 +680,6 @@ type ActivityListReposStarredByAuthenticatedUserSort string
 const (
 	ActivityListReposStarredByAuthenticatedUserSortCreated ActivityListReposStarredByAuthenticatedUserSort = "created"
 	ActivityListReposStarredByAuthenticatedUserSortUpdated ActivityListReposStarredByAuthenticatedUserSort = "updated"
-)
-
-type ActivityListReposStarredByUserDirection string
-
-const (
-	ActivityListReposStarredByUserDirectionAsc  ActivityListReposStarredByUserDirection = "asc"
-	ActivityListReposStarredByUserDirectionDesc ActivityListReposStarredByUserDirection = "desc"
-)
-
-type ActivityListReposStarredByUserSort string
-
-const (
-	ActivityListReposStarredByUserSortCreated ActivityListReposStarredByUserSort = "created"
-	ActivityListReposStarredByUserSortUpdated ActivityListReposStarredByUserSort = "updated"
 )
 
 type ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden BasicError
@@ -1694,8 +1274,6 @@ type AppsCreateContentAttachmentReq struct {
 	// The body of the attachment.
 	Body string `json:"body"`
 }
-
-type AppsCreateFromManifestReq map[string]jx.Raw
 
 type AppsCreateInstallationAccessTokenApplicationJSONForbidden BasicError
 
@@ -3633,20 +3211,6 @@ type Deployment struct {
 func (*Deployment) reposCreateDeploymentRes() {}
 func (*Deployment) reposGetDeploymentRes()    {}
 
-// The type of deployment branch policy for this environment. To allow all branches to deploy, set to
-// `null`.
-// Ref: #/components/schemas/deployment_branch_policy
-type DeploymentBranchPolicy struct {
-	// Whether only branches with branch protection rules can deploy to this environment. If
-	// `protected_branches` is `true`, `custom_branch_policies` must be `false`; if `protected_branches`
-	// is `false`, `custom_branch_policies` must be `true`.
-	ProtectedBranches bool `json:"protected_branches"`
-	// Whether only branches that match the specified name patterns can deploy to this environment.  If
-	// `custom_branch_policies` is `true`, `protected_branches` must be `false`; if
-	// `custom_branch_policies` is `false`, `protected_branches` must be `true`.
-	CustomBranchPolicies bool `json:"custom_branch_policies"`
-}
-
 // DeploymentPayload represents sum type.
 type DeploymentPayload struct {
 	Type               DeploymentPayloadType // switch on this field
@@ -3714,15 +3278,6 @@ func NewStringDeploymentPayload(v string) DeploymentPayload {
 }
 
 type DeploymentPayload0 map[string]jx.Raw
-
-// The type of reviewer. Must be one of: `User` or `Team`.
-// Ref: #/components/schemas/deployment-reviewer-type
-type DeploymentReviewerType string
-
-const (
-	DeploymentReviewerTypeUser DeploymentReviewerType = "User"
-	DeploymentReviewerTypeTeam DeploymentReviewerType = "Team"
-)
 
 // A deployment created as the result of an Actions check run from a workflow that references an
 // environment.
@@ -7123,23 +6678,6 @@ type LinkWithType struct {
 	Type string `json:"type"`
 }
 
-type MarkdownRenderReq struct {
-	// The Markdown text to render in HTML.
-	Text string `json:"text"`
-	// The rendering mode.
-	Mode OptMarkdownRenderReqMode `json:"mode"`
-	// The repository context to use when creating references in `gfm` mode.
-	Context OptString `json:"context"`
-}
-
-// The rendering mode.
-type MarkdownRenderReqMode string
-
-const (
-	MarkdownRenderReqModeMarkdown MarkdownRenderReqMode = "markdown"
-	MarkdownRenderReqModeGfm      MarkdownRenderReqMode = "gfm"
-)
-
 // Ref: #/components/schemas/marketplace-account
 type MarketplaceAccount struct {
 	URL                      url.URL      `json:"url"`
@@ -10217,98 +9755,6 @@ func (o OptActivityListReposStarredByAuthenticatedUserSort) Or(d ActivityListRep
 	return d
 }
 
-// NewOptActivityListReposStarredByUserDirection returns new OptActivityListReposStarredByUserDirection with value set to v.
-func NewOptActivityListReposStarredByUserDirection(v ActivityListReposStarredByUserDirection) OptActivityListReposStarredByUserDirection {
-	return OptActivityListReposStarredByUserDirection{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptActivityListReposStarredByUserDirection is optional ActivityListReposStarredByUserDirection.
-type OptActivityListReposStarredByUserDirection struct {
-	Value ActivityListReposStarredByUserDirection
-	Set   bool
-}
-
-// IsSet returns true if OptActivityListReposStarredByUserDirection was set.
-func (o OptActivityListReposStarredByUserDirection) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptActivityListReposStarredByUserDirection) Reset() {
-	var v ActivityListReposStarredByUserDirection
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptActivityListReposStarredByUserDirection) SetTo(v ActivityListReposStarredByUserDirection) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptActivityListReposStarredByUserDirection) Get() (v ActivityListReposStarredByUserDirection, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptActivityListReposStarredByUserDirection) Or(d ActivityListReposStarredByUserDirection) ActivityListReposStarredByUserDirection {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptActivityListReposStarredByUserSort returns new OptActivityListReposStarredByUserSort with value set to v.
-func NewOptActivityListReposStarredByUserSort(v ActivityListReposStarredByUserSort) OptActivityListReposStarredByUserSort {
-	return OptActivityListReposStarredByUserSort{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptActivityListReposStarredByUserSort is optional ActivityListReposStarredByUserSort.
-type OptActivityListReposStarredByUserSort struct {
-	Value ActivityListReposStarredByUserSort
-	Set   bool
-}
-
-// IsSet returns true if OptActivityListReposStarredByUserSort was set.
-func (o OptActivityListReposStarredByUserSort) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptActivityListReposStarredByUserSort) Reset() {
-	var v ActivityListReposStarredByUserSort
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptActivityListReposStarredByUserSort) SetTo(v ActivityListReposStarredByUserSort) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptActivityListReposStarredByUserSort) Get() (v ActivityListReposStarredByUserSort, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptActivityListReposStarredByUserSort) Or(d ActivityListReposStarredByUserSort) ActivityListReposStarredByUserSort {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptActivityMarkNotificationsAsReadReq returns new OptActivityMarkNotificationsAsReadReq with value set to v.
 func NewOptActivityMarkNotificationsAsReadReq(v ActivityMarkNotificationsAsReadReq) OptActivityMarkNotificationsAsReadReq {
 	return OptActivityMarkNotificationsAsReadReq{
@@ -12241,52 +11687,6 @@ func (o OptAppPermissionsWorkflows) Or(d AppPermissionsWorkflows) AppPermissions
 	return d
 }
 
-// NewOptAppsCreateFromManifestReq returns new OptAppsCreateFromManifestReq with value set to v.
-func NewOptAppsCreateFromManifestReq(v AppsCreateFromManifestReq) OptAppsCreateFromManifestReq {
-	return OptAppsCreateFromManifestReq{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptAppsCreateFromManifestReq is optional AppsCreateFromManifestReq.
-type OptAppsCreateFromManifestReq struct {
-	Value AppsCreateFromManifestReq
-	Set   bool
-}
-
-// IsSet returns true if OptAppsCreateFromManifestReq was set.
-func (o OptAppsCreateFromManifestReq) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptAppsCreateFromManifestReq) Reset() {
-	var v AppsCreateFromManifestReq
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptAppsCreateFromManifestReq) SetTo(v AppsCreateFromManifestReq) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptAppsCreateFromManifestReq) Get() (v AppsCreateFromManifestReq, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptAppsCreateFromManifestReq) Or(d AppsCreateFromManifestReq) AppsCreateFromManifestReq {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptAppsCreateInstallationAccessTokenReq returns new OptAppsCreateInstallationAccessTokenReq with value set to v.
 func NewOptAppsCreateInstallationAccessTokenReq(v AppsCreateInstallationAccessTokenReq) OptAppsCreateInstallationAccessTokenReq {
 	return OptAppsCreateInstallationAccessTokenReq{
@@ -14167,52 +13567,6 @@ func (o OptDateTime) Get() (v time.Time, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptDateTime) Or(d time.Time) time.Time {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptDeploymentReviewerType returns new OptDeploymentReviewerType with value set to v.
-func NewOptDeploymentReviewerType(v DeploymentReviewerType) OptDeploymentReviewerType {
-	return OptDeploymentReviewerType{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptDeploymentReviewerType is optional DeploymentReviewerType.
-type OptDeploymentReviewerType struct {
-	Value DeploymentReviewerType
-	Set   bool
-}
-
-// IsSet returns true if OptDeploymentReviewerType was set.
-func (o OptDeploymentReviewerType) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptDeploymentReviewerType) Reset() {
-	var v DeploymentReviewerType
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptDeploymentReviewerType) SetTo(v DeploymentReviewerType) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptDeploymentReviewerType) Get() (v DeploymentReviewerType, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptDeploymentReviewerType) Or(d DeploymentReviewerType) DeploymentReviewerType {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -17491,52 +16845,6 @@ func (o OptLinkWithType) Or(d LinkWithType) LinkWithType {
 	return d
 }
 
-// NewOptMarkdownRenderReqMode returns new OptMarkdownRenderReqMode with value set to v.
-func NewOptMarkdownRenderReqMode(v MarkdownRenderReqMode) OptMarkdownRenderReqMode {
-	return OptMarkdownRenderReqMode{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptMarkdownRenderReqMode is optional MarkdownRenderReqMode.
-type OptMarkdownRenderReqMode struct {
-	Value MarkdownRenderReqMode
-	Set   bool
-}
-
-// IsSet returns true if OptMarkdownRenderReqMode was set.
-func (o OptMarkdownRenderReqMode) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptMarkdownRenderReqMode) Reset() {
-	var v MarkdownRenderReqMode
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptMarkdownRenderReqMode) SetTo(v MarkdownRenderReqMode) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptMarkdownRenderReqMode) Get() (v MarkdownRenderReqMode, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptMarkdownRenderReqMode) Or(d MarkdownRenderReqMode) MarkdownRenderReqMode {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptMarketplaceListingPlan returns new OptMarketplaceListingPlan with value set to v.
 func NewOptMarketplaceListingPlan(v MarketplaceListingPlan) OptMarketplaceListingPlan {
 	return OptMarketplaceListingPlan{
@@ -18247,61 +17555,6 @@ func (o OptNilDateTime) Get() (v time.Time, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptNilDateTime) Or(d time.Time) time.Time {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptNilDeploymentBranchPolicy returns new OptNilDeploymentBranchPolicy with value set to v.
-func NewOptNilDeploymentBranchPolicy(v DeploymentBranchPolicy) OptNilDeploymentBranchPolicy {
-	return OptNilDeploymentBranchPolicy{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptNilDeploymentBranchPolicy is optional nullable DeploymentBranchPolicy.
-type OptNilDeploymentBranchPolicy struct {
-	Value DeploymentBranchPolicy
-	Set   bool
-	Null  bool
-}
-
-// IsSet returns true if OptNilDeploymentBranchPolicy was set.
-func (o OptNilDeploymentBranchPolicy) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptNilDeploymentBranchPolicy) Reset() {
-	var v DeploymentBranchPolicy
-	o.Value = v
-	o.Set = false
-	o.Null = false
-}
-
-// SetTo sets value to v.
-func (o *OptNilDeploymentBranchPolicy) SetTo(v DeploymentBranchPolicy) {
-	o.Set = true
-	o.Null = false
-	o.Value = v
-}
-
-// IsSet returns true if value is Null.
-func (o OptNilDeploymentBranchPolicy) IsNull() bool { return o.Null }
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptNilDeploymentBranchPolicy) Get() (v DeploymentBranchPolicy, ok bool) {
-	if o.Null {
-		return v, false
-	}
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptNilDeploymentBranchPolicy) Or(d DeploymentBranchPolicy) DeploymentBranchPolicy {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -19787,116 +19040,6 @@ func (o OptNilReposCreateForkReq) Get() (v ReposCreateForkReq, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptNilReposCreateForkReq) Or(d ReposCreateForkReq) ReposCreateForkReq {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptNilReposCreateOrUpdateEnvironmentReq returns new OptNilReposCreateOrUpdateEnvironmentReq with value set to v.
-func NewOptNilReposCreateOrUpdateEnvironmentReq(v ReposCreateOrUpdateEnvironmentReq) OptNilReposCreateOrUpdateEnvironmentReq {
-	return OptNilReposCreateOrUpdateEnvironmentReq{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptNilReposCreateOrUpdateEnvironmentReq is optional nullable ReposCreateOrUpdateEnvironmentReq.
-type OptNilReposCreateOrUpdateEnvironmentReq struct {
-	Value ReposCreateOrUpdateEnvironmentReq
-	Set   bool
-	Null  bool
-}
-
-// IsSet returns true if OptNilReposCreateOrUpdateEnvironmentReq was set.
-func (o OptNilReposCreateOrUpdateEnvironmentReq) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptNilReposCreateOrUpdateEnvironmentReq) Reset() {
-	var v ReposCreateOrUpdateEnvironmentReq
-	o.Value = v
-	o.Set = false
-	o.Null = false
-}
-
-// SetTo sets value to v.
-func (o *OptNilReposCreateOrUpdateEnvironmentReq) SetTo(v ReposCreateOrUpdateEnvironmentReq) {
-	o.Set = true
-	o.Null = false
-	o.Value = v
-}
-
-// IsSet returns true if value is Null.
-func (o OptNilReposCreateOrUpdateEnvironmentReq) IsNull() bool { return o.Null }
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptNilReposCreateOrUpdateEnvironmentReq) Get() (v ReposCreateOrUpdateEnvironmentReq, ok bool) {
-	if o.Null {
-		return v, false
-	}
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptNilReposCreateOrUpdateEnvironmentReq) Or(d ReposCreateOrUpdateEnvironmentReq) ReposCreateOrUpdateEnvironmentReq {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray returns new OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray with value set to v.
-func NewOptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray(v []ReposCreateOrUpdateEnvironmentReqReviewersItem) OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray {
-	return OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray is optional nullable []ReposCreateOrUpdateEnvironmentReqReviewersItem.
-type OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray struct {
-	Value []ReposCreateOrUpdateEnvironmentReqReviewersItem
-	Set   bool
-	Null  bool
-}
-
-// IsSet returns true if OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray was set.
-func (o OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) Reset() {
-	var v []ReposCreateOrUpdateEnvironmentReqReviewersItem
-	o.Value = v
-	o.Set = false
-	o.Null = false
-}
-
-// SetTo sets value to v.
-func (o *OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) SetTo(v []ReposCreateOrUpdateEnvironmentReqReviewersItem) {
-	o.Set = true
-	o.Null = false
-	o.Value = v
-}
-
-// IsSet returns true if value is Null.
-func (o OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) IsNull() bool { return o.Null }
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) Get() (v []ReposCreateOrUpdateEnvironmentReqReviewersItem, ok bool) {
-	if o.Null {
-		return v, false
-	}
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) Or(d []ReposCreateOrUpdateEnvironmentReqReviewersItem) []ReposCreateOrUpdateEnvironmentReqReviewersItem {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -21495,144 +20638,6 @@ func (o OptOrgsSetMembershipForUserReqRole) Get() (v OrgsSetMembershipForUserReq
 
 // Or returns value if set, or given parameter if does not.
 func (o OptOrgsSetMembershipForUserReqRole) Or(d OrgsSetMembershipForUserReqRole) OrgsSetMembershipForUserReqRole {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptOrgsUpdateReq returns new OptOrgsUpdateReq with value set to v.
-func NewOptOrgsUpdateReq(v OrgsUpdateReq) OptOrgsUpdateReq {
-	return OptOrgsUpdateReq{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptOrgsUpdateReq is optional OrgsUpdateReq.
-type OptOrgsUpdateReq struct {
-	Value OrgsUpdateReq
-	Set   bool
-}
-
-// IsSet returns true if OptOrgsUpdateReq was set.
-func (o OptOrgsUpdateReq) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptOrgsUpdateReq) Reset() {
-	var v OrgsUpdateReq
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptOrgsUpdateReq) SetTo(v OrgsUpdateReq) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptOrgsUpdateReq) Get() (v OrgsUpdateReq, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptOrgsUpdateReq) Or(d OrgsUpdateReq) OrgsUpdateReq {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptOrgsUpdateReqDefaultRepositoryPermission returns new OptOrgsUpdateReqDefaultRepositoryPermission with value set to v.
-func NewOptOrgsUpdateReqDefaultRepositoryPermission(v OrgsUpdateReqDefaultRepositoryPermission) OptOrgsUpdateReqDefaultRepositoryPermission {
-	return OptOrgsUpdateReqDefaultRepositoryPermission{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptOrgsUpdateReqDefaultRepositoryPermission is optional OrgsUpdateReqDefaultRepositoryPermission.
-type OptOrgsUpdateReqDefaultRepositoryPermission struct {
-	Value OrgsUpdateReqDefaultRepositoryPermission
-	Set   bool
-}
-
-// IsSet returns true if OptOrgsUpdateReqDefaultRepositoryPermission was set.
-func (o OptOrgsUpdateReqDefaultRepositoryPermission) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptOrgsUpdateReqDefaultRepositoryPermission) Reset() {
-	var v OrgsUpdateReqDefaultRepositoryPermission
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptOrgsUpdateReqDefaultRepositoryPermission) SetTo(v OrgsUpdateReqDefaultRepositoryPermission) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptOrgsUpdateReqDefaultRepositoryPermission) Get() (v OrgsUpdateReqDefaultRepositoryPermission, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptOrgsUpdateReqDefaultRepositoryPermission) Or(d OrgsUpdateReqDefaultRepositoryPermission) OrgsUpdateReqDefaultRepositoryPermission {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptOrgsUpdateReqMembersAllowedRepositoryCreationType returns new OptOrgsUpdateReqMembersAllowedRepositoryCreationType with value set to v.
-func NewOptOrgsUpdateReqMembersAllowedRepositoryCreationType(v OrgsUpdateReqMembersAllowedRepositoryCreationType) OptOrgsUpdateReqMembersAllowedRepositoryCreationType {
-	return OptOrgsUpdateReqMembersAllowedRepositoryCreationType{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptOrgsUpdateReqMembersAllowedRepositoryCreationType is optional OrgsUpdateReqMembersAllowedRepositoryCreationType.
-type OptOrgsUpdateReqMembersAllowedRepositoryCreationType struct {
-	Value OrgsUpdateReqMembersAllowedRepositoryCreationType
-	Set   bool
-}
-
-// IsSet returns true if OptOrgsUpdateReqMembersAllowedRepositoryCreationType was set.
-func (o OptOrgsUpdateReqMembersAllowedRepositoryCreationType) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptOrgsUpdateReqMembersAllowedRepositoryCreationType) Reset() {
-	var v OrgsUpdateReqMembersAllowedRepositoryCreationType
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptOrgsUpdateReqMembersAllowedRepositoryCreationType) SetTo(v OrgsUpdateReqMembersAllowedRepositoryCreationType) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptOrgsUpdateReqMembersAllowedRepositoryCreationType) Get() (v OrgsUpdateReqMembersAllowedRepositoryCreationType, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptOrgsUpdateReqMembersAllowedRepositoryCreationType) Or(d OrgsUpdateReqMembersAllowedRepositoryCreationType) OrgsUpdateReqMembersAllowedRepositoryCreationType {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -27623,52 +26628,6 @@ func (o OptScimGroupListEnterpriseResourcesItemMeta) Or(d ScimGroupListEnterpris
 	return d
 }
 
-// NewOptScimUpdateAttributeForUserReqOperationsItemValue returns new OptScimUpdateAttributeForUserReqOperationsItemValue with value set to v.
-func NewOptScimUpdateAttributeForUserReqOperationsItemValue(v ScimUpdateAttributeForUserReqOperationsItemValue) OptScimUpdateAttributeForUserReqOperationsItemValue {
-	return OptScimUpdateAttributeForUserReqOperationsItemValue{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptScimUpdateAttributeForUserReqOperationsItemValue is optional ScimUpdateAttributeForUserReqOperationsItemValue.
-type OptScimUpdateAttributeForUserReqOperationsItemValue struct {
-	Value ScimUpdateAttributeForUserReqOperationsItemValue
-	Set   bool
-}
-
-// IsSet returns true if OptScimUpdateAttributeForUserReqOperationsItemValue was set.
-func (o OptScimUpdateAttributeForUserReqOperationsItemValue) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptScimUpdateAttributeForUserReqOperationsItemValue) Reset() {
-	var v ScimUpdateAttributeForUserReqOperationsItemValue
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptScimUpdateAttributeForUserReqOperationsItemValue) SetTo(v ScimUpdateAttributeForUserReqOperationsItemValue) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptScimUpdateAttributeForUserReqOperationsItemValue) Get() (v ScimUpdateAttributeForUserReqOperationsItemValue, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptScimUpdateAttributeForUserReqOperationsItemValue) Or(d ScimUpdateAttributeForUserReqOperationsItemValue) ScimUpdateAttributeForUserReqOperationsItemValue {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptScimUserListEnterpriseResourcesItemMeta returns new OptScimUserListEnterpriseResourcesItemMeta with value set to v.
 func NewOptScimUserListEnterpriseResourcesItemMeta(v ScimUserListEnterpriseResourcesItemMeta) OptScimUserListEnterpriseResourcesItemMeta {
 	return OptScimUserListEnterpriseResourcesItemMeta{
@@ -30475,52 +29434,6 @@ func (o OptVerification) Or(d Verification) Verification {
 	return d
 }
 
-// NewOptWaitTimer returns new OptWaitTimer with value set to v.
-func NewOptWaitTimer(v WaitTimer) OptWaitTimer {
-	return OptWaitTimer{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptWaitTimer is optional WaitTimer.
-type OptWaitTimer struct {
-	Value WaitTimer
-	Set   bool
-}
-
-// IsSet returns true if OptWaitTimer was set.
-func (o OptWaitTimer) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptWaitTimer) Reset() {
-	var v WaitTimer
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptWaitTimer) SetTo(v WaitTimer) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptWaitTimer) Get() (v WaitTimer, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptWaitTimer) Or(d WaitTimer) WaitTimer {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptWebhookConfigContentType returns new OptWebhookConfigContentType with value set to v.
 func NewOptWebhookConfigContentType(v WebhookConfigContentType) OptWebhookConfigContentType {
 	return OptWebhookConfigContentType{
@@ -31381,124 +30294,6 @@ type OrgsUpdateMembershipForAuthenticatedUserReqState string
 
 const (
 	OrgsUpdateMembershipForAuthenticatedUserReqStateActive OrgsUpdateMembershipForAuthenticatedUserReqState = "active"
-)
-
-type OrgsUpdateReq struct {
-	// Billing email address. This address is not publicized.
-	BillingEmail OptString `json:"billing_email"`
-	// The company name.
-	Company OptString `json:"company"`
-	// The publicly visible email address.
-	Email OptString `json:"email"`
-	// The Twitter username of the company.
-	TwitterUsername OptString `json:"twitter_username"`
-	// The location.
-	Location OptString `json:"location"`
-	// The shorthand name of the company.
-	Name OptString `json:"name"`
-	// The description of the company.
-	Description OptString `json:"description"`
-	// Toggles whether an organization can use organization projects.
-	HasOrganizationProjects OptBool `json:"has_organization_projects"`
-	// Toggles whether repositories that belong to the organization can use repository projects.
-	HasRepositoryProjects OptBool `json:"has_repository_projects"`
-	// Default permission level members have for organization repositories:
-	// \* `read` - can pull, but not push to or administer this repository.
-	// \* `write` - can pull and push, but not administer this repository.
-	// \* `admin` - can pull, push, and administer this repository.
-	// \* `none` - no permissions granted by default.
-	DefaultRepositoryPermission OptOrgsUpdateReqDefaultRepositoryPermission `json:"default_repository_permission"`
-	// Toggles the ability of non-admin organization members to create repositories. Can be one of:
-	// \* `true` - all organization members can create repositories.
-	// \* `false` - only organization owners can create repositories.
-	// Default: `true`
-	// **Note:** A parameter can override this parameter. See `members_allowed_repository_creation_type`
-	// in this table for details. **Note:** A parameter can override this parameter. See
-	// `members_allowed_repository_creation_type` in this table for details.
-	MembersCanCreateRepositories OptBool `json:"members_can_create_repositories"`
-	// Toggles whether organization members can create internal repositories, which are visible to all
-	// enterprise members. You can only allow members to create internal repositories if your
-	// organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub
-	// Enterprise Server 2.20+. Can be one of:
-	// \* `true` - all organization members can create internal repositories.
-	// \* `false` - only organization owners can create internal repositories.
-	// Default: `true`. For more information, see "[Restricting repository creation in your
-	// organization](https://help.github.
-	// com/github/setting-up-and-managing-organizations-and-teams/restricting-repository-creation-in-your-organization)" in the GitHub Help documentation.
-	MembersCanCreateInternalRepositories OptBool `json:"members_can_create_internal_repositories"`
-	// Toggles whether organization members can create private repositories, which are visible to
-	// organization members with permission. Can be one of:
-	// \* `true` - all organization members can create private repositories.
-	// \* `false` - only organization owners can create private repositories.
-	// Default: `true`. For more information, see "[Restricting repository creation in your
-	// organization](https://help.github.
-	// com/github/setting-up-and-managing-organizations-and-teams/restricting-repository-creation-in-your-organization)" in the GitHub Help documentation.
-	MembersCanCreatePrivateRepositories OptBool `json:"members_can_create_private_repositories"`
-	// Toggles whether organization members can create public repositories, which are visible to anyone.
-	// Can be one of:
-	// \* `true` - all organization members can create public repositories.
-	// \* `false` - only organization owners can create public repositories.
-	// Default: `true`. For more information, see "[Restricting repository creation in your
-	// organization](https://help.github.
-	// com/github/setting-up-and-managing-organizations-and-teams/restricting-repository-creation-in-your-organization)" in the GitHub Help documentation.
-	MembersCanCreatePublicRepositories OptBool `json:"members_can_create_public_repositories"`
-	// Specifies which types of repositories non-admin organization members can create. Can be one of:
-	// \* `all` - all organization members can create public and private repositories.
-	// \* `private` - members can create private repositories. This option is only available to
-	// repositories that are part of an organization on GitHub Enterprise Cloud.
-	// \* `none` - only admin members can create repositories.
-	// **Note:** This parameter is deprecated and will be removed in the future. Its return value ignores
-	// internal repositories. Using this parameter overrides values set in
-	// `members_can_create_repositories`. See the parameter deprecation notice in the operation
-	// description for details.
-	MembersAllowedRepositoryCreationType OptOrgsUpdateReqMembersAllowedRepositoryCreationType `json:"members_allowed_repository_creation_type"`
-	// Toggles whether organization members can create GitHub Pages sites. Can be one of:
-	// \* `true` - all organization members can create GitHub Pages sites.
-	// \* `false` - no organization members can create GitHub Pages sites. Existing published sites will
-	// not be impacted.
-	MembersCanCreatePages OptBool `json:"members_can_create_pages"`
-	// Toggles whether organization members can create public GitHub Pages sites. Can be one of:
-	// \* `true` - all organization members can create public GitHub Pages sites.
-	// \* `false` - no organization members can create public GitHub Pages sites. Existing published
-	// sites will not be impacted.
-	MembersCanCreatePublicPages OptBool `json:"members_can_create_public_pages"`
-	// Toggles whether organization members can create private GitHub Pages sites. Can be one of:
-	// \* `true` - all organization members can create private GitHub Pages sites.
-	// \* `false` - no organization members can create private GitHub Pages sites. Existing published
-	// sites will not be impacted.
-	MembersCanCreatePrivatePages OptBool   `json:"members_can_create_private_pages"`
-	Blog                         OptString `json:"blog"`
-}
-
-// Default permission level members have for organization repositories:
-// \* `read` - can pull, but not push to or administer this repository.
-// \* `write` - can pull and push, but not administer this repository.
-// \* `admin` - can pull, push, and administer this repository.
-// \* `none` - no permissions granted by default.
-type OrgsUpdateReqDefaultRepositoryPermission string
-
-const (
-	OrgsUpdateReqDefaultRepositoryPermissionRead  OrgsUpdateReqDefaultRepositoryPermission = "read"
-	OrgsUpdateReqDefaultRepositoryPermissionWrite OrgsUpdateReqDefaultRepositoryPermission = "write"
-	OrgsUpdateReqDefaultRepositoryPermissionAdmin OrgsUpdateReqDefaultRepositoryPermission = "admin"
-	OrgsUpdateReqDefaultRepositoryPermissionNone  OrgsUpdateReqDefaultRepositoryPermission = "none"
-)
-
-// Specifies which types of repositories non-admin organization members can create. Can be one of:
-// \* `all` - all organization members can create public and private repositories.
-// \* `private` - members can create private repositories. This option is only available to
-// repositories that are part of an organization on GitHub Enterprise Cloud.
-// \* `none` - only admin members can create repositories.
-// **Note:** This parameter is deprecated and will be removed in the future. Its return value ignores
-// internal repositories. Using this parameter overrides values set in
-// `members_can_create_repositories`. See the parameter deprecation notice in the operation
-// description for details.
-type OrgsUpdateReqMembersAllowedRepositoryCreationType string
-
-const (
-	OrgsUpdateReqMembersAllowedRepositoryCreationTypeAll     OrgsUpdateReqMembersAllowedRepositoryCreationType = "all"
-	OrgsUpdateReqMembersAllowedRepositoryCreationTypePrivate OrgsUpdateReqMembersAllowedRepositoryCreationType = "private"
-	OrgsUpdateReqMembersAllowedRepositoryCreationTypeNone    OrgsUpdateReqMembersAllowedRepositoryCreationType = "none"
 )
 
 type OrgsUpdateWebhookConfigForOrgReq struct {
@@ -32651,86 +31446,6 @@ const (
 	ProjectsAddCollaboratorReqPermissionWrite ProjectsAddCollaboratorReqPermission = "write"
 	ProjectsAddCollaboratorReqPermissionAdmin ProjectsAddCollaboratorReqPermission = "admin"
 )
-
-// ProjectsCreateCardReq represents sum type.
-type ProjectsCreateCardReq struct {
-	Type                   ProjectsCreateCardReqType // switch on this field
-	ProjectsCreateCardReq0 ProjectsCreateCardReq0
-	ProjectsCreateCardReq1 ProjectsCreateCardReq1
-}
-
-// ProjectsCreateCardReqType is oneOf type of ProjectsCreateCardReq.
-type ProjectsCreateCardReqType string
-
-// Possible values for ProjectsCreateCardReqType.
-const (
-	ProjectsCreateCardReq0ProjectsCreateCardReq ProjectsCreateCardReqType = "ProjectsCreateCardReq0"
-	ProjectsCreateCardReq1ProjectsCreateCardReq ProjectsCreateCardReqType = "ProjectsCreateCardReq1"
-)
-
-// IsProjectsCreateCardReq0 reports whether ProjectsCreateCardReq is ProjectsCreateCardReq0.
-func (s ProjectsCreateCardReq) IsProjectsCreateCardReq0() bool {
-	return s.Type == ProjectsCreateCardReq0ProjectsCreateCardReq
-}
-
-// IsProjectsCreateCardReq1 reports whether ProjectsCreateCardReq is ProjectsCreateCardReq1.
-func (s ProjectsCreateCardReq) IsProjectsCreateCardReq1() bool {
-	return s.Type == ProjectsCreateCardReq1ProjectsCreateCardReq
-}
-
-// SetProjectsCreateCardReq0 sets ProjectsCreateCardReq to ProjectsCreateCardReq0.
-func (s *ProjectsCreateCardReq) SetProjectsCreateCardReq0(v ProjectsCreateCardReq0) {
-	s.Type = ProjectsCreateCardReq0ProjectsCreateCardReq
-	s.ProjectsCreateCardReq0 = v
-}
-
-// GetProjectsCreateCardReq0 returns ProjectsCreateCardReq0 and true boolean if ProjectsCreateCardReq is ProjectsCreateCardReq0.
-func (s ProjectsCreateCardReq) GetProjectsCreateCardReq0() (v ProjectsCreateCardReq0, ok bool) {
-	if !s.IsProjectsCreateCardReq0() {
-		return v, false
-	}
-	return s.ProjectsCreateCardReq0, true
-}
-
-// NewProjectsCreateCardReq0ProjectsCreateCardReq returns new ProjectsCreateCardReq from ProjectsCreateCardReq0.
-func NewProjectsCreateCardReq0ProjectsCreateCardReq(v ProjectsCreateCardReq0) ProjectsCreateCardReq {
-	var s ProjectsCreateCardReq
-	s.SetProjectsCreateCardReq0(v)
-	return s
-}
-
-// SetProjectsCreateCardReq1 sets ProjectsCreateCardReq to ProjectsCreateCardReq1.
-func (s *ProjectsCreateCardReq) SetProjectsCreateCardReq1(v ProjectsCreateCardReq1) {
-	s.Type = ProjectsCreateCardReq1ProjectsCreateCardReq
-	s.ProjectsCreateCardReq1 = v
-}
-
-// GetProjectsCreateCardReq1 returns ProjectsCreateCardReq1 and true boolean if ProjectsCreateCardReq is ProjectsCreateCardReq1.
-func (s ProjectsCreateCardReq) GetProjectsCreateCardReq1() (v ProjectsCreateCardReq1, ok bool) {
-	if !s.IsProjectsCreateCardReq1() {
-		return v, false
-	}
-	return s.ProjectsCreateCardReq1, true
-}
-
-// NewProjectsCreateCardReq1ProjectsCreateCardReq returns new ProjectsCreateCardReq from ProjectsCreateCardReq1.
-func NewProjectsCreateCardReq1ProjectsCreateCardReq(v ProjectsCreateCardReq1) ProjectsCreateCardReq {
-	var s ProjectsCreateCardReq
-	s.SetProjectsCreateCardReq1(v)
-	return s
-}
-
-type ProjectsCreateCardReq0 struct {
-	// The project card's note.
-	Note NilString `json:"note"`
-}
-
-type ProjectsCreateCardReq1 struct {
-	// The unique identifier of the content associated with the card.
-	ContentID int `json:"content_id"`
-	// The piece of content associated with the card.
-	ContentType string `json:"content_type"`
-}
 
 type ProjectsCreateColumnApplicationJSONForbidden BasicError
 
@@ -35806,19 +34521,6 @@ const (
 	ReposCreateInOrgReqVisibilityInternal   ReposCreateInOrgReqVisibility = "internal"
 )
 
-type ReposCreateOrUpdateEnvironmentReq struct {
-	WaitTimer              OptWaitTimer                                              `json:"wait_timer"`
-	Reviewers              OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray `json:"reviewers"`
-	DeploymentBranchPolicy OptNilDeploymentBranchPolicy                              `json:"deployment_branch_policy"`
-	AdditionalProps        map[string]jx.Raw
-}
-
-type ReposCreateOrUpdateEnvironmentReqReviewersItem struct {
-	Type OptDeploymentReviewerType `json:"type"`
-	// The id of the user or team who can review the deployment.
-	ID OptInt `json:"id"`
-}
-
 type ReposCreateOrUpdateFileContentsApplicationJSONConflict BasicError
 
 func (*ReposCreateOrUpdateFileContentsApplicationJSONConflict) reposCreateOrUpdateFileContentsRes() {}
@@ -37987,187 +36689,6 @@ type ScimGroupListEnterpriseResourcesItemMeta struct {
 	Created      OptString `json:"created"`
 	LastModified OptString `json:"lastModified"`
 	Location     OptString `json:"location"`
-}
-
-type ScimProvisionAndInviteUserReq struct {
-	// Configured by the admin. Could be an email, login, or username.
-	UserName string `json:"userName"`
-	// The name of the user, suitable for display to end-users.
-	DisplayName OptString                         `json:"displayName"`
-	Name        ScimProvisionAndInviteUserReqName `json:"name"`
-	// User emails.
-	Emails     []ScimProvisionAndInviteUserReqEmailsItem `json:"emails"`
-	Schemas    []string                                  `json:"schemas"`
-	ExternalId OptString                                 `json:"externalId"`
-	Groups     []string                                  `json:"groups"`
-	Active     OptBool                                   `json:"active"`
-}
-
-type ScimProvisionAndInviteUserReqEmailsItem struct {
-	Value   string    `json:"value"`
-	Primary OptBool   `json:"primary"`
-	Type    OptString `json:"type"`
-}
-
-type ScimProvisionAndInviteUserReqName struct {
-	GivenName  string    `json:"givenName"`
-	FamilyName string    `json:"familyName"`
-	Formatted  OptString `json:"formatted"`
-}
-
-type ScimSetInformationForProvisionedUserReq struct {
-	Schemas []string `json:"schemas"`
-	// The name of the user, suitable for display to end-users.
-	DisplayName OptString `json:"displayName"`
-	ExternalId  OptString `json:"externalId"`
-	Groups      []string  `json:"groups"`
-	Active      OptBool   `json:"active"`
-	// Configured by the admin. Could be an email, login, or username.
-	UserName string                                      `json:"userName"`
-	Name     ScimSetInformationForProvisionedUserReqName `json:"name"`
-	// User emails.
-	Emails []ScimSetInformationForProvisionedUserReqEmailsItem `json:"emails"`
-}
-
-type ScimSetInformationForProvisionedUserReqEmailsItem struct {
-	Type    OptString `json:"type"`
-	Value   string    `json:"value"`
-	Primary OptBool   `json:"primary"`
-}
-
-type ScimSetInformationForProvisionedUserReqName struct {
-	GivenName  string    `json:"givenName"`
-	FamilyName string    `json:"familyName"`
-	Formatted  OptString `json:"formatted"`
-}
-
-type ScimUpdateAttributeForUserReq struct {
-	Schemas []string `json:"schemas"`
-	// Set of operations to be performed.
-	Operations []ScimUpdateAttributeForUserReqOperationsItem `json:"Operations"`
-}
-
-type ScimUpdateAttributeForUserReqOperationsItem struct {
-	Op    ScimUpdateAttributeForUserReqOperationsItemOp       `json:"op"`
-	Path  OptString                                           `json:"path"`
-	Value OptScimUpdateAttributeForUserReqOperationsItemValue `json:"value"`
-}
-
-type ScimUpdateAttributeForUserReqOperationsItemOp string
-
-const (
-	ScimUpdateAttributeForUserReqOperationsItemOpAdd     ScimUpdateAttributeForUserReqOperationsItemOp = "add"
-	ScimUpdateAttributeForUserReqOperationsItemOpRemove  ScimUpdateAttributeForUserReqOperationsItemOp = "remove"
-	ScimUpdateAttributeForUserReqOperationsItemOpReplace ScimUpdateAttributeForUserReqOperationsItemOp = "replace"
-)
-
-// ScimUpdateAttributeForUserReqOperationsItemValue represents sum type.
-type ScimUpdateAttributeForUserReqOperationsItemValue struct {
-	Type                                                       ScimUpdateAttributeForUserReqOperationsItemValueType // switch on this field
-	ScimUpdateAttributeForUserReqOperationsItemValue0          ScimUpdateAttributeForUserReqOperationsItemValue0
-	ArrayScimUpdateAttributeForUserReqOperationsItemValue1Item []ScimUpdateAttributeForUserReqOperationsItemValue1Item
-	String                                                     string
-}
-
-// ScimUpdateAttributeForUserReqOperationsItemValueType is oneOf type of ScimUpdateAttributeForUserReqOperationsItemValue.
-type ScimUpdateAttributeForUserReqOperationsItemValueType string
-
-// Possible values for ScimUpdateAttributeForUserReqOperationsItemValueType.
-const (
-	ScimUpdateAttributeForUserReqOperationsItemValue0ScimUpdateAttributeForUserReqOperationsItemValue          ScimUpdateAttributeForUserReqOperationsItemValueType = "ScimUpdateAttributeForUserReqOperationsItemValue0"
-	ArrayScimUpdateAttributeForUserReqOperationsItemValue1ItemScimUpdateAttributeForUserReqOperationsItemValue ScimUpdateAttributeForUserReqOperationsItemValueType = "[]ScimUpdateAttributeForUserReqOperationsItemValue1Item"
-	StringScimUpdateAttributeForUserReqOperationsItemValue                                                     ScimUpdateAttributeForUserReqOperationsItemValueType = "string"
-)
-
-// IsScimUpdateAttributeForUserReqOperationsItemValue0 reports whether ScimUpdateAttributeForUserReqOperationsItemValue is ScimUpdateAttributeForUserReqOperationsItemValue0.
-func (s ScimUpdateAttributeForUserReqOperationsItemValue) IsScimUpdateAttributeForUserReqOperationsItemValue0() bool {
-	return s.Type == ScimUpdateAttributeForUserReqOperationsItemValue0ScimUpdateAttributeForUserReqOperationsItemValue
-}
-
-// IsArrayScimUpdateAttributeForUserReqOperationsItemValue1Item reports whether ScimUpdateAttributeForUserReqOperationsItemValue is []ScimUpdateAttributeForUserReqOperationsItemValue1Item.
-func (s ScimUpdateAttributeForUserReqOperationsItemValue) IsArrayScimUpdateAttributeForUserReqOperationsItemValue1Item() bool {
-	return s.Type == ArrayScimUpdateAttributeForUserReqOperationsItemValue1ItemScimUpdateAttributeForUserReqOperationsItemValue
-}
-
-// IsString reports whether ScimUpdateAttributeForUserReqOperationsItemValue is string.
-func (s ScimUpdateAttributeForUserReqOperationsItemValue) IsString() bool {
-	return s.Type == StringScimUpdateAttributeForUserReqOperationsItemValue
-}
-
-// SetScimUpdateAttributeForUserReqOperationsItemValue0 sets ScimUpdateAttributeForUserReqOperationsItemValue to ScimUpdateAttributeForUserReqOperationsItemValue0.
-func (s *ScimUpdateAttributeForUserReqOperationsItemValue) SetScimUpdateAttributeForUserReqOperationsItemValue0(v ScimUpdateAttributeForUserReqOperationsItemValue0) {
-	s.Type = ScimUpdateAttributeForUserReqOperationsItemValue0ScimUpdateAttributeForUserReqOperationsItemValue
-	s.ScimUpdateAttributeForUserReqOperationsItemValue0 = v
-}
-
-// GetScimUpdateAttributeForUserReqOperationsItemValue0 returns ScimUpdateAttributeForUserReqOperationsItemValue0 and true boolean if ScimUpdateAttributeForUserReqOperationsItemValue is ScimUpdateAttributeForUserReqOperationsItemValue0.
-func (s ScimUpdateAttributeForUserReqOperationsItemValue) GetScimUpdateAttributeForUserReqOperationsItemValue0() (v ScimUpdateAttributeForUserReqOperationsItemValue0, ok bool) {
-	if !s.IsScimUpdateAttributeForUserReqOperationsItemValue0() {
-		return v, false
-	}
-	return s.ScimUpdateAttributeForUserReqOperationsItemValue0, true
-}
-
-// NewScimUpdateAttributeForUserReqOperationsItemValue0ScimUpdateAttributeForUserReqOperationsItemValue returns new ScimUpdateAttributeForUserReqOperationsItemValue from ScimUpdateAttributeForUserReqOperationsItemValue0.
-func NewScimUpdateAttributeForUserReqOperationsItemValue0ScimUpdateAttributeForUserReqOperationsItemValue(v ScimUpdateAttributeForUserReqOperationsItemValue0) ScimUpdateAttributeForUserReqOperationsItemValue {
-	var s ScimUpdateAttributeForUserReqOperationsItemValue
-	s.SetScimUpdateAttributeForUserReqOperationsItemValue0(v)
-	return s
-}
-
-// SetArrayScimUpdateAttributeForUserReqOperationsItemValue1Item sets ScimUpdateAttributeForUserReqOperationsItemValue to []ScimUpdateAttributeForUserReqOperationsItemValue1Item.
-func (s *ScimUpdateAttributeForUserReqOperationsItemValue) SetArrayScimUpdateAttributeForUserReqOperationsItemValue1Item(v []ScimUpdateAttributeForUserReqOperationsItemValue1Item) {
-	s.Type = ArrayScimUpdateAttributeForUserReqOperationsItemValue1ItemScimUpdateAttributeForUserReqOperationsItemValue
-	s.ArrayScimUpdateAttributeForUserReqOperationsItemValue1Item = v
-}
-
-// GetArrayScimUpdateAttributeForUserReqOperationsItemValue1Item returns []ScimUpdateAttributeForUserReqOperationsItemValue1Item and true boolean if ScimUpdateAttributeForUserReqOperationsItemValue is []ScimUpdateAttributeForUserReqOperationsItemValue1Item.
-func (s ScimUpdateAttributeForUserReqOperationsItemValue) GetArrayScimUpdateAttributeForUserReqOperationsItemValue1Item() (v []ScimUpdateAttributeForUserReqOperationsItemValue1Item, ok bool) {
-	if !s.IsArrayScimUpdateAttributeForUserReqOperationsItemValue1Item() {
-		return v, false
-	}
-	return s.ArrayScimUpdateAttributeForUserReqOperationsItemValue1Item, true
-}
-
-// NewArrayScimUpdateAttributeForUserReqOperationsItemValue1ItemScimUpdateAttributeForUserReqOperationsItemValue returns new ScimUpdateAttributeForUserReqOperationsItemValue from []ScimUpdateAttributeForUserReqOperationsItemValue1Item.
-func NewArrayScimUpdateAttributeForUserReqOperationsItemValue1ItemScimUpdateAttributeForUserReqOperationsItemValue(v []ScimUpdateAttributeForUserReqOperationsItemValue1Item) ScimUpdateAttributeForUserReqOperationsItemValue {
-	var s ScimUpdateAttributeForUserReqOperationsItemValue
-	s.SetArrayScimUpdateAttributeForUserReqOperationsItemValue1Item(v)
-	return s
-}
-
-// SetString sets ScimUpdateAttributeForUserReqOperationsItemValue to string.
-func (s *ScimUpdateAttributeForUserReqOperationsItemValue) SetString(v string) {
-	s.Type = StringScimUpdateAttributeForUserReqOperationsItemValue
-	s.String = v
-}
-
-// GetString returns string and true boolean if ScimUpdateAttributeForUserReqOperationsItemValue is string.
-func (s ScimUpdateAttributeForUserReqOperationsItemValue) GetString() (v string, ok bool) {
-	if !s.IsString() {
-		return v, false
-	}
-	return s.String, true
-}
-
-// NewStringScimUpdateAttributeForUserReqOperationsItemValue returns new ScimUpdateAttributeForUserReqOperationsItemValue from string.
-func NewStringScimUpdateAttributeForUserReqOperationsItemValue(v string) ScimUpdateAttributeForUserReqOperationsItemValue {
-	var s ScimUpdateAttributeForUserReqOperationsItemValue
-	s.SetString(v)
-	return s
-}
-
-type ScimUpdateAttributeForUserReqOperationsItemValue0 struct {
-	Active     OptNilBool   `json:"active"`
-	UserName   OptNilString `json:"userName"`
-	ExternalId OptNilString `json:"externalId"`
-	GivenName  OptNilString `json:"givenName"`
-	FamilyName OptNilString `json:"familyName"`
-}
-
-type ScimUpdateAttributeForUserReqOperationsItemValue1Item struct {
-	Value   OptString `json:"value"`
-	Primary OptBool   `json:"primary"`
 }
 
 // Ref: #/components/schemas/scim-user-list-enterprise
@@ -40934,8 +39455,6 @@ type ViewTraffic struct {
 }
 
 func (*ViewTraffic) reposGetViewsRes() {}
-
-type WaitTimer int
 
 // Configuration object of the webhook.
 // Ref: #/components/schemas/webhook-config

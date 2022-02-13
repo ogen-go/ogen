@@ -122,7 +122,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 	cfg := TemplateConfig{
 		Package:       pkgName,
 		Operations:    g.operations,
-		Types:         g.types,
+		Types:         g.tstorage.types,
 		Interfaces:    g.interfaces,
 		Error:         g.errType,
 		ErrorType:     nil,
@@ -174,7 +174,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 }
 
 func (g *Generator) hasURIObjectParams() bool {
-	for _, t := range g.types {
+	for _, t := range g.tstorage.types {
 		if t.HasFeature("uri") && t.Is(ir.KindStruct) {
 			return true
 		}

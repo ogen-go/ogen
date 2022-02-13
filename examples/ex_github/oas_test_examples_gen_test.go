@@ -2162,37 +2162,6 @@ func TestDeployment_JSON(t *testing.T) {
 	}
 }
 
-func TestDeploymentReviewerType_JSON(t *testing.T) {
-	t.Parallel()
-
-	for i, tc := range []struct {
-		Input string
-	}{
-		{Input: "\"User\""},
-	} {
-		tc := tc
-		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-			var typ DeploymentReviewerType
-
-			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
-					t.Skipf("Validation error: %v", validateErr)
-					return
-				}
-				require.NoErrorf(t, err, "Input: %s", tc.Input)
-			}
-
-			e := jx.Writer{}
-			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
-
-			var typ2 DeploymentReviewerType
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
-		})
-	}
-}
-
 func TestDeploymentStatus_JSON(t *testing.T) {
 	t.Parallel()
 
@@ -3600,37 +3569,6 @@ func TestLicenseContent_JSON(t *testing.T) {
 			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
 
 			var typ2 LicenseContent
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
-		})
-	}
-}
-
-func TestMarkdownRenderReqMode_JSON(t *testing.T) {
-	t.Parallel()
-
-	for i, tc := range []struct {
-		Input string
-	}{
-		{Input: "\"markdown\""},
-	} {
-		tc := tc
-		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-			var typ MarkdownRenderReqMode
-
-			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
-					t.Skipf("Validation error: %v", validateErr)
-					return
-				}
-				require.NoErrorf(t, err, "Input: %s", tc.Input)
-			}
-
-			e := jx.Writer{}
-			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
-
-			var typ2 MarkdownRenderReqMode
 			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}
@@ -6165,68 +6103,6 @@ func TestScimGroupListEnterprise_JSON(t *testing.T) {
 			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
 
 			var typ2 ScimGroupListEnterprise
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
-		})
-	}
-}
-
-func TestScimProvisionAndInviteUserReqName_JSON(t *testing.T) {
-	t.Parallel()
-
-	for i, tc := range []struct {
-		Input string
-	}{
-		{Input: "{\n                      \"givenName\": \"Jane\",\n                      \"familyName\": \"User\"\n                    }"},
-	} {
-		tc := tc
-		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-			var typ ScimProvisionAndInviteUserReqName
-
-			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
-					t.Skipf("Validation error: %v", validateErr)
-					return
-				}
-				require.NoErrorf(t, err, "Input: %s", tc.Input)
-			}
-
-			e := jx.Writer{}
-			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
-
-			var typ2 ScimProvisionAndInviteUserReqName
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
-		})
-	}
-}
-
-func TestScimSetInformationForProvisionedUserReqName_JSON(t *testing.T) {
-	t.Parallel()
-
-	for i, tc := range []struct {
-		Input string
-	}{
-		{Input: "{\n                      \"givenName\": \"Jane\",\n                      \"familyName\": \"User\"\n                    }"},
-	} {
-		tc := tc
-		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-			var typ ScimSetInformationForProvisionedUserReqName
-
-			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
-					t.Skipf("Validation error: %v", validateErr)
-					return
-				}
-				require.NoErrorf(t, err, "Input: %s", tc.Input)
-			}
-
-			e := jx.Writer{}
-			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
-
-			var typ2 ScimSetInformationForProvisionedUserReqName
 			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
 		})
 	}

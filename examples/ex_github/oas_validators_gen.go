@@ -1086,26 +1086,6 @@ func (s ActivityListReposStarredByAuthenticatedUserSort) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ActivityListReposStarredByUserDirection) Validate() error {
-	switch s {
-	case "asc":
-		return nil
-	case "desc":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-func (s ActivityListReposStarredByUserSort) Validate() error {
-	switch s {
-	case "created":
-		return nil
-	case "updated":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
 func (s ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")
@@ -3922,16 +3902,6 @@ func (s Deployment) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
-}
-func (s DeploymentReviewerType) Validate() error {
-	switch s {
-	case "User":
-		return nil
-	case "Team":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
 }
 func (s DeploymentSimple) Validate() error {
 	var failures []validate.FieldError
@@ -6970,42 +6940,6 @@ func (s LicensesGetAllCommonlyUsedOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s MarkdownRenderReq) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Mode.Set {
-			if err := func() error {
-				if err := s.Mode.Value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "mode",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s MarkdownRenderReqMode) Validate() error {
-	switch s {
-	case "markdown":
-		return nil
-	case "gfm":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
 func (s MarketplaceAccount) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -8357,77 +8291,6 @@ func (s OrgsUpdateMembershipForAuthenticatedUserReq) Validate() error {
 func (s OrgsUpdateMembershipForAuthenticatedUserReqState) Validate() error {
 	switch s {
 	case "active":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-func (s OrgsUpdateReq) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.DefaultRepositoryPermission.Set {
-			if err := func() error {
-				if err := s.DefaultRepositoryPermission.Value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "default_repository_permission",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if s.MembersAllowedRepositoryCreationType.Set {
-			if err := func() error {
-				if err := s.MembersAllowedRepositoryCreationType.Value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "members_allowed_repository_creation_type",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s OrgsUpdateReqDefaultRepositoryPermission) Validate() error {
-	switch s {
-	case "read":
-		return nil
-	case "write":
-		return nil
-	case "admin":
-		return nil
-	case "none":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-func (s OrgsUpdateReqMembersAllowedRepositoryCreationType) Validate() error {
-	switch s {
-	case "all":
-		return nil
-	case "private":
-		return nil
-	case "none":
 		return nil
 	default:
 		return errors.Errorf("invalid value: %v", s)
@@ -11912,32 +11775,6 @@ func (s ReposCreateInOrgReqVisibility) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReposCreateOrUpdateEnvironmentReqReviewersItem) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Type.Set {
-			if err := func() error {
-				if err := s.Type.Value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "type",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
 func (s ReposCreatePagesSiteReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -13490,166 +13327,6 @@ func (s ScimGroupListEnterpriseResourcesItem) Validate() error {
 	}
 	return nil
 }
-func (s ScimProvisionAndInviteUserReq) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Emails == nil {
-			return errors.New("nil is invalid value")
-		}
-		if err := (validate.Array{
-			MinLength:    1,
-			MinLengthSet: true,
-			MaxLength:    0,
-			MaxLengthSet: false,
-		}).ValidateLength(len(s.Emails)); err != nil {
-			return errors.Wrap(err, "array")
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "emails",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s ScimSetInformationForProvisionedUserReq) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Emails == nil {
-			return errors.New("nil is invalid value")
-		}
-		if err := (validate.Array{
-			MinLength:    1,
-			MinLengthSet: true,
-			MaxLength:    0,
-			MaxLengthSet: false,
-		}).ValidateLength(len(s.Emails)); err != nil {
-			return errors.Wrap(err, "array")
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "emails",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s ScimUpdateAttributeForUserReq) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Operations == nil {
-			return errors.New("nil is invalid value")
-		}
-		if err := (validate.Array{
-			MinLength:    1,
-			MinLengthSet: true,
-			MaxLength:    0,
-			MaxLengthSet: false,
-		}).ValidateLength(len(s.Operations)); err != nil {
-			return errors.Wrap(err, "array")
-		}
-		var failures []validate.FieldError
-		for i, elem := range s.Operations {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "Operations",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s ScimUpdateAttributeForUserReqOperationsItem) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if err := s.Op.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "op",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if s.Value.Set {
-			if err := func() error {
-				if err := s.Value.Value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return err
-			}
-		}
-		return nil
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "value",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s ScimUpdateAttributeForUserReqOperationsItemOp) Validate() error {
-	switch s {
-	case "add":
-		return nil
-	case "remove":
-		return nil
-	case "replace":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-func (s ScimUpdateAttributeForUserReqOperationsItemValue) Validate() error {
-	switch s.Type {
-	case ScimUpdateAttributeForUserReqOperationsItemValue0ScimUpdateAttributeForUserReqOperationsItemValue:
-		return nil // no validation needed
-	case ArrayScimUpdateAttributeForUserReqOperationsItemValue1ItemScimUpdateAttributeForUserReqOperationsItemValue:
-		if s.ArrayScimUpdateAttributeForUserReqOperationsItemValue1Item == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	case StringScimUpdateAttributeForUserReqOperationsItemValue:
-		return nil // no validation needed
-	default:
-		return errors.Errorf("invalid type %q", s.Type)
-	}
-}
-
 func (s ScimUserListEnterprise) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {

@@ -1,6 +1,8 @@
 package gen
 
 import (
+	"strconv"
+
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
@@ -8,9 +10,9 @@ import (
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
-func (g *Generator) generateParameters(opName string, params []*oas.Parameter) ([]*ir.Parameter, error) {
+func (g *Generator) generateParameters(ctx *genctx, opName string, params []*oas.Parameter) ([]*ir.Parameter, error) {
 	result := make([]*ir.Parameter, 0, len(params))
-	for _, p := range params {
+	for i, p := range params {
 		if p.In == oas.LocationCookie {
 			if err := g.fail(&ErrNotImplemented{"cookie params"}); err != nil {
 				return nil, errors.Wrap(err, "fail")
@@ -27,15 +29,19 @@ func (g *Generator) generateParameters(opName string, params []*oas.Parameter) (
 			continue
 		}
 
-		t, err := g.generateSchema(pascal(opName, p.Name), p.Schema)
+		ctx := ctx.appendPath(strconv.Itoa(i), p.Name, "schema")
+		t, err := g.generateSchema(ctx, pascal(opName, p.Name), p.Schema)
 		if err != nil {
 			return nil, errors.Wrapf(err, "%q", p.Name)
 		}
 
-		t = g.boxType(ir.GenericVariant{
+		t, err = boxType(ctx, ir.GenericVariant{
 			Nullable: p.Schema != nil && p.Schema.Nullable,
 			Optional: !p.Required,
 		}, t)
+		if err != nil {
+			return nil, errors.Wrapf(err, "%q", p.Name)
+		}
 
 		visited := map[*ir.Type]struct{}{}
 		if err := isParamAllowed(t, true, visited); err != nil {

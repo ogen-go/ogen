@@ -13,7 +13,7 @@ import (
 	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (g *Generator) generateResponses(opName string, responses map[string]*oas.Response) (*ir.Response, error) {
+func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[string]*oas.Response) (*ir.Response, error) {
 	name := opName + "Res"
 	result := &ir.Response{
 		StatusCode: make(map[int]*ir.StatusResponse, len(responses)),
@@ -42,7 +42,7 @@ func (g *Generator) generateResponses(opName string, responses map[string]*oas.R
 			respName = pascal(opName, http.StatusText(code))
 			doc      = fmt.Sprintf("%s is response for %s operation.", respName, opName)
 		)
-		r, err := g.responseToIR(respName, doc, resp)
+		r, err := g.responseToIR(ctx, respName, doc, resp)
 		if err != nil {
 			return nil, errors.Wrapf(err, "%d", code)
 		}
@@ -55,12 +55,15 @@ func (g *Generator) generateResponses(opName string, responses map[string]*oas.R
 			respName = opName + "Def"
 			doc      = fmt.Sprintf("%s is default response for %s operation.", respName, opName)
 		)
-		resp, err := g.responseToIR(respName, doc, def)
+		resp, err := g.responseToIR(ctx, respName, doc, def)
 		if err != nil {
 			return nil, errors.Wrap(err, "default")
 		}
 
-		result.Default = g.wrapResponseStatusCode(respName, resp)
+		result.Default, err = g.wrapResponseStatusCode(ctx, respName, resp)
+		if err != nil {
+			return nil, errors.Wrap(err, "default")
+		}
 	}
 
 	var (
@@ -85,7 +88,9 @@ func (g *Generator) generateResponses(opName string, responses map[string]*oas.R
 	walkResponseTypes(result, func(resName string, t *ir.Type) *ir.Type {
 		if !t.CanHaveMethods() {
 			t = ir.Alias(pascal(opName, resName), t)
-			g.saveType(t)
+			if err := ctx.saveType(t); err != nil {
+				panic("unreachable")
+			}
 		}
 
 		t.Implement(iface)
@@ -96,9 +101,9 @@ func (g *Generator) generateResponses(opName string, responses map[string]*oas.R
 	return result, nil
 }
 
-func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (ret *ir.StatusResponse, err error) {
+func (g *Generator) responseToIR(ctx *genctx, name, doc string, resp *oas.Response) (ret *ir.StatusResponse, err error) {
 	if ref := resp.Ref; ref != "" {
-		if r, ok := g.refs.responses[ref]; ok {
+		if r, ok := ctx.lookupResponse(ref); ok {
 			return r, nil
 		}
 
@@ -106,7 +111,7 @@ func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (ret *ir.
 		doc = fmt.Sprintf("Ref: %s", ref)
 		defer func() {
 			if err == nil {
-				g.refs.responses[ref] = ret
+				ctx.local.responses[ref] = ret
 			}
 		}()
 	}
@@ -118,14 +123,16 @@ func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (ret *ir.
 			Doc:  doc,
 		}
 
-		g.saveType(t)
+		if err := ctx.saveType(t); err != nil {
+			return nil, errors.Wrap(err, "save type")
+		}
 		return &ir.StatusResponse{
 			NoContent: t,
 			Spec:      resp,
 		}, nil
 	}
 
-	contents, err := g.generateContents(name, false, resp.Contents)
+	contents, err := g.generateContents(ctx, name, false, resp.Contents)
 	if err != nil {
 		return nil, errors.Wrap(err, "contents")
 	}
@@ -136,42 +143,65 @@ func (g *Generator) responseToIR(name, doc string, resp *oas.Response) (ret *ir.
 	}, nil
 }
 
-func (g *Generator) wrapResponseStatusCode(name string, resp *ir.StatusResponse) (ret *ir.StatusResponse) {
+func (g *Generator) wrapResponseStatusCode(ctx *genctx, name string, resp *ir.StatusResponse) (ret *ir.StatusResponse, rerr error) {
 	if ref := resp.Spec.Ref; ref != "" {
-		if r, ok := g.wrapped.responses[ref]; ok {
-			return r
+		if r, ok := ctx.lookupWrappedResponse(ref); ok {
+			return r, nil
 		}
-		defer func() { g.wrapped.responses[ref] = ret }()
+		defer func() {
+			if rerr != nil {
+				return
+			}
+
+			ctx.local.wresponses[ref] = ret
+		}()
 	}
 
 	if noc := resp.NoContent; noc != nil {
+		w, err := g.wrapStatusCode(ctx, name, noc)
+		if err != nil {
+			return nil, err
+		}
+
 		return &ir.StatusResponse{
 			Wrapped:   true,
-			NoContent: g.wrapStatusCode(name, noc),
+			NoContent: w,
 			Spec:      resp.Spec,
-		}
+		}, nil
 	}
 
 	contents := make(map[ir.ContentType]*ir.Type, len(resp.Contents))
 	for contentType, t := range resp.Contents {
-		contents[contentType] = g.wrapStatusCode(name, t)
+		w, err := g.wrapStatusCode(ctx, name, t)
+		if err != nil {
+			return nil, err
+		}
+
+		contents[contentType] = w
 	}
 
 	return &ir.StatusResponse{
 		Wrapped:  true,
 		Contents: contents,
 		Spec:     resp.Spec,
-	}
+	}, nil
 }
 
-func (g *Generator) wrapStatusCode(name string, t *ir.Type) (ret *ir.Type) {
+func (g *Generator) wrapStatusCode(ctx *genctx, name string, t *ir.Type) (ret *ir.Type, rerr error) {
 	if schema := t.Schema; schema != nil && schema.Ref != "" {
-		if t, ok := g.wrapped.types[schema.Ref]; ok {
-			return t
+		if t, ok := ctx.lookupWrappedType(schema.Ref); ok {
+			return t, nil
 		}
-		defer func() { g.wrapped.types[schema.Ref] = ret }()
+
+		defer func() { ctx.local.wtypes[schema.Ref] = ret }()
 	} else {
-		defer func() { g.saveType(ret) }()
+		defer func() {
+			if rerr != nil {
+				return
+			}
+
+			rerr = ctx.saveType(ret)
+		}()
 	}
 
 	if t.Name != "" {
@@ -193,5 +223,5 @@ func (g *Generator) wrapStatusCode(name string, t *ir.Type) (ret *ir.Type) {
 				Type: t,
 			},
 		},
-	}
+	}, nil
 }

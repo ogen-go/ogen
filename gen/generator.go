@@ -13,18 +13,11 @@ import (
 	"github.com/ogen-go/ogen/internal/oas/parser"
 )
 
-type responses struct {
-	types     map[string]*ir.Type
-	responses map[string]*ir.StatusResponse
-}
-
 type Generator struct {
 	opt        Options
-	operations []*ir.Operation
-	types      map[string]*ir.Type
+	tstorage   *tstorage
 	interfaces map[string]*ir.Type
-	refs       responses
-	wrapped    responses
+	operations []*ir.Operation
 	errType    *ir.StatusResponse
 	router     Router
 }
@@ -46,26 +39,19 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 
 	g := &Generator{
 		opt:        opts,
-		types:      map[string]*ir.Type{},
 		interfaces: map[string]*ir.Type{},
-		refs: responses{
-			types:     map[string]*ir.Type{},
-			responses: map[string]*ir.StatusResponse{},
-		},
-		wrapped: responses{
-			types:     map[string]*ir.Type{},
-			responses: map[string]*ir.StatusResponse{},
-		},
+		tstorage:   newTStorage(),
 	}
 
 	if err := g.makeIR(operations); err != nil {
 		return nil, errors.Wrap(err, "make ir")
 	}
-	for _, w := range g.wrapped.types {
-		g.saveType(w)
+	for _, w := range g.tstorage.wtypes {
+		if err := g.tstorage.saveType(w); err != nil {
+			panic("unreachable")
+		}
 	}
-	g.reduce()
-	g.wrapGenerics()
+
 	if err := g.route(); err != nil {
 		return nil, errors.Wrap(err, "route")
 	}
@@ -84,7 +70,13 @@ func (g *Generator) makeIR(ops []*oas.Operation) error {
 			}
 		}
 
-		op, err := g.generateOperation(spec)
+		ctx := &genctx{
+			path:   []string{"#", "paths", spec.Path.String(), spec.HTTPMethod},
+			global: g.tstorage,
+			local:  newTStorage(),
+		}
+
+		op, err := g.generateOperation(ctx, spec)
 		if err != nil {
 			err = errors.Wrapf(err, "path %q: %s",
 				spec.Path.String(),
@@ -96,6 +88,14 @@ func (g *Generator) makeIR(ops []*oas.Operation) error {
 
 			continue
 		}
+
+		reduceEqualRequests(ctx, op)
+		reduceEqualResponses(ctx, op)
+
+		if err := g.tstorage.merge(ctx.local); err != nil {
+			return err
+		}
+
 		g.operations = append(g.operations, op)
 	}
 

@@ -34,7 +34,13 @@ func (g *Generator) reduceDefault(ops []*oas.Operation) error {
 		}
 	}
 
-	resp, err := g.responseToIR("ErrResp", "reduced default response", d)
+	ctx := &genctx{
+		path:   []string{"x-ogen-reduce-default"},
+		global: g.tstorage,
+		local:  g.tstorage,
+	}
+
+	resp, err := g.responseToIR(ctx, "ErrResp", "reduced default response", d)
 	if err != nil {
 		return errors.Wrap(err, "default")
 	}
@@ -42,16 +48,12 @@ func (g *Generator) reduceDefault(ops []*oas.Operation) error {
 		return errors.Wrap(err, "too complicated to reduce default error")
 	}
 
-	g.errType = g.wrapResponseStatusCode("", resp)
+	g.errType, err = g.wrapResponseStatusCode(ctx, "", resp)
+	if err != nil {
+		return errors.Wrap(err, "wrap default response with status code struct")
+	}
 
 	return nil
-}
-
-func (g *Generator) reduce() {
-	for _, op := range g.operations {
-		g.reduceEqualRequests(op)
-		g.reduceEqualResponses(op)
-	}
 }
 
 // Example:
@@ -87,7 +89,7 @@ func (g *Generator) reduce() {
 //
 // Referring to the same schema in different content types
 // also can cause a collision.
-func (g *Generator) reduceEqualResponses(op *ir.Operation) {
+func reduceEqualResponses(ctx *genctx, op *ir.Operation) {
 	if !op.Response.Type.Is(ir.KindInterface) {
 		return
 	}
@@ -180,7 +182,7 @@ func (g *Generator) reduceEqualResponses(op *ir.Operation) {
 
 		// TODO: Fix duplicates.
 		// g.saveType(alias)
-		g.types[alias.Name] = alias
+		ctx.local.types[alias.Name] = alias
 
 		if candidate.replaceNoc {
 			candidate.response.NoContent = alias
@@ -210,7 +212,7 @@ func cloneResponse(r *ir.Response) *ir.Response {
 	return newR
 }
 
-func (g *Generator) reduceEqualRequests(op *ir.Operation) {
+func reduceEqualRequests(ctx *genctx, op *ir.Operation) {
 	if op.Request == nil {
 		return
 	}
@@ -266,7 +268,7 @@ func (g *Generator) reduceEqualRequests(op *ir.Operation) {
 
 		// TODO: Fix duplicates.
 		// g.saveType(alias)
-		g.types[alias.Name] = alias
+		ctx.local.types[alias.Name] = alias
 
 		op.Request.Contents[ir.ContentType(candidate.ctype)] = alias
 	}
