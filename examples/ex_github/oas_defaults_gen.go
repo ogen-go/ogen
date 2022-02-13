@@ -130,15 +130,6 @@ func (s *IssuesUpdateMilestoneReq) setDefaults() {
 }
 
 // setDefaults set default value of fields.
-func (s *MarkdownRenderReq) setDefaults() {
-	{
-		val := MarkdownRenderReqMode("markdown")
-
-		s.Mode.SetTo(val)
-	}
-}
-
-// setDefaults set default value of fields.
 func (s *Milestone) setDefaults() {
 	{
 		val := MilestoneState("open")
@@ -232,35 +223,6 @@ func (s *OrgsSetMembershipForUserReq) setDefaults() {
 		val := OrgsSetMembershipForUserReqRole("member")
 
 		s.Role.SetTo(val)
-	}
-}
-
-// setDefaults set default value of fields.
-func (s *OrgsUpdateReq) setDefaults() {
-	{
-		val := OrgsUpdateReqDefaultRepositoryPermission("read")
-
-		s.DefaultRepositoryPermission.SetTo(val)
-	}
-	{
-		val := bool(true)
-
-		s.MembersCanCreateRepositories.SetTo(val)
-	}
-	{
-		val := bool(true)
-
-		s.MembersCanCreatePages.SetTo(val)
-	}
-	{
-		val := bool(true)
-
-		s.MembersCanCreatePublicPages.SetTo(val)
-	}
-	{
-		val := bool(true)
-
-		s.MembersCanCreatePrivatePages.SetTo(val)
 	}
 }
 
