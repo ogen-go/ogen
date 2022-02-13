@@ -7,10 +7,10 @@ import (
 	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.Request, error) {
+func (g *Generator) generateRequest(ctx *genctx, opName string, body *oas.RequestBody) (*ir.Request, error) {
 	name := opName + "Req"
 
-	contents, err := g.generateContents(name, !body.Required, body.Contents)
+	contents, err := g.generateContents(ctx, name, !body.Required, body.Contents)
 	if err != nil {
 		return nil, errors.Wrap(err, "contents")
 	}
@@ -28,7 +28,9 @@ func (g *Generator) generateRequest(opName string, body *oas.RequestBody) (*ir.R
 			if !t.CanHaveMethods() {
 				t = ir.Alias(pascal(name, string(contentType)), t)
 				contents[contentType] = t
-				g.saveType(t)
+				if err := ctx.saveType(t); err != nil {
+					return nil, errors.Wrap(err, "save alias type")
+				}
 			}
 
 			t.Implement(requestType)

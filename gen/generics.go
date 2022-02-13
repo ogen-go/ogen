@@ -4,18 +4,11 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/go-faster/errors"
 	"github.com/ogen-go/ogen/internal/ir"
 )
 
-func (g *Generator) wrapGenerics() {
-	for _, t := range g.types {
-		if t.Is(ir.KindStruct) || (t.Is(ir.KindMap) && len(t.Fields) > 0) {
-			g.boxStructFields(t)
-		}
-	}
-}
-
-func (g *Generator) boxStructFields(s *ir.Type) {
+func boxStructFields(ctx *genctx, s *ir.Type) error {
 	for _, field := range s.Fields {
 		if field.Spec == nil {
 			continue
@@ -26,37 +19,46 @@ func (g *Generator) boxStructFields(s *ir.Type) {
 			Optional: !field.Spec.Required,
 		}
 
-		field.Type = func(t *ir.Type) *ir.Type {
+		boxedT, err := func(t *ir.Type) (*ir.Type, error) {
 			if s.RecursiveTo(t) {
 				switch {
 				case v.OnlyOptional():
-					return ir.Pointer(t, ir.NilOptional)
+					return ir.Pointer(t, ir.NilOptional), nil
 				case v.OnlyNullable():
-					return ir.Pointer(t, ir.NilNull)
+					return ir.Pointer(t, ir.NilNull), nil
 				case v.NullableOptional():
-					return ir.Pointer(g.boxType(ir.GenericVariant{
+					t, err := boxType(ctx, ir.GenericVariant{
 						Optional: true,
-					}, t), ir.NilNull)
+					}, t)
+					if err != nil {
+						return nil, err
+					}
+
+					return ir.Pointer(t, ir.NilNull), nil
 				default:
 					// Required.
 					panic(fmt.Sprintf("recursion: %s.%s", s.Name, field.Name))
 				}
 			}
-			if v.Any() {
-				return g.boxType(v, t)
-			}
-			return t
+			return boxType(ctx, v, t)
 		}(field.Type)
+		if err != nil {
+			return errors.Wrapf(err, "wrap field %q with generic type", field.Name)
+		}
+
+		field.Type = boxedT
 	}
+
+	return nil
 }
 
-func (g *Generator) boxType(v ir.GenericVariant, t *ir.Type) *ir.Type {
+func boxType(ctx *genctx, v ir.GenericVariant, t *ir.Type) (*ir.Type, error) {
 	// Do not wrap if
 	//  * type is Any
 	//  * type is Stream
 	//  * type is not nullable and not optional
 	if t.IsAny() || t.IsStream() || !v.Any() {
-		return t
+		return t, nil
 	}
 
 	if t.IsArray() || t.Primitive == ir.ByteSlice {
@@ -67,32 +69,38 @@ func (g *Generator) boxType(v ir.GenericVariant, t *ir.Type) *ir.Type {
 		case v.OnlyNullable():
 			t.NilSemantic = ir.NilNull
 		default:
-			t = ir.Generic(genericPostfix(t),
-				t, v,
-			)
-			g.saveType(t)
+			t = ir.Generic(genericPostfix(t), t, v)
+			if err := ctx.saveType(t); err != nil {
+				return nil, err
+			}
 		}
 
-		return t
+		return t, nil
 	}
 
 	if t.CanGeneric() {
 		t = ir.Generic(genericPostfix(t), t, v)
-		g.saveType(t)
-		return t
+		if err := ctx.saveType(t); err != nil {
+			return nil, err
+		}
+
+		return t, nil
 	}
 
 	switch {
 	case v.OnlyOptional():
-		return t.Pointer(ir.NilOptional)
+		return t.Pointer(ir.NilOptional), nil
 	case v.OnlyNullable():
-		return t.Pointer(ir.NilNull)
+		return t.Pointer(ir.NilNull), nil
 	default:
 		t = ir.Generic(genericPostfix(t),
 			t.Pointer(ir.NilNull), ir.GenericVariant{Optional: true},
 		)
-		g.saveType(t)
-		return t
+		if err := ctx.saveType(t); err != nil {
+			return nil, err
+		}
+
+		return t, nil
 	}
 }
 

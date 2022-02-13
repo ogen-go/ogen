@@ -9,7 +9,7 @@ import (
 	"github.com/ogen-go/ogen/internal/oas"
 )
 
-func (g *Generator) generateOperation(spec *oas.Operation) (_ *ir.Operation, err error) {
+func (g *Generator) generateOperation(ctx *genctx, spec *oas.Operation) (_ *ir.Operation, err error) {
 	op := &ir.Operation{
 		Name:        pascal(spec.Path.String(), strings.ToLower(spec.HTTPMethod)),
 		Description: spec.Description,
@@ -20,7 +20,7 @@ func (g *Generator) generateOperation(spec *oas.Operation) (_ *ir.Operation, err
 	}
 
 	// Convert []oas.Parameter to []*ir.Parameter.
-	op.Params, err = g.generateParameters(op.Name, spec.Parameters)
+	op.Params, err = g.generateParameters(ctx.appendPath("parameters"), op.Name, spec.Parameters)
 	if err != nil {
 		return nil, errors.Wrap(err, "parameters")
 	}
@@ -29,13 +29,13 @@ func (g *Generator) generateOperation(spec *oas.Operation) (_ *ir.Operation, err
 	op.PathParts = convertPathParts(op.Spec.Path, op.PathParams())
 
 	if spec.RequestBody != nil {
-		op.Request, err = g.generateRequest(op.Name, spec.RequestBody)
+		op.Request, err = g.generateRequest(ctx.appendPath("requestBody"), op.Name, spec.RequestBody)
 		if err != nil {
 			return nil, errors.Wrap(err, "requestBody")
 		}
 	}
 
-	op.Response, err = g.generateResponses(op.Name, spec.Responses)
+	op.Response, err = g.generateResponses(ctx.appendPath("responses"), op.Name, spec.Responses)
 	if err != nil {
 		return nil, errors.Wrap(err, "responses")
 	}

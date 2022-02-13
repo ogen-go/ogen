@@ -12,9 +12,9 @@ import (
 )
 
 type schemaGen struct {
-	side       []*ir.Type
-	localRefs  map[string]*ir.Type
-	globalRefs map[string]*ir.Type
+	side      []*ir.Type
+	localRefs map[string]*ir.Type
+	lookupRef func(ref string) (*ir.Type, bool)
 }
 
 func variantFieldName(t *ir.Type) string {
@@ -43,7 +43,7 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 	}
 
 	if ref := schema.Ref; ref != "" {
-		if t, ok := g.globalRefs[ref]; ok {
+		if t, ok := g.lookupRef(ref); ok {
 			return t, nil
 		}
 		if t, ok := g.localRefs[ref]; ok {
