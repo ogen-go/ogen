@@ -5637,7 +5637,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_any":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				s.RequiredAny = jx.Raw(v)
 				if err != nil {
 					return err
@@ -5652,7 +5652,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				s.RequiredArrayAny = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -6167,7 +6167,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 					elem = make([]jx.Raw, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem jx.Raw
-						v, err := d.Raw()
+						v, err := d.RawAppend(nil)
 						elemElem = jx.Raw(v)
 						if err != nil {
 							return err
@@ -7136,7 +7136,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_any":
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				s.OptionalAny = jx.Raw(v)
 				if err != nil {
 					return err
@@ -7150,7 +7150,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				s.OptionalArrayAny = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -7638,7 +7638,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 					elem = make([]jx.Raw, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem jx.Raw
-						v, err := d.Raw()
+						v, err := d.RawAppend(nil)
 						elemElem = jx.Raw(v)
 						if err != nil {
 							return err
@@ -12360,7 +12360,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_any":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				s.RequiredAny = jx.Raw(v)
 				if err != nil {
 					return err
@@ -12375,7 +12375,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				s.RequiredArrayAny = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -12890,7 +12890,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 					elem = make([]jx.Raw, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem jx.Raw
-						v, err := d.Raw()
+						v, err := d.RawAppend(nil)
 						elemElem = jx.Raw(v)
 						if err != nil {
 							return err
@@ -13859,7 +13859,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_any":
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				s.OptionalAny = jx.Raw(v)
 				if err != nil {
 					return err
@@ -13873,7 +13873,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				s.OptionalArrayAny = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -14361,7 +14361,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 					elem = make([]jx.Raw, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem jx.Raw
-						v, err := d.Raw()
+						v, err := d.RawAppend(nil)
 						elemElem = jx.Raw(v)
 						if err != nil {
 							return err
@@ -19083,7 +19083,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_any":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				s.RequiredAny = jx.Raw(v)
 				if err != nil {
 					return err
@@ -19098,7 +19098,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				s.RequiredArrayAny = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -19613,7 +19613,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 					elem = make([]jx.Raw, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem jx.Raw
-						v, err := d.Raw()
+						v, err := d.RawAppend(nil)
 						elemElem = jx.Raw(v)
 						if err != nil {
 							return err
@@ -20582,7 +20582,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_any":
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				s.OptionalAny = jx.Raw(v)
 				if err != nil {
 					return err
@@ -20596,7 +20596,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				s.OptionalArrayAny = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -21084,7 +21084,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 					elem = make([]jx.Raw, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem jx.Raw
-						v, err := d.Raw()
+						v, err := d.RawAppend(nil)
 						elemElem = jx.Raw(v)
 						if err != nil {
 							return err

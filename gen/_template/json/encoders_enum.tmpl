@@ -26,7 +26,7 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 		*s = {{ $.Name }}(v)
 	}
 	{{- else }}
-	v, err := d.{{ $.JSON.Fn }}()
+	v, err := d.{{ $.JSON.Decode }}
 	if err != nil {
 		return err
 	}

@@ -1025,7 +1025,7 @@ func (s ActionsCancelWorkflowRunAccepted) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -1387,7 +1387,7 @@ func (s ActionsCreateOrUpdateRepoSecretCreated) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -4101,7 +4101,7 @@ func (s ActionsReRunWorkflowCreated) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -4287,7 +4287,7 @@ func (s ActionsRetryWorkflowCreated) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -12104,7 +12104,7 @@ func (s *AuditLogEvent) Decode(d *jx.Decoder) error {
 				s.Config = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -12123,7 +12123,7 @@ func (s *AuditLogEvent) Decode(d *jx.Decoder) error {
 				s.ConfigWas = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -12192,7 +12192,7 @@ func (s *AuditLogEvent) Decode(d *jx.Decoder) error {
 				s.Events = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -12211,7 +12211,7 @@ func (s *AuditLogEvent) Decode(d *jx.Decoder) error {
 				s.EventsWere = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -12527,7 +12527,7 @@ func (s AuditLogEventData) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -14063,7 +14063,7 @@ func (s *BaseGist) Decode(d *jx.Decoder) error {
 				s.Forks = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -14082,7 +14082,7 @@ func (s *BaseGist) Decode(d *jx.Decoder) error {
 				s.History = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -20327,7 +20327,7 @@ func (s ChecksRerequestSuiteCreated) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -21206,7 +21206,7 @@ func (s *CodeScanningAlert) Decode(d *jx.Decoder) error {
 			}
 		case "instances":
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				s.Instances = jx.Raw(v)
 				if err != nil {
 					return err
@@ -31766,7 +31766,7 @@ func (s DeploymentPayload0) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -33059,7 +33059,7 @@ func (s EmptyObject) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -36240,7 +36240,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue)
 		s.ArrayAny = make([]jx.Raw, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem jx.Raw
-			v, err := d.Raw()
+			v, err := d.RawAppend(nil)
 			elem = jx.Raw(v)
 			if err != nil {
 				return err
@@ -43760,7 +43760,7 @@ func (s *GistSimpleForkOf) Decode(d *jx.Decoder) error {
 				s.Forks = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -43779,7 +43779,7 @@ func (s *GistSimpleForkOf) Decode(d *jx.Decoder) error {
 				s.History = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -44219,7 +44219,7 @@ func (s GistsCheckIsStarredNotFound) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -50018,7 +50018,7 @@ func (s *GpgKeySubkeysItem) Decode(d *jx.Decoder) error {
 				s.Emails = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -50037,7 +50037,7 @@ func (s *GpgKeySubkeysItem) Decode(d *jx.Decoder) error {
 				s.Subkeys = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -51702,7 +51702,7 @@ func (s HookDeliveryRequestHeaders) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -51757,7 +51757,7 @@ func (s HookDeliveryRequestPayload) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -51914,7 +51914,7 @@ func (s HookDeliveryResponseHeaders) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -66650,7 +66650,7 @@ func (s *Migration) Decode(d *jx.Decoder) error {
 				s.Exclude = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -67214,7 +67214,7 @@ func (s *MigrationsMapCommitAuthorReq) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -94884,7 +94884,7 @@ func (s OrgsConvertMemberToOutsideCollaboratorAccepted) Decode(d *jx.Decoder) er
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -96569,7 +96569,7 @@ func (s *OrgsUpdateWebhookConfigForOrgReq) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -97658,7 +97658,7 @@ func (s *PackageVersionMetadataContainer) Decode(d *jx.Decoder) error {
 				s.Tags = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -97770,7 +97770,7 @@ func (s *PackageVersionMetadataDocker) Decode(d *jx.Decoder) error {
 				s.Tag = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -100223,7 +100223,7 @@ func (s *PagesHTTPSCertificate) Decode(d *jx.Decoder) error {
 				s.Domains = make([]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem jx.Raw
-					v, err := d.Raw()
+					v, err := d.RawAppend(nil)
 					elem = jx.Raw(v)
 					if err != nil {
 						return err
@@ -106486,7 +106486,7 @@ func (s ProjectsMoveCardCreated) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -107161,7 +107161,7 @@ func (s ProjectsMoveColumnCreated) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -108412,7 +108412,7 @@ func (s *ProtectedBranchAllowDeletions) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -108529,7 +108529,7 @@ func (s *ProtectedBranchAllowForcePushes) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -108665,7 +108665,7 @@ func (s *ProtectedBranchEnforceAdmins) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -109139,7 +109139,7 @@ func (s *ProtectedBranchRequiredConversationResolution) Decode(d *jx.Decoder) er
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -109224,7 +109224,7 @@ func (s *ProtectedBranchRequiredLinearHistory) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -110527,7 +110527,7 @@ func (s *PublicUser) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -131888,7 +131888,7 @@ func (s ReposCreateDeploymentReqPayload0) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -132323,7 +132323,7 @@ func (s ReposCreateDispatchEventReqClientPayload) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -134801,7 +134801,7 @@ func (s *ReposCreateWebhookReq) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -141817,7 +141817,7 @@ func (s *ReposUpdateWebhookConfigForRepoReq) Decode(d *jx.Decoder) error {
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
@@ -161966,7 +161966,7 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Decode(d *jx.Decoder) e
 		default:
 			var elem jx.Raw
 			if err := func() error {
-				v, err := d.Raw()
+				v, err := d.RawAppend(nil)
 				elem = jx.Raw(v)
 				if err != nil {
 					return err
