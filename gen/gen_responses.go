@@ -84,7 +84,9 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 
 	iface := ir.Interface(name)
 	iface.AddMethod(camel(name))
-	g.saveIface(iface)
+	if err := ctx.saveType(iface); err != nil {
+		return nil, errors.Wrap(err, "save interface type")
+	}
 	walkResponseTypes(result, func(resName string, t *ir.Type) *ir.Type {
 		if !t.CanHaveMethods() {
 			t = ir.Alias(pascal(opName, resName), t)

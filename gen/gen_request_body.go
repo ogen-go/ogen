@@ -19,7 +19,9 @@ func (g *Generator) generateRequest(ctx *genctx, opName string, body *oas.Reques
 	if len(contents) > 1 {
 		requestType = ir.Interface(name)
 		requestType.AddMethod(camel(name))
-		g.saveIface(requestType)
+		if err := ctx.saveType(requestType); err != nil {
+			return nil, errors.Wrap(err, "save interface type")
+		}
 	}
 
 	for contentType, t := range contents {

@@ -26,7 +26,7 @@ func newTStorage() *tstorage {
 }
 
 func (s *tstorage) saveType(t *ir.Type) error {
-	if !t.Is(ir.KindStruct, ir.KindMap, ir.KindEnum, ir.KindAlias, ir.KindGeneric, ir.KindSum, ir.KindStream) {
+	if !t.Is(ir.KindInterface, ir.KindStruct, ir.KindMap, ir.KindEnum, ir.KindAlias, ir.KindGeneric, ir.KindSum, ir.KindStream) {
 		panic(unreachable(t))
 	}
 

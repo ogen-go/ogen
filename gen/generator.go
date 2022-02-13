@@ -15,9 +15,8 @@ import (
 
 type Generator struct {
 	opt        Options
-	tstorage   *tstorage
-	interfaces map[string]*ir.Type
 	operations []*ir.Operation
+	tstorage   *tstorage
 	errType    *ir.StatusResponse
 	router     Router
 }
@@ -38,9 +37,8 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	}
 
 	g := &Generator{
-		opt:        opts,
-		interfaces: map[string]*ir.Type{},
-		tstorage:   newTStorage(),
+		opt:      opts,
+		tstorage: newTStorage(),
 	}
 
 	if err := g.makeIR(operations); err != nil {
