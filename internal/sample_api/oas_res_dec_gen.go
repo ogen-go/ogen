@@ -512,7 +512,7 @@ func decodePetFriendsNamesByIDResponse(resp *http.Response, span trace.Span) (re
 
 			var response []string
 			if err := func() error {
-				response = nil
+				response = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()

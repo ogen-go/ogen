@@ -350,7 +350,7 @@ func (s *Pets) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []Pet
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]Pet, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem Pet
 			if err := elem.Decode(d); err != nil {

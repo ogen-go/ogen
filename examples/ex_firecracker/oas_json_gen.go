@@ -1305,7 +1305,7 @@ func (s *FullVmConfiguration) Decode(d *jx.Decoder) error {
 			}
 		case "block_devices":
 			if err := func() error {
-				s.BlockDevices = nil
+				s.BlockDevices = make([]Drive, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Drive
 					if err := elem.Decode(d); err != nil {
@@ -1372,7 +1372,7 @@ func (s *FullVmConfiguration) Decode(d *jx.Decoder) error {
 			}
 		case "net_devices":
 			if err := func() error {
-				s.NetDevices = nil
+				s.NetDevices = make([]NetworkInterface, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem NetworkInterface
 					if err := elem.Decode(d); err != nil {

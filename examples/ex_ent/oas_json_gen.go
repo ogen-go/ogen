@@ -134,7 +134,7 @@ func (s *CreatePetCategoriesReq) Decode(d *jx.Decoder) error {
 			}
 		case "pets":
 			if err := func() error {
-				s.Pets = nil
+				s.Pets = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -331,7 +331,7 @@ func (s *CreatePetFriendsReq) Decode(d *jx.Decoder) error {
 			}
 		case "categories":
 			if err := func() error {
-				s.Categories = nil
+				s.Categories = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -362,7 +362,7 @@ func (s *CreatePetFriendsReq) Decode(d *jx.Decoder) error {
 			}
 		case "friends":
 			if err := func() error {
-				s.Friends = nil
+				s.Friends = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -509,7 +509,7 @@ func (s *CreatePetOwnerReq) Decode(d *jx.Decoder) error {
 			}
 		case "pets":
 			if err := func() error {
-				s.Pets = nil
+				s.Pets = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -706,7 +706,7 @@ func (s *CreatePetReq) Decode(d *jx.Decoder) error {
 			}
 		case "categories":
 			if err := func() error {
-				s.Categories = nil
+				s.Categories = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -737,7 +737,7 @@ func (s *CreatePetReq) Decode(d *jx.Decoder) error {
 			}
 		case "friends":
 			if err := func() error {
-				s.Friends = nil
+				s.Friends = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -822,7 +822,7 @@ func (s *ListPetCategoriesOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []PetCategoriesList
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]PetCategoriesList, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem PetCategoriesList
 			if err := elem.Decode(d); err != nil {
@@ -866,7 +866,7 @@ func (s *ListPetFriendsOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []PetFriendsList
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]PetFriendsList, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem PetFriendsList
 			if err := elem.Decode(d); err != nil {
@@ -910,7 +910,7 @@ func (s *ListPetOKApplicationJSON) Decode(d *jx.Decoder) error {
 	}
 	var unwrapped []PetList
 	if err := func() error {
-		unwrapped = nil
+		unwrapped = make([]PetList, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem PetList
 			if err := elem.Decode(d); err != nil {
@@ -1329,7 +1329,7 @@ func (s *PetCreate) Decode(d *jx.Decoder) error {
 			}
 		case "categories":
 			if err := func() error {
-				s.Categories = nil
+				s.Categories = make([]PetCreateCategories, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PetCreateCategories
 					if err := elem.Decode(d); err != nil {
@@ -3169,7 +3169,7 @@ func (s *UpdatePetReq) Decode(d *jx.Decoder) error {
 			}
 		case "categories":
 			if err := func() error {
-				s.Categories = nil
+				s.Categories = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -3200,7 +3200,7 @@ func (s *UpdatePetReq) Decode(d *jx.Decoder) error {
 			}
 		case "friends":
 			if err := func() error {
-				s.Friends = nil
+				s.Friends = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()

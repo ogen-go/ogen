@@ -778,7 +778,7 @@ func (s *AnswerInlineQuery) Decode(d *jx.Decoder) error {
 		case "results":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Results = nil
+				s.Results = make([]InlineQueryResult, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem InlineQueryResult
 					if err := elem.Decode(d); err != nil {
@@ -1109,7 +1109,7 @@ func (s *AnswerShippingQuery) Decode(d *jx.Decoder) error {
 			}
 		case "shipping_options":
 			if err := func() error {
-				s.ShippingOptions = nil
+				s.ShippingOptions = make([]ShippingOption, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ShippingOption
 					if err := elem.Decode(d); err != nil {
@@ -6193,7 +6193,7 @@ func (s *CopyMessage) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -8012,7 +8012,7 @@ func (s *EditMessageCaption) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -8779,7 +8779,7 @@ func (s *EditMessageText) Decode(d *jx.Decoder) error {
 			}
 		case "entities":
 			if err := func() error {
-				s.Entities = nil
+				s.Entities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -9167,7 +9167,7 @@ func (s *EncryptedPassportElement) Decode(d *jx.Decoder) error {
 			}
 		case "files":
 			if err := func() error {
-				s.Files = nil
+				s.Files = make([]PassportFile, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PassportFile
 					if err := elem.Decode(d); err != nil {
@@ -9214,7 +9214,7 @@ func (s *EncryptedPassportElement) Decode(d *jx.Decoder) error {
 			}
 		case "translation":
 			if err := func() error {
-				s.Translation = nil
+				s.Translation = make([]PassportFile, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PassportFile
 					if err := elem.Decode(d); err != nil {
@@ -10105,7 +10105,7 @@ func (s *Game) Decode(d *jx.Decoder) error {
 		case "photo":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Photo = nil
+				s.Photo = make([]PhotoSize, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PhotoSize
 					if err := elem.Decode(d); err != nil {
@@ -10132,7 +10132,7 @@ func (s *Game) Decode(d *jx.Decoder) error {
 			}
 		case "text_entities":
 			if err := func() error {
-				s.TextEntities = nil
+				s.TextEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -11198,7 +11198,7 @@ func (s *GetUpdates) Decode(d *jx.Decoder) error {
 			}
 		case "allowed_updates":
 			if err := func() error {
-				s.AllowedUpdates = nil
+				s.AllowedUpdates = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -11690,10 +11690,10 @@ func (s *InlineKeyboardMarkup) Decode(d *jx.Decoder) error {
 		case "inline_keyboard":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.InlineKeyboard = nil
+				s.InlineKeyboard = make([][]InlineKeyboardButton, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []InlineKeyboardButton
-					elem = nil
+					elem = make([]InlineKeyboardButton, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem InlineKeyboardButton
 						if err := elemElem.Decode(d); err != nil {
@@ -12669,7 +12669,7 @@ func (s *InlineQueryResultAudio) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -12935,7 +12935,7 @@ func (s *InlineQueryResultCachedAudio) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -13219,7 +13219,7 @@ func (s *InlineQueryResultCachedDocument) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -13485,7 +13485,7 @@ func (s *InlineQueryResultCachedGif) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -13751,7 +13751,7 @@ func (s *InlineQueryResultCachedMpeg4Gif) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -14037,7 +14037,7 @@ func (s *InlineQueryResultCachedPhoto) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -14488,7 +14488,7 @@ func (s *InlineQueryResultCachedVideo) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -14753,7 +14753,7 @@ func (s *InlineQueryResultCachedVoice) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -15339,7 +15339,7 @@ func (s *InlineQueryResultDocument) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -15914,7 +15914,7 @@ func (s *InlineQueryResultGif) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -16624,7 +16624,7 @@ func (s *InlineQueryResultMpeg4Gif) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -16969,7 +16969,7 @@ func (s *InlineQueryResultPhoto) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -17676,7 +17676,7 @@ func (s *InlineQueryResultVideo) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -17991,7 +17991,7 @@ func (s *InlineQueryResultVoice) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -18520,7 +18520,7 @@ func (s *InputInvoiceMessageContent) Decode(d *jx.Decoder) error {
 		case "prices":
 			requiredBitSet[0] |= 1 << 5
 			if err := func() error {
-				s.Prices = nil
+				s.Prices = make([]LabeledPrice, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem LabeledPrice
 					if err := elem.Decode(d); err != nil {
@@ -18547,7 +18547,7 @@ func (s *InputInvoiceMessageContent) Decode(d *jx.Decoder) error {
 			}
 		case "suggested_tip_amounts":
 			if err := func() error {
-				s.SuggestedTipAmounts = nil
+				s.SuggestedTipAmounts = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -19187,7 +19187,7 @@ func (s *InputMediaAnimation) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -19454,7 +19454,7 @@ func (s *InputMediaAudio) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -19701,7 +19701,7 @@ func (s *InputMediaDocument) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -19897,7 +19897,7 @@ func (s *InputMediaPhoto) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -20143,7 +20143,7 @@ func (s *InputMediaVideo) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -20517,7 +20517,7 @@ func (s *InputTextMessageContent) Decode(d *jx.Decoder) error {
 			}
 		case "entities":
 			if err := func() error {
-				s.Entities = nil
+				s.Entities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -22731,7 +22731,7 @@ func (s *Message) Decode(d *jx.Decoder) error {
 			}
 		case "entities":
 			if err := func() error {
-				s.Entities = nil
+				s.Entities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -22778,7 +22778,7 @@ func (s *Message) Decode(d *jx.Decoder) error {
 			}
 		case "photo":
 			if err := func() error {
-				s.Photo = nil
+				s.Photo = make([]PhotoSize, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PhotoSize
 					if err := elem.Decode(d); err != nil {
@@ -22845,7 +22845,7 @@ func (s *Message) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -22922,7 +22922,7 @@ func (s *Message) Decode(d *jx.Decoder) error {
 			}
 		case "new_chat_members":
 			if err := func() error {
-				s.NewChatMembers = nil
+				s.NewChatMembers = make([]User, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem User
 					if err := elem.Decode(d); err != nil {
@@ -22959,7 +22959,7 @@ func (s *Message) Decode(d *jx.Decoder) error {
 			}
 		case "new_chat_photo":
 			if err := func() error {
-				s.NewChatPhoto = nil
+				s.NewChatPhoto = make([]PhotoSize, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PhotoSize
 					if err := elem.Decode(d); err != nil {
@@ -25783,7 +25783,7 @@ func (s *PassportData) Decode(d *jx.Decoder) error {
 		case "data":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Data = nil
+				s.Data = make([]EncryptedPassportElement, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem EncryptedPassportElement
 					if err := elem.Decode(d); err != nil {
@@ -26445,7 +26445,7 @@ func (s *PassportElementErrorFiles) Decode(d *jx.Decoder) error {
 		case "file_hashes":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.FileHashes = nil
+				s.FileHashes = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -27343,7 +27343,7 @@ func (s *PassportElementErrorTranslationFiles) Decode(d *jx.Decoder) error {
 		case "file_hashes":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.FileHashes = nil
+				s.FileHashes = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -28215,7 +28215,7 @@ func (s *Poll) Decode(d *jx.Decoder) error {
 		case "options":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Options = nil
+				s.Options = make([]PollOption, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PollOption
 					if err := elem.Decode(d); err != nil {
@@ -28310,7 +28310,7 @@ func (s *Poll) Decode(d *jx.Decoder) error {
 			}
 		case "explanation_entities":
 			if err := func() error {
-				s.ExplanationEntities = nil
+				s.ExplanationEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -28472,7 +28472,7 @@ func (s *PollAnswer) Decode(d *jx.Decoder) error {
 		case "option_ids":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.OptionIds = nil
+				s.OptionIds = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -29423,10 +29423,10 @@ func (s *ReplyKeyboardMarkup) Decode(d *jx.Decoder) error {
 		case "keyboard":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Keyboard = nil
+				s.Keyboard = make([][]KeyboardButton, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []KeyboardButton
-					elem = nil
+					elem = make([]KeyboardButton, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem KeyboardButton
 						if err := elemElem.Decode(d); err != nil {
@@ -30026,7 +30026,7 @@ func (s *ResultArrayOfBotCommand) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "result":
 			if err := func() error {
-				s.Result = nil
+				s.Result = make([]BotCommand, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem BotCommand
 					if err := elem.Decode(d); err != nil {
@@ -30156,7 +30156,7 @@ func (s *ResultArrayOfChatMember) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "result":
 			if err := func() error {
-				s.Result = nil
+				s.Result = make([]ChatMember, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem ChatMember
 					if err := elem.Decode(d); err != nil {
@@ -30286,7 +30286,7 @@ func (s *ResultArrayOfGameHighScore) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "result":
 			if err := func() error {
-				s.Result = nil
+				s.Result = make([]GameHighScore, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem GameHighScore
 					if err := elem.Decode(d); err != nil {
@@ -30416,7 +30416,7 @@ func (s *ResultArrayOfMessage) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "result":
 			if err := func() error {
-				s.Result = nil
+				s.Result = make([]Message, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Message
 					if err := elem.Decode(d); err != nil {
@@ -30546,7 +30546,7 @@ func (s *ResultArrayOfUpdate) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "result":
 			if err := func() error {
-				s.Result = nil
+				s.Result = make([]Update, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem Update
 					if err := elem.Decode(d); err != nil {
@@ -32297,7 +32297,7 @@ func (s *SendAnimation) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -32682,7 +32682,7 @@ func (s *SendAudio) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -33792,7 +33792,7 @@ func (s *SendDocument) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -34529,7 +34529,7 @@ func (s *SendInvoice) Decode(d *jx.Decoder) error {
 		case "prices":
 			requiredBitSet[0] |= 1 << 6
 			if err := func() error {
-				s.Prices = nil
+				s.Prices = make([]LabeledPrice, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem LabeledPrice
 					if err := elem.Decode(d); err != nil {
@@ -34556,7 +34556,7 @@ func (s *SendInvoice) Decode(d *jx.Decoder) error {
 			}
 		case "suggested_tip_amounts":
 			if err := func() error {
-				s.SuggestedTipAmounts = nil
+				s.SuggestedTipAmounts = make([]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem int
 					v, err := d.Int()
@@ -35248,7 +35248,7 @@ func (s *SendMediaGroup) Decode(d *jx.Decoder) error {
 		case "media":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Media = nil
+				s.Media = make([]SendMediaGroupMediaItem, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem SendMediaGroupMediaItem
 					if err := elem.Decode(d); err != nil {
@@ -35576,7 +35576,7 @@ func (s *SendMessage) Decode(d *jx.Decoder) error {
 			}
 		case "entities":
 			if err := func() error {
-				s.Entities = nil
+				s.Entities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -35931,7 +35931,7 @@ func (s *SendPhoto) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -36346,7 +36346,7 @@ func (s *SendPoll) Decode(d *jx.Decoder) error {
 		case "options":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Options = nil
+				s.Options = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -36425,7 +36425,7 @@ func (s *SendPoll) Decode(d *jx.Decoder) error {
 			}
 		case "explanation_entities":
 			if err := func() error {
-				s.ExplanationEntities = nil
+				s.ExplanationEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -37559,7 +37559,7 @@ func (s *SendVideo) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -38250,7 +38250,7 @@ func (s *SendVoice) Decode(d *jx.Decoder) error {
 			}
 		case "caption_entities":
 			if err := func() error {
-				s.CaptionEntities = nil
+				s.CaptionEntities = make([]MessageEntity, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem MessageEntity
 					if err := elem.Decode(d); err != nil {
@@ -39355,7 +39355,7 @@ func (s *SetMyCommands) Decode(d *jx.Decoder) error {
 		case "commands":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				s.Commands = nil
+				s.Commands = make([]BotCommand, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem BotCommand
 					if err := elem.Decode(d); err != nil {
@@ -39499,7 +39499,7 @@ func (s *SetPassportDataErrors) Decode(d *jx.Decoder) error {
 		case "errors":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Errors = nil
+				s.Errors = make([]PassportElementError, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem PassportElementError
 					if err := elem.Decode(d); err != nil {
@@ -39927,7 +39927,7 @@ func (s *SetWebhook) Decode(d *jx.Decoder) error {
 			}
 		case "allowed_updates":
 			if err := func() error {
-				s.AllowedUpdates = nil
+				s.AllowedUpdates = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()
@@ -40264,7 +40264,7 @@ func (s *ShippingOption) Decode(d *jx.Decoder) error {
 		case "prices":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				s.Prices = nil
+				s.Prices = make([]LabeledPrice, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem LabeledPrice
 					if err := elem.Decode(d); err != nil {
@@ -42406,10 +42406,10 @@ func (s *UserProfilePhotos) Decode(d *jx.Decoder) error {
 		case "photos":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				s.Photos = nil
+				s.Photos = make([][]PhotoSize, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem []PhotoSize
-					elem = nil
+					elem = make([]PhotoSize, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem PhotoSize
 						if err := elemElem.Decode(d); err != nil {
@@ -43403,7 +43403,7 @@ func (s *VoiceChatParticipantsInvited) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "users":
 			if err := func() error {
-				s.Users = nil
+				s.Users = make([]User, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem User
 					if err := elem.Decode(d); err != nil {
@@ -43733,7 +43733,7 @@ func (s *WebhookInfo) Decode(d *jx.Decoder) error {
 			}
 		case "allowed_updates":
 			if err := func() error {
-				s.AllowedUpdates = nil
+				s.AllowedUpdates = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem string
 					v, err := d.Str()

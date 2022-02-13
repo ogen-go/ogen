@@ -121,7 +121,7 @@ func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, 
 			if err := func() error {
 				{
 					var unwrapped []SearchResponse
-					unwrapped = nil
+					unwrapped = make([]SearchResponse, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SearchResponse
 						if err := elem.Decode(d); err != nil {
@@ -169,7 +169,7 @@ func decodeSearchByTagIDResponse(resp *http.Response, span trace.Span) (res Sear
 			if err := func() error {
 				{
 					var unwrapped []SearchResponse
-					unwrapped = nil
+					unwrapped = make([]SearchResponse, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elem SearchResponse
 						if err := elem.Decode(d); err != nil {
