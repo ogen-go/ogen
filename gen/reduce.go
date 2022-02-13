@@ -48,7 +48,7 @@ func (g *Generator) reduceDefault(ops []*oas.Operation) error {
 		return errors.Wrap(err, "too complicated to reduce default error")
 	}
 
-	g.errType, err = g.wrapResponseStatusCode(ctx, "", resp)
+	g.errType, err = wrapResponseStatusCode(ctx, "", resp)
 	if err != nil {
 		return errors.Wrap(err, "wrap default response with status code struct")
 	}

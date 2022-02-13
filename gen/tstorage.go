@@ -11,6 +11,9 @@ type tstorage struct {
 	types     map[string]*ir.Type           // Key: type name
 	responses map[string]*ir.StatusResponse // Key: ref
 
+	// w means 'wrapped'.
+	// These maps stores references to types and responses
+	// that we wrapped in a [T]StatusCode struct.
 	wtypes     map[string]*ir.Type           // Key: ref
 	wresponses map[string]*ir.StatusResponse // Key: ref
 }
@@ -66,6 +69,37 @@ func (s *tstorage) saveRef(ref string, t *ir.Type) error {
 
 	s.refs[ref] = t
 	s.types[t.Name] = t
+	return nil
+}
+
+func (s *tstorage) saveResponse(ref string, r *ir.StatusResponse) error {
+	if _, ok := s.responses[ref]; ok {
+		return errors.Errorf("reference conflict: %q", ref)
+	}
+
+	s.responses[ref] = r
+	return nil
+}
+
+func (s *tstorage) saveWType(ref string, t *ir.Type) error {
+	if _, ok := s.wtypes[ref]; ok {
+		return errors.Errorf("reference conflict: %q", ref)
+	}
+	if _, ok := s.types[t.Name]; ok {
+		return errors.Errorf("reference %q type name conflict: %q", ref, t.Name)
+	}
+
+	s.wtypes[ref] = t
+	s.types[t.Name] = t
+	return nil
+}
+
+func (s *tstorage) saveWResponse(ref string, r *ir.StatusResponse) error {
+	if _, ok := s.wresponses[ref]; ok {
+		return errors.Errorf("reference conflict: %q", ref)
+	}
+
+	s.wresponses[ref] = r
 	return nil
 }
 

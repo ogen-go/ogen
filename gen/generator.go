@@ -44,15 +44,11 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	if err := g.makeIR(operations); err != nil {
 		return nil, errors.Wrap(err, "make ir")
 	}
-	for _, w := range g.tstorage.wtypes {
-		if err := g.tstorage.saveType(w); err != nil {
-			panic("unreachable")
-		}
-	}
 
 	if err := g.route(); err != nil {
 		return nil, errors.Wrap(err, "route")
 	}
+
 	return g, nil
 }
 
