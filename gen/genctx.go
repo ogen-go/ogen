@@ -10,14 +10,6 @@ type genctx struct {
 	local  *tstorage
 }
 
-func newGenCtx(path ...string) *genctx {
-	return &genctx{
-		path:   path,
-		global: newTStorage(),
-		local:  newTStorage(),
-	}
-}
-
 func (g *genctx) appendPath(v ...string) *genctx {
 	plen, pcap := len(g.path), len(g.path)
 	newPath := append(g.path[:plen:pcap], v...)
