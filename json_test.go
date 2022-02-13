@@ -169,26 +169,38 @@ func TestJSONArray(t *testing.T) {
 		}{
 			{
 				`{"required": [], "nullable_required": []}`,
-				api.ArrayTest{},
+				api.ArrayTest{
+					Required:         []string{},
+					NullableRequired: []string{},
+				},
 				false,
 			},
 			{
 				`{"required": [], "optional": [], "nullable_required": [], "nullable_optional": []}`,
 				api.ArrayTest{
+					Required:         []string{},
+					NullableRequired: []string{},
+					Optional:         []string{},
 					NullableOptional: api.OptNilStringArray{
-						Set: true,
+						Set:   true,
+						Value: []string{},
 					},
 				},
 				false,
 			},
 			{
 				`{"required": [], "nullable_required": null}`,
-				api.ArrayTest{},
+				api.ArrayTest{
+					Required:         []string{},
+					NullableRequired: nil,
+				},
 				false,
 			},
 			{
 				`{"required": [], "nullable_required": null, "nullable_optional": null}`,
 				api.ArrayTest{
+					Required:         []string{},
+					NullableRequired: nil,
 					NullableOptional: api.OptNilStringArray{
 						Set:  true,
 						Null: true,
