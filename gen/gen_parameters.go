@@ -50,7 +50,7 @@ func (g *Generator) generateParameters(ctx *genctx, opName string, params []*oas
 
 		t.AddFeature("uri")
 		result = append(result, &ir.Parameter{
-			Name: pascal(p.Name),
+			Name: pascalSpecial(p.Name),
 			Type: t,
 			Spec: p,
 		})
@@ -65,11 +65,18 @@ func (g *Generator) generateParameters(ctx *genctx, opName string, params []*oas
 			}
 
 			if p.Name == pp.Name {
-				if p.Spec.In == pp.Spec.In {
-					panic(unreachable(pp.Name))
+				inEqual := p.Spec.In == pp.Spec.In
+				specNameEqual := p.Spec.Name == pp.Spec.Name
+				switch {
+				case inEqual && specNameEqual:
+					panic(unreachable(pp.Spec.Name))
+				case inEqual:
+					p.Name = pascalSpecial(p.Spec.Name)
+					pp.Name = pascalSpecial(pp.Spec.Name)
+				case specNameEqual:
+					p.Name = string(p.Spec.In) + p.Name
+					pp.Name = string(pp.Spec.In) + pp.Name
 				}
-				p.Name = string(p.Spec.In) + p.Name
-				pp.Name = string(pp.Spec.In) + pp.Name
 			}
 		}
 	}
