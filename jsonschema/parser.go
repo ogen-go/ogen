@@ -26,7 +26,7 @@ func NewParser(s Settings) *Parser {
 }
 
 func (p *Parser) Parse(schema *RawSchema) (*Schema, error) {
-	return p.parse(schema, nil)
+	return p.parse(schema, resolveCtx{})
 }
 
 func (p *Parser) parse(schema *RawSchema, ctx resolveCtx) (*Schema, error) {
@@ -298,12 +298,9 @@ func (p *Parser) resolve(ref string, ctx resolveCtx) (*Schema, error) {
 	if s, ok := p.refcache[ref]; ok {
 		return s, nil
 	}
+
 	if _, ok := ctx[ref]; ok {
 		return nil, errors.Errorf("infinite recursion: %q", ref)
-	}
-
-	if ctx == nil {
-		ctx = resolveCtx{}
 	}
 	ctx[ref] = struct{}{}
 
