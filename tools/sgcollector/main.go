@@ -56,9 +56,10 @@ fragment SearchResultsAlertFields on SearchResults {
 
 func run(ctx context.Context) error {
 	var (
-		output = flag.String("output", "./corpus", "path to output corpus")
-		clean  = flag.Bool("clean", false, "Clean generated files before generation")
-		q      = flag.String("query", "", "Sourcegraph query")
+		output       = flag.String("output", "./corpus", "path to output corpus")
+		clean        = flag.Bool("clean", false, "Clean generated files before generation")
+		generateYaml = flag.Bool("yaml", false, "Query yaml files")
+		q            = flag.String("query", "", "Sourcegraph query")
 	)
 	flag.Parse()
 
@@ -70,6 +71,9 @@ func run(ctx context.Context) error {
 			`(openapi|"openapi"):\s(3|"3) file:.*\.yml -file:(^|/)vendor/ count:20000`,
 			`(openapi|"openapi"):\s(3|"3) file:.*\.yaml -file:(^|/)vendor/ count:20000`,
 			`"openapi":\s(3|"3) file:.*\.json -file:(^|/)vendor/ count:20000`,
+		}
+		if !(*generateYaml) {
+			queries = queries[2:]
 		}
 	}
 
