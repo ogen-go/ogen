@@ -62,7 +62,7 @@ type Schema struct {
 }
 
 func (s *Schema) AddExample(r json.RawMessage) {
-	if len(r) > 0 {
+	if s != nil && len(r) > 0 {
 		s.Examples = append(s.Examples, r)
 	}
 }
