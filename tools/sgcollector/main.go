@@ -78,7 +78,7 @@ func run(ctx context.Context) error {
 		links     = make(chan FileMatch, workers)
 		reporters = Reporters{}
 	)
-	reporters.init()
+	reporters.init(workers)
 
 	g, ctx := errgroup.WithContext(ctx)
 	g.Go(func() error {

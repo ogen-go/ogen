@@ -25,13 +25,13 @@ type Reporters struct {
 	Crash       chan Report
 }
 
-func (r *Reporters) init() {
-	r.InvalidJSON = make(chan Report)
-	r.Parse = make(chan Report)
-	r.Build = make(chan Report)
-	r.Template = make(chan Report)
-	r.Format = make(chan Report)
-	r.Crash = make(chan Report)
+func (r *Reporters) init(buf int) {
+	r.InvalidJSON = make(chan Report, buf)
+	r.Parse = make(chan Report, buf)
+	r.Build = make(chan Report, buf)
+	r.Template = make(chan Report, buf)
+	r.Format = make(chan Report, buf)
+	r.Crash = make(chan Report, buf)
 }
 
 func (r *Reporters) close() {
