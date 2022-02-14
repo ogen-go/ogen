@@ -50,7 +50,7 @@ func (g *Generator) generateParameters(ctx *genctx, opName string, params []*oas
 
 		t.AddFeature("uri")
 		result = append(result, &ir.Parameter{
-			Name: pascalSpecial(p.Name),
+			Name: pascal(p.Name),
 			Type: t,
 			Spec: p,
 		})
