@@ -61,7 +61,7 @@ func (s *skipBOMReader) Read(p []byte) (n int, err error) {
 
 func get(ctx context.Context, s Schema) error {
 	dir := filepath.Dir(s.File)
-	if err := os.MkdirAll(dir, 0o666); err != nil {
+	if err := os.MkdirAll(dir, 0o750); err != nil {
 		return errors.Wrap(err, "mkdir")
 	}
 

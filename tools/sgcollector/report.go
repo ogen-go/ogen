@@ -60,7 +60,7 @@ func (r *Reporters) spawn(ctx context.Context, clean bool, path string) error {
 			return err
 		}
 	}
-	if err := os.MkdirAll(path, 0o666); err != nil {
+	if err := os.MkdirAll(path, 0o750); err != nil {
 		return err
 	}
 
@@ -79,7 +79,7 @@ func (r *Reporters) spawn(ctx context.Context, clean bool, path string) error {
 }
 
 func schemasWriter(ctx context.Context, path string, r <-chan Report) error {
-	if err := os.MkdirAll(path, 0o666); err != nil {
+	if err := os.MkdirAll(path, 0o750); err != nil {
 		return err
 	}
 	i := 0
@@ -98,7 +98,7 @@ func schemasWriter(ctx context.Context, path string, r <-chan Report) error {
 			}
 
 			writePath := filepath.Join(path, fmt.Sprintf("%d.json", i))
-			if err := os.WriteFile(writePath, data, 0o666); err != nil {
+			if err := os.WriteFile(writePath, data, 0o750); err != nil {
 				return err
 			}
 			i++
