@@ -154,6 +154,28 @@ func TestSchemaRecursive(t *testing.T) {
 	require.Equal(t, pet, out)
 }
 
+func TestSchemaInfiniteRecursion(t *testing.T) {
+	testCases := []RawSchema{
+		{
+			Type: "object",
+			Ref:  "#/components/schemas/Type",
+		},
+	}
+
+	for _, cse := range testCases {
+		components := components{
+			"Type": &cse,
+		}
+		parser := NewParser(Settings{
+			Resolver: components,
+		})
+		_, err := parser.Parse(&RawSchema{
+			Ref: "#/components/schemas/Type",
+		})
+		require.Error(t, err)
+	}
+}
+
 func TestSchemaSideEffects(t *testing.T) {
 	expectSide := []*Schema{
 		{

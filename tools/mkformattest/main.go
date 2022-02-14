@@ -195,7 +195,7 @@ func generateSpec() *ogen.Spec {
 }
 
 func run() error {
-	output := flag.String("output", "./_testdata/test_format.json", "path to output file")
+	output := flag.String("output", "./_testdata/positive/test_format.json", "path to output file")
 	flag.Parse()
 
 	spec := generateSpec()

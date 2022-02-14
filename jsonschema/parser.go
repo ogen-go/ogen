@@ -26,13 +26,17 @@ func NewParser(s Settings) *Parser {
 }
 
 func (p *Parser) Parse(schema *RawSchema) (*Schema, error) {
-	return p.parse(schema, func(s *Schema) *Schema {
+	return p.parse(schema, nil)
+}
+
+func (p *Parser) parse(schema *RawSchema, ctx resolveCtx) (*Schema, error) {
+	return p.parse1(schema, ctx, func(s *Schema) *Schema {
 		return p.extendInfo(schema, s)
 	})
 }
 
-func (p *Parser) parse(schema *RawSchema, hook func(*Schema) *Schema) (*Schema, error) {
-	s, err := p.parseSchema(schema, hook)
+func (p *Parser) parse1(schema *RawSchema, ctx resolveCtx, hook func(*Schema) *Schema) (*Schema, error) {
+	s, err := p.parseSchema(schema, ctx, hook)
 	if err != nil {
 		return nil, errors.Wrap(err, "parse schema")
 	}
@@ -59,13 +63,13 @@ func (p *Parser) parse(schema *RawSchema, hook func(*Schema) *Schema) (*Schema, 
 	return s, nil
 }
 
-func (p *Parser) parseSchema(schema *RawSchema, hook func(*Schema) *Schema) (*Schema, error) {
+func (p *Parser) parseSchema(schema *RawSchema, ctx resolveCtx, hook func(*Schema) *Schema) (*Schema, error) {
 	if schema == nil {
 		return nil, nil
 	}
 
 	if ref := schema.Ref; ref != "" {
-		s, err := p.resolve(ref)
+		s, err := p.resolve(ref, ctx)
 		if err != nil {
 			return nil, errors.Wrapf(err, "reference %q", ref)
 		}
@@ -100,14 +104,14 @@ func (p *Parser) parseSchema(schema *RawSchema, hook func(*Schema) *Schema) (*Sc
 			Format: schema.Format,
 		}), nil
 	case len(schema.OneOf) > 0:
-		schemas, err := p.parseMany(schema.OneOf)
+		schemas, err := p.parseMany(schema.OneOf, ctx)
 		if err != nil {
 			return nil, errors.Wrapf(err, "oneOf")
 		}
 
 		return hook(&Schema{OneOf: schemas}), nil
 	case len(schema.AnyOf) > 0:
-		schemas, err := p.parseMany(schema.AnyOf)
+		schemas, err := p.parseMany(schema.AnyOf, ctx)
 		if err != nil {
 			return nil, errors.Wrapf(err, "anyOf")
 		}
@@ -133,7 +137,7 @@ func (p *Parser) parseSchema(schema *RawSchema, hook func(*Schema) *Schema) (*Sc
 			Pattern:   schema.Pattern,
 		}), nil
 	case len(schema.AllOf) > 0:
-		schemas, err := p.parseMany(schema.AllOf)
+		schemas, err := p.parseMany(schema.AllOf, ctx)
 		if err != nil {
 			return nil, errors.Wrapf(err, "allOf")
 		}
@@ -193,7 +197,7 @@ func (p *Parser) parseSchema(schema *RawSchema, hook func(*Schema) *Schema) (*Sc
 		if ap := schema.AdditionalProperties; ap != nil {
 			s.AdditionalProperties = true
 			if !ap.Bool {
-				item, err := p.Parse(&ap.Schema)
+				item, err := p.parse(&ap.Schema, ctx)
 				if err != nil {
 					return nil, errors.Wrapf(err, "additionalProperties")
 				}
@@ -202,7 +206,7 @@ func (p *Parser) parseSchema(schema *RawSchema, hook func(*Schema) *Schema) (*Sc
 		}
 
 		for _, propSpec := range schema.Properties {
-			prop, err := p.Parse(propSpec.Schema)
+			prop, err := p.parse(propSpec.Schema, ctx)
 			if err != nil {
 				return nil, errors.Wrapf(err, "%s", propSpec.Name)
 			}
@@ -232,7 +236,7 @@ func (p *Parser) parseSchema(schema *RawSchema, hook func(*Schema) *Schema) (*Sc
 			return nil, errors.New("array cannot contain properties")
 		}
 
-		item, err := p.Parse(schema.Items)
+		item, err := p.parse(schema.Items, ctx)
 		if err != nil {
 			return nil, errors.Wrap(err, "item")
 		}
@@ -274,10 +278,10 @@ func (p *Parser) parseSchema(schema *RawSchema, hook func(*Schema) *Schema) (*Sc
 	}
 }
 
-func (p *Parser) parseMany(schemas []*RawSchema) ([]*Schema, error) {
+func (p *Parser) parseMany(schemas []*RawSchema, ctx resolveCtx) ([]*Schema, error) {
 	result := make([]*Schema, 0, len(schemas))
 	for i, schema := range schemas {
-		s, err := p.Parse(schema)
+		s, err := p.parse(schema, ctx)
 		if err != nil {
 			return nil, errors.Wrapf(err, "[%d]", i)
 		}
@@ -288,17 +292,27 @@ func (p *Parser) parseMany(schemas []*RawSchema) ([]*Schema, error) {
 	return result, nil
 }
 
-func (p *Parser) resolve(ref string) (*Schema, error) {
+type resolveCtx map[string]struct{}
+
+func (p *Parser) resolve(ref string, ctx resolveCtx) (*Schema, error) {
 	if s, ok := p.refcache[ref]; ok {
 		return s, nil
 	}
+	if _, ok := ctx[ref]; ok {
+		return nil, errors.Errorf("infinite recursion: %q", ref)
+	}
+
+	if ctx == nil {
+		ctx = resolveCtx{}
+	}
+	ctx[ref] = struct{}{}
 
 	raw, err := p.resolver.ResolveReference(ref)
 	if err != nil {
 		return nil, errors.Wrapf(err, "resolve reference %q", ref)
 	}
 
-	return p.parse(raw, func(s *Schema) *Schema {
+	return p.parse1(raw, ctx, func(s *Schema) *Schema {
 		s.Ref = ref
 		p.refcache[ref] = s
 		return p.extendInfo(raw, s)
