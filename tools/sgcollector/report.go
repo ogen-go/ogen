@@ -20,23 +20,26 @@ type Reporters struct {
 	InvalidJSON chan Report
 	Parse       chan Report
 	Build       chan Report
-	Write       chan Report
+	Template    chan Report
+	Format      chan Report
 	Crash       chan Report
 }
 
 func (r *Reporters) init() {
+	r.InvalidJSON = make(chan Report)
 	r.Parse = make(chan Report)
 	r.Build = make(chan Report)
-	r.Write = make(chan Report)
+	r.Template = make(chan Report)
+	r.Format = make(chan Report)
 	r.Crash = make(chan Report)
-	r.InvalidJSON = make(chan Report)
 }
 
 func (r *Reporters) close() {
 	close(r.InvalidJSON)
 	close(r.Parse)
 	close(r.Build)
-	close(r.Write)
+	close(r.Template)
+	close(r.Format)
 	close(r.Crash)
 }
 
@@ -47,7 +50,8 @@ func (r *Reporters) spawn(ctx context.Context, path string) error {
 		"invalidJSON": r.InvalidJSON,
 		"parse":       r.Parse,
 		"build":       r.Build,
-		"write":       r.Write,
+		"template":    r.Template,
+		"format":      r.Format,
 		"crash":       r.Crash,
 	}
 

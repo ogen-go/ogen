@@ -13,13 +13,6 @@ import (
 	"github.com/ogen-go/ogen/gen"
 )
 
-type fmtFs struct{}
-
-func (n fmtFs) WriteFile(baseName string, source []byte) error {
-	_, err := format.Source(source)
-	return err
-}
-
 var (
 	errPanic       = errors.New("panic")
 	errInvalidJSON = errors.New("invalid json")
@@ -66,8 +59,10 @@ func worker(ctx context.Context, m FileMatch, r Reporters) (rErr error) {
 		switch pse.stage {
 		case "build":
 			ch = r.Build
-		case "write":
-			ch = r.Write
+		case "template":
+			ch = r.Template
+		case "format":
+			ch = r.Format
 		}
 
 		select {
@@ -89,8 +84,22 @@ type GenerateError struct {
 	err   error
 }
 
+func (p *GenerateError) Unwrap() error {
+	return p.err
+}
+
 func (p *GenerateError) Error() string {
 	return p.err.Error()
+}
+
+type fmtFs struct{}
+
+func (n fmtFs) WriteFile(baseName string, source []byte) error {
+	_, err := format.Source(source)
+	if err != nil {
+		return &GenerateError{stage: "format", err: err}
+	}
+	return nil
 }
 
 func generate(data []byte) error {
@@ -108,7 +117,11 @@ func generate(data []byte) error {
 	}
 
 	if err := g.WriteSource(fmtFs{}, "api"); err != nil {
-		return &GenerateError{stage: "write", err: err}
+		var pse *GenerateError
+		if errors.As(err, &pse) {
+			return err
+		}
+		return &GenerateError{stage: "template", err: err}
 	}
 	return nil
 }
