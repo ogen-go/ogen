@@ -22,11 +22,24 @@ var (
 
 var bomPrefix = []byte{0xEF, 0xBB, 0xBF}
 
+func convertYAMLtoJSON(data []byte) (_ []byte, rErr error) {
+	defer func() {
+		if rr := recover(); rr != nil {
+			rErr = errors.Errorf("panic: %#v", rr)
+		}
+	}()
+	j, err := yaml.YAMLToJSON(data)
+	if err != nil {
+		return nil, err
+	}
+	return j, nil
+}
+
 func worker(ctx context.Context, m FileMatch, r Reporters) (rErr error) {
 	data := bytes.TrimPrefix([]byte(m.File.Content), bomPrefix)
 
 	if strings.HasSuffix(m.File.Name, ".yml") || strings.HasSuffix(m.File.Name, ".yaml") {
-		j, err := yaml.YAMLToJSON(data)
+		j, err := convertYAMLtoJSON(data)
 		if err != nil {
 			select {
 			case <-ctx.Done():
