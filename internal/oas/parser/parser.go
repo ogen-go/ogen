@@ -55,6 +55,9 @@ func Parse(spec *ogen.Spec, inferTypes bool) ([]*oas.Operation, error) {
 func (p *parser) parse() error {
 	operationIDs := make(map[string]struct{})
 	for path, item := range p.spec.Paths {
+		if item == nil {
+			return errors.Errorf("%s: unexpected nil schema", path)
+		}
 		if item.Ref != "" {
 			return errors.Errorf("%s: referenced pathItem not supported", path)
 		}
