@@ -134,7 +134,7 @@ func (s {{ $t.Name }}) Validate() error {
 			{{- template "validate" field_elem $f }}
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
-				Name: {{ quote $f.Spec.Name }},
+				Name: {{ quote $f.ValidationName }},
 				Error: err,
 			})
 		}
@@ -154,7 +154,7 @@ func (s {{ $t.Name }}) Validate() error {
 			{{- template "validate" field_elem $f }}
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
-				Name: {{ quote $f.Spec.Name }},
+				Name: {{ quote $f.ValidationName }},
 				Error: err,
 			})
 		}

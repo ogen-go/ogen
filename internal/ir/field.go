@@ -25,6 +25,14 @@ type Field struct {
 	Spec *jsonschema.Property
 }
 
+// ValidationName returns name for FieldError.
+func (f Field) ValidationName() string {
+	if f.Spec != nil {
+		return f.Spec.Name
+	}
+	return f.Name
+}
+
 // Default returns default value of this field, if it is set.
 func (f Field) Default() Default {
 	var schema *jsonschema.Schema
