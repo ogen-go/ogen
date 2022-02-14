@@ -14,7 +14,7 @@ import (
 )
 
 const graphQLQuery = `query ($query: String!) {
-  search(query: $query, version: V2) {
+  search(query: $query, version: V2, patternType: regexp) {
     results {
       results {
         __typename
@@ -54,29 +54,26 @@ fragment SearchResultsAlertFields on SearchResults {
 }
 `
 
-const sgQuery = `"openapi": "3. file:.*\.json -file:(^|/)vendor/ count:20000`
-
 func run(ctx context.Context) error {
 	var (
 		output = flag.String("output", "./corpus", "path to output corpus")
 		clean  = flag.Bool("clean", false, "Clean generated files before generation")
-		q      = flag.String("query", sgQuery, "Sourcegraph query")
+		q      = flag.String("query", "", "Sourcegraph query")
 	)
 	flag.Parse()
 
-	resp, err := query(ctx, Query{
-		Query: graphQLQuery,
-		Variables: QueryVariables{
-			Query: *q,
-		},
-	})
-	if err != nil {
-		return errors.Wrap(err, "query")
+	var queries []string
+	if *q != "" {
+		queries = []string{*q}
+	} else {
+		queries = []string{
+			`(openapi|"openapi"):\s(3|"3) file:.*\.yml -file:(^|/)vendor/ count:20000`,
+			`(openapi|"openapi"):\s(3|"3) file:.*\.yaml -file:(^|/)vendor/ count:20000`,
+			`"openapi":\s(3|"3) file:.*\.json -file:(^|/)vendor/ count:20000`,
+		}
 	}
 
 	var (
-		results = resp.Data.Search.Results
-
 		workers   = runtime.GOMAXPROCS(-1)
 		links     = make(chan FileMatch, workers)
 		reporters = Reporters{}
@@ -87,11 +84,24 @@ func run(ctx context.Context) error {
 	g.Go(func() error {
 		defer close(links)
 
-		for _, m := range results.Matches {
-			select {
-			case <-ctx.Done():
-				return nil
-			case links <- m:
+		for i, q := range queries {
+			resp, err := query(ctx, Query{
+				Query: graphQLQuery,
+				Variables: QueryVariables{
+					Query: q,
+				},
+			})
+			if err != nil {
+				return errors.Wrapf(err, "query: %d", i)
+			}
+			results := resp.Data.Search.Results
+
+			for _, m := range results.Matches {
+				select {
+				case <-ctx.Done():
+					return nil
+				case links <- m:
+				}
 			}
 		}
 		return nil

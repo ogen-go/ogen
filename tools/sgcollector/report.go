@@ -17,6 +17,7 @@ type Report struct {
 }
 
 type Reporters struct {
+	InvalidYAML chan Report
 	InvalidJSON chan Report
 	Parse       chan Report
 	Build       chan Report
@@ -26,6 +27,7 @@ type Reporters struct {
 }
 
 func (r *Reporters) init(buf int) {
+	r.InvalidYAML = make(chan Report, buf)
 	r.InvalidJSON = make(chan Report, buf)
 	r.Parse = make(chan Report, buf)
 	r.Build = make(chan Report, buf)
@@ -35,6 +37,7 @@ func (r *Reporters) init(buf int) {
 }
 
 func (r *Reporters) close() {
+	close(r.InvalidYAML)
 	close(r.InvalidJSON)
 	close(r.Parse)
 	close(r.Build)
@@ -47,6 +50,7 @@ func (r *Reporters) spawn(ctx context.Context, clean bool, path string) error {
 	g, ctx := errgroup.WithContext(ctx)
 
 	mapping := map[string]chan Report{
+		"invalidYAML": r.InvalidYAML,
 		"invalidJSON": r.InvalidJSON,
 		"parse":       r.Parse,
 		"build":       r.Build,

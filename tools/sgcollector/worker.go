@@ -6,8 +6,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"go/format"
+	"strings"
 
 	"github.com/go-faster/errors"
+	"github.com/goccy/go-yaml"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
@@ -23,6 +25,21 @@ var bomPrefix = []byte{0xEF, 0xBB, 0xBF}
 func worker(ctx context.Context, m FileMatch, r Reporters) (rErr error) {
 	data := bytes.TrimPrefix([]byte(m.File.Content), bomPrefix)
 
+	if strings.HasSuffix(m.File.Name, ".yml") || strings.HasSuffix(m.File.Name, ".yaml") {
+		j, err := yaml.YAMLToJSON(data)
+		if err != nil {
+			select {
+			case <-ctx.Done():
+				return
+			case r.InvalidYAML <- Report{
+				File:  m,
+				Error: err.Error(),
+			}:
+				return errors.Wrap(err, "convert to JSON")
+			}
+		}
+		data = j
+	}
 	if !json.Valid(data) {
 		select {
 		case <-ctx.Done():
