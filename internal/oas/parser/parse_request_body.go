@@ -8,9 +8,9 @@ import (
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
-func (p *parser) parseRequestBody(body *ogen.RequestBody) (*oas.RequestBody, error) {
+func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx resolveCtx) (*oas.RequestBody, error) {
 	if ref := body.Ref; ref != "" {
-		reqBody, err := p.resolveRequestBody(ref)
+		reqBody, err := p.resolveRequestBody(ref, ctx)
 		if err != nil {
 			return nil, errors.Wrapf(err, "resolve %q reference", ref)
 		}

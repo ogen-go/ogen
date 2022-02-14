@@ -22,7 +22,7 @@ func (p *parser) parseParams(params []*ogen.Parameter) ([]*oas.Parameter, error)
 	)
 
 	for _, spec := range params {
-		param, err := p.parseParameter(spec)
+		param, err := p.parseParameter(spec, resolveCtx{})
 		if err != nil {
 			return nil, errors.Wrapf(err, "parse parameter %q", spec.Name)
 		}
@@ -42,9 +42,9 @@ func (p *parser) parseParams(params []*ogen.Parameter) ([]*oas.Parameter, error)
 	return result, nil
 }
 
-func (p *parser) parseParameter(param *ogen.Parameter) (*oas.Parameter, error) {
+func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*oas.Parameter, error) {
 	if ref := param.Ref; ref != "" {
-		parsed, err := p.resolveParameter(ref)
+		parsed, err := p.resolveParameter(ref, ctx)
 		if err != nil {
 			return nil, errors.Wrapf(err, "resolve %q reference", ref)
 		}

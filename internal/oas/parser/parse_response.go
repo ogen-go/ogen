@@ -22,7 +22,7 @@ func (p *parser) parseResponses(responses ogen.Responses) (map[string]*oas.Respo
 			return nil, errors.Wrap(err, status)
 		}
 
-		resp, err := p.parseResponse(response)
+		resp, err := p.parseResponse(response, resolveCtx{})
 		if err != nil {
 			return nil, errors.Wrap(err, status)
 		}
@@ -33,9 +33,9 @@ func (p *parser) parseResponses(responses ogen.Responses) (map[string]*oas.Respo
 	return result, nil
 }
 
-func (p *parser) parseResponse(resp *ogen.Response) (*oas.Response, error) {
+func (p *parser) parseResponse(resp *ogen.Response, ctx resolveCtx) (*oas.Response, error) {
 	if ref := resp.Ref; ref != "" {
-		resp, err := p.resolveResponse(ref)
+		resp, err := p.resolveResponse(ref, ctx)
 		if err != nil {
 			return nil, errors.Wrapf(err, "resolve %q reference", ref)
 		}

@@ -108,7 +108,7 @@ func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParam
 	}
 
 	if spec.RequestBody != nil {
-		op.RequestBody, err = p.parseRequestBody(spec.RequestBody)
+		op.RequestBody, err = p.parseRequestBody(spec.RequestBody, resolveCtx{})
 		if err != nil {
 			return nil, errors.Wrap(err, "requestBody")
 		}
