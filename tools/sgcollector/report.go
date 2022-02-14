@@ -43,7 +43,7 @@ func (r *Reporters) close() {
 	close(r.Crash)
 }
 
-func (r *Reporters) spawn(ctx context.Context, path string) error {
+func (r *Reporters) spawn(ctx context.Context, clean bool, path string) error {
 	g, ctx := errgroup.WithContext(ctx)
 
 	mapping := map[string]chan Report{
@@ -55,6 +55,11 @@ func (r *Reporters) spawn(ctx context.Context, path string) error {
 		"crash":       r.Crash,
 	}
 
+	if clean {
+		if err := os.RemoveAll(path); err != nil {
+			return err
+		}
+	}
 	if err := os.MkdirAll(path, 0o666); err != nil {
 		return err
 	}

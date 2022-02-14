@@ -57,8 +57,11 @@ fragment SearchResultsAlertFields on SearchResults {
 const sgQuery = `"openapi": "3. file:.*\.json -file:(^|/)vendor/ count:20000`
 
 func run(ctx context.Context) error {
-	output := flag.String("output", "./corpus", "path to output corpus")
-	q := flag.String("query", sgQuery, "Sourcegraph query")
+	var (
+		output = flag.String("output", "./corpus", "path to output corpus")
+		clean  = flag.Bool("clean", false, "Clean generated files before generation")
+		q      = flag.String("query", sgQuery, "Sourcegraph query")
+	)
 	flag.Parse()
 
 	resp, err := query(ctx, Query{
@@ -94,7 +97,7 @@ func run(ctx context.Context) error {
 		return nil
 	})
 	g.Go(func() error {
-		return reporters.spawn(ctx, *output)
+		return reporters.spawn(ctx, *clean, *output)
 	})
 
 	var workersWg sync.WaitGroup
