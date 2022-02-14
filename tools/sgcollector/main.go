@@ -2,11 +2,11 @@ package main
 
 import (
 	"context"
+	"flag"
 	"fmt"
 	"os"
 	"os/signal"
 	"runtime"
-	"strings"
 	"sync"
 
 	"github.com/go-faster/errors"
@@ -57,10 +57,14 @@ fragment SearchResultsAlertFields on SearchResults {
 const sgQuery = `"openapi": "3. file:.*\.json -file:(^|/)vendor/ count:20000`
 
 func run(ctx context.Context) error {
+	output := flag.String("output", "./corpus", "path to output corpus")
+	q := flag.String("query", sgQuery, "Sourcegraph query")
+	flag.Parse()
+
 	resp, err := query(ctx, Query{
 		Query: graphQLQuery,
 		Variables: QueryVariables{
-			Query: sgQuery,
+			Query: *q,
 		},
 	})
 	if err != nil {
@@ -81,9 +85,6 @@ func run(ctx context.Context) error {
 		defer close(links)
 
 		for _, m := range results.Matches {
-			if !strings.HasPrefix(m.Repository.Name, "github.com") {
-				continue
-			}
 			select {
 			case <-ctx.Done():
 				return nil
@@ -93,7 +94,7 @@ func run(ctx context.Context) error {
 		return nil
 	})
 	g.Go(func() error {
-		return reporters.spawn(ctx, "corpus")
+		return reporters.spawn(ctx, *output)
 	})
 
 	var workersWg sync.WaitGroup

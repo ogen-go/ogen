@@ -83,7 +83,7 @@ func schemasWriter(ctx context.Context, path string, r <-chan Report) error {
 				return nil
 			}
 
-			data, err := json.Marshal(invalid)
+			data, err := json.MarshalIndent(invalid, "", "\t")
 			if err != nil {
 				return errors.Wrap(err, "encode error")
 			}
