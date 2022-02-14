@@ -99,7 +99,7 @@ func TestGenerate(t *testing.T) {
 		"tinkoff.json": {},
 	}
 
-	if err := fs.WalkDir(testdata, "_testdata", func(path string, d fs.DirEntry, err error) error {
+	if err := fs.WalkDir(testdata, "_testdata/positive", func(path string, d fs.DirEntry, err error) error {
 		if err != nil || d == nil || d.IsDir() {
 			return err
 		}

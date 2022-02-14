@@ -31,7 +31,7 @@ func (s Schema) OutputDir() string {
 }
 
 func (s Schema) GoGenerate(w io.Writer) {
-	fmt.Fprintf(w, `//go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/%s --target %s`,
+	fmt.Fprintf(w, `//go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/positive/%s --target %s`,
 		s.File, s.OutputDir())
 	fmt.Fprintln(w, ` --infer-types --debug.noerr --clean`)
 }
@@ -101,7 +101,7 @@ func downloadSchemas(ctx context.Context) error {
 
 	spawn := func(s Schema) {
 		g.Go(func() error {
-			s.File = filepath.Join("_testdata", s.File)
+			s.File = filepath.Join("_testdata", "positive", s.File)
 			if err := get(ctx, s); err != nil {
 				return errors.Wrapf(err, "schema: %s", s.Output)
 			}
@@ -111,7 +111,7 @@ func downloadSchemas(ctx context.Context) error {
 	for _, links := range linkSets {
 		for _, s := range links {
 			if s.SkipReason != "" {
-				_ = os.Remove(filepath.Join("_testdata", s.File))
+				_ = os.Remove(filepath.Join("_testdata", "positive", s.File))
 				continue
 			}
 			// Argument is copied.
