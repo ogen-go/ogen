@@ -26,13 +26,13 @@ func NewParser(s Settings) *Parser {
 }
 
 func (p *Parser) Parse(schema *RawSchema) (*Schema, error) {
-	return p.parse(schema, func(s *Schema) *Schema {
+	return p.parse(schema, nil, func(s *Schema) *Schema {
 		return p.extendInfo(schema, s)
 	})
 }
 
-func (p *Parser) parse(schema *RawSchema, hook func(*Schema) *Schema) (*Schema, error) {
-	s, err := p.parseSchema(schema, hook)
+func (p *Parser) parse(schema *RawSchema, ctx resolveCtx, hook func(*Schema) *Schema) (*Schema, error) {
+	s, err := p.parseSchema(schema, ctx, hook)
 	if err != nil {
 		return nil, errors.Wrap(err, "parse schema")
 	}
@@ -59,13 +59,13 @@ func (p *Parser) parse(schema *RawSchema, hook func(*Schema) *Schema) (*Schema, 
 	return s, nil
 }
 
-func (p *Parser) parseSchema(schema *RawSchema, hook func(*Schema) *Schema) (*Schema, error) {
+func (p *Parser) parseSchema(schema *RawSchema, ctx resolveCtx, hook func(*Schema) *Schema) (*Schema, error) {
 	if schema == nil {
 		return nil, nil
 	}
 
 	if ref := schema.Ref; ref != "" {
-		s, err := p.resolve(ref)
+		s, err := p.resolve(ref, ctx)
 		if err != nil {
 			return nil, errors.Wrapf(err, "reference %q", ref)
 		}
@@ -288,17 +288,27 @@ func (p *Parser) parseMany(schemas []*RawSchema) ([]*Schema, error) {
 	return result, nil
 }
 
-func (p *Parser) resolve(ref string) (*Schema, error) {
+type resolveCtx map[string]struct{}
+
+func (p *Parser) resolve(ref string, ctx resolveCtx) (*Schema, error) {
 	if s, ok := p.refcache[ref]; ok {
 		return s, nil
 	}
+	if _, ok := ctx[ref]; ok {
+		return nil, errors.Errorf("infinite recursion: %q", ref)
+	}
+
+	if ctx == nil {
+		ctx = resolveCtx{}
+	}
+	ctx[ref] = struct{}{}
 
 	raw, err := p.resolver.ResolveReference(ref)
 	if err != nil {
 		return nil, errors.Wrapf(err, "resolve reference %q", ref)
 	}
 
-	return p.parse(raw, func(s *Schema) *Schema {
+	return p.parse(raw, ctx, func(s *Schema) *Schema {
 		s.Ref = ref
 		p.refcache[ref] = s
 		return p.extendInfo(raw, s)
