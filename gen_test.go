@@ -109,7 +109,11 @@ func TestGenerate(t *testing.T) {
 		if !ok {
 			skip = []string{"all"}
 		}
-		t.Run(strings.TrimSuffix(file, ".json"), g(path, skip...))
+
+		file = strings.TrimSuffix(file, ".json")
+		file = strings.TrimSuffix(file, ".yml")
+		file = strings.TrimSuffix(file, ".yaml")
+		t.Run(file, g(path, skip...))
 		return nil
 	}); err != nil {
 		t.Fatal(err)
