@@ -210,12 +210,13 @@ func (t *Type) NamePostfix() string {
 		}
 	case KindArray:
 		return t.Item.NamePostfix() + "Array"
+	case KindAny:
+		return "Any"
 	case KindPointer:
 		return t.PointerTo.NamePostfix() + "Pointer"
 	case KindStruct, KindMap, KindAlias, KindInterface, KindGeneric, KindEnum, KindSum, KindStream:
 		return t.Name
 	default:
-		// KindAny and KindPointer must not be wrapped.
 		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
 	}
 }
