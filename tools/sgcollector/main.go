@@ -7,6 +7,7 @@ import (
 	"os/signal"
 	"runtime"
 	"strings"
+	"sync"
 
 	"github.com/go-faster/errors"
 	"golang.org/x/sync/errgroup"
@@ -53,11 +54,7 @@ fragment SearchResultsAlertFields on SearchResults {
 }
 `
 
-const sgQuery = `"openapi": "3. file:.*\.json -file:(^|/)vendor/ count:2000` +
-	` -file:.*petstore.*` +
-	` -repo:^github\.com/Redocly/redoc$` +
-	` -repo:^github\.com/kubernetes/kubernetes$` +
-	` -repo:^github\.com/aws/serverless-application-model$`
+const sgQuery = `"openapi": "3. file:.*\.json -file:(^|/)vendor/ count:20000`
 
 func run(ctx context.Context) error {
 	resp, err := query(ctx, Query{
@@ -73,16 +70,15 @@ func run(ctx context.Context) error {
 	var (
 		results = resp.Data.Search.Results
 
-		workers       = runtime.GOMAXPROCS(-1)
-		links         = make(chan FileMatch, workers)
-		invalidSchema = make(chan Report)
-		crashSchema   = make(chan Report)
+		workers   = runtime.GOMAXPROCS(-1)
+		links     = make(chan FileMatch, workers)
+		reporters = Reporters{}
 	)
+	reporters.init()
 
 	g, ctx := errgroup.WithContext(ctx)
 	g.Go(func() error {
 		defer close(links)
-		defer close(invalidSchema)
 
 		for _, m := range results.Matches {
 			if !strings.HasPrefix(m.Repository.Name, "github.com") {
@@ -97,35 +93,35 @@ func run(ctx context.Context) error {
 		return nil
 	})
 	g.Go(func() error {
-		if err := schemasWriter(ctx, "invalid_schemas", invalidSchema); err != nil {
-			return errors.Wrap(err, "invalid schemas")
-		}
-		return nil
-	})
-	g.Go(func() error {
-		if err := schemasWriter(ctx, "crash_schemas", crashSchema); err != nil {
-			return errors.Wrap(err, "crash schemas")
-		}
-		return nil
+		return reporters.spawn(ctx, "corpus")
 	})
 
+	var workersWg sync.WaitGroup
 	for i := 0; i < workers; i++ {
+		workersWg.Add(1)
 		g.Go(func() error {
+			defer workersWg.Done()
 			for {
 				select {
 				case <-ctx.Done():
 					return nil
-				case link, ok := <-links:
+				case m, ok := <-links:
 					if !ok {
 						return nil
 					}
-					if err := worker(ctx, link, invalidSchema, crashSchema); err != nil {
-						fmt.Printf("Check %q: %v\n", link.Link(), err)
+
+					link := m.Link()
+					if err := worker(ctx, m, reporters); err != nil {
+						fmt.Printf("Check %q: %v\n", link, err)
 					}
 				}
 			}
 		})
 	}
+	// Wait until all writers stopped.
+	workersWg.Wait()
+	// Close readers.
+	reporters.close()
 
 	return g.Wait()
 }
