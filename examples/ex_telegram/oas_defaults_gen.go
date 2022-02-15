@@ -130,6 +130,33 @@ func (s *BotCommandScopeDefault) setDefaults() {
 }
 
 // setDefaults set default value of fields.
+func (s *Error) setDefaults() {
+	{
+		val := bool(false)
+
+		s.Ok = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *GetUpdates) setDefaults() {
+	{
+		val := int(0)
+
+		s.Offset.SetTo(val)
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *GetUserProfilePhotos) setDefaults() {
+	{
+		val := int(0)
+
+		s.Offset.SetTo(val)
+	}
+}
+
+// setDefaults set default value of fields.
 func (s *InlineQueryResultArticle) setDefaults() {
 	{
 		val := string("article")
@@ -351,6 +378,15 @@ func (s *InputMediaVideo) setDefaults() {
 		val := string("video")
 
 		s.Type = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *MessageEntity) setDefaults() {
+	{
+		val := int(0)
+
+		s.Offset = val
 	}
 }
 

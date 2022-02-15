@@ -6504,6 +6504,7 @@ func (s *ActivitySetThreadSubscriptionReq) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode ActivitySetThreadSubscriptionReq to nil")
 	}
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -32261,6 +32262,7 @@ func (s *DeploymentStatus) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode DeploymentStatus to nil")
 	}
 	var requiredBitSet [2]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -49107,6 +49109,7 @@ func (s *GitUpdateRefReq) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode GitUpdateRefReq to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -67762,6 +67765,7 @@ func (s *MigrationsStartForOrgReq) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode MigrationsStartForOrgReq to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -99495,6 +99499,7 @@ func (s *Page) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Page to nil")
 	}
 	var requiredBitSet [2]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -131996,6 +132001,7 @@ func (s *ReposCreateDeploymentStatusReq) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode ReposCreateDeploymentStatusReq to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -134308,6 +134314,7 @@ func (s *ReposCreateReleaseReq) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode ReposCreateReleaseReq to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -134498,6 +134505,7 @@ func (s *ReposCreateUsingTemplateReq) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode ReposCreateUsingTemplateReq to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -161675,6 +161683,7 @@ func (s *TeamsCreateDiscussionInOrgReq) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode TeamsCreateDiscussionInOrgReq to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -161801,6 +161810,7 @@ func (s *TeamsCreateDiscussionLegacyReq) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode TeamsCreateDiscussionLegacyReq to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {

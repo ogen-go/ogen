@@ -1,7 +1,6 @@
 package ir
 
 import (
-	"reflect"
 	"strconv"
 
 	"github.com/ogen-go/ogen/jsonschema"
@@ -63,9 +62,7 @@ func (f Field) GoDoc() []string {
 func (t Type) DefaultFields() (r []*Field) {
 	for _, f := range t.Fields {
 		if val := f.Default(); val.Set {
-			if val.Value == nil || !reflect.ValueOf(val.Value).IsZero() {
-				r = append(r, f)
-			}
+			r = append(r, f)
 		}
 	}
 	return r
@@ -74,7 +71,7 @@ func (t Type) DefaultFields() (r []*Field) {
 // HasDefaultFields whether type has fields with default values.
 func (t Type) HasDefaultFields() bool {
 	for _, f := range t.Fields {
-		if val := f.Default(); val.Set && !reflect.ValueOf(val.Value).IsZero() {
+		if val := f.Default(); val.Set {
 			return true
 		}
 	}

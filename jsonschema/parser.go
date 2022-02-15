@@ -55,6 +55,9 @@ func (p *Parser) parse1(schema *RawSchema, ctx resolveCtx, hook func(*Schema) *S
 			if err != nil {
 				return nil, errors.Wrap(err, "parse default")
 			}
+			if v == nil && !s.Nullable {
+				return nil, errors.New("unexpected default \"null\" value")
+			}
 			s.Default = v
 			s.DefaultSet = true
 		}

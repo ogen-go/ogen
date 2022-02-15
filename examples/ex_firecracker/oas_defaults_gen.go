@@ -82,6 +82,16 @@ func (s *Logger) setDefaults() {
 
 		s.Level.SetTo(val)
 	}
+	{
+		val := bool(false)
+
+		s.ShowLevel.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.ShowLogOrigin.SetTo(val)
+	}
 }
 
 // setDefaults set default value of fields.
