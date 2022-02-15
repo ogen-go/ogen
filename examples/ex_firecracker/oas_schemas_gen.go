@@ -70,12 +70,12 @@ var (
 // Ref: #/components/schemas/Balloon
 type Balloon struct {
 	// Target balloon size in MiB.
-	AmountMib int `json:"amount_mib"`
+	AmountMib int "json:\"amount_mib\""
 	// Whether the balloon should deflate when the guest has memory pressure.
-	DeflateOnOom bool `json:"deflate_on_oom"`
+	DeflateOnOom bool "json:\"deflate_on_oom\""
 	// Interval in seconds between refreshing statistics. A non-zero value will enable the statistics.
 	// Defaults to 0.
-	StatsPollingIntervalS OptInt `json:"stats_polling_interval_s"`
+	StatsPollingIntervalS OptInt "json:\"stats_polling_interval_s\""
 }
 
 func (*Balloon) describeBalloonConfigRes() {}
@@ -84,35 +84,35 @@ func (*Balloon) describeBalloonConfigRes() {}
 // Ref: #/components/schemas/BalloonStats
 type BalloonStats struct {
 	// Target number of pages the device aims to hold.
-	TargetPages int `json:"target_pages"`
+	TargetPages int "json:\"target_pages\""
 	// Actual number of pages the device is holding.
-	ActualPages int `json:"actual_pages"`
+	ActualPages int "json:\"actual_pages\""
 	// Target amount of memory (in MiB) the device aims to hold.
-	TargetMib int `json:"target_mib"`
+	TargetMib int "json:\"target_mib\""
 	// Actual amount of memory (in MiB) the device is holding.
-	ActualMib int `json:"actual_mib"`
+	ActualMib int "json:\"actual_mib\""
 	// The amount of memory that has been swapped in (in bytes).
-	SwapIn OptInt64 `json:"swap_in"`
+	SwapIn OptInt64 "json:\"swap_in\""
 	// The amount of memory that has been swapped out to disk (in bytes).
-	SwapOut OptInt64 `json:"swap_out"`
+	SwapOut OptInt64 "json:\"swap_out\""
 	// The number of major page faults that have occurred.
-	MajorFaults OptInt64 `json:"major_faults"`
+	MajorFaults OptInt64 "json:\"major_faults\""
 	// The number of minor page faults that have occurred.
-	MinorFaults OptInt64 `json:"minor_faults"`
+	MinorFaults OptInt64 "json:\"minor_faults\""
 	// The amount of memory not being used for any purpose (in bytes).
-	FreeMemory OptInt64 `json:"free_memory"`
+	FreeMemory OptInt64 "json:\"free_memory\""
 	// The total amount of memory available (in bytes).
-	TotalMemory OptInt64 `json:"total_memory"`
+	TotalMemory OptInt64 "json:\"total_memory\""
 	// An estimate of how much memory is available (in bytes) for starting new applications, without
 	// pushing the system to swap.
-	AvailableMemory OptInt64 `json:"available_memory"`
+	AvailableMemory OptInt64 "json:\"available_memory\""
 	// The amount of memory, in bytes, that can be quickly reclaimed without additional I/O. Typically
 	// these pages are used for caching files from disk.
-	DiskCaches OptInt64 `json:"disk_caches"`
+	DiskCaches OptInt64 "json:\"disk_caches\""
 	// The number of successful hugetlb page allocations in the guest.
-	HugetlbAllocations OptInt64 `json:"hugetlb_allocations"`
+	HugetlbAllocations OptInt64 "json:\"hugetlb_allocations\""
 	// The number of failed hugetlb page allocations in the guest.
-	HugetlbFailures OptInt64 `json:"hugetlb_failures"`
+	HugetlbFailures OptInt64 "json:\"hugetlb_failures\""
 }
 
 func (*BalloonStats) describeBalloonStatsRes() {}
@@ -122,25 +122,25 @@ func (*BalloonStats) describeBalloonStatsRes() {}
 // Ref: #/components/schemas/BalloonStatsUpdate
 type BalloonStatsUpdate struct {
 	// Interval in seconds between refreshing statistics.
-	StatsPollingIntervalS int `json:"stats_polling_interval_s"`
+	StatsPollingIntervalS int "json:\"stats_polling_interval_s\""
 }
 
 // Balloon device descriptor.
 // Ref: #/components/schemas/BalloonUpdate
 type BalloonUpdate struct {
 	// Target balloon size in MiB.
-	AmountMib int `json:"amount_mib"`
+	AmountMib int "json:\"amount_mib\""
 }
 
 // Boot source descriptor.
 // Ref: #/components/schemas/BootSource
 type BootSource struct {
 	// Kernel boot arguments.
-	BootArgs OptString `json:"boot_args"`
+	BootArgs OptString "json:\"boot_args\""
 	// Host level path to the initrd image used to boot the guest.
-	InitrdPath OptString `json:"initrd_path"`
+	InitrdPath OptString "json:\"initrd_path\""
 	// Host level path to the kernel image used to boot the guest.
-	KernelImagePath string `json:"kernel_image_path"`
+	KernelImagePath string "json:\"kernel_image_path\""
 }
 
 // The CPU Template defines a set of flags to be disabled from the microvm so that the features
@@ -165,23 +165,23 @@ func (*CreateSyncActionNoContent) createSyncActionRes() {}
 
 // Ref: #/components/schemas/Drive
 type Drive struct {
-	DriveID string `json:"drive_id"`
+	DriveID string "json:\"drive_id\""
 	// Represents the caching strategy for the block device.
-	CacheType    OptString `json:"cache_type"`
-	IsReadOnly   bool      `json:"is_read_only"`
-	IsRootDevice bool      `json:"is_root_device"`
+	CacheType    OptString "json:\"cache_type\""
+	IsReadOnly   bool      "json:\"is_read_only\""
+	IsRootDevice bool      "json:\"is_root_device\""
 	// Represents the unique id of the boot partition of this device. It is optional and it will be taken
 	// into account only if the is_root_device field is true.
-	Partuuid OptString `json:"partuuid"`
+	Partuuid OptString "json:\"partuuid\""
 	// Host level path for the guest drive.
-	PathOnHost  string         `json:"path_on_host"`
-	RateLimiter OptRateLimiter `json:"rate_limiter"`
+	PathOnHost  string         "json:\"path_on_host\""
+	RateLimiter OptRateLimiter "json:\"rate_limiter\""
 }
 
 // Ref: #/components/schemas/Error
 type Error struct {
 	// A description of the error condition.
-	FaultMessage OptString `json:"fault_message"`
+	FaultMessage OptString "json:\"fault_message\""
 }
 
 func (*Error) createSnapshotRes()                 {}
@@ -243,17 +243,17 @@ func (*ErrorStatusCode) putMetricsRes()                     {}
 
 // Ref: #/components/schemas/FullVmConfiguration
 type FullVmConfiguration struct {
-	BalloonDevice OptBalloon `json:"balloon_device"`
+	BalloonDevice OptBalloon "json:\"balloon_device\""
 	// Configurations for all block devices.
-	BlockDevices  []Drive                 `json:"block_devices"`
-	BootSource    OptBootSource           `json:"boot_source"`
-	Logger        OptLogger               `json:"logger"`
-	MachineConfig OptMachineConfiguration `json:"machine_config"`
-	Metrics       OptMetrics              `json:"metrics"`
-	MmdsConfig    OptMmdsConfig           `json:"mmds_config"`
+	BlockDevices  []Drive                 "json:\"block_devices\""
+	BootSource    OptBootSource           "json:\"boot_source\""
+	Logger        OptLogger               "json:\"logger\""
+	MachineConfig OptMachineConfiguration "json:\"machine_config\""
+	Metrics       OptMetrics              "json:\"metrics\""
+	MmdsConfig    OptMmdsConfig           "json:\"mmds_config\""
 	// Configurations for all net devices.
-	NetDevices  []NetworkInterface `json:"net_devices"`
-	VsockDevice OptVsock           `json:"vsock_device"`
+	NetDevices  []NetworkInterface "json:\"net_devices\""
+	VsockDevice OptVsock           "json:\"vsock_device\""
 }
 
 func (*FullVmConfiguration) getExportVmConfigRes() {}
@@ -262,7 +262,7 @@ func (*FullVmConfiguration) getExportVmConfigRes() {}
 // Ref: #/components/schemas/InstanceActionInfo
 type InstanceActionInfo struct {
 	// Enumeration indicating what type of action is contained in the payload.
-	ActionType InstanceActionInfoActionType `json:"action_type"`
+	ActionType InstanceActionInfoActionType "json:\"action_type\""
 }
 
 // Enumeration indicating what type of action is contained in the payload.
@@ -278,14 +278,14 @@ const (
 // Ref: #/components/schemas/InstanceInfo
 type InstanceInfo struct {
 	// Application name.
-	AppName string `json:"app_name"`
+	AppName string "json:\"app_name\""
 	// MicroVM / instance ID.
-	ID string `json:"id"`
+	ID string "json:\"id\""
 	// The current detailed state (Not started, Running, Paused) of the Firecracker instance. This value
 	// is read-only for the control-plane.
-	State InstanceInfoState `json:"state"`
+	State InstanceInfoState "json:\"state\""
 	// MicroVM hypervisor build version.
-	VmmVersion string `json:"vmm_version"`
+	VmmVersion string "json:\"vmm_version\""
 }
 
 func (*InstanceInfo) describeInstanceRes() {}
@@ -309,13 +309,13 @@ func (*LoadSnapshotNoContent) loadSnapshotRes() {}
 // Ref: #/components/schemas/Logger
 type Logger struct {
 	// Set the level. The possible values are case-insensitive.
-	Level OptLoggerLevel `json:"level"`
+	Level OptLoggerLevel "json:\"level\""
 	// Path to the named pipe or file for the human readable log output.
-	LogPath string `json:"log_path"`
+	LogPath string "json:\"log_path\""
 	// Whether or not to output the level in the logs.
-	ShowLevel OptBool `json:"show_level"`
+	ShowLevel OptBool "json:\"show_level\""
 	// Whether or not to include the file path and line number of the log's origin.
-	ShowLogOrigin OptBool `json:"show_log_origin"`
+	ShowLogOrigin OptBool "json:\"show_log_origin\""
 }
 
 // Set the level. The possible values are case-insensitive.
@@ -331,17 +331,17 @@ const (
 // Describes the number of vCPUs, memory size, Hyperthreading capabilities and the CPU template.
 // Ref: #/components/schemas/MachineConfiguration
 type MachineConfiguration struct {
-	CPUTemplate OptCpuTemplate `json:"cpu_template"`
+	CPUTemplate OptCpuTemplate "json:\"cpu_template\""
 	// Flag for enabling/disabling Hyperthreading.
-	HtEnabled bool `json:"ht_enabled"`
+	HtEnabled bool "json:\"ht_enabled\""
 	// Memory size of VM.
-	MemSizeMib int `json:"mem_size_mib"`
+	MemSizeMib int "json:\"mem_size_mib\""
 	// Enable dirty page tracking. If this is enabled, then incremental guest memory snapshots can be
 	// created. These belong to diff snapshots, which contain, besides the microVM state, only the memory
 	// dirtied since a previous snapshot. Full snapshots each contain a full copy of the guest memory.
-	TrackDirtyPages OptBool `json:"track_dirty_pages"`
+	TrackDirtyPages OptBool "json:\"track_dirty_pages\""
 	// Number of vCPUs (either 1 or an even number).
-	VcpuCount int `json:"vcpu_count"`
+	VcpuCount int "json:\"vcpu_count\""
 }
 
 func (*MachineConfiguration) getMachineConfigurationRes() {}
@@ -350,14 +350,14 @@ func (*MachineConfiguration) getMachineConfigurationRes() {}
 // Ref: #/components/schemas/Metrics
 type Metrics struct {
 	// Path to the named pipe or file where the JSON-formatted metrics are flushed.
-	MetricsPath string `json:"metrics_path"`
+	MetricsPath string "json:\"metrics_path\""
 }
 
 // Defines the MMDS configuration.
 // Ref: #/components/schemas/MmdsConfig
 type MmdsConfig struct {
 	// A valid IPv4 link-local address.
-	Ipv4Address OptString `json:"ipv4_address"`
+	Ipv4Address OptString "json:\"ipv4_address\""
 }
 
 // MmdsConfigPutNoContent is response for MmdsConfigPut operation.
@@ -390,13 +390,13 @@ type NetworkInterface struct {
 	// via this interface. In this case, both ARP requests for 169.254.169.254 and TCP segments heading
 	// to the same address are intercepted by the device model, and do not reach the associated TAP
 	// device.
-	AllowMmdsRequests OptBool   `json:"allow_mmds_requests"`
-	GuestMAC          OptString `json:"guest_mac"`
+	AllowMmdsRequests OptBool   "json:\"allow_mmds_requests\""
+	GuestMAC          OptString "json:\"guest_mac\""
 	// Host level path for the guest network interface.
-	HostDevName   string         `json:"host_dev_name"`
-	IfaceID       string         `json:"iface_id"`
-	RxRateLimiter OptRateLimiter `json:"rx_rate_limiter"`
-	TxRateLimiter OptRateLimiter `json:"tx_rate_limiter"`
+	HostDevName   string         "json:\"host_dev_name\""
+	IfaceID       string         "json:\"iface_id\""
+	RxRateLimiter OptRateLimiter "json:\"rx_rate_limiter\""
+	TxRateLimiter OptRateLimiter "json:\"tx_rate_limiter\""
 }
 
 // NewOptBalloon returns new OptBalloon with value set to v.
@@ -1137,19 +1137,19 @@ func (o OptVsock) Or(d Vsock) Vsock {
 
 // Ref: #/components/schemas/PartialDrive
 type PartialDrive struct {
-	DriveID string `json:"drive_id"`
+	DriveID string "json:\"drive_id\""
 	// Host level path for the guest drive.
-	PathOnHost  OptString      `json:"path_on_host"`
-	RateLimiter OptRateLimiter `json:"rate_limiter"`
+	PathOnHost  OptString      "json:\"path_on_host\""
+	RateLimiter OptRateLimiter "json:\"rate_limiter\""
 }
 
 // Defines a partial network interface structure, used to update the rate limiters for that interface,
 //  after microvm start.
 // Ref: #/components/schemas/PartialNetworkInterface
 type PartialNetworkInterface struct {
-	IfaceID       string         `json:"iface_id"`
-	RxRateLimiter OptRateLimiter `json:"rx_rate_limiter"`
-	TxRateLimiter OptRateLimiter `json:"tx_rate_limiter"`
+	IfaceID       string         "json:\"iface_id\""
+	RxRateLimiter OptRateLimiter "json:\"rx_rate_limiter\""
+	TxRateLimiter OptRateLimiter "json:\"tx_rate_limiter\""
 }
 
 // PatchBalloonNoContent is response for PatchBalloon operation.
@@ -1226,21 +1226,21 @@ func (*PutMetricsNoContent) putMetricsRes() {}
 // configuring each of the _bandwidth_ and _ops_ token buckets.
 // Ref: #/components/schemas/RateLimiter
 type RateLimiter struct {
-	Bandwidth OptTokenBucket `json:"bandwidth"`
-	Ops       OptTokenBucket `json:"ops"`
+	Bandwidth OptTokenBucket "json:\"bandwidth\""
+	Ops       OptTokenBucket "json:\"ops\""
 }
 
 // Ref: #/components/schemas/SnapshotCreateParams
 type SnapshotCreateParams struct {
 	// Path to the file that will contain the guest memory.
-	MemFilePath string `json:"mem_file_path"`
+	MemFilePath string "json:\"mem_file_path\""
 	// Path to the file that will contain the microVM state.
-	SnapshotPath string `json:"snapshot_path"`
+	SnapshotPath string "json:\"snapshot_path\""
 	// Type of snapshot to create. It is optional and by default, a full snapshot is created.
-	SnapshotType OptSnapshotCreateParamsSnapshotType `json:"snapshot_type"`
+	SnapshotType OptSnapshotCreateParamsSnapshotType "json:\"snapshot_type\""
 	// The microVM version for which we want to create the snapshot. It is optional and it defaults to
 	// the current version.
-	Version OptString `json:"version"`
+	Version OptString "json:\"version\""
 }
 
 // Type of snapshot to create. It is optional and by default, a full snapshot is created.
@@ -1254,13 +1254,13 @@ const (
 // Ref: #/components/schemas/SnapshotLoadParams
 type SnapshotLoadParams struct {
 	// Enable support for incremental (diff) snapshots by tracking dirty guest pages.
-	EnableDiffSnapshots OptBool `json:"enable_diff_snapshots"`
+	EnableDiffSnapshots OptBool "json:\"enable_diff_snapshots\""
 	// Path to the file that contains the guest memory to be loaded.
-	MemFilePath string `json:"mem_file_path"`
+	MemFilePath string "json:\"mem_file_path\""
 	// Path to the file that contains the microVM state to be loaded.
-	SnapshotPath string `json:"snapshot_path"`
+	SnapshotPath string "json:\"snapshot_path\""
 	// When set to true, the vm is also resumed if the snapshot load is successful.
-	ResumeVM OptBool `json:"resume_vm"`
+	ResumeVM OptBool "json:\"resume_vm\""
 }
 
 // Defines a token bucket with a maximum capacity (size), an initial burst size (one_time_burst) and
@@ -1272,17 +1272,17 @@ type SnapshotLoadParams struct {
 // Ref: #/components/schemas/TokenBucket
 type TokenBucket struct {
 	// The initial size of a token bucket.
-	OneTimeBurst OptInt64 `json:"one_time_burst"`
+	OneTimeBurst OptInt64 "json:\"one_time_burst\""
 	// The amount of milliseconds it takes for the bucket to refill.
-	RefillTime int64 `json:"refill_time"`
+	RefillTime int64 "json:\"refill_time\""
 	// The total number of tokens this bucket can hold.
-	Size int64 `json:"size"`
+	Size int64 "json:\"size\""
 }
 
 // Defines the microVM running state. It is especially useful in the snapshotting context.
 // Ref: #/components/schemas/Vm
 type VM struct {
-	State VMState `json:"state"`
+	State VMState "json:\"state\""
 }
 
 type VMState string
@@ -1302,8 +1302,8 @@ const (
 // Ref: #/components/schemas/Vsock
 type Vsock struct {
 	// Guest Vsock CID.
-	GuestCid int `json:"guest_cid"`
+	GuestCid int "json:\"guest_cid\""
 	// Path to UNIX domain socket, used to proxy vsock connections.
-	UdsPath string `json:"uds_path"`
-	VsockID string `json:"vsock_id"`
+	UdsPath string "json:\"uds_path\""
+	VsockID string "json:\"vsock_id\""
 }

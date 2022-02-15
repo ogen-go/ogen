@@ -76,15 +76,15 @@ const (
 
 // Ref: #/components/schemas/Candle
 type Candle struct {
-	Figi     string           `json:"figi"`
-	Interval CandleResolution `json:"interval"`
-	O        float64          `json:"o"`
-	C        float64          `json:"c"`
-	H        float64          `json:"h"`
-	L        float64          `json:"l"`
-	V        int32            `json:"v"`
+	Figi     string           "json:\"figi\""
+	Interval CandleResolution "json:\"interval\""
+	O        float64          "json:\"o\""
+	C        float64          "json:\"c\""
+	H        float64          "json:\"h\""
+	L        float64          "json:\"l\""
+	V        int32            "json:\"v\""
 	// ISO8601.
-	Time time.Time `json:"time"`
+	Time time.Time "json:\"time\""
 }
 
 // Интервал свечи и допустимый промежуток запроса:
@@ -118,23 +118,23 @@ const (
 
 // Ref: #/components/schemas/Candles
 type Candles struct {
-	Figi     string           `json:"figi"`
-	Interval CandleResolution `json:"interval"`
-	Candles  []Candle         `json:"candles"`
+	Figi     string           "json:\"figi\""
+	Interval CandleResolution "json:\"interval\""
+	Candles  []Candle         "json:\"candles\""
 }
 
 // Ref: #/components/schemas/CandlesResponse
 type CandlesResponse struct {
-	TrackingId string  `json:"trackingId"`
-	Status     string  `json:"status"`
-	Payload    Candles `json:"payload"`
+	TrackingId string  "json:\"trackingId\""
+	Status     string  "json:\"status\""
+	Payload    Candles "json:\"payload\""
 }
 
 func (*CandlesResponse) marketCandlesGetRes() {}
 
 // Ref: #/components/schemas/Currencies
 type Currencies struct {
-	Currencies []CurrencyPosition `json:"currencies"`
+	Currencies []CurrencyPosition "json:\"currencies\""
 }
 
 // Ref: #/components/schemas/Currency
@@ -154,16 +154,16 @@ const (
 
 // Ref: #/components/schemas/CurrencyPosition
 type CurrencyPosition struct {
-	Currency Currency   `json:"currency"`
-	Balance  float64    `json:"balance"`
-	Blocked  OptFloat64 `json:"blocked"`
+	Currency Currency   "json:\"currency\""
+	Balance  float64    "json:\"balance\""
+	Blocked  OptFloat64 "json:\"blocked\""
 }
 
 // Ref: #/components/schemas/Empty
 type Empty struct {
-	TrackingId string       `json:"trackingId"`
-	Payload    EmptyPayload `json:"payload"`
-	Status     string       `json:"status"`
+	TrackingId string       "json:\"trackingId\""
+	Payload    EmptyPayload "json:\"payload\""
+	Status     string       "json:\"status\""
 }
 
 func (*Empty) ordersCancelPostRes()             {}
@@ -176,9 +176,9 @@ type EmptyPayload struct{}
 
 // Ref: #/components/schemas/Error
 type Error struct {
-	TrackingId string       `json:"trackingId"`
-	Status     string       `json:"status"`
-	Payload    ErrorPayload `json:"payload"`
+	TrackingId string       "json:\"trackingId\""
+	Status     string       "json:\"status\""
+	Payload    ErrorPayload "json:\"payload\""
 }
 
 func (*Error) marketBondsGetRes()               {}
@@ -204,8 +204,8 @@ func (*Error) sandboxRemovePostRes()            {}
 func (*Error) userAccountsGetRes()              {}
 
 type ErrorPayload struct {
-	Message OptString `json:"message"`
-	Code    OptString `json:"code"`
+	Message OptString "json:\"message\""
+	Code    OptString "json:\"code\""
 }
 
 // Ref: #/components/schemas/InstrumentType
@@ -220,47 +220,47 @@ const (
 
 // Ref: #/components/schemas/LimitOrderRequest
 type LimitOrderRequest struct {
-	Lots      int32         `json:"lots"`
-	Operation OperationType `json:"operation"`
-	Price     float64       `json:"price"`
+	Lots      int32         "json:\"lots\""
+	Operation OperationType "json:\"operation\""
+	Price     float64       "json:\"price\""
 }
 
 // Ref: #/components/schemas/LimitOrderResponse
 type LimitOrderResponse struct {
-	TrackingId string           `json:"trackingId"`
-	Status     string           `json:"status"`
-	Payload    PlacedLimitOrder `json:"payload"`
+	TrackingId string           "json:\"trackingId\""
+	Status     string           "json:\"status\""
+	Payload    PlacedLimitOrder "json:\"payload\""
 }
 
 func (*LimitOrderResponse) ordersLimitOrderPostRes() {}
 
 // Ref: #/components/schemas/MarketInstrument
 type MarketInstrument struct {
-	Figi   string    `json:"figi"`
-	Ticker string    `json:"ticker"`
-	Isin   OptString `json:"isin"`
+	Figi   string    "json:\"figi\""
+	Ticker string    "json:\"ticker\""
+	Isin   OptString "json:\"isin\""
 	// Шаг цены.
-	MinPriceIncrement OptFloat64 `json:"minPriceIncrement"`
-	Lot               int32      `json:"lot"`
+	MinPriceIncrement OptFloat64 "json:\"minPriceIncrement\""
+	Lot               int32      "json:\"lot\""
 	// Минимальное число инструментов для покупки должно
 	// быть не меньше, чем размер лота х количество лотов.
-	MinQuantity OptInt32       `json:"minQuantity"`
-	Currency    OptCurrency    `json:"currency"`
-	Name        string         `json:"name"`
-	Type        InstrumentType `json:"type"`
+	MinQuantity OptInt32       "json:\"minQuantity\""
+	Currency    OptCurrency    "json:\"currency\""
+	Name        string         "json:\"name\""
+	Type        InstrumentType "json:\"type\""
 }
 
 // Ref: #/components/schemas/MarketInstrumentList
 type MarketInstrumentList struct {
-	Total       int32              `json:"total"`
-	Instruments []MarketInstrument `json:"instruments"`
+	Total       int32              "json:\"total\""
+	Instruments []MarketInstrument "json:\"instruments\""
 }
 
 // Ref: #/components/schemas/MarketInstrumentListResponse
 type MarketInstrumentListResponse struct {
-	TrackingId string               `json:"trackingId"`
-	Status     string               `json:"status"`
-	Payload    MarketInstrumentList `json:"payload"`
+	TrackingId string               "json:\"trackingId\""
+	Status     string               "json:\"status\""
+	Payload    MarketInstrumentList "json:\"payload\""
 }
 
 func (*MarketInstrumentListResponse) marketBondsGetRes()          {}
@@ -271,44 +271,44 @@ func (*MarketInstrumentListResponse) marketStocksGetRes()         {}
 
 // Ref: #/components/schemas/MarketOrderRequest
 type MarketOrderRequest struct {
-	Lots      int32         `json:"lots"`
-	Operation OperationType `json:"operation"`
+	Lots      int32         "json:\"lots\""
+	Operation OperationType "json:\"operation\""
 }
 
 // Ref: #/components/schemas/MarketOrderResponse
 type MarketOrderResponse struct {
-	TrackingId string            `json:"trackingId"`
-	Status     string            `json:"status"`
-	Payload    PlacedMarketOrder `json:"payload"`
+	TrackingId string            "json:\"trackingId\""
+	Status     string            "json:\"status\""
+	Payload    PlacedMarketOrder "json:\"payload\""
 }
 
 func (*MarketOrderResponse) ordersMarketOrderPostRes() {}
 
 // Ref: #/components/schemas/MoneyAmount
 type MoneyAmount struct {
-	Currency Currency `json:"currency"`
-	Value    float64  `json:"value"`
+	Currency Currency "json:\"currency\""
+	Value    float64  "json:\"value\""
 }
 
 // Ref: #/components/schemas/Operation
 type Operation struct {
-	ID         string           `json:"id"`
-	Status     OperationStatus  `json:"status"`
-	Trades     []OperationTrade `json:"trades"`
-	Commission OptMoneyAmount   `json:"commission"`
-	Currency   Currency         `json:"currency"`
-	Payment    float64          `json:"payment"`
-	Price      OptFloat64       `json:"price"`
+	ID         string           "json:\"id\""
+	Status     OperationStatus  "json:\"status\""
+	Trades     []OperationTrade "json:\"trades\""
+	Commission OptMoneyAmount   "json:\"commission\""
+	Currency   Currency         "json:\"currency\""
+	Payment    float64          "json:\"payment\""
+	Price      OptFloat64       "json:\"price\""
 	// Число инструментов в выставленной заявке.
-	Quantity OptInt32 `json:"quantity"`
+	Quantity OptInt32 "json:\"quantity\""
 	// Число инструментов, исполненных в заявке.
-	QuantityExecuted OptInt32          `json:"quantityExecuted"`
-	Figi             OptString         `json:"figi"`
-	InstrumentType   OptInstrumentType `json:"instrumentType"`
-	IsMarginCall     bool              `json:"isMarginCall"`
+	QuantityExecuted OptInt32          "json:\"quantityExecuted\""
+	Figi             OptString         "json:\"figi\""
+	InstrumentType   OptInstrumentType "json:\"instrumentType\""
+	IsMarginCall     bool              "json:\"isMarginCall\""
 	// ISO8601.
-	Date          time.Time                      `json:"date"`
-	OperationType OptOperationTypeWithCommission `json:"operationType"`
+	Date          time.Time                      "json:\"date\""
+	OperationType OptOperationTypeWithCommission "json:\"operationType\""
 }
 
 // Статус заявки.
@@ -323,11 +323,11 @@ const (
 
 // Ref: #/components/schemas/OperationTrade
 type OperationTrade struct {
-	TradeId string `json:"tradeId"`
+	TradeId string "json:\"tradeId\""
 	// ISO8601.
-	Date     time.Time `json:"date"`
-	Price    float64   `json:"price"`
-	Quantity int32     `json:"quantity"`
+	Date     time.Time "json:\"date\""
+	Price    float64   "json:\"price\""
+	Quantity int32     "json:\"quantity\""
 }
 
 // Ref: #/components/schemas/OperationType
@@ -367,14 +367,14 @@ const (
 
 // Ref: #/components/schemas/Operations
 type Operations struct {
-	Operations []Operation `json:"operations"`
+	Operations []Operation "json:\"operations\""
 }
 
 // Ref: #/components/schemas/OperationsResponse
 type OperationsResponse struct {
-	TrackingId string     `json:"trackingId"`
-	Status     string     `json:"status"`
-	Payload    Operations `json:"payload"`
+	TrackingId string     "json:\"trackingId\""
+	Status     string     "json:\"status\""
+	Payload    Operations "json:\"payload\""
 }
 
 func (*OperationsResponse) operationsGetRes() {}
@@ -795,20 +795,20 @@ func (o OptString) Or(d string) string {
 
 // Ref: #/components/schemas/Order
 type Order struct {
-	OrderId       string        `json:"orderId"`
-	Figi          string        `json:"figi"`
-	Operation     OperationType `json:"operation"`
-	Status        OrderStatus   `json:"status"`
-	RequestedLots int32         `json:"requestedLots"`
-	ExecutedLots  int32         `json:"executedLots"`
-	Type          OrderType     `json:"type"`
-	Price         float64       `json:"price"`
+	OrderId       string        "json:\"orderId\""
+	Figi          string        "json:\"figi\""
+	Operation     OperationType "json:\"operation\""
+	Status        OrderStatus   "json:\"status\""
+	RequestedLots int32         "json:\"requestedLots\""
+	ExecutedLots  int32         "json:\"executedLots\""
+	Type          OrderType     "json:\"type\""
+	Price         float64       "json:\"price\""
 }
 
 // Ref: #/components/schemas/OrderResponse
 type OrderResponse struct {
-	Price    float64 `json:"price"`
-	Quantity int32   `json:"quantity"`
+	Price    float64 "json:\"price\""
+	Quantity int32   "json:\"quantity\""
 }
 
 // Статус заявки.
@@ -838,109 +838,109 @@ const (
 
 // Ref: #/components/schemas/Orderbook
 type Orderbook struct {
-	Figi        string          `json:"figi"`
-	Depth       int32           `json:"depth"`
-	Bids        []OrderResponse `json:"bids"`
-	Asks        []OrderResponse `json:"asks"`
-	TradeStatus TradeStatus     `json:"tradeStatus"`
+	Figi        string          "json:\"figi\""
+	Depth       int32           "json:\"depth\""
+	Bids        []OrderResponse "json:\"bids\""
+	Asks        []OrderResponse "json:\"asks\""
+	TradeStatus TradeStatus     "json:\"tradeStatus\""
 	// Шаг цены.
-	MinPriceIncrement float64 `json:"minPriceIncrement"`
+	MinPriceIncrement float64 "json:\"minPriceIncrement\""
 	// Номинал для облигаций.
-	FaceValue  OptFloat64 `json:"faceValue"`
-	LastPrice  OptFloat64 `json:"lastPrice"`
-	ClosePrice OptFloat64 `json:"closePrice"`
+	FaceValue  OptFloat64 "json:\"faceValue\""
+	LastPrice  OptFloat64 "json:\"lastPrice\""
+	ClosePrice OptFloat64 "json:\"closePrice\""
 	// Верхняя граница цены.
-	LimitUp OptFloat64 `json:"limitUp"`
+	LimitUp OptFloat64 "json:\"limitUp\""
 	// Нижняя граница цены.
-	LimitDown OptFloat64 `json:"limitDown"`
+	LimitDown OptFloat64 "json:\"limitDown\""
 }
 
 // Ref: #/components/schemas/OrderbookResponse
 type OrderbookResponse struct {
-	TrackingId string    `json:"trackingId"`
-	Status     string    `json:"status"`
-	Payload    Orderbook `json:"payload"`
+	TrackingId string    "json:\"trackingId\""
+	Status     string    "json:\"status\""
+	Payload    Orderbook "json:\"payload\""
 }
 
 func (*OrderbookResponse) marketOrderbookGetRes() {}
 
 // Ref: #/components/schemas/OrdersResponse
 type OrdersResponse struct {
-	TrackingId string  `json:"trackingId"`
-	Status     string  `json:"status"`
-	Payload    []Order `json:"payload"`
+	TrackingId string  "json:\"trackingId\""
+	Status     string  "json:\"status\""
+	Payload    []Order "json:\"payload\""
 }
 
 func (*OrdersResponse) ordersGetRes() {}
 
 // Ref: #/components/schemas/PlacedLimitOrder
 type PlacedLimitOrder struct {
-	OrderId      string        `json:"orderId"`
-	Operation    OperationType `json:"operation"`
-	Status       OrderStatus   `json:"status"`
-	RejectReason OptString     `json:"rejectReason"`
+	OrderId      string        "json:\"orderId\""
+	Operation    OperationType "json:\"operation\""
+	Status       OrderStatus   "json:\"status\""
+	RejectReason OptString     "json:\"rejectReason\""
 	// Сообщение об ошибке.
-	Message       OptString      `json:"message"`
-	RequestedLots int            `json:"requestedLots"`
-	ExecutedLots  int            `json:"executedLots"`
-	Commission    OptMoneyAmount `json:"commission"`
+	Message       OptString      "json:\"message\""
+	RequestedLots int            "json:\"requestedLots\""
+	ExecutedLots  int            "json:\"executedLots\""
+	Commission    OptMoneyAmount "json:\"commission\""
 }
 
 // Ref: #/components/schemas/PlacedMarketOrder
 type PlacedMarketOrder struct {
-	OrderId      string        `json:"orderId"`
-	Operation    OperationType `json:"operation"`
-	Status       OrderStatus   `json:"status"`
-	RejectReason OptString     `json:"rejectReason"`
+	OrderId      string        "json:\"orderId\""
+	Operation    OperationType "json:\"operation\""
+	Status       OrderStatus   "json:\"status\""
+	RejectReason OptString     "json:\"rejectReason\""
 	// Сообщение об ошибке.
-	Message       OptString      `json:"message"`
-	RequestedLots int            `json:"requestedLots"`
-	ExecutedLots  int            `json:"executedLots"`
-	Commission    OptMoneyAmount `json:"commission"`
+	Message       OptString      "json:\"message\""
+	RequestedLots int            "json:\"requestedLots\""
+	ExecutedLots  int            "json:\"executedLots\""
+	Commission    OptMoneyAmount "json:\"commission\""
 }
 
 // Ref: #/components/schemas/Portfolio
 type Portfolio struct {
-	Positions []PortfolioPosition `json:"positions"`
+	Positions []PortfolioPosition "json:\"positions\""
 }
 
 // Ref: #/components/schemas/PortfolioCurrenciesResponse
 type PortfolioCurrenciesResponse struct {
-	TrackingId string     `json:"trackingId"`
-	Status     string     `json:"status"`
-	Payload    Currencies `json:"payload"`
+	TrackingId string     "json:\"trackingId\""
+	Status     string     "json:\"status\""
+	Payload    Currencies "json:\"payload\""
 }
 
 func (*PortfolioCurrenciesResponse) portfolioCurrenciesGetRes() {}
 
 // Ref: #/components/schemas/PortfolioPosition
 type PortfolioPosition struct {
-	Figi                      string         `json:"figi"`
-	Ticker                    OptString      `json:"ticker"`
-	Isin                      OptString      `json:"isin"`
-	InstrumentType            InstrumentType `json:"instrumentType"`
-	Balance                   float64        `json:"balance"`
-	Blocked                   OptFloat64     `json:"blocked"`
-	ExpectedYield             OptMoneyAmount `json:"expectedYield"`
-	Lots                      int32          `json:"lots"`
-	AveragePositionPrice      OptMoneyAmount `json:"averagePositionPrice"`
-	AveragePositionPriceNoNkd OptMoneyAmount `json:"averagePositionPriceNoNkd"`
-	Name                      string         `json:"name"`
+	Figi                      string         "json:\"figi\""
+	Ticker                    OptString      "json:\"ticker\""
+	Isin                      OptString      "json:\"isin\""
+	InstrumentType            InstrumentType "json:\"instrumentType\""
+	Balance                   float64        "json:\"balance\""
+	Blocked                   OptFloat64     "json:\"blocked\""
+	ExpectedYield             OptMoneyAmount "json:\"expectedYield\""
+	Lots                      int32          "json:\"lots\""
+	AveragePositionPrice      OptMoneyAmount "json:\"averagePositionPrice\""
+	AveragePositionPriceNoNkd OptMoneyAmount "json:\"averagePositionPriceNoNkd\""
+	Name                      string         "json:\"name\""
 }
 
 // Ref: #/components/schemas/PortfolioResponse
 type PortfolioResponse struct {
-	TrackingId string    `json:"trackingId"`
-	Status     string    `json:"status"`
-	Payload    Portfolio `json:"payload"`
+	TrackingId string    "json:\"trackingId\""
+	Status     string    "json:\"status\""
+	Payload    Portfolio "json:\"payload\""
 }
 
 func (*PortfolioResponse) portfolioGetRes() {}
 
 // Ref: #/components/schemas/SandboxAccount
 type SandboxAccount struct {
-	BrokerAccountType BrokerAccountType `json:"brokerAccountType"`
-	BrokerAccountId   string            `json:"brokerAccountId"`
+	BrokerAccountType BrokerAccountType "json:\"brokerAccountType\""
+	BrokerAccountId   string            "json:\"brokerAccountId\""
 }
 
 // Ref: #/components/schemas/SandboxCurrency
@@ -960,48 +960,48 @@ const (
 
 // Ref: #/components/schemas/SandboxRegisterRequest
 type SandboxRegisterRequest struct {
-	BrokerAccountType OptBrokerAccountType `json:"brokerAccountType"`
+	BrokerAccountType OptBrokerAccountType "json:\"brokerAccountType\""
 }
 
 // Ref: #/components/schemas/SandboxRegisterResponse
 type SandboxRegisterResponse struct {
-	TrackingId string         `json:"trackingId"`
-	Status     string         `json:"status"`
-	Payload    SandboxAccount `json:"payload"`
+	TrackingId string         "json:\"trackingId\""
+	Status     string         "json:\"status\""
+	Payload    SandboxAccount "json:\"payload\""
 }
 
 func (*SandboxRegisterResponse) sandboxRegisterPostRes() {}
 
 // Ref: #/components/schemas/SandboxSetCurrencyBalanceRequest
 type SandboxSetCurrencyBalanceRequest struct {
-	Currency SandboxCurrency `json:"currency"`
-	Balance  float64         `json:"balance"`
+	Currency SandboxCurrency "json:\"currency\""
+	Balance  float64         "json:\"balance\""
 }
 
 // Ref: #/components/schemas/SandboxSetPositionBalanceRequest
 type SandboxSetPositionBalanceRequest struct {
-	Figi    OptString `json:"figi"`
-	Balance float64   `json:"balance"`
+	Figi    OptString "json:\"figi\""
+	Balance float64   "json:\"balance\""
 }
 
 // Ref: #/components/schemas/SearchMarketInstrument
 type SearchMarketInstrument struct {
-	Figi   string    `json:"figi"`
-	Ticker string    `json:"ticker"`
-	Isin   OptString `json:"isin"`
+	Figi   string    "json:\"figi\""
+	Ticker string    "json:\"ticker\""
+	Isin   OptString "json:\"isin\""
 	// Шаг цены.
-	MinPriceIncrement OptFloat64     `json:"minPriceIncrement"`
-	Lot               int32          `json:"lot"`
-	Currency          OptCurrency    `json:"currency"`
-	Name              string         `json:"name"`
-	Type              InstrumentType `json:"type"`
+	MinPriceIncrement OptFloat64     "json:\"minPriceIncrement\""
+	Lot               int32          "json:\"lot\""
+	Currency          OptCurrency    "json:\"currency\""
+	Name              string         "json:\"name\""
+	Type              InstrumentType "json:\"type\""
 }
 
 // Ref: #/components/schemas/SearchMarketInstrumentResponse
 type SearchMarketInstrumentResponse struct {
-	TrackingId string                 `json:"trackingId"`
-	Status     string                 `json:"status"`
-	Payload    SearchMarketInstrument `json:"payload"`
+	TrackingId string                 "json:\"trackingId\""
+	Status     string                 "json:\"status\""
+	Payload    SearchMarketInstrument "json:\"payload\""
 }
 
 func (*SearchMarketInstrumentResponse) marketSearchByFigiGetRes() {}
@@ -1016,20 +1016,20 @@ const (
 
 // Ref: #/components/schemas/UserAccount
 type UserAccount struct {
-	BrokerAccountType BrokerAccountType `json:"brokerAccountType"`
-	BrokerAccountId   string            `json:"brokerAccountId"`
+	BrokerAccountType BrokerAccountType "json:\"brokerAccountType\""
+	BrokerAccountId   string            "json:\"brokerAccountId\""
 }
 
 // Ref: #/components/schemas/UserAccounts
 type UserAccounts struct {
-	Accounts []UserAccount `json:"accounts"`
+	Accounts []UserAccount "json:\"accounts\""
 }
 
 // Ref: #/components/schemas/UserAccountsResponse
 type UserAccountsResponse struct {
-	TrackingId string       `json:"trackingId"`
-	Status     string       `json:"status"`
-	Payload    UserAccounts `json:"payload"`
+	TrackingId string       "json:\"trackingId\""
+	Status     string       "json:\"status\""
+	Payload    UserAccounts "json:\"payload\""
 }
 
 func (*UserAccountsResponse) userAccountsGetRes() {}

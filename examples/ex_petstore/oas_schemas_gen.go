@@ -73,8 +73,8 @@ func (*CreatePetsCreated) createPetsRes() {}
 
 // Ref: #/components/schemas/Error
 type Error struct {
-	Code    int32  `json:"code"`
-	Message string `json:"message"`
+	Code    int32  "json:\"code\""
+	Message string "json:\"message\""
 }
 
 // ErrorStatusCode wraps Error with StatusCode.
@@ -181,9 +181,9 @@ func (o OptString) Or(d string) string {
 
 // Ref: #/components/schemas/Pet
 type Pet struct {
-	ID   int64     `json:"id"`
-	Name string    `json:"name"`
-	Tag  OptString `json:"tag"`
+	ID   int64     "json:\"id\""
+	Name string    "json:\"name\""
+	Tag  OptString "json:\"tag\""
 }
 
 func (*Pet) showPetByIdRes() {}

@@ -69,13 +69,13 @@ var (
 // Ref: #/components/schemas/HelloWorld
 type HelloWorld struct {
 	// Should be equal to 'Hello, World!'.
-	Message string `json:"message"`
+	Message string "json:\"message\""
 }
 
 // Ref: #/components/schemas/WorldObject
 type WorldObject struct {
-	ID           int64 `json:"id"`
-	RandomNumber int64 `json:"randomNumber"`
+	ID           int64 "json:\"id\""
+	RandomNumber int64 "json:\"randomNumber\""
 }
 
 type WorldObjects []WorldObject
