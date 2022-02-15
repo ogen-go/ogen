@@ -4652,8 +4652,8 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) 
 		return nil // no validation needed
 	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
 		return nil // no validation needed
-	case ArrayAnyEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
-		if s.ArrayAny == nil {
+	case AnyArrayEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
+		if s.AnyArray == nil {
 			return errors.New("nil is invalid value")
 		}
 		return nil
@@ -11388,8 +11388,8 @@ func (s ReposAddAppAccessRestrictionsReq) Validate() error {
 			return err
 		}
 		return nil
-	case ArrayStringReposAddAppAccessRestrictionsReq:
-		if s.ArrayString == nil {
+	case StringArrayReposAddAppAccessRestrictionsReq:
+		if s.StringArray == nil {
 			return errors.New("nil is invalid value")
 		}
 		return nil
@@ -11471,8 +11471,8 @@ func (s ReposAddStatusCheckContextsReq) Validate() error {
 			return err
 		}
 		return nil
-	case ArrayStringReposAddStatusCheckContextsReq:
-		if s.ArrayString == nil {
+	case StringArrayReposAddStatusCheckContextsReq:
+		if s.StringArray == nil {
 			return errors.New("nil is invalid value")
 		}
 		return nil
@@ -11512,8 +11512,8 @@ func (s ReposAddTeamAccessRestrictionsReq) Validate() error {
 			return err
 		}
 		return nil
-	case ArrayStringReposAddTeamAccessRestrictionsReq:
-		if s.ArrayString == nil {
+	case StringArrayReposAddTeamAccessRestrictionsReq:
+		if s.StringArray == nil {
 			return errors.New("nil is invalid value")
 		}
 		return nil
@@ -11553,8 +11553,8 @@ func (s ReposAddUserAccessRestrictionsReq) Validate() error {
 			return err
 		}
 		return nil
-	case ArrayStringReposAddUserAccessRestrictionsReq:
-		if s.ArrayString == nil {
+	case StringArrayReposAddUserAccessRestrictionsReq:
+		if s.StringArray == nil {
 			return errors.New("nil is invalid value")
 		}
 		return nil
@@ -12415,8 +12415,8 @@ func (s ReposRemoveAppAccessRestrictionsReq) Validate() error {
 			return err
 		}
 		return nil
-	case ArrayStringReposRemoveAppAccessRestrictionsReq:
-		if s.ArrayString == nil {
+	case StringArrayReposRemoveAppAccessRestrictionsReq:
+		if s.StringArray == nil {
 			return errors.New("nil is invalid value")
 		}
 		return nil
@@ -12456,8 +12456,8 @@ func (s ReposRemoveStatusCheckContextsReq) Validate() error {
 			return err
 		}
 		return nil
-	case ArrayStringReposRemoveStatusCheckContextsReq:
-		if s.ArrayString == nil {
+	case StringArrayReposRemoveStatusCheckContextsReq:
+		if s.StringArray == nil {
 			return errors.New("nil is invalid value")
 		}
 		return nil
@@ -12497,8 +12497,8 @@ func (s ReposRemoveTeamAccessRestrictionsReq) Validate() error {
 			return err
 		}
 		return nil
-	case ArrayStringReposRemoveTeamAccessRestrictionsReq:
-		if s.ArrayString == nil {
+	case StringArrayReposRemoveTeamAccessRestrictionsReq:
+		if s.StringArray == nil {
 			return errors.New("nil is invalid value")
 		}
 		return nil
@@ -12538,8 +12538,8 @@ func (s ReposRemoveUserAccessRestrictionsReq) Validate() error {
 			return err
 		}
 		return nil
-	case ArrayStringReposRemoveUserAccessRestrictionsReq:
-		if s.ArrayString == nil {
+	case StringArrayReposRemoveUserAccessRestrictionsReq:
+		if s.StringArray == nil {
 			return errors.New("nil is invalid value")
 		}
 		return nil
@@ -12614,8 +12614,8 @@ func (s ReposSetAppAccessRestrictionsReq) Validate() error {
 			return err
 		}
 		return nil
-	case ArrayStringReposSetAppAccessRestrictionsReq:
-		if s.ArrayString == nil {
+	case StringArrayReposSetAppAccessRestrictionsReq:
+		if s.StringArray == nil {
 			return errors.New("nil is invalid value")
 		}
 		return nil
@@ -12655,8 +12655,8 @@ func (s ReposSetStatusCheckContextsReq) Validate() error {
 			return err
 		}
 		return nil
-	case ArrayStringReposSetStatusCheckContextsReq:
-		if s.ArrayString == nil {
+	case StringArrayReposSetStatusCheckContextsReq:
+		if s.StringArray == nil {
 			return errors.New("nil is invalid value")
 		}
 		return nil
@@ -12696,8 +12696,8 @@ func (s ReposSetTeamAccessRestrictionsReq) Validate() error {
 			return err
 		}
 		return nil
-	case ArrayStringReposSetTeamAccessRestrictionsReq:
-		if s.ArrayString == nil {
+	case StringArrayReposSetTeamAccessRestrictionsReq:
+		if s.StringArray == nil {
 			return errors.New("nil is invalid value")
 		}
 		return nil
@@ -12737,8 +12737,8 @@ func (s ReposSetUserAccessRestrictionsReq) Validate() error {
 			return err
 		}
 		return nil
-	case ArrayStringReposSetUserAccessRestrictionsReq:
-		if s.ArrayString == nil {
+	case StringArrayReposSetUserAccessRestrictionsReq:
+		if s.StringArray == nil {
 			return errors.New("nil is invalid value")
 		}
 		return nil
@@ -14921,8 +14921,8 @@ func (s UsersAddEmailForAuthenticatedReq) Validate() error {
 			return err
 		}
 		return nil
-	case ArrayStringUsersAddEmailForAuthenticatedReq:
-		if s.ArrayString == nil {
+	case StringArrayUsersAddEmailForAuthenticatedReq:
+		if s.StringArray == nil {
 			return errors.New("nil is invalid value")
 		}
 		return nil
@@ -14984,8 +14984,8 @@ func (s UsersDeleteEmailForAuthenticatedReq) Validate() error {
 			return err
 		}
 		return nil
-	case ArrayStringUsersDeleteEmailForAuthenticatedReq:
-		if s.ArrayString == nil {
+	case StringArrayUsersDeleteEmailForAuthenticatedReq:
+		if s.StringArray == nil {
 			return errors.New("nil is invalid value")
 		}
 		return nil
@@ -15270,8 +15270,8 @@ func (s ValidationErrorErrorsItemValue) Validate() error {
 		return nil // no validation needed
 	case IntValidationErrorErrorsItemValue:
 		return nil // no validation needed
-	case ArrayStringValidationErrorErrorsItemValue:
-		if s.ArrayString == nil {
+	case StringArrayValidationErrorErrorsItemValue:
+		if s.StringArray == nil {
 			return errors.New("nil is invalid value")
 		}
 		return nil

@@ -1323,6 +1323,9 @@
           },
           "additional-fields": {
             "$ref": "#/components/schemas/OneVariantHasNoUniqueFields"
+          },
+          "oneOf-uuid-int-enum": {
+            "$ref": "#/components/schemas/OneOfUUIDAndIntEnum"
           }
         }
       },
@@ -1338,6 +1341,20 @@
             "type": "array"
           }
         }
+      },
+      "OneOfUUIDAndIntEnum": {
+        "oneOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {
+            "enum": [
+              0, 1
+            ],
+            "type": "integer"
+          }
+        ]
       },
       "DefaultTest": {
         "type": "object",

@@ -17,18 +17,7 @@ type schemaGen struct {
 }
 
 func variantFieldName(t *ir.Type) string {
-	var result string
-	switch t.Kind {
-	case ir.KindArray:
-		result = "Array" + variantFieldName(t.Item)
-	case ir.KindPointer:
-		result = variantFieldName(t.PointerTo)
-	case ir.KindAny:
-		result = "Any"
-	default:
-		result = t.Go()
-	}
-	return capitalize.Capitalize(result)
+	return capitalize.Capitalize(t.NamePostfix())
 }
 
 func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type, err error) {

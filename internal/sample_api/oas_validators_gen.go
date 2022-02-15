@@ -489,6 +489,56 @@ func (s NullableEnumsOnlyNullable) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+func (s OneOfBugs) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.OneOfMinusUUIDMinusIntMinusEnum.Set {
+			if err := func() error {
+				if err := s.OneOfMinusUUIDMinusIntMinusEnum.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "oneOf-uuid-int-enum",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s OneOfUUIDAndIntEnum) Validate() error {
+	switch s.Type {
+	case UUIDOneOfUUIDAndIntEnum:
+		return nil // no validation needed
+	case OneOfUUIDAndIntEnum1OneOfUUIDAndIntEnum:
+		if err := s.OneOfUUIDAndIntEnum1.Validate(); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s OneOfUUIDAndIntEnum1) Validate() error {
+	switch s {
+	case 0:
+		return nil
+	case 1:
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
 
 func (s Pet) Validate() error {
 	var failures []validate.FieldError
