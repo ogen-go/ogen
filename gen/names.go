@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"go/token"
 	"strings"
 	"unicode"
 
@@ -47,7 +48,13 @@ func (g *nameGen) generate() (string, error) {
 		r, ok := g.next()
 		if !ok {
 			pushPart()
-			return strings.Join(g.parts, ""), nil
+
+			name := strings.Join(g.parts, "")
+			if !token.IsIdentifier(name) {
+				return "", errors.Wrapf(&ErrNotImplemented{Name: "crypticName"},
+					"can't generate valid name: %+v", g.parts)
+			}
+			return "", nil
 		}
 
 		if g.isAllowed(r) {
