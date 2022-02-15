@@ -52,7 +52,7 @@ func (s *skipBOMReader) Read(p []byte) (n int, err error) {
 	if n == 0 {
 		return
 	}
-	cut := bytes.TrimPrefix(p, bomPrefix)
+	cut := bytes.TrimPrefix(p[:n], bomPrefix)
 	n = copy(p, cut)
 
 	s.met = true
