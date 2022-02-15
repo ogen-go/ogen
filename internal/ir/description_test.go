@@ -2,9 +2,12 @@ package ir
 
 import (
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
+
+	"github.com/ogen-go/ogen/internal/capitalize"
 )
 
 func Test_prettyDoc(t *testing.T) {
@@ -51,6 +54,13 @@ func Test_prettyDoc(t *testing.T) {
 				"content too quickly using this endpoint may result in secondary rate limiting. See \"[Secondary",
 				"rate limits](https://docs.github.", "com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)\" and \"[Dealing with secondary",
 				"rate limits](https://docs.github.", "com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)\"for details.",
+			},
+		},
+		{
+			input: strings.Repeat("a", lineLimit-4) + string(rune(12288)) + strings.Repeat("a", 10),
+			wantR: []string{
+				capitalize.Capitalize(strings.Repeat("a", lineLimit-4)),
+				strings.Repeat("a", 10) + ".",
 			},
 		},
 	}

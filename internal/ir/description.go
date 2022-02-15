@@ -21,29 +21,29 @@ func splitLine(s string, limit int) (r []string) {
 		}
 
 		idx := strings.LastIndexFunc(s[:limit-1], func(r rune) bool {
-			return unicode.IsSpace(r) || r == '.' || r == ','
+			return unicode.IsSpace(r) || r == '.' || r == ',' || r == ';'
 		})
 		if idx < 0 || len(s)-1 == idx {
 			r = append(r, s)
 			return
 		}
 
-		if ch, _ := utf8.DecodeRuneInString(s[idx:]); unicode.IsSpace(ch) {
+		if ch, size := utf8.DecodeRuneInString(s[idx:]); unicode.IsSpace(ch) {
 			r = append(r, s[:idx])
-			s = s[idx+1:]
+			s = s[idx+size:]
 		} else {
-			// Do not cut dots.
-			r = append(r, s[:idx+1])
-			s = s[idx+1:]
+			// Do not cut dots and commas.
+			r = append(r, s[:idx+size])
+			s = s[idx+size:]
 		}
 	}
 }
 
-func prettyDoc(s string) (r []string) {
-	const (
-		lineLimit = 100
-	)
+const (
+	lineLimit = 100
+)
 
+func prettyDoc(s string) (r []string) {
 	// TODO(tdakkota): basic common mark rendering?
 	for _, line := range strings.Split(s, "\n") {
 		r = append(r, splitLine(line, lineLimit)...)
