@@ -16,7 +16,7 @@ func (g *Generator) generateOperation(ctx *genctx, spec *oas.Operation) (_ *ir.O
 		Spec:        spec,
 	}
 	if spec.OperationID != "" {
-		op.Name = pascal(spec.OperationID)
+		op.Name = pascalNonEmpty(spec.OperationID)
 	}
 
 	// Convert []oas.Parameter to []*ir.Parameter.

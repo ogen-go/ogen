@@ -152,6 +152,13 @@ func pascalSpecial(strs ...string) string {
 	}).generate()
 }
 
+func pascalNonEmpty(strs ...string) string {
+	if r := pascal(strs...); r != "" {
+		return r
+	}
+	return pascalSpecial(strs...)
+}
+
 func camel(s string) string {
 	return firstLower(pascal(s))
 }
