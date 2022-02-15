@@ -50,11 +50,15 @@ func (g *nameGen) generate() (string, error) {
 			pushPart()
 
 			name := strings.Join(g.parts, "")
+			// FIXME(tdakkota): choose prefix according to context
+			if len(name) > 0 && name[0] >= '0' && name[0] <= '9' {
+				name = "R" + name
+			}
 			if !token.IsIdentifier(name) {
 				return "", errors.Wrapf(&ErrNotImplemented{Name: "crypticName"},
 					"can't generate valid name: %+v", g.parts)
 			}
-			return "", nil
+			return name, nil
 		}
 
 		if g.isAllowed(r) {
