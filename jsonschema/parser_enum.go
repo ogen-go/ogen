@@ -49,6 +49,8 @@ func parseJSONValue(root *Schema, v json.RawMessage) (interface{}, error) {
 	parse = func(s *Schema, d *jx.Decoder) (interface{}, error) {
 		next := d.Next()
 		if next == jx.Null {
+			// We do not check nullability here because enum with null value is completely valid
+			// even if it is not nullable.
 			return nil, nil
 		}
 		switch typ := s.Type; typ {
