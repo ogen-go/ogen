@@ -8,8 +8,8 @@ import (
 	"go/format"
 	"strings"
 
+	"github.com/ghodss/yaml"
 	"github.com/go-faster/errors"
-	"github.com/goccy/go-yaml"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
