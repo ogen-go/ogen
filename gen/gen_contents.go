@@ -7,7 +7,7 @@ import (
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
-func (g *Generator) generateContents(ctx *genctx, name string, optional bool, contents map[string]*jsonschema.Schema) (map[ir.ContentType]*ir.Type, error) {
+func (g *Generator) generateContents(ctx *genctx, name string, optional bool, contents map[string]*jsonschema.Schema) (_ map[ir.ContentType]*ir.Type, err error) {
 	var (
 		result      = make(map[ir.ContentType]*ir.Type, len(contents))
 		unsupported []string
@@ -16,11 +16,10 @@ func (g *Generator) generateContents(ctx *genctx, name string, optional bool, co
 	for contentType, schema := range contents {
 		typeName := name
 		if len(contents) > 1 {
-			n, err := pascal(name, contentType)
+			typeName, err = pascal(name, contentType)
 			if err != nil {
 				return nil, errors.Wrapf(err, "name for %q", contentType)
 			}
-			typeName = n
 		}
 
 		ctx := ctx.appendPath(contentType)

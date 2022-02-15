@@ -52,11 +52,10 @@ func (g *schemaGen) primitive(name string, schema *jsonschema.Schema) (*ir.Type,
 			if hasDuplicateNames {
 				variantName = name + "_" + cleanSpecial(vstr)
 			} else {
-				k, err := pascalSpecial(name, vstr)
+				variantName, err = pascalSpecial(name, vstr)
 				if err != nil {
 					return nil, errors.Wrapf(err, "variant %q", vstr)
 				}
-				variantName = k
 			}
 
 			variants = append(variants, &ir.EnumVariant{

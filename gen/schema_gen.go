@@ -44,11 +44,10 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 			return t, nil
 		}
 
-		n, err := pascal(strings.TrimPrefix(ref, "#/components/schemas/"))
+		name, err = pascal(strings.TrimPrefix(ref, "#/components/schemas/"))
 		if err != nil {
 			return nil, errors.Wrapf(err, "schema name: %q", ref)
 		}
-		name = n
 	}
 	if name[0] >= '0' && name[0] <= '9' {
 		name = "R" + name

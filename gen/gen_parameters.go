@@ -10,7 +10,7 @@ import (
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
-func (g *Generator) generateParameters(ctx *genctx, opName string, params []*oas.Parameter) ([]*ir.Parameter, error) {
+func (g *Generator) generateParameters(ctx *genctx, opName string, params []*oas.Parameter) (_ []*ir.Parameter, err error) {
 	result := make([]*ir.Parameter, 0, len(params))
 	for i, p := range params {
 		if p.In == oas.LocationCookie {
@@ -80,17 +80,15 @@ func (g *Generator) generateParameters(ctx *genctx, opName string, params []*oas
 				case inEqual && specNameEqual:
 					panic(unreachable(pp.Spec.Name))
 				case inEqual:
-					pName, err := pascalSpecial(p.Spec.Name)
+					p.Name, err = pascalSpecial(p.Spec.Name)
 					if err != nil {
 						return nil, errors.Wrap(err, "parameter name")
 					}
-					p.Name = pName
 
-					ppName, err := pascalSpecial(pp.Spec.Name)
+					pp.Name, err = pascalSpecial(pp.Spec.Name)
 					if err != nil {
 						return nil, errors.Wrap(err, "parameter name")
 					}
-					pp.Name = ppName
 				case specNameEqual:
 					p.Name = string(p.Spec.In) + p.Name
 					pp.Name = string(pp.Spec.In) + pp.Name
