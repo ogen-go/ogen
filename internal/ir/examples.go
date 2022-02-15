@@ -1,9 +1,10 @@
 package ir
 
 import (
-	"encoding/json"
 	"sort"
 	"strings"
+
+	"github.com/go-faster/jx"
 )
 
 func (t *Type) Examples() (r []string) {
@@ -14,7 +15,7 @@ func (t *Type) Examples() (r []string) {
 	dedup := make(map[string]struct{}, len(t.Schema.Examples))
 	for _, example := range t.Schema.Examples {
 
-		if !json.Valid(example) {
+		if !jx.Valid(example) {
 			continue
 		}
 		k := string(example)

@@ -3,13 +3,13 @@ package main
 import (
 	"bytes"
 	"context"
-	"encoding/json"
 	"fmt"
 	"go/format"
 	"strings"
 
+	"github.com/ghodss/yaml"
 	"github.com/go-faster/errors"
-	"github.com/goccy/go-yaml"
+	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
@@ -53,7 +53,7 @@ func worker(ctx context.Context, m FileMatch, r Reporters) (rErr error) {
 		}
 		data = j
 	}
-	if !json.Valid(data) {
+	if !jx.Valid(data) {
 		select {
 		case <-ctx.Done():
 			return

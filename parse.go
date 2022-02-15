@@ -3,10 +3,9 @@ package ogen
 import (
 	"encoding/json"
 
+	"github.com/ghodss/yaml"
 	"github.com/go-faster/errors"
-
 	"github.com/go-faster/jx"
-	"github.com/goccy/go-yaml"
 )
 
 func Parse(data []byte) (*Spec, error) {

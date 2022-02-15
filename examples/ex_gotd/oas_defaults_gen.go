@@ -614,12 +614,3 @@ func (s *ResultWebhookInfo) setDefaults() {
 		s.Ok = val
 	}
 }
-
-// setDefaults set default value of fields.
-func (s *UploadStickerFile) setDefaults() {
-	{
-		val := string("up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. More info on Sending Files »")
-
-		s.PNGSticker = val
-	}
-}

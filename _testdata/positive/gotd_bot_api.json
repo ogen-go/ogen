@@ -2269,7 +2269,7 @@
             "format": "int64"
           },
           "type": {
-            "description": "Type of chat, can be either “private”, “group”, “supergroup” or “channel”",
+            "description": "Type of chat, can be either \"private\", \"group\", \"supergroup\" or \"channel\"",
             "type": "string",
             "enum": [
               "private",
@@ -2361,7 +2361,7 @@
         "type": "object",
         "properties": {
           "invite_link": {
-            "description": "The invite link. If the link was created by another chat administrator, then the second part of the link will be replaced with “…”",
+            "description": "The invite link. If the link was created by another chat administrator, then the second part of the link will be replaced with \"…\"",
             "type": "string"
           },
           "creator": {
@@ -2484,7 +2484,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "description": "The member's status in the chat, always “administrator”",
+            "description": "The member's status in the chat, always \"administrator\"",
             "type": "string"
           },
           "user": {
@@ -2562,7 +2562,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "description": "The member's status in the chat, always “kicked”",
+            "description": "The member's status in the chat, always \"kicked\"",
             "type": "string"
           },
           "user": {
@@ -2584,7 +2584,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "description": "The member's status in the chat, always “left”",
+            "description": "The member's status in the chat, always \"left\"",
             "type": "string"
           },
           "user": {
@@ -2601,7 +2601,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "description": "The member's status in the chat, always “member”",
+            "description": "The member's status in the chat, always \"member\"",
             "type": "string"
           },
           "user": {
@@ -2618,7 +2618,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "description": "The member's status in the chat, always “creator”",
+            "description": "The member's status in the chat, always \"creator\"",
             "type": "string"
           },
           "user": {
@@ -2644,7 +2644,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "description": "The member's status in the chat, always “restricted”",
+            "description": "The member's status in the chat, always \"restricted\"",
             "type": "string"
           },
           "user": {
@@ -2873,7 +2873,7 @@
             "type": "string"
           },
           "value": {
-            "description": "Value of the dice, 1-6 for “”, “” and “” base emoji, 1-5 for “” and “” base emoji, 1-64 for “” base emoji",
+            "description": "Value of the dice, 1-6 for \"\", \"\" and \"\" base emoji, 1-5 for \"\" and \"\" base emoji, 1-64 for \"\" base emoji",
             "type": "integer"
           }
         },
@@ -2943,7 +2943,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "description": "Element type. One of “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”, “phone_number”, “email”",
+            "description": "Element type. One of \"personal_details\", \"passport\", \"driver_license\", \"identity_card\", \"internal_passport\", \"address\", \"utility_bill\", \"bank_statement\", \"rental_agreement\", \"passport_registration\", \"temporary_registration\", \"phone_number\", \"email\"",
             "type": "string",
             "enum": [
               "personal_details",
@@ -2962,19 +2962,19 @@
             ]
           },
           "data": {
-            "description": "Base64-encoded encrypted Telegram Passport element data provided by the user, available for “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport” and “address” types. Can be decrypted and verified using the accompanying EncryptedCredentials",
+            "description": "Base64-encoded encrypted Telegram Passport element data provided by the user, available for \"personal_details\", \"passport\", \"driver_license\", \"identity_card\", \"internal_passport\" and \"address\" types. Can be decrypted and verified using the accompanying EncryptedCredentials",
             "type": "string"
           },
           "phone_number": {
-            "description": "User's verified phone number, available only for “phone_number” type",
+            "description": "User's verified phone number, available only for \"phone_number\" type",
             "type": "string"
           },
           "email": {
-            "description": "User's verified email address, available only for “email” type",
+            "description": "User's verified email address, available only for \"email\" type",
             "type": "string"
           },
           "files": {
-            "description": "Array of encrypted files with documents provided by the user, available for “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration” types. Files can be decrypted and verified using the accompanying EncryptedCredentials",
+            "description": "Array of encrypted files with documents provided by the user, available for \"utility_bill\", \"bank_statement\", \"rental_agreement\", \"passport_registration\" and \"temporary_registration\" types. Files can be decrypted and verified using the accompanying EncryptedCredentials",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PassportFile"
@@ -2990,7 +2990,7 @@
             "$ref": "#/components/schemas/PassportFile"
           },
           "translation": {
-            "description": "Array of encrypted files with translated versions of documents provided by the user. Available if requested for “passport”, “driver_license”, “identity_card”, “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration” types. Files can be decrypted and verified using the accompanying EncryptedCredentials",
+            "description": "Array of encrypted files with translated versions of documents provided by the user. Available if requested for \"passport\", \"driver_license\", \"identity_card\", \"internal_passport\", \"utility_bill\", \"bank_statement\", \"rental_agreement\", \"passport_registration\" and \"temporary_registration\" types. Files can be decrypted and verified using the accompanying EncryptedCredentials",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PassportFile"
@@ -3232,7 +3232,7 @@
             "type": "string"
           },
           "chat_type": {
-            "description": "Type of the chat, from which the inline query was sent. Can be either “sender” for a private chat with the inline query sender, “private”, “group”, “supergroup”, or “channel”. The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat",
+            "description": "Type of the chat, from which the inline query was sent. Can be either \"sender\" for a private chat with the inline query sender, \"private\", \"group\", \"supergroup\", or \"channel\". The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat",
             "type": "string",
             "enum": [
               "sender",
@@ -3965,7 +3965,7 @@
             "type": "string"
           },
           "mime_type": {
-            "description": "Mime type of the content of the file, either “application/pdf” or “application/zip”",
+            "description": "Mime type of the content of the file, either \"application/pdf\" or \"application/zip\"",
             "type": "string"
           },
           "description": {
@@ -4074,7 +4074,7 @@
             "type": "string"
           },
           "thumb_mime_type": {
-            "description": "MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”",
+            "description": "MIME type of the thumbnail, must be one of \"image/jpeg\", \"image/gif\", or \"video/mp4\". Defaults to \"image/jpeg\"",
             "type": "string"
           },
           "title": {
@@ -4231,7 +4231,7 @@
             "type": "string"
           },
           "thumb_mime_type": {
-            "description": "MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”",
+            "description": "MIME type of the thumbnail, must be one of \"image/jpeg\", \"image/gif\", or \"video/mp4\". Defaults to \"image/jpeg\"",
             "type": "string"
           },
           "title": {
@@ -4375,7 +4375,7 @@
             "type": "string"
           },
           "foursquare_type": {
-            "description": "Foursquare type of the venue, if known. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)",
+            "description": "Foursquare type of the venue, if known. (For example, \"arts_entertainment/default\", \"arts_entertainment/aquarium\" or \"food/icecream\".)",
             "type": "string"
           },
           "google_place_id": {
@@ -4438,7 +4438,7 @@
             "type": "string"
           },
           "mime_type": {
-            "description": "Mime type of the content of video url, “text/html” or “video/mp4”",
+            "description": "Mime type of the content of video url, \"text/html\" or \"video/mp4\"",
             "type": "string"
           },
           "thumb_url": {
@@ -4780,11 +4780,11 @@
             "default": "animation"
           },
           "media": {
-            "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://\u003cfile_attach_name\u003e” to upload a new one using multipart/form-data under \u003cfile_attach_name\u003e name. More info on Sending Files »",
+            "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass \"attach://\u003cfile_attach_name\u003e\" to upload a new one using multipart/form-data under \u003cfile_attach_name\u003e name.",
             "type": "string"
           },
           "thumb": {
-            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://\u003cfile_attach_name\u003e” if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More info on Sending Files »",
+            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \"attach://\u003cfile_attach_name\u003e\" if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e.",
             "type": "string"
           },
           "caption": {
@@ -4837,11 +4837,11 @@
             "default": "audio"
           },
           "media": {
-            "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://\u003cfile_attach_name\u003e” to upload a new one using multipart/form-data under \u003cfile_attach_name\u003e name. More info on Sending Files »",
+            "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass \"attach://\u003cfile_attach_name\u003e\" to upload a new one using multipart/form-data under \u003cfile_attach_name\u003e name.",
             "type": "string"
           },
           "thumb": {
-            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://\u003cfile_attach_name\u003e” if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More info on Sending Files »",
+            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \"attach://\u003cfile_attach_name\u003e\" if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e.",
             "type": "string"
           },
           "caption": {
@@ -4890,11 +4890,11 @@
             "default": "document"
           },
           "media": {
-            "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://\u003cfile_attach_name\u003e” to upload a new one using multipart/form-data under \u003cfile_attach_name\u003e name. More info on Sending Files »",
+            "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass \"attach://\u003cfile_attach_name\u003e\" to upload a new one using multipart/form-data under \u003cfile_attach_name\u003e name.",
             "type": "string"
           },
           "thumb": {
-            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://\u003cfile_attach_name\u003e” if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More info on Sending Files »",
+            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \"attach://\u003cfile_attach_name\u003e\" if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e.",
             "type": "string"
           },
           "caption": {
@@ -4933,7 +4933,7 @@
             "default": "photo"
           },
           "media": {
-            "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://\u003cfile_attach_name\u003e” to upload a new one using multipart/form-data under \u003cfile_attach_name\u003e name. More info on Sending Files »",
+            "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass \"attach://\u003cfile_attach_name\u003e\" to upload a new one using multipart/form-data under \u003cfile_attach_name\u003e name.",
             "type": "string"
           },
           "caption": {
@@ -4968,11 +4968,11 @@
             "default": "video"
           },
           "media": {
-            "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://\u003cfile_attach_name\u003e” to upload a new one using multipart/form-data under \u003cfile_attach_name\u003e name. More info on Sending Files »",
+            "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass \"attach://\u003cfile_attach_name\u003e\" to upload a new one using multipart/form-data under \u003cfile_attach_name\u003e name.",
             "type": "string"
           },
           "thumb": {
-            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://\u003cfile_attach_name\u003e” if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More info on Sending Files »",
+            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \"attach://\u003cfile_attach_name\u003e\" if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e.",
             "type": "string"
           },
           "caption": {
@@ -5094,7 +5094,7 @@
             "type": "string"
           },
           "foursquare_type": {
-            "description": "Foursquare type of the venue, if known. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)",
+            "description": "Foursquare type of the venue, if known. (For example, \"arts_entertainment/default\", \"arts_entertainment/aquarium\" or \"food/icecream\".)",
             "type": "string"
           },
           "google_place_id": {
@@ -5275,7 +5275,7 @@
         "type": "object",
         "properties": {
           "point": {
-            "description": "The part of the face relative to which the mask should be placed. One of “forehead”, “eyes”, “mouth”, or “chin”",
+            "description": "The part of the face relative to which the mask should be placed. One of \"forehead\", \"eyes\", \"mouth\", or \"chin\"",
             "type": "string"
           },
           "x_shift": {
@@ -5555,7 +5555,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "description": "Type of the entity. Currently, can be “mention” (@username), “hashtag” (#hashtag), “cashtag” ($USD), “bot_command” (/start@jobs_bot), “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text), “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough text), “spoiler” (spoiler message), “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames)",
+            "description": "Type of the entity. Currently, can be \"mention\" (@username), \"hashtag\" (#hashtag), \"cashtag\" ($USD), \"bot_command\" (/start@jobs_bot), \"url\" (https://telegram.org), \"email\" (do-not-reply@telegram.org), \"phone_number\" (+1-212-555-0123), \"bold\" (bold text), \"italic\" (italic text), \"underline\" (underlined text), \"strikethrough\" (strikethrough text), \"spoiler\" (spoiler message), \"code\" (monowidth string), \"pre\" (monowidth block), \"text_link\" (for clickable text URLs), \"text_mention\" (for users without usernames)",
             "type": "string",
             "enum": [
               "mention",
@@ -5586,14 +5586,14 @@
             "type": "integer"
           },
           "url": {
-            "description": "For “text_link” only, url that will be opened after user taps on the text",
+            "description": "For \"text_link\" only, url that will be opened after user taps on the text",
             "type": "string"
           },
           "user": {
             "$ref": "#/components/schemas/User"
           },
           "language": {
-            "description": "For “pre” only, the programming language of the entity text",
+            "description": "For \"pre\" only, the programming language of the entity text",
             "type": "string"
           }
         },
@@ -5713,7 +5713,7 @@
             "default": "data"
           },
           "type": {
-            "description": "The section of the user's Telegram Passport which has the error, one of “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”",
+            "description": "The section of the user's Telegram Passport which has the error, one of \"personal_details\", \"passport\", \"driver_license\", \"identity_card\", \"internal_passport\", \"address\"",
             "type": "string",
             "enum": [
               "personal_details",
@@ -5755,7 +5755,7 @@
             "default": "file"
           },
           "type": {
-            "description": "The section of the user's Telegram Passport which has the issue, one of “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”",
+            "description": "The section of the user's Telegram Passport which has the issue, one of \"utility_bill\", \"bank_statement\", \"rental_agreement\", \"passport_registration\", \"temporary_registration\"",
             "type": "string",
             "enum": [
               "utility_bill",
@@ -5791,7 +5791,7 @@
             "default": "files"
           },
           "type": {
-            "description": "The section of the user's Telegram Passport which has the issue, one of “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”",
+            "description": "The section of the user's Telegram Passport which has the issue, one of \"utility_bill\", \"bank_statement\", \"rental_agreement\", \"passport_registration\", \"temporary_registration\"",
             "type": "string",
             "enum": [
               "utility_bill",
@@ -5830,7 +5830,7 @@
             "default": "front_side"
           },
           "type": {
-            "description": "The section of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”",
+            "description": "The section of the user's Telegram Passport which has the issue, one of \"passport\", \"driver_license\", \"identity_card\", \"internal_passport\"",
             "type": "string",
             "enum": [
               "passport",
@@ -5865,7 +5865,7 @@
             "default": "reverse_side"
           },
           "type": {
-            "description": "The section of the user's Telegram Passport which has the issue, one of “driver_license”, “identity_card”",
+            "description": "The section of the user's Telegram Passport which has the issue, one of \"driver_license\", \"identity_card\"",
             "type": "string",
             "enum": [
               "driver_license",
@@ -5898,7 +5898,7 @@
             "default": "selfie"
           },
           "type": {
-            "description": "The section of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”",
+            "description": "The section of the user's Telegram Passport which has the issue, one of \"passport\", \"driver_license\", \"identity_card\", \"internal_passport\"",
             "type": "string",
             "enum": [
               "passport",
@@ -5933,7 +5933,7 @@
             "default": "translation_file"
           },
           "type": {
-            "description": "Type of element of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”",
+            "description": "Type of element of the user's Telegram Passport which has the issue, one of \"passport\", \"driver_license\", \"identity_card\", \"internal_passport\", \"utility_bill\", \"bank_statement\", \"rental_agreement\", \"passport_registration\", \"temporary_registration\"",
             "type": "string",
             "enum": [
               "passport",
@@ -5973,7 +5973,7 @@
             "default": "translation_files"
           },
           "type": {
-            "description": "Type of element of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”",
+            "description": "Type of element of the user's Telegram Passport which has the issue, one of \"passport\", \"driver_license\", \"identity_card\", \"internal_passport\", \"utility_bill\", \"bank_statement\", \"rental_agreement\", \"passport_registration\", \"temporary_registration\"",
             "type": "string",
             "enum": [
               "passport",
@@ -6133,7 +6133,7 @@
             "type": "boolean"
           },
           "type": {
-            "description": "Poll type, currently can be “regular” or “quiz”",
+            "description": "Poll type, currently can be \"regular\" or \"quiz\"",
             "type": "string",
             "enum": [
               "regular",
@@ -7133,7 +7133,7 @@
             "type": "string"
           },
           "foursquare_type": {
-            "description": "Foursquare type of the venue. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)",
+            "description": "Foursquare type of the venue. (For example, \"arts_entertainment/default\", \"arts_entertainment/aquarium\" or \"food/icecream\".)",
             "type": "string"
           },
           "google_place_id": {
@@ -7380,7 +7380,7 @@
             "type": "string"
           },
           "png_sticker": {
-            "description": "PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »",
+            "description": "PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.",
             "type": "string"
           },
           "tgs_sticker": {
@@ -7688,7 +7688,7 @@
             "format": "int64"
           },
           "name": {
-            "description": "Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only english letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in “_by_\u003cbot username\u003e”. \u003cbot_username\u003e is case insensitive. 1-64 characters",
+            "description": "Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only english letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in \"_by_\u003cbot username\u003e\". \u003cbot_username\u003e is case insensitive. 1-64 characters",
             "type": "string",
             "maxLength": 64,
             "minLength": 1
@@ -7700,7 +7700,7 @@
             "minLength": 1
           },
           "png_sticker": {
-            "description": "PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »",
+            "description": "PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.",
             "type": "string"
           },
           "tgs_sticker": {
@@ -8216,7 +8216,7 @@
             "type": "integer"
           },
           "allowed_updates": {
-            "description": "A JSON-serialized list of the update types you want your bot to receive. For example, specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all update types except chat_member (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the getUpdates, so unwanted updates may be received for a short period of time",
+            "description": "A JSON-serialized list of the update types you want your bot to receive. For example, specify [\"message\", \"edited_channel_post\", \"callback_query\"] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all update types except chat_member (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the getUpdates, so unwanted updates may be received for a short period of time",
             "type": "array",
             "items": {
               "type": "string"
@@ -8395,7 +8395,7 @@
             "$ref": "#/components/schemas/ID"
           },
           "animation": {
-            "description": "Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More info on Sending Files »",
+            "description": "Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data.",
             "type": "string"
           },
           "duration": {
@@ -8417,7 +8417,7 @@
             "exclusiveMinimum": true
           },
           "thumb": {
-            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://\u003cfile_attach_name\u003e” if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More info on Sending Files »",
+            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \"attach://\u003cfile_attach_name\u003e\" if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e.",
             "type": "string"
           },
           "caption": {
@@ -8469,7 +8469,7 @@
             "$ref": "#/components/schemas/ID"
           },
           "audio": {
-            "description": "Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »",
+            "description": "Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data.",
             "type": "string"
           },
           "caption": {
@@ -8503,7 +8503,7 @@
             "type": "string"
           },
           "thumb": {
-            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://\u003cfile_attach_name\u003e” if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More info on Sending Files »",
+            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \"attach://\u003cfile_attach_name\u003e\" if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e.",
             "type": "string"
           },
           "disable_notification": {
@@ -8606,7 +8606,7 @@
             "$ref": "#/components/schemas/ID"
           },
           "emoji": {
-            "description": "Emoji on which the dice throw animation is based. Currently, must be one of “”, “”, “”, “”, “”, or “”. Dice can have values 1-6 for “”, “” and “”, values 1-5 for “” and “”, and values 1-64 for “”. Defaults to “”",
+            "description": "Emoji on which the dice throw animation is based. Currently, must be one of \"\", \"\", \"\", \"\", \"\", or \"\". Dice can have values 1-6 for \"\", \"\" and \"\", values 1-5 for \"\" and \"\", and values 1-64 for \"\". Defaults to \"\"",
             "type": "string"
           },
           "disable_notification": {
@@ -8641,11 +8641,11 @@
             "$ref": "#/components/schemas/ID"
           },
           "document": {
-            "description": "File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »",
+            "description": "File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.",
             "type": "string"
           },
           "thumb": {
-            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://\u003cfile_attach_name\u003e” if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More info on Sending Files »",
+            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \"attach://\u003cfile_attach_name\u003e\" if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e.",
             "type": "string"
           },
           "caption": {
@@ -9051,7 +9051,7 @@
             "$ref": "#/components/schemas/ID"
           },
           "photo": {
-            "description": "Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More info on Sending Files »",
+            "description": "Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20.",
             "type": "string"
           },
           "caption": {
@@ -9120,7 +9120,7 @@
             "type": "boolean"
           },
           "type": {
-            "description": "Poll type, “quiz” or “regular”, defaults to “regular”",
+            "description": "Poll type, \"quiz\" or \"regular\", defaults to \"regular\"",
             "type": "string"
           },
           "allows_multiple_answers": {
@@ -9193,7 +9193,7 @@
             "$ref": "#/components/schemas/ID"
           },
           "sticker": {
-            "description": "Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »",
+            "description": "Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP file from the Internet, or upload a new one using multipart/form-data.",
             "type": "string"
           },
           "disable_notification": {
@@ -9249,7 +9249,7 @@
             "type": "string"
           },
           "foursquare_type": {
-            "description": "Foursquare type of the venue, if known. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)",
+            "description": "Foursquare type of the venue, if known. (For example, \"arts_entertainment/default\", \"arts_entertainment/aquarium\" or \"food/icecream\".)",
             "type": "string"
           },
           "google_place_id": {
@@ -9296,7 +9296,7 @@
             "$ref": "#/components/schemas/ID"
           },
           "video": {
-            "description": "Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More info on Sending Files »",
+            "description": "Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data.",
             "type": "string"
           },
           "duration": {
@@ -9318,7 +9318,7 @@
             "exclusiveMinimum": true
           },
           "thumb": {
-            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://\u003cfile_attach_name\u003e” if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More info on Sending Files »",
+            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \"attach://\u003cfile_attach_name\u003e\" if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e.",
             "type": "string"
           },
           "caption": {
@@ -9374,7 +9374,7 @@
             "$ref": "#/components/schemas/ID"
           },
           "video_note": {
-            "description": "Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More info on Sending Files ». Sending video notes by a URL is currently unsupported",
+            "description": "Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. . Sending video notes by a URL is currently unsupported",
             "type": "string"
           },
           "duration": {
@@ -9388,7 +9388,7 @@
             "type": "integer"
           },
           "thumb": {
-            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://\u003cfile_attach_name\u003e” if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More info on Sending Files »",
+            "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \"attach://\u003cfile_attach_name\u003e\" if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e.",
             "type": "string"
           },
           "disable_notification": {
@@ -9424,7 +9424,7 @@
             "$ref": "#/components/schemas/ID"
           },
           "voice": {
-            "description": "Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »",
+            "description": "Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.",
             "type": "string"
           },
           "caption": {
@@ -9701,7 +9701,7 @@
             "format": "int64"
           },
           "thumb": {
-            "description": "A PNG image with the thumbnail, must be up to 128 kilobytes in size and have width and height exactly 100px, or a TGS animation with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/stickers#animated-sticker-requirements for animated sticker technical requirements, or a WEBM video with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/stickers#video-sticker-requirements for video sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files ». Animated sticker set thumbnails can't be uploaded via HTTP URL",
+            "description": "A PNG image with the thumbnail, must be up to 128 kilobytes in size and have width and height exactly 100px, or a TGS animation with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/stickers#animated-sticker-requirements for animated sticker technical requirements, or a WEBM video with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/stickers#video-sticker-requirements for video sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. . Animated sticker set thumbnails can't be uploaded via HTTP URL",
             "type": "string"
           }
         },
@@ -9731,7 +9731,7 @@
             "type": "integer"
           },
           "allowed_updates": {
-            "description": "A JSON-serialized list of the update types you want your bot to receive. For example, specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all update types except chat_member (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the setWebhook, so unwanted updates may be received for a short period of time",
+            "description": "A JSON-serialized list of the update types you want your bot to receive. For example, specify [\"message\", \"edited_channel_post\", \"callback_query\"] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all update types except chat_member (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the setWebhook, so unwanted updates may be received for a short period of time",
             "type": "array",
             "items": {
               "type": "string"
@@ -9864,9 +9864,8 @@
             "format": "int64"
           },
           "png_sticker": {
-            "description": "PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. More info on Sending Files »",
-            "type": "string",
-            "default": "up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. More info on Sending Files »"
+            "description": "PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px.",
+            "type": "string"
           }
         },
         "required": [
