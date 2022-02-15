@@ -76,11 +76,49 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) setDefaults() {
 }
 
 // setDefaults set default value of fields.
+func (s *ActivitySetThreadSubscriptionReq) setDefaults() {
+	{
+		val := bool(false)
+
+		s.Ignored.SetTo(val)
+	}
+}
+
+// setDefaults set default value of fields.
 func (s *ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) setDefaults() {
 	{
 		val := bool(true)
 
 		s.Setting = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *DeploymentStatus) setDefaults() {
+	{
+		val := string("")
+
+		s.Description = val
+	}
+	{
+		val := string("")
+
+		s.Environment.SetTo(val)
+	}
+	{
+		val, _ := json.DecodeURI(jx.DecodeStr("\"\""))
+
+		s.TargetURL = val
+	}
+	{
+		val, _ := json.DecodeURI(jx.DecodeStr("\"\""))
+
+		s.EnvironmentURL.SetTo(val)
+	}
+	{
+		val, _ := json.DecodeURI(jx.DecodeStr("\"\""))
+
+		s.LogURL.SetTo(val)
 	}
 }
 
@@ -112,6 +150,15 @@ func (s *GitCreateBlobReq) setDefaults() {
 }
 
 // setDefaults set default value of fields.
+func (s *GitUpdateRefReq) setDefaults() {
+	{
+		val := bool(false)
+
+		s.Force.SetTo(val)
+	}
+}
+
+// setDefaults set default value of fields.
 func (s *IssuesCreateMilestoneReq) setDefaults() {
 	{
 		val := IssuesCreateMilestoneReqState("open")
@@ -126,6 +173,30 @@ func (s *IssuesUpdateMilestoneReq) setDefaults() {
 		val := IssuesUpdateMilestoneReqState("open")
 
 		s.State.SetTo(val)
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *MigrationsStartForOrgReq) setDefaults() {
+	{
+		val := bool(false)
+
+		s.LockRepositories.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.ExcludeAttachments.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.ExcludeReleases.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.ExcludeOwnerProjects.SetTo(val)
 	}
 }
 
@@ -150,6 +221,16 @@ func (s *NullableMilestone) setDefaults() {
 // setDefaults set default value of fields.
 func (s *NullableRepository) setDefaults() {
 	{
+		val := bool(false)
+
+		s.Private = val
+	}
+	{
+		val := bool(false)
+
+		s.IsTemplate.SetTo(val)
+	}
+	{
 		val := bool(true)
 
 		s.HasIssues = val
@@ -170,6 +251,11 @@ func (s *NullableRepository) setDefaults() {
 		s.HasDownloads = val
 	}
 	{
+		val := bool(false)
+
+		s.Archived = val
+	}
+	{
 		val := string("public")
 
 		s.Visibility.SetTo(val)
@@ -183,6 +269,16 @@ func (s *NullableRepository) setDefaults() {
 		val := bool(true)
 
 		s.AllowSquashMerge.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.AllowAutoMerge.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.DeleteBranchOnMerge.SetTo(val)
 	}
 	{
 		val := bool(true)
@@ -244,6 +340,15 @@ func (s *OrgsUpdateWebhookReq) setDefaults() {
 }
 
 // setDefaults set default value of fields.
+func (s *Page) setDefaults() {
+	{
+		val := bool(false)
+
+		s.Custom404 = val
+	}
+}
+
+// setDefaults set default value of fields.
 func (s *ProjectsAddCollaboratorReq) setDefaults() {
 	{
 		val := ProjectsAddCollaboratorReqPermission("write")
@@ -301,10 +406,49 @@ func (s *ReposCreateDeploymentReq) setDefaults() {
 
 		s.Environment.SetTo(val)
 	}
+	{
+		val := string("")
+
+		s.Description.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.TransientEnvironment.SetTo(val)
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ReposCreateDeploymentStatusReq) setDefaults() {
+	{
+		val := string("")
+
+		s.TargetURL.SetTo(val)
+	}
+	{
+		val := string("")
+
+		s.LogURL.SetTo(val)
+	}
+	{
+		val := string("")
+
+		s.Description.SetTo(val)
+	}
+	{
+		val := string("")
+
+		s.EnvironmentURL.SetTo(val)
+	}
 }
 
 // setDefaults set default value of fields.
 func (s *ReposCreateForAuthenticatedUserReq) setDefaults() {
+	{
+		val := bool(false)
+
+		s.Private.SetTo(val)
+	}
 	{
 		val := bool(true)
 
@@ -321,6 +465,11 @@ func (s *ReposCreateForAuthenticatedUserReq) setDefaults() {
 		s.HasWiki.SetTo(val)
 	}
 	{
+		val := bool(false)
+
+		s.AutoInit.SetTo(val)
+	}
+	{
 		val := bool(true)
 
 		s.AllowSquashMerge.SetTo(val)
@@ -334,16 +483,36 @@ func (s *ReposCreateForAuthenticatedUserReq) setDefaults() {
 		val := bool(true)
 
 		s.AllowRebaseMerge.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.AllowAutoMerge.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.DeleteBranchOnMerge.SetTo(val)
 	}
 	{
 		val := bool(true)
 
 		s.HasDownloads.SetTo(val)
 	}
+	{
+		val := bool(false)
+
+		s.IsTemplate.SetTo(val)
+	}
 }
 
 // setDefaults set default value of fields.
 func (s *ReposCreateInOrgReq) setDefaults() {
+	{
+		val := bool(false)
+
+		s.Private.SetTo(val)
+	}
 	{
 		val := bool(true)
 
@@ -360,6 +529,16 @@ func (s *ReposCreateInOrgReq) setDefaults() {
 		s.HasWiki.SetTo(val)
 	}
 	{
+		val := bool(false)
+
+		s.IsTemplate.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.AutoInit.SetTo(val)
+	}
+	{
 		val := bool(true)
 
 		s.AllowSquashMerge.SetTo(val)
@@ -373,6 +552,16 @@ func (s *ReposCreateInOrgReq) setDefaults() {
 		val := bool(true)
 
 		s.AllowRebaseMerge.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.AllowAutoMerge.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.DeleteBranchOnMerge.SetTo(val)
 	}
 }
 
@@ -382,6 +571,34 @@ func (s *ReposCreatePagesSiteReqSource) setDefaults() {
 		val := ReposCreatePagesSiteReqSourcePath("/")
 
 		s.Path.SetTo(val)
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ReposCreateReleaseReq) setDefaults() {
+	{
+		val := bool(false)
+
+		s.Draft.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.Prerelease.SetTo(val)
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *ReposCreateUsingTemplateReq) setDefaults() {
+	{
+		val := bool(false)
+
+		s.IncludeAllBranches.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.Private.SetTo(val)
 	}
 }
 
@@ -405,6 +622,11 @@ func (s *ReposCreateWebhookReq) setDefaults() {
 // setDefaults set default value of fields.
 func (s *ReposUpdateReq) setDefaults() {
 	{
+		val := bool(false)
+
+		s.Private.SetTo(val)
+	}
+	{
 		val := bool(true)
 
 		s.HasIssues.SetTo(val)
@@ -420,6 +642,11 @@ func (s *ReposUpdateReq) setDefaults() {
 		s.HasWiki.SetTo(val)
 	}
 	{
+		val := bool(false)
+
+		s.IsTemplate.SetTo(val)
+	}
+	{
 		val := bool(true)
 
 		s.AllowSquashMerge.SetTo(val)
@@ -433,6 +660,26 @@ func (s *ReposUpdateReq) setDefaults() {
 		val := bool(true)
 
 		s.AllowRebaseMerge.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.AllowAutoMerge.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.DeleteBranchOnMerge.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.Archived.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.AllowForking.SetTo(val)
 	}
 }
 
@@ -456,6 +703,16 @@ func (s *ReposUpdateWebhookReq) setDefaults() {
 // setDefaults set default value of fields.
 func (s *Repository) setDefaults() {
 	{
+		val := bool(false)
+
+		s.Private = val
+	}
+	{
+		val := bool(false)
+
+		s.IsTemplate.SetTo(val)
+	}
+	{
 		val := bool(true)
 
 		s.HasIssues = val
@@ -476,6 +733,11 @@ func (s *Repository) setDefaults() {
 		s.HasDownloads = val
 	}
 	{
+		val := bool(false)
+
+		s.Archived = val
+	}
+	{
 		val := string("public")
 
 		s.Visibility.SetTo(val)
@@ -489,6 +751,16 @@ func (s *Repository) setDefaults() {
 		val := bool(true)
 
 		s.AllowSquashMerge.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.AllowAutoMerge.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.DeleteBranchOnMerge.SetTo(val)
 	}
 	{
 		val := bool(true)
@@ -523,6 +795,16 @@ func (s *TeamMembership) setDefaults() {
 // setDefaults set default value of fields.
 func (s *TeamRepository) setDefaults() {
 	{
+		val := bool(false)
+
+		s.Private = val
+	}
+	{
+		val := bool(false)
+
+		s.IsTemplate.SetTo(val)
+	}
+	{
 		val := bool(true)
 
 		s.HasIssues = val
@@ -543,6 +825,11 @@ func (s *TeamRepository) setDefaults() {
 		s.HasDownloads = val
 	}
 	{
+		val := bool(false)
+
+		s.Archived = val
+	}
+	{
 		val := string("public")
 
 		s.Visibility.SetTo(val)
@@ -558,9 +845,24 @@ func (s *TeamRepository) setDefaults() {
 		s.AllowSquashMerge.SetTo(val)
 	}
 	{
+		val := bool(false)
+
+		s.AllowAutoMerge.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.DeleteBranchOnMerge.SetTo(val)
+	}
+	{
 		val := bool(true)
 
 		s.AllowMergeCommit.SetTo(val)
+	}
+	{
+		val := bool(false)
+
+		s.AllowForking.SetTo(val)
 	}
 }
 
@@ -579,6 +881,24 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyReq) setDefaults() {
 		val := TeamsAddOrUpdateMembershipForUserLegacyReqRole("member")
 
 		s.Role.SetTo(val)
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *TeamsCreateDiscussionInOrgReq) setDefaults() {
+	{
+		val := bool(false)
+
+		s.Private.SetTo(val)
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *TeamsCreateDiscussionLegacyReq) setDefaults() {
+	{
+		val := bool(false)
+
+		s.Private.SetTo(val)
 	}
 }
 
