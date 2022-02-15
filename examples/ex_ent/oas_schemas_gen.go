@@ -67,32 +67,32 @@ var (
 )
 
 type CreatePetCategoriesReq struct {
-	Name string `json:"name"`
-	Pets []int  `json:"pets"`
+	Name string "json:\"name\""
+	Pets []int  "json:\"pets\""
 }
 
 type CreatePetFriendsReq struct {
-	Name       string      `json:"name"`
-	Weight     OptInt      `json:"weight"`
-	Birthday   OptDateTime `json:"birthday"`
-	Categories []int       `json:"categories"`
-	Owner      int         `json:"owner"`
-	Friends    []int       `json:"friends"`
+	Name       string      "json:\"name\""
+	Weight     OptInt      "json:\"weight\""
+	Birthday   OptDateTime "json:\"birthday\""
+	Categories []int       "json:\"categories\""
+	Owner      int         "json:\"owner\""
+	Friends    []int       "json:\"friends\""
 }
 
 type CreatePetOwnerReq struct {
-	Name string `json:"name"`
-	Age  int    `json:"age"`
-	Pets []int  `json:"pets"`
+	Name string "json:\"name\""
+	Age  int    "json:\"age\""
+	Pets []int  "json:\"pets\""
 }
 
 type CreatePetReq struct {
-	Name       string      `json:"name"`
-	Weight     OptInt      `json:"weight"`
-	Birthday   OptDateTime `json:"birthday"`
-	Categories []int       `json:"categories"`
-	Owner      int         `json:"owner"`
-	Friends    []int       `json:"friends"`
+	Name       string      "json:\"name\""
+	Weight     OptInt      "json:\"weight\""
+	Birthday   OptDateTime "json:\"birthday\""
+	Categories []int       "json:\"categories\""
+	Owner      int         "json:\"owner\""
+	Friends    []int       "json:\"friends\""
 }
 
 // DeletePetNoContent is response for DeletePet operation.
@@ -257,110 +257,110 @@ func (o OptInt32) Or(d int32) int32 {
 
 // Ref: #/components/schemas/Pet_CategoriesCreate
 type PetCategoriesCreate struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
+	ID   int    "json:\"id\""
+	Name string "json:\"name\""
 }
 
 func (*PetCategoriesCreate) createPetCategoriesRes() {}
 
 // Ref: #/components/schemas/Pet_CategoriesList
 type PetCategoriesList struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
+	ID   int    "json:\"id\""
+	Name string "json:\"name\""
 }
 
 // Ref: #/components/schemas/PetCreate
 type PetCreate struct {
-	ID         int                   `json:"id"`
-	Name       string                `json:"name"`
-	Weight     OptInt                `json:"weight"`
-	Birthday   OptDateTime           `json:"birthday"`
-	Categories []PetCreateCategories `json:"categories"`
-	Owner      PetCreateOwner        `json:"owner"`
+	ID         int                   "json:\"id\""
+	Name       string                "json:\"name\""
+	Weight     OptInt                "json:\"weight\""
+	Birthday   OptDateTime           "json:\"birthday\""
+	Categories []PetCreateCategories "json:\"categories\""
+	Owner      PetCreateOwner        "json:\"owner\""
 }
 
 func (*PetCreate) createPetRes() {}
 
 // Ref: #/components/schemas/PetCreate_Categories
 type PetCreateCategories struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
+	ID   int    "json:\"id\""
+	Name string "json:\"name\""
 }
 
 // Ref: #/components/schemas/PetCreate_Owner
 type PetCreateOwner struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
-	Age  int    `json:"age"`
+	ID   int    "json:\"id\""
+	Name string "json:\"name\""
+	Age  int    "json:\"age\""
 }
 
 // Ref: #/components/schemas/Pet_FriendsCreate
 type PetFriendsCreate struct {
-	ID       int         `json:"id"`
-	Name     string      `json:"name"`
-	Weight   OptInt      `json:"weight"`
-	Birthday OptDateTime `json:"birthday"`
+	ID       int         "json:\"id\""
+	Name     string      "json:\"name\""
+	Weight   OptInt      "json:\"weight\""
+	Birthday OptDateTime "json:\"birthday\""
 }
 
 func (*PetFriendsCreate) createPetFriendsRes() {}
 
 // Ref: #/components/schemas/Pet_FriendsList
 type PetFriendsList struct {
-	ID       int         `json:"id"`
-	Name     string      `json:"name"`
-	Weight   OptInt      `json:"weight"`
-	Birthday OptDateTime `json:"birthday"`
+	ID       int         "json:\"id\""
+	Name     string      "json:\"name\""
+	Weight   OptInt      "json:\"weight\""
+	Birthday OptDateTime "json:\"birthday\""
 }
 
 // Ref: #/components/schemas/PetList
 type PetList struct {
-	ID       int         `json:"id"`
-	Name     string      `json:"name"`
-	Weight   OptInt      `json:"weight"`
-	Birthday OptDateTime `json:"birthday"`
+	ID       int         "json:\"id\""
+	Name     string      "json:\"name\""
+	Weight   OptInt      "json:\"weight\""
+	Birthday OptDateTime "json:\"birthday\""
 }
 
 // Ref: #/components/schemas/Pet_OwnerCreate
 type PetOwnerCreate struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
-	Age  int    `json:"age"`
+	ID   int    "json:\"id\""
+	Name string "json:\"name\""
+	Age  int    "json:\"age\""
 }
 
 func (*PetOwnerCreate) createPetOwnerRes() {}
 
 // Ref: #/components/schemas/Pet_OwnerRead
 type PetOwnerRead struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
-	Age  int    `json:"age"`
+	ID   int    "json:\"id\""
+	Name string "json:\"name\""
+	Age  int    "json:\"age\""
 }
 
 func (*PetOwnerRead) readPetOwnerRes() {}
 
 // Ref: #/components/schemas/PetRead
 type PetRead struct {
-	ID       int         `json:"id"`
-	Name     string      `json:"name"`
-	Weight   OptInt      `json:"weight"`
-	Birthday OptDateTime `json:"birthday"`
+	ID       int         "json:\"id\""
+	Name     string      "json:\"name\""
+	Weight   OptInt      "json:\"weight\""
+	Birthday OptDateTime "json:\"birthday\""
 }
 
 func (*PetRead) readPetRes() {}
 
 // Ref: #/components/schemas/PetUpdate
 type PetUpdate struct {
-	ID       int         `json:"id"`
-	Name     string      `json:"name"`
-	Weight   OptInt      `json:"weight"`
-	Birthday OptDateTime `json:"birthday"`
+	ID       int         "json:\"id\""
+	Name     string      "json:\"name\""
+	Weight   OptInt      "json:\"weight\""
+	Birthday OptDateTime "json:\"birthday\""
 }
 
 func (*PetUpdate) updatePetRes() {}
 
 type R400 struct {
-	Code   int    `json:"code"`
-	Status string `json:"status"`
+	Code   int    "json:\"code\""
+	Status string "json:\"status\""
 }
 
 func (*R400) createPetCategoriesRes() {}
@@ -377,8 +377,8 @@ func (*R400) readPetRes()             {}
 func (*R400) updatePetRes()           {}
 
 type R404 struct {
-	Code   int    `json:"code"`
-	Status string `json:"status"`
+	Code   int    "json:\"code\""
+	Status string "json:\"status\""
 }
 
 func (*R404) deletePetOwnerRes()    {}
@@ -391,8 +391,8 @@ func (*R404) readPetRes()           {}
 func (*R404) updatePetRes()         {}
 
 type R409 struct {
-	Code   int    `json:"code"`
-	Status string `json:"status"`
+	Code   int    "json:\"code\""
+	Status string "json:\"status\""
 }
 
 func (*R409) createPetCategoriesRes() {}
@@ -401,8 +401,8 @@ func (*R409) createPetOwnerRes()      {}
 func (*R409) createPetRes()           {}
 
 type R500 struct {
-	Code   int    `json:"code"`
-	Status string `json:"status"`
+	Code   int    "json:\"code\""
+	Status string "json:\"status\""
 }
 
 func (*R500) createPetCategoriesRes() {}
@@ -419,10 +419,10 @@ func (*R500) readPetRes()             {}
 func (*R500) updatePetRes()           {}
 
 type UpdatePetReq struct {
-	Name       string      `json:"name"`
-	Weight     OptInt      `json:"weight"`
-	Birthday   OptDateTime `json:"birthday"`
-	Categories []int       `json:"categories"`
-	Owner      int         `json:"owner"`
-	Friends    []int       `json:"friends"`
+	Name       string      "json:\"name\""
+	Weight     OptInt      "json:\"weight\""
+	Birthday   OptDateTime "json:\"birthday\""
+	Categories []int       "json:\"categories\""
+	Owner      int         "json:\"owner\""
+	Friends    []int       "json:\"friends\""
 }

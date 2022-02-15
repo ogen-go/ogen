@@ -73,8 +73,8 @@ func (*DeletePetNoContent) deletePetRes() {}
 
 // Ref: #/components/schemas/Error
 type Error struct {
-	Code    int32  `json:"code"`
-	Message string `json:"message"`
+	Code    int32  "json:\"code\""
+	Message string "json:\"message\""
 }
 
 // ErrorStatusCode wraps Error with StatusCode.
