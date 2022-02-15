@@ -8,6 +8,7 @@ import (
 
 	"github.com/go-faster/errors"
 
+	"github.com/ogen-go/ogen/internal/capitalize"
 	"github.com/ogen-go/ogen/internal/ir"
 )
 
@@ -66,6 +67,7 @@ func templateFunctions() template.FuncMap {
 		},
 		"pascalSpecial": pascalSpecial,
 		"camelSpecial":  camelSpecial,
+		"capitalize":    capitalize.Capitalize,
 
 		// Helpers for recursive encoding and decoding.
 		"elem": func(t *ir.Type, v string) Elem {

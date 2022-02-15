@@ -103,8 +103,12 @@ func (g *Generator) makeIR(ops []*oas.Operation) error {
 			continue
 		}
 
-		fixEqualRequests(ctx, op)
-		fixEqualResponses(ctx, op)
+		if err := fixEqualRequests(ctx, op); err != nil {
+			return errors.Wrap(err, "fix requests")
+		}
+		if err := fixEqualResponses(ctx, op); err != nil {
+			return errors.Wrap(err, "fix responses")
+		}
 
 		if err := g.tstorage.merge(ctx.local); err != nil {
 			return err

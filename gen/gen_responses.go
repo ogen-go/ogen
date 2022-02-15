@@ -37,10 +37,14 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 	sort.Ints(statusCodes)
 
 	for _, code := range statusCodes {
+		respName, err := pascal(opName, http.StatusText(code))
+		if err != nil {
+			return nil, errors.Wrapf(err, "%s: %d: response name", opName, code)
+		}
+
 		var (
-			resp     = responses[strconv.Itoa(code)]
-			respName = pascal(opName, http.StatusText(code))
-			doc      = fmt.Sprintf("%s is response for %s operation.", respName, opName)
+			resp = responses[strconv.Itoa(code)]
+			doc  = fmt.Sprintf("%s is response for %s operation.", respName, opName)
 		)
 		r, err := g.responseToIR(ctx, respName, doc, resp)
 		if err != nil {
@@ -71,11 +75,13 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 		lastWalked *ir.Type
 	)
 
-	walkResponseTypes(result, func(_ string, t *ir.Type) *ir.Type {
+	if err := walkResponseTypes(result, func(_ string, t *ir.Type) (*ir.Type, error) {
 		countTypes += 1
 		lastWalked = t
-		return t
-	})
+		return t, nil
+	}); err != nil {
+		return nil, errors.Wrap(err, "walk")
+	}
 
 	if countTypes == 1 {
 		result.Type = lastWalked
@@ -83,21 +89,31 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 	}
 
 	iface := ir.Interface(name)
-	iface.AddMethod(camel(name))
+	methodName, err := camel(name)
+	if err != nil {
+		return nil, errors.Wrap(err, "method name")
+	}
+	iface.AddMethod(methodName)
 	if err := ctx.saveType(iface); err != nil {
 		return nil, errors.Wrap(err, "save interface type")
 	}
-	walkResponseTypes(result, func(resName string, t *ir.Type) *ir.Type {
+	if err := walkResponseTypes(result, func(resName string, t *ir.Type) (*ir.Type, error) {
 		if !t.CanHaveMethods() {
-			t = ir.Alias(pascal(opName, resName), t)
+			respName, err := pascal(opName, resName)
+			if err != nil {
+				return nil, errors.Wrapf(err, "request name: %q", resName)
+			}
+			t = ir.Alias(respName, t)
 			if err := ctx.saveType(t); err != nil {
 				panic("unreachable")
 			}
 		}
 
 		t.Implement(iface)
-		return t
-	})
+		return t, nil
+	}); err != nil {
+		return nil, errors.Wrap(err, "walk")
+	}
 
 	result.Type = iface
 	return result, nil
@@ -109,7 +125,11 @@ func (g *Generator) responseToIR(ctx *genctx, name, doc string, resp *oas.Respon
 			return r, nil
 		}
 
-		name = pascal(strings.TrimPrefix(ref, "#/components/responses/"))
+		n, err := pascal(strings.TrimPrefix(ref, "#/components/responses/"))
+		if err != nil {
+			return nil, errors.Wrapf(err, "response name: %q", ref)
+		}
+		name = n
 		doc = fmt.Sprintf("Ref: %s", ref)
 		defer func() {
 			if rerr != nil {

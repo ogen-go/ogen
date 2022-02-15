@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+
 	"github.com/ogen-go/ogen/internal/ir"
 )
 
@@ -69,7 +70,11 @@ func boxType(ctx *genctx, v ir.GenericVariant, t *ir.Type) (*ir.Type, error) {
 		case v.OnlyNullable():
 			t.NilSemantic = ir.NilNull
 		default:
-			t = ir.Generic(genericPostfix(t), t, v)
+			postfix, err := genericPostfix(t)
+			if err != nil {
+				return nil, errors.Wrap(err, "postfix")
+			}
+			t = ir.Generic(postfix, t, v)
 			if err := ctx.saveType(t); err != nil {
 				return nil, err
 			}
@@ -79,7 +84,11 @@ func boxType(ctx *genctx, v ir.GenericVariant, t *ir.Type) (*ir.Type, error) {
 	}
 
 	if t.CanGeneric() {
-		t = ir.Generic(genericPostfix(t), t, v)
+		postfix, err := genericPostfix(t)
+		if err != nil {
+			return nil, errors.Wrap(err, "postfix")
+		}
+		t = ir.Generic(postfix, t, v)
 		if err := ctx.saveType(t); err != nil {
 			return nil, err
 		}
@@ -93,7 +102,11 @@ func boxType(ctx *genctx, v ir.GenericVariant, t *ir.Type) (*ir.Type, error) {
 	case v.OnlyNullable():
 		return t.Pointer(ir.NilNull), nil
 	default:
-		t = ir.Generic(genericPostfix(t),
+		postfix, err := genericPostfix(t)
+		if err != nil {
+			return nil, errors.Wrap(err, "postfix")
+		}
+		t = ir.Generic(postfix,
 			t.Pointer(ir.NilNull), ir.GenericVariant{Optional: true},
 		)
 		if err := ctx.saveType(t); err != nil {
@@ -104,7 +117,7 @@ func boxType(ctx *genctx, v ir.GenericVariant, t *ir.Type) (*ir.Type, error) {
 	}
 }
 
-func genericPostfix(t *ir.Type) string {
+func genericPostfix(t *ir.Type) (string, error) {
 	name := t.NamePostfix()
 	if idx := strings.Index(name, "."); idx > 0 {
 		name = name[idx+1:]

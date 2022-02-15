@@ -3,6 +3,8 @@ package gen
 import (
 	"strings"
 	"unicode"
+
+	"github.com/go-faster/errors"
 )
 
 type nameGen struct {
@@ -32,7 +34,7 @@ var namedChar = map[rune][]rune{
 	'.': []rune("Dot"),
 }
 
-func (g *nameGen) generate() string {
+func (g *nameGen) generate() (string, error) {
 	var (
 		part     []rune
 		upper    = true
@@ -45,7 +47,7 @@ func (g *nameGen) generate() string {
 		r, ok := g.next()
 		if !ok {
 			pushPart()
-			return strings.Join(g.parts, "")
+			return strings.Join(g.parts, ""), nil
 		}
 
 		if g.isAllowed(r) {
@@ -139,25 +141,52 @@ func cleanSpecial(strs ...string) string {
 	}).clean()
 }
 
-func pascal(strs ...string) string {
+func pascal(strs ...string) (string, error) {
 	return (&nameGen{
 		src: []rune(strings.Join(strs, " ")),
 	}).generate()
 }
 
-func pascalSpecial(strs ...string) string {
+func pascalSpecial(strs ...string) (string, error) {
 	return (&nameGen{
 		src:          []rune(strings.Join(strs, " ")),
 		allowSpecial: true,
 	}).generate()
 }
 
-func camel(s string) string {
-	return firstLower(pascal(s))
+func pascalNonEmpty(strs ...string) (string, error) {
+	r, err := pascal(strs...)
+	if err != nil {
+		return "", err
+	}
+	if r != "" {
+		return r, nil
+	}
+
+	r, err = pascalSpecial(strs...)
+	if err != nil {
+		return "", err
+	}
+	if r != "" {
+		return r, nil
+	}
+	return "", errors.Wrapf(&ErrNotImplemented{Name: "crypticName"}, "can't generate name for %+v", strs)
 }
 
-func camelSpecial(s ...string) string {
-	return firstLower(pascalSpecial(s...))
+func camel(s ...string) (string, error) {
+	r, err := pascal(s...)
+	if err != nil {
+		return "", err
+	}
+	return firstLower(r), nil
+}
+
+func camelSpecial(s ...string) (string, error) {
+	r, err := pascalSpecial(s...)
+	if err != nil {
+		return "", err
+	}
+	return firstLower(r), nil
 }
 
 // firstLower returns s with first rune mapped to lower case.

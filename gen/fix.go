@@ -5,6 +5,8 @@ import (
 	"reflect"
 	"sort"
 
+	"github.com/go-faster/errors"
+
 	"github.com/ogen-go/ogen/internal/ir"
 )
 
@@ -37,13 +39,13 @@ import (
 // func(*FooResponseOK) FooResponse() {}
 //
 // type FooResponseAccepted Foo
-// func(*FooResponseOK) FooResponse() {}
+// func(*FooResponseAccepted) FooResponse() {}
 //
 // Referring to the same schema in different content types
 // also can cause a collision and it will be fixed in the same way.
-func fixEqualResponses(ctx *genctx, op *ir.Operation) {
+func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 	if !op.Response.Type.Is(ir.KindInterface) {
-		return
+		return nil
 	}
 
 	// We can modify contents of operation response.
@@ -74,14 +76,23 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) {
 			lresp, rresp := op.Response.StatusCode[lcode], op.Response.StatusCode[rcode]
 			if (lresp.NoContent != nil && rresp.NoContent != nil) && lcode != rcode {
 				if reflect.DeepEqual(lresp.NoContent, rresp.NoContent) {
+					lname, err := pascal(op.Name, http.StatusText(lcode))
+					if err != nil {
+						return errors.Wrap(err, "lname")
+					}
+					rname, err := pascal(op.Name, http.StatusText(rcode))
+					if err != nil {
+						return errors.Wrap(err, "rname")
+					}
+
 					candidates = append(candidates, candidate{
-						renameTo:   pascal(op.Name, http.StatusText(lcode)),
+						renameTo:   lname,
 						typ:        lresp.NoContent,
 						replaceNoc: true,
 						response:   lresp,
 					})
 					candidates = append(candidates, candidate{
-						renameTo:   pascal(op.Name, http.StatusText(rcode)),
+						renameTo:   rname,
 						typ:        rresp.NoContent,
 						replaceNoc: true,
 						response:   rresp,
@@ -109,14 +120,23 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) {
 					}
 					lschema, rschema := lresp.Contents[ir.ContentType(lct)], rresp.Contents[ir.ContentType(rct)]
 					if reflect.DeepEqual(lschema, rschema) {
+						lname, err := pascal(op.Name, lct, http.StatusText(lcode))
+						if err != nil {
+							return errors.Wrap(err, "lname")
+						}
+						rname, err := pascal(op.Name, rct, http.StatusText(rcode))
+						if err != nil {
+							return errors.Wrap(err, "rname")
+						}
+
 						candidates = append(candidates, candidate{
-							renameTo:  pascal(op.Name, lct, http.StatusText(lcode)),
+							renameTo:  lname,
 							typ:       lschema,
 							replaceCT: lct,
 							response:  lresp,
 						})
 						candidates = append(candidates, candidate{
-							renameTo:  pascal(op.Name, rct, http.StatusText(rcode)),
+							renameTo:  rname,
 							typ:       rschema,
 							replaceCT: rct,
 							response:  rresp,
@@ -143,6 +163,8 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) {
 
 		candidate.response.Contents[ir.ContentType(candidate.replaceCT)] = alias
 	}
+
+	return nil
 }
 
 func cloneResponse(r *ir.Response) *ir.Response {
@@ -164,12 +186,12 @@ func cloneResponse(r *ir.Response) *ir.Response {
 	return newR
 }
 
-func fixEqualRequests(ctx *genctx, op *ir.Operation) {
+func fixEqualRequests(ctx *genctx, op *ir.Operation) error {
 	if op.Request == nil {
-		return
+		return nil
 	}
 	if !op.Request.Type.Is(ir.KindInterface) {
-		return
+		return nil
 	}
 
 	// We can modify request contents.
@@ -199,13 +221,21 @@ func fixEqualRequests(ctx *genctx, op *ir.Operation) {
 
 			rschema := op.Request.Contents[ir.ContentType(rcontent)]
 			if reflect.DeepEqual(lschema, rschema) {
+				lname, err := pascal(op.Name, lcontent)
+				if err != nil {
+					return errors.Wrap(err, "lname")
+				}
+				rname, err := pascal(op.Name, rcontent)
+				if err != nil {
+					return errors.Wrap(err, "rname")
+				}
 				candidates = append(candidates, candidate{
-					renameTo: pascal(op.Name, lcontent),
+					renameTo: lname,
 					ctype:    lcontent,
 					t:        lschema,
 				})
 				candidates = append(candidates, candidate{
-					renameTo: pascal(op.Name, rcontent),
+					renameTo: rname,
 					ctype:    rcontent,
 					t:        rschema,
 				})
@@ -224,6 +254,8 @@ func fixEqualRequests(ctx *genctx, op *ir.Operation) {
 
 		op.Request.Contents[ir.ContentType(candidate.ctype)] = alias
 	}
+
+	return nil
 }
 
 func cloneRequest(r *ir.Request) *ir.Request {

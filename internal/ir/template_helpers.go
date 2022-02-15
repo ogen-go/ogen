@@ -3,19 +3,9 @@ package ir
 import (
 	"fmt"
 	"strings"
-	"unicode"
-)
 
-func capitalize(s string) string {
-	var v []rune
-	for i, c := range s {
-		if i == 0 {
-			c = unicode.ToUpper(c)
-		}
-		v = append(v, c)
-	}
-	return string(v)
-}
+	"github.com/ogen-go/ogen/internal/capitalize"
+)
 
 func afterDot(v string) string {
 	idx := strings.Index(v, ".")
@@ -31,7 +21,7 @@ func (t *Type) EncodeFn() string {
 	}
 	switch t.Primitive {
 	case Int, Int64, Int32, String, Bool, Float32, Float64:
-		return capitalize(t.Primitive.String())
+		return capitalize.Capitalize(t.Primitive.String())
 	case UUID, Time, IP, Duration, URL:
 		return afterDot(t.Primitive.String())
 	default:
