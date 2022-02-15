@@ -17,7 +17,7 @@ func (g *schemaGen) primitive(name string, schema *jsonschema.Schema) (*ir.Type,
 			return nil, errors.Errorf("unsupported enum type: %q", schema.Type)
 		}
 
-		hasDuplicateNames := func() bool {
+		hasDuplicateNames, err := func() (bool, error) {
 			names := map[string]struct{}{}
 			for _, v := range schema.Enum {
 				vstr := fmt.Sprintf("%v", v)
@@ -25,15 +25,21 @@ func (g *schemaGen) primitive(name string, schema *jsonschema.Schema) (*ir.Type,
 					vstr = "Empty"
 				}
 
-				k := pascalSpecial(name, vstr)
+				k, err := pascalSpecial(name, vstr)
+				if err != nil {
+					return false, errors.Wrapf(err, "variant %q", vstr)
+				}
 				if _, ok := names[k]; ok {
-					return true
+					return true, nil
 				}
 				names[k] = struct{}{}
 			}
 
-			return false
+			return false, nil
 		}()
+		if err != nil {
+			return nil, errors.Wrap(err, "enum")
+		}
 
 		var variants []*ir.EnumVariant
 		for _, v := range schema.Enum {
@@ -46,7 +52,11 @@ func (g *schemaGen) primitive(name string, schema *jsonschema.Schema) (*ir.Type,
 			if hasDuplicateNames {
 				variantName = name + "_" + cleanSpecial(vstr)
 			} else {
-				variantName = pascalSpecial(name, vstr)
+				k, err := pascalSpecial(name, vstr)
+				if err != nil {
+					return nil, errors.Wrapf(err, "variant %q", vstr)
+				}
+				variantName = k
 			}
 
 			variants = append(variants, &ir.EnumVariant{

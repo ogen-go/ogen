@@ -2,11 +2,10 @@ package gen
 
 import (
 	"strings"
-	"unicode"
-	"unicode/utf8"
 
 	"github.com/go-faster/errors"
 
+	"github.com/ogen-go/ogen/internal/capitalize"
 	"github.com/ogen-go/ogen/internal/ir"
 	"github.com/ogen-go/ogen/jsonschema"
 )
@@ -18,11 +17,6 @@ type schemaGen struct {
 }
 
 func variantFieldName(t *ir.Type) string {
-	capitalize := func(s string) string {
-		r, size := utf8.DecodeRuneInString(s)
-		return string(unicode.ToUpper(r)) + s[size:]
-	}
-
 	var result string
 	switch t.Kind {
 	case ir.KindArray:
@@ -34,7 +28,7 @@ func variantFieldName(t *ir.Type) string {
 	default:
 		result = t.Go()
 	}
-	return capitalize(result)
+	return capitalize.Capitalize(result)
 }
 
 func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type, err error) {
@@ -50,7 +44,11 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 			return t, nil
 		}
 
-		name = pascal(strings.TrimPrefix(ref, "#/components/schemas/"))
+		n, err := pascal(strings.TrimPrefix(ref, "#/components/schemas/"))
+		if err != nil {
+			return nil, errors.Wrapf(err, "schema name: %q", ref)
+		}
+		name = n
 	}
 	if name[0] >= '0' && name[0] <= '9' {
 		name = "R" + name
@@ -108,13 +106,23 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 
 		for i := range schema.Properties {
 			prop := schema.Properties[i]
-			t, err := g.generate(pascalSpecial(name, prop.Name), prop.Schema)
+			propTypeName, err := pascalSpecial(name, prop.Name)
+			if err != nil {
+				return nil, errors.Wrapf(err, "property type name: %q", prop.Name)
+			}
+
+			t, err := g.generate(propTypeName, prop.Schema)
 			if err != nil {
 				return nil, errors.Wrapf(err, "field %s", prop.Name)
 			}
 
+			propName, err := pascalSpecial(prop.Name)
+			if err != nil {
+				return nil, errors.Wrapf(err, "property name: %q", prop.Name)
+			}
+
 			s.Fields = append(s.Fields, &ir.Field{
-				Name: pascalSpecial(prop.Name),
+				Name: propName,
 				Type: t,
 				Tag: ir.Tag{
 					JSON: prop.Name,

@@ -10,13 +10,20 @@ import (
 )
 
 func (g *Generator) generateOperation(ctx *genctx, spec *oas.Operation) (_ *ir.Operation, err error) {
+	var opName string
+	if spec.OperationID != "" {
+		opName, err = pascalNonEmpty(spec.OperationID)
+	} else {
+		opName, err = pascal(spec.Path.String(), strings.ToLower(spec.HTTPMethod))
+	}
+	if err != nil {
+		return nil, errors.Wrap(err, "operation name")
+	}
+	
 	op := &ir.Operation{
-		Name:        pascal(spec.Path.String(), strings.ToLower(spec.HTTPMethod)),
+		Name:        opName,
 		Description: spec.Description,
 		Spec:        spec,
-	}
-	if spec.OperationID != "" {
-		op.Name = pascalNonEmpty(spec.OperationID)
 	}
 
 	// Convert []oas.Parameter to []*ir.Parameter.

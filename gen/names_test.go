@@ -11,19 +11,21 @@ func TestNames(t *testing.T) {
 		Input   string
 		Expect  string
 		AllowMP bool
+		Error   bool
 	}{
-		{"user_id", "UserID", false},
-		{"userId", "UserId", false},
-		{"foo+bar", "FooPlusBar", true},
-		{"foo+bar", "FooBar", false},
-		{"+1", "Plus1", true},
+		{"user_id", "UserID", false, false},
+		{"userId", "UserId", false, false},
+		{"foo+bar", "FooPlusBar", true, false},
+		{"foo+bar", "FooBar", false, false},
+		{"+1", "Plus1", true, false},
 	}
 
 	for _, test := range tests {
-		out := (&nameGen{
+		out, err := (&nameGen{
 			src:          []rune(test.Input),
 			allowSpecial: test.AllowMP,
 		}).generate()
+		require.NoError(t, err)
 		require.Equal(t, test.Expect, out)
 	}
 }

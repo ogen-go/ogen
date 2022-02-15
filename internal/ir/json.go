@@ -1,5 +1,7 @@
 package ir
 
+import "github.com/ogen-go/ogen/internal/capitalize"
+
 // JSON returns json encoding/decoding rules for t.
 func (t *Type) JSON() JSON {
 	return JSON{
@@ -192,7 +194,7 @@ func (j JSON) Fn() string {
 	case ByteSlice:
 		return "Base64"
 	default:
-		return capitalize(j.t.Primitive.String())
+		return capitalize.Capitalize(j.t.Primitive.String())
 	}
 }
 

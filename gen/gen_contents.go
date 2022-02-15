@@ -16,7 +16,11 @@ func (g *Generator) generateContents(ctx *genctx, name string, optional bool, co
 	for contentType, schema := range contents {
 		typeName := name
 		if len(contents) > 1 {
-			typeName = pascal(name, contentType)
+			n, err := pascal(name, contentType)
+			if err != nil {
+				return nil, errors.Wrapf(err, "name for %q", contentType)
+			}
+			typeName = n
 		}
 
 		ctx := ctx.appendPath(contentType)
