@@ -80,7 +80,7 @@ type AddStickerToSet struct {
 	// PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px,
 	// and either width or height must be exactly 512px. Pass a file_id as a String to send a file that
 	// already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file
-	// from the Internet, or upload a new one using multipart/form-data. More info on Sending Files ».
+	// from the Internet, or upload a new one using multipart/form-data.
 	PNGSticker OptString `json:"png_sticker"`
 	// TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.
 	// org/stickers#animated-sticker-requirements for technical requirements.
@@ -564,7 +564,7 @@ type Chat struct {
 	// significant bits, so a signed 64-bit integer or double-precision float type are safe for storing
 	// this identifier.
 	ID int64 `json:"id"`
-	// Type of chat, can be either “private”, “group”, “supergroup” or “channel”.
+	// Type of chat, can be either "private", "group", "supergroup" or "channel".
 	Type ChatType `json:"type"`
 	// Title, for supergroups, channels and group chats.
 	Title OptString `json:"title"`
@@ -612,7 +612,7 @@ type Chat struct {
 // Ref: #/components/schemas/ChatInviteLink
 type ChatInviteLink struct {
 	// The invite link. If the link was created by another chat administrator, then the second part of
-	// the link will be replaced with “…”.
+	// the link will be replaced with "…".
 	InviteLink string `json:"invite_link"`
 	Creator    User   `json:"creator"`
 	// True, if users joining the chat via the link need to be approved by chat administrators.
@@ -828,7 +828,7 @@ func NewChatMemberBannedChatMember(v ChatMemberBanned) ChatMember {
 // Represents a chat member that has some additional privileges.
 // Ref: #/components/schemas/ChatMemberAdministrator
 type ChatMemberAdministrator struct {
-	// The member's status in the chat, always “administrator”.
+	// The member's status in the chat, always "administrator".
 	Status string `json:"status"`
 	User   User   `json:"user"`
 	// True, if the bot is allowed to edit administrator privileges of that user.
@@ -867,7 +867,7 @@ type ChatMemberAdministrator struct {
 // messages.
 // Ref: #/components/schemas/ChatMemberBanned
 type ChatMemberBanned struct {
-	// The member's status in the chat, always “kicked”.
+	// The member's status in the chat, always "kicked".
 	Status string `json:"status"`
 	User   User   `json:"user"`
 	// Date when restrictions will be lifted for this user; unix time. If 0, then the user is banned
@@ -878,7 +878,7 @@ type ChatMemberBanned struct {
 // Represents a chat member that isn't currently a member of the chat, but may join it themselves.
 // Ref: #/components/schemas/ChatMemberLeft
 type ChatMemberLeft struct {
-	// The member's status in the chat, always “left”.
+	// The member's status in the chat, always "left".
 	Status string `json:"status"`
 	User   User   `json:"user"`
 }
@@ -886,7 +886,7 @@ type ChatMemberLeft struct {
 // Represents a chat member that has no additional privileges or restrictions.
 // Ref: #/components/schemas/ChatMemberMember
 type ChatMemberMember struct {
-	// The member's status in the chat, always “member”.
+	// The member's status in the chat, always "member".
 	Status string `json:"status"`
 	User   User   `json:"user"`
 }
@@ -894,7 +894,7 @@ type ChatMemberMember struct {
 // Represents a chat member that owns the chat and has all administrator privileges.
 // Ref: #/components/schemas/ChatMemberOwner
 type ChatMemberOwner struct {
-	// The member's status in the chat, always “creator”.
+	// The member's status in the chat, always "creator".
 	Status string `json:"status"`
 	User   User   `json:"user"`
 	// True, if the user's presence in the chat is hidden.
@@ -906,7 +906,7 @@ type ChatMemberOwner struct {
 // Represents a chat member that is under certain restrictions in the chat. Supergroups only.
 // Ref: #/components/schemas/ChatMemberRestricted
 type ChatMemberRestricted struct {
-	// The member's status in the chat, always “restricted”.
+	// The member's status in the chat, always "restricted".
 	Status string `json:"status"`
 	User   User   `json:"user"`
 	// True, if the user is a member of the chat at the moment of the request.
@@ -986,7 +986,7 @@ type ChatPhoto struct {
 	BigFileUniqueID string `json:"big_file_unique_id"`
 }
 
-// Type of chat, can be either “private”, “group”, “supergroup” or “channel”.
+// Type of chat, can be either "private", "group", "supergroup" or "channel".
 type ChatType string
 
 const (
@@ -1077,7 +1077,7 @@ type CreateNewStickerSet struct {
 	UserID int64 `json:"user_id"`
 	// Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only
 	// english letters, digits and underscores. Must begin with a letter, can't contain consecutive
-	// underscores and must end in “_by_<bot username>”. <bot_username> is case insensitive. 1-64
+	// underscores and must end in "_by_<bot username>". <bot_username> is case insensitive. 1-64
 	// characters.
 	Name string `json:"name"`
 	// Sticker set title, 1-64 characters.
@@ -1085,7 +1085,7 @@ type CreateNewStickerSet struct {
 	// PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px,
 	// and either width or height must be exactly 512px. Pass a file_id as a String to send a file that
 	// already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file
-	// from the Internet, or upload a new one using multipart/form-data. More info on Sending Files ».
+	// from the Internet, or upload a new one using multipart/form-data.
 	PNGSticker OptString `json:"png_sticker"`
 	// TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.
 	// org/stickers#animated-sticker-requirements for technical requirements.
@@ -1156,8 +1156,8 @@ type DeleteWebhook struct {
 type Dice struct {
 	// Emoji on which the dice throw animation is based.
 	Emoji string `json:"emoji"`
-	// Value of the dice, 1-6 for “”, “” and “” base emoji, 1-5 for “” and “” base
-	// emoji, 1-64 for “” base emoji.
+	// Value of the dice, 1-6 for "", "" and "" base emoji, 1-5 for "" and "" base emoji, 1-64 for ""
+	// base emoji.
 	Value int `json:"value"`
 }
 
@@ -1297,42 +1297,37 @@ type EncryptedCredentials struct {
 // the user.
 // Ref: #/components/schemas/EncryptedPassportElement
 type EncryptedPassportElement struct {
-	// Element type. One of “personal_details”, “passport”, “driver_license”,
-	// “identity_card”, “internal_passport”, “address”, “utility_bill”,
-	// “bank_statement”, “rental_agreement”, “passport_registration”,
-	// “temporary_registration”, “phone_number”, “email”.
+	// Element type. One of "personal_details", "passport", "driver_license", "identity_card",
+	// "internal_passport", "address", "utility_bill", "bank_statement", "rental_agreement",
+	// "passport_registration", "temporary_registration", "phone_number", "email".
 	Type EncryptedPassportElementType `json:"type"`
 	// Base64-encoded encrypted Telegram Passport element data provided by the user, available for
-	// “personal_details”, “passport”, “driver_license”, “identity_card”,
-	// “internal_passport” and “address” types. Can be decrypted and verified using the
-	// accompanying EncryptedCredentials.
+	// "personal_details", "passport", "driver_license", "identity_card", "internal_passport" and
+	// "address" types. Can be decrypted and verified using the accompanying EncryptedCredentials.
 	Data OptString `json:"data"`
-	// User's verified phone number, available only for “phone_number” type.
+	// User's verified phone number, available only for "phone_number" type.
 	PhoneNumber OptString `json:"phone_number"`
-	// User's verified email address, available only for “email” type.
+	// User's verified email address, available only for "email" type.
 	Email OptString `json:"email"`
-	// Array of encrypted files with documents provided by the user, available for “utility_bill”,
-	// “bank_statement”, “rental_agreement”, “passport_registration” and
-	// “temporary_registration” types. Files can be decrypted and verified using the accompanying
-	// EncryptedCredentials.
+	// Array of encrypted files with documents provided by the user, available for "utility_bill",
+	// "bank_statement", "rental_agreement", "passport_registration" and "temporary_registration" types.
+	// Files can be decrypted and verified using the accompanying EncryptedCredentials.
 	Files       []PassportFile  `json:"files"`
 	FrontSide   OptPassportFile `json:"front_side"`
 	ReverseSide OptPassportFile `json:"reverse_side"`
 	Selfie      OptPassportFile `json:"selfie"`
 	// Array of encrypted files with translated versions of documents provided by the user. Available if
-	// requested for “passport”, “driver_license”, “identity_card”, “internal_passport”,
-	// “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration” and
-	// “temporary_registration” types. Files can be decrypted and verified using the accompanying
-	// EncryptedCredentials.
+	// requested for "passport", "driver_license", "identity_card", "internal_passport", "utility_bill",
+	// "bank_statement", "rental_agreement", "passport_registration" and "temporary_registration" types.
+	// Files can be decrypted and verified using the accompanying EncryptedCredentials.
 	Translation []PassportFile `json:"translation"`
 	// Base64-encoded element hash for using in PassportElementErrorUnspecified.
 	Hash string `json:"hash"`
 }
 
-// Element type. One of “personal_details”, “passport”, “driver_license”,
-// “identity_card”, “internal_passport”, “address”, “utility_bill”,
-// “bank_statement”, “rental_agreement”, “passport_registration”,
-// “temporary_registration”, “phone_number”, “email”.
+// Element type. One of "personal_details", "passport", "driver_license", "identity_card",
+// "internal_passport", "address", "utility_bill", "bank_statement", "rental_agreement",
+// "passport_registration", "temporary_registration", "phone_number", "email".
 type EncryptedPassportElementType string
 
 const (
@@ -1522,11 +1517,11 @@ type GetUpdates struct {
 	// short polling should be used for testing purposes only.
 	Timeout OptInt `json:"timeout"`
 	// A JSON-serialized list of the update types you want your bot to receive. For example, specify
-	// [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these
-	// types. See Update for a complete list of available update types. Specify an empty list to receive
-	// all update types except chat_member (default). If not specified, the previous setting will be used.
-	// Please note that this parameter doesn't affect updates created before the call to the getUpdates,
-	// so unwanted updates may be received for a short period of time.
+	// ["message", "edited_channel_post", "callback_query"] to only receive updates of these types. See
+	// Update for a complete list of available update types. Specify an empty list to receive all update
+	// types except chat_member (default). If not specified, the previous setting will be used.Please
+	// note that this parameter doesn't affect updates created before the call to the getUpdates, so
+	// unwanted updates may be received for a short period of time.
 	AllowedUpdates []string `json:"allowed_updates"`
 }
 
@@ -1655,18 +1650,18 @@ type InlineQuery struct {
 	Query string `json:"query"`
 	// Offset of the results to be returned, can be controlled by the bot.
 	Offset string `json:"offset"`
-	// Type of the chat, from which the inline query was sent. Can be either “sender” for a private
-	// chat with the inline query sender, “private”, “group”, “supergroup”, or “channel”.
-	// The chat type should be always known for requests sent from official clients and most third-party
-	// clients, unless the request was sent from a secret chat.
+	// Type of the chat, from which the inline query was sent. Can be either "sender" for a private chat
+	// with the inline query sender, "private", "group", "supergroup", or "channel". The chat type should
+	// be always known for requests sent from official clients and most third-party clients, unless the
+	// request was sent from a secret chat.
 	ChatType OptInlineQueryChatType `json:"chat_type"`
 	Location OptLocation            `json:"location"`
 }
 
-// Type of the chat, from which the inline query was sent. Can be either “sender” for a private
-// chat with the inline query sender, “private”, “group”, “supergroup”, or “channel”.
-// The chat type should be always known for requests sent from official clients and most third-party
-// clients, unless the request was sent from a secret chat.
+// Type of the chat, from which the inline query was sent. Can be either "sender" for a private chat
+// with the inline query sender, "private", "group", "supergroup", or "channel". The chat type should
+// be always known for requests sent from official clients and most third-party clients, unless the
+// request was sent from a secret chat.
 type InlineQueryChatType string
 
 const (
@@ -2530,7 +2525,7 @@ type InlineQueryResultDocument struct {
 	CaptionEntities []MessageEntity `json:"caption_entities"`
 	// A valid URL for the file.
 	DocumentURL string `json:"document_url"`
-	// Mime type of the content of the file, either “application/pdf” or “application/zip”.
+	// Mime type of the content of the file, either "application/pdf" or "application/zip".
 	MimeType string `json:"mime_type"`
 	// Short description of the result.
 	Description         OptString               `json:"description"`
@@ -2575,8 +2570,8 @@ type InlineQueryResultGif struct {
 	GIFDuration OptInt `json:"gif_duration"`
 	// URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result.
 	ThumbURL string `json:"thumb_url"`
-	// MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”.
-	// Defaults to “image/jpeg”.
+	// MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to
+	// "image/jpeg".
 	ThumbMimeType OptString `json:"thumb_mime_type"`
 	// Title for the result.
 	Title OptString `json:"title"`
@@ -2644,8 +2639,8 @@ type InlineQueryResultMpeg4Gif struct {
 	Mpeg4Duration OptInt `json:"mpeg4_duration"`
 	// URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result.
 	ThumbURL string `json:"thumb_url"`
-	// MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”.
-	// Defaults to “image/jpeg”.
+	// MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to
+	// "image/jpeg".
 	ThumbMimeType OptString `json:"thumb_mime_type"`
 	// Title for the result.
 	Title OptString `json:"title"`
@@ -2708,8 +2703,8 @@ type InlineQueryResultVenue struct {
 	Address string `json:"address"`
 	// Foursquare identifier of the venue if known.
 	FoursquareID OptString `json:"foursquare_id"`
-	// Foursquare type of the venue, if known. (For example, “arts_entertainment/default”,
-	// “arts_entertainment/aquarium” or “food/icecream”.).
+	// Foursquare type of the venue, if known. (For example, "arts_entertainment/default",
+	// "arts_entertainment/aquarium" or "food/icecream".).
 	FoursquareType OptString `json:"foursquare_type"`
 	// Google Places identifier of the venue.
 	GooglePlaceID OptString `json:"google_place_id"`
@@ -2736,7 +2731,7 @@ type InlineQueryResultVideo struct {
 	ID string `json:"id"`
 	// A valid URL for the embedded video player or video file.
 	VideoURL string `json:"video_url"`
-	// Mime type of the content of video url, “text/html” or “video/mp4”.
+	// Mime type of the content of video url, "text/html" or "video/mp4".
 	MimeType string `json:"mime_type"`
 	// URL of the thumbnail (JPEG only) for the video.
 	ThumbURL string `json:"thumb_url"`
@@ -3022,15 +3017,15 @@ type InputMediaAnimation struct {
 	Type string `json:"type"`
 	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
 	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
-	// “attach://<file_attach_name>” to upload a new one using multipart/form-data under
-	// <file_attach_name> name. More info on Sending Files ».
+	// "attach://<file_attach_name>" to upload a new one using multipart/form-data under
+	// <file_attach_name> name.
 	Media string `json:"media"`
 	// Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
-	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-	// under <file_attach_name>. More info on Sending Files ».
+	// pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under
+	// <file_attach_name>.
 	Thumb OptString `json:"thumb"`
 	// Caption of the animation to be sent, 0-1024 characters after entities parsing.
 	Caption OptString `json:"caption"`
@@ -3053,15 +3048,15 @@ type InputMediaAudio struct {
 	Type string `json:"type"`
 	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
 	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
-	// “attach://<file_attach_name>” to upload a new one using multipart/form-data under
-	// <file_attach_name> name. More info on Sending Files ».
+	// "attach://<file_attach_name>" to upload a new one using multipart/form-data under
+	// <file_attach_name> name.
 	Media string `json:"media"`
 	// Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
-	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-	// under <file_attach_name>. More info on Sending Files ».
+	// pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under
+	// <file_attach_name>.
 	Thumb OptString `json:"thumb"`
 	// Caption of the audio to be sent, 0-1024 characters after entities parsing.
 	Caption OptString `json:"caption"`
@@ -3084,15 +3079,15 @@ type InputMediaDocument struct {
 	Type string `json:"type"`
 	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
 	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
-	// “attach://<file_attach_name>” to upload a new one using multipart/form-data under
-	// <file_attach_name> name. More info on Sending Files ».
+	// "attach://<file_attach_name>" to upload a new one using multipart/form-data under
+	// <file_attach_name> name.
 	Media string `json:"media"`
 	// Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
-	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-	// under <file_attach_name>. More info on Sending Files ».
+	// pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under
+	// <file_attach_name>.
 	Thumb OptString `json:"thumb"`
 	// Caption of the document to be sent, 0-1024 characters after entities parsing.
 	Caption OptString `json:"caption"`
@@ -3112,8 +3107,8 @@ type InputMediaPhoto struct {
 	Type string `json:"type"`
 	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
 	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
-	// “attach://<file_attach_name>” to upload a new one using multipart/form-data under
-	// <file_attach_name> name. More info on Sending Files ».
+	// "attach://<file_attach_name>" to upload a new one using multipart/form-data under
+	// <file_attach_name> name.
 	Media string `json:"media"`
 	// Caption of the photo to be sent, 0-1024 characters after entities parsing.
 	Caption OptString `json:"caption"`
@@ -3130,15 +3125,15 @@ type InputMediaVideo struct {
 	Type string `json:"type"`
 	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
 	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
-	// “attach://<file_attach_name>” to upload a new one using multipart/form-data under
-	// <file_attach_name> name. More info on Sending Files ».
+	// "attach://<file_attach_name>" to upload a new one using multipart/form-data under
+	// <file_attach_name> name.
 	Media string `json:"media"`
 	// Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
-	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-	// under <file_attach_name>. More info on Sending Files ».
+	// pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under
+	// <file_attach_name>.
 	Thumb OptString `json:"thumb"`
 	// Caption of the video to be sent, 0-1024 characters after entities parsing.
 	Caption OptString `json:"caption"`
@@ -3337,8 +3332,8 @@ type InputVenueMessageContent struct {
 	Address string `json:"address"`
 	// Foursquare identifier of the venue, if known.
 	FoursquareID OptString `json:"foursquare_id"`
-	// Foursquare type of the venue, if known. (For example, “arts_entertainment/default”,
-	// “arts_entertainment/aquarium” or “food/icecream”.).
+	// Foursquare type of the venue, if known. (For example, "arts_entertainment/default",
+	// "arts_entertainment/aquarium" or "food/icecream".).
 	FoursquareType OptString `json:"foursquare_type"`
 	// Google Places identifier of the venue.
 	GooglePlaceID OptString `json:"google_place_id"`
@@ -3519,8 +3514,8 @@ type LoginUrl struct {
 // This object describes the position on faces where a mask should be placed by default.
 // Ref: #/components/schemas/MaskPosition
 type MaskPosition struct {
-	// The part of the face relative to which the mask should be placed. One of “forehead”,
-	// “eyes”, “mouth”, or “chin”.
+	// The part of the face relative to which the mask should be placed. One of "forehead", "eyes",
+	// "mouth", or "chin".
 	Point string `json:"point"`
 	// Shift by X-axis measured in widths of the mask scaled to the face size, from left to right. For
 	// example, choosing -1.0 will place mask just to the left of the default mask position.
@@ -3653,32 +3648,30 @@ type MessageAutoDeleteTimerChanged struct {
 // URLs, etc.
 // Ref: #/components/schemas/MessageEntity
 type MessageEntity struct {
-	// Type of the entity. Currently, can be “mention” (@username), “hashtag” (#hashtag),
-	// “cashtag” ($USD), “bot_command” (/start@jobs_bot), “url” (https://telegram.org),
-	// “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold
-	// text), “italic” (italic text), “underline” (underlined text), “strikethrough”
-	// (strikethrough text), “spoiler” (spoiler message), “code” (monowidth string), “pre”
-	// (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users
-	// without usernames).
+	// Type of the entity. Currently, can be "mention" (@username), "hashtag" (#hashtag), "cashtag"
+	// ($USD), "bot_command" (/start@jobs_bot), "url" (https://telegram.org), "email"
+	// (do-not-reply@telegram.org), "phone_number" (+1-212-555-0123), "bold" (bold text), "italic"
+	// (italic text), "underline" (underlined text), "strikethrough" (strikethrough text), "spoiler"
+	// (spoiler message), "code" (monowidth string), "pre" (monowidth block), "text_link" (for clickable
+	// text URLs), "text_mention" (for users without usernames).
 	Type MessageEntityType `json:"type"`
 	// Offset in UTF-16 code units to the start of the entity.
 	Offset int `json:"offset"`
 	// Length of the entity in UTF-16 code units.
 	Length int `json:"length"`
-	// For “text_link” only, url that will be opened after user taps on the text.
+	// For "text_link" only, url that will be opened after user taps on the text.
 	URL  OptString `json:"url"`
 	User OptUser   `json:"user"`
-	// For “pre” only, the programming language of the entity text.
+	// For "pre" only, the programming language of the entity text.
 	Language OptString `json:"language"`
 }
 
-// Type of the entity. Currently, can be “mention” (@username), “hashtag” (#hashtag),
-// “cashtag” ($USD), “bot_command” (/start@jobs_bot), “url” (https://telegram.org),
-// “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold
-// text), “italic” (italic text), “underline” (underlined text), “strikethrough”
-// (strikethrough text), “spoiler” (spoiler message), “code” (monowidth string), “pre”
-// (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users
-// without usernames).
+// Type of the entity. Currently, can be "mention" (@username), "hashtag" (#hashtag), "cashtag"
+// ($USD), "bot_command" (/start@jobs_bot), "url" (https://telegram.org), "email"
+// (do-not-reply@telegram.org), "phone_number" (+1-212-555-0123), "bold" (bold text), "italic"
+// (italic text), "underline" (underlined text), "strikethrough" (strikethrough text), "spoiler"
+// (spoiler message), "code" (monowidth string), "pre" (monowidth block), "text_link" (for clickable
+// text URLs), "text_mention" (for users without usernames).
 type MessageEntityType string
 
 const (
@@ -7037,8 +7030,8 @@ func NewPassportElementErrorUnspecifiedPassportElementError(v PassportElementErr
 type PassportElementErrorDataField struct {
 	// Error source, must be data.
 	Source string `json:"source"`
-	// The section of the user's Telegram Passport which has the error, one of “personal_details”,
-	// “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”.
+	// The section of the user's Telegram Passport which has the error, one of "personal_details",
+	// "passport", "driver_license", "identity_card", "internal_passport", "address".
 	Type PassportElementErrorDataFieldType `json:"type"`
 	// Name of the data field which has the error.
 	FieldName string `json:"field_name"`
@@ -7048,8 +7041,8 @@ type PassportElementErrorDataField struct {
 	Message string `json:"message"`
 }
 
-// The section of the user's Telegram Passport which has the error, one of “personal_details”,
-// “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”.
+// The section of the user's Telegram Passport which has the error, one of "personal_details",
+// "passport", "driver_license", "identity_card", "internal_passport", "address".
 type PassportElementErrorDataFieldType string
 
 const (
@@ -7067,9 +7060,8 @@ const (
 type PassportElementErrorFile struct {
 	// Error source, must be file.
 	Source string `json:"source"`
-	// The section of the user's Telegram Passport which has the issue, one of “utility_bill”,
-	// “bank_statement”, “rental_agreement”, “passport_registration”,
-	// “temporary_registration”.
+	// The section of the user's Telegram Passport which has the issue, one of "utility_bill",
+	// "bank_statement", "rental_agreement", "passport_registration", "temporary_registration".
 	Type PassportElementErrorFileType `json:"type"`
 	// Base64-encoded file hash.
 	FileHash string `json:"file_hash"`
@@ -7077,9 +7069,8 @@ type PassportElementErrorFile struct {
 	Message string `json:"message"`
 }
 
-// The section of the user's Telegram Passport which has the issue, one of “utility_bill”,
-// “bank_statement”, “rental_agreement”, “passport_registration”,
-// “temporary_registration”.
+// The section of the user's Telegram Passport which has the issue, one of "utility_bill",
+// "bank_statement", "rental_agreement", "passport_registration", "temporary_registration".
 type PassportElementErrorFileType string
 
 const (
@@ -7096,9 +7087,8 @@ const (
 type PassportElementErrorFiles struct {
 	// Error source, must be files.
 	Source string `json:"source"`
-	// The section of the user's Telegram Passport which has the issue, one of “utility_bill”,
-	// “bank_statement”, “rental_agreement”, “passport_registration”,
-	// “temporary_registration”.
+	// The section of the user's Telegram Passport which has the issue, one of "utility_bill",
+	// "bank_statement", "rental_agreement", "passport_registration", "temporary_registration".
 	Type PassportElementErrorFilesType `json:"type"`
 	// List of base64-encoded file hashes.
 	FileHashes []string `json:"file_hashes"`
@@ -7106,9 +7096,8 @@ type PassportElementErrorFiles struct {
 	Message string `json:"message"`
 }
 
-// The section of the user's Telegram Passport which has the issue, one of “utility_bill”,
-// “bank_statement”, “rental_agreement”, “passport_registration”,
-// “temporary_registration”.
+// The section of the user's Telegram Passport which has the issue, one of "utility_bill",
+// "bank_statement", "rental_agreement", "passport_registration", "temporary_registration".
 type PassportElementErrorFilesType string
 
 const (
@@ -7125,8 +7114,8 @@ const (
 type PassportElementErrorFrontSide struct {
 	// Error source, must be front_side.
 	Source string `json:"source"`
-	// The section of the user's Telegram Passport which has the issue, one of “passport”,
-	// “driver_license”, “identity_card”, “internal_passport”.
+	// The section of the user's Telegram Passport which has the issue, one of "passport",
+	// "driver_license", "identity_card", "internal_passport".
 	Type PassportElementErrorFrontSideType `json:"type"`
 	// Base64-encoded hash of the file with the front side of the document.
 	FileHash string `json:"file_hash"`
@@ -7134,8 +7123,8 @@ type PassportElementErrorFrontSide struct {
 	Message string `json:"message"`
 }
 
-// The section of the user's Telegram Passport which has the issue, one of “passport”,
-// “driver_license”, “identity_card”, “internal_passport”.
+// The section of the user's Telegram Passport which has the issue, one of "passport",
+// "driver_license", "identity_card", "internal_passport".
 type PassportElementErrorFrontSideType string
 
 const (
@@ -7151,8 +7140,8 @@ const (
 type PassportElementErrorReverseSide struct {
 	// Error source, must be reverse_side.
 	Source string `json:"source"`
-	// The section of the user's Telegram Passport which has the issue, one of “driver_license”,
-	// “identity_card”.
+	// The section of the user's Telegram Passport which has the issue, one of "driver_license",
+	// "identity_card".
 	Type PassportElementErrorReverseSideType `json:"type"`
 	// Base64-encoded hash of the file with the reverse side of the document.
 	FileHash string `json:"file_hash"`
@@ -7160,8 +7149,8 @@ type PassportElementErrorReverseSide struct {
 	Message string `json:"message"`
 }
 
-// The section of the user's Telegram Passport which has the issue, one of “driver_license”,
-// “identity_card”.
+// The section of the user's Telegram Passport which has the issue, one of "driver_license",
+// "identity_card".
 type PassportElementErrorReverseSideType string
 
 const (
@@ -7175,8 +7164,8 @@ const (
 type PassportElementErrorSelfie struct {
 	// Error source, must be selfie.
 	Source string `json:"source"`
-	// The section of the user's Telegram Passport which has the issue, one of “passport”,
-	// “driver_license”, “identity_card”, “internal_passport”.
+	// The section of the user's Telegram Passport which has the issue, one of "passport",
+	// "driver_license", "identity_card", "internal_passport".
 	Type PassportElementErrorSelfieType `json:"type"`
 	// Base64-encoded hash of the file with the selfie.
 	FileHash string `json:"file_hash"`
@@ -7184,8 +7173,8 @@ type PassportElementErrorSelfie struct {
 	Message string `json:"message"`
 }
 
-// The section of the user's Telegram Passport which has the issue, one of “passport”,
-// “driver_license”, “identity_card”, “internal_passport”.
+// The section of the user's Telegram Passport which has the issue, one of "passport",
+// "driver_license", "identity_card", "internal_passport".
 type PassportElementErrorSelfieType string
 
 const (
@@ -7201,10 +7190,9 @@ const (
 type PassportElementErrorTranslationFile struct {
 	// Error source, must be translation_file.
 	Source string `json:"source"`
-	// Type of element of the user's Telegram Passport which has the issue, one of “passport”,
-	// “driver_license”, “identity_card”, “internal_passport”, “utility_bill”,
-	// “bank_statement”, “rental_agreement”, “passport_registration”,
-	// “temporary_registration”.
+	// Type of element of the user's Telegram Passport which has the issue, one of "passport",
+	// "driver_license", "identity_card", "internal_passport", "utility_bill", "bank_statement",
+	// "rental_agreement", "passport_registration", "temporary_registration".
 	Type PassportElementErrorTranslationFileType `json:"type"`
 	// Base64-encoded file hash.
 	FileHash string `json:"file_hash"`
@@ -7212,10 +7200,9 @@ type PassportElementErrorTranslationFile struct {
 	Message string `json:"message"`
 }
 
-// Type of element of the user's Telegram Passport which has the issue, one of “passport”,
-// “driver_license”, “identity_card”, “internal_passport”, “utility_bill”,
-// “bank_statement”, “rental_agreement”, “passport_registration”,
-// “temporary_registration”.
+// Type of element of the user's Telegram Passport which has the issue, one of "passport",
+// "driver_license", "identity_card", "internal_passport", "utility_bill", "bank_statement",
+// "rental_agreement", "passport_registration", "temporary_registration".
 type PassportElementErrorTranslationFileType string
 
 const (
@@ -7236,10 +7223,9 @@ const (
 type PassportElementErrorTranslationFiles struct {
 	// Error source, must be translation_files.
 	Source string `json:"source"`
-	// Type of element of the user's Telegram Passport which has the issue, one of “passport”,
-	// “driver_license”, “identity_card”, “internal_passport”, “utility_bill”,
-	// “bank_statement”, “rental_agreement”, “passport_registration”,
-	// “temporary_registration”.
+	// Type of element of the user's Telegram Passport which has the issue, one of "passport",
+	// "driver_license", "identity_card", "internal_passport", "utility_bill", "bank_statement",
+	// "rental_agreement", "passport_registration", "temporary_registration".
 	Type PassportElementErrorTranslationFilesType `json:"type"`
 	// List of base64-encoded file hashes.
 	FileHashes []string `json:"file_hashes"`
@@ -7247,10 +7233,9 @@ type PassportElementErrorTranslationFiles struct {
 	Message string `json:"message"`
 }
 
-// Type of element of the user's Telegram Passport which has the issue, one of “passport”,
-// “driver_license”, “identity_card”, “internal_passport”, “utility_bill”,
-// “bank_statement”, “rental_agreement”, “passport_registration”,
-// “temporary_registration”.
+// Type of element of the user's Telegram Passport which has the issue, one of "passport",
+// "driver_license", "identity_card", "internal_passport", "utility_bill", "bank_statement",
+// "rental_agreement", "passport_registration", "temporary_registration".
 type PassportElementErrorTranslationFilesType string
 
 const (
@@ -7336,7 +7321,7 @@ type Poll struct {
 	IsClosed bool `json:"is_closed"`
 	// True, if the poll is anonymous.
 	IsAnonymous bool `json:"is_anonymous"`
-	// Poll type, currently can be “regular” or “quiz”.
+	// Poll type, currently can be "regular" or "quiz".
 	Type PollType `json:"type"`
 	// True, if the poll allows multiple answers.
 	AllowsMultipleAnswers bool `json:"allows_multiple_answers"`
@@ -7374,7 +7359,7 @@ type PollOption struct {
 	VoterCount int `json:"voter_count"`
 }
 
-// Poll type, currently can be “regular” or “quiz”.
+// Poll type, currently can be "regular" or "quiz".
 type PollType string
 
 const (
@@ -7717,7 +7702,7 @@ type SendAnimation struct {
 	ChatID ID `json:"chat_id"`
 	// Animation to send. Pass a file_id as String to send an animation that exists on the Telegram
 	// servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the
-	// Internet, or upload a new animation using multipart/form-data. More info on Sending Files ».
+	// Internet, or upload a new animation using multipart/form-data.
 	Animation string `json:"animation"`
 	// Duration of sent animation in seconds.
 	Duration OptInt `json:"duration"`
@@ -7729,8 +7714,8 @@ type SendAnimation struct {
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
-	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-	// under <file_attach_name>. More info on Sending Files ».
+	// pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under
+	// <file_attach_name>.
 	Thumb OptString `json:"thumb"`
 	// Animation caption (may also be used when resending animation by file_id), 0-1024 characters after
 	// entities parsing.
@@ -7757,7 +7742,7 @@ type SendAudio struct {
 	ChatID ID `json:"chat_id"`
 	// Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram
 	// servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the
-	// Internet, or upload a new one using multipart/form-data. More info on Sending Files ».
+	// Internet, or upload a new one using multipart/form-data.
 	Audio string `json:"audio"`
 	// Audio caption, 0-1024 characters after entities parsing.
 	Caption OptString `json:"caption"`
@@ -7776,8 +7761,8 @@ type SendAudio struct {
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
-	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-	// under <file_attach_name>. More info on Sending Files ».
+	// pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under
+	// <file_attach_name>.
 	Thumb OptString `json:"thumb"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
@@ -7828,9 +7813,9 @@ type SendContact struct {
 // Ref: #/components/schemas/sendDice
 type SendDice struct {
 	ChatID ID `json:"chat_id"`
-	// Emoji on which the dice throw animation is based. Currently, must be one of “”, “”, “”,
-	//  “”, “”, or “”. Dice can have values 1-6 for “”, “” and “”, values 1-5 for
-	// “” and “”, and values 1-64 for “”. Defaults to “”.
+	// Emoji on which the dice throw animation is based. Currently, must be one of "", "", "", "", "", or
+	// "". Dice can have values 1-6 for "", "" and "", values 1-5 for "" and "", and values 1-64 for "".
+	// Defaults to "".
 	Emoji OptString `json:"emoji"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
@@ -7849,14 +7834,14 @@ type SendDocument struct {
 	ChatID ID `json:"chat_id"`
 	// File to send. Pass a file_id as String to send a file that exists on the Telegram servers
 	// (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or
-	// upload a new one using multipart/form-data. More info on Sending Files ».
+	// upload a new one using multipart/form-data.
 	Document string `json:"document"`
 	// Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
-	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-	// under <file_attach_name>. More info on Sending Files ».
+	// pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under
+	// <file_attach_name>.
 	Thumb OptString `json:"thumb"`
 	// Document caption (may also be used when resending documents by file_id), 0-1024 characters after
 	// entities parsing.
@@ -8168,8 +8153,7 @@ type SendPhoto struct {
 	// Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers
 	// (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or
 	// upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's
-	// width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More
-	// info on Sending Files ».
+	// width and height must not exceed 10000 in total. Width and height ratio must be at most 20.
 	Photo string `json:"photo"`
 	// Photo caption (may also be used when resending photos by file_id), 0-1024 characters after
 	// entities parsing.
@@ -8200,7 +8184,7 @@ type SendPoll struct {
 	Options []string `json:"options"`
 	// True, if the poll needs to be anonymous, defaults to True.
 	IsAnonymous OptBool `json:"is_anonymous"`
-	// Poll type, “quiz” or “regular”, defaults to “regular”.
+	// Poll type, "quiz" or "regular", defaults to "regular".
 	Type OptString `json:"type"`
 	// True, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to False.
 	AllowsMultipleAnswers OptBool `json:"allows_multiple_answers"`
@@ -8362,7 +8346,7 @@ type SendSticker struct {
 	ChatID ID `json:"chat_id"`
 	// Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers
 	// (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP file from the Internet, or
-	// upload a new one using multipart/form-data. More info on Sending Files ».
+	// upload a new one using multipart/form-data.
 	Sticker string `json:"sticker"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
@@ -8389,8 +8373,8 @@ type SendVenue struct {
 	Address string `json:"address"`
 	// Foursquare identifier of the venue.
 	FoursquareID OptString `json:"foursquare_id"`
-	// Foursquare type of the venue, if known. (For example, “arts_entertainment/default”,
-	// “arts_entertainment/aquarium” or “food/icecream”.).
+	// Foursquare type of the venue, if known. (For example, "arts_entertainment/default",
+	// "arts_entertainment/aquarium" or "food/icecream".).
 	FoursquareType OptString `json:"foursquare_type"`
 	// Google Places identifier of the venue.
 	GooglePlaceID OptString `json:"google_place_id"`
@@ -8413,7 +8397,7 @@ type SendVideo struct {
 	ChatID ID `json:"chat_id"`
 	// Video to send. Pass a file_id as String to send a video that exists on the Telegram servers
 	// (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or
-	// upload a new video using multipart/form-data. More info on Sending Files ».
+	// upload a new video using multipart/form-data.
 	Video string `json:"video"`
 	// Duration of sent video in seconds.
 	Duration OptInt `json:"duration"`
@@ -8425,8 +8409,8 @@ type SendVideo struct {
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
-	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-	// under <file_attach_name>. More info on Sending Files ».
+	// pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under
+	// <file_attach_name>.
 	Thumb OptString `json:"thumb"`
 	// Video caption (may also be used when resending videos by file_id), 0-1024 characters after
 	// entities parsing.
@@ -8454,8 +8438,8 @@ type SendVideo struct {
 type SendVideoNote struct {
 	ChatID ID `json:"chat_id"`
 	// Video note to send. Pass a file_id as String to send a video note that exists on the Telegram
-	// servers (recommended) or upload a new video using multipart/form-data. More info on Sending Files
-	// ». Sending video notes by a URL is currently unsupported.
+	// servers (recommended) or upload a new video using multipart/form-data. . Sending video notes by a
+	// URL is currently unsupported.
 	VideoNote string `json:"video_note"`
 	// Duration of sent video in seconds.
 	Duration OptInt `json:"duration"`
@@ -8465,8 +8449,8 @@ type SendVideoNote struct {
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
-	// pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-	// under <file_attach_name>. More info on Sending Files ».
+	// pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under
+	// <file_attach_name>.
 	Thumb OptString `json:"thumb"`
 	// Sends the message silently. Users will receive a notification with no sound.
 	DisableNotification OptBool `json:"disable_notification"`
@@ -8485,7 +8469,7 @@ type SendVoice struct {
 	ChatID ID `json:"chat_id"`
 	// Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers
 	// (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or
-	// upload a new one using multipart/form-data. More info on Sending Files ».
+	// upload a new one using multipart/form-data.
 	Voice string `json:"voice"`
 	// Voice message caption, 0-1024 characters after entities parsing.
 	Caption OptString `json:"caption"`
@@ -8620,7 +8604,7 @@ type SetStickerSetThumb struct {
 	// org/stickers#video-sticker-requirements for video sticker technical requirements. Pass a file_id
 	// as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a
 	// String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.
-	//  More info on Sending Files ». Animated sticker set thumbnails can't be uploaded via HTTP URL.
+	//  . Animated sticker set thumbnails can't be uploaded via HTTP URL.
 	Thumb OptString `json:"thumb"`
 }
 
@@ -8640,11 +8624,11 @@ type SetWebhook struct {
 	// increase your bot's throughput.
 	MaxConnections OptInt `json:"max_connections"`
 	// A JSON-serialized list of the update types you want your bot to receive. For example, specify
-	// [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these
-	// types. See Update for a complete list of available update types. Specify an empty list to receive
-	// all update types except chat_member (default). If not specified, the previous setting will be used.
-	// Please note that this parameter doesn't affect updates created before the call to the setWebhook,
-	// so unwanted updates may be received for a short period of time.
+	// ["message", "edited_channel_post", "callback_query"] to only receive updates of these types. See
+	// Update for a complete list of available update types. Specify an empty list to receive all update
+	// types except chat_member (default). If not specified, the previous setting will be used.Please
+	// note that this parameter doesn't affect updates created before the call to the setWebhook, so
+	// unwanted updates may be received for a short period of time.
 	AllowedUpdates []string `json:"allowed_updates"`
 	// Pass True to drop all pending updates.
 	DropPendingUpdates OptBool `json:"drop_pending_updates"`
@@ -8839,7 +8823,7 @@ type UploadStickerFile struct {
 	// User identifier of sticker file owner.
 	UserID int64 `json:"user_id"`
 	// PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px,
-	// and either width or height must be exactly 512px. More info on Sending Files ».
+	// and either width or height must be exactly 512px.
 	PNGSticker string `json:"png_sticker"`
 }
 
@@ -8888,8 +8872,8 @@ type Venue struct {
 	Address string `json:"address"`
 	// Foursquare identifier of the venue.
 	FoursquareID OptString `json:"foursquare_id"`
-	// Foursquare type of the venue. (For example, “arts_entertainment/default”,
-	// “arts_entertainment/aquarium” or “food/icecream”.).
+	// Foursquare type of the venue. (For example, "arts_entertainment/default",
+	// "arts_entertainment/aquarium" or "food/icecream".).
 	FoursquareType OptString `json:"foursquare_type"`
 	// Google Places identifier of the venue.
 	GooglePlaceID OptString `json:"google_place_id"`
