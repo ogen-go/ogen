@@ -3117,12 +3117,22 @@ func (s OneOfBugs) Encode(e *jx.Writer) {
 		e.RawStr("\"additional-fields\"" + ":")
 		s.AdditionalMinusFields.Encode(e)
 	}
+	{
+		if s.OneOfMinusUUIDMinusIntMinusEnum.Set {
+			e.Comma()
+		}
+		if s.OneOfMinusUUIDMinusIntMinusEnum.Set {
+			e.RawStr("\"oneOf-uuid-int-enum\"" + ":")
+			s.OneOfMinusUUIDMinusIntMinusEnum.Encode(e)
+		}
+	}
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfOneOfBugs = [2]string{
+var jsonFieldsNameOfOneOfBugs = [3]string{
 	0: "issue143",
 	1: "additional-fields",
+	2: "oneOf-uuid-int-enum",
 }
 
 // Decode decodes OneOfBugs from json.
@@ -3153,6 +3163,16 @@ func (s *OneOfBugs) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"additional-fields\"")
+			}
+		case "oneOf-uuid-int-enum":
+			if err := func() error {
+				s.OneOfMinusUUIDMinusIntMinusEnum.Reset()
+				if err := s.OneOfMinusUUIDMinusIntMinusEnum.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"oneOf-uuid-int-enum\"")
 			}
 		default:
 			return d.Skip()
@@ -3193,6 +3213,60 @@ func (s *OneOfBugs) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
+	return nil
+}
+
+// Encode encodes OneOfUUIDAndIntEnum as json.
+func (s OneOfUUIDAndIntEnum) Encode(e *jx.Writer) {
+	switch s.Type {
+	case UUIDOneOfUUIDAndIntEnum:
+		json.EncodeUUID(e, s.UUID)
+	case OneOfUUIDAndIntEnum1OneOfUUIDAndIntEnum:
+		s.OneOfUUIDAndIntEnum1.Encode(e)
+	}
+}
+
+// Decode decodes OneOfUUIDAndIntEnum from json.
+func (s *OneOfUUIDAndIntEnum) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode OneOfUUIDAndIntEnum to nil")
+	}
+	// Sum type type_discriminator.
+	switch t := d.Next(); t {
+	case jx.String:
+		v, err := json.DecodeUUID(d)
+		s.UUID = v
+		if err != nil {
+			return err
+		}
+		s.Type = UUIDOneOfUUIDAndIntEnum
+	case jx.Number:
+		if err := s.OneOfUUIDAndIntEnum1.Decode(d); err != nil {
+			return err
+		}
+		s.Type = OneOfUUIDAndIntEnum1OneOfUUIDAndIntEnum
+	default:
+		return errors.Errorf("unexpected json type %q", t)
+	}
+	return nil
+}
+
+// Encode encodes OneOfUUIDAndIntEnum1 as json.
+func (s OneOfUUIDAndIntEnum1) Encode(e *jx.Writer) {
+	e.Int(int(s))
+}
+
+// Decode decodes OneOfUUIDAndIntEnum1 from json.
+func (s *OneOfUUIDAndIntEnum1) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode OneOfUUIDAndIntEnum1 to nil")
+	}
+	v, err := d.Int()
+	if err != nil {
+		return err
+	}
+	*s = OneOfUUIDAndIntEnum1(v)
 
 	return nil
 }
@@ -4115,6 +4189,31 @@ func (o *OptNullableEnums) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf("unexpected type %q while reading OptNullableEnums", d.Next())
+	}
+}
+
+// Encode encodes OneOfUUIDAndIntEnum as json.
+func (o OptOneOfUUIDAndIntEnum) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes OneOfUUIDAndIntEnum from json.
+func (o *OptOneOfUUIDAndIntEnum) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptOneOfUUIDAndIntEnum to nil")
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptOneOfUUIDAndIntEnum", d.Next())
 	}
 }
 

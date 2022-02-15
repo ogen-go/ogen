@@ -193,6 +193,14 @@ func decodeOneofBugRequest(r *http.Request, span trace.Span) (req OneOfBugs, err
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode OneofBug:application/json request")
 		}
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate OneofBug request")
+		}
 		return request, nil
 	default:
 		return req, validate.InvalidContentType(ct)

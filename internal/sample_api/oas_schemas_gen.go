@@ -790,9 +790,84 @@ func (s OctetStreamEmptySchemaOK) Read(p []byte) (n int, err error) {
 
 // Ref: #/components/schemas/OneOfBugs
 type OneOfBugs struct {
-	Issue143              Issue143                    "json:\"issue143\""
-	AdditionalMinusFields OneVariantHasNoUniqueFields "json:\"additional-fields\""
+	Issue143                        Issue143                    "json:\"issue143\""
+	AdditionalMinusFields           OneVariantHasNoUniqueFields "json:\"additional-fields\""
+	OneOfMinusUUIDMinusIntMinusEnum OptOneOfUUIDAndIntEnum      "json:\"oneOf-uuid-int-enum\""
 }
+
+// Ref: #/components/schemas/OneOfUUIDAndIntEnum
+// OneOfUUIDAndIntEnum represents sum type.
+type OneOfUUIDAndIntEnum struct {
+	Type                 OneOfUUIDAndIntEnumType // switch on this field
+	UUID                 uuid.UUID
+	OneOfUUIDAndIntEnum1 OneOfUUIDAndIntEnum1
+}
+
+// OneOfUUIDAndIntEnumType is oneOf type of OneOfUUIDAndIntEnum.
+type OneOfUUIDAndIntEnumType string
+
+// Possible values for OneOfUUIDAndIntEnumType.
+const (
+	UUIDOneOfUUIDAndIntEnum                 OneOfUUIDAndIntEnumType = "uuid.UUID"
+	OneOfUUIDAndIntEnum1OneOfUUIDAndIntEnum OneOfUUIDAndIntEnumType = "OneOfUUIDAndIntEnum1"
+)
+
+// IsUUID reports whether OneOfUUIDAndIntEnum is uuid.UUID.
+func (s OneOfUUIDAndIntEnum) IsUUID() bool { return s.Type == UUIDOneOfUUIDAndIntEnum }
+
+// IsOneOfUUIDAndIntEnum1 reports whether OneOfUUIDAndIntEnum is OneOfUUIDAndIntEnum1.
+func (s OneOfUUIDAndIntEnum) IsOneOfUUIDAndIntEnum1() bool {
+	return s.Type == OneOfUUIDAndIntEnum1OneOfUUIDAndIntEnum
+}
+
+// SetUUID sets OneOfUUIDAndIntEnum to uuid.UUID.
+func (s *OneOfUUIDAndIntEnum) SetUUID(v uuid.UUID) {
+	s.Type = UUIDOneOfUUIDAndIntEnum
+	s.UUID = v
+}
+
+// GetUUID returns uuid.UUID and true boolean if OneOfUUIDAndIntEnum is uuid.UUID.
+func (s OneOfUUIDAndIntEnum) GetUUID() (v uuid.UUID, ok bool) {
+	if !s.IsUUID() {
+		return v, false
+	}
+	return s.UUID, true
+}
+
+// NewUUIDOneOfUUIDAndIntEnum returns new OneOfUUIDAndIntEnum from uuid.UUID.
+func NewUUIDOneOfUUIDAndIntEnum(v uuid.UUID) OneOfUUIDAndIntEnum {
+	var s OneOfUUIDAndIntEnum
+	s.SetUUID(v)
+	return s
+}
+
+// SetOneOfUUIDAndIntEnum1 sets OneOfUUIDAndIntEnum to OneOfUUIDAndIntEnum1.
+func (s *OneOfUUIDAndIntEnum) SetOneOfUUIDAndIntEnum1(v OneOfUUIDAndIntEnum1) {
+	s.Type = OneOfUUIDAndIntEnum1OneOfUUIDAndIntEnum
+	s.OneOfUUIDAndIntEnum1 = v
+}
+
+// GetOneOfUUIDAndIntEnum1 returns OneOfUUIDAndIntEnum1 and true boolean if OneOfUUIDAndIntEnum is OneOfUUIDAndIntEnum1.
+func (s OneOfUUIDAndIntEnum) GetOneOfUUIDAndIntEnum1() (v OneOfUUIDAndIntEnum1, ok bool) {
+	if !s.IsOneOfUUIDAndIntEnum1() {
+		return v, false
+	}
+	return s.OneOfUUIDAndIntEnum1, true
+}
+
+// NewOneOfUUIDAndIntEnum1OneOfUUIDAndIntEnum returns new OneOfUUIDAndIntEnum from OneOfUUIDAndIntEnum1.
+func NewOneOfUUIDAndIntEnum1OneOfUUIDAndIntEnum(v OneOfUUIDAndIntEnum1) OneOfUUIDAndIntEnum {
+	var s OneOfUUIDAndIntEnum
+	s.SetOneOfUUIDAndIntEnum1(v)
+	return s
+}
+
+type OneOfUUIDAndIntEnum1 int
+
+const (
+	OneOfUUIDAndIntEnum10 OneOfUUIDAndIntEnum1 = 0
+	OneOfUUIDAndIntEnum11 OneOfUUIDAndIntEnum1 = 1
+)
 
 // Ref: #/components/schemas/OneVariantHasNoUniqueFields
 // OneVariantHasNoUniqueFields represents sum type.
@@ -1903,6 +1978,52 @@ func (o OptNullableEnums) Get() (v NullableEnums, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptNullableEnums) Or(d NullableEnums) NullableEnums {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptOneOfUUIDAndIntEnum returns new OptOneOfUUIDAndIntEnum with value set to v.
+func NewOptOneOfUUIDAndIntEnum(v OneOfUUIDAndIntEnum) OptOneOfUUIDAndIntEnum {
+	return OptOneOfUUIDAndIntEnum{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOneOfUUIDAndIntEnum is optional OneOfUUIDAndIntEnum.
+type OptOneOfUUIDAndIntEnum struct {
+	Value OneOfUUIDAndIntEnum
+	Set   bool
+}
+
+// IsSet returns true if OptOneOfUUIDAndIntEnum was set.
+func (o OptOneOfUUIDAndIntEnum) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOneOfUUIDAndIntEnum) Reset() {
+	var v OneOfUUIDAndIntEnum
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOneOfUUIDAndIntEnum) SetTo(v OneOfUUIDAndIntEnum) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOneOfUUIDAndIntEnum) Get() (v OneOfUUIDAndIntEnum, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOneOfUUIDAndIntEnum) Or(d OneOfUUIDAndIntEnum) OneOfUUIDAndIntEnum {
 	if v, ok := o.Get(); ok {
 		return v
 	}

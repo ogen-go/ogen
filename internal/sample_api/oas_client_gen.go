@@ -738,6 +738,14 @@ func (c *Client) OctetStreamEmptySchema(ctx context.Context) (res OctetStreamEmp
 //
 // POST /oneofBug
 func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugOK, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
 	startTime := time.Now()
 	ctx, span := c.cfg.Tracer.Start(ctx, "OneofBug",
 		trace.WithAttributes(otelogen.OperationID("oneofBug")),
