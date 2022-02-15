@@ -31,7 +31,7 @@ type SumSpecMap struct {
 
 type TypeDiscriminator struct {
 	Kind      Kind
-	Primitive PrimitiveType
+	Primitive string
 }
 
 func (t TypeDiscriminator) Less(other TypeDiscriminator) bool {
@@ -43,7 +43,7 @@ func (t *TypeDiscriminator) Set(s *Type) {
 	case KindPrimitive, KindEnum:
 		// Treat enum as primitive.
 		t.Kind = KindPrimitive
-		t.Primitive = s.Primitive
+		t.Primitive = s.JSON().Type()
 	case KindArray:
 		t.Kind = KindArray
 	case KindAlias:
