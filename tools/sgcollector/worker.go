@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"context"
+	"crypto/sha256"
 	"fmt"
 	"go/format"
 	"strings"
@@ -37,28 +38,8 @@ func convertYAMLtoJSON(data []byte) (_ []byte, rErr error) {
 
 func worker(ctx context.Context, m FileMatch, r Reporters) (rErr error) {
 	data := bytes.TrimPrefix([]byte(m.File.Content), bomPrefix)
-
-	if strings.HasSuffix(m.File.Name, ".yml") || strings.HasSuffix(m.File.Name, ".yaml") {
-		j, err := convertYAMLtoJSON(data)
-		if err != nil {
-			if err := r.report(ctx, InvalidYAML, Report{
-				File:  m,
-				Error: err.Error(),
-			}); err != nil {
-				return errors.Wrap(err, "report")
-			}
-		}
-		data = j
-	}
-	if !jx.Valid(data) {
-		if err := r.report(ctx, InvalidJSON, Report{
-			File:  m,
-			Error: errInvalidJSON.Error(),
-		}); err != nil {
-			return errors.Wrap(err, "report")
-		}
-		return errInvalidJSON
-	}
+	isYAML := strings.HasSuffix(m.File.Name, ".yml") || strings.HasSuffix(m.File.Name, ".yaml")
+	hash := sha256.Sum256(data[:])
 
 	defer func() {
 		if rr := recover(); rr != nil {
@@ -66,12 +47,13 @@ func worker(ctx context.Context, m FileMatch, r Reporters) (rErr error) {
 			if err := r.report(ctx, Crash, Report{
 				File:  m,
 				Error: fmt.Sprintf("panic: %v", rr),
+				Hash:  hash,
 			}); err != nil {
 				return
 			}
 		}
 	}()
-	err := generate(data)
+	err := generate(data, isYAML)
 	if err != nil {
 		var pse *GenerateError
 		if !errors.As(err, &pse) {
@@ -81,6 +63,7 @@ func worker(ctx context.Context, m FileMatch, r Reporters) (rErr error) {
 		if err := r.report(ctx, pse.stage, Report{
 			File:  m,
 			Error: err.Error(),
+			Hash:  hash,
 		}); err != nil {
 			return errors.Wrap(err, "report")
 		}
@@ -100,7 +83,7 @@ func (p *GenerateError) Unwrap() error {
 }
 
 func (p *GenerateError) Error() string {
-	return p.err.Error()
+	return fmt.Sprintf("%s: %s", p.stage, p.err)
 }
 
 type fmtFs struct{}
@@ -113,7 +96,18 @@ func (n fmtFs) WriteFile(baseName string, source []byte) error {
 	return nil
 }
 
-func generate(data []byte) error {
+func generate(data []byte, isYAML bool) error {
+	if isYAML {
+		j, err := convertYAMLtoJSON(data)
+		if err != nil {
+			return &GenerateError{stage: InvalidYAML, err: err}
+		}
+		data = j
+	}
+	if !jx.Valid(data) {
+		return &GenerateError{stage: InvalidJSON, err: errInvalidJSON}
+	}
+
 	spec, err := ogen.Parse(data)
 	if err != nil {
 		return &GenerateError{stage: Parse, err: err}

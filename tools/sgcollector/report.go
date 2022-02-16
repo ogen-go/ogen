@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"crypto/sha256"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -15,6 +16,7 @@ import (
 type Report struct {
 	File  FileMatch
 	Error string
+	Hash  [sha256.Size]byte `json:"-"`
 }
 
 type Reporter struct {
@@ -30,17 +32,17 @@ func (r *Reporter) run(ctx context.Context, path string) error {
 		select {
 		case <-ctx.Done():
 			return ctx.Err()
-		case invalid, ok := <-r.ch:
+		case report, ok := <-r.ch:
 			if !ok {
 				return nil
 			}
 
-			data, err := json.MarshalIndent(invalid, "", "\t")
+			data, err := json.MarshalIndent(report, "", "\t")
 			if err != nil {
 				return errors.Wrap(err, "encode error")
 			}
 
-			writePath := filepath.Join(path, fmt.Sprintf("%d.json", r.counter))
+			writePath := filepath.Join(path, fmt.Sprintf("%x.json", report.Hash))
 			if err := os.WriteFile(writePath, data, 0o750); err != nil {
 				return err
 			}
