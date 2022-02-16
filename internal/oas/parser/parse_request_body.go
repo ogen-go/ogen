@@ -17,6 +17,10 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx resolveCtx) (*oas.
 
 		return reqBody, nil
 	}
+	if len(body.Content) < 1 {
+		// See https://github.com/OAI/OpenAPI-Specification/discussions/2875.
+		return nil, errors.New("content must have at least on entry")
+	}
 
 	result := &oas.RequestBody{
 		Contents: make(map[string]*jsonschema.Schema, len(body.Content)),

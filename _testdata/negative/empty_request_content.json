@@ -1,0 +1,38 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Basic content",
+    "version": "0.1"
+  },
+  "paths": {
+    "/test": {
+      "get": {
+        "summary": "this is a test",
+        "operationId": "test",
+        "requestBody": {
+          "description": "description of the request",
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "description",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "discriminator": {
+                  },
+                  "properties": {
+                    "c": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
