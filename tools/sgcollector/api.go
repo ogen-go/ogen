@@ -2,13 +2,22 @@ package main
 
 type (
 	Repository struct {
-		Name string `json:"name"`
+		Name        string `json:"name"`
+		Language    string `json:"language"`
+		Description string `json:"description"`
+	}
+
+	Commit struct {
+		Oid string `json:"oid"`
 	}
 
 	File struct {
-		Name    string `json:"name"`
-		Path    string `json:"path"`
-		Content string `json:"content"`
+		Name     string `json:"name"`
+		Size     int    `json:"size"`
+		Path     string `json:"path"`
+		ByteSize uint64 `json:"byteSize"`
+		Commit   Commit `json:"commit"`
+		Content  string `json:"content"`
 	}
 
 	FileMatch struct {
