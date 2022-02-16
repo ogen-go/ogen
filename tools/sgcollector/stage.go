@@ -5,8 +5,10 @@ type Stage int
 const (
 	InvalidYAML Stage = iota
 	InvalidJSON
+	Unmarshal
 	Parse
-	Build
+	BuildIR
+	BuildRouter
 	Template
 	Format
 	Crash
@@ -14,11 +16,13 @@ const (
 )
 
 func (s Stage) String() string {
-	r := [7]string{
+	r := [9]string{
 		"invalidYAML",
 		"invalidJSON",
+		"unmarshal",
 		"parse",
-		"build",
+		"buildIR",
+		"buildRouter",
 		"template",
 		"format",
 		last - 1: "crash",

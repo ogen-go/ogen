@@ -24,8 +24,14 @@ func (e *ErrUnsupportedContentTypes) Error() string {
 }
 
 func (g *Generator) fail(err error) error {
+	hook := g.opt.NotImplementedHook
+	if hook == nil {
+		hook = func(string, error) {}
+	}
+
 	var notImplementedErr *ErrNotImplemented
 	if errors.As(err, &notImplementedErr) {
+		hook(notImplementedErr.Name, err)
 		for _, s := range g.opt.IgnoreNotImplemented {
 			s = strings.TrimSpace(s)
 			if s == "all" {
@@ -39,6 +45,7 @@ func (g *Generator) fail(err error) error {
 
 	var ctypesErr *ErrUnsupportedContentTypes
 	if errors.As(err, &ctypesErr) {
+		hook("unsupported content types", err)
 		for _, s := range g.opt.IgnoreNotImplemented {
 			s = strings.TrimSpace(s)
 			if s == "all" || s == "unsupported content types" {
@@ -47,4 +54,28 @@ func (g *Generator) fail(err error) error {
 		}
 	}
 	return err
+}
+
+type ErrParseSpec struct {
+	err error
+}
+
+func (e *ErrParseSpec) Unwrap() error {
+	return e.err
+}
+
+func (e *ErrParseSpec) Error() string {
+	return fmt.Sprintf("parse spec: %s", e.err)
+}
+
+type ErrBuildRouter struct {
+	err error
+}
+
+func (e *ErrBuildRouter) Unwrap() error {
+	return e.err
+}
+
+func (e *ErrBuildRouter) Error() string {
+	return fmt.Sprintf("build router: %s", e.err)
 }

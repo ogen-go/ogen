@@ -1,5 +1,7 @@
 package main
 
+import "net/url"
+
 type (
 	Repository struct {
 		Name        string `json:"name"`
@@ -54,5 +56,5 @@ type (
 )
 
 func (m FileMatch) Link() string {
-	return "https://" + m.Repository.Name + "/blob/-/" + m.File.Path
+	return "https://" + m.Repository.Name + "/blob/-/" + url.PathEscape(m.File.Path)
 }

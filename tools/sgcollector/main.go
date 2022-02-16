@@ -87,7 +87,7 @@ func run(ctx context.Context) error {
 	var (
 		workers   = runtime.GOMAXPROCS(-1)
 		links     = make(chan FileMatch, workers)
-		reporters = Reporters{}
+		reporters = &Reporters{}
 		total     int
 	)
 	reporters.init(workers)

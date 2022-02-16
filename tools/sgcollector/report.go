@@ -14,9 +14,10 @@ import (
 )
 
 type Report struct {
-	File  FileMatch
-	Error string
-	Hash  [sha256.Size]byte `json:"-"`
+	File           FileMatch
+	Error          string
+	NotImplemented []string          `json:",omitempty"`
+	Hash           [sha256.Size]byte `json:"-"`
 }
 
 type Reporter struct {
@@ -56,12 +57,12 @@ func (r *Reporter) close() {
 }
 
 type Reporters struct {
-	reporters [last]Reporter
+	reporters [last]*Reporter
 }
 
 func (r *Reporters) init(buf int) {
 	for i := range r.reporters {
-		r.reporters[i] = Reporter{
+		r.reporters[i] = &Reporter{
 			ch: make(chan Report, buf),
 		}
 	}
@@ -94,7 +95,7 @@ func (r *Reporters) run(ctx context.Context, clean bool, path string) error {
 		})
 	}
 	for idx := range r.reporters {
-		spawn(Stage(idx).String(), &r.reporters[idx])
+		spawn(Stage(idx).String(), r.reporters[idx])
 	}
 	return g.Wait()
 }

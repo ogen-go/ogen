@@ -28,6 +28,7 @@ type Options struct {
 	InferSchemaType      bool
 	Filters              Filters
 	IgnoreNotImplemented []string
+	NotImplementedHook   func(name string, err error)
 }
 
 type Filters struct {
@@ -55,7 +56,7 @@ func (f Filters) accept(op *oas.Operation) bool {
 func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	operations, err := parser.Parse(spec, opts.InferSchemaType)
 	if err != nil {
-		return nil, errors.Wrap(err, "parse")
+		return nil, &ErrParseSpec{err: err}
 	}
 
 	g := &Generator{
@@ -68,7 +69,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	}
 
 	if err := g.route(); err != nil {
-		return nil, errors.Wrap(err, "route")
+		return nil, &ErrBuildRouter{err: err}
 	}
 
 	return g, nil
