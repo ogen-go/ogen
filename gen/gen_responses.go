@@ -23,10 +23,9 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 	statusCodes := make([]int, 0, len(responses))
 	for status := range responses {
 		if status == "default" {
-			continue// Ignore default response.
+			continue // Ignore default response.
 		}
-		switch status {
-		case strings.ToUpper(status):
+		switch strings.ToUpper(status) {
 		case "1XX", "2XX", "3XX", "4XX", "5XX":
 			return nil, &ErrNotImplemented{Name: "HTTP code pattern"}
 		default:
