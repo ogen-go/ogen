@@ -41,26 +41,21 @@ func worker(ctx context.Context, m FileMatch, r Reporters) (rErr error) {
 	if strings.HasSuffix(m.File.Name, ".yml") || strings.HasSuffix(m.File.Name, ".yaml") {
 		j, err := convertYAMLtoJSON(data)
 		if err != nil {
-			select {
-			case <-ctx.Done():
-				return
-			case r.InvalidYAML <- Report{
+			if err := r.report(ctx, InvalidYAML, Report{
 				File:  m,
 				Error: err.Error(),
-			}:
-				return errors.Wrap(err, "convert to JSON")
+			}); err != nil {
+				return errors.Wrap(err, "report")
 			}
 		}
 		data = j
 	}
 	if !jx.Valid(data) {
-		select {
-		case <-ctx.Done():
-			return
-		case r.InvalidJSON <- Report{
+		if err := r.report(ctx, InvalidJSON, Report{
 			File:  m,
 			Error: errInvalidJSON.Error(),
-		}:
+		}); err != nil {
+			return errors.Wrap(err, "report")
 		}
 		return errInvalidJSON
 	}
@@ -68,13 +63,11 @@ func worker(ctx context.Context, m FileMatch, r Reporters) (rErr error) {
 	defer func() {
 		if rr := recover(); rr != nil {
 			rErr = errPanic
-			select {
-			case <-ctx.Done():
-				return
-			case r.Crash <- Report{
+			if err := r.report(ctx, Crash, Report{
 				File:  m,
 				Error: fmt.Sprintf("panic: %v", rr),
-			}:
+			}); err != nil {
+				return
 			}
 		}
 	}()
@@ -85,32 +78,20 @@ func worker(ctx context.Context, m FileMatch, r Reporters) (rErr error) {
 			return errors.Wrap(err, "invalid schema")
 		}
 
-		ch := r.Parse
-		switch pse.stage {
-		case "build":
-			ch = r.Build
-		case "template":
-			ch = r.Template
-		case "format":
-			ch = r.Format
-		}
-
-		select {
-		case <-ctx.Done():
-			return ctx.Err()
-		case ch <- Report{
+		if err := r.report(ctx, pse.stage, Report{
 			File:  m,
 			Error: err.Error(),
-		}:
-			return errors.Wrap(err, "generate")
+		}); err != nil {
+			return errors.Wrap(err, "report")
 		}
+		return errors.Wrap(err, "generate")
 	}
 	return nil
 }
 
 // GenerateError reports that generation failed.
 type GenerateError struct {
-	stage string
+	stage Stage
 	err   error
 }
 
@@ -127,7 +108,7 @@ type fmtFs struct{}
 func (n fmtFs) WriteFile(baseName string, source []byte) error {
 	_, err := format.Source(source)
 	if err != nil {
-		return &GenerateError{stage: "format", err: err}
+		return &GenerateError{stage: Format, err: err}
 	}
 	return nil
 }
@@ -135,7 +116,7 @@ func (n fmtFs) WriteFile(baseName string, source []byte) error {
 func generate(data []byte) error {
 	spec, err := ogen.Parse(data)
 	if err != nil {
-		return &GenerateError{stage: "parse", err: err}
+		return &GenerateError{stage: Parse, err: err}
 	}
 
 	g, err := gen.NewGenerator(spec, gen.Options{
@@ -143,7 +124,7 @@ func generate(data []byte) error {
 		IgnoreNotImplemented: []string{"all"},
 	})
 	if err != nil {
-		return &GenerateError{stage: "build", err: err}
+		return &GenerateError{stage: Build, err: err}
 	}
 
 	if err := g.WriteSource(fmtFs{}, "api"); err != nil {
@@ -151,7 +132,7 @@ func generate(data []byte) error {
 		if errors.As(err, &pse) {
 			return err
 		}
-		return &GenerateError{stage: "template", err: err}
+		return &GenerateError{stage: Template, err: err}
 	}
 	return nil
 }
