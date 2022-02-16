@@ -248,6 +248,13 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx resolveCtx, hook func(*Schem
 		return array, nil
 
 	case "number", "integer":
+		if mul := schema.MultipleOf; mul != nil {
+			// The value of "multipleOf" MUST be a number, strictly greater than 0.
+			if v := *mul; v <= 0 {
+				return nil, errors.Errorf("invalid multipleOf value %d", v)
+			}
+		}
+
 		return hook(&Schema{
 			Type:             SchemaType(schema.Type),
 			Format:           schema.Format,

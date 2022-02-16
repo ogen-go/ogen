@@ -306,3 +306,17 @@ func TestSchemaReferencedArray(t *testing.T) {
 	require.Equal(t, expectRefcache, parser.refcache)
 	require.Equal(t, expect, out)
 }
+
+func TestInvalidMultipleOf(t *testing.T) {
+	values := []int{0, -1, -10}
+	parser := NewParser(Settings{
+		Resolver: components{},
+	})
+	for _, v := range values {
+		_, err := parser.Parse(&RawSchema{
+			Type:       "integer",
+			MultipleOf: &[]int{v}[0],
+		})
+		require.Errorf(t, err, "%d", v)
+	}
+}
