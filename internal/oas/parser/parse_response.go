@@ -1,7 +1,6 @@
 package parser
 
 import (
-	"net/http"
 	"strconv"
 
 	"github.com/go-faster/errors"
@@ -92,10 +91,9 @@ func validateStatusCode(v string) error {
 			return errors.Wrap(err, "parse status code")
 		}
 
-		if http.StatusText(code) == "" {
+		if code < 100 || code > 599 {
 			return errors.Errorf("unknown status code: %d", code)
 		}
-
 		return nil
 	}
 }
