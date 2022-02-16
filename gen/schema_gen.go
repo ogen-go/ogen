@@ -38,6 +38,10 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 			return nil, errors.Wrapf(err, "schema name: %q", ref)
 		}
 	}
+	if schema.DefaultSet && schema.Type == jsonschema.Object {
+		return nil, &ErrNotImplemented{Name: "object defaults"}
+	}
+
 	if name[0] >= '0' && name[0] <= '9' {
 		name = "R" + name
 	}
