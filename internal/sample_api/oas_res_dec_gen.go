@@ -421,6 +421,7 @@ func decodeOctetStreamBinaryStringSchemaResponse(resp *http.Response, span trace
 			if err != nil {
 				return res, err
 			}
+
 			return OctetStreamBinaryStringSchemaOK{
 				Data: bytes.NewReader(b),
 			}, nil
@@ -441,6 +442,7 @@ func decodeOctetStreamEmptySchemaResponse(resp *http.Response, span trace.Span) 
 			if err != nil {
 				return res, err
 			}
+
 			return OctetStreamEmptySchemaOK{
 				Data: bytes.NewReader(b),
 			}, nil
@@ -610,6 +612,7 @@ func decodePetGetAvatarByIDResponse(resp *http.Response, span trace.Span) (res P
 			if err != nil {
 				return res, err
 			}
+
 			return &PetGetAvatarByIDOK{
 				Data: bytes.NewReader(b),
 			}, nil
@@ -660,6 +663,7 @@ func decodePetGetAvatarByNameResponse(resp *http.Response, span trace.Span) (res
 			if err != nil {
 				return res, err
 			}
+
 			return &PetGetAvatarByNameOK{
 				Data: bytes.NewReader(b),
 			}, nil
