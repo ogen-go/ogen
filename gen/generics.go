@@ -1,7 +1,6 @@
 package gen
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -38,7 +37,7 @@ func boxStructFields(ctx *genctx, s *ir.Type) error {
 					return ir.Pointer(t, ir.NilNull), nil
 				default:
 					// Required.
-					panic(fmt.Sprintf("recursion: %s.%s", s.Name, field.Name))
+					return nil, errors.Errorf("infinite recursion: %s.%s is required", s.Name, field.Name)
 				}
 			}
 			return boxType(ctx, v, t)
