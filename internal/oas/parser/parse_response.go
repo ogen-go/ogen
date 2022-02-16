@@ -49,7 +49,7 @@ func (p *parser) parseResponse(resp *ogen.Response, ctx resolveCtx) (*oas.Respon
 	for contentType, media := range resp.Content {
 		schema, err := p.schemaParser.Parse(media.Schema.ToJSONSchema())
 		if err != nil {
-			return nil, errors.Wrapf(err, "content: %s: schema", contentType)
+			return nil, errors.Wrapf(err, "content: %q: schema", contentType)
 		}
 		schema.AddExample(media.Example)
 		for _, example := range media.Examples {

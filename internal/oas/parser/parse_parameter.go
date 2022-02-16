@@ -60,7 +60,7 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*oas.Par
 
 	locatedIn, exists := types[strings.ToLower(param.In)]
 	if !exists {
-		return nil, errors.Errorf("unsupported parameter type %s", param.In)
+		return nil, errors.Errorf("unsupported parameter type %q", param.In)
 	}
 
 	// Path parameters are always required.
@@ -125,7 +125,7 @@ func paramStyle(locatedIn oas.ParameterLocation, style string) (oas.ParameterSty
 
 	s, found := allowedStyles[locatedIn][style]
 	if !found {
-		return "", errors.Errorf("unexpected style: %s", style)
+		return "", errors.Errorf("unexpected style: %q", style)
 	}
 
 	return s, nil
