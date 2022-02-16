@@ -85,20 +85,23 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 				return res, err
 			}
 
-			{{- if $response.Wrapped }}
-				return {{ if $ptr }}&{{ end }}{{ $type.Name }}{
-					StatusCode: resp.StatusCode,
-					Response:   {{ ($type.MustField "Response").Type.Name }}{
-						Data: bytes.NewReader(b),
-					},
-				}
-			{{- else }}
-				return {{ if $ptr }}&{{ end }}{{ $type.Name }}{
+			return {{ if $ptr }}&{{ end }}{{ $type.Name }}{
+				Data: bytes.NewReader(b),
+			}, nil
+		{{- else if $response.Wrapped }}
+			{{- $subTyp := ($type.MustField "Response").Type }}
+			{{- if $subTyp.IsStream }}
+			return {{ if $ptr }}&{{ end }}{{ $type.Name }}{
+				StatusCode: resp.StatusCode,
+				Response:   {{ $subTyp.Name }}{
 					Data: bytes.NewReader(b),
-				}, nil
-			{{- end }}
+				},
+			}
+            {{- else }}
+                {{- errorf "%q: %s decoder not implemented" $contentType $type }}
+            {{- end }}
 		{{- else }}
-			{{- errorf "%s decoder not implemented" $contentType }}
+            {{- errorf "%q: %s decoder not implemented" $contentType $type }}
 		{{- end }}
 	{{- end }}{{/* Range over contents */}}
 	default:
