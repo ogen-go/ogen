@@ -22,10 +22,14 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 	// Sort responses by status code.
 	statusCodes := make([]int, 0, len(responses))
 	for status := range responses {
+		if status == "default" {
+			continue// Ignore default response.
+		}
 		switch status {
-		case "default": // Ignore default response.
+		case strings.ToUpper(status):
+		case "1XX", "2XX", "3XX", "4XX", "5XX":
+			return nil, &ErrNotImplemented{Name: "HTTP code pattern"}
 		default:
-			// TODO: Support patterns like 5XX?
 			code, err := strconv.Atoi(status)
 			if err != nil {
 				return nil, errors.Wrap(err, "parse response status code")
