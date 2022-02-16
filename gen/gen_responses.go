@@ -108,7 +108,7 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 			}
 			t = ir.Alias(respName, t)
 			if err := ctx.saveType(t); err != nil {
-				panic("unreachable")
+				return nil, errors.Wrap(err, "save type")
 			}
 		}
 
