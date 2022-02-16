@@ -11,6 +11,23 @@ import (
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
+func (p *parser) parseStatus(status string, response *ogen.Response) (*oas.Response, error) {
+	if err := validateStatusCode(status); err != nil {
+		return nil, err
+	}
+
+	if response == nil {
+		return nil, errors.New("response object is empty or null")
+	}
+
+	resp, err := p.parseResponse(response, resolveCtx{})
+	if err != nil {
+		return nil, err
+	}
+
+	return resp, nil
+}
+
 func (p *parser) parseResponses(responses ogen.Responses) (map[string]*oas.Response, error) {
 	result := make(map[string]*oas.Response, len(responses))
 	if len(responses) == 0 {
@@ -18,15 +35,10 @@ func (p *parser) parseResponses(responses ogen.Responses) (map[string]*oas.Respo
 	}
 
 	for status, response := range responses {
-		if err := validateStatusCode(status); err != nil {
-			return nil, errors.Wrap(err, status)
-		}
-
-		resp, err := p.parseResponse(response, resolveCtx{})
+		resp, err := p.parseStatus(status, response)
 		if err != nil {
 			return nil, errors.Wrap(err, status)
 		}
-
 		result[status] = resp
 	}
 

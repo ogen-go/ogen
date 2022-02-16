@@ -21,7 +21,11 @@ func (p *parser) parseParams(params []*ogen.Parameter) ([]*oas.Parameter, error)
 		unique = make(map[pnameLoc]struct{})
 	)
 
-	for _, spec := range params {
+	for idx, spec := range params {
+		if spec == nil {
+			return nil, errors.Errorf("parameter %d is empty or null", idx)
+		}
+
 		param, err := p.parseParameter(spec, resolveCtx{})
 		if err != nil {
 			return nil, errors.Wrapf(err, "parse parameter %q", spec.Name)
