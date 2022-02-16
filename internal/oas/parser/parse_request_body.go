@@ -30,7 +30,7 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx resolveCtx) (*oas.
 	for contentType, media := range body.Content {
 		schema, err := p.schemaParser.Parse(media.Schema.ToJSONSchema())
 		if err != nil {
-			return nil, errors.Wrapf(err, "content: %s: parse schema", contentType)
+			return nil, errors.Wrapf(err, "content: %q: parse schema", contentType)
 		}
 
 		result.Contents[contentType] = schema

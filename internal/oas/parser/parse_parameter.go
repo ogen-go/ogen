@@ -21,7 +21,11 @@ func (p *parser) parseParams(params []*ogen.Parameter) ([]*oas.Parameter, error)
 		unique = make(map[pnameLoc]struct{})
 	)
 
-	for _, spec := range params {
+	for idx, spec := range params {
+		if spec == nil {
+			return nil, errors.Errorf("parameter %d is empty or null", idx)
+		}
+
 		param, err := p.parseParameter(spec, resolveCtx{})
 		if err != nil {
 			return nil, errors.Wrapf(err, "parse parameter %q", spec.Name)
@@ -60,7 +64,7 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*oas.Par
 
 	locatedIn, exists := types[strings.ToLower(param.In)]
 	if !exists {
-		return nil, errors.Errorf("unsupported parameter type %s", param.In)
+		return nil, errors.Errorf("unsupported parameter type %q", param.In)
 	}
 
 	// Path parameters are always required.
@@ -125,7 +129,7 @@ func paramStyle(locatedIn oas.ParameterLocation, style string) (oas.ParameterSty
 
 	s, found := allowedStyles[locatedIn][style]
 	if !found {
-		return "", errors.Errorf("unexpected style: %s", style)
+		return "", errors.Errorf("unexpected style: %q", style)
 	}
 
 	return s, nil
