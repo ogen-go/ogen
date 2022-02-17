@@ -427,18 +427,45 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				}
-			case 'r': // Prefix: "recursiveMap"
-				if l := len("recursiveMap"); len(elem) >= l && elem[0:l] == "recursiveMap" {
+			case 'r': // Prefix: "recursive"
+				if l := len("recursive"); len(elem) >= l && elem[0:l] == "recursive" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					// Leaf: RecursiveMapGet
 					s.handleRecursiveMapGetRequest([0]string{}, w, r)
 
 					return
+				}
+				switch elem[0] {
+				case 'A': // Prefix: "Array"
+					if l := len("Array"); len(elem) >= l && elem[0:l] == "Array" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: RecursiveArrayGet
+						s.handleRecursiveArrayGetRequest([0]string{}, w, r)
+
+						return
+					}
+				case 'M': // Prefix: "Map"
+					if l := len("Map"); len(elem) >= l && elem[0:l] == "Map" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: RecursiveMapGet
+						s.handleRecursiveMapGetRequest([0]string{}, w, r)
+
+						return
+					}
 				}
 			case 't': // Prefix: "test"
 				if l := len("test"); len(elem) >= l && elem[0:l] == "test" {
@@ -1008,19 +1035,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 					}
 				}
-			case 'r': // Prefix: "recursiveMap"
-				if l := len("recursiveMap"); len(elem) >= l && elem[0:l] == "recursiveMap" {
+			case 'r': // Prefix: "recursive"
+				if l := len("recursive"); len(elem) >= l && elem[0:l] == "recursive" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					// Leaf: RecursiveMapGet
 					r.name = "RecursiveMapGet"
 					r.args = args
 					r.count = 0
 					return r, true
+				}
+				switch elem[0] {
+				case 'A': // Prefix: "Array"
+					if l := len("Array"); len(elem) >= l && elem[0:l] == "Array" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: RecursiveArrayGet
+						r.name = "RecursiveArrayGet"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
+				case 'M': // Prefix: "Map"
+					if l := len("Map"); len(elem) >= l && elem[0:l] == "Map" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: RecursiveMapGet
+						r.name = "RecursiveMapGet"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
 				}
 			case 't': // Prefix: "test"
 				if l := len("test"); len(elem) >= l && elem[0:l] == "test" {

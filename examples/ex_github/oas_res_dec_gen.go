@@ -140,12 +140,8 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response, span trace.Spa
 
 			var response ActionsApproveWorkflowRunApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActionsApproveWorkflowRunApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -171,12 +167,8 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response, span trace.Spa
 
 			var response ActionsApproveWorkflowRunApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActionsApproveWorkflowRunApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -2116,12 +2108,8 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 
 			var response ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -2147,12 +2135,8 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 
 			var response ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -2178,12 +2162,8 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 
 			var response ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -2229,12 +2209,8 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response, span tr
 
 			var response ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -2260,12 +2236,8 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response, span tr
 
 			var response ActivityDeleteThreadSubscriptionApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityDeleteThreadSubscriptionApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -2424,12 +2396,8 @@ func decodeActivityGetThreadResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ActivityGetThreadApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityGetThreadApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -2455,12 +2423,8 @@ func decodeActivityGetThreadResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ActivityGetThreadApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityGetThreadApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -2522,12 +2486,8 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 
 			var response ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -2553,12 +2513,8 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 
 			var response ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -2633,20 +2589,8 @@ func decodeActivityListNotificationsForAuthenticatedUserResponse(resp *http.Resp
 
 			var response ActivityListNotificationsForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Thread
-					unwrapped = make([]Thread, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Thread
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ActivityListNotificationsForAuthenticatedUserOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -2674,12 +2618,8 @@ func decodeActivityListNotificationsForAuthenticatedUserResponse(resp *http.Resp
 
 			var response ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -2705,12 +2645,8 @@ func decodeActivityListNotificationsForAuthenticatedUserResponse(resp *http.Resp
 
 			var response ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -2812,20 +2748,8 @@ func decodeActivityListPublicEventsResponse(resp *http.Response, span trace.Span
 
 			var response ActivityListPublicEventsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Event
-					unwrapped = make([]Event, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Event
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ActivityListPublicEventsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -2914,20 +2838,8 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 
 			var response ActivityListPublicEventsForRepoNetworkOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Event
-					unwrapped = make([]Event, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Event
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ActivityListPublicEventsForRepoNetworkOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -2953,12 +2865,8 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 
 			var response ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -2986,12 +2894,8 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 
 			var response ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -3017,12 +2921,8 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response, s
 
 			var response ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -3307,20 +3207,8 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 
 			var response ActivityListReposStarredByAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Repository
-					unwrapped = make([]Repository, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Repository
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ActivityListReposStarredByAuthenticatedUserOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -3348,12 +3236,8 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 
 			var response ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -3379,12 +3263,8 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 
 			var response ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -3459,20 +3339,8 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 
 			var response ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []MinimalRepository
-					unwrapped = make([]MinimalRepository, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem MinimalRepository
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -3500,12 +3368,8 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 
 			var response ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -3531,12 +3395,8 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 
 			var response ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -3642,12 +3502,8 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response, span tra
 
 			var response ActivityMarkNotificationsAsReadApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityMarkNotificationsAsReadApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -3673,12 +3529,8 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response, span tra
 
 			var response ActivityMarkNotificationsAsReadApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityMarkNotificationsAsReadApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -3848,12 +3700,8 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response, span trace
 
 			var response ActivitySetThreadSubscriptionApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivitySetThreadSubscriptionApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -3879,12 +3727,8 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response, span trace
 
 			var response ActivitySetThreadSubscriptionApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivitySetThreadSubscriptionApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -3921,12 +3765,8 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response, spa
 
 			var response ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -3952,12 +3792,8 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response, spa
 
 			var response ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -3983,12 +3819,8 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response, spa
 
 			var response ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -4025,12 +3857,8 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response, s
 
 			var response ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -4056,12 +3884,8 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response, s
 
 			var response ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -4087,12 +3911,8 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response, s
 
 			var response ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -4129,12 +3949,8 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response, span trace.Spa
 
 			var response AppsAddRepoToInstallationApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsAddRepoToInstallationApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -4160,12 +3976,8 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response, span trace.Spa
 
 			var response AppsAddRepoToInstallationApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsAddRepoToInstallationApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -4315,12 +4127,8 @@ func decodeAppsCreateContentAttachmentResponse(resp *http.Response, span trace.S
 
 			var response AppsCreateContentAttachmentApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsCreateContentAttachmentApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -4346,12 +4154,8 @@ func decodeAppsCreateContentAttachmentResponse(resp *http.Response, span trace.S
 
 			var response AppsCreateContentAttachmentApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsCreateContentAttachmentApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -4377,12 +4181,8 @@ func decodeAppsCreateContentAttachmentResponse(resp *http.Response, span trace.S
 
 			var response AppsCreateContentAttachmentApplicationJSONGone
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsCreateContentAttachmentApplicationJSONGone(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -4496,12 +4296,8 @@ func decodeAppsCreateInstallationAccessTokenResponse(resp *http.Response, span t
 
 			var response AppsCreateInstallationAccessTokenApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsCreateInstallationAccessTokenApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -4527,12 +4323,8 @@ func decodeAppsCreateInstallationAccessTokenResponse(resp *http.Response, span t
 
 			var response AppsCreateInstallationAccessTokenApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsCreateInstallationAccessTokenApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -4558,12 +4350,8 @@ func decodeAppsCreateInstallationAccessTokenResponse(resp *http.Response, span t
 
 			var response AppsCreateInstallationAccessTokenApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsCreateInstallationAccessTokenApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -4819,12 +4607,8 @@ func decodeAppsGetBySlugResponse(resp *http.Response, span trace.Span) (res Apps
 
 			var response AppsGetBySlugApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsGetBySlugApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -4850,12 +4634,8 @@ func decodeAppsGetBySlugResponse(resp *http.Response, span trace.Span) (res Apps
 
 			var response AppsGetBySlugApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsGetBySlugApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -4942,12 +4722,8 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response, span t
 
 			var response AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -4973,12 +4749,8 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response, span t
 
 			var response AppsGetSubscriptionPlanForAccountApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsGetSubscriptionPlanForAccountApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -5196,20 +4968,8 @@ func decodeAppsListAccountsForPlanResponse(resp *http.Response, span trace.Span)
 
 			var response AppsListAccountsForPlanOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []MarketplacePurchase
-					unwrapped = make([]MarketplacePurchase, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem MarketplacePurchase
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = AppsListAccountsForPlanOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -5235,12 +4995,8 @@ func decodeAppsListAccountsForPlanResponse(resp *http.Response, span trace.Span)
 
 			var response AppsListAccountsForPlanApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsListAccountsForPlanApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -5266,12 +5022,8 @@ func decodeAppsListAccountsForPlanResponse(resp *http.Response, span trace.Span)
 
 			var response AppsListAccountsForPlanApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsListAccountsForPlanApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -5331,20 +5083,8 @@ func decodeAppsListAccountsForPlanStubbedResponse(resp *http.Response, span trac
 
 			var response AppsListAccountsForPlanStubbedOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []MarketplacePurchase
-					unwrapped = make([]MarketplacePurchase, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem MarketplacePurchase
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = AppsListAccountsForPlanStubbedOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -5433,12 +5173,8 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 
 			var response AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -5464,12 +5200,8 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 
 			var response AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -5502,20 +5234,8 @@ func decodeAppsListPlansResponse(resp *http.Response, span trace.Span) (res Apps
 
 			var response AppsListPlansOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []MarketplaceListingPlan
-					unwrapped = make([]MarketplaceListingPlan, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem MarketplaceListingPlan
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = AppsListPlansOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -5541,12 +5261,8 @@ func decodeAppsListPlansResponse(resp *http.Response, span trace.Span) (res Apps
 
 			var response AppsListPlansApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsListPlansApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -5572,12 +5288,8 @@ func decodeAppsListPlansResponse(resp *http.Response, span trace.Span) (res Apps
 
 			var response AppsListPlansApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsListPlansApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -5610,20 +5322,8 @@ func decodeAppsListPlansStubbedResponse(resp *http.Response, span trace.Span) (r
 
 			var response AppsListPlansStubbedOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []MarketplaceListingPlan
-					unwrapped = make([]MarketplaceListingPlan, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem MarketplaceListingPlan
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = AppsListPlansStubbedOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -5712,12 +5412,8 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response, sp
 
 			var response AppsListReposAccessibleToInstallationApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsListReposAccessibleToInstallationApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -5743,12 +5439,8 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response, sp
 
 			var response AppsListReposAccessibleToInstallationApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsListReposAccessibleToInstallationApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -5781,20 +5473,8 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 
 			var response AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []UserMarketplacePurchase
-					unwrapped = make([]UserMarketplacePurchase, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem UserMarketplacePurchase
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -5822,12 +5502,8 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 
 			var response AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -5853,12 +5529,8 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 
 			var response AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -5891,20 +5563,8 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 
 			var response AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []UserMarketplacePurchase
-					unwrapped = make([]UserMarketplacePurchase, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem UserMarketplacePurchase
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -5966,20 +5626,8 @@ func decodeAppsListWebhookDeliveriesResponse(resp *http.Response, span trace.Spa
 
 			var response AppsListWebhookDeliveriesOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []HookDeliveryItem
-					unwrapped = make([]HookDeliveryItem, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem HookDeliveryItem
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = AppsListWebhookDeliveriesOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -6158,12 +5806,8 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response, span trac
 
 			var response AppsRemoveRepoFromInstallationApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsRemoveRepoFromInstallationApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -6189,12 +5833,8 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response, span trac
 
 			var response AppsRemoveRepoFromInstallationApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsRemoveRepoFromInstallationApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -6324,12 +5964,8 @@ func decodeAppsScopeTokenResponse(resp *http.Response, span trace.Span) (res App
 
 			var response AppsScopeTokenApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsScopeTokenApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -6355,12 +5991,8 @@ func decodeAppsScopeTokenResponse(resp *http.Response, span trace.Span) (res App
 
 			var response AppsScopeTokenApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsScopeTokenApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -6386,12 +6018,8 @@ func decodeAppsScopeTokenResponse(resp *http.Response, span trace.Span) (res App
 
 			var response AppsScopeTokenApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = AppsScopeTokenApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -6863,12 +6491,8 @@ func decodeChecksCreateSuiteResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ChecksCreateSuiteApplicationJSONOK
 			if err := func() error {
-				{
-					var unwrapped CheckSuite
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ChecksCreateSuiteApplicationJSONOK(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -6894,12 +6518,8 @@ func decodeChecksCreateSuiteResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ChecksCreateSuiteApplicationJSONCreated
 			if err := func() error {
-				{
-					var unwrapped CheckSuite
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ChecksCreateSuiteApplicationJSONCreated(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -7240,12 +6860,8 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 
 			var response CodeScanningDeleteAnalysisApplicationJSONBadRequest
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = CodeScanningDeleteAnalysisApplicationJSONBadRequest(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -7271,12 +6887,8 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 
 			var response CodeScanningDeleteAnalysisApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = CodeScanningDeleteAnalysisApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -7302,12 +6914,8 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response, span trace.Sp
 
 			var response CodeScanningDeleteAnalysisApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = CodeScanningDeleteAnalysisApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -7394,12 +7002,8 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response, span trace.Span) (r
 
 			var response CodeScanningGetAlertApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = CodeScanningGetAlertApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -7425,12 +7029,8 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response, span trace.Span) (r
 
 			var response CodeScanningGetAlertApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = CodeScanningGetAlertApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -7517,12 +7117,8 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response, span trace.Span)
 
 			var response CodeScanningGetAnalysisApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = CodeScanningGetAnalysisApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -7548,12 +7144,8 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response, span trace.Span)
 
 			var response CodeScanningGetAnalysisApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = CodeScanningGetAnalysisApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -7703,20 +7295,8 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response, span trac
 
 			var response CodeScanningListAlertInstancesOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []CodeScanningAlertInstance
-					unwrapped = make([]CodeScanningAlertInstance, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem CodeScanningAlertInstance
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = CodeScanningListAlertInstancesOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -7742,12 +7322,8 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response, span trac
 
 			var response CodeScanningListAlertInstancesApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = CodeScanningListAlertInstancesApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -7773,12 +7349,8 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response, span trac
 
 			var response CodeScanningListAlertInstancesApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = CodeScanningListAlertInstancesApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -7838,20 +7410,8 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response, span trace
 
 			var response CodeScanningListAlertsForRepoOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []CodeScanningAlertItems
-					unwrapped = make([]CodeScanningAlertItems, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem CodeScanningAlertItems
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = CodeScanningListAlertsForRepoOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -7877,12 +7437,8 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response, span trace
 
 			var response CodeScanningListAlertsForRepoApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = CodeScanningListAlertsForRepoApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -7908,12 +7464,8 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response, span trace
 
 			var response CodeScanningListAlertsForRepoApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = CodeScanningListAlertsForRepoApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -7973,20 +7525,8 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response, span trac
 
 			var response CodeScanningListRecentAnalysesOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []CodeScanningAnalysis
-					unwrapped = make([]CodeScanningAnalysis, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem CodeScanningAnalysis
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = CodeScanningListRecentAnalysesOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -8012,12 +7552,8 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response, span trac
 
 			var response CodeScanningListRecentAnalysesApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = CodeScanningListRecentAnalysesApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -8043,12 +7579,8 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response, span trac
 
 			var response CodeScanningListRecentAnalysesApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = CodeScanningListRecentAnalysesApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -8135,12 +7667,8 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response, span trace.Span)
 
 			var response CodeScanningUpdateAlertApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = CodeScanningUpdateAlertApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -8166,12 +7694,8 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response, span trace.Span)
 
 			var response CodeScanningUpdateAlertApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = CodeScanningUpdateAlertApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -8260,12 +7784,8 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response, span trace.Span)
 
 			var response CodeScanningUploadSarifApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = CodeScanningUploadSarifApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -8291,12 +7811,8 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response, span trace.Span)
 
 			var response CodeScanningUploadSarifApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = CodeScanningUploadSarifApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -8358,20 +7874,8 @@ func decodeCodesOfConductGetAllCodesOfConductResponse(resp *http.Response, span 
 
 			var response CodesOfConductGetAllCodesOfConductOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []CodeOfConduct
-					unwrapped = make([]CodeOfConduct, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem CodeOfConduct
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = CodesOfConductGetAllCodesOfConductOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -9602,12 +9106,8 @@ func decodeGistsCreateResponse(resp *http.Response, span trace.Span) (res GistsC
 
 			var response GistsCreateApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsCreateApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -9633,12 +9133,8 @@ func decodeGistsCreateResponse(resp *http.Response, span trace.Span) (res GistsC
 
 			var response GistsCreateApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsCreateApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -9727,12 +9223,8 @@ func decodeGistsCreateCommentResponse(resp *http.Response, span trace.Span) (res
 
 			var response GistsCreateCommentApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsCreateCommentApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -9758,12 +9250,8 @@ func decodeGistsCreateCommentResponse(resp *http.Response, span trace.Span) (res
 
 			var response GistsCreateCommentApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsCreateCommentApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -9800,12 +9288,8 @@ func decodeGistsDeleteResponse(resp *http.Response, span trace.Span) (res GistsD
 
 			var response GistsDeleteApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsDeleteApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -9831,12 +9315,8 @@ func decodeGistsDeleteResponse(resp *http.Response, span trace.Span) (res GistsD
 
 			var response GistsDeleteApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsDeleteApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -9873,12 +9353,8 @@ func decodeGistsDeleteCommentResponse(resp *http.Response, span trace.Span) (res
 
 			var response GistsDeleteCommentApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsDeleteCommentApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -9904,12 +9380,8 @@ func decodeGistsDeleteCommentResponse(resp *http.Response, span trace.Span) (res
 
 			var response GistsDeleteCommentApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsDeleteCommentApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -9971,12 +9443,8 @@ func decodeGistsForkResponse(resp *http.Response, span trace.Span) (res GistsFor
 
 			var response GistsForkApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsForkApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10002,12 +9470,8 @@ func decodeGistsForkResponse(resp *http.Response, span trace.Span) (res GistsFor
 
 			var response GistsForkApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsForkApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10274,12 +9738,8 @@ func decodeGistsGetRevisionResponse(resp *http.Response, span trace.Span) (res G
 
 			var response GistsGetRevisionApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsGetRevisionApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10305,12 +9765,8 @@ func decodeGistsGetRevisionResponse(resp *http.Response, span trace.Span) (res G
 
 			var response GistsGetRevisionApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsGetRevisionApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10370,20 +9826,8 @@ func decodeGistsListResponse(resp *http.Response, span trace.Span) (res GistsLis
 
 			var response GistsListOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []BaseGist
-					unwrapped = make([]BaseGist, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem BaseGist
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = GistsListOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10445,20 +9889,8 @@ func decodeGistsListCommentsResponse(resp *http.Response, span trace.Span) (res 
 
 			var response GistsListCommentsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []GistComment
-					unwrapped = make([]GistComment, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem GistComment
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = GistsListCommentsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10486,12 +9918,8 @@ func decodeGistsListCommentsResponse(resp *http.Response, span trace.Span) (res 
 
 			var response GistsListCommentsApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsListCommentsApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10517,12 +9945,8 @@ func decodeGistsListCommentsResponse(resp *http.Response, span trace.Span) (res 
 
 			var response GistsListCommentsApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsListCommentsApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10555,20 +9979,8 @@ func decodeGistsListCommitsResponse(resp *http.Response, span trace.Span) (res G
 
 			var response GistsListCommitsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []GistCommit
-					unwrapped = make([]GistCommit, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem GistCommit
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = GistsListCommitsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10596,12 +10008,8 @@ func decodeGistsListCommitsResponse(resp *http.Response, span trace.Span) (res G
 
 			var response GistsListCommitsApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsListCommitsApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10627,12 +10035,8 @@ func decodeGistsListCommitsResponse(resp *http.Response, span trace.Span) (res G
 
 			var response GistsListCommitsApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsListCommitsApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10665,20 +10069,8 @@ func decodeGistsListForUserResponse(resp *http.Response, span trace.Span) (res G
 
 			var response GistsListForUserOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []BaseGist
-					unwrapped = make([]BaseGist, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem BaseGist
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = GistsListForUserOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10738,20 +10130,8 @@ func decodeGistsListForksResponse(resp *http.Response, span trace.Span) (res Gis
 
 			var response GistsListForksOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []GistSimple
-					unwrapped = make([]GistSimple, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem GistSimple
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = GistsListForksOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10779,12 +10159,8 @@ func decodeGistsListForksResponse(resp *http.Response, span trace.Span) (res Gis
 
 			var response GistsListForksApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsListForksApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10810,12 +10186,8 @@ func decodeGistsListForksResponse(resp *http.Response, span trace.Span) (res Gis
 
 			var response GistsListForksApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsListForksApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10848,20 +10220,8 @@ func decodeGistsListPublicResponse(resp *http.Response, span trace.Span) (res Gi
 
 			var response GistsListPublicOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []BaseGist
-					unwrapped = make([]BaseGist, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem BaseGist
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = GistsListPublicOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10950,20 +10310,8 @@ func decodeGistsListStarredResponse(resp *http.Response, span trace.Span) (res G
 
 			var response GistsListStarredOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []BaseGist
-					unwrapped = make([]BaseGist, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem BaseGist
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = GistsListStarredOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10991,12 +10339,8 @@ func decodeGistsListStarredResponse(resp *http.Response, span trace.Span) (res G
 
 			var response GistsListStarredApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsListStarredApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -11022,12 +10366,8 @@ func decodeGistsListStarredResponse(resp *http.Response, span trace.Span) (res G
 
 			var response GistsListStarredApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsListStarredApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -11064,12 +10404,8 @@ func decodeGistsStarResponse(resp *http.Response, span trace.Span) (res GistsSta
 
 			var response GistsStarApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsStarApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -11095,12 +10431,8 @@ func decodeGistsStarResponse(resp *http.Response, span trace.Span) (res GistsSta
 
 			var response GistsStarApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsStarApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -11137,12 +10469,8 @@ func decodeGistsUnstarResponse(resp *http.Response, span trace.Span) (res GistsU
 
 			var response GistsUnstarApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsUnstarApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -11168,12 +10496,8 @@ func decodeGistsUnstarResponse(resp *http.Response, span trace.Span) (res GistsU
 
 			var response GistsUnstarApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GistsUnstarApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -11294,12 +10618,8 @@ func decodeGitCreateBlobResponse(resp *http.Response, span trace.Span) (res GitC
 
 			var response GitCreateBlobApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GitCreateBlobApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -11325,12 +10645,8 @@ func decodeGitCreateBlobResponse(resp *http.Response, span trace.Span) (res GitC
 
 			var response GitCreateBlobApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GitCreateBlobApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -11356,12 +10672,8 @@ func decodeGitCreateBlobResponse(resp *http.Response, span trace.Span) (res GitC
 
 			var response GitCreateBlobApplicationJSONConflict
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GitCreateBlobApplicationJSONConflict(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -11658,12 +10970,8 @@ func decodeGitCreateTreeResponse(resp *http.Response, span trace.Span) (res GitC
 
 			var response GitCreateTreeApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GitCreateTreeApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -11689,12 +10997,8 @@ func decodeGitCreateTreeResponse(resp *http.Response, span trace.Span) (res GitC
 
 			var response GitCreateTreeApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GitCreateTreeApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -11817,12 +11121,8 @@ func decodeGitGetBlobResponse(resp *http.Response, span trace.Span) (res GitGetB
 
 			var response GitGetBlobApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GitGetBlobApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -11848,12 +11148,8 @@ func decodeGitGetBlobResponse(resp *http.Response, span trace.Span) (res GitGetB
 
 			var response GitGetBlobApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = GitGetBlobApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -12287,22 +11583,8 @@ func decodeGitignoreGetAllTemplatesResponse(resp *http.Response, span trace.Span
 
 			var response GitignoreGetAllTemplatesOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []string
-					unwrapped = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem string
-						v, err := d.Str()
-						elem = string(v)
-						if err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = GitignoreGetAllTemplatesOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -12657,12 +11939,8 @@ func decodeIssuesCreateResponse(resp *http.Response, span trace.Span) (res Issue
 
 			var response IssuesCreateApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesCreateApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -12688,12 +11966,8 @@ func decodeIssuesCreateResponse(resp *http.Response, span trace.Span) (res Issue
 
 			var response IssuesCreateApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesCreateApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -12719,12 +11993,8 @@ func decodeIssuesCreateResponse(resp *http.Response, span trace.Span) (res Issue
 
 			var response IssuesCreateApplicationJSONGone
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesCreateApplicationJSONGone(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -12838,12 +12108,8 @@ func decodeIssuesCreateCommentResponse(resp *http.Response, span trace.Span) (re
 
 			var response IssuesCreateCommentApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesCreateCommentApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -12869,12 +12135,8 @@ func decodeIssuesCreateCommentResponse(resp *http.Response, span trace.Span) (re
 
 			var response IssuesCreateCommentApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesCreateCommentApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -12900,12 +12162,8 @@ func decodeIssuesCreateCommentResponse(resp *http.Response, span trace.Span) (re
 
 			var response IssuesCreateCommentApplicationJSONGone
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesCreateCommentApplicationJSONGone(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -13222,12 +12480,8 @@ func decodeIssuesGetResponse(resp *http.Response, span trace.Span) (res IssuesGe
 
 			var response IssuesGetApplicationJSONMovedPermanently
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesGetApplicationJSONMovedPermanently(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -13255,12 +12509,8 @@ func decodeIssuesGetResponse(resp *http.Response, span trace.Span) (res IssuesGe
 
 			var response IssuesGetApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesGetApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -13286,12 +12536,8 @@ func decodeIssuesGetResponse(resp *http.Response, span trace.Span) (res IssuesGe
 
 			var response IssuesGetApplicationJSONGone
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesGetApplicationJSONGone(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -13412,12 +12658,8 @@ func decodeIssuesGetEventResponse(resp *http.Response, span trace.Span) (res Iss
 
 			var response IssuesGetEventApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesGetEventApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -13443,12 +12685,8 @@ func decodeIssuesGetEventResponse(resp *http.Response, span trace.Span) (res Iss
 
 			var response IssuesGetEventApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesGetEventApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -13474,12 +12712,8 @@ func decodeIssuesGetEventResponse(resp *http.Response, span trace.Span) (res Iss
 
 			var response IssuesGetEventApplicationJSONGone
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesGetEventApplicationJSONGone(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -13634,20 +12868,8 @@ func decodeIssuesListResponse(resp *http.Response, span trace.Span) (res IssuesL
 
 			var response IssuesListOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Issue
-					unwrapped = make([]Issue, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Issue
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = IssuesListOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -13736,20 +12958,8 @@ func decodeIssuesListAssigneesResponse(resp *http.Response, span trace.Span) (re
 
 			var response IssuesListAssigneesOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []SimpleUser
-					unwrapped = make([]SimpleUser, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SimpleUser
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = IssuesListAssigneesOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -13809,20 +13019,8 @@ func decodeIssuesListCommentsResponse(resp *http.Response, span trace.Span) (res
 
 			var response IssuesListCommentsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []IssueComment
-					unwrapped = make([]IssueComment, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem IssueComment
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = IssuesListCommentsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -13848,12 +13046,8 @@ func decodeIssuesListCommentsResponse(resp *http.Response, span trace.Span) (res
 
 			var response IssuesListCommentsApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesListCommentsApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -13879,12 +13073,8 @@ func decodeIssuesListCommentsResponse(resp *http.Response, span trace.Span) (res
 
 			var response IssuesListCommentsApplicationJSONGone
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesListCommentsApplicationJSONGone(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -13917,20 +13107,8 @@ func decodeIssuesListCommentsForRepoResponse(resp *http.Response, span trace.Spa
 
 			var response IssuesListCommentsForRepoOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []IssueComment
-					unwrapped = make([]IssueComment, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem IssueComment
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = IssuesListCommentsForRepoOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -14017,20 +13195,8 @@ func decodeIssuesListEventsForRepoResponse(resp *http.Response, span trace.Span)
 
 			var response IssuesListEventsForRepoOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []IssueEvent
-					unwrapped = make([]IssueEvent, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem IssueEvent
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = IssuesListEventsForRepoOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -14090,20 +13256,8 @@ func decodeIssuesListForAuthenticatedUserResponse(resp *http.Response, span trac
 
 			var response IssuesListForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Issue
-					unwrapped = make([]Issue, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Issue
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = IssuesListForAuthenticatedUserOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -14165,20 +13319,8 @@ func decodeIssuesListForOrgResponse(resp *http.Response, span trace.Span) (res I
 
 			var response IssuesListForOrgOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Issue
-					unwrapped = make([]Issue, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Issue
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = IssuesListForOrgOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -14238,20 +13380,8 @@ func decodeIssuesListForRepoResponse(resp *http.Response, span trace.Span) (res 
 
 			var response IssuesListForRepoOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []IssueSimple
-					unwrapped = make([]IssueSimple, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem IssueSimple
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = IssuesListForRepoOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -14277,12 +13407,8 @@ func decodeIssuesListForRepoResponse(resp *http.Response, span trace.Span) (res 
 
 			var response IssuesListForRepoApplicationJSONMovedPermanently
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesListForRepoApplicationJSONMovedPermanently(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -14308,12 +13434,8 @@ func decodeIssuesListForRepoResponse(resp *http.Response, span trace.Span) (res 
 
 			var response IssuesListForRepoApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesListForRepoApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -14415,20 +13537,8 @@ func decodeIssuesListLabelsForRepoResponse(resp *http.Response, span trace.Span)
 
 			var response IssuesListLabelsForRepoOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Label
-					unwrapped = make([]Label, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Label
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = IssuesListLabelsForRepoOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -14488,20 +13598,8 @@ func decodeIssuesListLabelsOnIssueResponse(resp *http.Response, span trace.Span)
 
 			var response IssuesListLabelsOnIssueOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Label
-					unwrapped = make([]Label, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Label
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = IssuesListLabelsOnIssueOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -14561,20 +13659,8 @@ func decodeIssuesListMilestonesResponse(resp *http.Response, span trace.Span) (r
 
 			var response IssuesListMilestonesOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Milestone
-					unwrapped = make([]Milestone, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Milestone
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = IssuesListMilestonesOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -14636,12 +13722,8 @@ func decodeIssuesLockResponse(resp *http.Response, span trace.Span) (res IssuesL
 
 			var response IssuesLockApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesLockApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -14667,12 +13749,8 @@ func decodeIssuesLockResponse(resp *http.Response, span trace.Span) (res IssuesL
 
 			var response IssuesLockApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesLockApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -14698,12 +13776,8 @@ func decodeIssuesLockResponse(resp *http.Response, span trace.Span) (res IssuesL
 
 			var response IssuesLockApplicationJSONGone
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesLockApplicationJSONGone(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -14833,20 +13907,8 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response, span trace.Span) (res 
 
 			var response IssuesRemoveLabelOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Label
-					unwrapped = make([]Label, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Label
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = IssuesRemoveLabelOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -14872,12 +13934,8 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response, span trace.Span) (res 
 
 			var response IssuesRemoveLabelApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesRemoveLabelApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -14903,12 +13961,8 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response, span trace.Span) (res 
 
 			var response IssuesRemoveLabelApplicationJSONGone
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesRemoveLabelApplicationJSONGone(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -14943,12 +13997,8 @@ func decodeIssuesUnlockResponse(resp *http.Response, span trace.Span) (res Issue
 
 			var response IssuesUnlockApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesUnlockApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -14974,12 +14024,8 @@ func decodeIssuesUnlockResponse(resp *http.Response, span trace.Span) (res Issue
 
 			var response IssuesUnlockApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesUnlockApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -15039,12 +14085,8 @@ func decodeIssuesUpdateResponse(resp *http.Response, span trace.Span) (res Issue
 
 			var response IssuesUpdateApplicationJSONMovedPermanently
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesUpdateApplicationJSONMovedPermanently(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -15070,12 +14112,8 @@ func decodeIssuesUpdateResponse(resp *http.Response, span trace.Span) (res Issue
 
 			var response IssuesUpdateApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesUpdateApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -15101,12 +14139,8 @@ func decodeIssuesUpdateResponse(resp *http.Response, span trace.Span) (res Issue
 
 			var response IssuesUpdateApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesUpdateApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -15132,12 +14166,8 @@ func decodeIssuesUpdateResponse(resp *http.Response, span trace.Span) (res Issue
 
 			var response IssuesUpdateApplicationJSONGone
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = IssuesUpdateApplicationJSONGone(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -15382,12 +14412,8 @@ func decodeLicensesGetResponse(resp *http.Response, span trace.Span) (res Licens
 
 			var response LicensesGetApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = LicensesGetApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -15413,12 +14439,8 @@ func decodeLicensesGetResponse(resp *http.Response, span trace.Span) (res Licens
 
 			var response LicensesGetApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = LicensesGetApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -15451,20 +14473,8 @@ func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response, span trace.Sp
 
 			var response LicensesGetAllCommonlyUsedOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []LicenseSimple
-					unwrapped = make([]LicenseSimple, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem LicenseSimple
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = LicensesGetAllCommonlyUsedOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -15616,12 +14626,8 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 
 			var response MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -15647,12 +14653,8 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 
 			var response MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -15678,12 +14680,8 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 
 			var response MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -15792,12 +14790,8 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response,
 
 			var response MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -15823,12 +14817,8 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response,
 
 			var response MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -15861,20 +14851,8 @@ func decodeMigrationsGetCommitAuthorsResponse(resp *http.Response, span trace.Sp
 
 			var response MigrationsGetCommitAuthorsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []PorterAuthor
-					unwrapped = make([]PorterAuthor, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem PorterAuthor
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = MigrationsGetCommitAuthorsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -16066,12 +15044,8 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response, 
 
 			var response MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -16097,12 +15071,8 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response, 
 
 			var response MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -16128,12 +15098,8 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response, 
 
 			var response MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -16227,20 +15193,8 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response, span 
 
 			var response MigrationsListForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Migration
-					unwrapped = make([]Migration, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Migration
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = MigrationsListForAuthenticatedUserOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -16268,12 +15222,8 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response, span 
 
 			var response MigrationsListForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = MigrationsListForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -16299,12 +15249,8 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response, span 
 
 			var response MigrationsListForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = MigrationsListForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -16379,20 +15325,8 @@ func decodeMigrationsListReposForOrgResponse(resp *http.Response, span trace.Spa
 
 			var response MigrationsListReposForOrgOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []MinimalRepository
-					unwrapped = make([]MinimalRepository, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem MinimalRepository
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = MigrationsListReposForOrgOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -16452,20 +15386,8 @@ func decodeMigrationsListReposForUserResponse(resp *http.Response, span trace.Sp
 
 			var response MigrationsListReposForUserOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []MinimalRepository
-					unwrapped = make([]MinimalRepository, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem MinimalRepository
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = MigrationsListReposForUserOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -16703,12 +15625,8 @@ func decodeMigrationsStartForAuthenticatedUserResponse(resp *http.Response, span
 
 			var response MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -16734,12 +15652,8 @@ func decodeMigrationsStartForAuthenticatedUserResponse(resp *http.Response, span
 
 			var response MigrationsStartForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = MigrationsStartForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -16979,12 +15893,8 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response,
 
 			var response MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17010,12 +15920,8 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response,
 
 			var response MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17041,12 +15947,8 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response,
 
 			var response MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17178,12 +16080,8 @@ func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response, s
 
 			var response OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17209,12 +16107,8 @@ func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response, s
 
 			var response OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17240,12 +16134,8 @@ func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response, s
 
 			var response OAuthAuthorizationsCreateAuthorizationApplicationJSONGone
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsCreateAuthorizationApplicationJSONGone(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17309,12 +16199,8 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response, s
 
 			var response OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17340,12 +16226,8 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response, s
 
 			var response OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17382,12 +16264,8 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response, span trac
 
 			var response OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17413,12 +16291,8 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response, span trac
 
 			var response OAuthAuthorizationsDeleteGrantApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsDeleteGrantApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17480,12 +16354,8 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response, span
 
 			var response OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17511,12 +16381,8 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response, span
 
 			var response OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17578,12 +16444,8 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response, span trace.S
 
 			var response OAuthAuthorizationsGetGrantApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsGetGrantApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17609,12 +16471,8 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response, span trace.S
 
 			var response OAuthAuthorizationsGetGrantApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsGetGrantApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17647,12 +16505,8 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 
 			var response OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK
 			if err := func() error {
-				{
-					var unwrapped Authorization
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17678,12 +16532,8 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 
 			var response OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated
 			if err := func() error {
-				{
-					var unwrapped Authorization
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17711,12 +16561,8 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 
 			var response OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17742,12 +16588,8 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 
 			var response OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17807,12 +16649,8 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 
 			var response OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK
 			if err := func() error {
-				{
-					var unwrapped Authorization
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17838,12 +16676,8 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 
 			var response OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated
 			if err := func() error {
-				{
-					var unwrapped Authorization
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17903,20 +16737,8 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 
 			var response OAuthAuthorizationsListAuthorizationsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Authorization
-					unwrapped = make([]Authorization, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Authorization
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsListAuthorizationsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17944,12 +16766,8 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 
 			var response OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -17975,12 +16793,8 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 
 			var response OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -18006,12 +16820,8 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response, sp
 
 			var response OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -18044,20 +16854,8 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 
 			var response OAuthAuthorizationsListGrantsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []ApplicationGrant
-					unwrapped = make([]ApplicationGrant, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem ApplicationGrant
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsListGrantsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -18085,12 +16883,8 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 
 			var response OAuthAuthorizationsListGrantsApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsListGrantsApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -18116,12 +16910,8 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 
 			var response OAuthAuthorizationsListGrantsApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsListGrantsApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -18147,12 +16937,8 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response, span trace
 
 			var response OAuthAuthorizationsListGrantsApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OAuthAuthorizationsListGrantsApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -18813,12 +17599,8 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response, sp
 
 			var response OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -18844,12 +17626,8 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response, sp
 
 			var response OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -18909,12 +17687,8 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response, span trace.Span
 
 			var response OrgsGetMembershipForUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OrgsGetMembershipForUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -18940,12 +17714,8 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response, span trace.Span
 
 			var response OrgsGetMembershipForUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OrgsGetMembershipForUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -19161,20 +17931,8 @@ func decodeOrgsListResponse(resp *http.Response, span trace.Span) (res OrgsListR
 
 			var response OrgsListOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []OrganizationSimple
-					unwrapped = make([]OrganizationSimple, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem OrganizationSimple
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = OrgsListOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -19209,20 +17967,8 @@ func decodeOrgsListBlockedUsersResponse(resp *http.Response, span trace.Span) (r
 
 			var response OrgsListBlockedUsersOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []SimpleUser
-					unwrapped = make([]SimpleUser, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SimpleUser
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = OrgsListBlockedUsersOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -19282,20 +18028,8 @@ func decodeOrgsListFailedInvitationsResponse(resp *http.Response, span trace.Spa
 
 			var response OrgsListFailedInvitationsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []OrganizationInvitation
-					unwrapped = make([]OrganizationInvitation, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem OrganizationInvitation
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = OrgsListFailedInvitationsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -19355,20 +18089,8 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response, span trace.
 
 			var response OrgsListForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []OrganizationSimple
-					unwrapped = make([]OrganizationSimple, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem OrganizationSimple
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = OrgsListForAuthenticatedUserOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -19396,12 +18118,8 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response, span trace.
 
 			var response OrgsListForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OrgsListForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -19427,12 +18145,8 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response, span trace.
 
 			var response OrgsListForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OrgsListForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -19507,20 +18221,8 @@ func decodeOrgsListInvitationTeamsResponse(resp *http.Response, span trace.Span)
 
 			var response OrgsListInvitationTeamsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Team
-					unwrapped = make([]Team, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Team
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = OrgsListInvitationTeamsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -19580,20 +18282,8 @@ func decodeOrgsListMembersResponse(resp *http.Response, span trace.Span) (res Or
 
 			var response OrgsListMembersOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []SimpleUser
-					unwrapped = make([]SimpleUser, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SimpleUser
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = OrgsListMembersOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -19655,20 +18345,8 @@ func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response, 
 
 			var response OrgsListMembershipsForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []OrgMembership
-					unwrapped = make([]OrgMembership, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem OrgMembership
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = OrgsListMembershipsForAuthenticatedUserOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -19696,12 +18374,8 @@ func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response, 
 
 			var response OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -19727,12 +18401,8 @@ func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response, 
 
 			var response OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -19834,20 +18504,8 @@ func decodeOrgsListPendingInvitationsResponse(resp *http.Response, span trace.Sp
 
 			var response OrgsListPendingInvitationsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []OrganizationInvitation
-					unwrapped = make([]OrganizationInvitation, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem OrganizationInvitation
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = OrgsListPendingInvitationsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -19991,20 +18649,8 @@ func decodeOrgsListWebhookDeliveriesResponse(resp *http.Response, span trace.Spa
 
 			var response OrgsListWebhookDeliveriesOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []HookDeliveryItem
-					unwrapped = make([]HookDeliveryItem, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem HookDeliveryItem
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = OrgsListWebhookDeliveriesOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -20091,20 +18737,8 @@ func decodeOrgsListWebhooksResponse(resp *http.Response, span trace.Span) (res O
 
 			var response OrgsListWebhooksOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []OrgHook
-					unwrapped = make([]OrgHook, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem OrgHook
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = OrgsListWebhooksOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -20326,12 +18960,8 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response, span trace.S
 
 			var response OrgsRemoveMembershipForUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OrgsRemoveMembershipForUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -20357,12 +18987,8 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response, span trace.S
 
 			var response OrgsRemoveMembershipForUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OrgsRemoveMembershipForUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -20636,12 +19262,8 @@ func decodeOrgsUpdateMembershipForAuthenticatedUserResponse(resp *http.Response,
 
 			var response OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -20667,12 +19289,8 @@ func decodeOrgsUpdateMembershipForAuthenticatedUserResponse(resp *http.Response,
 
 			var response OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -20856,12 +19474,8 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 
 			var response PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -20887,12 +19501,8 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 
 			var response PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -20918,12 +19528,8 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 
 			var response PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -20958,12 +19564,8 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response, span trace.S
 
 			var response PackagesDeletePackageForOrgApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesDeletePackageForOrgApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -20989,12 +19591,8 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response, span trace.S
 
 			var response PackagesDeletePackageForOrgApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesDeletePackageForOrgApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21020,12 +19618,8 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response, span trace.S
 
 			var response PackagesDeletePackageForOrgApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesDeletePackageForOrgApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21060,12 +19654,8 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response, span trace.
 
 			var response PackagesDeletePackageForUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesDeletePackageForUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21091,12 +19681,8 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response, span trace.
 
 			var response PackagesDeletePackageForUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesDeletePackageForUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21122,12 +19708,8 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response, span trace.
 
 			var response PackagesDeletePackageForUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesDeletePackageForUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21162,12 +19744,8 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 
 			var response PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21193,12 +19771,8 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 
 			var response PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21224,12 +19798,8 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 
 			var response PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21264,12 +19834,8 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response, span 
 
 			var response PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21295,12 +19861,8 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response, span 
 
 			var response PackagesDeletePackageVersionForOrgApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesDeletePackageVersionForOrgApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21326,12 +19888,8 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response, span 
 
 			var response PackagesDeletePackageVersionForOrgApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesDeletePackageVersionForOrgApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21366,12 +19924,8 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response, span
 
 			var response PackagesDeletePackageVersionForUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesDeletePackageVersionForUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21397,12 +19951,8 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response, span
 
 			var response PackagesDeletePackageVersionForUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesDeletePackageVersionForUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21428,12 +19978,8 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response, span
 
 			var response PackagesDeletePackageVersionForUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesDeletePackageVersionForUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21466,20 +20012,8 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []PackageVersion
-					unwrapped = make([]PackageVersion, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem PackageVersion
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21505,12 +20039,8 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21536,12 +20066,8 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21567,12 +20093,8 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21605,20 +20127,8 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []PackageVersion
-					unwrapped = make([]PackageVersion, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem PackageVersion
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21644,12 +20154,8 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21675,12 +20181,8 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21706,12 +20208,8 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21744,20 +20242,8 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []PackageVersion
-					unwrapped = make([]PackageVersion, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem PackageVersion
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21783,12 +20269,8 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21814,12 +20296,8 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21845,12 +20323,8 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 
 			var response PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22129,20 +20603,8 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response, span
 
 			var response PackagesListPackagesForOrganizationOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Package
-					unwrapped = make([]Package, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Package
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = PackagesListPackagesForOrganizationOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22168,12 +20630,8 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response, span
 
 			var response PackagesListPackagesForOrganizationApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesListPackagesForOrganizationApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22199,12 +20657,8 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response, span
 
 			var response PackagesListPackagesForOrganizationApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesListPackagesForOrganizationApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22237,20 +20691,8 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response, span trace.S
 
 			var response PackagesListPackagesForUserOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Package
-					unwrapped = make([]Package, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Package
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = PackagesListPackagesForUserOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22276,12 +20718,8 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response, span trace.S
 
 			var response PackagesListPackagesForUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesListPackagesForUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22307,12 +20745,8 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response, span trace.S
 
 			var response PackagesListPackagesForUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesListPackagesForUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22347,12 +20781,8 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 
 			var response PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22378,12 +20808,8 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 
 			var response PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22409,12 +20835,8 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 
 			var response PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22449,12 +20871,8 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response, span trace.
 
 			var response PackagesRestorePackageForOrgApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesRestorePackageForOrgApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22480,12 +20898,8 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response, span trace.
 
 			var response PackagesRestorePackageForOrgApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesRestorePackageForOrgApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22511,12 +20925,8 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response, span trace.
 
 			var response PackagesRestorePackageForOrgApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesRestorePackageForOrgApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22551,12 +20961,8 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response, span trace
 
 			var response PackagesRestorePackageForUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesRestorePackageForUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22582,12 +20988,8 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response, span trace
 
 			var response PackagesRestorePackageForUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesRestorePackageForUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22613,12 +21015,8 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response, span trace
 
 			var response PackagesRestorePackageForUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesRestorePackageForUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22653,12 +21051,8 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 
 			var response PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22684,12 +21078,8 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 
 			var response PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22715,12 +21105,8 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 
 			var response PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22755,12 +21141,8 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response, span
 
 			var response PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22786,12 +21168,8 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response, span
 
 			var response PackagesRestorePackageVersionForOrgApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesRestorePackageVersionForOrgApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22817,12 +21195,8 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response, span
 
 			var response PackagesRestorePackageVersionForOrgApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesRestorePackageVersionForOrgApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22857,12 +21231,8 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response, spa
 
 			var response PackagesRestorePackageVersionForUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesRestorePackageVersionForUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22888,12 +21258,8 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response, spa
 
 			var response PackagesRestorePackageVersionForUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesRestorePackageVersionForUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22919,12 +21285,8 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response, spa
 
 			var response PackagesRestorePackageVersionForUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PackagesRestorePackageVersionForUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22961,12 +21323,8 @@ func decodeProjectsAddCollaboratorResponse(resp *http.Response, span trace.Span)
 
 			var response ProjectsAddCollaboratorApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsAddCollaboratorApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22992,12 +21350,8 @@ func decodeProjectsAddCollaboratorResponse(resp *http.Response, span trace.Span)
 
 			var response ProjectsAddCollaboratorApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsAddCollaboratorApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23023,12 +21377,8 @@ func decodeProjectsAddCollaboratorResponse(resp *http.Response, span trace.Span)
 
 			var response ProjectsAddCollaboratorApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsAddCollaboratorApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23117,12 +21467,8 @@ func decodeProjectsCreateColumnResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsCreateColumnApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsCreateColumnApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23148,12 +21494,8 @@ func decodeProjectsCreateColumnResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsCreateColumnApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsCreateColumnApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23242,12 +21584,8 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response, span 
 
 			var response ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23273,12 +21611,8 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response, span 
 
 			var response ProjectsCreateForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsCreateForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23392,12 +21726,8 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsCreateForOrgApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsCreateForOrgApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23423,12 +21753,8 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsCreateForOrgApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsCreateForOrgApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23454,12 +21780,8 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsCreateForOrgApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsCreateForOrgApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23485,12 +21807,8 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsCreateForOrgApplicationJSONGone
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsCreateForOrgApplicationJSONGone(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23577,12 +21895,8 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 
 			var response ProjectsCreateForRepoApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsCreateForRepoApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23608,12 +21922,8 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 
 			var response ProjectsCreateForRepoApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsCreateForRepoApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23639,12 +21949,8 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 
 			var response ProjectsCreateForRepoApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsCreateForRepoApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23670,12 +21976,8 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response, span trace.Span) (
 
 			var response ProjectsCreateForRepoApplicationJSONGone
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsCreateForRepoApplicationJSONGone(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23739,12 +22041,8 @@ func decodeProjectsDeleteResponse(resp *http.Response, span trace.Span) (res Pro
 
 			var response ProjectsDeleteApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsDeleteApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23797,12 +22095,8 @@ func decodeProjectsDeleteResponse(resp *http.Response, span trace.Span) (res Pro
 
 			var response ProjectsDeleteApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsDeleteApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23828,12 +22122,8 @@ func decodeProjectsDeleteResponse(resp *http.Response, span trace.Span) (res Pro
 
 			var response ProjectsDeleteApplicationJSONGone
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsDeleteApplicationJSONGone(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23870,12 +22160,8 @@ func decodeProjectsDeleteCardResponse(resp *http.Response, span trace.Span) (res
 
 			var response ProjectsDeleteCardApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsDeleteCardApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23928,12 +22214,8 @@ func decodeProjectsDeleteCardResponse(resp *http.Response, span trace.Span) (res
 
 			var response ProjectsDeleteCardApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsDeleteCardApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23970,12 +22252,8 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsDeleteColumnApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsDeleteColumnApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24001,12 +22279,8 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsDeleteColumnApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsDeleteColumnApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24068,12 +22342,8 @@ func decodeProjectsGetResponse(resp *http.Response, span trace.Span) (res Projec
 
 			var response ProjectsGetApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsGetApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24099,12 +22369,8 @@ func decodeProjectsGetResponse(resp *http.Response, span trace.Span) (res Projec
 
 			var response ProjectsGetApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsGetApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24166,12 +22432,8 @@ func decodeProjectsGetCardResponse(resp *http.Response, span trace.Span) (res Pr
 
 			var response ProjectsGetCardApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsGetCardApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24197,12 +22459,8 @@ func decodeProjectsGetCardResponse(resp *http.Response, span trace.Span) (res Pr
 
 			var response ProjectsGetCardApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsGetCardApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24228,12 +22486,8 @@ func decodeProjectsGetCardResponse(resp *http.Response, span trace.Span) (res Pr
 
 			var response ProjectsGetCardApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsGetCardApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24295,12 +22549,8 @@ func decodeProjectsGetColumnResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ProjectsGetColumnApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsGetColumnApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24326,12 +22576,8 @@ func decodeProjectsGetColumnResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ProjectsGetColumnApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsGetColumnApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24357,12 +22603,8 @@ func decodeProjectsGetColumnResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ProjectsGetColumnApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsGetColumnApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24424,12 +22666,8 @@ func decodeProjectsGetPermissionForUserResponse(resp *http.Response, span trace.
 
 			var response ProjectsGetPermissionForUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsGetPermissionForUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24455,12 +22693,8 @@ func decodeProjectsGetPermissionForUserResponse(resp *http.Response, span trace.
 
 			var response ProjectsGetPermissionForUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsGetPermissionForUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24486,12 +22720,8 @@ func decodeProjectsGetPermissionForUserResponse(resp *http.Response, span trace.
 
 			var response ProjectsGetPermissionForUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsGetPermissionForUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24551,20 +22781,8 @@ func decodeProjectsListCardsResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ProjectsListCardsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []ProjectCard
-					unwrapped = make([]ProjectCard, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem ProjectCard
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ProjectsListCardsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24592,12 +22810,8 @@ func decodeProjectsListCardsResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ProjectsListCardsApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsListCardsApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24623,12 +22837,8 @@ func decodeProjectsListCardsResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ProjectsListCardsApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsListCardsApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24661,20 +22871,8 @@ func decodeProjectsListCollaboratorsResponse(resp *http.Response, span trace.Spa
 
 			var response ProjectsListCollaboratorsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []SimpleUser
-					unwrapped = make([]SimpleUser, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SimpleUser
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ProjectsListCollaboratorsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24702,12 +22900,8 @@ func decodeProjectsListCollaboratorsResponse(resp *http.Response, span trace.Spa
 
 			var response ProjectsListCollaboratorsApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsListCollaboratorsApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24733,12 +22927,8 @@ func decodeProjectsListCollaboratorsResponse(resp *http.Response, span trace.Spa
 
 			var response ProjectsListCollaboratorsApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsListCollaboratorsApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24764,12 +22954,8 @@ func decodeProjectsListCollaboratorsResponse(resp *http.Response, span trace.Spa
 
 			var response ProjectsListCollaboratorsApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsListCollaboratorsApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24829,20 +23015,8 @@ func decodeProjectsListColumnsResponse(resp *http.Response, span trace.Span) (re
 
 			var response ProjectsListColumnsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []ProjectColumn
-					unwrapped = make([]ProjectColumn, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem ProjectColumn
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ProjectsListColumnsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24870,12 +23044,8 @@ func decodeProjectsListColumnsResponse(resp *http.Response, span trace.Span) (re
 
 			var response ProjectsListColumnsApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsListColumnsApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24901,12 +23071,8 @@ func decodeProjectsListColumnsResponse(resp *http.Response, span trace.Span) (re
 
 			var response ProjectsListColumnsApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsListColumnsApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24939,20 +23105,8 @@ func decodeProjectsListForOrgResponse(resp *http.Response, span trace.Span) (res
 
 			var response ProjectsListForOrgOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Project
-					unwrapped = make([]Project, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Project
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ProjectsListForOrgOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -25012,20 +23166,8 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 
 			var response ProjectsListForRepoOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Project
-					unwrapped = make([]Project, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Project
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ProjectsListForRepoOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -25051,12 +23193,8 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 
 			var response ProjectsListForRepoApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsListForRepoApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -25082,12 +23220,8 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 
 			var response ProjectsListForRepoApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsListForRepoApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -25113,12 +23247,8 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 
 			var response ProjectsListForRepoApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsListForRepoApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -25144,12 +23274,8 @@ func decodeProjectsListForRepoResponse(resp *http.Response, span trace.Span) (re
 
 			var response ProjectsListForRepoApplicationJSONGone
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsListForRepoApplicationJSONGone(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -25209,20 +23335,8 @@ func decodeProjectsListForUserResponse(resp *http.Response, span trace.Span) (re
 
 			var response ProjectsListForUserOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Project
-					unwrapped = make([]Project, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Project
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ProjectsListForUserOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -25457,12 +23571,8 @@ func decodeProjectsMoveColumnResponse(resp *http.Response, span trace.Span) (res
 
 			var response ProjectsMoveColumnApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsMoveColumnApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -25488,12 +23598,8 @@ func decodeProjectsMoveColumnResponse(resp *http.Response, span trace.Span) (res
 
 			var response ProjectsMoveColumnApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsMoveColumnApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -25557,12 +23663,8 @@ func decodeProjectsRemoveCollaboratorResponse(resp *http.Response, span trace.Sp
 
 			var response ProjectsRemoveCollaboratorApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsRemoveCollaboratorApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -25588,12 +23690,8 @@ func decodeProjectsRemoveCollaboratorResponse(resp *http.Response, span trace.Sp
 
 			var response ProjectsRemoveCollaboratorApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsRemoveCollaboratorApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -25619,12 +23717,8 @@ func decodeProjectsRemoveCollaboratorResponse(resp *http.Response, span trace.Sp
 
 			var response ProjectsRemoveCollaboratorApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsRemoveCollaboratorApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -25713,12 +23807,8 @@ func decodeProjectsUpdateResponse(resp *http.Response, span trace.Span) (res Pro
 
 			var response ProjectsUpdateApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsUpdateApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -25773,12 +23863,8 @@ func decodeProjectsUpdateResponse(resp *http.Response, span trace.Span) (res Pro
 
 			var response ProjectsUpdateApplicationJSONGone
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsUpdateApplicationJSONGone(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -25867,12 +23953,8 @@ func decodeProjectsUpdateCardResponse(resp *http.Response, span trace.Span) (res
 
 			var response ProjectsUpdateCardApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsUpdateCardApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -25898,12 +23980,8 @@ func decodeProjectsUpdateCardResponse(resp *http.Response, span trace.Span) (res
 
 			var response ProjectsUpdateCardApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsUpdateCardApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -25929,12 +24007,8 @@ func decodeProjectsUpdateCardResponse(resp *http.Response, span trace.Span) (res
 
 			var response ProjectsUpdateCardApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsUpdateCardApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -26023,12 +24097,8 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsUpdateColumnApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsUpdateColumnApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -26054,12 +24124,8 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response, span trace.Span) (r
 
 			var response ProjectsUpdateColumnApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ProjectsUpdateColumnApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -26669,12 +24735,8 @@ func decodePullsGetResponse(resp *http.Response, span trace.Span) (res PullsGetR
 
 			var response PullsGetApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PullsGetApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -26700,12 +24762,8 @@ func decodePullsGetResponse(resp *http.Response, span trace.Span) (res PullsGetR
 
 			var response PullsGetApplicationJSONInternalServerError
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PullsGetApplicationJSONInternalServerError(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -26860,20 +24918,8 @@ func decodePullsListResponse(resp *http.Response, span trace.Span) (res PullsLis
 
 			var response PullsListOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []PullRequestSimple
-					unwrapped = make([]PullRequestSimple, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem PullRequestSimple
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = PullsListOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -26935,20 +24981,8 @@ func decodePullsListCommentsForReviewResponse(resp *http.Response, span trace.Sp
 
 			var response PullsListCommentsForReviewOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []ReviewComment
-					unwrapped = make([]ReviewComment, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem ReviewComment
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = PullsListCommentsForReviewOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -27050,20 +25084,8 @@ func decodePullsListFilesResponse(resp *http.Response, span trace.Span) (res Pul
 
 			var response PullsListFilesOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []DiffEntry
-					unwrapped = make([]DiffEntry, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem DiffEntry
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = PullsListFilesOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -27337,12 +25359,8 @@ func decodePullsMergeResponse(resp *http.Response, span trace.Span) (res PullsMe
 
 			var response PullsMergeApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PullsMergeApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -27368,12 +25386,8 @@ func decodePullsMergeResponse(resp *http.Response, span trace.Span) (res PullsMe
 
 			var response PullsMergeApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PullsMergeApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -27575,12 +25589,8 @@ func decodePullsSubmitReviewResponse(resp *http.Response, span trace.Span) (res 
 
 			var response PullsSubmitReviewApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PullsSubmitReviewApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -27606,12 +25616,8 @@ func decodePullsSubmitReviewResponse(resp *http.Response, span trace.Span) (res 
 
 			var response PullsSubmitReviewApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = PullsSubmitReviewApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -28005,12 +26011,8 @@ func decodeReactionsCreateForCommitCommentResponse(resp *http.Response, span tra
 
 			var response ReactionsCreateForCommitCommentApplicationJSONOK
 			if err := func() error {
-				{
-					var unwrapped Reaction
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsCreateForCommitCommentApplicationJSONOK(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -28036,12 +26038,8 @@ func decodeReactionsCreateForCommitCommentResponse(resp *http.Response, span tra
 
 			var response ReactionsCreateForCommitCommentApplicationJSONCreated
 			if err := func() error {
-				{
-					var unwrapped Reaction
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsCreateForCommitCommentApplicationJSONCreated(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -28128,12 +26126,8 @@ func decodeReactionsCreateForIssueResponse(resp *http.Response, span trace.Span)
 
 			var response ReactionsCreateForIssueApplicationJSONOK
 			if err := func() error {
-				{
-					var unwrapped Reaction
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsCreateForIssueApplicationJSONOK(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -28159,12 +26153,8 @@ func decodeReactionsCreateForIssueResponse(resp *http.Response, span trace.Span)
 
 			var response ReactionsCreateForIssueApplicationJSONCreated
 			if err := func() error {
-				{
-					var unwrapped Reaction
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsCreateForIssueApplicationJSONCreated(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -28251,12 +26241,8 @@ func decodeReactionsCreateForIssueCommentResponse(resp *http.Response, span trac
 
 			var response ReactionsCreateForIssueCommentApplicationJSONOK
 			if err := func() error {
-				{
-					var unwrapped Reaction
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsCreateForIssueCommentApplicationJSONOK(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -28282,12 +26268,8 @@ func decodeReactionsCreateForIssueCommentResponse(resp *http.Response, span trac
 
 			var response ReactionsCreateForIssueCommentApplicationJSONCreated
 			if err := func() error {
-				{
-					var unwrapped Reaction
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsCreateForIssueCommentApplicationJSONCreated(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -28374,12 +26356,8 @@ func decodeReactionsCreateForPullRequestReviewCommentResponse(resp *http.Respons
 
 			var response ReactionsCreateForPullRequestReviewCommentApplicationJSONOK
 			if err := func() error {
-				{
-					var unwrapped Reaction
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsCreateForPullRequestReviewCommentApplicationJSONOK(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -28405,12 +26383,8 @@ func decodeReactionsCreateForPullRequestReviewCommentResponse(resp *http.Respons
 
 			var response ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated
 			if err := func() error {
-				{
-					var unwrapped Reaction
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -28497,12 +26471,8 @@ func decodeReactionsCreateForReleaseResponse(resp *http.Response, span trace.Spa
 
 			var response ReactionsCreateForReleaseApplicationJSONOK
 			if err := func() error {
-				{
-					var unwrapped Reaction
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsCreateForReleaseApplicationJSONOK(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -28528,12 +26498,8 @@ func decodeReactionsCreateForReleaseResponse(resp *http.Response, span trace.Spa
 
 			var response ReactionsCreateForReleaseApplicationJSONCreated
 			if err := func() error {
-				{
-					var unwrapped Reaction
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsCreateForReleaseApplicationJSONCreated(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -28620,12 +26586,8 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Respo
 
 			var response ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK
 			if err := func() error {
-				{
-					var unwrapped Reaction
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -28651,12 +26613,8 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Respo
 
 			var response ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated
 			if err := func() error {
-				{
-					var unwrapped Reaction
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -28723,12 +26681,8 @@ func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response, sp
 
 			var response ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK
 			if err := func() error {
-				{
-					var unwrapped Reaction
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -28754,12 +26708,8 @@ func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response, sp
 
 			var response ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated
 			if err := func() error {
-				{
-					var unwrapped Reaction
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -28884,12 +26834,8 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (
 
 			var response ReactionsDeleteLegacyApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsDeleteLegacyApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -28915,12 +26861,8 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (
 
 			var response ReactionsDeleteLegacyApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsDeleteLegacyApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -28946,12 +26888,8 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response, span trace.Span) (
 
 			var response ReactionsDeleteLegacyApplicationJSONGone
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsDeleteLegacyApplicationJSONGone(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -29011,20 +26949,8 @@ func decodeReactionsListForCommitCommentResponse(resp *http.Response, span trace
 
 			var response ReactionsListForCommitCommentOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Reaction
-					unwrapped = make([]Reaction, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Reaction
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReactionsListForCommitCommentOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -29111,20 +27037,8 @@ func decodeReactionsListForIssueResponse(resp *http.Response, span trace.Span) (
 
 			var response ReactionsListForIssueOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Reaction
-					unwrapped = make([]Reaction, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Reaction
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReactionsListForIssueOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -29150,12 +27064,8 @@ func decodeReactionsListForIssueResponse(resp *http.Response, span trace.Span) (
 
 			var response ReactionsListForIssueApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsListForIssueApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -29181,12 +27091,8 @@ func decodeReactionsListForIssueResponse(resp *http.Response, span trace.Span) (
 
 			var response ReactionsListForIssueApplicationJSONGone
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReactionsListForIssueApplicationJSONGone(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -29246,20 +27152,8 @@ func decodeReactionsListForIssueCommentResponse(resp *http.Response, span trace.
 
 			var response ReactionsListForIssueCommentOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Reaction
-					unwrapped = make([]Reaction, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Reaction
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReactionsListForIssueCommentOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -29346,20 +27240,8 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response,
 
 			var response ReactionsListForPullRequestReviewCommentOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Reaction
-					unwrapped = make([]Reaction, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Reaction
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReactionsListForPullRequestReviewCommentOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -29618,12 +27500,8 @@ func decodeReposAcceptInvitationResponse(resp *http.Response, span trace.Span) (
 
 			var response ReposAcceptInvitationApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposAcceptInvitationApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -29649,12 +27527,8 @@ func decodeReposAcceptInvitationResponse(resp *http.Response, span trace.Span) (
 
 			var response ReposAcceptInvitationApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposAcceptInvitationApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -29680,12 +27554,8 @@ func decodeReposAcceptInvitationResponse(resp *http.Response, span trace.Span) (
 
 			var response ReposAcceptInvitationApplicationJSONConflict
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposAcceptInvitationApplicationJSONConflict(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -29718,20 +27588,8 @@ func decodeReposAddAppAccessRestrictionsResponse(resp *http.Response, span trace
 
 			var response ReposAddAppAccessRestrictionsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Integration
-					unwrapped = make([]Integration, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Integration
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposAddAppAccessRestrictionsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -29881,22 +27739,8 @@ func decodeReposAddStatusCheckContextsResponse(resp *http.Response, span trace.S
 
 			var response ReposAddStatusCheckContextsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []string
-					unwrapped = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem string
-						v, err := d.Str()
-						elem = string(v)
-						if err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposAddStatusCheckContextsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -29922,12 +27766,8 @@ func decodeReposAddStatusCheckContextsResponse(resp *http.Response, span trace.S
 
 			var response ReposAddStatusCheckContextsApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposAddStatusCheckContextsApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -29953,12 +27793,8 @@ func decodeReposAddStatusCheckContextsResponse(resp *http.Response, span trace.S
 
 			var response ReposAddStatusCheckContextsApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposAddStatusCheckContextsApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -30018,20 +27854,8 @@ func decodeReposAddTeamAccessRestrictionsResponse(resp *http.Response, span trac
 
 			var response ReposAddTeamAccessRestrictionsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Team
-					unwrapped = make([]Team, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Team
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposAddTeamAccessRestrictionsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -30091,20 +27915,8 @@ func decodeReposAddUserAccessRestrictionsResponse(resp *http.Response, span trac
 
 			var response ReposAddUserAccessRestrictionsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []SimpleUser
-					unwrapped = make([]SimpleUser, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SimpleUser
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposAddUserAccessRestrictionsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -30213,12 +28025,8 @@ func decodeReposCompareCommitsResponse(resp *http.Response, span trace.Span) (re
 
 			var response ReposCompareCommitsApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposCompareCommitsApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -30244,12 +28052,8 @@ func decodeReposCompareCommitsResponse(resp *http.Response, span trace.Span) (re
 
 			var response ReposCompareCommitsApplicationJSONInternalServerError
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposCompareCommitsApplicationJSONInternalServerError(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -30803,12 +28607,8 @@ func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response, span tra
 
 			var response ReposCreateForAuthenticatedUserApplicationJSONBadRequest
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposCreateForAuthenticatedUserApplicationJSONBadRequest(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -30834,12 +28634,8 @@ func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response, span tra
 
 			var response ReposCreateForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposCreateForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -30865,12 +28661,8 @@ func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response, span tra
 
 			var response ReposCreateForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposCreateForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -30896,12 +28688,8 @@ func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response, span tra
 
 			var response ReposCreateForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposCreateForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -30988,12 +28776,8 @@ func decodeReposCreateForkResponse(resp *http.Response, span trace.Span) (res Re
 
 			var response ReposCreateForkApplicationJSONBadRequest
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposCreateForkApplicationJSONBadRequest(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -31019,12 +28803,8 @@ func decodeReposCreateForkResponse(resp *http.Response, span trace.Span) (res Re
 
 			var response ReposCreateForkApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposCreateForkApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -31050,12 +28830,8 @@ func decodeReposCreateForkResponse(resp *http.Response, span trace.Span) (res Re
 
 			var response ReposCreateForkApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposCreateForkApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -31203,12 +28979,8 @@ func decodeReposCreateOrUpdateFileContentsResponse(resp *http.Response, span tra
 
 			var response ReposCreateOrUpdateFileContentsApplicationJSONOK
 			if err := func() error {
-				{
-					var unwrapped FileCommit
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposCreateOrUpdateFileContentsApplicationJSONOK(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -31234,12 +29006,8 @@ func decodeReposCreateOrUpdateFileContentsResponse(resp *http.Response, span tra
 
 			var response ReposCreateOrUpdateFileContentsApplicationJSONCreated
 			if err := func() error {
-				{
-					var unwrapped FileCommit
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposCreateOrUpdateFileContentsApplicationJSONCreated(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -31265,12 +29033,8 @@ func decodeReposCreateOrUpdateFileContentsResponse(resp *http.Response, span tra
 
 			var response ReposCreateOrUpdateFileContentsApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposCreateOrUpdateFileContentsApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -31296,12 +29060,8 @@ func decodeReposCreateOrUpdateFileContentsResponse(resp *http.Response, span tra
 
 			var response ReposCreateOrUpdateFileContentsApplicationJSONConflict
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposCreateOrUpdateFileContentsApplicationJSONConflict(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -31625,12 +29385,8 @@ func decodeReposCreateWebhookResponse(resp *http.Response, span trace.Span) (res
 
 			var response ReposCreateWebhookApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposCreateWebhookApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -31656,12 +29412,8 @@ func decodeReposCreateWebhookResponse(resp *http.Response, span trace.Span) (res
 
 			var response ReposCreateWebhookApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposCreateWebhookApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -31725,12 +29477,8 @@ func decodeReposDeclineInvitationResponse(resp *http.Response, span trace.Span) 
 
 			var response ReposDeclineInvitationApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposDeclineInvitationApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -31756,12 +29504,8 @@ func decodeReposDeclineInvitationResponse(resp *http.Response, span trace.Span) 
 
 			var response ReposDeclineInvitationApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposDeclineInvitationApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -31787,12 +29531,8 @@ func decodeReposDeclineInvitationResponse(resp *http.Response, span trace.Span) 
 
 			var response ReposDeclineInvitationApplicationJSONConflict
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposDeclineInvitationApplicationJSONConflict(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -31827,12 +29567,8 @@ func decodeReposDeleteResponse(resp *http.Response, span trace.Span) (res ReposD
 
 			var response ReposDeleteApplicationJSONTemporaryRedirect
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposDeleteApplicationJSONTemporaryRedirect(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -31885,12 +29621,8 @@ func decodeReposDeleteResponse(resp *http.Response, span trace.Span) (res ReposD
 
 			var response ReposDeleteApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposDeleteApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -32220,12 +29952,8 @@ func decodeReposDeleteFileResponse(resp *http.Response, span trace.Span) (res Re
 
 			var response ReposDeleteFileApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposDeleteFileApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -32251,12 +29979,8 @@ func decodeReposDeleteFileResponse(resp *http.Response, span trace.Span) (res Re
 
 			var response ReposDeleteFileApplicationJSONConflict
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposDeleteFileApplicationJSONConflict(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -32658,12 +30382,8 @@ func decodeReposGetResponse(resp *http.Response, span trace.Span) (res ReposGetR
 
 			var response ReposGetApplicationJSONMovedPermanently
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposGetApplicationJSONMovedPermanently(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -32689,12 +30409,8 @@ func decodeReposGetResponse(resp *http.Response, span trace.Span) (res ReposGetR
 
 			var response ReposGetApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposGetApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -32720,12 +30436,8 @@ func decodeReposGetResponse(resp *http.Response, span trace.Span) (res ReposGetR
 
 			var response ReposGetApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposGetApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -32853,22 +30565,8 @@ func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response, span trac
 
 			var response ReposGetAllStatusCheckContextsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []string
-					unwrapped = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem string
-						v, err := d.Str()
-						elem = string(v)
-						if err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposGetAllStatusCheckContextsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -33016,20 +30714,8 @@ func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response, 
 
 			var response ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Integration
-					unwrapped = make([]Integration, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Integration
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -33177,12 +30863,8 @@ func decodeReposGetBranchResponse(resp *http.Response, span trace.Span) (res Rep
 
 			var response ReposGetBranchApplicationJSONMovedPermanently
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposGetBranchApplicationJSONMovedPermanently(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -33208,12 +30890,8 @@ func decodeReposGetBranchResponse(resp *http.Response, span trace.Span) (res Rep
 
 			var response ReposGetBranchApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposGetBranchApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -33395,34 +31073,8 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response, span trace.Sp
 
 			var response ReposGetCodeFrequencyStatsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []CodeFrequencyStat
-					unwrapped = make([]CodeFrequencyStat, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem CodeFrequencyStat
-						{
-							var unwrapped []int
-							unwrapped = make([]int, 0)
-							if err := d.Arr(func(d *jx.Decoder) error {
-								var elem int
-								v, err := d.Int()
-								elem = int(v)
-								if err != nil {
-									return err
-								}
-								unwrapped = append(unwrapped, elem)
-								return nil
-							}); err != nil {
-								return err
-							}
-							elem = CodeFrequencyStat(unwrapped)
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposGetCodeFrequencyStatsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -33633,12 +31285,8 @@ func decodeReposGetCommitResponse(resp *http.Response, span trace.Span) (res Rep
 
 			var response ReposGetCommitApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposGetCommitApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -33691,12 +31339,8 @@ func decodeReposGetCommitResponse(resp *http.Response, span trace.Span) (res Rep
 
 			var response ReposGetCommitApplicationJSONInternalServerError
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposGetCommitApplicationJSONInternalServerError(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -33729,20 +31373,8 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response, span trace.S
 
 			var response ReposGetCommitActivityStatsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []CommitActivity
-					unwrapped = make([]CommitActivity, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem CommitActivity
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposGetCommitActivityStatsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -33960,20 +31592,8 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response, span trace.Spa
 
 			var response ReposGetContributorsStatsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []ContributorActivity
-					unwrapped = make([]ContributorActivity, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem ContributorActivity
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposGetContributorsStatsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -34596,34 +32216,8 @@ func decodeReposGetPunchCardStatsResponse(resp *http.Response, span trace.Span) 
 
 			var response ReposGetPunchCardStatsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []CodeFrequencyStat
-					unwrapped = make([]CodeFrequencyStat, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem CodeFrequencyStat
-						{
-							var unwrapped []int
-							unwrapped = make([]int, 0)
-							if err := d.Arr(func(d *jx.Decoder) error {
-								var elem int
-								v, err := d.Int()
-								elem = int(v)
-								if err != nil {
-									return err
-								}
-								unwrapped = append(unwrapped, elem)
-								return nil
-							}); err != nil {
-								return err
-							}
-							elem = CodeFrequencyStat(unwrapped)
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposGetPunchCardStatsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -35107,20 +32701,8 @@ func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response,
 
 			var response ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Team
-					unwrapped = make([]Team, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Team
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -35180,20 +32762,8 @@ func decodeReposGetTopPathsResponse(resp *http.Response, span trace.Span) (res R
 
 			var response ReposGetTopPathsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []ContentTraffic
-					unwrapped = make([]ContentTraffic, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem ContentTraffic
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposGetTopPathsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -35253,20 +32823,8 @@ func decodeReposGetTopReferrersResponse(resp *http.Response, span trace.Span) (r
 
 			var response ReposGetTopReferrersOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []ReferrerTraffic
-					unwrapped = make([]ReferrerTraffic, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem ReferrerTraffic
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposGetTopReferrersOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -35326,20 +32884,8 @@ func decodeReposGetUsersWithAccessToProtectedBranchResponse(resp *http.Response,
 
 			var response ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []SimpleUser
-					unwrapped = make([]SimpleUser, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SimpleUser
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -35685,20 +33231,8 @@ func decodeReposListBranchesResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ReposListBranchesOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []ShortBranch
-					unwrapped = make([]ShortBranch, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem ShortBranch
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposListBranchesOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -35758,20 +33292,8 @@ func decodeReposListBranchesForHeadCommitResponse(resp *http.Response, span trac
 
 			var response ReposListBranchesForHeadCommitOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []BranchShort
-					unwrapped = make([]BranchShort, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem BranchShort
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposListBranchesForHeadCommitOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -35831,20 +33353,8 @@ func decodeReposListCollaboratorsResponse(resp *http.Response, span trace.Span) 
 
 			var response ReposListCollaboratorsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Collaborator
-					unwrapped = make([]Collaborator, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Collaborator
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposListCollaboratorsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -35988,20 +33498,8 @@ func decodeReposListCommitStatusesForRefResponse(resp *http.Response, span trace
 
 			var response ReposListCommitStatusesForRefOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Status
-					unwrapped = make([]Status, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Status
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposListCommitStatusesForRefOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -36061,20 +33559,8 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 
 			var response ReposListCommitsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Commit
-					unwrapped = make([]Commit, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Commit
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposListCommitsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -36100,12 +33586,8 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 
 			var response ReposListCommitsApplicationJSONBadRequest
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposListCommitsApplicationJSONBadRequest(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -36131,12 +33613,8 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 
 			var response ReposListCommitsApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposListCommitsApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -36162,12 +33640,8 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 
 			var response ReposListCommitsApplicationJSONConflict
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposListCommitsApplicationJSONConflict(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -36193,12 +33667,8 @@ func decodeReposListCommitsResponse(resp *http.Response, span trace.Span) (res R
 
 			var response ReposListCommitsApplicationJSONInternalServerError
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposListCommitsApplicationJSONInternalServerError(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -36231,20 +33701,8 @@ func decodeReposListContributorsResponse(resp *http.Response, span trace.Span) (
 
 			var response ReposListContributorsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Contributor
-					unwrapped = make([]Contributor, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Contributor
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposListContributorsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -36272,12 +33730,8 @@ func decodeReposListContributorsResponse(resp *http.Response, span trace.Span) (
 
 			var response ReposListContributorsApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposListContributorsApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -36303,12 +33757,8 @@ func decodeReposListContributorsResponse(resp *http.Response, span trace.Span) (
 
 			var response ReposListContributorsApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposListContributorsApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -36383,20 +33833,8 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response, span trace.S
 
 			var response ReposListDeploymentStatusesOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []DeploymentStatus
-					unwrapped = make([]DeploymentStatus, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem DeploymentStatus
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposListDeploymentStatusesOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -36498,20 +33936,8 @@ func decodeReposListForAuthenticatedUserResponse(resp *http.Response, span trace
 
 			var response ReposListForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Repository
-					unwrapped = make([]Repository, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Repository
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposListForAuthenticatedUserOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -36539,12 +33965,8 @@ func decodeReposListForAuthenticatedUserResponse(resp *http.Response, span trace
 
 			var response ReposListForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposListForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -36570,12 +33992,8 @@ func decodeReposListForAuthenticatedUserResponse(resp *http.Response, span trace
 
 			var response ReposListForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposListForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -36719,20 +34137,8 @@ func decodeReposListForksResponse(resp *http.Response, span trace.Span) (res Rep
 
 			var response ReposListForksOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []MinimalRepository
-					unwrapped = make([]MinimalRepository, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem MinimalRepository
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposListForksOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -36834,20 +34240,8 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 
 			var response ReposListInvitationsForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []RepositoryInvitation
-					unwrapped = make([]RepositoryInvitation, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem RepositoryInvitation
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposListInvitationsForAuthenticatedUserOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -36875,12 +34269,8 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 
 			var response ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -36906,12 +34296,8 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 
 			var response ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -36937,12 +34323,8 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response,
 
 			var response ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -37052,20 +34434,8 @@ func decodeReposListPublicResponse(resp *http.Response, span trace.Span) (res Re
 
 			var response ReposListPublicOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []MinimalRepository
-					unwrapped = make([]MinimalRepository, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem MinimalRepository
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposListPublicOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -37211,20 +34581,8 @@ func decodeReposListReleasesResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ReposListReleasesOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Release
-					unwrapped = make([]Release, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Release
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposListReleasesOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -37368,20 +34726,8 @@ func decodeReposListWebhookDeliveriesResponse(resp *http.Response, span trace.Sp
 
 			var response ReposListWebhookDeliveriesOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []HookDeliveryItem
-					unwrapped = make([]HookDeliveryItem, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem HookDeliveryItem
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposListWebhookDeliveriesOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -37468,20 +34814,8 @@ func decodeReposListWebhooksResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ReposListWebhooksOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Hook
-					unwrapped = make([]Hook, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Hook
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposListWebhooksOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -37797,20 +35131,8 @@ func decodeReposRemoveAppAccessRestrictionsResponse(resp *http.Response, span tr
 
 			var response ReposRemoveAppAccessRestrictionsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Integration
-					unwrapped = make([]Integration, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Integration
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposRemoveAppAccessRestrictionsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -37879,22 +35201,8 @@ func decodeReposRemoveStatusCheckContextsResponse(resp *http.Response, span trac
 
 			var response ReposRemoveStatusCheckContextsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []string
-					unwrapped = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem string
-						v, err := d.Str()
-						elem = string(v)
-						if err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposRemoveStatusCheckContextsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -37990,20 +35298,8 @@ func decodeReposRemoveTeamAccessRestrictionsResponse(resp *http.Response, span t
 
 			var response ReposRemoveTeamAccessRestrictionsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Team
-					unwrapped = make([]Team, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Team
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposRemoveTeamAccessRestrictionsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -38063,20 +35359,8 @@ func decodeReposRemoveUserAccessRestrictionsResponse(resp *http.Response, span t
 
 			var response ReposRemoveUserAccessRestrictionsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []SimpleUser
-					unwrapped = make([]SimpleUser, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SimpleUser
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposRemoveUserAccessRestrictionsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -38163,12 +35447,8 @@ func decodeReposRenameBranchResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ReposRenameBranchApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposRenameBranchApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -38194,12 +35474,8 @@ func decodeReposRenameBranchResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ReposRenameBranchApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposRenameBranchApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -38442,20 +35718,8 @@ func decodeReposSetAppAccessRestrictionsResponse(resp *http.Response, span trace
 
 			var response ReposSetAppAccessRestrictionsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Integration
-					unwrapped = make([]Integration, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Integration
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposSetAppAccessRestrictionsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -38515,22 +35779,8 @@ func decodeReposSetStatusCheckContextsResponse(resp *http.Response, span trace.S
 
 			var response ReposSetStatusCheckContextsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []string
-					unwrapped = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem string
-						v, err := d.Str()
-						elem = string(v)
-						if err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposSetStatusCheckContextsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -38617,20 +35867,8 @@ func decodeReposSetTeamAccessRestrictionsResponse(resp *http.Response, span trac
 
 			var response ReposSetTeamAccessRestrictionsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Team
-					unwrapped = make([]Team, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Team
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposSetTeamAccessRestrictionsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -38690,20 +35928,8 @@ func decodeReposSetUserAccessRestrictionsResponse(resp *http.Response, span trac
 
 			var response ReposSetUserAccessRestrictionsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []SimpleUser
-					unwrapped = make([]SimpleUser, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SimpleUser
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ReposSetUserAccessRestrictionsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -38860,12 +36086,8 @@ func decodeReposUpdateResponse(resp *http.Response, span trace.Span) (res ReposU
 
 			var response ReposUpdateApplicationJSONTemporaryRedirect
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposUpdateApplicationJSONTemporaryRedirect(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -38891,12 +36113,8 @@ func decodeReposUpdateResponse(resp *http.Response, span trace.Span) (res ReposU
 
 			var response ReposUpdateApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposUpdateApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -38922,12 +36140,8 @@ func decodeReposUpdateResponse(resp *http.Response, span trace.Span) (res ReposU
 
 			var response ReposUpdateApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposUpdateApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -39014,12 +36228,8 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response, span trace.S
 
 			var response ReposUpdateBranchProtectionApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposUpdateBranchProtectionApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -39045,12 +36255,8 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response, span trace.S
 
 			var response ReposUpdateBranchProtectionApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ReposUpdateBranchProtectionApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -39575,12 +36781,8 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response, span trace.Span) (
 
 			var response ScimDeleteUserFromOrgApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped ScimError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ScimDeleteUserFromOrgApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -39606,12 +36808,8 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response, span trace.Span) (
 
 			var response ScimDeleteUserFromOrgApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped ScimError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = ScimDeleteUserFromOrgApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -39970,12 +37168,8 @@ func decodeSearchLabelsResponse(resp *http.Response, span trace.Span) (res Searc
 
 			var response SearchLabelsApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = SearchLabelsApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -40001,12 +37195,8 @@ func decodeSearchLabelsResponse(resp *http.Response, span trace.Span) (res Searc
 
 			var response SearchLabelsApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = SearchLabelsApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -40372,20 +37562,8 @@ func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response, span trac
 
 			var response SecretScanningListAlertsForOrgOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []OrganizationSecretScanningAlert
-					unwrapped = make([]OrganizationSecretScanningAlert, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem OrganizationSecretScanningAlert
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = SecretScanningListAlertsForOrgOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -40472,20 +37650,8 @@ func decodeSecretScanningListAlertsForRepoResponse(resp *http.Response, span tra
 
 			var response SecretScanningListAlertsForRepoOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []SecretScanningAlert
-					unwrapped = make([]SecretScanningAlert, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SecretScanningAlert
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = SecretScanningListAlertsForRepoOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -41921,20 +39087,8 @@ func decodeTeamsListResponse(resp *http.Response, span trace.Span) (res TeamsLis
 
 			var response TeamsListOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Team
-					unwrapped = make([]Team, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Team
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = TeamsListOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -42036,20 +39190,8 @@ func decodeTeamsListChildLegacyResponse(resp *http.Response, span trace.Span) (r
 
 			var response TeamsListChildLegacyOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Team
-					unwrapped = make([]Team, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Team
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = TeamsListChildLegacyOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -42075,12 +39217,8 @@ func decodeTeamsListChildLegacyResponse(resp *http.Response, span trace.Span) (r
 
 			var response TeamsListChildLegacyApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = TeamsListChildLegacyApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -42106,12 +39244,8 @@ func decodeTeamsListChildLegacyResponse(resp *http.Response, span trace.Span) (r
 
 			var response TeamsListChildLegacyApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = TeamsListChildLegacyApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -42339,20 +39473,8 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response, span trace
 
 			var response TeamsListForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []TeamFull
-					unwrapped = make([]TeamFull, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem TeamFull
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = TeamsListForAuthenticatedUserOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -42380,12 +39502,8 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response, span trace
 
 			var response TeamsListForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = TeamsListForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -42411,12 +39529,8 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response, span trace
 
 			var response TeamsListForAuthenticatedUserApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = TeamsListForAuthenticatedUserApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -42476,12 +39590,8 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response, span trace.S
 
 			var response TeamsListIdpGroupsForLegacyApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = TeamsListIdpGroupsForLegacyApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -42507,12 +39617,8 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response, span trace.S
 
 			var response TeamsListIdpGroupsForLegacyApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = TeamsListIdpGroupsForLegacyApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -42655,20 +39761,8 @@ func decodeTeamsListMembersLegacyResponse(resp *http.Response, span trace.Span) 
 
 			var response TeamsListMembersLegacyOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []SimpleUser
-					unwrapped = make([]SimpleUser, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SimpleUser
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = TeamsListMembersLegacyOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -42854,20 +39948,8 @@ func decodeTeamsListProjectsLegacyResponse(resp *http.Response, span trace.Span)
 
 			var response TeamsListProjectsLegacyOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []TeamProject
-					unwrapped = make([]TeamProject, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem TeamProject
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = TeamsListProjectsLegacyOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -42969,20 +40051,8 @@ func decodeTeamsListReposLegacyResponse(resp *http.Response, span trace.Span) (r
 
 			var response TeamsListReposLegacyOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []MinimalRepository
-					unwrapped = make([]MinimalRepository, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem MinimalRepository
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = TeamsListReposLegacyOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43362,12 +40432,8 @@ func decodeTeamsUpdateLegacyResponse(resp *http.Response, span trace.Span) (res 
 
 			var response TeamsUpdateLegacyApplicationJSONOK
 			if err := func() error {
-				{
-					var unwrapped TeamFull
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = TeamsUpdateLegacyApplicationJSONOK(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43393,12 +40459,8 @@ func decodeTeamsUpdateLegacyResponse(resp *http.Response, span trace.Span) (res 
 
 			var response TeamsUpdateLegacyApplicationJSONCreated
 			if err := func() error {
-				{
-					var unwrapped TeamFull
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = TeamsUpdateLegacyApplicationJSONCreated(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43424,12 +40486,8 @@ func decodeTeamsUpdateLegacyResponse(resp *http.Response, span trace.Span) (res 
 
 			var response TeamsUpdateLegacyApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = TeamsUpdateLegacyApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43455,12 +40513,8 @@ func decodeTeamsUpdateLegacyResponse(resp *http.Response, span trace.Span) (res 
 
 			var response TeamsUpdateLegacyApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = TeamsUpdateLegacyApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43520,20 +40574,8 @@ func decodeUsersAddEmailForAuthenticatedResponse(resp *http.Response, span trace
 
 			var response UsersAddEmailForAuthenticatedCreatedApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Email
-					unwrapped = make([]Email, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Email
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = UsersAddEmailForAuthenticatedCreatedApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43561,12 +40603,8 @@ func decodeUsersAddEmailForAuthenticatedResponse(resp *http.Response, span trace
 
 			var response UsersAddEmailForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersAddEmailForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43592,12 +40630,8 @@ func decodeUsersAddEmailForAuthenticatedResponse(resp *http.Response, span trace
 
 			var response UsersAddEmailForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersAddEmailForAuthenticatedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43623,12 +40657,8 @@ func decodeUsersAddEmailForAuthenticatedResponse(resp *http.Response, span trace
 
 			var response UsersAddEmailForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersAddEmailForAuthenticatedApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43692,12 +40722,8 @@ func decodeUsersBlockResponse(resp *http.Response, span trace.Span) (res UsersBl
 
 			var response UsersBlockApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersBlockApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43723,12 +40749,8 @@ func decodeUsersBlockResponse(resp *http.Response, span trace.Span) (res UsersBl
 
 			var response UsersBlockApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersBlockApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43754,12 +40776,8 @@ func decodeUsersBlockResponse(resp *http.Response, span trace.Span) (res UsersBl
 
 			var response UsersBlockApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersBlockApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43823,12 +40841,8 @@ func decodeUsersCheckBlockedResponse(resp *http.Response, span trace.Span) (res 
 
 			var response UsersCheckBlockedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersCheckBlockedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43854,12 +40868,8 @@ func decodeUsersCheckBlockedResponse(resp *http.Response, span trace.Span) (res 
 
 			var response UsersCheckBlockedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersCheckBlockedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43885,12 +40895,8 @@ func decodeUsersCheckBlockedResponse(resp *http.Response, span trace.Span) (res 
 
 			var response UsersCheckBlockedApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersCheckBlockedApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43938,12 +40944,8 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 
 			var response UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43969,12 +40971,8 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 
 			var response UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44000,12 +40998,8 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 
 			var response UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44067,12 +41061,8 @@ func decodeUsersCreateGpgKeyForAuthenticatedResponse(resp *http.Response, span t
 
 			var response UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44098,12 +41088,8 @@ func decodeUsersCreateGpgKeyForAuthenticatedResponse(resp *http.Response, span t
 
 			var response UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44129,12 +41115,8 @@ func decodeUsersCreateGpgKeyForAuthenticatedResponse(resp *http.Response, span t
 
 			var response UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44223,12 +41205,8 @@ func decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp *http.Response, 
 
 			var response UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44254,12 +41232,8 @@ func decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp *http.Response, 
 
 			var response UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44285,12 +41259,8 @@ func decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp *http.Response, 
 
 			var response UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44354,12 +41324,8 @@ func decodeUsersDeleteEmailForAuthenticatedResponse(resp *http.Response, span tr
 
 			var response UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44385,12 +41351,8 @@ func decodeUsersDeleteEmailForAuthenticatedResponse(resp *http.Response, span tr
 
 			var response UsersDeleteEmailForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersDeleteEmailForAuthenticatedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44416,12 +41378,8 @@ func decodeUsersDeleteEmailForAuthenticatedResponse(resp *http.Response, span tr
 
 			var response UsersDeleteEmailForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersDeleteEmailForAuthenticatedApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44485,12 +41443,8 @@ func decodeUsersDeleteGpgKeyForAuthenticatedResponse(resp *http.Response, span t
 
 			var response UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44516,12 +41470,8 @@ func decodeUsersDeleteGpgKeyForAuthenticatedResponse(resp *http.Response, span t
 
 			var response UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44547,12 +41497,8 @@ func decodeUsersDeleteGpgKeyForAuthenticatedResponse(resp *http.Response, span t
 
 			var response UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44616,12 +41562,8 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response, 
 
 			var response UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44647,12 +41589,8 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response, 
 
 			var response UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44678,12 +41616,8 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response, 
 
 			var response UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44720,12 +41654,8 @@ func decodeUsersFollowResponse(resp *http.Response, span trace.Span) (res UsersF
 
 			var response UsersFollowApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersFollowApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44751,12 +41681,8 @@ func decodeUsersFollowResponse(resp *http.Response, span trace.Span) (res UsersF
 
 			var response UsersFollowApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersFollowApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44782,12 +41708,8 @@ func decodeUsersFollowResponse(resp *http.Response, span trace.Span) (res UsersF
 
 			var response UsersFollowApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersFollowApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44849,12 +41771,8 @@ func decodeUsersGetAuthenticatedResponse(resp *http.Response, span trace.Span) (
 
 			var response UsersGetAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersGetAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -44880,12 +41798,8 @@ func decodeUsersGetAuthenticatedResponse(resp *http.Response, span trace.Span) (
 
 			var response UsersGetAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersGetAuthenticatedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45123,12 +42037,8 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response, span trac
 
 			var response UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45154,12 +42064,8 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response, span trac
 
 			var response UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45185,12 +42091,8 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response, span trac
 
 			var response UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45252,12 +42154,8 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response, spa
 
 			var response UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45283,12 +42181,8 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response, spa
 
 			var response UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45314,12 +42208,8 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response, spa
 
 			var response UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45352,20 +42242,8 @@ func decodeUsersListResponse(resp *http.Response, span trace.Span) (res UsersLis
 
 			var response UsersListOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []SimpleUser
-					unwrapped = make([]SimpleUser, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SimpleUser
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = UsersListOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45400,20 +42278,8 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 
 			var response UsersListBlockedByAuthenticatedOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []SimpleUser
-					unwrapped = make([]SimpleUser, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SimpleUser
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = UsersListBlockedByAuthenticatedOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45441,12 +42307,8 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 
 			var response UsersListBlockedByAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListBlockedByAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45472,12 +42334,8 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 
 			var response UsersListBlockedByAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListBlockedByAuthenticatedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45503,12 +42361,8 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response, span tra
 
 			var response UsersListBlockedByAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListBlockedByAuthenticatedApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45568,20 +42422,8 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 
 			var response UsersListEmailsForAuthenticatedOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Email
-					unwrapped = make([]Email, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Email
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = UsersListEmailsForAuthenticatedOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45609,12 +42451,8 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 
 			var response UsersListEmailsForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListEmailsForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45640,12 +42478,8 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 
 			var response UsersListEmailsForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListEmailsForAuthenticatedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45671,12 +42505,8 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response, span tra
 
 			var response UsersListEmailsForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListEmailsForAuthenticatedApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45709,20 +42539,8 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response, span tr
 
 			var response UsersListFollowedByAuthenticatedOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []SimpleUser
-					unwrapped = make([]SimpleUser, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SimpleUser
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = UsersListFollowedByAuthenticatedOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45750,12 +42568,8 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response, span tr
 
 			var response UsersListFollowedByAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListFollowedByAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45781,12 +42595,8 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response, span tr
 
 			var response UsersListFollowedByAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListFollowedByAuthenticatedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45819,20 +42629,8 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response, s
 
 			var response UsersListFollowersForAuthenticatedUserOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []SimpleUser
-					unwrapped = make([]SimpleUser, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SimpleUser
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = UsersListFollowersForAuthenticatedUserOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45860,12 +42658,8 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response, s
 
 			var response UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -45891,12 +42685,8 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response, s
 
 			var response UsersListFollowersForAuthenticatedUserApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListFollowersForAuthenticatedUserApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46013,20 +42803,8 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 
 			var response UsersListGpgKeysForAuthenticatedOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []GpgKey
-					unwrapped = make([]GpgKey, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem GpgKey
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = UsersListGpgKeysForAuthenticatedOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46054,12 +42832,8 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 
 			var response UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46085,12 +42859,8 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 
 			var response UsersListGpgKeysForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListGpgKeysForAuthenticatedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46116,12 +42886,8 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response, span tr
 
 			var response UsersListGpgKeysForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListGpgKeysForAuthenticatedApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46196,20 +42962,8 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 
 			var response UsersListPublicEmailsForAuthenticatedOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Email
-					unwrapped = make([]Email, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Email
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = UsersListPublicEmailsForAuthenticatedOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46237,12 +42991,8 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 
 			var response UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46268,12 +43018,8 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 
 			var response UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46299,12 +43045,8 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response, sp
 
 			var response UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46379,20 +43121,8 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 
 			var response UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Key
-					unwrapped = make([]Key, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Key
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46420,12 +43150,8 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 
 			var response UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46451,12 +43177,8 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 
 			var response UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46482,12 +43204,8 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response, s
 
 			var response UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46520,20 +43238,8 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Res
 
 			var response UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []Email
-					unwrapped = make([]Email, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Email
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46561,12 +43267,8 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Res
 
 			var response UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46592,12 +43294,8 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Res
 
 			var response UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46623,12 +43321,8 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Res
 
 			var response UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46692,12 +43386,8 @@ func decodeUsersUnblockResponse(resp *http.Response, span trace.Span) (res Users
 
 			var response UsersUnblockApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersUnblockApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46723,12 +43413,8 @@ func decodeUsersUnblockResponse(resp *http.Response, span trace.Span) (res Users
 
 			var response UsersUnblockApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersUnblockApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46754,12 +43440,8 @@ func decodeUsersUnblockResponse(resp *http.Response, span trace.Span) (res Users
 
 			var response UsersUnblockApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersUnblockApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46796,12 +43478,8 @@ func decodeUsersUnfollowResponse(resp *http.Response, span trace.Span) (res User
 
 			var response UsersUnfollowApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersUnfollowApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46827,12 +43505,8 @@ func decodeUsersUnfollowResponse(resp *http.Response, span trace.Span) (res User
 
 			var response UsersUnfollowApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersUnfollowApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46858,12 +43532,8 @@ func decodeUsersUnfollowResponse(resp *http.Response, span trace.Span) (res User
 
 			var response UsersUnfollowApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersUnfollowApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46925,12 +43595,8 @@ func decodeUsersUpdateAuthenticatedResponse(resp *http.Response, span trace.Span
 
 			var response UsersUpdateAuthenticatedApplicationJSONUnauthorized
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersUpdateAuthenticatedApplicationJSONUnauthorized(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46956,12 +43622,8 @@ func decodeUsersUpdateAuthenticatedResponse(resp *http.Response, span trace.Span
 
 			var response UsersUpdateAuthenticatedApplicationJSONForbidden
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersUpdateAuthenticatedApplicationJSONForbidden(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -46987,12 +43649,8 @@ func decodeUsersUpdateAuthenticatedResponse(resp *http.Response, span trace.Span
 
 			var response UsersUpdateAuthenticatedApplicationJSONNotFound
 			if err := func() error {
-				{
-					var unwrapped BasicError
-					if err := unwrapped.Decode(d); err != nil {
-						return err
-					}
-					response = UsersUpdateAuthenticatedApplicationJSONNotFound(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {

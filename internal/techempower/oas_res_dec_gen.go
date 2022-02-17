@@ -83,20 +83,8 @@ func decodeCachingResponse(resp *http.Response, span trace.Span) (res WorldObjec
 
 			var response WorldObjects
 			if err := func() error {
-				{
-					var unwrapped []WorldObject
-					unwrapped = make([]WorldObject, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem WorldObject
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = WorldObjects(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -197,20 +185,8 @@ func decodeQueriesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 
 			var response WorldObjects
 			if err := func() error {
-				{
-					var unwrapped []WorldObject
-					unwrapped = make([]WorldObject, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem WorldObject
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = WorldObjects(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -243,20 +219,8 @@ func decodeUpdatesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 
 			var response WorldObjects
 			if err := func() error {
-				{
-					var unwrapped []WorldObject
-					unwrapped = make([]WorldObject, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem WorldObject
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = WorldObjects(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {

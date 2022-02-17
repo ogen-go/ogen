@@ -2700,6 +2700,8 @@ func (s PetUploadAvatarByIDReq) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
+type RecursiveArray []RecursiveArray
+
 // Ref: #/components/schemas/RecursiveMap
 type RecursiveMap struct {
 	OptionalRecursiveField *RecursiveMap `json:"optional_recursive_field"`

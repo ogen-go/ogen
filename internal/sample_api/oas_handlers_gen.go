@@ -761,6 +761,31 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 	span.SetStatus(codes.Ok, "Ok")
 }
 
+// HandleRecursiveArrayGetRequest handles  operation.
+//
+// GET /recursiveArray
+func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "RecursiveArrayGet",
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	response, err := s.h.RecursiveArrayGet(ctx)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeRecursiveArrayGetResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
 // HandleRecursiveMapGetRequest handles  operation.
 //
 // GET /recursiveMap

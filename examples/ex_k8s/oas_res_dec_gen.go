@@ -1919,14 +1919,8 @@ func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Respons
 
 			var response GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					response = GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -7271,14 +7265,8 @@ func decodeReadCoreV1NamespacedPodLogResponse(resp *http.Response, span trace.Sp
 
 			var response ReadCoreV1NamespacedPodLogOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					response = ReadCoreV1NamespacedPodLogOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
