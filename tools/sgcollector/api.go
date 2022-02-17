@@ -28,15 +28,23 @@ type (
 		File       File       `json:"file"`
 	}
 
+	Alert struct {
+		Title       string `json:"title"`
+		Description string `json:"description"`
+	}
+
 	SearchResult struct {
 		Matches             []FileMatch `json:"results"`
 		LimitHit            bool        `json:"limitHit"`
 		MatchCount          int         `json:"matchCount"`
 		ElapsedMilliseconds int         `json:"elapsedMilliseconds"`
+		Alert               Alert       `json:"alert"`
 	}
+
 	SearchResults struct {
 		Results SearchResult `json:"results"`
 	}
+
 	Data struct {
 		Search SearchResults `json:"search"`
 	}

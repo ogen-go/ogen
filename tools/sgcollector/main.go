@@ -97,7 +97,7 @@ func run(ctx context.Context) error {
 		defer close(links)
 
 		for i, q := range queries {
-			resp, err := query(ctx, Query{
+			results, err := query(ctx, Query{
 				Query: graphQLQuery,
 				Variables: QueryVariables{
 					Query: q,
@@ -106,7 +106,6 @@ func run(ctx context.Context) error {
 			if err != nil {
 				return errors.Wrapf(err, "query: %d", i)
 			}
-			results := resp.Data.Search.Results
 
 			for _, m := range results.Matches {
 				select {
