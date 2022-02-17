@@ -623,10 +623,27 @@
       "get": {
         "responses": {
           "200": {
+            "description": "Returns infinite object of object",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/RecursiveMap"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recursiveArray": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Returns infinite array of arrays",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecursiveArray"
                 }
               }
             }
@@ -812,6 +829,12 @@
           "optional_recursive_field": {
             "$ref": "#/components/schemas/RecursiveMap"
           }
+        }
+      },
+      "RecursiveArray": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/RecursiveArray"
         }
       },
       "NullableEnums": {

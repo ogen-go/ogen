@@ -276,6 +276,42 @@ func TestJSONArray(t *testing.T) {
 	})
 }
 
+func TestJSONRecursiveArray(t *testing.T) {
+	t.Run("DecodeEncodeDecode", func(t *testing.T) {
+		for i, tc := range []struct {
+			Value api.RecursiveArray
+			Input string
+		}{
+			{
+				Value: api.RecursiveArray{},
+				Input: `[]`,
+			},
+			{
+				Value: api.RecursiveArray{api.RecursiveArray{}},
+				Input: `[[]]`,
+			},
+			{
+				Value: api.RecursiveArray{
+					api.RecursiveArray{
+						api.RecursiveArray{},
+					},
+					api.RecursiveArray{},
+					api.RecursiveArray{},
+				},
+				Input: `[[[]], [], []]`,
+			},
+		} {
+			// Make range value copy to prevent data races.
+			tc := tc
+			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+				r := api.RecursiveArray{}
+				require.NoError(t, r.Decode(jx.DecodeStr(tc.Input)))
+				testEncode(t, tc.Value, tc.Input)
+			})
+		}
+	})
+}
+
 func TestJSONAdditionalProperties(t *testing.T) {
 	t.Run("Decode", func(t *testing.T) {
 		for i, tc := range []struct {

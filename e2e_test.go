@@ -223,6 +223,10 @@ func (s sampleAPIServer) RecursiveMapGet(ctx context.Context) (api.RecursiveMap,
 	panic("implement me")
 }
 
+func (s sampleAPIServer) RecursiveArrayGet(ctx context.Context) (api.RecursiveArray, error) {
+	panic("implement me")
+}
+
 func (s sampleAPIServer) DefaultTest(ctx context.Context, req api.DefaultTest, params api.DefaultTestParams) (int32, error) {
 	return params.Default.Value, nil
 }
