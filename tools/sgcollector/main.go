@@ -70,9 +70,12 @@ func run(ctx context.Context) error {
 		queries = []string{*q}
 	} else {
 		queries = []string{
-			`(openapi|"openapi"):\s(3|"3) file:.*\.yml$ count:20000`,
-			`(openapi|"openapi"):\s(3|"3) file:.*\.yaml$ count:20000`,
-			`"openapi":\s(3|"3) file:.*\.json$ count:20000`,
+			`(openapi|"openapi"):\s?"3 file:.*\.yml$ count:all`,
+			`(openapi|"openapi"):\s+3 file:.*\.yml$ count:all`,
+			`(openapi|"openapi"):\s?"3 file:.*\.yaml$ count:all`,
+			`(openapi|"openapi"):\s+3 file:.*\.yaml$ count:all`,
+			`"openapi":"3 file:.*\.json$ count:all`,
+			`"openapi":\s+"3 file:.*\.json$ count:all`,
 		}
 		if !(*generateYaml) {
 			queries = queries[2:]
