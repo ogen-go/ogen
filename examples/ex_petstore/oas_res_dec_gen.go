@@ -120,20 +120,8 @@ func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsR
 
 			var response Pets
 			if err := func() error {
-				{
-					var unwrapped []Pet
-					unwrapped = make([]Pet, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem Pet
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = Pets(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {

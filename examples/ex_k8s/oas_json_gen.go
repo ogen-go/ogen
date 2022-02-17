@@ -8564,14 +8564,8 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Decode(d *jx.D
 		case "currentAverageValue":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					s.CurrentAverageValue = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := s.CurrentAverageValue.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -8983,14 +8977,8 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Decode(d *jx.Decoder) e
 		case "currentValue":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					s.CurrentValue = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := s.CurrentValue.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10454,14 +10442,8 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Decode(d *jx.Decoder) err
 		case "targetValue":
 			requiredBitSet[0] |= 1 << 4
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					s.TargetValue = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := s.TargetValue.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10592,14 +10574,8 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Decode(d *jx.Decoder) err
 		case "currentValue":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					s.CurrentValue = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := s.CurrentValue.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10754,14 +10730,8 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) Decode(d *jx.Decoder) error
 		case "targetAverageValue":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					s.TargetAverageValue = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := s.TargetAverageValue.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -10862,14 +10832,8 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Decode(d *jx.Decoder) error
 		case "currentAverageValue":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					s.CurrentAverageValue = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := s.CurrentAverageValue.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -11132,14 +11096,8 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Decode(d *jx.Decoder) e
 		case "currentAverageValue":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					s.CurrentAverageValue = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := s.CurrentAverageValue.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -28436,14 +28394,8 @@ func (s *IoK8sAPICoreV1HTTPGetAction) Decode(d *jx.Decoder) error {
 		case "port":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					s.Port = IoK8sApimachineryPkgUtilIntstrIntOrString(unwrapped)
+				if err := s.Port.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -30117,14 +30069,8 @@ func (s IoK8sAPICoreV1LimitRangeItemDefault) Decode(d *jx.Decoder) error {
 		default:
 			var elem IoK8sApimachineryPkgAPIResourceQuantity
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -30174,14 +30120,8 @@ func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) Decode(d *jx.Decoder) error 
 		default:
 			var elem IoK8sApimachineryPkgAPIResourceQuantity
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -30231,14 +30171,8 @@ func (s IoK8sAPICoreV1LimitRangeItemMax) Decode(d *jx.Decoder) error {
 		default:
 			var elem IoK8sApimachineryPkgAPIResourceQuantity
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -30288,14 +30222,8 @@ func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Decode(d *jx.Decoder) 
 		default:
 			var elem IoK8sApimachineryPkgAPIResourceQuantity
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -30345,14 +30273,8 @@ func (s IoK8sAPICoreV1LimitRangeItemMin) Decode(d *jx.Decoder) error {
 		default:
 			var elem IoK8sApimachineryPkgAPIResourceQuantity
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -33756,14 +33678,8 @@ func (s IoK8sAPICoreV1NodeStatusAllocatable) Decode(d *jx.Decoder) error {
 		default:
 			var elem IoK8sApimachineryPkgAPIResourceQuantity
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -33813,14 +33729,8 @@ func (s IoK8sAPICoreV1NodeStatusCapacity) Decode(d *jx.Decoder) error {
 		default:
 			var elem IoK8sApimachineryPkgAPIResourceQuantity
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -35493,14 +35403,8 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Decode(d *jx.Decoder)
 		default:
 			var elem IoK8sApimachineryPkgAPIResourceQuantity
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -36697,14 +36601,8 @@ func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) Decode(d *jx.Decoder) error 
 		default:
 			var elem IoK8sApimachineryPkgAPIResourceQuantity
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -39574,14 +39472,8 @@ func (s IoK8sAPICoreV1PodSpecOverhead) Decode(d *jx.Decoder) error {
 		default:
 			var elem IoK8sApimachineryPkgAPIResourceQuantity
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43277,14 +43169,8 @@ func (s IoK8sAPICoreV1ResourceQuotaSpecHard) Decode(d *jx.Decoder) error {
 		default:
 			var elem IoK8sApimachineryPkgAPIResourceQuantity
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43412,14 +43298,8 @@ func (s IoK8sAPICoreV1ResourceQuotaStatusHard) Decode(d *jx.Decoder) error {
 		default:
 			var elem IoK8sApimachineryPkgAPIResourceQuantity
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43469,14 +43349,8 @@ func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) Decode(d *jx.Decoder) error {
 		default:
 			var elem IoK8sApimachineryPkgAPIResourceQuantity
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43604,14 +43478,8 @@ func (s IoK8sAPICoreV1ResourceRequirementsLimits) Decode(d *jx.Decoder) error {
 		default:
 			var elem IoK8sApimachineryPkgAPIResourceQuantity
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -43661,14 +43529,8 @@ func (s IoK8sAPICoreV1ResourceRequirementsRequests) Decode(d *jx.Decoder) error 
 		default:
 			var elem IoK8sApimachineryPkgAPIResourceQuantity
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -48226,14 +48088,8 @@ func (s *IoK8sAPICoreV1TCPSocketAction) Decode(d *jx.Decoder) error {
 		case "port":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					s.Port = IoK8sApimachineryPkgUtilIntstrIntOrString(unwrapped)
+				if err := s.Port.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -53038,14 +52894,8 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 		case "eventTime":
 			requiredBitSet[0] |= 1 << 6
 			if err := func() error {
-				{
-					var unwrapped time.Time
-					v, err := json.DecodeDateTime(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					s.EventTime = IoK8sApimachineryPkgApisMetaV1MicroTime(unwrapped)
+				if err := s.EventTime.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -53418,14 +53268,8 @@ func (s *IoK8sAPIEventsV1EventSeries) Decode(d *jx.Decoder) error {
 		case "lastObservedTime":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				{
-					var unwrapped time.Time
-					v, err := json.DecodeDateTime(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					s.LastObservedTime = IoK8sApimachineryPkgApisMetaV1MicroTime(unwrapped)
+				if err := s.LastObservedTime.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -53747,14 +53591,8 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 		case "eventTime":
 			requiredBitSet[0] |= 1 << 6
 			if err := func() error {
-				{
-					var unwrapped time.Time
-					v, err := json.DecodeDateTime(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					s.EventTime = IoK8sApimachineryPkgApisMetaV1MicroTime(unwrapped)
+				if err := s.EventTime.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -54127,14 +53965,8 @@ func (s *IoK8sAPIEventsV1beta1EventSeries) Decode(d *jx.Decoder) error {
 		case "lastObservedTime":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				{
-					var unwrapped time.Time
-					v, err := json.DecodeDateTime(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					s.LastObservedTime = IoK8sApimachineryPkgApisMetaV1MicroTime(unwrapped)
+				if err := s.LastObservedTime.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -62728,14 +62560,8 @@ func (s IoK8sAPINodeV1OverheadPodFixed) Decode(d *jx.Decoder) error {
 		default:
 			var elem IoK8sApimachineryPkgAPIResourceQuantity
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -63348,14 +63174,8 @@ func (s IoK8sAPINodeV1alpha1OverheadPodFixed) Decode(d *jx.Decoder) error {
 		default:
 			var elem IoK8sApimachineryPkgAPIResourceQuantity
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -64062,14 +63882,8 @@ func (s IoK8sAPINodeV1beta1OverheadPodFixed) Decode(d *jx.Decoder) error {
 		default:
 			var elem IoK8sApimachineryPkgAPIResourceQuantity
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -65269,14 +65083,8 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Decode(d *jx.Dec
 		default:
 			var elem IoK8sApimachineryPkgApisMetaV1Time
 			if err := func() error {
-				{
-					var unwrapped time.Time
-					v, err := json.DecodeDateTime(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgApisMetaV1Time(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -66529,14 +66337,8 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Decode(d *j
 		default:
 			var elem IoK8sApimachineryPkgApisMetaV1Time
 			if err := func() error {
-				{
-					var unwrapped time.Time
-					v, err := json.DecodeDateTime(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					elem = IoK8sApimachineryPkgApisMetaV1Time(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -79118,14 +78920,8 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) Decode(d *jx.Decoder) error {
 		case "lastTransitionTime":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				{
-					var unwrapped time.Time
-					v, err := json.DecodeDateTime(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					s.LastTransitionTime = IoK8sApimachineryPkgApisMetaV1Time(unwrapped)
+				if err := s.LastTransitionTime.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {

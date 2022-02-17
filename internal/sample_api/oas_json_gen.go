@@ -5378,6 +5378,50 @@ func (s *PetType) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// Encode encodes RecursiveArray as json.
+func (s RecursiveArray) Encode(e *jx.Writer) {
+	unwrapped := []RecursiveArray(s)
+	e.ArrStart()
+	if len(unwrapped) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := unwrapped[0]
+			elem.Encode(e)
+		}
+		for _, elem := range unwrapped[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes RecursiveArray from json.
+func (s *RecursiveArray) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode RecursiveArray to nil")
+	}
+	var unwrapped []RecursiveArray
+	if err := func() error {
+		unwrapped = make([]RecursiveArray, 0)
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem RecursiveArray
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = RecursiveArray(unwrapped)
+	return nil
+}
+
 // Encode implements json.Marshaler.
 func (s RecursiveMap) Encode(e *jx.Writer) {
 	e.ObjStart()

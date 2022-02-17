@@ -182,6 +182,10 @@ type Handler interface {
 	//
 	// POST /pet/avatar
 	PetUploadAvatarByID(ctx context.Context, req PetUploadAvatarByIDReq, params PetUploadAvatarByIDParams) (PetUploadAvatarByIDRes, error)
+	// RecursiveArrayGet implements  operation.
+	//
+	// GET /recursiveArray
+	RecursiveArrayGet(ctx context.Context) (RecursiveArray, error)
 	// RecursiveMapGet implements  operation.
 	//
 	// GET /recursiveMap

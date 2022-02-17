@@ -723,20 +723,8 @@ func decodeListPetResponse(resp *http.Response, span trace.Span) (res ListPetRes
 
 			var response ListPetOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []PetList
-					unwrapped = make([]PetList, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem PetList
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ListPetOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -850,20 +838,8 @@ func decodeListPetCategoriesResponse(resp *http.Response, span trace.Span) (res 
 
 			var response ListPetCategoriesOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []PetCategoriesList
-					unwrapped = make([]PetCategoriesList, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem PetCategoriesList
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ListPetCategoriesOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -977,20 +953,8 @@ func decodeListPetFriendsResponse(resp *http.Response, span trace.Span) (res Lis
 
 			var response ListPetFriendsOKApplicationJSON
 			if err := func() error {
-				{
-					var unwrapped []PetFriendsList
-					unwrapped = make([]PetFriendsList, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem PetFriendsList
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					response = ListPetFriendsOKApplicationJSON(unwrapped)
+				if err := response.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {

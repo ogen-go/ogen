@@ -4175,14 +4175,8 @@ func (s *ActionsRepositoryPermissions) Decode(d *jx.Decoder) error {
 		case "enabled":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				{
-					var unwrapped bool
-					v, err := d.Bool()
-					unwrapped = bool(v)
-					if err != nil {
-						return err
-					}
-					s.Enabled = ActionsEnabled(unwrapped)
+				if err := s.Enabled.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -4751,14 +4745,8 @@ func (s *ActionsSetGithubActionsPermissionsRepositoryReq) Decode(d *jx.Decoder) 
 		case "enabled":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				{
-					var unwrapped bool
-					v, err := d.Bool()
-					unwrapped = bool(v)
-					if err != nil {
-						return err
-					}
-					s.Enabled = ActionsEnabled(unwrapped)
+				if err := s.Enabled.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21144,14 +21132,8 @@ func (s *CodeScanningAlert) Decode(d *jx.Decoder) error {
 		case "number":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				{
-					var unwrapped int
-					v, err := d.Int()
-					unwrapped = int(v)
-					if err != nil {
-						return err
-					}
-					s.Number = AlertNumber(unwrapped)
+				if err := s.Number.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21160,14 +21142,8 @@ func (s *CodeScanningAlert) Decode(d *jx.Decoder) error {
 		case "created_at":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				{
-					var unwrapped time.Time
-					v, err := json.DecodeDateTime(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					s.CreatedAt = AlertCreatedAt(unwrapped)
+				if err := s.CreatedAt.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21176,14 +21152,8 @@ func (s *CodeScanningAlert) Decode(d *jx.Decoder) error {
 		case "url":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				{
-					var unwrapped url.URL
-					v, err := json.DecodeURI(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					s.URL = AlertURL(unwrapped)
+				if err := s.URL.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21192,14 +21162,8 @@ func (s *CodeScanningAlert) Decode(d *jx.Decoder) error {
 		case "html_url":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				{
-					var unwrapped url.URL
-					v, err := json.DecodeURI(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					s.HTMLURL = AlertHTMLURL(unwrapped)
+				if err := s.HTMLURL.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21219,14 +21183,8 @@ func (s *CodeScanningAlert) Decode(d *jx.Decoder) error {
 		case "instances_url":
 			requiredBitSet[0] |= 1 << 5
 			if err := func() error {
-				{
-					var unwrapped url.URL
-					v, err := json.DecodeURI(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					s.InstancesURL = AlertInstancesURL(unwrapped)
+				if err := s.InstancesURL.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21906,14 +21864,8 @@ func (s *CodeScanningAlertItems) Decode(d *jx.Decoder) error {
 		case "number":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				{
-					var unwrapped int
-					v, err := d.Int()
-					unwrapped = int(v)
-					if err != nil {
-						return err
-					}
-					s.Number = AlertNumber(unwrapped)
+				if err := s.Number.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21922,14 +21874,8 @@ func (s *CodeScanningAlertItems) Decode(d *jx.Decoder) error {
 		case "created_at":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				{
-					var unwrapped time.Time
-					v, err := json.DecodeDateTime(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					s.CreatedAt = AlertCreatedAt(unwrapped)
+				if err := s.CreatedAt.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21938,14 +21884,8 @@ func (s *CodeScanningAlertItems) Decode(d *jx.Decoder) error {
 		case "url":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				{
-					var unwrapped url.URL
-					v, err := json.DecodeURI(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					s.URL = AlertURL(unwrapped)
+				if err := s.URL.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21954,14 +21894,8 @@ func (s *CodeScanningAlertItems) Decode(d *jx.Decoder) error {
 		case "html_url":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				{
-					var unwrapped url.URL
-					v, err := json.DecodeURI(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					s.HTMLURL = AlertHTMLURL(unwrapped)
+				if err := s.HTMLURL.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -21970,14 +21904,8 @@ func (s *CodeScanningAlertItems) Decode(d *jx.Decoder) error {
 		case "instances_url":
 			requiredBitSet[0] |= 1 << 4
 			if err := func() error {
-				{
-					var unwrapped url.URL
-					v, err := json.DecodeURI(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					s.InstancesURL = AlertInstancesURL(unwrapped)
+				if err := s.InstancesURL.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22881,14 +22809,8 @@ func (s *CodeScanningAnalysis) Decode(d *jx.Decoder) error {
 		case "ref":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					s.Ref = CodeScanningRef(unwrapped)
+				if err := s.Ref.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22897,14 +22819,8 @@ func (s *CodeScanningAnalysis) Decode(d *jx.Decoder) error {
 		case "commit_sha":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					s.CommitSha = CodeScanningAnalysisCommitSha(unwrapped)
+				if err := s.CommitSha.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22913,14 +22829,8 @@ func (s *CodeScanningAnalysis) Decode(d *jx.Decoder) error {
 		case "analysis_key":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					s.AnalysisKey = CodeScanningAnalysisAnalysisKey(unwrapped)
+				if err := s.AnalysisKey.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22929,14 +22839,8 @@ func (s *CodeScanningAnalysis) Decode(d *jx.Decoder) error {
 		case "environment":
 			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					s.Environment = CodeScanningAnalysisEnvironment(unwrapped)
+				if err := s.Environment.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -22967,14 +22871,8 @@ func (s *CodeScanningAnalysis) Decode(d *jx.Decoder) error {
 		case "created_at":
 			requiredBitSet[0] |= 1 << 6
 			if err := func() error {
-				{
-					var unwrapped time.Time
-					v, err := json.DecodeDateTime(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					s.CreatedAt = CodeScanningAnalysisCreatedAt(unwrapped)
+				if err := s.CreatedAt.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23019,14 +22917,8 @@ func (s *CodeScanningAnalysis) Decode(d *jx.Decoder) error {
 		case "url":
 			requiredBitSet[1] |= 1 << 2
 			if err := func() error {
-				{
-					var unwrapped url.URL
-					v, err := json.DecodeURI(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					s.URL = CodeScanningAnalysisURL(unwrapped)
+				if err := s.URL.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -23035,14 +22927,8 @@ func (s *CodeScanningAnalysis) Decode(d *jx.Decoder) error {
 		case "sarif_id":
 			requiredBitSet[1] |= 1 << 3
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					s.SarifID = CodeScanningAnalysisSarifID(unwrapped)
+				if err := s.SarifID.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24558,14 +24444,8 @@ func (s *CodeScanningUploadSarifReq) Decode(d *jx.Decoder) error {
 		case "commit_sha":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					s.CommitSha = CodeScanningAnalysisCommitSha(unwrapped)
+				if err := s.CommitSha.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24574,14 +24454,8 @@ func (s *CodeScanningUploadSarifReq) Decode(d *jx.Decoder) error {
 		case "ref":
 			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					s.Ref = CodeScanningRef(unwrapped)
+				if err := s.Ref.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24590,14 +24464,8 @@ func (s *CodeScanningUploadSarifReq) Decode(d *jx.Decoder) error {
 		case "sarif":
 			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
-				{
-					var unwrapped string
-					v, err := d.Str()
-					unwrapped = string(v)
-					if err != nil {
-						return err
-					}
-					s.Sarif = CodeScanningAnalysisSarifFile(unwrapped)
+				if err := s.Sarif.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -24966,20 +24834,8 @@ func (s *CodeSearchResultItem) Decode(d *jx.Decoder) error {
 			if err := func() error {
 				s.TextMatches = nil
 				var elem SearchResultTextMatches
-				{
-					var unwrapped []SearchResultTextMatchesItem
-					unwrapped = make([]SearchResultTextMatchesItem, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SearchResultTextMatchesItem
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					elem = SearchResultTextMatches(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				s.TextMatches = &elem
 				return nil
@@ -28183,20 +28039,8 @@ func (s *CommitSearchResultItem) Decode(d *jx.Decoder) error {
 			if err := func() error {
 				s.TextMatches = nil
 				var elem SearchResultTextMatches
-				{
-					var unwrapped []SearchResultTextMatchesItem
-					unwrapped = make([]SearchResultTextMatchesItem, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SearchResultTextMatchesItem
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					elem = SearchResultTextMatches(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				s.TextMatches = &elem
 				return nil
@@ -57232,20 +57076,8 @@ func (s *IssueSearchResultItem) Decode(d *jx.Decoder) error {
 			if err := func() error {
 				s.TextMatches = nil
 				var elem SearchResultTextMatches
-				{
-					var unwrapped []SearchResultTextMatchesItem
-					unwrapped = make([]SearchResultTextMatchesItem, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SearchResultTextMatchesItem
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					elem = SearchResultTextMatches(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				s.TextMatches = &elem
 				return nil
@@ -62944,20 +62776,8 @@ func (s *LabelSearchResultItem) Decode(d *jx.Decoder) error {
 			if err := func() error {
 				s.TextMatches = nil
 				var elem SearchResultTextMatches
-				{
-					var unwrapped []SearchResultTextMatchesItem
-					unwrapped = make([]SearchResultTextMatchesItem, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SearchResultTextMatchesItem
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					elem = SearchResultTextMatches(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				s.TextMatches = &elem
 				return nil
@@ -95333,14 +95153,8 @@ func (s *OrgsCreateWebhookReqConfig) Decode(d *jx.Decoder) error {
 		case "url":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				{
-					var unwrapped url.URL
-					v, err := json.DecodeURI(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					s.URL = WebhookConfigURL(unwrapped)
+				if err := s.URL.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -96803,14 +96617,8 @@ func (s *OrgsUpdateWebhookReqConfig) Decode(d *jx.Decoder) error {
 		case "url":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				{
-					var unwrapped url.URL
-					v, err := json.DecodeURI(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					s.URL = WebhookConfigURL(unwrapped)
+				if err := s.URL.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -129522,20 +129330,8 @@ func (s *RepoSearchResultItem) Decode(d *jx.Decoder) error {
 			if err := func() error {
 				s.TextMatches = nil
 				var elem SearchResultTextMatches
-				{
-					var unwrapped []SearchResultTextMatchesItem
-					unwrapped = make([]SearchResultTextMatchesItem, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SearchResultTextMatchesItem
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					elem = SearchResultTextMatches(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				s.TextMatches = &elem
 				return nil
@@ -135804,22 +135600,8 @@ func (s *ReposGetCodeFrequencyStatsOKApplicationJSON) Decode(d *jx.Decoder) erro
 		unwrapped = make([]CodeFrequencyStat, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem CodeFrequencyStat
-			{
-				var unwrapped []int
-				unwrapped = make([]int, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int
-					v, err := d.Int()
-					elem = int(v)
-					if err != nil {
-						return err
-					}
-					unwrapped = append(unwrapped, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				elem = CodeFrequencyStat(unwrapped)
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
 			unwrapped = append(unwrapped, elem)
 			return nil
@@ -135998,22 +135780,8 @@ func (s *ReposGetPunchCardStatsOKApplicationJSON) Decode(d *jx.Decoder) error {
 		unwrapped = make([]CodeFrequencyStat, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
 			var elem CodeFrequencyStat
-			{
-				var unwrapped []int
-				unwrapped = make([]int, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem int
-					v, err := d.Int()
-					elem = int(v)
-					if err != nil {
-						return err
-					}
-					unwrapped = append(unwrapped, elem)
-					return nil
-				}); err != nil {
-					return err
-				}
-				elem = CodeFrequencyStat(unwrapped)
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
 			unwrapped = append(unwrapped, elem)
 			return nil
@@ -142140,14 +141908,8 @@ func (s *ReposUpdateWebhookReqConfig) Decode(d *jx.Decoder) error {
 		case "url":
 			requiredBitSet[0] |= 1 << 0
 			if err := func() error {
-				{
-					var unwrapped url.URL
-					v, err := json.DecodeURI(d)
-					unwrapped = v
-					if err != nil {
-						return err
-					}
-					s.URL = WebhookConfigURL(unwrapped)
+				if err := s.URL.Decode(d); err != nil {
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -164980,20 +164742,8 @@ func (s *TopicSearchResultItem) Decode(d *jx.Decoder) error {
 			if err := func() error {
 				s.TextMatches = nil
 				var elem SearchResultTextMatches
-				{
-					var unwrapped []SearchResultTextMatchesItem
-					unwrapped = make([]SearchResultTextMatchesItem, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SearchResultTextMatchesItem
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					elem = SearchResultTextMatches(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				s.TextMatches = &elem
 				return nil
@@ -166403,20 +166153,8 @@ func (s *UserSearchResultItem) Decode(d *jx.Decoder) error {
 			if err := func() error {
 				s.TextMatches = nil
 				var elem SearchResultTextMatches
-				{
-					var unwrapped []SearchResultTextMatchesItem
-					unwrapped = make([]SearchResultTextMatchesItem, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elem SearchResultTextMatchesItem
-						if err := elem.Decode(d); err != nil {
-							return err
-						}
-						unwrapped = append(unwrapped, elem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					elem = SearchResultTextMatches(unwrapped)
+				if err := elem.Decode(d); err != nil {
+					return err
 				}
 				s.TextMatches = &elem
 				return nil
