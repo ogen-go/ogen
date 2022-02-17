@@ -33,16 +33,11 @@ const graphQLQuery = `query ($query: String!) {
 fragment FileMatchFields on FileMatch {
   repository {
     name
-    language
-    description
   }
   file {
     name
     path
     byteSize
-    commit {
-      oid
-    }
     content
   }
 }

@@ -4,13 +4,7 @@ import "net/url"
 
 type (
 	Repository struct {
-		Name        string `json:"name"`
-		Language    string `json:"language"`
-		Description string `json:"description"`
-	}
-
-	Commit struct {
-		Oid string `json:"oid"`
+		Name string `json:"name"`
 	}
 
 	File struct {
@@ -18,7 +12,6 @@ type (
 		Size     int    `json:"size"`
 		Path     string `json:"path"`
 		ByteSize uint64 `json:"byteSize"`
-		Commit   Commit `json:"commit"`
 		Content  string `json:"content"`
 	}
 
