@@ -60,12 +60,6 @@ if err := d.Arr(func(d *jx.Decoder) error {
 	{{- $j := $t.JSON -}}
 	{{- if $t.IsPointer }}
 		{{- template "json/dec_pointer" $ }}
-	{{- else if $t.IsAlias }}
-		{
-			var unwrapped {{ $t.AliasTo.Go }}
-        	{{- template "json/dec" elem $t.AliasTo "unwrapped" }}
-			{{ $.Var }} = {{ $t.Go }}(unwrapped)
-		}
 	{{- else if $t.IsArray }}
 		{{ template "json/dec_array" $ }}
 	{{- else if $t.GenericOf }}
