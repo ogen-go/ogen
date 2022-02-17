@@ -33,10 +33,16 @@ const graphQLQuery = `query ($query: String!) {
 fragment FileMatchFields on FileMatch {
   repository {
     name
+    language
+    description
   }
   file {
     name
     path
+    byteSize
+    commit {
+      oid
+    }
     content
   }
 }
@@ -56,7 +62,8 @@ fragment SearchResultsAlertFields on SearchResults {
 
 func run(ctx context.Context) error {
 	var (
-		output       = flag.String("output", "./corpus", "path to output corpus")
+		output       = flag.String("output", "./corpus", "Path to corpus output")
+		stats        = flag.String("stats", "", "Path to stats output")
 		clean        = flag.Bool("clean", false, "Clean generated files before generation")
 		generateYaml = flag.Bool("yaml", false, "Query yaml files")
 		q            = flag.String("query", "", "Sourcegraph query")
@@ -80,7 +87,8 @@ func run(ctx context.Context) error {
 	var (
 		workers   = runtime.GOMAXPROCS(-1)
 		links     = make(chan FileMatch, workers)
-		reporters = Reporters{}
+		reporters = &Reporters{}
+		total     int
 	)
 	reporters.init(workers)
 
@@ -105,13 +113,14 @@ func run(ctx context.Context) error {
 				case <-ctx.Done():
 					return nil
 				case links <- m:
+					total++
 				}
 			}
 		}
 		return nil
 	})
 	g.Go(func() error {
-		return reporters.spawn(ctx, *clean, *output)
+		return reporters.run(ctx, *clean, *output)
 	})
 
 	var workersWg sync.WaitGroup
@@ -141,7 +150,16 @@ func run(ctx context.Context) error {
 	// Close readers.
 	reporters.close()
 
-	return g.Wait()
+	if err := g.Wait(); err != nil {
+		return errors.Wrap(err, "wait")
+	}
+
+	if o := *stats; o != "" {
+		if err := reporters.writeStats(o, total); err != nil {
+			return errors.Wrap(err, "write stats")
+		}
+	}
+	return nil
 }
 
 func main() {
