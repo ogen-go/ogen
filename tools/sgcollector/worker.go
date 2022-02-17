@@ -6,6 +6,7 @@ import (
 	"crypto/sha256"
 	"fmt"
 	"go/format"
+	"sort"
 	"strings"
 
 	"github.com/ghodss/yaml"
@@ -120,9 +121,15 @@ func generate(data []byte, isYAML bool) error {
 		InferSchemaType:      true,
 		IgnoreNotImplemented: []string{"all"},
 		NotImplementedHook: func(name string, err error) {
+			for _, existing := range notImpl {
+				if existing == name {
+					return
+				}
+			}
 			notImpl = append(notImpl, name)
 		},
 	})
+	sort.Strings(notImpl)
 	if err != nil {
 		if as := new(gen.ErrParseSpec); errors.As(err, &as) {
 			return &GenerateError{stage: Parse, notImpl: notImpl, err: err}
