@@ -195,6 +195,10 @@ func (s *sampleAPIServer) ErrorGet(ctx context.Context) (api.ErrorStatusCode, er
 	}, nil
 }
 
+func (s sampleAPIServer) TestFloatValidation(ctx context.Context, req api.TestFloatValidation) (api.TestFloatValidationOK, error) {
+	panic("implement me")
+}
+
 func (s *sampleAPIServer) TestObjectQueryParameter(ctx context.Context, params api.TestObjectQueryParameterParams) (api.TestObjectQueryParameterOK, error) {
 	if param, ok := params.FormObject.Get(); ok {
 		return api.TestObjectQueryParameterOK{

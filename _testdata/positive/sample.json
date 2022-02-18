@@ -599,6 +599,26 @@
         }
       }
     },
+    "/testFloatValidation": {
+      "post": {
+        "operationId": "testFloatValidation",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestFloatValidation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
     "/oneofBug": {
       "post": {
         "operationId": "oneofBug",
@@ -1349,6 +1369,24 @@
           },
           "oneOf-uuid-int-enum": {
             "$ref": "#/components/schemas/OneOfUUIDAndIntEnum"
+          }
+        }
+      },
+      "TestFloatValidation": {
+        "type": "object",
+        "required": [
+          "minmax",
+          "multipleOf"
+        ],
+        "properties": {
+          "minmax": {
+            "type": "number",
+            "minimum": 1.5,
+            "maximum": 2.0
+          },
+          "multipleOf": {
+            "type": "number",
+            "multipleOf": 5.0
           }
         }
       },
