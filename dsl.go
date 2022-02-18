@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"strings"
 
+	"github.com/go-faster/jx"
+
 	"github.com/ogen-go/ogen/internal/ir"
 	"github.com/ogen-go/ogen/internal/oas"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -869,14 +871,24 @@ func (s *Schema) SetEnum(e []json.RawMessage) *Schema {
 }
 
 // SetMultipleOf sets the MultipleOf of the Schema.
-func (s *Schema) SetMultipleOf(m *int) *Schema {
-	s.MultipleOf = m
+func (s *Schema) SetMultipleOf(m *uint64) *Schema {
+	if m != nil {
+		val := *m
+		e := jx.GetEncoder()
+		e.UInt64(val)
+		s.MultipleOf = e.Bytes()
+	}
 	return s
 }
 
 // SetMaximum sets the Maximum of the Schema.
 func (s *Schema) SetMaximum(m *int64) *Schema {
-	s.Maximum = m
+	if m != nil {
+		val := *m
+		e := jx.GetEncoder()
+		e.Int64(val)
+		s.Maximum = e.Bytes()
+	}
 	return s
 }
 
@@ -888,7 +900,12 @@ func (s *Schema) SetExclusiveMaximum(e bool) *Schema {
 
 // SetMinimum sets the Minimum of the Schema.
 func (s *Schema) SetMinimum(m *int64) *Schema {
-	s.Minimum = m
+	if m != nil {
+		val := *m
+		e := jx.GetEncoder()
+		e.Int64(val)
+		s.Minimum = e.Bytes()
+	}
 	return s
 }
 
@@ -905,7 +922,7 @@ func (s *Schema) SetMaxLength(m *uint64) *Schema {
 }
 
 // SetMinLength sets the MinLength of the Schema.
-func (s *Schema) SetMinLength(m *int64) *Schema {
+func (s *Schema) SetMinLength(m *uint64) *Schema {
 	s.MinLength = m
 	return s
 }

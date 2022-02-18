@@ -7,6 +7,23 @@ import (
 	"github.com/go-faster/jx"
 )
 
+// Num represents JSON number.
+type Num jx.Num
+
+// UnmarshalJSON implements json.Unmarshaler.
+func (n *Num) UnmarshalJSON(bytes []byte) error {
+	j, err := jx.DecodeBytes(bytes).Num()
+	if err != nil {
+		return errors.Wrapf(err, "invalid number %s", bytes)
+	}
+	if j.Str() {
+		return errors.Errorf("invalid number %s", bytes)
+	}
+
+	*n = Num(j)
+	return nil
+}
+
 type RawSchema struct {
 	Ref                  string                `json:"$ref,omitempty"`
 	Description          string                `json:"description,omitempty"`
@@ -22,13 +39,13 @@ type RawSchema struct {
 	AnyOf                []*RawSchema          `json:"anyOf,omitempty"`
 	Discriminator        *Discriminator        `json:"discriminator,omitempty"`
 	Enum                 []json.RawMessage     `json:"enum,omitempty"`
-	MultipleOf           *int                  `json:"multipleOf,omitempty"`
-	Maximum              *int64                `json:"maximum,omitempty"`
+	MultipleOf           Num                   `json:"multipleOf,omitempty"`
+	Maximum              Num                   `json:"maximum,omitempty"`
 	ExclusiveMaximum     bool                  `json:"exclusiveMaximum,omitempty"`
-	Minimum              *int64                `json:"minimum,omitempty"`
+	Minimum              Num                   `json:"minimum,omitempty"`
 	ExclusiveMinimum     bool                  `json:"exclusiveMinimum,omitempty"`
 	MaxLength            *uint64               `json:"maxLength,omitempty"`
-	MinLength            *int64                `json:"minLength,omitempty"`
+	MinLength            *uint64               `json:"minLength,omitempty"`
 	Pattern              string                `json:"pattern,omitempty"`
 	MaxItems             *uint64               `json:"maxItems,omitempty"`
 	MinItems             *uint64               `json:"minItems,omitempty"`

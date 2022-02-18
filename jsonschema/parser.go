@@ -1,6 +1,8 @@
 package jsonschema
 
 import (
+	"math/big"
+
 	"github.com/go-faster/errors"
 )
 
@@ -249,9 +251,13 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx resolveCtx, hook func(*Schem
 
 	case "number", "integer":
 		if mul := schema.MultipleOf; mul != nil {
+			rat := new(big.Rat)
+			if err := rat.UnmarshalText(mul); err != nil {
+				return nil, errors.Wrapf(err, "invalid number %q", mul)
+			}
 			// The value of "multipleOf" MUST be a number, strictly greater than 0.
-			if v := *mul; v <= 0 {
-				return nil, errors.Errorf("invalid multipleOf value %d", v)
+			if rat.Sign() != 1 {
+				return nil, errors.Errorf("invalid multipleOf value %q", mul)
 			}
 		}
 

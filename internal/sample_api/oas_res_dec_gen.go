@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -895,6 +897,15 @@ func decodeRecursiveMapGetResponse(resp *http.Response, span trace.Span) (res Re
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeTestFloatValidationResponse(resp *http.Response, span trace.Span) (res TestFloatValidationOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		return TestFloatValidationOK{}, nil
 	default:
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}

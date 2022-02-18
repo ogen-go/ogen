@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -2713,6 +2715,15 @@ type StringMap map[string]string
 
 // Ref: #/components/schemas/StringStringMap
 type StringStringMap map[string]StringMap
+
+// Ref: #/components/schemas/TestFloatValidation
+type TestFloatValidation struct {
+	Minmax     float64 "json:\"minmax\""
+	MultipleOf float64 "json:\"multipleOf\""
+}
+
+// TestFloatValidationOK is response for TestFloatValidation operation.
+type TestFloatValidationOK struct{}
 
 type TestObjectQueryParameterDeepObject struct {
 	Min    int    "json:\"min\""

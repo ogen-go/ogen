@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -377,8 +379,8 @@ func (s ActionsListOrgSecretsOK) Validate() error {
 func (s ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.TotalCount); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -477,8 +479,8 @@ func (s ActionsListSelectedReposForOrgSecretOK) Validate() error {
 func (s ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.TotalCount); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -506,8 +508,8 @@ func (s ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Valid
 func (s ActionsListSelfHostedRunnerGroupsForOrgOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.TotalCount); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -622,8 +624,8 @@ func (s ActionsListSelfHostedRunnersForRepoOK) Validate() error {
 func (s ActionsListSelfHostedRunnersInGroupForOrgOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.TotalCount); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -3547,8 +3549,8 @@ func (s CodeScanningUploadSarifReq) Validate() error {
 func (s CodeSearchResultItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.Score); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Score)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -3780,8 +3782,8 @@ func (s CommitSearchResultItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.Score); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Score)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -4154,8 +4156,8 @@ func (s EnterpriseAdminGetAuditLogOrder) Validate() error {
 func (s EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.TotalCount); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -4183,8 +4185,8 @@ func (s EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Valid
 func (s EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.TotalCount); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -4212,8 +4214,8 @@ func (s EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
 func (s EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.TotalCount); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -4260,8 +4262,8 @@ func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) Validate() error {
 	if err := func() error {
 		if s.TotalCount.Set {
 			if err := func() error {
-				if f := float64(s.TotalCount.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.TotalCount.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -4309,8 +4311,8 @@ func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) Validate() error {
 func (s EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.TotalCount); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -5543,8 +5545,8 @@ func (s HookConfig) Validate() error {
 func (s HookDelivery) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.Duration); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Duration)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -5561,8 +5563,8 @@ func (s HookDelivery) Validate() error {
 func (s HookDeliveryItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.Duration); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Duration)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -6050,8 +6052,8 @@ func (s IssueSearchResultItem) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.Score); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Score)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -6860,8 +6862,8 @@ func (s JobStepsItemStatus) Validate() error {
 func (s LabelSearchResultItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.Score); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Score)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -9690,12 +9692,14 @@ func (s ProtectedBranchPullRequestReview) Validate() error {
 		if s.RequiredApprovingReviewCount.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1,
-					MaxSet:       true,
-					Max:          6,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        true,
+					Max:           6,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.RequiredApprovingReviewCount.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -11324,8 +11328,8 @@ func (s ReleaseAssetState) Validate() error {
 func (s RepoSearchResultItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.Score); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Score)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -13125,8 +13129,8 @@ func (s Runner) Validate() error {
 func (s RunnerGroupsEnterprise) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.ID); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.ID)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -13143,8 +13147,8 @@ func (s RunnerGroupsEnterprise) Validate() error {
 func (s RunnerGroupsOrg) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.ID); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.ID)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -13244,8 +13248,8 @@ func (s ScimGroupListEnterprise) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.TotalResults); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.TotalResults)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -13255,8 +13259,8 @@ func (s ScimGroupListEnterprise) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.ItemsPerPage); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.ItemsPerPage)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -13266,8 +13270,8 @@ func (s ScimGroupListEnterprise) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.StartIndex); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.StartIndex)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -13341,8 +13345,8 @@ func (s ScimUserListEnterprise) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.TotalResults); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.TotalResults)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -13352,8 +13356,8 @@ func (s ScimUserListEnterprise) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.ItemsPerPage); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.ItemsPerPage)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -13363,8 +13367,8 @@ func (s ScimUserListEnterprise) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.StartIndex); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.StartIndex)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -14726,8 +14730,8 @@ func (s Topic) Validate() error {
 func (s TopicSearchResultItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.Score); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Score)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -14830,8 +14834,8 @@ func (s UserMarketplacePurchase) Validate() error {
 func (s UserSearchResultItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.Score); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Score)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -15329,8 +15333,8 @@ func (s WebhookConfigInsecureSsl) Validate() error {
 	case StringWebhookConfigInsecureSsl:
 		return nil // no validation needed
 	case Float64WebhookConfigInsecureSsl:
-		if f := float64(s.Float64); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Float64)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	default:

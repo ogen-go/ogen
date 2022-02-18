@@ -1,6 +1,7 @@
 package jsonschema
 
 import (
+	"fmt"
 	"strings"
 	"testing"
 
@@ -312,11 +313,18 @@ func TestInvalidMultipleOf(t *testing.T) {
 	parser := NewParser(Settings{
 		Resolver: components{},
 	})
-	for _, v := range values {
-		_, err := parser.Parse(&RawSchema{
-			Type:       "integer",
-			MultipleOf: &[]int{v}[0],
+	for _, typ := range []string{
+		"integer",
+		"number",
+	} {
+		t.Run(typ, func(t *testing.T) {
+			for _, v := range values {
+				_, err := parser.Parse(&RawSchema{
+					Type:       typ,
+					MultipleOf: []byte(fmt.Sprintf("%q", v)),
+				})
+				require.Errorf(t, err, "%d", v)
+			}
 		})
-		require.Errorf(t, err, "%d", v)
 	}
 }

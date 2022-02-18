@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -1502,8 +1504,8 @@ func decodeTestRequestNumberRequest(r *http.Request, span trace.Span) (req OptFl
 		if err := func() error {
 			if request.Set {
 				if err := func() error {
-					if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-						return errors.Errorf("%f float value is invalid", f)
+					if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+						return errors.Wrap(err, "float")
 					}
 					return nil
 				}(); err != nil {
@@ -1565,8 +1567,8 @@ func decodeTestRequestNumberArrayRequest(r *http.Request, span trace.Span) (req 
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-						return errors.Errorf("%f float value is invalid", f)
+					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+						return errors.Wrap(err, "float")
 					}
 					return nil
 				}(); err != nil {
@@ -1647,8 +1649,8 @@ func decodeTestRequestNumberArrayArrayRequest(r *http.Request, span trace.Span) 
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-								return errors.Errorf("%f float value is invalid", f)
+							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+								return errors.Wrap(err, "float")
 							}
 							return nil
 						}(); err != nil {
@@ -1716,8 +1718,8 @@ func decodeTestRequestNumberDoubleRequest(r *http.Request, span trace.Span) (req
 		if err := func() error {
 			if request.Set {
 				if err := func() error {
-					if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-						return errors.Errorf("%f float value is invalid", f)
+					if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+						return errors.Wrap(err, "float")
 					}
 					return nil
 				}(); err != nil {
@@ -1779,8 +1781,8 @@ func decodeTestRequestNumberDoubleArrayRequest(r *http.Request, span trace.Span)
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-						return errors.Errorf("%f float value is invalid", f)
+					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+						return errors.Wrap(err, "float")
 					}
 					return nil
 				}(); err != nil {
@@ -1861,8 +1863,8 @@ func decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request, span trace.
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-								return errors.Errorf("%f float value is invalid", f)
+							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+								return errors.Wrap(err, "float")
 							}
 							return nil
 						}(); err != nil {
@@ -1930,8 +1932,8 @@ func decodeTestRequestNumberDoubleNullableRequest(r *http.Request, span trace.Sp
 		if err := func() error {
 			if request.Set {
 				if err := func() error {
-					if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-						return errors.Errorf("%f float value is invalid", f)
+					if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+						return errors.Wrap(err, "float")
 					}
 					return nil
 				}(); err != nil {
@@ -1993,8 +1995,8 @@ func decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Request, span tra
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-						return errors.Errorf("%f float value is invalid", f)
+					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+						return errors.Wrap(err, "float")
 					}
 					return nil
 				}(); err != nil {
@@ -2075,8 +2077,8 @@ func decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.Request, spa
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-								return errors.Errorf("%f float value is invalid", f)
+							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+								return errors.Wrap(err, "float")
 							}
 							return nil
 						}(); err != nil {
@@ -2144,8 +2146,8 @@ func decodeTestRequestNumberFloatRequest(r *http.Request, span trace.Span) (req 
 		if err := func() error {
 			if request.Set {
 				if err := func() error {
-					if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-						return errors.Errorf("%f float value is invalid", f)
+					if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+						return errors.Wrap(err, "float")
 					}
 					return nil
 				}(); err != nil {
@@ -2207,8 +2209,8 @@ func decodeTestRequestNumberFloatArrayRequest(r *http.Request, span trace.Span) 
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-						return errors.Errorf("%f float value is invalid", f)
+					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+						return errors.Wrap(err, "float")
 					}
 					return nil
 				}(); err != nil {
@@ -2289,8 +2291,8 @@ func decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request, span trace.S
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-								return errors.Errorf("%f float value is invalid", f)
+							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+								return errors.Wrap(err, "float")
 							}
 							return nil
 						}(); err != nil {
@@ -2358,8 +2360,8 @@ func decodeTestRequestNumberFloatNullableRequest(r *http.Request, span trace.Spa
 		if err := func() error {
 			if request.Set {
 				if err := func() error {
-					if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-						return errors.Errorf("%f float value is invalid", f)
+					if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+						return errors.Wrap(err, "float")
 					}
 					return nil
 				}(); err != nil {
@@ -2421,8 +2423,8 @@ func decodeTestRequestNumberFloatNullableArrayRequest(r *http.Request, span trac
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-						return errors.Errorf("%f float value is invalid", f)
+					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+						return errors.Wrap(err, "float")
 					}
 					return nil
 				}(); err != nil {
@@ -2503,8 +2505,8 @@ func decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.Request, span
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-								return errors.Errorf("%f float value is invalid", f)
+							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+								return errors.Wrap(err, "float")
 							}
 							return nil
 						}(); err != nil {
@@ -3208,8 +3210,8 @@ func decodeTestRequestNumberNullableRequest(r *http.Request, span trace.Span) (r
 		if err := func() error {
 			if request.Set {
 				if err := func() error {
-					if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-						return errors.Errorf("%f float value is invalid", f)
+					if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+						return errors.Wrap(err, "float")
 					}
 					return nil
 				}(); err != nil {
@@ -3271,8 +3273,8 @@ func decodeTestRequestNumberNullableArrayRequest(r *http.Request, span trace.Spa
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-						return errors.Errorf("%f float value is invalid", f)
+					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+						return errors.Wrap(err, "float")
 					}
 					return nil
 				}(); err != nil {
@@ -3353,8 +3355,8 @@ func decodeTestRequestNumberNullableArrayArrayRequest(r *http.Request, span trac
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-								return errors.Errorf("%f float value is invalid", f)
+							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+								return errors.Wrap(err, "float")
 							}
 							return nil
 						}(); err != nil {
@@ -4899,8 +4901,8 @@ func decodeTestRequestRequiredNumberRequest(r *http.Request, span trace.Span) (r
 			return req, errors.Wrap(err, "decode TestRequestRequiredNumber:application/json request")
 		}
 		if err := func() error {
-			if f := float64(request); math.IsInf(f, 0) || math.IsNaN(f) {
-				return errors.Errorf("%f float value is invalid", f)
+			if err := (validate.Float{}).Validate(float64(request)); err != nil {
+				return errors.Wrap(err, "float")
 			}
 			return nil
 		}(); err != nil {
@@ -4959,8 +4961,8 @@ func decodeTestRequestRequiredNumberArrayRequest(r *http.Request, span trace.Spa
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-						return errors.Errorf("%f float value is invalid", f)
+					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+						return errors.Wrap(err, "float")
 					}
 					return nil
 				}(); err != nil {
@@ -5044,8 +5046,8 @@ func decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Request, span trac
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-								return errors.Errorf("%f float value is invalid", f)
+							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+								return errors.Wrap(err, "float")
 							}
 							return nil
 						}(); err != nil {
@@ -5112,8 +5114,8 @@ func decodeTestRequestRequiredNumberDoubleRequest(r *http.Request, span trace.Sp
 			return req, errors.Wrap(err, "decode TestRequestRequiredNumberDouble:application/json request")
 		}
 		if err := func() error {
-			if f := float64(request); math.IsInf(f, 0) || math.IsNaN(f) {
-				return errors.Errorf("%f float value is invalid", f)
+			if err := (validate.Float{}).Validate(float64(request)); err != nil {
+				return errors.Wrap(err, "float")
 			}
 			return nil
 		}(); err != nil {
@@ -5172,8 +5174,8 @@ func decodeTestRequestRequiredNumberDoubleArrayRequest(r *http.Request, span tra
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-						return errors.Errorf("%f float value is invalid", f)
+					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+						return errors.Wrap(err, "float")
 					}
 					return nil
 				}(); err != nil {
@@ -5257,8 +5259,8 @@ func decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.Request, spa
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-								return errors.Errorf("%f float value is invalid", f)
+							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+								return errors.Wrap(err, "float")
 							}
 							return nil
 						}(); err != nil {
@@ -5323,8 +5325,8 @@ func decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Request, span 
 			return req, errors.Wrap(err, "decode TestRequestRequiredNumberDoubleNullable:application/json request")
 		}
 		if err := func() error {
-			if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-				return errors.Errorf("%f float value is invalid", f)
+			if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+				return errors.Wrap(err, "float")
 			}
 			return nil
 			return nil
@@ -5384,8 +5386,8 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *http.Request, 
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-						return errors.Errorf("%f float value is invalid", f)
+					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+						return errors.Wrap(err, "float")
 					}
 					return nil
 				}(); err != nil {
@@ -5469,8 +5471,8 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r *http.Requ
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-								return errors.Errorf("%f float value is invalid", f)
+							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+								return errors.Wrap(err, "float")
 							}
 							return nil
 						}(); err != nil {
@@ -5537,8 +5539,8 @@ func decodeTestRequestRequiredNumberFloatRequest(r *http.Request, span trace.Spa
 			return req, errors.Wrap(err, "decode TestRequestRequiredNumberFloat:application/json request")
 		}
 		if err := func() error {
-			if f := float64(request); math.IsInf(f, 0) || math.IsNaN(f) {
-				return errors.Errorf("%f float value is invalid", f)
+			if err := (validate.Float{}).Validate(float64(request)); err != nil {
+				return errors.Wrap(err, "float")
 			}
 			return nil
 		}(); err != nil {
@@ -5597,8 +5599,8 @@ func decodeTestRequestRequiredNumberFloatArrayRequest(r *http.Request, span trac
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-						return errors.Errorf("%f float value is invalid", f)
+					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+						return errors.Wrap(err, "float")
 					}
 					return nil
 				}(); err != nil {
@@ -5682,8 +5684,8 @@ func decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.Request, span
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-								return errors.Errorf("%f float value is invalid", f)
+							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+								return errors.Wrap(err, "float")
 							}
 							return nil
 						}(); err != nil {
@@ -5748,8 +5750,8 @@ func decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Request, span t
 			return req, errors.Wrap(err, "decode TestRequestRequiredNumberFloatNullable:application/json request")
 		}
 		if err := func() error {
-			if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-				return errors.Errorf("%f float value is invalid", f)
+			if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+				return errors.Wrap(err, "float")
 			}
 			return nil
 			return nil
@@ -5809,8 +5811,8 @@ func decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *http.Request, s
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-						return errors.Errorf("%f float value is invalid", f)
+					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+						return errors.Wrap(err, "float")
 					}
 					return nil
 				}(); err != nil {
@@ -5894,8 +5896,8 @@ func decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r *http.Reque
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-								return errors.Errorf("%f float value is invalid", f)
+							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+								return errors.Wrap(err, "float")
 							}
 							return nil
 						}(); err != nil {
@@ -6640,8 +6642,8 @@ func decodeTestRequestRequiredNumberNullableRequest(r *http.Request, span trace.
 			return req, errors.Wrap(err, "decode TestRequestRequiredNumberNullable:application/json request")
 		}
 		if err := func() error {
-			if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-				return errors.Errorf("%f float value is invalid", f)
+			if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+				return errors.Wrap(err, "float")
 			}
 			return nil
 			return nil
@@ -6701,8 +6703,8 @@ func decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Request, span t
 			var failures []validate.FieldError
 			for i, elem := range request {
 				if err := func() error {
-					if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-						return errors.Errorf("%f float value is invalid", f)
+					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+						return errors.Wrap(err, "float")
 					}
 					return nil
 				}(); err != nil {
@@ -6786,8 +6788,8 @@ func decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *http.Request, s
 					var failures []validate.FieldError
 					for i, elem := range elem {
 						if err := func() error {
-							if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-								return errors.Errorf("%f float value is invalid", f)
+							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+								return errors.Wrap(err, "float")
 							}
 							return nil
 						}(); err != nil {

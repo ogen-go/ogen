@@ -5,7 +5,12 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
+
+	"github.com/ogen-go/ogen/jsonschema"
 )
+
+// Num represents JSON number.
+type Num = jsonschema.Num
 
 // Spec is the root document object of the OpenAPI document.
 type Spec struct {
@@ -317,7 +322,7 @@ type Schema struct {
 	//
 	// A numeric instance is only valid if division by this keyword's value
 	// results in an integer.
-	MultipleOf *int `json:"multipleOf,omitempty"`
+	MultipleOf Num `json:"multipleOf,omitempty"`
 
 	// The value of "maximum" MUST be a number, representing an upper limit
 	// for a numeric instance.
@@ -326,7 +331,7 @@ type Schema struct {
 	// "exclusiveMaximum" is true and instance is less than the provided
 	// value, or else if the instance is less than or exactly equal to the
 	// provided value.
-	Maximum *int64 `json:"maximum,omitempty"`
+	Maximum Num `json:"maximum,omitempty"`
 
 	// The value of "exclusiveMaximum" MUST be a boolean, representing
 	// whether the limit in "maximum" is exclusive or not.  An undefined
@@ -345,7 +350,7 @@ type Schema struct {
 	// "exclusiveMinimum" is true and instance is greater than the provided
 	// value, or else if the instance is greater than or exactly equal to
 	// the provided value.
-	Minimum *int64 `json:"minimum,omitempty"`
+	Minimum Num `json:"minimum,omitempty"`
 
 	// The value of "exclusiveMinimum" MUST be a boolean, representing
 	// whether the limit in "minimum" is exclusive or not.  An undefined
@@ -380,7 +385,7 @@ type Schema struct {
 	//
 	// "minLength", if absent, may be considered as being present with
 	// integer value 0.
-	MinLength *int64 `json:"minLength,omitempty"`
+	MinLength *uint64 `json:"minLength,omitempty"`
 
 	// The value of this keyword MUST be a string.  This string SHOULD be a
 	// valid regular expression, according to the ECMA 262 regular

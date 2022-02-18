@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -190,6 +192,10 @@ type Handler interface {
 	//
 	// GET /recursiveMap
 	RecursiveMapGet(ctx context.Context) (RecursiveMap, error)
+	// TestFloatValidation implements testFloatValidation operation.
+	//
+	// POST /testFloatValidation
+	TestFloatValidation(ctx context.Context, req TestFloatValidation) (TestFloatValidationOK, error)
 	// TestObjectQueryParameter implements testObjectQueryParameter operation.
 	//
 	// GET /testObjectQueryParameter

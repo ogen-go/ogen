@@ -35,15 +35,15 @@ type Schema struct {
 	Discriminator *Discriminator
 
 	// Numeric validation (Integer, Number).
-	Maximum          *int64
+	Maximum          Num
 	ExclusiveMaximum bool
-	Minimum          *int64
+	Minimum          Num
 	ExclusiveMinimum bool
-	MultipleOf       *int
+	MultipleOf       Num
 
 	// String validation.
 	MaxLength *uint64
-	MinLength *int64
+	MinLength *uint64
 	Pattern   string
 
 	// Array validation.

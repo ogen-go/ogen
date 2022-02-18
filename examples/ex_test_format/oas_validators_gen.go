@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -130,8 +132,8 @@ func (s TestRequestFormatTestReq) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.RequiredArrayNumber {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -158,8 +160,8 @@ func (s TestRequestFormatTestReq) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.RequiredArrayNumberDouble {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -186,8 +188,8 @@ func (s TestRequestFormatTestReq) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.RequiredArrayNumberFloat {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -597,8 +599,8 @@ func (s TestRequestFormatTestReq) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -642,8 +644,8 @@ func (s TestRequestFormatTestReq) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -687,8 +689,8 @@ func (s TestRequestFormatTestReq) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -1246,8 +1248,8 @@ func (s TestRequestFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.RequiredNumber); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.RequiredNumber)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -1257,8 +1259,8 @@ func (s TestRequestFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.RequiredNumberDouble); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.RequiredNumberDouble)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -1268,8 +1270,8 @@ func (s TestRequestFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.RequiredNumberFloat); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.RequiredNumberFloat)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -1320,8 +1322,8 @@ func (s TestRequestFormatTestReq) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.OptionalArrayNumber {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -1345,8 +1347,8 @@ func (s TestRequestFormatTestReq) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.OptionalArrayNumberDouble {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -1370,8 +1372,8 @@ func (s TestRequestFormatTestReq) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.OptionalArrayNumberFloat {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -1592,8 +1594,8 @@ func (s TestRequestFormatTestReq) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -1634,8 +1636,8 @@ func (s TestRequestFormatTestReq) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -1676,8 +1678,8 @@ func (s TestRequestFormatTestReq) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -2186,8 +2188,8 @@ func (s TestRequestFormatTestReq) Validate() error {
 	if err := func() error {
 		if s.OptionalNumber.Set {
 			if err := func() error {
-				if f := float64(s.OptionalNumber.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.OptionalNumber.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -2205,8 +2207,8 @@ func (s TestRequestFormatTestReq) Validate() error {
 	if err := func() error {
 		if s.OptionalNumberDouble.Set {
 			if err := func() error {
-				if f := float64(s.OptionalNumberDouble.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.OptionalNumberDouble.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -2224,8 +2226,8 @@ func (s TestRequestFormatTestReq) Validate() error {
 	if err := func() error {
 		if s.OptionalNumberFloat.Set {
 			if err := func() error {
-				if f := float64(s.OptionalNumberFloat.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.OptionalNumberFloat.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -2363,8 +2365,8 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.RequiredArrayNumber {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -2391,8 +2393,8 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.RequiredArrayNumberDouble {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -2419,8 +2421,8 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.RequiredArrayNumberFloat {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -2830,8 +2832,8 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -2875,8 +2877,8 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -2920,8 +2922,8 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -3479,8 +3481,8 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.RequiredNumber); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.RequiredNumber)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -3490,8 +3492,8 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.RequiredNumberDouble); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.RequiredNumberDouble)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -3501,8 +3503,8 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.RequiredNumberFloat); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.RequiredNumberFloat)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -3553,8 +3555,8 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.OptionalArrayNumber {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -3578,8 +3580,8 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.OptionalArrayNumberDouble {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -3603,8 +3605,8 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.OptionalArrayNumberFloat {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -3825,8 +3827,8 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -3867,8 +3869,8 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -3909,8 +3911,8 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -4419,8 +4421,8 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 	if err := func() error {
 		if s.OptionalNumber.Set {
 			if err := func() error {
-				if f := float64(s.OptionalNumber.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.OptionalNumber.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -4438,8 +4440,8 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 	if err := func() error {
 		if s.OptionalNumberDouble.Set {
 			if err := func() error {
-				if f := float64(s.OptionalNumberDouble.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.OptionalNumberDouble.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -4457,8 +4459,8 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 	if err := func() error {
 		if s.OptionalNumberFloat.Set {
 			if err := func() error {
-				if f := float64(s.OptionalNumberFloat.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.OptionalNumberFloat.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -4596,8 +4598,8 @@ func (s TestResponseFormatTestOK) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.RequiredArrayNumber {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -4624,8 +4626,8 @@ func (s TestResponseFormatTestOK) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.RequiredArrayNumberDouble {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -4652,8 +4654,8 @@ func (s TestResponseFormatTestOK) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.RequiredArrayNumberFloat {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -5063,8 +5065,8 @@ func (s TestResponseFormatTestOK) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -5108,8 +5110,8 @@ func (s TestResponseFormatTestOK) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -5153,8 +5155,8 @@ func (s TestResponseFormatTestOK) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -5712,8 +5714,8 @@ func (s TestResponseFormatTestOK) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.RequiredNumber); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.RequiredNumber)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -5723,8 +5725,8 @@ func (s TestResponseFormatTestOK) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.RequiredNumberDouble); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.RequiredNumberDouble)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -5734,8 +5736,8 @@ func (s TestResponseFormatTestOK) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.RequiredNumberFloat); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.RequiredNumberFloat)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -5786,8 +5788,8 @@ func (s TestResponseFormatTestOK) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.OptionalArrayNumber {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -5811,8 +5813,8 @@ func (s TestResponseFormatTestOK) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.OptionalArrayNumberDouble {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -5836,8 +5838,8 @@ func (s TestResponseFormatTestOK) Validate() error {
 		var failures []validate.FieldError
 		for i, elem := range s.OptionalArrayNumberFloat {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -6058,8 +6060,8 @@ func (s TestResponseFormatTestOK) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -6100,8 +6102,8 @@ func (s TestResponseFormatTestOK) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -6142,8 +6144,8 @@ func (s TestResponseFormatTestOK) Validate() error {
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -6652,8 +6654,8 @@ func (s TestResponseFormatTestOK) Validate() error {
 	if err := func() error {
 		if s.OptionalNumber.Set {
 			if err := func() error {
-				if f := float64(s.OptionalNumber.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.OptionalNumber.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -6671,8 +6673,8 @@ func (s TestResponseFormatTestOK) Validate() error {
 	if err := func() error {
 		if s.OptionalNumberDouble.Set {
 			if err := func() error {
-				if f := float64(s.OptionalNumberDouble.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.OptionalNumberDouble.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -6690,8 +6692,8 @@ func (s TestResponseFormatTestOK) Validate() error {
 	if err := func() error {
 		if s.OptionalNumberFloat.Set {
 			if err := func() error {
-				if f := float64(s.OptionalNumberFloat.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.OptionalNumberFloat.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {

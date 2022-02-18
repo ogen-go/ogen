@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -96,12 +98,14 @@ func (s Animation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: true,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           0,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  true,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.Width)); err != nil {
 			return errors.Wrap(err, "int")
 		}
@@ -114,12 +118,14 @@ func (s Animation) Validate() error {
 	}
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: true,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           0,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  true,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.Height)); err != nil {
 			return errors.Wrap(err, "int")
 		}
@@ -132,12 +138,14 @@ func (s Animation) Validate() error {
 	}
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: true,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           0,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  true,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.Duration)); err != nil {
 			return errors.Wrap(err, "int")
 		}
@@ -304,12 +312,14 @@ func (s Audio) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: true,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           0,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  true,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.Duration)); err != nil {
 			return errors.Wrap(err, "int")
 		}
@@ -477,12 +487,14 @@ func (s ChatInviteLink) Validate() error {
 		if s.MemberLimit.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1,
-					MaxSet:       true,
-					Max:          99999,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        true,
+					Max:           99999,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.MemberLimit.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -790,12 +802,14 @@ func (s CreateChatInviteLink) Validate() error {
 		if s.MemberLimit.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1,
-					MaxSet:       true,
-					Max:          99999,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        true,
+					Max:           99999,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.MemberLimit.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -940,12 +954,14 @@ func (s EditChatInviteLink) Validate() error {
 		if s.MemberLimit.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1,
-					MaxSet:       true,
-					Max:          99999,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        true,
+					Max:           99999,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.MemberLimit.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -1048,8 +1064,8 @@ func (s EditMessageCaption) Validate() error {
 func (s EditMessageLiveLocation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.Latitude); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -1059,8 +1075,8 @@ func (s EditMessageLiveLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.Longitude); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Longitude)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -1072,8 +1088,8 @@ func (s EditMessageLiveLocation) Validate() error {
 	if err := func() error {
 		if s.HorizontalAccuracy.Set {
 			if err := func() error {
-				if f := float64(s.HorizontalAccuracy.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.HorizontalAccuracy.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -1092,12 +1108,14 @@ func (s EditMessageLiveLocation) Validate() error {
 		if s.Heading.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1,
-					MaxSet:       true,
-					Max:          360,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        true,
+					Max:           360,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Heading.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -1118,12 +1136,14 @@ func (s EditMessageLiveLocation) Validate() error {
 		if s.ProximityAlertRadius.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1,
-					MaxSet:       true,
-					Max:          100000,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        true,
+					Max:           100000,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.ProximityAlertRadius.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -1493,12 +1513,14 @@ func (s GetUpdates) Validate() error {
 		if s.Limit.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1,
-					MaxSet:       true,
-					Max:          100,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        true,
+					Max:           100,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Limit.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -1526,12 +1548,14 @@ func (s GetUserProfilePhotos) Validate() error {
 		if s.Limit.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1,
-					MaxSet:       true,
-					Max:          100,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        true,
+					Max:           100,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Limit.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -1843,12 +1867,14 @@ func (s InlineQueryResultArticle) Validate() error {
 		if s.ThumbWidth.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.ThumbWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -1869,12 +1895,14 @@ func (s InlineQueryResultArticle) Validate() error {
 		if s.ThumbHeight.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.ThumbHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -1973,12 +2001,14 @@ func (s InlineQueryResultAudio) Validate() error {
 		if s.AudioDuration.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.AudioDuration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -2985,12 +3015,14 @@ func (s InlineQueryResultContact) Validate() error {
 		if s.ThumbWidth.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.ThumbWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -3011,12 +3043,14 @@ func (s InlineQueryResultContact) Validate() error {
 		if s.ThumbHeight.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.ThumbHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -3153,12 +3187,14 @@ func (s InlineQueryResultDocument) Validate() error {
 		if s.ThumbWidth.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.ThumbWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -3179,12 +3215,14 @@ func (s InlineQueryResultDocument) Validate() error {
 		if s.ThumbHeight.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.ThumbHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -3276,12 +3314,14 @@ func (s InlineQueryResultGif) Validate() error {
 		if s.GIFWidth.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.GIFWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -3302,12 +3342,14 @@ func (s InlineQueryResultGif) Validate() error {
 		if s.GIFHeight.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.GIFHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -3328,12 +3370,14 @@ func (s InlineQueryResultGif) Validate() error {
 		if s.GIFDuration.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.GIFDuration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -3448,8 +3492,8 @@ func (s InlineQueryResultGif) Validate() error {
 func (s InlineQueryResultLocation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.Latitude); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -3459,8 +3503,8 @@ func (s InlineQueryResultLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.Longitude); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Longitude)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -3472,8 +3516,8 @@ func (s InlineQueryResultLocation) Validate() error {
 	if err := func() error {
 		if s.HorizontalAccuracy.Set {
 			if err := func() error {
-				if f := float64(s.HorizontalAccuracy.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.HorizontalAccuracy.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -3492,12 +3536,14 @@ func (s InlineQueryResultLocation) Validate() error {
 		if s.LivePeriod.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          60,
-					MaxSet:       true,
-					Max:          86400,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           60,
+					MaxSet:        true,
+					Max:           86400,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.LivePeriod.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -3518,12 +3564,14 @@ func (s InlineQueryResultLocation) Validate() error {
 		if s.Heading.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1,
-					MaxSet:       true,
-					Max:          360,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        true,
+					Max:           360,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Heading.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -3544,12 +3592,14 @@ func (s InlineQueryResultLocation) Validate() error {
 		if s.ProximityAlertRadius.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1,
-					MaxSet:       true,
-					Max:          100000,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        true,
+					Max:           100000,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.ProximityAlertRadius.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -3608,12 +3658,14 @@ func (s InlineQueryResultLocation) Validate() error {
 		if s.ThumbWidth.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.ThumbWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -3634,12 +3686,14 @@ func (s InlineQueryResultLocation) Validate() error {
 		if s.ThumbHeight.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.ThumbHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -3686,12 +3740,14 @@ func (s InlineQueryResultMpeg4Gif) Validate() error {
 		if s.Mpeg4Width.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Mpeg4Width.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -3712,12 +3768,14 @@ func (s InlineQueryResultMpeg4Gif) Validate() error {
 		if s.Mpeg4Height.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Mpeg4Height.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -3738,12 +3796,14 @@ func (s InlineQueryResultMpeg4Gif) Validate() error {
 		if s.Mpeg4Duration.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Mpeg4Duration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -3880,12 +3940,14 @@ func (s InlineQueryResultPhoto) Validate() error {
 		if s.PhotoWidth.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.PhotoWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -3906,12 +3968,14 @@ func (s InlineQueryResultPhoto) Validate() error {
 		if s.PhotoHeight.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.PhotoHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -4026,8 +4090,8 @@ func (s InlineQueryResultPhoto) Validate() error {
 func (s InlineQueryResultVenue) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.Latitude); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -4037,8 +4101,8 @@ func (s InlineQueryResultVenue) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.Longitude); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Longitude)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -4089,12 +4153,14 @@ func (s InlineQueryResultVenue) Validate() error {
 		if s.ThumbWidth.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.ThumbWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -4115,12 +4181,14 @@ func (s InlineQueryResultVenue) Validate() error {
 		if s.ThumbHeight.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.ThumbHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -4219,12 +4287,14 @@ func (s InlineQueryResultVideo) Validate() error {
 		if s.VideoWidth.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.VideoWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -4245,12 +4315,14 @@ func (s InlineQueryResultVideo) Validate() error {
 		if s.VideoHeight.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.VideoHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -4271,12 +4343,14 @@ func (s InlineQueryResultVideo) Validate() error {
 		if s.VideoDuration.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.VideoDuration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -4413,12 +4487,14 @@ func (s InlineQueryResultVoice) Validate() error {
 		if s.VoiceDuration.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.VoiceDuration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -4586,12 +4662,14 @@ func (s InputInvoiceMessageContent) Validate() error {
 		if s.PhotoWidth.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.PhotoWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -4612,12 +4690,14 @@ func (s InputInvoiceMessageContent) Validate() error {
 		if s.PhotoHeight.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.PhotoHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -4642,8 +4722,8 @@ func (s InputInvoiceMessageContent) Validate() error {
 func (s InputLocationMessageContent) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.Latitude); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -4653,8 +4733,8 @@ func (s InputLocationMessageContent) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.Longitude); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Longitude)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -4666,8 +4746,8 @@ func (s InputLocationMessageContent) Validate() error {
 	if err := func() error {
 		if s.HorizontalAccuracy.Set {
 			if err := func() error {
-				if f := float64(s.HorizontalAccuracy.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.HorizontalAccuracy.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -4686,12 +4766,14 @@ func (s InputLocationMessageContent) Validate() error {
 		if s.LivePeriod.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          60,
-					MaxSet:       true,
-					Max:          86400,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           60,
+					MaxSet:        true,
+					Max:           86400,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.LivePeriod.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -4712,12 +4794,14 @@ func (s InputLocationMessageContent) Validate() error {
 		if s.Heading.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1,
-					MaxSet:       true,
-					Max:          360,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        true,
+					Max:           360,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Heading.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -4738,12 +4822,14 @@ func (s InputLocationMessageContent) Validate() error {
 		if s.ProximityAlertRadius.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1,
-					MaxSet:       true,
-					Max:          100000,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        true,
+					Max:           100000,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.ProximityAlertRadius.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -4855,12 +4941,14 @@ func (s InputMediaAnimation) Validate() error {
 		if s.Width.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Width.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -4881,12 +4969,14 @@ func (s InputMediaAnimation) Validate() error {
 		if s.Height.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Height.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -4907,12 +4997,14 @@ func (s InputMediaAnimation) Validate() error {
 		if s.Duration.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Duration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -4992,12 +5084,14 @@ func (s InputMediaAudio) Validate() error {
 		if s.Duration.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Duration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -5195,12 +5289,14 @@ func (s InputMediaVideo) Validate() error {
 		if s.Width.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Width.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -5221,12 +5317,14 @@ func (s InputMediaVideo) Validate() error {
 		if s.Height.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Height.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -5247,12 +5345,14 @@ func (s InputMediaVideo) Validate() error {
 		if s.Duration.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Duration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -5360,8 +5460,8 @@ func (s InputTextMessageContent) Validate() error {
 func (s InputVenueMessageContent) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.Latitude); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -5371,8 +5471,8 @@ func (s InputVenueMessageContent) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.Longitude); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Longitude)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -5389,8 +5489,8 @@ func (s InputVenueMessageContent) Validate() error {
 func (s Location) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.Longitude); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Longitude)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -5400,8 +5500,8 @@ func (s Location) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.Latitude); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -5413,8 +5513,8 @@ func (s Location) Validate() error {
 	if err := func() error {
 		if s.HorizontalAccuracy.Set {
 			if err := func() error {
-				if f := float64(s.HorizontalAccuracy.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.HorizontalAccuracy.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -5433,12 +5533,14 @@ func (s Location) Validate() error {
 		if s.Heading.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1,
-					MaxSet:       true,
-					Max:          360,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        true,
+					Max:           360,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Heading.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -5463,8 +5565,8 @@ func (s Location) Validate() error {
 func (s MaskPosition) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.XShift); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.XShift)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -5474,8 +5576,8 @@ func (s MaskPosition) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.YShift); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.YShift)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -5485,8 +5587,8 @@ func (s MaskPosition) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.Scale); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Scale)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -6459,12 +6561,14 @@ func (s PhotoSize) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: true,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           0,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  true,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.Width)); err != nil {
 			return errors.Wrap(err, "int")
 		}
@@ -6477,12 +6581,14 @@ func (s PhotoSize) Validate() error {
 	}
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: true,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           0,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  true,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.Height)); err != nil {
 			return errors.Wrap(err, "int")
 		}
@@ -6963,12 +7069,14 @@ func (s SendAnimation) Validate() error {
 		if s.Duration.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Duration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -6989,12 +7097,14 @@ func (s SendAnimation) Validate() error {
 		if s.Width.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Width.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -7015,12 +7125,14 @@ func (s SendAnimation) Validate() error {
 		if s.Height.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Height.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -7195,12 +7307,14 @@ func (s SendAudio) Validate() error {
 		if s.Duration.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Duration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -7594,12 +7708,14 @@ func (s SendInvoice) Validate() error {
 		if s.PhotoWidth.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.PhotoWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -7620,12 +7736,14 @@ func (s SendInvoice) Validate() error {
 		if s.PhotoHeight.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.PhotoHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -7669,8 +7787,8 @@ func (s SendInvoice) Validate() error {
 func (s SendLocation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.Latitude); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -7680,8 +7798,8 @@ func (s SendLocation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.Longitude); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Longitude)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -7693,8 +7811,8 @@ func (s SendLocation) Validate() error {
 	if err := func() error {
 		if s.HorizontalAccuracy.Set {
 			if err := func() error {
-				if f := float64(s.HorizontalAccuracy.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.HorizontalAccuracy.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -7713,12 +7831,14 @@ func (s SendLocation) Validate() error {
 		if s.LivePeriod.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          60,
-					MaxSet:       true,
-					Max:          86400,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           60,
+					MaxSet:        true,
+					Max:           86400,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.LivePeriod.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -7739,12 +7859,14 @@ func (s SendLocation) Validate() error {
 		if s.Heading.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1,
-					MaxSet:       true,
-					Max:          360,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        true,
+					Max:           360,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Heading.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -7765,12 +7887,14 @@ func (s SendLocation) Validate() error {
 		if s.ProximityAlertRadius.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1,
-					MaxSet:       true,
-					Max:          100000,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        true,
+					Max:           100000,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.ProximityAlertRadius.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -8278,8 +8402,8 @@ func (s SendStickerReplyMarkup) Validate() error {
 func (s SendVenue) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.Latitude); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -8289,8 +8413,8 @@ func (s SendVenue) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.Longitude); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Longitude)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -8353,12 +8477,14 @@ func (s SendVideo) Validate() error {
 		if s.Duration.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Duration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -8379,12 +8505,14 @@ func (s SendVideo) Validate() error {
 		if s.Width.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Width.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -8405,12 +8533,14 @@ func (s SendVideo) Validate() error {
 		if s.Height.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Height.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -8509,12 +8639,14 @@ func (s SendVideoNote) Validate() error {
 		if s.Duration.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Duration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -8661,12 +8793,14 @@ func (s SendVoice) Validate() error {
 		if s.Duration.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: true,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  true,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.Duration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -8909,12 +9043,14 @@ func (s Sticker) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: true,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           0,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  true,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.Width)); err != nil {
 			return errors.Wrap(err, "int")
 		}
@@ -8927,12 +9063,14 @@ func (s Sticker) Validate() error {
 	}
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: true,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           0,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  true,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.Height)); err != nil {
 			return errors.Wrap(err, "int")
 		}
@@ -9347,12 +9485,14 @@ func (s Video) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: true,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           0,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  true,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.Width)); err != nil {
 			return errors.Wrap(err, "int")
 		}
@@ -9365,12 +9505,14 @@ func (s Video) Validate() error {
 	}
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: true,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           0,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  true,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.Height)); err != nil {
 			return errors.Wrap(err, "int")
 		}
@@ -9383,12 +9525,14 @@ func (s Video) Validate() error {
 	}
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: true,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           0,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  true,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.Duration)); err != nil {
 			return errors.Wrap(err, "int")
 		}
@@ -9427,12 +9571,14 @@ func (s VideoNote) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: true,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           0,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  true,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.Duration)); err != nil {
 			return errors.Wrap(err, "int")
 		}
@@ -9471,12 +9617,14 @@ func (s Voice) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: true,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           0,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  true,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.Duration)); err != nil {
 			return errors.Wrap(err, "int")
 		}
@@ -9496,12 +9644,14 @@ func (s VoiceChatEnded) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: true,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           0,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  true,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.Duration)); err != nil {
 			return errors.Wrap(err, "int")
 		}

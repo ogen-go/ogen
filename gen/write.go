@@ -30,53 +30,73 @@ func (t TemplateConfig) SkipTest(typ *ir.Type) bool {
 	return t.skipTestRegex != nil && t.skipTestRegex.MatchString(typ.Name)
 }
 
-// RegexStrings returns slice of all unique regex validators.
-func (t TemplateConfig) RegexStrings() (r []string) {
+func (t TemplateConfig) collectStrings(cb func(typ *ir.Type) []string) (r []string) {
 	var (
-		addRegex func(typ *ir.Type)
-		m        = map[string]struct{}{}
-		seen     = map[*ir.Type]struct{}{}
+		add  func(typ *ir.Type)
+		m    = map[string]struct{}{}
+		seen = map[*ir.Type]struct{}{}
 	)
-	addRegex = func(typ *ir.Type) {
+	add = func(typ *ir.Type) {
 		_, skip := seen[typ]
 		if typ == nil || skip {
 			return
 		}
 		seen[typ] = struct{}{}
-
-		if r := typ.Validators.String.Regex; r != nil {
-			m[r.String()] = struct{}{}
+		for _, got := range cb(typ) {
+			m[got] = struct{}{}
 		}
+
 		for _, f := range typ.Fields {
-			addRegex(f.Type)
+			add(f.Type)
 		}
 		for _, f := range typ.SumOf {
-			addRegex(f)
+			add(f)
 		}
-		addRegex(typ.AliasTo)
-		addRegex(typ.PointerTo)
-		addRegex(typ.Item)
+		add(typ.AliasTo)
+		add(typ.PointerTo)
+		add(typ.GenericOf)
+		add(typ.Item)
 	}
 
 	for _, typ := range t.Types {
-		addRegex(typ)
+		add(typ)
 	}
 	for _, typ := range t.Interfaces {
-		addRegex(typ)
+		add(typ)
 	}
 	if t.Error != nil {
-		addRegex(t.Error.NoContent)
+		add(t.Error.NoContent)
 		for _, typ := range t.Error.Contents {
-			addRegex(typ)
+			add(typ)
 		}
 	}
-	addRegex(t.ErrorType)
+	add(t.ErrorType)
 
 	for exp := range m {
 		r = append(r, exp)
 	}
 	sort.Strings(r)
 	return r
+}
+
+// RegexStrings returns slice of all unique regex validators.
+func (t TemplateConfig) RegexStrings() (r []string) {
+	return t.collectStrings(func(typ *ir.Type) []string {
+		if r := typ.Validators.String.Regex; r != nil {
+			return []string{r.String()}
+		}
+		return nil
+	})
+}
+
+// RatStrings returns slice of all unique big.Rat (multipleOf validation).
+func (t TemplateConfig) RatStrings() (r []string) {
+	return t.collectStrings(func(typ *ir.Type) []string {
+		if r := typ.Validators.Float.MultipleOf; r != nil {
+			return []string{r.String()}
+		}
+		return nil
+	})
 }
 
 // FileSystem represents a directory of generated package.

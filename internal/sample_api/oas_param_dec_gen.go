@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -451,12 +453,14 @@ func decodePetGetParams(args [0]string, r *http.Request) (PetGetParams, error) {
 			}
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1337,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1337,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(params.PetID)); err != nil {
 					return errors.Wrap(err, "int")
 				}

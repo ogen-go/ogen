@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -90,8 +92,8 @@ func (s Candle) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.O); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.O)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -101,8 +103,8 @@ func (s Candle) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.C); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.C)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -112,8 +114,8 @@ func (s Candle) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.H); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.H)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -123,8 +125,8 @@ func (s Candle) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.L); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.L)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -303,8 +305,8 @@ func (s CurrencyPosition) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.Balance); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Balance)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -316,8 +318,8 @@ func (s CurrencyPosition) Validate() error {
 	if err := func() error {
 		if s.Blocked.Set {
 			if err := func() error {
-				if f := float64(s.Blocked.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.Blocked.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -365,8 +367,8 @@ func (s LimitOrderRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.Price); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Price)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -403,8 +405,8 @@ func (s MarketInstrument) Validate() error {
 	if err := func() error {
 		if s.MinPriceIncrement.Set {
 			if err := func() error {
-				if f := float64(s.MinPriceIncrement.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.MinPriceIncrement.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -557,8 +559,8 @@ func (s MoneyAmount) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Value)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -641,8 +643,8 @@ func (s Operation) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.Payment); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Payment)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -654,8 +656,8 @@ func (s Operation) Validate() error {
 	if err := func() error {
 		if s.Price.Set {
 			if err := func() error {
-				if f := float64(s.Price.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.Price.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -728,8 +730,8 @@ func (s OperationStatus) Validate() error {
 func (s OperationTrade) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.Price); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Price)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -891,8 +893,8 @@ func (s Order) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.Price); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Price)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -909,8 +911,8 @@ func (s Order) Validate() error {
 func (s OrderResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.Price); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Price)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -1028,8 +1030,8 @@ func (s Orderbook) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.MinPriceIncrement); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.MinPriceIncrement)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -1041,8 +1043,8 @@ func (s Orderbook) Validate() error {
 	if err := func() error {
 		if s.FaceValue.Set {
 			if err := func() error {
-				if f := float64(s.FaceValue.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.FaceValue.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -1060,8 +1062,8 @@ func (s Orderbook) Validate() error {
 	if err := func() error {
 		if s.LastPrice.Set {
 			if err := func() error {
-				if f := float64(s.LastPrice.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.LastPrice.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -1079,8 +1081,8 @@ func (s Orderbook) Validate() error {
 	if err := func() error {
 		if s.ClosePrice.Set {
 			if err := func() error {
-				if f := float64(s.ClosePrice.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.ClosePrice.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -1098,8 +1100,8 @@ func (s Orderbook) Validate() error {
 	if err := func() error {
 		if s.LimitUp.Set {
 			if err := func() error {
-				if f := float64(s.LimitUp.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.LimitUp.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -1117,8 +1119,8 @@ func (s Orderbook) Validate() error {
 	if err := func() error {
 		if s.LimitDown.Set {
 			if err := func() error {
-				if f := float64(s.LimitDown.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.LimitDown.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -1354,8 +1356,8 @@ func (s PortfolioPosition) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.Balance); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Balance)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -1367,8 +1369,8 @@ func (s PortfolioPosition) Validate() error {
 	if err := func() error {
 		if s.Blocked.Set {
 			if err := func() error {
-				if f := float64(s.Blocked.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.Blocked.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -1563,8 +1565,8 @@ func (s SandboxSetCurrencyBalanceRequest) Validate() error {
 		})
 	}
 	if err := func() error {
-		if f := float64(s.Balance); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Balance)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -1581,8 +1583,8 @@ func (s SandboxSetCurrencyBalanceRequest) Validate() error {
 func (s SandboxSetPositionBalanceRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
-		if f := float64(s.Balance); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(s.Balance)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -1601,8 +1603,8 @@ func (s SearchMarketInstrument) Validate() error {
 	if err := func() error {
 		if s.MinPriceIncrement.Set {
 			if err := func() error {
-				if f := float64(s.MinPriceIncrement.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.MinPriceIncrement.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
