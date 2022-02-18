@@ -38,7 +38,6 @@ func (g *Generator) generateSchema(ctx *genctx, name string, schema *jsonschema.
 		if err := ctx.saveRef(ref, t); err != nil {
 			return nil, errors.Wrap(err, "save referenced type")
 		}
-		// fmt.Println("saving ref", ref)
 	}
 
 	return t, nil
