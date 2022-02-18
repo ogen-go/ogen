@@ -4,7 +4,7 @@ import "github.com/go-faster/errors"
 
 // Int validates integers.
 type Int struct {
-	MultipleOf    int
+	MultipleOf    uint64
 	MultipleOfSet bool
 
 	Min          int64
@@ -17,7 +17,7 @@ type Int struct {
 }
 
 // SetMultipleOf sets multipleOf validator.
-func (t *Int) SetMultipleOf(v int) {
+func (t *Int) SetMultipleOf(v uint64) {
 	t.MultipleOfSet = true
 	t.MultipleOf = v
 }
@@ -59,7 +59,11 @@ func (t Int) Validate(v int64) error {
 	if t.MaxSet && (v > t.Max || t.MaxExclusive && v == t.Max) {
 		return errors.Errorf("value %d greater than %d", v, t.Max)
 	}
-	if t.MultipleOfSet && (v%int64(t.MultipleOf)) != 0 {
+	// We don't care about sign when checking value using multipleOf.
+	if v < 0 {
+		v *= -1
+	}
+	if t.MultipleOfSet && (uint64(v)%t.MultipleOf) != 0 {
 		return errors.Errorf("%d is not multiple of %d", v, t.MultipleOf)
 	}
 

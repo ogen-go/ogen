@@ -22,7 +22,7 @@ type RawSchema struct {
 	AnyOf                []*RawSchema          `json:"anyOf,omitempty"`
 	Discriminator        *Discriminator        `json:"discriminator,omitempty"`
 	Enum                 []json.RawMessage     `json:"enum,omitempty"`
-	MultipleOf           *int                  `json:"multipleOf,omitempty"`
+	MultipleOf           *uint64               `json:"multipleOf,omitempty"`
 	Maximum              *int64                `json:"maximum,omitempty"`
 	ExclusiveMaximum     bool                  `json:"exclusiveMaximum,omitempty"`
 	Minimum              *int64                `json:"minimum,omitempty"`

@@ -39,7 +39,7 @@ type Schema struct {
 	ExclusiveMaximum bool
 	Minimum          *int64
 	ExclusiveMinimum bool
-	MultipleOf       *int
+	MultipleOf       *uint64
 
 	// String validation.
 	MaxLength *uint64
