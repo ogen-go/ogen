@@ -1286,6 +1286,56 @@
           }
         ]
       },
+      "OneOfMappingReference": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/OneOfMappingReferenceA"
+          },
+          {
+            "$ref": "#/components/schemas/OneOfMappingReferenceB"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "infoType",
+          "mapping": {
+            "simple": "#/components/schemas/OneOfMappingReferenceA",
+            "extended": "#/components/schemas/OneOfMappingReferenceB"
+          }
+        }
+      },
+      "OneOfMappingReferenceA": {
+        "type": "object",
+        "properties": {
+          "infoType": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "OneOfMappingReferenceB": {
+        "type": "object",
+        "properties": {
+          "infoType": {
+            "type": "string"
+          },
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "type": "object",
+            "not": {
+              "type": "integer"
+            }
+          },
+          "info": {
+            "type": "string"
+          }
+        }
+      },
       "AnyOfTest": {
         "description": "Type for testing some anyOf cases from Jaeger operator API schema",
         "required": [
@@ -1369,6 +1419,9 @@
           },
           "oneOf-uuid-int-enum": {
             "$ref": "#/components/schemas/OneOfUUIDAndIntEnum"
+          },
+          "oneOf-mapping-reference": {
+            "$ref": "#/components/schemas/OneOfMappingReference"
           }
         }
       },
