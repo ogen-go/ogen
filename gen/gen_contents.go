@@ -45,7 +45,7 @@ func (g *Generator) generateContents(ctx *genctx, name string, optional bool, co
 
 			case "application/octet-stream":
 				if schema != nil && !isBinary(schema) {
-					return errors.Errorf("octet stream with schema not supported")
+					return errors.Errorf("octet stream with %q schema not supported", schema.Type)
 				}
 
 				t := ir.Stream(typeName)
