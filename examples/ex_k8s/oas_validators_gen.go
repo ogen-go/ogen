@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -4227,8 +4229,8 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 	if err := func() error {
 		if s.Maximum.Set {
 			if err := func() error {
-				if f := float64(s.Maximum.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.Maximum.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -4246,8 +4248,8 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 	if err := func() error {
 		if s.Minimum.Set {
 			if err := func() error {
-				if f := float64(s.Minimum.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.Minimum.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -4265,8 +4267,8 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 	if err := func() error {
 		if s.MultipleOf.Set {
 			if err := func() error {
-				if f := float64(s.MultipleOf.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(s.MultipleOf.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {

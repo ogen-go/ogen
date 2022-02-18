@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -339,12 +341,14 @@ func (s MachineConfiguration) Validate() error {
 	}
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          1,
-			MaxSet:       true,
-			Max:          32,
-			MinExclusive: false,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           1,
+			MaxSet:        true,
+			Max:           32,
+			MinExclusive:  false,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.VcpuCount)); err != nil {
 			return errors.Wrap(err, "int")
 		}
@@ -564,12 +568,14 @@ func (s TokenBucket) Validate() error {
 		if s.OneTimeBurst.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.OneTimeBurst.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -588,12 +594,14 @@ func (s TokenBucket) Validate() error {
 	}
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: false,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           0,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  false,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.RefillTime)); err != nil {
 			return errors.Wrap(err, "int")
 		}
@@ -606,12 +614,14 @@ func (s TokenBucket) Validate() error {
 	}
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: false,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           0,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  false,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.Size)); err != nil {
 			return errors.Wrap(err, "int")
 		}
@@ -659,12 +669,14 @@ func (s Vsock) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          3,
-			MaxSet:       false,
-			Max:          0,
-			MinExclusive: false,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           3,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  false,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.GuestCid)); err != nil {
 			return errors.Wrap(err, "int")
 		}

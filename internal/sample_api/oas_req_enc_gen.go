@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -120,4 +122,12 @@ func encodePetUpdateNamePostRequestJSON(req OptString, span trace.Span) (data *j
 
 func encodePetUploadAvatarByIDRequestOctetStream(req PetUploadAvatarByIDReq, span trace.Span) (data io.Reader, err error) {
 	return req, nil
+}
+
+func encodeTestFloatValidationRequestJSON(req TestFloatValidation, span trace.Span) (data *jx.Writer, err error) {
+	e := jx.GetWriter()
+
+	req.Encode(e)
+
+	return e, nil
 }

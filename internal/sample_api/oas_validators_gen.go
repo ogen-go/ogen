@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -563,12 +565,14 @@ func (s Pet) Validate() error {
 	}
 	if err := func() error {
 		if err := (validate.Int{
-			MinSet:       true,
-			Min:          0,
-			MaxSet:       true,
-			Max:          100000,
-			MinExclusive: false,
-			MaxExclusive: false,
+			MinSet:        true,
+			Min:           0,
+			MaxSet:        true,
+			Max:           100000,
+			MinExclusive:  false,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
 		}).Validate(int64(s.ID)); err != nil {
 			return errors.Wrap(err, "int")
 		}
@@ -684,12 +688,14 @@ func (s Pet) Validate() error {
 		if s.TestInteger1.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       false,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        false,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: true,
+					MultipleOf:    10,
 				}).Validate(int64(s.TestInteger1.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -709,18 +715,17 @@ func (s Pet) Validate() error {
 	if err := func() error {
 		if s.TestFloat1.Set {
 			if err := func() error {
-				if err := (validate.Int{
-					MinSet:       true,
-					Min:          15,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: false,
-					MaxExclusive: false,
-				}).Validate(int64(s.TestFloat1.Value)); err != nil {
-					return errors.Wrap(err, "int")
-				}
-				if f := float64(s.TestFloat1.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{
+					MinSet:        true,
+					Min:           15,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: true,
+					MultipleOf:    ratMap["10/1"],
+				}).Validate(float64(s.TestFloat1.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -976,6 +981,53 @@ func (s StringStringMap) Validate() error {
 		}
 	}
 
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s TestFloatValidation) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := (validate.Float{
+			MinSet:        true,
+			Min:           1.5,
+			MaxSet:        true,
+			Max:           2,
+			MinExclusive:  false,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    nil,
+		}).Validate(float64(s.Minmax)); err != nil {
+			return errors.Wrap(err, "float")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "minmax",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.Float{
+			MinSet:        false,
+			Min:           0,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  false,
+			MaxExclusive:  false,
+			MultipleOfSet: true,
+			MultipleOf:    ratMap["5/1"],
+		}).Validate(float64(s.MultipleOf)); err != nil {
+			return errors.Wrap(err, "float")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "multipleOf",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}

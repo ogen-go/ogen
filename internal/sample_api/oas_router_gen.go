@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -633,6 +635,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						}
 					}
+				}
+			case 't': // Prefix: "testFloatValidation"
+				if l := len("testFloatValidation"); len(elem) >= l && elem[0:l] == "testFloatValidation" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: TestFloatValidation
+					s.handleTestFloatValidationRequest([0]string{}, w, r)
+
+					return
 				}
 			}
 		}
@@ -1256,6 +1271,20 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 						}
 					}
+				}
+			case 't': // Prefix: "testFloatValidation"
+				if l := len("testFloatValidation"); len(elem) >= l && elem[0:l] == "testFloatValidation" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: TestFloatValidation
+					r.name = "TestFloatValidation"
+					r.args = args
+					r.count = 0
+					return r, true
 				}
 			}
 		}

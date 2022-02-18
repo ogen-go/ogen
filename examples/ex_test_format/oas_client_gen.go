@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -1754,8 +1756,8 @@ func (c *Client) TestRequestNumber(ctx context.Context, request OptFloat64) (res
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
-				if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -1825,8 +1827,8 @@ func (c *Client) TestRequestNumberArray(ctx context.Context, request []float64) 
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -1907,8 +1909,8 @@ func (c *Client) TestRequestNumberArrayArray(ctx context.Context, request [][]fl
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -1993,8 +1995,8 @@ func (c *Client) TestRequestNumberDouble(ctx context.Context, request OptFloat64
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
-				if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -2064,8 +2066,8 @@ func (c *Client) TestRequestNumberDoubleArray(ctx context.Context, request []flo
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -2146,8 +2148,8 @@ func (c *Client) TestRequestNumberDoubleArrayArray(ctx context.Context, request 
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -2232,8 +2234,8 @@ func (c *Client) TestRequestNumberDoubleNullable(ctx context.Context, request Op
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
-				if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -2303,8 +2305,8 @@ func (c *Client) TestRequestNumberDoubleNullableArray(ctx context.Context, reque
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -2385,8 +2387,8 @@ func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, 
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -2471,8 +2473,8 @@ func (c *Client) TestRequestNumberFloat(ctx context.Context, request OptFloat32)
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
-				if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -2542,8 +2544,8 @@ func (c *Client) TestRequestNumberFloatArray(ctx context.Context, request []floa
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -2624,8 +2626,8 @@ func (c *Client) TestRequestNumberFloatArrayArray(ctx context.Context, request [
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -2710,8 +2712,8 @@ func (c *Client) TestRequestNumberFloatNullable(ctx context.Context, request Opt
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
-				if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -2781,8 +2783,8 @@ func (c *Client) TestRequestNumberFloatNullableArray(ctx context.Context, reques
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -2863,8 +2865,8 @@ func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, r
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -3685,8 +3687,8 @@ func (c *Client) TestRequestNumberNullable(ctx context.Context, request OptNilFl
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
-				if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -3756,8 +3758,8 @@ func (c *Client) TestRequestNumberNullableArray(ctx context.Context, request []f
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -3838,8 +3840,8 @@ func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, reques
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -5652,8 +5654,8 @@ func (c *Client) TestRequestRequiredIntegerNullableArrayArray(ctx context.Contex
 // POST /test_request_required_number
 func (c *Client) TestRequestRequiredNumber(ctx context.Context, request float64) (res Error, err error) {
 	if err := func() error {
-		if f := float64(request); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(request)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -5720,8 +5722,8 @@ func (c *Client) TestRequestRequiredNumberArray(ctx context.Context, request []f
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -5805,8 +5807,8 @@ func (c *Client) TestRequestRequiredNumberArrayArray(ctx context.Context, reques
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -5889,8 +5891,8 @@ func (c *Client) TestRequestRequiredNumberArrayArray(ctx context.Context, reques
 // POST /test_request_required_number_double
 func (c *Client) TestRequestRequiredNumberDouble(ctx context.Context, request float64) (res Error, err error) {
 	if err := func() error {
-		if f := float64(request); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(request)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -5957,8 +5959,8 @@ func (c *Client) TestRequestRequiredNumberDoubleArray(ctx context.Context, reque
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -6042,8 +6044,8 @@ func (c *Client) TestRequestRequiredNumberDoubleArrayArray(ctx context.Context, 
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -6126,8 +6128,8 @@ func (c *Client) TestRequestRequiredNumberDoubleArrayArray(ctx context.Context, 
 // POST /test_request_required_number_double_nullable
 func (c *Client) TestRequestRequiredNumberDoubleNullable(ctx context.Context, request NilFloat64) (res Error, err error) {
 	if err := func() error {
-		if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 		return nil
@@ -6195,8 +6197,8 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArray(ctx context.Contex
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -6280,8 +6282,8 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.C
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -6364,8 +6366,8 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.C
 // POST /test_request_required_number_float
 func (c *Client) TestRequestRequiredNumberFloat(ctx context.Context, request float32) (res Error, err error) {
 	if err := func() error {
-		if f := float64(request); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(request)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 	}(); err != nil {
@@ -6432,8 +6434,8 @@ func (c *Client) TestRequestRequiredNumberFloatArray(ctx context.Context, reques
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -6517,8 +6519,8 @@ func (c *Client) TestRequestRequiredNumberFloatArrayArray(ctx context.Context, r
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -6601,8 +6603,8 @@ func (c *Client) TestRequestRequiredNumberFloatArrayArray(ctx context.Context, r
 // POST /test_request_required_number_float_nullable
 func (c *Client) TestRequestRequiredNumberFloatNullable(ctx context.Context, request NilFloat32) (res Error, err error) {
 	if err := func() error {
-		if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 		return nil
@@ -6670,8 +6672,8 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArray(ctx context.Context
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -6755,8 +6757,8 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Co
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {
@@ -7619,8 +7621,8 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Co
 // POST /test_request_required_number_nullable
 func (c *Client) TestRequestRequiredNumberNullable(ctx context.Context, request NilFloat64) (res Error, err error) {
 	if err := func() error {
-		if f := float64(request.Value); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
+			return errors.Wrap(err, "float")
 		}
 		return nil
 		return nil
@@ -7688,8 +7690,8 @@ func (c *Client) TestRequestRequiredNumberNullableArray(ctx context.Context, req
 		var failures []validate.FieldError
 		for i, elem := range request {
 			if err := func() error {
-				if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-					return errors.Errorf("%f float value is invalid", f)
+				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+					return errors.Wrap(err, "float")
 				}
 				return nil
 			}(); err != nil {
@@ -7773,8 +7775,8 @@ func (c *Client) TestRequestRequiredNumberNullableArrayArray(ctx context.Context
 				var failures []validate.FieldError
 				for i, elem := range elem {
 					if err := func() error {
-						if f := float64(elem); math.IsInf(f, 0) || math.IsNaN(f) {
-							return errors.Errorf("%f float value is invalid", f)
+						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
+							return errors.Wrap(err, "float")
 						}
 						return nil
 					}(); err != nil {

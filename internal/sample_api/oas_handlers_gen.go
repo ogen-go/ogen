@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -804,6 +806,39 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWri
 	}
 
 	if err := encodeRecursiveMapGetResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+}
+
+// HandleTestFloatValidationRequest handles testFloatValidation operation.
+//
+// POST /testFloatValidation
+func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestFloatValidation",
+		trace.WithAttributes(otelogen.OperationID("testFloatValidation")),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	request, err := decodeTestFloatValidationRequest(r, span)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.TestFloatValidation(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeTestFloatValidationResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		return

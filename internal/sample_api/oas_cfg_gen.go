@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -69,6 +71,22 @@ var (
 var regexMap = map[string]*regexp.Regexp{
 	"^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$": regexp.MustCompile("^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$"),
 	"^\\d-\\d$": regexp.MustCompile("^\\d-\\d$"),
+}
+var ratMap = map[string]*big.Rat{
+	"10/1": func() *big.Rat {
+		r := new(big.Rat)
+		if err := r.UnmarshalText([]byte("10/1")); err != nil {
+			panic(fmt.Sprintf("rat %q: %v", "10/1", err))
+		}
+		return r
+	}(),
+	"5/1": func() *big.Rat {
+		r := new(big.Rat)
+		if err := r.UnmarshalText([]byte("5/1")); err != nil {
+			panic(fmt.Sprintf("rat %q: %v", "5/1", err))
+		}
+		return r
+	}(),
 }
 
 // bufPool is pool of bytes.Buffer for encoding and decoding.

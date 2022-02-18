@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -472,6 +474,11 @@ func encodeRecursiveMapGetResponse(response RecursiveMap, w http.ResponseWriter,
 		return errors.Wrap(err, "write")
 	}
 
+	return nil
+}
+
+func encodeTestFloatValidationResponse(response TestFloatValidationOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
 	return nil
 }
 

@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/big"
 	"math/bits"
 	"net"
 	"net/http"
@@ -53,6 +54,7 @@ var (
 	_ = url.URL{}
 	_ = math.Mod
 	_ = bits.LeadingZeros64
+	_ = big.Rat{}
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}
@@ -72,12 +74,14 @@ func (s Book) Validate() error {
 		if s.ID.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.ID.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -98,12 +102,14 @@ func (s Book) Validate() error {
 		if s.MediaID.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.MediaID.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -168,12 +174,14 @@ func (s Book) Validate() error {
 		if s.NumPages.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.NumPages.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -194,12 +202,14 @@ func (s Book) Validate() error {
 		if s.NumFavorites.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.NumFavorites.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -227,12 +237,14 @@ func (s Image) Validate() error {
 		if s.W.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.W.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -253,12 +265,14 @@ func (s Image) Validate() error {
 		if s.H.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          0,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.H.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
@@ -435,12 +449,14 @@ func (s Tag) Validate() error {
 		if s.ID.Set {
 			if err := func() error {
 				if err := (validate.Int{
-					MinSet:       true,
-					Min:          1,
-					MaxSet:       false,
-					Max:          0,
-					MinExclusive: false,
-					MaxExclusive: false,
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
 				}).Validate(int64(s.ID.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
