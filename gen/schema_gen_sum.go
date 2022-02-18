@@ -126,7 +126,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 			// Explicit mapping.
 			var found bool
 			for _, s := range sum.SumOf {
-				if path.Base(s.Schema.Ref) == v {
+				if s.Schema.Ref == v || path.Base(s.Schema.Ref) == v {
 					found = true
 					sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
 						Key:  k,
