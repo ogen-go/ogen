@@ -73,8 +73,18 @@ func (g *schemaGen) anyOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 			switch v.Kind {
 			case ir.KindPrimitive, ir.KindEnum:
 				switch {
-				case v.IsNumeric() && !v.Validators.Int.Set():
-					v.Validators.SetInt(schema)
+				case v.IsInteger():
+					if !v.Validators.Int.Set() {
+						if err := v.Validators.SetInt(schema); err != nil {
+							return nil, errors.Wrap(err, "int validator")
+						}
+					}
+				case v.IsFloat():
+					if !v.Validators.Float.Set() {
+						if err := v.Validators.SetFloat(schema); err != nil {
+							return nil, errors.Wrap(err, "float validator")
+						}
+					}
 				case !v.Validators.String.Set():
 					if err := v.Validators.SetString(schema); err != nil {
 						return nil, errors.Wrap(err, "string validator")

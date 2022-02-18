@@ -106,8 +106,22 @@
 	{{- end }}
     {{- if $t.IsFloat }}
     {{- $validated = true }}
-		if f := float64({{ $.Var }}); math.IsInf(f, 0) || math.IsNaN(f) {
-			return errors.Errorf("%f float value is invalid", f)
+		{{- $v := $va.Float }}
+		if err := (validate.Float{ {{ if $v.Set }}
+			MinSet:       {{ $v.MinSet }},
+			Min:          {{ $v.Min }},
+			MaxSet:       {{ $v.MaxSet }},
+			Max:          {{ $v.Max }},
+			MinExclusive: {{ $v.MinExclusive }},
+			MaxExclusive: {{ $v.MaxExclusive }},
+			MultipleOfSet:{{ $v.MultipleOfSet }},
+			{{- if $v.MultipleOf }}
+			MultipleOf: ratMap[{{ quote $v.MultipleOf }}],
+            {{- else }}
+			MultipleOf: nil,
+			{{- end }}
+		{{ end }} }).Validate(float64({{ $.Var }})); err != nil {
+			return errors.Wrap(err, "float")
 		}
     {{- end }}
     {{- end }}

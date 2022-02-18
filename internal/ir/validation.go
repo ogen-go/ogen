@@ -2,9 +2,11 @@ package ir
 
 import (
 	"fmt"
+	"math/big"
 	"regexp"
 
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/validate"
@@ -13,6 +15,7 @@ import (
 type Validators struct {
 	String validate.String
 	Int    validate.Int
+	Float  validate.Float
 	Array  validate.Array
 	Object validate.Object
 }
@@ -39,18 +42,64 @@ func (v *Validators) SetString(schema *jsonschema.Schema) (err error) {
 	return nil
 }
 
-func (v *Validators) SetInt(schema *jsonschema.Schema) {
-	if schema.MultipleOf != nil {
-		v.Int.SetMultipleOf(*schema.MultipleOf)
+func (v *Validators) SetInt(schema *jsonschema.Schema) error {
+	if num := jx.Num(schema.MultipleOf); len(num) > 0 {
+		val, err := num.Uint64()
+		if err != nil {
+			return errors.Wrap(err, "set multipleOf")
+		}
+		v.Int.SetMultipleOf(val)
 	}
-	if schema.Maximum != nil {
-		v.Int.SetMaximum(*schema.Maximum)
+	set := func(num jx.Num, f func(int64)) error {
+		if len(num) < 1 {
+			return nil
+		}
+		val, err := num.Int64()
+		if err != nil {
+			return err
+		}
+		f(val)
+		return nil
 	}
-	if schema.Minimum != nil {
-		v.Int.SetMinimum(*schema.Minimum)
+	if err := set(jx.Num(schema.Maximum), v.Int.SetMaximum); err != nil {
+		return errors.Wrap(err, "set maximum")
+	}
+	if err := set(jx.Num(schema.Minimum), v.Int.SetMinimum); err != nil {
+		return errors.Wrap(err, "set minimum")
 	}
 	v.Int.MaxExclusive = schema.ExclusiveMaximum
 	v.Int.MinExclusive = schema.ExclusiveMinimum
+	return nil
+}
+
+func (v *Validators) SetFloat(schema *jsonschema.Schema) error {
+	if num := jx.Num(schema.MultipleOf); len(num) > 0 {
+		n := new(big.Rat)
+		if err := n.UnmarshalText(num); err != nil {
+			return errors.Wrap(err, "parse multipleOf")
+		}
+		v.Float.SetMultipleOf(n)
+	}
+	set := func(num jx.Num, f func(float64)) error {
+		if len(num) < 1 {
+			return nil
+		}
+		val, err := num.Float64()
+		if err != nil {
+			return err
+		}
+		f(val)
+		return nil
+	}
+	if err := set(jx.Num(schema.Maximum), v.Float.SetMaximum); err != nil {
+		return errors.Wrap(err, "set maximum")
+	}
+	if err := set(jx.Num(schema.Minimum), v.Float.SetMinimum); err != nil {
+		return errors.Wrap(err, "set minimum")
+	}
+	v.Float.MaxExclusive = schema.ExclusiveMaximum
+	v.Float.MinExclusive = schema.ExclusiveMinimum
+	return nil
 }
 
 func (v *Validators) SetArray(schema *jsonschema.Schema) {
@@ -89,7 +138,7 @@ func (t *Type) needValidation(path *walkpath) (result bool) {
 	switch t.Kind {
 	case KindPrimitive:
 		if t.IsFloat() {
-			// NaN, Inf.
+			// NaN, Inf, float validators.
 			return true
 		}
 		if t.IsNumeric() && t.Validators.Int.Set() {

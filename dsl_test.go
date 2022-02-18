@@ -4,9 +4,10 @@ import (
 	"encoding/json"
 	"testing"
 
+	"github.com/stretchr/testify/assert"
+
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/ir"
-	"github.com/stretchr/testify/assert"
 )
 
 const (
@@ -340,8 +341,10 @@ func TestBuilder(t *testing.T) {
 		Parameters: []*ogen.Parameter{_queryParam.Parameter},
 	}, pi)
 
-	mlt := 1
+	mlt := uint64(1)
+	mltStr := ogen.Num("1")
 	max := int64(2)
+	maxStr := ogen.Num("2")
 	umax := uint64(max)
 	assert.Equal(t, &ogen.Schema{
 		Ref:              "ref",
@@ -357,13 +360,13 @@ func TestBuilder(t *testing.T) {
 		AnyOf:            []*ogen.Schema{ogen.NewSchema()},
 		Discriminator:    &ogen.Discriminator{PropertyName: "prop"},
 		Enum:             []json.RawMessage{json.RawMessage("0"), json.RawMessage("1")},
-		MultipleOf:       &mlt,
-		Maximum:          &max,
+		MultipleOf:       mltStr,
+		Maximum:          maxStr,
 		ExclusiveMaximum: true,
-		Minimum:          &max,
+		Minimum:          maxStr,
 		ExclusiveMinimum: true,
 		MaxLength:        &umax,
-		MinLength:        &max,
+		MinLength:        &umax,
 		Pattern:          "",
 		MaxItems:         &umax,
 		MinItems:         &umax,
@@ -391,7 +394,7 @@ func TestBuilder(t *testing.T) {
 		SetMinimum(&max).
 		SetExclusiveMinimum(true).
 		SetMaxLength(&umax).
-		SetMinLength(&max).
+		SetMinLength(&umax).
 		SetPattern("").
 		SetMaxItems(&umax).
 		SetMinItems(&umax).

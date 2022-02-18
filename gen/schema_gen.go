@@ -167,9 +167,14 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 			if err := t.Validators.SetString(schema); err != nil {
 				return nil, errors.Wrap(err, "string validator")
 			}
-
-		case jsonschema.Integer, jsonschema.Number:
-			t.Validators.SetInt(schema)
+		case jsonschema.Integer:
+			if err := t.Validators.SetInt(schema); err != nil {
+				return nil, errors.Wrap(err, "int validator")
+			}
+		case jsonschema.Number:
+			if err := t.Validators.SetFloat(schema); err != nil {
+				return nil, errors.Wrap(err, "float validator")
+			}
 		}
 
 		return side(t), nil
