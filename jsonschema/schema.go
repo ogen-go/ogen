@@ -43,7 +43,7 @@ type Schema struct {
 
 	// String validation.
 	MaxLength *uint64
-	MinLength *int64
+	MinLength *uint64
 	Pattern   string
 
 	// Array validation.

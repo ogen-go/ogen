@@ -28,7 +28,7 @@ type RawSchema struct {
 	Minimum              *int64                `json:"minimum,omitempty"`
 	ExclusiveMinimum     bool                  `json:"exclusiveMinimum,omitempty"`
 	MaxLength            *uint64               `json:"maxLength,omitempty"`
-	MinLength            *int64                `json:"minLength,omitempty"`
+	MinLength            *uint64               `json:"minLength,omitempty"`
 	Pattern              string                `json:"pattern,omitempty"`
 	MaxItems             *uint64               `json:"maxItems,omitempty"`
 	MinItems             *uint64               `json:"minItems,omitempty"`
