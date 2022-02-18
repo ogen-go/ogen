@@ -795,7 +795,93 @@ type OneOfBugs struct {
 	Issue143                        Issue143                    "json:\"issue143\""
 	AdditionalMinusFields           OneVariantHasNoUniqueFields "json:\"additional-fields\""
 	OneOfMinusUUIDMinusIntMinusEnum OptOneOfUUIDAndIntEnum      "json:\"oneOf-uuid-int-enum\""
+	OneOfMinusMappingMinusReference OptOneOfMappingReference    "json:\"oneOf-mapping-reference\""
 }
+
+// Ref: #/components/schemas/OneOfMappingReference
+// OneOfMappingReference represents sum type.
+type OneOfMappingReference struct {
+	Type                   OneOfMappingReferenceType // switch on this field
+	OneOfMappingReferenceA OneOfMappingReferenceA
+	OneOfMappingReferenceB OneOfMappingReferenceB
+}
+
+// OneOfMappingReferenceType is oneOf type of OneOfMappingReference.
+type OneOfMappingReferenceType string
+
+// Possible values for OneOfMappingReferenceType.
+const (
+	OneOfMappingReferenceAOneOfMappingReference OneOfMappingReferenceType = "OneOfMappingReferenceA"
+	OneOfMappingReferenceBOneOfMappingReference OneOfMappingReferenceType = "OneOfMappingReferenceB"
+)
+
+// IsOneOfMappingReferenceA reports whether OneOfMappingReference is OneOfMappingReferenceA.
+func (s OneOfMappingReference) IsOneOfMappingReferenceA() bool {
+	return s.Type == OneOfMappingReferenceAOneOfMappingReference
+}
+
+// IsOneOfMappingReferenceB reports whether OneOfMappingReference is OneOfMappingReferenceB.
+func (s OneOfMappingReference) IsOneOfMappingReferenceB() bool {
+	return s.Type == OneOfMappingReferenceBOneOfMappingReference
+}
+
+// SetOneOfMappingReferenceA sets OneOfMappingReference to OneOfMappingReferenceA.
+func (s *OneOfMappingReference) SetOneOfMappingReferenceA(v OneOfMappingReferenceA) {
+	s.Type = OneOfMappingReferenceAOneOfMappingReference
+	s.OneOfMappingReferenceA = v
+}
+
+// GetOneOfMappingReferenceA returns OneOfMappingReferenceA and true boolean if OneOfMappingReference is OneOfMappingReferenceA.
+func (s OneOfMappingReference) GetOneOfMappingReferenceA() (v OneOfMappingReferenceA, ok bool) {
+	if !s.IsOneOfMappingReferenceA() {
+		return v, false
+	}
+	return s.OneOfMappingReferenceA, true
+}
+
+// NewOneOfMappingReferenceAOneOfMappingReference returns new OneOfMappingReference from OneOfMappingReferenceA.
+func NewOneOfMappingReferenceAOneOfMappingReference(v OneOfMappingReferenceA) OneOfMappingReference {
+	var s OneOfMappingReference
+	s.SetOneOfMappingReferenceA(v)
+	return s
+}
+
+// SetOneOfMappingReferenceB sets OneOfMappingReference to OneOfMappingReferenceB.
+func (s *OneOfMappingReference) SetOneOfMappingReferenceB(v OneOfMappingReferenceB) {
+	s.Type = OneOfMappingReferenceBOneOfMappingReference
+	s.OneOfMappingReferenceB = v
+}
+
+// GetOneOfMappingReferenceB returns OneOfMappingReferenceB and true boolean if OneOfMappingReference is OneOfMappingReferenceB.
+func (s OneOfMappingReference) GetOneOfMappingReferenceB() (v OneOfMappingReferenceB, ok bool) {
+	if !s.IsOneOfMappingReferenceB() {
+		return v, false
+	}
+	return s.OneOfMappingReferenceB, true
+}
+
+// NewOneOfMappingReferenceBOneOfMappingReference returns new OneOfMappingReference from OneOfMappingReferenceB.
+func NewOneOfMappingReferenceBOneOfMappingReference(v OneOfMappingReferenceB) OneOfMappingReference {
+	var s OneOfMappingReference
+	s.SetOneOfMappingReferenceB(v)
+	return s
+}
+
+// Ref: #/components/schemas/OneOfMappingReferenceA
+type OneOfMappingReferenceA struct {
+	InfoType    OptString "json:\"infoType\""
+	Description OptString "json:\"description\""
+}
+
+// Ref: #/components/schemas/OneOfMappingReferenceB
+type OneOfMappingReferenceB struct {
+	InfoType OptString                   "json:\"infoType\""
+	Code     OptInt32                    "json:\"code\""
+	Data     *OneOfMappingReferenceBData "json:\"data\""
+	Info     OptString                   "json:\"info\""
+}
+
+type OneOfMappingReferenceBData struct{}
 
 // Ref: #/components/schemas/OneOfUUIDAndIntEnum
 // OneOfUUIDAndIntEnum represents sum type.
@@ -1980,6 +2066,52 @@ func (o OptNullableEnums) Get() (v NullableEnums, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptNullableEnums) Or(d NullableEnums) NullableEnums {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptOneOfMappingReference returns new OptOneOfMappingReference with value set to v.
+func NewOptOneOfMappingReference(v OneOfMappingReference) OptOneOfMappingReference {
+	return OptOneOfMappingReference{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOneOfMappingReference is optional OneOfMappingReference.
+type OptOneOfMappingReference struct {
+	Value OneOfMappingReference
+	Set   bool
+}
+
+// IsSet returns true if OptOneOfMappingReference was set.
+func (o OptOneOfMappingReference) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOneOfMappingReference) Reset() {
+	var v OneOfMappingReference
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOneOfMappingReference) SetTo(v OneOfMappingReference) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOneOfMappingReference) Get() (v OneOfMappingReference, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOneOfMappingReference) Or(d OneOfMappingReference) OneOfMappingReference {
 	if v, ok := o.Get(); ok {
 		return v
 	}
