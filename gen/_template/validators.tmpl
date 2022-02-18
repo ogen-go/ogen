@@ -100,6 +100,8 @@
 			Max:          {{ $v.Max }},
 			MinExclusive: {{ $v.MinExclusive }},
 			MaxExclusive: {{ $v.MaxExclusive }},
+			MultipleOfSet:{{ $v.MultipleOfSet }},
+			MultipleOf:   {{ $v.MultipleOf }},
 		}).Validate(int64({{ $.Var }})); err != nil {
 			return errors.Wrap(err, "int")
 		}
