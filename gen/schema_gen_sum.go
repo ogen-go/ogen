@@ -135,7 +135,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 				}
 			}
 			if !found {
-				return nil, errors.Errorf("discriminator: unable to map %s to %s", k, v)
+				return nil, errors.Errorf("discriminator: unable to map %q to %q", k, v)
 			}
 		}
 		if len(sum.SumSpec.Mapping) == 0 {
