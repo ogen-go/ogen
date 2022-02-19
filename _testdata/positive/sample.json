@@ -1206,6 +1206,55 @@
           }
         }
       },
+      "AnyOfTest": {
+        "description": "Type for testing some anyOf cases from Jaeger operator API schema",
+        "required": [
+          "medium",
+          "sizeLimit"
+        ],
+        "properties": {
+          "medium": {
+            "type": "string"
+          },
+          "sizeLimit": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+            "x-kubernetes-int-or-string": true
+          }
+        },
+        "type": "object"
+      },
+      "OneOfBugs": {
+        "type": "object",
+        "required": [
+          "issue143",
+          "additional-fields"
+        ],
+        "properties": {
+          "issue143": {
+            "$ref": "#/components/schemas/Issue143"
+          },
+          "additional-fields": {
+            "$ref": "#/components/schemas/OneVariantHasNoUniqueFields"
+          },
+          "oneOf-uuid-int-enum": {
+            "$ref": "#/components/schemas/OneOfUUIDAndIntEnum"
+          },
+          "oneOf-mapping-reference": {
+            "$ref": "#/components/schemas/OneOfMappingReference"
+          },
+          "oneOf-mapping-any": {
+            "$ref": "#/components/schemas/OneOfMappingAny"
+          }
+        }
+      },
       "Issue143": {
         "oneOf": [
           {
@@ -1286,6 +1335,63 @@
           }
         ]
       },
+      "OneVariantHasNoUniqueFields": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "a",
+              "c"
+            ],
+            "properties": {
+              "a": {
+                "type": "string"
+              },
+              "b": {
+                "type": "integer"
+              },
+              "c": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "a",
+              "c"
+            ],
+            "properties": {
+              "a": {
+                "type": "string"
+              },
+              "b": {
+                "type": "integer"
+              },
+              "c": {
+                "type": "string"
+              },
+              "d": {
+                "type": "integer"
+              }
+            }
+          }
+        ]
+      },
+      "OneOfUUIDAndIntEnum": {
+        "oneOf": [
+          {
+            "format": "uuid",
+            "type": "string"
+          },
+          {
+            "enum": [
+              0, 1
+            ],
+            "type": "integer"
+          }
+        ]
+      },
       "OneOfMappingReference": {
         "type": "object",
         "oneOf": [
@@ -1336,92 +1442,43 @@
           }
         }
       },
-      "AnyOfTest": {
-        "description": "Type for testing some anyOf cases from Jaeger operator API schema",
-        "required": [
-          "medium",
-          "sizeLimit"
-        ],
-        "properties": {
-          "medium": {
-            "type": "string"
-          },
-          "sizeLimit": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "string"
-              }
-            ],
-            "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
-            "x-kubernetes-int-or-string": true
-          }
-        },
-        "type": "object"
-      },
-      "OneVariantHasNoUniqueFields": {
+      "OneOfMappingAny": {
+        "type": "object",
         "oneOf": [
           {
-            "type": "object",
-            "required": [
-              "a",
-              "c"
-            ],
-            "properties": {
-              "a": {
-                "type": "string"
-              },
-              "b": {
-                "type": "integer"
-              },
-              "c": {
-                "type": "string"
-              }
-            }
+            "$ref": "#/components/schemas/OneOfMappingAnyA"
           },
           {
-            "type": "object",
-            "required": [
-              "a",
-              "c"
-            ],
-            "properties": {
-              "a": {
-                "type": "string"
-              },
-              "b": {
-                "type": "integer"
-              },
-              "c": {
-                "type": "string"
-              },
-              "d": {
-                "type": "integer"
-              }
-            }
+            "$ref": "#/components/schemas/OneOfMappingAnyB"
           }
-        ]
-      },
-      "OneOfBugs": {
-        "type": "object",
-        "required": [
-          "issue143",
-          "additional-fields"
         ],
+        "discriminator": {
+          "propertyName": "infoType",
+          "mapping": {
+            "simple": "#/components/schemas/OneOfMappingAnyA",
+            "extended": "#/components/schemas/OneOfMappingAnyB"
+          }
+        }
+      },
+      "OneOfMappingAnyA": {},
+      "OneOfMappingAnyB": {
+        "type": "object",
         "properties": {
-          "issue143": {
-            "$ref": "#/components/schemas/Issue143"
+          "infoType": {
+            "type": "string"
           },
-          "additional-fields": {
-            "$ref": "#/components/schemas/OneVariantHasNoUniqueFields"
+          "code": {
+            "type": "integer",
+            "format": "int32"
           },
-          "oneOf-uuid-int-enum": {
-            "$ref": "#/components/schemas/OneOfUUIDAndIntEnum"
+          "data": {
+            "type": "object",
+            "not": {
+              "type": "integer"
+            }
           },
-          "oneOf-mapping-reference": {
-            "$ref": "#/components/schemas/OneOfMappingReference"
+          "info": {
+            "type": "string"
           }
         }
       },
@@ -1455,20 +1512,6 @@
             "type": "array"
           }
         }
-      },
-      "OneOfUUIDAndIntEnum": {
-        "oneOf": [
-          {
-            "format": "uuid",
-            "type": "string"
-          },
-          {
-            "enum": [
-              0, 1
-            ],
-            "type": "integer"
-          }
-        ]
       },
       "DefaultTest": {
         "type": "object",
