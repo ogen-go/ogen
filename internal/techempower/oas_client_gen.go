@@ -30,6 +30,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
@@ -59,6 +60,7 @@ var (
 	_ = ht.NewRequest
 	_ = net.IP{}
 	_ = otelogen.Version
+	_ = attribute.KeyValue{}
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
@@ -104,21 +106,24 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // GET /cached-worlds
 func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldObjects, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("Caching"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "Caching",
-		trace.WithAttributes(otelogen.OperationID("Caching")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/cached-worlds"
 
@@ -160,21 +165,24 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 // GET /db
 func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("DB"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "DB",
-		trace.WithAttributes(otelogen.OperationID("DB")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/db"
 
@@ -200,21 +208,24 @@ func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 // GET /json
 func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("json"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "JSON",
-		trace.WithAttributes(otelogen.OperationID("json")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/json"
 
@@ -240,21 +251,24 @@ func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 // GET /queries
 func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldObjects, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("Queries"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "Queries",
-		trace.WithAttributes(otelogen.OperationID("Queries")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/queries"
 
@@ -296,21 +310,24 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 // GET /updates
 func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldObjects, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("Updates"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "Updates",
-		trace.WithAttributes(otelogen.OperationID("Updates")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/updates"
 

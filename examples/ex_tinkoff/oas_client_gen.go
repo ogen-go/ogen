@@ -30,6 +30,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
@@ -59,6 +60,7 @@ var (
 	_ = ht.NewRequest
 	_ = net.IP{}
 	_ = otelogen.Version
+	_ = attribute.KeyValue{}
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
@@ -104,20 +106,22 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // GET /market/bonds
 func (c *Client) MarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketBondsGet",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/bonds"
 
@@ -143,20 +147,22 @@ func (c *Client) MarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err
 // GET /market/candles
 func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetParams) (res MarketCandlesGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketCandlesGet",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/candles"
 
@@ -237,20 +243,22 @@ func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetPa
 // GET /market/currencies
 func (c *Client) MarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketCurrenciesGet",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/currencies"
 
@@ -276,20 +284,22 @@ func (c *Client) MarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesG
 // GET /market/etfs
 func (c *Client) MarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketEtfsGet",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/etfs"
 
@@ -315,20 +325,22 @@ func (c *Client) MarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err e
 // GET /market/orderbook
 func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookGetParams) (res MarketOrderbookGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketOrderbookGet",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/orderbook"
 
@@ -383,20 +395,22 @@ func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookG
 // GET /market/search/by-figi
 func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchByFigiGetParams) (res MarketSearchByFigiGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketSearchByFigiGet",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/search/by-figi"
 
@@ -438,20 +452,22 @@ func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchB
 // GET /market/search/by-ticker
 func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearchByTickerGetParams) (res MarketSearchByTickerGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketSearchByTickerGet",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/search/by-ticker"
 
@@ -493,20 +509,22 @@ func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearc
 // GET /market/stocks
 func (c *Client) MarketStocksGet(ctx context.Context) (res MarketStocksGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketStocksGet",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/stocks"
 
@@ -532,20 +550,22 @@ func (c *Client) MarketStocksGet(ctx context.Context) (res MarketStocksGetRes, e
 // GET /operations
 func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) (res OperationsGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OperationsGet",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/operations"
 
@@ -632,20 +652,22 @@ func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) 
 // POST /orders/cancel
 func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostParams) (res OrdersCancelPostRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersCancelPost",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orders/cancel"
 
@@ -703,20 +725,22 @@ func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostPa
 // GET /orders
 func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (res OrdersGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersGet",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orders"
 
@@ -769,20 +793,22 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersLimitOrderPost",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -862,20 +888,22 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersMarketOrderPost",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -947,20 +975,22 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 // GET /portfolio/currencies
 func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCurrenciesGetParams) (res PortfolioCurrenciesGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PortfolioCurrenciesGet",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/portfolio/currencies"
 
@@ -1005,20 +1035,22 @@ func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCur
 // GET /portfolio
 func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (res PortfolioGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PortfolioGet",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/portfolio"
 
@@ -1065,20 +1097,22 @@ func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (r
 // POST /sandbox/clear
 func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostParams) (res SandboxClearPostRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxClearPost",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/clear"
 
@@ -1131,20 +1165,22 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxCurrenciesBalancePost",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1211,20 +1247,22 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxPositionsBalancePost",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1301,20 +1339,22 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxRegisterPost",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1356,20 +1396,22 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 // POST /sandbox/remove
 func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePostParams) (res SandboxRemovePostRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxRemovePost",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/remove"
 
@@ -1414,20 +1456,22 @@ func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePost
 // GET /user/accounts
 func (c *Client) UserAccountsGet(ctx context.Context) (res UserAccountsGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UserAccountsGet",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/accounts"
 

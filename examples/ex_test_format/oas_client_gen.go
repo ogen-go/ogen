@@ -30,6 +30,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
@@ -59,6 +60,7 @@ var (
 	_ = ht.NewRequest
 	_ = net.IP{}
 	_ = otelogen.Version
+	_ = attribute.KeyValue{}
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
@@ -104,21 +106,24 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // POST /test_request_Any
 func (c *Client) TestRequestAny(ctx context.Context, request jx.Raw) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_Any"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestAny",
-		trace.WithAttributes(otelogen.OperationID("test_request_Any")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -158,21 +163,24 @@ func (c *Client) TestRequestAny(ctx context.Context, request jx.Raw) (res Error,
 // POST /test_request_boolean
 func (c *Client) TestRequestBoolean(ctx context.Context, request OptBool) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_boolean"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBoolean",
-		trace.WithAttributes(otelogen.OperationID("test_request_boolean")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -212,21 +220,24 @@ func (c *Client) TestRequestBoolean(ctx context.Context, request OptBool) (res E
 // POST /test_request_boolean_array
 func (c *Client) TestRequestBooleanArray(ctx context.Context, request []bool) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_boolean_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_boolean_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -288,21 +299,24 @@ func (c *Client) TestRequestBooleanArrayArray(ctx context.Context, request [][]b
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_boolean_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_boolean_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -342,21 +356,24 @@ func (c *Client) TestRequestBooleanArrayArray(ctx context.Context, request [][]b
 // POST /test_request_boolean_nullable
 func (c *Client) TestRequestBooleanNullable(ctx context.Context, request OptNilBool) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_boolean_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_boolean_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -396,21 +413,24 @@ func (c *Client) TestRequestBooleanNullable(ctx context.Context, request OptNilB
 // POST /test_request_boolean_nullable_array
 func (c *Client) TestRequestBooleanNullableArray(ctx context.Context, request []bool) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_boolean_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_boolean_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -472,21 +492,24 @@ func (c *Client) TestRequestBooleanNullableArrayArray(ctx context.Context, reque
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_boolean_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_boolean_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -526,21 +549,24 @@ func (c *Client) TestRequestBooleanNullableArrayArray(ctx context.Context, reque
 // POST /test_request_EmptyStruct
 func (c *Client) TestRequestEmptyStruct(ctx context.Context, request *TestRequestEmptyStructReq) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_EmptyStruct"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestEmptyStruct",
-		trace.WithAttributes(otelogen.OperationID("test_request_EmptyStruct")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -596,21 +622,24 @@ func (c *Client) TestRequestFormatTest(ctx context.Context, request OptTestReque
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_FormatTest"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestFormatTest",
-		trace.WithAttributes(otelogen.OperationID("test_request_FormatTest")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -650,21 +679,24 @@ func (c *Client) TestRequestFormatTest(ctx context.Context, request OptTestReque
 // POST /test_request_integer
 func (c *Client) TestRequestInteger(ctx context.Context, request OptInt) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestInteger",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -704,21 +736,24 @@ func (c *Client) TestRequestInteger(ctx context.Context, request OptInt) (res Er
 // POST /test_request_integer_array
 func (c *Client) TestRequestIntegerArray(ctx context.Context, request []int) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -780,21 +815,24 @@ func (c *Client) TestRequestIntegerArrayArray(ctx context.Context, request [][]i
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -834,21 +872,24 @@ func (c *Client) TestRequestIntegerArrayArray(ctx context.Context, request [][]i
 // POST /test_request_integer_int32
 func (c *Client) TestRequestIntegerInt32(ctx context.Context, request OptInt32) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int32"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int32")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -888,21 +929,24 @@ func (c *Client) TestRequestIntegerInt32(ctx context.Context, request OptInt32) 
 // POST /test_request_integer_int32_array
 func (c *Client) TestRequestIntegerInt32Array(ctx context.Context, request []int32) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int32_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int32_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -964,21 +1008,24 @@ func (c *Client) TestRequestIntegerInt32ArrayArray(ctx context.Context, request 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int32_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int32_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1018,21 +1065,24 @@ func (c *Client) TestRequestIntegerInt32ArrayArray(ctx context.Context, request 
 // POST /test_request_integer_int32_nullable
 func (c *Client) TestRequestIntegerInt32Nullable(ctx context.Context, request OptNilInt32) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int32_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int32_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1072,21 +1122,24 @@ func (c *Client) TestRequestIntegerInt32Nullable(ctx context.Context, request Op
 // POST /test_request_integer_int32_nullable_array
 func (c *Client) TestRequestIntegerInt32NullableArray(ctx context.Context, request []int32) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int32_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int32_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1148,21 +1201,24 @@ func (c *Client) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int32_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int32_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1202,21 +1258,24 @@ func (c *Client) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, 
 // POST /test_request_integer_int64
 func (c *Client) TestRequestIntegerInt64(ctx context.Context, request OptInt64) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int64"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int64")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1256,21 +1315,24 @@ func (c *Client) TestRequestIntegerInt64(ctx context.Context, request OptInt64) 
 // POST /test_request_integer_int64_array
 func (c *Client) TestRequestIntegerInt64Array(ctx context.Context, request []int64) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int64_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int64_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1332,21 +1394,24 @@ func (c *Client) TestRequestIntegerInt64ArrayArray(ctx context.Context, request 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int64_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int64_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1386,21 +1451,24 @@ func (c *Client) TestRequestIntegerInt64ArrayArray(ctx context.Context, request 
 // POST /test_request_integer_int64_nullable
 func (c *Client) TestRequestIntegerInt64Nullable(ctx context.Context, request OptNilInt64) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int64_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int64_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1440,21 +1508,24 @@ func (c *Client) TestRequestIntegerInt64Nullable(ctx context.Context, request Op
 // POST /test_request_integer_int64_nullable_array
 func (c *Client) TestRequestIntegerInt64NullableArray(ctx context.Context, request []int64) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int64_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int64_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1516,21 +1587,24 @@ func (c *Client) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int64_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int64_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1570,21 +1644,24 @@ func (c *Client) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, 
 // POST /test_request_integer_nullable
 func (c *Client) TestRequestIntegerNullable(ctx context.Context, request OptNilInt) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1624,21 +1701,24 @@ func (c *Client) TestRequestIntegerNullable(ctx context.Context, request OptNilI
 // POST /test_request_integer_nullable_array
 func (c *Client) TestRequestIntegerNullableArray(ctx context.Context, request []int) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1700,21 +1780,24 @@ func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, reque
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1770,21 +1853,24 @@ func (c *Client) TestRequestNumber(ctx context.Context, request OptFloat64) (res
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumber",
-		trace.WithAttributes(otelogen.OperationID("test_request_number")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1846,21 +1932,24 @@ func (c *Client) TestRequestNumberArray(ctx context.Context, request []float64) 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1939,21 +2028,24 @@ func (c *Client) TestRequestNumberArrayArray(ctx context.Context, request [][]fl
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -2009,21 +2101,24 @@ func (c *Client) TestRequestNumberDouble(ctx context.Context, request OptFloat64
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_double"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDouble",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_double")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -2085,21 +2180,24 @@ func (c *Client) TestRequestNumberDoubleArray(ctx context.Context, request []flo
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_double_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_double_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -2178,21 +2276,24 @@ func (c *Client) TestRequestNumberDoubleArrayArray(ctx context.Context, request 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_double_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_double_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -2248,21 +2349,24 @@ func (c *Client) TestRequestNumberDoubleNullable(ctx context.Context, request Op
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_double_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_double_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -2324,21 +2428,24 @@ func (c *Client) TestRequestNumberDoubleNullableArray(ctx context.Context, reque
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_double_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_double_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -2417,21 +2524,24 @@ func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_double_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_double_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -2487,21 +2597,24 @@ func (c *Client) TestRequestNumberFloat(ctx context.Context, request OptFloat32)
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_float"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloat",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_float")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -2563,21 +2676,24 @@ func (c *Client) TestRequestNumberFloatArray(ctx context.Context, request []floa
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_float_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_float_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -2656,21 +2772,24 @@ func (c *Client) TestRequestNumberFloatArrayArray(ctx context.Context, request [
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_float_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_float_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -2726,21 +2845,24 @@ func (c *Client) TestRequestNumberFloatNullable(ctx context.Context, request Opt
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_float_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_float_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -2802,21 +2924,24 @@ func (c *Client) TestRequestNumberFloatNullableArray(ctx context.Context, reques
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_float_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_float_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -2895,21 +3020,24 @@ func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, r
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_float_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_float_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -2949,21 +3077,24 @@ func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, r
 // POST /test_request_number_int32
 func (c *Client) TestRequestNumberInt32(ctx context.Context, request OptInt32) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int32"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int32")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -3003,21 +3134,24 @@ func (c *Client) TestRequestNumberInt32(ctx context.Context, request OptInt32) (
 // POST /test_request_number_int32_array
 func (c *Client) TestRequestNumberInt32Array(ctx context.Context, request []int32) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int32_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int32_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -3079,21 +3213,24 @@ func (c *Client) TestRequestNumberInt32ArrayArray(ctx context.Context, request [
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int32_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int32_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -3133,21 +3270,24 @@ func (c *Client) TestRequestNumberInt32ArrayArray(ctx context.Context, request [
 // POST /test_request_number_int32_nullable
 func (c *Client) TestRequestNumberInt32Nullable(ctx context.Context, request OptNilInt32) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int32_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int32_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -3187,21 +3327,24 @@ func (c *Client) TestRequestNumberInt32Nullable(ctx context.Context, request Opt
 // POST /test_request_number_int32_nullable_array
 func (c *Client) TestRequestNumberInt32NullableArray(ctx context.Context, request []int32) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int32_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int32_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -3263,21 +3406,24 @@ func (c *Client) TestRequestNumberInt32NullableArrayArray(ctx context.Context, r
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int32_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int32_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -3317,21 +3463,24 @@ func (c *Client) TestRequestNumberInt32NullableArrayArray(ctx context.Context, r
 // POST /test_request_number_int64
 func (c *Client) TestRequestNumberInt64(ctx context.Context, request OptInt64) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int64"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int64")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -3371,21 +3520,24 @@ func (c *Client) TestRequestNumberInt64(ctx context.Context, request OptInt64) (
 // POST /test_request_number_int64_array
 func (c *Client) TestRequestNumberInt64Array(ctx context.Context, request []int64) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int64_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int64_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -3447,21 +3599,24 @@ func (c *Client) TestRequestNumberInt64ArrayArray(ctx context.Context, request [
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int64_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int64_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -3501,21 +3656,24 @@ func (c *Client) TestRequestNumberInt64ArrayArray(ctx context.Context, request [
 // POST /test_request_number_int64_nullable
 func (c *Client) TestRequestNumberInt64Nullable(ctx context.Context, request OptNilInt64) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int64_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int64_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -3555,21 +3713,24 @@ func (c *Client) TestRequestNumberInt64Nullable(ctx context.Context, request Opt
 // POST /test_request_number_int64_nullable_array
 func (c *Client) TestRequestNumberInt64NullableArray(ctx context.Context, request []int64) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int64_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int64_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -3631,21 +3792,24 @@ func (c *Client) TestRequestNumberInt64NullableArrayArray(ctx context.Context, r
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int64_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int64_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -3701,21 +3865,24 @@ func (c *Client) TestRequestNumberNullable(ctx context.Context, request OptNilFl
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -3777,21 +3944,24 @@ func (c *Client) TestRequestNumberNullableArray(ctx context.Context, request []f
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -3870,21 +4040,24 @@ func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, reques
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -3924,21 +4097,24 @@ func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, reques
 // POST /test_request_required_Any
 func (c *Client) TestRequestRequiredAny(ctx context.Context, request jx.Raw) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_Any"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredAny",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_Any")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -3978,21 +4154,24 @@ func (c *Client) TestRequestRequiredAny(ctx context.Context, request jx.Raw) (re
 // POST /test_request_required_boolean
 func (c *Client) TestRequestRequiredBoolean(ctx context.Context, request bool) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_boolean"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBoolean",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_boolean")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -4040,21 +4219,24 @@ func (c *Client) TestRequestRequiredBooleanArray(ctx context.Context, request []
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_boolean_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_boolean_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -4119,21 +4301,24 @@ func (c *Client) TestRequestRequiredBooleanArrayArray(ctx context.Context, reque
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_boolean_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_boolean_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -4173,21 +4358,24 @@ func (c *Client) TestRequestRequiredBooleanArrayArray(ctx context.Context, reque
 // POST /test_request_required_boolean_nullable
 func (c *Client) TestRequestRequiredBooleanNullable(ctx context.Context, request NilBool) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_boolean_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_boolean_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -4235,21 +4423,24 @@ func (c *Client) TestRequestRequiredBooleanNullableArray(ctx context.Context, re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_boolean_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_boolean_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -4314,21 +4505,24 @@ func (c *Client) TestRequestRequiredBooleanNullableArrayArray(ctx context.Contex
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_boolean_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_boolean_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -4368,21 +4562,24 @@ func (c *Client) TestRequestRequiredBooleanNullableArrayArray(ctx context.Contex
 // POST /test_request_required_EmptyStruct
 func (c *Client) TestRequestRequiredEmptyStruct(ctx context.Context, request TestRequestRequiredEmptyStructReq) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_EmptyStruct"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredEmptyStruct",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_EmptyStruct")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -4430,21 +4627,24 @@ func (c *Client) TestRequestRequiredFormatTest(ctx context.Context, request Test
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_FormatTest"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredFormatTest",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_FormatTest")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -4484,21 +4684,24 @@ func (c *Client) TestRequestRequiredFormatTest(ctx context.Context, request Test
 // POST /test_request_required_integer
 func (c *Client) TestRequestRequiredInteger(ctx context.Context, request int) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredInteger",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -4546,21 +4749,24 @@ func (c *Client) TestRequestRequiredIntegerArray(ctx context.Context, request []
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -4625,21 +4831,24 @@ func (c *Client) TestRequestRequiredIntegerArrayArray(ctx context.Context, reque
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -4679,21 +4888,24 @@ func (c *Client) TestRequestRequiredIntegerArrayArray(ctx context.Context, reque
 // POST /test_request_required_integer_int32
 func (c *Client) TestRequestRequiredIntegerInt32(ctx context.Context, request int32) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int32"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int32")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -4741,21 +4953,24 @@ func (c *Client) TestRequestRequiredIntegerInt32Array(ctx context.Context, reque
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int32_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int32_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -4820,21 +5035,24 @@ func (c *Client) TestRequestRequiredIntegerInt32ArrayArray(ctx context.Context, 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int32_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int32_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -4874,21 +5092,24 @@ func (c *Client) TestRequestRequiredIntegerInt32ArrayArray(ctx context.Context, 
 // POST /test_request_required_integer_int32_nullable
 func (c *Client) TestRequestRequiredIntegerInt32Nullable(ctx context.Context, request NilInt32) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int32_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int32_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -4936,21 +5157,24 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArray(ctx context.Contex
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int32_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int32_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -5015,21 +5239,24 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.C
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int32_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int32_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -5069,21 +5296,24 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.C
 // POST /test_request_required_integer_int64
 func (c *Client) TestRequestRequiredIntegerInt64(ctx context.Context, request int64) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int64"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int64")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -5131,21 +5361,24 @@ func (c *Client) TestRequestRequiredIntegerInt64Array(ctx context.Context, reque
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int64_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int64_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -5210,21 +5443,24 @@ func (c *Client) TestRequestRequiredIntegerInt64ArrayArray(ctx context.Context, 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int64_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int64_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -5264,21 +5500,24 @@ func (c *Client) TestRequestRequiredIntegerInt64ArrayArray(ctx context.Context, 
 // POST /test_request_required_integer_int64_nullable
 func (c *Client) TestRequestRequiredIntegerInt64Nullable(ctx context.Context, request NilInt64) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int64_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int64_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -5326,21 +5565,24 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArray(ctx context.Contex
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int64_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int64_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -5405,21 +5647,24 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.C
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int64_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int64_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -5459,21 +5704,24 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.C
 // POST /test_request_required_integer_nullable
 func (c *Client) TestRequestRequiredIntegerNullable(ctx context.Context, request NilInt) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -5521,21 +5769,24 @@ func (c *Client) TestRequestRequiredIntegerNullableArray(ctx context.Context, re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -5600,21 +5851,24 @@ func (c *Client) TestRequestRequiredIntegerNullableArrayArray(ctx context.Contex
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -5662,21 +5916,24 @@ func (c *Client) TestRequestRequiredNumber(ctx context.Context, request float64)
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumber",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -5741,21 +5998,24 @@ func (c *Client) TestRequestRequiredNumberArray(ctx context.Context, request []f
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -5837,21 +6097,24 @@ func (c *Client) TestRequestRequiredNumberArrayArray(ctx context.Context, reques
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -5899,21 +6162,24 @@ func (c *Client) TestRequestRequiredNumberDouble(ctx context.Context, request fl
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_double"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDouble",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_double")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -5978,21 +6244,24 @@ func (c *Client) TestRequestRequiredNumberDoubleArray(ctx context.Context, reque
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_double_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_double_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6074,21 +6343,24 @@ func (c *Client) TestRequestRequiredNumberDoubleArrayArray(ctx context.Context, 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_double_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_double_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6137,21 +6409,24 @@ func (c *Client) TestRequestRequiredNumberDoubleNullable(ctx context.Context, re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_double_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_double_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6216,21 +6491,24 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArray(ctx context.Contex
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_double_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_double_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6312,21 +6590,24 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.C
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_double_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_double_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6374,21 +6655,24 @@ func (c *Client) TestRequestRequiredNumberFloat(ctx context.Context, request flo
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_float"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloat",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_float")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6453,21 +6737,24 @@ func (c *Client) TestRequestRequiredNumberFloatArray(ctx context.Context, reques
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_float_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_float_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6549,21 +6836,24 @@ func (c *Client) TestRequestRequiredNumberFloatArrayArray(ctx context.Context, r
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_float_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_float_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6612,21 +6902,24 @@ func (c *Client) TestRequestRequiredNumberFloatNullable(ctx context.Context, req
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_float_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_float_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6691,21 +6984,24 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArray(ctx context.Context
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_float_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_float_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6787,21 +7083,24 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Co
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_float_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_float_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6841,21 +7140,24 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Co
 // POST /test_request_required_number_int32
 func (c *Client) TestRequestRequiredNumberInt32(ctx context.Context, request int32) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int32"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int32")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6903,21 +7205,24 @@ func (c *Client) TestRequestRequiredNumberInt32Array(ctx context.Context, reques
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int32_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int32_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6982,21 +7287,24 @@ func (c *Client) TestRequestRequiredNumberInt32ArrayArray(ctx context.Context, r
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int32_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int32_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -7036,21 +7344,24 @@ func (c *Client) TestRequestRequiredNumberInt32ArrayArray(ctx context.Context, r
 // POST /test_request_required_number_int32_nullable
 func (c *Client) TestRequestRequiredNumberInt32Nullable(ctx context.Context, request NilInt32) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int32_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int32_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -7098,21 +7409,24 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArray(ctx context.Context
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int32_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int32_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -7177,21 +7491,24 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Co
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int32_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int32_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -7231,21 +7548,24 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Co
 // POST /test_request_required_number_int64
 func (c *Client) TestRequestRequiredNumberInt64(ctx context.Context, request int64) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int64"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int64")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -7293,21 +7613,24 @@ func (c *Client) TestRequestRequiredNumberInt64Array(ctx context.Context, reques
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int64_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int64_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -7372,21 +7695,24 @@ func (c *Client) TestRequestRequiredNumberInt64ArrayArray(ctx context.Context, r
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int64_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int64_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -7426,21 +7752,24 @@ func (c *Client) TestRequestRequiredNumberInt64ArrayArray(ctx context.Context, r
 // POST /test_request_required_number_int64_nullable
 func (c *Client) TestRequestRequiredNumberInt64Nullable(ctx context.Context, request NilInt64) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int64_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int64_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -7488,21 +7817,24 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArray(ctx context.Context
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int64_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int64_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -7567,21 +7899,24 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Co
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int64_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int64_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -7630,21 +7965,24 @@ func (c *Client) TestRequestRequiredNumberNullable(ctx context.Context, request 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -7709,21 +8047,24 @@ func (c *Client) TestRequestRequiredNumberNullableArray(ctx context.Context, req
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -7805,21 +8146,24 @@ func (c *Client) TestRequestRequiredNumberNullableArrayArray(ctx context.Context
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -7859,21 +8203,24 @@ func (c *Client) TestRequestRequiredNumberNullableArrayArray(ctx context.Context
 // POST /test_request_required_string
 func (c *Client) TestRequestRequiredString(ctx context.Context, request string) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredString",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -7921,21 +8268,24 @@ func (c *Client) TestRequestRequiredStringArray(ctx context.Context, request []s
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -8000,21 +8350,24 @@ func (c *Client) TestRequestRequiredStringArrayArray(ctx context.Context, reques
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -8054,21 +8407,24 @@ func (c *Client) TestRequestRequiredStringArrayArray(ctx context.Context, reques
 // POST /test_request_required_string_binary
 func (c *Client) TestRequestRequiredStringBinary(ctx context.Context, request string) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_binary"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinary",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_binary")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -8116,21 +8472,24 @@ func (c *Client) TestRequestRequiredStringBinaryArray(ctx context.Context, reque
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_binary_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_binary_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -8195,21 +8554,24 @@ func (c *Client) TestRequestRequiredStringBinaryArrayArray(ctx context.Context, 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_binary_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_binary_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -8249,21 +8611,24 @@ func (c *Client) TestRequestRequiredStringBinaryArrayArray(ctx context.Context, 
 // POST /test_request_required_string_binary_nullable
 func (c *Client) TestRequestRequiredStringBinaryNullable(ctx context.Context, request NilString) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_binary_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_binary_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -8311,21 +8676,24 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArray(ctx context.Contex
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_binary_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_binary_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -8390,21 +8758,24 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArrayArray(ctx context.C
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_binary_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_binary_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -8444,21 +8815,24 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArrayArray(ctx context.C
 // POST /test_request_required_string_byte
 func (c *Client) TestRequestRequiredStringByte(ctx context.Context, request []byte) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_byte"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByte",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_byte")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -8506,21 +8880,24 @@ func (c *Client) TestRequestRequiredStringByteArray(ctx context.Context, request
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_byte_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_byte_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -8585,21 +8962,24 @@ func (c *Client) TestRequestRequiredStringByteArrayArray(ctx context.Context, re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_byte_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_byte_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -8639,21 +9019,24 @@ func (c *Client) TestRequestRequiredStringByteArrayArray(ctx context.Context, re
 // POST /test_request_required_string_byte_nullable
 func (c *Client) TestRequestRequiredStringByteNullable(ctx context.Context, request []byte) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_byte_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_byte_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -8701,21 +9084,24 @@ func (c *Client) TestRequestRequiredStringByteNullableArray(ctx context.Context,
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_byte_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_byte_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -8780,21 +9166,24 @@ func (c *Client) TestRequestRequiredStringByteNullableArrayArray(ctx context.Con
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_byte_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_byte_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -8834,21 +9223,24 @@ func (c *Client) TestRequestRequiredStringByteNullableArrayArray(ctx context.Con
 // POST /test_request_required_string_date
 func (c *Client) TestRequestRequiredStringDate(ctx context.Context, request time.Time) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDate",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -8896,21 +9288,24 @@ func (c *Client) TestRequestRequiredStringDateArray(ctx context.Context, request
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -8975,21 +9370,24 @@ func (c *Client) TestRequestRequiredStringDateArrayArray(ctx context.Context, re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9029,21 +9427,24 @@ func (c *Client) TestRequestRequiredStringDateArrayArray(ctx context.Context, re
 // POST /test_request_required_string_date_nullable
 func (c *Client) TestRequestRequiredStringDateNullable(ctx context.Context, request NilDate) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9091,21 +9492,24 @@ func (c *Client) TestRequestRequiredStringDateNullableArray(ctx context.Context,
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9170,21 +9574,24 @@ func (c *Client) TestRequestRequiredStringDateNullableArrayArray(ctx context.Con
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9224,21 +9631,24 @@ func (c *Client) TestRequestRequiredStringDateNullableArrayArray(ctx context.Con
 // POST /test_request_required_string_date-time
 func (c *Client) TestRequestRequiredStringDateTime(ctx context.Context, request time.Time) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date-time"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTime",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date-time")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9286,21 +9696,24 @@ func (c *Client) TestRequestRequiredStringDateTimeArray(ctx context.Context, req
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date-time_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date-time_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9365,21 +9778,24 @@ func (c *Client) TestRequestRequiredStringDateTimeArrayArray(ctx context.Context
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date-time_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date-time_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9419,21 +9835,24 @@ func (c *Client) TestRequestRequiredStringDateTimeArrayArray(ctx context.Context
 // POST /test_request_required_string_date-time_nullable
 func (c *Client) TestRequestRequiredStringDateTimeNullable(ctx context.Context, request NilDateTime) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date-time_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date-time_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9481,21 +9900,24 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArray(ctx context.Cont
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date-time_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date-time_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9560,21 +9982,24 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArrayArray(ctx context
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date-time_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date-time_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9614,21 +10039,24 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArrayArray(ctx context
 // POST /test_request_required_string_duration
 func (c *Client) TestRequestRequiredStringDuration(ctx context.Context, request time.Duration) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_duration"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDuration",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_duration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9676,21 +10104,24 @@ func (c *Client) TestRequestRequiredStringDurationArray(ctx context.Context, req
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_duration_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_duration_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9755,21 +10186,24 @@ func (c *Client) TestRequestRequiredStringDurationArrayArray(ctx context.Context
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_duration_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_duration_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9809,21 +10243,24 @@ func (c *Client) TestRequestRequiredStringDurationArrayArray(ctx context.Context
 // POST /test_request_required_string_duration_nullable
 func (c *Client) TestRequestRequiredStringDurationNullable(ctx context.Context, request NilDuration) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_duration_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_duration_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9871,21 +10308,24 @@ func (c *Client) TestRequestRequiredStringDurationNullableArray(ctx context.Cont
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_duration_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_duration_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9950,21 +10390,24 @@ func (c *Client) TestRequestRequiredStringDurationNullableArrayArray(ctx context
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_duration_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_duration_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -10020,21 +10463,24 @@ func (c *Client) TestRequestRequiredStringEmail(ctx context.Context, request str
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_email"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmail",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_email")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -10107,21 +10553,24 @@ func (c *Client) TestRequestRequiredStringEmailArray(ctx context.Context, reques
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_email_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_email_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -10211,21 +10660,24 @@ func (c *Client) TestRequestRequiredStringEmailArrayArray(ctx context.Context, r
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_email_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_email_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -10282,21 +10734,24 @@ func (c *Client) TestRequestRequiredStringEmailNullable(ctx context.Context, req
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_email_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_email_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -10369,21 +10824,24 @@ func (c *Client) TestRequestRequiredStringEmailNullableArray(ctx context.Context
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_email_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_email_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -10473,21 +10931,24 @@ func (c *Client) TestRequestRequiredStringEmailNullableArrayArray(ctx context.Co
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_email_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_email_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -10543,21 +11004,24 @@ func (c *Client) TestRequestRequiredStringHostname(ctx context.Context, request 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_hostname"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostname",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_hostname")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -10630,21 +11094,24 @@ func (c *Client) TestRequestRequiredStringHostnameArray(ctx context.Context, req
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_hostname_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_hostname_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -10734,21 +11201,24 @@ func (c *Client) TestRequestRequiredStringHostnameArrayArray(ctx context.Context
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_hostname_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_hostname_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -10805,21 +11275,24 @@ func (c *Client) TestRequestRequiredStringHostnameNullable(ctx context.Context, 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_hostname_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_hostname_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -10892,21 +11365,24 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArray(ctx context.Cont
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_hostname_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_hostname_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -10996,21 +11472,24 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArrayArray(ctx context
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_hostname_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_hostname_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -11050,21 +11529,24 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArrayArray(ctx context
 // POST /test_request_required_string_ip
 func (c *Client) TestRequestRequiredStringIP(ctx context.Context, request net.IP) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ip"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIP",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ip")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -11112,21 +11594,24 @@ func (c *Client) TestRequestRequiredStringIPArray(ctx context.Context, request [
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ip_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ip_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -11191,21 +11676,24 @@ func (c *Client) TestRequestRequiredStringIPArrayArray(ctx context.Context, requ
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ip_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ip_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -11245,21 +11733,24 @@ func (c *Client) TestRequestRequiredStringIPArrayArray(ctx context.Context, requ
 // POST /test_request_required_string_ip_nullable
 func (c *Client) TestRequestRequiredStringIPNullable(ctx context.Context, request NilIP) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ip_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ip_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -11307,21 +11798,24 @@ func (c *Client) TestRequestRequiredStringIPNullableArray(ctx context.Context, r
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ip_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ip_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -11386,21 +11880,24 @@ func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Conte
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ip_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ip_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -11440,21 +11937,24 @@ func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Conte
 // POST /test_request_required_string_ipv4
 func (c *Client) TestRequestRequiredStringIpv4(ctx context.Context, request net.IP) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv4"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv4")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -11502,21 +12002,24 @@ func (c *Client) TestRequestRequiredStringIpv4Array(ctx context.Context, request
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv4_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv4_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -11581,21 +12084,24 @@ func (c *Client) TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv4_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv4_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -11635,21 +12141,24 @@ func (c *Client) TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, re
 // POST /test_request_required_string_ipv4_nullable
 func (c *Client) TestRequestRequiredStringIpv4Nullable(ctx context.Context, request NilIPv4) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv4_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv4_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -11697,21 +12206,24 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArray(ctx context.Context,
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv4_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv4_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -11776,21 +12288,24 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Con
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv4_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv4_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -11830,21 +12345,24 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Con
 // POST /test_request_required_string_ipv6
 func (c *Client) TestRequestRequiredStringIpv6(ctx context.Context, request net.IP) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv6"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv6")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -11892,21 +12410,24 @@ func (c *Client) TestRequestRequiredStringIpv6Array(ctx context.Context, request
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv6_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv6_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -11971,21 +12492,24 @@ func (c *Client) TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv6_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv6_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -12025,21 +12549,24 @@ func (c *Client) TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, re
 // POST /test_request_required_string_ipv6_nullable
 func (c *Client) TestRequestRequiredStringIpv6Nullable(ctx context.Context, request NilIPv6) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv6_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv6_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -12087,21 +12614,24 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArray(ctx context.Context,
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv6_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv6_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -12166,21 +12696,24 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Con
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv6_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv6_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -12220,21 +12753,24 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Con
 // POST /test_request_required_string_nullable
 func (c *Client) TestRequestRequiredStringNullable(ctx context.Context, request NilString) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -12282,21 +12818,24 @@ func (c *Client) TestRequestRequiredStringNullableArray(ctx context.Context, req
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -12361,21 +12900,24 @@ func (c *Client) TestRequestRequiredStringNullableArrayArray(ctx context.Context
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -12415,21 +12957,24 @@ func (c *Client) TestRequestRequiredStringNullableArrayArray(ctx context.Context
 // POST /test_request_required_string_password
 func (c *Client) TestRequestRequiredStringPassword(ctx context.Context, request string) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_password"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPassword",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_password")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -12477,21 +13022,24 @@ func (c *Client) TestRequestRequiredStringPasswordArray(ctx context.Context, req
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_password_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_password_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -12556,21 +13104,24 @@ func (c *Client) TestRequestRequiredStringPasswordArrayArray(ctx context.Context
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_password_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_password_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -12610,21 +13161,24 @@ func (c *Client) TestRequestRequiredStringPasswordArrayArray(ctx context.Context
 // POST /test_request_required_string_password_nullable
 func (c *Client) TestRequestRequiredStringPasswordNullable(ctx context.Context, request NilString) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_password_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_password_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -12672,21 +13226,24 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArray(ctx context.Cont
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_password_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_password_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -12751,21 +13308,24 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArrayArray(ctx context
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_password_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_password_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -12805,21 +13365,24 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArrayArray(ctx context
 // POST /test_request_required_string_time
 func (c *Client) TestRequestRequiredStringTime(ctx context.Context, request time.Time) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_time"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTime",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_time")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -12867,21 +13430,24 @@ func (c *Client) TestRequestRequiredStringTimeArray(ctx context.Context, request
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_time_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_time_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -12946,21 +13512,24 @@ func (c *Client) TestRequestRequiredStringTimeArrayArray(ctx context.Context, re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_time_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_time_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -13000,21 +13569,24 @@ func (c *Client) TestRequestRequiredStringTimeArrayArray(ctx context.Context, re
 // POST /test_request_required_string_time_nullable
 func (c *Client) TestRequestRequiredStringTimeNullable(ctx context.Context, request NilTime) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_time_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_time_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -13062,21 +13634,24 @@ func (c *Client) TestRequestRequiredStringTimeNullableArray(ctx context.Context,
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_time_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_time_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -13141,21 +13716,24 @@ func (c *Client) TestRequestRequiredStringTimeNullableArrayArray(ctx context.Con
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_time_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_time_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -13195,21 +13773,24 @@ func (c *Client) TestRequestRequiredStringTimeNullableArrayArray(ctx context.Con
 // POST /test_request_required_string_uri
 func (c *Client) TestRequestRequiredStringURI(ctx context.Context, request url.URL) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uri"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURI",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uri")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -13257,21 +13838,24 @@ func (c *Client) TestRequestRequiredStringURIArray(ctx context.Context, request 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uri_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURIArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uri_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -13336,21 +13920,24 @@ func (c *Client) TestRequestRequiredStringURIArrayArray(ctx context.Context, req
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uri_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURIArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uri_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -13390,21 +13977,24 @@ func (c *Client) TestRequestRequiredStringURIArrayArray(ctx context.Context, req
 // POST /test_request_required_string_uri_nullable
 func (c *Client) TestRequestRequiredStringURINullable(ctx context.Context, request NilURI) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uri_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURINullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uri_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -13452,21 +14042,24 @@ func (c *Client) TestRequestRequiredStringURINullableArray(ctx context.Context, 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uri_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURINullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uri_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -13531,21 +14124,24 @@ func (c *Client) TestRequestRequiredStringURINullableArrayArray(ctx context.Cont
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uri_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURINullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uri_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -13585,21 +14181,24 @@ func (c *Client) TestRequestRequiredStringURINullableArrayArray(ctx context.Cont
 // POST /test_request_required_string_uuid
 func (c *Client) TestRequestRequiredStringUUID(ctx context.Context, request uuid.UUID) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uuid"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUID",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uuid")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -13647,21 +14246,24 @@ func (c *Client) TestRequestRequiredStringUUIDArray(ctx context.Context, request
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uuid_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uuid_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -13726,21 +14328,24 @@ func (c *Client) TestRequestRequiredStringUUIDArrayArray(ctx context.Context, re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uuid_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uuid_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -13780,21 +14385,24 @@ func (c *Client) TestRequestRequiredStringUUIDArrayArray(ctx context.Context, re
 // POST /test_request_required_string_uuid_nullable
 func (c *Client) TestRequestRequiredStringUUIDNullable(ctx context.Context, request NilUUID) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uuid_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uuid_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -13842,21 +14450,24 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArray(ctx context.Context,
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uuid_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uuid_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -13921,21 +14532,24 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Con
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uuid_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uuid_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -13975,21 +14589,24 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Con
 // POST /test_request_string
 func (c *Client) TestRequestString(ctx context.Context, request OptString) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestString",
-		trace.WithAttributes(otelogen.OperationID("test_request_string")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -14029,21 +14646,24 @@ func (c *Client) TestRequestString(ctx context.Context, request OptString) (res 
 // POST /test_request_string_array
 func (c *Client) TestRequestStringArray(ctx context.Context, request []string) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -14105,21 +14725,24 @@ func (c *Client) TestRequestStringArrayArray(ctx context.Context, request [][]st
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -14159,21 +14782,24 @@ func (c *Client) TestRequestStringArrayArray(ctx context.Context, request [][]st
 // POST /test_request_string_binary
 func (c *Client) TestRequestStringBinary(ctx context.Context, request OptString) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_binary"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinary",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_binary")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -14213,21 +14839,24 @@ func (c *Client) TestRequestStringBinary(ctx context.Context, request OptString)
 // POST /test_request_string_binary_array
 func (c *Client) TestRequestStringBinaryArray(ctx context.Context, request []string) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_binary_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_binary_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -14289,21 +14918,24 @@ func (c *Client) TestRequestStringBinaryArrayArray(ctx context.Context, request 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_binary_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_binary_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -14343,21 +14975,24 @@ func (c *Client) TestRequestStringBinaryArrayArray(ctx context.Context, request 
 // POST /test_request_string_binary_nullable
 func (c *Client) TestRequestStringBinaryNullable(ctx context.Context, request OptNilString) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_binary_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_binary_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -14397,21 +15032,24 @@ func (c *Client) TestRequestStringBinaryNullable(ctx context.Context, request Op
 // POST /test_request_string_binary_nullable_array
 func (c *Client) TestRequestStringBinaryNullableArray(ctx context.Context, request []string) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_binary_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_binary_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -14473,21 +15111,24 @@ func (c *Client) TestRequestStringBinaryNullableArrayArray(ctx context.Context, 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_binary_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_binary_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -14527,21 +15168,24 @@ func (c *Client) TestRequestStringBinaryNullableArrayArray(ctx context.Context, 
 // POST /test_request_string_byte
 func (c *Client) TestRequestStringByte(ctx context.Context, request []byte) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_byte"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByte",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_byte")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -14581,21 +15225,24 @@ func (c *Client) TestRequestStringByte(ctx context.Context, request []byte) (res
 // POST /test_request_string_byte_array
 func (c *Client) TestRequestStringByteArray(ctx context.Context, request [][]byte) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_byte_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_byte_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -14657,21 +15304,24 @@ func (c *Client) TestRequestStringByteArrayArray(ctx context.Context, request []
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_byte_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_byte_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -14711,21 +15361,24 @@ func (c *Client) TestRequestStringByteArrayArray(ctx context.Context, request []
 // POST /test_request_string_byte_nullable
 func (c *Client) TestRequestStringByteNullable(ctx context.Context, request OptNilByte) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_byte_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_byte_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -14765,21 +15418,24 @@ func (c *Client) TestRequestStringByteNullable(ctx context.Context, request OptN
 // POST /test_request_string_byte_nullable_array
 func (c *Client) TestRequestStringByteNullableArray(ctx context.Context, request [][]byte) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_byte_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_byte_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -14841,21 +15497,24 @@ func (c *Client) TestRequestStringByteNullableArrayArray(ctx context.Context, re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_byte_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_byte_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -14895,21 +15554,24 @@ func (c *Client) TestRequestStringByteNullableArrayArray(ctx context.Context, re
 // POST /test_request_string_date
 func (c *Client) TestRequestStringDate(ctx context.Context, request OptDate) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDate",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -14949,21 +15611,24 @@ func (c *Client) TestRequestStringDate(ctx context.Context, request OptDate) (re
 // POST /test_request_string_date_array
 func (c *Client) TestRequestStringDateArray(ctx context.Context, request []time.Time) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -15025,21 +15690,24 @@ func (c *Client) TestRequestStringDateArrayArray(ctx context.Context, request []
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -15079,21 +15747,24 @@ func (c *Client) TestRequestStringDateArrayArray(ctx context.Context, request []
 // POST /test_request_string_date_nullable
 func (c *Client) TestRequestStringDateNullable(ctx context.Context, request OptNilDate) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -15133,21 +15804,24 @@ func (c *Client) TestRequestStringDateNullable(ctx context.Context, request OptN
 // POST /test_request_string_date_nullable_array
 func (c *Client) TestRequestStringDateNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -15209,21 +15883,24 @@ func (c *Client) TestRequestStringDateNullableArrayArray(ctx context.Context, re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -15263,21 +15940,24 @@ func (c *Client) TestRequestStringDateNullableArrayArray(ctx context.Context, re
 // POST /test_request_string_date-time
 func (c *Client) TestRequestStringDateTime(ctx context.Context, request OptDateTime) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date-time"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTime",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date-time")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -15317,21 +15997,24 @@ func (c *Client) TestRequestStringDateTime(ctx context.Context, request OptDateT
 // POST /test_request_string_date-time_array
 func (c *Client) TestRequestStringDateTimeArray(ctx context.Context, request []time.Time) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date-time_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date-time_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -15393,21 +16076,24 @@ func (c *Client) TestRequestStringDateTimeArrayArray(ctx context.Context, reques
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date-time_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date-time_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -15447,21 +16133,24 @@ func (c *Client) TestRequestStringDateTimeArrayArray(ctx context.Context, reques
 // POST /test_request_string_date-time_nullable
 func (c *Client) TestRequestStringDateTimeNullable(ctx context.Context, request OptNilDateTime) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date-time_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date-time_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -15501,21 +16190,24 @@ func (c *Client) TestRequestStringDateTimeNullable(ctx context.Context, request 
 // POST /test_request_string_date-time_nullable_array
 func (c *Client) TestRequestStringDateTimeNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date-time_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date-time_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -15577,21 +16269,24 @@ func (c *Client) TestRequestStringDateTimeNullableArrayArray(ctx context.Context
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date-time_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date-time_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -15631,21 +16326,24 @@ func (c *Client) TestRequestStringDateTimeNullableArrayArray(ctx context.Context
 // POST /test_request_string_duration
 func (c *Client) TestRequestStringDuration(ctx context.Context, request OptDuration) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_duration"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDuration",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_duration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -15685,21 +16383,24 @@ func (c *Client) TestRequestStringDuration(ctx context.Context, request OptDurat
 // POST /test_request_string_duration_array
 func (c *Client) TestRequestStringDurationArray(ctx context.Context, request []time.Duration) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_duration_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_duration_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -15761,21 +16462,24 @@ func (c *Client) TestRequestStringDurationArrayArray(ctx context.Context, reques
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_duration_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_duration_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -15815,21 +16519,24 @@ func (c *Client) TestRequestStringDurationArrayArray(ctx context.Context, reques
 // POST /test_request_string_duration_nullable
 func (c *Client) TestRequestStringDurationNullable(ctx context.Context, request OptNilDuration) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_duration_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_duration_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -15869,21 +16576,24 @@ func (c *Client) TestRequestStringDurationNullable(ctx context.Context, request 
 // POST /test_request_string_duration_nullable_array
 func (c *Client) TestRequestStringDurationNullableArray(ctx context.Context, request []time.Duration) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_duration_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_duration_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -15945,21 +16655,24 @@ func (c *Client) TestRequestStringDurationNullableArrayArray(ctx context.Context
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_duration_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_duration_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -16023,21 +16736,24 @@ func (c *Client) TestRequestStringEmail(ctx context.Context, request OptString) 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_email"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmail",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_email")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -16107,21 +16823,24 @@ func (c *Client) TestRequestStringEmailArray(ctx context.Context, request []stri
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_email_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_email_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -16208,21 +16927,24 @@ func (c *Client) TestRequestStringEmailArrayArray(ctx context.Context, request [
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_email_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_email_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -16286,21 +17008,24 @@ func (c *Client) TestRequestStringEmailNullable(ctx context.Context, request Opt
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_email_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_email_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -16370,21 +17095,24 @@ func (c *Client) TestRequestStringEmailNullableArray(ctx context.Context, reques
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_email_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_email_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -16471,21 +17199,24 @@ func (c *Client) TestRequestStringEmailNullableArrayArray(ctx context.Context, r
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_email_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_email_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -16549,21 +17280,24 @@ func (c *Client) TestRequestStringHostname(ctx context.Context, request OptStrin
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_hostname"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostname",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_hostname")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -16633,21 +17367,24 @@ func (c *Client) TestRequestStringHostnameArray(ctx context.Context, request []s
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_hostname_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_hostname_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -16734,21 +17471,24 @@ func (c *Client) TestRequestStringHostnameArrayArray(ctx context.Context, reques
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_hostname_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_hostname_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -16812,21 +17552,24 @@ func (c *Client) TestRequestStringHostnameNullable(ctx context.Context, request 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_hostname_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_hostname_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -16896,21 +17639,24 @@ func (c *Client) TestRequestStringHostnameNullableArray(ctx context.Context, req
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_hostname_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_hostname_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -16997,21 +17743,24 @@ func (c *Client) TestRequestStringHostnameNullableArrayArray(ctx context.Context
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_hostname_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_hostname_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17051,21 +17800,24 @@ func (c *Client) TestRequestStringHostnameNullableArrayArray(ctx context.Context
 // POST /test_request_string_ip
 func (c *Client) TestRequestStringIP(ctx context.Context, request OptIP) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ip"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIP",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ip")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17105,21 +17857,24 @@ func (c *Client) TestRequestStringIP(ctx context.Context, request OptIP) (res Er
 // POST /test_request_string_ip_array
 func (c *Client) TestRequestStringIPArray(ctx context.Context, request []net.IP) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ip_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ip_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17181,21 +17936,24 @@ func (c *Client) TestRequestStringIPArrayArray(ctx context.Context, request [][]
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ip_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ip_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17235,21 +17993,24 @@ func (c *Client) TestRequestStringIPArrayArray(ctx context.Context, request [][]
 // POST /test_request_string_ip_nullable
 func (c *Client) TestRequestStringIPNullable(ctx context.Context, request OptNilIP) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ip_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ip_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17289,21 +18050,24 @@ func (c *Client) TestRequestStringIPNullable(ctx context.Context, request OptNil
 // POST /test_request_string_ip_nullable_array
 func (c *Client) TestRequestStringIPNullableArray(ctx context.Context, request []net.IP) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ip_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ip_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17365,21 +18129,24 @@ func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, requ
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ip_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ip_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17419,21 +18186,24 @@ func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, requ
 // POST /test_request_string_ipv4
 func (c *Client) TestRequestStringIpv4(ctx context.Context, request OptIPv4) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv4"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv4")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17473,21 +18243,24 @@ func (c *Client) TestRequestStringIpv4(ctx context.Context, request OptIPv4) (re
 // POST /test_request_string_ipv4_array
 func (c *Client) TestRequestStringIpv4Array(ctx context.Context, request []net.IP) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv4_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv4_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17549,21 +18322,24 @@ func (c *Client) TestRequestStringIpv4ArrayArray(ctx context.Context, request []
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv4_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv4_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17603,21 +18379,24 @@ func (c *Client) TestRequestStringIpv4ArrayArray(ctx context.Context, request []
 // POST /test_request_string_ipv4_nullable
 func (c *Client) TestRequestStringIpv4Nullable(ctx context.Context, request OptNilIPv4) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv4_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv4_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17657,21 +18436,24 @@ func (c *Client) TestRequestStringIpv4Nullable(ctx context.Context, request OptN
 // POST /test_request_string_ipv4_nullable_array
 func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request []net.IP) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv4_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv4_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17733,21 +18515,24 @@ func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv4_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv4_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17787,21 +18572,24 @@ func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, re
 // POST /test_request_string_ipv6
 func (c *Client) TestRequestStringIpv6(ctx context.Context, request OptIPv6) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv6"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv6")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17841,21 +18629,24 @@ func (c *Client) TestRequestStringIpv6(ctx context.Context, request OptIPv6) (re
 // POST /test_request_string_ipv6_array
 func (c *Client) TestRequestStringIpv6Array(ctx context.Context, request []net.IP) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv6_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv6_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17917,21 +18708,24 @@ func (c *Client) TestRequestStringIpv6ArrayArray(ctx context.Context, request []
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv6_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv6_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17971,21 +18765,24 @@ func (c *Client) TestRequestStringIpv6ArrayArray(ctx context.Context, request []
 // POST /test_request_string_ipv6_nullable
 func (c *Client) TestRequestStringIpv6Nullable(ctx context.Context, request OptNilIPv6) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv6_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv6_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18025,21 +18822,24 @@ func (c *Client) TestRequestStringIpv6Nullable(ctx context.Context, request OptN
 // POST /test_request_string_ipv6_nullable_array
 func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request []net.IP) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv6_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv6_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18101,21 +18901,24 @@ func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv6_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv6_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18155,21 +18958,24 @@ func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, re
 // POST /test_request_string_nullable
 func (c *Client) TestRequestStringNullable(ctx context.Context, request OptNilString) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18209,21 +19015,24 @@ func (c *Client) TestRequestStringNullable(ctx context.Context, request OptNilSt
 // POST /test_request_string_nullable_array
 func (c *Client) TestRequestStringNullableArray(ctx context.Context, request []string) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18285,21 +19094,24 @@ func (c *Client) TestRequestStringNullableArrayArray(ctx context.Context, reques
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18339,21 +19151,24 @@ func (c *Client) TestRequestStringNullableArrayArray(ctx context.Context, reques
 // POST /test_request_string_password
 func (c *Client) TestRequestStringPassword(ctx context.Context, request OptString) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_password"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPassword",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_password")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18393,21 +19208,24 @@ func (c *Client) TestRequestStringPassword(ctx context.Context, request OptStrin
 // POST /test_request_string_password_array
 func (c *Client) TestRequestStringPasswordArray(ctx context.Context, request []string) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_password_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_password_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18469,21 +19287,24 @@ func (c *Client) TestRequestStringPasswordArrayArray(ctx context.Context, reques
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_password_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_password_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18523,21 +19344,24 @@ func (c *Client) TestRequestStringPasswordArrayArray(ctx context.Context, reques
 // POST /test_request_string_password_nullable
 func (c *Client) TestRequestStringPasswordNullable(ctx context.Context, request OptNilString) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_password_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_password_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18577,21 +19401,24 @@ func (c *Client) TestRequestStringPasswordNullable(ctx context.Context, request 
 // POST /test_request_string_password_nullable_array
 func (c *Client) TestRequestStringPasswordNullableArray(ctx context.Context, request []string) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_password_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_password_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18653,21 +19480,24 @@ func (c *Client) TestRequestStringPasswordNullableArrayArray(ctx context.Context
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_password_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_password_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18707,21 +19537,24 @@ func (c *Client) TestRequestStringPasswordNullableArrayArray(ctx context.Context
 // POST /test_request_string_time
 func (c *Client) TestRequestStringTime(ctx context.Context, request OptTime) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_time"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTime",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_time")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18761,21 +19594,24 @@ func (c *Client) TestRequestStringTime(ctx context.Context, request OptTime) (re
 // POST /test_request_string_time_array
 func (c *Client) TestRequestStringTimeArray(ctx context.Context, request []time.Time) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_time_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_time_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18837,21 +19673,24 @@ func (c *Client) TestRequestStringTimeArrayArray(ctx context.Context, request []
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_time_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_time_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18891,21 +19730,24 @@ func (c *Client) TestRequestStringTimeArrayArray(ctx context.Context, request []
 // POST /test_request_string_time_nullable
 func (c *Client) TestRequestStringTimeNullable(ctx context.Context, request OptNilTime) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_time_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_time_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18945,21 +19787,24 @@ func (c *Client) TestRequestStringTimeNullable(ctx context.Context, request OptN
 // POST /test_request_string_time_nullable_array
 func (c *Client) TestRequestStringTimeNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_time_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_time_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -19021,21 +19866,24 @@ func (c *Client) TestRequestStringTimeNullableArrayArray(ctx context.Context, re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_time_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_time_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -19075,21 +19923,24 @@ func (c *Client) TestRequestStringTimeNullableArrayArray(ctx context.Context, re
 // POST /test_request_string_uri
 func (c *Client) TestRequestStringURI(ctx context.Context, request OptURI) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uri"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURI",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uri")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -19129,21 +19980,24 @@ func (c *Client) TestRequestStringURI(ctx context.Context, request OptURI) (res 
 // POST /test_request_string_uri_array
 func (c *Client) TestRequestStringURIArray(ctx context.Context, request []url.URL) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uri_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURIArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uri_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -19205,21 +20059,24 @@ func (c *Client) TestRequestStringURIArrayArray(ctx context.Context, request [][
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uri_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURIArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uri_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -19259,21 +20116,24 @@ func (c *Client) TestRequestStringURIArrayArray(ctx context.Context, request [][
 // POST /test_request_string_uri_nullable
 func (c *Client) TestRequestStringURINullable(ctx context.Context, request OptNilURI) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uri_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURINullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uri_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -19313,21 +20173,24 @@ func (c *Client) TestRequestStringURINullable(ctx context.Context, request OptNi
 // POST /test_request_string_uri_nullable_array
 func (c *Client) TestRequestStringURINullableArray(ctx context.Context, request []url.URL) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uri_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURINullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uri_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -19389,21 +20252,24 @@ func (c *Client) TestRequestStringURINullableArrayArray(ctx context.Context, req
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uri_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURINullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uri_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -19443,21 +20309,24 @@ func (c *Client) TestRequestStringURINullableArrayArray(ctx context.Context, req
 // POST /test_request_string_uuid
 func (c *Client) TestRequestStringUUID(ctx context.Context, request OptUUID) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uuid"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUID",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uuid")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -19497,21 +20366,24 @@ func (c *Client) TestRequestStringUUID(ctx context.Context, request OptUUID) (re
 // POST /test_request_string_uuid_array
 func (c *Client) TestRequestStringUUIDArray(ctx context.Context, request []uuid.UUID) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uuid_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uuid_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -19573,21 +20445,24 @@ func (c *Client) TestRequestStringUUIDArrayArray(ctx context.Context, request []
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uuid_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uuid_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -19627,21 +20502,24 @@ func (c *Client) TestRequestStringUUIDArrayArray(ctx context.Context, request []
 // POST /test_request_string_uuid_nullable
 func (c *Client) TestRequestStringUUIDNullable(ctx context.Context, request OptNilUUID) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uuid_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uuid_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -19681,21 +20559,24 @@ func (c *Client) TestRequestStringUUIDNullable(ctx context.Context, request OptN
 // POST /test_request_string_uuid_nullable_array
 func (c *Client) TestRequestStringUUIDNullableArray(ctx context.Context, request []uuid.UUID) (res Error, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uuid_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uuid_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -19757,21 +20638,24 @@ func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uuid_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uuid_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -19811,21 +20695,24 @@ func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, re
 // POST /test_response_Any
 func (c *Client) TestResponseAny(ctx context.Context, request string) (res jx.Raw, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_Any"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseAny",
-		trace.WithAttributes(otelogen.OperationID("test_response_Any")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -19865,21 +20752,24 @@ func (c *Client) TestResponseAny(ctx context.Context, request string) (res jx.Ra
 // POST /test_response_boolean
 func (c *Client) TestResponseBoolean(ctx context.Context, request string) (res bool, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_boolean"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBoolean",
-		trace.WithAttributes(otelogen.OperationID("test_response_boolean")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -19919,21 +20809,24 @@ func (c *Client) TestResponseBoolean(ctx context.Context, request string) (res b
 // POST /test_response_boolean_array
 func (c *Client) TestResponseBooleanArray(ctx context.Context, request string) (res []bool, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_boolean_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_boolean_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -19973,21 +20866,24 @@ func (c *Client) TestResponseBooleanArray(ctx context.Context, request string) (
 // POST /test_response_boolean_array_array
 func (c *Client) TestResponseBooleanArrayArray(ctx context.Context, request string) (res [][]bool, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_boolean_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_boolean_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20027,21 +20923,24 @@ func (c *Client) TestResponseBooleanArrayArray(ctx context.Context, request stri
 // POST /test_response_boolean_nullable
 func (c *Client) TestResponseBooleanNullable(ctx context.Context, request string) (res NilBool, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_boolean_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_boolean_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20081,21 +20980,24 @@ func (c *Client) TestResponseBooleanNullable(ctx context.Context, request string
 // POST /test_response_boolean_nullable_array
 func (c *Client) TestResponseBooleanNullableArray(ctx context.Context, request string) (res []bool, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_boolean_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_boolean_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20135,21 +21037,24 @@ func (c *Client) TestResponseBooleanNullableArray(ctx context.Context, request s
 // POST /test_response_boolean_nullable_array_array
 func (c *Client) TestResponseBooleanNullableArrayArray(ctx context.Context, request string) (res [][]bool, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_boolean_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_boolean_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20189,21 +21094,24 @@ func (c *Client) TestResponseBooleanNullableArrayArray(ctx context.Context, requ
 // POST /test_response_EmptyStruct
 func (c *Client) TestResponseEmptyStruct(ctx context.Context, request string) (res TestResponseEmptyStructOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_EmptyStruct"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseEmptyStruct",
-		trace.WithAttributes(otelogen.OperationID("test_response_EmptyStruct")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20243,21 +21151,24 @@ func (c *Client) TestResponseEmptyStruct(ctx context.Context, request string) (r
 // POST /test_response_FormatTest
 func (c *Client) TestResponseFormatTest(ctx context.Context, request string) (res TestResponseFormatTestOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_FormatTest"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseFormatTest",
-		trace.WithAttributes(otelogen.OperationID("test_response_FormatTest")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20297,21 +21208,24 @@ func (c *Client) TestResponseFormatTest(ctx context.Context, request string) (re
 // POST /test_response_integer
 func (c *Client) TestResponseInteger(ctx context.Context, request string) (res int, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseInteger",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20351,21 +21265,24 @@ func (c *Client) TestResponseInteger(ctx context.Context, request string) (res i
 // POST /test_response_integer_array
 func (c *Client) TestResponseIntegerArray(ctx context.Context, request string) (res []int, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20405,21 +21322,24 @@ func (c *Client) TestResponseIntegerArray(ctx context.Context, request string) (
 // POST /test_response_integer_array_array
 func (c *Client) TestResponseIntegerArrayArray(ctx context.Context, request string) (res [][]int, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20459,21 +21379,24 @@ func (c *Client) TestResponseIntegerArrayArray(ctx context.Context, request stri
 // POST /test_response_integer_int32
 func (c *Client) TestResponseIntegerInt32(ctx context.Context, request string) (res int32, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int32"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int32")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20513,21 +21436,24 @@ func (c *Client) TestResponseIntegerInt32(ctx context.Context, request string) (
 // POST /test_response_integer_int32_array
 func (c *Client) TestResponseIntegerInt32Array(ctx context.Context, request string) (res []int32, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int32_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32Array",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int32_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20567,21 +21493,24 @@ func (c *Client) TestResponseIntegerInt32Array(ctx context.Context, request stri
 // POST /test_response_integer_int32_array_array
 func (c *Client) TestResponseIntegerInt32ArrayArray(ctx context.Context, request string) (res [][]int32, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int32_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int32_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20621,21 +21550,24 @@ func (c *Client) TestResponseIntegerInt32ArrayArray(ctx context.Context, request
 // POST /test_response_integer_int32_nullable
 func (c *Client) TestResponseIntegerInt32Nullable(ctx context.Context, request string) (res NilInt32, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int32_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int32_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20675,21 +21607,24 @@ func (c *Client) TestResponseIntegerInt32Nullable(ctx context.Context, request s
 // POST /test_response_integer_int32_nullable_array
 func (c *Client) TestResponseIntegerInt32NullableArray(ctx context.Context, request string) (res []int32, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int32_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int32_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20729,21 +21664,24 @@ func (c *Client) TestResponseIntegerInt32NullableArray(ctx context.Context, requ
 // POST /test_response_integer_int32_nullable_array_array
 func (c *Client) TestResponseIntegerInt32NullableArrayArray(ctx context.Context, request string) (res [][]int32, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int32_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int32_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20783,21 +21721,24 @@ func (c *Client) TestResponseIntegerInt32NullableArrayArray(ctx context.Context,
 // POST /test_response_integer_int64
 func (c *Client) TestResponseIntegerInt64(ctx context.Context, request string) (res int64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int64"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int64")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20837,21 +21778,24 @@ func (c *Client) TestResponseIntegerInt64(ctx context.Context, request string) (
 // POST /test_response_integer_int64_array
 func (c *Client) TestResponseIntegerInt64Array(ctx context.Context, request string) (res []int64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int64_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64Array",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int64_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20891,21 +21835,24 @@ func (c *Client) TestResponseIntegerInt64Array(ctx context.Context, request stri
 // POST /test_response_integer_int64_array_array
 func (c *Client) TestResponseIntegerInt64ArrayArray(ctx context.Context, request string) (res [][]int64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int64_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int64_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20945,21 +21892,24 @@ func (c *Client) TestResponseIntegerInt64ArrayArray(ctx context.Context, request
 // POST /test_response_integer_int64_nullable
 func (c *Client) TestResponseIntegerInt64Nullable(ctx context.Context, request string) (res NilInt64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int64_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int64_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20999,21 +21949,24 @@ func (c *Client) TestResponseIntegerInt64Nullable(ctx context.Context, request s
 // POST /test_response_integer_int64_nullable_array
 func (c *Client) TestResponseIntegerInt64NullableArray(ctx context.Context, request string) (res []int64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int64_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int64_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21053,21 +22006,24 @@ func (c *Client) TestResponseIntegerInt64NullableArray(ctx context.Context, requ
 // POST /test_response_integer_int64_nullable_array_array
 func (c *Client) TestResponseIntegerInt64NullableArrayArray(ctx context.Context, request string) (res [][]int64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int64_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int64_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21107,21 +22063,24 @@ func (c *Client) TestResponseIntegerInt64NullableArrayArray(ctx context.Context,
 // POST /test_response_integer_nullable
 func (c *Client) TestResponseIntegerNullable(ctx context.Context, request string) (res NilInt, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21161,21 +22120,24 @@ func (c *Client) TestResponseIntegerNullable(ctx context.Context, request string
 // POST /test_response_integer_nullable_array
 func (c *Client) TestResponseIntegerNullableArray(ctx context.Context, request string) (res []int, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21215,21 +22177,24 @@ func (c *Client) TestResponseIntegerNullableArray(ctx context.Context, request s
 // POST /test_response_integer_nullable_array_array
 func (c *Client) TestResponseIntegerNullableArrayArray(ctx context.Context, request string) (res [][]int, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21269,21 +22234,24 @@ func (c *Client) TestResponseIntegerNullableArrayArray(ctx context.Context, requ
 // POST /test_response_number
 func (c *Client) TestResponseNumber(ctx context.Context, request string) (res float64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumber",
-		trace.WithAttributes(otelogen.OperationID("test_response_number")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21323,21 +22291,24 @@ func (c *Client) TestResponseNumber(ctx context.Context, request string) (res fl
 // POST /test_response_number_array
 func (c *Client) TestResponseNumberArray(ctx context.Context, request string) (res []float64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21377,21 +22348,24 @@ func (c *Client) TestResponseNumberArray(ctx context.Context, request string) (r
 // POST /test_response_number_array_array
 func (c *Client) TestResponseNumberArrayArray(ctx context.Context, request string) (res [][]float64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21431,21 +22405,24 @@ func (c *Client) TestResponseNumberArrayArray(ctx context.Context, request strin
 // POST /test_response_number_double
 func (c *Client) TestResponseNumberDouble(ctx context.Context, request string) (res float64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_double"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDouble",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_double")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21485,21 +22462,24 @@ func (c *Client) TestResponseNumberDouble(ctx context.Context, request string) (
 // POST /test_response_number_double_array
 func (c *Client) TestResponseNumberDoubleArray(ctx context.Context, request string) (res []float64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_double_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_double_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21539,21 +22519,24 @@ func (c *Client) TestResponseNumberDoubleArray(ctx context.Context, request stri
 // POST /test_response_number_double_array_array
 func (c *Client) TestResponseNumberDoubleArrayArray(ctx context.Context, request string) (res [][]float64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_double_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_double_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21593,21 +22576,24 @@ func (c *Client) TestResponseNumberDoubleArrayArray(ctx context.Context, request
 // POST /test_response_number_double_nullable
 func (c *Client) TestResponseNumberDoubleNullable(ctx context.Context, request string) (res NilFloat64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_double_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_double_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21647,21 +22633,24 @@ func (c *Client) TestResponseNumberDoubleNullable(ctx context.Context, request s
 // POST /test_response_number_double_nullable_array
 func (c *Client) TestResponseNumberDoubleNullableArray(ctx context.Context, request string) (res []float64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_double_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_double_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21701,21 +22690,24 @@ func (c *Client) TestResponseNumberDoubleNullableArray(ctx context.Context, requ
 // POST /test_response_number_double_nullable_array_array
 func (c *Client) TestResponseNumberDoubleNullableArrayArray(ctx context.Context, request string) (res [][]float64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_double_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_double_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21755,21 +22747,24 @@ func (c *Client) TestResponseNumberDoubleNullableArrayArray(ctx context.Context,
 // POST /test_response_number_float
 func (c *Client) TestResponseNumberFloat(ctx context.Context, request string) (res float32, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_float"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloat",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_float")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21809,21 +22804,24 @@ func (c *Client) TestResponseNumberFloat(ctx context.Context, request string) (r
 // POST /test_response_number_float_array
 func (c *Client) TestResponseNumberFloatArray(ctx context.Context, request string) (res []float32, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_float_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_float_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21863,21 +22861,24 @@ func (c *Client) TestResponseNumberFloatArray(ctx context.Context, request strin
 // POST /test_response_number_float_array_array
 func (c *Client) TestResponseNumberFloatArrayArray(ctx context.Context, request string) (res [][]float32, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_float_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_float_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21917,21 +22918,24 @@ func (c *Client) TestResponseNumberFloatArrayArray(ctx context.Context, request 
 // POST /test_response_number_float_nullable
 func (c *Client) TestResponseNumberFloatNullable(ctx context.Context, request string) (res NilFloat32, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_float_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_float_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21971,21 +22975,24 @@ func (c *Client) TestResponseNumberFloatNullable(ctx context.Context, request st
 // POST /test_response_number_float_nullable_array
 func (c *Client) TestResponseNumberFloatNullableArray(ctx context.Context, request string) (res []float32, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_float_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_float_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22025,21 +23032,24 @@ func (c *Client) TestResponseNumberFloatNullableArray(ctx context.Context, reque
 // POST /test_response_number_float_nullable_array_array
 func (c *Client) TestResponseNumberFloatNullableArrayArray(ctx context.Context, request string) (res [][]float32, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_float_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_float_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22079,21 +23089,24 @@ func (c *Client) TestResponseNumberFloatNullableArrayArray(ctx context.Context, 
 // POST /test_response_number_int32
 func (c *Client) TestResponseNumberInt32(ctx context.Context, request string) (res int32, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int32"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int32")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22133,21 +23146,24 @@ func (c *Client) TestResponseNumberInt32(ctx context.Context, request string) (r
 // POST /test_response_number_int32_array
 func (c *Client) TestResponseNumberInt32Array(ctx context.Context, request string) (res []int32, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int32_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32Array",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int32_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22187,21 +23203,24 @@ func (c *Client) TestResponseNumberInt32Array(ctx context.Context, request strin
 // POST /test_response_number_int32_array_array
 func (c *Client) TestResponseNumberInt32ArrayArray(ctx context.Context, request string) (res [][]int32, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int32_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int32_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22241,21 +23260,24 @@ func (c *Client) TestResponseNumberInt32ArrayArray(ctx context.Context, request 
 // POST /test_response_number_int32_nullable
 func (c *Client) TestResponseNumberInt32Nullable(ctx context.Context, request string) (res NilInt32, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int32_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int32_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22295,21 +23317,24 @@ func (c *Client) TestResponseNumberInt32Nullable(ctx context.Context, request st
 // POST /test_response_number_int32_nullable_array
 func (c *Client) TestResponseNumberInt32NullableArray(ctx context.Context, request string) (res []int32, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int32_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int32_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22349,21 +23374,24 @@ func (c *Client) TestResponseNumberInt32NullableArray(ctx context.Context, reque
 // POST /test_response_number_int32_nullable_array_array
 func (c *Client) TestResponseNumberInt32NullableArrayArray(ctx context.Context, request string) (res [][]int32, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int32_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int32_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22403,21 +23431,24 @@ func (c *Client) TestResponseNumberInt32NullableArrayArray(ctx context.Context, 
 // POST /test_response_number_int64
 func (c *Client) TestResponseNumberInt64(ctx context.Context, request string) (res int64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int64"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int64")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22457,21 +23488,24 @@ func (c *Client) TestResponseNumberInt64(ctx context.Context, request string) (r
 // POST /test_response_number_int64_array
 func (c *Client) TestResponseNumberInt64Array(ctx context.Context, request string) (res []int64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int64_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64Array",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int64_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22511,21 +23545,24 @@ func (c *Client) TestResponseNumberInt64Array(ctx context.Context, request strin
 // POST /test_response_number_int64_array_array
 func (c *Client) TestResponseNumberInt64ArrayArray(ctx context.Context, request string) (res [][]int64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int64_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int64_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22565,21 +23602,24 @@ func (c *Client) TestResponseNumberInt64ArrayArray(ctx context.Context, request 
 // POST /test_response_number_int64_nullable
 func (c *Client) TestResponseNumberInt64Nullable(ctx context.Context, request string) (res NilInt64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int64_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int64_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22619,21 +23659,24 @@ func (c *Client) TestResponseNumberInt64Nullable(ctx context.Context, request st
 // POST /test_response_number_int64_nullable_array
 func (c *Client) TestResponseNumberInt64NullableArray(ctx context.Context, request string) (res []int64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int64_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int64_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22673,21 +23716,24 @@ func (c *Client) TestResponseNumberInt64NullableArray(ctx context.Context, reque
 // POST /test_response_number_int64_nullable_array_array
 func (c *Client) TestResponseNumberInt64NullableArrayArray(ctx context.Context, request string) (res [][]int64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int64_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int64_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22727,21 +23773,24 @@ func (c *Client) TestResponseNumberInt64NullableArrayArray(ctx context.Context, 
 // POST /test_response_number_nullable
 func (c *Client) TestResponseNumberNullable(ctx context.Context, request string) (res NilFloat64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22781,21 +23830,24 @@ func (c *Client) TestResponseNumberNullable(ctx context.Context, request string)
 // POST /test_response_number_nullable_array
 func (c *Client) TestResponseNumberNullableArray(ctx context.Context, request string) (res []float64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22835,21 +23887,24 @@ func (c *Client) TestResponseNumberNullableArray(ctx context.Context, request st
 // POST /test_response_number_nullable_array_array
 func (c *Client) TestResponseNumberNullableArrayArray(ctx context.Context, request string) (res [][]float64, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22889,21 +23944,24 @@ func (c *Client) TestResponseNumberNullableArrayArray(ctx context.Context, reque
 // POST /test_response_string
 func (c *Client) TestResponseString(ctx context.Context, request string) (res string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseString",
-		trace.WithAttributes(otelogen.OperationID("test_response_string")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22943,21 +24001,24 @@ func (c *Client) TestResponseString(ctx context.Context, request string) (res st
 // POST /test_response_string_array
 func (c *Client) TestResponseStringArray(ctx context.Context, request string) (res []string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22997,21 +24058,24 @@ func (c *Client) TestResponseStringArray(ctx context.Context, request string) (r
 // POST /test_response_string_array_array
 func (c *Client) TestResponseStringArrayArray(ctx context.Context, request string) (res [][]string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -23051,21 +24115,24 @@ func (c *Client) TestResponseStringArrayArray(ctx context.Context, request strin
 // POST /test_response_string_binary
 func (c *Client) TestResponseStringBinary(ctx context.Context, request string) (res string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_binary"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinary",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_binary")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -23105,21 +24172,24 @@ func (c *Client) TestResponseStringBinary(ctx context.Context, request string) (
 // POST /test_response_string_binary_array
 func (c *Client) TestResponseStringBinaryArray(ctx context.Context, request string) (res []string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_binary_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_binary_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -23159,21 +24229,24 @@ func (c *Client) TestResponseStringBinaryArray(ctx context.Context, request stri
 // POST /test_response_string_binary_array_array
 func (c *Client) TestResponseStringBinaryArrayArray(ctx context.Context, request string) (res [][]string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_binary_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_binary_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -23213,21 +24286,24 @@ func (c *Client) TestResponseStringBinaryArrayArray(ctx context.Context, request
 // POST /test_response_string_binary_nullable
 func (c *Client) TestResponseStringBinaryNullable(ctx context.Context, request string) (res NilString, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_binary_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_binary_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -23267,21 +24343,24 @@ func (c *Client) TestResponseStringBinaryNullable(ctx context.Context, request s
 // POST /test_response_string_binary_nullable_array
 func (c *Client) TestResponseStringBinaryNullableArray(ctx context.Context, request string) (res []string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_binary_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_binary_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -23321,21 +24400,24 @@ func (c *Client) TestResponseStringBinaryNullableArray(ctx context.Context, requ
 // POST /test_response_string_binary_nullable_array_array
 func (c *Client) TestResponseStringBinaryNullableArrayArray(ctx context.Context, request string) (res [][]string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_binary_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_binary_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -23375,21 +24457,24 @@ func (c *Client) TestResponseStringBinaryNullableArrayArray(ctx context.Context,
 // POST /test_response_string_byte
 func (c *Client) TestResponseStringByte(ctx context.Context, request string) (res []byte, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_byte"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByte",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_byte")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -23429,21 +24514,24 @@ func (c *Client) TestResponseStringByte(ctx context.Context, request string) (re
 // POST /test_response_string_byte_array
 func (c *Client) TestResponseStringByteArray(ctx context.Context, request string) (res [][]byte, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_byte_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_byte_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -23483,21 +24571,24 @@ func (c *Client) TestResponseStringByteArray(ctx context.Context, request string
 // POST /test_response_string_byte_array_array
 func (c *Client) TestResponseStringByteArrayArray(ctx context.Context, request string) (res [][][]byte, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_byte_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_byte_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -23537,21 +24628,24 @@ func (c *Client) TestResponseStringByteArrayArray(ctx context.Context, request s
 // POST /test_response_string_byte_nullable
 func (c *Client) TestResponseStringByteNullable(ctx context.Context, request string) (res []byte, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_byte_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_byte_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -23591,21 +24685,24 @@ func (c *Client) TestResponseStringByteNullable(ctx context.Context, request str
 // POST /test_response_string_byte_nullable_array
 func (c *Client) TestResponseStringByteNullableArray(ctx context.Context, request string) (res [][]byte, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_byte_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_byte_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -23645,21 +24742,24 @@ func (c *Client) TestResponseStringByteNullableArray(ctx context.Context, reques
 // POST /test_response_string_byte_nullable_array_array
 func (c *Client) TestResponseStringByteNullableArrayArray(ctx context.Context, request string) (res [][][]byte, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_byte_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_byte_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -23699,21 +24799,24 @@ func (c *Client) TestResponseStringByteNullableArrayArray(ctx context.Context, r
 // POST /test_response_string_date
 func (c *Client) TestResponseStringDate(ctx context.Context, request string) (res time.Time, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDate",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -23753,21 +24856,24 @@ func (c *Client) TestResponseStringDate(ctx context.Context, request string) (re
 // POST /test_response_string_date_array
 func (c *Client) TestResponseStringDateArray(ctx context.Context, request string) (res []time.Time, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -23807,21 +24913,24 @@ func (c *Client) TestResponseStringDateArray(ctx context.Context, request string
 // POST /test_response_string_date_array_array
 func (c *Client) TestResponseStringDateArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -23861,21 +24970,24 @@ func (c *Client) TestResponseStringDateArrayArray(ctx context.Context, request s
 // POST /test_response_string_date_nullable
 func (c *Client) TestResponseStringDateNullable(ctx context.Context, request string) (res NilDate, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -23915,21 +25027,24 @@ func (c *Client) TestResponseStringDateNullable(ctx context.Context, request str
 // POST /test_response_string_date_nullable_array
 func (c *Client) TestResponseStringDateNullableArray(ctx context.Context, request string) (res []time.Time, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -23969,21 +25084,24 @@ func (c *Client) TestResponseStringDateNullableArray(ctx context.Context, reques
 // POST /test_response_string_date_nullable_array_array
 func (c *Client) TestResponseStringDateNullableArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24023,21 +25141,24 @@ func (c *Client) TestResponseStringDateNullableArrayArray(ctx context.Context, r
 // POST /test_response_string_date-time
 func (c *Client) TestResponseStringDateTime(ctx context.Context, request string) (res time.Time, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date-time"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTime",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date-time")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24077,21 +25198,24 @@ func (c *Client) TestResponseStringDateTime(ctx context.Context, request string)
 // POST /test_response_string_date-time_array
 func (c *Client) TestResponseStringDateTimeArray(ctx context.Context, request string) (res []time.Time, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date-time_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date-time_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24131,21 +25255,24 @@ func (c *Client) TestResponseStringDateTimeArray(ctx context.Context, request st
 // POST /test_response_string_date-time_array_array
 func (c *Client) TestResponseStringDateTimeArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date-time_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date-time_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24185,21 +25312,24 @@ func (c *Client) TestResponseStringDateTimeArrayArray(ctx context.Context, reque
 // POST /test_response_string_date-time_nullable
 func (c *Client) TestResponseStringDateTimeNullable(ctx context.Context, request string) (res NilDateTime, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date-time_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date-time_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24239,21 +25369,24 @@ func (c *Client) TestResponseStringDateTimeNullable(ctx context.Context, request
 // POST /test_response_string_date-time_nullable_array
 func (c *Client) TestResponseStringDateTimeNullableArray(ctx context.Context, request string) (res []time.Time, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date-time_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date-time_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24293,21 +25426,24 @@ func (c *Client) TestResponseStringDateTimeNullableArray(ctx context.Context, re
 // POST /test_response_string_date-time_nullable_array_array
 func (c *Client) TestResponseStringDateTimeNullableArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date-time_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date-time_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24347,21 +25483,24 @@ func (c *Client) TestResponseStringDateTimeNullableArrayArray(ctx context.Contex
 // POST /test_response_string_duration
 func (c *Client) TestResponseStringDuration(ctx context.Context, request string) (res time.Duration, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_duration"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDuration",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_duration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24401,21 +25540,24 @@ func (c *Client) TestResponseStringDuration(ctx context.Context, request string)
 // POST /test_response_string_duration_array
 func (c *Client) TestResponseStringDurationArray(ctx context.Context, request string) (res []time.Duration, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_duration_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_duration_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24455,21 +25597,24 @@ func (c *Client) TestResponseStringDurationArray(ctx context.Context, request st
 // POST /test_response_string_duration_array_array
 func (c *Client) TestResponseStringDurationArrayArray(ctx context.Context, request string) (res [][]time.Duration, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_duration_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_duration_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24509,21 +25654,24 @@ func (c *Client) TestResponseStringDurationArrayArray(ctx context.Context, reque
 // POST /test_response_string_duration_nullable
 func (c *Client) TestResponseStringDurationNullable(ctx context.Context, request string) (res NilDuration, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_duration_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_duration_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24563,21 +25711,24 @@ func (c *Client) TestResponseStringDurationNullable(ctx context.Context, request
 // POST /test_response_string_duration_nullable_array
 func (c *Client) TestResponseStringDurationNullableArray(ctx context.Context, request string) (res []time.Duration, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_duration_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_duration_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24617,21 +25768,24 @@ func (c *Client) TestResponseStringDurationNullableArray(ctx context.Context, re
 // POST /test_response_string_duration_nullable_array_array
 func (c *Client) TestResponseStringDurationNullableArrayArray(ctx context.Context, request string) (res [][]time.Duration, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_duration_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_duration_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24671,21 +25825,24 @@ func (c *Client) TestResponseStringDurationNullableArrayArray(ctx context.Contex
 // POST /test_response_string_email
 func (c *Client) TestResponseStringEmail(ctx context.Context, request string) (res string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_email"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmail",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_email")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24725,21 +25882,24 @@ func (c *Client) TestResponseStringEmail(ctx context.Context, request string) (r
 // POST /test_response_string_email_array
 func (c *Client) TestResponseStringEmailArray(ctx context.Context, request string) (res []string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_email_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_email_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24779,21 +25939,24 @@ func (c *Client) TestResponseStringEmailArray(ctx context.Context, request strin
 // POST /test_response_string_email_array_array
 func (c *Client) TestResponseStringEmailArrayArray(ctx context.Context, request string) (res [][]string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_email_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_email_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24833,21 +25996,24 @@ func (c *Client) TestResponseStringEmailArrayArray(ctx context.Context, request 
 // POST /test_response_string_email_nullable
 func (c *Client) TestResponseStringEmailNullable(ctx context.Context, request string) (res NilString, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_email_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_email_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24887,21 +26053,24 @@ func (c *Client) TestResponseStringEmailNullable(ctx context.Context, request st
 // POST /test_response_string_email_nullable_array
 func (c *Client) TestResponseStringEmailNullableArray(ctx context.Context, request string) (res []string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_email_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_email_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24941,21 +26110,24 @@ func (c *Client) TestResponseStringEmailNullableArray(ctx context.Context, reque
 // POST /test_response_string_email_nullable_array_array
 func (c *Client) TestResponseStringEmailNullableArrayArray(ctx context.Context, request string) (res [][]string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_email_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_email_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -24995,21 +26167,24 @@ func (c *Client) TestResponseStringEmailNullableArrayArray(ctx context.Context, 
 // POST /test_response_string_hostname
 func (c *Client) TestResponseStringHostname(ctx context.Context, request string) (res string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_hostname"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostname",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_hostname")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25049,21 +26224,24 @@ func (c *Client) TestResponseStringHostname(ctx context.Context, request string)
 // POST /test_response_string_hostname_array
 func (c *Client) TestResponseStringHostnameArray(ctx context.Context, request string) (res []string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_hostname_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_hostname_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25103,21 +26281,24 @@ func (c *Client) TestResponseStringHostnameArray(ctx context.Context, request st
 // POST /test_response_string_hostname_array_array
 func (c *Client) TestResponseStringHostnameArrayArray(ctx context.Context, request string) (res [][]string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_hostname_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_hostname_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25157,21 +26338,24 @@ func (c *Client) TestResponseStringHostnameArrayArray(ctx context.Context, reque
 // POST /test_response_string_hostname_nullable
 func (c *Client) TestResponseStringHostnameNullable(ctx context.Context, request string) (res NilString, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_hostname_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_hostname_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25211,21 +26395,24 @@ func (c *Client) TestResponseStringHostnameNullable(ctx context.Context, request
 // POST /test_response_string_hostname_nullable_array
 func (c *Client) TestResponseStringHostnameNullableArray(ctx context.Context, request string) (res []string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_hostname_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_hostname_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25265,21 +26452,24 @@ func (c *Client) TestResponseStringHostnameNullableArray(ctx context.Context, re
 // POST /test_response_string_hostname_nullable_array_array
 func (c *Client) TestResponseStringHostnameNullableArrayArray(ctx context.Context, request string) (res [][]string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_hostname_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_hostname_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25319,21 +26509,24 @@ func (c *Client) TestResponseStringHostnameNullableArrayArray(ctx context.Contex
 // POST /test_response_string_ip
 func (c *Client) TestResponseStringIP(ctx context.Context, request string) (res net.IP, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ip"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIP",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ip")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25373,21 +26566,24 @@ func (c *Client) TestResponseStringIP(ctx context.Context, request string) (res 
 // POST /test_response_string_ip_array
 func (c *Client) TestResponseStringIPArray(ctx context.Context, request string) (res []net.IP, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ip_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ip_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25427,21 +26623,24 @@ func (c *Client) TestResponseStringIPArray(ctx context.Context, request string) 
 // POST /test_response_string_ip_array_array
 func (c *Client) TestResponseStringIPArrayArray(ctx context.Context, request string) (res [][]net.IP, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ip_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ip_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25481,21 +26680,24 @@ func (c *Client) TestResponseStringIPArrayArray(ctx context.Context, request str
 // POST /test_response_string_ip_nullable
 func (c *Client) TestResponseStringIPNullable(ctx context.Context, request string) (res NilIP, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ip_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ip_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25535,21 +26737,24 @@ func (c *Client) TestResponseStringIPNullable(ctx context.Context, request strin
 // POST /test_response_string_ip_nullable_array
 func (c *Client) TestResponseStringIPNullableArray(ctx context.Context, request string) (res []net.IP, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ip_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ip_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25589,21 +26794,24 @@ func (c *Client) TestResponseStringIPNullableArray(ctx context.Context, request 
 // POST /test_response_string_ip_nullable_array_array
 func (c *Client) TestResponseStringIPNullableArrayArray(ctx context.Context, request string) (res [][]net.IP, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ip_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ip_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25643,21 +26851,24 @@ func (c *Client) TestResponseStringIPNullableArrayArray(ctx context.Context, req
 // POST /test_response_string_ipv4
 func (c *Client) TestResponseStringIpv4(ctx context.Context, request string) (res net.IP, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv4"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv4")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25697,21 +26908,24 @@ func (c *Client) TestResponseStringIpv4(ctx context.Context, request string) (re
 // POST /test_response_string_ipv4_array
 func (c *Client) TestResponseStringIpv4Array(ctx context.Context, request string) (res []net.IP, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv4_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4Array",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv4_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25751,21 +26965,24 @@ func (c *Client) TestResponseStringIpv4Array(ctx context.Context, request string
 // POST /test_response_string_ipv4_array_array
 func (c *Client) TestResponseStringIpv4ArrayArray(ctx context.Context, request string) (res [][]net.IP, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv4_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv4_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25805,21 +27022,24 @@ func (c *Client) TestResponseStringIpv4ArrayArray(ctx context.Context, request s
 // POST /test_response_string_ipv4_nullable
 func (c *Client) TestResponseStringIpv4Nullable(ctx context.Context, request string) (res NilIPv4, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv4_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv4_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25859,21 +27079,24 @@ func (c *Client) TestResponseStringIpv4Nullable(ctx context.Context, request str
 // POST /test_response_string_ipv4_nullable_array
 func (c *Client) TestResponseStringIpv4NullableArray(ctx context.Context, request string) (res []net.IP, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv4_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv4_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25913,21 +27136,24 @@ func (c *Client) TestResponseStringIpv4NullableArray(ctx context.Context, reques
 // POST /test_response_string_ipv4_nullable_array_array
 func (c *Client) TestResponseStringIpv4NullableArrayArray(ctx context.Context, request string) (res [][]net.IP, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv4_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv4_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25967,21 +27193,24 @@ func (c *Client) TestResponseStringIpv4NullableArrayArray(ctx context.Context, r
 // POST /test_response_string_ipv6
 func (c *Client) TestResponseStringIpv6(ctx context.Context, request string) (res net.IP, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv6"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv6")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26021,21 +27250,24 @@ func (c *Client) TestResponseStringIpv6(ctx context.Context, request string) (re
 // POST /test_response_string_ipv6_array
 func (c *Client) TestResponseStringIpv6Array(ctx context.Context, request string) (res []net.IP, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv6_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6Array",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv6_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26075,21 +27307,24 @@ func (c *Client) TestResponseStringIpv6Array(ctx context.Context, request string
 // POST /test_response_string_ipv6_array_array
 func (c *Client) TestResponseStringIpv6ArrayArray(ctx context.Context, request string) (res [][]net.IP, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv6_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv6_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26129,21 +27364,24 @@ func (c *Client) TestResponseStringIpv6ArrayArray(ctx context.Context, request s
 // POST /test_response_string_ipv6_nullable
 func (c *Client) TestResponseStringIpv6Nullable(ctx context.Context, request string) (res NilIPv6, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv6_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv6_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26183,21 +27421,24 @@ func (c *Client) TestResponseStringIpv6Nullable(ctx context.Context, request str
 // POST /test_response_string_ipv6_nullable_array
 func (c *Client) TestResponseStringIpv6NullableArray(ctx context.Context, request string) (res []net.IP, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv6_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv6_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26237,21 +27478,24 @@ func (c *Client) TestResponseStringIpv6NullableArray(ctx context.Context, reques
 // POST /test_response_string_ipv6_nullable_array_array
 func (c *Client) TestResponseStringIpv6NullableArrayArray(ctx context.Context, request string) (res [][]net.IP, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv6_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv6_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26291,21 +27535,24 @@ func (c *Client) TestResponseStringIpv6NullableArrayArray(ctx context.Context, r
 // POST /test_response_string_nullable
 func (c *Client) TestResponseStringNullable(ctx context.Context, request string) (res NilString, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26345,21 +27592,24 @@ func (c *Client) TestResponseStringNullable(ctx context.Context, request string)
 // POST /test_response_string_nullable_array
 func (c *Client) TestResponseStringNullableArray(ctx context.Context, request string) (res []string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26399,21 +27649,24 @@ func (c *Client) TestResponseStringNullableArray(ctx context.Context, request st
 // POST /test_response_string_nullable_array_array
 func (c *Client) TestResponseStringNullableArrayArray(ctx context.Context, request string) (res [][]string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26453,21 +27706,24 @@ func (c *Client) TestResponseStringNullableArrayArray(ctx context.Context, reque
 // POST /test_response_string_password
 func (c *Client) TestResponseStringPassword(ctx context.Context, request string) (res string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_password"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPassword",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_password")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26507,21 +27763,24 @@ func (c *Client) TestResponseStringPassword(ctx context.Context, request string)
 // POST /test_response_string_password_array
 func (c *Client) TestResponseStringPasswordArray(ctx context.Context, request string) (res []string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_password_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_password_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26561,21 +27820,24 @@ func (c *Client) TestResponseStringPasswordArray(ctx context.Context, request st
 // POST /test_response_string_password_array_array
 func (c *Client) TestResponseStringPasswordArrayArray(ctx context.Context, request string) (res [][]string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_password_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_password_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26615,21 +27877,24 @@ func (c *Client) TestResponseStringPasswordArrayArray(ctx context.Context, reque
 // POST /test_response_string_password_nullable
 func (c *Client) TestResponseStringPasswordNullable(ctx context.Context, request string) (res NilString, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_password_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_password_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26669,21 +27934,24 @@ func (c *Client) TestResponseStringPasswordNullable(ctx context.Context, request
 // POST /test_response_string_password_nullable_array
 func (c *Client) TestResponseStringPasswordNullableArray(ctx context.Context, request string) (res []string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_password_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_password_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26723,21 +27991,24 @@ func (c *Client) TestResponseStringPasswordNullableArray(ctx context.Context, re
 // POST /test_response_string_password_nullable_array_array
 func (c *Client) TestResponseStringPasswordNullableArrayArray(ctx context.Context, request string) (res [][]string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_password_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_password_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26777,21 +28048,24 @@ func (c *Client) TestResponseStringPasswordNullableArrayArray(ctx context.Contex
 // POST /test_response_string_time
 func (c *Client) TestResponseStringTime(ctx context.Context, request string) (res time.Time, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_time"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTime",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_time")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26831,21 +28105,24 @@ func (c *Client) TestResponseStringTime(ctx context.Context, request string) (re
 // POST /test_response_string_time_array
 func (c *Client) TestResponseStringTimeArray(ctx context.Context, request string) (res []time.Time, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_time_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_time_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26885,21 +28162,24 @@ func (c *Client) TestResponseStringTimeArray(ctx context.Context, request string
 // POST /test_response_string_time_array_array
 func (c *Client) TestResponseStringTimeArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_time_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_time_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26939,21 +28219,24 @@ func (c *Client) TestResponseStringTimeArrayArray(ctx context.Context, request s
 // POST /test_response_string_time_nullable
 func (c *Client) TestResponseStringTimeNullable(ctx context.Context, request string) (res NilTime, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_time_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_time_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26993,21 +28276,24 @@ func (c *Client) TestResponseStringTimeNullable(ctx context.Context, request str
 // POST /test_response_string_time_nullable_array
 func (c *Client) TestResponseStringTimeNullableArray(ctx context.Context, request string) (res []time.Time, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_time_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_time_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -27047,21 +28333,24 @@ func (c *Client) TestResponseStringTimeNullableArray(ctx context.Context, reques
 // POST /test_response_string_time_nullable_array_array
 func (c *Client) TestResponseStringTimeNullableArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_time_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_time_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -27101,21 +28390,24 @@ func (c *Client) TestResponseStringTimeNullableArrayArray(ctx context.Context, r
 // POST /test_response_string_uri
 func (c *Client) TestResponseStringURI(ctx context.Context, request string) (res url.URL, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uri"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURI",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uri")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -27155,21 +28447,24 @@ func (c *Client) TestResponseStringURI(ctx context.Context, request string) (res
 // POST /test_response_string_uri_array
 func (c *Client) TestResponseStringURIArray(ctx context.Context, request string) (res []url.URL, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uri_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURIArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uri_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -27209,21 +28504,24 @@ func (c *Client) TestResponseStringURIArray(ctx context.Context, request string)
 // POST /test_response_string_uri_array_array
 func (c *Client) TestResponseStringURIArrayArray(ctx context.Context, request string) (res [][]url.URL, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uri_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURIArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uri_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -27263,21 +28561,24 @@ func (c *Client) TestResponseStringURIArrayArray(ctx context.Context, request st
 // POST /test_response_string_uri_nullable
 func (c *Client) TestResponseStringURINullable(ctx context.Context, request string) (res NilURI, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uri_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURINullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uri_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -27317,21 +28618,24 @@ func (c *Client) TestResponseStringURINullable(ctx context.Context, request stri
 // POST /test_response_string_uri_nullable_array
 func (c *Client) TestResponseStringURINullableArray(ctx context.Context, request string) (res []url.URL, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uri_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURINullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uri_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -27371,21 +28675,24 @@ func (c *Client) TestResponseStringURINullableArray(ctx context.Context, request
 // POST /test_response_string_uri_nullable_array_array
 func (c *Client) TestResponseStringURINullableArrayArray(ctx context.Context, request string) (res [][]url.URL, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uri_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURINullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uri_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -27425,21 +28732,24 @@ func (c *Client) TestResponseStringURINullableArrayArray(ctx context.Context, re
 // POST /test_response_string_uuid
 func (c *Client) TestResponseStringUUID(ctx context.Context, request string) (res uuid.UUID, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uuid"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUID",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uuid")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -27479,21 +28789,24 @@ func (c *Client) TestResponseStringUUID(ctx context.Context, request string) (re
 // POST /test_response_string_uuid_array
 func (c *Client) TestResponseStringUUIDArray(ctx context.Context, request string) (res []uuid.UUID, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uuid_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uuid_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -27533,21 +28846,24 @@ func (c *Client) TestResponseStringUUIDArray(ctx context.Context, request string
 // POST /test_response_string_uuid_array_array
 func (c *Client) TestResponseStringUUIDArrayArray(ctx context.Context, request string) (res [][]uuid.UUID, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uuid_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uuid_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -27587,21 +28903,24 @@ func (c *Client) TestResponseStringUUIDArrayArray(ctx context.Context, request s
 // POST /test_response_string_uuid_nullable
 func (c *Client) TestResponseStringUUIDNullable(ctx context.Context, request string) (res NilUUID, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uuid_nullable"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uuid_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -27641,21 +28960,24 @@ func (c *Client) TestResponseStringUUIDNullable(ctx context.Context, request str
 // POST /test_response_string_uuid_nullable_array
 func (c *Client) TestResponseStringUUIDNullableArray(ctx context.Context, request string) (res []uuid.UUID, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uuid_nullable_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uuid_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -27695,21 +29017,24 @@ func (c *Client) TestResponseStringUUIDNullableArray(ctx context.Context, reques
 // POST /test_response_string_uuid_nullable_array_array
 func (c *Client) TestResponseStringUUIDNullableArrayArray(ctx context.Context, request string) (res [][]uuid.UUID, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uuid_nullable_array_array"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uuid_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
