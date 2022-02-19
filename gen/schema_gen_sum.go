@@ -125,8 +125,15 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 		for k, v := range schema.Discriminator.Mapping {
 			// Explicit mapping.
 			var found bool
-			for _, s := range sum.SumOf {
-				if s.Schema.Ref == v || path.Base(s.Schema.Ref) == v {
+			for i, s := range sum.SumOf {
+				var ref string
+				if s.Schema != nil {
+					ref = s.Schema.Ref
+				} else {
+					ref = schema.OneOf[i].Ref
+				}
+
+				if ref == v || path.Base(ref) == v {
 					found = true
 					sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
 						Key:  k,
@@ -140,9 +147,16 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 		}
 		if len(sum.SumSpec.Mapping) == 0 {
 			// Implicit mapping, defaults to type name.
-			for _, s := range sum.SumOf {
+			for i, s := range sum.SumOf {
+				var ref string
+				if s.Schema != nil {
+					ref = s.Schema.Ref
+				} else {
+					ref = schema.OneOf[i].Ref
+				}
+
 				sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
-					Key:  path.Base(s.Schema.Ref),
+					Key:  path.Base(ref),
 					Type: s.Name,
 				})
 			}

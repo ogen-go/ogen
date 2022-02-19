@@ -3139,14 +3139,24 @@ func (s OneOfBugs) Encode(e *jx.Writer) {
 			s.OneOfMinusMappingMinusReference.Encode(e)
 		}
 	}
+	{
+		if s.OneOfMinusMappingMinusAny.Set {
+			e.Comma()
+		}
+		if s.OneOfMinusMappingMinusAny.Set {
+			e.RawStr("\"oneOf-mapping-any\"" + ":")
+			s.OneOfMinusMappingMinusAny.Encode(e)
+		}
+	}
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfOneOfBugs = [4]string{
+var jsonFieldsNameOfOneOfBugs = [5]string{
 	0: "issue143",
 	1: "additional-fields",
 	2: "oneOf-uuid-int-enum",
 	3: "oneOf-mapping-reference",
+	4: "oneOf-mapping-any",
 }
 
 // Decode decodes OneOfBugs from json.
@@ -3198,6 +3208,16 @@ func (s *OneOfBugs) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"oneOf-mapping-reference\"")
 			}
+		case "oneOf-mapping-any":
+			if err := func() error {
+				s.OneOfMinusMappingMinusAny.Reset()
+				if err := s.OneOfMinusMappingMinusAny.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"oneOf-mapping-any\"")
+			}
 		default:
 			return d.Skip()
 		}
@@ -3236,6 +3256,234 @@ func (s *OneOfBugs) Decode(d *jx.Decoder) error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode encodes OneOfMappingAny as json.
+func (s OneOfMappingAny) Encode(e *jx.Writer) {
+	switch s.Type {
+	case AnyOneOfMappingAny:
+		if len(s.Any) != 0 {
+			e.Raw(s.Any)
+		}
+	case OneOfMappingAnyBOneOfMappingAny:
+		s.OneOfMappingAnyB.Encode(e)
+	}
+}
+
+// Decode decodes OneOfMappingAny from json.
+func (s *OneOfMappingAny) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode OneOfMappingAny to nil")
+	}
+	// Sum type discriminator.
+	if d.Next() != jx.Object {
+		return errors.Errorf("unexpected json type %q", d.Next())
+	}
+
+	var found bool
+	if err := d.Capture(func(d *jx.Decoder) error {
+		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
+			if found {
+				return d.Skip()
+			}
+			switch string(key) {
+			case "infoType":
+				typ, err := d.Str()
+				if err != nil {
+					return err
+				}
+				switch typ {
+				case "extended":
+					s.Type = OneOfMappingAnyBOneOfMappingAny
+					found = true
+				case "simple":
+					s.Type = AnyOneOfMappingAny
+					found = true
+				default:
+					return errors.Errorf("unknown type %s", typ)
+				}
+				return nil
+			}
+			return d.Skip()
+		})
+	}); err != nil {
+		return errors.Wrap(err, "capture")
+	}
+	if !found {
+		return errors.New("unable to detect sum type variant")
+	}
+	switch s.Type {
+	case AnyOneOfMappingAny:
+		v, err := d.RawAppend(nil)
+		s.Any = jx.Raw(v)
+		if err != nil {
+			return err
+		}
+	case OneOfMappingAnyBOneOfMappingAny:
+		if err := s.OneOfMappingAnyB.Decode(d); err != nil {
+			return err
+		}
+	default:
+		return errors.Errorf("inferred invalid type: %s", s.Type)
+	}
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s OneOfMappingAnyB) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.InfoType.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.InfoType.Set {
+			e.RawStr("\"infoType\"" + ":")
+			s.InfoType.Encode(e)
+		}
+	}
+	{
+		if s.Code.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Code.Set {
+			e.RawStr("\"code\"" + ":")
+			s.Code.Encode(e)
+		}
+	}
+	{
+		if s.Data != nil {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Data != nil {
+			e.RawStr("\"data\"" + ":")
+			s.Data.Encode(e)
+		}
+	}
+	{
+		if s.Info.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Info.Set {
+			e.RawStr("\"info\"" + ":")
+			s.Info.Encode(e)
+		}
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfOneOfMappingAnyB = [4]string{
+	0: "infoType",
+	1: "code",
+	2: "data",
+	3: "info",
+}
+
+// Decode decodes OneOfMappingAnyB from json.
+func (s *OneOfMappingAnyB) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode OneOfMappingAnyB to nil")
+	}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "infoType":
+			if err := func() error {
+				s.InfoType.Reset()
+				if err := s.InfoType.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"infoType\"")
+			}
+		case "code":
+			if err := func() error {
+				s.Code.Reset()
+				if err := s.Code.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"code\"")
+			}
+		case "data":
+			if err := func() error {
+				s.Data = nil
+				var elem OneOfMappingAnyBData
+				if err := elem.Decode(d); err != nil {
+					return err
+				}
+				s.Data = &elem
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"data\"")
+			}
+		case "info":
+			if err := func() error {
+				s.Info.Reset()
+				if err := s.Info.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"info\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode OneOfMappingAnyB")
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s OneOfMappingAnyBData) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfOneOfMappingAnyBData = [0]string{}
+
+// Decode decodes OneOfMappingAnyBData from json.
+func (s *OneOfMappingAnyBData) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode OneOfMappingAnyBData to nil")
+	}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode OneOfMappingAnyBData")
 	}
 
 	return nil
@@ -4542,6 +4790,31 @@ func (o *OptNullableEnums) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf("unexpected type %q while reading OptNullableEnums", d.Next())
+	}
+}
+
+// Encode encodes OneOfMappingAny as json.
+func (o OptOneOfMappingAny) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes OneOfMappingAny from json.
+func (o *OptOneOfMappingAny) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptOneOfMappingAny to nil")
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf("unexpected type %q while reading OptOneOfMappingAny", d.Next())
 	}
 }
 
