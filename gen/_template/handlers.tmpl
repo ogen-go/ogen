@@ -9,12 +9,17 @@
 //
 // {{ $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
 func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+	{{- if $op.Spec.OperationID }}
+		otelogen.OperationID({{ quote $op.Spec.OperationID }}),
+	{{- end }}
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), {{ quote $op.Name }},
-		{{- if $op.Spec.OperationID }}
-		trace.WithAttributes(otelogen.OperationID({{ quote $op.Spec.OperationID }})),
-		{{- end }}
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
 	{{- if $op.Params }}
@@ -22,6 +27,7 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -32,6 +38,7 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -41,6 +48,8 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	if err != nil {
 		{{- /* It is not secure to expose internal error to client, but better than nothing. */ -}}
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		{{- if $.Error }}
 		var errRes *{{ $.ErrorType.Go }}
 		if errors.As(err, &errRes) {
@@ -49,7 +58,6 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		{{- else }}
-		span.SetStatus(codes.Error, "Internal")
 		respondError(w, http.StatusInternalServerError, err)
         {{- end }}
 		return
@@ -58,9 +66,12 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	if err := encode{{ $op.Name }}Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 {{ end }}
 

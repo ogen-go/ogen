@@ -2716,12 +2716,26 @@ type Handler interface {
 type Server struct {
 	h   Handler
 	cfg config
+
+	requests metric.Int64Counter
+	errors   metric.Int64Counter
+	duration metric.Int64Histogram
 }
 
-func NewServer(h Handler, opts ...Option) *Server {
-	srv := &Server{
+func NewServer(h Handler, opts ...Option) (*Server, error) {
+	s := &Server{
 		h:   h,
 		cfg: newConfig(opts...),
 	}
-	return srv
+	var err error
+	if s.requests, err = s.cfg.Meter.NewInt64Counter(otelogen.ServerRequestCount); err != nil {
+		return nil, err
+	}
+	if s.errors, err = s.cfg.Meter.NewInt64Counter(otelogen.ServerErrorsCount); err != nil {
+		return nil, err
+	}
+	if s.duration, err = s.cfg.Meter.NewInt64Histogram(otelogen.ServerDuration); err != nil {
+		return nil, err
+	}
+	return s, nil
 }

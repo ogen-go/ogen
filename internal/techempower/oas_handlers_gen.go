@@ -74,15 +74,21 @@ var (
 //
 // GET /cached-worlds
 func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("Caching"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "Caching",
-		trace.WithAttributes(otelogen.OperationID("Caching")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	params, err := decodeCachingParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -91,6 +97,7 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -98,25 +105,34 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 	if err := encodeCachingResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleDBRequest handles DB operation.
 //
 // GET /db
 func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("DB"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DB",
-		trace.WithAttributes(otelogen.OperationID("DB")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
 	response, err := s.h.DB(ctx)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -124,25 +140,34 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 	if err := encodeDBResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleJSONRequest handles json operation.
 //
 // GET /json
 func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("json"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "JSON",
-		trace.WithAttributes(otelogen.OperationID("json")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
 	response, err := s.h.JSON(ctx)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -150,24 +175,33 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 	if err := encodeJSONResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleQueriesRequest handles Queries operation.
 //
 // GET /queries
 func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("Queries"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "Queries",
-		trace.WithAttributes(otelogen.OperationID("Queries")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	params, err := decodeQueriesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -176,6 +210,7 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -183,24 +218,33 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 	if err := encodeQueriesResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleUpdatesRequest handles Updates operation.
 //
 // GET /updates
 func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("Updates"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "Updates",
-		trace.WithAttributes(otelogen.OperationID("Updates")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	params, err := decodeUpdatesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -209,6 +253,7 @@ func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -216,9 +261,12 @@ func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *
 	if err := encodeUpdatesResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 func respondError(w http.ResponseWriter, code int, err error) {

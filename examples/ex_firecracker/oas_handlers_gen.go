@@ -74,15 +74,21 @@ var (
 //
 // PUT /snapshot/create
 func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("createSnapshot"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateSnapshot",
-		trace.WithAttributes(otelogen.OperationID("createSnapshot")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeCreateSnapshotRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -91,6 +97,7 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -98,24 +105,33 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 	if err := encodeCreateSnapshotResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleCreateSyncActionRequest handles createSyncAction operation.
 //
 // PUT /actions
 func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("createSyncAction"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateSyncAction",
-		trace.WithAttributes(otelogen.OperationID("createSyncAction")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeCreateSyncActionRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -124,6 +140,7 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -131,25 +148,34 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 	if err := encodeCreateSyncActionResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleDescribeBalloonConfigRequest handles describeBalloonConfig operation.
 //
 // GET /balloon
 func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("describeBalloonConfig"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DescribeBalloonConfig",
-		trace.WithAttributes(otelogen.OperationID("describeBalloonConfig")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
 	response, err := s.h.DescribeBalloonConfig(ctx)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -157,25 +183,34 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.Respo
 	if err := encodeDescribeBalloonConfigResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleDescribeBalloonStatsRequest handles describeBalloonStats operation.
 //
 // GET /balloon/statistics
 func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("describeBalloonStats"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DescribeBalloonStats",
-		trace.WithAttributes(otelogen.OperationID("describeBalloonStats")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
 	response, err := s.h.DescribeBalloonStats(ctx)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -183,25 +218,34 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.Respon
 	if err := encodeDescribeBalloonStatsResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleDescribeInstanceRequest handles describeInstance operation.
 //
 // GET /
 func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("describeInstance"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DescribeInstance",
-		trace.WithAttributes(otelogen.OperationID("describeInstance")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
 	response, err := s.h.DescribeInstance(ctx)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -209,25 +253,34 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWr
 	if err := encodeDescribeInstanceResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleGetExportVmConfigRequest handles getExportVmConfig operation.
 //
 // GET /vm/config
 func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getExportVmConfig"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetExportVmConfig",
-		trace.WithAttributes(otelogen.OperationID("getExportVmConfig")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
 	response, err := s.h.GetExportVmConfig(ctx)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -235,25 +288,34 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseW
 	if err := encodeGetExportVmConfigResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleGetMachineConfigurationRequest handles getMachineConfiguration operation.
 //
 // GET /machine-config
 func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getMachineConfiguration"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetMachineConfiguration",
-		trace.WithAttributes(otelogen.OperationID("getMachineConfiguration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
 	response, err := s.h.GetMachineConfiguration(ctx)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -261,24 +323,33 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.Res
 	if err := encodeGetMachineConfigurationResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleLoadSnapshotRequest handles loadSnapshot operation.
 //
 // PUT /snapshot/load
 func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("loadSnapshot"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "LoadSnapshot",
-		trace.WithAttributes(otelogen.OperationID("loadSnapshot")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeLoadSnapshotRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -287,6 +358,7 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -294,23 +366,31 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 	if err := encodeLoadSnapshotResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleMmdsConfigPutRequest handles  operation.
 //
 // PUT /mmds/config
 func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MmdsConfigPut",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeMmdsConfigPutRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -319,6 +399,7 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -326,24 +407,32 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 	if err := encodeMmdsConfigPutResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleMmdsGetRequest handles  operation.
 //
 // GET /mmds
 func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MmdsGet",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
 	response, err := s.h.MmdsGet(ctx)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -351,23 +440,31 @@ func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *
 	if err := encodeMmdsGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleMmdsPatchRequest handles  operation.
 //
 // PATCH /mmds
 func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MmdsPatch",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeMmdsPatchRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -376,6 +473,7 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -383,23 +481,31 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 	if err := encodeMmdsPatchResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleMmdsPutRequest handles  operation.
 //
 // PUT /mmds
 func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MmdsPut",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeMmdsPutRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -408,6 +514,7 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -415,24 +522,33 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 	if err := encodeMmdsPutResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandlePatchBalloonRequest handles patchBalloon operation.
 //
 // PATCH /balloon
 func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("patchBalloon"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PatchBalloon",
-		trace.WithAttributes(otelogen.OperationID("patchBalloon")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodePatchBalloonRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -441,6 +557,7 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -448,24 +565,33 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 	if err := encodePatchBalloonResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandlePatchBalloonStatsIntervalRequest handles patchBalloonStatsInterval operation.
 //
 // PATCH /balloon/statistics
 func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("patchBalloonStatsInterval"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PatchBalloonStatsInterval",
-		trace.WithAttributes(otelogen.OperationID("patchBalloonStatsInterval")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodePatchBalloonStatsIntervalRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -474,6 +600,7 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -481,24 +608,33 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 	if err := encodePatchBalloonStatsIntervalResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandlePatchGuestDriveByIDRequest handles patchGuestDriveByID operation.
 //
 // PATCH /drives/{drive_id}
 func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("patchGuestDriveByID"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PatchGuestDriveByID",
-		trace.WithAttributes(otelogen.OperationID("patchGuestDriveByID")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	params, err := decodePatchGuestDriveByIDParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -506,6 +642,7 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -514,6 +651,7 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -521,24 +659,33 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 	if err := encodePatchGuestDriveByIDResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandlePatchGuestNetworkInterfaceByIDRequest handles patchGuestNetworkInterfaceByID operation.
 //
 // PATCH /network-interfaces/{iface_id}
 func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("patchGuestNetworkInterfaceByID"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PatchGuestNetworkInterfaceByID",
-		trace.WithAttributes(otelogen.OperationID("patchGuestNetworkInterfaceByID")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	params, err := decodePatchGuestNetworkInterfaceByIDParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -546,6 +693,7 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -554,6 +702,7 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -561,24 +710,33 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 	if err := encodePatchGuestNetworkInterfaceByIDResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandlePatchMachineConfigurationRequest handles patchMachineConfiguration operation.
 //
 // PATCH /machine-config
 func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("patchMachineConfiguration"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PatchMachineConfiguration",
-		trace.WithAttributes(otelogen.OperationID("patchMachineConfiguration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodePatchMachineConfigurationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -587,6 +745,7 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -594,24 +753,33 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 	if err := encodePatchMachineConfigurationResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandlePatchVmRequest handles patchVm operation.
 //
 // PATCH /vm
 func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("patchVm"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PatchVm",
-		trace.WithAttributes(otelogen.OperationID("patchVm")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodePatchVmRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -620,6 +788,7 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -627,24 +796,33 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 	if err := encodePatchVmResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandlePutBalloonRequest handles putBalloon operation.
 //
 // PUT /balloon
 func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("putBalloon"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PutBalloon",
-		trace.WithAttributes(otelogen.OperationID("putBalloon")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodePutBalloonRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -653,6 +831,7 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -660,24 +839,33 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 	if err := encodePutBalloonResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandlePutGuestBootSourceRequest handles putGuestBootSource operation.
 //
 // PUT /boot-source
 func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("putGuestBootSource"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PutGuestBootSource",
-		trace.WithAttributes(otelogen.OperationID("putGuestBootSource")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodePutGuestBootSourceRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -686,6 +874,7 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -693,24 +882,33 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 	if err := encodePutGuestBootSourceResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandlePutGuestDriveByIDRequest handles putGuestDriveByID operation.
 //
 // PUT /drives/{drive_id}
 func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("putGuestDriveByID"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PutGuestDriveByID",
-		trace.WithAttributes(otelogen.OperationID("putGuestDriveByID")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	params, err := decodePutGuestDriveByIDParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -718,6 +916,7 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -726,6 +925,7 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -733,24 +933,33 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 	if err := encodePutGuestDriveByIDResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandlePutGuestNetworkInterfaceByIDRequest handles putGuestNetworkInterfaceByID operation.
 //
 // PUT /network-interfaces/{iface_id}
 func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("putGuestNetworkInterfaceByID"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PutGuestNetworkInterfaceByID",
-		trace.WithAttributes(otelogen.OperationID("putGuestNetworkInterfaceByID")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	params, err := decodePutGuestNetworkInterfaceByIDParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -758,6 +967,7 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -766,6 +976,7 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -773,24 +984,33 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 	if err := encodePutGuestNetworkInterfaceByIDResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandlePutGuestVsockRequest handles putGuestVsock operation.
 //
 // PUT /vsock
 func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("putGuestVsock"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PutGuestVsock",
-		trace.WithAttributes(otelogen.OperationID("putGuestVsock")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodePutGuestVsockRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -799,6 +1019,7 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -806,24 +1027,33 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 	if err := encodePutGuestVsockResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandlePutLoggerRequest handles putLogger operation.
 //
 // PUT /logger
 func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("putLogger"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PutLogger",
-		trace.WithAttributes(otelogen.OperationID("putLogger")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodePutLoggerRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -832,6 +1062,7 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -839,24 +1070,33 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 	if err := encodePutLoggerResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandlePutMachineConfigurationRequest handles putMachineConfiguration operation.
 //
 // PUT /machine-config
 func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("putMachineConfiguration"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PutMachineConfiguration",
-		trace.WithAttributes(otelogen.OperationID("putMachineConfiguration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodePutMachineConfigurationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -865,6 +1105,7 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -872,24 +1113,33 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 	if err := encodePutMachineConfigurationResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandlePutMetricsRequest handles putMetrics operation.
 //
 // PUT /metrics
 func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("putMetrics"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PutMetrics",
-		trace.WithAttributes(otelogen.OperationID("putMetrics")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodePutMetricsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -898,6 +1148,7 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -905,9 +1156,12 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 	if err := encodePutMetricsResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 func respondError(w http.ResponseWriter, code int, err error) {

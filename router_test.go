@@ -11,7 +11,8 @@ import (
 )
 
 func TestRouter(t *testing.T) {
-	s := api.NewServer(&sampleAPIServer{})
+	s, err := api.NewServer(&sampleAPIServer{})
+	require.NoError(t, err)
 
 	type testCase struct {
 		Method    string

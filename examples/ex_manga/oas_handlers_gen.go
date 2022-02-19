@@ -74,15 +74,21 @@ var (
 //
 // GET /api/gallery/{book_id}
 func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getBook"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetBook",
-		trace.WithAttributes(otelogen.OperationID("getBook")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	params, err := decodeGetBookParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -91,6 +97,7 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -98,24 +105,33 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 	if err := encodeGetBookResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSearchRequest handles search operation.
 //
 // GET /api/galleries/search
 func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("search"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "Search",
-		trace.WithAttributes(otelogen.OperationID("search")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	params, err := decodeSearchParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -124,6 +140,7 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -131,24 +148,33 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 	if err := encodeSearchResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSearchByTagIDRequest handles searchByTagID operation.
 //
 // GET /api/galleries/tagged
 func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("searchByTagID"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SearchByTagID",
-		trace.WithAttributes(otelogen.OperationID("searchByTagID")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	params, err := decodeSearchByTagIDParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -157,6 +183,7 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -164,9 +191,12 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 	if err := encodeSearchByTagIDResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 func respondError(w http.ResponseWriter, code int, err error) {
