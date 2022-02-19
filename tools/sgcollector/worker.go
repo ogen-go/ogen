@@ -17,10 +17,7 @@ import (
 	"github.com/ogen-go/ogen/gen"
 )
 
-var (
-	errPanic       = errors.New("panic")
-	errInvalidJSON = errors.New("invalid json")
-)
+var errPanic = errors.New("panic")
 
 var bomPrefix = []byte{0xEF, 0xBB, 0xBF}
 
@@ -35,6 +32,13 @@ func convertYAMLtoJSON(data []byte) (_ []byte, rErr error) {
 		return nil, err
 	}
 	return j, nil
+}
+
+func validateJSON(data []byte) error {
+	d := jx.GetDecoder()
+	d.ResetBytes(data)
+	defer jx.PutDecoder(d)
+	return d.Validate()
 }
 
 func worker(ctx context.Context, m FileMatch, r *Reporters) (rErr error) {
@@ -107,8 +111,9 @@ func generate(data []byte, isYAML bool) error {
 		}
 		data = j
 	}
-	if !jx.Valid(data) {
-		return &GenerateError{stage: InvalidJSON, err: errInvalidJSON}
+
+	if err := validateJSON(data); err != nil {
+		return &GenerateError{stage: InvalidJSON, err: err}
 	}
 
 	spec, err := ogen.Parse(data)
